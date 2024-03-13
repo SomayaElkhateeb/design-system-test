@@ -4,24 +4,24 @@ import { getImageUrl } from "src/utils";
 
 const ProfileInfo = () => {
   return (
-    <div className="flex items-center gap-4">
-      <button className="rounded-lg border border-light-2 p-[10px]">
-        <FaqIcon className="" />
+    <div className="flex items-center gap-[14px]">
+      <button className="rounded-lg border border-light-2 w-[42px] h-[42px] grid place-content-center">
+        <FaqIcon />
       </button>
-      <button className="rounded-lg border border-light-2  p-[10px]">
+      <button className="rounded-lg border border-light-2 w-[42px] h-[42px] grid place-content-center">
         <ViewIcon />
       </button>
-      <button className="rounded-lg border border-light-2  p-[10px] relative">
+      <button className="rounded-lg border border-light-2 w-[42px] h-[42px] grid place-content-center relative">
         <span className="absolute p-1 rounded-full bg-error top-1 right-1"></span>
         <ChatIcon />
       </button>
-      <button className="rounded-lg border border-light-2  p-[10px] relative">
+      <button className="rounded-lg border border-light-2 w-[42px] h-[42px] grid place-content-center relative">
         <span className="absolute p-1 rounded-full bg-error top-1 right-1"></span>
         <NotifiIcon />
       </button>
-      <div className="w-11 h-11 border border-light-2 rounded-lg overflow-hidden">
+      <div className="rounded-lg border border-light-2 w-[42px] h-[42px] grid place-content-center overflow-hidden">
         <img
-          src={getImageUrl("profile.jpg")}
+          src={getImageUrl("images/profile.png")}
           alt="logo"
           className=" object-cover h-full "
         />

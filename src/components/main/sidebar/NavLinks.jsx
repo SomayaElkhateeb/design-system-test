@@ -2,13 +2,13 @@
 import { sidebarLinks } from "src/utils/constants";
 import SidebarItem from "./SidebarItem";
 
-const NavLinks = () => {
+const NavLinks = ({isOpen}) => {
   return (
-    <nav className="flex flex-col p-3 max-lg:p-1">
-      <ul className="space-y-1">
+    <nav className="my-4 w-full">
+      <ul className="flex gap-2 flex-col">
         {sidebarLinks.map((link) => ( // no use index id 
           <li key={link.id}>
-            <SidebarItem {...link} />
+            <SidebarItem {...link}  isOpen={isOpen} />
           </li>
         ))}
       </ul>

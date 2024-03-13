@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-
+import { getImageUrl } from ".";
 import {
   DashboardIcon,
   ProductsIcon,
@@ -13,13 +13,11 @@ import {
   ServicesIcon,
   SettingsIcon,
   StoresIcon,
-
   CopyIcon,
   ExportIcon,
   RemoveIcon,
   ShippingIcon,
 } from "./icons";
-
 
 
 //  SIDEBAR
@@ -39,12 +37,12 @@ export const sidebarLinks = [
 ];
 
 // Icons Social media
-export const iconsSocial = [
-  { id: nanoid(), img: 'F', url: '' },
-  { id: nanoid(), img: 'G', url: '' },
-  { id: nanoid(), img: 'M', url: '' },
-  { id: nanoid(), img: 'T', url: '' },
-]
+export const socialLinks = [
+  { id: nanoid(), img: getImageUrl("social/facebook.svg"), url: "/" },
+  { id: nanoid(), img: getImageUrl("social/google.svg"), url: "/" },
+  { id: nanoid(), img: getImageUrl("social/gmail.svg"), url: "/" },
+  { id: nanoid(), img: getImageUrl("social/tiktok.svg"), url: "/" },
+];
 
 // 1. Sorting
 export const sortMenus = [

@@ -5,16 +5,14 @@ import ProfileInfo from "./ProfileInfo";
 // onclick icon Bar show and hide sidebar, mini sidebar.
 // Header fexid.
 
-const Header = () => {
+const Header = ({setIsOpen}) => {
   return (
-    <div className="h-[80px]  flex justify-between items-center p-5">
+    <div className="h-[70px] flex justify-between items-center p-4 bg-white">
       <div className="flex items-center gap-3">
-        <button
-          onClick={() => {
-            console.log(132546);
-          }}
+        <button className="max-lg:hidden"
+          onClick={setIsOpen}
         >
-          <NavIcon className="fill-pri-dark" />
+            <NavIcon className="fill-pri-dark" />
         </button>
         <h2 className="title text-lg font-semibold">Home</h2>
       </div>

@@ -4,6 +4,7 @@ import {
   HomePage,
   StorePage,
   ErrorPage,
+  PagesPage,
   OrdersPage,
   ReviewsPage,
   SettingsPage,
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "apps", element: <AppsPage /> },
+      { path: "pages", element: <PagesPage /> },
       { path: "store", element: <StorePage /> },
       { path: "orders", element: <OrdersPage /> },
       { path: "reviews", element: <ReviewsPage /> },

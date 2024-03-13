@@ -51,6 +51,9 @@ export default {
         "clamp-container": "clamp(500px, 50vw, 1186px)",
         // clamp: "font-size: clamp(0.625rem, 0.3501rem + 1.0676vw, 1.375rem);",
       },
+      boxShadow: {
+        "custom-shadow": "0px 5px 15px 0px #7C82B90D",
+      },
     },
   },
   plugins: [require("daisyui"),

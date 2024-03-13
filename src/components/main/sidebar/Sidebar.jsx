@@ -1,39 +1,49 @@
-import { getImageUrl } from "src/utils"; // ?
+import { Link } from "react-router-dom";
+
 import NavLinks from "./NavLinks";
-import { GmailIcon, GoogleIcon } from "src/utils/icons";
+import { getImageUrl } from "src/utils";
+import { socialLinks } from "src/utils/constants";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   return (
-    <aside className="min-h-screen duration-500 transition-all w-60  max-lg:w-16 ">
-      <div className="sticky top-0 overflow-hidden">
-        <header className="grid  h-[70px] w-full place-content-center">
-          <img
-            src={getImageUrl("full-logo.svg")}
-            alt="logo"
-            className="w-32 max-lg:hidden"
-          />
-          <img
-            src={getImageUrl("mini-logo.svg")}
-            alt="logo"
-            className="w-9 lg:hidden"
-          />
+    <aside
+      className={`min-h-lvh h-full duration-500 transition-all max-lg:min-w-16 max-lg:w-16 px-2 py-3 bg-white ${
+        isOpen ? "w-[180px]" : "w-16 min-w-16"
+      }`}
+    >
+      <div className="sticky top-3 overflow-hidden ">
+        <header className=" h-[42px]">
+          <div className={`w-[162px] rounded-lg h-full shadow-[0px_5px_15px_0px_#7C82B90D] max-lg:hidden place-content-center grid ${!isOpen ? "hidden" : ""}`}>
+            <img
+              src={getImageUrl("brand/en-light.svg")}
+              alt="logo"
+              className={`w-32 max-lg:hidden `}
+            />
+          </div>
+
+          <div className={`max-lg:grid place-content-center grid h-full ${isOpen ? "hidden" : "grid"} `}>
+            <img
+              src={getImageUrl("brand/cloud.svg")}
+              alt="logo"
+              className={`w-9  `}
+            />
+          </div>
         </header>
+        <NavLinks isOpen={isOpen}/>
 
-        <NavLinks />
-
-        <div className="p-3 max-lg:p-1">
-          <p className="paragraph mb-3 ml-3  max-lg:hidden ">Sales channel</p>
-          <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center gap-2">
-            {/* 
-
-           1. this bad code => you should made array data then map ,  look constants.js line 36
-           2. sidebar --> fexid
-           3. size icon wrong
-           4. logo ?
-           */}
-            {/* <FacebookIcon className="border rounded-lg p-[5px] w-[40px] h-[40px]  max-lg:border-0" /> */}
-            <GoogleIcon className="border rounded-lg p-[5px] w-[40px] h-[40px]  max-lg:border-0" />
-            <GmailIcon className="border rounded-lg p-[5px] w-[40px] h-[40px]  max-lg:border-0" />
+        <div className="px-2 max-lg:p-1">
+          <p className={`paragraph text-subtitle mb-2 max-lg:hidden ${!isOpen ? "hidden" : ""}`}>
+            Sales channel
+          </p>
+          <div className={`grid max-lg:grid-cols-1 gap-2 ${!isOpen ? "grid-cols-1" : "grid-cols-3"}`}>
+            {socialLinks.map((link) => (
+              <Link
+                key={link.id}
+                className={`w-10 h-10 hover:border-primary focus:border-primary focus:bg-pri-light/50 max-lg:border-0 border border-borders-lines rounded-xl grid place-content-center ${!isOpen ? "border-0" : ""} `}
+              >
+                <img src={link.img} alt="social" className="w-6 h-6" />
+              </Link>
+            ))}
           </div>
         </div>
       </div>
