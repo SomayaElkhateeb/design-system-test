@@ -45,10 +45,9 @@
   .subheading {
     @apply font-normal text-sm text-subtitle;
   }
- 
-  /* .active {
+   .active {
     @apply bg-pri-light;
-  } */
+  }
 }
 
 
