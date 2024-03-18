@@ -1,5 +1,7 @@
 import { nanoid } from "nanoid";
 import { getImageUrl } from ".";
+
+// IMPORT ICONS FROM icons.jsx
 import {
   DashboardIcon,
   ProductsIcon,
@@ -19,6 +21,11 @@ import {
   ShippingIcon,
 } from "./icons";
 
+// IMPORT COMPONENT FROM MARKETING PAGE
+import {
+  SelectCustomers,
+  SelectGroup,
+} from 'src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/index'
 
 //  SIDEBAR
 export const sidebarLinks = [
@@ -114,3 +121,41 @@ export const check = [
   { id: nanoid(), text: 'Place your text' },
 ]
 
+//           DATA DISCOUNT
+
+// Discount Basic Info
+export const DiscountBasicInfo = [
+
+  {
+    id: nanoid(),
+    title: "Discount Type",
+    btns: [
+      {id: nanoid(), textBtn: "Percentage"},
+      {id: nanoid(), textBtn: "Fixed amount"},
+      {id: nanoid(), textBtn: "Free shipping"},
+    ]
+  },
+  {
+    id: nanoid(),
+    title: "Apply to",
+    btns: [
+      {id: nanoid(), textBtn: "All products"},
+      {id: nanoid(), textBtn: "Specific category"},
+      {id: nanoid(), textBtn: "Specific products"},
+      {id: nanoid(), textBtn: "Buy x get y"},
+    ]
+  }
+
+]
+
+// Discount Customer Segment
+export const DiscountCustomerSegment = [
+  { id: nanoid(), textBtn: "All customers", component: null },
+  { id: nanoid(), textBtn: "Specific customer groups", component: SelectGroup},
+  { id: nanoid(), textBtn: "Specific customers", component: SelectCustomers },
+];
+
+// Discount Minimun Requirements
+export const DiscountMinimunRequirements = [
+
+]

@@ -30,6 +30,9 @@
   .btn-delete {
     @apply bg-error text-sm font-semibold px-4 py-2 rounded text-white
   }
+  .btn-rounded {
+    @apply bg-white rounded-[22px] py-[6px] px-[12px] border border-constrained text-sm text-subtitle focus:text-white focus:bg-secondary
+  }
   .card {
     @apply border-2 border-light-2 rounded-lg p-5;
   }

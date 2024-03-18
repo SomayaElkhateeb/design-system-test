@@ -1,0 +1,21 @@
+// props src or name
+{/* <Avatar name="somaya" src={img} /> */}
+
+const AvatarSm = ({ src , firstName, lastName}) => {
+   
+  const shortName = `${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}`;
+
+  return (
+    <div className='w-10 h-10 rounded-full bg-pri-light overflow-hidden flex justify-center items-center'>
+      {src ?
+        <img src={src} alt="Avatar" className='w-full h-full' />
+        :
+        <span className='text-sec-pressed font-semibold uppercase'>{shortName}</span>
+      }
+    </div>
+  );
+
+}
+
+export default AvatarSm;
+
