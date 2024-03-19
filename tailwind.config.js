@@ -43,7 +43,8 @@ export default {
       },
       backgroundImage: {
         "brand-gradient":
-          "linear-gradient(67.99deg, #0D53FC -8.97%, #49C596 102.31%)",
+          "linear-gradient(313.9deg, #0D53FC -2.74%, #55C397 140.56%)",
+
       },
       fontSize: {
         "clamp-title": "clamp(18px, 2.5vw, 22px)",

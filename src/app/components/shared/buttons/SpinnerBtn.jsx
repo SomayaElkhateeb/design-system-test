@@ -17,18 +17,3 @@ const SpinnerBtn = ({ background }) => {
 }
 
 export default SpinnerBtn;
-
-
-
-
-
-
-// const SpinnerBtn = ({ background }) => {
-//     return (
-//         <div className={`btn-pri w-[121px] h-[35px] flex justify-center ${background ? '': 'bg-[121px]'}`}>
-//             <div className="spinner-btn" />
-//         </div>
-//     );
-// }
-
-// export default SpinnerBtn;

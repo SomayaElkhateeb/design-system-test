@@ -18,17 +18,25 @@ import { GiClothes } from "react-icons/gi";
 import { RxHome } from "react-icons/rx";
 import { MdAllInclusive } from "react-icons/md";
 import { getImageUrl } from "src/app/utils";
+import { useLocation } from "react-router-dom";
 
 const Header = ({ setIsOpen }) => {
+  
+  const { pathname } = useLocation();
+  const activeModule =
+    pathname === "/"
+      ? "Home"
+      : pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
+
   return (
     <div className="h-[70px] flex justify-between items-center p-4 bg-white">
       <div className="flex items-center gap-3">
         <button className="max-lg:hidden" onClick={setIsOpen}>
           <NavIcon className="fill-pri-dark" />
         </button>
-        <h2 className="title text-lg font-semibold">Home</h2>
+        <h2 className="title text-lg font-semibold">{activeModule}</h2>
       </div>
-      <HeaderSearchBar />
+      {/* <HeaderSearchBar /> */}
       <ProfileInfo />
     </div>
   );

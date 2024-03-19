@@ -25,6 +25,7 @@ const SelectButtons = ({ data }) => {
 
   const handleSelect = (option) => {
     setSelectedOptionId(option.id);
+    setSelectedOptionId(option.value);
   };
 
   return (

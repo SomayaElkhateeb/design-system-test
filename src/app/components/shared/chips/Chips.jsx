@@ -13,7 +13,7 @@ const Chips = ({
         className={`p-1 flex items-center border pr-3 w-fit rounded-full  ${
           checked
             ? "border-sec-pressed cursor-pointer bg-sec-light"
-            : "border-borders-lines"
+            : "border-border-color"
         } `}
       >
         {checked ? (
@@ -36,7 +36,7 @@ const Chips = ({
   return (
     <div
       className={`p-1 flex items-center border py-1 px-2 w-fit rounded-full cursor-pointer  ${
-        checked ? " bg-secondary border-secondary" : "border-borders-lines"
+        checked ? " bg-secondary border-secondary" : "border-border-color"
       } `}
     >
       {location ? (

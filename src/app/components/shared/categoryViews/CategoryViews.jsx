@@ -2,7 +2,7 @@ import React from "react";
 import { getImageUrl } from "src/app/utils";
 import { MoreIcon } from "src/app/utils/icons";
 
-const CategoryViews = ({ small = true }) => {
+const CategoryViews = ({ small }) => {
   return (
     <div className="w-[343px] flex justify-between">
       <div className="flex">

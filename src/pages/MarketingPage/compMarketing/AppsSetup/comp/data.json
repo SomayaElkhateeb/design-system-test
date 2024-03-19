@@ -1,0 +1,81 @@
+{
+  "platform_title": "Setup Facebook sales",
+  "platform_settings": {
+    "connect_account": {
+      "title": "Connect your Facebook account",
+      "description": "Connect with Facebook to get your products into your own Facebook Shop."
+    },
+    "business_manager": {
+      "title": "Business manager",
+      "description": "Connect with Facebook manager you use to manage Facebook page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
+      "companies": [
+        {
+          "name": "Bark",
+          "date": "5/6/2021",
+          "id": "#8965742",
+          "logo": ""
+        },
+        {
+          "name": "P&G",
+          "date": "5/6/2021",
+          "id": "#8965742",
+          "logo": ""
+        },
+        {
+          "name": "DELL",
+          "date": "5/6/2021",
+          "id": "#8965742",
+          "logo": ""
+        },
+        {
+          "name": "NASA",
+          "date": "5/6/2021",
+          "id": "#8965742",
+          "logo": ""
+        }
+      ]
+    },
+    "domain_verification": {
+      "title": "Domain verification",
+      "description": "Veify your Facebook domain, so they can define that you’re the owner of it"
+    },
+    "platform_page": {
+      "title": "Facebook page",
+      "description": "Connect with Facebook pages you want to sell or post ads, You need to be an admin to be able to connect a page.",
+      "companies": [
+        {
+          "name": "Bark",
+          "industry": "Pet supplies",
+          "likes": 400
+        },
+        {
+          "name": "P&G",
+          "industry": "Consumer goods",
+          "likes": 400
+        },
+        {
+          "name": "DELL",
+          "industry": "Marketing",
+          "likes": 400000
+        },
+        {
+          "name": "NASA",
+          "industry": "Design",
+          "likes": 5000000
+        }
+      ]
+    },
+    "data_sharing": {
+      "title": "Data sharing (Facebook Pixel)",
+      "description": "Facebook collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
+    },
+    "commerce_account": {
+      "title": "Facebook commerce account",
+      "description": "Create a Facebook commerce account to start selling on Facebook, Instagram or both once you have one, You'll be able to customize your Facebook shop"
+    },
+    "terms_and_conditions": {
+      "title": "Terms & conditions",
+      "description": "You need to accept Facebook terms of service "
+    }
+  }
+}

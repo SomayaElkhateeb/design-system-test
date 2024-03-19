@@ -9,7 +9,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-/* added border transparent to (.btn-sec, .btn-ter, .btn-lin) */
+
 @layer components {
   .btn-pri {
     @apply bg-primary px-4 py-2 rounded font-semibold text-white text-sm capitalize hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-1  focus:ring-pri-light;
@@ -55,20 +55,73 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* remove all default Webkit search field styling */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
+}
+
+/* double-range-slider */
+.double-range-slider-container {
+  margin: 5px;
+}
+.double-range-slider-rail {
+  background-color: #d1d1d1;
+}
+
+.double-range-slider-text-holder {
+  color: #000;
+}
+
+.double-range-slider-track {
+  background-color: #498df3;
+}
+
+.double-range-slider-ball {
+  background-color: #498df3;
+  outline: #f3eeee 5px solid;
+}
+.double-range-slider-tooltip {
+  background-color: #fff;
+  border: #f3eeee 2px solid;
+}
+
+.double-range-slider-over::after {
+  border-color: #f3eeee transparent transparent transparent;
+}
+/* double-range-slider */
+
+/* input-range__slider */
+.input-range__slider {
+  background: #498df3;
+  border: 1px solid #498df3;
+}
+.input-range__track--active {
+  background: #498df3;
+}
+/* input-range__slider */
+
+.splide__arrows {
+  display: flex;
+  justify-content: flex-end;
+}
+.splide__arrow {
+  position: relative;
+}
+
+button.splide__arrow--next,
+button.splide__arrow--prev {
+  background-color: #ddd !important;
+  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+}
+button.splide__arrow--next svg,
+button.splide__arrow--prev svg {
+  width: 10px;
+}
+button.splide__arrow--prev {
+  margin-right: 40px;
 }

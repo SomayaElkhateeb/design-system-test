@@ -53,7 +53,7 @@ const Sidebar = ({ isOpen }) => {
             {socialLinks.map((link) => (
               <Link
                 key={link.id}
-                className={`w-10 h-10 hover:border-primary focus:border-primary focus:bg-pri-light/50 max-lg:border-0 border border-borders-lines rounded-xl grid place-content-center ${
+                className={`w-10 h-10 hover:border-primary focus:border-primary focus:bg-pri-light/50 max-lg:border-0 border border-border-color rounded-xl grid place-content-center ${
                   !isOpen ? "border-0" : ""
                 } `}
               >
@@ -74,15 +74,11 @@ const SidebarNavLinks = ({ isOpen }) => {
   return (
     <nav className="my-4 w-full">
       <ul className="flex gap-2 flex-col">
-        {sidebarLinks.map(
-          (
-            link // no use index id
-          ) => (
-            <li key={link.id}>
-              <SidebarLink {...link} isOpen={isOpen} />
-            </li>
-          )
-        )}
+        {sidebarLinks.map((link) => (
+          <li key={link.id}>
+            <SidebarLink {...link} isOpen={isOpen} />
+          </li>
+        ))}
       </ul>
     </nav>
   );

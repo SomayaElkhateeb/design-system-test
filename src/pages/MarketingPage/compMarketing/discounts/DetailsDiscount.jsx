@@ -1,9 +1,6 @@
-import ToggleSwitch from "src/app/components/shared/InputsFields/InputsCollection/ToggleSwitch";
-import SettingTwoBtns from "src/app/components/shared/SettingHeader/SettingTwoBtns";
-import BasicInfo from "./compDiscountPage/compDetails/BasicInfo";
-import CustomerSegment from "./compDiscountPage/compDetails/CustomerSegment";
-import MinimumRequirements from "./compDiscountPage/compDetails/MinimumRequirements";
-import ActiveDates from "./compDiscountPage/compDetails/ActiveDates";
+import {SettingTwoBtns, ToggleSwitch} from "src/app/components/shared";
+import { BasicInfo, CustomerSegment, MinimumRequirements, ActiveDates } from "./compDiscountPage";
+
 
 const DetailsDiscount = () => {
     return (

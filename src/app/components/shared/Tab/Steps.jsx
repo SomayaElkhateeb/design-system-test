@@ -100,9 +100,9 @@ const HStep = ({ steps }) => {
     </div>
   );
 };
+export default Steps;
 
 Steps.defaultProps = {
   steps: [{ title: "Active" }, { title: "Done" }, { title: "Not Done" }],
 };
 
-export default Steps;

@@ -22,21 +22,26 @@ import {
 } from "./icons";
 
 // IMPORT COMPONENT FROM MARKETING PAGE
-import {
-  SelectCustomers,
-  SelectGroup,
-} from 'src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/index'
+// import { SelectCustomers, SelectGroup, MinimumPrice, MinimumQuantity, FixedAmount } from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage";
 
+import SelectCustomers from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/customerSegment/SelectCustomers";
+import SelectGroup from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/customerSegment/SelectGroup";
+import MinimumPrice from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/minimumRequirements/MinimumPrice";
+import MinimumQuantity from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/minimumRequirements/MinimumQuantity";
+import FixedAmount from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/basicInfo/discountType/FixedAmount";
+import SpecificCategory from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/basicInfo/applyTo/SpecificCategory";
+import BuyAndGet from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/basicInfo/applyTo/BuyAndGet";
+import SpecificPercentage from "src/pages/MarketingPage/compMarketing/discounts/compDiscountPage/compDetails/basicInfo/applyTo/SpecificPercentage";
 //  SIDEBAR
 export const sidebarLinks = [
   { id: nanoid(), path: "/", name: "Home", Icon: DashboardIcon },
   { id: nanoid(), path: "products", name: "Products", Icon: ProductsIcon },
   { id: nanoid(), path: "orders", name: "Orders", Icon: OrdersIcon },
-  { id: nanoid(), path: "customers", name: "Customers", Icon: CustomersIcon,},
-  { id: nanoid(), path: "analytics", name: "Analytics", Icon: AnalyticsIcon},
+  { id: nanoid(), path: "customers", name: "Customers", Icon: CustomersIcon, },
+  { id: nanoid(), path: "analytics", name: "Analytics", Icon: AnalyticsIcon },
   { id: nanoid(), path: "reviews", name: "Reviews", Icon: ReviewsIcon },
   { id: nanoid(), path: "pages", name: "Pages", Icon: PagesIcon },
-  { id: nanoid(), path: "marketing", name: "Marketing", Icon: AdsIcon},
+  { id: nanoid(), path: "marketing", name: "Marketing", Icon: AdsIcon },
   { id: nanoid(), path: "apps", name: "Apps", Icon: AppsIcon },
   { id: nanoid(), path: "services", name: "Services", Icon: ServicesIcon },
   { id: nanoid(), path: "settings", name: "Settings", Icon: SettingsIcon },
@@ -76,43 +81,43 @@ export const controlProductsMenus = [
 export const productStatus = [
   {
     id: nanoid(),
-    Icon : ShippingIcon,
+    Icon: ShippingIcon,
     text: 'Simple Product',
     description: 'You don’t need advanced options to fill',
     detailed: true,
-  
+
   },
   {
     id: nanoid(),
-    Icon : ShippingIcon,
+    Icon: ShippingIcon,
     text: 'Configurable product',
     description: 'You need all options available',
     detailed: false,
   },
   {
     id: nanoid(),
-    Icon : ShippingIcon,
+    Icon: ShippingIcon,
     text: 'Virtual Product',
     description: 'Services, ebooks, Downloadable',
     detailed: true,
   },
   {
     id: nanoid(),
-    Icon : ShippingIcon,
+    Icon: ShippingIcon,
     text: 'Food',
     description: 'Food & Drinks have special way shipping',
     detailed: false,
   },
   {
     id: nanoid(),
-    Icon : ShippingIcon,
+    Icon: ShippingIcon,
     text: 'Bundle',
     description: 'Collection of related products',
     detailed: false,
   },
 ]
 
-// 1. Check
+// 1. CheckBox
 export const check = [
   { id: nanoid(), text: 'Place your text' },
   { id: nanoid(), text: 'Place your text' },
@@ -123,6 +128,19 @@ export const check = [
 
 //           DATA DISCOUNT
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Discount Basic Info
 export const DiscountBasicInfo = [
 
@@ -130,9 +148,9 @@ export const DiscountBasicInfo = [
     id: nanoid(),
     title: "Discount Type",
     btns: [
-      {id: nanoid(), textBtn: "Percentage"},
-      {id: nanoid(), textBtn: "Fixed amount"},
-      {id: nanoid(), textBtn: "Free shipping"},
+      { id: nanoid(), textBtn: "Percentage", component: null },
+      { id: nanoid(), textBtn: "Fixed amount", component: FixedAmount },
+      { id: nanoid(), textBtn: "Free shipping", component: null },
     ]
   },
   {
@@ -148,14 +166,66 @@ export const DiscountBasicInfo = [
 
 ]
 
+
+
+
+
+
+
+
+{
+  name: 'somaya',
+  discountType: 'fexid',
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Discount Type
+export const discountType = [
+  { id: nanoid(),value: 0 , textBtn: "Percentage", component: null },
+  { id: nanoid(),value: 1 , textBtn: "Fixed amount", component: FixedAmount },
+  { id: nanoid(),value: 2 , textBtn: "Free shipping", component: null },
+]
+
+// Apply
+export const applyTo = [
+  { id: nanoid(), textBtn: "All products", component: null },
+  { id: nanoid(), textBtn: "Specific category", component: SpecificCategory },
+  { id: nanoid(), textBtn: "Specific products", component: null },
+  { id: nanoid(), textBtn: "Buy x get y", component: BuyAndGet },
+]
+
+// Apply Customer Gets
+export const customerGets = [
+  { id: nanoid(), textBtn: "Free", component: null },
+  { id: nanoid(), textBtn: "50% offer", component: null },
+  { id: nanoid(), textBtn: "Specific percentage", component: SpecificPercentage },
+]
+
 // Discount Customer Segment
 export const DiscountCustomerSegment = [
   { id: nanoid(), textBtn: "All customers", component: null },
-  { id: nanoid(), textBtn: "Specific customer groups", component: SelectGroup},
+  { id: nanoid(), textBtn: "Specific customer groups", component: SelectGroup },
   { id: nanoid(), textBtn: "Specific customers", component: SelectCustomers },
 ];
 
 // Discount Minimun Requirements
 export const DiscountMinimunRequirements = [
-
+  { id: nanoid(), textBtn: "Minimum price", component: MinimumPrice },
+  { id: nanoid(), textBtn: "Minimum quantity", component: MinimumQuantity },
 ]

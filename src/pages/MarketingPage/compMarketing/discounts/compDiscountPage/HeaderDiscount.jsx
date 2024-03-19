@@ -4,7 +4,7 @@ import PrimaryBtn from "src/app/components/shared/buttons/PrimaryBtn"
 import SecondaryBtn from "src/app/components/shared/buttons/SecondaryBtn";
 
 // import icons
-import { AddFillIconWhite, DownIcon, ArrangeIcon, FilterIcon } from "src/app/utils/icons";
+import { AddFillIconWhite, ArrangeIcon, FilterIcon, DownIconSm } from "src/app/utils/icons";
 const HeaderDiscount = () => {
     return (
         <div className="h-[70px] flex items-center border-b-2 border-light-2 mx-3">
@@ -12,7 +12,7 @@ const HeaderDiscount = () => {
                <Link to="/DitailsDiscount"><PrimaryBtn IconLeft={AddFillIconWhite} text="add new discount" /></Link> 
 
                 <div className="flex gap-8">
-                    <SecondaryBtn text="arrange" IconLeft={ArrangeIcon} IconRight={DownIcon} />
+                    <SecondaryBtn text="arrange" IconLeft={ArrangeIcon} IconRight={DownIconSm} />
                     <SecondaryBtn text="filter" IconLeft={FilterIcon} />
                 </div>
             </div>

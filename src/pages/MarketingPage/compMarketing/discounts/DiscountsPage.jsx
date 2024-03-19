@@ -1,6 +1,4 @@
-import HeaderDiscount from "./compDiscountPage/HeaderDiscount"
-import TableDiscount from "./compDiscountPage/TableDiscount"
-
+import {HeaderDiscount, TableDiscount} from "./compDiscountPage";
 
 const DiscountsPage = () => {
   return (

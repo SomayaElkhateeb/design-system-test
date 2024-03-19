@@ -1,17 +1,11 @@
-import DetailsDiscount from "./compMarketing/discounts/DetailsDiscount";
-// import DiscountsPage from "./compMarketing/discounts/DiscountsPage";
-
-
+import MarketingLayout from "./MarketingLayout";
 
 const MarketingPage = () => {
   return (
     <div>
-      <DetailsDiscount />
-      {/* <DiscountsPage /> */}
-
-
+      <MarketingLayout />
     </div>
-  )
-}
+  );
+};
 
 export default MarketingPage;
