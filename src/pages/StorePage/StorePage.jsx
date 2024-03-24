@@ -10,6 +10,11 @@ const StorePage = () => {
       <p>Lorem</p>
       <p>Lorem</p>
       <p>Lorem Lorem Lorem</p>
+      <p>Lorem Lorem Lorem</p>
+      <p>Lorem Lorem Lorem</p>
+      <p>Lorem Lorem Lorem</p>
+      <p>Lorem Lorem Lorem</p>
+      <p>Lorem Lorem Lorem</p>
       <p>Lorem</p>
     </div>
   );
