@@ -1,27 +1,46 @@
-function Checkbox({ label, checked, onChange }) {
-  return (
-    <label className="inline-flex items-center">
-      <input
-        type="checkbox"
-        className="form-checkbox h-5 w-5 text-indigo-600"
-        checked={checked}
-        onChange={onChange}
-      />
-      <span className="ml-2 text-gray-700">{label}</span>
-    </label>
-  );
-}
+import { useState } from "react";
+import { CheckIcon } from "src/app/utils/icons";
 
-export default Checkbox;
+const CheckBox = ({ variant, onChange }) => {
+  const [checked, setChecked] = useState(false);
 
-// const [isChecked, setIsChecked] = useState(false);
+  const handleToggle = () => {
+    const newValue = !checked;
+    setChecked(newValue);
+    // Call the onChange function with the new value
+    if (onChange) {
+      onChange(newValue);
+    }
+  };
 
-// const handleCheckboxChange = (event) => {
-//   setIsChecked(event.target.checked);
-// };
+  switch (variant) {
+    case "minus":
+      return (
+        <div
+          onClick={handleToggle}
+          className={`hover:bg-sec-light w-5 h-5 border rounded cursor-pointer disabled:bg-hint ${
+            checked && "bg-success hover:bg-sec-pressed"
+          }`}
+        >
+          {checked && (
+            <p className="text-white flex justify-center items-center h-full w-full">
+              -
+            </p>
+          )}
+        </div>
+      );
+    default:
+      return (
+        <div
+          onClick={handleToggle}
+          className={` hover:bg-sec-light w-5 h-5 border rounded cursor-pointer disabled:bg-hint ${
+            checked && "bg-success hover:bg-sec-pressed"
+          }`}
+        >
+          {checked && <CheckIcon className="fill-white w-full h-full" />}
+        </div>
+      );
+  }
+};
 
-// <Checkbox
-// label=""
-// checked={isChecked}
-// onChange={handleCheckboxChange}
-// />
+export default CheckBox;

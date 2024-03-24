@@ -42,7 +42,7 @@ const InputRow = ({
         >
           <div className="relative">
             {leftIcon && (
-              <div className="absolute inset-y-0 left-0 flex items-center  p-5 bg-gray-200 ">
+              <div className="absolute inset-y-0 left-0 flex items-center  p-4 ">
                 {leftIcon}
               </div>
             )}
@@ -58,7 +58,7 @@ const InputRow = ({
               {...rest}
             />
             {rightIcon && !loading && (
-              <div className="absolute inset-y-0 right-0 flex items-center p-5 bg-gray-200">
+              <div className="absolute inset-y-0 right-0 flex items-center p-4">
                 {rightIcon}
               </div>
             )}
