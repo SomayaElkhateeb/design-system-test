@@ -1,81 +1,209 @@
 {
-  "platform_title": "Setup Facebook sales",
-  "platform_settings": {
-    "connect_account": {
-      "title": "Connect your Facebook account",
-      "description": "Connect with Facebook to get your products into your own Facebook Shop."
-    },
-    "business_manager": {
-      "title": "Business manager",
-      "description": "Connect with Facebook manager you use to manage Facebook page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
-      "companies": [
-        {
-          "name": "Bark",
-          "date": "5/6/2021",
-          "id": "#8965742",
-          "logo": ""
-        },
-        {
-          "name": "P&G",
-          "date": "5/6/2021",
-          "id": "#8965742",
-          "logo": ""
-        },
-        {
-          "name": "DELL",
-          "date": "5/6/2021",
-          "id": "#8965742",
-          "logo": ""
-        },
-        {
-          "name": "NASA",
-          "date": "5/6/2021",
-          "id": "#8965742",
-          "logo": ""
-        }
-      ]
-    },
-    "domain_verification": {
-      "title": "Domain verification",
-      "description": "Veify your Facebook domain, so they can define that you’re the owner of it"
-    },
-    "platform_page": {
-      "title": "Facebook page",
-      "description": "Connect with Facebook pages you want to sell or post ads, You need to be an admin to be able to connect a page.",
-      "companies": [
-        {
-          "name": "Bark",
-          "industry": "Pet supplies",
-          "likes": 400
-        },
-        {
-          "name": "P&G",
-          "industry": "Consumer goods",
-          "likes": 400
-        },
-        {
-          "name": "DELL",
-          "industry": "Marketing",
-          "likes": 400000
-        },
-        {
-          "name": "NASA",
-          "industry": "Design",
-          "likes": 5000000
-        }
-      ]
-    },
-    "data_sharing": {
-      "title": "Data sharing (Facebook Pixel)",
-      "description": "Facebook collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
-    },
-    "commerce_account": {
-      "title": "Facebook commerce account",
-      "description": "Create a Facebook commerce account to start selling on Facebook, Instagram or both once you have one, You'll be able to customize your Facebook shop"
-    },
-    "terms_and_conditions": {
-      "title": "Terms & conditions",
-      "description": "You need to accept Facebook terms of service "
+  "facebook": {
+    "platform_title": "Setup Facebook Ad Campaign",
+    "platform_settings": {
+      "connect_account": {
+        "title": "Connect your Facebook account",
+        "description": "Connect with Facebook to get your products into your own Facebook Shop."
+      },
+      "business_manager": {
+        "title": "Business manager",
+        "description": "Connect with Facebook manager you use to manage Facebook page, accounts, and product catalog. You need to be an admin to be able to connect a business manager.",
+        "companies": [
+          {
+            "name": "ABC Inc.",
+            "date": "5/6/2021",
+            "id": "#123456",
+            "logo": "abc_logo.png"
+          },
+          {
+            "name": "XYZ Corp.",
+            "date": "5/6/2021",
+            "id": "#789012",
+            "logo": "xyz_logo.png"
+          }
+        ]
+      },
+      "domain_verification": {
+        "title": "Domain verification",
+        "description": "Verify your Facebook domain, so they can define that you’re the owner of it"
+      },
+      "platform_page": {
+        "title": "Facebook page",
+        "description": "Connect with Facebook pages you want to sell or post ads. You need to be an admin to be able to connect a page.",
+        "companies": [
+          {
+            "name": "Bark",
+            "industry": "Pet supplies",
+            "likes": 400
+          },
+          {
+            "name": "P&G",
+            "industry": "Consumer goods",
+            "likes": 400
+          },
+          {
+            "name": "DELL",
+            "industry": "Marketing",
+            "likes": 400000
+          },
+          {
+            "name": "NASA",
+            "industry": "Design",
+            "likes": 5000000
+          }
+        ]
+      },
+      "data_sharing": {
+        "title": "Data sharing (Facebook Pixel)",
+        "description": "Facebook collects data about your customers so they can use it to retarget them through your ads, which helps your business grow."
+      },
+      "commerce_account": {
+        "title": "Facebook commerce account",
+        "description": "Create a Facebook commerce account to start selling on Facebook, Instagram, or both once you have one. You'll be able to customize your Facebook shop"
+      },
+      "terms_and_conditions": {
+        "title": "Terms & conditions",
+        "description": "You need to accept Facebook terms of service"
+      }
+    }
+  },
+  "google": {
+    "platform_title": "Setup Google Ad Campaign",
+    "platform_settings": {
+      "connect_account": {
+        "title": "Connect your Google account",
+        "description": "Connect with Google to get your products into your own Google Shop."
+      },
+      "business_manager": {
+        "title": "Business manager",
+        "description": "Connect with Google manager you use to manage Google page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
+        "companies": [
+          {
+            "name": "ABC Inc.",
+            "date": "5/6/2021",
+            "id": "#123456",
+            "logo": "abc_logo.png"
+          },
+          {
+            "name": "XYZ Corp.",
+            "date": "5/6/2021",
+            "id": "#789012",
+            "logo": "xyz_logo.png"
+          }
+        ]
+      },
+      "domain_verification": {
+        "title": "Domain verification",
+        "description": "Veify your Google domain, so they can define that you’re the owner of it"
+      },
+      "platform_page": {
+        "title": "Google page",
+        "description": "Connect with Google pages you want to sell or post ads, You need to be an admin to be able to connect a page.",
+        "companies": [
+          {
+            "name": "Bark",
+            "industry": "Pet supplies",
+            "likes": 400
+          },
+          {
+            "name": "P&G",
+            "industry": "Consumer goods",
+            "likes": 400
+          },
+          {
+            "name": "DELL",
+            "industry": "Marketing",
+            "likes": 400000
+          },
+          {
+            "name": "NASA",
+            "industry": "Design",
+            "likes": 5000000
+          }
+        ]
+      },
+      "data_sharing": {
+        "title": "Data sharing (Google Pixel)",
+        "description": "Google collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
+      },
+      "commerce_account": {
+        "title": "Google commerce account",
+        "description": "Create a Google commerce account to start selling on Google, Instagram or both once you have one, You'll be able to customize your Google shop"
+      },
+      "terms_and_conditions": {
+        "title": "Terms & conditions",
+        "description": "You need to accept Google terms of service "
+      }
+    }
+  },
+  "twitter": {
+    "platform_title": "Setup Twitter Ad Campaign",
+    "platform_settings": {
+      "connect_account": {
+        "title": "Connect your Twitter  account",
+        "description": "Connect with Twitter  to get your products into your own Twitter  Shop."
+      },
+      "business_manager": {
+        "title": "Business manager",
+        "description": "Connect with Twitter  manager you use to manage Twitter  page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
+        "companies": [
+          {
+            "name": "ABC Inc.",
+            "date": "5/6/2021",
+            "id": "#123456",
+            "logo": "abc_logo.png"
+          },
+          {
+            "name": "XYZ Corp.",
+            "date": "5/6/2021",
+            "id": "#789012",
+            "logo": "xyz_logo.png"
+          }
+        ]
+      },
+      "domain_verification": {
+        "title": "Domain verification",
+        "description": "Veify your Twitter  domain, so they can define that you’re the owner of it"
+      },
+      "platform_page": {
+        "title": "Twitter  page",
+        "description": "Connect with Twitter  pages you want to sell or post ads, You need to be an admin to be able to connect a page.",
+        "companies": [
+          {
+            "name": "Bark",
+            "industry": "Pet supplies",
+            "likes": 400
+          },
+          {
+            "name": "P&G",
+            "industry": "Consumer goods",
+            "likes": 400
+          },
+          {
+            "name": "DELL",
+            "industry": "Marketing",
+            "likes": 400000
+          },
+          {
+            "name": "NASA",
+            "industry": "Design",
+            "likes": 5000000
+          }
+        ]
+      },
+      "data_sharing": {
+        "title": "Data sharing (Twitter  Pixel)",
+        "description": "Twitter  collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
+      },
+      "commerce_account": {
+        "title": "Twitter  commerce account",
+        "description": "Create a Twitter  commerce account to start selling on Twitter , Instagram or both once you have one, You'll be able to customize your Twitter  shop"
+      },
+      "terms_and_conditions": {
+        "title": "Terms & conditions",
+        "description": "You need to accept Twitter  terms of service "
+      }
     }
   }
 }

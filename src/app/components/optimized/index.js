@@ -6,6 +6,7 @@ export { default as LayoutCard } from "./Cards/LayoutCard";
 export { default as ToggleSwitch } from "./UiKits/ToggleSwitch";
 export { default as HeaderSearchBar } from "./UiKits/HeaderSearchBar";
 export { default as LanguageSelect } from "./UiKits/LanguageSelect";
+export { default as ButtonX } from "./UiKits/ButtonX";
 export { default as CheckboxWithImage } from "./UiKits/CheckboxWithImage";
 export { default as AppsCard } from "./Cards/AppsCard";
 export { default as HorizontalTabsLink } from "./Tabs/HorizontalTabsLink";

@@ -10,8 +10,8 @@ const DataSharing = ({ data }) => {
 
   const { selectedValue, value } = inputState;
 
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
   };
 
   const handleInputChange = (value) => {
@@ -29,7 +29,7 @@ const DataSharing = ({ data }) => {
       <p className="mb-3 ">
         {data.description} <a href="#">Learn more</a>
       </p>
-      <CheckBox onChange={handleCheckboxChange} />
+      <CheckBox label="Activate data sharing" onChange={handleCheckboxChange} />
 
       {isChecked && (
         <div className="w-1/3 flex flex-col space-y-3 ">
