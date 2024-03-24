@@ -17,7 +17,7 @@ const AppsCard = ({ image, name, description, status, url }) => {
         <h3 className="title mb-2">{name}</h3>
         <p className="paragraph text-subtitle">{description}</p>
         <img
-          src={`getImageUrl(padges/${statusPadge}.svg)`}
+          src={getImageUrl(`$padges/${statusPadge}.svg`)}
           alt="status"
           className="h-7 mt-3"
         />

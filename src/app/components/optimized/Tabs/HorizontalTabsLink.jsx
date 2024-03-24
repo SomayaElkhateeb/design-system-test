@@ -2,8 +2,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-const HorizontalTabsLink = ({ tabs }) => {
-  const { tabName } = useParams();
+const HorizontalTabsLink = ({ tabs, path }) => {
+  const { tab: marketingTab } = useParams();
   if (!tabs) {
     return <div>Loading...</div>;
   }
@@ -16,11 +16,11 @@ const HorizontalTabsLink = ({ tabs }) => {
             <li key={tab} className="mr-2">
               <Link
                 className={`inline-block p-2 rounded-t-lg  ${
-                  tabName === tab
+                  marketingTab === tab
                     ? "text-primary title border-b-2 border-primary"
                     : "text-hint paragraph hover:text-primary"
                 }`}
-                to={`/marketing/${tab}`}
+                to={`${path}/${tab}`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </Link>

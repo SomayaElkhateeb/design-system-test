@@ -1,8 +1,0 @@
-export { default as Discounts } from "./Discounts/Discounts";
-export { default as Coupons } from "./Coupons/Coupons";
-export { default as Campaigns } from "./Campaigns/Campaigns";
-export { default as Apps } from "./Apps/Apps";
-export { default as AddPage } from "./AddPage";
-export { default as TabPage } from "./TabPage";
-export { default as NewDiscount } from "./Discounts/NewDiscount/NewDiscount";
-export { default as AppsSetupLayout } from "./Apps/AppsSetup/AppsSetupLayout";

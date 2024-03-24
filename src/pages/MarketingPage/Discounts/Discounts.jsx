@@ -1,7 +1,7 @@
 // import dispatch
 import { useDispatch, useSelector } from "react-redux";
 
-import { getDiscounts } from "src/app/store/slices/marketingSlice/marketingSlice";
+import { getDiscounts } from "src/app/store/slices/marketing/marketingSlice";
 import { useNavigate } from "react-router-dom";
 // import components
 import { Button } from "src/app/components/optimized";

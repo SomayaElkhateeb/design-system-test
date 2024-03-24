@@ -6,7 +6,7 @@ import ActiveDates from "./comp/ActiveDates";
 import { getInitialDate } from "src/app/utils";
 import { useDispatch } from "react-redux";
 import { forwardRef, useRef, useState } from "react";
-import { insertDiscount } from "src/app/store/slices/marketingSlice/marketingSlice";
+import { insertDiscount } from "src/app/store/slices/marketing/marketingSlice";
 
 const NewDiscount = () => {
   const dispatch = useDispatch();

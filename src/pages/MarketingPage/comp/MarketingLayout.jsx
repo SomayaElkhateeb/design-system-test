@@ -6,7 +6,7 @@ const MarketingLayout = () => {
 
   return (
     <div>
-      <HorizontalTabsLink tabs={tabs} />
+      <HorizontalTabsLink tabs={tabs} path="/marketing" />
       <Outlet />
     </div>
   );

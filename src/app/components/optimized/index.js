@@ -2,12 +2,12 @@
 export { default as InputRow } from "./InputsFields/InputRow";
 export { default as SelectBoxRow } from "./InputsFields/SelectBoxRow";
 export { default as VerticalTabs } from "./Tabs/VerticalTabs";
-export { default as LayoutCard } from "./UiKits/LayoutCard";
+export { default as LayoutCard } from "./Cards/LayoutCard";
 export { default as ToggleSwitch } from "./UiKits/ToggleSwitch";
 export { default as HeaderSearchBar } from "./UiKits/HeaderSearchBar";
 export { default as LanguageSelect } from "./UiKits/LanguageSelect";
 export { default as CheckboxWithImage } from "./UiKits/CheckboxWithImage";
-export { default as AppsCard } from "./Card/AppsCard";
+export { default as AppsCard } from "./Cards/AppsCard";
 export { default as HorizontalTabsLink } from "./Tabs/HorizontalTabsLink";
 
 // Somaya

@@ -16,7 +16,7 @@ import {
   SocialAppDetails,
 } from "src/pages";
 import RootLayout from "./pages/RootLayout";
-import { AddPage, TabPage } from "./pages/MarketingPage";
+import { MarketingConfig, MarketingTabs } from "./pages/MarketingPage/comp";
 
 const router = createBrowserRouter([
   {
@@ -37,11 +37,11 @@ const router = createBrowserRouter([
       {
         path: "marketing",
         element: <MarketingPage />,
-        children: [{ path: ":tabName", element: <TabPage /> }],
+        children: [{ path: ":tab", element: <MarketingTabs /> }],
       },
       { path: "analytics", element: <AnalyticsPage /> },
       { path: "apps/:platform", element: <SocialAppDetails /> },
-      { path: "marketing/:tabName/:add", element: <AddPage /> },
+      { path: "marketing/:tab/:config", element: <MarketingConfig /> },
     ],
   },
 ]);

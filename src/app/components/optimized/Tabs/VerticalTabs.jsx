@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LayoutCard from "../UiKits/LayoutCard";
+import { LayoutCard } from "..";
 
 const VerticalTabs = ({ tabs }) => {
   const { currentTab, handleTabClick, handleNext, handlePrev } =

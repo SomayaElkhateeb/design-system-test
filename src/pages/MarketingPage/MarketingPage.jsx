@@ -1,4 +1,4 @@
-import MarketingLayout from "./MarketingLayout";
+import MarketingLayout from "./comp/MarketingLayout";
 
 const MarketingPage = () => {
   return (

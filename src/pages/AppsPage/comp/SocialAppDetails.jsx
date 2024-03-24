@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getImageUrl } from "src/app/utils";
 import { socialMediaContent } from "src/app/utils/constants";
 import { BackIcon } from "src/app/utils/icons";
 import data from "./data.json";
+import { Button } from "src/app/components/optimized";
 const SocialAppDetails = () => {
   const { platform } = useParams();
   const [socialPlatform, setSocialPlatform] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchSocialPlatformContent = () => {
       const content = data.apps[platform];
@@ -44,10 +45,14 @@ const SocialAppDetails = () => {
           <Link to={-1}>
             <BackIcon />
           </Link>
-          <h2 className="font-semibold text-lg text-title">{name}</h2>
+          <h2 className="font-semibold text-lg text-title capitalize">
+            {name}
+          </h2>
         </div>
-
-        <button className="btn-pri">Install now</button>
+        <Button
+          text="Install now"
+          onClick={() => navigate(`/marketing/${name}/config`)}
+        />
       </div>
 
       {/*[2] gradient section */}
@@ -67,7 +72,9 @@ const SocialAppDetails = () => {
             />
           </div>
           <div className=" max-w-[600px] text-white">
-            <h2 className="mb-3 font-semibold text-lg text-white">{name}</h2>
+            <h2 className="mb-3 font-semibold text-lg text-white capitalize">
+              {name}
+            </h2>
             <p className="text-sm font-normal  text-white">{description}</p>
             <img
               src={getImageUrl(`padges/${statusPadge}.svg`)}
@@ -82,7 +89,7 @@ const SocialAppDetails = () => {
             height="216"
             src={videoUrl}
             title={name}
-            allowfullscreen
+            allowFullScreen
           />
         </div>
       </div>

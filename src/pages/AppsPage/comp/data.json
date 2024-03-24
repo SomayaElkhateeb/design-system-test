@@ -1,7 +1,7 @@
 {
   "apps": {
     "google": {
-      "name": "Google",
+      "name": "google",
       "image": "social/google.svg",
       "description": "Google is a multinational technology company that specializes in Internet-related services and products.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -30,7 +30,7 @@
       "mostPopular": true
     },
     "gmail": {
-      "name": "Gmail",
+      "name": "gmail",
       "image": "social/gmail.svg",
       "description": "Gmail is a free email service developed by Google.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -59,7 +59,7 @@
       "mostPopular": false
     },
     "telegram": {
-      "name": "Telegram",
+      "name": "telegram",
       "image": "social/telegram.svg",
       "description": "Telegram is a cloud-based instant messaging and voice over IP service.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -88,7 +88,7 @@
       "mostPopular": false
     },
     "whatsapp": {
-      "name": "WhatsApp",
+      "name": "whatsApp",
       "image": "social/whatsapp.svg",
       "description": "WhatsApp is a messaging app for smartphones that allows users to send and receive text messages, voice messages, and multimedia files.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -117,7 +117,7 @@
       "mostPopular": true
     },
     "tiktok": {
-      "name": "TikTok",
+      "name": "tikTok",
       "image": "social/tiktok.svg",
       "description": "TikTok is a social media platform for creating, sharing, and discovering short music videos.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -146,7 +146,7 @@
       "mostPopular": "false"
     },
     "twitter": {
-      "name": "Twitter",
+      "name": "twitter",
       "image": "social/twitter-X.svg",
       "description": "Twitter is a social media platform for sharing news, thoughts, and ideas with a global audience.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -175,7 +175,7 @@
       "mostPopular": false
     },
     "facebook": {
-      "name": "Facebook",
+      "name": "facebook",
       "image": "social/facebook.svg",
       "description": "Facebook is a social media platform for connecting with friends, family, and communities.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -204,7 +204,7 @@
       "mostPopular": true
     },
     "mailchimp": {
-      "name": "Mailchimp",
+      "name": "mailchimp",
       "image": "social/mailchimp.svg",
       "description": "Mailchimp is an all-in-one marketing platform for small businesses.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -232,7 +232,7 @@
       "mostPopular": true
     },
     "snapchat": {
-      "name": "Snapchat",
+      "name": "snapchat",
       "image": "social/snapchat.svg",
       "description": "Connect with mailchimp to get your very own Email marketting and Drive traffic and sales with email and marketing automation.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
@@ -261,7 +261,7 @@
       "mostPopular": false
     },
     "sendgrid": {
-      "name": "SendGrid",
+      "name": "sendGrid",
       "image": "social/sendgrid.svg",
       "description": "SendGrid is a cloud-based service for sending transactional and marketing emails.",
       "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",

@@ -2,15 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Apps, Campaigns, Coupons, Discounts } from ".";
 
-const TabPage = () => {
-  const { tabName } = useParams();
+const MarketingTabs = () => {
+  const { tab } = useParams();
   const tabs = {
     apps: <Apps />,
     discounts: <Discounts />,
     coupons: <Coupons />,
     campaigns: <Campaigns />,
   };
-  return tabs[tabName];
+  return tabs[tab];
 };
 
-export default TabPage;
+export default MarketingTabs;

@@ -2,13 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { AppsSetupLayout, NewDiscount } from ".";
 
-const AddPage = () => {
-  const { add } = useParams();
+const MarketingConfig = () => {
+  const { config } = useParams();
   const tabs = {
     addDiscount: <NewDiscount />,
-    appSetup: <AppsSetupLayout />,
+    config: <AppsSetupLayout />,
   };
-  return tabs[add];
+  return tabs[config];
 };
 
-export default AddPage;
+export default MarketingConfig;
