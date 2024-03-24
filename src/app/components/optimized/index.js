@@ -20,3 +20,5 @@ export { default as ChannelChart } from "./Charts/ChannelChart";
 export { default as ColumnChart } from "./Charts/ColumnChart";
 export { default as LineChart } from "./Charts/LineChart";
 export { default as StackedColumnChart } from "./Charts/StackedColumnChart";
+export { default as Checkbox } from "./UiKits/Checkbox";
+export { default as ClientBox } from "./UiKits/ClientBox";

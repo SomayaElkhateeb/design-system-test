@@ -19,7 +19,6 @@ export default {
         "sec-pressed": "#3E8F6E",
         "sec-hover": "#49A882 ",
         "sec-light": "#EEF9F5",
-        
 
         //! Grayscale Colors
         black: "#000000",
@@ -44,7 +43,6 @@ export default {
       backgroundImage: {
         "brand-gradient":
           "linear-gradient(313.9deg, #0D53FC -2.74%, #55C397 140.56%)",
-
       },
       fontSize: {
         "clamp-title": "clamp(18px, 2.5vw, 22px)",
@@ -57,11 +55,5 @@ export default {
       },
     },
   },
-  plugins: [require("daisyui"),
-  //  require("@tailwindcss/custom-forms")
-  ],
-  daisyui: {
-    themes: ["light"],
-  },
+  plugins: [],
 };
-

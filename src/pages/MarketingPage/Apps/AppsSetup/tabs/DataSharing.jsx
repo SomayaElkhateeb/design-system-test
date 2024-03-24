@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { InputRow, SelectBoxRow } from "src/app/components/optimized";
-import CheckboxInput from "src/app/components/shared/MuHakeem/Comp/InputsFields/InputsCollection/CheckboxInput";
+import { Checkbox, InputRow, SelectBoxRow } from "src/app/components/optimized";
+// import CheckboxInput from "src/app/components/shared/MuHakeem/Comp/InputsFields/InputsCollection/CheckboxInput";
 // import { Checkbox, InputRow, SelectBoxRow } from "src/app/components";
 
 const DataSharing = ({ data }) => {
@@ -31,7 +31,7 @@ const DataSharing = ({ data }) => {
       <p className="mb-3 ">
         {data.description} <a href="#">Learn more</a>
       </p>
-      <CheckboxInput
+      <Checkbox
         label="Activate data sharing"
         checked={isChecked}
         onChange={handleCheckboxChange}
