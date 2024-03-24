@@ -36,9 +36,12 @@ const Discounts = () => {
       {/* header discount */}
       <div className="h-[70px] flex items-center border-b-2 border-light-2 mx-3">
         <div className="flex justify-between  w-full">
-          <button onClick={() => navigate("addDiscount")}>
-            <Button LeftIcon={IoIosAddCircle} text="add new discount" />
-          </button>
+          <Button
+            LeftIcon={IoIosAddCircle}
+            text="add new discount"
+            onClick={() => navigate("addDiscount")}
+          />
+
           {/* navigate(""); */}
           <div className="flex gap-8">
             {/* SecondaryBtn */}

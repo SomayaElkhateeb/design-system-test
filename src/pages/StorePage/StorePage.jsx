@@ -5,7 +5,7 @@ const StorePage = () => {
   return (
     <div>
       <CheckBox />
-      <CheckBox variant="minus" />
+      <CheckBox variant="minus" onChange={() => console.log("done")} />
 
       <Button text="button" onClick={() => console.log("done")} />
     </div>

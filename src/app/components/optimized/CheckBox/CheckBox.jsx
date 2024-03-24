@@ -36,19 +36,19 @@
 
 // export default CheckBox;
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CheckIcon } from "src/app/utils/icons";
 
-const CheckBox = ({ variant, isChecked }) => {
-  const [checked, setChecked] = useState(isChecked || false);
-
-  useEffect(() => {
-    // Update the state when the isChecked prop changes
-    setChecked(isChecked);
-  }, [isChecked]);
+const CheckBox = ({ variant, onChange }) => {
+  const [checked, setChecked] = useState(false);
 
   const handleToggle = () => {
-    setChecked(!checked);
+    const newValue = !checked;
+    setChecked(newValue);
+    // Call the onChange function with the new value
+    if (onChange) {
+      onChange(newValue);
+    }
   };
 
   switch (variant) {
@@ -71,7 +71,7 @@ const CheckBox = ({ variant, isChecked }) => {
       return (
         <div
           onClick={handleToggle}
-          className={`hover:bg-sec-light w-5 h-5 border rounded cursor-pointer disabled:bg-hint ${
+          className={` hover:bg-sec-light w-5 h-5 border rounded cursor-pointer disabled:bg-hint ${
             checked && "bg-success hover:bg-sec-pressed"
           }`}
         >
