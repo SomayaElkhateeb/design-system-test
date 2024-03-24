@@ -1,5 +1,7 @@
 const StorePage = () => {
-  return <div></div>;
+  return <div>
+    <p>Lorem</p>
+  </div>;
 };
 
 export default StorePage;
