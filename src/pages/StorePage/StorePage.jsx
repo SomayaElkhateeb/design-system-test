@@ -2,19 +2,7 @@ const StorePage = () => {
   return (
     <div>
       <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem</p>
-      <p>Lorem Lorem Lorem</p>
-      <p>Lorem Lorem Lorem</p>
-      <p>Lorem Lorem Lorem</p>
-      <p>Lorem Lorem Lorem</p>
-      <p>Lorem Lorem Lorem</p>
-      <p>Lorem Lorem Lorem</p>
+      <h1>Store Page</h1>
       <p>Lorem</p>
     </div>
   );
