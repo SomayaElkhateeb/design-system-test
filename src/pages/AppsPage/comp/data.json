@@ -4,8 +4,8 @@
       "name": "Google",
       "image": "social/google.svg",
       "description": "Google is a multinational technology company that specializes in Internet-related services and products.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
-      "feature": [
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
         {
           "title": "Search Anything, Anytime",
           "description": "Access the world's information at your fingertips with Google Search."
@@ -33,8 +33,8 @@
       "name": "Gmail",
       "image": "social/gmail.svg",
       "description": "Gmail is a free email service developed by Google.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
-      "feature": [
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
         {
           "title": "Send and Receive Emails",
           "description": "Effortlessly send and receive emails from anywhere in the world with Gmail."
@@ -51,10 +51,10 @@
       "status": "installed",
       "backgroundColor": ["#D44638", "#FFFFFF"],
       "posters": {
-        "poster_1": "posters/gmail_1.jpeg",
-        "poster_2": "posters/gmail_2.jpeg",
-        "poster_3": "posters/gmail_3.jpeg",
-        "poster_4": "posters/gmail_4.jpeg"
+        "poster_1": "posters/email_1.jpeg",
+        "poster_2": "posters/email_2.jpeg",
+        "poster_3": "posters/email_3.jpeg",
+        "poster_4": "posters/email_4.jpeg"
       },
       "mostPopular": false
     },
@@ -62,8 +62,8 @@
       "name": "Telegram",
       "image": "social/telegram.svg",
       "description": "Telegram is a cloud-based instant messaging and voice over IP service.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
-      "feature": [
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
         {
           "title": "Private and Secure Messaging",
           "description": "Communicate with friends and family securely with end-to-end encryption."
@@ -91,8 +91,8 @@
       "name": "WhatsApp",
       "image": "social/whatsapp.svg",
       "description": "WhatsApp is a messaging app for smartphones that allows users to send and receive text messages, voice messages, and multimedia files.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
-      "feature": [
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
         {
           "title": "Instant Messaging",
           "description": "Send text messages, voice messages, and multimedia files instantly to friends and family."
@@ -120,8 +120,8 @@
       "name": "TikTok",
       "image": "social/tiktok.svg",
       "description": "TikTok is a social media platform for creating, sharing, and discovering short music videos.",
-      "videoUrl": "https://www.youtube.com/embed/TzFvB35n8To",
-      "feature": [
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
         {
           "title": "Create Videos Quickly & Easily",
           "description": "With our Video Generator tool, you can create high quality videos in minutes. No video production expertise is required."
@@ -148,54 +148,53 @@
     "twitter": {
       "name": "Twitter",
       "image": "social/twitter-X.svg",
-      "description": "Twitter is a social media platform for creating, sharing, and discovering short posts.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
+      "description": "Twitter is a social media platform for sharing news, thoughts, and ideas with a global audience.",
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
       "features": [
         {
-          "title": "Grow your reach",
-          "description": "Advertise and sell your products directly through your Facebook page and reach billions of potential customers."
+          "title": "Promoted Tweets",
+          "description": "Boost your visibility with Promoted Tweets that appear in users' timelines."
         },
         {
-          "title": "Increase your revenue",
-          "description": "Merchants see an average increase of 15% in revenue when selling on Facebook."
+          "title": "Campaign Targeting",
+          "description": "Target specific demographics, interests, and keywords to reach your audience."
         },
         {
-          "title": "Easy checkout",
-          "description": "With Facebook Shop, your customers will be able to easily browse products on mobile and checkout on any device."
+          "title": "Performance Tracking",
+          "description": "Track the performance of your ad campaigns with real-time analytics."
         }
       ],
       "status": "installed",
-      "backgroundColor": ["#1DA1F2", "#14171A"],
+      "backgroundColor": ["#1DA1F2", "#FFFFFF"],
       "posters": {
         "poster_1": "posters/twitter_1.jpeg",
         "poster_2": "posters/twitter_2.jpeg",
         "poster_3": "posters/twitter_3.jpeg",
         "poster_4": "posters/twitter_4.jpeg"
       },
-
-      "mostPopular": true
+      "mostPopular": false
     },
     "facebook": {
       "name": "Facebook",
       "image": "social/facebook.svg",
-      "description": "Facebook is a social networking platform that allows users to connect with friends and family, share photos, and engage in various activities.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
+      "description": "Facebook is a social media platform for connecting with friends, family, and communities.",
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
       "features": [
         {
-          "title": "Grow your reach",
-          "description": "Advertise and sell your products directly through your Facebook page and reach billions of potential customers."
+          "title": "Ad Campaigns",
+          "description": "Launch targeted ad campaigns to reach your audience on Facebook and Instagram."
         },
         {
-          "title": "Increase your revenue",
-          "description": "Merchants see an average increase of 15% in revenue when selling on Facebook."
+          "title": "Audience Targeting",
+          "description": "Target specific demographics, interests, and behaviors to reach the right audience."
         },
         {
-          "title": "Easy checkout",
-          "description": "With Facebook Shop, your customers will be able to easily browse products on mobile and checkout on any device."
+          "title": "Performance Analytics",
+          "description": "Track ad performance and optimize campaigns with detailed analytics and insights."
         }
       ],
-      "status": "free",
-      "backgroundColor": ["#0D53FC", "#55C397"],
+      "status": "installed",
+      "backgroundColor": ["#4267B2", "#FFFFFF"],
       "posters": {
         "poster_1": "posters/facebook_1.jpeg",
         "poster_2": "posters/facebook_2.jpeg",
@@ -206,30 +205,87 @@
     },
     "mailchimp": {
       "name": "Mailchimp",
-      "image": "social/facebook.svg",
-      "description": "Mailchimp is an all-in-one marketing platform that helps businesses manage their email campaigns, build landing pages, and analyze their marketing efforts.",
-      "videoUrl": "https://youtu.be/pUb9EW770d0?si=UM_prUaMrTy8s6Ls",
+      "image": "social/mailchimp.svg",
+      "description": "Mailchimp is an all-in-one marketing platform for small businesses.",
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
       "features": [
         {
-          "title": "Grow and Measure Sales",
-          "description": "Measure the impact of your ads, build retargeting audiences, and optimize campaigns to drive purchases with the Snap Pixel."
+          "title": "Email Campaigns",
+          "description": "Design and send beautiful email campaigns to your subscribers."
         },
         {
-          "title": "Showcase Your Products",
-          "description": "Easily sync your Shopify products to your Snapchat Catalog to create engaging, made-for-commerce product ads."
+          "title": "Audience Insights",
+          "description": "Gain valuable insights into your audience with advanced analytics and reporting."
         },
         {
-          "title": "Personalize Campaigns",
-          "description": "Reach the right customers at the right time with Dynamic Ads; get set up from either Snapchat’s Ads Manager or Shopify’s Marketing tab."
+          "title": "Marketing Automation",
+          "description": "Automate your marketing campaigns to save time and increase efficiency."
+        }
+      ],
+      "status": "installed",
+      "backgroundColor": ["#FFAB00", "#FFFFFF"],
+      "posters": {
+        "poster_1": "posters/mailchimp_1.jpeg",
+        "poster_2": "posters/mailchimp_2.jpeg",
+        "poster_3": "posters/mailchimp_3.jpeg"
+      },
+      "mostPopular": true
+    },
+    "snapchat": {
+      "name": "Snapchat",
+      "image": "social/snapchat.svg",
+      "description": "Connect with mailchimp to get your very own Email marketting and Drive traffic and sales with email and marketing automation.",
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
+        {
+          "title": "Drive sales with automations",
+          "description": "Generate more orders than email alone with automated welcome, abandoned cart, and re-engagement emails."
+        },
+        {
+          "title": "Leverage AI-powered insights",
+          "description": "Get real-time recommendations to boost engagement and drive sales - powered by data from 12 billion daily emails."
+        },
+        {
+          "title": "Start for free, grow for less",
+          "description": "Try our powerful slate of marketing and design tools for free to see how Mailchimp can supercharge your growth."
         }
       ],
       "status": "free",
       "backgroundColor": ["#FFE01B", "#FF4C4C"],
       "posters": {
-        "poster_1": "posters/mailchimp_1.jpeg",
-        "poster_2": "posters/mailchimp_2.jpeg",
-        "poster_3": "posters/mailchimp_3.jpeg",
-        "poster_4": "posters/mailchimp_4.jpeg"
+        "poster_1": "posters/snapchat_1.jpeg",
+        "poster_2": "posters/snapchat_2.jpeg",
+        "poster_3": "posters/snapchat_3.jpeg",
+        "poster_4": "posters/snapchat_4.jpeg"
+      },
+      "mostPopular": false
+    },
+    "sendgrid": {
+      "name": "SendGrid",
+      "image": "social/sendgrid.svg",
+      "description": "SendGrid is a cloud-based service for sending transactional and marketing emails.",
+      "videoUrl": "https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa",
+      "features": [
+        {
+          "title": "Email Marketing",
+          "description": "Create and send marketing emails to your subscribers with ease."
+        },
+        {
+          "title": "Automation",
+          "description": "Automate your email campaigns based on user actions and behavior."
+        },
+        {
+          "title": "Analytics",
+          "description": "Track email engagement metrics and analyze campaign performance."
+        }
+      ],
+      "status": "installed",
+      "backgroundColor": ["#3A79BF", "#FFFFFF"],
+      "posters": {
+        "poster_1": "posters/sendgrid_1.jpeg",
+        "poster_2": "posters/sendgrid_2.jpeg",
+        "poster_3": "posters/sendgrid_3.jpeg",
+        "poster_4": "posters/sendgrid_4.jpeg"
       },
       "mostPopular": false
     }

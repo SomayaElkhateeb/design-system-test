@@ -6,15 +6,13 @@ import { BackIcon } from "src/app/utils/icons";
 import data from "./data.json";
 const SocialAppDetails = () => {
   const { platform } = useParams();
-
   const [socialPlatform, setSocialPlatform] = useState(null);
 
   useEffect(() => {
     const fetchSocialPlatformContent = () => {
-      const content = socialMediaContent[platform];
+      const content = data.apps[platform];
       setSocialPlatform(content);
     };
-
     fetchSocialPlatformContent();
   }, [platform]);
 
@@ -25,14 +23,14 @@ const SocialAppDetails = () => {
   const {
     name,
     image,
-    description,
-    videoUrl,
     status,
+    posters,
+    videoUrl,
     features,
+    description,
     backgroundColor,
   } = socialPlatform;
-
-
+  console.log(posters[1]);
   const statusPadge = status === "available" ? "free" : "installed";
 
   const [fColor, sColor] = backgroundColor;
@@ -58,11 +56,15 @@ const SocialAppDetails = () => {
         style={{
           backgroundImage: `linear-gradient(313.9deg, ${fColor} -2.74%, ${sColor} 140.56%)`,
         }}
-        className="p-5 flex justify-between h-[180px]"
+        className="p-5 flex justify-between h-[180px] max-[992px]:flex-col max-[992px]:h-64 max-[992px]:items-center max-[992px]:mb-32"
       >
-        <div className="flex ">
+        <div className="flex mr-3 max-[992px]:mb-5">
           <div className="size-[120px] min-w-[120px] mr-5 grid place-content-center bg-white rounded-lg">
-            <img src={image} alt={name} className="w-[90px] object-cover" />
+            <img
+              src={getImageUrl(image)}
+              alt={name}
+              className="w-[90px] object-cover"
+            />
           </div>
           <div className=" max-w-[600px] text-white">
             <h2 className="mb-3 font-semibold text-lg text-white">{name}</h2>
@@ -74,16 +76,16 @@ const SocialAppDetails = () => {
             />
           </div>
         </div>
-
-        <iframe
-          width="384"
-          height="216"
-          src={videoUrl}
-          title={name}
-          allowFullScreen
-        />
+        <div className="-mr-4">
+          <iframe
+            width="384"
+            height="216"
+            src={videoUrl}
+            title={name}
+            allowfullscreen
+          />
+        </div>
       </div>
-
       {/*[3] feature section  */}
       <div className="p-5">
         {/* Description */}
@@ -98,10 +100,32 @@ const SocialAppDetails = () => {
           ))}
         </div>
         {/* Posters */}
-        <div className="flex flex-wrap">
-          {[...Array(4)].map((_, index) => (
-            <div  key={index} className="bg-gray-200 p-4 w-[350px] h-[250px] m-4"></div>
-          ))}
+        <div className="flex justify-between flex-wrap gap-7">
+          {posters ? (
+            <>
+              {Object.entries(posters).map(([posterKey, posterValue]) => (
+                <div
+                  key={posterKey}
+                  className="bg-gray-200 w-[350px] h-[250px] "
+                >
+                  <img
+                    src={getImageUrl(posterValue)}
+                    alt={posterKey}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            <>
+              {[...Array(4)].map((_, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-200 w-[350px] h-[250px] "
+                ></div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>

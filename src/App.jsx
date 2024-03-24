@@ -13,8 +13,10 @@ import {
   AnalyticsPage,
   CustomersPage,
   MarketingPage,
+  SocialAppDetails,
 } from "src/pages";
 import RootLayout from "./pages/RootLayout";
+import { AddPage, TabPage } from "./pages/MarketingPage";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +34,14 @@ const router = createBrowserRouter([
       { path: "settings", element: <SettingsPage /> },
       { path: "products", element: <ProductsPage /> },
       { path: "customers", element: <CustomersPage /> },
-      { path: "marketing", element: <MarketingPage /> },
+      {
+        path: "marketing",
+        element: <MarketingPage />,
+        children: [{ path: ":tabName", element: <TabPage /> }],
+      },
       { path: "analytics", element: <AnalyticsPage /> },
+      { path: "apps/:platform", element: <SocialAppDetails /> },
+      { path: "marketing/:tabName/:add", element: <AddPage /> },
     ],
   },
 ]);
