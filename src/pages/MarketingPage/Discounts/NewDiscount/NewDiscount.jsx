@@ -35,6 +35,7 @@ const NewDiscount = () => {
   return (
     <div>
       <HeaderSettings
+        to={-1}
         title="Add discount"
         btn2={{
           text: "save changes",

@@ -6,8 +6,10 @@ import {
   PrintIcon,
 } from "src/app/utils/icons";
 import { GroupIcons, PrevNextBtn } from "..";
+import { Link } from "react-router-dom";
 
 const HeaderSettings = ({
+  to = "/",
   variant,
   title,
   btn1 = { text: "discard", onClick: () => {} },
@@ -19,7 +21,9 @@ const HeaderSettings = ({
       return (
         <div className="flex justify-between items-center bg-white pl-2 pr-4 h-[58px]">
           <div className="flex gap-1 items-center">
-            <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            <Link to={to}>
+              <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            </Link>
             <h2 className="text-title font-semibold capitalize">{title}</h2>
           </div>
 
@@ -39,7 +43,9 @@ const HeaderSettings = ({
       return (
         <div className="flex justify-between items-center bg-white pl-2 pr-4 h-[58px]">
           <div className="flex gap-1 items-center">
-            <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            <Link to={to}>
+              <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            </Link>
             <h2 className="text-title font-semibold capitalize">{title}</h2>
           </div>
 
@@ -65,11 +71,33 @@ const HeaderSettings = ({
       );
       break;
 
+    case "settingOneBtn":
+      return (
+        <div className="flex justify-between items-center bg-white pl-2 pr-4 h-[58px]">
+          <div className="flex gap-1 items-center">
+            <Link to={to}>
+              <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            </Link>
+            <h2 className="text-title font-semibold capitalize">{title}</h2>
+          </div>
+
+          <div className="flex gap-6 items-center">
+            <button className="btn-ter" onClick={btn1.onClick}>
+              {btn1.text}
+            </button>
+          </div>
+        </div>
+      );
+
+      break;
+
     case "settingThreeBtns":
       return (
         <div className="flex justify-between items-center bg-white pl-2 pr-4 h-[58px]">
           <div className="flex gap-1 items-center">
-            <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            <Link to={to}>
+              <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            </Link>
             <h2 className="text-title font-semibold capitalize">{title}</h2>
           </div>
 
@@ -93,7 +121,9 @@ const HeaderSettings = ({
       return (
         <div className="flex justify-between items-center  bg-white  pl-2 pr-4 h-[58px]">
           <div className="flex gap-1 items-center">
-            <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            <Link to={to}>
+              <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            </Link>
             <h2 className="text-title font-semibold capitalize">{title}</h2>
           </div>
           <div className="flex gap-6 items-center">
@@ -113,7 +143,9 @@ const HeaderSettings = ({
       return (
         <div className="flex justify-between items-center bg-white pl-2 pr-4 h-[58px]">
           <div className="flex gap-1 items-center">
-            <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            <Link to={to}>
+              <BackIcon className="mt-0.5 cursor-pointer fill-title" />
+            </Link>
             <h2 className="text-title font-semibold capitalize">{title}</h2>
           </div>
           <div className="flex gap-6 items-center">

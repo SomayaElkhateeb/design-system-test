@@ -1,7 +1,7 @@
 import { useState } from "react";
-import StatusCheckBox from "src/app/components/shared/SomayaAdel/Comp/customComp/StatusCheckBox";
 import SelectButtons from "../../../comp/SelectButtons";
 import { DiscountMinimunRequirements } from "../../../comp/data";
+import { CheckBox } from "src/app/components/optimized";
 
 const MinimumRequirements = () => {
   const [showSelectButtons, setShowSelectButtons] = useState(false);
@@ -15,16 +15,13 @@ const MinimumRequirements = () => {
       <h3 className="text-title font-semibold mb-2">Minimum requirements</h3>
 
       <div className="pt-[18px] flex gap-2 items-center">
-        <button onClick={handleCheckBoxClick}>
-          <StatusCheckBox />
-        </button>
+        <CheckBox onChange={handleCheckBoxClick} />
         <p className="text-title text-sm">define minimum requirement</p>
       </div>
 
       {showSelectButtons && (
         <div className="pt-[18px]">
-          {" "}
-          <SelectButtons data={DiscountMinimunRequirements} />{" "}
+          <SelectButtons data={DiscountMinimunRequirements} />
         </div>
       )}
     </div>
