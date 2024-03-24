@@ -1,5 +1,4 @@
-import { Avatars, Button } from "src/app/components/optimized";
-import ClientBox from "src/app/components/shared/SomayaAdel/Comp/detailsUser/ClientBox";
+import { Avatars, Button, ClientBox } from "src/app/components/optimized";
 import { FaAngleRight } from "react-icons/fa6";
 
 const SelectCustomers = () => {

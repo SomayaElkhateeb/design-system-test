@@ -17,6 +17,7 @@ export { default as PrevNextBtn } from "./UiKits/PrevNextBtn";
 export { default as GroupIcons } from "./UiKits/GroupIcons";
 export { default as Button } from "./UiKits/Button";
 export { default as CheckBox } from "./UiKits/CheckBox";
+export { default as ClientBox } from "./UiKits/ClientBox";
 export { default as ChannelChart } from "./Charts/ChannelChart";
 export { default as ColumnChart } from "./Charts/ColumnChart";
 export { default as LineChart } from "./Charts/LineChart";
