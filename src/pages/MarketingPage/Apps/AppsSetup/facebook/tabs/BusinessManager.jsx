@@ -1,6 +1,6 @@
 import React from "react";
 import { getImageUrl } from "src/app/utils";
-import CompanyCard from "../comp/CompanyCard";
+import CompanyCard from "../../comp/CompanyCard";
 
 const BusinessManager = ({ data }) => {
   return (

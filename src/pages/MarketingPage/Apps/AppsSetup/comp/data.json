@@ -73,67 +73,25 @@
     "platform_settings": {
       "connect_account": {
         "title": "Connect your Google account",
-        "description": "Connect with Google to get your products into your own Google Shop."
+        "description": "Connect with Google to get your products into your own Google merchant center."
       },
       "business_manager": {
-        "title": "Business manager",
-        "description": "Connect with Google manager you use to manage Google page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
-        "companies": [
+        "title": "Confirm some details",
+        "description": "Activate payment method so Google can make sure your store is trustworthy",
+        "data": [
           {
-            "name": "ABC Inc.",
-            "date": "5/6/2021",
-            "id": "#123456",
-            "logo": "abc_logo.png"
+            "category": "Payment",
+            "desc": "Add payment method for your store, so your customers can pay you online"
           },
           {
-            "name": "XYZ Corp.",
-            "date": "5/6/2021",
-            "id": "#789012",
-            "logo": "xyz_logo.png"
+            "category": "Pages",
+            "desc": "Add a refund policy and terms of service"
+          },
+          {
+            "category": "Contact",
+            "desc": "Confirm you have 2 contact methods on your online store"
           }
         ]
-      },
-      "domain_verification": {
-        "title": "Domain verification",
-        "description": "Veify your Google domain, so they can define that you’re the owner of it"
-      },
-      "platform_page": {
-        "title": "Google page",
-        "description": "Connect with Google pages you want to sell or post ads, You need to be an admin to be able to connect a page.",
-        "companies": [
-          {
-            "name": "Bark",
-            "industry": "Pet supplies",
-            "likes": 400
-          },
-          {
-            "name": "P&G",
-            "industry": "Consumer goods",
-            "likes": 400
-          },
-          {
-            "name": "DELL",
-            "industry": "Marketing",
-            "likes": 400000
-          },
-          {
-            "name": "NASA",
-            "industry": "Design",
-            "likes": 5000000
-          }
-        ]
-      },
-      "data_sharing": {
-        "title": "Data sharing (Google Pixel)",
-        "description": "Google collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
-      },
-      "commerce_account": {
-        "title": "Google commerce account",
-        "description": "Create a Google commerce account to start selling on Google, Instagram or both once you have one, You'll be able to customize your Google shop"
-      },
-      "terms_and_conditions": {
-        "title": "Terms & conditions",
-        "description": "You need to accept Google terms of service "
       }
     }
   },

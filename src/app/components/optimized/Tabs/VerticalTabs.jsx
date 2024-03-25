@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayoutCard } from "..";
+import { Button, LayoutCard } from "..";
 
 const VerticalTabs = ({ tabs }) => {
   const { currentTab, handleTabClick, handleNext, handlePrev } =
@@ -115,23 +115,20 @@ const VTab = ({
             {/* Next & Prev */}
             <div className="flex justify-end mt-4">
               {index !== 0 && (
-                <button
+                <Button
                   onClick={onPrev}
                   disabled={currentTab === 0}
-                  className="bg-blue-500 text-white px-4 py-2 rounded mr-4"
-                >
-                  Prev
-                </button>
+                  text="Prev"
+                  className="ml-5"
+                />
               )}
 
-              <button
+              <Button
                 onClick={
                   index === tabs.length - 1 ? () => alert("Finish") : onNext
                 }
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-              >
-                {index === tabs.length - 1 ? "Finish" : "Next"}
-              </button>
+                text={index === tabs.length - 1 ? "Finish" : "Next"}
+              />
             </div>
           </LayoutCard>
         </div>

@@ -1,6 +1,4 @@
-import React from "react";
-import { VerticalTabs } from "src/app/components/optimized";
-import platforms from "./comp/data.json";
+import platforms from "../comp/data.json";
 import {
   BusinessManager,
   CommerceAccount,
@@ -11,7 +9,7 @@ import {
   Terms,
 } from "./tabs";
 
-const AppsSetupLayout = ({ platform }) => {
+export const useFacebookSetup = (platform) => {
   const { platform_settings, platform_title } = platforms[platform];
   const {
     connect_account,
@@ -54,16 +52,5 @@ const AppsSetupLayout = ({ platform }) => {
     },
   ];
 
-  return (
-    <section>
-      <div className="bg-white text-black p-4">
-        <h3 className="text-xl font-medium">{platform_title}</h3>
-      </div>
-      <div className="bg-[#F9FAFC] p-4 flex flex-col ">
-        <VerticalTabs tabs={tabs} />
-      </div>
-    </section>
-  );
+  return { platformTitle: platform_title, tabs };
 };
-
-export default AppsSetupLayout;
