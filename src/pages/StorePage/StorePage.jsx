@@ -61,7 +61,7 @@ const StorePage = () => {
 
       <br />
 
-      <SelectItems />
+      {/* <SelectItems /> */}
       <br />
       <br />
       <br />

@@ -87,7 +87,7 @@ const SelectItems = ({ title = "Select categories", onClose }) => {
 
         <div className="flex mt-4 justify-end mr-[18px] gap-[18px]">
           <Button
-            onClick={() => onClose()}
+            // onClick={() => onClose()}
             text="cancel"
             variant="tertiaryBtn"
           />
