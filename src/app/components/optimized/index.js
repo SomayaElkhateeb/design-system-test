@@ -6,6 +6,7 @@ export { default as LayoutCard } from "./Cards/LayoutCard";
 export { default as ToggleSwitch } from "./UiKits/ToggleSwitch";
 export { default as HeaderSearchBar } from "./UiKits/HeaderSearchBar";
 export { default as LanguageSelect } from "./UiKits/LanguageSelect";
+export { default as ButtonX } from "./UiKits/ButtonX";
 export { default as CheckboxWithImage } from "./UiKits/CheckboxWithImage";
 export { default as AppsCard } from "./Cards/AppsCard";
 export { default as HorizontalTabsLink } from "./Tabs/HorizontalTabsLink";
@@ -17,7 +18,11 @@ export { default as PrevNextBtn } from "./UiKits/PrevNextBtn";
 export { default as GroupIcons } from "./UiKits/GroupIcons";
 export { default as Button } from "./UiKits/Button";
 export { default as CheckBox } from "./UiKits/CheckBox";
+<<<<<<< HEAD
 export { default as ClientBox } from "./Categories/ClientBox";
+=======
+export { default as ClientBox } from "./UiKits/ClientBox";
+>>>>>>> c7651de87fae66abbd49c6fb2ece43ec61432162
 export { default as ChannelChart } from "./Charts/ChannelChart";
 export { default as ColumnChart } from "./Charts/ColumnChart";
 export { default as LineChart } from "./Charts/LineChart";

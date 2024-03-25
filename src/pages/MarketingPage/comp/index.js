@@ -5,4 +5,4 @@ export { default as Apps } from "../Apps/Apps";
 export { default as MarketingConfig } from "./MarketingConfig";
 export { default as MarketingTabs } from "./MarketingTabs";
 export { default as NewDiscount } from "../Discounts/NewDiscount/NewDiscount";
-export { default as AppsSetupLayout } from "../Apps/AppsSetup/AppsSetupLayout";
+export { default as PlatformSetup } from "../Apps/AppsSetup/PlatformSetup";

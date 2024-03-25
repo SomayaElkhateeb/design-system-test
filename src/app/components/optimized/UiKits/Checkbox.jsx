@@ -53,6 +53,7 @@
 import { useState, useEffect } from "react";
 import { CheckIcon } from "src/app/utils/icons";
 
+<<<<<<< HEAD
 const CheckBox = ({ variant, onChange, label, checked: externalChecked }) => {
   const [internalChecked, setInternalChecked] = useState(false);
 
@@ -65,6 +66,14 @@ const CheckBox = ({ variant, onChange, label, checked: externalChecked }) => {
   const handleToggle = () => {
     const newValue = !internalChecked;
     setInternalChecked(newValue);
+=======
+const CheckBox = ({ variant, onChange, label }) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleToggle = () => {
+    const newValue = !checked;
+    setChecked(newValue);
+>>>>>>> c7651de87fae66abbd49c6fb2ece43ec61432162
     if (onChange) {
       onChange(newValue);
     }
@@ -77,10 +86,17 @@ const CheckBox = ({ variant, onChange, label, checked: externalChecked }) => {
           <div
             onClick={handleToggle}
             className={`hover:bg-sec-light w-5 h-5 border rounded cursor-pointer disabled:bg-hint ${
+<<<<<<< HEAD
               internalChecked && "bg-success hover:bg-sec-pressed"
             }`}
           >
             {internalChecked && (
+=======
+              checked && "bg-success hover:bg-sec-pressed"
+            }`}
+          >
+            {checked && (
+>>>>>>> c7651de87fae66abbd49c6fb2ece43ec61432162
               <p className="text-white flex justify-center items-center h-full w-full">
                 -
               </p>
@@ -95,12 +111,19 @@ const CheckBox = ({ variant, onChange, label, checked: externalChecked }) => {
           <div
             onClick={handleToggle}
             className={`hover:bg-sec-light w-5 h-5 border rounded cursor-pointer disabled:bg-hint ${
+<<<<<<< HEAD
               internalChecked && "bg-success hover:bg-sec-pressed"
             }`}
           >
             {internalChecked && (
               <CheckIcon className="fill-white w-full h-full" />
             )}
+=======
+              checked && "bg-success hover:bg-sec-pressed"
+            }`}
+          >
+            {checked && <CheckIcon className="fill-white w-full h-full" />}
+>>>>>>> c7651de87fae66abbd49c6fb2ece43ec61432162
           </div>
           {label && <label className="text-title text-sm ml-2">{label}</label>}
         </div>
