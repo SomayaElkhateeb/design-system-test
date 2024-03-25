@@ -1,4 +1,9 @@
-import { HeaderSettings } from "src/app/components/optimized";
+import {
+  CheckBox,
+  HeaderSettings,
+  SelectItem,
+  SelectItems,
+} from "src/app/components/optimized";
 
 const StorePage = () => {
   return (
@@ -48,6 +53,18 @@ const StorePage = () => {
         btn1={{ text: "Button 1", onClick: () => {} }}
         btn2={{ text: "Button 2", onClick: () => {} }}
       />
+
+      <CheckBox
+        label="Example Label"
+        onChange={(value) => console.log(value)}
+      />
+
+      <br />
+
+      <SelectItems />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
