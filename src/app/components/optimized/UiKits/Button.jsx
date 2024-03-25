@@ -68,7 +68,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className={`text-title text-sm capitalize font-semibold flex items-center pl-0 gap-1.5`}
+          className="text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3"
         >
           {LeftIcon && (
             <LeftIcon className="fill-pri-dark w-[18px] h-[18px] mb-0.5" />

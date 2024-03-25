@@ -46,3 +46,61 @@ export const DiscountMinimunRequirements = [
   { id: nanoid(), textBtn: "Minimum price", component: MinimumPrice },
   { id: nanoid(), textBtn: "Minimum quantity", component: MinimumQuantity },
 ];
+
+// select
+export const select = [
+  {
+    id: nanoid(),
+    title: "jumpsuits & Rompers",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/1.png",
+  },
+  {
+    id: nanoid(),
+    title: "sportsWear",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/2.png",
+  },
+  {
+    id: nanoid(),
+    title: "jumpsuits & Rompers",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/3.png",
+  },
+  {
+    id: nanoid(),
+    title: "sportsWear",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/4.png",
+  },
+  {
+    id: nanoid(),
+    title: "sportsWear",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/1.png",
+  },
+  {
+    id: nanoid(),
+    title: "sportsWear",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/1.png",
+  },
+  {
+    id: nanoid(),
+    title: "jumpsuits & Rompers",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/1.png",
+  },
+  {
+    id: nanoid(),
+    title: "sportsWear",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/1.png",
+  },
+  {
+    id: nanoid(),
+    title: "jumpsuits & Rompers",
+    subTitle: "Lorem Ipsum is simply dummy text of",
+    img: "/images/1.png",
+  },
+];
