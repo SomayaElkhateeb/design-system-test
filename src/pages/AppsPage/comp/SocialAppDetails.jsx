@@ -51,7 +51,7 @@ const SocialAppDetails = () => {
         </div>
         <Button
           text="Install now"
-          onClick={() => navigate(`/marketing/${name}/config`)}
+          onClick={() => navigate(`/marketing/${name}/${name}-setup`)}
         />
       </div>
 

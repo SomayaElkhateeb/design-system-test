@@ -8,6 +8,7 @@ const Button = ({
   background,
   isLoading,
   onClick,
+  ...rest
 }) => {
   // if (isLoading) {
   //   return (
@@ -30,7 +31,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className="text-primary flex flex-row justify-center items-center text-sm capitalize"
+          className={`text-primary flex flex-row justify-center items-center text-sm capitalize`}
         >
           {text}
           <LinkIcon className="fill-primary p-1 mb-1" />
@@ -41,7 +42,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className="btn-sec flex items-center gap-1 p-2"
+          className={`btn-sec flex items-center gap-1 p-2`}
         >
           {LeftIcon && <LeftIcon className="fill-pri-dark w-[18px] h-[18px]" />}
           {text}
@@ -67,7 +68,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className="text-title text-sm capitalize font-semibold flex items-center pl-0 gap-1.5"
+          className={`text-title text-sm capitalize font-semibold flex items-center pl-0 gap-1.5`}
         >
           {LeftIcon && (
             <LeftIcon className="fill-pri-dark w-[18px] h-[18px] mb-0.5" />
@@ -81,7 +82,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className="relative btn-pri flex px-1 items-center"
+          className={`relative btn-pri flex px-1 items-center ml-1`}
         >
           {LeftIcon && <LeftIcon className="fill-white w-[18px] h-[18px]" />}
           <span className="mx-1 text-sm">{text}</span>

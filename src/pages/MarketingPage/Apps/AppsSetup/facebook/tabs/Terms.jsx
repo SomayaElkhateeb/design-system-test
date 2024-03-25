@@ -5,8 +5,8 @@ const Terms = ({ data }) => {
     <div>
       <p>{data.description}</p>
       <div className="flex space-x-3 justify-end">
-        <Button text="Read Terms" variant="tertiaryBtn" />
-        <Button>Accept anyway</Button>
+        <Button text="Read Terms" variant="secondaryBtn" />
+        <Button text="Accept anyway" />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { formatLikes, getImageUrl } from "src/app/utils";
-import CompanyCard from "../comp/CompanyCard";
+import CompanyCard from "../../comp/CompanyCard";
 
 const PlatformPage = ({ data }) => {
   return (
