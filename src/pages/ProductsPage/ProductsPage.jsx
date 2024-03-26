@@ -3,6 +3,7 @@ const ProductsPage = () => {
     <>
       <div>ProductsPage</div>
       <p>just for test</p>
+      <p>just for test</p>
     </>
   );
 };
