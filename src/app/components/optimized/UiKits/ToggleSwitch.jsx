@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-const ToggleSwitch = () => {
+const ToggleSwitch = ({ onSwitch }) => {
   const [isOn, setIsOn] = useState(true);
 
   const toggleSwitch = () => {
     setIsOn(!isOn);
+    onSwitch(!isOn);
   };
 
   return (

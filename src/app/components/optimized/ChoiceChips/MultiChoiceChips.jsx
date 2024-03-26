@@ -6,7 +6,6 @@ import { AddIcon, CheckIcon } from "src/app/utils/icons";
 // const Component = () => {
 //   const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
 //   const [Options, setOptions] = useState([]);
-//   console.log(Options);
 // 
 //   return (
 //     <div>
@@ -28,7 +27,6 @@ const MultiChoiceChips = ({ options, setOptions }) => {
     }
     setSelectedOptions(newSelectedOptions);
     setOptions(newSelectedOptions);
-    // console.log(newSelectedOptions); // Log the current selected options
   };
   return (
     <div>
