@@ -6,8 +6,6 @@ import { LocationIcon } from "src/app/utils/icons";
 // const Component = () => {
 //   const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
 //   const [option, setOption] = useState("");
-//   console.log(option);
-
 //   return (
 //     <div>
 //       <SingleChoiceChips options={options} setOption={setOption} />
@@ -21,7 +19,6 @@ const SingleChoiceChips = ({ options, setOption }) => {
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     setOption(option);
-    // console.log(option); // Log the selected option
   };
 
   return (

@@ -31,7 +31,6 @@ const SocialAppDetails = () => {
     description,
     backgroundColor,
   } = socialPlatform;
-  console.log(posters[1]);
   const statusPadge = status === "available" ? "free" : "installed";
 
   const [fColor, sColor] = backgroundColor;

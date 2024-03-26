@@ -4,12 +4,15 @@ import { NewDiscount, PlatformSetup } from ".";
 
 const MarketingConfig = () => {
   const { config } = useParams();
+
   const platform = config.slice(0, config.indexOf("-"));
+  const platformKey = `${platform}-setup`;
 
   const tabs = {
     addDiscount: <NewDiscount />,
-    [config]: <PlatformSetup platform={platform} />,
+    [platformKey]: <PlatformSetup platform={platform} />,
   };
+  
   return tabs[config];
 };
 
