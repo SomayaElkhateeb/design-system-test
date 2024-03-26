@@ -7,7 +7,6 @@ const Button = ({
   RightIcon,
   background,
   isLoading,
-  className,
   onClick,
   ...rest
 }) => {
@@ -32,7 +31,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className={`${className} text-primary flex flex-row justify-center items-center capitalize`}
+          className=" text-primary flex flex-row justify-center items-center capitalize"
         >
           {text}
 
@@ -44,7 +43,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className={`${className} btn-sec flex items-center gap-1 p-2`}
+          className= "btn-sec flex items-center gap-1 p-2"
         >
           {LeftIcon && <LeftIcon className="fill-pri-dark w-[18px] h-[18px]" />}
           {text}
@@ -70,7 +69,9 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className={`${className} text-title text-sm capitalize font-semibold flex items-center pl-0 gap-1.5`}
+
+
+          className="text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3"
         >
           {LeftIcon && (
             <LeftIcon className="fill-pri-dark w-[18px] h-[18px] mb-0.5" />
@@ -84,7 +85,7 @@ const Button = ({
       return (
         <button
           onClick={onClick}
-          className={`${className} relative btn-pri flex px-1 items-center ml-1`}
+          className="relative btn-pri flex px-1 items-center ml-1"
         >
           {LeftIcon && <LeftIcon className="fill-white w-[18px] h-[18px]" />}
           <span className="mx-1 text-sm">{text}</span>

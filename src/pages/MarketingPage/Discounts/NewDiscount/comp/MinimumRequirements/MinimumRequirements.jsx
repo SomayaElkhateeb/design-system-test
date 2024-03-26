@@ -14,9 +14,11 @@ const MinimumRequirements = () => {
     <div className="bg-white w-full border border-constrained rounded-md p-[18px]">
       <h3 className="text-title font-semibold mb-2">Minimum requirements</h3>
 
-      <div className="pt-[18px] flex gap-2 items-center">
-        <CheckBox onChange={handleCheckBoxClick} />
-        <p className="text-title text-sm">define minimum requirement</p>
+      <div className="pt-[18px]">
+        <CheckBox
+          onChange={handleCheckBoxClick}
+          label="define minimum requirement"
+        />
       </div>
 
       {showSelectButtons && (

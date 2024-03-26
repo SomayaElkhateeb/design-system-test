@@ -82,7 +82,7 @@ const HeaderSettings = ({
           </div>
 
           <div className="flex gap-6 items-center">
-            <button className="btn-ter" onClick={btn1.onClick}>
+            <button className="btn-pri" onClick={btn1.onClick}>
               {btn1.text}
             </button>
           </div>
