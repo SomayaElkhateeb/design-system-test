@@ -1,7 +1,7 @@
 {
   "facebook": {
-    "platform_title": "Setup Facebook Ad Campaign",
-    "platform_settings": {
+    "facebook_title": "Setup Facebook Ad Campaign",
+    "facebook_settings": {
       "connect_account": {
         "title": "Connect your Facebook account",
         "description": "Connect with Facebook to get your products into your own Facebook Shop."
@@ -28,7 +28,7 @@
         "title": "Domain verification",
         "description": "Verify your Facebook domain, so they can define that you’re the owner of it"
       },
-      "platform_page": {
+      "facebook_page": {
         "title": "Facebook page",
         "description": "Connect with Facebook pages you want to sell or post ads. You need to be an admin to be able to connect a page.",
         "companies": [
@@ -69,27 +69,33 @@
     }
   },
   "google": {
-    "platform_title": "Setup Google Ad Campaign",
-    "platform_settings": {
+    "google_title": "Setup Google Ad Campaign",
+    "google_settings": {
       "connect_account": {
         "title": "Connect your Google account",
         "description": "Connect with Google to get your products into your own Google merchant center."
       },
-      "business_manager": {
+      "payment_method": {
         "title": "Confirm some details",
         "description": "Activate payment method so Google can make sure your store is trustworthy",
-        "data": [
+        "method": [
           {
-            "category": "Payment",
-            "desc": "Add payment method for your store, so your customers can pay you online"
+            "icon": "PaymentIcon",
+            "title": "Payment",
+            "description": "Add payment method for your store, so your customers can pay you online",
+            "buttonText": "Activate"
           },
           {
-            "category": "Pages",
-            "desc": "Add a refund policy and terms of service"
+            "icon": "PagesIcon",
+            "title": "Pages",
+            "description": "Add a refund policy and terms of service",
+            "buttonText": "Add"
           },
           {
-            "category": "Contact",
-            "desc": "Confirm you have 2 contact methods on your online store"
+            "icon": "PhoneIcon",
+            "title": "Contact",
+            "description": "Confirm you have 2 contact methods on your online store",
+            "buttonText": "Confirm"
           }
         ]
       }

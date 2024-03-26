@@ -10,18 +10,18 @@ import {
 } from "./tabs";
 
 export const useFacebookSetup = (platform) => {
-  const { platform_settings, platform_title } = platforms[platform];
+  const { facebook_settings, facebook_title } = platforms[platform];
   const {
     connect_account,
     business_manager,
     domain_verification,
-    platform_page,
+    facebook_page,
     data_sharing,
     commerce_account,
     terms_and_conditions,
-  } = platform_settings;
+  } = facebook_settings;
 
-  const tabs = [
+  const facebook_tabs = [
     {
       title: connect_account.title,
       content: <ConnectAccount data={connect_account} />,
@@ -35,8 +35,8 @@ export const useFacebookSetup = (platform) => {
       content: <DomainVerification data={domain_verification} />,
     },
     {
-      title: platform_page.title,
-      content: <PlatformPage data={platform_page} />,
+      title: facebook_page.title,
+      content: <PlatformPage data={facebook_page} />,
     },
     {
       title: data_sharing.title,
@@ -52,5 +52,5 @@ export const useFacebookSetup = (platform) => {
     },
   ];
 
-  return { platformTitle: platform_title, tabs };
+  return { facebook_title, facebook_tabs };
 };
