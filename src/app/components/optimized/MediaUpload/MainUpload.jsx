@@ -1,3 +1,7 @@
+//? Unfinished task
+//! ===============
+// todo Integration <ImageUploader /> Component
+
 import { UploadIcon } from "src/app/utils/icons";
 
 const MainUpload = () => {
