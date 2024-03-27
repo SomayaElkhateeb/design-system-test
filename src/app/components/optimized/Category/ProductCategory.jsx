@@ -1,3 +1,7 @@
+//? Unfinished tasks
+//! =================
+// todo made it dropable
+// todo created nested categories
 import { useState } from "react";
 import { ToggleSwitch } from "src/app/components/optimized";
 import { getImageUrl } from "src/app/utils";
@@ -10,11 +14,9 @@ const ProductCategory = ({ imageUrl, title, category, quantity, price }) => {
   const availabilityHandler = () => {
     setAvailability(!availability);
   };
-
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <div className="w-full p-3 grid grid-cols-12 ">
       {/* [1] */}
@@ -68,3 +70,38 @@ const ProductCategory = ({ imageUrl, title, category, quantity, price }) => {
   );
 };
 export default ProductCategory;
+
+ProductCategory.defaultProps = {
+  imageUrl: "images/Vector.svg",
+  title: "Product 1",
+  category: "Category 1",
+  quantity: 10,
+  price: "$100",
+  showToggle: true,
+};
+
+// const ParentComponent = () => {
+//   const demoData = [
+//     {
+//       imageUrl: "image-url-1",
+//       title: "Product 1",
+//       category: "Category 1",
+//       quantity: 10,
+//       price: "$100",
+//     },
+//     {
+//       imageUrl: "image-url-2",
+//       title: "Product 2",
+//       category: "Category 2",
+//       quantity: 20,
+//       price: "$200",
+//     },
+//   ];
+//   return (
+//     <div>
+//       {demoData.map((data, index) => (
+//         <ProductCategory key={index} {...data} />
+//       ))}
+//     </div>
+//   );
+// };

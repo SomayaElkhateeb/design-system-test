@@ -1,3 +1,8 @@
+//? Unfinished tasks
+//! =================
+// todo store uploaded image
+// todo Actions buttons
+
 import { useState } from "react";
 import { AddBgIcon, UploadIcon } from "src/app/utils/icons";
 
