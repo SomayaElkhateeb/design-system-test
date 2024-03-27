@@ -2,7 +2,7 @@ import platforms from "../comp/data.json";
 import ConnectAccount from "./tabs/ConnectAccount";
 import PaymentMethod from "./tabs/PaymentMethod";
 
-export const useGooglsSetup = (platform) => {
+export const useGoogleSetup = (platform) => {
   const { google_settings, google_title } = platforms[platform];
   const { connect_account, payment_method } = google_settings;
 

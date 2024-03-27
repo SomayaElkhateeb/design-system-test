@@ -101,72 +101,52 @@
       }
     }
   },
-  "twitter": {
-    "platform_title": "Setup Twitter Ad Campaign",
-    "platform_settings": {
-      "connect_account": {
-        "title": "Connect your Twitter  account",
-        "description": "Connect with Twitter  to get your products into your own Twitter  Shop."
+  "tikTok": {
+    "tikTok_title": "Setup TikTok sales",
+    "mega_title": "You are about to add TikTok",
+    "tikTok_settings": {
+      "settings_title": "TikTok will be able to:",
+      "tikTok_intro": [
+        {
+          "title": "View Dookan account data",
+          "linkURL": "#",
+          "linkText": "View Details"
+        },
+        {
+          "title": "View products",
+          "linkURL": "#",
+          "linkText": "View Details"
+        },
+        {
+          "title": "Edit marketing",
+          "linkURL": "#",
+          "linkText": "View Details"
+        },
+        {
+          "title": "Edit store analytics",
+          "linkURL": "#",
+          "linkText": "View Details"
+        },
+        {
+          "title": "Edit your online store",
+          "linkURL": "#",
+          "linkText": "View Details"
+        },
+        {
+          "title": "Edit Other data",
+          "linkURL": "#",
+          "linkText": "View Details"
+        }
+      ],
+      "privacy_notice": {
+        "text": "To erase your customers’ personal information from TikTok, Remove the app. After 48 hours, a request will be sent to TikTok to erase this data.",
+        "linkText": "Learn more about data Privacy",
+        "linkURL": "#"
       },
-      "business_manager": {
-        "title": "Business manager",
-        "description": "Connect with Twitter  manager you use to manage Twitter  page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
-        "companies": [
-          {
-            "name": "ABC Inc.",
-            "date": "5/6/2021",
-            "id": "#123456",
-            "logo": "abc_logo.png"
-          },
-          {
-            "name": "XYZ Corp.",
-            "date": "5/6/2021",
-            "id": "#789012",
-            "logo": "xyz_logo.png"
-          }
-        ]
-      },
-      "domain_verification": {
-        "title": "Domain verification",
-        "description": "Veify your Twitter  domain, so they can define that you’re the owner of it"
-      },
-      "platform_page": {
-        "title": "Twitter  page",
-        "description": "Connect with Twitter  pages you want to sell or post ads, You need to be an admin to be able to connect a page.",
-        "companies": [
-          {
-            "name": "Bark",
-            "industry": "Pet supplies",
-            "likes": 400
-          },
-          {
-            "name": "P&G",
-            "industry": "Consumer goods",
-            "likes": 400
-          },
-          {
-            "name": "DELL",
-            "industry": "Marketing",
-            "likes": 400000
-          },
-          {
-            "name": "NASA",
-            "industry": "Design",
-            "likes": 5000000
-          }
-        ]
-      },
-      "data_sharing": {
-        "title": "Data sharing (Twitter  Pixel)",
-        "description": "Twitter  collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
-      },
-      "commerce_account": {
-        "title": "Twitter  commerce account",
-        "description": "Create a Twitter  commerce account to start selling on Twitter , Instagram or both once you have one, You'll be able to customize your Twitter  shop"
-      },
-      "terms_and_conditions": {
-        "title": "Terms & conditions",
-        "description": "You need to accept Twitter  terms of service "
+      "agreement_terms": {
+        "text": "By proceeding, you are agreeing to the",
+        "linkText": "Dookan Terms of Service",
+        "linkURL": "#"
       }
     }
   }
