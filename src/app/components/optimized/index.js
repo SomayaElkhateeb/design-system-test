@@ -11,6 +11,7 @@ export { default as CheckboxWithImage } from "./UiKits/CheckboxWithImage";
 export { default as AppsCard } from "./Cards/AppsCard";
 export { default as HorizontalTabsLink } from "./Tabs/HorizontalTabsLink";
 
+
 //? Somaya
 export { default as Avatars } from "./UiKits/Avatars";
 export { default as HeaderSettings } from "./UiKits/HeaderSettings";
@@ -27,16 +28,19 @@ export { default as SelectItems } from "./SelectItems/SelectItems";
 export { default as SelectItem } from "./SelectItems/SelectItem";
 export { default as PopupProceed } from "./Popups/PopupProceed";
 
+
 //? Ahmed
 export { default as MultiImageUploader } from "./MediaUpload/MultiImageUploader";
 export { default as MopileProductViews } from "./Products/MopileProductViews";
+export { default as MultiChoiceChips } from "./ChoiceChips/MultiChoiceChips";
 export { default as MobileProductCard } from "./Products/MobileProductCard";
 export { default as ProductCategory } from "./Category/ProductCategory";
 export { default as ImageUploader } from "./MediaUpload/ImageUploader";
+export { default as MopileSetupCard } from "./Cards/MopileSetupCard";
 export { default as CategoryViews } from "./Category/CategoryViews";
 export { default as ProductViews } from "./Products/ProductViews";
 export { default as MainUpload } from "./MediaUpload/MainUpload";
 export { default as ProductCard } from "./Products/ProductCard";
 export { default as TrialBanner } from "./UiKits/TrialBanner";
-export { default as MultiChoiceChips } from "./ChoiceChips/MultiChoiceChips";
+export { default as SetupCard } from "./Cards/SetupCard";
 
