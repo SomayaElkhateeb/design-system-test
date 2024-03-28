@@ -1,37 +1,43 @@
+import { useState } from "react";
 import { VerticalTabs } from "src/app/components/optimized";
+import TikTokSetup from "./tiktok/TikTokSetup";
 import { useFacebookSetup } from "./facebook/useFacebookSetup";
-import { useGooglsSetup } from "./google/useGooglsSetup";
+import { useTikTokSetup } from "./tiktok/useTikTokSetup";
+import { useGoogleSetup } from "./google/useGoogleSetup";
 
 const PlatformSetup = ({ platform }) => {
+  const [tikTokConfirm, confirmTikTok] = useState(false);
+  let title, tabs;
+  
   switch (platform) {
     case "facebook":
-      const { facebook_title, facebook_tabs } = useFacebookSetup(platform);
-      return (
-        <section>
-          <div className="bg-white text-black p-4">
-            <h3 className="text-xl font-medium">{facebook_title}</h3>
-          </div>
-          <div className="bg-[#F9FAFC] p-4 flex flex-col ">
-            <VerticalTabs tabs={facebook_tabs} />
-          </div>
-        </section>
-      );
-    case "google":
-      const { google_title, google_tabs } = useGooglsSetup(platform);
-      return (
-        <section>
-          <div className="bg-white text-black p-4">
-            <h3 className="text-xl font-medium">{google_title}</h3>
-          </div>
-          <div className="bg-[#F9FAFC] p-4 flex flex-col ">
-            <VerticalTabs tabs={google_tabs} />
-          </div>
-        </section>
-      );
-    default:
+      ({ facebook_title: title, facebook_tabs: tabs } =
+        useFacebookSetup(platform));
       break;
+    case "google":
+      ({ google_title: title, google_tabs: tabs } = useGoogleSetup(platform));
+      break;
+    case "tikTok":
+      ({ tikTok_title: title, tikTok_tabs: tabs } = useTikTokSetup(platform));
+      break;
+    default:
+      return <section>All</section>;
   }
-  return <section>All</section>;
+
+  return (
+    <section>
+      <div className="bg-white text-black p-4">
+        <h3 className="text-xl font-medium">{title}</h3>
+      </div>
+      <div className="bg-[#F9FAFC] p-4 flex flex-col">
+        {platform === "tikTok" && !tikTokConfirm ? (
+          <TikTokSetup platform={platform} confirmTikTok={confirmTikTok} />
+        ) : (
+          <VerticalTabs tabs={tabs} />
+        )}
+      </div>
+    </section>
+  );
 };
 
 export default PlatformSetup;
