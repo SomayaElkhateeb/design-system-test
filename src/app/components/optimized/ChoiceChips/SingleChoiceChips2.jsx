@@ -3,7 +3,13 @@ import React, { useState } from "react";
 //! How To use
 
 // const Component = () => {
-//   const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
+//   const options = [
+//     { key: "Option 1", value: "Value 1" },
+//     { key: "Option 2", value: "Value 2" },
+//     { key: "Option 3", value: "Value 3" },
+//     { key: "Option 4", value: "Value 4" },
+//     { key: "Option 5", value: "Value 5" },
+//   ];
 //   const [option, setOption] = useState("");
 //   return (
 //     <div>
@@ -12,7 +18,7 @@ import React, { useState } from "react";
 //   );
 // };
 
-const SingleChoiceChips = ({ options, setOption, icon }) => {
+const SingleChoiceChips2 = ({ options, setOption, icon }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionSelect = (option) => {
@@ -22,12 +28,13 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
 
   return (
     <div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 p-2">
         {options.map((option, index) => (
           <Chip
             key={index}
-            label={option}
-            isSelected={option === selectedOption}
+            label={option.key}
+            value={option.value}
+            isSelected={option.value === selectedOption}
             icon={icon}
             onSelect={handleOptionSelect}
           />
@@ -37,9 +44,9 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
   );
 };
 
-export default SingleChoiceChips;
+export default SingleChoiceChips2;
 
-const Chip = ({ label, isSelected, icon, onSelect }) => {
+const Chip = ({ label, value, isSelected, icon, onSelect }) => {
   const baseStyle =
     "flex items-center border p-1 pr-2 w-fit rounded-full cursor-pointer transition-all";
   const notSelectedStyle =
@@ -51,7 +58,7 @@ const Chip = ({ label, isSelected, icon, onSelect }) => {
       className={`${baseStyle} ${
         isSelected ? selectedStyle : notSelectedStyle
       }`}
-      onClick={() => onSelect(label)}
+      onClick={() => onSelect(value)}
     >
       {icon && <div className="mr-1">{icon}</div>}
       <span
