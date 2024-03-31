@@ -34,7 +34,7 @@ const InputRow = ({
   return (
     <>
       <div className="flex flex-col">
-        <label htmlFor={name} className="block text-sm ">
+        <label htmlFor={name} className="block text-sm mb-1">
           {label}
         </label>
         <div
