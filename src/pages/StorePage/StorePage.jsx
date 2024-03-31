@@ -9,15 +9,6 @@ const StorePage = () => {
   return (
     <div>
       <HeaderSettings
-        variant="settingIcons"
-        to="/your-back-link"
-        title="Your Title"
-        btn1={{ text: "Button 1", onClick: () => {} }}
-        btn2={{ text: "Button 2", onClick: () => {} }}
-      />
-      <br />
-
-      <HeaderSettings
         variant="settingOrder"
         to="/your-back-link"
         title="Your Title"

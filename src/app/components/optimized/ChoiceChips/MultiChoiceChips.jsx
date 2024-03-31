@@ -6,7 +6,7 @@ import { AddIcon, CheckIcon } from "src/app/utils/icons";
 // const Component = () => {
 //   const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
 //   const [Options, setOptions] = useState([]);
-//
+// 
 //   return (
 //     <div>
 //       <MultiChoiceChips options={options} setOptions={setOptions} />
@@ -30,7 +30,7 @@ const MultiChoiceChips = ({ options, setOptions }) => {
   };
   return (
     <div>
-      <div className="flex flex-wrap gap-2 mt-2">
+      <div className="flex flex-wrap gap-2 p-2">
         {options.map((option, index) => (
           <Chip
             key={index}
@@ -45,9 +45,9 @@ const MultiChoiceChips = ({ options, setOptions }) => {
 };
 export default MultiChoiceChips;
 
-//
-//
-//
+// 
+// 
+// 
 
 const Chip = ({ label, isSelected, onToggle }) => {
   const baseStyle =

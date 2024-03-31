@@ -1,26 +1,94 @@
-import { select } from "src/pages/MarketingPage/Discounts/comp/data";
 import { Button, CheckBox, InputRow, SelectItem } from "..";
 import { LiaSearchSolid } from "react-icons/lia";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { capitalizeFirstLetter } from "src/app/utils";
 
-const SelectItems = ({ title = "Select categories", onClose }) => {
+const SelectItems = ({ title, onClose, select, varient }) => {
   const [state, setState] = useState({
     searchQuery: "",
-    selectedCount: 0,
-    totalItems: select.length,
+    selectedItems: [],
+    totalItems: select,
     isChecked: true,
   });
 
-  const { searchQuery, selectedCount, totalItems, isChecked } = state;
-  const handleChange = (newValue) => {
-    setState(newValue);
+  const { searchQuery, selectedItems, totalItems, isChecked } = state;
+
+  useEffect(() => {
+    setState((prevState) => ({
+      ...prevState,
+      totalItems: select,
+    }));
+  }, [select]);
+
+  // useEffect(() => {
+  //   const storedItemsData = localStorage.getItem("selectedItemsData");
+  //   if (storedItemsData) {
+  //     const storedItems = JSON.parse(storedItemsData);
+  //     const storedItemIds = storedItems.map((item) => item.id);
+  //     setState((prevState) => ({
+  //       ...prevState,
+  //       selectedItems: storedItemIds,
+  //     }));
+  //   }
+  // }, []);
+
+  const handleChangeBox = (isChecked) => {
+    setState((prevState) => ({
+      ...prevState,
+      isChecked,
+    }));
   };
 
-  // Filter items based on the search query
-  const filteredItems = select.filter((item) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleCheckBoxChange = (isChecked, itemId) => {
+    const updatedItems = isChecked
+      ? [...selectedItems, itemId]
+      : selectedItems.filter((item) => item !== itemId);
+    setState((prevState) => ({
+      ...prevState,
+      selectedItems: updatedItems,
+    }));
+  };
+
+  useEffect(() => {
+    const updatedSelectedItems = totalItems.filter((item) =>
+      selectedItems.includes(item.id)
+    );
+    setState((prevState) => ({
+      ...prevState,
+      selectedItems: updatedSelectedItems,
+    }));
+  }, [searchQuery]);
+
+  // const filteredItems = select
+  //   ? select.filter((item) =>
+  //       item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  //     )
+  //   : [];
+  const filteredItems = select
+    ? select.filter(
+        (item) =>
+          item.title &&
+          item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
+  const handleAddButtonClick = () => {
+    const itemsData = totalItems
+      .filter((item) => selectedItems.includes(item.id))
+      .map((item) => {
+        return {
+          id: item.id,
+          image: item.img,
+          title: item.title,
+          subTitle: item.subTitle,
+          fName: item.fName,
+          lName: item.lName,
+          count: item.count,
+        };
+      });
+    localStorage.setItem("selectedItemsData", JSON.stringify(itemsData));
+    onClose();
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
@@ -48,19 +116,29 @@ const SelectItems = ({ title = "Select categories", onClose }) => {
             </div>
 
             <p>
-              {selectedCount} categories out of {totalItems}
+              {selectedItems.length} categories out of {totalItems.length}
             </p>
 
-            {selectedCount === 0 && <CheckBox variant="minus" />}
-            {selectedCount > 0 && selectedCount < totalItems && (
+            {selectedItems.length === 0 && (
               <CheckBox
                 variant="minus"
-                checked={isChecked}
-                onChange={handleChange}
+                checked={!isChecked}
+                onChange={(e) => handleChangeBox(e.target.checked)}
               />
             )}
-            {selectedCount === totalItems && (
-              <CheckBox checked={isChecked} onChange={handleChange} />
+            {selectedItems.length > 0 &&
+              selectedItems.length < totalItems.length && (
+                <CheckBox
+                  checked={isChecked}
+                  variant="minus"
+                  onChange={(e) => handleChangeBox(e.target.checked)}
+                />
+              )}
+            {selectedItems.length === totalItems.length && (
+              <CheckBox
+                checked={isChecked}
+                onChange={(e) => handleChangeBox(e.target.checked)}
+              />
             )}
           </div>
         </div>
@@ -70,15 +148,12 @@ const SelectItems = ({ title = "Select categories", onClose }) => {
           {filteredItems.map((item) => {
             return (
               <SelectItem
+                varient={varient}
                 key={item.id}
                 {...item}
+                isChecked={selectedItems.includes(item.id)}
                 onCheckBoxChange={(isChecked) =>
-                  setState({
-                    ...state,
-                    selectedCount: isChecked
-                      ? selectedCount + 1
-                      : selectedCount - 1,
-                  })
+                  handleCheckBoxChange(isChecked, item.id)
                 }
               />
             );
@@ -86,12 +161,11 @@ const SelectItems = ({ title = "Select categories", onClose }) => {
         </div>
 
         <div className="flex mt-4 justify-end mr-[18px] gap-[18px]">
+          <Button onClick={() => onClose()} text="cancel" variant="ter" />
           <Button
-            // onClick={() => onClose()}
-            text="cancel"
-            variant="tertiaryBtn"
+            onClick={handleAddButtonClick}
+            text={`add (${selectedItems.length})`}
           />
-          <Button text={`add (${selectedCount})`} />
         </div>
       </div>
     </div>
