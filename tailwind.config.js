@@ -19,7 +19,7 @@ module.exports = {
         "pri-pressed": "#0A3FBF",
         "pri-hover": "#0B47D9",
         "pri-light": "#E7EEFF", // primary-Light
-        // "pri-top-light": "#E7EEFF", // Primary-Top light-BG
+        "pri-top-light": "#E7EEFF", // Primary-Top light-BG
 
         //! Secondary Colors
         secondary: "#55C397",

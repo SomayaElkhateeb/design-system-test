@@ -17,7 +17,7 @@ export { default as HeaderSettings } from "./UiKits/HeaderSettings";
 export { default as PrevNextBtn } from "./UiKits/PrevNextBtn";
 export { default as GroupIcons } from "./UiKits/GroupIcons";
 export { default as Button } from "./UiKits/Button";
-export { default as CheckBox } from "./UiKits/Checkbox";
+export { default as CheckBox } from "./UiKits/CheckBox";
 export { default as ClientBox } from "./Categories/ClientBox";
 export { default as ChannelChart } from "./Charts/ChannelChart";
 export { default as ColumnChart } from "./Charts/ColumnChart";
@@ -26,17 +26,21 @@ export { default as StackedColumnChart } from "./Charts/StackedColumnChart";
 export { default as SelectItems } from "./SelectItems/SelectItems";
 export { default as SelectItem } from "./SelectItems/SelectItem";
 export { default as PopupProceed } from "./Popups/PopupProceed";
+export { default as TimePicker } from "./Pickers/TimePicker";
+export { default as DatePicker } from "./Pickers/DatePicker";
+export { default as Accordion } from "./UiKits/Accordion";
 
 //? Ahmed
 export { default as MultiImageUploader } from "./MediaUpload/MultiImageUploader";
 export { default as MopileProductViews } from "./Products/MopileProductViews";
+export { default as MultiChoiceChips } from "./ChoiceChips/MultiChoiceChips";
 export { default as MobileProductCard } from "./Products/MobileProductCard";
 export { default as ProductCategory } from "./Category/ProductCategory";
 export { default as ImageUploader } from "./MediaUpload/ImageUploader";
+export { default as MopileSetupCard } from "./Cards/MopileSetupCard";
 export { default as CategoryViews } from "./Category/CategoryViews";
 export { default as ProductViews } from "./Products/ProductViews";
 export { default as MainUpload } from "./MediaUpload/MainUpload";
 export { default as ProductCard } from "./Products/ProductCard";
 export { default as TrialBanner } from "./UiKits/TrialBanner";
-export { default as MultiChoiceChips } from "./ChoiceChips/MultiChoiceChips";
-
+export { default as SetupCard } from "./Cards/SetupCard";
