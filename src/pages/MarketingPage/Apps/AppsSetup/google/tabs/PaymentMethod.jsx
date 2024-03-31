@@ -7,8 +7,8 @@ import PaymentCard from "../comp/PaymentCard";
 
 const PaymentMethod = ({ data }) => {
   const [isConfirm, setIsConfirm] = useState(false);
-  const options = ["Business address", "Email address", "Phone number"];
-  const [Options, setOptions] = useState([]);
+  const theOptions = ["Business address", "Email address", "Phone number"];
+  const [options, setOptions] = useState([]);
   return (
     <>
       <div className="flex flex-col justify-between">
@@ -59,7 +59,7 @@ const PaymentMethod = ({ data }) => {
         </p>
         <p className="mt-6">Select the 2 contact methods added:</p>
 
-        <MultiChoiceChips options={options} setOptions={setOptions} />
+        <MultiChoiceChips options={theOptions} setOptions={setOptions} />
       </PopupProceed>
     </>
   );

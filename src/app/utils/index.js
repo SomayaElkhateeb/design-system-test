@@ -1,4 +1,11 @@
-//
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+// ClassValue[]
+export function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
+
 export const truncateString = (str, maxLength) => {
   if (str.length <= maxLength) {
     return str;

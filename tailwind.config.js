@@ -1,9 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
+  darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      // Define custom color classes here
       colors: {
         //! Primary Colors
         primary: "#0D53FC",
@@ -19,7 +27,6 @@ export default {
         "sec-pressed": "#3E8F6E",
         "sec-hover": "#49A882 ",
         "sec-light": "#EEF9F5",
-        
 
         //! Grayscale Colors
         black: "#000000",
@@ -40,11 +47,65 @@ export default {
         "neutral-2": "#D65036",
         tips: "#446CCE", // info, tips
         success: "#49C596",
+        /////////////////////////////////////////////
+        //shadcn
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
+        // secondary: {
+        //   DEFAULT: "hsl(var(--secondary))",
+        //   foreground: "hsl(var(--secondary-foreground))",
+        // },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      /////////////////////////////////////////////
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       backgroundImage: {
         "brand-gradient":
           "linear-gradient(313.9deg, #0D53FC -2.74%, #55C397 140.56%)",
-
       },
       fontSize: {
         "clamp-title": "clamp(18px, 2.5vw, 22px)",
@@ -57,11 +118,5 @@ export default {
       },
     },
   },
-  plugins: [require("daisyui"),
-  //  require("@tailwindcss/custom-forms")
-  ],
-  daisyui: {
-    themes: ["light"],
-  },
+  plugins: [require("tailwindcss-animate")],
 };
-
