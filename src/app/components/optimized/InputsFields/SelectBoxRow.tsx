@@ -14,7 +14,6 @@ import { ClipLoader } from "react-spinners";
  * @param handleSelectChange Handler function to update the selected value
  * @param rest Additional props to pass to the select element
  */
-
 const SelectBoxRow = ({
   label,
   options,
@@ -26,8 +25,25 @@ const SelectBoxRow = ({
   selectedValue,
   handleSelectChange,
   ...rest
+}: {
+  label: string;
+  options: { value: string; label: string }[];
+  loading: boolean;
+  error: boolean;
+  success: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  selectedValue: string;
+  handleSelectChange: (value: string) => void;
+  // Add a type for the rest of the props
+  rest: any;
 }) => {
   const [focused, setFocused] = useState(false);
+
+  /**
+   * Get input class names based on the current state
+   * @returns classNames
+   */
   const getInputClassNames = () => {
     if (focused && !success) {
       return "border-blue-500";
@@ -44,18 +60,22 @@ const SelectBoxRow = ({
   return (
     <>
       <div className="flex flex-col">
-        <label htmlFor={rest.name} className="block text-sm ">
+        {/* Label for the select box */}
+        <label htmlFor={rest.name || ""} className="block text-sm ">
           {label}
         </label>
+        {/* Select box container */}
         <div
           className={`${classNames} overflow-hidden rounded-md w-full border`}
         >
           <div className="relative">
+            {/* Left icon (if provided) */}
             {leftIcon && (
               <div className="absolute inset-y-0 left-0 flex items-center  p-5 bg-gray-200 ">
                 {leftIcon}
               </div>
             )}
+            {/* Select box */}
             <select
               className={`block w-full px-3 py-2 border rounded focus:outline-none border-none outline-none ${
                 leftIcon && "px-16"
@@ -67,20 +87,24 @@ const SelectBoxRow = ({
               onChange={(e) => handleSelectChange(e.target.value)}
               {...rest}
             >
+              {/* Placeholder option */}
               <option disabled value="">
                 {selectedValue}
               </option>
+              {/* Options */}
               {options?.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
             </select>
+            {/* Right icon (if provided) */}
             {rightIcon && !loading && (
               <div className="absolute inset-y-0 right-0 flex items-center p-5 bg-gray-200">
                 {rightIcon}
               </div>
             )}
+            {/* Loading spinner */}
             {loading && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2">
                 <ClipLoader size={16} />
@@ -88,10 +112,11 @@ const SelectBoxRow = ({
             )}
           </div>
         </div>
-
+        {/* Error message (if error) */}
         {error && !focused && (
           <small className="text-red-500 text-xs">Error</small>
         )}
+        {/* Success message (if success) */}
         {success && !focused && (
           <small className="text-green-500 text-xs">Success</small>
         )}
@@ -99,8 +124,6 @@ const SelectBoxRow = ({
     </>
   );
 };
-
-export default SelectBoxRow;
 
 // Default props
 SelectBoxRow.defaultProps = {
@@ -110,6 +133,8 @@ SelectBoxRow.defaultProps = {
     { value: "option3", label: "Option 3" },
   ],
 };
+
+export default SelectBoxRow;
 
 /*
   Usage Example:
