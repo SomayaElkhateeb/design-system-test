@@ -1,6 +1,7 @@
-import { FaTelegram } from "react-icons/fa";
+// Done refactoring to type
 import { Link } from "react-router-dom";
 import { getImageUrl } from "src/app/utils";
+import { FaTelegram } from "react-icons/fa";
 
 /**
  * @param {object} props - Props for the AppsCard component
