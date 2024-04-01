@@ -7,7 +7,7 @@
  * ```jsx
  * Usage Example:
  *
- * import React from "react";
+ *
  * import LayoutCard from "./LayoutCard";
  *
  * export default function MyComponent() {

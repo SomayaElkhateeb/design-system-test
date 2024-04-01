@@ -16,7 +16,7 @@ import { useState } from 'react';
  * Usage Example:
  *
  * ```jsx
- * import React, { useState } from "react";
+ * import { useState } from "react";
  * import SingleChoiceChips from "./SingleChoiceChips";
  * import { LocationIcon } from "src/app/utils/icons";
  *

@@ -16,7 +16,7 @@ import { FaTelegram } from 'react-icons/fa';
  * Usage Example:
  *
  * ```jsx
- * import React from "react";
+ *
  * import AppsCard from "./AppsCard";
  * import { FaTelegram } from "react-icons/fa";
  *

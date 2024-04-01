@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
-import { ClipLoader } from "react-spinners";
+import { useState, ChangeEvent, FC } from 'react';
+import { ClipLoader } from 'react-spinners';
 
 /**
  * @param {object} props - Props for the InputRow component
@@ -10,97 +10,97 @@ import { ClipLoader } from "react-spinners";
  * @param {string} props.error - Error message to display
  * @param {string} props.success - Success message to display
  * @param {string} props.value - Value of the input field
- * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} props.onChange - Function to handle input value change
+ * @param {(event: import("react").ChangeEvent<HTMLInputElement>) => void} props.onChange - Function to handle input value change
  * @returns {JSX.Element} InputRow component
  */
 
 interface InputRowProps {
-  label?: string;
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
-  loading?: boolean;
-  error?: string;
-  success?: string;
-  value: string;
-  onChange: (value: string) => void;
+	label?: string;
+	leftIcon?: JSX.Element;
+	rightIcon?: JSX.Element;
+	loading?: boolean;
+	error?: string;
+	success?: string;
+	value: string;
+	onChange: (value: string) => void;
 }
 
-const InputRow: React.FC<InputRowProps> = ({
-  label,
-  leftIcon,
-  rightIcon,
-  loading,
-  error,
-  success,
-  value,
-  onChange,
+const InputRow: FC<InputRowProps> = ({
+	label,
+	leftIcon,
+	rightIcon,
+	loading,
+	error,
+	success,
+	value,
+	onChange
 }) => {
-  const [focused, setFocused] = useState(false);
+	const [focused, setFocused] = useState(false);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
-  };
+	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		onChange(e.target.value);
+	};
 
-  const getInputClassNames = () => {
-    if (focused) {
-      return "border-blue-500";
-    } else if (success) {
-      return "border-green-500 bg-gray-50";
-    } else if (error) {
-      return "border-red-500 bg-gray-50";
-    }
-    return "bg-gray-50";
-  };
+	const getInputClassNames = () => {
+		if (focused) {
+			return 'border-blue-500';
+		} else if (success) {
+			return 'border-green-500 bg-gray-50';
+		} else if (error) {
+			return 'border-red-500 bg-gray-50';
+		}
+		return 'bg-gray-50';
+	};
 
-  const classNames = getInputClassNames();
+	const classNames = getInputClassNames();
 
-  return (
-    <>
-      <div className="flex flex-col">
-        <label htmlFor={label} className="block text-sm ">
-          {label}
-        </label>
-        <div
-          className={`${classNames} overflow-hidden rounded-md w-full border`}
-        >
-          <div className="relative">
-            {leftIcon && (
-              <div className="absolute inset-y-0 left-0 flex items-center  p-4 ">
-                {leftIcon}
-              </div>
-            )}
-            <input
-              className={`${
-                leftIcon && "pl-16"
-              } block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none`}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              disabled={loading}
-              value={value}
-              onChange={handleInputChange}
-            />
-            {rightIcon && !loading && (
-              <div className="absolute inset-y-0 right-0 flex items-center p-4">
-                {rightIcon}
-              </div>
-            )}
-            {loading && (
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2">
-                <ClipLoader size={16} />
-              </div>
-            )}
-          </div>
-        </div>
+	return (
+		<>
+			<div className='flex flex-col'>
+				<label htmlFor={label} className='block text-sm '>
+					{label}
+				</label>
+				<div
+					className={`${classNames} overflow-hidden rounded-md w-full border`}
+				>
+					<div className='relative'>
+						{leftIcon && (
+							<div className='absolute inset-y-0 left-0 flex items-center p-4 '>
+								{leftIcon}
+							</div>
+						)}
+						<input
+							className={`${
+								leftIcon && 'pl-16'
+							} block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none`}
+							onFocus={() => setFocused(true)}
+							onBlur={() => setFocused(false)}
+							disabled={loading}
+							value={value}
+							onChange={handleInputChange}
+						/>
+						{rightIcon && !loading && (
+							<div className='absolute inset-y-0 right-0 flex items-center p-4'>
+								{rightIcon}
+							</div>
+						)}
+						{loading && (
+							<div className='absolute inset-y-0 right-0 flex items-center pr-2'>
+								<ClipLoader size={16} />
+							</div>
+						)}
+					</div>
+				</div>
 
-        {error && !focused && (
-          <small className=" text-red-500 text-xs">{error}</small>
-        )}
-        {success && !focused && (
-          <small className=" text-green-500 text-xs">{success}</small>
-        )}
-      </div>
-    </>
-  );
+				{error && !focused && (
+					<small className='text-xs text-red-500 '>{error}</small>
+				)}
+				{success && !focused && (
+					<small className='text-xs text-green-500 '>{success}</small>
+				)}
+			</div>
+		</>
+	);
 };
 
 export default InputRow;

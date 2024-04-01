@@ -12,7 +12,7 @@ import { capitalizeFirstLetter } from 'src/app/utils';
  * Usage Example:
  *
  * ```jsx
- * import React from "react";
+ *
  * import { AvatarComponent } from "./AvatarComponent";
  *
  * export default function MyComponent() {
