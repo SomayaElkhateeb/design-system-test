@@ -6,7 +6,7 @@ import { AddIcon, CheckIcon } from "src/app/utils/icons";
 // const Component = () => {
 //   const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
 //   const [Options, setOptions] = useState([]);
-// 
+//
 //   return (
 //     <div>
 //       <MultiChoiceChips options={options} setOptions={setOptions} />
@@ -14,9 +14,16 @@ import { AddIcon, CheckIcon } from "src/app/utils/icons";
 //   );
 // };
 
+/**
+ * @param {object} props - Props for the MultiChoiceChips component
+ * @param {string[]} props.options - Array of options to display as chips
+ * @param {function} props.setOptions - Function to update the selected options
+ */
+
 const MultiChoiceChips = ({ options, setOptions }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
+  // Toggle the selection state of an option
   const toggleOption = (option) => {
     const currentIndex = selectedOptions.indexOf(option);
     const newSelectedOptions = [...selectedOptions]; // Clone the array to avoid mutation
@@ -28,6 +35,7 @@ const MultiChoiceChips = ({ options, setOptions }) => {
     setSelectedOptions(newSelectedOptions);
     setOptions(newSelectedOptions);
   };
+
   return (
     <div>
       <div className="flex flex-wrap gap-2 p-2">
@@ -45,16 +53,14 @@ const MultiChoiceChips = ({ options, setOptions }) => {
 };
 export default MultiChoiceChips;
 
-// 
-// 
-// 
-
+// Chip Component
 const Chip = ({ label, isSelected, onToggle }) => {
   const baseStyle =
     "py-1 pr-2 flex items-center border w-fit rounded-full cursor-pointer transition-all";
   const notSelectedStyle =
     "bg-white border-border-color text-subtitle hover:bg-gray-100";
   const selectedStyle = "border-sec-pressed text-sec-pressed bg-sec-light";
+
   return (
     <div
       className={`${baseStyle} ${

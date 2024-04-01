@@ -1,104 +1,97 @@
 //? Unfinished tasks
 //! =================
 // todo refactoring the buttons
-import React, { useState } from "react";
-import { Button } from "..";
-import { NextIcon, SuccessIcon } from "src/app/utils/icons";
+import { useState } from 'react';
+import { SuccessIcon } from 'src/app/utils/icons';
 
-const MopileSetupCard = (props) => {
-  const { title, description, buttonText, Icon, onButtonClick } = props;
-  const [isStepDone, setIsStepDone] = useState(false);
+/**
+ * @param {object} props - Props for the MobileSetupCard component
+ * @param {string} props.title - The title of the card
+ * @param {string} props.description - The description of the card
+ * @param {string} props.buttonText - The text to display on the button
+ * @param {(props: { className?: string }) => import("react").ReactNode} props.Icon - The icon component for the card
+ * @param {function} props.onButtonClick - The function to call when the button is clicked
+ *
+ * @description
+ * ```jsx
+ * Usage Example:
+ * import React from "react";
+ * import { AddIcon } from "./icons";
+ *
+ * export default function MyComponent() {
+ *   const handleButtonClick = () => {
+ *     console.log("Button clicked!");
+ *   };
+ *
+ *   return (
+ *     <MobileSetupCard
+ *       title="Title"
+ *       description="Description"
+ *       buttonText="Button Text"
+ *       Icon={AddIcon}
+ *       onButtonClick={handleButtonClick}
+ *     />
+ *   );
+ * };
+ *
+ * ```
+ */
+export default function MobileSetupCard(props) {
+	const [isStepDone, setIsStepDone] = useState(false);
 
-  const handleStepCompletion = () => {
-    setIsStepDone(true);
-    onButtonClick();
-  };
+	/**
+	 * @description
+	 *
+	 * Handles the completion of the step and calls the provided button click handler
+	 */
+	const handleStepCompletion = () => {
+		setIsStepDone(true);
+		props.onButtonClick();
+	};
 
-  return (
-    <div
-      className={`border-2 border-light-2  rounded-xl flex justify-between  p-3 ${
-        isStepDone ? "bg-brand-gradient" : "bg-white border-2 border-light-2"
-      }`}
-    >
-      <div className="flex">
-        <div
-          className={`size-10 min-w-10 rounded-full mr-2 grid place-content-center ${
-            isStepDone ? "bg-white/10 grid" : "bg-pri-top-light"
-          }`}
-        >
-          <Icon
-            className={`w-8 h-8 ${isStepDone ? "fill-white" : "fill-primary"}`}
-          />
-        </div>
+	return (
+		<div
+			className={`border-2 border-light-2 rounded-xl flex justify-between p-3 ${
+				isStepDone ? 'bg-brand-gradient' : 'bg-white border-2 border-light-2'
+			}`}
+		>
+			<div className='flex'>
+				<div
+					className={`size-10 min-w-10 rounded-full mr-2 grid place-content-center ${
+						isStepDone ? 'bg-white/10 grid' : 'bg-pri-top-light'
+					}`}
+				>
+					<props.Icon
+						className={`w-8 h-8 ${isStepDone ? 'fill-white' : 'fill-primary'}`}
+					/>
+				</div>
 
-        <div className="w-full mb-3">
-          <h5
-            className={`font-semibold mb-1 text-sm ${
-              isStepDone ? "text-white" : " text-title"
-            }`}
-          >
-            {title}
-          </h5>
-          <p
-            className={`font-normal text-sm ${
-              isStepDone ? "text-white" : "text-title"
-            }`}
-          >
-            {description}
-          </p>
-        </div>
-      </div>
-      <div className="self-center">
-        {isStepDone ? (
-          <SuccessIcon className="fill-white" />
-        ) : (
-          <NextIcon className="fill-pri-dark" />
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default MopileSetupCard;
-
-MopileSetupCard.defaultProps = {
-      title: "Pages",
-      description: "Add a refund policy and terms of service",
-      buttonText: "Add",
-};
-
-//! How To Use
-
-// import { PagesIcon, PaymentIcon, PhoneIcon } from "src/app/utils/icons";
-
-// const ParentComponent = () => {
-//   const method = [
-//     {
-//       title: "Payment",
-//       description:
-//         "Add payment method for your store, so your customers can pay you online",
-//       buttonText: "Activate",
-//     },
-//     {
-//       title: "Pages",
-//       description: "Add a refund policy and terms of service",
-//       buttonText: "Add",
-//     },
-//   ];
-//   const iconMap = {
-//     Payment: PaymentIcon,
-//     Contact: PhoneIcon,
-//     Pages: PagesIcon,
-//   };
-//   return (
-//     <div className="flex gap-4">
-//       {method.map((item, index) => (
-//         <MopileSetupCard
-//           key={index}
-//           Icon={iconMap[item.title]} // Pass the corresponding icon component based on the title
-//           {...item}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
+				<div className='w-full mb-3'>
+					<h5
+						className={`font-semibold mb-1 text-sm ${
+							isStepDone ? 'text-white' : ' text-title'
+						}`}
+					>
+						{props.title}
+					</h5>
+					<p
+						className={`font-normal text-sm ${
+							isStepDone ? 'text-white' : 'text-title'
+						}`}
+					>
+						{props.description}
+					</p>
+				</div>
+			</div>
+			<div className='self-center'>
+				{isStepDone ? (
+					<SuccessIcon className='fill-white' />
+				) : (
+					<button onClick={handleStepCompletion} className='focus:outline-none'>
+						{props.buttonText}
+					</button>
+				)}
+			</div>
+		</div>
+	);
+}

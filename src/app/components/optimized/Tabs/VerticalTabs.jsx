@@ -1,7 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, LayoutCard } from "..";
 
+/**
+ * VerticalTabs component renders a vertical tab navigation system.
+ * @param {object} props - Props for the VerticalTabs component.
+ * @param {Object[]} props.tabs - An array of tab objects containing title and content.
+ * @returns {JSX.Element} VerticalTabs component.
+ */
+
 const VerticalTabs = ({ tabs }) => {
+  // Destructure the state and functions returned by useVerticalTabs hook
   const { currentTab, handleTabClick, handleNext, handlePrev } =
     useVerticalTabs(0, tabs);
 
@@ -28,7 +36,13 @@ const VerticalTabs = ({ tabs }) => {
 
 export default VerticalTabs;
 
-// ======================== useVerticalTabs
+/**
+ * useVerticalTabs custom hook manages the state and functionality of vertical tabs.
+ * @param {object} props - Props for the useVerticalTabs hook.
+ * @param {number} props.initialTab - The initial tab index.
+ * @param {Object[]} props.tabs - An array of tab objects containing title and content.
+ * @returns {Object} Object containing current tab index and tab navigation functions.
+ */
 const useVerticalTabs = (initialTab = 0, tabs) => {
   const [currentTab, setCurrentTab] = useState(initialTab);
 
@@ -56,7 +70,20 @@ const useVerticalTabs = (initialTab = 0, tabs) => {
   };
 };
 
-// ======================== VTab
+/**
+ * VTab component represents an individual vertical tab.
+ * @param {object} props - Props for the VTab component.
+ * @param {number} props.index - The index of the tab.
+ * @param {number} props.currentTab - The index of the currently active tab.
+ * @param {string} props.title - The title of the tab.
+ * @param {JSX.Element} props.content - The content of the tab.
+ * @param {Function} props.onClick - Function to handle tab click event.
+ * @param {Function} props.onNext - Function to handle next button click event.
+ * @param {Function} props.onPrev - Function to handle previous button click event.
+ * @param {Object[]} props.tabs - An array of tab objects containing title and content.
+ * @returns {JSX.Element} VTab component.
+ */
+
 const VTab = ({
   index,
   currentTab,
