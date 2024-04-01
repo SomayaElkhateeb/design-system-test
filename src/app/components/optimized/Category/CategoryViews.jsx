@@ -13,7 +13,7 @@ import { MoreIcon } from 'src/app/utils/icons';
  * Usage Example:
  *
  * ```jsx
- * import React from "react";
+ *
  * import { CategoryViews } from "./CategoryViews";
  *
  * export default function MyComponent() {

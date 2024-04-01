@@ -17,7 +17,7 @@ import { AddBgIcon, DownIcon, MoreIcon, MoveIcon } from 'src/app/utils/icons';
  * Usage Example:
  *
  * ```jsx
- * import React from "react";
+ *
  * import { ProductCategory } from "./ProductCategory";
  *
  * export default function ParentComponent() {

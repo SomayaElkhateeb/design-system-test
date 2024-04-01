@@ -16,7 +16,7 @@ import { SuccessIcon } from 'src/app/utils/icons';
  * @description
  * ```jsx
  * Usage Example:
- * import React from "react";
+ *
  * import { AddIcon } from "./icons";
  *
  * export default function MyComponent() {
