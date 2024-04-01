@@ -1,20 +1,54 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
 /**
- * @param {object} props - Props for the SelectBoxRow component
- * @param {string} props.label - The label for the select box
- * @param {Array<{ value: string, label: string }>} props.options - An array of objects representing the options for the select box
- * @param {boolean} props.loading - Boolean indicating whether the select box is in a loading state
- * @param {boolean} props.error - Boolean indicating whether there is an error
- * @param {boolean} props.success - Boolean indicating whether the operation was successful
- * @param {JSX.Element} props.leftIcon - Optional icon component to be displayed on the left side of the select box
- * @param {JSX.Element} props.rightIcon - Optional icon component to be displayed on the right side of the select box
- * @param {string} props.selectedValue - The currently selected value
- * @param {Function} props.handleSelectChange - Handler function to update the selected value
- * @param {object} props.rest - Additional props to pass to the select element
+ * @param {{
+ * label: string
+ * options: Array<{ value: string, label: string }>
+ * loading?: boolean
+ * error?: boolean
+ * success?: boolean
+ * leftIcon?: JSX.Element
+ * rightIcon?: JSX.Element
+ * selectedValue: string
+ * handleSelectChange: Function
+ * } & import('react').SelectHTMLAttributes<HTMLSelectElement>} props - Props for the SelectBoxRow component
+ *
+ * @description
+ *
+ * Usage Example:
+ *
+ * ```jsx
+ * import { useState } from "react";
+ * import SelectBoxRow from "./SelectBoxRow";
+ *
+ * export default function MyComponent() {
+ *   const [selectedOption, setSelectedOption] = useState("");
+ *
+ *   const handleSelectChange = (value) => {
+ *     setSelectedOption(value);
+ *   };
+ *
+ *   return (
+ *     <div>
+ *       <SelectBoxRow
+ *         label="Select an option"
+ *         options={[
+ *           { value: "option1", label: "Option 1" },
+ *           { value: "option2", label: "Option 2" },
+ *           { value: "option3", label: "Option 3" },
+ *         ]}
+ *         loading={false}
+ *         error={false}
+ *         success={false}
+ *         selectedValue={selectedOption}
+ *         handleSelectChange={handleSelectChange}
+ *       />
+ *     </div>
+ *   );
+ * };
+ * ```
  */
-
 const SelectBoxRow = ({
 	label,
 	options,
@@ -27,8 +61,11 @@ const SelectBoxRow = ({
 	handleSelectChange,
 	...rest
 }) => {
+	const reactId = useId();
+	const controlId = rest.id ?? reactId;
 	const [focused, setFocused] = useState(false);
-	const getInputClassNames = () => {
+
+	function getInputClassNames() {
 		if (focused && !success) {
 			return 'border-blue-500';
 		} else if (success) {
@@ -37,14 +74,14 @@ const SelectBoxRow = ({
 			return 'border-red-500 bg-gray-50';
 		}
 		return 'bg-gray-50 ';
-	};
+	}
 
 	const classNames = getInputClassNames();
 
 	return (
 		<>
 			<div className='flex flex-col'>
-				<label htmlFor={rest.name} className='block text-sm '>
+				<label htmlFor={controlId} className='block text-sm '>
 					{label}
 				</label>
 				<div
@@ -52,7 +89,7 @@ const SelectBoxRow = ({
 				>
 					<div className='relative'>
 						{leftIcon && (
-							<div className='absolute inset-y-0 left-0 flex items-center  p-5 bg-gray-200 '>
+							<div className='absolute inset-y-0 left-0 flex items-center p-5 bg-gray-200 '>
 								{leftIcon}
 							</div>
 						)}
@@ -60,6 +97,7 @@ const SelectBoxRow = ({
 							className={`block w-full px-3 py-2 border rounded focus:outline-none border-none outline-none ${
 								leftIcon && 'px-16'
 							} ${loading && 'appearance-none'}`}
+							id={controlId}
 							onFocus={() => setFocused(true)}
 							onBlur={() => setFocused(false)}
 							disabled={loading}
@@ -90,10 +128,10 @@ const SelectBoxRow = ({
 				</div>
 
 				{error && !focused && (
-					<small className='text-red-500 text-xs'>Error</small>
+					<small className='text-xs text-red-500'>Error</small>
 				)}
 				{success && !focused && (
-					<small className='text-green-500 text-xs'>Success</small>
+					<small className='text-xs text-green-500'>Success</small>
 				)}
 			</div>
 		</>
@@ -102,46 +140,6 @@ const SelectBoxRow = ({
 
 export default SelectBoxRow;
 
-// Default props
-SelectBoxRow.defaultProps = {
-	options: [
-		{ value: 'option1', label: 'Option 1' },
-		{ value: 'option2', label: 'Option 2' },
-		{ value: 'option3', label: 'Option 3' }
-	]
-};
-
 /*
-  Usage Example:
 
-  import { useState } from "react";
-  import SelectBoxRow from "./SelectBoxRow";
-
-  const MyComponent = () => {
-    const [selectedOption, setSelectedOption] = useState("");
-
-    const handleSelectChange = (value) => {
-      setSelectedOption(value);
-    };
-
-    return (
-      <div>
-        <SelectBoxRow
-          label="Select an option"
-          options={[
-            { value: "option1", label: "Option 1" },
-            { value: "option2", label: "Option 2" },
-            { value: "option3", label: "Option 3" },
-          ]}
-          loading={false}
-          error={false}
-          success={false}
-          selectedValue={selectedOption}
-          handleSelectChange={handleSelectChange}
-        />
-      </div>
-    );
-  };
-
-  export default MyComponent;
 */
