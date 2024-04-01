@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 
 /**
- * SelectBoxRow Component
- * @param label The label for the select box
- * @param options An array of objects representing the options for the select box
- * @param loading Boolean indicating whether the select box is in a loading state
- * @param error Boolean indicating whether there is an error
- * @param success Boolean indicating whether the operation was successful
- * @param leftIcon Optional icon component to be displayed on the left side of the select box
- * @param rightIcon Optional icon component to be displayed on the right side of the select box
- * @param selectedValue The currently selected value
- * @param handleSelectChange Handler function to update the selected value
- * @param rest Additional props to pass to the select element
+ * @param {object} props - Props for the SelectBoxRow component
+ * @param {string} props.label - The label for the select box
+ * @param {Array<{ value: string, label: string }>} props.options - An array of objects representing the options for the select box
+ * @param {boolean} props.loading - Boolean indicating whether the select box is in a loading state
+ * @param {boolean} props.error - Boolean indicating whether there is an error
+ * @param {boolean} props.success - Boolean indicating whether the operation was successful
+ * @param {JSX.Element} props.leftIcon - Optional icon component to be displayed on the left side of the select box
+ * @param {JSX.Element} props.rightIcon - Optional icon component to be displayed on the right side of the select box
+ * @param {string} props.selectedValue - The currently selected value
+ * @param {Function} props.handleSelectChange - Handler function to update the selected value
+ * @param {object} props.rest - Additional props to pass to the select element
  */
+
 const SelectBoxRow = ({
   label,
   options,

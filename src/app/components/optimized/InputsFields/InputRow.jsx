@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
 
 /**
- * InputRow Component
- * @param {{
- *    label: string, // Label for the input field
- *    leftIcon: JSX.Element, // Icon element to display on the left side of the input
- *    rightIcon: JSX.Element, // Icon element to display on the right side of the input
- *    loading: boolean, // Loading state of the input
- *    error: string, // Error message to display
- *    success: string, // Success message to display
- *    value: string, // Value of the input field
- *    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void, // Function to handle input value change
- * }} props
+ * @param {object} props - Props for the InputRow component
+ * @param {string} props.label - Label for the input field
+ * @param {JSX.Element} props.leftIcon - Icon element to display on the left side of the input
+ * @param {JSX.Element} props.rightIcon - Icon element to display on the right side of the input
+ * @param {boolean} props.loading - Loading state of the input
+ * @param {string} props.error - Error message to display
+ * @param {string} props.success - Success message to display
+ * @param {string} props.value - Value of the input field
+ * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} props.onChange - Function to handle input value change
  * @returns {JSX.Element} InputRow component
  */
+
 const InputRow = ({
   label,
   leftIcon,
@@ -140,3 +139,18 @@ Explanation:
 - value: The current value of the input field.
 - onChange: A callback function to handle changes to the input field value.
 */
+
+// /**
+//  * InputRow Component
+//  * @param {{
+// *    label: string, // Label for the input field
+// *    leftIcon: JSX.Element, // Icon element to display on the left side of the input
+// *    rightIcon: JSX.Element, // Icon element to display on the right side of the input
+// *    loading: boolean, // Loading state of the input
+// *    error: string, // Error message to display
+// *    success: string, // Success message to display
+// *    value: string, // Value of the input field
+// *    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void, // Function to handle input value change
+// * }} props
+// * @returns {JSX.Element} InputRow component
+// */

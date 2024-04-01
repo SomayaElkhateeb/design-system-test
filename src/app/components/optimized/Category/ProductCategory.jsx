@@ -1,22 +1,31 @@
-//? Unfinished tasks
-//! =================
-// todo made it dropable
-// todo created nested categories
 import { useState } from "react";
 import { ToggleSwitch } from "src/app/components/optimized";
 import { getImageUrl } from "src/app/utils";
 import { AddBgIcon, DownIcon, MoreIcon, MoveIcon } from "src/app/utils/icons";
 
+/**
+ * @param {object} props - Props for the ProductCategory component
+ * @param {string} props.imageUrl - The URL of the image for the product category
+ * @param {string} props.title - The title of the product
+ * @param {string} props.category - The category of the product
+ * @param {number} props.quantity - The quantity of the product
+ * @param {string} props.price - The price of the product
+ */
+
 const ProductCategory = ({ imageUrl, title, category, quantity, price }) => {
   const [availability, setAvailability] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
+  // Toggle the availability of the product
   const availabilityHandler = () => {
     setAvailability(!availability);
   };
+
+  // Toggle the opening and closing of additional details
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div className="w-full p-3 grid grid-cols-12 ">
       {/* [1] */}
@@ -69,17 +78,22 @@ const ProductCategory = ({ imageUrl, title, category, quantity, price }) => {
     </div>
   );
 };
+
 export default ProductCategory;
 
+// Default props
 ProductCategory.defaultProps = {
-  imageUrl: "images/Vector.svg",
-  title: "Product 1",
-  category: "Category 1",
-  quantity: 10,
-  price: "$100",
-  showToggle: true,
+  imageUrl: "images/Vector.svg", // Default image URL
+  title: "Product 1", // Default product title
+  category: "Category 1", // Default product category
+  quantity: 10, // Default product quantity
+  price: "$100", // Default product price
 };
 
+// Usage Example:
+// import React from "react";
+// import { ProductCategory } from "./ProductCategory";
+//
 // const ParentComponent = () => {
 //   const demoData = [
 //     {
@@ -105,3 +119,5 @@ ProductCategory.defaultProps = {
 //     </div>
 //   );
 // };
+//
+// export default ParentComponent;
