@@ -2,13 +2,29 @@
 //! =================
 // todo refactoring the buttons
 import React, { useState } from "react";
-import { Button } from "..";
 import { NextIcon, SuccessIcon } from "src/app/utils/icons";
 
-const MopileSetupCard = (props) => {
-  const { title, description, buttonText, Icon, onButtonClick } = props;
+/**
+ * @param {object} props - Props for the MobileSetupCard component
+ * @param {string} props.title - The title of the card
+ * @param {string} props.description - The description of the card
+ * @param {string} props.buttonText - The text to display on the button
+ * @param {React.Component} props.Icon - The icon component for the card
+ * @param {function} props.onButtonClick - The function to call when the button is clicked
+ */
+
+const MobileSetupCard = ({
+  title,
+  description,
+  buttonText,
+  Icon,
+  onButtonClick,
+}) => {
   const [isStepDone, setIsStepDone] = useState(false);
 
+  /**
+   * Handles the completion of the step and calls the provided button click handler
+   */
   const handleStepCompletion = () => {
     setIsStepDone(true);
     onButtonClick();
@@ -16,7 +32,7 @@ const MopileSetupCard = (props) => {
 
   return (
     <div
-      className={`border-2 border-light-2  rounded-xl flex justify-between  p-3 ${
+      className={`border-2 border-light-2 rounded-xl flex justify-between p-3 ${
         isStepDone ? "bg-brand-gradient" : "bg-white border-2 border-light-2"
       }`}
     >
@@ -52,53 +68,35 @@ const MopileSetupCard = (props) => {
         {isStepDone ? (
           <SuccessIcon className="fill-white" />
         ) : (
-          <NextIcon className="fill-pri-dark" />
+          <button onClick={handleStepCompletion} className="focus:outline-none">
+            {buttonText}
+          </button>
         )}
       </div>
     </div>
   );
 };
 
-export default MopileSetupCard;
+export default MobileSetupCard;
 
-MopileSetupCard.defaultProps = {
-      title: "Pages",
-      description: "Add a refund policy and terms of service",
-      buttonText: "Add",
-};
-
-//! How To Use
-
-// import { PagesIcon, PaymentIcon, PhoneIcon } from "src/app/utils/icons";
-
-// const ParentComponent = () => {
-//   const method = [
-//     {
-//       title: "Payment",
-//       description:
-//         "Add payment method for your store, so your customers can pay you online",
-//       buttonText: "Activate",
-//     },
-//     {
-//       title: "Pages",
-//       description: "Add a refund policy and terms of service",
-//       buttonText: "Add",
-//     },
-//   ];
-//   const iconMap = {
-//     Payment: PaymentIcon,
-//     Contact: PhoneIcon,
-//     Pages: PagesIcon,
+// Usage Example:
+// import React from "react";
+// import { AddIcon } from "./icons";
+//
+// const MyComponent = () => {
+//   const handleButtonClick = () => {
+//     console.log("Button clicked!");
 //   };
+//
 //   return (
-//     <div className="flex gap-4">
-//       {method.map((item, index) => (
-//         <MopileSetupCard
-//           key={index}
-//           Icon={iconMap[item.title]} // Pass the corresponding icon component based on the title
-//           {...item}
-//         />
-//       ))}
-//     </div>
+//     <MobileSetupCard
+//       title="Title"
+//       description="Description"
+//       buttonText="Button Text"
+//       Icon={AddIcon}
+//       onButtonClick={handleButtonClick}
+//     />
 //   );
 // };
+//
+// export default MyComponent;

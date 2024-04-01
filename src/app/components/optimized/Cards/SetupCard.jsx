@@ -1,14 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "src/app/components/optimized";
 import { SuccessIcon } from "src/app/utils/icons";
 
-const SetupCard = (props) => {
-  const { title, description, buttonText, Icon, onButtonClick } = props;
+/**
+ * @param {object} props - Props for the SetupCard component
+ * @param {string} props.title - The title of the card
+ * @param {string} props.description - The description of the card
+ * @param {string} props.buttonText - The text to display on the button
+ * @param {React.Component} props.Icon - The icon component for the card
+ * @param {function} props.onButtonClick - The function to call when the button is clicked
+ */
+
+const SetupCard = ({ title, description, buttonText, Icon, onButtonClick }) => {
   const [isStepDone, setIsStepDone] = useState(false);
 
+  /**
+   * Handles the completion of the step and calls the provided button click handler
+   */
   const handleStepCompletion = () => {
     setIsStepDone(true);
-    onButtonClick()
+    onButtonClick();
   };
 
   return (
@@ -23,7 +34,9 @@ const SetupCard = (props) => {
             isStepDone ? "bg-white/10 grid" : "bg-pri-top-light"
           }`}
         >
-          <Icon className={`w-8 h-8 ${isStepDone ? "fill-white" : "fill-primary"}`}/>
+          <Icon
+            className={`w-8 h-8 ${isStepDone ? "fill-white" : "fill-primary"}`}
+          />
         </div>
         <div className="w-full mb-3">
           <h5
@@ -57,13 +70,8 @@ const SetupCard = (props) => {
     </div>
   );
 };
-export default SetupCard;
 
-SetupCard.defaultProps = {
-  title: "Pages",
-  description: "Add a refund policy and terms of service",
-  buttonText: "Add",
-};
+export default SetupCard;
 
 //! How To Use
 

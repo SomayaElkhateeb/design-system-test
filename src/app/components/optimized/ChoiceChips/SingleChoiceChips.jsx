@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 
-
 //! How To use
 
-
 /**
- * SingleChoiceChips Component
- * @param options An array of options to display as chips
- * @param setOption Function to set the selected option
- * @param icon Optional icon component to display with each chip
- * @param type Type of options: 'array' or 'object'
+ * @param {object} props - Props for the SingleChoiceChips component
+ * @param {Array|string} props.options - An array of options to display as chips
+ * @param {function} props.setOption - Function to set the selected option
+ * @param {React.Component} [props.icon] - Optional icon component to display with each chip
+ * @param {string} [props.type='array'] - Type of options: 'array' or 'object'
  */
 
-
 const SingleChoiceChips = ({ options, setOption, icon, type }) => {
-
-const SingleChoiceChips = ({ options, setOption, icon }) => {
-
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionSelect = (option) => {
@@ -30,7 +24,6 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
         {options.map((option, index) => (
           <Chip
             key={index}
-
             label={type === "array" ? option : option.key}
             value={type === "array" ? option : option.value}
             isSelected={
@@ -38,10 +31,8 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
                 ? option === selectedOption
                 : option.value === selectedOption
             }
-
             label={option}
             isSelected={option === selectedOption}
-
             icon={icon}
             onSelect={handleOptionSelect}
           />
@@ -53,20 +44,18 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
 
 export default SingleChoiceChips;
 
-
 /**
- * Chip Component
- * @param label The text label for the chip
- * @param value The value associated with the chip
- * @param isSelected Boolean indicating whether the chip is selected
- * @param icon Optional icon component to display with the chip
- * @param onSelect Function to handle chip selection
+ * @param {object} props - Props for the Chip component
+ * @param {string} props.label - The text label for the chip
+ * @param {any} props.value - The value associated with the chip
+ * @param {boolean} props.isSelected - Boolean indicating whether the chip is selected
+ * @param {React.Component} [props.icon] - Optional icon component to display with the chip
+ * @param {function} props.onSelect - Function to handle chip selection
  */
 
 // const Chip = ({ label, value, isSelected, icon, onSelect }) => {
 
 const Chip = ({ label, isSelected, icon, onSelect }) => {
-
   const baseStyle =
     "flex items-center border p-1 pr-2 w-fit rounded-full cursor-pointer transition-all";
   const notSelectedStyle =

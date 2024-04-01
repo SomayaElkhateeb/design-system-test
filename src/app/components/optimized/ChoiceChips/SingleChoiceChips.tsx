@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 /**
- * SingleChoiceChips Component
- * @param options An array of options to display as chips
- * @param setOption Function to set the selected option
- * @param icon Optional icon component to display with each chip
+ * @param {object} props - Props for the SingleChoiceChips component
+ * @param {Array} props.options - An array of options to display as chips
+ * @param {function} props.setOption - Function to set the selected option
+ * @param {React.Component} [props.icon] - Optional icon component to display with each chip
  */
 const SingleChoiceChips = ({
   options,
@@ -19,7 +19,7 @@ const SingleChoiceChips = ({
 
   /**
    * Handle option selection
-   * @param option The selected option
+   * @param {any} option - The selected option
    */
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
@@ -47,11 +47,11 @@ const SingleChoiceChips = ({
 export default SingleChoiceChips;
 
 /**
- * Chip Component
- * @param label The text label for the chip
- * @param isSelected Boolean indicating whether the chip is selected
- * @param icon Optional icon component to display with the chip
- * @param onSelect Function to handle chip selection
+ * @param {object} props - Props for the Chip component
+ * @param {string} props.label - The text label for the chip
+ * @param {boolean} props.isSelected - Boolean indicating whether the chip is selected
+ * @param {React.Component} [props.icon] - Optional icon component to display with the chip
+ * @param {function} props.onSelect - Function to handle chip selection
  */
 const Chip = ({
   label,
