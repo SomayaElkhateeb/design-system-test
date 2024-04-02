@@ -13,9 +13,7 @@ const OptionsMinimumReq = ({ optionType }) => {
 				<div className='w-[390px]'>
 					<InputRow
 						value={minimumPrice}
-						onChange={(event) => {
-							setMinimumPrice(event.target.value);
-						}}
+						handleOnChange={setMinimumPrice}
 						label='Mini purchase price'
 					/>
 				</div>
@@ -24,9 +22,7 @@ const OptionsMinimumReq = ({ optionType }) => {
 				<div className='w-[390px]'>
 					<InputRow
 						value={minimumQuantity}
-						onChange={(event) => {
-							setMinimumQuantity(event.target.value);
-						}}
+						handleOnChange={setMinimumQuantity}
 						label='Mini purchase quantity'
 					/>
 				</div>

@@ -114,9 +114,7 @@ const BuyxGety = () => {
 					<div className='w-[390px]'>
 						<InputRow
 							value={percentGets}
-							onChange={(event) => {
-								setPercentGets(event.target.value);
-							}}
+							handleOnChange={setPercentGets}
 							label='Percentage'
 							leftIcon={<AiOutlinePercentage />}
 						/>
@@ -124,9 +122,7 @@ const BuyxGety = () => {
 					<div className='w-[390px]'>
 						<InputRow
 							value={quantityGets}
-							onChange={(event) => {
-								setQuantityGets(event.target.value);
-							}}
+							handleOnChange={setQuantityGets}
 							label='Quantity'
 						/>
 					</div>

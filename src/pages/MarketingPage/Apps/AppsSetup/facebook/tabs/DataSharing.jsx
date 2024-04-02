@@ -35,9 +35,7 @@ const DataSharing = ({ data }) => {
 					<InputRow
 						label='Pixel ID'
 						value={inputState.value}
-						onChange={(event) => {
-							handleInputChange(event.target.value);
-						}}
+						handleOnChange={handleInputChange}
 					/>
 					<SelectBoxRow
 						label='Tracked action'

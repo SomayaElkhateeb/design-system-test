@@ -1,17 +1,18 @@
+// Done refactoring to type
 import { useId, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
 /**
  * @param {{
- * label: string
- * options: Array<{ value: string, label: string }>
- * loading?: boolean
- * error?: boolean
- * success?: boolean
- * leftIcon?: JSX.Element
- * rightIcon?: JSX.Element
- * selectedValue: string
- * handleSelectChange: Function
+ *  label: string
+ *  options: Array<{ value: string, label: string }>
+ *  loading?: boolean
+ *  error?: boolean
+ *  success?: boolean
+ *  leftIcon?: JSX.Element
+ *  rightIcon?: JSX.Element
+ *  selectedValue: string
+ *  handleSelectChange: (value: string) => void
  * } & import('react').SelectHTMLAttributes<HTMLSelectElement>} props - Props for the SelectBoxRow component
  *
  * @description
@@ -49,7 +50,7 @@ import { ClipLoader } from 'react-spinners';
  * };
  * ```
  */
-const SelectBoxRow = ({
+export default function SelectBoxRow({
 	label,
 	options,
 	loading,
@@ -58,9 +59,9 @@ const SelectBoxRow = ({
 	leftIcon,
 	rightIcon,
 	selectedValue,
-	handleSelectChange,
+	handleSelectChange: handleOnChange,
 	...rest
-}) => {
+}) {
 	const reactId = useId();
 	const controlId = rest.id ?? reactId;
 	const [focused, setFocused] = useState(false);
@@ -102,7 +103,7 @@ const SelectBoxRow = ({
 							onBlur={() => setFocused(false)}
 							disabled={loading}
 							value={selectedValue}
-							onChange={(e) => handleSelectChange(e.target.value)}
+							onChange={(e) => handleOnChange(e.target.value)}
 							{...rest}
 						>
 							<option disabled value=''>
@@ -136,10 +137,4 @@ const SelectBoxRow = ({
 			</div>
 		</>
 	);
-};
-
-export default SelectBoxRow;
-
-/*
-
-*/
+}

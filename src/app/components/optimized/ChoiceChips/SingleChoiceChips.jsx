@@ -1,3 +1,4 @@
+// Done refactoring to type
 /** @typedef {string} Option */
 
 /**

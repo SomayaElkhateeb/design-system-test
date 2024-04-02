@@ -106,10 +106,10 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 								leftIcon={<LiaSearchSolid />}
 								placeholder='Search'
 								value={searchQuery}
-								onChange={(event) =>
+								handleOnChange={(value) =>
 									setState({
 										...state,
-										searchQuery: event.target.value
+										searchQuery: value
 									})
 								}
 							/>

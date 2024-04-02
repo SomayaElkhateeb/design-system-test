@@ -1,3 +1,4 @@
+// Done refactoring to type
 import ReactApexChart from 'react-apexcharts';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 

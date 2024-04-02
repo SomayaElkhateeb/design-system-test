@@ -16,9 +16,7 @@ const DiscountTypesOptions = ({ discountType }) => {
 						leftIcon={<AiOutlinePercentage />}
 						id='percentage'
 						value={percentage}
-						onChange={(event) => {
-							setPercentage(event.target.value);
-						}}
+						handleOnChange={setPercentage}
 					/>
 				</div>
 			)}
@@ -28,9 +26,7 @@ const DiscountTypesOptions = ({ discountType }) => {
 						label='Discount'
 						id='fixedAmount'
 						value={fixedAmount}
-						onChange={(event) => {
-							setFixedAmount(event.target.value);
-						}}
+						handleOnChange={setFixedAmount}
 					/>
 				</div>
 			)}

@@ -27,9 +27,7 @@ const BasicInfo = () => {
 					<InputRow
 						id='discountName'
 						value={discountName}
-						onChange={(event) => {
-							setDiscountName(event.target.value);
-						}}
+						handleOnChange={setDiscountName}
 						label='Discount name'
 					/>
 				</div>
