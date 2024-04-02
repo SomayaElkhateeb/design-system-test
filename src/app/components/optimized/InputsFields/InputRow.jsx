@@ -4,14 +4,14 @@ import { ClipLoader } from 'react-spinners';
 
 /**
  * @param {{
- * label: string
- * leftIcon?: JSX.Element
- * rightIcon?: JSX.Element
- * loading?: boolean
- * error?: string
- * success?: string
- * value: string
- * onChange: (event: import('react').ChangeEvent<HTMLInputElement>) => void
+ *  label?: string
+ *  leftIcon?: JSX.Element
+ *  rightIcon?: JSX.Element
+ *  loading?: boolean
+ *  error?: string
+ *  success?: boolean
+ *  value: string
+ *  handleOnChange: (value: string) => void
  * } & import('react').InputHTMLAttributes<HTMLInputElement>} props - Props for the InputRow component
  *
  * How to Use:
@@ -27,11 +27,6 @@ import { ClipLoader } from 'react-spinners';
  *   const [success, setSuccess] = useState("");
  *   const [loading, setLoading] = useState(false);
  *
- *   const handleChange = (newValue: string) => {
- *     setValue(newValue);
- *     // Add your validation logic here
- *   };
- *
  *   return (
  *     <div>
  *       <InputRow
@@ -42,7 +37,7 @@ import { ClipLoader } from 'react-spinners';
  *         error={error}
  *         success={success}
  *         value={value}
- *         onChange={handleChange}
+ *         onChange={value => setValue(value)}
  *       />
  *     </div>
  *   );
@@ -57,7 +52,7 @@ import { ClipLoader } from 'react-spinners';
  * - error: An optional error message to display below the input field when there is an error.
  * - success: An optional success message to display below the input field when the input is successful.
  * - value: The current value of the input field.
- * - onChange: A callback function to handle changes to the input field value.
+ * - handleSelectChange: A function to handle changes to the input field value.
  */
 export default function InputRow({
 	label,
@@ -67,7 +62,7 @@ export default function InputRow({
 	error,
 	success,
 	value,
-	onChange,
+	handleOnChange,
 	...rest
 }) {
 	const reactId = useId();
@@ -90,9 +85,11 @@ export default function InputRow({
 	return (
 		<>
 			<div className='flex flex-col'>
-				<label htmlFor={controlId} className='block text-sm '>
-					{label}
-				</label>
+				{label && (
+					<label htmlFor={controlId} className='block text-sm '>
+						{label}
+					</label>
+				)}
 				<div
 					className={`${classNames} overflow-hidden rounded-md w-full border`}
 				>
@@ -110,7 +107,7 @@ export default function InputRow({
 							onBlur={() => setFocused(false)}
 							disabled={loading}
 							value={value}
-							onChange={onChange}
+							onChange={(event) => handleOnChange(event.target.value)}
 							{...rest}
 							id={controlId}
 						/>
