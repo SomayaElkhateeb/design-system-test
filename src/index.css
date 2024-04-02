@@ -15,23 +15,23 @@
     @apply bg-primary px-4 py-2 rounded font-semibold text-white text-sm capitalize hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-1  focus:ring-pri-light;
   }
   .btn-sec {
-    @apply  border-transparent px-4 py-2 rounded text-pri-dark font-normal text-sm border border-pri-dark hover:bg-light-1 active:bg-light-2 focus:ring-1 focus:ring-pri-light disabled:bg-inactive disabled:text-hint disabled:border-inactive capitalize;
+    @apply border-transparent px-4 py-2 rounded text-pri-dark font-normal text-sm border border-pri-dark hover:bg-light-1 active:bg-light-2 focus:ring-1 focus:ring-pri-light disabled:bg-inactive disabled:text-hint disabled:border-inactive capitalize;
   }
   .btn-ter {
     @apply border-2 border-transparent bg-transparent px-4 py-2 rounded hover:bg-light-1 font-semibold text-title text-sm capitalize active:bg-light-2 focus:border-2 focus:border-pri-light disabled:text-hint;
   }
   .btn-lin {
-    /* hover:bg-light-3   don't work! */  
+    /* hover:bg-light-3   don't work! */
     @apply border-2 border-transparent bg-transparent px-[15px] py-2 rounded hover:bg-light-3 font-normal text-primary text-sm capitalize active:bg-pri-light focus:border-2 focus:border-pri-light;
   }
   .spinner-btn {
-    @apply w-[18px] h-[18px] border-2 border-white border-t-transparent rounded-full animate-spin
+    @apply w-[18px] h-[18px] border-2 border-white border-t-transparent rounded-full animate-spin;
   }
   .btn-delete {
-    @apply bg-error text-sm font-semibold px-4 py-2 rounded text-white
+    @apply bg-error text-sm font-semibold px-4 py-2 rounded text-white;
   }
   .btn-rounded {
-    @apply bg-white rounded-[22px] py-[6px] px-[12px] border border-constrained text-sm text-subtitle focus:text-white focus:bg-secondary
+    @apply bg-white rounded-[22px] py-[6px] px-[12px] border border-constrained text-sm text-subtitle focus:text-white focus:bg-secondary;
   }
   .card {
     @apply border-2 border-light-2 rounded-lg p-5;
@@ -48,12 +48,14 @@
   .subheading {
     @apply font-normal text-sm text-subtitle;
   }
-   .active {
+  .active {
     @apply bg-pri-light;
   }
+  .border-gradient {
+    border-image: linear-gradient(313.9deg, #0D53FC -2.74%, #55C397 140.56%) 1;
+    border-radius: 0.375rem;
+  }
 }
-
-
 
 /* remove all default Webkit search field styling */
 input[type="search"]::-webkit-search-decoration,

@@ -47,7 +47,9 @@ const Button = ({
         >
           {LeftIcon && <LeftIcon className="fill-pri-dark w-[18px] h-[18px]" />}
           {text}
-          {RightIcon && <RightIcon className="fill-pri-dark h-3 w-3 ml-1" />}
+          {RightIcon && (
+            <RightIcon className="fill-pri-dark h-3 w-3 ml-1 mt-1" />
+          )}
         </button>
       );
 
