@@ -1,6 +1,6 @@
 import { Button } from "src/app/components/optimized";
 
-const Terms = ({ data }) => {
+const FBTerms = ({ data }) => {
   return (
     <div>
       <p>{data.description}</p>
@@ -12,4 +12,4 @@ const Terms = ({ data }) => {
   );
 };
 
-export default Terms;
+export default FBTerms;

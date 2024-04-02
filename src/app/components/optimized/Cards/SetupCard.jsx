@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button } from "src/app/components/optimized";
 import { SuccessIcon } from "src/app/utils/icons";
 
-const SetupCard = (props) => {
-  const { title, description, buttonText, Icon, onButtonClick } = props;
+const SetupCard = ({ title, description, buttonText, Icon, onButtonClick }) => {
   const [isStepDone, setIsStepDone] = useState(false);
 
   const handleStepCompletion = () => {

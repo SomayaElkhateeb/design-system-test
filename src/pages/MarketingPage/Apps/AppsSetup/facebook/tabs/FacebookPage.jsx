@@ -1,12 +1,12 @@
 import { formatLikes, getImageUrl } from "src/app/utils";
-import CompanyCard from "../../comp/CompanyCard";
+import PartnerCard from "../../comp/PartnerCard";
 
-const PlatformPage = ({ data }) => {
+const FacebookPage = ({ data }) => {
   return (
     <div>
       <p className="mb-3">{data.description}</p>
       {data.companies.map((company) => (
-        <CompanyCard
+        <PartnerCard
           key={company.id}
           imageUrl={getImageUrl("companies/t-terl.svg")}
           subtitle={company.industry}
@@ -18,4 +18,4 @@ const PlatformPage = ({ data }) => {
   );
 };
 
-export default PlatformPage;
+export default FacebookPage;

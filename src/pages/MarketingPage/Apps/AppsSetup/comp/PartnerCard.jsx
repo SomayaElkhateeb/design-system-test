@@ -1,7 +1,6 @@
-import React from "react";
 import { Button } from "src/app/components/optimized";
 
-function CompanyCard({ imageUrl, subtitle, name, id }) {
+function PartnerCard({ imageUrl, subtitle, name, id }) {
   return (
     <div className="border-t  flex items-center justify-between">
       <div className="py-3 overflow-hidden flex items-center">
@@ -21,4 +20,4 @@ function CompanyCard({ imageUrl, subtitle, name, id }) {
   );
 }
 
-export default CompanyCard;
+export default PartnerCard;

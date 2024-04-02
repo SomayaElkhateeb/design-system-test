@@ -1,8 +1,8 @@
-export { default as ConnectAccount } from "./ConnectAccount";
-export { default as BusinessManager } from "./BusinessManager";
-export { default as DomainVerification } from "./DomainVerification";
-export { default as PlatformPage } from "./PlatformPage";
-export { default as DataSharing } from "./DataSharing";
-export { default as CommerceAccount } from "./CommerceAccount";
-export { default as Terms } from "./Terms";
+export { default as FBConnectAccount } from "./FBConnectAccount";
+export { default as FBBusinessManager } from "./FBBusinessManager";
+export { default as FacebookPage } from "./FacebookPage";
+export { default as FBDataSharing } from "./FBDataSharing";
+export { default as FBCommerceAccount } from "./FBCommerceAccount";
+export { default as FBDomainVerification } from "./FBDomainVerification";
+export { default as FBTerms } from "./FBTerms";
 

@@ -1,6 +1,6 @@
 import { Button } from "src/app/components/optimized";
 
-const DomainVerification = ({ data }) => {
+const FBDomainVerification = ({ data }) => {
   return (
     <div className="flex justify-between items-center">
       <p>{data.description}</p>
@@ -11,4 +11,4 @@ const DomainVerification = ({ data }) => {
   );
 };
 
-export default DomainVerification;
+export default FBDomainVerification;

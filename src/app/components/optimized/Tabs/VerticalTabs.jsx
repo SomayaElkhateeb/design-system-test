@@ -118,17 +118,19 @@ const VTab = ({
                 <Button
                   onClick={onPrev}
                   disabled={currentTab === 0}
-                  text="Prev"
                   className="ml-5"
-                />
+                >
+                  Prev
+                </Button>
               )}
 
               <Button
                 onClick={
                   index === tabs.length - 1 ? () => alert("Finish") : onNext
                 }
-                text={index === tabs.length - 1 ? "Finish" : "Next"}
-              />
+              >
+                {index === tabs.length - 1 ? "Finish" : "Next"}
+              </Button>
             </div>
           </LayoutCard>
         </div>

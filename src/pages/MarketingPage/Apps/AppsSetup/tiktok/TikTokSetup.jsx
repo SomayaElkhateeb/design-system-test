@@ -1,9 +1,13 @@
-import React from "react";
 import { Button } from "src/app/components/optimized";
-import { useTikTokSetup } from "./useTikTokSetup";
-import SetpLogo from "./SetpLogo";
+import { useTikTokSetup } from "./comp/useTikTokSetup";
+import SetpLogo from "../comp/SetupLogo";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const TikTokSetup = ({ platform, confirmTikTok }) => {
+const TikTokSetup = ({ platform }) => {
+  const [_, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
   const { mega_title, tikTok_settings } = useTikTokSetup(platform);
   const { settings_title, tikTok_intro, privacy_notice, agreement_terms } =
     tikTok_settings;
@@ -45,10 +49,14 @@ const TikTokSetup = ({ platform, confirmTikTok }) => {
         </div>
 
         <div className="flex space-x-3 mt-8 justify-end">
-          <Button text="Discard" variant="secondaryBtn" />
+          <Button
+            text="Discard"
+            variant="secondaryBtn"
+            onClick={() => navigate("/apps/tiktok")}
+          />
           <Button
             text="Add Sales Channel"
-            onClick={() => confirmTikTok(true)}
+            onClick={() => setSearchParams({ "add_channel": "true" })}
           />
         </div>
 

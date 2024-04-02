@@ -1,23 +1,17 @@
 import { useState } from "react";
-import { FiPhoneCall } from "react-icons/fi";
-import { MdPayments } from "react-icons/md";
-import { RiPagesLine } from "react-icons/ri";
 import {
   MultiChoiceChips,
   PopupProceed,
   SetupCard,
 } from "src/app/components/optimized";
-import PaymentCard from "../comp/PaymentCard";
 import { PagesIcon, PaymentIcon, PhoneIcon } from "src/app/utils/icons";
 
-const PaymentMethod = ({ data }) => {
+const GooglePayment = ({ data }) => {
+
   const [isConfirm, setIsConfirm] = useState(false);
 
   const theOptions = ["Business address", "Email address", "Phone number"];
   const [options, setOptions] = useState([]);
-
-//   const options = ["Business address", "Email address", "Phone number"];
-//   const [Options, setOptions] = useState([]);
 
   const iconMap = {
     Payment: PaymentIcon,
@@ -25,41 +19,10 @@ const PaymentMethod = ({ data }) => {
     Pages: PagesIcon,
   };
 
-
   return (
     <>
       <div className="flex flex-col justify-between">
         <p>{data.description}</p>
-
-        <div className="flex mt-5">
-          {data &&
-            data.method?.map((item) => (
-              <PaymentCard
-                key={item.title}
-                icon={
-                  item.icon === "PaymentIcon" ? (
-                    <MdPayments size={32} className="text-primary" />
-                  ) : item.icon === "PagesIcon" ? (
-                    <RiPagesLine size={32} className="text-primary" />
-                  ) : item.icon === "PhoneIcon" ? (
-                    <FiPhoneCall size={32} className="text-primary" />
-                  ) : null
-                }
-                title={item.title}
-                description={item.description}
-                buttonText={item.buttonText}
-                onButtonClick={
-                  item.title === "Contact"
-                    ? () => setIsConfirm(true)
-                    : item.title === "Pages"
-                    ? null
-                    : item.title === "Payment"
-                    ? null
-                    : null
-                }
-              />
-            ))}
-        </div>
 
         <div className="flex mt-5 gap-5">
           {data &&
@@ -71,7 +34,13 @@ const PaymentMethod = ({ data }) => {
                 buttonText={item.buttonText}
                 Icon={iconMap[item.title]}
                 onButtonClick={
-                  item.title === "Contact" ? () => setIsConfirm(true) : null
+                  item.title === "Contact"
+                    ? () => setIsConfirm(true)
+                    : item.title === "Pages"
+                    ? null
+                    : item.title === "Payment"
+                    ? null
+                    : null
                 }
               />
             ))}
@@ -99,4 +68,4 @@ const PaymentMethod = ({ data }) => {
   );
 };
 
-export default PaymentMethod;
+export default GooglePayment;

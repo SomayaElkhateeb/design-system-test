@@ -1,71 +1,110 @@
-import { LinkIcon } from "src/app/utils/icons";
+/**
+ * Button component for various button styles with optional icons and loading spinner.
+ * @param {Object} props - Props for the Button component.
+ * @param {string} props.variant - The variant of the button. Can be "lin", "sec", "ter", or default.
+ * @param {string} props.children - The text content of the button.
+ * @param {JSX.Element} props.LeftIcon - Optional left icon component.
+ * @param {JSX.Element} props.RightIcon - Optional right icon component.
+ * @param {boolean} props.loading - Indicates whether the button is in a loading state.
+ * @param {Function} props.onClick - Click event handler for the button.
+ * @returns {JSX.Element} Button component.
+ */
 
-const Button = ({ variant, text, LeftIcon, RightIcon, loading, onClick }) => {
+const Button = ({
+  variant,
+  children,
+  LeftIcon,
+  RightIcon,
+  loading,
+  onClick,
+}) => {
+  // Define variables for class names
+  let buttonClass = "";
+  let iconClass = "";
+  let textClass = "";
+
+  // Switch case to determine button styling based on variant
   switch (variant) {
-    case "lin":
-      return (
-        <button
-          onClick={onClick}
-          className=" text-primary flex flex-row justify-center items-center capitalize"
-        >
-          {text}
-          <LinkIcon className="fill-primary p-0.5 mb-1 ml-1" />
-        </button>
-      );
-
-    case "sec":
-      return (
-        <button
-          onClick={onClick}
-          className="btn-sec flex items-center gap-1 p-2"
-        >
-          {LeftIcon && <LeftIcon className="fill-pri-dark w-[18px] h-[18px]" />}
-          {text}
-          {RightIcon && <RightIcon className="fill-pri-dark h-3 w-3 ml-1" />}
-        </button>
-      );
-
-    case "ter":
-      return (
-        <button
-          onClick={onClick}
-          className="text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3"
-        >
-          {LeftIcon && (
-            <LeftIcon className="fill-pri-dark w-[18px] h-[18px] mb-0.5" />
-          )}
-          {text}
-          {RightIcon && <RightIcon className="fill-pri-dark ml-1 h-3 w-3" />}
-        </button>
-      );
-
+    case "link":
+      // Link variant styling
+      buttonClass =
+        "text-primary flex flex-row justify-center items-center capitalize";
+      iconClass = "fill-primary p-0.5 mb-1 ml-1";
+      break;
+    case "secondary":
+      // Secondary variant styling
+      buttonClass = "btn-sec flex items-center gap-1 p-2";
+      iconClass = "fill-pri-dark h-3 w-3 ml-1";
+      textClass = "fill-pri-dark ";
+      break;
+    case "tertiary":
+      // Tertiary variant styling
+      buttonClass =
+        "text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3";
+      iconClass = "fill-pri-dark ml-1 h-3 w-3";
+      textClass = "fill-pri-dark";
+      break;
     default:
-      return (
-        <button
-          onClick={onClick}
-          className="relative btn-pri flex px-1 items-center ml-1"
-        >
-          {loading ? (
-            <div className="py-1 px-6 flex justify-center items-center">
-              <div className="w-[18px] h-[18px] border-2 border-t-transparent rounded-full animate-spin border-white" />
-            </div>
-          ) : (
-            <>
-              {LeftIcon && (
-                <LeftIcon className="fill-white w-[18px] h-[18px]" />
-              )}
-              <span className="mx-1 text-sm">{text}</span>
-              {RightIcon && (
-                <>
-                  <span className="absolute bg-white w-[1px] h-full right-[24px]" />
-                  <RightIcon className="fill-white h-3 w-3 mt-0.5 mr-1 ml-2" />
-                </>
-              )}
-            </>
-          )}
-        </button>
-      );
+      // Primary variant styling
+      buttonClass = "relative btn-pri flex px-1 items-center ml-1";
+      iconClass = "fill-white";
+      textClass = "mx-1 text-sm";
+      break;
   }
+
+  return (
+    <button onClick={onClick} className={buttonClass}>
+      {/* Render loading spinner if loading is true */}
+      {loading ? (
+        <div className="py-1 px-6 flex justify-center items-center">
+          <div className=" border-2 border-t-transparent rounded-full animate-spin border-white" />
+        </div>
+      ) : (
+        // Render button content with LeftIcon, text, and RightIcon
+        <>
+          {LeftIcon && <LeftIcon className={textClass} />}
+          <span className={textClass}>{children}</span>
+          {RightIcon && <RightIcon className={iconClass} />}
+        </>
+      )}
+    </button>
+  );
 };
 
 export default Button;
+
+/*  Example usage of Button component
+
+const ExampleComponent = () => {
+
+  const handleClick = () => {
+    console.log("Button clicked!");
+  };
+
+  return (
+    <div>
+      <Button variant="primary" onClick={handleClick}>
+        Primary Button
+      </Button>
+
+      <Button variant="secondary" LeftIcon={LeftIcon} onClick={handleClick}>
+        Secondary Button
+      </Button>
+
+      <Button variant="tertiary" RightIcon={RightIcon} onClick={handleClick}>
+        Tertiary Button
+      </Button>
+
+      <Button variant="link" onClick={handleClick}>
+        Link Button
+      </Button>
+
+      <Button variant="primary" loading onClick={handleClick}>
+        Loading Button
+      </Button>
+    </div>
+  );
+};
+
+export default ExampleComponent; 
+*/

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-
 //! How To use
-
 
 /**
  * SingleChoiceChips Component
@@ -12,11 +10,7 @@ import React, { useState } from "react";
  * @param type Type of options: 'array' or 'object'
  */
 
-
 const SingleChoiceChips = ({ options, setOption, icon, type }) => {
-
-const SingleChoiceChips = ({ options, setOption, icon }) => {
-
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionSelect = (option) => {
@@ -30,7 +24,6 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
         {options.map((option, index) => (
           <Chip
             key={index}
-
             label={type === "array" ? option : option.key}
             value={type === "array" ? option : option.value}
             isSelected={
@@ -38,10 +31,8 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
                 ? option === selectedOption
                 : option.value === selectedOption
             }
-
             label={option}
             isSelected={option === selectedOption}
-
             icon={icon}
             onSelect={handleOptionSelect}
           />
@@ -52,7 +43,6 @@ const SingleChoiceChips = ({ options, setOption, icon }) => {
 };
 
 export default SingleChoiceChips;
-
 
 /**
  * Chip Component
@@ -66,7 +56,6 @@ export default SingleChoiceChips;
 // const Chip = ({ label, value, isSelected, icon, onSelect }) => {
 
 const Chip = ({ label, isSelected, icon, onSelect }) => {
-
   const baseStyle =
     "flex items-center border p-1 pr-2 w-fit rounded-full cursor-pointer transition-all";
   const notSelectedStyle =

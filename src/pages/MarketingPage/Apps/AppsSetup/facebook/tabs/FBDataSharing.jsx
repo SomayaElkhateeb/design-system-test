@@ -1,25 +1,31 @@
 import { useState } from "react";
 import { CheckBox, InputRow, SelectBoxRow } from "src/app/components/optimized";
 
-const DataSharing = ({ data }) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [inputState, setInputState] = useState({
-    selectedValue: "Select an option",
-    value: "",
+const FBDataSharing = ({ data }) => {
+  const [state, setState] = useState({
+    isChecked: false,
+    inputState: {
+      selectedValue: "Select an option",
+      value: "",
+    },
   });
 
-  const { selectedValue, value } = inputState;
+  const { isChecked, inputState } = state;
 
   const handleInputChange = (value) => {
-    setInputState({ ...inputState, value });
+    setState((prevState) => ({
+      ...prevState,
+      inputState: { ...prevState.inputState, value },
+    }));
   };
 
   const handleSelectChange = (value) => {
-    setInputState((prevState) => ({
+    setState((prevState) => ({
       ...prevState,
-      selectedValue: value,
+      inputState: { ...prevState.inputState, selectedValue: value },
     }));
   };
+
   return (
     <div>
       <p className="mb-3 ">
@@ -27,7 +33,12 @@ const DataSharing = ({ data }) => {
       </p>
       <CheckBox
         label="Activate data sharing"
-        onChange={() => setIsChecked(!isChecked)}
+        onChange={() =>
+          setState((prevState) => ({
+            ...prevState,
+            isChecked: !prevState.isChecked,
+          }))
+        }
       />
 
       {isChecked && (
@@ -39,7 +50,7 @@ const DataSharing = ({ data }) => {
           />
           <SelectBoxRow
             label="Tracked action"
-            selectedValue={selectedValue}
+            selectedValue={inputState.selectedValue}
             handleSelectChange={handleSelectChange}
             options={[
               { value: "option1", label: "Option 1" },
@@ -53,4 +64,4 @@ const DataSharing = ({ data }) => {
   );
 };
 
-export default DataSharing;
+export default FBDataSharing;

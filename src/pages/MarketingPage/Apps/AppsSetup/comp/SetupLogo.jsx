@@ -1,6 +1,6 @@
 import { getImageUrl } from "src/app/utils";
 
-function SetpLogo({ iconPath }) {
+function SetupLogo({ iconPath }) {
   return (
     <div className="flex items-center justify-center">
       <img src={getImageUrl("brand/cloud.svg")} className="size-16 mx-1" />
@@ -14,4 +14,4 @@ function SetpLogo({ iconPath }) {
   );
 }
 
-export default SetpLogo;
+export default SetupLogo;

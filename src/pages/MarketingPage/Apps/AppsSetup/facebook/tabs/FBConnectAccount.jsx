@@ -1,6 +1,6 @@
 import { Button } from "src/app/components/optimized";
 
-const ConnectAccount = ({ data }) => {
+const FBConnectAccount = ({ data }) => {
   return (
     <div className="flex items-center justify-between">
       <p>{data.description}</p>
@@ -10,4 +10,4 @@ const ConnectAccount = ({ data }) => {
   );
 };
 
-export default ConnectAccount;
+export default FBConnectAccount;

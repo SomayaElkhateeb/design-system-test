@@ -80,19 +80,16 @@
         "description": "Activate payment method so Google can make sure your store is trustworthy",
         "method": [
           {
-            "icon": "PaymentIcon",
             "title": "Payment",
             "description": "Add payment method for your store, so your customers can pay you online",
             "buttonText": "Activate"
           },
           {
-            "icon": "PagesIcon",
             "title": "Pages",
             "description": "Add a refund policy and terms of service",
             "buttonText": "Add"
           },
           {
-            "icon": "PhoneIcon",
             "title": "Contact",
             "description": "Confirm you have 2 contact methods on your online store",
             "buttonText": "Confirm"
@@ -147,6 +144,42 @@
         "text": "By proceeding, you are agreeing to the",
         "linkText": "Dookan Terms of Service",
         "linkURL": "#"
+      },
+
+      "create_account": {
+        "title": "Connect your Business TikTok account",
+        "description": "Connect with TikTok to get your products into your own TikTok Shop."
+      },
+      "business_account": {
+        "title": "Business Account",
+        "description": "Dookan uses your TikTok for business account to access your TikTok Ads Manager Account.",
+        "partners": [
+          {
+            "name": "Partner1",
+            "id": "123",
+            "logo": "",
+            "is_connected": false
+          },
+          {
+            "id": "456",
+            "name": "Partner2",
+            "logo": "",
+            "is_connected": false
+          }
+        ]
+      },
+      "data_sharing": {
+        "title": "Data sharing (TikTok Pixel)",
+        "description": "TikTok collect data about your customers so they can use it to retarget them through your ads, which help your business grow."
+      },
+      "payment_method": {
+        "title": "Payment",
+        "description": "A valid payment method is required to run ads on TikTok and use admcredits. Go to TikTok ads manager to set up your payments."
+      },
+      "target_location": {
+        "title": "Target Location",
+        "description": "Select the location where your customer are. TikTok willdeliver your ads to users in those target locations to help you maximize your budget.",
+        "location": ["egypt", "cairo"]
       }
     }
   }

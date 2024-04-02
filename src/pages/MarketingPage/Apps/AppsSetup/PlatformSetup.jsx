@@ -1,14 +1,16 @@
-import { useState } from "react";
 import { VerticalTabs } from "src/app/components/optimized";
-import TikTokSetup from "./tiktok/TikTokSetup";
 import { useFacebookSetup } from "./facebook/useFacebookSetup";
-import { useTikTokSetup } from "./tiktok/useTikTokSetup";
 import { useGoogleSetup } from "./google/useGoogleSetup";
+import TikTokSetup from "./tiktok/TikTokSetup";
+import { useTikTokSetup } from "./tiktok/comp/useTikTokSetup";
+import { useSearchParams } from "react-router-dom";
 
 const PlatformSetup = ({ platform }) => {
-  const [tikTokConfirm, confirmTikTok] = useState(false);
+  const [searchParams, _] = useSearchParams();
+  const hasConfirmed = searchParams.get("add_channel") === "true";
+
   let title, tabs;
-  
+
   switch (platform) {
     case "facebook":
       ({ facebook_title: title, facebook_tabs: tabs } =
@@ -30,8 +32,8 @@ const PlatformSetup = ({ platform }) => {
         <h3 className="text-xl font-medium">{title}</h3>
       </div>
       <div className="bg-[#F9FAFC] p-4 flex flex-col">
-        {platform === "tikTok" && !tikTokConfirm ? (
-          <TikTokSetup platform={platform} confirmTikTok={confirmTikTok} />
+        {platform === "tikTok" && !hasConfirmed ? (
+          <TikTokSetup platform={platform} />
         ) : (
           <VerticalTabs tabs={tabs} />
         )}
