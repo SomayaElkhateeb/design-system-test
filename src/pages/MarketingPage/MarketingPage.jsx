@@ -1,10 +1,11 @@
+import MarketingPageGard from "../MarketingPageGard";
 import MarketingLayout from "./comp/MarketingLayout";
 
 const MarketingPage = () => {
   return (
-    <div>
+    <MarketingPageGard>
       <MarketingLayout />
-    </div>
+    </MarketingPageGard>
   );
 };
 

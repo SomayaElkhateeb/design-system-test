@@ -25,23 +25,23 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "apps", element: <AppsPage /> },
-      { path: "pages", element: <PagesPage /> },
-      { path: "store", element: <StorePage /> },
-      { path: "orders", element: <OrdersPage /> },
-      { path: "reviews", element: <ReviewsPage /> },
-      { path: "services", element: <ServicesPage /> },
-      { path: "settings", element: <SettingsPage /> },
-      { path: "products", element: <ProductsPage /> },
-      { path: "customers", element: <CustomersPage /> },
+      { path: "/apps", element: <AppsPage /> },
+      { path: "/pages", element: <PagesPage /> },
+      { path: "/store", element: <StorePage /> },
+      { path: "/orders", element: <OrdersPage /> },
+      { path: "/reviews", element: <ReviewsPage /> },
+      { path: "/services", element: <ServicesPage /> },
+      { path: "/settings", element: <SettingsPage /> },
+      { path: "/products", element: <ProductsPage /> },
+      { path: "/customers", element: <CustomersPage /> },
       {
-        path: "marketing",
+        path: "/marketing",
         element: <MarketingPage />,
         children: [{ path: ":tab", element: <MarketingTabs /> }],
       },
-      { path: "analytics", element: <AnalyticsPage /> },
-      { path: "apps/:platform", element: <SocialAppDetails /> },
-      { path: "marketing/:tab/:config", element: <MarketingConfig /> },
+      { path: "/analytics", element: <AnalyticsPage /> },
+      { path: "/apps/:platform", element: <SocialAppDetails /> },
+      { path: "/marketing/:tab/:config", element: <MarketingConfig /> },
     ],
   },
 ]);
@@ -51,3 +51,4 @@ const App = () => {
 };
 
 export default App;
+    
