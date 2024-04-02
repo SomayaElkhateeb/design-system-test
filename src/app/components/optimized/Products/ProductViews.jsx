@@ -31,6 +31,9 @@ const ProductViews = ({
   const [isFavorite, setIsFavorite] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
+  // console.log(isFavorite);
+  console.log(isChecked);
+
   const isFavoriteHandler = () => {
     setIsFavorite(!isFavorite);
   };

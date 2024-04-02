@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react";
-
 import { TooltipIcon } from "src/app/utils/icons";
 import { InputRow } from "..";
 import { getImageUrl } from "src/app/utils";
-import usePaymentValidation from "./usePaymentValidation";
 
-export const CreditDebitCard = () => {
-  const [creditData, setCreditData] = useState({});
+const PaymentForm = ({ data, onDataChange, errors }) => {
 
-  return <PaymentFrom setData={handleUpdateCreditData} />;
-};
+  const handleInputChange = (fieldName, value) => {
+    onDataChange(fieldName, value); // Call the callback function with field name and value
+  };
 
-export const ApplePay = () => {
-  const [applePayData, setApplePayData] = useState({});
-  return <PaymentFrom setData={applePayData} />;
-};
-
-export const StcPay = () => {
-  const [stcPayData, setStcPayData] = useState({});
-
-  return <PaymentFrom setData={setStcPayData} />;
-};
-
-const PaymentFrom = ({ setData }) => {
   return (
     <section>
       <div className="grid grid-cols-4 gap-6">
@@ -30,37 +15,34 @@ const PaymentFrom = ({ setData }) => {
           <InputRow
             label={QuantityLable}
             errors={errors.quantity}
-            value={quantity}
-            onChange={handleQuantityChange}
+            // value={data.quantity}
+            onChange={(value) => handleInputChange("quantity", value)}
           />
         </div>
         <div className="col-span-1">
           <InputRow
             label="Expiry date"
             errors={errors.expiryDate}
-            value={expiryDate}
-            onChange={handleExpiryDateChange}
+            // value={data.expiryDate}
+            onChange={(value) => handleInputChange("expiryDate", value)}
+
           />
         </div>
         <div className="col-span-1">
           <InputRow
             label={CvvLable}
             errors={errors.cvv}
-            value={cvv}
-            onChange={handleCVVChange}
+            // value={data.cvv}
+            onChange={(value) => handleInputChange("cvv", value)}
+
           />
         </div>
       </div>
     </section>
   );
 };
+export default PaymentForm;
 
-const CvvLable = (
-  <span className="flex">
-    CVV&nbsp;
-    <TooltipIcon className="fill-secondary" />
-  </span>
-);
 const CreditTransactions = () => {
   return (
     <div className="flex gap-1">
@@ -71,9 +53,17 @@ const CreditTransactions = () => {
     </div>
   );
 };
+const CvvLable = (
+  <span className="flex">
+    CVV&nbsp;
+    <TooltipIcon className="fill-secondary" />
+  </span>
+);
 const QuantityLable = (
   <span className="flex justify-between">
     <p>Quantity</p>
     <CreditTransactions />
   </span>
 );
+
+

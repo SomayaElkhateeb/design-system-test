@@ -82,12 +82,12 @@ const ImageUploader = ({ onImageUpload, onImageDelete }) => {
           >
             <AddBgIcon className="rounded-full fill-primary rotate-45 border-2 border-white" />
           </button>
-          {/* <span className="absolute bottom-1 left-1 paragraph px-[6px]  text-[13px] text-subtitle border rounded-full">
+          <span className="absolute bottom-1 left-1 paragraph px-[6px]  text-[13px] text-subtitle border rounded-full">
             Main
           </span>
           <span className="absolute bottom-1 right-1 size-6 rounded-full border-2 border-white bg-secondary text-white text-xs leading-5">
             8
-          </span> */}
+          </span>
         </>
       ) : (
         <div className="flex flex-col justify-center items-center text-center space-y-2">

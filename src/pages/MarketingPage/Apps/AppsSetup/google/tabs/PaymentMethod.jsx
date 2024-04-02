@@ -71,6 +71,7 @@ const PaymentMethod = ({ data }) => {
               />
             ))}
         </div>
+        
       </div>
 
       <PopupProceed

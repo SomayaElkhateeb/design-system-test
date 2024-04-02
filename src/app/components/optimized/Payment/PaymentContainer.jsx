@@ -1,9 +1,12 @@
-import { useState } from "react";
-import { Button, CheckBox } from "src/app/components/optimized";
-import { DownIcon } from "src/app/utils/icons";
-import { ApplePay, CreditDebitCard, StcPay } from "./PaymentMethod";
+import {
+  Button,
+  CheckBox,
+  PaymentMethodAccordion,
+} from "src/app/components/optimized";
+import usePayment from "./usePayment";
+import PaymentForm from "./PaymentForm";
 
-const lable = (
+const checkboxLable = (
   <span className="flex">
     I agree to&nbsp;
     <Button
@@ -19,116 +22,77 @@ const lable = (
     />
     , and&nbsp;
     <Button
-      text="Privacy Policy"
+      text="Selling policy"
       variant="linkBtn"
       //  onClick={}
     />
     .
   </span>
 );
+const PaymentContainer = () => {
+  // Payment Custom Hook
+  const {
+    errors,
+    paymentData,
+    agreeToTerms,
+    isButtonDisabled,
+    selectedPaymentMethod,
+    paymentDataHandler,
+    handleTermsCheckbox,
+    handlePaymentMethodChange,
+  } = usePayment();
 
-const PaymentContainer = ({ onConfirmPurchase }) => {
-
-
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
-  const [agreeToTerms, setAgreeToTerms] = useState(false);
-
-
-  const handlePaymentMethodChange = (method) => {
-    setSelectedPaymentMethod(method === selectedPaymentMethod ? null : method);
+  const onConfirmPurchase = (e) => {
+    e.preventDefault();
+    // if validatation is Ok
+    // make the payment logic
+    console.log(paymentData);
   };
 
-  const handleTermsCheckbox = () => {
-    setAgreeToTerms(!agreeToTerms);
-  };
-
-  const isButtonDisabled = !agreeToTerms || !selectedPaymentMethod;
-
-
+  // Payment Methods Array
+  const paymentMethods = [
+    { title: "Credit/Debit Card", name: "credit" },
+    { title: "Apple Pay", name: "applePay" },
+    { title: "STC Pay", name: "stcPay" },
+  ];
 
   return (
-    <div className="bg-white border border-border-color rounded-lg  px-4 py-6 w-[718px]">
+    <form className="bg-white border border-border-color rounded-lg px-4 py-6 w-[718px]">
       <h2 className="text-lg font-bold title mb-4">Select payment method</h2>
-
+      {/* Mapping on Payment Methods */}
       <div className="space-y-4 mb-4">
-
-        <PaymentMethodAccordion
-          title="Credit/Debit Card"
-          isOpen={selectedPaymentMethod === "Credit"}
-          onToggle={() => handlePaymentMethodChange("Credit")}
-        >
-          <CreditDebitCard />
-        </PaymentMethodAccordion>
-
-
-        <PaymentMethodAccordion
-          title="Apple Pay"
-          isOpen={selectedPaymentMethod === "applePay"}
-          onToggle={() => handlePaymentMethodChange("applePay")}
-        >
-          <ApplePay />
-        </PaymentMethodAccordion>
-
-
-
-        <PaymentMethodAccordion
-          title="Apple Pay"
-          isOpen={selectedPaymentMethod === "StcPay"}
-          onToggle={() => handlePaymentMethodChange("StcPay")}
-        >
-          <StcPay />
-        </PaymentMethodAccordion>
-
-
-
+        {paymentMethods.map((item, index) => (
+          <PaymentMethodAccordion
+            key={index}
+            title={item.title}
+            isOpen={selectedPaymentMethod === item.name}
+            onToggle={() => handlePaymentMethodChange(item.name)}
+          >
+            <PaymentForm
+              data={paymentData}
+              onDataChange={paymentDataHandler}
+              errors={errors}
+            />
+          </PaymentMethodAccordion>
+        ))}
       </div>
-
+      {/*Terms and Conditions checkBox*/}
       <CheckBox
-        label={lable}
+        label={checkboxLable}
         onChange={handleTermsCheckbox}
         checked={agreeToTerms}
       />
-
+      {/*Confirm Button*/}
       <div className="mt-4 flex justify-end">
         <Button
           onClick={onConfirmPurchase}
           disabled={isButtonDisabled}
           text="Confirm Purchase (SAR 50)"
+          type="submit"
         />
       </div>
-
-
-    </div>
+    </form>
   );
 };
 
 export default PaymentContainer;
-
-const PaymentMethodAccordion = ({ title, isOpen, onToggle, children }) => {
-  return (
-    <div
-      className={`border border-border-color rounded mb-4 ${
-        isOpen ? "bg-light-1" : "bg-white"
-      }`}
-    >
-      <button
-        type="button"
-        className="w-full p-4 flex justify-between items-center text-left focus:outline-none"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-      >
-        <h2 className="title">{title}</h2>
-        <DownIcon
-          className={`transition-all fill-hint duration-300 ${
-            isOpen ? "rotate-180" : "bg-white"
-          }`}
-        />
-      </button>
-      <div className={`p-4 ${!isOpen && "hidden"}`} aria-hidden={!isOpen}>
-
-
-        {children}
-      </div>
-    </div>
-  );
-};

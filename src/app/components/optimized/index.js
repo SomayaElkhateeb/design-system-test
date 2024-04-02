@@ -29,6 +29,7 @@ export { default as SelectItem } from "./SelectItems/SelectItem";
 export { default as PopupProceed } from "./Popups/PopupProceed";
 
 //? Ahmed
+export { default as PaymentMethodAccordion } from "./Payment/PaymentMethodAccordion";
 export { default as MultiImageUploader } from "./MediaUpload/MultiImageUploader";
 export { default as MopileProductViews } from "./Products/MopileProductViews";
 export { default as MultiChoiceChips } from "./ChoiceChips/MultiChoiceChips";

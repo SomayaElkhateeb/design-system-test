@@ -42,7 +42,7 @@ const ProductCard = ({
   };
   console.log(info);
   return (
-    <div className="border-2 bg-white overflow-hidden border-light-2 rounded-xl grid grid-cols-1 divide-y p-0 w-[271px] group">
+    <div className="border-2 bg-white overflow-hidden border-light-2 rounded-xl grid grid-cols-1 divide-y p-0 w-[271px] group ">
       <div className="relative w-full h-[260px]">
         <img
           src={getImageUrl(imageUrl)}
