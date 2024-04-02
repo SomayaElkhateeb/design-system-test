@@ -1,12 +1,23 @@
 import { InputRow } from "src/app/components/optimized";
 import { AiOutlinePercentage } from "react-icons/ai";
-import useDiscountForm from "../useDiscountForm";
+import useDiscountForm from "../../comp/useDiscountForm";
+
+// import { useEffect } from "react";
 const DiscountTypesOptions = ({ discountType }) => {
-  const { percentage, setPercentage, fixedAmount, setFixedAmount } =
-    useDiscountForm();
+  const {
+    percentage,
+    setPercentage,
+    fixedAmount,
+    setFixedAmount,
+    fixedAmountRef,
+  } = useDiscountForm();
 
   console.log("percentage", percentage);
   console.log("fixedAmount", fixedAmount);
+  // useEffect(() => {
+  //   localStorage.setItem("fixedAmount", fixedAmount);
+  // }, [fixedAmount]);
+
   return (
     <div>
       {discountType === "Percentage" && (
@@ -27,6 +38,7 @@ const DiscountTypesOptions = ({ discountType }) => {
             id="fixedAmount"
             value={fixedAmount}
             onChange={setFixedAmount}
+            ref={fixedAmountRef.current}
           />
         </div>
       )}

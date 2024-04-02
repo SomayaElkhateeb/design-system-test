@@ -1,17 +1,19 @@
-import { Button, CheckBox, InputRow, SelectItem } from "..";
-import { LiaSearchSolid } from "react-icons/lia";
 import { useState, useEffect } from "react";
 import { capitalizeFirstLetter } from "src/app/utils";
+import { LiaSearchSolid } from "react-icons/lia";
+import { Button, CheckBox, InputRow, SelectItem } from "..";
 
 const SelectItems = ({ title, onClose, select, varient }) => {
   const [state, setState] = useState({
     searchQuery: "",
-    selectedItems: [],
+    selectedItems: [], // select items
+    queryItems: [], // search
     totalItems: select,
     isChecked: true,
   });
 
-  const { searchQuery, selectedItems, totalItems, isChecked } = state;
+  const { searchQuery, selectedItems, totalItems, isChecked, queryItems } =
+    state;
 
   useEffect(() => {
     setState((prevState) => ({
@@ -20,17 +22,35 @@ const SelectItems = ({ title, onClose, select, varient }) => {
     }));
   }, [select]);
 
-  // useEffect(() => {
-  //   const storedItemsData = localStorage.getItem("selectedItemsData");
-  //   if (storedItemsData) {
-  //     const storedItems = JSON.parse(storedItemsData);
-  //     const storedItemIds = storedItems.map((item) => item.id);
-  //     setState((prevState) => ({
-  //       ...prevState,
-  //       selectedItems: storedItemIds,
-  //     }));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const filteredItems = select?.filter((item) => {
+      if ("title" in item) {
+        return (
+          item.title &&
+          item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+      if ("fName" in item || "lName" in item) {
+        return (
+          (item.fName &&
+            item.fName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.lName &&
+            item.lName.toLowerCase().includes(searchQuery.toLowerCase()))
+        );
+      }
+      return false;
+    });
+
+    const updatedSelectedItems = totalItems.filter((item) =>
+      selectedItems.includes(item.id)
+    );
+
+    setState((prevState) => ({
+      ...prevState,
+      queryItems: filteredItems,
+      selectedItems: updatedSelectedItems,
+    }));
+  }, [searchQuery, select]);
 
   const handleChangeBox = (isChecked) => {
     setState((prevState) => ({
@@ -49,29 +69,6 @@ const SelectItems = ({ title, onClose, select, varient }) => {
     }));
   };
 
-  useEffect(() => {
-    const updatedSelectedItems = totalItems.filter((item) =>
-      selectedItems.includes(item.id)
-    );
-    setState((prevState) => ({
-      ...prevState,
-      selectedItems: updatedSelectedItems,
-    }));
-  }, [searchQuery]);
-
-  // const filteredItems = select
-  //   ? select.filter((item) =>
-  //       item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  //     )
-  //   : [];
-  const filteredItems = select
-    ? select.filter(
-        (item) =>
-          item.title &&
-          item.title.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
-
   const handleAddButtonClick = () => {
     const itemsData = totalItems
       .filter((item) => selectedItems.includes(item.id))
@@ -86,21 +83,32 @@ const SelectItems = ({ title, onClose, select, varient }) => {
           count: item.count,
         };
       });
-    localStorage.setItem("selectedItemsData", JSON.stringify(itemsData));
+    console.log("selectedItems", selectedItems);
+    // specific category
+
+    localStorage.setItem("selectedItems", JSON.stringify(itemsData));
+
     onClose();
   };
 
+  const handleClickOutside = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+    <div
+      className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50"
+      onClick={handleClickOutside}
+    >
       <div className="w-[637px] rounded bg-white py-[18px]">
-        {/* header */}
         <div>
           <h3 className="text-title font-semibold mb-3 ml-[18px]">
             {capitalizeFirstLetter(title)}
           </h3>
 
           <div className="flex items-center justify-between px-[18px]">
-            {/* input search */}
             <div className="w-[380px]">
               <InputRow
                 leftIcon={<LiaSearchSolid />}
@@ -143,21 +151,18 @@ const SelectItems = ({ title, onClose, select, varient }) => {
           </div>
         </div>
 
-        {/* contain */}
         <div className="flex flex-col gap-2 my-2 h-[400px] overflow-auto">
-          {filteredItems.map((item) => {
-            return (
-              <SelectItem
-                varient={varient}
-                key={item.id}
-                {...item}
-                isChecked={selectedItems.includes(item.id)}
-                onCheckBoxChange={(isChecked) =>
-                  handleCheckBoxChange(isChecked, item.id)
-                }
-              />
-            );
-          })}
+          {queryItems.map((item) => (
+            <SelectItem
+              varient={varient}
+              key={item.id}
+              {...item}
+              isChecked={selectedItems.includes(item.id)}
+              onCheckBoxChange={(isChecked) =>
+                handleCheckBoxChange(isChecked, item.id)
+              }
+            />
+          ))}
         </div>
 
         <div className="flex mt-4 justify-end mr-[18px] gap-[18px]">
@@ -173,3 +178,14 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 };
 
 export default SelectItems;
+
+// localStorage.setItem("selectedCategory", JSON.stringify(itemsData));
+// // specific products
+
+// localStorage.setItem("selectedProducts", JSON.stringify(itemsData));
+// // specific customer groups
+
+// localStorage.setItem("selectedGroups", JSON.stringify(itemsData));
+// // specific customers
+// if (varient === "customers")
+//   localStorage.setItem("selectedCustomers", JSON.stringify(itemsData));

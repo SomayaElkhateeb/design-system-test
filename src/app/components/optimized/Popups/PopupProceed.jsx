@@ -17,7 +17,7 @@ const PopupProceed = ({
   const handleProceed = () => {
     alert("Confirmed");
     onClose();
-    // onProceed();
+    // onProceed(); // Uncommented
   };
 
   return (

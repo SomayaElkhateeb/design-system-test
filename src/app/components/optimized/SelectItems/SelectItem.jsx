@@ -10,8 +10,6 @@ const SelectItem = ({
   count,
   onCheckBoxChange,
   varient,
-  // productCategory,
-  // group,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -20,11 +18,14 @@ const SelectItem = ({
     setIsChecked(newValue);
     onCheckBoxChange(newValue);
   };
-
   switch (varient) {
     case "customers":
       return (
-        <>
+        <div
+          className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
+            isChecked ? "bg-sec-light" : ""
+          }`}
+        >
           <ClientBox
             title={fName + " " + lName}
             details={subTitle}
@@ -33,12 +34,16 @@ const SelectItem = ({
           <button onClick={handleCheckBoxClick}>
             <CheckBox isChecked={isChecked} />
           </button>
-        </>
+        </div>
       );
       break;
     case "groups":
       return (
-        <>
+        <div
+          className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
+            isChecked ? "bg-sec-light" : ""
+          }`}
+        >
           <ClientBox
             title={title}
             details={subTitle}
@@ -47,7 +52,7 @@ const SelectItem = ({
           <button onClick={handleCheckBoxClick}>
             <CheckBox isChecked={isChecked} />
           </button>
-        </>
+        </div>
       );
       break;
     default:
@@ -78,5 +83,3 @@ const SelectItem = ({
 };
 
 export default SelectItem;
-
-SelectItem.js;
