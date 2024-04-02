@@ -4,14 +4,14 @@ import { ClipLoader } from 'react-spinners';
 
 /**
  * @param {{
- * label: string
- * leftIcon?: JSX.Element
- * rightIcon?: JSX.Element
- * loading?: boolean
- * error?: string
- * success?: string
- * value: string
- * onChange: (event: import('react').ChangeEvent<HTMLInputElement>) => void
+ *  label: string
+ *  leftIcon?: JSX.Element
+ *  rightIcon?: JSX.Element
+ *  loading?: boolean
+ *  error?: string
+ *  success?: string
+ *  value: string
+ *  onChange: (event: import('react').ChangeEvent<HTMLInputElement>) => void
  * } & import('react').InputHTMLAttributes<HTMLInputElement>} props - Props for the InputRow component
  *
  * How to Use:
@@ -27,11 +27,6 @@ import { ClipLoader } from 'react-spinners';
  *   const [success, setSuccess] = useState("");
  *   const [loading, setLoading] = useState(false);
  *
- *   const handleChange = (newValue: string) => {
- *     setValue(newValue);
- *     // Add your validation logic here
- *   };
- *
  *   return (
  *     <div>
  *       <InputRow
@@ -42,7 +37,7 @@ import { ClipLoader } from 'react-spinners';
  *         error={error}
  *         success={success}
  *         value={value}
- *         onChange={handleChange}
+ *         onChange={event => setValue(event.target.value)}
  *       />
  *     </div>
  *   );
