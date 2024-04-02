@@ -124,6 +124,59 @@ export default function InputRow({
 					</div>
 				</div>
 
+
+//   return (
+//     <>
+//       <div className="flex flex-col">
+//         <label htmlFor={name} className="block text-sm mb-1">
+//           {label}
+//         </label>
+//         <div
+//           className={`${classNames} overflow-hidden rounded-md w-full border`}
+//         >
+//           <div className="relative">
+//             {leftIcon && (
+//               <div className="absolute inset-y-0 left-0 flex items-center  p-4 ">
+//                 {leftIcon}
+//               </div>
+//             )}
+//             <input
+//               className={`${
+//                 leftIcon && "pl-16"
+//               } block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none`}
+//               onFocus={() => setFocused(true)}
+//               onBlur={() => setFocused(false)}
+//               disabled={loading}
+//               value={value}
+//               onChange={handleInputChange}
+//               {...rest}
+//             />
+//             {rightIcon && !loading && (
+//               <div className="absolute inset-y-0 right-0 flex items-center p-4">
+//                 {rightIcon}
+//               </div>
+//             )}
+//             {loading && (
+//               <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+//                 <ClipLoader size={16} />
+//               </div>
+//             )}
+//           </div>
+//         </div>
+
+//         {error && !focused && (
+//           <small className=" text-red-500 text-xs">{error}</small>
+//         )}
+//         {success && !focused && (
+//           <small className=" text-green-500 text-xs">Success</small>
+//         )}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default InputRow;
+
 				{error && !focused && (
 					<small className='text-xs text-red-500 '>{error}</small>
 				)}
@@ -134,3 +187,4 @@ export default function InputRow({
 		</>
 	);
 }
+

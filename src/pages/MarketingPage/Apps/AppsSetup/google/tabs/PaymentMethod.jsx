@@ -19,11 +19,61 @@ const PaymentMethod = ({ data }) => {
 	//   const options = ["Business address", "Email address", "Phone number"];
 	//   const [Options, setOptions] = useState([]);
 
+
+        <div className="flex mt-5">
+          {data &&
+            data.method?.map((item) => (
+              <PaymentCard
+                key={item.title}
+                icon={
+                  item.icon === "PaymentIcon" ? (
+                    <MdPayments size={32} className="text-primary" />
+                  ) : item.icon === "PagesIcon" ? (
+                    <RiPagesLine size={32} className="text-primary" />
+                  ) : item.icon === "PhoneIcon" ? (
+                    <FiPhoneCall size={32} className="text-primary" />
+                  ) : null
+                }
+                title={item.title}
+                description={item.description}
+                buttonText={item.buttonText}
+                onButtonClick={
+                  item.title === "Contact"
+                    ? () => setIsConfirm(true)
+                    : item.title === "Pages"
+                    ? null
+                    : item.title === "Payment"
+                    ? null
+                    : null
+                }
+              />
+            ))}
+        </div>
+
+        <div className="flex mt-5 gap-5">
+          {data &&
+            data.method?.map((item, index) => (
+              <SetupCard
+                key={index}
+                title={item.title}
+                description={item.description}
+                buttonText={item.buttonText}
+                Icon={iconMap[item.title]}
+                onButtonClick={
+                  item.title === "Contact" ? () => setIsConfirm(true) : null
+                }
+              />
+            ))}
+        </div>
+        
+      </div>
+
 	const iconMap = {
 		Payment: PaymentIcon,
 		Contact: PhoneIcon,
 		Pages: PagesIcon
 	};
+
 
 	return (
 		<>
