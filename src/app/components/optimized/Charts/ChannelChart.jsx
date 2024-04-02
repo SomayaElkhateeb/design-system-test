@@ -2,15 +2,7 @@ import ReactApexChart from 'react-apexcharts';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
 /**
- * @typedef {{
- * 	options: import("apexcharts").ApexOptions;
- * 	series: import("apexcharts").ApexOptions['series']
- * }} ChannelChartProps
- *
- */
-
-/**
- * @param {ChannelChartProps} props
+ * @param {import("./types").ReactApexCompProps} props
  *
  * @example
  *
@@ -80,43 +72,44 @@ export default function ChannelChart(props) {
 	);
 }
 
-ChannelChart.defaultProps = /** @satisfies {ChannelChartProps} props */ ({
-	options: {
-		chart: {
-			type: 'donut',
-			width: '100%',
-			fontFamily: 'Poppins , sans-serif'
-		},
-		plotOptions: {
-			pie: {
-				dataLabels: {
-					// position doesn't exist in the types of `pie`
-					// position: 'top'
-				}
-			}
-		},
-		grid: {
-			padding: {
-				right: 25,
-				left: 20
-			}
-		},
-		labels: ['Google', 'Social media', 'Email'],
-		legend: {
-			position: 'top',
-			horizontalAlign: 'center'
-		},
-		colors: ['#446CCE', '#49C596', '#D65036'],
-		responsive: [
-			{
-				breakpoint: 480,
-				options: {
-					chart: {
-						width: 400
+ChannelChart.defaultProps =
+	/** @satisfies {import("./types").ReactApexCompProps} props */ ({
+		options: {
+			chart: {
+				type: 'donut',
+				width: '100%',
+				fontFamily: 'Poppins , sans-serif'
+			},
+			plotOptions: {
+				pie: {
+					dataLabels: {
+						// position doesn't exist in the types of `pie`
+						// position: 'top'
 					}
 				}
-			}
-		]
-	},
-	series: [44, 55, 41]
-});
+			},
+			grid: {
+				padding: {
+					right: 25,
+					left: 20
+				}
+			},
+			labels: ['Google', 'Social media', 'Email'],
+			legend: {
+				position: 'top',
+				horizontalAlign: 'center'
+			},
+			colors: ['#446CCE', '#49C596', '#D65036'],
+			responsive: [
+				{
+					breakpoint: 480,
+					options: {
+						chart: {
+							width: 400
+						}
+					}
+				}
+			]
+		},
+		series: [44, 55, 41]
+	});
