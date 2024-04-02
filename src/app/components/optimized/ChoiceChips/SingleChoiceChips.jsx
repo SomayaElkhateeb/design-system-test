@@ -26,26 +26,13 @@
  *
  *   const simpleOptions = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
  *
- *   const keyValueOptions = [
- *     { key: "Option 1", value: "Value 1" },
- *     { key: "Option 2", value: "Value 2" },
- *     { key: "Option 3", value: "Value 3" },
- *     { key: "Option 4", value: "Value 4" },
- *     { key: "Option 5", value: "Value 5" },
- *   ];
- *
  *   return (
  *     <div>
  *       <SingleChoiceChips
- * 			   options={keyValueOptions}
+ * 			   options={simpleOptions}
  * 			   setSelected={handleOptionSelect}
  * 			   selected={selectedOption}
  *         icon={<LocationIcon />} // Optional icon
- *       />
- *       <SingleChoiceChips
- * 			   options={keyValueOptions}
- * 			   setSelected={handleOptionSelect}
- * 			   selected={selectedOption}
  *       />
  *    </div>
  *   );
@@ -65,7 +52,7 @@ export default function SingleChoiceChips(props) {
 						isSelected={option === props.selected}
 						icon={props.icon}
 						onSelect={props.setSelected}
-						value={option}
+						label={option}
 					/>
 				))}
 			</div>
@@ -75,7 +62,7 @@ export default function SingleChoiceChips(props) {
 
 /**
  * @param {object} props
- * @param {string} props.value The value associated with the chip
+ * @param {string} props.label The value associated with the chip
  * @param {boolean} props.isSelected Boolean indicating whether the chip is selected
  * @param {import('react').ReactNode} props.icon Optional icon component to display with the chip
  * @param {((option: string) => void)} props.onSelect Function to handle chip selection
@@ -93,7 +80,7 @@ function Chip(props) {
 			className={`${baseStyle} ${
 				props.isSelected ? selectedStyle : notSelectedStyle
 			}`}
-			onClick={() => props.onSelect(props.value)}
+			onClick={() => props.onSelect(props.label)}
 		>
 			{props.icon && <div className='mr-1'>{props.icon}</div>}
 			<span
@@ -101,7 +88,7 @@ function Chip(props) {
 					props.isSelected ? 'text-white' : 'text-subtitle'
 				} `}
 			>
-				{props.value}
+				{props.label}
 			</span>
 		</div>
 	);
