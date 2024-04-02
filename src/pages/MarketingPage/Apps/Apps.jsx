@@ -1,27 +1,26 @@
-import React from "react";
-import { socialApps } from "src/app/utils/constants";
+import { socialApps } from 'src/app/utils/constants';
 
-import MostPopularList from "./comp/MostPopularList";
-import SocialAppsWrapper from "./comp/SocialAppsWrapper";
+import MostPopularList from './comp/MostPopularList';
+import SocialAppsWrapper from './comp/SocialAppsWrapper';
 
 const Apps = () => {
-  return (
-    <div className="p-5 gap-8 flex flex-col">
-      <MostPopularList />
+	return (
+		<div className='flex flex-col gap-8 p-5'>
+			<MostPopularList />
 
-      <SocialAppsWrapper
-        socialApps={socialApps}
-        title="Recommended"
-        linkTo="/"
-      />
+			<SocialAppsWrapper
+				socialApps={socialApps}
+				title='Recommended'
+				linkTo='/'
+			/>
 
-      <SocialAppsWrapper
-        socialApps={socialApps}
-        title="Reach more customers"
-        linkTo="/"
-      />
-    </div>
-  );
+			<SocialAppsWrapper
+				socialApps={socialApps}
+				title='Reach more customers'
+				linkTo='/'
+			/>
+		</div>
+	);
 };
 
 export default Apps;

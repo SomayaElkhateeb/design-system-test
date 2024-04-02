@@ -1,12 +1,21 @@
 import { TooltipIcon } from "src/app/utils/icons";
+
 const Tooltip = ({ message }) => {
+
+
+const Tooltip = ({ title }) => {
+
   return (
     <div className="relative inline-block w-[150px] text-center">
       <div className="group inline-block">
         <TooltipIcon className="fill-secondary cursor-pointer ml-1 mt-2" />
 
         <div className="absolute bg-title text-white text-sm py-1 px-1.5 rounded opacity-0 bottom-full left-0 group-hover:opacity-100 transition-opacity duration-300">
+
           {message}
+
+          {title}
+
           <svg
             className="absolute text-title h-2 w-full left-0 top-full"
             x="0px"
@@ -22,6 +31,7 @@ const Tooltip = ({ message }) => {
 };
 
 export default Tooltip;
+
 // const Tooltip = ({ message }) => {
 //   return (
 //     <div className="relative group inline-block">
@@ -40,3 +50,4 @@ export default Tooltip;
 //     </div>
 //   );
 // };
+
