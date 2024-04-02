@@ -6,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { capitalizeFirstLetter } from "src/app/utils";
 
-const DatePicker = ({ label }) => {
+const DatePicker = ({ label, value, onChange }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer
@@ -21,7 +21,11 @@ const DatePicker = ({ label }) => {
           <span className="text-pri-dark text-sm">
             {capitalizeFirstLetter(label)}
           </span>
-          <MobileDatePicker defaultValue={dayjs("2022-04-17")} />
+          <MobileDatePicker
+            defaultValue={dayjs("2022-04-17")}
+            // value={value}
+            // onChange={onChange}
+          />
         </DemoItem>
       </DemoContainer>
     </LocalizationProvider>

@@ -12,11 +12,19 @@ const PopupProceed = ({
 		onClose();
 	};
 
+
+  const handleProceed = () => {
+    alert("Confirmed");
+    onClose();
+    // onProceed(); // Uncommented
+  };
+
 	const handleProceed = () => {
 		alert('Confirmed');
 		onClose();
 		// onProceed();
 	};
+
 
 	return (
 		<>

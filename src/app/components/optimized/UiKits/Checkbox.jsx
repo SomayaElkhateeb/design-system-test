@@ -15,6 +15,7 @@ const CheckBox = ({ variant, onChange, label, checked: externalChecked }) => {
     setInternalChecked(newValue);
     if (onChange) {
       onChange(newValue);
+      console.log(newValue);
     }
   };
 

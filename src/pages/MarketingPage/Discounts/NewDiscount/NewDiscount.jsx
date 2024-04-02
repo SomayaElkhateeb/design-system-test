@@ -1,9 +1,12 @@
 import { HeaderSettings, ToggleSwitch } from "src/app/components/optimized";
-import CustomerSegment from "./CustomerSegment/CustomerSegment";
 import BasicInfo from "./BasicInfo/BasicInfo";
-import { useNavigate } from "react-router-dom";
+import CustomerSegment from "./CustomerSegment/CustomerSegment";
 import MinimumRequirements from "./MinimumRequirements/MinimumRequirements";
 import ActiveDates from "./ActiveDates/ActiveDates";
+import { useNavigate } from "react-router-dom";
+import useDiscountForm from "./comp/useDiscountForm";
+import { useEffect, useState } from "react";
+
 const NewDiscount = () => {
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ const NewDiscount = () => {
         to={-1}
         title="Add Discount"
         btn1={{ text: "Discard", onClick: () => {} }}
-        btn2={{ text: "Save Changes", onClick: () => {} }}
+        btn2={{ text: "Save Changes", onClick: handleSaveChanges }}
       />
       <div className="p-4 flex justify-between gap-7">
         <div className="w-full flex flex-col gap-[18px]">

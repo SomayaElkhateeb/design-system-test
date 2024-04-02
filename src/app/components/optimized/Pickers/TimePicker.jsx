@@ -22,7 +22,10 @@ const TimePicker = ({ label }) => {
           <span className="text-pri-dark text-sm">
             {capitalizeFirstLetter(label)}
           </span>
-          <MobileTimePicker defaultValue={dayjs("2022-04-17T15:30")} />
+          <MobileTimePicker
+            defaultValue={dayjs("2022-04-17T15:30")}
+            onChange={(value) => console.log(value)}
+          />
         </DemoItem>
       </DemoContainer>
     </LocalizationProvider>
