@@ -13,6 +13,7 @@ import {
   SelectItem,
   SelectItems,
   StackedColumnChart,
+  ToggleSwitch,
 } from "src/app/components/optimized";
 import { IoIosAddCircle } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa";
@@ -25,13 +26,130 @@ import SizeAndCloseIcon from "src/app/components/optimized/Sizes/SizeAndCloseIco
 import PopupDelete from "src/app/components/optimized/Popups/PopupDelete";
 import PopupDiscover from "src/app/components/optimized/Popups/PopupDiscover";
 import PopupWelcome from "src/app/components/optimized/Popups/PopupWelcome";
+import Table from "src/app/components/optimized/Table/Table";
+import HeaderTable from "src/app/components/optimized/Table/HeaderTable";
+import BodyTable from "src/app/components/optimized/Table/BodyTable";
+import Body from "src/app/components/optimized/Table/Body";
+import Header from "src/app/components/optimized/Table/Header";
+// import Table, { Header, Body } from "src/app/components/optimized/UiKits/Table";
+
 // import PopupProceed from "src/app/components/optimized/Popups/PopupProceed";
+const headerData = [
+  {
+    name: "discount name",
+    type: "discount",
+    date: "ends at",
+    active: "active?",
+    sales: "sales",
+    actions: "actions",
+  },
+];
+
+const bodyData = [
+  {
+    id: 1,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 20000,
+  },
+  {
+    id: 2,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+  {
+    id: 3,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+  {
+    id: 4,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+  {
+    id: 5,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+  {
+    id: 6,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+
+  {
+    id: 7,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+
+  {
+    id: 8,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+
+  {
+    id: 9,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+
+  {
+    id: 10,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+  {
+    id: 11,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+  {
+    id: 12,
+    name: "summer discount",
+    value: 2000,
+    date: "15 / 4 / 2020",
+    sales: 200000,
+  },
+];
 
 const StorePage = () => {
   return (
-    <div>
+    <div className="bg-sky-100">
+      <Table>
+        <HeaderTable>
+          <Header headerData={headerData} />
+        </HeaderTable>
+        <BodyTable>
+          <Body bodyData={bodyData} />
+        </BodyTable>
+      </Table>
       {/* HeaderSettings */}
-      <div>
+      <br />
+      {/* <div>
         <HeaderSettings
           variant="settingOrder"
           to="/your-back-link"
@@ -64,7 +182,7 @@ const StorePage = () => {
           btn1={{ text: "Button 1", onClick: () => {} }}
           btn2={{ text: "Button 2", onClick: () => {} }}
         />
-      </div>
+      </div> */}
       <hr />
       {/* check box */}
       <CheckBox
@@ -148,7 +266,7 @@ const StorePage = () => {
       <SizeAndCloseIcon />
       <SizeAndCloseIcon bgColor="sky-400" />
       <br /> <hr />
-      <PopupDelete />
+      {/* <PopupDelete /> */}
       <br /> <hr />
       {/* <PopupProceed /> */}
       <br /> <hr />
