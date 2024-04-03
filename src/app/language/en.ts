@@ -1,6 +1,16 @@
 export const english = {
 
 "Home":"Home",
+"Products":"Products",
+"Analytics":"Analytics",
+"Reviews":"Reviews",
+"Pages":"Pages",
+"Marketing":"Marketing",
+"Apps":"Apps",
+"Services":"Services",
+"Settings":"Settings",
+"Store":"Store",
+"Sales channel":"Sales channel",
 
 
 
