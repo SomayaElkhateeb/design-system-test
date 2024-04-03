@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const usePayment = () => {
 	// State
-	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(/** @type {string | null} */ (null));
 	const [agreeToTerms, setAgreeToTerms] = useState(false);
 	const [errors, setErrors] = useState(
 		/**
@@ -20,19 +20,26 @@ const usePayment = () => {
 		cvv: '',
 	});
 
-	const paymentDataHandler = (fieldName, enteredValue) => {
+	/**
+	 * @param {string} fieldName
+	 * @param {string} enteredValue
+	 */
+	function paymentDataHandler(fieldName, enteredValue) {
 		setPaymentData((prevPaymentData) => ({
 			...prevPaymentData,
 			[fieldName]: enteredValue,
 		}));
-	};
+	}
 
-	// Select Payment Method
-	const handlePaymentMethodChange = (method) => {
+	/**
+	 * @description - Select Payment Method
+	 * @param {string} method - Payment Method
+	 */
+	function handlePaymentMethodChange(method) {
 		setSelectedPaymentMethod(method === selectedPaymentMethod ? null : method);
 		setPaymentData({ quantity: '', expiryDate: '', cvv: '' });
-	};
-	// Agree to the terms to affect the confirmation button
+	}
+	// Agree to the terms to affect the confirmation button
 	const handleTermsCheckbox = () => {
 		setAgreeToTerms(!agreeToTerms);
 	};
