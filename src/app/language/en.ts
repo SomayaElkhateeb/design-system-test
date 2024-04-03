@@ -1,6 +1,5 @@
 export const english = {
-	"Home": "Home",
-
+	Home: 'Home',
 
 	Products: 'Products',
 	Analytics: 'Analytics',
@@ -178,7 +177,4 @@ export const english = {
 	'Reset Password ?': 'Reset Password ?',
 	'Enter Category': 'Enter Category',
 	'language changed successfully': 'language changed successfully',
-
-
-
 };
