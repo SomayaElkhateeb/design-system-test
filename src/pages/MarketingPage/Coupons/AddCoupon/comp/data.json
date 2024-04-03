@@ -1,0 +1,18 @@
+{
+  "basicInfo": [
+    {
+      "discountType": [
+        { "id": 1, "title": "Percentage" },
+        { "id": 2, "title": "Fixed amount" },
+        { "id": 3, "title": "Free shipping" }
+      ]
+    },
+    {
+      "applyTo": [
+        { "id": 1, "title": "All products" },
+        { "id": 2, "title": "Specific category" },
+        { "id": 3, "title": "Specific products" }
+      ]
+    }
+  ]
+}
