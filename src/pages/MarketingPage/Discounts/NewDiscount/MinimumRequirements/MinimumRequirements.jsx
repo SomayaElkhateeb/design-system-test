@@ -22,7 +22,7 @@ const MinimumRequirements = () => {
 	console.log('minimumReq', minimumReq);
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[18px]'>
-			<h3 className='text-title font-semibold'>Minimum requirements</h3>
+			<h3 className='font-semibold text-title'>Minimum requirements</h3>
 
 			<div className='py-[18px]'>
 				<CheckBox
@@ -34,7 +34,8 @@ const MinimumRequirements = () => {
 			{showSelectButtons && (
 				<SingleChoiceChips
 					options={minimumRequirementsOptions}
-					setSelectedOption={handleMinimumChange}
+					setSelected={handleMinimumChange}
+					selected={minimumReq}
 				/>
 			)}
 
