@@ -2,10 +2,9 @@ import { Button } from 'src/app/components/optimized';
 import { getTikTokSetup, TikTokTabs } from './comp/getTikTokSetup';
 import SetpLogo from '../comp/SetupLogo';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { TikTokSetupProps } from './comp/tikTokTypes';
 
-interface TikTokSetupProps {
-	platform: string;
-}
+
 
 const TikTokSetup: React.FC<TikTokSetupProps> = ({ platform }) => {
 	const [_, setSearchParams] = useSearchParams();

@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface TikCreateAccountProps {
-	data: {
-		description: string,
-	};
-}
+import { TikCreateAccountProps } from '../tikTokTypes';
 
 const TikCreateAccount: React.FC<TikCreateAccountProps> = ({ data }) => {
 	return <p>{data.description}</p>;

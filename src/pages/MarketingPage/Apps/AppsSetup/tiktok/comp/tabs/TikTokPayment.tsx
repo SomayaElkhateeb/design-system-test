@@ -2,12 +2,8 @@ import React from 'react';
 import { MdErrorOutline } from 'react-icons/md';
 import { Button } from 'src/app/components/optimized';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { TikTokPaymentProps } from '../tikTokTypes';
 
-interface TikTokPaymentProps {
-	data: {
-		description: string,
-	};
-}
 
 const TikTokPayment: React.FC<TikTokPaymentProps> = ({ data }) => {
 	return (

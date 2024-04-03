@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'src/app/components/optimized';
+import { TikTokCardProps } from './tikTokTypes';
 
-interface TikTokCardProps {
-	partnerImage: string;
-	partnerName: string;
-	partnerStatus: boolean;
-	userId: string;
-}
 
 const TikTokCard: React.FC<TikTokCardProps> = ({ partnerImage, partnerName, partnerStatus, userId }) => {
 	const [status, setStatus] = useState<boolean>(partnerStatus);

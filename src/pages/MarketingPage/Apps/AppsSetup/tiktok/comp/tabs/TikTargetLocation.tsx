@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import { Button } from 'src/app/components/optimized';
+import { TikTargetLocationProps } from '../tikTokTypes';
 
-interface LocationData {
-	description: string;
-	location: string[];
-}
 
-interface TikTargetLocationProps {
-	data: LocationData;
-}
 
 const TikTargetLocation: React.FC<TikTargetLocationProps> = ({ data }) => {
 	const [selectedLocations, setSelectedLocations] = useState<string[]>([data.location[0]]);

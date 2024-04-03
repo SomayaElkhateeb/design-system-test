@@ -2,19 +2,9 @@ import React from 'react';
 import { getImageUrl } from 'src/app/utils';
 import TikTokCard from '../TikTokCard';
 import TikTokBusiness from '../TikTokBusiness';
+import { TikBusinessAccountProps } from '../tikTokTypes';
 
-interface Partner {
-	id: string;
-	name: string;
-	is_connected: boolean;
-}
 
-interface TikBusinessAccountProps {
-	data: {
-		description: string;
-		partners: Partner[];
-	};
-}
 
 const TikBusinessAccount: React.FC<TikBusinessAccountProps> = ({ data }) => {
 	return (
