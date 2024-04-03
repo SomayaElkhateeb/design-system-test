@@ -18,6 +18,9 @@ export const english = {
 	'Marketing/discounts': 'Marketing/discounts',
 	'Marketing/coupons': 'Marketing/coupons',
 	'Marketing/campaigns': 'Marketing/campaigns',
+	"For more information about setup guide": "For more information about setup guide",
+	"Learn more": "Learn more",
+	"Most popular": "Most popular",
 
 	Dashboard: 'Dashboard',
 	'Welcome to Restaurant Admin!': 'Welcome to Restaurant Admin!',

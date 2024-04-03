@@ -1,17 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 
 import { mostPopularApps } from 'src/app/utils/constants';
 
 const MostPopularList = () => {
+	//  hooks
+	const { t } = useTranslation()
 	return (
-		<div>
+		<>
 			<div className='mb-5'>
-				<h2 className='title text-lg'>Most popular</h2>
+				<h2 className='title text-lg'>{t("Most popular")}</h2>
 				<p className='paragraph text-subtitle'>
-					For more information about setup guide{' '}
+					{t("For more information about setup guide")}{' '}
 					<Link className='text-primary' to=''>
-						Learn more
+						{t("Learn more")}
 					</Link>
 				</p>
 			</div>
@@ -20,7 +23,7 @@ const MostPopularList = () => {
 					<BigAppsCard key={app.id} {...app} />
 				))}
 			</div>
-		</div>
+		</>
 	);
 };
 
