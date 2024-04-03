@@ -1,18 +1,157 @@
 {
-  "basicInfo": [
-    {
-      "discountType": [
-        { "id": 1, "title": "Percentage" },
-        { "id": 2, "title": "Fixed amount" },
-        { "id": 3, "title": "Free shipping" }
-      ]
-    },
-    {
-      "applyTo": [
-        { "id": 1, "title": "All products" },
-        { "id": 2, "title": "Specific category" },
-        { "id": 3, "title": "Specific products" }
-      ]
-    }
-  ]
+	"discount": [
+		{
+			"id": "1",
+			"name": "summer discount",
+			"disc": {
+				"currency": "sar",
+				"value_discount": 20
+			},
+			"ends": "4/5/2020",
+			"sales": {
+				"currency": "sar",
+				"value_sales": 20000
+			}
+		},
+		{
+			"id": "2",
+			"name": "summer discount",
+			"disc": {
+				"currency": "eg",
+				"value_discount": 20
+			},
+			"ends": "4/5/2020",
+			"sales": {
+				"currency": "eg",
+				"value_sales": 20000
+			}
+		}
+	],
+	"select_categories": [
+		{
+			"id": 1,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"category": "Jumpsuits & Rompers",
+			"description": "Lorem Ipsum is simply dummy text of"
+		},
+		{
+			"id": 2,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"category": "Shoes",
+			"description": "Lorem Ipsum is simply dummy text of"
+		},
+		{
+			"id": 3,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"category": "Jumpsuits & Rompers",
+			"description": "Lorem Ipsum is simply dummy text of"
+		},
+		{
+			"id": 4,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"category": "Dinnerware & Tableware",
+			"description": "Lorem Ipsum is simply dummy text of"
+		},
+		{
+			"id": 5,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"category": "Shoes",
+			"description": "Lorem Ipsum is simply dummy text of"
+		},
+		{
+			"id": 6,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"category": "Dinnerware & Tableware",
+			"description": "Lorem Ipsum is simply dummy text of"
+		}
+	],
+	"select_products": [
+		{
+			"id": 1,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"product": "Bathroom products",
+			"description": "Blankets"
+		},
+		{
+			"id": 2,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"product": "Baby & children",
+			"description": "Blankets"
+		},
+		{
+			"id": 3,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"product": "Bathroom products",
+			"description": "Blankets"
+		},
+		{
+			"id": 4,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"product": "Baby & children",
+			"description": "Blankets"
+		},
+		{
+			"id": 5,
+			"src_image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/",
+			"product": "Baby & children",
+			"description": "Blankets"
+		}
+	],
+	"select_customer_groups": [
+		{
+			"id": 1,
+			"count": 54,
+			"group_name": "Brooklyn Simmons",
+			"description": "This group is high niche"
+		},
+		{
+			"id": 2,
+			"count": 35,
+			"group_name": "Top clients",
+			"description": "This group is high niche"
+		},
+		{
+			"id": 3,
+			"count": 50,
+			"group_name": "Loyal clients",
+			"description": "This group is high niche"
+		}
+	],
+	"select_customers": [
+		{
+			"id": 1,
+			"first_Name": "walied",
+			"last_Name": "sayed",
+			"email": "nathan.roberts@example.com",
+			"image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/"
+		},
+		{
+			"id": 2,
+			"first_Name": "ahmed",
+			"last_Name": "ramy",
+			"email": "nathan.roberts@example.com",
+			"image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/"
+		},
+		{
+			"id": 3,
+			"first_Name": "salma",
+			"last_Name": "sayed",
+			"email": "nathan.roberts@example.com",
+			"image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/"
+		},
+		{
+			"id": 4,
+			"first_Name": "salma",
+			"last_Name": "",
+			"email": "nathan.roberts@example.com",
+			"image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/"
+		},
+		{
+			"id": 5,
+			"first_Name": "walied",
+			"last_Name": "sayed",
+			"email": "nathan.roberts@example.com",
+			"image": "https://www.pexels.com/photo/duckling-on-black-soil-during-daytime-162140/"
+		}
+	]
 }

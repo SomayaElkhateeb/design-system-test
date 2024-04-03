@@ -1,19 +1,43 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Avatars, CheckBox, ClientBox } from '..';
 
-const SelectItem = ({ title, subTitle, img, fName, lName, count, onCheckBoxChange, varient }) => {
+interface Props {
+	id: string;
+	title: string;
+	subTitle: string;
+	img: string;
+	fName?: string;
+	lName?: string;
+	count?: number;
+	onCheckBoxChange: (isChecked: boolean, itemId: string) => void; // Update the callback function signature
+	variant: string;
+}
+
+const SelectItem: React.FC<Props> = ({
+	id, // Destructure the id prop
+	title,
+	subTitle,
+	img,
+	fName,
+	lName,
+	count,
+	onCheckBoxChange,
+	variant,
+}) => {
 	const [isChecked, setIsChecked] = useState(false);
 
 	const handleCheckBoxClick = () => {
 		const newValue = !isChecked;
 		setIsChecked(newValue);
-		onCheckBoxChange(newValue);
+		onCheckBoxChange(newValue, id); // Pass the id to the callback function
+		console.log('id', id);
 	};
-	switch (varient) {
+
+	switch (variant) {
 		case 'customers':
 			return (
 				<div
-					className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
+					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
 						isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
@@ -22,23 +46,19 @@ const SelectItem = ({ title, subTitle, img, fName, lName, count, onCheckBoxChang
 						details={subTitle}
 						avatar={<Avatars img={img} fName={fName} lName={lName} />}
 					/>
-					<button onClick={handleCheckBoxClick}>
-						<CheckBox checked={isChecked} />
-					</button>
+					<CheckBox initialChecked={true} handleOnChange={handleCheckBoxClick} />
 				</div>
 			);
 
 		case 'groups':
 			return (
 				<div
-					className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
+					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
 						isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
 					<ClientBox title={title} details={subTitle} avatar={<Avatars variant='countAvatar' count={count} />} />
-					<button onClick={handleCheckBoxClick}>
-						<CheckBox checked={isChecked} />
-					</button>
+					<CheckBox initialChecked={true} handleOnChange={handleCheckBoxClick} />
 				</div>
 			);
 
@@ -59,9 +79,7 @@ const SelectItem = ({ title, subTitle, img, fName, lName, count, onCheckBoxChang
 							<p className='text-sm text-subtitle'>{subTitle}</p>
 						</div>
 					</div>
-					<button onClick={handleCheckBoxClick}>
-						<CheckBox checked={isChecked} />
-					</button>
+					<CheckBox initialChecked={true} handleOnChange={handleCheckBoxClick} />
 				</div>
 			);
 	}
