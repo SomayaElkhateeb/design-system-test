@@ -1,13 +1,11 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
 /**
- *
  * @param {{
  *  options: string[];
  *  onSelect: (option: string) => void;
  *  selectedOption?: string | null;
  * }} props
- * @returns
  */
 export default function Menu(props) {
 	return (

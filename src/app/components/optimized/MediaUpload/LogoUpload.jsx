@@ -16,7 +16,6 @@ import { AddBgIcon, MoreIcon, UploadIcon } from 'src/app/utils/icons';
  *  isUploading?: boolean;
  *  loaded?: boolean;
  * }} props
- * @returns
  */
 export default function LogoUpload(props) {
 	// ! ///////////////////
