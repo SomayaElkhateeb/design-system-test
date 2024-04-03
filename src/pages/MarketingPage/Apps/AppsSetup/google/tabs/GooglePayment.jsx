@@ -1,21 +1,17 @@
 import { useState } from 'react';
-import {
-	MultiChoiceChips,
-	PopupProceed,
-	SetupCard
-} from 'src/app/components/optimized';
+import { MultiChoiceChips, PopupProceed, SetupCard } from 'src/app/components/optimized';
 import { PagesIcon, PaymentIcon, PhoneIcon } from 'src/app/utils/icons';
 
 const GooglePayment = ({ data }) => {
 	const [isConfirm, setIsConfirm] = useState(false);
 
 	const theOptions = ['Business address', 'Email address', 'Phone number'];
-	const [options, setOptions] = useState([]);
+	const [options, setOptions] = useState(/** @type {string[]} */ ([]));
 
 	const iconMap = {
 		Payment: PaymentIcon,
 		Contact: PhoneIcon,
-		Pages: PagesIcon
+		Pages: PagesIcon,
 	};
 
 	return (
@@ -54,14 +50,12 @@ const GooglePayment = ({ data }) => {
 				onClose={() => setIsConfirm(false)}
 			>
 				<p className='mt-5'>
-					Google requires your contact information to be visible on your online
-					store, before the checkout, so customers can reach you.{' '}
-					<span className='cursor-pointer text-primary'>View our tutorial</span>{' '}
-					on how to do this
+					Google requires your contact information to be visible on your online store, before the checkout, so customers
+					can reach you. <span className='cursor-pointer text-primary'>View our tutorial</span> on how to do this
 				</p>
 				<p className='mt-6'>Select the 2 contact methods added:</p>
 
-				<MultiChoiceChips options={theOptions} setOptions={setOptions} />
+				<MultiChoiceChips options={theOptions} setSelected={setOptions} selected={options} />
 			</PopupProceed>
 		</>
 	);

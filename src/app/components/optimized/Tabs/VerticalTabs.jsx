@@ -10,8 +10,7 @@ import { Button, LayoutCard } from '..';
 
 const VerticalTabs = ({ tabs }) => {
 	// Destructure the state and functions returned by useVerticalTabs hook
-	const { currentTab, handleTabClick, handleNext, handlePrev } =
-		useVerticalTabs(0, tabs);
+	const { currentTab, handleTabClick, handleNext, handlePrev } = useVerticalTabs(0, tabs);
 
 	return (
 		<div className='flex flex-col space-y-4'>
@@ -66,7 +65,7 @@ const useVerticalTabs = (initialTab = 0, tabs) => {
 		currentTab,
 		handleTabClick,
 		handleNext,
-		handlePrev
+		handlePrev,
 	};
 };
 
@@ -77,23 +76,14 @@ const useVerticalTabs = (initialTab = 0, tabs) => {
  * @param {number} props.currentTab - The index of the currently active tab.
  * @param {string} props.title - The title of the tab.
  * @param {JSX.Element} props.content - The content of the tab.
- * @param {Function} props.onClick - Function to handle tab click event.
- * @param {Function} props.onNext - Function to handle next button click event.
- * @param {Function} props.onPrev - Function to handle previous button click event.
+ * @param {() => void} props.onClick - Function to handle tab click event.
+ * @param {() => void} props.onNext - Function to handle next button click event.
+ * @param {() => void} props.onPrev - Function to handle previous button click event.
  * @param {Object[]} props.tabs - An array of tab objects containing title and content.
  * @returns {JSX.Element} VTab component.
  */
 
-const VTab = ({
-	index,
-	currentTab,
-	title,
-	content,
-	onClick,
-	onNext,
-	onPrev,
-	tabs
-}) => {
+const VTab = ({ index, currentTab, title, content, onClick, onNext, onPrev, tabs }) => {
 	return (
 		<div className='relative'>
 			<div className='flex items-center'>
@@ -107,11 +97,7 @@ const VTab = ({
 					}`}
 					onClick={() => onClick(index)}
 				>
-					{index < currentTab ? (
-						<span className='text-sm'>&#10003;</span>
-					) : (
-						index + 1
-					)}
+					{index < currentTab ? <span className='text-sm'>&#10003;</span> : index + 1}
 				</div>
 
 				{/* Line between tabs */}
@@ -126,11 +112,7 @@ const VTab = ({
 				)}
 
 				{/* title */}
-				<div
-					className={`flex-grow ml-2  text-md capitalize ${
-						index === currentTab ? 'font-semibold' : ''
-					}`}
-				>
+				<div className={`flex-grow ml-2  text-md capitalize ${index === currentTab ? 'font-semibold' : ''}`}>
 					{title}
 				</div>
 			</div>
@@ -142,20 +124,12 @@ const VTab = ({
 						{/* Next & Prev */}
 						<div className='flex justify-end mt-4'>
 							{index !== 0 && (
-								<Button
-									onClick={onPrev}
-									disabled={currentTab === 0}
-									className='ml-5'
-								>
+								<Button onClick={onPrev} disabled={currentTab === 0} className='ml-5'>
 									Prev
 								</Button>
 							)}
 
-							<Button
-								onClick={
-									index === tabs.length - 1 ? () => alert('Finish') : onNext
-								}
-							>
+							<Button onClick={index === tabs.length - 1 ? () => alert('Finish') : onNext}>
 								{index === tabs.length - 1 ? 'Finish' : 'Next'}
 							</Button>
 						</div>

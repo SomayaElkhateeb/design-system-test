@@ -51,7 +51,6 @@ import { BackAndroidIcon } from 'src/app/utils/icons';
  * ```
  */
 export default function ChannelChart(props) {
-	// const [chartData] = useState();
 	return (
 		<div className='w-[375px] h-[300px] border border-constrained rounded-md bg-white p-5'>
 			<div className='flex items-center justify-between mb-1'>

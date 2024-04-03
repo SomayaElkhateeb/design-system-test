@@ -15,8 +15,8 @@ const TikTokSetup = ({ platform }) => {
 	return (
 		<section className='w-full p-5'>
 			<div className='w-2/5 m-auto'>
-				<div className='bg-white rounded-lg overflow-hidden border mb-5'>
-					<h2 className='font-semibold text-xl text-center p-5'>
+				<div className='mb-5 overflow-hidden bg-white border rounded-lg'>
+					<h2 className='p-5 text-xl font-semibold text-center'>
 						{mega_title}
 					</h2>
 					<div className='w-2/4 m-auto mb-5'>
@@ -24,15 +24,15 @@ const TikTokSetup = ({ platform }) => {
 					</div>
 				</div>
 
-				<div className='bg-white rounded-lg overflow-hidden border mb-5'>
-					<h2 className='font-semibold text-lg px-5 my-5'>{settings_title}</h2>
+				<div className='mb-5 overflow-hidden bg-white border rounded-lg'>
+					<h2 className='px-5 my-5 text-lg font-semibold'>{settings_title}</h2>
 					{tikTok_intro.map((item) => (
 						<div
-							className='border-b flex justify-between items-center p-5'
+							className='flex items-center justify-between p-5 border-b'
 							key={item.title}
 						>
 							<h3 className='text-lg'>{item.title}</h3>
-							<p className='text-lg text-primary cursor-pointer'>
+							<p className='text-lg cursor-pointer text-primary'>
 								{item.linkText}
 							</p>
 						</div>
@@ -42,28 +42,28 @@ const TikTokSetup = ({ platform }) => {
 				<div className='p-3'>
 					<p>
 						{privacy_notice.text}{' '}
-						<span className='text-primary cursor-pointer'>
+						<span className='cursor-pointer text-primary'>
 							{privacy_notice.linkText}
 						</span>
 					</p>
 				</div>
 
-				<div className='flex space-x-3 mt-8 justify-end'>
+				<div className='flex justify-end mt-8 space-x-3'>
 					<Button
-						text='Discard'
 						variant='secondaryBtn'
 						onClick={() => navigate('/apps/tiktok')}
-					/>
-					<Button
-						text='Add Sales Channel'
-						onClick={() => setSearchParams({ add_channel: 'true' })}
-					/>
+					>
+						Discard
+					</Button>
+					<Button onClick={() => setSearchParams({ add_channel: 'true' })}>
+						Add Sales Channel
+					</Button>
 				</div>
 
 				<div className='p-3 m-auto text-center'>
 					<p>
 						{agreement_terms.text}{' '}
-						<span className='text-primary cursor-pointer'>
+						<span className='cursor-pointer text-primary'>
 							{agreement_terms.linkText}
 						</span>
 					</p>

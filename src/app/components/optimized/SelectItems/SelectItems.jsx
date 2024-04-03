@@ -8,7 +8,7 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 		searchQuery: '',
 		selectedItems: [],
 		totalItems: select,
-		isChecked: true
+		isChecked: true,
 	});
 
 	const { searchQuery, selectedItems, totalItems, isChecked } = state;
@@ -16,54 +16,45 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 	useEffect(() => {
 		setState((prevState) => ({
 			...prevState,
-			totalItems: select
+			totalItems: select,
 		}));
 	}, [select]);
 
 	useEffect(() => {
 		const filteredItems = select?.filter((item) => {
 			if ('title' in item) {
-				return (
-					item.title &&
-					item.title.toLowerCase().includes(searchQuery.toLowerCase())
-				);
+				return item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase());
 			}
 			if ('fName' in item || 'lName' in item) {
 				return (
-					(item.fName &&
-						item.fName.toLowerCase().includes(searchQuery.toLowerCase())) ||
-					(item.lName &&
-						item.lName.toLowerCase().includes(searchQuery.toLowerCase()))
+					(item.fName && item.fName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+					(item.lName && item.lName.toLowerCase().includes(searchQuery.toLowerCase()))
 				);
 			}
 			return false;
 		});
 
-		const updatedSelectedItems = totalItems.filter((item) =>
-			selectedItems.includes(item.id)
-		);
+		const updatedSelectedItems = totalItems.filter((item) => selectedItems.includes(item.id));
 
 		setState((prevState) => ({
 			...prevState,
 			queryItems: filteredItems,
-			selectedItems: updatedSelectedItems
+			selectedItems: updatedSelectedItems,
 		}));
 	}, [searchQuery, select]);
 
 	const handleChangeBox = (isChecked) => {
 		setState((prevState) => ({
 			...prevState,
-			isChecked
+			isChecked,
 		}));
 	};
 
 	const handleCheckBoxChange = (isChecked, itemId) => {
-		const updatedItems = isChecked
-			? [...selectedItems, itemId]
-			: selectedItems.filter((item) => item !== itemId);
+		const updatedItems = isChecked ? [...selectedItems, itemId] : selectedItems.filter((item) => item !== itemId);
 		setState((prevState) => ({
 			...prevState,
-			selectedItems: updatedItems
+			selectedItems: updatedItems,
 		}));
 	};
 
@@ -78,7 +69,7 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 					subTitle: item.subTitle,
 					fName: item.fName,
 					lName: item.lName,
-					count: item.count
+					count: item.count,
 				};
 			});
 		localStorage.setItem('selectedItemsData', JSON.stringify(itemsData));
@@ -98,9 +89,7 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 		>
 			<div className='w-[637px] rounded bg-white py-[18px]'>
 				<div>
-					<h3 className='text-title font-semibold mb-3 ml-[18px]'>
-						{capitalizeFirstLetter(title)}
-					</h3>
+					<h3 className='text-title font-semibold mb-3 ml-[18px]'>{capitalizeFirstLetter(title)}</h3>
 
 					<div className='flex items-center justify-between px-[18px]'>
 						<div className='w-[380px]'>
@@ -111,7 +100,7 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 								handleOnChange={(query) =>
 									setState({
 										...state,
-										searchQuery: query
+										searchQuery: query,
 									})
 								}
 							/>
@@ -122,25 +111,13 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 						</p>
 
 						{selectedItems.length === 0 && (
-							<CheckBox
-								variant='minus'
-								checked={!isChecked}
-								onChange={(e) => handleChangeBox(e.target.checked)}
-							/>
+							<CheckBox variant='minus' checked={!isChecked} handleOnChange={handleChangeBox} />
 						)}
-						{selectedItems.length > 0 &&
-							selectedItems.length < totalItems.length && (
-								<CheckBox
-									checked={isChecked}
-									variant='minus'
-									onChange={(e) => handleChangeBox(e.target.checked)}
-								/>
-							)}
+						{selectedItems.length > 0 && selectedItems.length < totalItems.length && (
+							<CheckBox checked={isChecked} variant='minus' handleOnChange={handleChangeBox} />
+						)}
 						{selectedItems.length === totalItems.length && (
-							<CheckBox
-								checked={isChecked}
-								onChange={(e) => handleChangeBox(e.target.checked)}
-							/>
+							<CheckBox checked={isChecked} handleOnChange={handleChangeBox} />
 						)}
 					</div>
 				</div>
@@ -152,19 +129,16 @@ const SelectItems = ({ title, onClose, select, varient }) => {
 							key={item.id}
 							{...item}
 							isChecked={selectedItems.includes(item.id)}
-							onCheckBoxChange={(isChecked) =>
-								handleCheckBoxChange(isChecked, item.id)
-							}
+							onCheckBoxChange={(isChecked) => handleCheckBoxChange(isChecked, item.id)}
 						/>
 					))}
 				</div>
 
 				<div className='flex mt-4 justify-end mr-[18px] gap-[18px]'>
-					<Button onClick={() => onClose()} text='cancel' variant='ter' />
-					<Button
-						onClick={handleAddButtonClick}
-						text={`add (${selectedItems.length})`}
-					/>
+					<Button onClick={() => onClose()} variant='ter'>
+						cancel
+					</Button>
+					<Button onClick={handleAddButtonClick}>{`add (${selectedItems.length})`}</Button>
 				</div>
 			</div>
 		</div>

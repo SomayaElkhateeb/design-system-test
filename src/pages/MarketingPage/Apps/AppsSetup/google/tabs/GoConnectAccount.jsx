@@ -1,13 +1,12 @@
-import { Button } from "src/app/components/optimized";
+import { Button } from 'src/app/components/optimized';
 
-const GoConnectAccount = ({ data }) => {
-  return (
-    <div className="flex items-center justify-between">
-      <p>{data.description}</p>
+/** @param {{ data: { description: string } }} props */
+export default function GoConnectAccount(props) {
+	return (
+		<div className='flex items-center justify-between'>
+			<p>{props.data.description}</p>
 
-      <Button text="Connect Account" />
-    </div>
-  );
-};
-
-export default GoConnectAccount;
+			<Button>Connect Account</Button>
+		</div>
+	);
+}

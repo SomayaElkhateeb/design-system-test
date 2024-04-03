@@ -5,8 +5,7 @@ import useDiscountForm from '../comp/useDiscountForm';
 import { minimumRequirementsOptions } from '../comp/data';
 
 const MinimumRequirements = () => {
-	const { minimumReq, setShowSelectButtons, showSelectButtons, setMinimumReq } =
-		useDiscountForm();
+	const { minimumReq, setShowSelectButtons, showSelectButtons, setMinimumReq } = useDiscountForm();
 
 	console.log('minimumReq', minimumReq);
 	console.log('showSelectButtons', showSelectButtons);
@@ -16,17 +15,14 @@ const MinimumRequirements = () => {
 
 			<div className='py-[18px]'>
 				<CheckBox
-					onChange={setShowSelectButtons}
+					handleOnChange={setShowSelectButtons}
+					checked={showSelectButtons}
 					label='define minimum requirement'
 				/>
 			</div>
 
 			{showSelectButtons && (
-				<SingleChoiceChips
-					options={minimumRequirementsOptions}
-					setSelected={setMinimumReq}
-					selected={minimumReq}
-				/>
+				<SingleChoiceChips options={minimumRequirementsOptions} setSelected={setMinimumReq} selected={minimumReq} />
 			)}
 
 			<OptionsMinimumReq optionType={minimumReq} />

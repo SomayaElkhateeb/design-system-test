@@ -6,8 +6,8 @@ const FBDataSharing = ({ data }) => {
 		isChecked: false,
 		inputState: {
 			selectedValue: 'Select an option',
-			value: ''
-		}
+			value: '',
+		},
 	});
 
 	const { isChecked, inputState } = state;
@@ -15,14 +15,14 @@ const FBDataSharing = ({ data }) => {
 	const handleInputChange = (value) => {
 		setState((prevState) => ({
 			...prevState,
-			inputState: { ...prevState.inputState, value }
+			inputState: { ...prevState.inputState, value },
 		}));
 	};
 
 	const handleSelectChange = (value) => {
 		setState((prevState) => ({
 			...prevState,
-			inputState: { ...prevState.inputState, selectedValue: value }
+			inputState: { ...prevState.inputState, selectedValue: value },
 		}));
 	};
 
@@ -33,29 +33,26 @@ const FBDataSharing = ({ data }) => {
 			</p>
 			<CheckBox
 				label='Activate data sharing'
-				onChange={() =>
+				handleOnChange={() =>
 					setState((prevState) => ({
 						...prevState,
-						isChecked: !prevState.isChecked
+						isChecked: !prevState.isChecked,
 					}))
 				}
+				checked={state.isChecked}
 			/>
 
 			{isChecked && (
 				<div className='flex flex-col w-1/3 space-y-3 '>
-					<InputRow
-						label='Pixel ID'
-						value={inputState.value}
-						onChange={handleInputChange}
-					/>
+					<InputRow label='Pixel ID' value={inputState.value} handleOnChange={handleInputChange} />
 					<SelectBoxRow
 						label='Tracked action'
 						selectedValue={inputState.selectedValue}
-						handleSelectChange={handleSelectChange}
+						handleOnChange={handleSelectChange}
 						options={[
 							{ value: 'option1', label: 'Option 1' },
 							{ value: 'option2', label: 'Option 2' },
-							{ value: 'option3', label: 'Option 3' }
+							{ value: 'option3', label: 'Option 3' },
 						]}
 					/>
 				</div>

@@ -15,7 +15,7 @@ function PartnerCard({ imageUrl, subtitle, name, id }) {
 					<p>{id}</p>
 				</div>
 			</div>
-			<Button text='Connect' />
+			<Button>Connect</Button>
 		</div>
 	);
 }

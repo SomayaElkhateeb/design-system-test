@@ -1,121 +1,143 @@
-import { Link } from "react-router-dom";
-import { GroupIcons } from "..";
+import { Link } from 'react-router-dom';
+import { GroupIcons } from '..';
 import {
-  BackIcon,
-  LinkIcon,
-  LoadUpdateIcon,
-  MoreIcon,
-  PrintIcon,
-} from "src/app/utils/icons";
+	BackIcon,
+	LinkIcon,
+	LoadUpdateIcon,
+	MoreIcon,
+	PrintIcon
+} from 'src/app/utils/icons';
 
-const HeaderSettings = ({
-  to = "/",
-  variant,
-  title,
-  btn1 = { text: "", onClick: () => {} },
-  btn2 = { text: "", onClick: () => {} },
-  btn3 = { text: "", onClick: () => {} },
-}) => {
-  return (
-    <div className="flex justify-between items-center bg-white pl-2 pr-4 h-14">
-      <div className="flex items-center gap-1">
-        <Link to={to}>
-          <BackIcon />
-        </Link>
-        <h2 className="text-title font-semibold capitalize">{title}</h2>
-      </div>
+/**
+ *
+ * @param {{
+ *  to: string;
+ *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons';
+ *  title: string;
+ *  btn1: { text: string; onClick: () => void };
+ *  btn2: { text: string; onClick: () => void };
+ *  btn3: { text: string; onClick: () => void };
+ * }} props
+ * @returns
+ */
+export default function HeaderSettings(props) {
+	return (
+		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
+			<div className='flex items-center gap-1'>
+				<Link to={props.to}>
+					<BackIcon />
+				</Link>
+				<h2 className='font-semibold capitalize text-title'>{props.title}</h2>
+			</div>
 
-      <div className="flex gap-6 items-center">
-        {variant === "settingIcons" && (
-          <>
-            <IconButton onClick={btn1.onClick}>
-              <LinkIcon className="fill-title p-1 mb-2" />
-            </IconButton>
-            <IconButton onClick={btn2.onClick}>
-              <MoreIcon className="fill-pri-dark" />
-            </IconButton>
-          </>
-        )}
-        {variant === "settingOrder" && (
-          <>
-            <ButtonWithIcon
-              onClick={btn1.onClick}
-              icon={<LoadUpdateIcon className="p-0.5 fill-pri-dark" />}
-            >
-              Update Status
-            </ButtonWithIcon>
-            <ButtonWithIcon
-              onClick={btn2.onClick}
-              icon={<PrintIcon className="p-0.5 fill-pri-dark" />}
-            >
-              Print Invoice
-            </ButtonWithIcon>
-            <IconButton onClick={btn3.onClick}>
-              <MoreIcon />
-            </IconButton>
-          </>
-        )}
-        {variant === "settingOneBtn" && (
-          <Button onClick={btn1.onClick} variant="pri">
-            {btn1.text}
-          </Button>
-        )}
-        {variant === "settingTwoBtns" && (
-          <>
-            <Button onClick={btn1.onClick} variant="sec">
-              {btn1.text}
-            </Button>
-            <Button onClick={btn2.onClick} variant="pri">
-              {btn2.text}
-            </Button>
-          </>
-        )}
-        {variant === "settingThreeBtns" && (
-          <>
-            <Button onClick={btn1.onClick} variant="ter">
-              {btn1.text}
-            </Button>
-            <Button onClick={btn2.onClick} variant="sec">
-              {btn2.text}
-            </Button>
-            <Button onClick={btn3.onClick} variant="pri">
-              {btn3.text}
-            </Button>
-          </>
-        )}
-        {variant === "settingWithIcons" && (
-          <>
-            <GroupIcons />
-            <Button onClick={btn1.onClick} variant="sec">
-              {btn1.text}
-            </Button>
-            <Button onClick={btn2.onClick} variant="pri">
-              {btn2.text}
-            </Button>
-          </>
-        )}
-      </div>
-    </div>
-  );
-};
+			<div className='flex items-center gap-6'>
+				{props.variant === 'settingIcons' && (
+					<>
+						<IconButton onClick={props.btn1.onClick}>
+							<LinkIcon className='p-1 mb-2 fill-title' />
+						</IconButton>
+						<IconButton onClick={props.btn2.onClick}>
+							<MoreIcon className='fill-pri-dark' />
+						</IconButton>
+					</>
+				)}
+				{props.variant === 'settingOrder' && (
+					<>
+						<ButtonWithIcon
+							onClick={props.btn1.onClick}
+							icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}
+						>
+							Update Status
+						</ButtonWithIcon>
+						<ButtonWithIcon
+							onClick={props.btn2.onClick}
+							icon={<PrintIcon className='p-0.5 fill-pri-dark' />}
+						>
+							Print Invoice
+						</ButtonWithIcon>
+						<IconButton onClick={props.btn3.onClick}>
+							<MoreIcon />
+						</IconButton>
+					</>
+				)}
+				{props.variant === 'settingOneBtn' && (
+					<Button onClick={props.btn1.onClick} variant='pri'>
+						{props.btn1.text}
+					</Button>
+				)}
+				{props.variant === 'settingTwoBtns' && (
+					<>
+						<Button onClick={props.btn1.onClick} variant='sec'>
+							{props.btn1.text}
+						</Button>
+						<Button onClick={props.btn2.onClick} variant='pri'>
+							{props.btn2.text}
+						</Button>
+					</>
+				)}
+				{props.variant === 'settingThreeBtns' && (
+					<>
+						<Button onClick={props.btn1.onClick} variant='ter'>
+							{props.btn1.text}
+						</Button>
+						<Button onClick={props.btn2.onClick} variant='sec'>
+							{props.btn2.text}
+						</Button>
+						<Button onClick={props.btn3.onClick} variant='pri'>
+							{props.btn3.text}
+						</Button>
+					</>
+				)}
+				{props.variant === 'settingWithIcons' && (
+					<>
+						<GroupIcons />
+						<Button onClick={props.btn1.onClick} variant='sec'>
+							{props.btn1.text}
+						</Button>
+						<Button onClick={props.btn2.onClick} variant='pri'>
+							{props.btn2.text}
+						</Button>
+					</>
+				)}
+			</div>
+		</div>
+	);
+}
 
-const IconButton = ({ children, onClick }) => (
-  <button onClick={onClick} className="p-1">
-    {children}
-  </button>
-);
+/**
+ * @param {import("react").ButtonHTMLAttributes<HTMLButtonElement>} props
+ */
+function IconButton({ ...props }) {
+	return (
+		<button {...props} className='p-1'>
+			{props.children}
+		</button>
+	);
+}
 
-const ButtonWithIcon = ({ children, onClick, icon }) => (
-  <button onClick={onClick} className="flex items-center gap-2">
-    {icon}
-    <span className="font-semibold text-title text-sm">{children}</span>
-  </button>
-);
+/**
+ * @param {{
+ *  icon: import("react").ReactNode
+ * } & import("react").ButtonHTMLAttributes<HTMLButtonElement>} props
+ */
+function ButtonWithIcon({ ...props }) {
+	return (
+		<button {...props} className='flex items-center gap-2'>
+			{props.icon}
+			<span className='text-sm font-semibold text-title'>{props.children}</span>
+		</button>
+	);
+}
 
-const Button = ({ children, onClick, variant }) => (
-  <button onClick={onClick} className={`btn-${variant}`}>
-    {children}
-  </button>
-);
-
-export default HeaderSettings;
+/**
+ * @param {{
+ *  variant?: "pri" | "sec" | "ter"
+ * } & import("react").ButtonHTMLAttributes<HTMLButtonElement>} props
+ */
+function Button({ ...props }) {
+	return (
+		<button {...props} className={`btn-${props.variant}`}>
+			{props.children}
+		</button>
+	);
+}

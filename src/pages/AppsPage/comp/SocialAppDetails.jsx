@@ -39,19 +39,18 @@ const SocialAppDetails = () => {
 		<div>
 			{/*[1] Top Bar */}
 
-			<div className=' flex justify-between px-4 py-3 bg-white'>
+			<div className='flex justify-between px-4 py-3 bg-white '>
 				<div className='flex items-center'>
 					<Link to={-1}>
 						<BackIcon />
 					</Link>
-					<h2 className='font-semibold text-lg text-title capitalize'>
+					<h2 className='text-lg font-semibold capitalize text-title'>
 						{name}
 					</h2>
 				</div>
-				<Button
-					text='Install now'
-					onClick={() => navigate(`/marketing/${name}/${name}-setup`)}
-				/>
+				<Button onClick={() => navigate(`/marketing/${name}/${name}-setup`)}>
+					Install now
+				</Button>
 			</div>
 
 			{/*[2] gradient section */}
@@ -71,14 +70,14 @@ const SocialAppDetails = () => {
 						/>
 					</div>
 					<div className=' max-w-[600px] text-white'>
-						<h2 className='mb-3 font-semibold text-lg text-white capitalize'>
+						<h2 className='mb-3 text-lg font-semibold text-white capitalize'>
 							{name}
 						</h2>
-						<p className='text-sm font-normal  text-white'>{description}</p>
+						<p className='text-sm font-normal text-white'>{description}</p>
 						<img
 							src={getImageUrl(`padges/${statusPadge}.svg`)}
 							alt='status'
-							className='h-7 mt-3'
+							className='mt-3 h-7'
 						/>
 					</div>
 				</div>
@@ -106,7 +105,7 @@ const SocialAppDetails = () => {
 					))}
 				</div>
 				{/* Posters */}
-				<div className='flex justify-between flex-wrap gap-7'>
+				<div className='flex flex-wrap justify-between gap-7'>
 					{posters ? (
 						<>
 							{Object.entries(posters).map(([posterKey, posterValue]) => (

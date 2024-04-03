@@ -1,15 +1,14 @@
-import { Button } from "src/app/components/optimized";
+import { Button } from 'src/app/components/optimized';
 
-const FBTerms = ({ data }) => {
-  return (
-    <div>
-      <p>{data.description}</p>
-      <div className="flex space-x-3 justify-end">
-        <Button text="Read Terms" variant="secondaryBtn" />
-        <Button text="Accept anyway" />
-      </div>
-    </div>
-  );
-};
-
-export default FBTerms;
+/** @param {{ data: { description: string } }} props */
+export default function FBTerms(props) {
+	return (
+		<div>
+			<p>{props.data.description}</p>
+			<div className='flex justify-end space-x-3'>
+				<Button variant='secondaryBtn'>Read Terms</Button>
+				<Button>Accept anyway</Button>
+			</div>
+		</div>
+	);
+}
