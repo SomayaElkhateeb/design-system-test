@@ -25,7 +25,7 @@ const Accordion = () => {
       </div>
 
       {open ? (
-        <p className="text-subtitle duration-300 transition-all ease-linear pt-4  ">
+        <p className="text-subtitle duration-500 transition-all ease-linear pt-4  ">
           Yes we do that exactly
         </p>
       ) : (

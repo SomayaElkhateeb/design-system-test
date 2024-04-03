@@ -25,6 +25,7 @@ const CheckBox = ({ variant, onChange, label, initialChecked }) => {
     setIsChecked(newValue);
     if (onChange) {
       onChange(newValue);
+      console.log(newValue);
     }
   };
 

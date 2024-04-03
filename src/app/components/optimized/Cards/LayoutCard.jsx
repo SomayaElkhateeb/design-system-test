@@ -1,9 +1,31 @@
-const LayoutCard = ({ children }) => {
-  return (
-    <div className="w-full shadow-md rounded-lg overflow-hidden bg-white p-5">
-      <div className="px-4 py-2">{children}</div>
-    </div>
-  );
-};
-
-export default LayoutCard;
+// Done refactoring to type
+/**
+ * @param {{ children: import("react").ReactNode }} props
+ *
+ * @description
+ *
+ * ```jsx
+ * Usage Example:
+ *
+ *
+ * import LayoutCard from "./LayoutCard";
+ *
+ * export default function MyComponent() {
+ *   return (
+ *     <LayoutCard>
+ *       <div>
+ *         <h1>This is a Layout Card</h1>
+ *         <p>It can contain any content you want!</p>
+ *       </div>
+ *     </LayoutCard>
+ *   );
+ * };
+ * ```
+ */
+export default function LayoutCard(props) {
+	return (
+		<div className='w-full p-5 overflow-hidden bg-white rounded-lg shadow-md'>
+			<div className='px-4 py-2'>{props.children}</div>
+		</div>
+	);
+}

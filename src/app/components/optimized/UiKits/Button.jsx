@@ -11,64 +11,64 @@
  */
 
 const Button = ({
-  variant,
-  children,
-  LeftIcon,
-  RightIcon,
-  loading,
-  onClick,
+	variant,
+	children,
+	LeftIcon,
+	RightIcon,
+	loading,
+	onClick
 }) => {
-  // Define variables for class names
-  let buttonClass = "";
-  let iconClass = "";
-  let textClass = "";
+	// Define variables for class names
+	let buttonClass = '';
+	let iconClass = '';
+	let textClass = '';
 
-  // Switch case to determine button styling based on variant
-  switch (variant) {
-    case "link":
-      // Link variant styling
-      buttonClass =
-        "text-primary flex flex-row justify-center items-center capitalize";
-      iconClass = "fill-primary p-0.5 mb-1 ml-1";
-      break;
-    case "secondary":
-      // Secondary variant styling
-      buttonClass = "btn-sec flex items-center gap-1 p-2";
-      iconClass = "fill-pri-dark h-3 w-3 ml-1";
-      textClass = "fill-pri-dark ";
-      break;
-    case "tertiary":
-      // Tertiary variant styling
-      buttonClass =
-        "text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3";
-      iconClass = "fill-pri-dark ml-1 h-3 w-3";
-      textClass = "fill-pri-dark";
-      break;
-    default:
-      // Primary variant styling
-      buttonClass = "relative btn-pri flex px-1 items-center ml-1";
-      iconClass = "fill-white";
-      textClass = "mx-1 text-sm";
-      break;
-  }
+	// Switch case to determine button styling based on variant
+	switch (variant) {
+		case 'link':
+			// Link variant styling
+			buttonClass =
+				'text-primary flex flex-row justify-center items-center capitalize';
+			iconClass = 'fill-primary p-0.5 mb-1 ml-1';
+			break;
+		case 'secondary':
+			// Secondary variant styling
+			buttonClass = 'btn-sec flex items-center gap-1 p-2';
+			iconClass = 'fill-pri-dark h-3 w-3 ml-1';
+			textClass = 'fill-pri-dark ';
+			break;
+		case 'tertiary':
+			// Tertiary variant styling
+			buttonClass =
+				'text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3';
+			iconClass = 'fill-pri-dark ml-1 h-3 w-3';
+			textClass = 'fill-pri-dark';
+			break;
+		default:
+			// Primary variant styling
+			buttonClass = 'relative btn-pri flex px-1 items-center ml-1';
+			iconClass = 'fill-white';
+			textClass = 'mx-1 text-sm';
+			break;
+	}
 
-  return (
-    <button onClick={onClick} className={buttonClass}>
-      {/* Render loading spinner if loading is true */}
-      {loading ? (
-        <div className="py-1 px-6 flex justify-center items-center">
-          <div className=" border-2 border-t-transparent rounded-full animate-spin border-white" />
-        </div>
-      ) : (
-        // Render button content with LeftIcon, text, and RightIcon
-        <>
-          {LeftIcon && <LeftIcon className={textClass} />}
-          <span className={textClass}>{children}</span>
-          {RightIcon && <RightIcon className={iconClass} />}
-        </>
-      )}
-    </button>
-  );
+	return (
+		<button onClick={onClick} className={buttonClass}>
+			{/* Render loading spinner if loading is true */}
+			{loading ? (
+				<div className='flex items-center justify-center px-6 py-1'>
+					<div className='border-2 border-white rounded-full  border-t-transparent animate-spin' />
+				</div>
+			) : (
+				// Render button content with LeftIcon, text, and RightIcon
+				<>
+					{LeftIcon && <LeftIcon className={textClass} />}
+					<span className={textClass}>{children}</span>
+					{RightIcon && <RightIcon className={iconClass} />}
+				</>
+			)}
+		</button>
+	);
 };
 
 export default Button;

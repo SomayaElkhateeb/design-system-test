@@ -1,23 +1,23 @@
-import { Button } from "src/app/components/optimized";
+import { Button } from 'src/app/components/optimized';
 
 function PartnerCard({ imageUrl, subtitle, name, id }) {
-  return (
-    <div className="border-t  flex items-center justify-between">
-      <div className="py-3 overflow-hidden flex items-center">
-        <img className="size-12 object-cover" src={imageUrl} alt="" />
-        <div className="p-4">
-          <div className="flex space-x-3 items-center">
-            <h5 className="text-md font-bold tracking-tight text-gray-900">
-              {name}
-            </h5>
-            <p className="text-sm text-gray-500">{subtitle}</p>
-          </div>
-          <p>{id}</p>
-        </div>
-      </div>
-      <Button text="Connect" />
-    </div>
-  );
+	return (
+		<div className='flex items-center justify-between border-t'>
+			<div className='flex items-center py-3 overflow-hidden'>
+				<img className='object-cover size-12' src={imageUrl} alt='' />
+				<div className='p-4'>
+					<div className='flex items-center space-x-3'>
+						<h5 className='font-bold tracking-tight text-gray-900 text-md'>
+							{name}
+						</h5>
+						<p className='text-sm text-gray-500'>{subtitle}</p>
+					</div>
+					<p>{id}</p>
+				</div>
+			</div>
+			<Button text='Connect' />
+		</div>
+	);
 }
 
 export default PartnerCard;

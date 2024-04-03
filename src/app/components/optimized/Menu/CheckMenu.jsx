@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { check } from "src/app/utils/constants";
-import { CheckIcon } from 'src/app/utils/icons';
+
+import { CheckBox } from "..";
 
 const CheckMenu = () => {
   const [menuItems, setMenuItems] = useState(check);
 
   const handleClick = (id) => {
-    setMenuItems(prevMenuItems => {
-      return prevMenuItems.map(item => {
+    setMenuItems((prevMenuItems) => {
+      return prevMenuItems.map((item) => {
         if (item.id === id) {
           return { ...item, checked: !item.checked };
         }
@@ -21,33 +22,23 @@ const CheckMenu = () => {
       {menuItems.map((menuItem) => {
         const { id, text, checked } = menuItem;
         return (
-          <button
+          <div
             key={id}
+            className={
+              checked
+                ? "flex text-title items-center bg-sec-light px-4 py-3 gap-2 duration-300 transition-all"
+                : "flex text-title items-center group hover:bg-sec-light px-4 py-3 gap-2 duration-300 transition-all"
+            }
             onClick={() => handleClick(id)}
-            className={checked ? "flex text-title items-center bg-sec-light px-4 py-3 gap-2 duration-300 transition-all" :
-             "flex text-title items-center group hover:bg-sec-light px-4 py-3 gap-2 duration-300 transition-all"}>
-            <div className={checked ? "bg-success w-5 h-5 border rounded" : "w-5 h-5 border rounded"}>
-              {checked && <CheckIcon className='fill-white' />}
-            </div>
-            <span className="text-sm mt-1">
-              {text}
-            </span>
-          </button>
+            state
+          >
+            <CheckBox isChecked={checked} />
+            <span className="text-sm mt-1">{text}</span>
+          </div>
         );
       })}
     </div>
   );
-}
+};
 
 export default CheckMenu;
-
-
-
-
-
-
-
-
-
-
-
