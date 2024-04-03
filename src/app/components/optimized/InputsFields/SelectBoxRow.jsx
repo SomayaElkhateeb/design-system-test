@@ -4,16 +4,18 @@ import { ClipLoader } from 'react-spinners';
 
 /**
  * @param {{
- *  label: string
- *  options: Array<{ value: string, label: string }>
- *  loading?: boolean
- *  error?: boolean
- *  success?: boolean
- *  leftIcon?: JSX.Element
- *  rightIcon?: JSX.Element
- *  selectedValue: string
- *  handleSelectChange: (value: string) => void
- * } & import('react').SelectHTMLAttributes<HTMLSelectElement>} props - Props for the SelectBoxRow component
+ *  label?: import("react").ReactNode;
+ *  leftIcon?: JSX.Element;
+ *  rightIcon?: JSX.Element;
+ *  loading?: boolean;
+ *  error?: string;
+ *  success?: boolean;
+ *  value?: string;
+ *  handleOnChange?: (value: string) => void;
+ * _ref?: any;
+ *  options: Array<{ value: string, label: string }>;
+ *  selectedValue?: string;
+ * } & Omit<import('react').SelectHTMLAttributes<HTMLSelectElement>, "onChange">} props - Props for the SelectBoxRow component
  *
  * @description
  *
@@ -59,7 +61,8 @@ export default function SelectBoxRow({
 	leftIcon,
 	rightIcon,
 	selectedValue,
-	handleSelectChange: handleOnChange,
+	handleOnChange,
+	_ref,
 	...rest
 }) {
 	const reactId = useId();
@@ -95,6 +98,7 @@ export default function SelectBoxRow({
 							</div>
 						)}
 						<select
+							ref={_ref}
 							className={`block w-full px-3 py-2 border rounded focus:outline-none border-none outline-none ${
 								leftIcon && 'px-16'
 							} ${loading && 'appearance-none'}`}
@@ -103,7 +107,10 @@ export default function SelectBoxRow({
 							onBlur={() => setFocused(false)}
 							disabled={loading}
 							value={selectedValue}
-							onChange={(e) => handleOnChange(e.target.value)}
+							onChange={
+								handleOnChange &&
+								((event) => handleOnChange(event.target.value))
+							}
 							{...rest}
 						>
 							<option disabled value=''>
