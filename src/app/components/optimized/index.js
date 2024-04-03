@@ -26,7 +26,7 @@ export { default as LineChart } from "./Charts/LineChart";
 export { default as StackedColumnChart } from "./Charts/StackedColumnChart";
 export { default as SelectItems } from "./SelectItems/SelectItems";
 export { default as SelectItem } from "./SelectItems/SelectItem";
-// export { default as PopupProceed } from "./Popups/PopupProceed";
+export { default as PopupProceed } from "./Popups/PopupProceed";
 
 export { default as Tooltip } from "./UiKits/Tooltip";
 export { default as TimePicker } from "./Pickers/TimePicker";
