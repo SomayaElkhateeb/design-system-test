@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 
 /**
@@ -10,10 +11,10 @@ import { Link, useParams } from 'react-router-dom';
  * @returns {JSX.Element} HorizontalTabsLink component.
  */
 const HorizontalTabsLink = ({ tabs, path }) => {
+	//  hooks
 	const { tab: marketingTab } = useParams();
-	if (!tabs) {
-		return <div>Loading...</div>;
-	}
+
+	const { t } = useTranslation()
 
 	return (
 		<div>
@@ -22,14 +23,13 @@ const HorizontalTabsLink = ({ tabs, path }) => {
 					{tabs.map((tab) => (
 						<li key={tab} className='mr-2'>
 							<Link
-								className={`inline-block p-2 rounded-t-lg  ${
-									marketingTab === tab
+								className={`inline-block p-2 rounded-t-lg  ${marketingTab === tab
 										? 'text-primary title border-b-2 border-primary'
 										: 'text-hint paragraph hover:text-primary'
-								}`}
+									}`}
 								to={`${path}/${tab}`}
 							>
-								{tab.charAt(0).toUpperCase() + tab.slice(1)}
+								{t(tab.charAt(0).toUpperCase() + tab.slice(1))}
 							</Link>
 						</li>
 					))}

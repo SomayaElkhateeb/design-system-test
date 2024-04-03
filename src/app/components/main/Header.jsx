@@ -21,12 +21,17 @@ import { getImageUrl } from 'src/app/utils';
 import { useLocation } from 'react-router-dom';
 import { TbWorld } from "react-icons/tb";
 import { UseLanguage } from '../CustomHook/LanguageHook';
+import { useTranslation } from 'react-i18next';
 const Header = ({ setIsOpen }) => {
+	//  hooks
 	const { pathname } = useLocation();
+	const { t } = useTranslation()
+
+	//  handel active header
 	const activeModule =
 		pathname === '/'
-			? 'Home'
-			: pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
+			? t('Home')
+			: t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
 
 	return (
 		<div className='h-[70px] flex justify-between items-center p-4 bg-white'>
@@ -131,7 +136,7 @@ const ProfileInfo = () => {
 	}
 
 
-	 
+
 	return (
 		<div className='flex items-center gap-[14px]'>
 			<TbWorld className=' text-[30px] cursor-pointer' onClick={handelLanguage} />
