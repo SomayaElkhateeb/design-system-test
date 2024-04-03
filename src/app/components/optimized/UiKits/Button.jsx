@@ -97,7 +97,7 @@ export default function Button({
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{LeftIcon && <LeftIcon className={textClass} />}
+					{LeftIcon && <LeftIcon className={iconClass} />}
 					<span className={textClass}>{children ?? text}</span>
 					{RightIcon && <RightIcon className={iconClass} />}
 				</>
