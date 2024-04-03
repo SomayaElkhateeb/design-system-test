@@ -1,26 +1,29 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 
 import { mostPopularApps } from 'src/app/utils/constants';
 
 const MostPopularList = () => {
+	//  hooks
+	const { t } = useTranslation();
 	return (
-		<div>
+		<>
 			<div className='mb-5'>
-				<h2 className='title text-lg'>Most popular</h2>
+				<h2 className='text-lg title'>{t('Most popular')}</h2>
 				<p className='paragraph text-subtitle'>
-					For more information about setup guide{' '}
+					{t('For more information about setup guide')}{' '}
 					<Link className='text-primary' to=''>
-						Learn more
+						{t('Learn more')}
 					</Link>
 				</p>
 			</div>
-			<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+			<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
 				{mostPopularApps.map((app) => (
 					<BigAppsCard key={app.id} {...app} />
 				))}
 			</div>
-		</div>
+		</>
 	);
 };
 
@@ -36,12 +39,8 @@ const BigAppsCard = ({ image, name, description, url, status }) => {
 						<img src={image} alt={name} className='h-[180px]' />
 					</div>
 					<h2 className='mt-4 title text-[16px]'>{name}</h2>
-					<p className='paragraph mt-2'>{description}</p>
-					<img
-						src={getImageUrl(`padges/${statusPadge}.svg`)}
-						alt='status'
-						className='h-7 mt-3'
-					/>
+					<p className='mt-2 paragraph'>{description}</p>
+					<img src={getImageUrl(`padges/${statusPadge}.svg`)} alt='status' className='mt-3 h-7' />
 				</div>
 			</div>
 		</Link>

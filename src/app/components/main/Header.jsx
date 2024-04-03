@@ -19,13 +19,19 @@ import { RxHome } from 'react-icons/rx';
 import { MdAllInclusive } from 'react-icons/md';
 import { getImageUrl } from 'src/app/utils';
 import { useLocation } from 'react-router-dom';
-
+import { TbWorld } from "react-icons/tb";
+import { UseLanguage } from '../CustomHook/LanguageHook';
+import { useTranslation } from 'react-i18next';
 const Header = ({ setIsOpen }) => {
+	//  hooks
 	const { pathname } = useLocation();
+	const { t } = useTranslation()
+
+	//  handel active header
 	const activeModule =
 		pathname === '/'
-			? 'Home'
-			: pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
+			? t('Home')
+			: t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
 
 	return (
 		<div className='h-[70px] flex justify-between items-center p-4 bg-white'>
@@ -115,8 +121,25 @@ HeaderSearchBar.defaultProps = {
 
 // ProfileInfo
 const ProfileInfo = () => {
+
+	//  handel language
+	const language = UseLanguage()
+
+	const handelLanguage = () => {
+		if (language === "ar") {
+			window.location.reload()
+			localStorage.setItem("language", "en")
+		} else {
+			window.location.reload()
+			localStorage.setItem("language", "ar")
+		}
+	}
+
+
+
 	return (
 		<div className='flex items-center gap-[14px]'>
+			<TbWorld className=' text-[30px] cursor-pointer' onClick={handelLanguage} />
 			<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
 				<FaqIcon />
 			</button>

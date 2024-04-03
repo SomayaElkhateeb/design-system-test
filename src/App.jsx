@@ -17,6 +17,9 @@ import {
 } from "src/pages";
 import RootLayout from "./pages/RootLayout";
 import { MarketingConfig, MarketingTabs } from "./pages/MarketingPage/comp";
+import { UseLanguage } from "./app/components/CustomHook/LanguageHook";
+import { useEffect } from "react";
+import i18n from "./app/language/i18n";
 
 const router = createBrowserRouter([
   {
@@ -47,8 +50,17 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+
+  const language = UseLanguage()
+  useEffect(() => {
+
+    language === "ar"
+      ? i18n.changeLanguage("ar")
+      : i18n.changeLanguage("en");
+
+    document.dir = language === "ar" ? "rtl" : "ltr";
+  }, [language]);
   return <RouterProvider router={router} />;
 };
 
 export default App;
-    
