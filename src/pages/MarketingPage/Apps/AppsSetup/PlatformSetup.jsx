@@ -2,7 +2,7 @@ import { VerticalTabs } from 'src/app/components/optimized';
 import { useFacebookSetup } from './facebook/useFacebookSetup';
 import { useGoogleSetup } from './google/useGoogleSetup';
 import TikTokSetup from './tiktok/TikTokSetup';
-import { useTikTokSetup } from './tiktok/comp/getTikTokSetup';
+import { getTikTokSetup } from './tiktok/comp/getTikTokSetup';
 import { useSearchParams } from 'react-router-dom';
 
 const PlatformSetup = ({ platform }) => {
@@ -19,7 +19,7 @@ const PlatformSetup = ({ platform }) => {
 			({ google_title: title, google_tabs: tabs } = useGoogleSetup(platform));
 			break;
 		case 'tikTok':
-			({ tikTok_title: title, tikTok_tabs: tabs } = useTikTokSetup(platform));
+			({ tikTok_title: title, tikTok_tabs: tabs } = getTikTokSetup(platform));
 			break;
 		default:
 			return <section>All</section>;
