@@ -11,9 +11,9 @@ import { getImageUrl } from 'src/app/utils';
  *   };
  *  onDataChange: (fieldName: string, value: string) => void;
  *  errors: {
- *   quantity: string;
- *   expiryDate: string;
- *   cvv: string;
+ *   quantity?: string;
+ *   expiryDate?: string;
+ *   cvv?: string;
  *  };
  * }} props
  */
