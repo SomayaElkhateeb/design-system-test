@@ -1,4 +1,22 @@
 export const english = {
+
+"Home":"Home",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Dashboard: "Dashboard",
     "Welcome to Restaurant Admin!": "Welcome to Restaurant Admin!",
     "Total Income": "Total Income",
@@ -19,8 +37,8 @@ export const english = {
     "Recent Orders Request": "Recent Orders Request",
     "Customer Name": "Customer Name",
     "Add Item Successfully": "Item Added Successfully",
-    "Item increased Successfully":"Item increased Successfully",
-    "Item decreased Successfully":"Item decreased Successfully",
+    "Item increased Successfully": "Item increased Successfully",
+    "Item decreased Successfully": "Item decreased Successfully",
     "Food Management": "Food Management",
     Restaurant: "Restaurant",
     Profile: "Profile",

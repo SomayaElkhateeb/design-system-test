@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link, NavLink } from "react-router-dom";
 import { getImageUrl } from "src/app/utils";
 import { sidebarLinks, socialLinks } from "src/app/utils/constants";
@@ -86,6 +87,8 @@ const SidebarNavLinks = ({ isOpen }) => {
 
 // SidebarLink
 const SidebarLink = ({ Icon, name, path, isOpen }) => {
+  //  hooks
+  const {t}=useTranslation()
   return (
     <NavLink
       to={path}
@@ -107,7 +110,7 @@ const SidebarLink = ({ Icon, name, path, isOpen }) => {
           !isOpen ? "hidden" : ""
         }`}
       >
-        {name}
+        {t(name)}
       </p>
       <span
         className={`absolute rounded-full right-0 h-0 w-[3px] bg-primary group-[.active]:h-[30px] duration-300 transition-all ${

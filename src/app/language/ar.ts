@@ -1,4 +1,5 @@
 export const arabic = {
+    "Home":"الصفحه الرئيسيه",
     Dashboard: "اللوحه الرئيسيه",
     "Welcome to Restaurant Admin!": "مرحبا بك في لوحه تحكم المطعم !",
     "Total Income": "اجمالي الدخل",

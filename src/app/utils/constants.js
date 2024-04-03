@@ -23,7 +23,7 @@ import {
 
 //  SIDEBAR
 export const sidebarLinks = [
-  { id: nanoid(), path: "/", name: "Home", Icon: DashboardIcon },
+  { id: nanoid(), path: "/", name:"Home", Icon: DashboardIcon },
   { id: nanoid(), path: "products", name: "Products", Icon: ProductsIcon },
   { id: nanoid(), path: "orders", name: "Orders", Icon: OrdersIcon },
   { id: nanoid(), path: "customers", name: "Customers", Icon: CustomersIcon },
