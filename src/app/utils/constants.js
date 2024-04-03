@@ -72,7 +72,7 @@ export const mostPopularApps = [
 		url: '/apps/facebook',
 		status: 'installed',
 		description:
-			'Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers. ',
+			'Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.',
 	},
 ];
 

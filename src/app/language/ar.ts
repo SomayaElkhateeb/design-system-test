@@ -22,6 +22,20 @@ export const arabic = {
 	'For more information about setup guide': 'لمزيد من المعلومات حول دليل الإعداد',
 	'Learn more': 'اعرف اكثر',
 	'Most popular': 'الاكثر شيوعا',
+	Google: 'جوجل',
+
+	'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.':
+		'تسهل عليك قناة Google الوصول إلى ملايين المتسوقين الذين يستخدمون Google للعثور على المنتجات التي يحتاجون إليها.',
+	Twitter: 'تويتر',
+	'Connect with Twitter to launch an ad campaign to show your products in front of potential customers.':
+		'تواصل مع تويتر لإطلاق حملة إعلانية لعرض منتجاتك أمام العملاء المحتملين.',
+	'Facebook & Instagram': 'فيسبوك & انستجرام',
+	'Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.':
+		'تواصل مع Facebook وInstagram Shop وأطلق حملة إعلانية لعرض منتجاتك أمام العملاء المحتملين.',
+
+	free: 'مجاني',
+	installed: 'تم تنزيله',
+
 	Dashboard: 'اللوحه الرئيسيه',
 	'Welcome to Restaurant Admin!': 'مرحبا بك في لوحه تحكم المطعم !',
 	'Total Income': 'اجمالي الدخل',
