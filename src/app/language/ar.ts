@@ -81,22 +81,18 @@ export const arabic = {
 	'View Details': 'اظهار التفاصيل',
 	'Add New Customer': 'اضف عميل جديد',
 	Customers: 'العملاء',
-
 	'Your Restaurant': 'مطعمك',
-
 	'Sign In': 'تسجيل الدخول',
 	'Enter your Email and password': 'ادخل الايميل والرقم السري',
 	Email: 'الايميل',
 	Password: 'الرقم السري',
 	'Remember me': 'تذكرني',
 	'Forget Password?': 'نسيت الرقم السري ؟',
-
 	'Forgot Password ?': 'نسيت الرقم السري ؟',
 	'Enter your email to reset your password': 'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك',
 	'Will Grow': 'سوف ينمو',
 	'With Us': 'معنا',
 	cancel: 'الغاء',
-
 	'Control Your Menu': 'تحكم بالقائمه',
 	'Add Food Name': 'اضف اسم الطعام',
 	'Product Name': 'اسم الطعام',
@@ -105,7 +101,6 @@ export const arabic = {
 	'Update Image': 'تحديث الصوره',
 	'Select Category': 'تحديد فئه',
 	'Food Price': 'سعر الطعام',
-
 	'language changed successfully': 'تم تغيير اللغة بنجاح.',
 	'Enter Three fields of name And Describtion': 'ادخل جميع الحقول الخاصه بالاسم والوصف',
 	'Enter Category': 'ادخل الفئه',
@@ -117,14 +112,11 @@ export const arabic = {
 	Remove: 'حذف',
 	'Size Title': 'عنوان الحجم',
 	'Size Name': 'اسم الحجم',
-
 	'Food Variations': 'خيارات الطعام',
 	'Add New Variation': 'اضف خيار جديد',
 	'Variation Title': 'عنوان الخيار',
 	'Variation Name': 'اسم الخيار',
-
 	'Profile Information': 'معلومات الملف الشخصي',
-
 	'Order ID': 'رقم الطلب',
 	'Order Date': 'تاريخ الطلب',
 	Amount: 'المبلغ',
@@ -132,7 +124,6 @@ export const arabic = {
 	Orders: 'الطلبات',
 	Print: 'طباعه',
 	'Orders List': 'قائمه الطلبات',
-
 	'Order created at': 'تم إنشاء الطلب في',
 	Items: 'العناصر',
 	Variations: 'الخيارات',
@@ -151,11 +142,9 @@ export const arabic = {
 	House: 'المنزل',
 	Floor: 'الطابق',
 	Address: 'العنوان',
-
 	'Customer Info': 'معلومات العميل',
 	'View more details for customer': 'اظهر المزيد من التفاصيل عن العميل',
 	'Address Info': 'معلومات العنوان',
-
 	'New Customer': 'عميل جديد',
 	'Full Name': 'الاسم الكلي',
 	'Phone Number': 'رقم الهاتف',
@@ -166,13 +155,28 @@ export const arabic = {
 	Building: 'البنايه',
 	Save: 'حفظ',
 	update: 'تعديل',
-
 	'Deliver to': 'توصيل الي',
-
 	'Food List': 'قائمه الطعام',
 	'Add New Food': 'اضف طعام جديد',
 	'change Food visibility to customers': 'تغيير رؤية الغذاء للعملاء',
 	Food: 'الطعام',
+	Products: 'المنتجات',
+	Analytics: 'التحليلات',
+	Reviews: 'التقيمات',
+	Pages: 'الصفحات',
+	Marketing: 'التسويق',
+	Apps: 'التطبيقات',
+	Discounts: 'الخصومات',
+	Coupons: 'الكوبونات',
+	Campaigns: 'الحملات',
+	Services: 'الخدمات',
+	Settings: 'الادوات',
+	Store: 'المخزن',
+	'Sales channel': 'قناه المبيعات',
+	'Marketing/apps': 'التسويق / التطبيقات',
+	'Marketing/discounts': 'التسويق / الخصومات',
+	'Marketing/coupons': 'التسويق / الكوبونات',
+	'Marketing/campaigns': 'التسويق /  الحملات',
 
 	// "Sub total": "الإجمالي",
 	// "Pick Up at": "الاستلام في",
