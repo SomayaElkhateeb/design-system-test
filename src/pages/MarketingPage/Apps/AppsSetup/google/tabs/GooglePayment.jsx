@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { MultiChoiceChips, PopupProceed, SetupCard } from 'src/app/components/optimized';
+import { MultiChoiceChips,  SetupCard } from 'src/app/components/optimized';
+import PopupProceed from 'src/app/components/optimized/Popups/PopupProceed';
 import { PagesIcon, PaymentIcon, PhoneIcon } from 'src/app/utils/icons';
 
 const GooglePayment = ({ data }) => {
