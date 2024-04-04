@@ -42,7 +42,7 @@ const SocialAppsWrapper = ({ socialApps, title, linkTo }) => {
 				</Link>
 			</div>
 			<div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
-				{socialApps.slice(0, itemsToRender).map((app) => (
+				{socialApps?.map((app) => (
 					<div key={app.id} className='col-span-1'>
 						<AppsCard {...app} />
 					</div>

@@ -5,7 +5,13 @@ import { socialMediaContent } from 'src/app/utils/constants';
 import { BackIcon } from 'src/app/utils/icons';
 import data from './data.json';
 import { Button } from 'src/app/components/optimized';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { IoIosArrowForward } from "react-icons/io";
+
 const SocialAppDetails = () => {
+
+
+
 	const { platform } = useParams();
 	const [socialPlatform, setSocialPlatform] = useState(null);
 	const navigate = useNavigate();
@@ -35,6 +41,8 @@ const SocialAppDetails = () => {
 
 	const [fColor, sColor] = backgroundColor;
 
+const language=UseLanguage()
+
 	return (
 		<div>
 			{/*[1] Top Bar */}
@@ -42,7 +50,7 @@ const SocialAppDetails = () => {
 			<div className='flex justify-between px-4 py-3 bg-white '>
 				<div className='flex items-center'>
 					<Link to={-1}>
-						<BackIcon />
+						{language==="ar"?<IoIosArrowForward />:<BackIcon />}
 					</Link>
 					<h2 className='text-lg font-semibold capitalize text-title'>
 						{name}
