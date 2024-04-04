@@ -21,7 +21,16 @@ export const english = {
 	'For more information about setup guide': 'For more information about setup guide',
 	'Learn more': 'Learn more',
 	'Most popular': 'Most popular',
-
+	"Google": "Google",
+	"The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.": "The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.",
+	"Twitter":"Twitter",
+	"Connect with Twitter to launch an ad campaign to show your products in front of potential customers.":"Connect with Twitter to launch an ad campaign to show your products in front of potential customers.",
+	"Facebook & Instagram":"Facebook & Instagram",
+	"Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.":"Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.",
+	"free":"free",
+	"installed":"installed",
+	
+	
 	Dashboard: 'Dashboard',
 	'Welcome to Restaurant Admin!': 'Welcome to Restaurant Admin!',
 	'Total Income': 'Total Income',

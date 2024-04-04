@@ -1,35 +1,31 @@
-import * as React from "react";
-import dayjs from "dayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-import { MobileTimePicker } from "@mui/x-date-pickers/MobileTimePicker";
-import { capitalizeFirstLetter } from "src/app/utils";
+import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
+import { capitalizeFirstLetter } from 'src/app/utils';
 
-const TimePicker = ({ label }) => {
-  return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer
-        components={[
-          "TimePicker",
-          "MobileTimePicker",
-          "DesktopTimePicker",
-          "StaticTimePicker",
-        ]}
-      >
-        <DemoItem>
-          <span className="text-pri-dark text-sm">
-            {capitalizeFirstLetter(label)}
-          </span>
-          <MobileTimePicker
-            defaultValue={dayjs("2022-04-17T15:30")}
-            onChange={(value) => console.log(value)}
-          />
-        </DemoItem>
-      </DemoContainer>
-    </LocalizationProvider>
-  );
-};
-
-export default TimePicker;
+/**
+ * @param {{
+ *  label: string;
+ *  value?: import("dayjs").Dayjs | null;
+ *  handleOnChange?: (date: import("dayjs").Dayjs | null) => void;
+ * }} props
+ */
+export default function TimePicker(props) {
+	return (
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
+			<DemoContainer components={['TimePicker', 'MobileTimePicker', 'DesktopTimePicker', 'StaticTimePicker']}>
+				<DemoItem>
+					<span className='text-sm text-pri-dark'>{capitalizeFirstLetter(props.label)}</span>
+					<MobileTimePicker
+						defaultValue={dayjs('2022-04-17T15:30')}
+						value={props.value}
+						onChange={props.handleOnChange}
+					/>
+				</DemoItem>
+			</DemoContainer>
+		</LocalizationProvider>
+	);
+}

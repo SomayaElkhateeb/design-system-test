@@ -30,6 +30,9 @@ const MostPopularList = () => {
 export default MostPopularList;
 
 const BigAppsCard = ({ image, name, description, url, status }) => {
+	//  hooks
+	const { t } = useTranslation();
+	//  handel card status
 	const statusPadge = status === 'available' ? 'free' : 'installed';
 	return (
 		<Link to={url} rel='noopener noreferrer'>
@@ -38,8 +41,8 @@ const BigAppsCard = ({ image, name, description, url, status }) => {
 					<div className='border border-border-color w-full h-[213px] grid place-content-center  rounded-lg'>
 						<img src={image} alt={name} className='h-[180px]' />
 					</div>
-					<h2 className='mt-4 title text-[16px]'>{name}</h2>
-					<p className='mt-2 paragraph'>{description}</p>
+					<h2 className='mt-4 title text-[16px]'>{t(name)}</h2>
+					<p className='mt-2 paragraph'>{t(description)}</p>
 					<img src={getImageUrl(`padges/${statusPadge}.svg`)} alt='status' className='mt-3 h-7' />
 				</div>
 			</div>

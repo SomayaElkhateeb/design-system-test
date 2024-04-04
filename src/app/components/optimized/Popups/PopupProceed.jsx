@@ -3,11 +3,16 @@ const PopupProceed = ({ isOpen, onClose, title, subTitle, children, proceedButto
 		onClose();
 	};
 
-	const handleProceed = () => {
-		alert('Confirmed');
-		onClose();
-		// onProceed(); // Uncommented
-	};
+
+
+  const handleProceed = () => {
+    alert("Confirmed");
+    onClose();
+    // onProceed(); // Uncommented
+  };
+
+
+
 
 	return (
 		<>

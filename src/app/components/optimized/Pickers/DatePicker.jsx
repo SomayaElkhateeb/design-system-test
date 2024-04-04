@@ -9,7 +9,7 @@ import { capitalizeFirstLetter } from 'src/app/utils';
  * @param {{
  *  label: string;
  *  value?: import("dayjs").Dayjs | null;
- *  onChange?: (date: import("dayjs").Dayjs | null) => void;
+ *  handleOnChange?: (date: import("dayjs").Dayjs | null) => void;
  * }} props
  */
 export default function DatePicker(props) {
@@ -19,7 +19,7 @@ export default function DatePicker(props) {
 				<DemoItem>
 					<span className='text-sm text-pri-dark'>{capitalizeFirstLetter(props.label)}</span>
 					<MobileDatePicker
-						onChange={props.onChange}
+						onChange={props.handleOnChange}
 						defaultValue={props.value ? undefined : dayjs('2022-04-17')}
 						value={props.value}
 					/>
