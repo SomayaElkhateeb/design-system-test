@@ -82,7 +82,7 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 		>
 			<div className='w-[39rem] rounded bg-white py-[1rem]'>
 				<div>
-					<h3 className='text-title font-semibold mb-3 ml-[1rem]'>{capitalizeFirstLetter(title)}</h3>
+					<h3 className='text-title font-semibold mb-3 ml-[1rem]'>Select {capitalizeFirstLetter(title)}</h3>
 
 					<div className='flex items-center justify-between px-[1rem]'>
 						<div className='w-[24rem]'>
@@ -95,16 +95,16 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 						</div>
 
 						<p>
-							{selectedItems.length} categories out of {select.length}
+							{selectedItems.length} {title} out of {select.length}
 						</p>
 
 						{selectedItems.length === 0 && (
 							<CheckBox variant='minus' initialChecked={false} handleOnChange={handleChange} />
 						)}
-						{selectedItems.length >= 1 && (
+						{/* {selectedItems.length >= 1 && (
 							<CheckBox variant='minus' initialChecked={true} handleOnChange={handleChange} />
 						)}
-						{selectedItems.length === select.length && <CheckBox initialChecked={true} handleOnChange={handleChange} />}
+						{selectedItems.length === select.length && <CheckBox initialChecked={true} handleOnChange={handleChange} />} */}
 					</div>
 				</div>
 

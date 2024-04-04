@@ -17,7 +17,7 @@ const SpecificProducts: React.FC<SpecificProductsProps> = (props) => {
 					select products
 				</Button>
 
-				{showSelect && <SelectItems title='Example' onClose={() => setShowSelect(false)} select={selectProducts} />}
+				{showSelect && <SelectItems title='products' onClose={() => setShowSelect(false)} select={selectProducts} />}
 			</div>
 		</div>
 	);
