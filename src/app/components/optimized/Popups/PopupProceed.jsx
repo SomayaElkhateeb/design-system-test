@@ -1,59 +1,47 @@
-const PopupProceed = ({
-	isOpen,
-	onClose,
-	title,
-	subTitle,
-	children,
-	proceedButton,
-	onCancel,
-	onProceed
-}) => {
-	const handleClose = () => {
-		onClose();
+/**
+ * @param {{
+ *  isOpen: boolean;
+ *  onClose: () => void;
+ *  title: string;
+ *  subTitle: string;
+ *  children: JSX.Element;
+ *  proceedButton: string;
+ *  onCancel?: () => void;
+ *  onProceed: () => void;
+ * }} props
+ */
+export default function PopupProceed(props) {
+	const handleProceed = () => {
+		alert('Confirmed');
+		props.onClose();
+		// props.onProceed(); // Uncommented
 	};
 
-
-  const handleProceed = () => {
-    alert("Confirmed");
-    onClose();
-    // onProceed(); // Uncommented
-  };
-
-
+	if (!props.isOpen) {
+		return null;
+	}
 
 	return (
-		<>
-			{isOpen && (
-				<div className='fixed inset-0 z-50 flex items-center justify-center p-3'>
-					{/* Overlay */}
-					<div
-						className='fixed inset-0 bg-black opacity-50'
-						onClick={handleClose}
-					></div>
+		<div className='fixed inset-0 z-50 flex items-center justify-center p-3'>
+			{/* Overlay */}
+			<div className='fixed inset-0 bg-black opacity-50' onClick={props.onClose}></div>
 
-					{/* Popup Content */}
-					<div className='relative flex flex-col content-between border border-constrained rounded-md max-w-xl p-5 bg-white'>
-						<h3 className='font-semibold text-title'>{title}</h3>
-						<p className='mt-1 text-sm subtitle'>{subTitle}</p>
+			{/* Popup Content */}
+			<div className='relative flex flex-col content-between max-w-xl p-5 bg-white border rounded-md border-constrained'>
+				<h3 className='font-semibold text-title'>{props.title}</h3>
+				<p className='mt-1 text-sm subtitle'>{props.subTitle}</p>
 
-						<div>{children}</div>
+				<div>{props.children}</div>
 
-						<div className='flex justify-end items-center gap-2 mt-5'>
-							<button
-								className='font-semibold text-title text-sm px-4 py-2'
-								onClick={onCancel || handleClose}
-							>
-								Cancel
-							</button>
-							<button className='btn-pri' onClick={handleProceed}>
-								{proceedButton}
-							</button>
-						</div>
-					</div>
+				<div className='flex items-center justify-end gap-2 mt-5'>
+					<button className='px-4 py-2 text-sm font-semibold text-title' onClick={props.onCancel ?? props.onClose}>
+						Cancel
+					</button>
+					<button className='btn-pri' onClick={handleProceed}>
+						{props.proceedButton}
+					</button>
 				</div>
-			)}
-		</>
+			</div>
+		</div>
 	);
-};
-
-export default PopupProceed;
+}
