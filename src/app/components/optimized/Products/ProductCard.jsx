@@ -43,6 +43,7 @@ import {
  *   quantity={50}
  *   price='10000.00'
  * />
+ * ```
  */
 export default function ProductCard(props) {
 	const [isFavorite, setIsFavorite] = useState(false);
