@@ -23,7 +23,9 @@ export const arabic = {
 	'Learn more': 'اعرف اكثر',
 	'Most popular': 'الاكثر شيوعا',
 	Google: 'جوجل',
-
+	"Install now":"التنزيل الان",
+	"Recommended": "ينصح به",
+	"Reach more customers": "الوصول للكثير من العملاء",
 	'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.':
 		'تسهل عليك قناة Google الوصول إلى ملايين المتسوقين الذين يستخدمون Google للعثور على المنتجات التي يحتاجون إليها.',
 	Twitter: 'تويتر',
