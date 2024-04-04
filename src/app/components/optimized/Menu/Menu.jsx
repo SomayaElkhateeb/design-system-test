@@ -1,21 +1,21 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
-
 const Menu = ({ options, onSelect, selectedOption }) => {
-  // md:w-[341px]
-  return (
-    <ul className="absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 ">
-      {options.map((option) => (
-        <MenuItem
-          key={option.id}
-          text={option.text}
-          onClick={() => onSelect(option.text)}
-          selected={selectedOption === option.text}
-        />
-      ))}
-    </ul>
-  );
+	// md:w-[341px]
+	return (
+		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
+			{options.map((option) => (
+				<MenuItem
+					key={option.id}
+					text={option.text}
+					onClick={() => onSelect(option.text)}
+					selected={selectedOption === option.text}
+				/>
+			))}
+		</ul>
+	);
 };
+export default Menu;
 
 /**
  * @param {{
@@ -38,7 +38,6 @@ const Menu = ({ options, onSelect, selectedOption }) => {
 // 		</ul>
 // 	);
 // }
-
 
 /**
  * @param {{

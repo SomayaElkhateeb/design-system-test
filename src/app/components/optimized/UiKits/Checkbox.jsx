@@ -42,7 +42,7 @@ export default function CheckBox({ variant, label, defaultChecked: initialChecke
 	const [_isChecked, setIsChecked] = useState(!!props.checked);
 
 	const isChecked = props.checked ?? _isChecked;
-
+	console.log('isChecked', isChecked);
 	useEffect(() => {
 		if (initialChecked !== undefined) {
 			setIsChecked(initialChecked);

@@ -1,10 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import discounts from "./slices/marketing/marketingSlice";
-import productReducer from "./slices/product/productSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import discounts from './slices/marketing/marketingSlice';
 export default configureStore({
-  reducer: {
-    discounts,
-    //mohammed
-    products: productReducer,
-  },
+	reducer: {
+		discounts,
+	},
 });
