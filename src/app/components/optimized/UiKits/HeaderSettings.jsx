@@ -1,12 +1,6 @@
 import { Link } from 'react-router-dom';
 import { GroupIcons } from '..';
-import {
-	BackIcon,
-	LinkIcon,
-	LoadUpdateIcon,
-	MoreIcon,
-	PrintIcon
-} from 'src/app/utils/icons';
+import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 
 /**
  *
@@ -18,7 +12,6 @@ import {
  *  btn2: { text: string; onClick: () => void };
  *  btn3: { text: string; onClick: () => void };
  * }} props
- * @returns
  */
 export default function HeaderSettings(props) {
 	return (
@@ -43,16 +36,10 @@ export default function HeaderSettings(props) {
 				)}
 				{props.variant === 'settingOrder' && (
 					<>
-						<ButtonWithIcon
-							onClick={props.btn1.onClick}
-							icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}
-						>
+						<ButtonWithIcon onClick={props.btn1.onClick} icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}>
 							Update Status
 						</ButtonWithIcon>
-						<ButtonWithIcon
-							onClick={props.btn2.onClick}
-							icon={<PrintIcon className='p-0.5 fill-pri-dark' />}
-						>
+						<ButtonWithIcon onClick={props.btn2.onClick} icon={<PrintIcon className='p-0.5 fill-pri-dark' />}>
 							Print Invoice
 						</ButtonWithIcon>
 						<IconButton onClick={props.btn3.onClick}>

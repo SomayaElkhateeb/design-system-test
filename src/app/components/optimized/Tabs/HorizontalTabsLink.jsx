@@ -8,13 +8,12 @@ import { Link, useParams } from 'react-router-dom';
  * @param {Object} props - Component props.
  * @param {string[]} props.tabs - Array of tab names.
  * @param {string} props.path - Path for the tab links.
- * @returns {JSX.Element} HorizontalTabsLink component.
  */
 const HorizontalTabsLink = ({ tabs, path }) => {
 	//  hooks
 	const { tab: marketingTab } = useParams();
 
-	const { t } = useTranslation()
+	const { t } = useTranslation();
 
 	return (
 		<div>
@@ -23,10 +22,11 @@ const HorizontalTabsLink = ({ tabs, path }) => {
 					{tabs.map((tab) => (
 						<li key={tab} className='mr-2'>
 							<Link
-								className={`inline-block p-2 rounded-t-lg  ${marketingTab === tab
+								className={`inline-block p-2 rounded-t-lg  ${
+									marketingTab === tab
 										? 'text-primary title border-b-2 border-primary'
 										: 'text-hint paragraph hover:text-primary'
-									}`}
+								}`}
 								to={`${path}/${tab}`}
 							>
 								{t(tab.charAt(0).toUpperCase() + tab.slice(1))}

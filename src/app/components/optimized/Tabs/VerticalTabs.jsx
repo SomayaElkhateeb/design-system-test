@@ -5,7 +5,6 @@ import { Button, LayoutCard } from '..';
  * VerticalTabs component renders a vertical tab navigation system.
  * @param {object} props - Props for the VerticalTabs component.
  * @param {Object[]} props.tabs - An array of tab objects containing title and content.
- * @returns {JSX.Element} VerticalTabs component.
  */
 
 const VerticalTabs = ({ tabs }) => {
@@ -40,7 +39,6 @@ export default VerticalTabs;
  * @param {object} props - Props for the useVerticalTabs hook.
  * @param {number} props.initialTab - The initial tab index.
  * @param {Object[]} props.tabs - An array of tab objects containing title and content.
- * @returns {Object} Object containing current tab index and tab navigation functions.
  */
 const useVerticalTabs = (initialTab = 0, tabs) => {
 	const [currentTab, setCurrentTab] = useState(initialTab);
@@ -80,7 +78,6 @@ const useVerticalTabs = (initialTab = 0, tabs) => {
  * @param {() => void} props.onNext - Function to handle next button click event.
  * @param {() => void} props.onPrev - Function to handle previous button click event.
  * @param {Object[]} props.tabs - An array of tab objects containing title and content.
- * @returns {JSX.Element} VTab component.
  */
 
 const VTab = ({ index, currentTab, title, content, onClick, onNext, onPrev, tabs }) => {
