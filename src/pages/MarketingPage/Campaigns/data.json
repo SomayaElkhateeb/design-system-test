@@ -1,0 +1,50 @@
+{
+	"statsData": [
+		{
+			"percentage": "4.75 %",
+			"label": "Sessions",
+			"value": "1200",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Time per session",
+			"value": "12",
+			"positive": false,
+			"extensions": "min"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Orders",
+			"value": "252",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Abandoned cart",
+			"value": "250",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Sales",
+			"value": "120",
+			"positive": false,
+			"extensions": "sar"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Expenses",
+			"value": "500",
+			"positive": false,
+			"extensions": "sar"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Net profit",
+			"value": "120",
+			"positive": false,
+			"extensions": "sar"
+		}
+	]
+}
