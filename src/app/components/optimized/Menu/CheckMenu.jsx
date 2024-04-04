@@ -3,10 +3,11 @@ import { check } from 'src/app/utils/constants';
 
 import { CheckBox } from '..';
 
-const CheckMenu = () => {
+export default function CheckMenu() {
 	const [menuItems, setMenuItems] = useState(check);
 
-	const handleClick = (id) => {
+	/** @param {string} id  */
+	function handleClick(id) {
 		setMenuItems((prevMenuItems) => {
 			return prevMenuItems.map((item) => {
 				if (item.id === id) {
@@ -15,7 +16,7 @@ const CheckMenu = () => {
 				return item;
 			});
 		});
-	};
+	}
 
 	return (
 		<div className='rounded bg-white shadow-md py-2 flex flex-col w-[341px] gap-0.5'>
@@ -30,7 +31,6 @@ const CheckMenu = () => {
 								: 'flex text-title items-center group hover:bg-sec-light px-4 py-3 gap-2 duration-300 transition-all'
 						}
 						onClick={() => handleClick(id)}
-						// state
 					>
 						<CheckBox checked={checked} />
 						<span className='mt-1 text-sm'>{text}</span>
@@ -39,6 +39,4 @@ const CheckMenu = () => {
 			})}
 		</div>
 	);
-};
-
-export default CheckMenu;
+}

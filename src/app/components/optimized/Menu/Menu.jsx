@@ -1,4 +1,5 @@
-import { CheckIcon } from "src/app/utils/icons";
+import { CheckIcon } from 'src/app/utils/icons';
+
 
 const Menu = ({ options, onSelect, selectedOption }) => {
   // md:w-[341px]
@@ -16,19 +17,46 @@ const Menu = ({ options, onSelect, selectedOption }) => {
   );
 };
 
-export default Menu;
-const MenuItem = ({ text, onClick, selected }) => {
-  return (
-    <li
-      onClick={onClick}
-      className={`flex text-title justify-between items-center hover:bg-sec-light px-4 py-3 transition-all ${
-        selected ? "bg-sec-light" : ""
-      }`}
-    >
-      <span className={`text-sm ${selected ? "text-sec-pressed" : ""}`}>
-        {text}
-      </span>
-      {selected && <CheckIcon className="fill-sec-pressed" />}
-    </li>
-  );
-};
+/**
+ * @param {{
+ *  options: string[];
+ *  onSelect: (option: string) => void;
+ *  selectedOption?: string | null;
+ * }} props
+ */
+// export default function Menu(props) {
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 md:w-[341px]'>
+// 			{props.options.map((option, index) => (
+// 				<MenuItem
+// 					key={index}
+// 					text={option}
+// 					onClick={() => props.onSelect(option)}
+// 					selected={props.selectedOption === option}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
+// }
+
+
+/**
+ * @param {{
+ *  text: string;
+ *  onClick: () => void;
+ *  selected: boolean;
+ * }} props
+ */
+function MenuItem(props) {
+	return (
+		<li
+			onClick={props.onClick}
+			className={`flex text-title justify-between items-center hover:bg-sec-light px-4 py-3 transition-all ${
+				props.selected ? 'bg-sec-light' : ''
+			}`}
+		>
+			<span className={`text-sm ${props.selected ? 'text-sec-pressed' : ''}`}>{props.text}</span>
+			{props.selected && <CheckIcon className='fill-sec-pressed' />}
+		</li>
+	);
+}

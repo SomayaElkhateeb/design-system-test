@@ -2,8 +2,8 @@
  * Button component for various button styles with optional icons and loading spinner.
  * @param {{
  *  variant?: string,
- *  LeftIcon?: (props: { className?: string }) => import("react").ReactNode,
- *  RightIcon?: (props: { className?: string }) => import("react").ReactNode,
+ *  LeftIcon?: ((props: { className?: string }) => import("react").ReactNode) | JSX.Element,
+ *  RightIcon?: ((props: { className?: string }) => import("react").ReactNode) | JSX.Element,
  *  loading?: boolean,
  *  text?: never
  * } & import("react").ButtonHTMLAttributes<HTMLButtonElement>} props - Props for the Button component.
@@ -97,9 +97,13 @@ export default function Button({
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
+
 					{LeftIcon && <LeftIcon className={iconClass} />}
+
+// 					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)}
+
 					<span className={textClass}>{children ?? text}</span>
-					{RightIcon && <RightIcon className={iconClass} />}
+					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
 				</>
 			)}
 		</button>

@@ -1,5 +1,11 @@
+
 import CampaignBtns from './CampaignBtns';
 import CampaignStatus from './CampaignStatus';
+
+
+import { useState } from 'react';
+import { Button, Menu } from 'src/app/components/optimized';
+import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
 
 const Campaigns = () => {
 	return (
@@ -43,7 +49,24 @@ const CampaignsData = [
 	},
 ];
 
+
 const CampaignTable = () => {
+
+const Header = () => {
+	const [isOpen, setIsOpen] = useState(false);
+	const [selectedOption, setSelectedOption] = useState(/** @type {string | null | undefined} */ (null));
+	const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+
+	/** @param {string} option */
+	function handleSelect(option) {
+		setSelectedOption(option);
+		setIsOpen(false);
+	}
+	const handleButtonClick = () => {
+		setIsOpen(!isOpen);
+	};
+
+
 	return (
 		<div className='flex flex-col'>
 			<table className=' w-full table-auto rounded -lg'>
