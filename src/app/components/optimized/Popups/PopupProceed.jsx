@@ -19,7 +19,6 @@ const PopupProceed = ({
     // onProceed(); // Uncommented
   };
 
-	
 
 
 	return (
