@@ -17,6 +17,7 @@ const Menu = ({ options, onSelect, selectedOption }) => {
   );
 };
 
+export default Menu;
 /**
  * @param {{
  *  options: string[];

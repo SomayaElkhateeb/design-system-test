@@ -100,7 +100,7 @@ export default function Button({
 
 					{LeftIcon && <LeftIcon className={iconClass} />}
 
-// 					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)}
+					{/* {LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)} */}
 
 					<span className={textClass}>{children ?? text}</span>
 					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}

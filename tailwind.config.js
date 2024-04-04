@@ -42,7 +42,7 @@ module.exports = {
 
 				//! Semantic & illustration colors
 				'neutral-1': '#FFCC73',
-				Warning: '#F59556',
+				warning: '#F59556',
 				error: '#EC5151',
 				'neutral-2': '#D65036',
 				tips: '#446CCE', // info, tips
