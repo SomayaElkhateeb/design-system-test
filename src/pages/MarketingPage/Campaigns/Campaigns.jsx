@@ -1,88 +1,44 @@
+import { useState } from 'react';
 import CampaignBtns from './CampaignBtns';
 import CampaignStatus from './CampaignStatus';
+import CampaignTable from './CampaignTable';
+import campaignData from './data.json';
+import { useSearchParams } from 'react-router-dom';
+import { StackedColumnChart } from 'src/app/components/optimized';
+import CampaignInfoCard from './CampaignInfoCard';
+import CampaignsHeader from './CampaignsHeader';
 
 const Campaigns = () => {
+	const [selectedOption, setSelectedOption] = useState(null);
+	const [searchParams, _] = useSearchParams();
+
+	const campaignActivity = searchParams.get('campaign_activity');
+	const activityDetails = searchParams.get('activity_details');
+	const title = activityDetails ? activityDetails : campaignActivity;
+	let tableData;
+	if (campaignActivity === null) {
+		tableData = campaignData.campaigns;
+	} else {
+		const matchedCampaign = campaignData.campaigns.find((campaign) => campaign.name === campaignActivity);
+		tableData = matchedCampaign ? matchedCampaign.activities : [];
+	}
+	const handleSelectOption = (option) => {
+		setSelectedOption(option);
+	};
+
+
 	return (
-		<div>
-			<CampaignStatus />
-			<CampaignBtns />
-			<CampaignTable />
-		</div>
+		<>
+			{(activityDetails || campaignActivity) && <CampaignsHeader title={title} />}
+			<div className='p-4'>
+				{activityDetails && <CampaignInfoCard />}
+				<CampaignStatus />
+				<CampaignBtns onSelectOption={handleSelectOption} />
+				{!activityDetails && <CampaignTable sortTerm={selectedOption} data={tableData} />}
+				{activityDetails && <StackedColumnChart />}
+			</div>
+		</>
 	);
 };
 
 export default Campaigns;
-const CampaignsData = [
-	{
-		name: 'Summer campaign',
-		status: 'running',
-		sales: 'SAR 10000.00',
-		expenses: 'SAR 10000.00',
-		netProfit: 'SAR 10000.00',
-	},
-	{
-		name: 'Ramadan campaign ',
-		status: 'ended',
-		sales: 'SAR 10000.00',
-		expenses: 'SAR 10000.00',
-		netProfit: 'SAR 10000.00',
-	},
-	{
-		name: 'Ramadan campaign ',
-		status: 'in review',
-		sales: 'SAR 10000.00',
-		expenses: 'SAR 10000.00',
-		netProfit: 'SAR 10000.00',
-	},
-	{
-		name: 'Ramadan campaign ',
-		status: 'refused',
-		sales: 'SAR 10000.00',
-		expenses: 'SAR 10000.00',
-		netProfit: 'SAR 10000.00',
-	},
-];
-
-const CampaignTable = () => {
-	return (
-		<div className='flex flex-col'>
-			<table className=' w-full table-auto rounded -lg'>
-				<thead>
-					<tr className='text-left bg-white'>
-						<th className='px-4 py-4 subheading '>Campaign</th>
-						<th className='px-4 py-4 subheading'>Status </th>
-						<th className='px-4 py-4 subheading'>sales </th>
-						<th className='px-4 py-4 subheading'>Expenses </th>
-						<th className='px-4 py-4 subheading'>Net profit </th>
-					</tr>
-				</thead>
-
-				<tbody>
-					{CampaignsData.map((campaign) => (
-						<tr key={campaign.name} className='rounded-xl bg-white'>
-							<td className='px-4 py-4 paagraph text-primary'>{campaign.name}</td>
-							<td className={`px-4 py-4 paagraph text-white `}>
-								<span
-									className={` p-1 rounded-lg ${
-										campaign.status === 'ended' || campaign.status === 'refused'
-											? 'bg-error'
-											: campaign.status === 'running'
-											? 'bg-success'
-											: campaign.status === 'in review'
-											? 'bg-warning'
-											: ''
-									}`}
-								>
-									{campaign.status}
-								</span>
-							</td>
-							<td className='px-4 py-4 paagraph text-title'>{campaign.sales}</td>
-							<td className='px-4 py-4 paagraph text-title'>{campaign.expenses}</td>
-							<td className='px-4 py-4 paagraph text-title'>{campaign.netProfit}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</div>
-	);
-};

@@ -3,7 +3,7 @@ import { CheckIcon } from "src/app/utils/icons";
 const Menu = ({ options, onSelect, selectedOption }) => {
   // md:w-[341px]
   return (
-    <ul className="absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 ">
+    <ul className="absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-56 ">
       {options.map((option) => (
         <MenuItem
           key={option.id}
