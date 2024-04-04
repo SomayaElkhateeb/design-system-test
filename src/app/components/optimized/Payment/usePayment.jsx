@@ -1,3 +1,4 @@
+// Done refactoring to type
 import { useState } from 'react';
 
 const usePayment = () => {
