@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, CheckBox, InputRow } from 'src/app/components/optimized';
+import { TikDataSharingProps } from '../tikTokTypes';
 
-const TikDataSharing = ({ data }) => {
+
+const TikDataSharing: React.FC<TikDataSharingProps> = ({ data }) => {
 	const [state, setState] = useState({
 		isChecked: false,
 		inputState: {
@@ -10,7 +12,7 @@ const TikDataSharing = ({ data }) => {
 		},
 	});
 
-	const handleCheckBoxChange = (value) => {
+	const handleCheckBoxChange = (value: boolean) => {
 		setState({
 			...state,
 			isChecked: value,

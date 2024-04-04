@@ -1,7 +1,5 @@
-
 import CampaignBtns from './CampaignBtns';
 import CampaignStatus from './CampaignStatus';
-
 
 import { useState } from 'react';
 import { Button, Menu } from 'src/app/components/optimized';
@@ -49,8 +47,7 @@ const CampaignsData = [
 	},
 ];
 
-
-const CampaignTable = () => {
+// const CampaignTable = () => {
 
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +62,6 @@ const Header = () => {
 	const handleButtonClick = () => {
 		setIsOpen(!isOpen);
 	};
-
 
 	return (
 		<div className='flex flex-col'>

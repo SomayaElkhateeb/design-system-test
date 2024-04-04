@@ -30,7 +30,7 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 		setQueryItems(select);
 	}, [select]);
 
-	const handleChange = (isChecked: boolean, itemId: string) => {
+	const handleChange = (isChecked: boolean, itemId: string, title: string) => {
 		const updatedItems = isChecked ? [...selectedItems, itemId] : selectedItems.filter((item) => item !== itemId);
 		setSelectedItems(updatedItems);
 		console.log('Checkbox checked:', isChecked);
@@ -80,7 +80,7 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 			className='fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50'
 			onClick={handleClickOutside}
 		>
-			<div className='w-[39rem] rounded bg-white py-[1rem]'>
+			<label className='w-[39rem] rounded bg-white py-[1rem]'>
 				<div>
 					<h3 className='text-title font-semibold mb-3 ml-[1rem]'>Select {capitalizeFirstLetter(title)}</h3>
 
@@ -98,8 +98,22 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 							{selectedItems.length} {title} out of {select.length}
 						</p>
 
-						{selectedItems.length === 0 && (
-							<CheckBox variant='minus' initialChecked={false} handleOnChange={handleChange} />
+						{queryItems.length > 0 && (
+							<CheckBox
+								variant={queryItems.length === selectedItems.length ? undefined : 'minus'}
+								handleOnChange={(isChecked) => {
+									if (isChecked) {
+										return setSelectedItems(
+											queryItems.map((item) => {
+												return item.id;
+											}),
+										);
+									}
+
+									setSelectedItems([]);
+								}}
+								checked={selectedItems.length > 0}
+							/>
 						)}
 						{/* {selectedItems.length >= 1 && (
 							<CheckBox variant='minus' initialChecked={true} handleOnChange={handleChange} />
@@ -126,7 +140,7 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 					</Button>
 					<Button onClick={handleAddButtonClick}>{`add (${selectedItems.length})`}</Button>
 				</div>
-			</div>
+			</label>
 		</div>
 	);
 };

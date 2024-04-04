@@ -35,7 +35,7 @@ export default function PopupProceed(props) {
 				<div>{props.children}</div>
 
 				<div className='flex items-center justify-end gap-2 mt-5'>
-					<button className='px-4 py-2 text-sm font-semibold text-title' onClick={props.onCancel ?? props.onClose}>
+					<button className='px-4 py-2 text-sm font-semibold text-title' onClick={onCancel || handleClose}>
 						Cancel
 					</button>
 					<button className='btn-pri' onClick={handleProceed}>
