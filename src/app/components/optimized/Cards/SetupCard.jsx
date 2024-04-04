@@ -8,7 +8,7 @@ import { SuccessIcon } from 'src/app/utils/icons';
  * @param {string} props.title - The title of the card
  * @param {string} props.description - The description of the card
  * @param {string} props.buttonText - The text to display on the button
- * @param {(props: { className?: string }) => import('react').ReactNode} props.Icon - The icon component for the card
+ * @param {import("react").ComponentType<{ className?: string; }>} props.Icon - The icon component for the card
  * @param {function} props.onButtonClick - The function to call when the button is clicked
  *
  * @description
