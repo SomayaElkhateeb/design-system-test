@@ -3,11 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { AppsCard } from 'src/app/components/optimized';
 
+import { IoIosArrowBack } from "react-icons/io";
+
 import { NextIcon } from 'src/app/utils/icons';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 const SocialAppsWrapper = ({ socialApps, title, linkTo }) => {
 	//  hooks
 	const { t } = useTranslation();
+	const language = UseLanguage();
 	const [itemsToRender, setItemsToRender] = useState(3); // Default number of items to render
 	useEffect(() => {
 		// Function to calculate number of items to render based on screen width
@@ -40,8 +44,8 @@ const SocialAppsWrapper = ({ socialApps, title, linkTo }) => {
 			<div className='flex justify-between mb-5'>
 				<h2 className='text-lg font-semibold text-title'>{t(title)}</h2>
 				<Link to={linkTo} className='flex items-center'>
-					<p className='text-sm font-semibold text-title'>View All</p>
-					<NextIcon className='fill-pri-dark' />
+					<p className='text-sm font-semibold text-title'>{t('View All')}</p>
+					{language === 'ar' ? <IoIosArrowBack /> : <NextIcon className='fill-pri-dark' />}
 				</Link>
 			</div>
 			<div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>

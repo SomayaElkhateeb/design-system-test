@@ -37,7 +37,8 @@ export const arabic = {
 
 	free: 'مجاني',
 	installed: 'تم تنزيله',
-
+	"View All":"اظهار الكل",
+	"Marketing/google/google-setup":"التسويق / جوجل / تنزيل جوجل",
 	Dashboard: 'اللوحه الرئيسيه',
 	'Welcome to Restaurant Admin!': 'مرحبا بك في لوحه تحكم المطعم !',
 	'Total Income': 'اجمالي الدخل',
