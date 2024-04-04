@@ -2,7 +2,7 @@ import { Button, CheckBox, PaymentMethodAccordion } from 'src/app/components/opt
 import usePayment from './usePayment';
 import PaymentForm from './PaymentForm';
 
-const checkboxLable = (
+const checkboxLabel = (
 	<span className='flex'>
 		I agree to&nbsp;
 		<Button
@@ -28,7 +28,8 @@ const checkboxLable = (
 		.
 	</span>
 );
-const PaymentContainer = () => {
+
+export default function PaymentContainer() {
 	// Payment Custom Hook
 	const {
 		errors,
@@ -41,12 +42,13 @@ const PaymentContainer = () => {
 		handlePaymentMethodChange,
 	} = usePayment();
 
-	const onConfirmPurchase = (e) => {
-		e.preventDefault();
+	/** @param {import("react").MouseEvent<HTMLButtonElement>} event */
+	function onConfirmPurchase(event) {
+		event.preventDefault();
 		// if validatation is Ok
 		// make the payment logic
 		console.log(paymentData);
-	};
+	}
 
 	// Payment Methods Array
 	const paymentMethods = [
@@ -72,7 +74,7 @@ const PaymentContainer = () => {
 				))}
 			</div>
 			{/*Terms and Conditions checkBox*/}
-			<CheckBox label={checkboxLable} handleOnChange={handleTermsCheckbox} checked={agreeToTerms} />
+			<CheckBox label={checkboxLabel} handleOnChange={handleTermsCheckbox} checked={agreeToTerms} />
 			{/*Confirm Button*/}
 			<div className='flex justify-end mt-4'>
 				<Button onClick={onConfirmPurchase} disabled={isButtonDisabled} type='submit'>
@@ -81,6 +83,4 @@ const PaymentContainer = () => {
 			</div>
 		</form>
 	);
-};
-
-export default PaymentContainer;
+}

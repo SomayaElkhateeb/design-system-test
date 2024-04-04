@@ -8,17 +8,9 @@ const Apps = () => {
 		<div className='flex flex-col gap-8 p-5'>
 			<MostPopularList />
 
-			<SocialAppsWrapper
-				socialApps={socialApps}
-				title='Recommended'
-				linkTo='/'
-			/>
+			<SocialAppsWrapper socialApps={socialApps} title='Recommended' linkTo='/' />
 
-			<SocialAppsWrapper
-				socialApps={socialApps}
-				title='Reach more customers'
-				linkTo='/'
-			/>
+			<SocialAppsWrapper socialApps={socialApps} title='Reach more customers' linkTo='/' />
 		</div>
 	);
 };

@@ -2,12 +2,11 @@ import { useState } from 'react';
 import CampaignBtns from './CampaignBtns';
 import CampaignStatus from './CampaignStatus';
 import CampaignTable from './CampaignTable';
-import campaignData from './data.json';
-import { useSearchParams } from 'react-router-dom';
 import { StackedColumnChart } from 'src/app/components/optimized';
-import CampaignInfoCard from './CampaignInfoCard';
 import CampaignsHeader from './CampaignsHeader';
-
+import campaignData from "./data.json"
+import { useSearchParams } from 'react-router-dom';
+import CampaignInfoCard from './CampaignInfoCard';
 const Campaigns = () => {
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [searchParams, _] = useSearchParams();
@@ -42,3 +41,4 @@ const Campaigns = () => {
 };
 
 export default Campaigns;
+

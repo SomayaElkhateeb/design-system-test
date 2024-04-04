@@ -61,55 +61,50 @@ export default function ChannelChart(props) {
 			</div>
 
 			<div id='chart'>
-				<ReactApexChart
-					options={props.options}
-					series={props.series}
-					type='donut'
-				/>
+				<ReactApexChart options={props.options} series={props.series} type='donut' />
 			</div>
 			<div id='html-dist'></div>
 		</div>
 	);
 }
 
-ChannelChart.defaultProps =
-	/** @satisfies {import("./types").ReactApexCompProps} props */ ({
-		options: {
-			chart: {
-				type: 'donut',
-				width: '100%',
-				fontFamily: 'Poppins , sans-serif'
-			},
-			plotOptions: {
-				pie: {
-					dataLabels: {
-						// position doesn't exist in the types of `pie`
-						// position: 'top'
-					}
-				}
-			},
-			grid: {
-				padding: {
-					right: 25,
-					left: 20
-				}
-			},
-			labels: ['Google', 'Social media', 'Email'],
-			legend: {
-				position: 'top',
-				horizontalAlign: 'center'
-			},
-			colors: ['#446CCE', '#49C596', '#D65036'],
-			responsive: [
-				{
-					breakpoint: 480,
-					options: {
-						chart: {
-							width: 400
-						}
-					}
-				}
-			]
+ChannelChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps} */ ({
+	options: {
+		chart: {
+			type: 'donut',
+			width: '100%',
+			fontFamily: 'Poppins , sans-serif',
 		},
-		series: [44, 55, 41]
-	});
+		plotOptions: {
+			pie: {
+				dataLabels: {
+					// position doesn't exist in the types of `pie`
+					// position: 'top'
+				},
+			},
+		},
+		grid: {
+			padding: {
+				right: 25,
+				left: 20,
+			},
+		},
+		labels: ['Google', 'Social media', 'Email'],
+		legend: {
+			position: 'top',
+			horizontalAlign: 'center',
+		},
+		colors: ['#446CCE', '#49C596', '#D65036'],
+		responsive: [
+			{
+				breakpoint: 480,
+				options: {
+					chart: {
+						width: 400,
+					},
+				},
+			},
+		],
+	},
+	series: [44, 55, 41],
+});

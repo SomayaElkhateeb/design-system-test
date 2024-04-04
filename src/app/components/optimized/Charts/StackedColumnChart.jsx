@@ -87,84 +87,67 @@ export default function StackedColumnChart(props) {
 					<BackAndroidIcon className='rotate-90 fill-secondary' /> 4.75%
 				</span>
 			</div>
-			<ReactApexChart
-				options={props.options}
-				series={props.series}
-				type='bar'
-				width='100%'
-				height='89%'
-			/>
+			<ReactApexChart options={props.options} series={props.series} type='bar' width='100%' height='89%' />
 		</div>
 	);
 }
 
-StackedColumnChart.defaultProps =
-	/** @satisfies {import("./types").ReactApexCompProps} props */ ({
-		options: {
-			chart: {
-				type: 'bar',
-				stacked: true,
-				fontFamily: 'Poppins, sans-serif',
-				toolbar: {
-					show: false
-				}
+StackedColumnChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps} */ ({
+	options: {
+		chart: {
+			type: 'bar',
+			stacked: true,
+			fontFamily: 'Poppins, sans-serif',
+			toolbar: {
+				show: false,
 			},
-			plotOptions: {
-				bar: {
-					horizontal: false,
-					columnWidth: '70%'
-				}
-			},
-			yaxis: {
-				tickAmount: 5
-			},
-			xaxis: {
-				categories: [
-					'Apr 1',
-					'Apr 2',
-					'Apr 3',
-					'Apr 4',
-					'Apr 5',
-					'Apr 6',
-					'Apr 7',
-					'Apr 8',
-					'Apr 9'
-				],
-				labels: {
-					rotate: -45
-				}
-			},
-
-			legend: {
-				position: 'top',
-				horizontalAlign: 'left'
-			},
-			responsive: [
-				{
-					breakpoint: 480,
-					options: {
-						chart: {
-							width: 200
-						},
-						legend: {
-							position: 'bottom'
-						}
-					}
-				}
-			],
-			colors: ['#55C397', '#FFCC73'],
-			grid: {
-				show: false
-			}
 		},
-		series: [
-			{
-				name: 'Group 1',
-				data: [300, 1000, 700, 300, 500, 300]
+		plotOptions: {
+			bar: {
+				horizontal: false,
+				columnWidth: '70%',
 			},
+		},
+		yaxis: {
+			tickAmount: 5,
+		},
+		xaxis: {
+			categories: ['Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9'],
+			labels: {
+				rotate: -45,
+			},
+		},
+
+		legend: {
+			position: 'top',
+			horizontalAlign: 'left',
+		},
+		responsive: [
 			{
-				name: 'Group 2',
-				data: [100, 100, 200, 400, 500, 900]
-			}
-		]
-	});
+				breakpoint: 480,
+				options: {
+					chart: {
+						width: 200,
+					},
+					legend: {
+						position: 'bottom',
+					},
+				},
+			},
+		],
+		colors: ['#55C397', '#FFCC73'],
+		grid: {
+			show: false,
+		},
+	},
+	series: [
+		{
+			name: 'Group 1',
+			data: [300, 1000, 700, 300, 500, 300],
+		},
+		{
+			name: 'Group 2',
+			data: [100, 100, 200, 400, 500, 900],
+		},
+	],
+});

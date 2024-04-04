@@ -1,35 +1,30 @@
-import * as React from "react";
-import dayjs from "dayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import { capitalizeFirstLetter } from "src/app/utils";
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { capitalizeFirstLetter } from 'src/app/utils';
 
-const DatePicker = ({ label, value, onChange }) => {
-  return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer
-        components={[
-          "DatePicker",
-          "MobileDatePicker",
-          "DesktopDatePicker",
-          "StaticDatePicker",
-        ]}
-      >
-        <DemoItem>
-          <span className="text-pri-dark text-sm">
-            {capitalizeFirstLetter(label)}
-          </span>
-          <MobileDatePicker
-            defaultValue={dayjs("2022-04-17")}
-            // value={value}
-            // onChange={onChange}
-          />
-        </DemoItem>
-      </DemoContainer>
-    </LocalizationProvider>
-  );
-};
-
-export default DatePicker;
+/**
+ * @param {{
+ *  label: string;
+ *  value?: import("dayjs").Dayjs | null;
+ *  onChange?: (date: import("dayjs").Dayjs | null) => void;
+ * }} props
+ */
+export default function DatePicker(props) {
+	return (
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
+			<DemoContainer components={['DatePicker', 'MobileDatePicker', 'DesktopDatePicker', 'StaticDatePicker']}>
+				<DemoItem>
+					<span className='text-sm text-pri-dark'>{capitalizeFirstLetter(props.label)}</span>
+					<MobileDatePicker
+						onChange={props.onChange}
+						defaultValue={props.value ? undefined : dayjs('2022-04-17')}
+						value={props.value}
+					/>
+				</DemoItem>
+			</DemoContainer>
+		</LocalizationProvider>
+	);
+}
