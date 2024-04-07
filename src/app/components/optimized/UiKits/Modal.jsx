@@ -1,6 +1,13 @@
 import { useState } from 'react';
 
-const Modal = ({ buttonText, modalTitle, children }) => {
+/**
+ * @param {{
+ *  buttonText: string;
+ *  modalTitle: string;
+ *  children: import('react').ReactNode;
+ * }} props
+ */
+export default function Modal(props) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const openModal = () => {
@@ -13,22 +20,16 @@ const Modal = ({ buttonText, modalTitle, children }) => {
 
 	return (
 		<div className='relative'>
-			<button
-				className='bg-blue-500 text-white px-4 py-2 rounded'
-				onClick={openModal}
-			>
-				{buttonText}
+			<button className='px-4 py-2 text-white bg-blue-500 rounded' onClick={openModal}>
+				{props.buttonText}
 			</button>
 
 			{isOpen && (
-				<div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
-					<div className='bg-white p-8 rounded'>
-						<h2 className='text-xl mb-4'>{modalTitle}</h2>
-						{children}
-						<button
-							className='bg-red-500 text-white px-4 py-2 rounded'
-							onClick={closeModal}
-						>
+				<div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
+					<div className='p-8 bg-white rounded'>
+						<h2 className='mb-4 text-xl'>{props.modalTitle}</h2>
+						{props.children}
+						<button className='px-4 py-2 text-white bg-red-500 rounded' onClick={closeModal}>
 							Close Modal
 						</button>
 					</div>
@@ -36,6 +37,4 @@ const Modal = ({ buttonText, modalTitle, children }) => {
 			)}
 		</div>
 	);
-};
-
-export default Modal;
+}
