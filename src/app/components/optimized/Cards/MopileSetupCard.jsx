@@ -10,7 +10,7 @@ import { SuccessIcon } from 'src/app/utils/icons';
  * @param {string} props.title - The title of the card
  * @param {string} props.description - The description of the card
  * @param {string} props.buttonText - The text to display on the button
- * @param {(props: { className?: string }) => import("react").ReactNode} props.Icon - The icon component for the card
+ * @param {import("react").ComponentType<{ className?: string; }>} props.Icon - The icon component for the card
  * @param {function} props.onButtonClick - The function to call when the button is clicked
  *
  * @description
@@ -62,26 +62,12 @@ export default function MobileSetupCard(props) {
 						isStepDone ? 'bg-white/10 grid' : 'bg-pri-top-light'
 					}`}
 				>
-					<props.Icon
-						className={`w-8 h-8 ${isStepDone ? 'fill-white' : 'fill-primary'}`}
-					/>
+					<props.Icon className={`w-8 h-8 ${isStepDone ? 'fill-white' : 'fill-primary'}`} />
 				</div>
 
 				<div className='w-full mb-3'>
-					<h5
-						className={`font-semibold mb-1 text-sm ${
-							isStepDone ? 'text-white' : ' text-title'
-						}`}
-					>
-						{props.title}
-					</h5>
-					<p
-						className={`font-normal text-sm ${
-							isStepDone ? 'text-white' : 'text-title'
-						}`}
-					>
-						{props.description}
-					</p>
+					<h5 className={`font-semibold mb-1 text-sm ${isStepDone ? 'text-white' : ' text-title'}`}>{props.title}</h5>
+					<p className={`font-normal text-sm ${isStepDone ? 'text-white' : 'text-title'}`}>{props.description}</p>
 				</div>
 			</div>
 			<div className='self-center'>

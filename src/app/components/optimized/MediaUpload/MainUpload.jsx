@@ -1,3 +1,4 @@
+// Done refactoring to type
 //? Unfinished task
 //! ===============
 // todo Integration <ImageUploader /> Component

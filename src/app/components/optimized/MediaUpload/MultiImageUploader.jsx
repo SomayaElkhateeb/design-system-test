@@ -1,3 +1,4 @@
+// Done refactoring to type
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import ImageUploader from './ImageUploader';

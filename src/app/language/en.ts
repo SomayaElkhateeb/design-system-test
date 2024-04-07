@@ -30,7 +30,11 @@ export const english = {
 	"free":"free",
 	"installed":"installed",
 	
-	
+	"Recommended":"Recommended",
+	"Reach more customers":"Reach more customers",
+	"Install now":"Install now",
+	"Marketing/google/google-setup":"Marketing/google/google-setup",
+	"View All":"View All",
 	Dashboard: 'Dashboard',
 	'Welcome to Restaurant Admin!': 'Welcome to Restaurant Admin!',
 	'Total Income': 'Total Income',

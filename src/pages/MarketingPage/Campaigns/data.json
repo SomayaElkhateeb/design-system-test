@@ -1,0 +1,160 @@
+{
+	"statsData": [
+		{
+			"percentage": "4.75 %",
+			"label": "Sessions",
+			"value": "1200",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Time per session",
+			"value": "12",
+			"positive": false,
+			"extensions": "min"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Orders",
+			"value": "252",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Abandoned cart",
+			"value": "250",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Sales",
+			"value": "120",
+			"positive": false,
+			"extensions": "sar"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Expenses",
+			"value": "500",
+			"positive": false,
+			"extensions": "sar"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "netProfit",
+			"value": "120",
+			"positive": false,
+			"extensions": "sar"
+		}
+	],
+	"campaigns": [
+		{
+			"name": "Summer campaign",
+			"status": "running",
+			"sales": "SAR 10000.00",
+			"expenses": "SAR 10000.00",
+			"netProfit": "SAR 10000.00",
+			"activities": [
+				{
+					"name": "Facebook summer ad",
+					"status": "in review",
+					"sessions": 28,
+					"sales": "SAR 10000.00",
+					"expenses": "SAR 10000.00",
+					"netProfit": "SAR 10000.00"
+				},
+				{
+					"name": "Google AdWords campaign",
+					"status": "running",
+					"sessions": 35,
+					"sales": "SAR 15000.00",
+					"expenses": "SAR 8000.00",
+					"netProfit": "SAR 7000.00"
+				},
+				{
+					"name": "Instagram sponsored post",
+					"status": "refused",
+					"sessions": 20,
+					"sales": "SAR 12000.00",
+					"expenses": "SAR 10000.00",
+					"netProfit": "SAR 2000.00"
+				}
+			]
+		},
+		{
+			"name": "Ramadan campaign",
+			"status": "ended",
+			"sales": "SAR 10000.00",
+			"expenses": "SAR 10000.00",
+			"netProfit": "SAR 10000.00",
+			"activities": [
+				{
+					"name": "Facebook Ramadan ad",
+					"status": "running",
+					"sessions": 25,
+					"sales": "SAR 12000.00",
+					"expenses": "SAR 8000.00",
+					"netProfit": "SAR 4000.00"
+				},
+				{
+					"name": "Instagram Ramadan post",
+					"status": "in review",
+					"sessions": 30,
+					"sales": "SAR 15000.00",
+					"expenses": "SAR 9000.00",
+					"netProfit": "SAR 6000.00"
+				}
+			]
+		},
+		{
+			"name": "Black Friday campaign",
+			"status": "in review",
+			"sales": "SAR 10000.00",
+			"expenses": "SAR 10000.00",
+			"netProfit": "SAR 10000.00",
+			"activities": [
+				{
+					"name": "Facebook Black Friday ad",
+					"status": "refused",
+					"sessions": 20,
+					"sales": "SAR 12000.00",
+					"expenses": "SAR 8000.00",
+					"netProfit": "SAR 4000.00"
+				},
+				{
+					"name": "Google Black Friday campaign",
+					"status": "in review",
+					"sessions": 22,
+					"sales": "SAR 13000.00",
+					"expenses": "SAR 9000.00",
+					"netProfit": "SAR 4000.00"
+				}
+			]
+		},
+		{
+			"name": "New Year campaign",
+			"status": "refused",
+			"sales": "SAR 10000.00",
+			"expenses": "SAR 10000.00",
+			"netProfit": "SAR 10000.00",
+			"activities": [
+				{
+					"name": "Facebook New Year ad",
+					"status": "in review",
+					"sessions": 28,
+					"sales": "SAR 10000.00",
+					"expenses": "SAR 10000.00",
+					"netProfit": "SAR 10000.00"
+				},
+				{
+					"name": "Instagram New Year post",
+					"status": "running",
+					"sessions": 32,
+					"sales": "SAR 12000.00",
+					"expenses": "SAR 8000.00",
+					"netProfit": "SAR 4000.00"
+				}
+			]
+		}
+	]
+}

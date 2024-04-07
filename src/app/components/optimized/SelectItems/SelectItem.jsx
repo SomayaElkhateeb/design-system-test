@@ -1,70 +1,79 @@
-import { useState } from 'react';
 import { Avatars, CheckBox, ClientBox } from '..';
 
-const SelectItem = ({ title, subTitle, img, fName, lName, count, onCheckBoxChange, varient }) => {
-	const [isChecked, setIsChecked] = useState(false);
+/**
+ * @param {{
+ *   id: string | number;
+ *   title?: string;
+ *   subTitle: string;
+ *   img: string;
+ *   fName?: string;
+ *   lName?: string;
+ *   count?: number;
+ *   isChecked: boolean;
+ *   handleOnCheckChange: (isChecked: boolean, item: { id: string | number; title: string }) => void;
+ *   variant?: "customers" | "groups";
+ * }} props
+ */
+export default function SelectItem(props) {
+	function handleCheckBoxClick() {
+		const newValue = !props.isChecked;
+		props.handleOnCheckChange(newValue, { id: props.id, title: props.title ?? '' }); // Pass the id to the callback function
+	}
 
-	const handleCheckBoxClick = () => {
-		const newValue = !isChecked;
-		setIsChecked(newValue);
-		onCheckBoxChange(newValue);
-	};
-	switch (varient) {
+	const title = props.title ?? `${props.fName} ${props.lName ?? ''}`;
+
+	switch (props.variant) {
 		case 'customers':
 			return (
-				<div
-					className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
-						isChecked ? 'bg-sec-light' : ''
+				<label
+					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
+						props.isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
 					<ClientBox
-						title={fName + ' ' + lName}
-						details={subTitle}
-						avatar={<Avatars img={img} fName={fName} lName={lName} />}
+						title={title}
+						details={props.subTitle}
+						avatar={<Avatars src={props.img} fName={props.fName} lName={props.lName} />}
 					/>
-					<button onClick={handleCheckBoxClick}>
-						<CheckBox checked={isChecked} />
-					</button>
-				</div>
+					<CheckBox checked={props.isChecked} handleOnChange={handleCheckBoxClick} />
+				</label>
 			);
 
 		case 'groups':
 			return (
-				<div
-					className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
-						isChecked ? 'bg-sec-light' : ''
+				<label
+					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
+						props.isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
-					<ClientBox title={title} details={subTitle} avatar={<Avatars variant='countAvatar' count={count} />} />
-					<button onClick={handleCheckBoxClick}>
-						<CheckBox checked={isChecked} />
-					</button>
-				</div>
+					<ClientBox
+						title={title}
+						details={props.subTitle}
+						avatar={<Avatars variant='countAvatar' count={props.count} />}
+					/>
+					<CheckBox checked={props.isChecked} handleOnChange={handleCheckBoxClick} />
+				</label>
 			);
 
 		default:
 			return (
-				<div
-					className={`w-full h-[56px] flex items-center justify-between px-[18px] hover:bg-sec-light ${
-						isChecked ? 'bg-sec-light' : ''
+				<label
+					className={`w-full h-[56px] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
+						props.isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
-					<div className='flex items-center gap-[18px]'>
+					<div className='flex items-center gap-[1rem]'>
 						<div className='w-[46px] h-[46px] rounded overflow-hidden'>
-							<img src={img} alt='' className='w-full h-full' />
+							<img src={props.img} alt='' className='w-full h-full' />
 						</div>
 
 						<div>
-							<h4 className='text-sm font-semibold capitalize text-title'>{title}</h4>
-							<p className='text-sm text-subtitle'>{subTitle}</p>
+							<h4 className='text-sm font-semibold capitalize text-title'>{props.title}</h4>
+							<p className='text-sm text-subtitle'>{props.subTitle}</p>
 						</div>
 					</div>
-					<button onClick={handleCheckBoxClick}>
-						<CheckBox checked={isChecked} />
-					</button>
-				</div>
+					<CheckBox checked={props.isChecked} handleOnChange={handleCheckBoxClick} />
+				</label>
 			);
 	}
-};
-
-export default SelectItem;
+}

@@ -1,12 +1,52 @@
+import { cva } from 'class-variance-authority';
+
+const handleButtonVariant = cva(undefined, {
+	variants: {
+		variant: {
+			link: 'text-primary flex flex-row justify-center items-center capitalize',
+			secondary: 'btn-sec flex items-center gap-1 p-2',
+			tertiary:
+				'text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3',
+			default: 'relative btn-pri flex px-1 items-center ml-1',
+		},
+	},
+	defaultVariants: { variant: 'default' },
+});
+const handleIconVariant = cva(undefined, {
+	variants: {
+		variant: {
+			link: 'fill-primary p-0.5 mb-1 ml-1',
+			secondary: 'fill-pri-dark h-3 w-3 ml-1',
+			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
+			default: 'fill-white',
+		},
+	},
+	defaultVariants: { variant: 'default' },
+});
+const handleTextVariant = cva(undefined, {
+	variants: {
+		variant: {
+			link: undefined,
+			secondary: 'fill-pri-dark',
+			tertiary: 'fill-pri-dark',
+			default: 'mx-1 text-sm',
+		},
+	},
+	defaultVariants: { variant: 'default' },
+});
+
+/**
+ * @typedef {import('class-variance-authority').VariantProps<typeof handleButtonVariant>} ButtonVariants
+ */
+
 /**
  * Button component for various button styles with optional icons and loading spinner.
  * @param {{
- *  variant?: string,
- *  LeftIcon?: ((props: { className?: string }) => import("react").ReactNode) | JSX.Element,
- *  RightIcon?: ((props: { className?: string }) => import("react").ReactNode) | JSX.Element,
+ *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
+ *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
  *  text?: never
- * } & import("react").ButtonHTMLAttributes<HTMLButtonElement>} props - Props for the Button component.
+ * } & import("react").ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants} props - Props for the Button component.
  *
  * @example
  *
@@ -43,49 +83,11 @@
  * };
  * ```
  */
-export default function Button({
-	variant,
-	children,
-	LeftIcon,
-	RightIcon,
-	loading,
-	className,
-	text,
-	// onClick
-	...props
-}) {
+export default function Button({ variant, children, LeftIcon, RightIcon, loading, className, text, ...props }) {
 	// Define variables for class names
-	let buttonClass = className ?? '';
-	let iconClass = '';
-	let textClass = '';
-
-	// Switch case to determine button styling based on variant
-	switch (variant) {
-		case 'link':
-			// Link variant styling
-			buttonClass += ' text-primary flex flex-row justify-center items-center capitalize';
-			iconClass = 'fill-primary p-0.5 mb-1 ml-1';
-			break;
-		case 'secondary':
-			// Secondary variant styling
-			buttonClass += ' btn-sec flex items-center gap-1 p-2';
-			iconClass = 'fill-pri-dark h-3 w-3 ml-1';
-			textClass = 'fill-pri-dark ';
-			break;
-		case 'tertiary':
-			// Tertiary variant styling
-			buttonClass +=
-				' text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3';
-			iconClass = 'fill-pri-dark ml-1 h-3 w-3';
-			textClass = 'fill-pri-dark';
-			break;
-		default:
-			// Primary variant styling
-			buttonClass += ' relative btn-pri flex px-1 items-center ml-1';
-			iconClass = 'fill-white';
-			textClass = 'mx-1 text-sm';
-			break;
-	}
+	let buttonClass = handleButtonVariant({ variant, className });
+	let iconClass = handleIconVariant({ variant });
+	let textClass = handleTextVariant({ variant });
 
 	return (
 		<button {...props} className={buttonClass}>
@@ -97,7 +99,10 @@ export default function Button({
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)}
+					{LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
+
+					{/* {LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)} */}
+
 					<span className={textClass}>{children ?? text}</span>
 					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
 				</>

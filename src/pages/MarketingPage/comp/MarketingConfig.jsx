@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { NewDiscount, PlatformSetup } from '.';
+import { AddCoupon, NewDiscount, PlatformSetup } from '.';
 
 const MarketingConfig = () => {
 	const { config } = useParams();
@@ -9,7 +9,8 @@ const MarketingConfig = () => {
 
 	const tabs = {
 		addDiscount: <NewDiscount />,
-		[platformKey]: <PlatformSetup platform={platform} />
+		addCoupon: <AddCoupon />,
+		[platformKey]: <PlatformSetup platform={platform} />,
 	};
 
 	return tabs[config];

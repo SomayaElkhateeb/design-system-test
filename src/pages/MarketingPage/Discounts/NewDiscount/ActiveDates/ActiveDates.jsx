@@ -16,7 +16,7 @@ const ActiveDates = () => {
 
 			{endDatePicker && (
 				<div className='flex gap-4 my-[18px]'>
-					<DatePicker label='end date' value={endDate} onChange={setEndDate} />
+					<DatePicker label='end date' value={endDate} handleOnChange={setEndDate} />
 					<TimePicker label='end time' />
 				</div>
 			)}

@@ -1,5 +1,39 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
+const Menu = ({ options, onSelect, selectedOption }) => {
+
+  // md:w-[341px]
+  return (
+    <ul className="absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-56 ">
+      {options.map((option) => (
+        <MenuItem
+          key={option.id}
+          text={option.text}
+          onClick={() => onSelect(option.text)}
+          selected={selectedOption === option.text}
+        />
+      ))}
+    </ul>
+  );
+
+	// md:w-[341px]
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
+// 			{options.map((option) => (
+// 				<MenuItem
+// 					key={option.id}
+// 					text={option.text}
+// 					onClick={() => onSelect(option.text)}
+// 					selected={selectedOption === option.text}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
+
+};
+
+
+export default Menu;
 /**
  * @param {{
  *  options: string[];
@@ -7,20 +41,20 @@ import { CheckIcon } from 'src/app/utils/icons';
  *  selectedOption?: string | null;
  * }} props
  */
-export default function Menu(props) {
-	return (
-		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 md:w-[341px]'>
-			{props.options.map((option, index) => (
-				<MenuItem
-					key={index}
-					text={option}
-					onClick={() => props.onSelect(option)}
-					selected={props.selectedOption === option}
-				/>
-			))}
-		</ul>
-	);
-}
+// export default function Menu(props) {
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 md:w-[341px]'>
+// 			{props.options.map((option, index) => (
+// 				<MenuItem
+// 					key={index}
+// 					text={option}
+// 					onClick={() => props.onSelect(option)}
+// 					selected={props.selectedOption === option}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
+// }
 
 /**
  * @param {{

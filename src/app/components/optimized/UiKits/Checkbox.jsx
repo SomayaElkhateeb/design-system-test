@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { CheckIcon } from 'src/app/utils/icons';
 
 /**
@@ -6,8 +5,8 @@ import { CheckIcon } from 'src/app/utils/icons';
  * @param {{
  *  variant?: "minus";
  *  label?: import("react").ReactNode;
- *  handleOnChange?: (isChecked: boolean) => void;
- *  checked?: boolean;
+ *  handleOnChange: (isChecked: boolean) => void;
+ *  checked: boolean;
  * } & Omit<import("react").InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked">} props - Props for the CheckBoxX component.
  *
  * @example
@@ -38,28 +37,9 @@ import { CheckIcon } from 'src/app/utils/icons';
  * };
  * ```
  */
-export default function CheckBox({ variant, label, defaultChecked: initialChecked, handleOnChange, ...props }) {
-	const [_isChecked, setIsChecked] = useState(!!props.checked);
-
-	const isChecked = props.checked ?? _isChecked;
-
-	useEffect(() => {
-		if (initialChecked !== undefined) {
-			setIsChecked(initialChecked);
-		}
-	}, [initialChecked]);
-
-	function handleToggle() {
-		const newValue = !isChecked;
-		setIsChecked(newValue);
-		if (handleOnChange) {
-			handleOnChange(newValue);
-			console.log(newValue);
-		}
-	}
-
+export default function CheckBox({ variant, label, handleOnChange, ...props }) {
 	function renderCheckboxIcon() {
-		if (variant === 'minus' && isChecked) {
+		if (variant === 'minus' && props.checked) {
 			return <p className='flex items-center justify-center w-full h-full text-white'>-</p>;
 		}
 
@@ -68,9 +48,17 @@ export default function CheckBox({ variant, label, defaultChecked: initialChecke
 
 	return (
 		<label className='flex items-center cursor-pointer'>
-			<input {...props} type='checkbox' checked={isChecked} onChange={handleToggle} className='hidden' />
+			<input
+				{...props}
+				type='checkbox'
+				checked={props.checked}
+				onChange={(event) => handleOnChange(event.target.checked)}
+				className='hidden'
+			/>
 			<div
-				className={`hover:bg-sec-light w-5 h-5 border rounded ${isChecked ? 'bg-success hover:bg-sec-pressed' : ''}`}
+				className={`hover:bg-sec-light w-5 h-5 border rounded ${
+					props.checked ? 'bg-success hover:bg-sec-pressed' : ''
+				}`}
 			>
 				{renderCheckboxIcon()}
 			</div>

@@ -1,3 +1,4 @@
+// Done refactoring to type
 //? Unfinished tasks
 //! =================
 // todo store uploaded image

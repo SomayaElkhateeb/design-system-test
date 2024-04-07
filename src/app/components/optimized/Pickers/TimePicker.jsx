@@ -1,3 +1,4 @@
+// Done refactoring to type
 import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -10,7 +11,7 @@ import { capitalizeFirstLetter } from 'src/app/utils';
  * @param {{
  *  label: string;
  *  value?: import("dayjs").Dayjs | null;
- *  onChange?: (date: import("dayjs").Dayjs | null) => void;
+ *  handleOnChange?: (date: import("dayjs").Dayjs | null) => void;
  * }} props
  */
 export default function TimePicker(props) {
@@ -19,7 +20,11 @@ export default function TimePicker(props) {
 			<DemoContainer components={['TimePicker', 'MobileTimePicker', 'DesktopTimePicker', 'StaticTimePicker']}>
 				<DemoItem>
 					<span className='text-sm text-pri-dark'>{capitalizeFirstLetter(props.label)}</span>
-					<MobileTimePicker defaultValue={dayjs('2022-04-17T15:30')} value={props.value} onChange={props.onChange} />
+					<MobileTimePicker
+						defaultValue={dayjs('2022-04-17T15:30')}
+						value={props.value}
+						onChange={props.handleOnChange}
+					/>
 				</DemoItem>
 			</DemoContainer>
 		</LocalizationProvider>

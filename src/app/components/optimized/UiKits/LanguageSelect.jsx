@@ -1,28 +1,24 @@
 import { useState } from 'react';
 import { FaRegFlag } from 'react-icons/fa';
 
-const LanguageSelect = () => {
+export default function LanguageSelect() {
 	const [selectedLanguage, setSelectedLanguage] = useState('en'); // Initial language
 
 	const languages = [
 		{
-			value: 'en',
+			value: /** @type {"en"} */ ('en'),
 			label: 'English',
-			icon: <FaRegFlag size={20} />
+			icon: <FaRegFlag size={20} />,
 		},
 		{
-			value: 'ar',
+			value: /** @type {"ar"} */ ('ar'),
 			label: 'عربي',
-			icon: <FaRegFlag size={20} />
-		}
+			icon: <FaRegFlag size={20} />,
+		},
 	];
 
-	const handleLanguageClick = (language) => {
-		setSelectedLanguage(language.value);
-	};
-
 	return (
-		<div className='flex flex-wrap gap-2 flex-row-reverse'>
+		<div className='flex flex-row-reverse flex-wrap gap-2'>
 			{languages.map((language) => (
 				<button
 					key={language.value}
@@ -32,7 +28,7 @@ const LanguageSelect = () => {
 							? 'bg-blue-500 text-white'
 							: 'bg-gray-200 text-gray-700 hover:bg-gray-300'
 					}`}
-					onClick={() => handleLanguageClick(language)}
+					onClick={() => setSelectedLanguage(language.value)}
 				>
 					<span>{language.icon}</span>
 					<span>{language.label}</span>
@@ -41,11 +37,9 @@ const LanguageSelect = () => {
 
 			<input
 				type='text'
-				className='w-full  py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-2'
+				className='w-full py-3 pl-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500'
 				placeholder='Placeholder'
 			/>
 		</div>
 	);
-};
-
-export default LanguageSelect;
+}
