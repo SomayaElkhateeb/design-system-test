@@ -2,46 +2,30 @@ import { useState } from 'react';
 import data from './data.json';
 import { Button } from 'src/app/components/optimized';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import * as XLSX from "xlsx/xlsx.mjs";
-import { ExportIcon } from 'src/app/utils/icons';
-const CampaignTable = ({ arrangeTerm, data }) => {
+
+const CampaignTable = ({ sortTerm, data }) => {
+	// const [sortBy, setSortBy] = useState(null);
 	const [searchParams, setSearchParams] = useSearchParams();
+	// const navigate = useNavigate();
 
-	const arrangeData = (data, arrangeTerm) => {
-		switch (arrangeTerm) {
-			case 'Campaign':
-				return data.sort((a, b) => a.name.localeCompare(b.name));
-			case 'Status':
-				return data.sort((a, b) => a.status.localeCompare(b.status));
-			case 'Sales':
-				return data.sort((a, b) => parseFloat(a.sales) - parseFloat(b.sales));
-			case 'Expenses':
-				return data.sort((a, b) => parseFloat(a.expenses) - parseFloat(b.expenses));
-			case 'Net Profit':
-				return data.sort((a, b) => parseFloat(a.netProfit) - parseFloat(b.netProfit));
-			default:
-				return data;
-		}
-	};
-
-	const arrangedData = arrangeData(data, arrangeTerm);
-
+	// const sortData = (sortTerm) => {
+	// 	if (sortBy === field) {
+	// 		setSortBy(null); // Reset sorting
+	// 	} else {
+	// 		setSortBy(field);
+	// 		couponsData.sort((a, b) => (a[field] < b[field] ? -1 : 1));
+	// 	}
+	// };
 
 	const handleButtonClick = (campaignName) => {
 		const activityParam = searchParams.get('campaign_activity');
 		const newActivityParam = `&activity_details=${campaignName}`;
-		const updatedSearchParams = activityParam
-			? `?campaign_activity=${activityParam}${newActivityParam}`
-			: `?campaign_activity=${campaignName}`;
+		const updatedSearchParams = activityParam ? `?campaign_activity=${activityParam}${newActivityParam}` : `?campaign_activity=${campaignName}`;
 		setSearchParams(updatedSearchParams);
-	};
-
+};
 
 	return (
 		<div className='flex flex-col'>
-
-
-
 			<table className=' w-full table-auto rounded -lg'>
 				<thead>
 					<tr className='text-left bg-white'>
@@ -55,16 +39,16 @@ const CampaignTable = ({ arrangeTerm, data }) => {
 				</thead>
 				{/* data.campaigns */}
 				<tbody>
-					{arrangedData.map((item) => (
+					{data.map((item) => (
 						<tr key={item.name} className='rounded-xl bg-white'>
 							<td className='px-4 py-4 paagraph text-primary'>
 								<Button variant='link' onClick={() => handleButtonClick(item.name)}>
 									{item.name}
 								</Button>
 							</td>
-							<td className={`paragraph text-white `}>
+							<td className={`px-4 py-4 paagraph text-white `}>
 								<span
-									className={`px-2 p-1 rounded-md capitalize ${
+									className={` p-1 rounded-lg ${
 										item.status === 'ended' || item.status === 'refused'
 											? 'bg-error'
 											: item.status === 'running'
