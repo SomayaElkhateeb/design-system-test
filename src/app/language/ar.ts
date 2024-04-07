@@ -23,7 +23,7 @@ export const arabic = {
 	'Learn more': 'اعرف اكثر',
 	'Most popular': 'الاكثر شيوعا',
 	Google: 'جوجل',
-	"Install now":"التنزيل الان",
+	"Install now": "التنزيل الان",
 	"Recommended": "ينصح به",
 	"Reach more customers": "الوصول للكثير من العملاء",
 	'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.':
@@ -37,8 +37,17 @@ export const arabic = {
 
 	free: 'مجاني',
 	installed: 'تم تنزيله',
-	"View All":"اظهار الكل",
-	"Marketing/google/google-setup":"التسويق / جوجل / تنزيل جوجل",
+	"add new coupon":"اضافه كوبون جديد",
+
+	"View All": "اظهار الكل",
+	"All Customers": "جميع العملاء",
+	"Customers Groups": "مجموعه العملاء",
+	"Marketing/google/google-setup": "التسويق / جوجل / تنزيل جوجل",
+	"arrange":"ترتيب",
+	"filter":"فلتر",
+	"Actions":"احداث",
+	"AddCustomer":"اضافه عميل",
+	
 	Dashboard: 'اللوحه الرئيسيه',
 	'Welcome to Restaurant Admin!': 'مرحبا بك في لوحه تحكم المطعم !',
 	'Total Income': 'اجمالي الدخل',

@@ -14,6 +14,7 @@ import {
   CustomersPage,
   MarketingPage,
   SocialAppDetails,
+  AddCustomerPage
 } from "src/pages";
 import RootLayout from "./pages/RootLayout";
 import { MarketingConfig, MarketingTabs } from "./pages/MarketingPage/comp";
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       { path: "/settings", element: <SettingsPage /> },
       { path: "/products", element: <ProductsPage /> },
       { path: "/customers", element: <CustomersPage /> },
+      { path: "/addCustomer", element: <AddCustomerPage /> },
       {
         path: "/marketing",
         element: <MarketingPage />,
