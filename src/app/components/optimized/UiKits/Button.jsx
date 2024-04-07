@@ -99,7 +99,12 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)}
+
+
+					{LeftIcon && <LeftIcon className={iconClass} />}
+
+					{/* {LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)} */}
+
 					<span className={textClass}>{children ?? text}</span>
 					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
 				</>
