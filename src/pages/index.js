@@ -12,4 +12,5 @@ export { default as AnalyticsPage } from "./AnalyticsPage/AnalyticsPage";
 export { default as CustomersPage } from "./CustomersPage/CustomersPage";
 export { default as MarketingPage } from "./MarketingPage/MarketingPage";
 export { default as SocialAppDetails } from "./AppsPage/comp/SocialAppDetails";
+export { default as AddCustomerPage } from "./AddCustomerPage/AddCustomerPage";
 

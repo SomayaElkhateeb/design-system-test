@@ -12,8 +12,11 @@ import HeaderTable from 'src/app/components/page/discount/Table/HeaderTable';
 import Header from 'src/app/components/page/discount/Table/Header';
 import Body from 'src/app/components/page/discount/Table/Body';
 import { headerData } from './AddCoupon/comp/data';
+import { useTranslation } from 'react-i18next';
 const Coupons: React.FC = () => {
+	// hooks
 	const navigate = useNavigate();
+	const {t}=useTranslation()
 	return (
 		<>
 			<div>
@@ -26,7 +29,7 @@ const Coupons: React.FC = () => {
 								navigate('addCoupon');
 							}}
 						>
-							add new coupon
+							{t("add new coupon")}
 						</Button>
 						<div className='flex gap-8'>
 							<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
