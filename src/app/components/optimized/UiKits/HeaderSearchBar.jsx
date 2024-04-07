@@ -13,10 +13,10 @@ import { GoSearch } from 'react-icons/go';
  * ```jsx
  * <HeaderSearchBar
  * 	options={[
- * 	 { icon: <MdAllInclusive />, value: 'all', label: 'All Products' },
- * 	 { icon: <IoLogoElectron />, value: 'electronics', label: 'Electronics' },
- * 	 { icon: <GiClothes />, value: 'clothing', label: 'Clothing' },
- * 	 { icon: <RxHome />, value: 'home', label: 'Home & Garden' }
+ * 		{ icon: <MdAllInclusive />, value: 'all', label: 'All Products' },
+ * 		{ icon: <IoLogoElectron />, value: 'electronics', label: 'Electronics' },
+ * 		{ icon: <GiClothes />, value: 'clothing', label: 'Clothing' },
+ * 		{ icon: <RxHome />, value: 'home', label: 'Home & Garden' }
  * 	]}
  * />
  * ```
