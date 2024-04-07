@@ -1,6 +1,7 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
 const Menu = ({ options, onSelect, selectedOption }) => {
+
 	
 	return (
 		<ul className='  rounded  shadow-md py-2 flex flex-col '>
@@ -16,6 +17,24 @@ const Menu = ({ options, onSelect, selectedOption }) => {
 	);
 };
 export default Menu;
+
+  
+	// md:w-[341px]
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
+// 			{options.map((option) => (
+// 				<MenuItem
+// 					key={option.id}
+// 					text={option.text}
+// 					onClick={() => onSelect(option.text)}
+// 					selected={selectedOption === option.text}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
+
+
+
 
 /**
  * @param {{

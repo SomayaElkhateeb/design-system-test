@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
+// get coupons
+import { useDispatch, useSelector } from 'react-redux';
+import { getCoupons } from 'src/app/store/slices/marketing/marketingAsyncThunks';
 
 // icons
 import { IoIosAddCircle } from 'react-icons/io';
 import { FaAngleDown } from 'react-icons/fa6';
 import { ArrangeIcon, FilterIcon } from 'src/app/utils/icons';
-import Table from 'src/app/components/page/discount/Table/Table';
-import BodyTable from 'src/app/components/page/discount/Table/BodyTable';
-import HeaderTable from 'src/app/components/page/discount/Table/HeaderTable';
-import Header from 'src/app/components/page/discount/Table/Header';
-import Body from 'src/app/components/page/discount/Table/Body';
-import { headerData } from './AddCoupon/comp/data';
+import { headerData, bodyData } from './AddCoupon/comp/data';
+import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/page';
+import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+
 const Coupons: React.FC = () => {
 	// hooks
-	const navigate = useNavigate();
 	const {t}=useTranslation()
+	const navigate = useNavigate();
+
+	const dispatch = useDispatch();
+	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
+
+	useEffect(() => {
+		dispatch(getCoupons());
+	}, [dispatch]);
+
 	return (
+		// Render your component with fetched data
 		<>
-			<div>
+			<div style={{ position: 'sticky', top: 120 }} className='bg-light-1 z-50'>
 				<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
 					<div className='flex justify-between  w-full'>
 						<Button
@@ -33,10 +43,10 @@ const Coupons: React.FC = () => {
 						</Button>
 						<div className='flex gap-8'>
 							<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-								arrange
+								{t("arrange")}
 							</Button>
 							<Button variant='secondary' LeftIcon={FilterIcon}>
-								filter
+								{t("filter")}
 							</Button>
 						</div>
 					</div>
@@ -44,14 +54,29 @@ const Coupons: React.FC = () => {
 			</div>
 
 			{/* Table */}
-			<Table>
-				{/* <HeaderTable>
-					<Header headerData={headerData} />
-				</HeaderTable>
-				<BodyTable>
-					<Body />
-				</BodyTable> */}
-			</Table>
+			{isLoading ? (
+				<div className='h-screen w-full flex justify-center items-center'>
+					<div className='spinner'></div>
+				</div>
+			) : coupons.length > 0 ? (
+				<div className='mx-3'>
+					<Table>
+						<HeaderTable>
+							<Header headerData={headerData} />
+						</HeaderTable>
+						<BodyTable>
+							<Body bodyData={coupons} />
+						</BodyTable>
+					</Table>
+				</div>
+			) : (
+				<div className='py-2 px-6 my-20 mx-auto w-fit bg-white rounded'>
+					<h3 className='text-title font-semibold'>There is no coupons available!</h3>
+				</div>
+			)}
+
+			{/* Render error message if error exists */}
+			{error && toast.error(error)}
 		</>
 	);
 };

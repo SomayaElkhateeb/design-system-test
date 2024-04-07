@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-	getDiscountsReducer,
+	getCouponsReducer,
 	// addDiscountReducer,
 } from './marketingExtraReducers';
 
 // initialState
-const initialState = { discounts: [], isLoading: false, error: null };
+const initialState = { coupons: [], isLoading: false, error: null };
 
-const discountSlice = createSlice({
-	name: 'discounts',
+const couponsSlice = createSlice({
+	name: 'coupons',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		// Chain the reducers using addCase
-		getDiscountsReducer(builder);
+		getCouponsReducer(builder);
 		// addDiscountReducer(builder);
 	},
 });
 
-export const selectDiscounts = (state) => state.discounts;
+export const selectcoupons = (state) => state.coupons;
 
-export default discountSlice.reducer;
+export default couponsSlice.reducer;
