@@ -1,13 +1,13 @@
-
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { StackedColumnChart } from 'src/app/components/optimized';
 import CampaignBtns from './CampaignBtns';
+import CampaignInfoCard from './CampaignInfoCard';
 import CampaignStatus from './CampaignStatus';
 import CampaignTable from './CampaignTable';
-import { StackedColumnChart } from 'src/app/components/optimized';
 import CampaignsHeader from './CampaignsHeader';
-import campaignData from "./data.json"
-import { useSearchParams } from 'react-router-dom';
-import CampaignInfoCard from './CampaignInfoCard';
+import campaignData from './data.json';
+
 const Campaigns = () => {
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [searchParams, _] = useSearchParams();
@@ -21,26 +21,17 @@ const Campaigns = () => {
 	} else {
 		const matchedCampaign = campaignData.campaigns.find((campaign) => campaign.name === campaignActivity);
 		tableData = matchedCampaign ? matchedCampaign.activities : [];
+	}
 
-import CampaignBtns from './CampaignBtns';
-import CampaignStatus from './CampaignStatus';
+	return (
+		<div>
+			<CampaignStatus />
+			{/* <CampaignBtns />
+			<CampaignTable /> */}
+		</div>
+	);
+};
 
-import { useState } from 'react';
-import { Button, Menu } from 'src/app/components/optimized';
-import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
-
-// const Campaigns = () => {
-// 	return (
-// 		<div>
-// 			<CampaignStatus />
-// 			<CampaignBtns />
-// 			<CampaignTable />
-// 		</div>
-// 	);
-// };
-
-// export default Campaigns;
-    
 const CampaignsData = [
 	{
 		name: 'Summer campaign',
@@ -83,7 +74,6 @@ const Header = () => {
 	function handleSelect(option) {
 		setSelectedOption(option);
 		setIsOpen(false);
-
 	}
 	const handleSelectOption = (option) => {
 		setSelectedOption(option);
@@ -104,4 +94,3 @@ const Header = () => {
 };
 
 export default Campaigns;
-
