@@ -42,8 +42,8 @@ const handleTextVariant = cva(undefined, {
 /**
  * Button component for various button styles with optional icons and loading spinner.
  * @param {{
- *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>) | JSX.Element,
- *  RightIcon?: (import("react").ComponentType<{ className?: string; }>) | JSX.Element,
+ *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
+ *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
  *  text?: never
  * } & import("react").ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants} props - Props for the Button component.
@@ -99,9 +99,7 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-
-
-					{LeftIcon && <LeftIcon className={iconClass} />}
+					{LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
 
 					{/* {LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)} */}
 
