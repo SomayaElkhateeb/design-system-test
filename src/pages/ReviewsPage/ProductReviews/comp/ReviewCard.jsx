@@ -4,15 +4,27 @@ import ProductBody from './ProductBody';
 import TweetCard from './TweetCard';
 import { getCurrentDate } from 'src/app/utils';
 
-const ReviewCard = ({ product, rating, reviewer, numReviews, date, content, isPublished, image }) => {
+const ReviewCard = ({
+	product,
+	rating,
+	reviewer,
+	numReviews,
+	date,
+	content,
+	isPublished,
+	isReplyed,
+	image,
+	handleProductPublish,
+	handleProductReply,
+}) => {
 	const [isReplyForm, setIsReplyForm] = useState(false);
 	const [replyContent, setReplyContent] = useState('');
 	const [replies, setReplies] = useState([]);
 
 	const handleReply = () => {
 		setIsReplyForm(true);
-
 		if (replyContent.trim() !== '') {
+			handleProductReply();
 			const newReply = {
 				author: reviewer,
 				content: replyContent,
@@ -31,9 +43,11 @@ const ReviewCard = ({ product, rating, reviewer, numReviews, date, content, isPu
 				date={date}
 				content={content}
 				isPublished={isPublished}
+				isReplyed={isReplyed}
 				rating={rating}
 				isReplyForm={isReplyForm}
 				handleReply={handleReply}
+				handleProductPublish={handleProductPublish}
 			/>
 			{replies.map((reply, index) => (
 				<TweetCard key={index} {...reply} />

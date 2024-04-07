@@ -6,10 +6,20 @@ import { Button } from 'src/app/components/optimized';
 import ActionCard from './ActionCard';
 import Rating from './Rating';
 
-const ProductBody = ({ reviewer, content, date, isPublished, rating, isReplyForm, handleReply }) => {
+const ProductBody = ({
+	reviewer,
+	content,
+	date,
+	isPublished,
+	isReplyed,
+	rating,
+	isReplyForm,
+	handleReply,
+	handleProductPublish,
+}) => {
 	const [showActionCard, setShowActionCard] = useState(false);
 	const handlePublish = () => {
-		handleReply();
+		handleProductPublish();
 		console.log('Publishing:', content);
 	};
 
@@ -46,9 +56,11 @@ const ProductBody = ({ reviewer, content, date, isPublished, rating, isReplyForm
 					<HiOutlineDotsHorizontal size={24} />
 				</button>
 				{!isPublished && <Button onClick={handlePublish}>{isReplyForm ? 'Submit & publish' : 'Publish'}</Button>}
-				<Button LeftIcon={<PiArrowBendUpRightFill />} variant='secondary' onClick={handleReply}>
-					{isReplyForm ? 'Submit Reply' : 'Reply'}
-				</Button>
+				{!isReplyed && (
+					<Button LeftIcon={<PiArrowBendUpRightFill />} variant='secondary' onClick={handleReply}>
+						{isReplyForm ? 'Submit Reply' : 'Reply'}
+					</Button>
+				)}
 			</div>
 		</div>
 	);
