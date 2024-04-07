@@ -47,20 +47,9 @@ import { AddBgIcon, DownIcon, MoreIcon, MoveIcon } from 'src/app/utils/icons';
  * };
  * ```
  */
-export default function ProductCategory({
-	imageUrl,
-	title,
-	category,
-	quantity,
-	price
-}) {
+export default function ProductCategory({ imageUrl, title, category, quantity, price }) {
 	const [availability, setAvailability] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
-
-	// Toggle the availability of the product
-	const availabilityHandler = () => {
-		setAvailability(!availability);
-	};
 
 	// Toggle the opening and closing of additional details
 	const toggleOpen = () => {
@@ -76,11 +65,7 @@ export default function ProductCategory({
 				</div>
 				<div className='flex flex-1 gap-3'>
 					<div className='overflow-hidden border rounded-lg size-10 border-light-2'>
-						<img
-							src={getImageUrl(imageUrl)}
-							alt={title}
-							className='object-cover size-full'
-						/>
+						<img src={getImageUrl(imageUrl)} alt={title} className='object-cover size-full' />
 					</div>
 					<div className='flex flex-col justify-around'>
 						<h2 className='title'>{title}</h2>
@@ -93,7 +78,7 @@ export default function ProductCategory({
 				<p className='paragraph'>{quantity}</p>
 				<p className='paragraph'>{price}</p>
 				<div className='flex items-start gap-[5px]'>
-					<ToggleSwitch onSwitch={availabilityHandler} />
+					<ToggleSwitch handleToggle={() => setAvailability((prev) => !prev)} checked={availability} />
 				</div>
 			</div>
 			{/* [3] */}
@@ -106,15 +91,8 @@ export default function ProductCategory({
 				</button>
 			</div>
 			{/* [4] */}
-			<button
-				className='flex items-center justify-self-end'
-				onClick={toggleOpen}
-			>
-				<DownIcon
-					className={`fill-subtitle transition-all ${
-						isOpen ? 'rotate-180' : ''
-					}`}
-				/>
+			<button className='flex items-center justify-self-end' onClick={toggleOpen}>
+				<DownIcon className={`fill-subtitle transition-all ${isOpen ? 'rotate-180' : ''}`} />
 			</button>
 		</div>
 	);
