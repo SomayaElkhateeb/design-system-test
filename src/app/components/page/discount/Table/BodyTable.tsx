@@ -1,15 +1,15 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
 interface BodyProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 const BodyTable: React.FC<BodyProps> = ({ children }) => {
-  return (
-    <tbody className="rounded-md text-title text-sm bg-red-500 h-[40rem] overflow-auto">
-      {children}
-    </tbody>
-  );
+	return (
+		<tbody className='text-subtitle text-sm flex flex-col items-center overflow-auto bg-light-1 h-[30rem]'>
+			{children}
+		</tbody>
+	);
 };
 
 export default BodyTable;

@@ -7,6 +7,7 @@ interface Item {
 	value: number;
 	date: string;
 	sales: number;
+	used: number;
 }
 
 interface Props {
@@ -16,15 +17,19 @@ interface Props {
 const Body: React.FC<Props> = ({ bodyData }) => {
 	const body = bodyData?.map((item: Item) => {
 		return (
-			<tr key={item.id}>
-				<td className='w-1/7 pl-[18px]'>{item.name}</td>
-				<td className='w-1/7 text-center'>-SAR {item.value.toFixed(2)}</td>
-				<td className='w-1/7 text-center'>{item.date}</td>
-				<td className='w-1/7 flex justify-center pt-3'>
+			<tr
+				key={item.id}
+				className='h-[2.6rem] flex items-center justify-between mb-3 px-[1rem] bg-white w-full rounded-md'
+			>
+				<td className='w-2/8 text-title font-semibold'>{item.name}</td>
+				<td className='w-1/8'>-SAR {item.value.toFixed(2)}</td>
+				<td className='w-1/8'>{item.date}</td>
+				<td className='w-1/8 pt-4'>
 					<ToggleSwitch />
 				</td>
-				<td className='w-1/7 text-center'>SAR {item.sales.toFixed(2)}</td>
-				<td className='w-1/7 flex justify-center pt-3 ml-8'>
+				<td className='w-1/8'>SAR {item.sales.toFixed(2)}</td>
+				<td className='w-1/8'>{item.used}</td>
+				<td className='w-1/8'>
 					<GroupIcons variant='edit' />
 				</td>
 			</tr>

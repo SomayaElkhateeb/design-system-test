@@ -1,39 +1,34 @@
 // import { toast } from "react-toastify";
-// import { getDiscounts, addDiscount } from "./marketingAsyncThunks";
-import { getDiscounts } from './marketingAsyncThunks';
 
-// get discounts
-export const getDiscountsReducer = (builder) => {
+import { getCoupons, postCoupons } from './marketingAsyncThunks';
+
+export const getCouponsReducer = (builder) => {
 	builder
-		.addCase(getDiscounts.pending, (state) => {
+		// get coupons
+		.addCase(getCoupons.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getDiscounts.fulfilled, (state, action) => {
+		.addCase(getCoupons.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.discounts = action.payload;
+			state.coupons = action.payload;
 		})
-		.addCase(getDiscounts.rejected, (state, action) => {
+		.addCase(getCoupons.rejected, (state, action) => {
+			state.isLoading = false;
+			state.error = action.payload;
+		})
+
+		// post coupon
+		.addCase(postCoupons.pending, (state) => {
+			state.isLoading = true;
+			state.error = null;
+		})
+		.addCase(postCoupons.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.coupons.push(action.payload);
+		})
+		.addCase(postCoupons.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});
 };
-
-// add discount
-// export const addDiscountReducer = (builder) => {
-//   builder
-//     .addCase(addDiscount.pending, (state) => {
-//       state.isLoading = true;
-//       state.error = null;
-//     })
-//     .addCase(addDiscount.fulfilled, (state, action) => {
-//       state.isLoading = false;
-//       state.discounts.push(action.payload);
-//       toast.success("Dicount added successfully");
-//     })
-//     .addCase(addDiscount.rejected, (state, action) => {
-//       state.isLoading = false;
-//       state.error = action.payload;
-//       toast.error("Failed to add product");
-//     });
-// };

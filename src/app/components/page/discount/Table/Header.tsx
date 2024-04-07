@@ -23,7 +23,7 @@ const Header: React.FC<Props> = ({ headerData }) => {
 	const header = headerData.map((item, index) => {
 		return (
 			<tr key={index}>
-				<th className='w-2/8 pl-[18px] font-normal text-left'>{item.name}</th>
+				<th className='w-2/8 font-normal'>{item.name}</th>
 				<th className='w-1/8 font-normal'>{item.type}</th>
 				<th className='w-1/8 font-normal'>{item.date}</th>
 				<th className='w-1/8 font-normal'>{item.active}</th>
