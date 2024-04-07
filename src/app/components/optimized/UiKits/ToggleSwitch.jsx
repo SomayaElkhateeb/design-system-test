@@ -5,13 +5,6 @@
  * }} props
  */
 function ToggleSwitch(props) {
-	// const [isOn, setIsOn] = useState(true);
-
-	// const toggleSwitch = () => {
-	// 	setIsOn(!isOn);
-	// 	props.handleOnChange(!isOn);
-	// };
-
 	return (
 		<label className='flex items-center mb-4 cursor-pointer ' onClick={props.handleToggle}>
 			<span
