@@ -1,7 +1,7 @@
 
-import { useState } from 'react';
-import CampaignBtns from './CampaignBtns';
-import CampaignStatus from './CampaignStatus';
+// import { useState } from 'react';
+// import CampaignBtns from './CampaignBtns';
+// import CampaignStatus from './CampaignStatus';
 import CampaignTable from './CampaignTable';
 import { StackedColumnChart } from 'src/app/components/optimized';
 import CampaignsHeader from './CampaignsHeader';
@@ -21,7 +21,7 @@ const Campaigns = () => {
 	} else {
 		const matchedCampaign = campaignData.campaigns.find((campaign) => campaign.name === campaignActivity);
 		tableData = matchedCampaign ? matchedCampaign.activities : [];
-
+	}}
 import CampaignBtns from './CampaignBtns';
 import CampaignStatus from './CampaignStatus';
 
@@ -91,13 +91,13 @@ const Header = () => {
 
 	return (
 		<>
-			{(activityDetails || campaignActivity) && <CampaignsHeader title={title} />}
+			{/* {(activityDetails || campaignActivity) && <CampaignsHeader title={title} />} */}
 			<div className='p-4'>
-				{activityDetails && <CampaignInfoCard />}
+				{/* {activityDetails && <CampaignInfoCard />} */}
 				<CampaignStatus />
 				<CampaignBtns onSelectOption={handleSelectOption} />
-				{!activityDetails && <CampaignTable sortTerm={selectedOption} data={tableData} />}
-				{activityDetails && <StackedColumnChart />}
+				{/* {!activityDetails && <CampaignTable sortTerm={selectedOption} data={tableData} />}
+				{activityDetails && <StackedColumnChart />} */}
 			</div>
 		</>
 	);
