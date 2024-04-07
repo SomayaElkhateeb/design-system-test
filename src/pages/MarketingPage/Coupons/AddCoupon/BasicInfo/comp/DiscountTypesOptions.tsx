@@ -4,9 +4,10 @@ import { AiOutlinePercentage } from 'react-icons/ai';
 
 interface selectedOptionType {
 	discountType: string;
+	discount: number;
 }
 
-const DiscountTypesOptions: React.FC = ({ discountType }) => {
+const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount }) => {
 	const [state, setState] = useState({
 		amountPercentage: 0,
 		amountFixed: 0,
@@ -51,6 +52,7 @@ const DiscountTypesOptions: React.FC = ({ discountType }) => {
 			{discountType === 'Fixed amount' && (
 				<div className='w-[24rem] pt-[1rem]'>
 					<InputRow
+						ref={discount}
 						label='Fixed amount'
 						id='fixedAmount'
 						type='number'

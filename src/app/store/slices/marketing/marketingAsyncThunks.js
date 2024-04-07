@@ -1,39 +1,39 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import dataJson from 'src/pages/MarketingPage/Coupons/AddCoupon/comp/data.json';
-
-// // fetch discounts
-// export const getDiscounts = createAsyncThunk('discount/getDiscounts', async (_, { thunkAPI }) => {
-// 	try {
-// 		const { data } = await dataJson.get(`${dataJson}/discount`);
-// 		return data;
-// 	} catch (error) {
-// 		throw thunkAPI.rejectWithValue(error.message);
-// 	}
-// });
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import dataJson from 'src/pages/MarketingPage/Coupons/AddCoupon/comp/data.json';
+import axios from 'axios';
 
-// fetch discounts
-export const getDiscounts = createAsyncThunk('discount/getDiscounts', async (_, { thunkAPI }) => {
+const URL = 'http://localhost:3007';
+
+// fetch coupons
+export const getCoupons = createAsyncThunk('coupon/getCoupons', async (_, thunkAPI) => {
+	const { rejectWithValue } = thunkAPI;
 	try {
-		// Simply return the imported JSON data
-		return dataJson;
+		// Make an HTTP GET request to your API endpoint using Axios
+		const { data } = await axios.get(`${URL}/coupons`);
+
+		// Return the data to be stored in the Redux store
+		return data;
 	} catch (error) {
-		throw thunkAPI.rejectWithValue(error.message);
+		// Handle errors and reject with the error message
+		throw rejectWithValue(error.message);
 	}
 });
 
-// add discount
-// export const addDiscount = createAsyncThunk(
-//   "discount/addDiscount",
-//   async (discountData, { thunkAPI }) => {
-//     try {
-//       const { data } = await api.post("/discount", discountData);
-//       return data;
-//     } catch (error) {
-//       console.error("Error adding discount:", error);
-//       throw thunkAPI.rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+// add coupons
+export const postCoupons = createAsyncThunk('coupon/postCoupons', async (couponData, thunkAPI) => {
+	const { rejectWithValue } = thunkAPI;
+	try {
+		// Make an HTTP POST request to your API endpoint using Axios
+		const { data } = await axios.post(`${URL}/coupons`, {
+			body: JSON.stringify(couponData),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		});
+
+		// Return the data to be stored in the Redux store
+		return data;
+	} catch (error) {
+		// Handle errors and reject with the error message
+		throw rejectWithValue(error.message);
+	}
+});
