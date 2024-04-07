@@ -49,3 +49,23 @@ export function getInitialDate() {
 	const day = String(today.getDate()).padStart(2, '0');
 	return `${year}-${month}-${day}`;
 }
+
+export const formatReviewScore = (score: number): string => {
+	const formattedScore = score.toString();
+	return formattedScore.includes('.') ? formattedScore : `${formattedScore}.0`;
+};
+
+export const getCurrentDate = () => {
+	const currentDate = new Date();
+
+	const formattedDate = currentDate.toLocaleDateString(undefined, {
+		month: '2-digit',
+		day: '2-digit',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: true,
+	});
+
+	return formattedDate;
+};
