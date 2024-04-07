@@ -3,18 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 // get coupons
 import { useDispatch, useSelector } from 'react-redux';
-import { getCoupons } from 'src/app/store/slices/marketing/marketingAsyncThunks';
+import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 
 // icons
 import { IoIosAddCircle } from 'react-icons/io';
 import { FaAngleDown } from 'react-icons/fa6';
 import { ArrangeIcon, FilterIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
 
-import { headerData, bodyData } from './AddCoupon/comp/data';
+import { headerData } from './AddCoupon/comp/data';
 import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/page';
 import { toast } from 'react-toastify';
 const Coupons: React.FC = () => {
+	// hooks
+	const {t}=useTranslation()
 	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
 	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
 
@@ -25,7 +29,7 @@ const Coupons: React.FC = () => {
 	return (
 		// Render your component with fetched data
 		<>
-			<div style={{ position: 'sticky', top: 120 }} className='bg-light-1 z-50'>
+			<div style={{ position: 'sticky', top: 120 }} className='bg-light-1 z-50 mb-3'>
 				<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
 					<div className='flex justify-between  w-full'>
 						<Button
@@ -35,14 +39,14 @@ const Coupons: React.FC = () => {
 								navigate('addCoupon');
 							}}
 						>
-							add new coupon
+							{t("add new coupon")}
 						</Button>
 						<div className='flex gap-8'>
 							<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-								arrange
+								{t("arrange")}
 							</Button>
 							<Button variant='secondary' LeftIcon={FilterIcon}>
-								filter
+								{t("filter")}
 							</Button>
 						</div>
 					</div>
