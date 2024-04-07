@@ -5,6 +5,7 @@ const handleButtonVariant = cva(undefined, {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize',
 			secondary: 'btn-sec flex items-center gap-1 p-2',
+			primary: 'fill-white',
 			tertiary:
 				'text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3',
 			default: 'relative btn-pri flex px-1 items-center ml-1',
@@ -18,6 +19,7 @@ const handleIconVariant = cva(undefined, {
 			link: 'fill-primary p-0.5 mb-1 ml-1',
 			secondary: 'fill-pri-dark h-3 w-3 ml-1',
 			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
+			primary: 'fill-white',
 			default: 'fill-white',
 		},
 	},
@@ -29,6 +31,7 @@ const handleTextVariant = cva(undefined, {
 			link: undefined,
 			secondary: 'fill-pri-dark',
 			tertiary: 'fill-pri-dark',
+			primary: 'fill-white',
 			default: 'mx-1 text-sm',
 		},
 	},
@@ -99,9 +102,9 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
+					{/* {LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)} */}
 
-					{/* {LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)} */}
+					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)}
 
 					<span className={textClass}>{children ?? text}</span>
 					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}

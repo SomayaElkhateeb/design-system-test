@@ -4,6 +4,11 @@ import { useTranslation } from "react-i18next";
 import { IoIosAddCircle } from 'react-icons/io';
 import ActionsComp from "./ActionsComp";
 import useSelectBox from "../../optimized/Menu/useSelectBox";
+import { nanoid } from "nanoid";
+import { FaRegEdit } from "react-icons/fa";
+import { SiMicrosoftexcel } from "react-icons/si";
+import { FiUploadCloud } from "react-icons/fi";
+
 //  componenet will be used in customers page
 export default function AllCustomers() {
     //  hooks
@@ -16,7 +21,26 @@ export default function AllCustomers() {
         useSelectBox();
 
 
-        
+    const sortMenus = [
+        { id: nanoid(), text: "Name A to Z" },
+        { id: nanoid(), text: "Name Z to A" },
+        { id: nanoid(), text: "Sales Ascending" },
+        { id: nanoid(), text: "Sales Descending" },
+        { id: nanoid(), text: "Expenses Ascending" },
+        { id: nanoid(), text: "Expenses Descending" },
+        { id: nanoid(), text: "Net profit Ascending" },
+        { id: nanoid(), text: "Net profit Descending" },
+    ];
+
+    const ActionsMenus = [
+        { id: nanoid(), text: "Bulk edit", icon: <FaRegEdit/> },
+        { id: nanoid(), text: "Export customers",icon:<SiMicrosoftexcel/> },
+        { id: nanoid(), text: "Import customers",icon:<FiUploadCloud/> },
+
+    ];
+
+
+
     return (
         <div className=" flex flex-col gap-[4rem]">
             {/*  top section */}
@@ -33,7 +57,12 @@ export default function AllCustomers() {
                 </Button>
 
                 {/*  actions filter arrange,... */}
-                <ActionsComp  selectedOption={selectedOption} handelSelect={handleSelect}/>
+                <ActionsComp 
+                filterMenus={sortMenus} 
+                sortMenus={sortMenus} 
+                ActionsMenus={ActionsMenus} 
+                selectedOption={selectedOption} 
+                handelSelect={handleSelect} />
             </div>
 
 
