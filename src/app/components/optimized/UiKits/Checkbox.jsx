@@ -6,8 +6,8 @@ import { CheckIcon } from 'src/app/utils/icons';
  * @param {{
  *  variant?: "minus";
  *  label?: import("react").ReactNode;
- *  handleOnChange?: (isChecked: boolean) => void;
- *  checked?: boolean;
+ *  handleOnChange: (isChecked: boolean) => void;
+ *  checked: boolean;
  * } & Omit<import("react").InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked">} props - Props for the CheckBoxX component.
  *
  * @example
@@ -42,7 +42,7 @@ export default function CheckBox({ variant, label, defaultChecked: initialChecke
 	const [_isChecked, setIsChecked] = useState(!!props.checked);
 
 	const isChecked = props.checked ?? _isChecked;
-
+	console.log('isChecked', isChecked);
 	useEffect(() => {
 		if (initialChecked !== undefined) {
 			setIsChecked(initialChecked);

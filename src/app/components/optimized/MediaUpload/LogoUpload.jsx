@@ -1,3 +1,4 @@
+// Done refactoring to type
 import { getImageUrl } from 'src/app/utils';
 import { AddBgIcon, MoreIcon, UploadIcon } from 'src/app/utils/icons';
 // ! ///////////////////
