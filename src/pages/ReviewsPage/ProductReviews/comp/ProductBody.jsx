@@ -15,19 +15,26 @@ const ProductBody = ({
 	rating,
 	isReplyForm,
 	handleReply,
-	handleProductPublish,
+	publishProduct,
+	unpublishProduct,
+	deleteProduct,
 }) => {
 	const [showActionCard, setShowActionCard] = useState(false);
+
 	const handlePublish = () => {
-		handleProductPublish();
+		publishProduct();
 		console.log('Publishing:', content);
 	};
 
 	const handleUnpublish = () => {
+		unpublishProduct();
+		setShowActionCard(false);
 		console.log('Unpublish action triggered');
 	};
 
 	const handleDelete = () => {
+		deleteProduct();
+		setShowActionCard(false);
 		console.log('Delete action triggered');
 	};
 	return (

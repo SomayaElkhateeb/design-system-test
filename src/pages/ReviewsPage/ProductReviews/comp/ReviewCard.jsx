@@ -14,8 +14,10 @@ const ReviewCard = ({
 	isPublished,
 	isReplyed,
 	image,
-	handleProductPublish,
-	handleProductReply,
+	publishProduct,
+	unpublishProduct,
+	deleteProduct,
+	replyToProduct,
 }) => {
 	const [isReplyForm, setIsReplyForm] = useState(false);
 	const [replyContent, setReplyContent] = useState('');
@@ -24,7 +26,7 @@ const ReviewCard = ({
 	const handleReply = () => {
 		setIsReplyForm(true);
 		if (replyContent.trim() !== '') {
-			handleProductReply();
+			replyToProduct();
 			const newReply = {
 				author: reviewer,
 				content: replyContent,
@@ -47,7 +49,9 @@ const ReviewCard = ({
 				rating={rating}
 				isReplyForm={isReplyForm}
 				handleReply={handleReply}
-				handleProductPublish={handleProductPublish}
+				publishProduct={publishProduct}
+				unpublishProduct={unpublishProduct}
+				deleteProduct={deleteProduct}
 			/>
 			{replies.map((reply, index) => (
 				<TweetCard key={index} {...reply} />

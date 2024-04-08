@@ -4,6 +4,7 @@ import { Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import ReviewCard from './comp/ReviewCard';
 import RightSidebar from './comp/RightSidebar';
+import useProductState from './comp/useProductState';
 
 const productsList = [
 	{
@@ -11,7 +12,7 @@ const productsList = [
 		reviewer: 'Muhammed 1',
 		date: '2024-04-03',
 		content: 'This product is amazing! I highly recommend it.',
-		rating: 5,
+		rating: "5",
 		numReviews: 500,
 		product: 'DJI Mavic Pro 2',
 		image: getImageUrl('product/product.png'),
@@ -57,35 +58,17 @@ const productsList = [
 ];
 
 const ProductReviews = () => {
-	const [products, setProducts] = useState(productsList);
+	const {
+		publishAllProducts,
+		unpublishProduct,
+		replyToProduct,
+		deleteProduct,
+		publishProduct,
+		publishedProducts,
+		unpublishedProducts,
+	} = useProductState(productsList);
+
 	const [isOpen, setIsOpen] = useState(false);
-
-	const publishAllProducts = () => {
-		const updatedProducts = products.map((product) => ({ ...product, isPublished: true }));
-		setProducts(updatedProducts);
-	};
-
-	const handleProductPublish = (productId) => {
-		const updatedProducts = products.map((product) => {
-			if (product.id === productId) {
-				return { ...product, isPublished: true };
-			}
-			return product;
-		});
-		setProducts(updatedProducts);
-	};
-	const handleProductReply = (productId) => {
-		const updatedProducts = products.map((product) => {
-			if (product.id === productId) {
-				return { ...product, isReplyed: true };
-			}
-			return product;
-		});
-		setProducts(updatedProducts);
-	};
-
-	const publishedProducts = products.filter((product) => product.isPublished);
-	const unpublishedProducts = products.filter((product) => !product.isPublished);
 
 	return (
 		<>
@@ -117,20 +100,27 @@ const ProductReviews = () => {
 									<ReviewCard
 										key={product.id}
 										{...product}
-										handleProductPublish={() => handleProductPublish(product.id)}
-										handleProductReply={() => handleProductReply(product.id)}
+										publishProduct={() => publishProduct(product.id)}
+										replyToProduct={() => replyToProduct(product.id)}
+										deleteProduct={() => deleteProduct(product.id)}
 									/>
 								))}
 							</div>
 						</div>
 					)}
 
-					{publishedProducts && (
+					{publishedProducts && publishedProducts.length > 0 && (
 						<div>
 							<h3 className='text-md text-gray-400 mt-8 mb-2 uppercase'>Published ({publishedProducts.length})</h3>
 							<div className='grid grid-cols-1 gap-4 w-full'>
 								{publishedProducts.map((product) => (
-									<ReviewCard key={product.id} {...product} handleProductReply={() => handleProductReply(product.id)} />
+									<ReviewCard
+										key={product.id}
+										{...product}
+										replyToProduct={() => replyToProduct(product.id)}
+										unpublishProduct={() => unpublishProduct(product.id)}
+										deleteProduct={() => deleteProduct(product.id)}
+									/>
 								))}
 							</div>
 						</div>
