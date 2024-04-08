@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { useState } from 'react';
 import { ToggleSwitch } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';

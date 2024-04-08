@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { TooltipIcon } from 'src/app/utils/icons';
 import { InputRow } from '..';
 import { getImageUrl } from 'src/app/utils';
