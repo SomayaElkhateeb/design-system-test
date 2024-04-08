@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { useId, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
@@ -88,15 +87,9 @@ export default function SelectBoxRow({
 				<label htmlFor={controlId} className='block text-sm '>
 					{label}
 				</label>
-				<div
-					className={`${classNames} overflow-hidden rounded-md w-full border`}
-				>
+				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
-						{leftIcon && (
-							<div className='absolute inset-y-0 left-0 flex items-center p-5 bg-gray-200 '>
-								{leftIcon}
-							</div>
-						)}
+						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-5 bg-gray-200 '>{leftIcon}</div>}
 						<select
 							ref={_ref}
 							className={`block w-full px-3 py-2 border rounded focus:outline-none border-none outline-none ${
@@ -107,10 +100,7 @@ export default function SelectBoxRow({
 							onBlur={() => setFocused(false)}
 							disabled={loading}
 							value={selectedValue}
-							onChange={
-								handleOnChange &&
-								((event) => handleOnChange(event.target.value))
-							}
+							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
 							{...rest}
 						>
 							<option disabled value=''>
@@ -123,9 +113,7 @@ export default function SelectBoxRow({
 							))}
 						</select>
 						{rightIcon && !loading && (
-							<div className='absolute inset-y-0 right-0 flex items-center p-5 bg-gray-200'>
-								{rightIcon}
-							</div>
+							<div className='absolute inset-y-0 right-0 flex items-center p-5 bg-gray-200'>{rightIcon}</div>
 						)}
 						{loading && (
 							<div className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -135,12 +123,8 @@ export default function SelectBoxRow({
 					</div>
 				</div>
 
-				{error && !focused && (
-					<small className='text-xs text-red-500'>Error</small>
-				)}
-				{success && !focused && (
-					<small className='text-xs text-green-500'>Success</small>
-				)}
+				{error && !focused && <small className='text-xs text-red-500'>Error</small>}
+				{success && !focused && <small className='text-xs text-green-500'>Success</small>}
 			</div>
 		</>
 	);

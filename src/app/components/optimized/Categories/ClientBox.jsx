@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { capitalizeFirstLetter } from 'src/app/utils';
 
 /**
@@ -32,9 +31,7 @@ export default function ClientBox(props) {
 			<div className='flex items-center gap-2'>
 				{props.avatar}
 				<div>
-					<h5 className='text-sm font-semibold text-title'>
-						{capitalizeFirstLetter(props.title)}
-					</h5>
+					<h5 className='text-sm font-semibold text-title'>{capitalizeFirstLetter(props.title)}</h5>
 					<p className='text-sm text-subtitle'>{props.details}</p>
 				</div>
 			</div>
@@ -45,5 +42,5 @@ export default function ClientBox(props) {
 // Default props
 ClientBox.defaultProps = {
 	title: 'top clients',
-	details: 'This group is high niche'
+	details: 'This group is high niche',
 };

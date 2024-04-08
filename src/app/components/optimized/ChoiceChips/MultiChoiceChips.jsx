@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { AddIcon, CheckIcon } from 'src/app/utils/icons';
 
 /**

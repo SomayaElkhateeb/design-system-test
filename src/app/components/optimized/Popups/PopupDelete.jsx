@@ -1,4 +1,3 @@
-// Done refactoring to type
 /**
  * @param {{
  *  onClose: () => void;
