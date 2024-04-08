@@ -17,6 +17,7 @@ import {
 import emptyList from "../../../../assets/images/EmptyList.png";
 import { Model } from "src/app/types/model.type";
 import { ReactMetaElement } from "src/app/interface/react-meta-element.interface";
+import { t } from "i18next";
 type props = {
 
 
@@ -55,7 +56,7 @@ const BaseTable = <T extends Model>({
                                     fontWeight: 400,
                                 }}
                                 key={`h-${i}`}>
-                                {header?.toUpperCase()}
+                                {t(header)?.toUpperCase()}
                             </TableCell>
                         ))}
                     </TableRow>

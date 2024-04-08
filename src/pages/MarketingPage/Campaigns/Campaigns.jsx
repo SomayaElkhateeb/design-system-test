@@ -5,15 +5,9 @@ import { useSearchParams } from 'react-router-dom';
 import campaignData from './data.json';
 import CampaignBtns from './CampaignBtns';
 
-
-// import { useState } from 'react';
-// import CampaignBtns from './CampaignBtns';
-// import CampaignStatus from './CampaignStatus';
-
 import CampaignTable from './CampaignTable';
 import CampaignStatus from './CampaignStatus';
-import CampaignsHeader from './CampaignsHeader';
-import CampaignInfoCard from './CampaignInfoCard';
+
 import { StackedColumnChart } from 'src/app/components/optimized';
 
 const Campaigns = () => {
@@ -40,24 +34,7 @@ const Campaigns = () => {
 		tableData = matchedCampaign ? matchedCampaign.activities : [];
 
 	}}
-import CampaignBtns from './CampaignBtns';
-import CampaignStatus from './CampaignStatus';
 
-import { useState } from 'react';
-import { Button, Menu } from 'src/app/components/optimized';
-import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
-
-// const Campaigns = () => {
-// 	return (
-// 		<div>
-// 			<CampaignStatus />
-// 			<CampaignBtns />
-// 			<CampaignTable />
-// 		</div>
-// 	);
-// };
-
-// export default Campaigns;
     
 const CampaignsData = [
 	{
@@ -112,9 +89,9 @@ const Header = () => {
 				{/* {activityDetails && <CampaignInfoCard />} */}
 				<CampaignStatus />
 
-				<CampaignBtns onSelectOption={handleArrangeChange} data={tableData}/>
+				{/* <CampaignBtns onSelectOption={handleArrangeChange} data={tableData}/>
 				{!activityDetails && <CampaignTable arrangeTerm={arrange} data={tableData} />}
-				{activityDetails && <StackedColumnChart />}
+				{activityDetails && <StackedColumnChart />} */}
 
   {/*<CampaignBtns onSelectOption={handleSelectOption} />*/}
 				{/* {!activityDetails && <CampaignTable sortTerm={selectedOption} data={tableData} />}

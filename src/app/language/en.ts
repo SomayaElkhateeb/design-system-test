@@ -162,7 +162,7 @@ export const english = {
 	'Order Date': 'Order Date',
 	Amount: 'Amount',
 	'Order Status': 'Order Status',
-	
+	"Add New Group":"Add New Group",
 	Print: 'Print',
 	'Orders List': 'Orders List',
 	'Order created at': 'Order created at',

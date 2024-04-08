@@ -171,7 +171,7 @@ export const arabic = {
 	'Order Date': 'تاريخ الطلب',
 	Amount: 'المبلغ',
 	'Order Status': 'حاله الطلب',
-
+	"Add New Group":"اضافه مجموعه جديده",
 	Print: 'طباعه',
 	'Orders List': 'قائمه الطلبات',
 	'Order created at': 'تم إنشاء الطلب في',
