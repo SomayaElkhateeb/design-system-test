@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { useState } from 'react';
 import { Button } from 'src/app/components/optimized';
 import { SuccessIcon } from 'src/app/utils/icons';

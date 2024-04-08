@@ -1,29 +1,23 @@
-import { BackAndroidIcon } from "src/app/utils/icons";
-
-
+import { BackAndroidIcon } from 'src/app/utils/icons';
 
 const StatsCard = ({ percentage, label, value, positive, extensions }) => {
-  return (
-    <div className="flex flex-col bg-white rounded-lg border border-black  p-2 w-40 h-[100px] ">
-      <div className="flex items-center">
-        <BackAndroidIcon
-          className={`${
-            positive ? "fill-success rotate-90" : "fill-error -rotate-90"
-          }`}
-        />
-        <h2 className={`paragraph ${positive ? "text-success" : "text-error"}`}>
-          {percentage}
-        </h2>
-      </div>
-      <p className="subheading text-title my-[3px]">{label}</p>
-      <div className="flex items-end gap-2">
-        <p className="text-3xl  text-title">{value}</p>
-        {<span className="paragraph text-subtitle">{extensions}</span>}
-      </div>
-    </div>
-  );
+	return (
+		<div className='rounded-lg bg-brand-gradient w-40 p-px '>
+			<div className='rounded-[calc(0.5rem-1px)] p-2 bg-white flex flex-col'>
+				<div className='flex items-center'>
+					<BackAndroidIcon className={`${positive ? 'fill-success rotate-90' : 'fill-error -rotate-90'}`} />
+					<h2 className={`paragraph ${positive ? 'text-success' : 'text-error'}`}>{percentage}</h2>
+				</div>
+				<p className='subheading text-title my-[3px]'>{label}</p>
+				<div className='flex items-end gap-2'>
+					<p className='text-3xl  text-title'>{value}</p>
+					{<span className='paragraph text-subtitle'>{extensions}</span>}
+				</div>
+			</div>
+		</div>
+	);
 };
-
+// p-2 w-40
 
 export default StatsCard;
 // const ParentComponent = () => {
