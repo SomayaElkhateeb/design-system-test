@@ -38,7 +38,7 @@ const BaseTable = <T extends Model>({
             sx={{
                 marginTop: "20px",
                 backgroundColor: "white",
-                maxHeight: 700,
+                maxHeight: 600,
                 minHeight: 100,
             }}>
             <Fade in={isLoading}>
