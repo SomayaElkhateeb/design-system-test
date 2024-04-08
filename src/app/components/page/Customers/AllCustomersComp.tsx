@@ -8,6 +8,8 @@ import { nanoid } from "nanoid";
 import { FaRegEdit } from "react-icons/fa";
 import { SiMicrosoftexcel } from "react-icons/si";
 import { FiUploadCloud } from "react-icons/fi";
+import CustomersTable from "./CustomersTable";
+
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -33,16 +35,16 @@ export default function AllCustomers() {
     ];
 
     const ActionsMenus = [
-        { id: nanoid(), text: "Bulk edit", icon: <FaRegEdit/> },
-        { id: nanoid(), text: "Export customers",icon:<SiMicrosoftexcel/> },
-        { id: nanoid(), text: "Import customers",icon:<FiUploadCloud/> },
+        { id: nanoid(), text: "Bulk edit", icon: <FaRegEdit /> },
+        { id: nanoid(), text: "Export customers", icon: <SiMicrosoftexcel /> },
+        { id: nanoid(), text: "Import customers", icon: <FiUploadCloud /> },
 
     ];
 
 
 
     return (
-        <div className=" flex flex-col gap-[4rem]">
+        <div className=" flex flex-col gap-[1rem]">
             {/*  top section */}
             <div className="flex justify-between items-center">
                 {/*  add customers button */}
@@ -57,14 +59,17 @@ export default function AllCustomers() {
                 </Button>
 
                 {/*  actions filter arrange,... */}
-                <ActionsComp 
-                filterMenus={sortMenus} 
-                sortMenus={sortMenus} 
-                ActionsMenus={ActionsMenus} 
-                selectedOption={selectedOption} 
-                handelSelect={handleSelect} />
+                <ActionsComp
+                    filterMenus={sortMenus}
+                    sortMenus={sortMenus}
+                    ActionsMenus={ActionsMenus}
+                    selectedOption={selectedOption}
+                    handelSelect={handleSelect} />
             </div>
+            <hr />
 
+            {/*  customers table */}
+            <CustomersTable />
 
         </div>
     )

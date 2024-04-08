@@ -34,20 +34,24 @@ export const arabic = {
 	'Facebook & Instagram': 'فيسبوك & انستجرام',
 	'Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.':
 		'تواصل مع Facebook وInstagram Shop وأطلق حملة إعلانية لعرض منتجاتك أمام العملاء المحتملين.',
-
+	"Mobile": "رقم الهاتف",
+	"City": "المدينه",
+	"Orders": "الطلبات",
+	"E-Subscription": "المتابعه",
+	"actions": "الاحداث",
 	free: 'مجاني',
 	installed: 'تم تنزيله',
-	"add new coupon":"اضافه كوبون جديد",
+	"add new coupon": "اضافه كوبون جديد",
 
 	"View All": "اظهار الكل",
 	"All Customers": "جميع العملاء",
 	"Customers Groups": "مجموعه العملاء",
 	"Marketing/google/google-setup": "التسويق / جوجل / تنزيل جوجل",
-	"arrange":"ترتيب",
-	"filter":"فلتر",
-	"Actions":"احداث",
-	"AddCustomer":"اضافه عميل",
-	
+	"arrange": "ترتيب",
+	"filter": "فلتر",
+	"Actions": "احداث",
+	"AddCustomer": "اضافه عميل",
+
 	Dashboard: 'اللوحه الرئيسيه',
 	'Welcome to Restaurant Admin!': 'مرحبا بك في لوحه تحكم المطعم !',
 	'Total Income': 'اجمالي الدخل',
@@ -167,7 +171,7 @@ export const arabic = {
 	'Order Date': 'تاريخ الطلب',
 	Amount: 'المبلغ',
 	'Order Status': 'حاله الطلب',
-	Orders: 'الطلبات',
+
 	Print: 'طباعه',
 	'Orders List': 'قائمه الطلبات',
 	'Order created at': 'تم إنشاء الطلب في',

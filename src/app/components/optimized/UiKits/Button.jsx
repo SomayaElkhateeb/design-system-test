@@ -5,7 +5,7 @@ const handleButtonVariant = cva(undefined, {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize',
 			secondary: 'btn-sec flex items-center gap-1 p-2',
-			primary: 'fill-white',
+			primary: 'text-white bg-primary flex items-center p-2 gap-2 rounded',
 			tertiary:
 				'text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3',
 			default: 'relative btn-pri flex px-1 items-center ml-1',
