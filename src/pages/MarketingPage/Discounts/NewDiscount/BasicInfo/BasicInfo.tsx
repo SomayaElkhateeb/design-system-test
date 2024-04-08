@@ -14,7 +14,7 @@ const BasicInfo: React.FC = () => {
 			<h3 className='text-title font-semibold mb-2'>Basic info</h3>
 			<div className='flex flex-col gap-[1rem]'>
 				<div className='w-[24rem]'>
-					<InputRow label='coupon code' />
+					<InputRow label='discount name' />
 				</div>
 			</div>
 

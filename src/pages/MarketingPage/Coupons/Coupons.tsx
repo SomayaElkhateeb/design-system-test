@@ -12,11 +12,10 @@ import { ArrangeIcon, FilterIcon } from 'src/app/utils/icons';
 
 import { headerData } from './AddCoupon/comp/data';
 import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/page';
-// import { toast } from 'react-toastify';
 const Coupons: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
+	const { isLoading, coupons } = useSelector((state) => state.coupons);
 
 	useEffect(() => {
 		dispatch(getCoupons());
@@ -72,7 +71,7 @@ const Coupons: React.FC = () => {
 			)}
 
 			{/* Render error message if error exists */}
-			{error && toast.error(error)}
+			{/* {error && toast.error(error)} */}
 		</>
 	);
 };

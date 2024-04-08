@@ -12,11 +12,13 @@ import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discounts
 const Discounts: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { isLoading, discount, error } = useSelector((state) => state.discount);
+	const { isLoading, discount } = useSelector((state) => state.discount);
 
 	useEffect(() => {
 		dispatch(getDiscounts());
 	}, [dispatch]);
+
+	console.log('discount', discount);
 	return (
 		<>
 			<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
@@ -64,7 +66,7 @@ const Discounts: React.FC = () => {
 			)}
 
 			{/* Render error message if error exists */}
-			{error && toast.error(error)}
+			{/* {error && toast.error(error)} */}
 		</>
 	);
 };

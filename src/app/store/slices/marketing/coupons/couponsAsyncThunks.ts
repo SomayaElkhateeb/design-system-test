@@ -7,10 +7,7 @@ const URL = 'http://localhost:3007';
 export const getCoupons = createAsyncThunk<any[]>('coupon/getCoupons', async (_, thunkAPI) => {
 	const { rejectWithValue } = thunkAPI;
 	try {
-		// Make an HTTP GET request to your API endpoint using Axios
 		const { data } = await axios.get<any[]>(`${URL}/coupons`);
-
-		// Return the data to be stored in the Redux store
 		return data;
 	} catch (error) {
 		// Handle errors and reject with the error message

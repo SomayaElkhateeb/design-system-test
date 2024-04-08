@@ -31,7 +31,7 @@ const SelectItem: React.FC<Props> = ({
 	const handleCheckBoxClick = () => {
 		const newValue = !isChecked;
 		// setIsChecked(newValue);
-		onCheckBoxChange(newValue, id, title); // Pass the id to the callback function
+		onCheckBoxChange(newValue, id, title);
 	};
 	console.log('id', id);
 	console.log('title', title);

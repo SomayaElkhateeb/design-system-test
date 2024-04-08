@@ -9,7 +9,7 @@ export const getDiscountReducer = (builder) => {
 		})
 		.addCase(getDiscounts.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.coupons = action.payload;
+			state.discount = action.payload;
 		})
 		.addCase(getDiscounts.rejected, (state, action) => {
 			state.isLoading = false;

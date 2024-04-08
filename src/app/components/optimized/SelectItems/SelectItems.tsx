@@ -125,11 +125,11 @@ const SelectItems: React.FC<Props> = ({ title, onClose, select, variant }) => {
 				<div className='flex flex-col gap-2 my-2 h-[25rem] overflow-auto'>
 					{queryItems.map((item) => (
 						<SelectItem
-							variant={variant}
 							key={item.id}
+							variant={variant}
 							{...item}
 							isChecked={selectedItems.includes(item.id)}
-							onCheckBoxChange={(isChecked) => handleChange(isChecked, item.id)}
+							onCheckBoxChange={(isChecked) => handleChange(isChecked, item.id, item.title)}
 						/>
 					))}
 				</div>

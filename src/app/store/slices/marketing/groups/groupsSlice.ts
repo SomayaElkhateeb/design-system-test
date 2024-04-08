@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDiscountReducer } from './groupsExtraReducers';
+import { getGroupsReducer } from './groupsExtraReducers';
 
 // initialState
-const initialState = { discount: [], isLoading: false, error: null };
+const initialState = { groups: [], isLoading: false, error: null };
 
-const discountSlice = createSlice({
-	name: 'discount',
+const groupsSlice = createSlice({
+	name: 'groups',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		getDiscountReducer(builder);
+		getGroupsReducer(builder);
 	},
 });
 
-export const selectdiscount = (state) => state.discount;
+export const selectGroups = (state) => state.groups;
 
-export default discountSlice.reducer;
+export default groupsSlice.reducer;

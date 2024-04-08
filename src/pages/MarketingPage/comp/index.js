@@ -1,4 +1,4 @@
-// export { default as Discounts } from "../Discounts/Discounts";
+export { default as Discounts } from '../Discounts/Discounts';
 export { default as Coupons } from '../Coupons/Coupons';
 export { default as AddCoupon } from '../Coupons/AddCoupon/AddCoupon';
 export { default as Campaigns } from '../Campaigns/Campaigns';

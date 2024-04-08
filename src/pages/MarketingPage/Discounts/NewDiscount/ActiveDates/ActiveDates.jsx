@@ -1,35 +1,36 @@
+import { useState } from 'react';
 import { Button, DatePicker, TimePicker } from 'src/app/components/optimized';
-import { IoIosAddCircle } from 'react-icons/io';
-import { IoIosClose } from 'react-icons/io';
-import useDiscountForm from '../comp/useDiscountForm';
+import { IoIosAddCircle, IoIosClose } from 'react-icons/io';
 
 const ActiveDates = () => {
-	const { endDatePicker, setEndDatePicker, endDate, setEndDate } = useDiscountForm();
-	console.log('endDate', endDate);
+	const [endDate, setEndDate] = useState(false);
+	const [valueDate, setValueDate] = useState(/** @type {(import("dayjs").Dayjs | null)} */ (null));
+
+	console.log('valueDate', valueDate);
+	const handleShowDate = () => {
+		setEndDate(!endDate);
+	};
+
 	return (
-		<div className='bg-white w-full border  border-constrained rounded-md p-[18px]'>
+		<div className='bg-white w-full border border-constrained rounded-md p-[18px]'>
 			<h3 className='mb-2 font-semibold text-title'>Active dates</h3>
 			<div className='flex gap-4 my-[18px]'>
 				<DatePicker label='start date' />
 				<TimePicker label='start time' />
 			</div>
 
-			{endDatePicker && (
+			{endDate && (
 				<div className='flex gap-4 my-[18px]'>
-					<DatePicker label='end date' value={endDate} handleOnChange={setEndDate} />
+					<DatePicker label='end date' value={valueDate} handleOnChange={setValueDate} />
 					<TimePicker label='end time' />
 				</div>
 			)}
 
-			<div className='w-fit' onClick={() => setEndDatePicker(!endDatePicker)}>
-				<Button variant='ter' LeftIcon={endDate ? IoIosClose : IoIosAddCircle}>{`${
-					endDate ? 'remove end date' : 'add end date'
-				}`}</Button>
-			</div>
+			<Button variant='tertiary' LeftIcon={endDate ? IoIosClose : IoIosAddCircle} onClick={handleShowDate}>
+				{endDate ? 'remove end date' : 'add end date'}
+			</Button>
 		</div>
 	);
 };
 
 export default ActiveDates;
-
-//https://mui.com/x/react-date-pickers/date-picker/#system-ResponsiveDatePickers.tsx

@@ -1,15 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import discount from './slices/marketing/discounts/discountSlice';
 import coupons from './slices/marketing/coupons/couponSlice';
-import selectCategories from './slices/marketing/categories/categoriesSlice';
-import customersSlice from './slices/marketing/customers/customersSlice';
+import categories from './slices/marketing/categories/categoriesSlice';
+import customers from './slices/marketing/customers/customersSlice';
+import products from './slices/marketing/products/productsSlice';
+import groups from './slices/marketing/groups/groupsSlice';
 
 const store = configureStore({
 	reducer: {
 		discount: discount,
 		coupons: coupons,
-		categories: selectCategories,
-		customers: customersSlice,
+		categories: categories,
+		customers: customers,
+		products: products,
+		groups: groups,
 	},
 });
 
