@@ -20,7 +20,7 @@ export default function CustomersTable() {
 
     //  rows
 
-    const customers = [{
+    const customers: CustomerInterface[] = [{
         id: 1,
         name: "mohamed Mostafa",
         mobile: "01064545565",
@@ -29,7 +29,7 @@ export default function CustomersTable() {
         "E-Subscription": true,
     }];
     return (
-        <BaseTable color="#55607A" headers={customersHeaders.map((h: string) => t(h))}
+        <BaseTable color="#55607A" headers={customersHeaders.map((h: string) => h)}
 
             rows={customers?.map(
                 (e: CustomerInterface, i: number) => {
