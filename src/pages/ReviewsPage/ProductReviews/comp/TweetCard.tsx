@@ -1,8 +1,24 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FiEdit } from 'react-icons/fi';
 
-const TweetCard = ({ content, author, date, onEdit, onDelete }) => {
+interface Props {
+	content: string;
+	author?: string;
+	date?: string;
+	onEdit: (content: string) => void;
+	onDelete: (content: string) => void;
+	markAsNotReplied: () => void;
+}
+
+const TweetCard: React.FC<Props> = ({
+	content,
+	author = 'Muhammed',
+	date = 'Today',
+	onEdit,
+	onDelete,
+	markAsNotReplied,
+}) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [editedContent, setEditedContent] = useState(content);
 	const [isDelete, setIsDelete] = useState(false);
@@ -14,6 +30,7 @@ const TweetCard = ({ content, author, date, onEdit, onDelete }) => {
 	const handleDeleteClick = () => {
 		// onDelete(content);
 		setIsDelete(true);
+		markAsNotReplied();
 	};
 
 	const handleSaveClick = () => {
@@ -77,12 +94,6 @@ const TweetCard = ({ content, author, date, onEdit, onDelete }) => {
 			</div>
 		)
 	);
-};
-
-TweetCard.defaultProps = {
-	author: 'Muhammed',
-	date: 'Today',
-	content: 'Default content here',
 };
 
 export default TweetCard;

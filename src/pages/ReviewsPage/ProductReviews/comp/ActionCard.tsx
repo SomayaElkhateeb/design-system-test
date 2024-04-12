@@ -1,7 +1,14 @@
+import React from 'react';
 import { FaRegTrashCan } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 
-const ActionCard = ({ unpublishAction, deleteAction, isPublished }) => {
+interface Props {
+	unpublishAction: () => void;
+	deleteAction: () => void;
+	isPublished: boolean;
+}
+
+const ActionCard: React.FC<Props> = ({ unpublishAction, deleteAction, isPublished }) => {
 	const handleUnpublish = () => {
 		const confirmed = window.confirm('Are you sure you want to unpublish this card?');
 		if (confirmed) {

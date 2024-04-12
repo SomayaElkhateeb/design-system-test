@@ -1,7 +1,15 @@
+import React, { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 
-const RightSidebar = ({ isOpen, toggleSidebar }) => {
+interface Props {
+	isOpen: boolean;
+	toggleSidebar: () => void;
+	children: ReactNode;
+	header: string;
+}
+
+const RightSidebar: React.FC<Props> = ({ isOpen, toggleSidebar, children, header }) => {
 	return createPortal(
 		<>
 			{/* Sidebar */}
@@ -14,21 +22,15 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => {
 				<div className='h-full bg-white overflow-auto'>
 					{/* Sidebar content */}
 					<div className='flex justify-between items-center border-b py-4 p-5'>
-						<h2 className='text-xl font-bold'>Orders Filters</h2>
+						<h2 className='text-xl font-bold'>{header}</h2>
 						<button onClick={toggleSidebar}>
 							<IoMdCloseCircleOutline size={24} />
 						</button>
 					</div>
-					<ul className='p-5'>
-						<li>Order status</li>
-						<li>Date</li>
-						<li>Payment Status</li>
-						<li>Delivery Option</li>
-						<li>Shipping Providers</li>
-						<li>Payment Methods</li>
-						<li>Location</li>
-						<li>Branches</li>
-					</ul>
+
+					{/* Children content */}
+
+					{children}
 				</div>
 			</div>
 

@@ -1,9 +1,9 @@
-import ProductReviews from './ProductReviews/ProductReviews'
+import ReviewsPageLayout from './comp/ReviewsPageLayout'
 
 const ReviewsPage = () => {
   return (
 	<div>
-	  <ProductReviews/>
+	  <ReviewsPageLayout/>
 	</div>
   )
 }
