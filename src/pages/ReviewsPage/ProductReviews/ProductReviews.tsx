@@ -98,7 +98,7 @@ const ProductReviews = () => {
 					<li>Branches</li>
 				</ul>
 			</RightSidebar>
-			<div className='flex flex-col items-center bg-[#F9FAFC] p-4'>
+			<div className='flex flex-col items-center bg-[#F9FAFC]'>
 				<div className='flex justify-between items-center w-full'>
 					<div>
 						<Button onClick={publishAllProducts}>{t('publish all')}</Button>
