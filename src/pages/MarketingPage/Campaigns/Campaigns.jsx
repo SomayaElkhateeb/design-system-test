@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import campaignData from './data.json';
 import CampaignBtns from './CampaignBtns';
-
 
 // import { useState } from 'react';
 // import CampaignBtns from './CampaignBtns';
@@ -12,8 +10,7 @@ import CampaignBtns from './CampaignBtns';
 
 import CampaignTable from './CampaignTable';
 import CampaignStatus from './CampaignStatus';
-import CampaignsHeader from './CampaignsHeader';
-import CampaignInfoCard from './CampaignInfoCard';
+
 import { StackedColumnChart } from 'src/app/components/optimized';
 
 const Campaigns = () => {
@@ -38,14 +35,8 @@ const Campaigns = () => {
 	} else {
 		const matchedCampaign = campaignData.campaigns.find((campaign) => campaign.name === campaignActivity);
 		tableData = matchedCampaign ? matchedCampaign.activities : [];
-
-	}}
-import CampaignBtns from './CampaignBtns';
-import CampaignStatus from './CampaignStatus';
-
-import { useState } from 'react';
-import { Button, Menu } from 'src/app/components/optimized';
-import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
+	}
+};
 
 // const Campaigns = () => {
 // 	return (
@@ -58,7 +49,7 @@ import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
 // };
 
 // export default Campaigns;
-    
+
 const CampaignsData = [
 	{
 		name: 'Summer campaign',
@@ -101,8 +92,6 @@ const Header = () => {
 	function handleSelect(option) {
 		setSelectedOption(option);
 		setIsOpen(false);
-
-
 	}
 
 	return (
@@ -112,14 +101,13 @@ const Header = () => {
 				{/* {activityDetails && <CampaignInfoCard />} */}
 				<CampaignStatus />
 
-				<CampaignBtns onSelectOption={handleArrangeChange} data={tableData}/>
+				<CampaignBtns onSelectOption={handleArrangeChange} data={tableData} />
 				{!activityDetails && <CampaignTable arrangeTerm={arrange} data={tableData} />}
 				{activityDetails && <StackedColumnChart />}
 
-  {/*<CampaignBtns onSelectOption={handleSelectOption} />*/}
+				{/*<CampaignBtns onSelectOption={handleSelectOption} />*/}
 				{/* {!activityDetails && <CampaignTable sortTerm={selectedOption} data={tableData} />}
 				{activityDetails && <StackedColumnChart />} */}
-
 			</div>
 		</>
 	);
