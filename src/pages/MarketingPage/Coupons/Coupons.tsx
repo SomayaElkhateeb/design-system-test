@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 // get coupons
@@ -14,7 +14,11 @@ import { useTranslation } from 'react-i18next';
 import { headerData } from './AddCoupon/comp/data';
 import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/page';
 import { toast } from 'react-toastify';
+import LinearDeterminate from 'src/app/components/optimized/UiKits/LinearDeterminate';
+import FilterButton from 'src/app/components/page/Customers/FilterButton';
+import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 const Coupons: React.FC = () => {
+	const [selectedOption, setSelectedOption] = useState('');
 	// hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -26,12 +30,21 @@ const Coupons: React.FC = () => {
 		dispatch(getCoupons());
 	}, [dispatch]);
 
+	const sortMenus = [
+		{ id: '1', text: 'Name A to Z' },
+		{ id: '2', text: 'Name Z to A' },
+		// Add more sorting options as needed
+	];
+
+	const handleSelect = (selectedOption) => {
+		setSelectedOption(selectedOption);
+	};
 	return (
 		// Render your component with fetched data
 		<>
 			<div style={{ position: 'sticky', top: 120 }} className='bg-light-1 z-50 mb-3'>
 				<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
-					<div className='flex justify-between  w-full'>
+					<div className='flex justify-between w-full items-center'>
 						<Button
 							LeftIcon={IoIosAddCircle}
 							onClick={() => {
@@ -41,12 +54,8 @@ const Coupons: React.FC = () => {
 							{t('add new coupon')}
 						</Button>
 						<div className='flex gap-8'>
-							<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-								{t('arrange')}
-							</Button>
-							<Button variant='secondary' LeftIcon={FilterIcon}>
-								{t('filter')}
-							</Button>
+							<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+							<FilterButton />
 						</div>
 					</div>
 				</div>
@@ -54,9 +63,7 @@ const Coupons: React.FC = () => {
 
 			{/* Table */}
 			{isLoading ? (
-				<div className='h-screen w-full flex justify-center items-center'>
-					<div className='spinner'></div>
-				</div>
+				<LinearDeterminate />
 			) : coupons.length > 0 ? (
 				<div className='mx-3'>
 					<Table>

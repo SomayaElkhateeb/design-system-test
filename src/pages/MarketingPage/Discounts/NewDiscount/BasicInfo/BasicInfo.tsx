@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import { discountTypesOptions, applyToOptions } from '../comp/data';
 import { InputRow } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { discountTypesOptions, applyToOptions } from '../comp/data';
 import DiscountTypesOptions from './comp/DiscountTypesOptions';
 import ApplyToOptions from './comp/ApplyToOptions';
 
-const BasicInfo: React.FC = ({ fixedAmount, discountName, setState }) => {
+const BasicInfo: React.FC<{ fixedAmount: number; discountName: string; setState: Function; validationErrors: any }> = ({
+	fixedAmount,
+	discountName,
+	setState,
+	validationErrors,
+}) => {
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setState({
-			...discountName,
-			discountName: e.target.value,
-		});
+		const newName = e.target.value;
+		setState((prevState) => ({
+			...prevState,
+			discountName: newName,
+		}));
 	};
 
 	return (
@@ -22,6 +28,7 @@ const BasicInfo: React.FC = ({ fixedAmount, discountName, setState }) => {
 			<div className='flex flex-col gap-[1rem]'>
 				<div className='w-[24rem]'>
 					<InputRow label='discount name' value={discountName} onChange={handleChange} />
+					{validationErrors.discountName && <span className='text-red-500'>{validationErrors.discountName}</span>}
 				</div>
 			</div>
 
@@ -33,7 +40,12 @@ const BasicInfo: React.FC = ({ fixedAmount, discountName, setState }) => {
 					setSelected={(option: string) => setSelectedOptionType(option)}
 				/>
 
-				<DiscountTypesOptions discountType={selectedOptionType} fixedAmount={fixedAmount} setState={setState} />
+				<DiscountTypesOptions
+					discountType={selectedOptionType}
+					fixedAmount={fixedAmount}
+					setState={setState}
+					validationErrors={validationErrors}
+				/>
 			</section>
 
 			<section>
