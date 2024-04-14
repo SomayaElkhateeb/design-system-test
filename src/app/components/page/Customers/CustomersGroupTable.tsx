@@ -27,6 +27,8 @@ export default function CustomersGroupTable() {
         describtion: "high group",
         active: true
     }];
+
+    //  commit
     return (
         <BaseTable color="#55607A" headers={customersHeaders.map((h: string) => h)}
 
