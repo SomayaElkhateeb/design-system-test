@@ -55,7 +55,7 @@ const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 				</thead>
 				{/* data.campaigns */}
 				<tbody>
-					{arrangedData.map((item) => (
+					{arrangedData?.map((item) => (
 						<tr key={item.name} className='rounded-xl bg-white'>
 							<td className='px-4 py-4 paagraph text-primary'>
 								<Button variant='link' onClick={() => handleButtonClick(item.name)}>

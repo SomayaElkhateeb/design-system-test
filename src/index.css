@@ -86,6 +86,15 @@
 }
 
 @layer components {
+	.customer-border{
+		@apply w-[70%] bg-white rounded-[12px] py-[.7rem] border border-[constrained] flex flex-col
+	}
+	.flex-row-global{
+		@apply flex flex-row items-center
+	}
+	.flex-row-global-items-start{
+		@apply flex flex-row items-start
+	}
 	.btn-pri {
 		@apply bg-primary px-4 py-2 rounded font-semibold text-white text-sm capitalize hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-1  focus:ring-pri-light;
 	}

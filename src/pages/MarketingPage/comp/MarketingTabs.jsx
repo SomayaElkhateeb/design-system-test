@@ -4,6 +4,7 @@ import Discounts from '../Discounts/Discounts';
 
 const MarketingTabs = () => {
 	const { tab } = useParams();
+	console.log(tab)
 	const tabs = {
 		apps: <Apps />,
 		discounts: <Discounts />,
