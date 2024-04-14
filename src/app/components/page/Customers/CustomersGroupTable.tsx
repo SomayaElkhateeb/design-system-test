@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { CustomerGroupInterface } from "src/app/interface/CustomerGroupInterface";
 import { UseLanguage } from "../../CustomHook/LanguageHook";
 import { IoIosArrowBack } from "react-icons/io";
+import { useState } from "react";
 export default function CustomersGroupTable() {
 
 
@@ -16,25 +17,45 @@ export default function CustomersGroupTable() {
     const navigate = useNavigate()
     const { t } = useTranslation()
     const language = UseLanguage()
-    //  headers
-
-    //  headers
-    const customersHeaders = [
-        { icon: <Checkbox defaultChecked />, title: t("Group Name") }, { title: t("Customers No.") }, { title: t("Active?") }, { title: t("Actions") }
-    ]
-
+    const [array, setArray] = useState<number[]>([])
     //  rows
-
     const customerGroups: CustomerGroupInterface[] = [{
         id: 1,
         name: "group1",
         customerNumber: 45,
         describtion: "high group",
-        active: true
-    }];
+        active: true,
+
+    },
+    {
+        id: 2,
+        name: "group1",
+        customerNumber: 45,
+        describtion: "high group",
+        active: true,
+
+    }
+    ];
+    //  headers
+    const customersHeaders = [
+        {
+            icon: <Checkbox
+
+                checked={array?.length === customerGroups?.length}
+                onChange={() => {
+                    if (array?.length !== customerGroups?.length) {
+                        setArray(customerGroups?.map((e) => e.id))
+                    } else {
+                        setArray([])
+                    }
+                }} />, title: t("Group Name")
+        }, { title: t("Customers No.") }, { title: t("Active?") }, { title: t("Actions") }
+    ]
+
 
     const actionsButtonStyleAr = "justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]"
     const actionsButtonStyleEn = "justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]"
+
     return (
         <BaseTable color="#55607A" headers={customersHeaders}
 
@@ -50,7 +71,16 @@ export default function CustomersGroupTable() {
                                 }}
                             >
                                 <div className=" flex  items-center gap-[.2rem]">
-                                    <Checkbox defaultChecked />
+                                    <Checkbox
+
+                                        onChange={() => {
+                                            if (array.includes(e.id)) {
+                                                setArray(array.filter((el) => el !== e.id))
+                                            } else {
+                                                setArray([e.id, ...array])
+                                            }
+                                        }}
+                                        checked={array.includes(e.id)} />
                                     <div className="flex flex-col gap-2">
                                         <p>{e.name}</p>
                                         <p className="text-subtitle text-[.8rem]">{e.describtion}</p>
