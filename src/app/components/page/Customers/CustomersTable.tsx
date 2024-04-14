@@ -9,20 +9,20 @@ import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { UseLanguage } from "../../CustomHook/LanguageHook";
 import { IoIosArrowBack } from "react-icons/io";
+import { useState } from "react";
+import CustomTableHeaderCheckbox from "../../shared/CustomTableHeaderChckbox";
+import CustomTableBodyCheckbox from "../../shared/CustomTableBodyChckbox";
 
 export default function CustomersTable() {
     //  hooks
     const language = UseLanguage()
     const navigate = useNavigate();
     const { t } = useTranslation();
-    //  headers
-    //  headers
-    const customersHeaders = [
-        { icon: <Checkbox defaultChecked />, title: t("Customer Name") }, { title: t("Mobile") }, { title: t("City") }, { title: t("Orders") }, { title: t("E-Subscription") }, { title: t("actions") }
-    ]
 
-    //  rows
+    const [array, setArray] = useState<number[]>([])
 
+
+    //  rows 
 
     const customers: CustomerInterface[] = [
         {
@@ -34,7 +34,14 @@ export default function CustomersTable() {
             email: "mmmm@yahoo.com",
             'E-Subscription': true,
         },
+
     ];
+    //  headers
+
+    const customersHeaders = [
+        { icon: <CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={customers?.map((e) => e.id)} />, title: t("Customer Name") }, { title: t("Mobile") }, { title: t("City") }, { title: t("Orders") }, { title: t("E-Subscription") }, { title: t("actions") }
+    ]
+
 
     const actionsButtonStyleAr = "justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]"
     const actionsButtonStyleEn = "justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]"
@@ -53,7 +60,7 @@ export default function CustomersTable() {
                             }}
                         >
                             <div className=" flex  items-center gap-[.2rem]">
-                                <Checkbox defaultChecked />
+                            <CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id}/>
                                 <div className="flex flex-col gap-2">
                                     <p>{e.name}</p>
                                     <p className="text-subtitle text-[.8rem]">{e.email}</p>

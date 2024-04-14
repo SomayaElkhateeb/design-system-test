@@ -10,6 +10,8 @@ import { CustomerGroupInterface } from "src/app/interface/CustomerGroupInterface
 import { UseLanguage } from "../../CustomHook/LanguageHook";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
+import CustomTableHeaderCheckbox from "../../shared/CustomTableHeaderChckbox";
+import CustomTableBodyCheckbox from "../../shared/CustomTableBodyChckbox";
 export default function CustomersGroupTable() {
 
 
@@ -39,16 +41,7 @@ export default function CustomersGroupTable() {
     //  headers
     const customersHeaders = [
         {
-            icon: <Checkbox
-
-                checked={array?.length === customerGroups?.length}
-                onChange={() => {
-                    if (array?.length !== customerGroups?.length) {
-                        setArray(customerGroups?.map((e) => e.id))
-                    } else {
-                        setArray([])
-                    }
-                }} />, title: t("Group Name")
+            icon: <CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={customerGroups?.map((e) => e.id)} />, title: t("Group Name")
         }, { title: t("Customers No.") }, { title: t("Active?") }, { title: t("Actions") }
     ]
 
@@ -71,16 +64,7 @@ export default function CustomersGroupTable() {
                                 }}
                             >
                                 <div className=" flex  items-center gap-[.2rem]">
-                                    <Checkbox
-
-                                        onChange={() => {
-                                            if (array.includes(e.id)) {
-                                                setArray(array.filter((el) => el !== e.id))
-                                            } else {
-                                                setArray([e.id, ...array])
-                                            }
-                                        }}
-                                        checked={array.includes(e.id)} />
+                                    <CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
                                     <div className="flex flex-col gap-2">
                                         <p>{e.name}</p>
                                         <p className="text-subtitle text-[.8rem]">{e.describtion}</p>
