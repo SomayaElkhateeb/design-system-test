@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { Button, CheckBox, PaymentMethodAccordion } from 'src/app/components/optimized';
 import usePayment from './usePayment';
 import PaymentForm from './PaymentForm';

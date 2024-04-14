@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { DownIcon } from 'src/app/utils/icons';
 /**
  * @param {import('react').PropsWithChildren<{

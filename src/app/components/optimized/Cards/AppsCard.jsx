@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { Link } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 import { FaTelegram } from 'react-icons/fa';
@@ -37,21 +36,14 @@ export default function AppsCard(props) {
 	const statusPadge = props.status === 'available' ? 'free' : 'installed';
 
 	return (
-		<Link
-			to={props.url}
-			className='flex gap-3 p-3 bg-white border rounded-lg shadow-md border-border-color'
-		>
+		<Link to={props.url} className='flex gap-3 p-3 bg-white border rounded-lg shadow-md border-border-color'>
 			<div className='size-[60px] grid place-content-center min-w-[60px] rounded-lg border border-light-2 overflow-hidden'>
 				<img src={props.image} className='object-cover w-full' />
 			</div>
 			<div>
 				<h3 className='mb-2 title'>{props.name}</h3>
 				<p className='paragraph text-subtitle'>{props.description}</p>
-				<img
-					src={getImageUrl(`$padges/${statusPadge}.svg`)}
-					alt='status'
-					className='mt-3 h-7'
-				/>
+				<img src={getImageUrl(`$padges/${statusPadge}.svg`)} alt='status' className='mt-3 h-7' />
 			</div>
 		</Link>
 	);
@@ -62,5 +54,5 @@ AppsCard.defaultProps = {
 	heading: 'Telegram',
 	paragraph:
 		'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum soluta,eaque ducimus perspiciatis odio repudiandae nisi cupiditate doloribus',
-	label: 'free'
+	label: 'free',
 };

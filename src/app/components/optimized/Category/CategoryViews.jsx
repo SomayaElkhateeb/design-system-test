@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { MoreIcon } from 'src/app/utils/icons';
 
 /**
@@ -37,18 +36,12 @@ export default function CategoryViews(props) {
 			<div className='flex'>
 				{/* Category Image */}
 				<div className={`rounded-lg border ${imageSizeClass}`}>
-					<img
-						src={props.imageUrl}
-						alt={props.title}
-						className='object-cover size-full'
-					/>
+					<img src={props.imageUrl} alt={props.title} className='object-cover size-full' />
 				</div>
 				{/* Category Title and Description */}
 				<div className='flex flex-col justify-center gap-4 ml-1'>
 					<h2 className='title'>{props.title}</h2>
-					{props.description && (
-						<p className='paragraph text-subtitle'>{props.description}</p>
-					)}
+					{props.description && <p className='paragraph text-subtitle'>{props.description}</p>}
 				</div>
 			</div>
 			{/* Action Button */}
@@ -63,5 +56,5 @@ export default function CategoryViews(props) {
 
 // Default props
 CategoryViews.defaultProps = {
-	title: 'Category Title' // Default category title
+	title: 'Category Title', // Default category title
 };

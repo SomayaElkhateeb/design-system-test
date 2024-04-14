@@ -1,4 +1,3 @@
-// Done refactoring to type
 // TODO: (needs to be reviewed)
 import image from 'src/app/assets/brand/cloud.svg';
 

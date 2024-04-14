@@ -1,4 +1,3 @@
-// Done refactoring to type
 //? Unfinished tasks
 //! =================
 // todo refactoring the buttons

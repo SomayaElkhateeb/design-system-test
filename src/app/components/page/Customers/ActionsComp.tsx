@@ -16,7 +16,7 @@ export default function ActionsComp({ selectedOption, handelSelect, sortMenus, A
 
 
     return (
-        <div className='flex gap-4'>
+        <div className='flex gap-1'>
 
             {/*   arrange button */}
 

@@ -1,4 +1,3 @@
-// Done refactoring to type
 import { useId, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 
@@ -93,15 +92,9 @@ export default function InputRow({
 						{label}
 					</label>
 				)}
-				<div
-					className={`${classNames} overflow-hidden rounded-md w-full border`}
-				>
+				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
-						{leftIcon && (
-							<div className='absolute inset-y-0 left-0 flex items-center p-4 '>
-								{leftIcon}
-							</div>
-						)}
+						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-4 '>{leftIcon}</div>}
 						<input
 							ref={_ref}
 							className={`${
@@ -111,17 +104,12 @@ export default function InputRow({
 							onBlur={() => setFocused(false)}
 							disabled={loading}
 							value={value}
-							onChange={
-								handleOnChange &&
-								((event) => handleOnChange(event.target.value))
-							}
+							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
 							{...rest}
 							id={controlId}
 						/>
 						{rightIcon && !loading && (
-							<div className='absolute inset-y-0 right-0 flex items-center p-4'>
-								{rightIcon}
-							</div>
+							<div className='absolute inset-y-0 right-0 flex items-center p-4'>{rightIcon}</div>
 						)}
 						{loading && (
 							<div className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -130,12 +118,8 @@ export default function InputRow({
 						)}
 					</div>
 				</div>
-				{error && !focused && (
-					<small className='text-xs text-red-500 '>{error}</small>
-				)}
-				{success && !focused && (
-					<small className='text-xs text-green-500 '>Success</small>
-				)}
+				{error && !focused && <small className='text-xs text-red-500 '>{error}</small>}
+				{success && !focused && <small className='text-xs text-green-500 '>Success</small>}
 			</div>
 		</>
 	);
