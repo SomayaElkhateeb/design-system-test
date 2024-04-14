@@ -46,11 +46,9 @@ const NewDiscount: React.FC = () => {
 			navigate('/marketing/discounts');
 		} catch (error) {
 			console.error('Validation error:', error.errors);
-			// Update validationErrors state to include both errors
 			setValidationErrors({
 				discountName: error.errors.find((err) => err.path[0] === 'discountName')?.message,
 				fixedAmount: error.errors.find((err) => err.path[0] === 'fixedAmount')?.message,
-				// Add other error messages as needed
 			});
 		}
 	};

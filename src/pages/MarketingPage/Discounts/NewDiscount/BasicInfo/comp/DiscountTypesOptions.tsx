@@ -40,7 +40,7 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({
 						label='Percentage'
 						leftIcon={<AiOutlinePercentage />}
 						type='number'
-						value={amountPercentage} // Use amountPercentage from state
+						value={amountPercentage}
 						onChange={(e) => handleAmountPercentage(Number(e.target.value))}
 					/>
 				</div>
