@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import TopHeader from "src/app/components/shared/TopHeader";
+import TopHeader from "src/app/components/page/Customers/TopHeader";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { FaRegEdit } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";

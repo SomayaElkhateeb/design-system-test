@@ -10,8 +10,8 @@ import { CustomerGroupInterface } from "src/app/interface/CustomerGroupInterface
 import { UseLanguage } from "../../CustomHook/LanguageHook";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
-import CustomTableHeaderCheckbox from "../../shared/CustomTableHeaderChckbox";
-import CustomTableBodyCheckbox from "../../shared/CustomTableBodyChckbox";
+import CustomTableHeaderCheckbox from "./CustomTableHeaderChckbox";
+import CustomTableBodyCheckbox from "./CustomTableBodyChckbox";
 export default function CustomersGroupTable() {
 
 

@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { UseLanguage } from "../../CustomHook/LanguageHook";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
-import CustomTableHeaderCheckbox from "../../shared/CustomTableHeaderChckbox";
-import CustomTableBodyCheckbox from "../../shared/CustomTableBodyChckbox";
+import CustomTableHeaderCheckbox from "./CustomTableHeaderChckbox";
+import CustomTableBodyCheckbox from "./CustomTableBodyChckbox";
 
 export default function CustomersTable() {
     //  hooks
@@ -60,7 +60,7 @@ export default function CustomersTable() {
                             }}
                         >
                             <div className=" flex  items-center gap-[.2rem]">
-                            <CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id}/>
+                                <CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
                                 <div className="flex flex-col gap-2">
                                     <p>{e.name}</p>
                                     <p className="text-subtitle text-[.8rem]">{e.email}</p>
