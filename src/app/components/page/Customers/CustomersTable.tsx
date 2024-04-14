@@ -32,6 +32,9 @@ export default function CustomersTable() {
         Orders: 10,
         "E-Subscription": true,
     }];
+
+    const actionsButtonStyleAr = "justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]"
+    const actionsButtonStyleEn = "justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]"
     return (
         <BaseTable color="#55607A" headers={customersHeaders.map((h: string) => h)}
 
@@ -84,7 +87,7 @@ export default function CustomersTable() {
                                 />
                             </TableCell>,
                             <TableCell>
-                                <div className=" justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]">
+                                <div className={language === "ar" ? actionsButtonStyleAr : actionsButtonStyleEn}>
                                     <FaRegEdit onClick={() => navigate(`/addCustomer?id=${e?.id}`)} />
                                     <HiOutlineDotsHorizontal />
                                     {language === "ar" ?
