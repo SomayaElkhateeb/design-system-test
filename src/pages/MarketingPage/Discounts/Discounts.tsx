@@ -8,15 +8,18 @@ import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/
 import { headerData } from './NewDiscount/comp/data';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 
 const Discounts: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { isLoading, discount, error } = useSelector((state) => state.discount);
+	const { isLoading, discount } = useSelector((state) => state.discount);
 
 	useEffect(() => {
 		dispatch(getDiscounts());
 	}, [dispatch]);
+
+	console.log('discount', discount);
 	return (
 		<>
 			<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
@@ -31,9 +34,10 @@ const Discounts: React.FC = () => {
 					</Button>
 
 					<div className='flex gap-8'>
-						<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
+						{/* <Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
 							arrange
-						</Button>
+						</Button> */}
+						<ArrangeButton />
 						<Button variant='secondary' LeftIcon={FilterIcon}>
 							filter
 						</Button>
@@ -64,7 +68,7 @@ const Discounts: React.FC = () => {
 			)}
 
 			{/* Render error message if error exists */}
-			{error && toast.error(error)}
+			{/* {error && toast.error(error)} */}
 		</>
 	);
 };

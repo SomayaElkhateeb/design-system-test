@@ -1,8 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getCoupons } from './couponsAsyncThunks';
+import { getCoupons, postCoupons } from './couponsAsyncThunks';
 
 interface CouponsState {
-	coupons: any[]; // Define the type of coupons array
+	coupons: any[];
 	isLoading: boolean;
 	error: any;
 }
@@ -19,6 +19,23 @@ export const getCouponsReducer = (builder: ActionReducerMapBuilder<CouponsState>
 			state.coupons = action.payload;
 		})
 		.addCase(getCoupons.rejected, (state, action) => {
+			state.isLoading = false;
+			state.error = action.payload;
+		})
+		// post coupons
+		.addCase(postCoupons.pending, (state) => {
+			state.isLoading = true;
+			state.error = null;
+		})
+		.addCase(postCoupons.fulfilled, (state, action) => {
+			state.isLoading = false;
+			if (Array.isArray(state.coupons)) {
+				state.coupons.push(action.payload);
+			} else {
+				state.coupons = [action.payload];
+			}
+		})
+		.addCase(postCoupons.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});
