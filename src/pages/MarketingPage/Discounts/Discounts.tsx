@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrangeIcon, FilterIcon } from 'src/app/utils/icons';
 import { IoIosAddCircle } from 'react-icons/io';
 import { FaAngleDown } from 'react-icons/fa6';
@@ -9,8 +9,11 @@ import { headerData } from './NewDiscount/comp/data';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
+import LinearDeterminate from 'src/app/components/optimized/UiKits/LinearDeterminate';
+import FilterButton from 'src/app/components/page/Customers/FilterButton';
 
 const Discounts: React.FC = () => {
+	const [selectedOption, setSelectedOption] = useState('');
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { isLoading, discount } = useSelector((state) => state.discount);
@@ -20,10 +23,25 @@ const Discounts: React.FC = () => {
 	}, [dispatch]);
 
 	console.log('discount', discount);
+
+	const handleMoreClick = () => {
+		console.log('more click');
+	};
+
+	const sortMenus = [
+		{ id: '1', text: 'Name A to Z' },
+		{ id: '2', text: 'Name Z to A' },
+		// Add more sorting options as needed
+	];
+
+	const handleSelect = (selectedOption) => {
+		setSelectedOption(selectedOption);
+	};
+
 	return (
 		<>
 			<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
-				<div className='flex justify-between w-full'>
+				<div className='flex justify-between items-center w-full'>
 					<Button
 						LeftIcon={IoIosAddCircle}
 						onClick={() => {
@@ -34,22 +52,15 @@ const Discounts: React.FC = () => {
 					</Button>
 
 					<div className='flex gap-8'>
-						{/* <Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-							arrange
-						</Button> */}
-						<ArrangeButton />
-						<Button variant='secondary' LeftIcon={FilterIcon}>
-							filter
-						</Button>
+						<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+						<FilterButton />
 					</div>
 				</div>
 			</div>
 
 			{/* Table */}
 			{isLoading ? (
-				<div className='h-screen w-full flex justify-center items-center'>
-					<div className='spinner'></div>
-				</div>
+				<LinearDeterminate />
 			) : discount.length > 0 ? (
 				<div className='mx-3'>
 					<Table>
@@ -57,7 +68,7 @@ const Discounts: React.FC = () => {
 							<Header headerData={headerData} />
 						</HeaderTable>
 						<BodyTable>
-							<Body bodyData={discount} />
+							<Body bodyData={discount} onClick={handleMoreClick} />
 						</BodyTable>
 					</Table>
 				</div>

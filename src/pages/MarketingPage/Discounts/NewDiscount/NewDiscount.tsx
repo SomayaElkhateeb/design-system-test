@@ -1,46 +1,56 @@
 import React, { useState } from 'react';
-import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
+import { useNavigate } from 'react-router-dom';
+
 import BasicInfo from './BasicInfo/BasicInfo';
 import CustomerSegment from './CustomerSegment/CustomerSegment';
 import MinimumRequirements from './MinimumRequirements/MinimumRequirements';
 import ActiveDates from './ActiveDates/ActiveDates';
-import { useNavigate } from 'react-router-dom';
+import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
+
 import { useDispatch } from 'react-redux';
 import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { z } from 'zod';
+
+const basicInfoSchema = z.object({
+	discountName: z.string().min(4, 'Discount name must be at least 3 characters long'),
+	fixedAmount: z.number().min(0, 'Fixed amount must be a positive number'),
+	minimumPrice: z.number().min(0, 'Minimum price must be a positive number'),
+	endDate: z.date().nullable(),
+});
 
 const initialValues = {
 	discountName: '',
-	fixedAmount: 0,
-	minimumPrice: 0,
+	fixedAmount: '',
+	minimumPrice: '',
 	endDate: null,
 };
 const NewDiscount: React.FC = () => {
 	const [state, setState] = useState(initialValues);
-
+	const [validationErrors, setValidationErrors] = useState({});
 	let { discountName, fixedAmount, minimumPrice, endDate } = state;
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const handleSaveChanges = () => {
-		console.log('discountName state:', discountName);
-		console.log('fixedAmount state:', fixedAmount);
-		console.log('minimumPrice state:', minimumPrice);
-		console.log('endDate state:', endDate);
-		const data = {
-			name: discountName,
-			value: fixedAmount,
-			date: endDate,
-			sales: minimumPrice,
-		};
-		dispatch(postDiscounts(data));
-
-		discountName = '';
-		fixedAmount = 0;
-		minimumPrice = 0;
-		endDate = null;
-
-		navigate('/marketing/discounts');
+		try {
+			basicInfoSchema.parse(state);
+			const data = {
+				name: discountName,
+				value: fixedAmount,
+				date: endDate,
+				sales: minimumPrice,
+			};
+			dispatch(postDiscounts(data));
+			setState(initialValues);
+			navigate('/marketing/discounts');
+		} catch (error) {
+			console.error('Validation error:', error.errors);
+			setValidationErrors({
+				discountName: error.errors.find((err) => err.path[0] === 'discountName')?.message,
+				fixedAmount: error.errors.find((err) => err.path[0] === 'fixedAmount')?.message,
+			});
+		}
 	};
 
 	return (
@@ -54,7 +64,12 @@ const NewDiscount: React.FC = () => {
 			/>
 			<div className='p-4 flex justify-between gap-7'>
 				<div className='w-full flex flex-col gap-[18px]'>
-					<BasicInfo discountName={discountName} fixedAmount={fixedAmount} setState={setState} />
+					<BasicInfo
+						discountName={state.discountName}
+						fixedAmount={state.fixedAmount}
+						setState={setState}
+						validationErrors={validationErrors}
+					/>
 					<CustomerSegment />
 					<MinimumRequirements setState={setState} minimumPrice={minimumPrice} />
 					<ActiveDates setState={setState} />
@@ -67,5 +82,4 @@ const NewDiscount: React.FC = () => {
 		</div>
 	);
 };
-
 export default NewDiscount;

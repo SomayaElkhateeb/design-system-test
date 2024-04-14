@@ -14,18 +14,18 @@ export const getSelectCategories = createAsyncThunk('categories/getSelectCategor
 	}
 });
 
-export const postSelectCategories = createAsyncThunk(
-	'categories/postSelectCategories',
-	async (postData: any, thunkAPI) => {
-		// Add postData parameter
-		const { rejectWithValue } = thunkAPI;
-		try {
-			// Now include postData in the axios.post call
-			const { data } = await axios.post(`${URL}/select_categories`, postData);
-			console.log('select_categories: ', data);
-			return data;
-		} catch (error) {
-			throw rejectWithValue(error.message);
-		}
-	},
-);
+// export const postSelectCategories = createAsyncThunk(
+// 	'categories/postSelectCategories',
+// 	async (postData: any, thunkAPI) => {
+// 		// Add postData parameter
+// 		const { rejectWithValue } = thunkAPI;
+// 		try {
+// 			// Now include postData in the axios.post call
+// 			const { data } = await axios.post(`${URL}/select_categories`, postData);
+// 			console.log('select_categories: ', data);
+// 			return data;
+// 		} catch (error) {
+// 			throw rejectWithValue(error.message);
+// 		}
+// 	},
+// );
