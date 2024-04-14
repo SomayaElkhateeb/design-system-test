@@ -7,7 +7,7 @@ interface selectedOptionType {
 	discount: number;
 }
 
-const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount, fixedAmount, setState }) => {
+const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount, setState, fixedAmount }) => {
 	const [amountPercentage, setAmountPercentage] = useState(0);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,14 +40,7 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 			)}
 			{discountType === 'Fixed amount' && (
 				<div className='w-[24rem] pt-[1rem]'>
-					<InputRow
-						ref={discount}
-						label='Fixed amount'
-						id='fixedAmount'
-						type='number'
-						value={fixedAmount}
-						onChange={handleChange}
-					/>
+					<InputRow ref={discount} label='Fixed amount' type='number' value={fixedAmount} onChange={handleChange} />
 				</div>
 			)}
 		</div>

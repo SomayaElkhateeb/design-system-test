@@ -16,11 +16,11 @@ import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/
 import { toast } from 'react-toastify';
 const Coupons: React.FC = () => {
 	// hooks
-	const {t}=useTranslation()
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
-	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
+	const { isLoading, coupons } = useSelector((state) => state.coupons);
 
 	useEffect(() => {
 		dispatch(getCoupons());
@@ -33,20 +33,19 @@ const Coupons: React.FC = () => {
 				<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
 					<div className='flex justify-between  w-full'>
 						<Button
-							variant='primary'
 							LeftIcon={IoIosAddCircle}
 							onClick={() => {
 								navigate('addCoupon');
 							}}
 						>
-							{t("add new coupon")}
+							{t('add new coupon')}
 						</Button>
 						<div className='flex gap-8'>
 							<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-								{t("arrange")}
+								{t('arrange')}
 							</Button>
 							<Button variant='secondary' LeftIcon={FilterIcon}>
-								{t("filter")}
+								{t('filter')}
 							</Button>
 						</div>
 					</div>
@@ -76,7 +75,7 @@ const Coupons: React.FC = () => {
 			)}
 
 			{/* Render error message if error exists */}
-			{error && toast.error(error)}
+			{/* {error && toast.error(error)} */}
 		</>
 	);
 };

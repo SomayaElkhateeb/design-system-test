@@ -121,10 +121,6 @@ function SelectItems(props) {
 								checked={selectedItems.length > 0}
 							/>
 						)}
-						{/* {selectedItems.length >= 1 && (
-                <CheckBox variant='minus' initialChecked={true} handleOnChange={handleChange} />
-            )}
-            {selectedItems.length === props.select.length && <CheckBox initialChecked={true} handleOnChange={handleChange} />} */}
 					</div>
 				</div>
 
@@ -133,6 +129,7 @@ function SelectItems(props) {
 						<SelectItem
 							variant={props.variant}
 							key={item.id}
+							// variant={variant}
 							{...item}
 							isChecked={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
 							handleOnCheckChange={(isChecked) =>

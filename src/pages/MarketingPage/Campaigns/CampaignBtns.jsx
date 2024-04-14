@@ -1,22 +1,25 @@
 import { nanoid } from 'nanoid';
-import { Button, Menu } from 'src/app/components/optimized';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { Button } from 'src/app/components/optimized';
 import * as XLSX from 'xlsx/xlsx.mjs';
-
+import { useReactToPrint } from 'react-to-print';
+import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton.tsx';
 const sortMenus = [
-	{ id: nanoid(), text: 'Campaign' },
-	{ id: nanoid(), text: 'Status' },
-	{ id: nanoid(), text: 'Sales' },
-	{ id: nanoid(), text: 'Expenses' },
-	{ id: nanoid(), text: 'Net Profit' },
+	{ id: nanoid(), text: 'Campaign (A-Z)' },
+	{ id: nanoid(), text: 'Campaign (Z-A)' },
+	{ id: nanoid(), text: 'Status (A-Z)' },
+	{ id: nanoid(), text: 'Status (Z-A)' },
+	{ id: nanoid(), text: 'Sales (High-Low)' },
+	{ id: nanoid(), text: 'Sales (Low-High)' },
+	{ id: nanoid(), text: 'Expenses (High-Low)' },
+	{ id: nanoid(), text: 'Expenses (Low-High)' },
+	{ id: nanoid(), text: 'Net Profit (High-Low)' },
+	{ id: nanoid(), text: 'Net Profit (Low-High)' },
 ];
-import { AddBgIcon, ArrangeIcon, DownIcon, ExportIcon, PrintIcon } from 'src/app/utils/icons';
+import { AddBgIcon, ExportIcon, PrintIcon } from 'src/app/utils/icons';
 
-const CampaignBtns = ({ onSelectOption, data }) => {
-	const { isOpen, selectedOption, handleSelect, handleButtonClick } = useSelectBox();
+const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }) => {
 
 	const handleSelectOption = (option) => {
-		handleSelect(option);
 		onSelectOption(option);
 	};
 
@@ -28,6 +31,14 @@ const CampaignBtns = ({ onSelectOption, data }) => {
 		XLSX.writeFile(workbook, 'data.xlsx');
 	};
 
+	const handlePrint = useReactToPrint({
+		content: () => campaignTableRef.current,
+		documentTitle: 'Campaigns Data',
+		onBeforePrint: () => console.log('before printing...'),
+		onAfterPrint: () => console.log('after printing...'),
+		removeAfterPrint: true,
+	});
+
 	return (
 		<div className=' relative flex justify-between items-center h-[70px] mb-4 border-b border-borders-lines'>
 			<div>
@@ -38,22 +49,11 @@ const CampaignBtns = ({ onSelectOption, data }) => {
 				/>
 			</div>
 			<div className='flex gap-3'>
-				<Button
-					variant='secondary'
-					LeftIcon={ArrangeIcon}
-					RightIcon={DownIcon}
-					text='Arrange'
-					onClick={handleButtonClick}
-				/>
-				{isOpen && <Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelectOption} />}
+				<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelectOption} />
+
 				<Button variant='secondary' LeftIcon={ExportIcon} text='Export' onClick={handleExportFile} />
 
-				<Button
-					variant='secondary'
-					LeftIcon={PrintIcon}
-					text='Print'
-					// onClick={}
-				/>
+				<Button variant='secondary' LeftIcon={PrintIcon} text='Print' onClick={handlePrint} />
 			</div>
 		</div>
 	);
