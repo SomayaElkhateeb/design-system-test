@@ -21,6 +21,7 @@ import { MarketingConfig, MarketingTabs } from "./pages/MarketingPage/comp";
 import { UseLanguage } from "./app/components/CustomHook/LanguageHook";
 import { useEffect } from "react";
 import i18n from "./app/language/i18n";
+import CustomerInfo from "./pages/CustomerInfoPage/CustomerInfo";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: "/settings", element: <SettingsPage /> },
       { path: "/products", element: <ProductsPage /> },
       { path: "/customers", element: <CustomersPage /> },
+      { path: "/customers/:id", element: <CustomerInfo /> },
       { path: "/addCustomer", element: <AddCustomerPage /> },
       {
         path: "/marketing",

@@ -34,8 +34,8 @@ const Header = ({ setIsOpen }) => {
 			: t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
 
 	return (
-		<div className='h-[70px] flex justify-between items-center p-4 bg-white'>
-			<div className='flex items-center gap-3'>
+		<div className='h-[70px] container flex justify-between items-center  mx-auto bg-white'>
+			<div className='flex  items-center gap-3'>
 				<button className='max-lg:hidden' onClick={setIsOpen}>
 					<NavIcon className='fill-pri-dark' />
 				</button>

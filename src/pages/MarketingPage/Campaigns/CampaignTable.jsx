@@ -1,31 +1,35 @@
-import { useState } from 'react';
-import data from './data.json';
+import { forwardRef } from 'react';
 import { Button } from 'src/app/components/optimized';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import * as XLSX from "xlsx/xlsx.mjs";
-import { ExportIcon } from 'src/app/utils/icons';
-const CampaignTable = ({ arrangeTerm, data }) => {
+
+const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const arrangeData = (data, arrangeTerm) => {
-		switch (arrangeTerm) {
-			case 'Campaign':
-				return data.sort((a, b) => a.name.localeCompare(b.name));
-			case 'Status':
-				return data.sort((a, b) => a.status.localeCompare(b.status));
-			case 'Sales':
-				return data.sort((a, b) => parseFloat(a.sales) - parseFloat(b.sales));
-			case 'Expenses':
-				return data.sort((a, b) => parseFloat(a.expenses) - parseFloat(b.expenses));
-			case 'Net Profit':
-				return data.sort((a, b) => parseFloat(a.netProfit) - parseFloat(b.netProfit));
-			default:
-				return data;
-		}
+	const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
+
+	const sortFunctions = {
+		'Campaign (A-Z)': (a, b) => a.name.localeCompare(b.name),
+		'Campaign (Z-A)': (a, b) => b.name.localeCompare(a.name),
+		'Status (A-Z)': (a, b) => a.status.localeCompare(b.status),
+		'Status (Z-A)': (a, b) => b.status.localeCompare(a.status),
+		'Sales (High-Low)': (a, b) => getNumericValue(b.sales) - getNumericValue(a.sales),
+		'Sales (Low-High)': (a, b) => getNumericValue(a.sales) - getNumericValue(b.sales),
+		'Expenses (High-Low)': (a, b) => getNumericValue(b.expenses) - getNumericValue(a.expenses),
+		'Expenses (Low-High)': (a, b) => getNumericValue(a.expenses) - getNumericValue(b.expenses),
+		'Net Profit (High-Low)': (a, b) => getNumericValue(b.netProfit) - getNumericValue(a.netProfit),
+		'Net Profit (Low-High)': (a, b) => getNumericValue(a.netProfit) - getNumericValue(b.netProfit),
 	};
 
-	const arrangedData = arrangeData(data, arrangeTerm);
+	const arrangeData = (data, sortBy) => {
+		const sortFunction = sortFunctions[sortBy];
+		if (!sortFunction) {
+			console.error('Invalid sort criteria:', sortBy);
+			return data; // or throw error
+		}
+		return data.slice().sort(sortFunction);
+	};
 
+	const arrangedData = arrangeData(data, sortBy);
 
 	const handleButtonClick = (campaignName) => {
 		const activityParam = searchParams.get('campaign_activity');
@@ -36,13 +40,9 @@ const CampaignTable = ({ arrangeTerm, data }) => {
 		setSearchParams(updatedSearchParams);
 	};
 
-
 	return (
 		<div className='flex flex-col'>
-
-
-
-			<table className=' w-full table-auto rounded -lg'>
+			<table ref={ref} className=' w-full table-auto rounded -lg'>
 				<thead>
 					<tr className='text-left bg-white'>
 						<th className='px-4 py-4 subheading '>Campaign</th>
@@ -55,7 +55,7 @@ const CampaignTable = ({ arrangeTerm, data }) => {
 				</thead>
 				{/* data.campaigns */}
 				<tbody>
-					{arrangedData.map((item) => (
+					{arrangedData?.map((item) => (
 						<tr key={item.name} className='rounded-xl bg-white'>
 							<td className='px-4 py-4 paagraph text-primary'>
 								<Button variant='link' onClick={() => handleButtonClick(item.name)}>
@@ -87,5 +87,5 @@ const CampaignTable = ({ arrangeTerm, data }) => {
 			</table>
 		</div>
 	);
-};
+});
 export default CampaignTable;
