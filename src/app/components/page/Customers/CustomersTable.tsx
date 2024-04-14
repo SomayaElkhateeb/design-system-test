@@ -6,6 +6,8 @@ import { FaRegEdit } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { UseLanguage } from "../../CustomHook/LanguageHook";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default function CustomersTable() {
 
@@ -13,6 +15,7 @@ export default function CustomersTable() {
     //  hooks
     const navigate = useNavigate()
     const { t } = useTranslation()
+    const language = UseLanguage()
     //  headers
     const customersHeaders = [
         "Customer Name", "Mobile", "City", "Orders", "E-Subscription", "actions"
@@ -74,16 +77,22 @@ export default function CustomersTable() {
 
                             <TableCell>
                                 <Switch
-                                    checked={e["E-Subscription"]}
+                                    color="success"
+                                    // checked={e["E-Subscription"]}
                                     // onChange={handleChange}
                                     inputProps={{ 'aria-label': 'controlled' }}
                                 />
                             </TableCell>,
                             <TableCell>
-                                <div className=" flex  items-center gap-4 cursor-pointer text-[1.2rem]">
+                                <div className=" justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]">
                                     <FaRegEdit onClick={() => navigate(`/addCustomer?id=${e?.id}`)} />
                                     <HiOutlineDotsHorizontal />
-                                    <IoIosArrowForward />
+                                    {language === "ar" ?
+                                        <IoIosArrowBack onClick={() => navigate(`/customers/${e?.id}`)} />
+                                        :
+                                        <IoIosArrowForward onClick={() => navigate(`/customers/${e?.id}`)} />
+                                    }
+
                                 </div>
                             </TableCell>
 
