@@ -7,33 +7,22 @@ interface selectedOptionType {
 	discount: number;
 }
 
-const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount }) => {
-	const [state, setState] = useState({
-		amountPercentage: 0,
-		amountFixed: 0,
-	});
-	// Destructure amountPercentage from state
-	const { amountPercentage, amountFixed } = state;
+const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount, fixedAmount, setState }) => {
+	const [amountPercentage, setAmountPercentage] = useState(0);
 
-	console.log('amountPercentage', state.amountPercentage);
-	console.log('amountFixed', state.amountFixed);
-
-	// Update state
-	const updateState = (newValue) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newFixedAmount = Math.max(parseInt(e.target.value), 0);
 		setState((prevState) => ({
 			...prevState,
-			...newValue,
+			fixedAmount: newFixedAmount,
 		}));
 	};
 
+	console.log('amountPercentage', amountPercentage);
+
 	// Function to handle amount percentage
 	const handleAmountPercentage = (value) => {
-		updateState({ amountPercentage: Math.min(Math.max(value, 0), 100) });
-	};
-
-	// Function to handle amount fixed
-	const handleAmountFixed = (value) => {
-		updateState({ amountFixed: Math.max(value, 0) });
+		setAmountPercentage({ amountPercentage: Math.min(Math.max(value, 0), 100) });
 	};
 
 	return (
@@ -56,8 +45,8 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 						label='Fixed amount'
 						id='fixedAmount'
 						type='number'
-						value={amountFixed} // Use amountFixed from state
-						onChange={(e) => handleAmountFixed(Number(e.target.value))}
+						value={fixedAmount}
+						onChange={handleChange}
 					/>
 				</div>
 			)}

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { CheckBox, InputRow } from 'src/app/components/optimized';
 
-const Limits: React.FC = () => {
+const Limits: React.FC = ({ setState, used }) => {
 	const [isChecked, setIsChecked] = useState<boolean>(false);
-	const [usageNumber, setUsageNumber] = useState<number>(0);
 
 	const handleCheckboxChange = (newValue: boolean) => {
 		setIsChecked(newValue);
 	};
 
-	const handleAmountFixed = (value: number) => {
-		setUsageNumber(Math.max(value, 0));
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newUsed = Math.max(parseInt(e.target.value), 0);
+		setState((prevState) => ({
+			...prevState,
+			used: newUsed,
+		}));
 	};
 
 	return (
@@ -20,12 +23,7 @@ const Limits: React.FC = () => {
 
 			{isChecked && (
 				<div className='w-[24rem]'>
-					<InputRow
-						label='Usage number'
-						type='number'
-						value={usageNumber.toString()}
-						onChange={(e) => handleAmountFixed(Number(e.target.value))}
-					/>
+					<InputRow label='Usage number' type='number' value={used} onChange={handleChange} />
 				</div>
 			)}
 

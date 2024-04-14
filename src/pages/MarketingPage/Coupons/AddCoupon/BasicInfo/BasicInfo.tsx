@@ -5,16 +5,21 @@ import { discountTypesOptions, applyToOptions } from '../comp/data';
 import DiscountTypesOptions from './comp/DiscountTypesOptions';
 import ApplyToOptions from './comp/ApplyToOptions';
 
-const BasicInfo: React.FC = () => {
+const BasicInfo: React.FC = ({ discountName, fixedAmount, setState }) => {
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
-
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setState({
+			...discountName,
+			discountName: e.target.value,
+		});
+	};
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold mb-2'>Basic info</h3>
 			<div className='flex flex-col gap-[1rem]'>
 				<div className='w-[24rem]'>
-					<InputRow label='coupon code' />
+					<InputRow label='coupon code' value={discountName} onChange={handleChange} />
 				</div>
 			</div>
 
@@ -26,7 +31,7 @@ const BasicInfo: React.FC = () => {
 					setSelected={(option: string) => setSelectedOptionType(option)}
 				/>
 
-				<DiscountTypesOptions discountType={selectedOptionType} />
+				<DiscountTypesOptions discountType={selectedOptionType} fixedAmount={fixedAmount} setState={setState} />
 			</section>
 
 			<section>

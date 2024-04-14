@@ -1,13 +1,14 @@
+import React from 'react';
 import { CheckIcon } from 'src/app/utils/icons';
 
 const Menu = ({ options, onSelect, selectedOption }) => {
-	// md:w-[341px]
 	return (
-		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
+		<ul className='  rounded  shadow-md py-2 flex flex-col '>
 			{options.map((option) => (
 				<MenuItem
 					key={option.id}
 					text={option.text}
+					icon={option?.icon}
 					onClick={() => onSelect(option.text)}
 					selected={selectedOption === option.text}
 				/>
@@ -16,6 +17,20 @@ const Menu = ({ options, onSelect, selectedOption }) => {
 	);
 };
 export default Menu;
+
+// md:w-[341px]
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
+// 			{options.map((option) => (
+// 				<MenuItem
+// 					key={option.id}
+// 					text={option.text}
+// 					onClick={() => onSelect(option.text)}
+// 					selected={selectedOption === option.text}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
 
 /**
  * @param {{
@@ -44,17 +59,25 @@ export default Menu;
  *  text: string;
  *  onClick: () => void;
  *  selected: boolean;
+ * icon?:React.ReactNode
  * }} props
  */
 function MenuItem(props) {
 	return (
 		<li
 			onClick={props.onClick}
-			className={`flex text-title justify-between items-center hover:bg-sec-light px-4 py-3 transition-all ${
+			className={`flex text-title cursor-pointer justify-between items-center hover:bg-sec-light px-4 py-3 transition-all ${
 				props.selected ? 'bg-sec-light' : ''
 			}`}
 		>
-			<span className={`text-sm ${props.selected ? 'text-sec-pressed' : ''}`}>{props.text}</span>
+			<span
+				className={`text-sm ${
+					props.selected ? 'text-sec-pressed flex gap-[.5rem] items-center' : 'flex gap-[.5rem] items-center'
+				}`}
+			>
+				{props.icon}
+				{props.text}
+			</span>
 			{props.selected && <CheckIcon className='fill-sec-pressed' />}
 		</li>
 	);

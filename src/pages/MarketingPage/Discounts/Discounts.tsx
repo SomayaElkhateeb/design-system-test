@@ -8,6 +8,7 @@ import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/
 import { headerData } from './NewDiscount/comp/data';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 
 const Discounts: React.FC = () => {
 	const navigate = useNavigate();
@@ -33,9 +34,10 @@ const Discounts: React.FC = () => {
 					</Button>
 
 					<div className='flex gap-8'>
-						<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
+						{/* <Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
 							arrange
-						</Button>
+						</Button> */}
+						<ArrangeButton />
 						<Button variant='secondary' LeftIcon={FilterIcon}>
 							filter
 						</Button>

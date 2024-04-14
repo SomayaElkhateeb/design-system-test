@@ -9,11 +9,16 @@ import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncT
 import { IoIosAddCircle } from 'react-icons/io';
 import { FaAngleDown } from 'react-icons/fa6';
 import { ArrangeIcon, FilterIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
 
 import { headerData } from './AddCoupon/comp/data';
 import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/page';
+import { toast } from 'react-toastify';
 const Coupons: React.FC = () => {
+	// hooks
+	const { t } = useTranslation();
 	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
 	const { isLoading, coupons } = useSelector((state) => state.coupons);
 
@@ -28,20 +33,19 @@ const Coupons: React.FC = () => {
 				<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
 					<div className='flex justify-between  w-full'>
 						<Button
-							variant='primary'
 							LeftIcon={IoIosAddCircle}
 							onClick={() => {
 								navigate('addCoupon');
 							}}
 						>
-							add new coupon
+							{t('add new coupon')}
 						</Button>
 						<div className='flex gap-8'>
 							<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-								arrange
+								{t('arrange')}
 							</Button>
 							<Button variant='secondary' LeftIcon={FilterIcon}>
-								filter
+								{t('filter')}
 							</Button>
 						</div>
 					</div>

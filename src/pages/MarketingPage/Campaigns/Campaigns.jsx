@@ -1,3 +1,27 @@
+
+// import { useState } from 'react';
+// import CampaignBtns from './CampaignBtns';
+// import CampaignStatus from './CampaignStatus';
+import CampaignTable from './CampaignTable';
+import { StackedColumnChart } from 'src/app/components/optimized';
+import CampaignsHeader from './CampaignsHeader';
+import campaignData from "./data.json"
+import { useSearchParams } from 'react-router-dom';
+import CampaignInfoCard from './CampaignInfoCard';
+const Campaigns = () => {
+	const [selectedOption, setSelectedOption] = useState(null);
+	const [searchParams, _] = useSearchParams();
+
+	const campaignActivity = searchParams.get('campaign_activity');
+	const activityDetails = searchParams.get('activity_details');
+	const title = activityDetails ? activityDetails : campaignActivity;
+	let tableData;
+	if (campaignActivity === null) {
+		tableData = campaignData.campaigns;
+	} else {
+		const matchedCampaign = campaignData.campaigns.find((campaign) => campaign.name === campaignActivity);
+		tableData = matchedCampaign ? matchedCampaign.activities : [];
+	}}
 import CampaignBtns from './CampaignBtns';
 import CampaignStatus from './CampaignStatus';
 
@@ -5,17 +29,18 @@ import { useState } from 'react';
 import { Button, Menu } from 'src/app/components/optimized';
 import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
 
-const Campaigns = () => {
-	return (
-		<div>
-			<CampaignStatus />
-			<CampaignBtns />
-			<CampaignTable />
-		</div>
-	);
-};
+// const Campaigns = () => {
+// 	return (
+// 		<div>
+// 			<CampaignStatus />
+// 			<CampaignBtns />
+// 			<CampaignTable />
+// 		</div>
+// 	);
+// };
 
-export default Campaigns;
+// export default Campaigns;
+    
 const CampaignsData = [
 	{
 		name: 'Summer campaign',
@@ -58,50 +83,25 @@ const Header = () => {
 	function handleSelect(option) {
 		setSelectedOption(option);
 		setIsOpen(false);
+
 	}
-	const handleButtonClick = () => {
-		setIsOpen(!isOpen);
+	const handleSelectOption = (option) => {
+		setSelectedOption(option);
 	};
 
 	return (
-		<div className='flex flex-col'>
-			<table className=' w-full table-auto rounded -lg'>
-				<thead>
-					<tr className='text-left bg-white'>
-						<th className='px-4 py-4 subheading '>Campaign</th>
-						<th className='px-4 py-4 subheading'>Status </th>
-						<th className='px-4 py-4 subheading'>sales </th>
-						<th className='px-4 py-4 subheading'>Expenses </th>
-						<th className='px-4 py-4 subheading'>Net profit </th>
-					</tr>
-				</thead>
-
-				<tbody>
-					{CampaignsData.map((campaign) => (
-						<tr key={campaign.name} className='rounded-xl bg-white'>
-							<td className='px-4 py-4 paagraph text-primary'>{campaign.name}</td>
-							<td className={`px-4 py-4 paagraph text-white `}>
-								<span
-									className={` p-1 rounded-lg ${
-										campaign.status === 'ended' || campaign.status === 'refused'
-											? 'bg-error'
-											: campaign.status === 'running'
-											? 'bg-success'
-											: campaign.status === 'in review'
-											? 'bg-warning'
-											: ''
-									}`}
-								>
-									{campaign.status}
-								</span>
-							</td>
-							<td className='px-4 py-4 paagraph text-title'>{campaign.sales}</td>
-							<td className='px-4 py-4 paagraph text-title'>{campaign.expenses}</td>
-							<td className='px-4 py-4 paagraph text-title'>{campaign.netProfit}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</div>
+		<>
+			{/* {(activityDetails || campaignActivity) && <CampaignsHeader title={title} />} */}
+			<div className='p-4'>
+				{/* {activityDetails && <CampaignInfoCard />} */}
+				<CampaignStatus />
+				<CampaignBtns onSelectOption={handleSelectOption} />
+				{/* {!activityDetails && <CampaignTable sortTerm={selectedOption} data={tableData} />}
+				{activityDetails && <StackedColumnChart />} */}
+			</div>
+		</>
 	);
 };
+
+export default Campaigns;
+

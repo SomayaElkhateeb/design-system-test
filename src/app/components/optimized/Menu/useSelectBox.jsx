@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const useSelectBox = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+	const [isOpen, setIsOpen] = useState(false);
+	const [selectedOption, setSelectedOption] = useState("");
 
-  const handleSelect = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
+	const handleSelect = (option) => {
+		setSelectedOption(option);
+		setIsOpen(false);
+	};
 
-  const handleButtonClick = () => {
-    setIsOpen(!isOpen);
-  };
+	const handleButtonClick = () => {
+		setIsOpen(!isOpen);
+	};
 
-  return { isOpen, selectedOption, handleSelect, handleButtonClick };
+	return { isOpen, selectedOption, handleSelect, handleButtonClick };
 };
 
 export default useSelectBox;

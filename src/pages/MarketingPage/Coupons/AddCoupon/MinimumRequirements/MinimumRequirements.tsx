@@ -6,36 +6,37 @@ import { CheckBox, InputRow } from 'src/app/components/optimized';
 interface State {
 	selectedMinimumRequirements: string;
 	isChecked: boolean;
-	minimumPrice: number;
 	minimumQuantity: number;
 }
 
 const initialState: State = {
 	selectedMinimumRequirements: '',
 	isChecked: false,
-	minimumPrice: 0,
 	minimumQuantity: 0,
 };
 
-const MinimumRequirements: React.FC = () => {
-	const [state, setState] = useState<State>(initialState);
-	const { selectedMinimumRequirements, isChecked, minimumPrice, minimumQuantity } = state;
+const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
+	const [updateState, setUpdateState] = useState<State>(initialState);
+	const { selectedMinimumRequirements, isChecked, minimumQuantity } = updateState;
 
 	// Update state
-	const updateState = (newValue: Partial<State>) => {
-		setState((prevState) => ({
+	const update = (newValue: Partial<State>) => {
+		setUpdateState((prevState) => ({
 			...prevState,
 			...newValue,
 		}));
 	};
 
 	const handleCheckboxChange = (newValue: boolean) => {
-		updateState({ isChecked: newValue });
+		update({ isChecked: newValue });
 	};
 
-	// Function to handle amount fixed
-	const handleAmountFixed = (value: number) => {
-		updateState({ minimumPrice: Math.max(value, 0) });
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newMinimumPrice = Math.max(parseInt(e.target.value), 0);
+		setState((prevState) => ({
+			...prevState,
+			minimumPrice: newMinimumPrice,
+		}));
 	};
 
 	return (
@@ -48,18 +49,13 @@ const MinimumRequirements: React.FC = () => {
 				<SingleChoiceChips
 					options={minimumRequirementsOptions}
 					selected={selectedMinimumRequirements}
-					setSelected={(option: string) => updateState({ selectedMinimumRequirements: option })}
+					setSelected={(option: string) => update({ selectedMinimumRequirements: option })}
 				/>
 			)}
 
 			{selectedMinimumRequirements === 'Minimum price' && (
 				<div className='w-[390px] mt-[18px]'>
-					<InputRow
-						label='Mini purchase price'
-						type='number'
-						value={minimumPrice}
-						onChange={(e) => handleAmountFixed(Number(e.target.value))}
-					/>
+					<InputRow label='Mini purchase price' type='number' value={minimumPrice} onChange={handleChange} />
 				</div>
 			)}
 			{selectedMinimumRequirements === 'Minimum quantity' && (
@@ -68,7 +64,7 @@ const MinimumRequirements: React.FC = () => {
 						label='Mini purchase quantity'
 						type='number'
 						value={minimumQuantity}
-						onChange={(e) => updateState({ minimumQuantity: Number(e.target.value) })}
+						onChange={(e) => update({ minimumQuantity: Number(e.target.value) })}
 					/>
 				</div>
 			)}
