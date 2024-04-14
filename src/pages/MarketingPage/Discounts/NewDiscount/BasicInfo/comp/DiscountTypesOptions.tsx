@@ -5,9 +5,18 @@ import { AiOutlinePercentage } from 'react-icons/ai';
 interface selectedOptionType {
 	discountType: string;
 	discount: number;
+	setState: any;
+	fixedAmount: number;
+	validationErrors: any;
 }
 
-const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount, setState, fixedAmount }) => {
+const DiscountTypesOptions: React.FC<selectedOptionType> = ({
+	discountType,
+	discount,
+	setState,
+	fixedAmount,
+	validationErrors,
+}) => {
 	const [amountPercentage, setAmountPercentage] = useState(0);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +26,6 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 			fixedAmount: newFixedAmount,
 		}));
 	};
-
-	console.log('amountPercentage', amountPercentage);
 
 	// Function to handle amount percentage
 	const handleAmountPercentage = (value) => {
@@ -41,6 +48,10 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 			{discountType === 'Fixed amount' && (
 				<div className='w-[24rem] pt-[1rem]'>
 					<InputRow ref={discount} label='Fixed amount' type='number' value={fixedAmount} onChange={handleChange} />
+
+					{validationErrors && validationErrors.fixedAmount && (
+						<span className='text-red-500'>{validationErrors.fixedAmount}</span>
+					)}
 				</div>
 			)}
 		</div>
