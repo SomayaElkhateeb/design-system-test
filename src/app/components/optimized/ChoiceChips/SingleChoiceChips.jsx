@@ -44,7 +44,7 @@
 export default function SingleChoiceChips(props) {
 	return (
 		<div>
-			<div className='flex gap-2 p-2'>
+			<div className='flex gap-2 py-2'>
 				{/* Render each option as a chip */}
 				{props.options.map((option, index) => (
 					<Chip
@@ -67,6 +67,7 @@ export default function SingleChoiceChips(props) {
  * @param {import('react').ReactNode} props.icon Optional icon component to display with the chip
  * @param {((option: string) => void)} props.onSelect Function to handle chip selection
  */
+
 function Chip(props) {
 	// Base styles for the chip
 	const baseStyle = 'flex items-center border p-1 pr-2 w-fit rounded-full cursor-pointer transition-all';

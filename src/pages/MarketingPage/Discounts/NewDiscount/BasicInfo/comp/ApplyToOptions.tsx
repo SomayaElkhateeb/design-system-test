@@ -1,6 +1,6 @@
 import React from 'react';
-import SpecificCategory from './comp/SpecificCategory';
-import SpecificProducts from './comp/SpecificProducts';
+import SpecificCategory from '../../../../../../app/components/page/discount/Selectors/SpecificCategory';
+import SpecificProducts from '../../../../../../app/components/page/discount/Selectors/SpecificProducts';
 import BuyXGetY from './comp/BuyXGetY';
 
 interface ApplyToOptionsProps {

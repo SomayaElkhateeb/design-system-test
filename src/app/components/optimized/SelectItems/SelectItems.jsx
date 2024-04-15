@@ -21,14 +21,15 @@ import SelectItem from './SelectItem';
  * @param {{
  *  title: string;
  *  onClose: () => void;
- *  addBtn: () => void;
+ *  addBtn: (selectedItems: Item[]) => void;
  *  select: Item[];
  *  variant?: "customers" | "groups";
  * }} props
  */
+
 function SelectItems(props) {
 	const [searchQuery, setSearchQuery] = useState('');
-	const [selectedItems, setSelectedItems] = useState(/** @type {{ id: string | number; title: string; }[]}  */ ([]));
+	const [selectedItems, setSelectedItems] = useState(/** @type {Item[]}  */ ([]));
 	const [queryItems, setQueryItems] = useState(props.select);
 
 	useEffect(() => {
@@ -37,7 +38,7 @@ function SelectItems(props) {
 
 	/**
 	 * @param {boolean} isChecked
-	 * @param {{ id: string | number; title: string; }} item
+	 * @param {Item} item
 	 */
 	function handleChange(isChecked, item) {
 		const updatedItems = isChecked ? [...selectedItems, item] : selectedItems.filter((item) => item.id !== item.id);
@@ -99,7 +100,7 @@ function SelectItems(props) {
 								variant={queryItems.length === selectedItems.length ? undefined : 'minus'}
 								handleOnChange={(isChecked) => {
 									if (isChecked) {
-										return setSelectedItems(queryItems.map((item) => ({ id: item.id, title: item.title ?? '' })));
+										return setSelectedItems(queryItems);
 									}
 
 									setSelectedItems([]);
@@ -118,12 +119,7 @@ function SelectItems(props) {
 							// variant={variant}
 							{...item}
 							isChecked={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
-							handleOnCheckChange={(isChecked) =>
-								handleChange(isChecked, {
-									id: item.id,
-									title: item.title ?? '',
-								})
-							}
+							handleOnCheckChange={(isChecked) => handleChange(isChecked, item)}
 						/>
 					))}
 				</div>
@@ -132,7 +128,7 @@ function SelectItems(props) {
 					<Button onClick={() => props.onClose()} variant='tertiary'>
 						cancel
 					</Button>
-					<Button onClick={props.addBtn}>{`add (${selectedItems.length})`}</Button>
+					<Button onClick={() => props.addBtn(selectedItems)}>{`add (${selectedItems.length})`}</Button>
 				</div>
 			</label>
 		</div>

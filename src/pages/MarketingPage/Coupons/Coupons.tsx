@@ -7,16 +7,14 @@ import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncT
 
 // icons
 import { IoIosAddCircle } from 'react-icons/io';
-import { FaAngleDown } from 'react-icons/fa6';
-import { ArrangeIcon, FilterIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
-
 import { headerData } from './AddCoupon/comp/data';
 import { Body, BodyTable, Header, HeaderTable, Table } from 'src/app/components/page';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import LinearDeterminate from 'src/app/components/optimized/UiKits/LinearDeterminate';
 import FilterButton from 'src/app/components/page/Customers/FilterButton';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
+// import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 const Coupons: React.FC = () => {
 	const [selectedOption, setSelectedOption] = useState('');
 	// hooks
@@ -24,11 +22,15 @@ const Coupons: React.FC = () => {
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
-	const { isLoading, coupons } = useSelector((state) => state.coupons);
+	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
 
 	useEffect(() => {
 		dispatch(getCoupons());
 	}, [dispatch]);
+
+	if (error) {
+		toast.error(error);
+	}
 
 	const sortMenus = [
 		{ id: '1', text: 'Name A to Z' },
@@ -64,6 +66,8 @@ const Coupons: React.FC = () => {
 			{/* Table */}
 			{isLoading ? (
 				<LinearDeterminate />
+			) : error ? (
+				<ToastContainer position='top-right' />
 			) : coupons.length > 0 ? (
 				<div className='mx-3'>
 					<Table>
@@ -74,15 +78,13 @@ const Coupons: React.FC = () => {
 							<Body bodyData={coupons} />
 						</BodyTable>
 					</Table>
+					{/* <BaseTable headers={headerData} rows={coupons} /> */}
 				</div>
 			) : (
 				<div className='py-2 px-6 my-20 mx-auto w-fit bg-white rounded'>
-					<h3 className='text-title font-semibold'>There is no coupons available!</h3>
+					<h3 className='text-title font-semibold'>There are no coupons available!</h3>
 				</div>
 			)}
-
-			{/* Render error message if error exists */}
-			{/* {error && toast.error(error)} */}
 		</>
 	);
 };
