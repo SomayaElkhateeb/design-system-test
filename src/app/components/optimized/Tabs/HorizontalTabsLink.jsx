@@ -34,7 +34,7 @@ export default function HorizontalTabsLink(props) {
 								}`}
 								to={`${props.path}/${tab}`}
 							>
-								{t(tab.charAt(0).toUpperCase() + tab.slice(1))}
+								{tab!=="AllProducts"? t(tab.charAt(0).toUpperCase() + tab.slice(1)):t("All Products")}
 							</Link>
 						</li>
 					))}
