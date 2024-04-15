@@ -1,7 +1,8 @@
-import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
+
 import data from './data.json';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton.tsx';
 import { useState } from 'react';
+import StatsCard from 'src/app/components/page/Cards/StatsCard';
 const sortMenus = [
 	{ text: 'Option 1', id: 1 },
 	{ text: 'Option 2', id: 2 },

@@ -53,7 +53,7 @@ const router = createBrowserRouter([
 				element: <MarketingPage />,
 				children: [{ path: ':tab', element: <MarketingTabs /> }],
 			},
-			{ path: '/analytics', element: <AnalyticsPage />, children: [{ path: ':tabName', element: <AnalyticsTabs /> }] },
+			{ path: '/analytics', element: <AnalyticsPage />, children: [{ path: ':tab', element: <AnalyticsTabs /> }] },
 			{ path: '/apps/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 		],

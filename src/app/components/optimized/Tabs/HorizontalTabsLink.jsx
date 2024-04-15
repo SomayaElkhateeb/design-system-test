@@ -16,7 +16,7 @@ import { Link, useParams } from 'react-router-dom';
 
 export default function HorizontalTabsLink(props) {
 	//  hooks
-	const { tabName } = useParams();
+	const { tab:tabName } = useParams();
 
 	const { t } = useTranslation();
 
