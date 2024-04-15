@@ -1,6 +1,5 @@
-import React from 'react';
-import SpecificGroups from './SpecificGroups';
-import SpecificCustomers from './SpecificCustomers';
+import SpecificCustomers from 'src/app/components/page/discount/Selectors/SpecificCustomers';
+import SpecificGroups from 'src/app/components/page/discount/Selectors/SpecificGroups';
 
 interface CustomerSegmentOptionsProps {
 	segmentOptions: string;

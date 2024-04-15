@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'src/app/components/optimized';
@@ -6,7 +6,7 @@ import SelectItems from 'src/app/components/optimized/SelectItems/SelectItems';
 import CategoryView from 'src/app/components/optimized/UiKits/CategoryView';
 import { getSelectCategories } from 'src/app/store/slices/marketing/categories/categoriesAsyncThunks';
 
-const SpecificCategory: React.FC = () => {
+const SpecificCategory = () => {
 	const [showSelect, setShowSelect] = useState(false);
 	const [selectedItem, setSelectedItem] = useState([]);
 
@@ -18,8 +18,8 @@ const SpecificCategory: React.FC = () => {
 		dispatch(getSelectCategories());
 	}, [dispatch]);
 
-	const handleAddButtonClick = (selectedItems) => {
-		setSelectedItem(selectedItems);
+	const handleAddButtonClick = (selectedItem) => {
+		setSelectedItem(selectedItem);
 		setShowSelect(false);
 	};
 

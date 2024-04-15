@@ -1,6 +1,6 @@
 /**
  * @param {{
- *  imageUrl: string,
+ *  imageUrl?: string,
  *  title: string,
  *  description?: string
  * }} props
