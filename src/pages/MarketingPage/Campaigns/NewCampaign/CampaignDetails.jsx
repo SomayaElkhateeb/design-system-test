@@ -1,8 +1,6 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { InputRow } from 'src/app/components/optimized';
-import SpecificProducts from '../../Discounts/NewDiscount/BasicInfo/comp/comp/SpecificProducts';
-
-
+import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
 
 const CampaignDetails = () => {
 	const { campaignName, activityName, adText, handleChange } = useCampaignDetails();
@@ -28,7 +26,6 @@ const CampaignDetails = () => {
 	);
 };
 export default CampaignDetails;
-
 
 const useCampaignDetails = () => {
 	const [campaignName, setCampaignName] = useState('');
