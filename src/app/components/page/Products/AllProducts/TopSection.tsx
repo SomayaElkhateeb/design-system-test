@@ -12,7 +12,7 @@ import { FiUploadCloud } from "react-icons/fi";
 import ActionsComp from "../../Customers/ActionsComp";
 import { MdDelete } from "react-icons/md";
 
-export default function TopSection() {
+export default function TopSection({ verticalCard, setVerticalCard }: { verticalCard: boolean, setVerticalCard: (e: boolean) => void }) {
     //  hooks
     const { t } = useTranslation()
 
@@ -50,6 +50,17 @@ export default function TopSection() {
         { id: nanoid(), text: "Delete all products", icon: <MdDelete className="text-[red]" /> },
 
     ];
+
+
+
+    const handelListAndGridImg = () => {
+        return (
+            <div className="flex-row-global gap-[.7rem]">
+                <img onClick={() => setVerticalCard(false)} src={getImageUrl(!verticalCard ? "images/AllProductsImg/listActive.svg" : "images/AllProductsImg/listNotActive.svg")} loading="lazy" alt="listImg" className="cursor-pointer" />
+                <img onClick={() => setVerticalCard(true)} src={getImageUrl(!verticalCard ? "images/AllProductsImg/gridNotActive.svg" : "images/AllProductsImg/gridActive.svg")} loading="lazy" alt="gridImg" className="cursor-pointer" />
+            </div>
+        )
+    }
     return (
         <div className="flex-row-global justify-between">
             {/*  left dropdow */}
@@ -89,14 +100,19 @@ export default function TopSection() {
                 </div>
             </PopoverComponenet>
 
-            
+
             {/*  actions filter arrange,... */}
-            <ActionsComp
-                filterMenus={sortMenus}
-                sortMenus={sortMenus}
-                ActionsMenus={ActionsMenus}
-                selectedOption={selectedOption}
-                handelSelect={handleSelect} />
+            <div className="flex-row-global  gap-[1.2rem]">
+                <ActionsComp
+                    filterMenus={sortMenus}
+                    sortMenus={sortMenus}
+                    ActionsMenus={ActionsMenus}
+                    selectedOption={selectedOption}
+                    handelSelect={handleSelect} />
+
+                {handelListAndGridImg()}
+
+            </div>
         </div>
     )
 }
