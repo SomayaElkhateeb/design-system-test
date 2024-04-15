@@ -6,16 +6,28 @@ import Inventory from 'src/pages/ProductsPage/Inventory';
 
 
 const ProductsTabs = () => {
+	//  hooks
 	const { tab } = useParams();
 
-	const tabs = {
-		AllProducts: <AllProducts />,
-		categories: <Categories />,
-		brands: <Barnds />,
-		inventory: <Inventory />,
-	};
 
-	return tabs[tab];
+
+
+	switch (tab) {
+		case "AllProducts":
+			return (<AllProducts />)
+		case "categories":
+			return (<Categories />)
+		case "brands":
+			return (<Barnds />)
+		case "inventory":
+			return (<Inventory />)
+
+		default: return (<AllProducts />)
+
+	}
+
+
+
 };
 
 export default ProductsTabs;

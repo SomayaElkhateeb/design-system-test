@@ -170,6 +170,7 @@ export const english = {
 	"Group Name":"Group Name",
 	"Customers No.":"Customers No.",
 	"Active?":"Active?",
+	"Add Product":"Add Product",
 	Print: 'Print',
 	'Orders List': 'Orders List',
 	'Order created at': 'Order created at',

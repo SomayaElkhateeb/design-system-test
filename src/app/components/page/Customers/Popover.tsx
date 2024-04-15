@@ -32,7 +32,9 @@ export default function PopoverComponenet({ button, children }: { button: React.
                     horizontal: 'left',
                 }}
             >
-                {children}
+                <div onClick={handleClose}>
+                    {children}
+                </div>
             </Popover>
         </>
     )

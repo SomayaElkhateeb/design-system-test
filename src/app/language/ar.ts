@@ -192,6 +192,7 @@ export const arabic = {
 	"Group Name":"اسم المجموعه",
 	"Customers No.":"عدد العملاء",
 	"Active?":"نشط ؟",
+	"Add Product":"اضافه منتج",
 	'Order Address Info': 'معلومات عنوان التوصيل',
 	"Add new address":"اضافه عنوان جديد",
 	"Show on map":"اظهار علي الخريطه",
