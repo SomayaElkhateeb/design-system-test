@@ -11,9 +11,12 @@ import { Link, useParams } from 'react-router-dom';
  * HorizontalTabsLink renders horizontal tabs with links based on the provided tabs array,
  * and the current active tab from the URL parameters.
  */
+
+
+
 export default function HorizontalTabsLink(props) {
 	//  hooks
-	const { tab: marketingTab } = useParams();
+	const { tabName } = useParams();
 
 	const { t } = useTranslation();
 
@@ -25,7 +28,7 @@ export default function HorizontalTabsLink(props) {
 						<li key={tab} className='mr-2'>
 							<Link
 								className={`inline-block p-2 rounded-t-lg  ${
-									marketingTab === tab
+									tabName === tab
 										? 'text-primary title border-b-2 border-primary'
 										: 'text-hint paragraph hover:text-primary'
 								}`}
