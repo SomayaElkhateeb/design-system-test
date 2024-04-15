@@ -197,6 +197,7 @@ export const arabic = {
 	"SKU":"الؤقم التعريفي",
 	"QTY":"الكميه",
 	"Out of stock":"انتهت الكميه",
+	"Options":"اختيارات",
 	'Order Address Info': 'معلومات عنوان التوصيل',
 	"Add new address":"اضافه عنوان جديد",
 	"Show on map":"اظهار علي الخريطه",

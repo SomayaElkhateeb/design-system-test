@@ -175,6 +175,7 @@ export const english = {
 	"SKU":"SKU",
 	"QTY":"QTY",
 	"Out of stock":"Out of stock",
+	"Options":"Options",
 	Print: 'Print',
 	'Orders List': 'Orders List',
 	'Order created at': 'Order created at',

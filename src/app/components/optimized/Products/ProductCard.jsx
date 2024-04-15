@@ -17,6 +17,8 @@ import {
 	CameraIcon,
 	StarActiveIcon,
 } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
+import CustomTableBodyCheckbox from '../../page/Customers/CustomTableBodyChckbox';
 
 /**
  * @param {{
@@ -27,7 +29,9 @@ import {
  *   options: number;
  *   sku: string;
  *   quantity: number;
- *   price: string;
+ *   price: number;
+ *   array:string[];
+ *   setArray:(e:string[])=>void;
  * }} props
  *
  * @example
@@ -46,28 +50,33 @@ import {
  * ```
  */
 export default function ProductCard(props) {
+	//  hooks
+	const { t } = useTranslation();
 	const [isFavorite, setIsFavorite] = useState(false);
-	const [isSelected, setIsSelected] = useState(false);
+	
 
 	function toggleFavorite() {
 		setIsFavorite(!isFavorite);
 	}
-	function isSelectedHandler() {
-		setIsSelected(!isSelected);
-	}
+	
 	const info = {
 		sku: props.sku,
-		quantity: props.quantity,
+		quantity: props.quantity > 0 ? props.quantity : t('Out of stock'),
 		price: props.price,
 	};
 
 	return (
-		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl grid grid-cols-1 divide-y p-0 w-[271px] group '>
+		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl  divide-y p-0  group '>
 			<div className='relative w-full h-[260px]'>
-				<img src={getImageUrl(props.imageUrl)} alt={props.name} className='object-cover w-full h-full' />
+				<img
+					src={getImageUrl('images/AllProductsImg/fakeImg.png')}
+					alt={props.name}
+					className='object-cover w-full h-full'
+				/>
 				<div className='absolute flex flex-col items-center justify-between top-3 bottom-2 left-3'>
 					<div className='flex flex-col items-center gap-4 '>
-						<CheckBox handleOnChange={isSelectedHandler} checked={isSelected} />
+						{/* <CheckBox handleOnChange={isSelectedHandler} checked={isSelected} /> */}
+						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
 						<button onClick={toggleFavorite}>
 							{isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
 						</button>
