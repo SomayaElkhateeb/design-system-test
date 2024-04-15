@@ -88,7 +88,7 @@ export default function InputRow({
 		<>
 			<div className='flex flex-col'>
 				{label && (
-					<label htmlFor={controlId} className='block text-sm '>
+					<label htmlFor={controlId} className='block text-sm mb-1.5'>
 						{label}
 					</label>
 				)}

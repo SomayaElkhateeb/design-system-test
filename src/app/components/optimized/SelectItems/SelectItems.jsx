@@ -26,6 +26,7 @@ import SelectItem from './SelectItem';
  *  variant?: "customers" | "groups";
  * }} props
  */
+
 function SelectItems(props) {
 	const [searchQuery, setSearchQuery] = useState('');
 	const [selectedItems, setSelectedItems] = useState(/** @type {Item[]}  */ ([]));

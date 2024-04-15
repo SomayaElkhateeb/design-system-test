@@ -16,9 +16,10 @@ const sortMenus = [
 	{ id: nanoid(), text: 'Net Profit (Low-High)' },
 ];
 import { AddBgIcon, ExportIcon, PrintIcon } from 'src/app/utils/icons';
+import { useNavigate } from 'react-router-dom';
 
 const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }) => {
-
+	const navigate = useNavigate();
 	const handleSelectOption = (option) => {
 		onSelectOption(option);
 	};
@@ -44,8 +45,10 @@ const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }
 			<div>
 				<Button
 					LeftIcon={AddBgIcon}
-					text='Add campaign'
-					// onClick={}
+					text='Add Campaign'
+					onClick={() => {
+						navigate('addCampaign');
+					}}
 				/>
 			</div>
 			<div className='flex gap-3'>

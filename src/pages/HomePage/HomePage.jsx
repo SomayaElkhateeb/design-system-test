@@ -5,6 +5,7 @@ import Reports from './comp/Reports';
 import Setups from './comp/Setups';
 
 const HomePage = () => {
+
 	return (
 		<div className='w-full h-full px-4 py-6'>
 			<div className='grid grid-cols-3 gap-5'>
@@ -22,6 +23,9 @@ const HomePage = () => {
 			<div></div>
 		</div>
 	);
+
+	return <div>HomePage</div>;
+
 };
 
 export default HomePage;
