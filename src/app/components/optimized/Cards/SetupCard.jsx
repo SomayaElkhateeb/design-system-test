@@ -60,8 +60,8 @@ export default function SetupCard(props) {
 
 	return (
 		<div
-			className={`flex flex-col justify-between p-3 rounded-xl w-56 ${
-				isStepDone ? 'bg-brand-gradient' : 'bg-white border-2 border-light-2'
+			className={`flex flex-col justify-between p-3 rounded-xl w-full ${
+				isStepDone ? 'bg-brand-gradient' : 'bg-white border-2 border-light-3'
 			}`}
 		>
 			<div>
@@ -81,7 +81,7 @@ export default function SetupCard(props) {
 				{isStepDone ? (
 					<SuccessIcon className='fill-white' />
 				) : (
-					<Button className='text-sm place-self-start' onClick={handleStepCompletion} variant='linkBtn'>
+					<Button className='text-sm place-self-start' onClick={handleStepCompletion} variant='link'>
 						{props.buttonText}
 					</Button>
 				)}
