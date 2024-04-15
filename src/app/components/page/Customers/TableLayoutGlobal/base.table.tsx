@@ -8,7 +8,7 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    Theme,
+
 } from "@mui/material";
 
 
@@ -17,10 +17,16 @@ import {
 import emptyList from "../../../../assets/images/EmptyList.png";
 import { Model } from "src/app/types/model.type";
 import { ReactMetaElement } from "src/app/interface/react-meta-element.interface";
+
+
+
+interface header {
+    title: string, icon?: React.ReactNode
+}
 type props = {
 
 
-    headers: string[];
+    headers: header[];
     rows: ReactMetaElement<any>[];
     isLoading?: boolean;
     color?: string;
@@ -47,7 +53,7 @@ const BaseTable = <T extends Model>({
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
-                        {headers?.map((header: string, i: any) => (
+                        {headers?.map((header: header, i: any) => (
                             <TableCell
                                 sx={{
                                     color: color,
@@ -55,7 +61,8 @@ const BaseTable = <T extends Model>({
                                     fontWeight: 400,
                                 }}
                                 key={`h-${i}`}>
-                                {header?.toUpperCase()}
+                                {header.icon && header.icon}
+                                {header.title?.toUpperCase()}
                             </TableCell>
                         ))}
                     </TableRow>
@@ -73,7 +80,7 @@ const BaseTable = <T extends Model>({
                                     }>
                                     {...e?.elements}
                                     {/*Actions*/}
-                                    {e?.extras &&<TableCell>{...e?.extras}</TableCell>}
+                                    {e?.extras && <TableCell>{...e?.extras}</TableCell>}
                                 </TableRow>
                             ))}
                     </TableBody>
