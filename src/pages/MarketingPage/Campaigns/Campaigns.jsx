@@ -6,39 +6,10 @@ import useCampaigns from './useCampaigns';
 import CampaignsHeader from './CampaignsHeader';
 import CampaignInfoCard from './CampaignInfoCard';
 import CampaignBtns from './CampaignBtns';
-
+import CampaignsData from "./data.json"
 
 const Campaigns = () => {
-	const CampaignsData = [
-		{
-			name: 'Summer campaign',
-			status: 'running',
-			sales: 'SAR 10000.00',
-			expenses: 'SAR 10000.00',
-			netProfit: 'SAR 10000.00',
-		},
-		{
-			name: 'Ramadan campaign ',
-			status: 'ended',
-			sales: 'SAR 10000.00',
-			expenses: 'SAR 10000.00',
-			netProfit: 'SAR 10000.00',
-		},
-		{
-			name: 'Ramadan campaign ',
-			status: 'in review',
-			sales: 'SAR 10000.00',
-			expenses: 'SAR 10000.00',
-			netProfit: 'SAR 10000.00',
-		},
-		{
-			name: 'Ramadan campaign ',
-			status: 'refused',
-			sales: 'SAR 10000.00',
-			expenses: 'SAR 10000.00',
-			netProfit: 'SAR 10000.00',
-		},
-	];
+
 
 	const { title, tableData, arrange, handleArrangeChange, campaignTableRef, activityDetails } =
 		useCampaigns(CampaignsData);
@@ -56,7 +27,7 @@ const Campaigns = () => {
 					data={tableData}
 					campaignTableRef={campaignTableRef}
 				/>
-				{!activityDetails && tableData?.length > 0 && (
+				{!activityDetails  && (
 					<CampaignTable sortBy={arrange} data={tableData} ref={campaignTableRef} />
 				)}
 				{activityDetails && <StackedColumnChart />}
