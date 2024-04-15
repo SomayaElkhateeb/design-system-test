@@ -22,6 +22,7 @@ import { UseLanguage } from "./app/components/CustomHook/LanguageHook";
 import { useEffect } from "react";
 import i18n from "./app/language/i18n";
 import CustomerInfo from "./pages/CustomerInfoPage/CustomerInfo";
+import ProductsTabs from "./app/components/page/Products/ProductsTabs";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,12 @@ const router = createBrowserRouter([
       { path: "/reviews", element: <ReviewsPage /> },
       { path: "/services", element: <ServicesPage /> },
       { path: "/settings", element: <SettingsPage /> },
-      { path: "/products", element: <ProductsPage /> },
+      
+      {
+        path: "/products",
+        element: <ProductsPage />,
+        children: [{ path: ":tab", element: <ProductsTabs /> }],
+      },
       { path: "/customers", element: <CustomersPage /> },
       { path: "/customers/:id", element: <CustomerInfo /> },
       { path: "/addCustomer", element: <AddCustomerPage /> },
