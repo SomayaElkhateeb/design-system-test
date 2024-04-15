@@ -48,4 +48,5 @@ export { default as ProductViews } from './Products/ProductViews';
 export { default as MainUpload } from './MediaUpload/MainUpload';
 export { default as ProductCard } from './Products/ProductCard';
 export { default as TrialBanner } from './UiKits/TrialBanner';
+export { default as SearshBox } from './SearshBox/SearshBox';
 export { default as SetupCard } from './Cards/SetupCard';
