@@ -3,8 +3,8 @@ import { Apps, Campaigns, Coupons } from '.';
 import Discounts from '../Discounts/Discounts';
 
 const MarketingTabs = () => {
-	const { tabName } = useParams();
-	
+	const { tab } = useParams();
+	console.log(tab)
 
 	const tabs = {
 		apps: <Apps />,
@@ -12,7 +12,7 @@ const MarketingTabs = () => {
 		coupons: <Coupons />,
 		campaigns: <Campaigns />,
 	};
-	return tabs[tabName];
+	return tabs[tab];
 };
 
 export default MarketingTabs;
