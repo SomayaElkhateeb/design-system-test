@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const useSelectBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState(null);
+	const [selectedOption, setSelectedOption] = useState("");
 
 	const handleSelect = (option) => {
 		setSelectedOption(option);

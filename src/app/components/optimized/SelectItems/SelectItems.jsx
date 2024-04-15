@@ -14,12 +14,14 @@ import SelectItem from './SelectItem';
  *  lName?: string;
  *  count?: number;
  * }} Item
+ *
  */
 
 /**
  * @param {{
  *  title: string;
  *  onClose: () => void;
+ *  addBtn: () => void;
  *  select: Item[];
  *  variant?: "customers" | "groups";
  * }} props
@@ -42,22 +44,6 @@ function SelectItems(props) {
 		const updatedItems = isChecked ? [...selectedItems, item] : selectedItems.filter((item) => item.id !== item.id);
 		setSelectedItems(updatedItems);
 		console.log('Checkbox checked:', isChecked);
-	}
-
-	function handleAddButtonClick() {
-		const itemsData = props.select
-			.filter((item) => selectedItems.some((selectedItem) => selectedItem.id === item.id))
-			.map((item) => ({
-				id: item.id,
-				image: item.img,
-				title: item.title,
-				subTitle: item.subTitle,
-				fName: item.fName,
-				lName: item.lName,
-				count: item.count,
-			}));
-		localStorage.setItem('selectedItemsData', JSON.stringify(itemsData));
-		props.onClose();
 	}
 
 	/** @param {import("react").MouseEvent<HTMLDivElement>} event */
@@ -147,7 +133,7 @@ function SelectItems(props) {
 					<Button onClick={() => props.onClose()} variant='tertiary'>
 						cancel
 					</Button>
-					<Button onClick={handleAddButtonClick}>{`add (${selectedItems.length})`}</Button>
+					<Button onClick={props.addBtn}>{`add (${selectedItems.length})`}</Button>
 				</div>
 			</label>
 		</div>

@@ -6,5 +6,6 @@ export interface CustomerInterface {
     mobile: string
     city: string
     Orders: number
+    email:string
     "E-Subscription": boolean
 }
