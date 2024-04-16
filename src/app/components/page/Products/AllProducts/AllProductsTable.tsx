@@ -4,12 +4,12 @@ import { useTranslation } from "react-i18next";
 import { TableCell } from "@mui/material";
 
 import { FaRegEdit } from "react-icons/fa";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 import { IoIosArrowBack } from "react-icons/io";
-import React, { useState } from "react";
+import { useState } from "react";
 import { UseLanguage } from "src/app/components/CustomHook/LanguageHook";
 import CustomTableHeaderCheckbox from "../../Customers/CustomTableHeaderChckbox";
 import BaseTable from "../../Customers/TableLayoutGlobal/base.table";
@@ -17,7 +17,7 @@ import CustomTableBodyCheckbox from "../../Customers/CustomTableBodyChckbox";
 import { Product } from "src/app/interface/ProductInterface";
 
 import { IoEyeOutline } from "react-icons/io5";
-import { MdCopyAll } from "react-icons/md";
+
 import {
 
     StarIcon,
@@ -124,9 +124,9 @@ export default function AllProductsTable({ products, array, setArray, settingMen
                             <div className={language === "ar" ? actionsButtonStyleAr : actionsButtonStyleEn}>
                                 <IoEyeOutline className="text-subtitle" />
                                 <FaRegEdit className="text-subtitle" onClick={() => navigate(`/addProduct?id=${e?.id}`)} />
-                                {/* <MdCopyAll className="text-subtitle" /> */}
+
                                 <CopyIcon className='fill-subtitle' />
-                                {/* <HiOutlineDotsHorizontal className="text-subtitle" /> */}
+
                                 <ThreeDotsButton sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
                                 {language === "ar" ?
                                     <IoIosArrowBack className="text-subtitle" onClick={() => navigate(`/products/${e?.id}`)} />
