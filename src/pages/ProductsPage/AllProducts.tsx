@@ -7,7 +7,16 @@ import VerticalproductsCard from 'src/app/components/page/Products/AllProducts/A
 import TopSection from 'src/app/components/page/Products/AllProducts/TopSection';
 import { Product } from 'src/app/interface/ProductInterface';
 import { getImageUrl } from 'src/app/utils';
-import { CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+
+//  setting menus for setting button action and will be used in brands section page
+export const settingMenus = [
+	{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
+	{ id: nanoid(), text: 'Product report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+	{ id: nanoid(), text: 'Product orders', icon: <OrdersIcon className='fill-subtitle' /> },
+	{ id: nanoid(), text: 'Export product orders XLS', icon: <FiUploadCloud className='text-[1.3rem] text-subtitle' /> },
+	{ id: nanoid(), text: 'Delete product', icon: <MdDelete className='text-[red] text-[1.3rem]' /> },
+];
 
 export default function AllProducts() {
 	//  hooks render products card
@@ -68,13 +77,6 @@ export default function AllProducts() {
 		},
 	];
 
-	const settingMenus = [
-		{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
-		{ id: nanoid(), text: 'Product report', icon: <CopyIcon /> },
-		{ id: nanoid(), text: 'Product orders', icon: <OrdersIcon /> },
-		{ id: nanoid(), text: 'Export product orders XLS', icon: <FiUploadCloud className='text-[red]' /> },
-		{ id: nanoid(), text: 'Delete product', icon: <MdDelete className='text-[red]' /> },
-	];
 	return (
 		<div className=' container mx-auto my-[0.8rem]'>
 			<div className=' flex flex-col '>
