@@ -35,9 +35,9 @@ export default function AllCustomers() {
     ];
 
     const ActionsMenus = [
-        { id: nanoid(), text: "Bulk edit", icon: <FaRegEdit /> },
-        { id: nanoid(), text: "Export customers", icon: <SiMicrosoftexcel /> },
-        { id: nanoid(), text: "Import customers", icon: <FiUploadCloud /> },
+        { id: nanoid(), text: "Bulk edit", icon: <FaRegEdit className='iconClass'/> },
+        { id: nanoid(), text: "Export customers", icon: <SiMicrosoftexcel className='iconClass'/> },
+        { id: nanoid(), text: "Import customers", icon: <FiUploadCloud className='iconClass'/> },
 
     ];
 

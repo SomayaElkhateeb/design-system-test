@@ -11,10 +11,7 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import { IoIosArrowBack } from 'react-icons/io';
-import { nanoid } from 'nanoid';
-import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
-import { MdDelete } from 'react-icons/md';
-import { FiUploadCloud } from 'react-icons/fi';
+
 import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
 export default function BrandsTable() {
 	//  hooks
@@ -50,7 +47,6 @@ export default function BrandsTable() {
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
-	
 	return (
 		<BaseTable
 			language={language}

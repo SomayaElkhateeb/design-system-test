@@ -14,8 +14,8 @@ export const settingMenus = [
 	{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
 	{ id: nanoid(), text: 'Product report', icon: <AnalyticsIcon className='fill-subtitle' /> },
 	{ id: nanoid(), text: 'Product orders', icon: <OrdersIcon className='fill-subtitle' /> },
-	{ id: nanoid(), text: 'Export product orders XLS', icon: <FiUploadCloud className='text-[1.3rem] text-subtitle' /> },
-	{ id: nanoid(), text: 'Delete product', icon: <MdDelete className='text-[red] text-[1.3rem]' /> },
+	{ id: nanoid(), text: 'Export product orders XLS', icon: <FiUploadCloud className='iconClass' /> },
+	{ id: nanoid(), text: 'Delete product', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
 ];
 
 export default function AllProducts() {
