@@ -4,7 +4,9 @@ import { Button, InputRow } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { customerGetsOptions } from '../../../comp/data';
 import { AiOutlinePercentage } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 const BuyXGetY: React.FC = () => {
+	const { t } = useTranslation();
 	const [selectedCustomerGets, setSelectedCustomerGets] = useState<string>('');
 	const [amountPercentage, setAmountPercentage] = useState<string>('');
 
@@ -17,7 +19,7 @@ const BuyXGetY: React.FC = () => {
 			<div className='pt-[18px]'>
 				{/* select product x */}
 				<Button variant='secondary' RightIcon={FaAngleRight}>
-					select products x
+					{t('select products x')}
 				</Button>
 
 				{/* item view */}
@@ -42,7 +44,7 @@ const BuyXGetY: React.FC = () => {
 				</div>
 				{/* select product Y */}
 				<Button variant='secondary' RightIcon={FaAngleRight}>
-					select products y
+					{t('select products y')}
 				</Button>
 
 				{/* item view */}

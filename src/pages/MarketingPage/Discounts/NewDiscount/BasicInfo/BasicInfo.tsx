@@ -4,6 +4,7 @@ import { InputRow } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import DiscountTypesOptions from './comp/DiscountTypesOptions';
 import ApplyToOptions from './comp/ApplyToOptions';
+import { useTranslation } from 'react-i18next';
 
 const BasicInfo: React.FC<{ fixedAmount: number; discountName: string; setState: Function; validationErrors: any }> = ({
 	fixedAmount,
@@ -11,6 +12,7 @@ const BasicInfo: React.FC<{ fixedAmount: number; discountName: string; setState:
 	setState,
 	validationErrors,
 }) => {
+	const { t } = useTranslation();
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
 
@@ -24,16 +26,16 @@ const BasicInfo: React.FC<{ fixedAmount: number; discountName: string; setState:
 
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
-			<h3 className='text-title font-semibold mb-2'>Basic info</h3>
+			<h3 className='text-title font-semibold mb-2'>{t('Basic info')}</h3>
 			<div className='flex flex-col gap-[1rem]'>
 				<div className='w-[24rem]'>
-					<InputRow label='discount name' value={discountName} onChange={handleChange} />
+					<InputRow label={t('discount name')} value={discountName} onChange={handleChange} />
 					{validationErrors.discountName && <span className='text-red-500'>{validationErrors.discountName}</span>}
 				</div>
 			</div>
 
 			<section>
-				<h5 className='text-sm text-pri-dark font-semibold mb-2'>Discount Type</h5>
+				<h5 className='text-sm text-pri-dark font-semibold mb-2'>{t('Discount Type')}</h5>
 				<SingleChoiceChips
 					options={discountTypesOptions}
 					selected={selectedOptionType}
@@ -49,7 +51,7 @@ const BasicInfo: React.FC<{ fixedAmount: number; discountName: string; setState:
 			</section>
 
 			<section>
-				<h5 className='text-sm text-pri-dark font-semibold pb-2'>Apply to</h5>
+				<h5 className='text-sm text-pri-dark font-semibold pb-2'>{t('Apply to')}</h5>
 				<SingleChoiceChips
 					options={applyToOptions}
 					selected={selectedOptionApply}
