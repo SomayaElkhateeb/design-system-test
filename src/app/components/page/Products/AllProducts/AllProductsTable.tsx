@@ -9,7 +9,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 import { IoIosArrowBack } from "react-icons/io";
-import { useState } from "react";
+import React, { useState } from "react";
 import { UseLanguage } from "src/app/components/CustomHook/LanguageHook";
 import CustomTableHeaderCheckbox from "../../Customers/CustomTableHeaderChckbox";
 import BaseTable from "../../Customers/TableLayoutGlobal/base.table";
@@ -19,27 +19,32 @@ import { Product } from "src/app/interface/ProductInterface";
 import { IoEyeOutline } from "react-icons/io5";
 import { MdCopyAll } from "react-icons/md";
 import {
-	
-	StarIcon,
-	
-	StarActiveIcon,
-} from 'src/app/utils/icons';
 
-export default function AllProductsTable({ products }: { products: Product[] }) {
+    StarIcon,
+
+    StarActiveIcon,
+    CameraIcon,
+    CopyIcon,
+} from 'src/app/utils/icons';
+import useSelectBox from "src/app/components/optimized/Menu/useSelectBox";
+import ThreeDotsButton from "../../Customers/ThreedotsButton";
+import { menuType } from "../../Customers/ActionsComp";
+
+export default function AllProductsTable({ products, array, setArray, settingMenus }: { products: Product[], array: string[], setArray: (e: string[]) => void, settingMenus: menuType[] }) {
     //  hooks
     const language = UseLanguage()
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [isFavorite, setIsFavorite] = useState(false);
-    const [array, setArray] = useState<string[]>([])
 
+    //  custom hook for select setting item
 
-   
-	
+    const { selectedOption, handleSelect } =
+        useSelectBox();
 
-	function toggleFavorite() {
-		setIsFavorite(!isFavorite);
-	}
+    function toggleFavorite() {
+        setIsFavorite(!isFavorite);
+    }
 
 
     //  headers
@@ -73,7 +78,11 @@ export default function AllProductsTable({ products }: { products: Product[] }) 
                                         {isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
                                     </button>
                                 </div>
-                                <img src={e.img} loading="lazy" alt={e.title} />
+                                <div className="relative">
+                                    <img src={e.img} loading="lazy" alt={e.title} />
+                                    <CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
+                                </div>
+
                                 <div className="flex flex-col gap-2">
                                     <p className="text-title text-[.9rem] font-semibold">{e.title}</p>
                                     <p className="text-subtitle text-[.8rem]">{e.category}</p>
@@ -115,8 +124,10 @@ export default function AllProductsTable({ products }: { products: Product[] }) 
                             <div className={language === "ar" ? actionsButtonStyleAr : actionsButtonStyleEn}>
                                 <IoEyeOutline className="text-subtitle" />
                                 <FaRegEdit className="text-subtitle" onClick={() => navigate(`/addProduct?id=${e?.id}`)} />
-                                <MdCopyAll className="text-subtitle" />
-                                <HiOutlineDotsHorizontal className="text-subtitle" />
+                                {/* <MdCopyAll className="text-subtitle" /> */}
+                                <CopyIcon className='fill-subtitle' />
+                                {/* <HiOutlineDotsHorizontal className="text-subtitle" /> */}
+                                <ThreeDotsButton sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
                                 {language === "ar" ?
                                     <IoIosArrowBack className="text-subtitle" onClick={() => navigate(`/products/${e?.id}`)} />
                                     :

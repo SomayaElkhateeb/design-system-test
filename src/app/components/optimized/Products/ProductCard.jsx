@@ -19,6 +19,8 @@ import {
 } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import CustomTableBodyCheckbox from '../../page/Customers/CustomTableBodyChckbox';
+import useSelectBox from '../Menu/useSelectBox';
+import ThreeDotsButton from '../../page/Customers/ThreedotsButton';
 
 /**
  * @param {{
@@ -32,6 +34,7 @@ import CustomTableBodyCheckbox from '../../page/Customers/CustomTableBodyChckbox
  *   price: number;
  *   array:string[];
  *   setArray:(e:string[])=>void;
+ *   settingMenus:import('../../page/Customers/ActionsComp').menuType[]
  * }} props
  *
  * @example
@@ -53,12 +56,15 @@ export default function ProductCard(props) {
 	//  hooks
 	const { t } = useTranslation();
 	const [isFavorite, setIsFavorite] = useState(false);
-	
 
 	function toggleFavorite() {
 		setIsFavorite(!isFavorite);
 	}
-	
+
+	//  custom hook for select setting item
+
+	const { selectedOption, handleSelect } = useSelectBox();
+
 	const info = {
 		sku: props.sku,
 		quantity: props.quantity > 0 ? props.quantity : t('Out of stock'),
@@ -91,7 +97,7 @@ export default function ProductCard(props) {
 
 				{/* Actions Btns */}
 				<div className='absolute transition-all bg-white opacity-0 top-2 right-2 group-hover:opacity-100'>
-					<Actions />
+					<Actions settingMenus={props.settingMenus} selectedOption={selectedOption} handleSelect={handleSelect} />
 				</div>
 			</div>
 			<div className='flex items-end justify-between p-3'>
@@ -114,21 +120,33 @@ export default function ProductCard(props) {
 	);
 }
 
-function Actions() {
+/**
+ * @param {{
+*   settingMenus:import('../../page/Customers/ActionsComp').menuType[]
+* selectedOption:string
+* handleSelect:()=>void
+* }} props
+*
+* @example
+*
+* ```jsx
+
+* ```
+*/
+function Actions(props) {
 	return (
-		<div className='flex flex-col gap-3 px-2 py-1 card'>
-			<button>
-				<ViewIcon className='fill-subtitle' />
-			</button>
-			<button>
-				<EditIcon className='fill-subtitle' />
-			</button>
-			<button>
-				<CopyIcon className='fill-subtitle' />
-			</button>
-			<button>
-				<MoreIcon className='fill-subtitle' />
-			</button>
+		<div className='flex flex-col gap-3 px-2 py-1 card items-center '>
+			<ViewIcon className='fill-subtitle' />
+
+			<EditIcon className='fill-subtitle' />
+
+			<CopyIcon className='fill-subtitle' />
+
+			<ThreeDotsButton
+				sortMenus={props.settingMenus}
+				selectedOption={props.selectedOption}
+				handelSelect={props.handleSelect}
+			/>
 		</div>
 	);
 }
