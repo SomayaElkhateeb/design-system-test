@@ -11,8 +11,10 @@ import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discounts
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 import LinearDeterminate from 'src/app/components/optimized/UiKits/LinearDeterminate';
 import FilterButton from 'src/app/components/page/Customers/FilterButton';
+import { useTranslation } from 'react-i18next';
 
 const Discounts: React.FC = () => {
+	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('');
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -48,7 +50,7 @@ const Discounts: React.FC = () => {
 							navigate('addDiscount');
 						}}
 					>
-						add new discount
+						{t('add new discount')}
 					</Button>
 
 					<div className='flex gap-8'>
@@ -74,7 +76,7 @@ const Discounts: React.FC = () => {
 				</div>
 			) : (
 				<div className='py-2 px-6 my-20 mx-auto w-fit bg-white rounded'>
-					<h3 className='text-title font-semibold'>There is no coupons available!</h3>
+					<h3 className='text-title font-semibold'>{t('There is no discount available!')}</h3>
 				</div>
 			)}
 

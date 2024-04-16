@@ -8,6 +8,7 @@ import ActiveDates from './ActiveDates/ActiveDates';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
 	discountName: '',
@@ -18,6 +19,7 @@ const initialValues = {
 };
 
 const AddCoupon: React.FC = () => {
+	const { t } = useTranslation();
 	const [state, setState] = useState(initialValues);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -25,11 +27,6 @@ const AddCoupon: React.FC = () => {
 	const { discountName, fixedAmount, minimumPrice, used, endDate } = state;
 
 	const handleSaveChanges = () => {
-		console.log('discountName state:', discountName);
-		console.log('fixedAmount state:', fixedAmount);
-		console.log('minimumPrice state:', minimumPrice);
-		console.log('used state:', used);
-		console.log('endDate state:', endDate);
 		const data = {
 			name: discountName,
 			value: fixedAmount,
@@ -63,7 +60,7 @@ const AddCoupon: React.FC = () => {
 					<ActiveDates setState={setState} />
 				</div>
 				<div className='bg-white w-[15rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
-					<h3 className='text-title font-semibold'>Quick actions</h3>
+					<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
 					<ToggleSwitch />
 				</div>
 			</div>
