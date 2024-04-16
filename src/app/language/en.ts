@@ -189,6 +189,7 @@ export const english = {
 
 	Print: 'Print',
 	'Orders List': 'Orders List',
+	"Add Category":"Add Category",
 	'Order created at': 'Order created at',
 	Items: 'Items',
 	Variations: 'Variations',

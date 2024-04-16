@@ -12,7 +12,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../Customers/ActionsComp';
 import { MdDelete } from 'react-icons/md';
 
-export default function TopSectionBrandsTable() {
+export default function TopSectionCategoriesTable() {
 	//  hooks
 	const { t } = useTranslation();
 
@@ -23,19 +23,15 @@ export default function TopSectionBrandsTable() {
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
 		{ id: nanoid(), text: 'Name Z to A' },
-		{ id: nanoid(), text: 'SKU Ascending' },
-		{ id: nanoid(), text: 'SKU Descending' },
-		{ id: nanoid(), text: 'Price Low in first' },
-		{ id: nanoid(), text: 'Price High in first' },
 		{ id: nanoid(), text: 'Date Added' },
 		{ id: nanoid(), text: 'Date modified' },
 	];
 
 	const ActionsMenus = [
-		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass'/> },
-		{ id: nanoid(), text: 'Export products', icon: <SiMicrosoftexcel className='iconClass'/> },
-		{ id: nanoid(), text: 'Import products', icon: <FiUploadCloud className='iconClass'/> },
-		{ id: nanoid(), text: 'Delete all products', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
+		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
+		{ id: nanoid(), text: 'Export categories', icon: <SiMicrosoftexcel className='iconClass' /> },
+		{ id: nanoid(), text: 'Import categories', icon: <FiUploadCloud className='iconClass' /> },
+		{ id: nanoid(), text: 'Delete all categories', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
 	];
 
 	return (
@@ -43,7 +39,7 @@ export default function TopSectionBrandsTable() {
 			{/*  left dropdow */}
 
 			<Button variant='primary' LeftIcon={IoIosAddCircle}>
-				{t('Add Brand')}
+				{t('Add Category')}
 			</Button>
 
 			{/*  actions  arrange,... */}
