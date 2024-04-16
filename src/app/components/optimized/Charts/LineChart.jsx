@@ -62,7 +62,7 @@ import { BackAndroidIcon } from 'src/app/utils/icons';
  */
 export default function LineChart(props) {
 	return (
-		<div className='p-5 bg-white sm:w-[375px] sm:h-[327px] lg:w-[1150px] lg:h-[315px] '>
+		<div className='p-5 bg-white sm:h-[327px] lg:h-[315px] '>
 			<div className='flex items-center justify-between mb-1'>
 				<h2 className='text-lg font-semibold text-title'>Sales</h2>
 				<span className='flex text-secondary'>
