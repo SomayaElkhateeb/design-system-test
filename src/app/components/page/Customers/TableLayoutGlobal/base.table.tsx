@@ -11,12 +11,9 @@ import {
 
 } from "@mui/material";
 
-
-
-
-import emptyList from "../../../../assets/images/EmptyList.png";
 import { Model } from "src/app/types/model.type";
 import { ReactMetaElement } from "src/app/interface/react-meta-element.interface";
+import { getImageUrl } from "src/app/utils";
 
 
 
@@ -30,6 +27,7 @@ type props = {
     rows: ReactMetaElement<any>[];
     isLoading?: boolean;
     color?: string;
+    language?: string | null | undefined
 };
 
 const BaseTable = <T extends Model>({
@@ -37,6 +35,7 @@ const BaseTable = <T extends Model>({
     rows,
     isLoading,
     color,
+    language
 
 }: props) => (
     <>
@@ -61,33 +60,35 @@ const BaseTable = <T extends Model>({
                                     fontWeight: 400,
                                 }}
                                 key={`h-${i}`}>
+                                <Box sx={{ display: "flex", justifyContent: header.icon ? "flex-start" :  language=== "ar" ? "flex-end" : "flex-start" , alignItems:"center"}}>
                                 {header.icon && header.icon}
                                 {header.title?.toUpperCase()}
+                            </Box>
                             </TableCell>
                         ))}
-                    </TableRow>
-                </TableHead>
+                </TableRow>
+            </TableHead>
 
-                {rows?.length > 0 && (
-                    <TableBody>
-                        {/*Rows*/}
-                        {!isLoading &&
-                            rows?.map((e: ReactMetaElement<T>, i: number) => (
-                                <TableRow
-                                    key={
-                                        `r-${e.item.id}+${i}` ||
-                                        `${e.item.user}+${i}`
-                                    }>
-                                    {...e?.elements}
-                                    {/*Actions*/}
-                                    {e?.extras && <TableCell>{...e?.extras}</TableCell>}
-                                </TableRow>
-                            ))}
-                    </TableBody>
-                )}
-            </Table>
-        </TableContainer>
-        {rows?.length === 0 && (
+            {rows?.length > 0 && (
+                <TableBody>
+                    {/*Rows*/}
+                    {!isLoading &&
+                        rows?.map((e: ReactMetaElement<T>, i: number) => (
+                            <TableRow
+                                key={
+                                    `r-${e.item.id}+${i}` ||
+                                    `${e.item.user}+${i}`
+                                }>
+                                {...e?.elements}
+                                {/*Actions*/}
+                                {e?.extras && <TableCell>{...e?.extras}</TableCell>}
+                            </TableRow>
+                        ))}
+                </TableBody>
+            )}
+        </Table>
+    </TableContainer>
+        { rows?.length === 0 && (
             <Box
                 sx={{
                     display: "flex",
@@ -102,7 +103,7 @@ const BaseTable = <T extends Model>({
                         width: "259px",
                         height: "287px",
                     }}
-                    src={emptyList}
+                    src={getImageUrl("images/EmptyList.png")}
                     loading="lazy"
                     alt="emptyImg"
                 />

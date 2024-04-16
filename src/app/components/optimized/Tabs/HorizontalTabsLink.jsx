@@ -16,7 +16,7 @@ import { Link, useParams } from 'react-router-dom';
 
 export default function HorizontalTabsLink(props) {
 	//  hooks
-	const { tabName } = useParams();
+	const { tab:tabName } = useParams();
 
 	const { t } = useTranslation();
 
@@ -34,7 +34,7 @@ export default function HorizontalTabsLink(props) {
 								}`}
 								to={`${props.path}/${tab}`}
 							>
-								{t(tab.charAt(0).toUpperCase() + tab.slice(1))}
+								{tab!=="AllProducts"? t(tab.charAt(0).toUpperCase() + tab.slice(1)):t("All Products")}
 							</Link>
 						</li>
 					))}

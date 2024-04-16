@@ -19,14 +19,14 @@ export default function CustomersTable() {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const [array, setArray] = useState<number[]>([])
+    const [array, setArray] = useState<string[]>([])
 
 
     //  rows 
 
     const customers: CustomerInterface[] = [
         {
-            id: 1,
+            id: "1",
             name: 'mohamed Mostafa',
             mobile: '01064545565',
             city: 'mansoura',
@@ -47,6 +47,7 @@ export default function CustomersTable() {
     const actionsButtonStyleEn = "justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]"
     return (
         <BaseTable
+            language={language}
             color='#55607A'
             headers={customersHeaders.map((h) => h)}
             rows={customers?.map((e: CustomerInterface, i: number) => {

@@ -19,7 +19,7 @@ export default function PopoverComponenet({ button, children }: { button: React.
     const id = open ? 'simple-popover' : undefined;
     return (
         <>
-            <Button aria-describedby={id} onClick={handleClick}>
+            <Button sx={{ color: "black", minWidth: "2px" }} aria-describedby={id} onClick={handleClick}>
                 {button}
             </Button>
             <Popover
@@ -32,7 +32,9 @@ export default function PopoverComponenet({ button, children }: { button: React.
                     horizontal: 'left',
                 }}
             >
-                {children}
+                <div onClick={handleClose}>
+                    {children}
+                </div>
             </Popover>
         </>
     )
