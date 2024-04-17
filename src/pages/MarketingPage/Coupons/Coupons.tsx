@@ -16,9 +16,9 @@ import FilterButton from 'src/app/components/page/Customers/FilterButton';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 // import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 const Coupons: React.FC = () => {
+	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('');
 	// hooks
-	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();

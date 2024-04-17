@@ -22,6 +22,7 @@ import { UseLanguage } from './app/components/CustomHook/LanguageHook';
 import { useEffect } from 'react';
 import i18n from './app/language/i18n';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
+import ProductsTabs from './app/components/page/Products/ProductsTabs';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 
 const router = createBrowserRouter([
@@ -38,16 +39,21 @@ const router = createBrowserRouter([
 			{ path: '/reviews', element: <ReviewsPage /> },
 			{ path: '/services', element: <ServicesPage /> },
 			{ path: '/settings', element: <SettingsPage /> },
-			{ path: '/products', element: <ProductsPage /> },
+
+			{
+				path: '/products',
+				element: <ProductsPage />,
+				children: [{ path: ':tab', element: <ProductsTabs /> }],
+			},
 			{ path: '/customers', element: <CustomersPage /> },
 			{ path: '/customers/:id', element: <CustomerInfo /> },
 			{ path: '/addCustomer', element: <AddCustomerPage /> },
 			{
 				path: '/marketing',
 				element: <MarketingPage />,
-				children: [{ path: ':tabName', element: <MarketingTabs /> }],
+				children: [{ path: ':tab', element: <MarketingTabs /> }],
 			},
-			{ path: '/analytics', element: <AnalyticsPage />, children: [{ path: ':tabName', element: <AnalyticsTabs /> }] },
+			{ path: '/analytics', element: <AnalyticsPage />, children: [{ path: ':tab', element: <AnalyticsTabs /> }] },
 			{ path: '/apps/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 		],

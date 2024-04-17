@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InputRow } from 'src/app/components/optimized';
 import { AiOutlinePercentage } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 
 interface selectedOptionType {
 	discountType: string;
@@ -8,6 +9,7 @@ interface selectedOptionType {
 }
 
 const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, discount, fixedAmount, setState }) => {
+	const { t } = useTranslation();
 	const [amountPercentage, setAmountPercentage] = useState(0);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +19,6 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 			fixedAmount: newFixedAmount,
 		}));
 	};
-
-	console.log('amountPercentage', amountPercentage);
 
 	// Function to handle amount percentage
 	const handleAmountPercentage = (value) => {
@@ -30,7 +30,7 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 			{discountType === 'Percentage' && (
 				<div className='w-[24rem] pt-[1rem]'>
 					<InputRow
-						label='Percentage'
+						label={t('Percentage')}
 						leftIcon={<AiOutlinePercentage />}
 						type='number'
 						value={amountPercentage} // Use amountPercentage from state
@@ -42,7 +42,7 @@ const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType, disc
 				<div className='w-[24rem] pt-[1rem]'>
 					<InputRow
 						ref={discount}
-						label='Fixed amount'
+						label={t('Fixed amount')}
 						id='fixedAmount'
 						type='number'
 						value={fixedAmount}

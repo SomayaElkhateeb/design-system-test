@@ -10,6 +10,7 @@ import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
 import { useDispatch } from 'react-redux';
 import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
 
 const basicInfoSchema = z.object({
 	discountName: z.string().min(4, 'Discount name must be at least 3 characters long'),
@@ -25,6 +26,7 @@ const initialValues = {
 	endDate: null,
 };
 const NewDiscount: React.FC = () => {
+	const { t } = useTranslation();
 	const [state, setState] = useState(initialValues);
 	const [validationErrors, setValidationErrors] = useState({});
 	let { discountName, fixedAmount, minimumPrice, endDate } = state;
@@ -75,7 +77,7 @@ const NewDiscount: React.FC = () => {
 					<ActiveDates setState={setState} />
 				</div>
 				<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
-					<h3 className='text-title font-semibold'>Quick actions</h3>
+					<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
 					<ToggleSwitch />
 				</div>
 			</div>

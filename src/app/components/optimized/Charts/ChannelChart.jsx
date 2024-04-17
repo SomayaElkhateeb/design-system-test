@@ -60,7 +60,7 @@ export default function ChannelChart(props) {
 			</div>
 
 			<div id='chart'>
-				<ReactApexChart options={props.options} series={props.series} type='donut' />
+				<ReactApexChart options={props.options} series={props.series} type='donut' width='100%' height='89%' />
 			</div>
 			<div id='html-dist'></div>
 		</div>

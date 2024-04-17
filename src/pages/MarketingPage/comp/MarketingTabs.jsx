@@ -3,15 +3,22 @@ import { Apps, Campaigns, Coupons } from '.';
 import Discounts from '../Discounts/Discounts';
 
 const MarketingTabs = () => {
-	const { tabName } = useParams();
-	console.log(tabName)
-	const tabs = {
-		apps: <Apps />,
-		discounts: <Discounts />,
-		coupons: <Coupons />,
-		campaigns: <Campaigns />,
-	};
-	return tabs[tabName];
+	//  hooks
+	const { tab } = useParams();
+
+	switch (tab) {
+		case 'apps':
+			return <Apps />;
+		case 'discounts':
+			return <Discounts />;
+		case 'coupons':
+			return <Coupons />;
+		case 'campaigns':
+			return <Campaigns />;
+
+		default:
+			return <Apps />;
+	}
 };
 
 export default MarketingTabs;

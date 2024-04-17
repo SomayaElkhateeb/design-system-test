@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GroupIcons } from '..';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
 
 /**
  *
@@ -14,6 +15,7 @@ import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app
  * }} props
  */
 export default function HeaderSettings(props) {
+	const { t } = useTranslation();
 	return (
 		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
 			<div className='flex items-center gap-1'>
@@ -37,10 +39,10 @@ export default function HeaderSettings(props) {
 				{props.variant === 'settingOrder' && (
 					<>
 						<ButtonWithIcon onClick={props.btn1.onClick} icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}>
-							Update Status
+							{t('Update Status')}
 						</ButtonWithIcon>
 						<ButtonWithIcon onClick={props.btn2.onClick} icon={<PrintIcon className='p-0.5 fill-pri-dark' />}>
-							Print Invoice
+							{t('Print Invoice')}
 						</ButtonWithIcon>
 						<IconButton onClick={props.btn3.onClick}>
 							<MoreIcon />
