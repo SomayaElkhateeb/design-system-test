@@ -4,10 +4,12 @@ import { Button } from 'src/app/components/optimized';
 import SelectItems from 'src/app/components/optimized/SelectItems/SelectItems';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectProducts } from 'src/app/store/slices/marketing/products/productsAsyncThunks';
-import CategoryView from 'src/app/components/optimized/UiKits/CategoryView';
+import CategoryView from 'src/pages/MarketingPage/CategoryView';
+import { useTranslation } from 'react-i18next';
 interface SpecificProductsProps {}
 
 const SpecificProducts: React.FC<SpecificProductsProps> = (props) => {
+	const { t } = useTranslation();
 	const [showSelect, setShowSelect] = useState(false);
 	const [selectedItem, setSelectedItem] = useState([]);
 	const dispatch = useDispatch();
@@ -25,12 +27,12 @@ const SpecificProducts: React.FC<SpecificProductsProps> = (props) => {
 		<div className='mt-[18px] flex flex-col gap-[18px]'>
 			<div>
 				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setShowSelect(true)}>
-					select products
+					{t('select products')}
 				</Button>
 
 				{showSelect && (
 					<SelectItems
-						title='products'
+						title={t('products')}
 						onClose={() => setShowSelect(false)}
 						select={products}
 						addBtn={handleAddButtonClick}
@@ -38,9 +40,8 @@ const SpecificProducts: React.FC<SpecificProductsProps> = (props) => {
 				)}
 
 				{selectedItem?.map((item) => {
-					console.log('selectedItem', item);
 					const { title, id, img, subtitle } = item;
-					return <CategoryView key={id} imageUrl={img} title={title} description={subtitle} />;
+					return <CategoryView key={id} img={img} title={title} subtitle={subtitle} />;
 				})}
 			</div>
 		</div>

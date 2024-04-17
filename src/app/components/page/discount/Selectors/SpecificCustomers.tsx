@@ -3,8 +3,8 @@ import { Button, SelectItems } from 'src/app/components/optimized';
 import { FaChevronRight } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectCustomers } from 'src/app/store/slices/marketing/customers/customersAsyncThunks';
-import CategoryView from 'src/app/components/optimized/UiKits/CategoryView';
 import { useTranslation } from 'react-i18next';
+import CategoryView from 'src/pages/MarketingPage/CategoryView';
 
 const SpecificCustomers: React.FC = () => {
 	const { t } = useTranslation();
@@ -31,7 +31,7 @@ const SpecificCustomers: React.FC = () => {
 
 				{showSelect && (
 					<SelectItems
-						title='Customers'
+						title={t('Customers')}
 						variant='customers'
 						onClose={() => setShowSelect(false)}
 						select={customers}
@@ -40,9 +40,10 @@ const SpecificCustomers: React.FC = () => {
 				)}
 
 				{selectedItem?.map((item) => {
-					console.log('selectedItem', item);
 					const { fName, lName, id, img, subtitle } = item;
-					return <CategoryView key={id} imageUrl={img} title={fName + ' ' + lName} description={subtitle} />;
+					return (
+						<CategoryView variant='customers' key={id} img={img} title={fName + ' ' + lName} subtitle={subtitle} />
+					);
 				})}
 			</div>
 		</div>

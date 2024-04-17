@@ -314,4 +314,11 @@ export const english = {
 	'coupon code': 'coupon code',
 	'coupon name': 'coupon name',
 	used: 'used',
+	'select category': 'select category',
+	categories: 'categories',
+	'select products': 'select products',
+	products: 'products',
+	'out of': 'out of',
+	'Update Status': 'Update Status',
+	'Print Invoice': 'Print Invoice',
 };
