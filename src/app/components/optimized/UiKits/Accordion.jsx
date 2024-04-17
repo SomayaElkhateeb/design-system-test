@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DownIcon, UpIcon } from 'src/app/utils/icons';
 
-export default function Accordion() {
+export default function Accordion({ title, subtitle }) {
 	const [open, setOpen] = useState(false);
 
 	return (
@@ -11,17 +11,13 @@ export default function Accordion() {
 			}`}
 		>
 			<div className='flex justify-between'>
-				<h3 className='font-semibold text-title'>Do we ship goods?</h3>
+				<h3 className='font-semibold text-title'>{title}</h3>
 				<button className='transition-all duration-300 ease-linear' onClick={() => setOpen(!open)}>
 					{open ? <UpIcon className='fill-hint' /> : <DownIcon className='fill-hint' />}
 				</button>
 			</div>
 
-			{open ? (
-				<p className='pt-4 transition-all duration-500 ease-linear text-subtitle '>Yes we do that exactly</p>
-			) : (
-				''
-			)}
+			{open ? <p className='pt-4 transition-all duration-500 ease-linear text-subtitle '>{subtitle}</p> : ''}
 		</div>
 	);
 }

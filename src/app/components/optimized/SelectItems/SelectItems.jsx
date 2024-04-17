@@ -3,6 +3,7 @@ import { capitalizeFirstLetter } from 'src/app/utils';
 import { LiaSearchSolid } from 'react-icons/lia';
 import { Button, CheckBox, InputRow } from '..';
 import SelectItem from './SelectItem';
+import { useTranslation } from 'react-i18next';
 
 /**
  * @typedef {{
@@ -28,6 +29,7 @@ import SelectItem from './SelectItem';
  */
 
 function SelectItems(props) {
+	const { t } = useTranslation();
 	const [searchQuery, setSearchQuery] = useState('');
 	const [selectedItems, setSelectedItems] = useState(/** @type {Item[]}  */ ([]));
 	const [queryItems, setQueryItems] = useState(props.select);
@@ -85,14 +87,14 @@ function SelectItems(props) {
 						<div className='w-[24rem]'>
 							<InputRow
 								leftIcon={<LiaSearchSolid />}
-								placeholder='Search'
+								placeholder={t('Search')}
 								value={searchQuery}
 								handleOnChange={handleSearchChange}
 							/>
 						</div>
 
 						<p>
-							{selectedItems.length} {props.title} out of {props.select.length}
+							{selectedItems.length} {props.title} {t('out of')} {props.select.length}
 						</p>
 
 						{queryItems.length > 0 && (
@@ -116,7 +118,6 @@ function SelectItems(props) {
 						<SelectItem
 							variant={props.variant}
 							key={item.id}
-							// variant={variant}
 							{...item}
 							isChecked={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
 							handleOnCheckChange={(isChecked) => handleChange(isChecked, item)}
@@ -126,9 +127,9 @@ function SelectItems(props) {
 
 				<div className='flex mt-4 justify-end mr-[1rem] gap-[1rem]'>
 					<Button onClick={() => props.onClose()} variant='tertiary'>
-						cancel
+						{t('cancel')}
 					</Button>
-					<Button onClick={() => props.addBtn(selectedItems)}>{`add (${selectedItems.length})`}</Button>
+					<Button onClick={() => props.addBtn(selectedItems)}>{`${t('add')} (${selectedItems.length})`}</Button>
 				</div>
 			</label>
 		</div>

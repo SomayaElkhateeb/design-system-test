@@ -33,7 +33,6 @@ const Discounts: React.FC = () => {
 	const sortMenus = [
 		{ id: '1', text: 'Name A to Z' },
 		{ id: '2', text: 'Name Z to A' },
-		// Add more sorting options as needed
 	];
 
 	const handleSelect = (selectedOption) => {

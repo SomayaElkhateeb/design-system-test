@@ -303,4 +303,11 @@ export const arabic = {
 	'coupon code': 'رمز الكوبون',
 	'coupon name': 'اسم الكوبون',
 	used: 'مستخدم',
+	'select category': 'اختر الفئة',
+	categories: 'فئات',
+	'select products': 'اختر المنتجات',
+	products: 'منتجات',
+	'out of': 'من',
+	'Update Status': 'تحديث الحالة',
+	'Print Invoice': 'طباعة فاتورة ',
 } satisfies typeof english;
