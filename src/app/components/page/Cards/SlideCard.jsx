@@ -1,4 +1,6 @@
+import { Button } from '@mui/material';
 import { useState } from 'react';
+import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
 
 // how to use
 
@@ -18,7 +20,7 @@ const SlideCard = ({ slides, title, percentage, positive }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	return (
-		<div className='bg-white rounded-xl border border-borders-lines  size-96 flex flex-col justify-between'>
+		<div className='bg-white rounded-xl border border-borders-lines h-80 flex flex-col justify-between'>
 			<div className='p-5 flex flex-col flex-1'>
 				<div className='flex justify-between items-center mb-3'>
 					<h2 className='title text-lg'>{title}</h2>
@@ -28,9 +30,7 @@ const SlideCard = ({ slides, title, percentage, positive }) => {
 							<h2 className={`paragraph ${positive ? 'text-success' : 'text-error'}`}>{percentage}</h2>
 						</div>
 					) : select ? (
-						<select>
-							<option></option>
-						</select>
+						<Button variant='link' RightIcon={DownIcon} />
 					) : null}
 				</div>
 				{slides.map((slide, index) => (

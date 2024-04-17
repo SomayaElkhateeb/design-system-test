@@ -81,7 +81,7 @@ const Orders = () => {
 		setSelectedOption(selectedOption);
 	};
 	return (
-		<section className='border border-constrained bg-white rounded-md p-4 h-[22rem]'>
+		<section className='border border-constrained bg-white rounded-xl p-4 h-[350px]'>
 			<header className='flex justify-between items-center'>
 				<h2 className='text-title font-semibold text-lg'>Latest Orders</h2>
 

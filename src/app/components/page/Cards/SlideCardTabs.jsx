@@ -21,7 +21,7 @@ const SlideCardTabs = ({ slides }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	return (
-		<div className='bg-white rounded-xl border border-borders-lines p-5 size-96 flex flex-col'>
+		<div className='bg-white rounded-xl border border-borders-lines p-5 h-[350px] flex flex-col'>
 			<div className='flex justify-between items-center border-b border-borders-lines'>
 				{slides.map((slide, index) => (
 					<Tab key={index} title={slide.title} active={index === activeIndex} onClick={() => setActiveIndex(index)} />

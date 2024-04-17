@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Button } from 'src/app/components/optimized';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -23,8 +23,7 @@ const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 	const arrangeData = (data, sortBy) => {
 		const sortFunction = sortFunctions[sortBy];
 		if (!sortFunction) {
-			console.error('Invalid sort criteria:', sortBy);
-			return data; // or throw error
+			return data;
 		}
 		return data.slice().sort(sortFunction);
 	};

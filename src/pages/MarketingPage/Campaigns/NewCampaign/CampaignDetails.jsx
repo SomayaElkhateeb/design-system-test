@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import { InputRow } from 'src/app/components/optimized';
-import SpecificProducts from '../../Discounts/NewDiscount/BasicInfo/comp/comp/SpecificProducts';
+import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
 
 
 

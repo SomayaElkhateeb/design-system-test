@@ -51,7 +51,7 @@ import { BackAndroidIcon } from 'src/app/utils/icons';
  */
 export default function ChannelChart(props) {
 	return (
-		<div className='w-[375px] h-[300px] border border-constrained rounded-md bg-white p-5'>
+		<div className=' h-80 rounded-xl border border-borders-lines bg-white p-5 w-96'>
 			<div className='flex items-center justify-between mb-1'>
 				<h2 className='text-lg font-semibold text-title'>sales by channel</h2>
 				<span className='flex text-secondary'>
