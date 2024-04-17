@@ -1,11 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getCoupons, postCoupons } from './couponsAsyncThunks';
+import { CouponsState } from './couponSlice';
 
-interface CouponsState {
-	coupons: any[];
-	isLoading: boolean;
-	error: any;
-}
+
 
 export const getCouponsReducer = (builder: ActionReducerMapBuilder<CouponsState>) => {
 	builder

@@ -203,7 +203,9 @@ export const arabic = {
 	Options: 'اختيارات',
 	'Add Brand': 'اضافه ماركه',
 	'Name & Description': 'الاسم & الوصف',
-
+	"Ends At":"ينتهي في",
+	"Sales":"المبيعات",
+	"Used":"المستخدم",
 	"Add Category":"اضافه فئه",
 	'Products No.': 'عدد المنتجات',
 	Availability: 'الاتاحه',

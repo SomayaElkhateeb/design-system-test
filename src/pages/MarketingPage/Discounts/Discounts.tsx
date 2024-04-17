@@ -12,77 +12,35 @@ import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 import LinearDeterminate from 'src/app/components/optimized/UiKits/LinearDeterminate';
 import FilterButton from 'src/app/components/page/Customers/FilterButton';
 import { useTranslation } from 'react-i18next';
+import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 
 const Discounts: React.FC = () => {
+	//  hooks
 	const { t } = useTranslation();
-	const [selectedOption, setSelectedOption] = useState('');
-	const navigate = useNavigate();
+	
 	const dispatch = useDispatch();
+
+	//  selectors
 	const { isLoading, discount } = useSelector((state) => state.discount);
 
+	//  call api to get discounts
 	useEffect(() => {
 		dispatch(getDiscounts());
 	}, [dispatch]);
 
-	console.log('discount', discount);
+	
 
-	const handleMoreClick = () => {
-		console.log('more click');
-	};
+	
 
-	const sortMenus = [
-		{ id: '1', text: 'Name A to Z' },
-		{ id: '2', text: 'Name Z to A' },
-		// Add more sorting options as needed
-	];
-
-	const handleSelect = (selectedOption) => {
-		setSelectedOption(selectedOption);
-	};
+	
 
 	return (
-		<>
-			<div className='h-[70px] flex items-center border-b-2 border-light-2 mx-3'>
-				<div className='flex justify-between items-center w-full'>
-					<Button
-						LeftIcon={IoIosAddCircle}
-						onClick={() => {
-							navigate('addDiscount');
-						}}
-					>
-						{t('add new discount')}
-					</Button>
-
-					<div className='flex gap-8'>
-						<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
-						<FilterButton />
-					</div>
-				</div>
+		<div className=' container mx-auto my-[0.8rem]'>
+			<div className=' flex flex-col '>
+				{/*  top section */}
+				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
 			</div>
-
-			{/* Table */}
-			{isLoading ? (
-				<LinearDeterminate />
-			) : discount.length > 0 ? (
-				<div className='mx-3'>
-					<Table>
-						<HeaderTable>
-							<Header headerData={headerData} />
-						</HeaderTable>
-						<BodyTable>
-							<Body bodyData={discount} onClick={handleMoreClick} />
-						</BodyTable>
-					</Table>
-				</div>
-			) : (
-				<div className='py-2 px-6 my-20 mx-auto w-fit bg-white rounded'>
-					<h3 className='text-title font-semibold'>{t('There is no discount available!')}</h3>
-				</div>
-			)}
-
-			{/* Render error message if error exists */}
-			{/* {error && toast.error(error)} */}
-		</>
+		</div>
 	);
 };
 
