@@ -35,8 +35,6 @@ const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }
 	const handlePrint = useReactToPrint({
 		content: () => campaignTableRef.current,
 		documentTitle: 'Campaigns Data',
-		onBeforePrint: () => console.log('before printing...'),
-		onAfterPrint: () => console.log('after printing...'),
 		removeAfterPrint: true,
 	});
 

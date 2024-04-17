@@ -1,32 +1,36 @@
 import { useState } from 'react';
-import { ColumnChart } from 'src/app/components/optimized';
+import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
-import ProductActions from './comp/ProductActions';
+import data from '../../comp/data.json';
 const sortMenus = [
-	{ id: '1', text: 'Today' },
-	{ id: '2', text: 'Last week' },
-	{ id: '3', text: 'Last month' },
-	{ id: '3', text: 'Specify date' },
+	{ text: 'Option 1', id: 1 },
+	{ text: 'Option 2', id: 2 },
+	{ text: 'Option 3', id: 3 },
+	{ text: 'Option 4', id: 4 },
 ];
-const Products = () => {
+
+const AnalyticsComparison = () => {
 	const [selectedOption, setSelectedOption] = useState(null);
 
 	const handleSelect = (option) => {
 		setSelectedOption(option);
 	};
 	return (
-		<div className='p-5 grid gap-5'>
+		<div>
 			<div className='mb-4 flex items-center gap-2'>
 				<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
 				<div className='flex gap-2'>
 					<p className='paragraph text-subtitle'>Compared to:</p>
-					<p className='paragraph text-title'>{selectedOption}</p>
+					<p className='paragraph text-title'>Last week</p>
 				</div>
 			</div>
-			<ColumnChart/>
-			{/* <ProductActions/> */}
+			<div className='flex gap-4 flex-wrap'>
+				{data.statsData.map((item, index) => (
+					<StatsCard key={index} {...item} />
+				))}
+			</div>
 		</div>
 	);
 };
 
-export default Products;
+export default AnalyticsComparison;
