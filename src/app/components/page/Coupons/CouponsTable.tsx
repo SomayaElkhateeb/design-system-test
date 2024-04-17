@@ -1,17 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import { BrandsInterface } from 'src/app/interface/BrandInterface';
-
-import { getImageUrl } from 'src/app/utils';
-
 import { Switch, TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
-
 import { IoIosArrowBack } from 'react-icons/io';
-
-import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
 import BaseTable from '../Customers/TableLayoutGlobal/base.table';
 import ThreeDotsButton from '../Customers/ThreedotsButton';
 import { Coupon } from 'src/app/interface/CouponInterface';
@@ -25,7 +18,7 @@ export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]
 	const navigate = useNavigate();
 	//  headers
 
-	const brandssHeaders = [
+	const CouponsHeaders = [
 		{ title: t('Customer Name') },
 		{ title: t('Discount') },
 		{ title: t('Ends At') },
@@ -50,7 +43,7 @@ export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]
 			isLoading={isLoading}
 			language={language}
 			color='#55607A'
-			headers={brandssHeaders.map((h) => h)}
+			headers={CouponsHeaders.map((h) => h)}
 			rows={coupons?.map((e: Coupon, i: number) => {
 				return {
 					item: e,
@@ -58,7 +51,7 @@ export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]
 						<TableCell
 							sx={{
 								fontSize: '14px',
-								fontWeight: 400,
+								fontWeight: 600,
 							}}
 						>
 							{e.name}

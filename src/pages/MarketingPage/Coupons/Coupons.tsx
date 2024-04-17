@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 // get coupons
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
@@ -28,7 +28,7 @@ const Coupons: React.FC = () => {
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 
 				{/*  table section */}
-				<CouponsTable coupons={coupons} isLoading={isLoading}/>
+				<CouponsTable coupons={coupons} isLoading={isLoading} />
 			</div>
 		</div>
 	);
