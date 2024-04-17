@@ -1,11 +1,10 @@
 import { Checkbox } from "@mui/material"
 
-export default function CustomTableBodyCheckbox({ array, setArray, id }: { array: number[], setArray: (e: number[]) => void , id: number}) {
+export default function CustomTableBodyCheckbox({ array, setArray, id }: { array: string[], setArray: (e: string[]) => void, id: string }) {
 
 
     return (
         <Checkbox
-
             onChange={() => {
                 if (array.includes(id)) {
                     setArray(array.filter((el) => el !== id))

@@ -7,8 +7,8 @@ import Integrations from "../Integrations/Integrations";
 
 
 const AnalyticsTabs = () => {
-const { tabName } = useParams();
-console.log(tabName)
+const { tab } = useParams();
+
 const tabs = {
   orders: <Orders />,
   products: <Products />,
@@ -16,7 +16,7 @@ const tabs = {
   customers: <Customers />,
   integrations: <Integrations />,
 };
-return tabs[tabName];
+return tabs[tab];
 }
 
 export default AnalyticsTabs

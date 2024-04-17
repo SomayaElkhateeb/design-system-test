@@ -1,6 +1,6 @@
 import { Checkbox } from "@mui/material"
 
-export default function CustomTableHeaderCheckbox({ array, mainArray, setArray }: { array: number[], mainArray: number[], setArray: (e: number[]) => void }) {
+export default function CustomTableHeaderCheckbox({ array, mainArray, setArray }: { array: string[], mainArray: string[], setArray: (e: string[]) => void }) {
 
 
     return (

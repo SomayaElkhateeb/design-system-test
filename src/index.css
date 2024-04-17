@@ -95,6 +95,9 @@
 	.flex-row-global-items-start{
 		@apply flex flex-row items-start
 	}
+	.iconClass{
+	@apply	text-[1.2rem] text-subtitle
+	}
 	.btn-pri {
 		@apply bg-primary px-4 py-2 rounded font-semibold text-white text-sm capitalize hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-1  focus:ring-pri-light;
 	}
