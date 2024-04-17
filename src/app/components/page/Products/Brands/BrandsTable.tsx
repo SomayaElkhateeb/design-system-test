@@ -12,9 +12,10 @@ import { IoIosArrowForward } from 'react-icons/io';
 
 import { IoIosArrowBack } from 'react-icons/io';
 import { nanoid } from 'nanoid';
-import { CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 import { MdDelete } from 'react-icons/md';
 import { FiUploadCloud } from 'react-icons/fi';
+import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
 export default function BrandsTable() {
 	//  hooks
 	const language = UseLanguage();
@@ -49,13 +50,7 @@ export default function BrandsTable() {
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
-	const settingMenus = [
-		{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
-		{ id: nanoid(), text: 'Product report', icon: <CopyIcon /> },
-		{ id: nanoid(), text: 'Product orders', icon: <OrdersIcon /> },
-		{ id: nanoid(), text: 'Export product orders XLS', icon: <FiUploadCloud className='text-[red]' /> },
-		{ id: nanoid(), text: 'Delete product', icon: <MdDelete className='text-[red]' /> },
-	];
+	
 	return (
 		<BaseTable
 			language={language}
