@@ -17,7 +17,7 @@ import { Avatars, CheckBox, ClientBox } from '..';
 export default function SelectItem(props) {
 	function handleCheckBoxClick() {
 		const newValue = !props.isChecked;
-		props.handleOnCheckChange(newValue, { id: props.id, title: props.title ?? '' }); // Pass the id to the callback function
+		props.handleOnCheckChange(newValue, { id: props.id, title: props.title ?? '' });
 	}
 
 	const title = props.title ?? `${props.fName} ${props.lName ?? ''}`;
@@ -26,7 +26,7 @@ export default function SelectItem(props) {
 		case 'customers':
 			return (
 				<label
-					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
+					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light cursor-pointer ${
 						props.isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
@@ -42,7 +42,7 @@ export default function SelectItem(props) {
 		case 'groups':
 			return (
 				<label
-					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
+					className={`w-full h-[3.5rem] flex items-center justify-between px-[1rem] hover:bg-sec-light cursor-pointer${
 						props.isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
@@ -58,7 +58,7 @@ export default function SelectItem(props) {
 		default:
 			return (
 				<label
-					className={`w-full h-[56px] flex items-center justify-between px-[1rem] hover:bg-sec-light ${
+					className={`w-full h-[56px] flex items-center justify-between px-[1rem] hover:bg-sec-light cursor-pointer${
 						props.isChecked ? 'bg-sec-light' : ''
 					}`}
 				>
