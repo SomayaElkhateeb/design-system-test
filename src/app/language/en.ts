@@ -345,4 +345,6 @@ export const english = {
 	Description: 'Description',
 	Available: 'Available',
 	Slug: 'Slug',
+	Off: 'Off',
+	On: 'On',
 };

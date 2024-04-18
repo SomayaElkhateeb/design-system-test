@@ -349,4 +349,6 @@ export const arabic = {
 	Canceled: 'ألغيت',
 	Paid: 'مدفوع',
 	Visitors: 'الزوار',
+	Off: 'توقف',
+	On: 'تشغيل',
 } satisfies typeof english;
