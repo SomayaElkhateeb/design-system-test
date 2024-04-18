@@ -13,7 +13,7 @@ import { cn } from 'src/app/utils';
  *  value?: string;
  *  handleOnChange?: (value: string) => void;
  * _ref?: any;
- * } & Omit<import('react').InputHTMLAttributes<HTMLInputElement>, "onChange">} props - Props for the InputRow component
+ * } & Omit<import('react').TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange">} props - Props for the InputRow component
  *
  * How to Use:
  *
@@ -30,7 +30,7 @@ import { cn } from 'src/app/utils';
  *
  *   return (
  *     <div>
- *       <InputRow
+ *       <Textarea
  *         label="Username"
  *         leftIcon={<FaUser />}
  *         rightIcon={<FaCheckCircle />}
@@ -56,7 +56,7 @@ import { cn } from 'src/app/utils';
  * - handleSelectChange: A function to handle changes to the input field value.
  */
 
-export default function InputRow({
+export default function Textarea({
 	label,
 	leftIcon,
 	rightIcon,
@@ -92,7 +92,7 @@ export default function InputRow({
 				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
 						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>}
-						<input
+						<textarea
 							ref={_ref}
 							className={`${
 								leftIcon && 'pl-16'
@@ -100,6 +100,7 @@ export default function InputRow({
 							disabled={loading}
 							value={value}
 							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
+							rows={5}
 							{...rest}
 							id={controlId}
 						/>

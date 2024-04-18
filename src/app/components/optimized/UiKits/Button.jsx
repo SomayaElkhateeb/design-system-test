@@ -93,7 +93,7 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 	let textClass = handleTextVariant({ variant });
 
 	return (
-		<button {...props} className={buttonClass}>
+		<button type='button' {...props} className={buttonClass}>
 			{/* Render loading spinner if loading is true */}
 			{loading ? (
 				<div className='flex items-center justify-center px-6 py-1'>
@@ -102,8 +102,6 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{/* {LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)} */}
-
 					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
 
 					<span className={textClass}>{children ?? text}</span>
