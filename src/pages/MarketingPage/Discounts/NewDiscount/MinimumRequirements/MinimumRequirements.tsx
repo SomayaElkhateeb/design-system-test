@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { minimumRequirementsOptions } from '../comp/data';
 import { CheckBox, InputRow } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 
@@ -20,7 +19,7 @@ const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
 	const { t } = useTranslation();
 	const [updateState, setUpdateState] = useState<State>(initialState);
 	const { selectedMinimumRequirements, isChecked, minimumQuantity } = updateState;
-
+	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')];
 	// Update state
 	const update = (newValue: Partial<State>) => {
 		setUpdateState((prevState) => ({
@@ -45,7 +44,7 @@ const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
 
-			<CheckBox label='define minimum requirements' handleOnChange={handleCheckboxChange} />
+			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
 
 			{isChecked && (
 				<SingleChoiceChips

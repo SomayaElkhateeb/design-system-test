@@ -330,4 +330,10 @@ export const arabic = {
 	views: 'الآراء',
 	'quantity sold': 'الكمية المباعة',
 	returns: 'مرتجعات',
+	'define minimum requirements': 'تحديد الحد الأدنى من المتطلبات',
+	Limits: 'الحدود',
+	'Limit number of times this coupon can be used in total':
+		'الحد الأقصى لعدد المرات التي يمكن فيها استخدام اجمالي هذا الكوبون',
+	'Usage number': 'رقم الاستخدام',
+	'Limit to one use per customer': 'الحد من الاستخدام مرة واحدة لكل عميل',
 } satisfies typeof english;

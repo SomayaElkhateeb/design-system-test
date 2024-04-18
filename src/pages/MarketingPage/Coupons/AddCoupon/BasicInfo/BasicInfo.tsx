@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { InputRow } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { discountTypesOptions, applyToOptions } from '../comp/data';
 import DiscountTypesOptions from './comp/DiscountTypesOptions';
 import ApplyToOptions from './comp/ApplyToOptions';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +15,9 @@ const BasicInfo: React.FC = ({ discountName, fixedAmount, setState }) => {
 			discountName: e.target.value,
 		});
 	};
+	const applyToOptions = [t('All products'), t('Specific category'), t('Specific products')].map((option) => option);
+
+	const discountTypesOptions = [t('Percentage'), t('Fixed amount'), t('Free shipping')].map((option) => option);
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold mb-2'>{t('Basic info')}</h3>

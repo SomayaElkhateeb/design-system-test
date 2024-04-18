@@ -77,7 +77,7 @@ const Products = () => {
 					<p className='paragraph text-title'>{selectedOption}</p>
 				</div>
 			</div>
-			<ColumnChart />
+			<ColumnChart percentage='40' negative />
 			{/* <ProductActions/> */}
 
 			<ProductsTable data={data} />

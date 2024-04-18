@@ -90,7 +90,7 @@ const Orders = () => {
 					<p className='paragraph text-title'>{selectedComparisonOption}</p>
 				</div>
 			</div>
-			<ColumnChart />
+			<ColumnChart title='sales orders' percentage='77' />
 			<OrderActions sortMenus={sortMenus} selectedOption={arrange} onSelectOption={handleArrangeChange} />
 			<Table data={tableData} headers={headers} />
 		</div>
