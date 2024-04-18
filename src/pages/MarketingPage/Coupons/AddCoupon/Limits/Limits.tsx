@@ -21,15 +21,18 @@ const Limits: React.FC = ({ setState, used }) => {
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Limits')}</h3>
-			<CheckBox label='Limit number of times this coupon can be used in total' handleOnChange={handleCheckboxChange} />
+			<CheckBox
+				label={t('Limit number of times this coupon can be used in total')}
+				handleOnChange={handleCheckboxChange}
+			/>
 
 			{isChecked && (
 				<div className='w-[24rem]'>
-					<InputRow label='Usage number' type='number' value={used} onChange={handleChange} />
+					<InputRow label={t('Usage number')} type='number' value={used} onChange={handleChange} />
 				</div>
 			)}
 
-			<CheckBox label='Limit to one use per customer' />
+			<CheckBox label={t('Limit to one use per customer')} />
 		</section>
 	);
 };

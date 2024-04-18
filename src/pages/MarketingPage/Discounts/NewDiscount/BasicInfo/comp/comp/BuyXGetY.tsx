@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Button, InputRow, SelectItems } from 'src/app/components/optimized';
 import { FaChevronRight } from 'react-icons/fa';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { customerGetsOptions } from '../../../comp/data';
 import { AiOutlinePercentage } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +18,7 @@ const BuyXGetY: React.FC = () => {
 	const [selectedItemY, setSelectedItemY] = useState<any[]>([]);
 	const dispatch = useDispatch();
 	const { products } = useSelector((state: any) => state.products);
+	const customerGetsOptions = [t('Free'), t('50% offer'), t('Specify percentage')];
 
 	useEffect(() => {
 		dispatch(getSelectProducts());

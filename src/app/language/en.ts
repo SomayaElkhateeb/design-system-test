@@ -341,10 +341,18 @@ export const english = {
 	views: 'views',
 	'quantity sold': 'quantity sold',
 	returns: 'returns',
+
+	'define minimum requirements': 'define minimum requirements',
+	Limits: 'Limits',
+	'Limit number of times this coupon can be used in total': 'Limit number of times this coupon can be used in total',
+	'Usage number': 'Usage number',
+	'Limit to one use per customer': 'Limit to one use per customer',
+
 	Link: 'Link',
 	Description: 'Description',
 	Available: 'Available',
 	Slug: 'Slug',
 	Off: 'Off',
 	On: 'On',
+
 };

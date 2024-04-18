@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { discountTypesOptions, applyToOptions } from '../comp/data';
 import { InputRow } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import DiscountTypesOptions from './comp/DiscountTypesOptions';
@@ -24,6 +23,9 @@ const BasicInfo: React.FC<{ fixedAmount: number; discountName: string; setState:
 		}));
 	};
 
+	const applyToOptions = [t('All products'), t('Specific category'), t('Specific products'), t('Buy x get y')];
+
+	const discountTypesOptions = [t('Percentage'), t('Fixed amount'), t('Free shipping')];
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold mb-2'>{t('Basic info')}</h3>
