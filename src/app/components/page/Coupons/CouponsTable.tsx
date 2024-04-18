@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Switch, TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import BaseTable from '../Customers/TableLayoutGlobal/base.table';
@@ -11,6 +11,7 @@ import { Coupon } from 'src/app/interface/CouponInterface';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
+import useSelectBox from '../../optimized/Menu/useSelectBox';
 export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]; isLoading: boolean }) {
 	//  hooks
 	const language = UseLanguage();

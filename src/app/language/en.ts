@@ -275,6 +275,11 @@ export const english = {
 	'Ends At': 'Ends At',
 	Sales: 'Sales',
 	Used: 'Used',
+	"Compared to":"Compared to",
+	"last Year":"last Year",
+	"Add Campaign":"Add Campaign",
+	
+	"Export":"Export",
 	'There is no discount available!': 'There is no discount available!',
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',

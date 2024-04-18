@@ -4,14 +4,21 @@ import ThreeDotsButton from '../../Customers/ThreedotsButton';
 import BaseTable from '../../Customers/TableLayoutGlobal/base.table';
 import { Switch, TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { FaRegEdit } from 'react-icons/fa';
-export default function DiscountsTable({ discounts, isLoading }: { discounts: DiscountInterface[]; isLoading: boolean }) {
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+export default function DiscountsTable({
+	discounts,
+	isLoading,
+}: {
+	discounts: DiscountInterface[];
+	isLoading: boolean;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
