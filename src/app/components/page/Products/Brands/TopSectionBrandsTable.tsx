@@ -32,9 +32,9 @@ export default function TopSectionBrandsTable() {
 	];
 
 	const ActionsMenus = [
-		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass'/> },
-		{ id: nanoid(), text: 'Export products', icon: <SiMicrosoftexcel className='iconClass'/> },
-		{ id: nanoid(), text: 'Import products', icon: <FiUploadCloud className='iconClass'/> },
+		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
+		{ id: nanoid(), text: 'Export products', icon: <SiMicrosoftexcel className='iconClass' /> },
+		{ id: nanoid(), text: 'Import products', icon: <FiUploadCloud className='iconClass' /> },
 		{ id: nanoid(), text: 'Delete all products', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
 	];
 

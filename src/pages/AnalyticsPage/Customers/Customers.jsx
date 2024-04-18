@@ -1,91 +1,38 @@
-import React, { useState } from 'react';
-import { ColumnChart } from 'src/app/components/optimized';
-import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
-import CustomersActions from './comp/CustomersActions';
-import { Table } from '@mui/material';
-import data from '../comp/data.json';
-import { nanoid } from 'nanoid';
+// @ts-nocheck
 
-const comparisonMenus = [
-	{ id: nanoid(), text: 'Today' },
-	{ id: nanoid(), text: 'Last week' },
-	{ id: nanoid(), text: 'Last month' },
-	{ id: nanoid(), text: 'Specify date' },
-];
-const headers = [
-	'day ',
-	'new customers',
-	'purchasing customers',
-	'customer groups',
-];
-const sortMenus = [
-	{ id: nanoid(), text: 'Day (Latest)' },
-	{ id: nanoid(), text: 'Day (Oldest)' },
-	{ id: nanoid(), text: 'new customers (High-Low)' },
-	{ id: nanoid(), text: 'new customers (Low-High)' },
-	{ id: nanoid(), text: 'purchasing customers (High-Low)' },
-	{ id: nanoid(), text: 'purchasing customers (Low-High)' },
-	{ id: nanoid(), text: 'customer groups (High-Low)' },
-	{ id: nanoid(), text: 'customer groups (Low-High)' },
-];
-const sortFunctions = {
-  day: (a, b) => {
-    // Convert date strings to Date objects for comparison
-    const dateA = new Date(a.day);
-    const dateB = new Date(b.day);
-    return dateA - dateB;
-  },
-  new_customers: (a, b) => a.new_customers - b.new_customers,
-  purchasing_customers: (a, b) => a.purchasing_customers - b.purchasing_customers,
-  customer_groups: (a, b) => a.customer_groups - b.customer_groups
-};
+import { customersSortFunctions, customersSortMenus, customersTableHeaders } from '../comp/analyticsConstants';
+import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
+import AnalyticsTableActions from '../comp/AnalyticsTableActions';
+import { ColumnChart } from 'src/app/components/optimized';
+import useAnalyticsData from '../comp/useAnalyticsData';
+import data from '../comp/data.json';
+import Table from '../comp/Table';
 
 const Customers = () => {
-  const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
-	const [arrange, setArrange] = useState();
-	const [tableData, setTableData] = useState(data.customers_analytics_table);
-	
-  const handleComparisonChange = (option) => {
-		setSelectedComparisonOption(option);
-	};
-
-  const handleArrangeChange = (option) => {
-		setArrange(option);
-		if (option) {
-			const sortedData = tableData.slice().sort(sortFunctions[option]); // Sort a copy of data
-			setTableData(sortedData);
-		}
-	};
-
-  // const handleArrangeChange = (option) => {
-	// 	setArrange(option);
-  //   const sortedData = option ? [...tableData].sort((a, b) => {
-  //     if (sortFunctions[option]) {
-  //       return sortFunctions[option](a, b);
-  //     } else {
-  //       return 0; 
-  //     }
-  //   }) : tableData;
-  //   setTableData(sortedData);
-  // };
-
+	const {
+		selectedComparisonOption,
+		setSelectedComparisonOption,
+		arrange,
+		setArrange,
+		tableData,
+		handleComparisonChange,
+		handleArrangeChange,
+		AnalyticsTableRef,
+	} = useAnalyticsData(data.customers_analytics_table, customersSortFunctions);
 
 	return (
-		<div className='p-3 grid gap-5'>
-			<div className='mb-4 flex items-center gap-2'>
-				<ArrangeButton
-					sortMenus={comparisonMenus}
-					selectedOption={selectedComparisonOption}
-					handelSelect={handleComparisonChange}
-				/>
-				<div className='flex gap-2'>
-					<p className='paragraph text-subtitle'>Compared to:</p>
-					<p className='paragraph text-title'>{selectedComparisonOption}</p>
-				</div>
-			</div>
+		<div className='p-5 grid gap-5'>
+			<CompareBar selectedComparisonOption={selectedComparisonOption} handleComparisonChange={handleComparisonChange} />
 			<ColumnChart />
-			<CustomersActions sortMenus={sortMenus} selectedOption={arrange} onSelectOption={handleArrangeChange} />
-			<Table data={tableData} headers={headers} />
+			<AnalyticsTableActions
+				data={tableData}
+				sortMenus={customersSortMenus}
+				selectedOption={arrange}
+				onSelectOption={handleArrangeChange}
+				customersTableRef={AnalyticsTableRef}
+				documentTitle='Customer Table Data'
+			/>
+			<Table data={tableData} headers={customersTableHeaders} ref={AnalyticsTableRef} />
 		</div>
 	);
 };

@@ -24,6 +24,7 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = ({ slides }) => {
 			<div className='py-5'>
 				{slides.map((slide, index) => (
 					<div key={index} className={`${index === activeIndex ? 'block' : 'hidden'}`}>
+						
 						{Array.isArray(slide.content) ? (
 							slide.content.map((item) => {
 								const { id, title, img, qty, price, subtitle } = item || {};
@@ -53,6 +54,7 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = ({ slides }) => {
 						) : (
 							<div>{slide.content}</div>
 						)}
+						
 					</div>
 				))}
 			</div>

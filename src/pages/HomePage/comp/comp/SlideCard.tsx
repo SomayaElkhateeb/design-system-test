@@ -11,9 +11,12 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides }) => {
 	return (
 		<div>
 			<div>
+
 				{slides.map((slide: any, index: number) => (
 					<div key={index} className={`flex-1 ${index === activeIndex ? 'block' : 'hidden'}`}>
+
 						<div className='grid grid-cols-2 gap-4 mt-4'>
+
 							{Array.isArray(slide.content) ? (
 								slide.content.map((item: any) => {
 									const { id, title, value, percentage, positive } = item || {};
@@ -43,9 +46,12 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides }) => {
 							) : (
 								<div>{slide.content}</div>
 							)}
+
 						</div>
+
 					</div>
 				))}
+
 			</div>
 
 			<div className='flex justify-center py-2'>

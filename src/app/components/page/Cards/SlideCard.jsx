@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
@@ -24,6 +25,7 @@ const SlideCard = ({ slides, title, percentage, positive }) => {
 			<div className='p-5 flex flex-col flex-1'>
 				<div className='flex justify-between items-center mb-3'>
 					<h2 className='title text-lg'>{title}</h2>
+					
 					{percentage ? (
 						<div className='flex items-center'>
 							<BackAndroidIcon className={`${positive ? 'fill-success rotate-90' : 'fill-error -rotate-90'}`} />
@@ -55,3 +57,4 @@ const Bullet = ({ active, onClick }) => (
 		onClick={onClick}
 	/>
 );
+
