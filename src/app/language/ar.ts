@@ -204,10 +204,10 @@ export const arabic = {
 	'Add Brand': 'اضافه ماركه',
 	'Name & Description': 'الاسم & الوصف',
 
-	"Ends At":"ينتهي في",
-	"Sales":"المبيعات",
-	"Used":"المستخدم",
-	"Add Category":"اضافه فئه",
+	'Ends At': 'ينتهي في',
+	Sales: 'المبيعات',
+	Used: 'المستخدم',
+	'Add Category': 'اضافه فئه',
 
 	'Products No.': 'عدد المنتجات',
 	Availability: 'الاتاحه',
@@ -325,4 +325,9 @@ export const arabic = {
 	'Welcome to Dookan': 'مرحبًا بكم في دوكان',
 	'No Thanks': 'ًلا شكرا',
 	Ok: 'حسنا',
+	quantity: 'الكمية',
+	searches: 'عمليات البحث',
+	views: 'الآراء',
+	'quantity sold': 'الكمية المباعة',
+	returns: 'مرتجعات',
 } satisfies typeof english;
