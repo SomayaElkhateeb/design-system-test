@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ColumnChart } from 'src/app/components/optimized';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
-import ProductActions from './comp/ProductActions';
+// import ProductActions from './comp/ProductActions';
 import ProductsTable from 'src/app/components/page/Analytics/ProductsTable';
 import { getImageUrl } from 'src/app/utils';
 const sortMenus = [
