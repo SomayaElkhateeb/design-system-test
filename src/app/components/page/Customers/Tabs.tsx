@@ -28,7 +28,6 @@ export default function Tabs({ body, children }: { body: React.ReactNode, childr
                     </TabList>
                 </Box>
                 {body}
-
             </TabContext>
         </Box>
     )

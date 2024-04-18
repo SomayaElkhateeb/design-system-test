@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { ColumnChart } from 'src/app/components/optimized';
+<<<<<<< HEAD
+import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
+=======
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
 import ProductActions from './comp/ProductActions';
 import ProductsTable from 'src/app/components/page/Analytics/ProductsTable';
@@ -64,12 +67,21 @@ const data = [
 ];
 const Products = () => {
 	const [selectedOption, setSelectedOption] = useState(null);
+>>>>>>> master
 
-	const handleSelect = (option) => {
-		setSelectedOption(option);
+const Products = () => {
+	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
+
+	const handleComparisonChange = (option) => {
+		setSelectedComparisonOption(option);
 	};
+
 	return (
 		<div className='p-5 grid gap-5'>
+<<<<<<< HEAD
+			<CompareBar selectedComparisonOption={selectedComparisonOption} handleComparisonChange={handleComparisonChange} />
+			<ColumnChart />
+=======
 			<div className='mb-4 flex items-center gap-2'>
 				<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
 				<div className='flex gap-2'>
@@ -81,6 +93,7 @@ const Products = () => {
 			{/* <ProductActions/> */}
 
 			<ProductsTable data={data} />
+>>>>>>> master
 		</div>
 	);
 };

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+// @ts-nocheck
+import { useState } from "react";
+
+
+
+=======
 import { useState } from 'react';
+>>>>>>> master
 
 // how to use
 // const ParentComponent = () => {
@@ -23,7 +31,6 @@ const SlideCardTabs = ({ slides }) => {
 					<Tab key={index} title={slide.title} active={index === activeIndex} onClick={() => setActiveIndex(index)} />
 				))}
 			</div>
-
 			<div className='p-5'>
 				{slides.map((slide, index) => (
 					<div key={index} className={`${index === activeIndex ? 'block' : 'hidden'}`}>

@@ -1,22 +1,25 @@
+// @ts-nocheck
+import { forwardRef } from 'react';
 
-const Table = ({ data, headers }) => {
-	const formattedHeaders = headers.map((header) => header.toLowerCase().replace(/\s+/g, '_'));
+const Table = forwardRef(({ data, headers }, ref) => {
+	const formattedHeaders = headers.map((header) => header.replace(/\s+/g, '_'));
 	return (
-		<table className='table-auto w-full border border-collapse shadow-md'>
+		<table ref={ref} className='w-full table-auto rounded-lg'>
 			<thead>
-				<tr className='bg-gray-800 text-white'>
+				<tr className='text-left bg-white'>
 					{headers.map((header) => (
-						<th key={header} className='px-4 py-2'>
+						<th key={header} className='px-4 py-4 subtitle uppercase'>
 							{header}
 						</th>
 					))}
 				</tr>
 			</thead>
+
 			<tbody>
 				{data.map((row, index) => (
-					<tr key={index} className='border-b hover:bg-gray-100'>
+					<tr key={index} className='rounded-xl bg-white'>
 						{formattedHeaders.map((header) => (
-							<td key={header} className='px-4 py-2'>
+							<td key={header} className='px-4 py-4 paagraph text-title'>
 								{row[header]}
 							</td>
 						))}
@@ -25,5 +28,5 @@ const Table = ({ data, headers }) => {
 			</tbody>
 		</table>
 	);
-};
+});
 export default Table;
