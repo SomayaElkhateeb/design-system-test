@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { ColumnChart, StackedColumnChart } from 'src/app/components/optimized';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
@@ -100,6 +101,7 @@ const Customers = () => {
 			/>
 			<CustomersActions sortMenus={sortMenus} selectedOption={arrange} onSelectOption={handleArrangeChange} />
 			<Table data={tableData} headers={headers} />
+
 		</div>
 	);
 };

@@ -49,3 +49,6 @@ export function getInitialDate() {
 	const day = String(today.getDate()).padStart(2, '0');
 	return `${year}-${month}-${day}`;
 }
+
+export const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
+export const parseDate = (dateString) => new Date(dateString);

@@ -311,6 +311,14 @@ export const check = [
 	{ id: nanoid(), text: 'Place your text' },
 ];
 
+// Comparison Menus
+export const comparisonMenus = [
+	{ id: nanoid(), text: 'Today' },
+	{ id: nanoid(), text: 'Last week' },
+	{ id: nanoid(), text: 'Last month' },
+	{ id: nanoid(), text: 'Specify date' },
+];
+
 //           DATA DISCOUNT
 
 // Discount Basic Info
