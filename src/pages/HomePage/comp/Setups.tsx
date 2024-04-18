@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { tabs } from '../data';
-import VerticalTabs from './comp/VerticalTabsCopy';
+import VerticalTabs from './VerticalTabsCopy';
+import { tabs } from './data';
 
 const Setups = () => {
 	const { t } = useTranslation();

@@ -1,13 +1,11 @@
 import { LineChart } from 'src/app/components/optimized';
-
-import Orders from './comp/Orders';
-
-import Reports from './comp/Reports';
-import Products from './comp/Products';
-import Setups from './comp/Setups';
-import GetStartedCard from './comp/comp/GetStartedCard';
-import { slides } from './data';
 import { useTranslation } from 'react-i18next';
+import Setups from './comp/Setups';
+import SlideCard from './comp/SlideCard';
+import CustomDetails from './comp/CustomDetails';
+import { data, slides, slidesContent, slidesTabs, sortMenus } from './comp/data';
+import SlideCardTabs from './comp/SlideCardTabs';
+import GetStartedCard from './comp/GetStartedCard';
 
 const HomePage = () => {
 	const { t } = useTranslation();
@@ -18,11 +16,11 @@ const HomePage = () => {
 					<Setups />
 					{/* <LineChart /> */}
 				</div>
-				<Reports />
+				<SlideCard slides={slidesContent} sortMenus={sortMenus} text={t('Reports')} btn />
 				<div className='col-span-2'>
-					<Orders />
+					<CustomDetails data={data} sortMenus={sortMenus} text={t('Latest Orders')} />
 				</div>
-				<Products />
+				<SlideCardTabs slides={slidesTabs} sortMenus={sortMenus} text={t('Products')} btn />
 			</div>
 
 			<div className='bg-white rounded-xl border border-borders-lines h-fit mt-6'>
