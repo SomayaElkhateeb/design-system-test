@@ -1,12 +1,7 @@
 import React from 'react';
-import DateRange from 'src/app/components/optimized/Pickers/DateRangePicker';
 
 const StorePage = () => {
-	return (
-		<div>
-			<DateRange />
-		</div>
-	);
+	return <div>StorePage</div>;
 };
 
 export default StorePage;

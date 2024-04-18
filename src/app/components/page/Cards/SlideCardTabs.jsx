@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 // @ts-nocheck
 import { useState } from "react";
 
 
 
+=======
+import { useState } from 'react';
+>>>>>>> master
 
 // how to use
 // const ParentComponent = () => {
@@ -16,7 +20,6 @@ import { useState } from "react";
 // 	return <SlideCardTabs slides={slides} />
 
 // };
-
 
 const SlideCardTabs = ({ slides }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
