@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { forwardRef } from 'react';
 import { Button } from 'src/app/components/optimized';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -12,19 +13,18 @@ const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 		'Campaign (Z-A)': (a, b) => b.name.localeCompare(a.name),
 		'Status (A-Z)': (a, b) => a.status.localeCompare(b.status),
 		'Status (Z-A)': (a, b) => b.status.localeCompare(a.status),
-		'Sales (High-Low)': (a, b) => getNumericValue(b.sales) - getNumericValue(a.sales),
-		'Sales (Low-High)': (a, b) => getNumericValue(a.sales) - getNumericValue(b.sales),
-		'Expenses (High-Low)': (a, b) => getNumericValue(b.expenses) - getNumericValue(a.expenses),
-		'Expenses (Low-High)': (a, b) => getNumericValue(a.expenses) - getNumericValue(b.expenses),
-		'Net Profit (High-Low)': (a, b) => getNumericValue(b.netProfit) - getNumericValue(a.netProfit),
-		'Net Profit (Low-High)': (a, b) => getNumericValue(a.netProfit) - getNumericValue(b.netProfit),
+		'Sales Descending': (a, b) => getNumericValue(b.sales) - getNumericValue(a.sales),
+		'Sales Ascending': (a, b) => getNumericValue(a.sales) - getNumericValue(b.sales),
+		'Expenses Descending': (a, b) => getNumericValue(b.expenses) - getNumericValue(a.expenses),
+		'Expenses Ascending': (a, b) => getNumericValue(a.expenses) - getNumericValue(b.expenses),
+		'Net Profit Descending': (a, b) => getNumericValue(b.netProfit) - getNumericValue(a.netProfit),
+		'Net Profit Ascending': (a, b) => getNumericValue(a.netProfit) - getNumericValue(b.netProfit),
 	};
 
 	const arrangeData = (data, sortBy) => {
 		const sortFunction = sortFunctions[sortBy];
 		if (!sortFunction) {
-			console.error('Invalid sort criteria:', sortBy);
-			return data; // or throw error
+			return data;
 		}
 		return data.slice().sort(sortFunction);
 	};
@@ -41,11 +41,11 @@ const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 	};
 
 	return (
-		<div className='flex flex-col'>
-			<table ref={ref} className=' w-full table-auto rounded -lg'>
+
+			<table ref={ref}  className='w-full table-auto rounded-lg' >
 				<thead>
-					<tr className='text-left bg-white'>
-						<th className='px-4 py-4 subheading '>Campaign</th>
+					<tr className='text-left bg-white '>
+						<th className='px-4 py-4 subheading'>Campaign</th>
 						<th className='px-4 py-4 subheading'>Status </th>
 						{data[0].sessions && <th className='px-4 py-4 subheading'>Sessions </th>}
 						<th className='px-4 py-4 subheading'>sales </th>
@@ -85,7 +85,6 @@ const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 					))}
 				</tbody>
 			</table>
-		</div>
 	);
 });
 export default CampaignTable;

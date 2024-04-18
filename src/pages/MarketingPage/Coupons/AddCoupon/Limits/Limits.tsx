@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CheckBox, InputRow } from 'src/app/components/optimized';
 
 const Limits: React.FC = ({ setState, used }) => {
+	const { t } = useTranslation();
 	const [isChecked, setIsChecked] = useState<boolean>(false);
 
 	const handleCheckboxChange = (newValue: boolean) => {
@@ -18,7 +20,7 @@ const Limits: React.FC = ({ setState, used }) => {
 
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
-			<h3 className='text-title font-semibold'>Limits</h3>
+			<h3 className='text-title font-semibold'>{t('Limits')}</h3>
 			<CheckBox label='Limit number of times this coupon can be used in total' handleOnChange={handleCheckboxChange} />
 
 			{isChecked && (

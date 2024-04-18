@@ -85,7 +85,7 @@ export default function InputRow({
 		<>
 			<div className={containerClassName}>
 				{label && (
-					<label htmlFor={controlId} className='block text-sm'>
+					<label htmlFor={controlId} className='block text-sm mb-1.5'>
 						{label}
 					</label>
 				)}

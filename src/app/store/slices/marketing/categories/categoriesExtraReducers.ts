@@ -1,4 +1,4 @@
-import { getSelectCategories, postSelectCategories } from './categoriesAsyncThunks';
+import { getSelectCategories, deleteCategory } from './categoriesAsyncThunks';
 
 export const getCategoriesReducer = (builder) => {
 	builder
@@ -15,16 +15,15 @@ export const getCategoriesReducer = (builder) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});
-	// post selectCategories
-	// .addCase(postSelectCategories.pending, (state) => {
+	// .addCase(deleteCategory.pending, (state) => {
 	// 	state.isLoading = true;
 	// 	state.error = null;
 	// })
-	// .addCase(postSelectCategories.fulfilled, (state, action) => {
+	// .addCase(deleteCategory.fulfilled, (state, action) => {
 	// 	state.isLoading = false;
-	// 	state.categories.push(action.payload);
+	// 	state.categories = state.categories.filter((el) => el.id !== action.payload.id);
 	// })
-	// .addCase(postSelectCategories.rejected, (state, action) => {
+	// .addCase(deleteCategory.rejected, (state, action) => {
 	// 	state.isLoading = false;
 	// 	state.error = action.payload;
 	// });

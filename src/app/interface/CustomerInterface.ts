@@ -1,7 +1,7 @@
 
 
 export interface CustomerInterface {
-    id: number
+    id: string
     name: string
     mobile: string
     city: string

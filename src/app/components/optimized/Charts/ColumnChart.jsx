@@ -75,8 +75,9 @@ import { BackAndroidIcon } from 'src/app/utils/icons';
  * ```
  */
 export default function ColumnChart(props) {
+	// sm:w-[375px] lg:w-[1150px]
 	return (
-		<div className='px-5 pt-5 bg-white sm:w-[375px] sm:h-[327px] lg:w-[1150px] lg:h-[315px]'>
+		<div className='px-5 pt-5 bg-white sm:h-[327px] lg:h-[315px]'>
 			<div className='flex items-center justify-between mb-1'>
 				<h2 className='text-lg font-semibold text-title'>Sales</h2>
 				<span className='flex text-secondary'>
@@ -94,7 +95,7 @@ ColumnChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps}
 	series: [
 		{
 			name: 'Series 1',
-			data: [100, 500, 300, 800, 200, 100, 400, 250, 50],
+			data: [125, 500, 300, 800, 200, 100, 400, 250, 950, 600, 300, 700, 340, 530, 620, 750],
 		},
 	],
 	options: {
@@ -109,11 +110,28 @@ ColumnChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps}
 		plotOptions: {
 			bar: {
 				horizontal: false,
-				columnWidth: '70%',
+				columnWidth: '60%',
 			},
 		},
 		xaxis: {
-			categories: ['Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9'],
+			categories: [
+				'Apr 1',
+				'Apr 2',
+				'Apr 3',
+				'Apr 4',
+				'Apr 5',
+				'Apr 6',
+				'Apr 7',
+				'Apr 8',
+				'Apr 9',
+				'Apr 10',
+				'Apr 11',
+				'Apr 12',
+				'Apr 13',
+				'Apr 14',
+				'Apr 15',
+				'Apr 16',
+			],
 			labels: {
 				rotate: -45,
 			},

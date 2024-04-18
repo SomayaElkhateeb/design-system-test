@@ -8,17 +8,18 @@ const sortMenus = [
 	{ id: nanoid(), text: 'Campaign (Z-A)' },
 	{ id: nanoid(), text: 'Status (A-Z)' },
 	{ id: nanoid(), text: 'Status (Z-A)' },
-	{ id: nanoid(), text: 'Sales (High-Low)' },
-	{ id: nanoid(), text: 'Sales (Low-High)' },
-	{ id: nanoid(), text: 'Expenses (High-Low)' },
-	{ id: nanoid(), text: 'Expenses (Low-High)' },
-	{ id: nanoid(), text: 'Net Profit (High-Low)' },
-	{ id: nanoid(), text: 'Net Profit (Low-High)' },
+	{ id: nanoid(), text: 'Sales Descending' },
+	{ id: nanoid(), text: 'Sales Ascending' },
+	{ id: nanoid(), text: 'Expenses Descending' },
+	{ id: nanoid(), text: 'Expenses Ascending' },
+	{ id: nanoid(), text: 'Net Profit Descending' },
+	{ id: nanoid(), text: 'Net Profit Ascending' },
 ];
 import { AddBgIcon, ExportIcon, PrintIcon } from 'src/app/utils/icons';
+import { useNavigate } from 'react-router-dom';
 
 const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }) => {
-
+	const navigate = useNavigate();
 	const handleSelectOption = (option) => {
 		onSelectOption(option);
 	};
@@ -34,8 +35,6 @@ const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }
 	const handlePrint = useReactToPrint({
 		content: () => campaignTableRef.current,
 		documentTitle: 'Campaigns Data',
-		onBeforePrint: () => console.log('before printing...'),
-		onAfterPrint: () => console.log('after printing...'),
 		removeAfterPrint: true,
 	});
 
@@ -44,8 +43,10 @@ const CampaignBtns = ({ onSelectOption, data, campaignTableRef, selectedOption }
 			<div>
 				<Button
 					LeftIcon={AddBgIcon}
-					text='Add campaign'
-					// onClick={}
+					text='Add Campaign'
+					onClick={() => {
+						navigate('addCampaign');
+					}}
 				/>
 			</div>
 			<div className='flex gap-3'>

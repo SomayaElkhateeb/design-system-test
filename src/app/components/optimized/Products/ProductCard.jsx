@@ -17,6 +17,10 @@ import {
 	CameraIcon,
 	StarActiveIcon,
 } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
+import CustomTableBodyCheckbox from '../../page/Customers/CustomTableBodyChckbox';
+import useSelectBox from '../Menu/useSelectBox';
+import ThreeDotsButton from '../../page/Customers/ThreedotsButton';
 
 /**
  * @param {{
@@ -27,7 +31,10 @@ import {
  *   options: number;
  *   sku: string;
  *   quantity: number;
- *   price: string;
+ *   price: number;
+ *   array:string[];
+ *   setArray:(e:string[])=>void;
+ *   settingMenus:import('../../page/Customers/ActionsComp').menuType[]
  * }} props
  *
  * @example
@@ -46,28 +53,36 @@ import {
  * ```
  */
 export default function ProductCard(props) {
+	//  hooks
+	const { t } = useTranslation();
 	const [isFavorite, setIsFavorite] = useState(false);
-	const [isSelected, setIsSelected] = useState(false);
 
 	function toggleFavorite() {
 		setIsFavorite(!isFavorite);
 	}
-	function isSelectedHandler() {
-		setIsSelected(!isSelected);
-	}
+
+	//  custom hook for select setting item
+
+	const { selectedOption, handleSelect } = useSelectBox();
+
 	const info = {
 		sku: props.sku,
-		quantity: props.quantity,
+		quantity: props.quantity > 0 ? props.quantity : t('Out of stock'),
 		price: props.price,
 	};
 
 	return (
-		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl grid grid-cols-1 divide-y p-0 w-[271px] group '>
+		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl  divide-y p-0  group '>
 			<div className='relative w-full h-[260px]'>
-				<img src={getImageUrl(props.imageUrl)} alt={props.name} className='object-cover w-full h-full' />
+				<img
+					src={getImageUrl('images/AllProductsImg/fakeImg.png')}
+					alt={props.name}
+					className='object-cover w-full h-full'
+				/>
 				<div className='absolute flex flex-col items-center justify-between top-3 bottom-2 left-3'>
 					<div className='flex flex-col items-center gap-4 '>
-						<CheckBox handleOnChange={isSelectedHandler} checked={isSelected} />
+						{/* <CheckBox handleOnChange={isSelectedHandler} checked={isSelected} /> */}
+						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
 						<button onClick={toggleFavorite}>
 							{isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
 						</button>
@@ -82,7 +97,7 @@ export default function ProductCard(props) {
 
 				{/* Actions Btns */}
 				<div className='absolute transition-all bg-white opacity-0 top-2 right-2 group-hover:opacity-100'>
-					<Actions />
+					<Actions settingMenus={props.settingMenus} selectedOption={selectedOption} handleSelect={handleSelect} />
 				</div>
 			</div>
 			<div className='flex items-end justify-between p-3'>
@@ -105,21 +120,33 @@ export default function ProductCard(props) {
 	);
 }
 
-function Actions() {
+/**
+ * @param {{
+*   settingMenus:import('../../page/Customers/ActionsComp').menuType[]
+* selectedOption:string
+* handleSelect:()=>void
+* }} props
+*
+* @example
+*
+* ```jsx
+
+* ```
+*/
+function Actions(props) {
 	return (
-		<div className='flex flex-col gap-3 px-2 py-1 card'>
-			<button>
-				<ViewIcon className='fill-subtitle' />
-			</button>
-			<button>
-				<EditIcon className='fill-subtitle' />
-			</button>
-			<button>
-				<CopyIcon className='fill-subtitle' />
-			</button>
-			<button>
-				<MoreIcon className='fill-subtitle' />
-			</button>
+		<div className='flex flex-col gap-3 px-2 py-1 card items-center '>
+			<ViewIcon className='fill-subtitle' />
+
+			<EditIcon className='fill-subtitle' />
+
+			<CopyIcon className='fill-subtitle' />
+
+			<ThreeDotsButton
+				sortMenus={props.settingMenus}
+				selectedOption={props.selectedOption}
+				handelSelect={props.handleSelect}
+			/>
 		</div>
 	);
 }

@@ -1,11 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getDiscounts, postDiscounts, deleteDiscount } from './discountsAsyncThunks';
+import { DiscountState } from './discountSlice';
 
-interface DiscountState {
-	discount: any[];
-	isLoading: boolean;
-	error: any;
-}
+
 export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountState>) => {
 	builder
 		// get discounts
@@ -15,7 +12,7 @@ export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountStat
 		})
 		.addCase(getDiscounts.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.discount = action.payload;
+			state.discounts = action.payload;
 		})
 		.addCase(getDiscounts.rejected, (state, action) => {
 			state.isLoading = false;
@@ -28,10 +25,10 @@ export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountStat
 		})
 		.addCase(postDiscounts.fulfilled, (state, action) => {
 			state.isLoading = false;
-			if (Array.isArray(state.discount)) {
-				state.discount.push(action.payload);
+			if (Array.isArray(state.discounts)) {
+				state.discounts.push(action.payload);
 			} else {
-				state.discount = [action.payload];
+				state.discounts = [action.payload];
 			}
 		})
 		.addCase(postDiscounts.rejected, (state, action) => {
@@ -46,7 +43,7 @@ export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountStat
 		})
 		.addCase(deleteDiscount.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.discount = state.discount.filter((el) => el.id !== action.payload.id);
+			state.discounts = state.discounts.filter((el) => el.id !== action.payload.id);
 		})
 		.addCase(deleteDiscount.rejected, (state, action) => {
 			state.isLoading = false;

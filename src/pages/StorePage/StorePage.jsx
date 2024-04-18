@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const StorePage = () => {
-  return <div>StorePage</div>;
+	return <div>StorePage</div>;
 };
 
 export default StorePage;
+
+

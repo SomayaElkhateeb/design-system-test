@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { MoreIcon } from 'src/app/utils/icons';
 import { FaChevronRight } from 'react-icons/fa';
-import { AiOutlinePercentage } from 'react-icons/ai';
 import { Button } from 'src/app/components/optimized';
 import SelectItems from 'src/app/components/optimized/SelectItems/SelectItems';
-
-import { selectProducts } from '../../../comp/data';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectProducts } from 'src/app/store/slices/marketing/products/productsAsyncThunks';
+import CategoryView from 'src/pages/MarketingPage/CategoryView';
+import { useTranslation } from 'react-i18next';
 interface SpecificProductsProps {}
 
 const SpecificProducts: React.FC<SpecificProductsProps> = (props) => {
+	const { t } = useTranslation();
 	const [showSelect, setShowSelect] = useState(false);
+	const [selectedItem, setSelectedItem] = useState([]);
 	const dispatch = useDispatch();
-	const { isLoading, products } = useSelector((state) => state.products);
+	const { products } = useSelector((state) => state.products);
 
 	useEffect(() => {
 		dispatch(getSelectProducts());
 	}, [dispatch]);
 
-	console.log('products', products);
+	const handleAddButtonClick = (selectedItem) => {
+		setSelectedItem(selectedItem);
+		setShowSelect(false);
+	};
 	return (
 		<div className='mt-[18px] flex flex-col gap-[18px]'>
 			<div>
 				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setShowSelect(true)}>
-					select products
+					{t('select products')}
 				</Button>
 
-				{showSelect && <SelectItems title='products' onClose={() => setShowSelect(false)} select={products} />}
+				{showSelect && (
+					<SelectItems
+						title={t('products')}
+						onClose={() => setShowSelect(false)}
+						select={products}
+						addBtn={handleAddButtonClick}
+					/>
+				)}
+
+				{selectedItem?.map((item) => {
+					const { title, id, img, subtitle } = item;
+					return <CategoryView key={id} img={img} title={title} subtitle={subtitle} />;
+				})}
 			</div>
 		</div>
 	);

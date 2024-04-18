@@ -13,7 +13,7 @@ const useCampaigns = (campaignData) => {
 	const handleArrangeChange = (option) => {
 		setArrange(option);
 	};
-
+	
 	// Print ref to handle table print.
 	const campaignTableRef = useRef();
 
@@ -34,14 +34,7 @@ const useCampaigns = (campaignData) => {
 			return <div>Error: Campaign activity not found</div>;
 		}
 	}
-	// const getCampaignData = () => {
-	// 	if (campaignActivity === null) {
-	// 		return campaignData.campaigns;
-	// 	} else {
-	// 		const matchedCampaign = campaignData.campaigns.find((campaign) => campaign.name === campaignActivity);
-	// 		return matchedCampaign ? matchedCampaign.activities || [] : null;
-	// 	}
-	// };
+
 	return {
 		title,
 		tableData,
