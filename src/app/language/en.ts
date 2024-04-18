@@ -189,7 +189,7 @@ export const english = {
 
 	Print: 'Print',
 	'Orders List': 'Orders List',
-	"Add Category":"Add Category",
+	'Add Category': 'Add Category',
 	'Order created at': 'Order created at',
 	Items: 'Items',
 	Variations: 'Variations',
@@ -325,4 +325,16 @@ export const english = {
 	'out of': 'out of',
 	'Update Status': 'Update Status',
 	'Print Invoice': 'Print Invoice',
+	Pixel: 'Pixel',
+	'Pixle ID': 'Pixle ID',
+	'You can copy it from': 'You can copy it from',
+	'ads manager': 'ads manager',
+	Cancel: 'Cancel',
+	//
+	'Help center': 'Help center',
+	'Discover Now': 'Discover Now',
+	Delete: 'Delete',
+	'Welcome to Dookan': 'Welcome to Dookan',
+	'No Thanks': 'No Thanks',
+	Ok: 'Ok',
 };

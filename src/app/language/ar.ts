@@ -203,10 +203,12 @@ export const arabic = {
 	Options: 'اختيارات',
 	'Add Brand': 'اضافه ماركه',
 	'Name & Description': 'الاسم & الوصف',
+
 	"Ends At":"ينتهي في",
 	"Sales":"المبيعات",
 	"Used":"المستخدم",
 	"Add Category":"اضافه فئه",
+
 	'Products No.': 'عدد المنتجات',
 	Availability: 'الاتاحه',
 	'All Products': 'كل المنتجات',
@@ -312,4 +314,15 @@ export const arabic = {
 	'out of': 'من',
 	'Update Status': 'تحديث الحالة',
 	'Print Invoice': 'طباعة فاتورة ',
+	Pixel: 'بكسل',
+	'Pixle ID': 'معرف البكسل',
+	'You can copy it from': 'يمكنك نسخه من',
+	'ads manager': 'مدير الإعلانات',
+	Cancel: 'ألغاء',
+	'Help center': 'مركز المساعدة',
+	'Discover Now': 'اكتشف الآن',
+	Delete: 'مسح',
+	'Welcome to Dookan': 'مرحبًا بكم في دوكان',
+	'No Thanks': 'ًلا شكرا',
+	Ok: 'حسنا',
 } satisfies typeof english;
