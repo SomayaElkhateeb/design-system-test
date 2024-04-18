@@ -74,10 +74,6 @@ const Products = () => {
 
 	return (
 		<div className='grid gap-5 p-5'>
-<<<<<<< HEAD
-			<CompareBar selectedComparisonOption={selectedComparisonOption} handleComparisonChange={handleComparisonChange} />
-			<ColumnChart />
-=======
 			<div className='flex items-center gap-2 mb-4'>
 				<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
 				<div className='flex gap-2'>
@@ -89,7 +85,6 @@ const Products = () => {
 			{/* <ProductActions/> */}
 
 			<ProductsTable data={data} />
->>>>>>> master
 		</div>
 	);
 };
