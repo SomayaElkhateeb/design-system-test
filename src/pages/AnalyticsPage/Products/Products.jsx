@@ -62,15 +62,18 @@ const data = [
 		img: getImageUrl('images/product.png'),
 	},
 ];
-const Products = () => {
-	const [selectedOption, setSelectedOption] = useState(null);
 
 const Products = () => {
+	const [selectedOption, setSelectedOption] = useState(null);
 	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
 
 	const handleComparisonChange = (option) => {
 		setSelectedComparisonOption(option);
 	};
+
+	function handleSelect(option) {
+		// setSelectedOption(option);
+	}
 
 	return (
 		<div className='grid gap-5 p-5'>
