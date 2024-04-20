@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { InputRow } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import DiscountTypesOptions from './comp/DiscountTypesOptions';
 import ApplyToOptions from './comp/ApplyToOptions';
 import { useTranslation } from 'react-i18next';
+import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
 
 const BasicInfo: React.FC = ({ discountName, fixedAmount, setState }) => {
 	const { t } = useTranslation();

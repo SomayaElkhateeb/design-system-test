@@ -359,5 +359,5 @@ export const arabic = {
 	Visitors: 'الزوار',
 	Off: 'توقف',
 	On: 'تشغيل',
-
+	Groups: 'مجموعات',
 } satisfies typeof english;

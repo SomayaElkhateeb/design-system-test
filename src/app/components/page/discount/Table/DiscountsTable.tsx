@@ -11,7 +11,18 @@ import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { FaRegEdit } from 'react-icons/fa';
-export default function DiscountsTable({ discounts, isLoading }: { discounts: DiscountInterface[]; isLoading: boolean }) {
+
+export default function DiscountsTable({
+	discounts,
+	isLoading,
+	deleteDiscount,
+	dispatch,
+}: {
+	discounts: DiscountInterface[];
+	isLoading: boolean;
+	deleteDiscount: any;
+	dispatch: any;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
@@ -35,7 +46,11 @@ export default function DiscountsTable({ discounts, isLoading }: { discounts: Di
 	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
 	const settingMenus = [
-		{ id: nanoid(), text: 'Delete permanently', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
+		{
+			id: nanoid(),
+			text: 'Delete permanently',
+			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+		},
 	];
 	return (
 		<BaseTable
@@ -70,6 +85,9 @@ export default function DiscountsTable({ discounts, isLoading }: { discounts: Di
 								fontWeight: 400,
 							}}
 						>
+							{/* {`${e.date.$Y}-${(e.date.$M + 1).toString().padStart(2, '0')}-${
+								e.date.$D ? e.date.$D.toString().padStart(2, '0') : ''
+							}`} */}
 							{e.date}
 						</TableCell>,
 
@@ -100,6 +118,9 @@ export default function DiscountsTable({ discounts, isLoading }: { discounts: Di
 									<IoIosArrowForward className='text-subtitle' onClick={() => navigate(`/brands/${e?.id}`)} />
 								)}
 							</div>
+						</TableCell>,
+						<TableCell>
+							<button onClick={() => dispatch(deleteDiscount(e?.id))}>delete</button>
 						</TableCell>,
 					],
 				};

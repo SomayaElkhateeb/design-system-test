@@ -13,14 +13,3 @@ export const getSelectCategories = createAsyncThunk('categories/getSelectCategor
 		throw rejectWithValue(error.message);
 	}
 });
-
-// export const deleteCategory = createAsyncThunk<any[], any>('categories/deleteCategory', async (id, thunkAPI) => {
-// 	const { rejectWithValue } = thunkAPI;
-// 	try {
-// 		await axios.delete<any[]>(`${URL}/select_categories/${id}`);
-// 		console.log('delete categories', id);
-// 		return id;
-// 	} catch (error) {
-// 		throw rejectWithValue(error.message);
-// 	}
-// });

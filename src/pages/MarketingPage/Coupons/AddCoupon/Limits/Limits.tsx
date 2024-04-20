@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CheckBox, InputRow } from 'src/app/components/optimized';
-
-const Limits: React.FC = ({ setState, used }) => {
+import { CheckBox } from 'src/app/components/optimized';
+import InputRow from 'src/app/components/optimized/InputsFields/InputRow';
+const Limits: React.FC = () => {
 	const { t } = useTranslation();
 	const [isChecked, setIsChecked] = useState<boolean>(false);
 
@@ -10,14 +10,17 @@ const Limits: React.FC = ({ setState, used }) => {
 		setIsChecked(newValue);
 	};
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newUsed = Math.max(parseInt(e.target.value), 0);
-		setState((prevState) => ({
-			...prevState,
-			used: newUsed,
-		}));
-	};
+	const [inputState, setInputState] = useState({
+		selectedValue: '',
+		value: '',
+		error: '',
+		success: false,
+	});
 
+	function handleInputChange(value) {
+		setInputState({ ...inputState, value });
+		console.log('input value', value);
+	}
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Limits')}</h3>
@@ -28,7 +31,15 @@ const Limits: React.FC = ({ setState, used }) => {
 
 			{isChecked && (
 				<div className='w-[24rem]'>
-					<InputRow label={t('Usage number')} type='number' value={used} onChange={handleChange} />
+					<InputRow
+						label={t('Usage number')}
+						type='number'
+						min={0}
+						handleOnChange={handleInputChange}
+						value={inputState.value}
+						error={inputState.error}
+						success={inputState.success}
+					/>
 				</div>
 			)}
 

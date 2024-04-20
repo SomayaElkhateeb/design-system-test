@@ -18,7 +18,6 @@ export const postDiscounts = createAsyncThunk<any[], any>('discount/postDiscount
 	const { rejectWithValue } = thunkAPI;
 	try {
 		const { data } = await axios.post<any[]>(`${URL}/discount`, requestData);
-		console.log('post discount', data);
 		return data;
 	} catch (error) {
 		throw rejectWithValue(error.message);
@@ -26,12 +25,11 @@ export const postDiscounts = createAsyncThunk<any[], any>('discount/postDiscount
 });
 
 // delete discount
-export const deleteDiscount = createAsyncThunk<any[], any>('discount/deleteDiscount', async (item, thunkAPI) => {
+export const deleteDiscount = createAsyncThunk<any[], any>('discount/deleteDiscount', async (id, thunkAPI) => {
 	const { rejectWithValue } = thunkAPI;
 	try {
-		await axios.delete<any[]>(`${URL}/discount${item.id}`);
-		console.log('delete discount', item.id);
-		return item;
+		await axios.delete<any[]>(`${URL}/discount/${id}`);
+		return id;
 	} catch (error) {
 		throw rejectWithValue(error.message);
 	}

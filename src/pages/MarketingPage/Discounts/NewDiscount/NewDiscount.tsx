@@ -1,58 +1,42 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import BasicInfo from './BasicInfo/BasicInfo';
-import CustomerSegment from './CustomerSegment/CustomerSegment';
-import MinimumRequirements from './MinimumRequirements/MinimumRequirements';
-import ActiveDates from './ActiveDates/ActiveDates';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
 
-import { useDispatch } from 'react-redux';
+import BasicInfo from './BasicInfo/BasicInfo';
+import ActiveDates from '../../../../app/components/page/discount/Comp/ActiveDates';
+import MinimumRequirements from 'src/app/components/page/discount/Comp/MinimumRequirements';
+import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegment/CustomerSegment';
+
 import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
-import { z } from 'zod';
-import { useTranslation } from 'react-i18next';
 
-const basicInfoSchema = z.object({
-	discountName: z.string().min(4, 'Discount name must be at least 3 characters long'),
-	fixedAmount: z.number().min(0, 'Fixed amount must be a positive number'),
-	minimumPrice: z.number().min(0, 'Minimum price must be a positive number'),
-	endDate: z.date().nullable(),
-});
-
-const initialValues = {
-	discountName: '',
-	fixedAmount: '',
-	minimumPrice: '',
-	endDate: null,
-};
 const NewDiscount: React.FC = () => {
-	const { t } = useTranslation();
-	const [state, setState] = useState(initialValues);
-	const [validationErrors, setValidationErrors] = useState({});
-	let { discountName, fixedAmount, minimumPrice, endDate } = state;
-
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const { t } = useTranslation();
+	const [state, setState] = useState();
 
 	const handleSaveChanges = () => {
-		try {
-			basicInfoSchema.parse(state);
-			const data = {
-				name: discountName,
-				value: fixedAmount,
-				date: endDate,
-				sales: minimumPrice,
-			};
-			dispatch(postDiscounts(data));
-			setState(initialValues);
-			navigate('/marketing/discounts');
-		} catch (error) {
-			console.error('Validation error:', error.errors);
-			setValidationErrors({
-				discountName: error.errors.find((err) => err.path[0] === 'discountName')?.message,
-				fixedAmount: error.errors.find((err) => err.path[0] === 'fixedAmount')?.message,
-			});
-		}
+		// try {
+		// 	basicInfoSchema.parse(state);
+
+		// const data = {
+		// name: discountName,
+		// value: fixedAmount,
+		// date: endDate,
+		// sales: minimumPrice,
+		// };
+		// dispatch(postDiscounts(data));
+		// setState(initialValues);
+		navigate('/marketing/discounts');
+		// } catch (error) {
+		// 	console.error('Validation error:', error.errors);
+		// 	setValidationErrors({
+		// 		discountName: error.errors.find((err) => err.path[0] === 'discountName')?.message,
+		// 		fixedAmount: error.errors.find((err) => err.path[0] === 'fixedAmount')?.message,
+		// 	});
+		// }
 	};
 
 	return (
@@ -66,14 +50,9 @@ const NewDiscount: React.FC = () => {
 			/>
 			<div className='p-4 flex justify-between gap-7'>
 				<div className='w-full flex flex-col gap-[18px]'>
-					<BasicInfo
-						discountName={state.discountName}
-						fixedAmount={state.fixedAmount}
-						setState={setState}
-						validationErrors={validationErrors}
-					/>
+					<BasicInfo />
 					<CustomerSegment />
-					<MinimumRequirements setState={setState} minimumPrice={minimumPrice} />
+					<MinimumRequirements />
 					<ActiveDates setState={setState} />
 				</div>
 				<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>

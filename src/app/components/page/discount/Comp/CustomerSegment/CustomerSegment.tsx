@@ -9,7 +9,7 @@ const CustomerSegment: React.FC = () => {
 	const customerSegmentOptions = [t('All customers'), t('Specific customer groups'), t('Specific customers')];
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
-			<h3 className='text-title font-semibold mb-2'>{t('Customer segment')}</h3>
+			<h3 className='text-title font-semibold'>{t('Customer segment')}</h3>
 			<section>
 				<SingleChoiceChips
 					options={customerSegmentOptions}
