@@ -24,3 +24,14 @@ export const postCoupons = createAsyncThunk<any, any>('coupon/postCoupons', asyn
 		throw rejectWithValue(error.message);
 	}
 });
+
+// delete Coupons
+export const deleteCoupons = createAsyncThunk<any[], any>('coupons/deleteCoupons', async (id, thunkAPI) => {
+	const { rejectWithValue } = thunkAPI;
+	try {
+		await axios.delete<any[]>(`${URL}/coupons/${id}`);
+		return id;
+	} catch (error) {
+		throw rejectWithValue(error.message);
+	}
+});

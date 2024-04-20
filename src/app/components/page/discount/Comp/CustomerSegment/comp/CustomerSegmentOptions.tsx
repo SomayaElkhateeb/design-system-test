@@ -1,5 +1,5 @@
-import SpecificCustomers from 'src/app/components/page/discount/Selectors/SpecificCustomers';
-import SpecificGroups from 'src/app/components/page/discount/Selectors/SpecificGroups';
+import SpecificCustomers from '../../../Selectors/SpecificCustomers';
+import SpecificGroups from '../../../Selectors/SpecificGroups';
 
 interface CustomerSegmentOptionsProps {
 	segmentOptions: string;

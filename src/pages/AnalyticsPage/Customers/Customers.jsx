@@ -1,8 +1,7 @@
-
-import React, { useState } from 'react';
-import { ColumnChart, StackedColumnChart } from 'src/app/components/optimized';
+import { useState } from 'react';
+import { StackedColumnChart } from 'src/app/components/optimized';
 import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
-import CustomersActions from './comp/CustomersActions';
+// import CustomersActions from './comp/CustomersActions';
 import { Table } from '@mui/material';
 import data from '../comp/data.json';
 import { nanoid } from 'nanoid';
@@ -99,9 +98,8 @@ const Customers = () => {
 				]}
 				colors={['#EC5151', '#FFCC73']}
 			/>
-			<CustomersActions sortMenus={sortMenus} selectedOption={arrange} onSelectOption={handleArrangeChange} />
+			{/* <CustomersActions sortMenus={sortMenus} selectedOption={arrange} onSelectOption={handleArrangeChange} /> */}
 			<Table data={tableData} headers={headers} />
-
 		</div>
 	);
 };

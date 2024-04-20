@@ -354,5 +354,5 @@ export const english = {
 	Slug: 'Slug',
 	Off: 'Off',
 	On: 'On',
-
+	Groups: 'Groups',
 };

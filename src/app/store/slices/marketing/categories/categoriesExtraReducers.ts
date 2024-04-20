@@ -15,16 +15,4 @@ export const getCategoriesReducer = (builder) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});
-	// .addCase(deleteCategory.pending, (state) => {
-	// 	state.isLoading = true;
-	// 	state.error = null;
-	// })
-	// .addCase(deleteCategory.fulfilled, (state, action) => {
-	// 	state.isLoading = false;
-	// 	state.categories = state.categories.filter((el) => el.id !== action.payload.id);
-	// })
-	// .addCase(deleteCategory.rejected, (state, action) => {
-	// 	state.isLoading = false;
-	// 	state.error = action.payload;
-	// });
 };
