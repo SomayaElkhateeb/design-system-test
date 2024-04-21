@@ -3,7 +3,9 @@ import { ZodRawShape, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UseFormProps, useForm as useRHForm } from 'react-hook-form';
 
-type InferredZodSchema<T extends ZodRawShape> = T extends ZodRawShape ? z.infer<z.ZodObject<T>> : never;
+export type InferredZodSchema<T extends ZodRawShape> = T extends ZodRawShape
+	? z.infer<z.ZodObject<T>>
+	: never;
 
 export function useForm<TZodRawShape extends ZodRawShape>(params: {
 	schema: TZodRawShape;
