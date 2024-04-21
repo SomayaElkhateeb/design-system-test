@@ -1,29 +1,31 @@
-import { useTranslation } from "react-i18next";
-import PopoverComponenet from "./Popover";
-import { Button, Menu } from "../../optimized";
-;
+import { useTranslation } from 'react-i18next';
+import PopoverComponenet from './Popover';
+import { Button, Menu } from '../../optimized';
 import { FilterIcon } from 'src/app/utils/icons';
 //  global componenet used in multi components like ActionsComp
-export default function FilterButton({ sortMenus, selectedOption, handelSelect }: { sortMenus: { id: string, text: string }[], selectedOption: string, handelSelect: () => void }) {
-    //  hooks
-    const { t } = useTranslation()
+export default function FilterButton({
+	sortMenus,
+	selectedOption,
+	handelSelect,
+}: {
+	sortMenus: { id: string; text: string }[];
+	selectedOption: string;
+	handelSelect: (e:string) => void;
+}) {
+	//  hooks
+	const { t } = useTranslation();
 
-    return (
-        <PopoverComponenet
-            button={
-                <>
-                    <Button variant='secondary' LeftIcon={FilterIcon}>
-                        {t("filter")}
-                    </Button>
-                </>
-            }
-        >
-            <Menu
-                options={sortMenus}
-                selectedOption={selectedOption}
-                onSelect={handelSelect}
-
-            />
-        </PopoverComponenet>
-    )
+	return (
+		<PopoverComponenet
+			button={
+				<>
+					<Button variant='secondary' LeftIcon={FilterIcon}>
+						{t('filter')}
+					</Button>
+				</>
+			}
+		>
+			<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handelSelect} />
+		</PopoverComponenet>
+	);
 }

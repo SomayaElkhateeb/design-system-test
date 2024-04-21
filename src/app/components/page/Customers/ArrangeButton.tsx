@@ -11,7 +11,7 @@ export default function ArrangeButton({
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
-	handelSelect: () => void;
+	handelSelect: (e:string) => void;
 }) {
 	//  hooks
 	const { t } = useTranslation();

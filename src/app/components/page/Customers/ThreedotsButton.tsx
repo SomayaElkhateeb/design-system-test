@@ -10,7 +10,7 @@ export default function ThreeDotsButton({
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
-	handelSelect: () => void;
+	handelSelect: (e: string) => void;
 }) {
 	return (
 		<PopoverComponent button={<MoreIcon className='fill-subtitle' />}>

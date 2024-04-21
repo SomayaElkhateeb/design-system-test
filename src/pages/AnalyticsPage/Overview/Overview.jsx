@@ -1,10 +1,11 @@
 import SlideCardTabs from 'src/app/components/page/Cards/SlideCardTabs';
 import { ChannelChart, LineChart } from 'src/app/components/optimized';
-import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
+
 import SlideCard from 'src/app/components/page/Cards/SlideCard';
 import AnalyticsComparison from './comp/AnalyticsComparison';
 import Orders from 'src/app/components/page/Cards/Orders';
 import data from '../comp/data.json';
+import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
 // const ParentComponent = () => {
 const slides = [
 	{ content: <div> 123 </div> },
