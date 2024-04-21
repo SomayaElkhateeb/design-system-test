@@ -26,7 +26,7 @@ const Coupons: React.FC = () => {
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 
 				{/*  table section */}
-				<CouponsTable coupons={coupons} isLoading={isLoading} deleteCoupons={deleteCoupons} dispatch={dispatch} />
+				<CouponsTable coupons={coupons} isLoading={isLoading}  />
 			</div>
 		</div>
 	);
