@@ -278,7 +278,12 @@ export const english = {
 	"Compared to":"Compared to",
 	"last Year":"last Year",
 	"Add Campaign":"Add Campaign",
-	
+	"Add Activity":"Add Activity",
+	"Campaign":"Campaign",
+	"Expenses":"Expenses",
+	"Net profit":"Net profit",
+	"Sessions":"Sessions",
+	"Activity":"Activity",
 	"Export":"Export",
 	'There is no discount available!': 'There is no discount available!',
 	'Quick actions': 'Quick actions',

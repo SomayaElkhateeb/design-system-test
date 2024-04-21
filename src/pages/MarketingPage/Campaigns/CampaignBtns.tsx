@@ -3,7 +3,6 @@ import { Button } from 'src/app/components/optimized';
 import * as XLSX from 'xlsx/xlsx.mjs';
 import { useReactToPrint } from 'react-to-print';
 
-
 import { AddBgIcon } from 'src/app/utils/icons';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -14,9 +13,10 @@ interface CampaignBtnsInterface {
 	selectedOption: string;
 	onSelectOption: (e: string) => void;
 	data: any;
-	campaignTableRef: RefObject<HTMLElement|undefined>;
+	campaignTableRef: RefObject<HTMLElement | undefined>;
+	activity?:boolean
 }
-const CampaignBtns = ({ data, campaignTableRef, selectedOption, onSelectOption }: CampaignBtnsInterface) => {
+const CampaignBtns = ({ data, campaignTableRef, selectedOption, onSelectOption,activity }: CampaignBtnsInterface) => {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -56,12 +56,12 @@ const CampaignBtns = ({ data, campaignTableRef, selectedOption, onSelectOption }
 			<div className='  flex justify-between items-center '>
 				<Button
 					onClick={() => {
-						navigate('addCampaign');
+						navigate('/marketing/campaigns/addCampaign');
 					}}
 					variant='primary'
 					LeftIcon={AddBgIcon}
 				>
-					{t('Add Campaign')}
+					{!activity?t('Add Campaign'):t('Add Activity')}
 				</Button>
 
 				<ActionsButtonsCampains

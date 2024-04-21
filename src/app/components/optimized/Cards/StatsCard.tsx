@@ -1,7 +1,7 @@
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
 
-interface StatsCardInterface{
+export interface StatsCardInterface{
 	percentage:string
 	label:string
 	value:string

@@ -7,20 +7,21 @@ export interface CampaignActivityInterface {
     sales: string,
     expenses: string,
     netProfit: string,
-    sessions: 28,
+    sessions: number,
+    id:string,
 }
 
 export interface CampaignDataInterface {
-
+    id: string
     name: string,
     status: string,
     sales: string,
     expenses: string,
     netProfit: string,
-    activities:CampaignActivityInterface[]
+    activities: CampaignActivityInterface[]
 }
 export interface CampaignTableInterface {
-    
+
     sortBy: string
     ref: RefObject<HTMLElement | undefined>
 }
