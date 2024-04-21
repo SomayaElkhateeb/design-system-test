@@ -1,9 +1,10 @@
 import data from './data.json';
-import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton.tsx';
+
 
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
 import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
+import { ArrangeButton } from 'src/app/components/optimized';
 
 const CampaignStatus = () => {
 	//  hooks

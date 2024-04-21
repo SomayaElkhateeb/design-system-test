@@ -34,7 +34,7 @@ import ThreeDotsButton from '../../page/Customers/ThreedotsButton';
  *   price: number;
  *   array:string[];
  *   setArray:(e:string[])=>void;
- *   settingMenus:import('../../page/Customers/ActionsComp').menuType[]
+ *   settingMenus:import('../Buttons/ActionsComp').menuType[]
  * }} props
  *
  * @example
@@ -84,7 +84,11 @@ export default function ProductCard(props) {
 						{/* <CheckBox handleOnChange={isSelectedHandler} checked={isSelected} /> */}
 						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
 						<button onClick={toggleFavorite}>
-							{isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
+							{isFavorite ? (
+								<StarActiveIcon className='fill-neutral-1' />
+							) : (
+								<StarIcon className='fill-hint' />
+							)}
 						</button>
 					</div>
 
@@ -97,7 +101,11 @@ export default function ProductCard(props) {
 
 				{/* Actions Btns */}
 				<div className='absolute transition-all bg-white opacity-0 top-2 right-2 group-hover:opacity-100'>
-					<Actions settingMenus={props.settingMenus} selectedOption={selectedOption} handleSelect={handleSelect} />
+					<Actions
+						settingMenus={props.settingMenus}
+						selectedOption={selectedOption}
+						handleSelect={handleSelect}
+					/>
 				</div>
 			</div>
 			<div className='flex items-end justify-between p-3'>
@@ -122,7 +130,7 @@ export default function ProductCard(props) {
 
 /**
  * @param {{
-*   settingMenus:import('../../page/Customers/ActionsComp').menuType[]
+*   settingMenus:import('../Buttons/ActionsComp').menuType[]
 * selectedOption:string
 * handleSelect:()=>void
 * }} props

@@ -1,18 +1,10 @@
-import { useState } from 'react';
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage
-} from 'src/app/components/ui/avatar';
+import ReviewsPageLayout from './_comp/ReviewsPageLayout';
 
 const ReviewsPage = () => {
 	return (
-		<div>
-			<Avatar>
-				<AvatarImage src='https://github.com/shadcn.png' />
-				<AvatarFallback>CN</AvatarFallback>
-			</Avatar>
-		</div>
+		<>
+			<ReviewsPageLayout />
+		</>
 	);
 };
 

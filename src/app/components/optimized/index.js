@@ -6,18 +6,23 @@ export { default as LayoutCard } from './Cards/LayoutCard';
 export { default as ToggleSwitch } from './UiKits/ToggleSwitch';
 export { default as HeaderSearchBar } from './UiKits/HeaderSearchBar';
 export { default as LanguageSelect } from './UiKits/LanguageSelect';
-export { default as ButtonX } from './UiKits/ButtonX';
+// export { default as ButtonX } from '../shared/ButtonX';
 export { default as CheckboxWithImage } from './UiKits/CheckboxWithImage';
+export { default as InitialsAvatar } from './UiKits/InitialsAvatar';
+export { default as Rating } from './UiKits/Rating';
+export { default as RightSidebar } from './UiKits/RightSidebar';
 export { default as AppsCard } from './Cards/AppsCard';
 export { default as HorizontalTabsLink } from './Tabs/HorizontalTabsLink';
+export { default as ArrangeButton } from './Buttons/ArrangeButton';
+export { default as CustomTable } from './CustomTable/CustomTable';
 // export { default as TourCard } from "./Cards/TourCard";
 
 //? Somaya
+export { default as Button } from './Buttons/Button';
 export { default as Avatars } from './UiKits/Avatars';
 export { default as HeaderSettings } from './UiKits/HeaderSettings';
 export { default as PrevNextBtn } from './UiKits/PrevNextBtn';
 export { default as GroupIcons } from './UiKits/GroupIcons';
-export { default as Button } from './UiKits/Button';
 export { default as CheckBox } from './UiKits/Checkbox';
 export { default as ClientBox } from './Categories/ClientBox';
 export { default as ChannelChart } from './Charts/ChannelChart';

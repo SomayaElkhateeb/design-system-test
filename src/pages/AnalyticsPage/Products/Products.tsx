@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { ColumnChart } from 'src/app/components/optimized';
+import {  ArrangeButton, ColumnChart } from 'src/app/components/optimized';
 
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
-import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
+
 import ProductsTable from 'src/app/components/page/Analytics/ProductsTable';
 import { getImageUrl } from 'src/app/utils';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';

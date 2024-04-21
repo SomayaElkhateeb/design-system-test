@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
-import ActionsComp from './ActionsComp';
+import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import { Button } from '../../optimized';
 import { IoIosAddCircle } from 'react-icons/io';
 import CustomersGroupTable from './CustomersGroupTable';
@@ -43,7 +43,11 @@ export default function CustomersGroups() {
 				</Button>
 
 				{/*  arrange,... */}
-				<ActionsComp sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+				<ActionsComp
+					sortMenus={sortMenus}
+					selectedOption={selectedOption}
+					handelSelect={handleSelect}
+				/>
 			</div>
 			<hr />
 

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../optimized';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
-import ActionsComp from './ActionsComp';
+import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';

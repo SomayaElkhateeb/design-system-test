@@ -20,7 +20,7 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { StarIcon, StarActiveIcon, CameraIcon, CopyIcon } from 'src/app/utils/icons';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from '../../Customers/ThreedotsButton';
-import { menuType } from '../../Customers/ActionsComp';
+import { menuType } from '../../../optimized/Buttons/ActionsComp';
 
 export default function AllProductsTable({
 	products,
@@ -51,7 +51,13 @@ export default function AllProductsTable({
 
 	const productsHeaders = [
 		{
-			icon: <CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={products?.map((e) => e.id)} />,
+			icon: (
+				<CustomTableHeaderCheckbox
+					array={array}
+					setArray={setArray}
+					mainArray={products?.map((e) => e.id)}
+				/>
+			),
 			title: t('Product & Category'),
 		},
 		{ title: t('SKU') },
@@ -61,7 +67,8 @@ export default function AllProductsTable({
 	];
 
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleEn =
+		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
 			language={language}
@@ -81,7 +88,11 @@ export default function AllProductsTable({
 								<div className='flex flex-col gap-[.4rem] items-center'>
 									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 									<button onClick={toggleFavorite}>
-										{isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
+										{isFavorite ? (
+											<StarActiveIcon className='fill-neutral-1' />
+										) : (
+											<StarIcon className='fill-hint' />
+										)}
 									</button>
 								</div>
 								<div className='relative'>
@@ -128,15 +139,28 @@ export default function AllProductsTable({
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<IoEyeOutline className='text-subtitle' />
-								<FaRegEdit className='text-subtitle' onClick={() => navigate(`/addProduct?id=${e?.id}`)} />
+								<FaRegEdit
+									className='text-subtitle'
+									onClick={() => navigate(`/addProduct?id=${e?.id}`)}
+								/>
 
 								<CopyIcon className='fill-subtitle' />
 
-								<ThreeDotsButton sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+								<ThreeDotsButton
+									sortMenus={settingMenus}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
 								{language === 'ar' ? (
-									<IoIosArrowBack className='text-subtitle' onClick={() => navigate(`/products/${e?.id}`)} />
+									<IoIosArrowBack
+										className='text-subtitle'
+										onClick={() => navigate(`/products/${e?.id}`)}
+									/>
 								) : (
-									<IoIosArrowForward className='text-subtitle' onClick={() => navigate(`/products/${e?.id}`)} />
+									<IoIosArrowForward
+										className='text-subtitle'
+										onClick={() => navigate(`/products/${e?.id}`)}
+									/>
 								)}
 							</div>
 						</TableCell>,

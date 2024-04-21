@@ -19,6 +19,7 @@ export default function ActionsComp({
 }: {
 	selectedOption: string;
 	handelSelect: (e: string) => void;
+
 	sortMenus?: menuType[];
 	ActionsMenus?: menuType[];
 	filterMenus?: menuType[];
@@ -28,17 +29,29 @@ export default function ActionsComp({
 			{/*   arrange button */}
 
 			{sortMenus && sortMenus?.length > 0 && (
-				<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handelSelect} />
+				<ArrangeButton
+					sortMenus={sortMenus}
+					selectedOption={selectedOption}
+					handelSelect={handelSelect}
+				/>
 			)}
 
 			{/*  filter button */}
 
 			{filterMenus && filterMenus?.length > 0 && (
-				<FilterButton sortMenus={filterMenus} selectedOption={selectedOption} handelSelect={handelSelect} />
+				<FilterButton
+					sortMenus={filterMenus}
+					selectedOption={selectedOption}
+					handelSelect={handelSelect}
+				/>
 			)}
 			{/*  actions button */}
 			{ActionsMenus && ActionsMenus?.length > 0 && (
-				<ActionsButton sortMenus={ActionsMenus} selectedOption={selectedOption} handelSelect={handelSelect} />
+				<ActionsButton
+					sortMenus={ActionsMenus}
+					selectedOption={selectedOption}
+					handelSelect={handelSelect}
+				/>
 			)}
 		</div>
 	);
