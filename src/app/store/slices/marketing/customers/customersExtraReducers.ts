@@ -1,6 +1,13 @@
+import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getSelectCustomers } from './customersAsyncThunks';
 
-export const getCustomersReducer = (builder) => {
+interface CustomersState {
+	isLoading: boolean;
+	error: string | null;
+	customers: any[];
+}
+
+export const getCustomersReducer = (builder: ActionReducerMapBuilder<CustomersState>) => {
 	builder
 		// get selectCustomers
 		.addCase(getSelectCustomers.pending, (state) => {
@@ -9,7 +16,7 @@ export const getCustomersReducer = (builder) => {
 		})
 		.addCase(getSelectCustomers.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.coupons.push(action.payload);
+			state.customers = action.payload;
 		})
 		.addCase(getSelectCustomers.rejected, (state, action) => {
 			state.isLoading = false;

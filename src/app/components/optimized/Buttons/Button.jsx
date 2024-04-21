@@ -1,14 +1,14 @@
 import { cva } from 'class-variance-authority';
+import { cn } from 'src/app/utils';
 
 const handleButtonVariant = cva(undefined, {
 	variants: {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize',
 			secondary: 'btn-sec flex items-center gap-1 p-2',
-			primary: 'fill-white',
-			tertiary:
-				'text-title text-sm capitalize font-semibold flex items-center gap-1.5 px-[15px] py-2 rounded hover:bg-light-3',
-			default: 'relative btn-pri flex px-1 items-center ml-1',
+			primary: 'text-white bg-primary flex items-center p-2 gap-2 rounded',
+			tertiary: 'text-title text-sm capitalize font-semibold flex items-center gap-1.5',
+			default: 'relative btn-pri flex px-1 items-center ',
 		},
 	},
 	defaultVariants: { variant: 'default' },
@@ -16,7 +16,7 @@ const handleButtonVariant = cva(undefined, {
 const handleIconVariant = cva(undefined, {
 	variants: {
 		variant: {
-			link: 'fill-primary p-0.5 mb-1 ml-1',
+			link: 'fill-primary p-0.5 mt-1',
 			secondary: 'fill-pri-dark h-3 w-3 ml-1',
 			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
 			primary: 'fill-white',
@@ -45,8 +45,9 @@ const handleTextVariant = cva(undefined, {
 /**
  * Button component for various button styles with optional icons and loading spinner.
  * @param {{
- *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>) | JSX.Element,
- *  RightIcon?: (import("react").ComponentType<{ className?: string; }>) | JSX.Element,
+ *  textClassName?: string,
+ *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
+ *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
  *  text?: never
  * } & import("react").ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants} props - Props for the Button component.
@@ -86,14 +87,24 @@ const handleTextVariant = cva(undefined, {
  * };
  * ```
  */
-export default function Button({ variant, children, LeftIcon, RightIcon, loading, className, text, ...props }) {
+export default function Button({
+	variant,
+	children,
+	LeftIcon,
+	RightIcon,
+	loading,
+	className,
+	text,
+	textClassName,
+	...props
+}) {
 	// Define variables for class names
-	let buttonClass = handleButtonVariant({ variant, className });
+	let buttonClass = handleButtonVariant({ variant });
 	let iconClass = handleIconVariant({ variant });
-	let textClass = handleTextVariant({ variant });
+	let textClass = handleTextVariant({ variant, className: textClassName });
 
 	return (
-		<button {...props} className={buttonClass}>
+		<button type='button' {...props} className={cn(buttonClass, className)}>
 			{/* Render loading spinner if loading is true */}
 			{loading ? (
 				<div className='flex items-center justify-center px-6 py-1'>
@@ -102,12 +113,12 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{/* {LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)} */}
-
-					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={textClass} /> : LeftIcon)}
+					{LeftIcon &&
+						(typeof LeftIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
 
 					<span className={textClass}>{children ?? text}</span>
-					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
+					{RightIcon &&
+						(typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
 				</>
 			)}
 		</button>

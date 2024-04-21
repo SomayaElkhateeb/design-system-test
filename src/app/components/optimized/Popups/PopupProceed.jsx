@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 /**
  * @param {{
  *  isOpen: boolean;
@@ -11,6 +13,7 @@
  * }} props
  */
 export default function PopupProceed(props) {
+	const { t } = useTranslation();
 	function handleProceed() {
 		alert('Confirmed');
 		props.onClose();
@@ -35,7 +38,7 @@ export default function PopupProceed(props) {
 
 				<div className='flex items-center justify-end gap-2 mt-5'>
 					<button className='px-4 py-2 text-sm font-semibold text-title' onClick={props.onCancel || props.onClose}>
-						Cancel
+						{t('Cancel')}
 					</button>
 					<button className='btn-pri' onClick={handleProceed}>
 						{props.proceedButton}

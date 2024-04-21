@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { getCategoriesReducer } from './categoriesExtraReducers';
 
 // Define the type for the category item

@@ -1,6 +1,6 @@
 import React from 'react';
-import SpecificCategory from './comp/SpecificCategory';
-import SpecificProducts from './comp/SpecificProducts';
+import SpecificCategory from 'src/app/components/page/discount/Selectors/SpecificCategory';
+import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
 
 interface ApplyToOptionsProps {
 	applyTo: string;

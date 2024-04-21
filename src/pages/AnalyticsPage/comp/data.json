@@ -1,0 +1,130 @@
+{
+	"statsData": [
+		{
+			"percentage": "4.75 %",
+			"label": "Sessions",
+			"value": "1200",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Time per session",
+			"value": "12",
+			"positive": false,
+			"extensions": "min"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Orders",
+			"value": "252",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Abandoned cart",
+			"value": "250",
+			"positive": false
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Sales",
+			"value": "120",
+			"positive": false,
+			"extensions": "sar"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "Expenses",
+			"value": "500",
+			"positive": false,
+			"extensions": "sar"
+		},
+		{
+			"percentage": "4.75 %",
+			"label": "netProfit",
+			"value": "120",
+			"positive": false,
+			"extensions": "sar"
+		}
+	],
+	"orders_analytics_table": [
+		{
+			"day": "24 Apr 2024",
+			"orders": 123,
+			"average_units_ordered": 2.5,
+			"average_order_value": "$100.50",
+			"delivered": 110,
+			"returned_quantity": 13
+		},
+		{
+			"day": "25 Apr 2024",
+			"orders": 456,
+			"average_units_ordered": 3.1,
+			"average_order_value": "$120.75",
+			"delivered": 420,
+			"returned_quantity": 36
+		},
+		{
+			"day": "26 Apr 2024",
+			"orders": 789,
+			"average_units_ordered": 4.2,
+			"average_order_value": "$150.25",
+			"delivered": 750,
+			"returned_quantity": 39
+		},
+		{
+			"day": "27 Apr 2024",
+			"orders": 564,
+			"average_units_ordered": 3.8,
+			"average_order_value": "$135.20",
+			"delivered": 600,
+			"returned_quantity": 24
+		},
+		{
+			"day": "28 Apr 2024",
+			"orders": 890,
+			"average_units_ordered": 4.5,
+			"average_order_value": "$170.00",
+			"delivered": 850,
+			"returned_quantity": 40
+		}
+	],
+	"customers_analytics_table": [
+		{
+			"day": "24 Apr 2024",
+			"new_customers": 1200,
+			"purchasing_customers": "420 (12%)",
+			"customer_groups": "520"
+		},
+		{
+			"day": "25 Apr 2024",
+			"new_customers": 1350,
+			"purchasing_customers": "480 (14%)",
+			"customer_groups": "540"
+		},
+		{
+			"day": "26 Apr 2024",
+			"new_customers": 1180,
+			"purchasing_customers": "410 (11%)",
+			"customer_groups": "515"
+		},
+		{
+			"day": "27 Apr 2024",
+			"new_customers": 1225,
+			"purchasing_customers": "430 (12%)",
+			"customer_groups": "525"
+		},
+		{
+			"day": "28 Apr 2024",
+			"new_customers": 1300,
+			"purchasing_customers": "450 (13%)",
+			"customer_groups": "535"
+		},
+		{
+			"day": "29 Apr 2024",
+			"new_customers": 1285,
+			"purchasing_customers": "440 (12%)",
+			"customer_groups": "530"
+		}
+	]
+}

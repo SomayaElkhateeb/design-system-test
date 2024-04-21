@@ -1,5 +1,6 @@
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import { ClipLoader } from 'react-spinners';
+import { cn } from 'src/app/utils';
 
 /**
  * @param {{
@@ -69,39 +70,33 @@ export default function InputRow({
 }) {
 	const reactId = useId();
 	const controlId = rest.id ?? reactId;
-	const [focused, setFocused] = useState(false);
 
-	function getInputClassNames() {
-		if (focused) {
-			return 'border-blue-500';
-		} else if (success) {
-			return 'border-green-500 bg-gray-50';
-		} else if (error) {
-			return 'border-red-500 bg-gray-50';
-		}
-		return 'bg-gray-50 ';
-	}
+	const classNames = cn('bg-gray-50 focus-within:border-blue-500 focus-within:bg-auto', {
+		'[&:not(:focus-within)]:border-red-500 [&:not(:focus-within)]:bg-auto': error,
+		'[&:not(:focus-within)]:border-green-500 [&:not(:focus-within)]:bg-auto': success,
+	});
 
-	const classNames = getInputClassNames();
+	const containerClassName = cn('flex flex-col', {
+		'group error': error,
+		'group success': success,
+	});
 
 	return (
 		<>
-			<div className='flex flex-col'>
+			<div className={containerClassName}>
 				{label && (
-					<label htmlFor={controlId} className='block text-sm '>
+					<label htmlFor={controlId} className='block text-sm mb-1.5'>
 						{label}
 					</label>
 				)}
 				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
-						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-4 '>{leftIcon}</div>}
+						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>}
 						<input
 							ref={_ref}
 							className={`${
 								leftIcon && 'pl-16'
 							} block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none`}
-							onFocus={() => setFocused(true)}
-							onBlur={() => setFocused(false)}
 							disabled={loading}
 							value={value}
 							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
@@ -118,8 +113,8 @@ export default function InputRow({
 						)}
 					</div>
 				</div>
-				{error && !focused && <small className='text-xs text-red-500 '>{error}</small>}
-				{success && !focused && <small className='text-xs text-green-500 '>Success</small>}
+				{error && <small className='group-[.error:focus-within]:hidden text-xs text-red-500 '>{error}</small>}
+				{success && <small className='group-[.success:focus-within]:hidden text-xs text-green-500 '>Success</small>}
 			</div>
 		</>
 	);

@@ -1,4 +1,4 @@
-import { getSelectCategories } from './categoriesAsyncThunks';
+import { getSelectCategories, deleteCategory } from './categoriesAsyncThunks';
 
 export const getCategoriesReducer = (builder) => {
 	builder
@@ -9,7 +9,7 @@ export const getCategoriesReducer = (builder) => {
 		})
 		.addCase(getSelectCategories.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.coupons.push(action.payload);
+			state.categories = action.payload;
 		})
 		.addCase(getSelectCategories.rejected, (state, action) => {
 			state.isLoading = false;

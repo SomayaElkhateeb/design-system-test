@@ -26,6 +26,7 @@ export { default as GroupIcons } from './UiKits/GroupIcons';
 export { default as CheckBox } from './UiKits/Checkbox';
 export { default as ClientBox } from './Categories/ClientBox';
 export { default as ChannelChart } from './Charts/ChannelChart';
+
 export { default as ColumnChart } from './Charts/ColumnChart';
 export { default as LineChart } from './Charts/LineChart';
 export { default as StackedColumnChart } from './Charts/StackedColumnChart';
@@ -53,4 +54,5 @@ export { default as ProductViews } from './Products/ProductViews';
 export { default as MainUpload } from './MediaUpload/MainUpload';
 export { default as ProductCard } from './Products/ProductCard';
 export { default as TrialBanner } from './UiKits/TrialBanner';
+export { default as SearshBox } from './SearshBox/SearshBox';
 export { default as SetupCard } from './Cards/SetupCard';

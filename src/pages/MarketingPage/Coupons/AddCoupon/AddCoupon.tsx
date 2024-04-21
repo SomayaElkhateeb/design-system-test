@@ -1,26 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
 import BasicInfo from './BasicInfo/BasicInfo';
-import CustomerSegment from './CustomerSegment/CustomerSegment';
-import MinimumRequirements from './MinimumRequirements/MinimumRequirements';
+import MinimumRequirements from '../../../../app/components/page/discount/Comp/MinimumRequirements';
 import Limits from './Limits/Limits';
-import ActiveDates from './ActiveDates/ActiveDates';
-
 import { useDispatch } from 'react-redux';
-import { postCoupons } from 'src/app/store/slices/marketing/marketingAsyncThunks';
+import { useNavigate } from 'react-router-dom';
+import { postCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import { useTranslation } from 'react-i18next';
+import ActiveDates from 'src/app/components/page/discount/Comp/ActiveDates';
+import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegment/CustomerSegment';
 
 const AddCoupon: React.FC = () => {
+	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const [state, setState] = useState();
 
-	// Create a ref for the input field
-	const nameRef = useRef(null);
-
-	const handlePostCoupon = () => {
-		if (nameRef.current) {
-			console.log(nameRef.current.value);
-		} else {
-			console.error('Ref is not properly initialized');
-		}
+	const handleSaveChanges = () => {
+		// const data = {
+		// 	name: discountName,
+		// 	value: fixedAmount,
+		// 	date: endDate,
+		// 	used: used,
+		// 	sales: minimumPrice,
+		// };
+		dispatch(postCoupons(data));
+		navigate('/marketing/coupons');
 	};
 
 	return (
@@ -32,7 +37,7 @@ const AddCoupon: React.FC = () => {
 				btn1={{ text: 'Discard', onClick: () => {} }}
 				btn2={{
 					text: 'Save Changes',
-					onClick: () => {},
+					onClick: handleSaveChanges,
 				}}
 			/>
 
@@ -42,10 +47,10 @@ const AddCoupon: React.FC = () => {
 					<CustomerSegment />
 					<MinimumRequirements />
 					<Limits />
-					<ActiveDates />
+					<ActiveDates setState={setState} />
 				</div>
 				<div className='bg-white w-[15rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
-					<h3 className='text-title font-semibold'>Quick actions</h3>
+					<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
 					<ToggleSwitch />
 				</div>
 			</div>

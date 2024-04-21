@@ -3,6 +3,7 @@ import { capitalizeFirstLetter } from 'src/app/utils';
 import { LiaSearchSolid } from 'react-icons/lia';
 import { Button, CheckBox, InputRow } from '..';
 import SelectItem from './SelectItem';
+import { useTranslation } from 'react-i18next';
 
 /**
  * @typedef {{
@@ -14,19 +15,23 @@ import SelectItem from './SelectItem';
  *  lName?: string;
  *  count?: number;
  * }} Item
+ *
  */
 
 /**
  * @param {{
  *  title: string;
  *  onClose: () => void;
+ *  addBtn: (selectedItems: Item[]) => void;
  *  select: Item[];
  *  variant?: "customers" | "groups";
  * }} props
  */
+
 function SelectItems(props) {
+	const { t } = useTranslation();
 	const [searchQuery, setSearchQuery] = useState('');
-	const [selectedItems, setSelectedItems] = useState(/** @type {{ id: string | number; title: string; }[]}  */ ([]));
+	const [selectedItems, setSelectedItems] = useState(/** @type {Item[]}  */ ([]));
 	const [queryItems, setQueryItems] = useState(props.select);
 
 	useEffect(() => {
@@ -35,28 +40,12 @@ function SelectItems(props) {
 
 	/**
 	 * @param {boolean} isChecked
-	 * @param {{ id: string | number; title: string; }} item
+	 * @param {Item} item
 	 */
 	function handleChange(isChecked, item) {
 		const updatedItems = isChecked ? [...selectedItems, item] : selectedItems.filter((item) => item.id !== item.id);
 		setSelectedItems(updatedItems);
 		console.log('Checkbox checked:', isChecked);
-	}
-
-	function handleAddButtonClick() {
-		const itemsData = props.select
-			.filter((item) => selectedItems.some((selectedItem) => selectedItem.id === item.id))
-			.map((item) => ({
-				id: item.id,
-				image: item.img,
-				title: item.title,
-				subTitle: item.subTitle,
-				fName: item.fName,
-				lName: item.lName,
-				count: item.count,
-			}));
-		localStorage.setItem('selectedItemsData', JSON.stringify(itemsData));
-		props.onClose();
 	}
 
 	/** @param {import("react").MouseEvent<HTMLDivElement>} event */
@@ -98,14 +87,14 @@ function SelectItems(props) {
 						<div className='w-[24rem]'>
 							<InputRow
 								leftIcon={<LiaSearchSolid />}
-								placeholder='Search'
+								placeholder={t('Search')}
 								value={searchQuery}
 								handleOnChange={handleSearchChange}
 							/>
 						</div>
 
 						<p>
-							{selectedItems.length} {props.title} out of {props.select.length}
+							{selectedItems.length} {props.title} {t('out of')} {props.select.length}
 						</p>
 
 						{queryItems.length > 0 && (
@@ -113,7 +102,7 @@ function SelectItems(props) {
 								variant={queryItems.length === selectedItems.length ? undefined : 'minus'}
 								handleOnChange={(isChecked) => {
 									if (isChecked) {
-										return setSelectedItems(queryItems.map((item) => ({ id: item.id, title: item.title ?? '' })));
+										return setSelectedItems(queryItems);
 									}
 
 									setSelectedItems([]);
@@ -121,10 +110,6 @@ function SelectItems(props) {
 								checked={selectedItems.length > 0}
 							/>
 						)}
-						{/* {selectedItems.length >= 1 && (
-                <CheckBox variant='minus' initialChecked={true} handleOnChange={handleChange} />
-            )}
-            {selectedItems.length === props.select.length && <CheckBox initialChecked={true} handleOnChange={handleChange} />} */}
 					</div>
 				</div>
 
@@ -135,21 +120,16 @@ function SelectItems(props) {
 							key={item.id}
 							{...item}
 							isChecked={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
-							handleOnCheckChange={(isChecked) =>
-								handleChange(isChecked, {
-									id: item.id,
-									title: item.title ?? '',
-								})
-							}
+							handleOnCheckChange={(isChecked) => handleChange(isChecked, item)}
 						/>
 					))}
 				</div>
 
 				<div className='flex mt-4 justify-end mr-[1rem] gap-[1rem]'>
 					<Button onClick={() => props.onClose()} variant='tertiary'>
-						cancel
+						{t('cancel')}
 					</Button>
-					<Button onClick={handleAddButtonClick}>{`add (${selectedItems.length})`}</Button>
+					<Button onClick={() => props.addBtn(selectedItems)}>{`${t('add')} (${selectedItems.length})`}</Button>
 				</div>
 			</label>
 		</div>

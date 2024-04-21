@@ -1,25 +1,29 @@
 import { Link } from 'react-router-dom';
 import { GroupIcons } from '..';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
+import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { IoIosArrowForward } from 'react-icons/io';
 
 /**
  *
  * @param {{
  *  to: string;
  *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons';
- *  title: string;
+ *  title: string | null;
  *  btn1: { text: string; onClick: () => void };
  *  btn2: { text: string; onClick: () => void };
  *  btn3: { text: string; onClick: () => void };
  * }} props
  */
 export default function HeaderSettings(props) {
+	//  hooks
+	const { t } = useTranslation();
+	const language = UseLanguage();
 	return (
 		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
 			<div className='flex items-center gap-1'>
-				<Link to={props.to}>
-					<BackIcon />
-				</Link>
+				<Link to={props.to}>{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}</Link>
 				<h2 className='font-semibold capitalize text-title'>{props.title}</h2>
 			</div>
 
@@ -37,10 +41,10 @@ export default function HeaderSettings(props) {
 				{props.variant === 'settingOrder' && (
 					<>
 						<ButtonWithIcon onClick={props.btn1.onClick} icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}>
-							Update Status
+							{t('Update Status')}
 						</ButtonWithIcon>
 						<ButtonWithIcon onClick={props.btn2.onClick} icon={<PrintIcon className='p-0.5 fill-pri-dark' />}>
-							Print Invoice
+							{t('Print Invoice')}
 						</ButtonWithIcon>
 						<IconButton onClick={props.btn3.onClick}>
 							<MoreIcon />

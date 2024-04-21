@@ -1,119 +1,140 @@
 import ReactApexChart from 'react-apexcharts';
+import { capitalizeFirstLetter } from 'src/app/utils';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
-/**
- * @param {import("./types").ReactApexCompProps} props
- *
- * @example
- *
- * ```jsx
- *  <ChannelChart
- *   options={{
- *		chart: {
- *			type: "line",
- *			fontFamily: "Poppins, sans-serif",
- *			toolbar: {
- *				show: false,
- *			},
- *		},
- *		stroke: {
- *			width: 1,
- *		},
- *		xaxis: {
- *			categories: [
- *				"Apr 1",
- *				"Apr 2",
- *				"Apr 3",
- *				"Apr 4",
- *				"Apr 5",
- *				"Apr 6",
- *				"Apr 7",
- *			],
- *			labels: {
- *				rotate: -45,
- *			},
- *		},
- *		yaxis: {
- *			min: 0,
- *			max: 1000,
- *			tickAmount: 5,
- *		},
- *		legend: {
- *			position: "top",
- *			horizontalAlign: "left",
- *		},
- *		colors: ["#C0C7D6", "#55C397"],
- *		grid: {
- *			show: false,
- *		},
- *	}}
- *   series={[
- *   	{
- *   		name: "Last Week",
- *   		data: [220, 230, 250, 200, 210, 180, 220],
- *   	},
- *   	{
- *   		name: "This Week",
- *   		data: [200, 210, 230, 240, 250, 230, 240],
- *   	},
- *    ]}
- *  />
- * ```
- */
+// /**
+//  * @param {import("./types").ReactApexCompProps} props
+//  *
+//  * @example
+//  *
+//  * ```jsx
+//  *  <ChannelChart
+//  *   options={{
+//  *		chart: {
+//  *			type: "line",
+//  *			fontFamily: "Poppins, sans-serif",
+//  *			toolbar: {
+//  *				show: false,
+//  *			},
+//  *		},
+//  *		stroke: {
+//  *			width: 1,
+//  *		},
+//  *		xaxis: {
+//  *			categories: [
+//  *				"Apr 1",
+//  *				"Apr 2",
+//  *				"Apr 3",
+//  *				"Apr 4",
+//  *				"Apr 5",
+//  *				"Apr 6",
+//  *				"Apr 7",
+//  *			],
+//  *			labels: {
+//  *				rotate: -45,
+//  *			},
+//  *		},
+//  *		yaxis: {
+//  *			min: 0,
+//  *			max: 1000,
+//  *			tickAmount: 5,
+//  *		},
+//  *		legend: {
+//  *			position: "top",
+//  *			horizontalAlign: "left",
+//  *		},
+//  *		colors: ["#C0C7D6", "#55C397"],
+//  *		grid: {
+//  *			show: false,
+//  *		},
+//  *	}}
+//  *   series={[
+//  *   	{
+//  *   		name: "Last Week",
+//  *   		data: [220, 230, 250, 200, 210, 180, 220],
+//  *   	},
+//  *   	{
+//  *   		name: "This Week",
+//  *   		data: [200, 210, 230, 240, 250, 230, 240],
+//  *   	},
+//  *    ]}
+//  *  />
+//  * ```
+//  */
 export default function LineChart(props) {
-	return (
-		<div className='p-5 bg-white sm:w-[375px] sm:h-[327px] lg:w-[1150px] lg:h-[315px] '>
-			<div className='flex items-center justify-between mb-1'>
-				<h2 className='text-lg font-semibold text-title'>Sales</h2>
-				<span className='flex text-secondary'>
-					<BackAndroidIcon className='rotate-90 fill-secondary' /> 4.75%
-				</span>
-			</div>
-			<ReactApexChart options={props.options} series={props.series} type='line' width='100%' height='89%' />
-		</div>
-	);
-}
+	const {
+		title = 'sales',
+		percentage,
+		negative,
+		categories = ['Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7'],
+		colors = ['#C0C7D6', '#55C397'],
+		nameA = 'Last Week',
+		nameB = 'This Week',
+		dataA = [220, 230, 250, 200, 210, 180, 220],
+		dataB = [200, 210, 230, 240, 250, 230, 240],
+	} = props;
 
-LineChart.defaultProps = {
-	options: {
-		chart: {
-			type: 'line',
-			fontFamily: 'Poppins, sans-serif',
-			toolbar: {
+	const defaultProps = {
+		options: {
+			chart: {
+				// type: 'line',
+				fontFamily: 'Poppins, sans-serif',
+				toolbar: {
+					show: false,
+				},
+			},
+			stroke: {
+				width: 1,
+			},
+			xaxis: {
+				categories,
+				labels: {
+					rotate: -40,
+				},
+			},
+			yaxis: {
+				min: 0,
+				max: 1000,
+				tickAmount: 5,
+			},
+			legend: {
+				position: 'top',
+				horizontalAlign: 'left',
+			},
+			colors,
+			grid: {
 				show: false,
 			},
 		},
-		stroke: {
-			width: 1,
-		},
-		xaxis: {
-			categories: ['Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7'],
-			labels: {
-				rotate: -45,
+		series: [
+			{
+				name: nameA,
+				data: dataA,
 			},
-		},
-		yaxis: {
-			min: 0,
-			max: 1000,
-			tickAmount: 5,
-		},
-		legend: {
-			position: 'top',
-			horizontalAlign: 'left',
-		},
-		colors: ['#C0C7D6', '#55C397'],
-		grid: {
-			show: false,
-		},
-	},
-	series: [
-		{
-			name: 'Last Week',
-			data: [220, 230, 250, 200, 210, 180, 220],
-		},
-		{
-			name: 'This Week',
-			data: [200, 210, 230, 240, 250, 230, 240],
-		},
-	],
-};
+			{
+				name: nameB,
+				data: dataB,
+			},
+		],
+	};
+	return (
+		<div className='p-5 bg-white h-80 rounded-xl border border-borders-lines '>
+			<div className='flex items-center justify-between mb-1'>
+				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
+				<div className='flex'>
+					<BackAndroidIcon
+						className={`fill-${negative ? 'error' : 'success'}  ${negative ? '-rotate-90' : 'rotate-90'}`}
+					/>
+					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
+				</div>
+			</div>
+			<ReactApexChart
+				options={props.options || defaultProps.options}
+				series={props.series || defaultProps.series}
+				type='line'
+				width='100%'
+				height='89%'
+			/>
+		</div>
+	);
+}
