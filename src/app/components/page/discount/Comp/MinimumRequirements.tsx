@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { minimumRequirementsOptions } from '../comp/data';
 import { CheckBox, InputRow } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 
@@ -33,19 +32,37 @@ const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
 		update({ isChecked: newValue });
 	};
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newMinimumPrice = Math.max(parseInt(e.target.value), 0);
-		setState((prevState) => ({
-			...prevState,
-			minimumPrice: newMinimumPrice,
-		}));
-	};
+	const [inputStatePrice, setInputStatePrice] = useState({
+		selectedValue: '',
+		value: '',
+		error: '',
+		success: false,
+	});
+
+	const [inputState, setInputState] = useState({
+		selectedValue: '',
+		value: '',
+		error: '',
+		success: false,
+	});
+
+	function handleInputChange(value) {
+		setInputState({ ...inputState, value });
+		console.log('input value', value);
+	}
+
+	function handleInputChangePrice(value) {
+		setInputStatePrice({ ...inputStatePrice, value });
+		console.log('input value', value);
+	}
+
+	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map((option) => option);
 
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
 
-			<CheckBox label='define minimum requirements' handleOnChange={handleCheckboxChange} />
+			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
 
 			{isChecked && (
 				<SingleChoiceChips
@@ -56,17 +73,28 @@ const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
 			)}
 
 			{selectedMinimumRequirements === 'Minimum price' && (
-				<div className='w-[390px] mt-[18px]'>
-					<InputRow label='Mini purchase price' type='number' value={minimumPrice} onChange={handleChange} />
+				<div className='w-[390px]'>
+					<InputRow
+						label={t('Mini purchase price')}
+						type='number'
+						min={0}
+						handleOnChange={handleInputChangePrice}
+						value={inputStatePrice.value}
+						error={inputStatePrice.error}
+						success={inputStatePrice.success}
+					/>
 				</div>
 			)}
 			{selectedMinimumRequirements === 'Minimum quantity' && (
-				<div className='w-[390px] mt-[18px]'>
+				<div className='w-[390px]'>
 					<InputRow
-						label='Mini purchase quantity'
+						label={t('Mini purchase quantity')}
 						type='number'
-						value={minimumQuantity}
-						onChange={(e) => update({ minimumQuantity: Number(e.target.value) })}
+						min={0}
+						handleOnChange={handleInputChange}
+						value={inputState.value}
+						error={inputState.error}
+						success={inputState.success}
 					/>
 				</div>
 			)}

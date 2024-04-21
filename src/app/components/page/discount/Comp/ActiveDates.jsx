@@ -8,9 +8,12 @@ const ActiveDates = ({ setState }) => {
 	const [endDate, setEndDate] = useState(false);
 	const [valueDate, setValueDate] = useState(/** @type {(import("dayjs").Dayjs | null)} */ (null));
 
+	console.log('valueDate', valueDate);
+
 	const handleShowDate = () => {
 		setEndDate(!endDate);
 	};
+
 	const handleEndDateChange = (newValue) => {
 		setValueDate(newValue);
 		setState((prevState) => ({
@@ -20,7 +23,7 @@ const ActiveDates = ({ setState }) => {
 	};
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[18px]'>
-			<h3 className='mb-2 font-semibold text-title'>Active dates</h3>
+			<h3 className='mb-2 font-semibold text-title'>{t('Active dates')}</h3>
 			<div className='flex gap-4 my-[18px]'>
 				<DatePicker label={t('start date')} />
 				<TimePicker label={t('start time')} />

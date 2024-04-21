@@ -1,7 +1,7 @@
 import React from 'react';
 import SpecificCategory from '../../../../../../app/components/page/discount/Selectors/SpecificCategory';
 import SpecificProducts from '../../../../../../app/components/page/discount/Selectors/SpecificProducts';
-import BuyXGetY from './comp/BuyXGetY';
+import BuyXGetY from './BuyXGetY';
 
 interface ApplyToOptionsProps {
 	applyTo: string;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // get coupons
 import { useDispatch, useSelector } from 'react-redux';
-import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import { getCoupons, deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 import { useTranslation } from 'react-i18next';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
@@ -20,15 +20,13 @@ const Coupons: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		// Render your component with fetched data
-
 		<div className=' container mx-auto my-[0.8rem]'>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 
 				{/*  table section */}
-				<CouponsTable coupons={coupons} isLoading={isLoading} />
+				<CouponsTable coupons={coupons} isLoading={isLoading} deleteCoupons={deleteCoupons} dispatch={dispatch} />
 			</div>
 		</div>
 	);

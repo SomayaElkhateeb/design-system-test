@@ -11,7 +11,17 @@ import { Coupon } from 'src/app/interface/CouponInterface';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
-export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]; isLoading: boolean }) {
+export default function CouponsTable({
+	coupons,
+	isLoading,
+	dispatch,
+	deleteCoupons,
+}: {
+	coupons: Coupon[];
+	isLoading: boolean;
+	dispatch: any;
+	deleteCoupons: any;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
@@ -109,6 +119,9 @@ export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]
 									<IoIosArrowForward className='text-subtitle' onClick={() => navigate(`/brands/${e?.id}`)} />
 								)}
 							</div>
+						</TableCell>,
+						<TableCell>
+							<button onClick={() => dispatch(deleteCoupons(e?.id))}>delete</button>
 						</TableCell>,
 					],
 				};
