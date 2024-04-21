@@ -211,6 +211,10 @@ export const arabic = {
 	'Submit & Publish': 'نشر وإرسال',
 	'Product Reviews': 'مراجعة المنتج',
 	'Asks & Queries': 'أسئلة واستفسارات',
+	Published: 'منشور',
+	'Not Published': 'غير منشور',
+	Responded: 'تم الرد',
+	'Not Responded': 'لم يتم الرد',
 	Reply: 'رد',
 	Publish: 'نشر',
 } satisfies typeof english;

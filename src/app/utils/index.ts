@@ -50,11 +50,6 @@ export function getInitialDate() {
 	return `${year}-${month}-${day}`;
 }
 
-export const formatReviewScore = (score: number): string => {
-	const formattedScore = score.toString();
-	return formattedScore.includes('.') ? formattedScore : `${formattedScore}.0`;
-};
-
 export const getCurrentDate = () => {
 	const currentDate = new Date();
 
@@ -69,3 +64,14 @@ export const getCurrentDate = () => {
 
 	return formattedDate;
 };
+
+// Function to calculate the average rating
+export const calculateAverageRating = (reviews: { rating: number }[]): string => {
+	if (reviews.length === 0) {
+		return '0'; // Return '0' if there are no reviews
+	}
+	const totalRating = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+	return (totalRating / reviews.length).toFixed(2);
+};
+
+export const randomColor = Math.floor(Math.random() * 16777215).toString(16);

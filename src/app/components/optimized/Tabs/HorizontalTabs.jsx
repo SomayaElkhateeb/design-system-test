@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
  * @param {Object} props - Component props.
  * @param {string} props.defaultTab - Default active tab.
  * @param {Object.<string, JSX.Element>} props.tabContent - Content for each tab, keyed by tab ID.
- * @param {Function} props.t - Translation function.
  * @returns {JSX.Element} HorizontalTabs component.
  */
 function HorizontalTabs({ defaultTab, tabContent }) {

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { FaAngleDown } from 'react-icons/fa6';
 import { ArrangeIcon } from 'src/app/utils/icons';
-import Popover from './Popover';
+import Popover from '../UiKits/Popover';
 import { Button, Menu } from '..';
 
 export default function ArrangeButton({

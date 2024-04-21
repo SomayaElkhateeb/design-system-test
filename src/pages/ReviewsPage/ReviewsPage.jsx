@@ -1,11 +1,11 @@
-import ReviewsPageLayout from './comp/ReviewsPageLayout'
+import ReviewsPageLayout from './_comp/ReviewsPageLayout';
 
 const ReviewsPage = () => {
-  return (
-	<div>
-	  <ReviewsPageLayout/>
-	</div>
-  )
-}
+	return (
+		<>
+			<ReviewsPageLayout />
+		</>
+	);
+};
 
-export default ReviewsPage
+export default ReviewsPage;

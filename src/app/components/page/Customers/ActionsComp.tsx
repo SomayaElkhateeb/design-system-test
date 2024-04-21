@@ -1,6 +1,6 @@
 //  global componenet used in multi compoenents like AllCustomersComp
 
-import ArrangeButton from '../../optimized/UiKits/ArrangeButton';
+import ArrangeButton from '../../optimized/Buttons/ArrangeButton';
 
 import FilterButton from './FilterButton';
 import ActionsButton from './ActionsButton';
