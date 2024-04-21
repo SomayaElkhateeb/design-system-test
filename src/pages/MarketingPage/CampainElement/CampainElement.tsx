@@ -41,7 +41,12 @@ export default function CampainElement() {
 
 			{!activity && <CampaignElementTable sortBy={selectedOption} ref={campaignTableRef} />}
 
-			{activity && <StackedColumnChart />}
+			{activity && (
+				<StackedColumnChart
+					percentage='4.75'
+					colors={[ 'rgba(236, 81, 81, 1)','rgba(255, 204, 115, 1)']}
+				/>
+			)}
 		</div>
 	);
 }
