@@ -2,40 +2,69 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaChevronRight } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'src/app/components/optimized';
-import SelectItems from 'src/app/components/optimized/SelectItems/SelectItems';
+import { ToastContainer, toast } from 'react-toastify';
+import { Button, SelectItems } from 'src/app/components/optimized';
 import { getSelectCategories } from 'src/app/store/slices/marketing/categories/categoriesAsyncThunks';
-import CategoryView from 'src/pages/MarketingPage/CategoryView';
+import CategoryViewSelect from 'src/app/components/page/discount/Selectors/CategoryViewSelect';
 
 const SpecificCategory = () => {
 	const { t } = useTranslation();
-	const [showSelect, setShowSelect] = useState(false);
-	const [selectedItem, setSelectedItem] = useState([]);
-
 	const dispatch = useDispatch();
-	// get select categories
 	const { categories } = useSelector((state) => state.categories);
+	const [state, setState] = useState({
+		showSelect: false,
+		showPopup: false,
+		selectedItem: [],
+	});
 
+	const { showSelect, showPopup, selectedItem } = state;
+
+	// get select categories
 	useEffect(() => {
 		dispatch(getSelectCategories());
 	}, [dispatch]);
+	// show select
+	const handleAddButtonClick = (newItems) => {
+		setState((prevState) => {
+			const duplicates = newItems.filter(
+				(newItem) => !prevState.selectedItem.some((prevItem) => prevItem.id === newItem.id),
+			);
 
-	const handleAddButtonClick = (selectedItem) => {
-		setSelectedItem(selectedItem);
-		setShowSelect(false);
+			if (duplicates.length === newItems.length) {
+				toast.success('Successfully added.');
+				return {
+					...prevState,
+					selectedItem: [...prevState.selectedItem, ...newItems],
+					showSelect: false,
+				};
+			} else {
+				toast.error('error: you added before. please click Cancel.');
+				return prevState;
+			}
+		});
+	};
+
+	// delete item
+	const handleDeleteItem = (idToDelete: number) => {
+		const updatedItems = selectedItem.filter((el) => el.id !== idToDelete);
+		setState({
+			...state,
+			selectedItem: updatedItems,
+			showPopup: false,
+		});
 	};
 
 	return (
 		<div className='mt-[1rem] flex flex-col gap-[1rem]'>
 			<div>
-				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setShowSelect(true)}>
+				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setState({ ...state, showSelect: true })}>
 					{t('select category')}
 				</Button>
 
 				{showSelect && (
 					<SelectItems
 						title={t('categories')}
-						onClose={() => setShowSelect(false)}
+						onClose={() => setState({ ...state, showSelect: false })}
 						select={categories}
 						addBtn={handleAddButtonClick}
 					/>
@@ -44,16 +73,20 @@ const SpecificCategory = () => {
 				{selectedItem?.map((item) => {
 					const { title, id, img, subtitle } = item;
 					return (
-						<CategoryView
+						<CategoryViewSelect
 							key={id}
 							img={img}
 							title={title}
 							subtitle={subtitle}
-							// onClick={() => dispatch(deleteCategory(item.id))}
+							handleDelete={() => setState({ ...state, showPopup: true })}
+							handleDeleteItem={() => handleDeleteItem(id)}
+							showPopup={showPopup}
+							onClose={() => setState({ ...state, showPopup: false })}
 						/>
 					);
 				})}
 			</div>
+			<ToastContainer position='top-center' />
 		</div>
 	);
 };

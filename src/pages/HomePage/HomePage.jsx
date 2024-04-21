@@ -23,7 +23,7 @@ const HomePage = () => {
 				<SlideCardTabs slides={slidesTabs} sortMenus={sortMenus} text={t('Products')} btn />
 			</div>
 
-			<div className='bg-white rounded-xl border border-borders-lines h-fit mt-6'>
+			<div className='mt-6 bg-white border rounded-xl border-borders-lines h-fit'>
 				<GetStartedCard size='mini' slides={slides} title={t('Get started with dookan')} />
 			</div>
 		</div>

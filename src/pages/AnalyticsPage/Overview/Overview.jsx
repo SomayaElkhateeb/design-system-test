@@ -28,28 +28,51 @@ const Overview = () => {
 				{/* 1 */}
 				<div className='grid grid-cols-3 col-span-1 gap-5'>
 					<div className=' col-span-2 '>
-						<LineChart />
+						<LineChart title='sales' percentage='4.75' />
 					</div>
 					<div className=' col-span-1 '>
 						<SlideCard slides={slides} title='Title' percentage='4.71' positive />
 					</div>
 				</div>
 				{/* 2 */}
-				<div className='grid grid-cols-3 col-span-1  gap-5'>
+				<div className='grid grid-cols-3 mx-auto gap-5'>
 					<div className=' col-span-1 '>
-						<ChannelChart />
+						<ChannelChart title='sales by channel' percentage='50' />
 					</div>
 					<div className=' col-span-1 '>
-						<ChannelChart />
+						<ChannelChart
+							title='sales by device'
+							percentage='36.5'
+							negative
+							labels={['Ios', 'Android', 'Desktop']}
+							colors={['#FFCC73', '#D65036', '#F59556']}
+							series={[31, 31, 41]}
+						/>
 					</div>
 					<div className=' col-span-1 '>
-						<ChannelChart />
+						<ChannelChart
+							title='sales by customer groups'
+							percentage='48'
+							labels={['Group 1', 'Group 2']}
+							colors={['#FFCC73', '#D65036']}
+							series={[31, 69]}
+						/>
 					</div>
 				</div>
 				{/* 3 */}
 				<div className='grid grid-cols-3 col-span-1  gap-5'>
 					<div className=' col-span-2 '>
-						<LineChart />
+						<LineChart
+							title='returning customers'
+							percentage='17.8'
+							negative
+							nameA='First time'
+							nameB='Returning'
+							categories={['Oct 1', 'Oct 2', 'Oct 3', 'Oct 4', 'Oct 5', 'Oct 6', 'Oct 7']}
+							colors={['#446CCE', '#F59556']}
+							dataA={[100, 230, 230, 500, 210, 180, 220]}
+							dataB={[500, 210, 230, 700, 250, 800, 240]}
+						/>
 					</div>
 					<div className=' col-span-1 '>
 						<SlideCard slides={slides} title='Title' percentage='4.71' positive />
@@ -89,5 +112,3 @@ const RecentActivity = () => {
 		</div>
 	);
 };
-
-

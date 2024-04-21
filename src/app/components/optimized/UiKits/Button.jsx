@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority';
+import { cn } from 'src/app/utils';
 
 const handleButtonVariant = cva(undefined, {
 	variants: {
@@ -44,6 +45,7 @@ const handleTextVariant = cva(undefined, {
 /**
  * Button component for various button styles with optional icons and loading spinner.
  * @param {{
+ *  textClassName?: string,
  *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
@@ -85,14 +87,24 @@ const handleTextVariant = cva(undefined, {
  * };
  * ```
  */
-export default function Button({ variant, children, LeftIcon, RightIcon, loading, className, text, ...props }) {
+export default function Button({
+	variant,
+	children,
+	LeftIcon,
+	RightIcon,
+	loading,
+	className,
+	text,
+	textClassName,
+	...props
+}) {
 	// Define variables for class names
-	let buttonClass = handleButtonVariant({ variant, className });
+	let buttonClass = handleButtonVariant({ variant });
 	let iconClass = handleIconVariant({ variant });
-	let textClass = handleTextVariant({ variant });
+	let textClass = handleTextVariant({ variant, className: textClassName });
 
 	return (
-		<button {...props} className={buttonClass}>
+		<button type='button' {...props} className={cn(buttonClass, className)}>
 			{/* Render loading spinner if loading is true */}
 			{loading ? (
 				<div className='flex items-center justify-center px-6 py-1'>
@@ -101,12 +113,12 @@ export default function Button({ variant, children, LeftIcon, RightIcon, loading
 			) : (
 				// Render button content with LeftIcon, text, and RightIcon
 				<>
-					{/* {LeftIcon && (typeof RightIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)} */}
-
-					{LeftIcon && (typeof LeftIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
+					{LeftIcon &&
+						(typeof LeftIcon === 'function' ? <LeftIcon className={iconClass} /> : LeftIcon)}
 
 					<span className={textClass}>{children ?? text}</span>
-					{RightIcon && (typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
+					{RightIcon &&
+						(typeof RightIcon === 'function' ? <RightIcon className={iconClass} /> : RightIcon)}
 				</>
 			)}
 		</button>
