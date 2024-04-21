@@ -1,9 +1,9 @@
-// global component used in multi pages like customers
+// / global component used in multi pages like customers
 import Popover from '@mui/material/Popover';
+
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
-
-export default function PopoverComponenet({
+export default function PopoverComponent({
 	button,
 	children,
 }: {
@@ -24,7 +24,7 @@ export default function PopoverComponenet({
 	const id = open ? 'simple-popover' : undefined;
 	return (
 		<>
-			<Button aria-describedby={id} onClick={handleClick}>
+			<Button sx={{ color: 'black', minWidth: '2px' }} aria-describedby={id} onClick={handleClick}>
 				{button}
 			</Button>
 			<Popover
@@ -37,7 +37,7 @@ export default function PopoverComponenet({
 					horizontal: 'left',
 				}}
 			>
-				{children}
+				<div onClick={handleClose}>{children}</div>
 			</Popover>
 		</>
 	);

@@ -1,5 +1,6 @@
 import { comparisonMenus } from 'src/app/utils/constants';
-import ArrangeButton from '../../page/Customers/ArrangeButton';
+import ArrangeButton from '../Buttons/ArrangeButton';
+
 
 // how to use
 

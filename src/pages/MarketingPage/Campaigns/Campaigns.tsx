@@ -1,9 +1,10 @@
-import CampaignTable from './CampaignTable';
+
 import CampaignStatus from './CampaignStatus';
 
 import CampaignBtns from './CampaignBtns';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { RefObject, useRef } from 'react';
+import CampaignTable from './CampaignTable';
 
 const Campaigns = () => {
 	// Print ref to handle table print.

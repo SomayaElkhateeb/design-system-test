@@ -2,8 +2,7 @@ import { VscSettings } from 'react-icons/vsc';
 import { Button } from 'src/app/components/optimized';
 import ArrangeButton from 'src/app/components/optimized/Buttons/ArrangeButton';
 import RightSidebar from 'src/app/components/optimized/UiKits/RightSidebar';
-import QueriesHeader from './_comp/QueryHeader';
-import QueriesBody from './_comp/QueryBody';
+
 import { AsksQueriesProvider, useAsksQueriesContext } from './_comp/AsksQueriesContext';
 import { useTranslation } from 'react-i18next';
 import { sortMenus } from '../_comp/data';
