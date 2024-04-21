@@ -27,7 +27,18 @@ import { FormControl, FormDescription, FormFieldController, FormItem, FormLabel,
  * @template {import("react-hook-form").FieldValues} Values
  * @template {import("react-hook-form").FieldPath<Values> } [Key=import("react-hook-form").FieldPath<Values>]
  * @param {FormFieldProps<Values, Key>} props
- * @returns
+ *
+ * @example
+ *
+ * ```jsx
+ *	<FormField
+ *		formStore={formStore}
+ *		name='nameEn'
+ *		label='Name (En)'
+ *		render={(field) => <Input {...field} />}
+ *	/>
+ * ```
+ *
  */
 function FormField(props) {
 	const reactId = useId();

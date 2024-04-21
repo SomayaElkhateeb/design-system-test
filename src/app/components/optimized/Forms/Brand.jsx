@@ -121,9 +121,6 @@ export default function BrandForm(props) {
 							formStore={formStore}
 							name='isAvailable'
 							label={t('Available')}
-							container={{
-								className: 'flex flex-col space-y-1',
-							}}
 							render={(field) => (
 								<div className='flex gap-1'>
 									<Switch checked={field.value} onCheckedChange={field.onChange} />{' '}

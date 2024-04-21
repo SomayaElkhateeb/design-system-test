@@ -7,9 +7,10 @@ import { cn } from 'src/app/utils';
  *  setError: (error: { message: string, type: string }) => void;
  *  onFileLoad: (params: { file: File; reader: FileReader }) => void;
  * } & import('react-dropzone').DropzoneOptions} params
+ *
+ * @returns {import('react-dropzone').DropzoneOptions}
  */
 export function getDefaultFileInputOptions({ setError, onFileLoad, ...params }) {
-	/** @returns {import('react-dropzone').DropzoneOptions} */
 	return {
 		onError: (error) => setError({ message: error.message, type: 'error' }),
 		onDropRejected: (rejectedFiles) => {
@@ -46,7 +47,6 @@ const FileInput = forwardRef(
 	 * @param {import('react').Ref<HTMLInputElement>} ref
 	 */
 	({ options, children, className, ...props }, ref) => {
-		console.log('options', options);
 		const { getRootProps, getInputProps } = useDropzone(options);
 
 		const inputProps = getInputProps(props);
