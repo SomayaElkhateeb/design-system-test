@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import * as XLSX from 'xlsx';
 
 /**
  * @param  {...import("clsx").ClassValue} inputs */
@@ -78,3 +79,14 @@ export const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 export const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
 export const parseDate = (dateString) => new Date(dateString);
 
+export const exportToExcel = (data: any[], filename: string) => {
+	// Convert data to worksheet
+	const ws = XLSX.utils.json_to_sheet(data);
+
+	// Create workbook
+	const wb: XLSX.WorkBook = XLSX.utils.book_new();
+	XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+	// Save to file
+	XLSX.writeFile(wb, filename);
+};

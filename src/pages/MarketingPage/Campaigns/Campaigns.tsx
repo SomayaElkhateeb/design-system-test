@@ -1,4 +1,3 @@
-
 import CampaignStatus from './CampaignStatus';
 
 import CampaignBtns from './CampaignBtns';
@@ -14,9 +13,7 @@ const Campaigns = () => {
 
 	return (
 		<>
-			{/* {title && <CampaignsHeader title={title} />} */}
 			<div className='p-4 flex flex-col gap-4'>
-				{/* {activityDetails && <CampaignInfoCard />} */}
 				<CampaignStatus />
 
 				<CampaignBtns
@@ -27,7 +24,6 @@ const Campaigns = () => {
 				/>
 
 				<CampaignTable sortBy={selectedOption} ref={campaignTableRef} />
-				{/* {activityDetails && <StackedColumnChart />} */}
 			</div>
 		</>
 	);
