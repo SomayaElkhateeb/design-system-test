@@ -1,5 +1,10 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getDiscounts, postDiscounts, deleteDiscount } from './discountsAsyncThunks';
+import {
+	getDiscounts,
+	postDiscounts,
+	updateDiscounts,
+	deleteDiscount,
+} from './discountsAsyncThunks';
 import { DiscountState } from './discountSlice';
 
 export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountState>) => {
@@ -34,7 +39,24 @@ export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountStat
 			state.isLoading = false;
 			state.error = action.payload;
 		})
-
+		// update discount
+		.addCase(updateDiscounts.pending, (state) => {
+			state.isLoading = true;
+			state.error = null;
+		})
+		.addCase(updateDiscounts.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.discounts = state.discounts.map((discount) => {
+				if (discount.id === action.payload.id) {
+					return action.payload;
+				}
+				return discount;
+			});
+		})
+		.addCase(updateDiscounts.rejected, (state, action) => {
+			state.isLoading = false;
+			state.error = action.payload;
+		})
 		// delete discount
 		.addCase(deleteDiscount.pending, (state) => {
 			state.isLoading = true;

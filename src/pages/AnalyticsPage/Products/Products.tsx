@@ -1,17 +1,10 @@
 import { useState } from 'react';
-import {  ArrangeButton, ColumnChart } from 'src/app/components/optimized';
+import { ColumnChart } from 'src/app/components/optimized';
 
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 
 import ProductsTable from 'src/app/components/page/Analytics/ProductsTable';
 import { getImageUrl } from 'src/app/utils';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-const sortMenus = [
-	{ id: '1', text: 'Today' },
-	{ id: '2', text: 'Last week' },
-	{ id: '3', text: 'Last month' },
-	{ id: '3', text: 'Specify date' },
-];
 
 //  dumy data
 const data = [
@@ -69,9 +62,6 @@ const Products = () => {
 	//  hooks
 
 	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
-	//  custom hook for select setting item
-
-	const { selectedOption, handleSelect } = useSelectBox();
 
 	const handleComparisonChange = (option: string) => {
 		setSelectedComparisonOption(option);
@@ -85,25 +75,7 @@ const Products = () => {
 			/>
 			<ColumnChart />
 
-			<div className='mb-4 flex items-center gap-2'>
-				<div className='grid gap-5 p-5'>
-					<div className='flex items-center gap-2 mb-4'>
-						<ArrangeButton
-							sortMenus={sortMenus}
-							selectedOption={selectedOption}
-							handelSelect={handleSelect}
-						/>
-						<div className='flex gap-2'>
-							<p className='paragraph text-subtitle'>Compared to:</p>
-							<p className='paragraph text-title'>{selectedOption}</p>
-						</div>
-					</div>
-					<ColumnChart percentage='40' negative />
-					{/* <ProductActions/> */}
-
-					<ProductsTable data={data} />
-				</div>
-			</div>
+			<ProductsTable data={data} />
 		</div>
 	);
 };
