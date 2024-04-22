@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { StackedColumnChart } from 'src/app/components/optimized';
-import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton';
-// import CustomersActions from './comp/CustomersActions';
+import { ArrangeButton, StackedColumnChart } from 'src/app/components/optimized';
+
 import { Table } from '@mui/material';
 import data from '../comp/data.json';
 import { nanoid } from 'nanoid';

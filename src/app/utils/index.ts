@@ -49,6 +49,32 @@ export function getInitialDate() {
 	const day = String(today.getDate()).padStart(2, '0');
 	return `${year}-${month}-${day}`;
 }
+export const getCurrentDate = () => {
+	const currentDate = new Date();
+
+	const formattedDate = currentDate.toLocaleDateString(undefined, {
+		month: '2-digit',
+		day: '2-digit',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: true,
+	});
+
+	return formattedDate;
+};
+
+// Function to calculate the average rating
+export const calculateAverageRating = (reviews: { rating: number }[]): string => {
+	if (reviews.length === 0) {
+		return '0'; // Return '0' if there are no reviews
+	}
+	const totalRating = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+	return (totalRating / reviews.length).toFixed(2);
+};
+
+export const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
 export const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
 export const parseDate = (dateString) => new Date(dateString);
+

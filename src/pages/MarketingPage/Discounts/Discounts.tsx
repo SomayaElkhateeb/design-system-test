@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDiscounts, deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { useTranslation } from 'react-i18next';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import DiscountsTable from 'src/app/components/page/discount/Table/DiscountsTable';
@@ -25,12 +25,7 @@ const Discounts: React.FC = () => {
 				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
 
 				{/*  table section */}
-				<DiscountsTable
-					discounts={discounts}
-					isLoading={isLoading}
-					deleteDiscount={deleteDiscount}
-					dispatch={dispatch}
-				/>
+				<DiscountsTable discounts={discounts} isLoading={isLoading} />
 			</div>
 		</div>
 	);

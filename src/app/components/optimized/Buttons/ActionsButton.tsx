@@ -1,17 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import PopoverComponenet from './Popover';
-import { Button, Menu } from '../../optimized';
+
+import PopoverComponenet from '../UiKits/Popover';
+
+import { Button, Menu } from '..';
 import { FaAngleDown } from 'react-icons/fa6';
-import { ArrangeIcon } from 'src/app/utils/icons';
 //  global componenet used in multi components like ActionsComp
-export default function ArrangeButton({
+export default function ActionsButton({
 	sortMenus,
 	selectedOption,
 	handelSelect,
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
-	handelSelect: () => void;
+	handelSelect: (e: string) => void;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -20,8 +21,8 @@ export default function ArrangeButton({
 		<PopoverComponenet
 			button={
 				<>
-					<Button variant='secondary' LeftIcon={ArrangeIcon} RightIcon={FaAngleDown}>
-						{t('arrange')}
+					<Button variant='secondary' RightIcon={FaAngleDown}>
+						{t('Actions')}
 					</Button>
 				</>
 			}

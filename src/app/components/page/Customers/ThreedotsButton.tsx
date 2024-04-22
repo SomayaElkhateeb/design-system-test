@@ -1,7 +1,8 @@
-import PopoverComponent from './Popover';
+
 import { Menu } from '../../optimized';
 
 import { MoreIcon } from 'src/app/utils/icons';
+import PopoverComponent from '../../optimized/UiKits/Popover';
 //  global componenet used in multi components like ActionsComp
 export default function ThreeDotsButton({
 	sortMenus,
@@ -10,7 +11,7 @@ export default function ThreeDotsButton({
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
-	handelSelect: () => void;
+	handelSelect: (e: string) => void;
 }) {
 	return (
 		<PopoverComponent button={<MoreIcon className='fill-subtitle' />}>

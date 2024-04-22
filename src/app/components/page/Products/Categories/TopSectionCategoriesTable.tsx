@@ -9,7 +9,7 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-import ActionsComp from '../../Customers/ActionsComp';
+import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import { MdDelete } from 'react-icons/md';
 
 export default function TopSectionCategoriesTable() {
@@ -31,7 +31,11 @@ export default function TopSectionCategoriesTable() {
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export categories', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import categories', icon: <FiUploadCloud className='iconClass' /> },
-		{ id: nanoid(), text: 'Delete all categories', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
+		{
+			id: nanoid(),
+			text: 'Delete all categories',
+			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+		},
 	];
 
 	return (

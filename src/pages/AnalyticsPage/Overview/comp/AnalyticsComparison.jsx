@@ -1,8 +1,9 @@
-// @ts-nocheck
+
 import { useState } from 'react';
-import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
+
 import data from '../../comp/data.json';
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
+import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
 
 const AnalyticsComparison = () => {
 	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);

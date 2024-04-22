@@ -218,3 +218,41 @@ button.splide__arrow--prev svg {
 button.splide__arrow--prev {
 	margin-right: 40px;
 }
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 50px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+@media print {
+	body * {
+		visibility: hidden;
+	}
+	.print-only,
+	.print-only * {
+		visibility: visible;
+	}
+	.print-only {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+}

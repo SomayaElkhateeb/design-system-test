@@ -39,16 +39,20 @@ export const english = {
 	'View All': 'View All',
 	'All Customers': 'All Customers',
 	'Customers Groups': 'Customers Groups',
+
 	'add new coupon': 'Add New Coupon',
+
 	arrange: 'Arrange',
 	filter: 'Filter',
 	Actions: 'Actions',
 	AddCustomer: 'AddCustomer',
+
 	Mobile: 'Mobile',
 	City: 'City',
 	Orders: 'Orders',
 	'E-Subscription': 'E-Subscription',
 	actions: 'actions',
+
 	Dashboard: 'Dashboard',
 	'Welcome to Restaurant Admin!': 'Welcome to Restaurant Admin!',
 	'Total Income': 'Total Income',
@@ -230,6 +234,19 @@ export const english = {
 	'Reset Password ?': 'Reset Password ?',
 	'Enter Category': 'Enter Category',
 	'language changed successfully': 'language changed successfully',
+
+	'publish all': 'publish all',
+	'Published': 'Published',
+	'Not Published': 'Not Published',
+	'Responded': 'Responded',
+	'Not Responded': 'Not Responded',
+	'Submit & Reply': 'Submit & Reply',
+	'Submit & Publish': 'Submit & Publish',
+	Reply: 'Reply',
+	Publish: 'Publish',
+	'Product Reviews': 'Product Reviews',
+	'Asks & Queries': 'Asks & Queries',
+
 	// Somaya
 	'Get ready for your first sale': 'Get ready for your first sale',
 	'There are only 2 main steps to launch your store': 'There are only 2 main steps to launch your store',
@@ -275,6 +292,16 @@ export const english = {
 	'Ends At': 'Ends At',
 	Sales: 'Sales',
 	Used: 'Used',
+	"Compared to":"Compared to",
+	"last Year":"last Year",
+	"Add Campaign":"Add Campaign",
+	"Add Activity":"Add Activity",
+	"Campaign":"Campaign",
+	"Expenses":"Expenses",
+	"Net profit":"Net profit",
+	"Sessions":"Sessions",
+	"Activity":"Activity",
+	"Export":"Export",
 	'There is no discount available!': 'There is no discount available!',
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',
@@ -355,4 +382,5 @@ export const english = {
 	Off: 'Off',
 	On: 'On',
 	Groups: 'Groups',
+
 };
