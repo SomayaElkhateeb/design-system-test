@@ -43,7 +43,9 @@ function SelectItems(props) {
 	 * @param {Item} item
 	 */
 	function handleChange(isChecked, item) {
-		const updatedItems = isChecked ? [...selectedItems, item] : selectedItems.filter((item) => item.id !== item.id);
+		const updatedItems = isChecked
+			? [...selectedItems, item]
+			: selectedItems.filter((item) => item.id !== item.id);
 		setSelectedItems(updatedItems);
 		console.log('Checkbox checked:', isChecked);
 	}
@@ -81,7 +83,9 @@ function SelectItems(props) {
 		>
 			<label className='w-[39rem] rounded bg-white py-[1rem]'>
 				<div>
-					<h3 className='text-title font-semibold mb-3 ml-[1rem]'>Select {capitalizeFirstLetter(props.title)}</h3>
+					<h3 className='text-title font-semibold mb-3 ml-[1rem] mr-4'>
+						{t('Select')} {capitalizeFirstLetter(props.title)}
+					</h3>
 
 					<div className='flex items-center justify-between px-[1rem]'>
 						<div className='w-[24rem]'>
@@ -125,11 +129,13 @@ function SelectItems(props) {
 					))}
 				</div>
 
-				<div className='flex mt-4 justify-end mr-[1rem] gap-[1rem]'>
+				<div className='flex mt-4 justify-end mx-4 gap-4'>
 					<Button onClick={() => props.onClose()} variant='tertiary'>
 						{t('cancel')}
 					</Button>
-					<Button onClick={() => props.addBtn(selectedItems)}>{`${t('add')} (${selectedItems.length})`}</Button>
+					<Button onClick={() => props.addBtn(selectedItems)}>
+						{t('add')} {selectedItems.length}
+					</Button>
 				</div>
 			</label>
 		</div>

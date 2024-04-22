@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import LayoutCard from './LayoutCard';
 import { Button } from 'src/app/components/optimized';
+import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 /**
  * @typedef {{
@@ -35,6 +37,7 @@ export default function VerticalTabs(props) {
 						onNext={handleNext}
 						onPrev={handlePrev}
 						tabs={props.tabs}
+						handleFinish={props.handleFinish}
 					/>
 				))}
 			</div>
@@ -92,11 +95,13 @@ function useVerticalTabs(initialTab = 0, tabs) {
  */
 
 function VTab(props) {
+	const { t } = useTranslation();
+	const language = UseLanguage();
 	return (
 		<div className='relative'>
 			<div className='flex items-center'>
 				<div
-					className={`z-20 w-8 h-8 rounded-full flex justify-center items-center ${
+					className={`z-20 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer ${
 						props.index <= props.currentTab
 							? 'bg-blue-500 text-white' // Active
 							: props.currentTab >= props.index - 1
@@ -105,13 +110,19 @@ function VTab(props) {
 					}`}
 					onClick={() => props.onClick(props.index)}
 				>
-					{props.index < props.currentTab ? <span className='text-sm'>&#10003;</span> : props.index + 1}
+					{props.index < props.currentTab ? (
+						<span className='text-sm'>&#10003;</span>
+					) : (
+						props.index + 1
+					)}
 				</div>
 
 				{/* Line between tabs */}
 				{props.index < props.tabs.length - 1 && (
 					<span
 						className={`h-full w-0.5 absolute left-[15px] top-4 ${
+							language === 'ar' ? 'right-[15px]' : 'left-[15px]'
+						} ${
 							props.index === props.currentTab || props.index <= props.currentTab
 								? 'bg-blue-600' // Blue line for active tab
 								: 'bg-gray-300' // Gray line for inactive tab
@@ -121,7 +132,9 @@ function VTab(props) {
 
 				{/* title */}
 				<div
-					className={`flex-grow ml-2  text-md capitalize ${props.index === props.currentTab ? 'font-semibold' : ''}`}
+					className={`flex-grow ml-2 mx-2 text-md capitalize ${
+						props.index === props.currentTab ? 'font-semibold' : ''
+					}`}
 				>
 					{props.title}
 				</div>
@@ -132,15 +145,34 @@ function VTab(props) {
 					<LayoutCard>
 						{props.content}
 						{/* Next & Prev */}
-						<div className='flex justify-end mt-4'>
+						{/* <div className='flex justify-end mt-4'>
 							{props.index !== 0 && (
 								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ml-5'>
-									Prev
+									{t('Prev')}
 								</Button>
 							)}
 
-							<Button onClick={props.index === props.tabs.length - 1 ? () => alert('Finish') : props.onNext}>
-								{props.index === props.tabs.length - 1 ? 'Finish' : 'Next'}
+							<Button
+								onClick={
+									props.index === props.tabs.length - 1 ? () => alert(t('Finish')) : props.onNext
+								}
+							>
+								{props.index === props.tabs.length - 1 ? t('Finish') : t('Next')}
+							</Button>
+						</div> */}
+
+						{/* Render next and previous buttons */}
+						<div className='flex justify-end mt-4'>
+							{props.index !== 0 && (
+								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ml-5'>
+									{t('Prev')}
+								</Button>
+							)}
+
+							<Button
+								onClick={props.index === props.tabs.length - 1 ? props.handleFinish : props.onNext}
+							>
+								{props.index === props.tabs.length - 1 ? t('Finish') : t('Next')}
 							</Button>
 						</div>
 					</LayoutCard>
