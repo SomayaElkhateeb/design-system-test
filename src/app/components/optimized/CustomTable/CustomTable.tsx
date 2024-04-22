@@ -4,6 +4,7 @@ import { exportToExcel } from './exportToExcel';
 import { Button } from 'src/app/components/optimized';
 import { IoPrintOutline } from 'react-icons/io5';
 import { RiFileExcel2Line } from 'react-icons/ri';
+import ActionHandler from 'src/app/utils/ActionMethods';
 
 interface CustomTableProps<T, K extends keyof T> {
 	data?: T[];
@@ -22,20 +23,21 @@ const CustomTable = <T, K extends keyof T>({
 	initialPage,
 	initialItemsPerPage,
 }: CustomTableProps<T, K>) => {
-	const { sortedData, sortConfig, currentPage, totalPages, handleSort, handlePageChange } = useSortablePaginatedTable(
-		data,
-		initialSortColumn,
-		initialSortOrder,
-		initialPage,
-		initialItemsPerPage,
-	);
+	const { sortedData, sortConfig, currentPage, totalPages, handleSort, handlePageChange } =
+		useSortablePaginatedTable(
+			data,
+			initialSortColumn,
+			initialSortOrder,
+			initialPage,
+			initialItemsPerPage,
+		);
 
 	const handlePrint = () => {
-		window.print();
+		ActionHandler.PrintTable();
 	};
 
 	const handleExportToExcel = () => {
-		exportToExcel(sortedData, 'reviews_data.xlsx');
+		ActionHandler.exportToExcel(sortedData, 'reviews_data.xlsx');
 	};
 
 	const renderColumns = () => {
@@ -86,7 +88,11 @@ const CustomTable = <T, K extends keyof T>({
 					<tbody>{renderRows()}</tbody>
 				</table>
 			</div>
-			<Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+			<Pagination
+				currentPage={currentPage}
+				totalPages={totalPages}
+				onPageChange={handlePageChange}
+			/>
 		</div>
 	);
 };

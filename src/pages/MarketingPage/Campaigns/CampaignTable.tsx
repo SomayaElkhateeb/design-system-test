@@ -9,7 +9,7 @@ import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
-const CampaignTable = forwardRef(({ sortBy }: CampaignTableInterface, ref) => {
+const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 	// const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
 
 	// const sortFunctions = {
@@ -68,7 +68,7 @@ const CampaignTable = forwardRef(({ sortBy }: CampaignTableInterface, ref) => {
 		);
 	};
 	return (
-		<Box ref={ref}>
+		<Box  className='print-only'>
 			<BaseTable
 				language={language}
 				color='#55607A'
@@ -127,5 +127,5 @@ const CampaignTable = forwardRef(({ sortBy }: CampaignTableInterface, ref) => {
 			/>
 		</Box>
 	);
-});
+}
 export default CampaignTable;
