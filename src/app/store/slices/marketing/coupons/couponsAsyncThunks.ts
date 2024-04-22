@@ -14,24 +14,46 @@ export const getCoupons = createAsyncThunk<any[]>('coupon/getCoupons', async (_,
 });
 
 // add coupons
-export const postCoupons = createAsyncThunk<any, any>('coupon/postCoupons', async (couponData, thunkAPI) => {
-	const { rejectWithValue } = thunkAPI;
-	try {
-		const { data } = await axios.post<any>(`${URL}/coupons`, couponData);
-		console.log('post coupons', data);
-		return data;
-	} catch (error) {
-		throw rejectWithValue(error.message);
-	}
-});
+export const postCoupons = createAsyncThunk<any, any>(
+	'coupon/postCoupons',
+	async (couponData, thunkAPI) => {
+		const { rejectWithValue } = thunkAPI;
+		try {
+			const { data } = await axios.post<any>(`${URL}/coupons`, couponData);
+			return data;
+		} catch (error) {
+			throw rejectWithValue(error.message);
+		}
+	},
+);
+
+// update coupons
+export const updateCoupon = createAsyncThunk<any[], any>(
+	'coupon/updateCoupon',
+	async (requestData, thunkAPI) => {
+		const { rejectWithValue } = thunkAPI;
+		try {
+			const { data } = await axios.put<any[]>(
+				`${URL}/coupons/${requestData.couponsId}`,
+				requestData.updatedData,
+			);
+			return data;
+		} catch (error) {
+			throw rejectWithValue(error.message);
+		}
+	},
+);
 
 // delete Coupons
-export const deleteCoupons = createAsyncThunk<any[], any>('coupons/deleteCoupons', async (id, thunkAPI) => {
-	const { rejectWithValue } = thunkAPI;
-	try {
-		await axios.delete<any[]>(`${URL}/coupons/${id}`);
-		return id;
-	} catch (error) {
-		throw rejectWithValue(error.message);
-	}
-});
+export const deleteCoupons = createAsyncThunk<any[], any>(
+	'coupons/deleteCoupons',
+	async (id, thunkAPI) => {
+		const { rejectWithValue } = thunkAPI;
+		try {
+			await axios.delete<any[]>(`${URL}/coupons/${id}`);
+			return id;
+		} catch (error) {
+			throw rejectWithValue(error.message);
+		}
+	},
+);

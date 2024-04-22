@@ -60,6 +60,7 @@ const data = [
 const Products = () => {
 	//  hooks
 	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
+
 	const handleComparisonChange = (option: string) => {
 		setSelectedComparisonOption(option);
 	};

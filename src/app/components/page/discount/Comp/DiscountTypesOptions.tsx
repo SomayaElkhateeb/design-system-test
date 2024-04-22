@@ -13,7 +13,7 @@ const DiscountTypesOptions = ({
 	const { t } = useTranslation();
 	return (
 		<div>
-			{discountType === 'Percentage' && (
+			{discountType === t('Percentage') && (
 				<div className='w-[24rem] pt-[1rem]'>
 					<FormField
 						formStore={formStore}
@@ -25,7 +25,7 @@ const DiscountTypesOptions = ({
 					/>
 				</div>
 			)}
-			{discountType === 'Fixed amount' && (
+			{discountType === t('Fixed amount') && (
 				<div className='w-[24rem] pt-[1rem]'>
 					<FormField
 						formStore={formStore}

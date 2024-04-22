@@ -6,8 +6,8 @@ import DiscountTypesOptions from 'src/app/components/page/discount/Comp/Discount
 import { DiscountFormStore } from '../NewDiscount';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-
-const BasicInfo = ({ formStore }: { formStore: DiscountFormStore }) => {
+import { ErrorMessage } from '@hookform/error-message';
+const BasicInfo = ({ formStore, errors }: { formStore: DiscountFormStore; errors: string }) => {
 	const { t } = useTranslation();
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
@@ -33,6 +33,7 @@ const BasicInfo = ({ formStore }: { formStore: DiscountFormStore }) => {
 							return <Input {...field} value={field.value} onChange={field.onChange} />;
 						}}
 					/>
+					<ErrorMessage errors={errors} name='singleErrorInput' />
 				</div>
 			</div>
 
