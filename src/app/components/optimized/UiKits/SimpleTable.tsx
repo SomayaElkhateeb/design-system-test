@@ -53,13 +53,14 @@ const useSortableTable = (initialData: TableRow[]) => {
 // SimpleTable
 const SimpleTable: React.FC<TableProps> = ({ columns, data, itemsPerPage, exportFilename }) => {
 	const { sortedData, sortData, sortConfig } = useSortableTable(data);
+
+	// Pagination;
 	const [currentPage, setCurrentPage] = useState(1);
-	// Pagination
+	const totalItems = sortedData.length;
+	const totalPages = Math.ceil(totalItems / itemsPerPage);
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 	};
-	const totalItems = sortedData.length;
-	const totalPages = Math.ceil(totalItems / itemsPerPage);
 
 	const handlePrint = () => {
 		window.print();

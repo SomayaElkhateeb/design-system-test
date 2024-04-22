@@ -31,7 +31,7 @@ const StoreReviews = () => {
 					legends={chartData}
 				/>
 			</div>
-			<SimpleTable columns={columns} data={data} itemsPerPage={5} exportFilename='StoreReviews' />
+			<SimpleTable columns={columns} data={data} itemsPerPage={3} exportFilename='StoreReviews' />
 		</div>
 	);
 };

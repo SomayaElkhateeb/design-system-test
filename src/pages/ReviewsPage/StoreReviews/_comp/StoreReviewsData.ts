@@ -34,7 +34,7 @@ export const data = [
 	},
 	{
 		id: 2,
-		day: 'Mon 21 April',
+		day: 'Mon 22 April',
 		ratingsNo: 11,
 		average: 4.5,
 		topCustomerGroup: 'Niche goup',
@@ -43,7 +43,7 @@ export const data = [
 	},
 	{
 		id: 3,
-		day: 'Mon 21 April',
+		day: 'Mon 23 April',
 		ratingsNo: 12,
 		average: 4.5,
 		topCustomerGroup: 'Niche goup',
