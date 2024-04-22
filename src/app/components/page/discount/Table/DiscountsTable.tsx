@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import ThreeDotsButton from '../../Customers/ThreedotsButton';
+import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable from '../../Customers/TableLayoutGlobal/base.table';
 import { Switch, TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';

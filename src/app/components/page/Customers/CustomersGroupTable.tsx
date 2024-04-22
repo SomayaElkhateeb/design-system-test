@@ -16,7 +16,7 @@ import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
-import ThreeDotsButton from './ThreedotsButton';
+import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 export default function CustomersGroupTable() {
 	//  hooks
 	const navigate = useNavigate();
@@ -54,7 +54,11 @@ export default function CustomersGroupTable() {
 	const customersHeaders = [
 		{
 			icon: (
-				<CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={customerGroups?.map((e) => e.id)} />
+				<CustomTableHeaderCheckbox
+					array={array}
+					setArray={setArray}
+					mainArray={customerGroups?.map((e) => e.id)}
+				/>
 			),
 			title: t('Group Name'),
 		},
@@ -64,7 +68,8 @@ export default function CustomersGroupTable() {
 	];
 
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleEn =
+		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
 	return (
 		<BaseTable
@@ -106,12 +111,25 @@ export default function CustomersGroupTable() {
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<FaRegEdit className='text-subtitle' onClick={() => navigate(`/addCustomer?id=${e?.id}`)} />
-								<ThreeDotsButton sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+								<FaRegEdit
+									className='text-subtitle'
+									onClick={() => navigate(`/addCustomer?id=${e?.id}`)}
+								/>
+								<ThreeDotsButton
+									sortMenus={settingMenus}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
 								{language === 'ar' ? (
-									<IoIosArrowBack className='text-subtitle' onClick={() => navigate(`/customers/${e?.id}`)} />
+									<IoIosArrowBack
+										className='text-subtitle'
+										onClick={() => navigate(`/customers/${e?.id}`)}
+									/>
 								) : (
-									<IoIosArrowForward className='text-subtitle' onClick={() => navigate(`/customers/${e?.id}`)} />
+									<IoIosArrowForward
+										className='text-subtitle'
+										onClick={() => navigate(`/customers/${e?.id}`)}
+									/>
 								)}
 							</div>
 						</TableCell>,

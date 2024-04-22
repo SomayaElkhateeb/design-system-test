@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import BaseTable from '../Customers/TableLayoutGlobal/base.table';
-import ThreeDotsButton from '../Customers/ThreedotsButton';
+import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import { Coupon } from 'src/app/interface/CouponInterface';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';

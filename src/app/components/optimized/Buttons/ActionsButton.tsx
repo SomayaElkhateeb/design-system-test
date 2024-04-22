@@ -21,7 +21,7 @@ export default function ActionsButton({
 		<PopoverComponenet
 			button={
 				<>
-					<Button variant='secondary' RightIcon={FaAngleDown}>
+					<Button  variant='secondary' RightIcon={FaAngleDown}>
 						{t('Actions')}
 					</Button>
 				</>

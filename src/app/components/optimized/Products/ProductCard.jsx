@@ -20,7 +20,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import CustomTableBodyCheckbox from '../../page/Customers/CustomTableBodyChckbox';
 import useSelectBox from '../Menu/useSelectBox';
-import ThreeDotsButton from '../../page/Customers/ThreedotsButton';
+import ThreeDotsButton from '../Buttons/ThreedotsButton';
 
 /**
  * @param {{

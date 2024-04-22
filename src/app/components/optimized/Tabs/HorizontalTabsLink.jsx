@@ -12,14 +12,27 @@ import { Link, useParams } from 'react-router-dom';
  * and the current active tab from the URL parameters.
  */
 
-
-
 export default function HorizontalTabsLink(props) {
 	//  hooks
-	const { tab:tabName } = useParams();
+	const { tab: tabName } = useParams();
 
 	const { t } = useTranslation();
 
+	/**@param {string} tab */
+	const handelTabs = (tab) => {
+		if (!tabName?.includes('orders')) {
+			return (
+				<>
+					{tab !== 'AllProducts'
+						? t(tab.charAt(0).toUpperCase() + tab.slice(1))
+						: t('All Products')}
+				</>
+			);
+		} else {
+			return;
+			<p>{t(tab.charAt(0).toUpperCase() + tab.slice(1))}</p>;
+		}
+	};
 	return (
 		<div>
 			<div className='bg-white border-b border-border-color '>
@@ -34,7 +47,7 @@ export default function HorizontalTabsLink(props) {
 								}`}
 								to={`${props.path}/${tab}`}
 							>
-								{tab!=="AllProducts"? t(tab.charAt(0).toUpperCase() + tab.slice(1)):t("All Products")}
+								{handelTabs(tab)}
 							</Link>
 						</li>
 					))}

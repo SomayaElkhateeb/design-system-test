@@ -19,7 +19,7 @@ import { IoEyeOutline } from 'react-icons/io5';
 
 import { StarIcon, StarActiveIcon, CameraIcon, CopyIcon } from 'src/app/utils/icons';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import ThreeDotsButton from '../../Customers/ThreedotsButton';
+import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import { menuType } from '../../../optimized/Buttons/ActionsComp';
 
 export default function AllProductsTable({

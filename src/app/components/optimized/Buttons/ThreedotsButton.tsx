@@ -1,8 +1,7 @@
-
-import { Menu } from '../../optimized';
+import { Menu } from '..';
 
 import { MoreIcon } from 'src/app/utils/icons';
-import PopoverComponent from '../../optimized/UiKits/Popover';
+import PopoverComponent from '../UiKits/Popover';
 //  global componenet used in multi components like ActionsComp
 export default function ThreeDotsButton({
 	sortMenus,
