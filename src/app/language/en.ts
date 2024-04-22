@@ -65,7 +65,8 @@ export const english = {
 	Today: 'Today',
 	Delivered: 'Delivered',
 	'Order Statistics': 'Orders Statistics',
-	'A Detailed Analysis of Restaurant Order Dynamics': 'A Detailed Analysis of Restaurant Orders Dynamics',
+	'A Detailed Analysis of Restaurant Order Dynamics':
+		'A Detailed Analysis of Restaurant Orders Dynamics',
 	'Recent Customer': 'Recent Customers',
 	'View More': 'View More',
 	'Customers Map': 'Customers Map',
@@ -236,9 +237,9 @@ export const english = {
 	'language changed successfully': 'language changed successfully',
 
 	'publish all': 'publish all',
-	'Published': 'Published',
+	Published: 'Published',
 	'Not Published': 'Not Published',
-	'Responded': 'Responded',
+	Responded: 'Responded',
 	'Not Responded': 'Not Responded',
 	'Submit & Reply': 'Submit & Reply',
 	'Submit & Publish': 'Submit & Publish',
@@ -249,7 +250,8 @@ export const english = {
 
 	// Somaya
 	'Get ready for your first sale': 'Get ready for your first sale',
-	'There are only 2 main steps to launch your store': 'There are only 2 main steps to launch your store',
+	'There are only 2 main steps to launch your store':
+		'There are only 2 main steps to launch your store',
 	'Follow our tips': 'Follow our tips',
 	'to get started': 'to get started',
 	'Basic setup': 'Basic setup',
@@ -258,7 +260,8 @@ export const english = {
 	Activate: 'Activate',
 	'Add at least 1 product to your store': 'Add at least 1 product to your store',
 	Add: 'Add',
-	'Create at least 1 inventory to locate and manage': 'Create at least 1 inventory to locate and manage',
+	'Create at least 1 inventory to locate and manage':
+		'Create at least 1 inventory to locate and manage',
 	shipping: 'shipping',
 	'Add shipping method for your store, so you can deliver products to your customers':
 		'Add shipping method for your store, so you can deliver products to your customers',
@@ -292,16 +295,16 @@ export const english = {
 	'Ends At': 'Ends At',
 	Sales: 'Sales',
 	Used: 'Used',
-	"Compared to":"Compared to",
-	"last Year":"last Year",
-	"Add Campaign":"Add Campaign",
-	"Add Activity":"Add Activity",
-	"Campaign":"Campaign",
-	"Expenses":"Expenses",
-	"Net profit":"Net profit",
-	"Sessions":"Sessions",
-	"Activity":"Activity",
-	"Export":"Export",
+	'Compared to': 'Compared to',
+	'last Year': 'last Year',
+	'Add Campaign': 'Add Campaign',
+	'Add Activity': 'Add Activity',
+	Campaign: 'Campaign',
+	Expenses: 'Expenses',
+	'Net profit': 'Net profit',
+	Sessions: 'Sessions',
+	Activity: 'Activity',
+	Export: 'Export',
 	'There is no discount available!': 'There is no discount available!',
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',
@@ -371,7 +374,8 @@ export const english = {
 
 	'define minimum requirements': 'define minimum requirements',
 	Limits: 'Limits',
-	'Limit number of times this coupon can be used in total': 'Limit number of times this coupon can be used in total',
+	'Limit number of times this coupon can be used in total':
+		'Limit number of times this coupon can be used in total',
 	'Usage number': 'Usage number',
 	'Limit to one use per customer': 'Limit to one use per customer',
 
@@ -382,5 +386,17 @@ export const english = {
 	Off: 'Off',
 	On: 'On',
 	Groups: 'Groups',
-
+	'Add Discount': 'Add Discount',
+	'Save Changes': 'Save Changes',
+	Discard: 'Discard',
+	'Add coupon': 'Add coupon',
+	No: 'No',
+	yet: 'yet',
+	Finish: 'Finish',
+	Next: 'Next',
+	Prev: 'Prev',
+	'Last Week': 'Last Week',
+	'This Week': 'This Week',
+	Select: 'Select',
+	add: 'add',
 };

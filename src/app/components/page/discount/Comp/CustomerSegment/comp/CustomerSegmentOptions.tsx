@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import SpecificCustomers from '../../../Selectors/SpecificCustomers';
 import SpecificGroups from '../../../Selectors/SpecificGroups';
 
@@ -6,10 +7,11 @@ interface CustomerSegmentOptionsProps {
 }
 
 const CustomerSegmentOptions: React.FC<CustomerSegmentOptionsProps> = ({ segmentOptions }) => {
+	const { t } = useTranslation();
 	return (
 		<div>
-			{segmentOptions === 'Specific customer groups' && <SpecificGroups />}
-			{segmentOptions === 'Specific customers' && <SpecificCustomers />}
+			{segmentOptions === t('Specific customer groups') && <SpecificGroups />}
+			{segmentOptions === t('Specific customers') && <SpecificCustomers />}
 		</div>
 	);
 };

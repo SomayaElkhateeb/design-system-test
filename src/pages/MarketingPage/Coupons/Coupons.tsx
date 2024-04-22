@@ -23,7 +23,7 @@ const Coupons: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<div className=' p-5 mx-auto my-[0.8rem]'>
+		<div className=' px-5 mx-auto my-[0.8rem]'>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
