@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { CheckBox, InputRow } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
+import { DiscountFormStore } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 
 interface State {
 	selectedMinimumRequirements: string;
 	isChecked: boolean;
-	minimumQuantity: number;
 }
 
 const initialState: State = {
 	selectedMinimumRequirements: '',
 	isChecked: false,
-	minimumQuantity: 0,
 };
 
-const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
+const MinimumRequirements = ({ formStore }: { formStore: DiscountFormStore }) => {
 	const { t } = useTranslation();
 	const [updateState, setUpdateState] = useState<State>(initialState);
-	const { selectedMinimumRequirements, isChecked, minimumQuantity } = updateState;
+	const { selectedMinimumRequirements, isChecked } = updateState;
 
 	// Update state
 	const update = (newValue: Partial<State>) => {
@@ -31,32 +32,9 @@ const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
 	const handleCheckboxChange = (newValue: boolean) => {
 		update({ isChecked: newValue });
 	};
-
-	const [inputStatePrice, setInputStatePrice] = useState({
-		selectedValue: '',
-		value: '',
-		error: '',
-		success: false,
-	});
-
-	const [inputState, setInputState] = useState({
-		selectedValue: '',
-		value: '',
-		error: '',
-		success: false,
-	});
-
-	function handleInputChange(value) {
-		setInputState({ ...inputState, value });
-		console.log('input value', value);
-	}
-
-	function handleInputChangePrice(value) {
-		setInputStatePrice({ ...inputStatePrice, value });
-		console.log('input value', value);
-	}
-
-	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map((option) => option);
+	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map(
+		(option) => option,
+	);
 
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
@@ -74,27 +52,25 @@ const MinimumRequirements: React.FC = ({ minimumPrice, setState }) => {
 
 			{selectedMinimumRequirements === 'Minimum price' && (
 				<div className='w-[390px]'>
-					<InputRow
+					<FormField
+						formStore={formStore}
+						name='MiniPrice'
 						label={t('Mini purchase price')}
-						type='number'
-						min={0}
-						handleOnChange={handleInputChangePrice}
-						value={inputStatePrice.value}
-						error={inputStatePrice.error}
-						success={inputStatePrice.success}
+						render={(field) => {
+							return <Input {...field} type='number' />;
+						}}
 					/>
 				</div>
 			)}
 			{selectedMinimumRequirements === 'Minimum quantity' && (
 				<div className='w-[390px]'>
-					<InputRow
+					<FormField
+						formStore={formStore}
+						name='MiniQuantity'
 						label={t('Mini purchase quantity')}
-						type='number'
-						min={0}
-						handleOnChange={handleInputChange}
-						value={inputState.value}
-						error={inputState.error}
-						success={inputState.success}
+						render={(field) => {
+							return <Input {...field} type='number' />;
+						}}
 					/>
 				</div>
 			)}

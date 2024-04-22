@@ -1,63 +1,39 @@
-import React, { useState } from 'react';
-import InputRow from 'src/app/components/optimized/InputsFields/InputRow';
-import { AiOutlinePercentage } from 'react-icons/ai';
+import { DiscountFormStore } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
+import { Input } from 'src/app/components/ui/input';
+import FormField from 'src/app/components/ui/form/field';
+import { useTranslation } from 'react-i18next';
 
-interface selectedOptionType {
+const DiscountTypesOptions = ({
+	discountType,
+	formStore,
+}: {
+	formStore: DiscountFormStore;
 	discountType: string;
-}
-
-const DiscountTypesOptions: React.FC<selectedOptionType> = ({ discountType }) => {
-	const [inputState, setInputState] = useState({
-		selectedValue: '',
-		value: '',
-		error: '',
-		success: false,
-	});
-
-	function handleInputChange(value) {
-		setInputState({ ...inputState, value });
-		console.log('input value', value);
-	}
-
-	const [inputStateFixed, setInputStateFixed] = useState({
-		selectedValue: '',
-		value: '',
-		error: '',
-		success: false,
-	});
-
-	function handleInputChangeFixed(value) {
-		setInputStateFixed({ ...inputState, value });
-		console.log('input value', value);
-	}
-
+}) => {
+	const { t } = useTranslation();
 	return (
 		<div>
 			{discountType === 'Percentage' && (
 				<div className='w-[24rem] pt-[1rem]'>
-					<InputRow
-						label='Percentage'
-						type='number'
-						min={0}
-						max={100}
-						leftIcon={<AiOutlinePercentage />}
-						handleOnChange={handleInputChange}
-						value={inputState.value}
-						error={inputState.error}
-						success={inputState.success}
+					<FormField
+						formStore={formStore}
+						name='percentage'
+						label={t('Percentage')}
+						render={(field) => {
+							return <Input {...field} type='number' />;
+						}}
 					/>
 				</div>
 			)}
 			{discountType === 'Fixed amount' && (
 				<div className='w-[24rem] pt-[1rem]'>
-					<InputRow
-						label='Fixed amount'
-						type='number'
-						min={0}
-						handleOnChange={handleInputChangeFixed}
-						value={inputStateFixed.value}
-						error={inputStateFixed.error}
-						success={inputStateFixed.success}
+					<FormField
+						formStore={formStore}
+						name='fixedAmount'
+						label={t('Fixed amount')}
+						render={(field) => {
+							return <Input {...field} type='number' />;
+						}}
 					/>
 				</div>
 			)}
