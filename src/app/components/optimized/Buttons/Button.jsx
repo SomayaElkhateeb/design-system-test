@@ -4,7 +4,7 @@ import { cn } from 'src/app/utils';
 const handleButtonVariant = cva(undefined, {
 	variants: {
 		variant: {
-			link: 'text-primary flex flex-row justify-center items-center capitalize',
+			link: 'text-primary flex flex-row justify-center items-center capitalize gap-1',
 			secondary: 'btn-sec flex items-center gap-1 p-2',
 			primary: 'text-white bg-primary flex items-center p-2 gap-2 rounded',
 			tertiary: 'text-title text-sm capitalize font-semibold flex items-center gap-1.5',
@@ -16,7 +16,7 @@ const handleButtonVariant = cva(undefined, {
 const handleIconVariant = cva(undefined, {
 	variants: {
 		variant: {
-			link: 'fill-primary p-0.5 mt-1',
+			link: 'fill-primary p-0.5  mt-1',
 			secondary: 'fill-pri-dark h-3 w-3 ml-1',
 			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
 			primary: 'fill-white',

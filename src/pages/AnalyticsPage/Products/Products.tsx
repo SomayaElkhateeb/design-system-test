@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { ColumnChart } from 'src/app/components/optimized';
-
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
+import { ColumnChart } from 'src/app/components/optimized';
 
 import ProductsTable from 'src/app/components/page/Analytics/ProductsTable';
 import { getImageUrl } from 'src/app/utils';
@@ -60,13 +59,11 @@ const data = [
 
 const Products = () => {
 	//  hooks
-
 	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
 
 	const handleComparisonChange = (option: string) => {
 		setSelectedComparisonOption(option);
 	};
-
 	return (
 		<div className='p-5 grid gap-5'>
 			<CompareBar

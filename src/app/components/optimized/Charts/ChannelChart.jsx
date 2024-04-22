@@ -103,14 +103,20 @@ export default function ChannelChart(props) {
 
 				<div className='flex'>
 					<BackAndroidIcon
-						className={`fill-${negative ? 'error' : 'success'}  ${negative ? '-rotate-90' : 'rotate-90'}`}
+						className={`fill-${negative ? 'error' : 'success'}  ${
+							negative ? '-rotate-90' : 'rotate-90'
+						}`}
 					/>
 					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
 				</div>
 			</div>
 
 			<div id='chart'>
-				<ReactApexChart options={props.options || defaultOptions} series={props.series || series} type='donut' />
+				<ReactApexChart
+					options={props.options || defaultOptions}
+					series={props.series || series}
+					type='donut'
+				/>
 			</div>
 			<div id='html-dist'></div>
 		</div>

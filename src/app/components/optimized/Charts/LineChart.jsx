@@ -123,7 +123,9 @@ export default function LineChart(props) {
 				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
 				<div className='flex'>
 					<BackAndroidIcon
-						className={`fill-${negative ? 'error' : 'success'}  ${negative ? '-rotate-90' : 'rotate-90'}`}
+						className={`fill-${negative ? 'error' : 'success'}  ${
+							negative ? '-rotate-90' : 'rotate-90'
+						}`}
 					/>
 					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
 				</div>
