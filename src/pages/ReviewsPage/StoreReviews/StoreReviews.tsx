@@ -1,4 +1,4 @@
-import { CustomTable, DonutCard } from 'src/app/components/optimized';
+import { DonutCard, SimpleTable } from 'src/app/components/optimized';
 import { columns, data } from './_comp/StoreReviewsData';
 import DonutGraph, { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
 
@@ -31,7 +31,7 @@ const StoreReviews = () => {
 					legends={chartData}
 				/>
 			</div>
-			<CustomTable data={data} columns={columns} initialPage={1} initialItemsPerPage={2} />
+			<SimpleTable columns={columns} data={data} itemsPerPage={5} exportFilename='StoreReviews' />
 		</div>
 	);
 };

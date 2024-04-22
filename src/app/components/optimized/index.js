@@ -14,7 +14,8 @@ export { default as RightSidebar } from './UiKits/RightSidebar';
 export { default as AppsCard } from './Cards/AppsCard';
 export { default as HorizontalTabsLink } from './Tabs/HorizontalTabsLink';
 export { default as ArrangeButton } from './Buttons/ArrangeButton';
-export { default as CustomTable } from './CustomTable/CustomTable';
+export { default as SimpleTable } from './UiKits/SimpleTable';
+export { default as Pagination } from './UiKits/Pagination';
 export { default as DonutCard } from './Charts/DonutChart/DonutCard';
 // export { default as TourCard } from "./Cards/TourCard";
 
