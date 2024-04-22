@@ -1,5 +1,5 @@
 import { Button } from 'src/app/components/optimized';
-import PopoverComponenet from '../../Customers/Popover';
+
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
 import { IoMdArrowDropdown } from 'react-icons/io';
@@ -9,9 +9,9 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-import ActionsComp from '../../Customers/ActionsComp';
+import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import { MdDelete } from 'react-icons/md';
-
+import PopoverComponenet from '../../../optimized/UiKits/Popover'
 export default function TopSection({
 	verticalCard,
 	setVerticalCard,
@@ -27,11 +27,36 @@ export default function TopSection({
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const dropdownMenu = [
-		{ id: nanoid(), title: 'Simple Product', describtion: 'You don’t need advanced options to fill', shipping: true },
-		{ id: nanoid(), title: 'Configurable product', describtion: 'You need all options available', shipping: false },
-		{ id: nanoid(), title: 'Virtual Product', describtion: 'Services, ebooks, Downloadable', shipping: false },
-		{ id: nanoid(), title: 'Food', describtion: 'Food & Drinks have special way shipping', shipping: true },
-		{ id: nanoid(), title: 'Bundle', describtion: 'Collection of related products', shipping: false },
+		{
+			id: nanoid(),
+			title: 'Simple Product',
+			describtion: 'You don’t need advanced options to fill',
+			shipping: true,
+		},
+		{
+			id: nanoid(),
+			title: 'Configurable product',
+			describtion: 'You need all options available',
+			shipping: false,
+		},
+		{
+			id: nanoid(),
+			title: 'Virtual Product',
+			describtion: 'Services, ebooks, Downloadable',
+			shipping: false,
+		},
+		{
+			id: nanoid(),
+			title: 'Food',
+			describtion: 'Food & Drinks have special way shipping',
+			shipping: true,
+		},
+		{
+			id: nanoid(),
+			title: 'Bundle',
+			describtion: 'Collection of related products',
+			shipping: false,
+		},
 	];
 
 	const sortMenus = [
@@ -49,7 +74,11 @@ export default function TopSection({
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export products', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import products', icon: <FiUploadCloud className='iconClass' /> },
-		{ id: nanoid(), text: 'Delete all products', icon: <MdDelete className='text-[red]  text-[1.2rem]' /> },
+		{
+			id: nanoid(),
+			text: 'Delete all products',
+			icon: <MdDelete className='text-[red]  text-[1.2rem]' />,
+		},
 	];
 
 	const handelListAndGridImg = () => {
@@ -58,7 +87,9 @@ export default function TopSection({
 				<img
 					onClick={() => setVerticalCard(false)}
 					src={getImageUrl(
-						!verticalCard ? 'images/AllProductsImg/listActive.svg' : 'images/AllProductsImg/listNotActive.svg',
+						!verticalCard
+							? 'images/AllProductsImg/listActive.svg'
+							: 'images/AllProductsImg/listNotActive.svg',
 					)}
 					loading='lazy'
 					alt='listImg'
@@ -67,7 +98,9 @@ export default function TopSection({
 				<img
 					onClick={() => setVerticalCard(true)}
 					src={getImageUrl(
-						!verticalCard ? 'images/AllProductsImg/gridNotActive.svg' : 'images/AllProductsImg/gridActive.svg',
+						!verticalCard
+							? 'images/AllProductsImg/gridNotActive.svg'
+							: 'images/AllProductsImg/gridActive.svg',
 					)}
 					loading='lazy'
 					alt='gridImg'

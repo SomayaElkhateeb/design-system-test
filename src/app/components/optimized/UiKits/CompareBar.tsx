@@ -1,5 +1,5 @@
 import { comparisonMenus } from 'src/app/utils/constants';
-import CompareButton from './CompareButton';
+import { ArrangeButton } from '..';
 
 // how to use
 
@@ -17,14 +17,10 @@ import CompareButton from './CompareButton';
 //
 // };
 
-interface Props {
-	selectedComparisonOption: string;
-	handleComparisonChange: () => void;
-}
-const CompareBar = ({ selectedComparisonOption, handleComparisonChange }: Props) => {
+const CompareBar = ({ selectedComparisonOption, handleComparisonChange }) => {
 	return (
 		<div className='mb-4 flex items-center gap-2'>
-			<CompareButton
+			<ArrangeButton
 				sortMenus={comparisonMenus}
 				selectedOption={selectedComparisonOption}
 				handelSelect={handleComparisonChange}

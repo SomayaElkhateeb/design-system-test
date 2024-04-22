@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Switch, TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import BaseTable from '../Customers/TableLayoutGlobal/base.table';
@@ -11,11 +11,23 @@ import { Coupon } from 'src/app/interface/CouponInterface';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
-export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]; isLoading: boolean }) {
+
+import useSelectBox from '../../optimized/Menu/useSelectBox';
+import { useDispatch } from 'react-redux';
+import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+
+export default function CouponsTable({
+	coupons,
+	isLoading,
+}: {
+	coupons: Coupon[];
+	isLoading: boolean;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	//  headers
 
 	const CouponsHeaders = [
@@ -33,10 +45,15 @@ export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleEn =
+		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
 	const settingMenus = [
-		{ id: nanoid(), text: 'Delete permanently', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
+		{
+			id: nanoid(),
+			text: 'Delete permanently',
+			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+		},
 	];
 	return (
 		<BaseTable
@@ -100,15 +117,31 @@ export default function CouponsTable({ coupons, isLoading }: { coupons: Coupon[]
 
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<FaRegEdit className='text-subtitle' onClick={() => navigate(`addCoupon?id=${e?.id}`)} />
+								<FaRegEdit
+									className='text-subtitle'
+									onClick={() => navigate(`addCoupon?id=${e?.id}`)}
+								/>
 
-								<ThreeDotsButton sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+								<ThreeDotsButton
+									sortMenus={settingMenus}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
 								{language === 'ar' ? (
-									<IoIosArrowBack className='text-subtitle' onClick={() => navigate(`/brands/${e?.id}`)} />
+									<IoIosArrowBack
+										className='text-subtitle'
+										onClick={() => navigate(`/brands/${e?.id}`)}
+									/>
 								) : (
-									<IoIosArrowForward className='text-subtitle' onClick={() => navigate(`/brands/${e?.id}`)} />
+									<IoIosArrowForward
+										className='text-subtitle'
+										onClick={() => navigate(`/brands/${e?.id}`)}
+									/>
 								)}
 							</div>
+						</TableCell>,
+						<TableCell>
+							<button onClick={() => dispatch(deleteCoupons(e?.id))}>delete</button>
 						</TableCell>,
 					],
 				};

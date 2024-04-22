@@ -1,58 +1,77 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
-
-import BasicInfo from './BasicInfo/BasicInfo';
-import CustomerSegment from './CustomerSegment/CustomerSegment';
-import MinimumRequirements from './MinimumRequirements/MinimumRequirements';
-import ActiveDates from './ActiveDates/ActiveDates';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
 
-import { useDispatch } from 'react-redux';
+import BasicInfo from './BasicInfo/BasicInfo';
+import ActiveDates from '../../../../app/components/page/discount/Comp/ActiveDates';
+import MinimumRequirements from 'src/app/components/page/discount/Comp/MinimumRequirements';
+import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegment/CustomerSegment';
+
 import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
-import { z } from 'zod';
-import { useTranslation } from 'react-i18next';
+import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
+import { UseFormReturn } from 'react-hook-form';
+import { Form } from 'src/app/components/ui/form';
 
-const basicInfoSchema = z.object({
-	discountName: z.string().min(4, 'Discount name must be at least 3 characters long'),
-	fixedAmount: z.number().min(0, 'Fixed amount must be a positive number'),
-	minimumPrice: z.number().min(0, 'Minimum price must be a positive number'),
-	endDate: z.date().nullable(),
-});
-
-const initialValues = {
-	discountName: '',
-	fixedAmount: '',
-	minimumPrice: '',
-	endDate: null,
+const schema = {
+	name: z.string().min(3).max(60),
+	fixedAmount: z.number().min(0),
+	minimumPrice: z.number().min(0),
+	MiniPrice: z.number().min(0),
+	MiniQuantity: z.number().min(0),
+	percentage: z.number().min(0).max(100).optional(),
+	percentageGets: z.number().min(0).max(100).optional(),
+	endDate: z.date().nullable().optional(),
 };
-const NewDiscount: React.FC = () => {
-	const { t } = useTranslation();
-	const [state, setState] = useState(initialValues);
-	const [validationErrors, setValidationErrors] = useState({});
-	let { discountName, fixedAmount, minimumPrice, endDate } = state;
 
+type FormValues = InferredZodSchema<typeof schema>;
+export type DiscountFormStore = UseFormReturn<FormValues>;
+
+const NewDiscount = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const { t } = useTranslation();
+	const [state, setState] = useState();
 
+	const { formStore, onSubmit } = useForm({
+		schema,
+		defaultValues: {
+			name: '',
+			fixedAmount: 0,
+			minimumPrice: 0,
+			MiniPrice: 0,
+			MiniQuantity: 0,
+			percentage: 0,
+			percentageGets: 0,
+			endDate: '',
+		},
+		handleSubmit(validatedData) {
+			console.log('validatedData discount', validatedData);
+		},
+	});
 	const handleSaveChanges = () => {
-		try {
-			basicInfoSchema.parse(state);
-			const data = {
-				name: discountName,
-				value: fixedAmount,
-				date: endDate,
-				sales: minimumPrice,
-			};
-			dispatch(postDiscounts(data));
-			setState(initialValues);
-			navigate('/marketing/discounts');
-		} catch (error) {
-			console.error('Validation error:', error.errors);
-			setValidationErrors({
-				discountName: error.errors.find((err) => err.path[0] === 'discountName')?.message,
-				fixedAmount: error.errors.find((err) => err.path[0] === 'fixedAmount')?.message,
-			});
-		}
+		onSubmit();
+		// try {
+		// 	basicInfoSchema.parse(state);
+
+		// const data = {
+		// name: discountName,
+		// value: fixedAmount,
+		// date: endDate,
+		// sales: minimumPrice,
+		// };
+		// dispatch(postDiscounts(data));
+		// setState(initialValues);
+		// navigate('/marketing/discounts');
+		// } catch (error) {
+		// 	console.error('Validation error:', error.errors);
+		// 	setValidationErrors({
+		// 		discountName: error.errors.find((err) => err.path[0] === 'discountName')?.message,
+		// 		fixedAmount: error.errors.find((err) => err.path[0] === 'fixedAmount')?.message,
+		// 	});
+		// }
 	};
 
 	return (
@@ -64,23 +83,20 @@ const NewDiscount: React.FC = () => {
 				btn1={{ text: 'Discard', onClick: () => {} }}
 				btn2={{ text: 'Save Changes', onClick: handleSaveChanges }}
 			/>
-			<div className='p-4 flex justify-between gap-7'>
-				<div className='w-full flex flex-col gap-[18px]'>
-					<BasicInfo
-						discountName={state.discountName}
-						fixedAmount={state.fixedAmount}
-						setState={setState}
-						validationErrors={validationErrors}
-					/>
-					<CustomerSegment />
-					<MinimumRequirements setState={setState} minimumPrice={minimumPrice} />
-					<ActiveDates setState={setState} />
+			<Form {...formStore}>
+				<div className='p-4 flex justify-between gap-7'>
+					<div className='w-full flex flex-col gap-[18px]'>
+						<BasicInfo formStore={formStore} />
+						<CustomerSegment />
+						<MinimumRequirements formStore={formStore} />
+						<ActiveDates setState={setState} />
+					</div>
+					<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
+						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
+						<ToggleSwitch />
+					</div>
 				</div>
-				<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
-					<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
-					<ToggleSwitch />
-				</div>
-			</div>
+			</Form>
 		</div>
 	);
 };

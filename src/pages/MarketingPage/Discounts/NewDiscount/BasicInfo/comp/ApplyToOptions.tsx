@@ -1,18 +1,20 @@
-import React from 'react';
 import SpecificCategory from '../../../../../../app/components/page/discount/Selectors/SpecificCategory';
 import SpecificProducts from '../../../../../../app/components/page/discount/Selectors/SpecificProducts';
-import BuyXGetY from './comp/BuyXGetY';
+import { DiscountFormStore } from '../../NewDiscount';
+import BuyXGetY from './BuyXGetY';
 
-interface ApplyToOptionsProps {
+const ApplyToOptions = ({
+	applyTo,
+	formStore,
+}: {
 	applyTo: string;
-}
-
-const ApplyToOptions: React.FC<ApplyToOptionsProps> = ({ applyTo }) => {
+	formStore: DiscountFormStore;
+}) => {
 	return (
 		<div>
 			{applyTo === 'Specific category' && <SpecificCategory />}
 			{applyTo === 'Specific products' && <SpecificProducts />}
-			{applyTo === 'Buy x get y' && <BuyXGetY />}
+			{applyTo === 'Buy x get y' && <BuyXGetY formStore={formStore} />}
 		</div>
 	);
 };

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Apps, Campaigns, Coupons } from '.';
+import { Apps,  Campaigns,  Coupons } from '.';
 import Discounts from '../Discounts/Discounts';
 
 const MarketingTabs = () => {

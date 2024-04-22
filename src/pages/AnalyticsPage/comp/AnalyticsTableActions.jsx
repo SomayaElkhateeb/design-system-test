@@ -1,7 +1,7 @@
 import * as XLSX from 'xlsx/xlsx.mjs';
 import { useReactToPrint } from 'react-to-print';
-import { Button } from 'src/app/components/optimized';
-import ArrangeButton from 'src/app/components/page/Customers/ArrangeButton.tsx';
+import { ArrangeButton, Button } from 'src/app/components/optimized';
+
 import { ExportIcon, PrintIcon } from 'src/app/utils/icons';
 
 const AnalyticsTableActions = ({ sortMenus, onSelectOption, selectedOption, customersTableRef, data, documentTitle }) => {

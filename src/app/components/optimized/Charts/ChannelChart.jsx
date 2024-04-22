@@ -1,75 +1,67 @@
 import ReactApexChart from 'react-apexcharts';
+import { capitalizeFirstLetter } from 'src/app/utils';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
-/**
- * @param {import("./types").ReactApexCompProps} props
- *
- * @example
- *
- * ```jsx
- *  <ChannelChart
- *   options={{
- *   	chart: {
- *   		type: 'donut',
- *   		width: '100%',
- *   		fontFamily: 'Poppins , sans-serif'
- *   	},
- *   	plotOptions: {
- *   		pie: {
- *   			dataLabels: {
- *   				// position doesn't exist in the types of `pie`
- *   				// position: 'top'
- *   			}
- *   		}
- *   	},
- *   	grid: {
- *   		padding: {
- *   			right: 25,
- *   			left: 20
- *   		}
- *   	},
- *   	labels: ['Google', 'Social media', 'Email'],
- *   	legend: {
- *   		position: 'top',
- *   		horizontalAlign: 'center'
- *   	},
- *   	colors: ['#446CCE', '#49C596', '#D65036'],
- *   	responsive: [
- *   		{
- *   			breakpoint: 480,
- *   			options: {
- *   				chart: {
- *   					width: 400
- *   				}
- *   			}
- *   		}
- *   	]
- *   }}
- *   series={[44, 55, 41]}
- *  />
- * ```
- */
+// /**
+//  * @param {import("./types").ReactApexCompProps} props
+//  *
+//  * @example
+//  *
+//  * ```jsx
+//  *  <ChannelChart
+//  *   options={{
+//  *   	chart: {
+//  *   		type: 'donut',
+//  *   		width: '100%',
+//  *   		fontFamily: 'Poppins , sans-serif'
+//  *   	},
+//  *   	plotOptions: {
+//  *   		pie: {
+//  *   			dataLabels: {
+//  *   				// position doesn't exist in the types of `pie`
+//  *   				// position: 'top'
+//  *   			}
+//  *   		}
+//  *   	},
+//  *   	grid: {
+//  *   		padding: {
+//  *   			right: 25,
+//  *   			left: 20
+//  *   		}
+//  *   	},
+//  *   	labels: ['Google', 'Social media', 'Email'],
+//  *   	legend: {
+//  *   		position: 'top',
+//  *   		horizontalAlign: 'center'
+//  *   	},
+//  *   	colors: ['#446CCE', '#49C596', '#D65036'],
+//  *   	responsive: [
+//  *   		{
+//  *   			breakpoint: 480,
+//  *   			options: {
+//  *   				chart: {
+//  *   					width: 400
+//  *   				}
+//  *   			}
+//  *   		}
+//  *   	]
+//  *   }}
+//  *   series={[44, 55, 41]}
+//  *  />
+//  * ```
+//  */
+
 export default function ChannelChart(props) {
-	// max-w-[25rem]
-	return (
-		<div className=' h-full min-w-[20rem] rounded-xl border border-borders-lines bg-white p-4'>
-			<div className='flex items-center justify-between mb-1'>
-				<h2 className='text-lg font-semibold text-title'>sales by channel</h2>
-				<span className='flex text-secondary'>
-					<BackAndroidIcon className='rotate-90 fill-secondary' /> 4.75%
-				</span>
-			</div>
+	const {
+		title,
+		percentage,
+		negative,
+		labels = ['Google', 'Social media', 'Email'],
+		colors = ['#446CCE', '#49C596', '#D65036'],
+		series = [44, 55, 41],
+	} = props;
 
-			<div id='chart'>
-				<ReactApexChart options={props.options} series={props.series} type='donut' width='100%' height='89%' />
-			</div>
-			<div id='html-dist'></div>
-		</div>
-	);
-}
-
-ChannelChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps} */ ({
-	options: {
+	const defaultOptions = {
 		chart: {
 			type: 'donut',
 			width: '100%',
@@ -77,10 +69,7 @@ ChannelChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps
 		},
 		plotOptions: {
 			pie: {
-				dataLabels: {
-					// position doesn't exist in the types of `pie`
-					// position: 'top'
-				},
+				dataLabels: {},
 			},
 		},
 		grid: {
@@ -89,12 +78,12 @@ ChannelChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps
 				left: 20,
 			},
 		},
-		labels: ['Google', 'Social media', 'Email'],
+		labels,
 		legend: {
 			position: 'top',
 			horizontalAlign: 'center',
 		},
-		colors: ['#446CCE', '#49C596', '#D65036'],
+		colors,
 		responsive: [
 			{
 				breakpoint: 480,
@@ -105,6 +94,31 @@ ChannelChart.defaultProps = /** @satisfies {import("./types").ReactApexCompProps
 				},
 			},
 		],
-	},
-	series: [44, 55, 41],
-});
+	};
+
+	return (
+		<div className='w-[25rem] h-[21rem] border border-constrained rounded-md bg-white p-5'>
+			<div className='flex items-center justify-between mb-1'>
+				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
+
+				<div className='flex'>
+					<BackAndroidIcon
+						className={`fill-${negative ? 'error' : 'success'}  ${
+							negative ? '-rotate-90' : 'rotate-90'
+						}`}
+					/>
+					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
+				</div>
+			</div>
+
+			<div id='chart'>
+				<ReactApexChart
+					options={props.options || defaultOptions}
+					series={props.series || series}
+					type='donut'
+				/>
+			</div>
+			<div id='html-dist'></div>
+		</div>
+	);
+}

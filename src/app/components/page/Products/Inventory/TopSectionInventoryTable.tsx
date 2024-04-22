@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 
-import ActionsComp from '../../Customers/ActionsComp';
+import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 
@@ -49,7 +49,11 @@ export default function TopSectionInventoryTable() {
 
 			{/*   arrange,... */}
 			<div className='flex-row-global  gap-[1.2rem]'>
-				<ActionsComp sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+				<ActionsComp
+					sortMenus={sortMenus}
+					selectedOption={selectedOption}
+					handelSelect={handleSelect}
+				/>
 			</div>
 		</div>
 	);

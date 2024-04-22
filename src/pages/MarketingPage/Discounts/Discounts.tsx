@@ -8,7 +8,6 @@ import DiscountsTable from 'src/app/components/page/discount/Table/DiscountsTabl
 const Discounts: React.FC = () => {
 	//  hooks
 	const { t } = useTranslation();
-
 	const dispatch = useDispatch();
 
 	//  selectors

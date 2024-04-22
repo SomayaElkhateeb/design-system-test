@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
-import { InputRow } from 'src/app/components/optimized';
+
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { discountTypesOptions, applyToOptions } from '../comp/data';
-import DiscountTypesOptions from './comp/DiscountTypesOptions';
 import ApplyToOptions from './comp/ApplyToOptions';
 import { useTranslation } from 'react-i18next';
+import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import { DiscountFormStore } from '../AddCoupon';
 
-const BasicInfo: React.FC = ({ discountName, fixedAmount, setState }) => {
+const BasicInfo = ({ formStore }: { formStore: DiscountFormStore }) => {
 	const { t } = useTranslation();
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setState({
-			...discountName,
-			discountName: e.target.value,
-		});
-	};
+
+	const applyToOptions = [t('All products'), t('Specific category'), t('Specific products')].map(
+		(option) => option,
+	);
+
+	const discountTypesOptions = [t('Percentage'), t('Fixed amount'), t('Free shipping')].map(
+		(option) => option,
+	);
 	return (
 		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold mb-2'>{t('Basic info')}</h3>
 			<div className='flex flex-col gap-[1rem]'>
 				<div className='w-[24rem]'>
-					<InputRow label={t('coupon code')} value={discountName} onChange={handleChange} />
+					<FormField
+						formStore={formStore}
+						name='name'
+						label={t('coupon code')}
+						render={(field) => {
+							return <Input {...field} />;
+						}}
+					/>
 				</div>
 			</div>
 
@@ -33,7 +44,7 @@ const BasicInfo: React.FC = ({ discountName, fixedAmount, setState }) => {
 					setSelected={(option: string) => setSelectedOptionType(option)}
 				/>
 
-				<DiscountTypesOptions discountType={selectedOptionType} fixedAmount={fixedAmount} setState={setState} />
+				<DiscountTypesOptions discountType={selectedOptionType} formStore={formStore} />
 			</section>
 
 			<section>

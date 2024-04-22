@@ -21,18 +21,23 @@ const Orders = () => {
 	} = useAnalyticsData(data.orders_analytics_table, ordersSortFunctions);
 
 	return (
-		<div className='p-5 grid gap-5'>
-			<CompareBar selectedComparisonOption={selectedComparisonOption} handleComparisonChange={handleComparisonChange} />
-			<ColumnChart />
-			<AnalyticsTableActions
-				data={tableData}
-				sortMenus={ordersSortMenus}
-				selectedOption={arrange}
-				onSelectOption={handleArrangeChange}
-				customersTableRef={AnalyticsTableRef}
-				documentTitle='Orders Table Data'
-			/>
-			<Table data={tableData} headers={ordersTableHeaders} ref={AnalyticsTableRef} />
+
+		<div className='p-3 grid gap-5'>
+			<div className='mb-4 flex items-center gap-2'>
+				<ArrangeButton
+					sortMenus={comparisonMenus}
+					selectedOption={selectedComparisonOption}
+					handelSelect={handleComparisonChange}
+				/>
+				<div className='flex gap-2'>
+					<p className='paragraph text-subtitle'>Compared to:</p>
+					<p className='paragraph text-title'>{selectedComparisonOption}</p>
+				</div>
+			</div>
+			<ColumnChart title='sales orders' percentage='77' />
+			<OrderActions sortMenus={sortMenus} selectedOption={arrange} onSelectOption={handleArrangeChange} />
+			<Table data={tableData} headers={headers} />
+
 		</div>
 	);
 };

@@ -4,28 +4,60 @@ import { FaChevronRight } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectCustomers } from 'src/app/store/slices/marketing/customers/customersAsyncThunks';
 import { useTranslation } from 'react-i18next';
-import CategoryView from 'src/pages/MarketingPage/CategoryView';
+import { ToastContainer, toast } from 'react-toastify';
+import CategoryViewSelect from 'src/app/components/page/discount/Selectors/CategoryViewSelect';
 
 const SpecificCustomers: React.FC = () => {
 	const { t } = useTranslation();
-	const [showSelect, setShowSelect] = useState<boolean>(false);
-	const [selectedItem, setSelectedItem] = useState([]);
 	const dispatch = useDispatch();
 	const { customers } = useSelector((state) => state.customers);
+	const [state, setState] = useState({
+		showSelect: false,
+		showPopup: false,
+		selectedItem: [],
+	});
+
+	const { showSelect, showPopup, selectedItem } = state;
 
 	useEffect(() => {
 		dispatch(getSelectCustomers());
 	}, [dispatch]);
 
-	const handleAddButtonClick = (selectedItem) => {
-		setSelectedItem(selectedItem);
-		setShowSelect(false);
+	// show select
+	const handleAddButtonClick = (newItems) => {
+		setState((prevState) => {
+			const duplicates = newItems.filter(
+				(newItem) => !prevState.selectedItem.some((prevItem) => prevItem.id === newItem.id),
+			);
+
+			if (duplicates.length === newItems.length) {
+				toast.success('Successfully added.');
+				return {
+					...prevState,
+					selectedItem: [...prevState.selectedItem, ...newItems],
+					showSelect: false,
+				};
+			} else {
+				toast.error('error: you added before. please click Cancel.');
+				return prevState;
+			}
+		});
+	};
+
+	// delete item
+	const handleDeleteItem = (idToDelete: number) => {
+		const updatedItems = selectedItem.filter((el) => el.id !== idToDelete);
+		setState({
+			...state,
+			selectedItem: updatedItems,
+			showPopup: false,
+		});
 	};
 
 	return (
-		<div className='mt-[18px] flex flex-col gap-[18px]'>
+		<div className='mt-[1rem] flex flex-col gap-[1rem]'>
 			<div>
-				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setShowSelect(true)}>
+				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setState({ ...state, showSelect: true })}>
 					{t('select customers')}
 				</Button>
 
@@ -33,7 +65,7 @@ const SpecificCustomers: React.FC = () => {
 					<SelectItems
 						title={t('Customers')}
 						variant='customers'
-						onClose={() => setShowSelect(false)}
+						onClose={() => setState({ ...state, showSelect: false })}
 						select={customers}
 						addBtn={handleAddButtonClick}
 					/>
@@ -42,10 +74,20 @@ const SpecificCustomers: React.FC = () => {
 				{selectedItem?.map((item) => {
 					const { fName, lName, id, img, subtitle } = item;
 					return (
-						<CategoryView variant='customers' key={id} img={img} title={fName + ' ' + lName} subtitle={subtitle} />
+						<CategoryViewSelect
+							variant='customers'
+							key={id}
+							img={img}
+							title={fName + ' ' + lName}
+							subtitle={subtitle}
+							handleDelete={() => setState({ ...state, showPopup: true })}
+							handleDeleteItem={() => handleDeleteItem(id)}
+							showPopup={showPopup}
+						/>
 					);
 				})}
 			</div>
+			<ToastContainer position='top-center' />
 		</div>
 	);
 };

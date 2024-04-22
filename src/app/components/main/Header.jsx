@@ -8,7 +8,7 @@ import {
 	NavIcon,
 	NotifiIcon,
 	SearchIcon,
-	ViewIcon
+	ViewIcon,
 } from 'src/app/utils/icons';
 
 // HeaderSearchBar Icon
@@ -19,20 +19,17 @@ import { RxHome } from 'react-icons/rx';
 import { MdAllInclusive } from 'react-icons/md';
 import { getImageUrl } from 'src/app/utils';
 import { useLocation } from 'react-router-dom';
-import { TbWorld } from "react-icons/tb";
+import { TbWorld } from 'react-icons/tb';
 import { UseLanguage } from '../CustomHook/LanguageHook';
 import { useTranslation } from 'react-i18next';
 const Header = ({ setIsOpen }) => {
 	//  hooks
 	const { pathname } = useLocation();
-	const { t } = useTranslation()
+	const { t } = useTranslation();
 
 	//  handel active header
 	const activeModule =
-		pathname === '/'
-			? t('Home')
-			: t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
-// container
+		pathname === '/' ? t('Home') : t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
 	return (
 		<div className='h-[70px] px-4 flex justify-between items-center  mx-auto bg-white'>
 			<div className='flex  items-center gap-3'>
@@ -76,11 +73,7 @@ function HeaderSearchBar({ options }) {
 			/>
 
 			<span className='absolute left-3 top-3 '>
-				<GoSearch
-					size={24}
-					color='gray'
-					style={{ transform: 'rotate(90deg)' }}
-				/>
+				<GoSearch size={24} color='gray' style={{ transform: 'rotate(90deg)' }} />
 			</span>
 
 			<select
@@ -115,27 +108,24 @@ HeaderSearchBar.defaultProps = {
 		{ icon: <MdAllInclusive />, value: 'all', label: 'All Products' },
 		{ icon: <IoLogoElectron />, value: 'electronics', label: 'Electronics' },
 		{ icon: <GiClothes />, value: 'clothing', label: 'Clothing' },
-		{ icon: <RxHome />, value: 'home', label: 'Home & Garden' }
-	]
+		{ icon: <RxHome />, value: 'home', label: 'Home & Garden' },
+	],
 };
 
 // ProfileInfo
 const ProfileInfo = () => {
-
 	//  handel language
-	const language = UseLanguage()
+	const language = UseLanguage();
 
 	const handelLanguage = () => {
-		if (language === "ar") {
-			window.location.reload()
-			localStorage.setItem("language", "en")
+		if (language === 'ar') {
+			window.location.reload();
+			localStorage.setItem('language', 'en');
 		} else {
-			window.location.reload()
-			localStorage.setItem("language", "ar")
+			window.location.reload();
+			localStorage.setItem('language', 'ar');
 		}
-	}
-
-
+	};
 
 	return (
 		<div className='flex items-center gap-[14px]'>
@@ -155,11 +145,7 @@ const ProfileInfo = () => {
 				<NotifiIcon />
 			</button>
 			<div className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
-				<img
-					src={getImageUrl('images/profile.png')}
-					alt='logo'
-					className=' object-cover h-full '
-				/>
+				<img src={getImageUrl('images/profile.png')} alt='logo' className=' object-cover h-full ' />
 			</div>
 		</div>
 	);

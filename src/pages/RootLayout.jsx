@@ -29,4 +29,4 @@ const RootLayout = () => {
 
 export default RootLayout;
 // w-[calc(90vw-64px)]
-// 
+//
