@@ -31,8 +31,12 @@ export const english = {
 		'Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.',
 	free: 'free',
 	installed: 'installed',
-
 	Recommended: 'Recommended',
+	"Add Order":"Add Order",
+	"No. & Date":"No. & Date",
+	"billing":"billing",
+	"Delivery":"Delivery",
+	"Payment":"Payment",
 	'Reach more customers': 'Reach more customers',
 	'Install now': 'Install now',
 	'Marketing/google/google-setup': 'Marketing/google/google-setup',

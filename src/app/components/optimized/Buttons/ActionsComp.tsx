@@ -25,7 +25,7 @@ export default function ActionsComp({
 	filterMenus?: menuType[];
 }) {
 	return (
-		<div className='flex gap-1'>
+		<div className='flex gap-4 '>
 			{/*   arrange button */}
 
 			{sortMenus && sortMenus?.length > 0 && (

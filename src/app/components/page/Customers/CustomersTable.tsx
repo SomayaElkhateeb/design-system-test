@@ -11,7 +11,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from 'react';
 import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
 import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
-import ThreeDotsButton from './ThreedotsButton';
+import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
@@ -30,8 +30,12 @@ export default function CustomersTable() {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const settingMenus = [
-		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle'/> },
-		{ id: nanoid(), text: 'Delete customer', icon: <MdDelete className='text-[red] text-[1.3rem]' /> },
+		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+		{
+			id: nanoid(),
+			text: 'Delete customer',
+			icon: <MdDelete className='text-[red] text-[1.3rem]' />,
+		},
 	];
 
 	//  rows
@@ -51,7 +55,13 @@ export default function CustomersTable() {
 
 	const customersHeaders = [
 		{
-			icon: <CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={customers?.map((e) => e.id)} />,
+			icon: (
+				<CustomTableHeaderCheckbox
+					array={array}
+					setArray={setArray}
+					mainArray={customers?.map((e) => e.id)}
+				/>
+			),
 			title: t('Customer Name'),
 		},
 		{ title: t('Mobile') },
@@ -62,7 +72,8 @@ export default function CustomersTable() {
 	];
 
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleEn =
+		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
 			language={language}
@@ -120,12 +131,25 @@ export default function CustomersTable() {
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<FaRegEdit className="text-subtitle" onClick={() => navigate(`/addCustomer?id=${e?.id}`)} />
-								<ThreeDotsButton  sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+								<FaRegEdit
+									className='text-subtitle'
+									onClick={() => navigate(`/addCustomer?id=${e?.id}`)}
+								/>
+								<ThreeDotsButton
+									sortMenus={settingMenus}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
 								{language === 'ar' ? (
-									<IoIosArrowBack className="text-subtitle" onClick={() => navigate(`/customers/${e?.id}`)} />
+									<IoIosArrowBack
+										className='text-subtitle'
+										onClick={() => navigate(`/customers/${e?.id}`)}
+									/>
 								) : (
-									<IoIosArrowForward className="text-subtitle" onClick={() => navigate(`/customers/${e?.id}`)} />
+									<IoIosArrowForward
+										className='text-subtitle'
+										onClick={() => navigate(`/customers/${e?.id}`)}
+									/>
 								)}
 							</div>
 						</TableCell>,
