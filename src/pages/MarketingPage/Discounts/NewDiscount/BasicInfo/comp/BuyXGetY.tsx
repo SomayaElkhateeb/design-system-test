@@ -1,25 +1,16 @@
-import React, { useState } from 'react';
-import InputRow from 'src/app/components/optimized/InputsFields/InputRow';
+import { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { AiOutlinePercentage } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
+import { DiscountFormStore } from '../../NewDiscount';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 
-const BuyXGetY: React.FC = () => {
+const BuyXGetY = ({ formStore }: { formStore: DiscountFormStore }) => {
 	const { t } = useTranslation();
 	const [selectedCustomerGets, setSelectedCustomerGets] = useState<string>('');
 	const customerGetsOptions = [t('Free'), t('50% offer'), t('Specify percentage')];
-	const [inputState, setInputState] = useState({
-		selectedValue: '',
-		value: '',
-		error: '',
-		success: false,
-	});
 
-	function handleInputChange(value) {
-		setInputState({ ...inputState, value });
-		console.log('input value', value);
-	}
 	return (
 		<div className='mt-[1rem] flex flex-col gap-[1rem]'>
 			<div>
@@ -36,16 +27,13 @@ const BuyXGetY: React.FC = () => {
 				</div>
 				{selectedCustomerGets === 'Specify percentage' && (
 					<div className='w-[24rem]  '>
-						<InputRow
-							label='Percentage'
-							type='number'
-							min={0}
-							max={100}
-							leftIcon={<AiOutlinePercentage />}
-							handleOnChange={handleInputChange}
-							value={inputState.value}
-							error={inputState.error}
-							success={inputState.success}
+						<FormField
+							formStore={formStore}
+							name='percentageGets'
+							label={t('Percentage')}
+							render={(field) => {
+								return <Input {...field} type='number' />;
+							}}
 						/>
 					</div>
 				)}

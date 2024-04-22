@@ -8,8 +8,6 @@ const ActiveDates = ({ setState }) => {
 	const [endDate, setEndDate] = useState(false);
 	const [valueDate, setValueDate] = useState(/** @type {(import("dayjs").Dayjs | null)} */ (null));
 
-	console.log('valueDate', valueDate);
-
 	const handleShowDate = () => {
 		setEndDate(!endDate);
 	};
@@ -31,12 +29,20 @@ const ActiveDates = ({ setState }) => {
 
 			{endDate && (
 				<div className='flex gap-4 my-[18px]'>
-					<DatePicker label={t('end date')} value={valueDate} handleOnChange={handleEndDateChange} />
+					<DatePicker
+						label={t('end date')}
+						value={valueDate}
+						handleOnChange={handleEndDateChange}
+					/>
 					<TimePicker label={t('end time')} />
 				</div>
 			)}
 
-			<Button variant='tertiary' LeftIcon={endDate ? IoIosClose : IoIosAddCircle} onClick={handleShowDate}>
+			<Button
+				variant='tertiary'
+				LeftIcon={endDate ? IoIosClose : IoIosAddCircle}
+				onClick={handleShowDate}
+			>
 				{endDate ? t('remove end date') : t('add end date')}
 			</Button>
 		</div>
