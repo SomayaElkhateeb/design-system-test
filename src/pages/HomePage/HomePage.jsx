@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { LineChart } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 import Setups from './comp/Setups';
@@ -14,7 +15,7 @@ const HomePage = () => {
 			<div className='grid grid-cols-3 gap-5'>
 				<div className='col-span-2'>
 					<Setups />
-					<LineChart />
+					{/* <LineChart /> */}
 				</div>
 				<SlideCard slides={slidesContent} sortMenus={sortMenus} text={t('Reports')} btn />
 				<div className='col-span-2'>
@@ -28,7 +29,6 @@ const HomePage = () => {
 			</div>
 		</div>
 	);
-
 };
 
 export default HomePage;

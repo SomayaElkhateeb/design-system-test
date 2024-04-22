@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 
 const useAnalyticsData = (initialData, sortFunctions) => {
-  const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
+  const [selectedComparisonOption, setSelectedComparisonOption] = useState("Today");
   const [arrange, setArrange] = useState();
   const [tableData, setTableData] = useState(initialData);
   const AnalyticsTableRef = useRef();
