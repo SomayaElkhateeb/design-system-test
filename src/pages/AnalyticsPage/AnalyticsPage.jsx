@@ -11,7 +11,9 @@ const AnalyticsPage = () => {
 				<HorizontalTabsLink tabs={tabs} path='/analytics' />
 			</div>
 			{/* AnalyticsTabs Page */}
-			<Outlet />
+			<main className='container'>
+				<Outlet />
+			</main>
 		</AnalyticsPageGard>
 	);
 };

@@ -5,7 +5,7 @@ import data from '../../comp/data.json';
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 
 const AnalyticsComparison = () => {
-	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
+	const [selectedComparisonOption, setSelectedComparisonOption] = useState("Today");
 	const handleComparisonChange = (option) => {
 		setSelectedComparisonOption(option);
 	};

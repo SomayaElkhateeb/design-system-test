@@ -9,9 +9,6 @@ const ProductsTabs = () => {
 	//  hooks
 	const { tab } = useParams();
 
-
-
-
 	switch (tab) {
 		case "AllProducts":
 			return (<AllProducts />)
@@ -21,13 +18,8 @@ const ProductsTabs = () => {
 			return (<Barnds />)
 		case "inventory":
 			return (<Inventory />)
-
 		default: return (<AllProducts />)
-
 	}
-
-
-
 };
 
 export default ProductsTabs;

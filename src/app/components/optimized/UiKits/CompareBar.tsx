@@ -1,28 +1,30 @@
 import { comparisonMenus } from 'src/app/utils/constants';
-import ArrangeButton from '../../page/Customers/ArrangeButton';
+import CompareButton from './CompareButton';
 
 // how to use
 
 // const Component = () => {
-// 
+//
 // 	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
-// 
+//
 // 	const handleComparisonChange = (option) => {
 // 		setSelectedComparisonOption(option);
 // 	};
-// 
+//
 // 	return (
 // 		<CompareBar selectedComparisonOption={selectedComparisonOption} handleComparisonChange={handleComparisonChange} />
 // 	);
-// 
+//
 // };
 
-const CompareBar = ({ selectedComparisonOption, handleComparisonChange }) => {
-
-
+interface Props {
+	selectedComparisonOption: string;
+	handleComparisonChange: () => void;
+}
+const CompareBar = ({ selectedComparisonOption, handleComparisonChange }: Props) => {
 	return (
 		<div className='mb-4 flex items-center gap-2'>
-			<ArrangeButton
+			<CompareButton
 				sortMenus={comparisonMenus}
 				selectedOption={selectedComparisonOption}
 				handelSelect={handleComparisonChange}

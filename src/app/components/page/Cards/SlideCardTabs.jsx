@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-// @ts-nocheck
-import { useState } from "react";
-
-
-
-=======
 import { useState } from 'react';
->>>>>>> master
-
 // how to use
 // const ParentComponent = () => {
 // 	const slides = [

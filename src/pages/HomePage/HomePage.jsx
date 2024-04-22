@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { LineChart } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 import Setups from './comp/Setups';

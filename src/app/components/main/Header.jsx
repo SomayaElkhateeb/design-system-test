@@ -32,9 +32,9 @@ const Header = ({ setIsOpen }) => {
 		pathname === '/'
 			? t('Home')
 			: t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
-
+// container
 	return (
-		<div className='h-[70px] container flex justify-between items-center  mx-auto bg-white'>
+		<div className='h-[70px] px-4 flex justify-between items-center  mx-auto bg-white'>
 			<div className='flex  items-center gap-3'>
 				<button className='max-lg:hidden' onClick={setIsOpen}>
 					<NavIcon className='fill-pri-dark' />

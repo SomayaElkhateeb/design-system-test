@@ -41,50 +41,49 @@ const CampaignTable = forwardRef(({ sortBy, data }, ref) => {
 	};
 
 	return (
-
-			<table ref={ref}  className='w-full table-auto rounded-lg' >
-				<thead>
-					<tr className='text-left bg-white '>
-						<th className='px-4 py-4 subheading'>Campaign</th>
-						<th className='px-4 py-4 subheading'>Status </th>
-						{data[0].sessions && <th className='px-4 py-4 subheading'>Sessions </th>}
-						<th className='px-4 py-4 subheading'>sales </th>
-						<th className='px-4 py-4 subheading'>Expenses </th>
-						<th className='px-4 py-4 subheading'>Net profit </th>
+		<table ref={ref} className=' w-full table-auto border-separate border-spacing-y-3'>
+			<thead>
+				<tr className='text-left bg-white'>
+					<th className='px-4 py-4 subheading rounded-tl-xl rounded-bl-xl'>Campaign</th>
+					<th className='px-4 py-4 subheading'>Status </th>
+					{data[0].sessions && <th className='px-4 py-4 subheading'>Sessions </th>}
+					<th className='px-4 py-4 subheading'>sales </th>
+					<th className='px-4 py-4 subheading'>Expenses </th>
+					<th className='px-4 py-4 subheading rounded-tr-xl rounded-br-xl'>Net profit </th>
+				</tr>
+			</thead>
+			{/* data.campaigns */}
+			<tbody>
+				{arrangedData?.map((item) => (
+					<tr key={item.name} className='rounded-xl bg-white'>
+						<td className='px-4 py-4 paagraph text-primary rounded-tl-xl rounded-bl-xl'>
+							<Button variant='link' onClick={() => handleButtonClick(item.name)}>
+								{item.name}
+							</Button>
+						</td>
+						<td className={`paragraph text-white `}>
+							<span
+								className={`px-2 p-1 rounded-md capitalize ${
+									item.status === 'ended' || item.status === 'refused'
+										? 'bg-error'
+										: item.status === 'running'
+										? 'bg-success'
+										: item.status === 'in review'
+										? 'bg-warning'
+										: ''
+								}`}
+							>
+								{item.status}
+							</span>
+						</td>
+						{item.sessions && <td className='px-4 py-4 paagraph text-title'>{item.sessions}</td>}
+						<td className='px-4 py-4 paagraph text-title'>{item.sales}</td>
+						<td className='px-4 py-4 paagraph text-title'>{item.expenses}</td>
+						<td className='px-4 py-4 paagraph text-title rounded-tr-xl rounded-br-xl'>{item.netProfit}</td>
 					</tr>
-				</thead>
-				{/* data.campaigns */}
-				<tbody>
-					{arrangedData?.map((item) => (
-						<tr key={item.name} className='rounded-xl bg-white'>
-							<td className='px-4 py-4 paagraph text-primary'>
-								<Button variant='link' onClick={() => handleButtonClick(item.name)}>
-									{item.name}
-								</Button>
-							</td>
-							<td className={`paragraph text-white `}>
-								<span
-									className={`px-2 p-1 rounded-md capitalize ${
-										item.status === 'ended' || item.status === 'refused'
-											? 'bg-error'
-											: item.status === 'running'
-											? 'bg-success'
-											: item.status === 'in review'
-											? 'bg-warning'
-											: ''
-									}`}
-								>
-									{item.status}
-								</span>
-							</td>
-							{item.sessions && <td className='px-4 py-4 paagraph text-title'>{item.sessions}</td>}
-							<td className='px-4 py-4 paagraph text-title'>{item.sales}</td>
-							<td className='px-4 py-4 paagraph text-title'>{item.expenses}</td>
-							<td className='px-4 py-4 paagraph text-title'>{item.netProfit}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
+				))}
+			</tbody>
+		</table>
 	);
 });
 export default CampaignTable;
