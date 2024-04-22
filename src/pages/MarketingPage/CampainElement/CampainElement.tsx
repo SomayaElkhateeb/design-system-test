@@ -7,9 +7,11 @@ import { HeaderSettings, StackedColumnChart } from 'src/app/components/optimized
 import CampaignElementTable from '../Campaigns/CampaignElementTable';
 import { useSearchParams } from 'react-router-dom';
 import CampaignInfoCard from '../Campaigns/CampaignInfoCard';
+import { useTranslation } from 'react-i18next';
 
 export default function CampainElement() {
 	//  hooks
+	const {t}=useTranslation()
 	const [searchParams] = useSearchParams();
 	const activity = searchParams.get('activityId');
 
@@ -43,8 +45,9 @@ export default function CampainElement() {
 
 			{activity && (
 				<StackedColumnChart
+					title={t('Sales')}
 					percentage='4.75'
-					colors={[ 'rgba(236, 81, 81, 1)','rgba(255, 204, 115, 1)']}
+					colors={['rgba(236, 81, 81, 1)', 'rgba(255, 204, 115, 1)']}
 				/>
 			)}
 		</div>
