@@ -31,30 +31,33 @@ export default function TopSectionInventoryTable() {
 	};
 
 	return (
-		<div className='flex-row-global justify-between'>
-			{/*  left select box */}
+		<div className='flex-col-top-section-pages'>
+			<div className='flex-row-global justify-between'>
+				{/*  left select box */}
 
-			<FormControl sx={{ width: '12rem', backgroundColor: 'white' }}>
-				<InputLabel id='demo-simple-select-label'>Riyadh warehouse</InputLabel>
-				<Select
-					labelId='demo-simple-select-label'
-					id='demo-simple-select'
-					value={age}
-					label='Riyadh warehouse'
-					onChange={handleChange}
-				>
-					<MenuItem value={10}>Riyadh warehouse</MenuItem>
-				</Select>
-			</FormControl>
+				<FormControl sx={{ width: '12rem', backgroundColor: 'white' }}>
+					<InputLabel id='demo-simple-select-label'>Riyadh warehouse</InputLabel>
+					<Select
+						labelId='demo-simple-select-label'
+						id='demo-simple-select'
+						value={age}
+						label='Riyadh warehouse'
+						onChange={handleChange}
+					>
+						<MenuItem value={10}>Riyadh warehouse</MenuItem>
+					</Select>
+				</FormControl>
 
-			{/*   arrange,... */}
-			<div className='flex-row-global  gap-[1.2rem]'>
-				<ActionsComp
-					sortMenus={sortMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+				{/*   arrange,... */}
+				<div className='flex-row-global  gap-[1.2rem]'>
+					<ActionsComp
+						sortMenus={sortMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</div>
 			</div>
+			<hr />
 		</div>
 	);
 }

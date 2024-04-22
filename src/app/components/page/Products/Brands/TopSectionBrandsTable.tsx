@@ -43,22 +43,26 @@ export default function TopSectionBrandsTable() {
 	];
 
 	return (
-		<div className='flex-row-global justify-between'>
-			{/*  left dropdow */}
+		<div className='flex-col-top-section-pages'>
+			<div className='flex-row-global justify-between'>
+				{/*  left dropdow */}
 
-			<Button variant='primary' LeftIcon={IoIosAddCircle}>
-				{t('Add Brand')}
-			</Button>
+				<Button variant='primary' LeftIcon={IoIosAddCircle}>
+					{t('Add Brand')}
+				</Button>
 
-			{/*  actions  arrange,... */}
-			<div className='flex-row-global  gap-[1.2rem]'>
-				<ActionsComp
-					sortMenus={sortMenus}
-					ActionsMenus={ActionsMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+				{/*  actions  arrange,... */}
+				<div className='flex-row-global  gap-[1.2rem]'>
+					<ActionsComp
+						sortMenus={sortMenus}
+						ActionsMenus={ActionsMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</div>
 			</div>
+
+			<hr />
 		</div>
 	);
 }
