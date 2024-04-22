@@ -1,26 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckBox } from 'src/app/components/optimized';
 import InputRow from 'src/app/components/optimized/InputsFields/InputRow';
-const Limits: React.FC = () => {
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import { DiscountFormStore } from '../AddCoupon';
+const Limits = ({ formStore }: { formStore: DiscountFormStore }) => {
 	const { t } = useTranslation();
 	const [isChecked, setIsChecked] = useState<boolean>(false);
-
 	const handleCheckboxChange = (newValue: boolean) => {
 		setIsChecked(newValue);
 	};
 
-	const [inputState, setInputState] = useState({
-		selectedValue: '',
-		value: '',
-		error: '',
-		success: false,
-	});
-
-	function handleInputChange(value) {
-		setInputState({ ...inputState, value });
-		console.log('input value', value);
-	}
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Limits')}</h3>
@@ -31,14 +22,13 @@ const Limits: React.FC = () => {
 
 			{isChecked && (
 				<div className='w-[24rem]'>
-					<InputRow
+					<FormField
+						formStore={formStore}
+						name='usage'
 						label={t('Usage number')}
-						type='number'
-						min={0}
-						handleOnChange={handleInputChange}
-						value={inputState.value}
-						error={inputState.error}
-						success={inputState.success}
+						render={(field) => {
+							return <Input {...field} type='number' />;
+						}}
 					/>
 				</div>
 			)}

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -10,14 +11,48 @@ import MinimumRequirements from 'src/app/components/page/discount/Comp/MinimumRe
 import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegment/CustomerSegment';
 
 import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
+import { UseFormReturn } from 'react-hook-form';
+import { Form } from 'src/app/components/ui/form';
 
-const NewDiscount: React.FC = () => {
+const schema = {
+	name: z.string().min(3).max(60),
+	fixedAmount: z.number().min(0),
+	minimumPrice: z.number().min(0),
+	MiniPrice: z.number().min(0),
+	MiniQuantity: z.number().min(0),
+	percentage: z.number().min(0).max(100).optional(),
+	percentageGets: z.number().min(0).max(100).optional(),
+	endDate: z.date().nullable().optional(),
+};
+
+type FormValues = InferredZodSchema<typeof schema>;
+export type DiscountFormStore = UseFormReturn<FormValues>;
+
+const NewDiscount = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { t } = useTranslation();
 	const [state, setState] = useState();
 
+	const { formStore, onSubmit } = useForm({
+		schema,
+		defaultValues: {
+			name: '',
+			fixedAmount: 0,
+			minimumPrice: 0,
+			MiniPrice: 0,
+			MiniQuantity: 0,
+			percentage: 0,
+			percentageGets: 0,
+			endDate: '',
+		},
+		handleSubmit(validatedData) {
+			console.log('validatedData discount', validatedData);
+		},
+	});
 	const handleSaveChanges = () => {
+		onSubmit();
 		// try {
 		// 	basicInfoSchema.parse(state);
 
@@ -29,7 +64,7 @@ const NewDiscount: React.FC = () => {
 		// };
 		// dispatch(postDiscounts(data));
 		// setState(initialValues);
-		navigate('/marketing/discounts');
+		// navigate('/marketing/discounts');
 		// } catch (error) {
 		// 	console.error('Validation error:', error.errors);
 		// 	setValidationErrors({
@@ -48,18 +83,20 @@ const NewDiscount: React.FC = () => {
 				btn1={{ text: 'Discard', onClick: () => {} }}
 				btn2={{ text: 'Save Changes', onClick: handleSaveChanges }}
 			/>
-			<div className='p-4 flex justify-between gap-7'>
-				<div className='w-full flex flex-col gap-[18px]'>
-					<BasicInfo />
-					<CustomerSegment />
-					<MinimumRequirements />
-					<ActiveDates setState={setState} />
+			<Form {...formStore}>
+				<div className='p-4 flex justify-between gap-7'>
+					<div className='w-full flex flex-col gap-[18px]'>
+						<BasicInfo formStore={formStore} />
+						<CustomerSegment />
+						<MinimumRequirements formStore={formStore} />
+						<ActiveDates setState={setState} />
+					</div>
+					<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
+						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
+						<ToggleSwitch />
+					</div>
 				</div>
-				<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
-					<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
-					<ToggleSwitch />
-				</div>
-			</div>
+			</Form>
 		</div>
 	);
 };
