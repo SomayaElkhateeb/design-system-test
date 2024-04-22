@@ -27,7 +27,7 @@
 		"@radix-ui/react-tabs": "^1.0.4",
 		"@reduxjs/toolkit": "^2.2.1",
 		"@splidejs/react-splide": "^0.7.12",
-		"apexcharts": "^3.47.0",
+		"apexcharts": "^3.49.0",
 		"axios": "^1.6.7",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",

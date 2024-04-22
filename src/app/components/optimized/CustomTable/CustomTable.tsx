@@ -52,7 +52,6 @@ const CustomTable = <T, K extends keyof T>({
 			</th>
 		));
 	};
-
 	const renderRows = () => {
 		return sortedData.map((row) => (
 			<tr key={String(row.id)}>
