@@ -80,9 +80,9 @@ const NewDiscount = () => {
 				<HeaderSettings
 					variant='settingTwoBtns'
 					to={-1}
-					title='Add Discount'
-					btn1={{ text: 'Discard', onClick: () => {} }}
-					btn2={{ text: 'Save Changes', onClick: handleSaveChanges }}
+					title={t('Add Discount')}
+					btn1={{ text: t('Discard'), onClick: () => {} }}
+					btn2={{ text: t('Save Changes'), onClick: handleSaveChanges }}
 				/>
 				<div className='p-4 flex justify-between gap-7'>
 					<div className='w-full flex flex-col gap-[18px]'>
@@ -91,7 +91,7 @@ const NewDiscount = () => {
 						<MinimumRequirements formStore={formStore} />
 						<ActiveDates setState={setState} />
 					</div>
-					<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
+					<div className='bg-white w-[17rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
 						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
 						<ToggleSwitch />
 					</div>

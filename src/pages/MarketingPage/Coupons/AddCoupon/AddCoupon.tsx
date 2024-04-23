@@ -59,14 +59,14 @@ const AddCoupon = () => {
 			<HeaderSettings
 				variant='settingTwoBtns'
 				to={-1}
-				title='Add coupon'
-				btn1={{ text: 'Discard', onClick: () => {} }}
+				title={t('Add coupon')}
+				btn1={{ text: t('Discard'), onClick: () => {} }}
 				btn2={{
-					text: 'Save Changes',
+					text: t('Save Changes'),
 					onClick: handleSaveChanges,
 				}}
 			/>
-			{/* <Form {...formStore}>
+			<Form {...formStore}>
 				<div className='p-4 flex justify-between gap-[1rem]'>
 					<div className='w-full flex flex-col gap-[1rem]'>
 						<BasicInfo formStore={formStore} />
@@ -80,7 +80,7 @@ const AddCoupon = () => {
 						<ToggleSwitch />
 					</div>
 				</div>
-			</Form> */}
+			</Form>
 		</div>
 	);
 };

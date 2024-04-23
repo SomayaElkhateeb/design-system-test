@@ -43,36 +43,38 @@ const MinimumRequirements = ({ formStore }: { formStore: DiscountFormStore }) =>
 			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
 
 			{isChecked && (
-				<SingleChoiceChips
-					options={minimumRequirementsOptions}
-					selected={selectedMinimumRequirements}
-					setSelected={(option: string) => update({ selectedMinimumRequirements: option })}
-				/>
-			)}
+				<>
+					<SingleChoiceChips
+						options={minimumRequirementsOptions}
+						selected={selectedMinimumRequirements}
+						setSelected={(option: string) => update({ selectedMinimumRequirements: option })}
+					/>
 
-			{selectedMinimumRequirements === 'Minimum price' && (
-				<div className='w-[390px]'>
-					<FormField
-						formStore={formStore}
-						name='MiniPrice'
-						label={t('Mini purchase price')}
-						render={(field) => {
-							return <Input {...field} type='number' />;
-						}}
-					/>
-				</div>
-			)}
-			{selectedMinimumRequirements === 'Minimum quantity' && (
-				<div className='w-[390px]'>
-					<FormField
-						formStore={formStore}
-						name='MiniQuantity'
-						label={t('Mini purchase quantity')}
-						render={(field) => {
-							return <Input {...field} type='number' />;
-						}}
-					/>
-				</div>
+					{selectedMinimumRequirements === t('Minimum price') && (
+						<div className='w-[390px]'>
+							<FormField
+								formStore={formStore}
+								name='MiniPrice'
+								label={t('Mini purchase price')}
+								render={(field) => {
+									return <Input {...field} type='number' />;
+								}}
+							/>
+						</div>
+					)}
+					{selectedMinimumRequirements === t('Minimum quantity') && (
+						<div className='w-[390px]'>
+							<FormField
+								formStore={formStore}
+								name='MiniQuantity'
+								label={t('Mini purchase quantity')}
+								render={(field) => {
+									return <Input {...field} type='number' />;
+								}}
+							/>
+						</div>
+					)}
+				</>
 			)}
 		</section>
 	);
