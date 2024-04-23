@@ -1,8 +1,11 @@
+import { Checkbox } from '@mui/material';
 import { useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from 'src/app/components/ui/card';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
+import Button from '../../../Buttons/Button';
+import { FaCirclePlus } from 'react-icons/fa6';
 
 /** @param {{ formStore: import("..").ProductFormStore; }} props */
 function ProfitField(props) {
@@ -40,7 +43,7 @@ export default function ProductFormPricingSection(props) {
 			<CardHeader>
 				<CardTitle>{t('Pricing')}</CardTitle>
 			</CardHeader>
-			<CardContent>
+			<CardContent className='flex flex-col gap-4'>
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
 					<FormField
 						formStore={props.formStore}
@@ -61,7 +64,34 @@ export default function ProductFormPricingSection(props) {
 						render={(field) => <Input {...field} type='number' />}
 					/>
 					<ProfitField formStore={props.formStore} />
+					<FormField
+						formStore={props.formStore}
+						name='generalInfo.canContinueSellingWhenOutOfStock'
+						label={{
+							children: t('Can continue selling when out of stock'),
+							className: 'self-center mt-0.5',
+						}}
+						render={({ value, ...field }) => (
+							<Checkbox
+								{...field}
+								checked={value}
+								style={{ gridArea: 'input', padding: 0 }}
+								className='justify-self-start'
+							/>
+						)}
+						layout='inline-reversed'
+					/>
 				</div>
+				{/* ??? */}
+				{/* TODO: to be implemented */}
+				<Button
+					variant='secondary'
+					textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
+					className='px-0 border-0'
+				>
+					<FaCirclePlus className='size-5' />
+					{t('Add Bulk Pricing')}
+				</Button>
 			</CardContent>
 		</Card>
 	);

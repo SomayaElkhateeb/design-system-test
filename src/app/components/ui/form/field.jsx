@@ -1,5 +1,52 @@
 import { useId } from 'react';
-import { FormControl, FormDescription, FormFieldController, FormItem, FormLabel, FormMessage } from '.';
+import {
+	FormControl,
+	FormDescription,
+	FormFieldController,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from '.';
+import { cn } from 'src/app/utils';
+
+/**
+ * @typedef {'inline' | 'inline-reversed'} FormFieldLayout
+ */
+
+/**
+ * @param {FormFieldLayout | undefined} layout
+ * @param {import('react').HTMLAttributes<HTMLDivElement> | undefined} containerProps
+ * @param {*} hasError
+ * @param {*} hasDescription
+ */
+function getContainerProps(layout, containerProps, hasError, hasDescription) {
+	const newContainerProps = {
+		...containerProps,
+	};
+
+	switch (layout) {
+		case 'inline':
+		case 'inline-reversed': {
+			newContainerProps.className = cn(newContainerProps.className, 'grid justify-start');
+			hasError;
+			const gridTemplateColumns = 'auto auto';
+			let gridTemplateAreas = layout === 'inline' ? '"label input"' : '"input label"';
+			if (hasDescription) {
+				gridTemplateAreas += '\n"description description"';
+			}
+			if (hasError) {
+				gridTemplateAreas += '\n"error error"';
+			}
+			newContainerProps.style = {
+				...newContainerProps.style,
+				gridTemplateColumns,
+				gridTemplateAreas,
+			};
+		}
+	}
+
+	return newContainerProps;
+}
 
 /**
  * @template {import("react-hook-form").FieldValues} Values
@@ -8,7 +55,7 @@ import { FormControl, FormDescription, FormFieldController, FormItem, FormLabel,
  * @typedef {{
  *  formStore: import("react-hook-form").UseFormReturn<Values>;
  *  name: Key;
- *  label?: import("react").ReactNode;
+ *  label?: import("react").ReactNode | import('.').FormLabelProps;
  *  description?: string;
  *  render: (
  *  	field: import("react-hook-form").ControllerRenderProps<Values, Key> & {
@@ -20,6 +67,7 @@ import { FormControl, FormDescription, FormFieldController, FormItem, FormLabel,
  *  required?: boolean;
  *  hideError?: boolean;
  *  container?: import("react").HTMLAttributes<HTMLDivElement>;
+ *  layout?: FormFieldLayout
  * }} FormFieldProps
  */
 
@@ -44,17 +92,29 @@ function FormField(props) {
 	const reactId = useId();
 	const controlId = `${props.controlId ?? props.name}-${reactId}`;
 
+	const labelProps = typeof props.label === 'object' ? props.label : { children: props.label };
+
 	return (
 		<FormFieldController
 			control={props.formStore.control}
 			name={props.name}
-			render={({ field }) => {
+			render={({ field, fieldState }) => {
+				const containerProps = getContainerProps(
+					props.layout,
+					props.container,
+					fieldState.error,
+					props.description,
+				);
+
 				return (
-					<FormItem {...props.container}>
+					<FormItem {...containerProps}>
 						{typeof props.label !== 'undefined' && (
-							<FormLabel htmlFor={controlId} className='mb-1 text-sm capitalize text-zinc-700'>
-								{props.label}
-							</FormLabel>
+							<FormLabel
+								htmlFor={controlId}
+								className='text-sm capitalize text-zinc-700'
+								style={{ gridArea: 'label' }}
+								{...labelProps}
+							/>
 						)}
 						<FormControl>
 							{props.render({
@@ -63,8 +123,12 @@ function FormField(props) {
 								required: props.required,
 							})}
 						</FormControl>
-						{props.description && <FormDescription>{props.description}</FormDescription>}
-						{!props.hideError && <FormMessage />}
+						{props.description && (
+							<FormDescription style={{ gridArea: 'description' }}>
+								{props.description}
+							</FormDescription>
+						)}
+						{!props.hideError && <FormMessage style={{ gridArea: 'error' }} />}
 					</FormItem>
 				);
 			}}
