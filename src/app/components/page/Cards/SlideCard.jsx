@@ -19,9 +19,9 @@ const SlideCard = ({ items, title, itemsPerSlide, SlideComponent }) => {
 
 	// Determine the number of columns based on itemsPerSlide
 	// const gridColumns = itemsPerSlide === 1 ? 'grid-cols-1' : 'grid-cols-2';
-// 
+// max-w-[26rem]
 	return (
-		<div className='bg-white rounded-xl border border-borders-lines h-full min-w-[20rem] max-w-[26rem] flex flex-col justify-between p-4'>
+		<div className='bg-white rounded-xl border border-borders-lines h-full min-w-[20rem] w-full flex flex-col justify-between p-4'>
 			<div className=' flex flex-col flex-1'>
 				<div className='flex justify-between items-center mb-2'>
 					<h2 className='title text-lg'>{title}</h2>
