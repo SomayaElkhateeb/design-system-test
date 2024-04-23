@@ -1,7 +1,9 @@
 
 const AppsPage = () => {
   return (
-    <div>AppsPage</div>
+    <div>
+      AppsPage
+    </div>
   )
 }
 

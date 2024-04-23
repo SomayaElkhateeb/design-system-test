@@ -1,6 +1,7 @@
 import { DonutCard, SimpleTable } from 'src/app/components/optimized';
 import { columns, data } from './_comp/StoreReviewsData';
 import DonutGraph, { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
+import RecentReview from './_comp/RecentReview';
 
 const chartData: ChartData[] = [
 	{
@@ -23,7 +24,8 @@ const chartData: ChartData[] = [
 const StoreReviews = () => {
 	return (
 		<div className='w-full'>
-			<div className='flex justify-end my-5'>
+			<div className='flex justify-between my-5 p-2'>
+				<RecentReview/>
 				<DonutCard
 					title='Net Promoter Score'
 					score={4.75}
