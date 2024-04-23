@@ -6,17 +6,9 @@ import CustomDetails from './comp/CustomDetails';
 // import { data, slidesContent, slidesTabs } from './comp/data';
 import SlideCardTabs from './comp/SlideCardTabs';
 import GetStartedCard from './comp/GetStartedCard';
-import ProductForm from 'src/app/components/optimized/Forms/Product';
 
 const HomePage = () => {
 	const { t } = useTranslation();
-	return (
-		<ProductForm
-			handleSubmit={(values) => {
-				console.log(values);
-			}}
-		/>
-	);
 	const slides = [
 		{
 			image: 'https://placehold.co/600x400',
