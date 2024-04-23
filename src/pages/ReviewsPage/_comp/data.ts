@@ -58,7 +58,7 @@ export const products: Product[] = [
 				},
 				date: getCurrentDate(),
 				comment: 'This product is awesome! I highly recommend it',
-				rating: 3,
+				rating: 3.6,
 				response: null,
 				isReplied: false,
 				isPublished: false,
