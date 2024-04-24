@@ -58,7 +58,9 @@
 		"react-spring": "^9.7.3",
 		"react-to-print": "^2.15.1",
 		"react-toastify": "^10.0.5",
+
 		"reactjs-social-login": "^2.6.3",
+
 		"save": "^2.9.0",
 		"slick-carousel": "^1.8.1",
 		"tailwind-merge": "^2.2.2",
@@ -73,7 +75,7 @@
 		"@types/node": "^20.12.2",
 		"@types/react": "^18.2.73",
 		"@types/react-dom": "^18.2.23",
-		"@types/xlsx": "^0.0.36",
+		"@types/xlsx": "^0.0.35",
 		"@vitejs/plugin-react": "^4.2.1",
 		"@vitejs/plugin-react-swc": "^3.6.0",
 		"autoprefixer": "^10.4.17",

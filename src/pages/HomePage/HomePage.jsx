@@ -134,7 +134,7 @@ const HomePage = () => {
 	];
 	return (
 		<div className='w-full h-full px-4 py-6'>
-			<div className='grid lg:grid-cols-3 gap-5 md:grid-cols-1 sm:grid-cols-1'>
+			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1'>
 				<div className='col-span-2'>
 					<Setups />
 				</div>

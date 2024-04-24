@@ -50,7 +50,7 @@ export default function OrdersCard({ latestOrders }: OrdersCardProps) {
 	);
 
 	return (
-		<section className='grid content-start gap-2 p-4 h-full rounded-xl border border-borders-lines bg-white'>
+		<section className='grid content-start gap-2 p-4 h-full min-h-[22rem] rounded-xl border border-borders-lines bg-white'>
 			<Header
 				selectedOption={selectedComparisonOption}
 				handleSelect={handleComparisonChange}
