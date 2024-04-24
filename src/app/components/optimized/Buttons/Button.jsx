@@ -8,6 +8,7 @@ const handleButtonVariant = cva(undefined, {
 			secondary: 'btn-sec flex items-center gap-1 p-2',
 			primary: 'text-white bg-primary flex items-center p-2 gap-2 rounded',
 			tertiary: 'text-title text-sm capitalize font-semibold flex items-center gap-1.5',
+			LearnButton: 'text-[.8rem] text-white rounded-[.2rem]    border border-white bg-transparent flex items-center gap-1.5',
 			default: 'relative btn-pri flex px-1 items-center ',
 		},
 	},
