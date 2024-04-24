@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckIcon } from 'src/app/utils/icons';
 
-const Menu = ({ options, onSelect, selectedOption }) => {
+const Menu = ({ options, onSelect, selectedOption, onClick }) => {
 	return (
 		<ul className='  rounded  shadow-md py-2 flex flex-col '>
 			{options.map((option) => (
@@ -72,7 +72,9 @@ function MenuItem(props) {
 		>
 			<span
 				className={`text-sm ${
-					props.selected ? 'text-sec-pressed flex gap-[.5rem] items-center' : 'flex gap-[.5rem] items-center'
+					props.selected
+						? 'text-sec-pressed flex gap-[.5rem] items-center'
+						: 'flex gap-[.5rem] items-center'
 				}`}
 			>
 				{props.icon}
