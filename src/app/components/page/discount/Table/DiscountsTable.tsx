@@ -14,6 +14,8 @@ import { FaRegEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { useState } from 'react';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 
 export default function DiscountsTable({
 	discounts,
@@ -27,6 +29,7 @@ export default function DiscountsTable({
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	// const [showPopup, setShowPopup] = useState(false);
 	//  headers
 
 	const DiscountsHeaders = [
@@ -53,92 +56,106 @@ export default function DiscountsTable({
 			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
 		},
 	];
-	return (
-		<BaseTable
-			isLoading={isLoading}
-			language={language}
-			color='#55607A'
-			headers={DiscountsHeaders.map((h) => h)}
-			rows={discounts?.map((e: DiscountInterface, i: number) => {
-				return {
-					item: e,
-					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 600,
-							}}
-						>
-							{e.name}
-						</TableCell>,
 
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.value}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{/* {`${e.date.$Y}-${(e.date.$M + 1).toString().padStart(2, '0')}-${
+	const deleteItem = (id) => {
+		dispatch(deleteDiscount(id));
+		// setShowPopup(false);
+	};
+	return (
+		<>
+			<BaseTable
+				isLoading={isLoading}
+				language={language}
+				color='#55607A'
+				headers={DiscountsHeaders.map((h) => h)}
+				rows={discounts?.map((e: DiscountInterface, i: number) => {
+					return {
+						item: e,
+						elements: [
+							<TableCell
+								sx={{
+									fontSize: '14px',
+									fontWeight: 600,
+								}}
+							>
+								{e.name}
+							</TableCell>,
+
+							<TableCell
+								sx={{
+									fontSize: '14px',
+									fontWeight: 400,
+								}}
+							>
+								{e.value}
+							</TableCell>,
+							<TableCell
+								sx={{
+									fontSize: '14px',
+									fontWeight: 400,
+								}}
+							>
+								{/* {`${e.date.$Y}-${(e.date.$M + 1).toString().padStart(2, '0')}-${
 								e.date.$D ? e.date.$D.toString().padStart(2, '0') : ''
 							}`} */}
-							{e.date}
-						</TableCell>,
+								{e.date}
+							</TableCell>,
 
-						<TableCell>
-							<Switch
-								checked={e.active}
-								// onChange={handleChange}
-								inputProps={{ 'aria-label': 'controlled' }}
-							/>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.sales}
-						</TableCell>,
-
-						<TableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<FaRegEdit
-									className='text-subtitle'
-									onClick={() => navigate(`addDiscount?id=${e?.id}`)}
+							<TableCell>
+								<Switch
+									checked={e.active}
+									// onChange={handleChange}
+									inputProps={{ 'aria-label': 'controlled' }}
 								/>
+							</TableCell>,
+							<TableCell
+								sx={{
+									fontSize: '14px',
+									fontWeight: 400,
+								}}
+							>
+								{e.sales}
+							</TableCell>,
 
-								<ThreeDotsButton
-									sortMenus={settingMenus}
-									selectedOption={selectedOption}
-									handelSelect={handleSelect}
-								/>
-								{language === 'ar' ? (
-									<IoIosArrowBack
+							<TableCell>
+								<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+									<FaRegEdit
 										className='text-subtitle'
-										onClick={() => navigate(`/brands/${e?.id}`)}
+										onClick={() => navigate(`addDiscount?id=${e?.id}`)}
 									/>
-								) : (
-									<IoIosArrowForward
-										className='text-subtitle'
-										onClick={() => navigate(`/brands/${e?.id}`)}
+
+									<ThreeDotsButton
+										sortMenus={settingMenus}
+										selectedOption={selectedOption}
+										handelSelect={handleSelect}
+										onClick={() => dispatch(deleteDiscount(e?.id))}
 									/>
-								)}
-							</div>
-						</TableCell>,
-						<TableCell>
-							<button onClick={() => dispatch(deleteDiscount(e?.id))}>delete</button>
-						</TableCell>,
-					],
-				};
-			})}
-		/>
+									{language === 'ar' ? (
+										<IoIosArrowBack
+											className='text-subtitle'
+											onClick={() => navigate(`/brands/${e?.id}`)}
+										/>
+									) : (
+										<IoIosArrowForward
+											className='text-subtitle'
+											onClick={() => navigate(`/brands/${e?.id}`)}
+										/>
+									)}
+								</div>
+							</TableCell>,
+							<TableCell>
+								<button onClick={() => deleteItem(e?.id)}>delete</button>
+							</TableCell>,
+						],
+					};
+				})}
+			/>
+
+			{/* {
+				showPopup && (
+					<PopupDelete onClose={() => setShowPopup(false)} onDelete={() => deleteItem(e?.id)} />
+				);
+					} */}
+		</>
 	);
 }
