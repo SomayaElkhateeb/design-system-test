@@ -14,15 +14,16 @@ import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discount
 import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
 import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
+import { ErrorMessage } from '@hookform/error-message';
 
 const schema = {
 	name: z.string().min(3).max(60),
-	fixedAmount: z.number().min(0),
-	minimumPrice: z.number().min(0),
-	MiniPrice: z.number().min(0),
-	MiniQuantity: z.number().min(0),
-	percentage: z.number().min(0).max(100).optional(),
-	percentageGets: z.number().min(0).max(100).optional(),
+	fixedAmount: z.coerce.number().min(0),
+	minimumPrice: z.coerce.number().min(0),
+	MiniPrice: z.coerce.number().min(0),
+	MiniQuantity: z.coerce.number().min(0),
+	percentage: z.coerce.number().min(0).max(100).optional(),
+	percentageGets: z.coerce.number().min(0).max(100).optional(),
 	endDate: z.date().nullable().optional(),
 };
 
@@ -35,7 +36,8 @@ const NewDiscount = () => {
 	const { t } = useTranslation();
 	const [state, setState] = useState();
 
-	const { formStore, onSubmit } = useForm({
+	const { formStore, onSubmit, errors } = useForm({
+		criteriaMode: 'all',
 		schema,
 		defaultValues: {
 			name: '',
@@ -52,10 +54,8 @@ const NewDiscount = () => {
 		},
 	});
 	const handleSaveChanges = () => {
-		onSubmit();
 		// try {
 		// 	basicInfoSchema.parse(state);
-
 		// const data = {
 		// name: discountName,
 		// value: fixedAmount,
@@ -76,22 +76,22 @@ const NewDiscount = () => {
 
 	return (
 		<div>
-			<HeaderSettings
-				variant='settingTwoBtns'
-				to={-1}
-				title='Add Discount'
-				btn1={{ text: 'Discard', onClick: () => {} }}
-				btn2={{ text: 'Save Changes', onClick: handleSaveChanges }}
-			/>
-			<Form {...formStore}>
+			<Form {...formStore} onSubmit={onSubmit}>
+				<HeaderSettings
+					variant='settingTwoBtns'
+					to={-1}
+					title={t('Add Discount')}
+					btn1={{ text: t('Discard'), onClick: () => {} }}
+					btn2={{ text: t('Save Changes'), onClick: handleSaveChanges }}
+				/>
 				<div className='p-4 flex justify-between gap-7'>
 					<div className='w-full flex flex-col gap-[18px]'>
-						<BasicInfo formStore={formStore} />
+						<BasicInfo formStore={formStore} errors={errors} />
 						<CustomerSegment />
 						<MinimumRequirements formStore={formStore} />
 						<ActiveDates setState={setState} />
 					</div>
-					<div className='bg-white w-[277px] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[18px]'>
+					<div className='bg-white w-[17rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
 						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
 						<ToggleSwitch />
 					</div>

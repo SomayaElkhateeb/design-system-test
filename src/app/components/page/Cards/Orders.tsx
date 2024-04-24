@@ -119,7 +119,6 @@ const Orders = () => {
 										</p>
 									</div>
 								</div>
-
 								<div>
 									<h4 className='text-right text-title text-sm font-semibold'>
 										{price} {currency}

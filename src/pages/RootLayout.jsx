@@ -16,10 +16,10 @@ const RootLayout = () => {
 				<Sidebar isOpen={sidebarIsOpen} />
 			</div>
 			<div className='w-full bg-light-1'>
-				<div className='sticky top-0 z-10'>
+				<div className='sticky top-0 z-50'>
 					<Header setIsOpen={sidebarOpenHandler} />
 				</div>
-				<main className='w-full'>
+				<main>
 					<Outlet />
 				</main>
 			</div>
@@ -28,5 +28,5 @@ const RootLayout = () => {
 };
 
 export default RootLayout;
-//  xl:w-11/12
 // w-[calc(90vw-64px)]
+//

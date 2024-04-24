@@ -149,6 +149,9 @@
 		border-image: linear-gradient(313.9deg, #0d53fc -2.74%, #55c397 140.56%) 1;
 		border-radius: 0.375rem;
 	}
+	.page-container {
+		@apply w-full 2xl:w-11/12 mx-auto
+	}
 }
 
 /* remove all default Webkit search field styling */

@@ -4,11 +4,20 @@ import { forwardRef } from 'react';
 const Table = forwardRef(({ data, headers }, ref) => {
 	const formattedHeaders = headers.map((header) => header.replace(/\s+/g, '_'));
 	return (
-		<table ref={ref} className='w-full table-auto rounded-lg'>
+		<table ref={ref} className='w-full table-auto border-separate border-spacing-y-3'>
 			<thead>
 				<tr className='text-left bg-white'>
-					{headers.map((header) => (
-						<th key={header} className='px-4 py-4 subtitle uppercase'>
+					{headers.map((header, index) => (
+						<th
+							key={header}
+							className={`px-4 py-3 subtitle uppercase ${
+								index === 0
+									? 'rounded-tl-xl rounded-bl-xl'
+									: index === headers.length - 1
+									? 'rounded-tr-xl rounded-br-xl'
+									: ''
+							}`}
+						>
 							{header}
 						</th>
 					))}
@@ -18,8 +27,17 @@ const Table = forwardRef(({ data, headers }, ref) => {
 			<tbody>
 				{data.map((row, index) => (
 					<tr key={index} className='rounded-xl bg-white'>
-						{formattedHeaders.map((header) => (
-							<td key={header} className='px-4 py-4 paagraph text-title'>
+						{formattedHeaders.map((header, index) => (
+							<td
+								key={header}
+								className={`px-4 py-3  text-title ${
+									index === 0
+										? 'rounded-tl-xl rounded-bl-xl title'
+										: index === formattedHeaders.length - 1
+										? 'rounded-tr-xl rounded-br-xl paragraph'
+										: ''
+								}`}
+							>
 								{row[header]}
 							</td>
 						))}
@@ -30,3 +48,25 @@ const Table = forwardRef(({ data, headers }, ref) => {
 	);
 });
 export default Table;
+// {formattedHeaders.map((header, index) => (
+//   <td
+//     key={header}
+//     className={`px-4 py-3 text-title ${
+//       index === 0
+//         ? 'rounded-tl-xl rounded-bl-xl title'
+//         : index === formattedHeaders.length - 1
+//         ? 'rounded-tr-xl rounded-br-xl paragraph'
+//         : ''
+//     }`}
+//   >
+//     {index === 0 ? (
+//       <div>
+//         <img src={row[header].imageUrl} alt={row[header].altText} />
+//         <h2>{row[header].title}</h2>
+//         <span>{row[header].subtitle}</span>
+//       </div>
+//     ) : (
+//       row[header]
+//     )}
+//   </td>
+// ))}

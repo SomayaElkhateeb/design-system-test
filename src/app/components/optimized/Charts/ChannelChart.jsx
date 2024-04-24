@@ -97,20 +97,26 @@ export default function ChannelChart(props) {
 	};
 
 	return (
-		<div className='w-[25rem] h-[21rem] border border-constrained rounded-md bg-white p-5'>
+		<div className='h-full min-w-[20rem] rounded-xl border border-borders-lines bg-white p-4'>
 			<div className='flex items-center justify-between mb-1'>
 				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
 
 				<div className='flex'>
 					<BackAndroidIcon
-						className={`fill-${negative ? 'error' : 'success'}  ${negative ? '-rotate-90' : 'rotate-90'}`}
+						className={`fill-${negative ? 'error' : 'success'}  ${
+							negative ? '-rotate-90' : 'rotate-90'
+						}`}
 					/>
 					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
 				</div>
 			</div>
 
 			<div id='chart'>
-				<ReactApexChart options={props.options || defaultOptions} series={props.series || series} type='donut' />
+				<ReactApexChart
+					options={props.options || defaultOptions}
+					series={props.series || series}
+					type='donut'
+				/>
 			</div>
 			<div id='html-dist'></div>
 		</div>

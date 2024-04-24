@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import TabsBuilder from 'src/app/components/builders/Tabs';
 import { Card, CardContent } from 'src/app/components/ui/card';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import FormField from 'src/app/components/ui/form/field';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from 'src/app/components/ui/tabs';
 
 /** @param {import("react").SVGProps<SVGSVGElement>} props  */
 function UploadCloudIcon(props) {
@@ -25,8 +25,8 @@ function UploadCloudIcon(props) {
 	);
 }
 
-/** @param {{ formStore: import(".").ProductFormStore; }} props */
-function ImagesBody(props) {
+/** @param {{ formStore: import("..").ProductFormStore; }} props */
+function ImagesElem(props) {
 	const { t } = useTranslation();
 
 	return (
@@ -64,13 +64,13 @@ function ImagesBody(props) {
 
 /**
  * @param {{
- *  formStore: import(".").ProductFormStore;
+ *  formStore: import("..").ProductFormStore;
  * 	name: "generalInfo.videoMedia" | "generalInfo.threeDModelMedia" | "generalInfo.threeSixtyViewMedia";
  *  accept: import('react-dropzone').Accept
  *  title: import('react').ReactNode;
  * }} props
  */
-function FileBody(props) {
+function FileElem(props) {
 	const { t } = useTranslation();
 	return (
 		<FormField
@@ -105,19 +105,18 @@ function FileBody(props) {
 	);
 }
 
-const tabs = [
+/** @type {import('src/app/components/builders/Tabs').TabsBuilderItem<{ formStore: import("..").ProductFormStore; }>[]} */
+const tabsItems = [
 	{
 		title: 'Images',
-		Body: /** @param {{ formStore: import(".").ProductFormStore; }} props */ (props) => (
-			<ImagesBody formStore={props.formStore} />
-		),
+		Elem: (props) => <ImagesElem formStore={props.formStore} />,
 	},
 	{
 		title: 'Video',
-		Body: /** @param {{ formStore: import(".").ProductFormStore; }} props */ (props) => {
+		Elem: (props) => {
 			const { t } = useTranslation();
 			return (
-				<FileBody
+				<FileElem
 					formStore={props.formStore}
 					name='generalInfo.videoMedia'
 					accept={{ 'video/*': [] }}
@@ -128,10 +127,10 @@ const tabs = [
 	},
 	{
 		title: '360o  View',
-		Body: /** @param {{ formStore: import(".").ProductFormStore; }} props */ (props) => {
+		Elem: (props) => {
 			const { t } = useTranslation();
 			return (
-				<FileBody
+				<FileElem
 					formStore={props.formStore}
 					name='generalInfo.threeSixtyViewMedia'
 					accept={{
@@ -151,10 +150,10 @@ const tabs = [
 	},
 	{
 		title: '3D View',
-		Body: /** @param {{ formStore: import(".").ProductFormStore; }} props */ (props) => {
+		Elem: (props) => {
 			const { t } = useTranslation();
 			return (
-				<FileBody
+				<FileElem
 					formStore={props.formStore}
 					name='generalInfo.threeDModelMedia'
 					// FIXME: Add 3D model file types
@@ -167,32 +166,12 @@ const tabs = [
 	},
 ];
 
-/** @param {{ formStore: import(".").ProductFormStore; }} props */
+/** @param {{ formStore: import("..").ProductFormStore; }} props */
 export default function ProductFormMediaSection(props) {
-	const { t } = useTranslation();
-
 	return (
 		<Card>
 			<CardContent>
-				<Tabs defaultValue={tabs[0].title} className='space-y-4'>
-					<TabsList className='justify-start w-full h-auto gap-6 p-0 bg-transparent border-b rounded-none border-inactive'>
-						{tabs.map((tab) => (
-							<TabsTrigger
-								key={tab.title}
-								value={tab.title}
-								className='p-0 pb-2 shadow-none rounded-none data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary'
-							>
-								{t(tab.title)}{' '}
-								{tab.isInProgress && <p className='text-sec-pressed'>&nbsp;({t('In Progress')})</p>}
-							</TabsTrigger>
-						))}
-					</TabsList>
-					{tabs.map((tab) => (
-						<TabsContent key={tab.title} value={tab.title}>
-							{<tab.Body formStore={props.formStore} />}
-						</TabsContent>
-					))}
-				</Tabs>
+				<TabsBuilder items={tabsItems} sharedProps={{ formStore: props.formStore }} />
 			</CardContent>
 		</Card>
 	);
