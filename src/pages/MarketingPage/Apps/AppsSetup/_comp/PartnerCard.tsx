@@ -1,0 +1,29 @@
+import React from 'react';
+import { Button } from 'src/app/components/optimized';
+
+interface PartnerCardProps {
+	imageUrl: string;
+	subtitle: string;
+	name: string;
+	id: string | number;
+}
+
+const PartnerCard: React.FC<PartnerCardProps> = ({ imageUrl, subtitle, name, id }) => {
+	return (
+		<div className='flex items-center justify-between border-t'>
+			<div className='flex items-center py-3 overflow-hidden'>
+				<img className='object-cover size-12' src={imageUrl} alt='' />
+				<div className='p-4'>
+					<div className='flex items-center space-x-3'>
+						<h5 className='font-bold tracking-tight text-gray-900 text-md'>{name}</h5>
+						<p className='text-sm text-gray-500'>{subtitle}</p>
+					</div>
+					<p>{id}</p>
+				</div>
+			</div>
+			<Button>Connect</Button>
+		</div>
+	);
+};
+
+export default PartnerCard;
