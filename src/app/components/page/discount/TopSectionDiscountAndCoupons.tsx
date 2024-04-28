@@ -26,22 +26,28 @@ export default function TopSectionDiscountAndCoupons({
 	];
 
 	return (
-		<div className='flex-row-global justify-between'>
-			{/*  left dropdow */}
+		
+		<div className='flex-col-top-section-pages'>
+			<div className='flex-row-global justify-between'>
+				{/*  left dropdow */}
 
-			<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
-				{addButton}
-			</Button>
+				<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+					{addButton}
+				</Button>
 
-			{/*  actions  arrange,... */}
-			<div className='flex-row-global  gap-[1.2rem]'>
-				<ActionsComp
-					sortMenus={sortMenus}
-					filterMenus={sortMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+				{/*  actions  arrange,... */}
+				<div className='flex-row-global  gap-[1.2rem]'>
+					<ActionsComp
+						sortMenus={sortMenus}
+						filterMenus={sortMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</div>
 			</div>
+			<hr/>
 		</div>
+		
+		
 	);
 }

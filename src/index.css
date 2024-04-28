@@ -95,6 +95,9 @@
 	.flex-row-global-items-start{
 		@apply flex flex-row items-start
 	}
+	.flex-col-top-section-pages{
+		@apply flex flex-col gap-[1rem]
+	}
 	.iconClass{
 	@apply	text-[1.2rem] text-subtitle
 	}

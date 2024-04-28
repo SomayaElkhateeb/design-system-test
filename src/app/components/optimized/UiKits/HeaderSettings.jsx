@@ -9,11 +9,12 @@ import { IoIosArrowForward } from 'react-icons/io';
  *
  * @param {{
  *  to: string;
- *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons';
+ *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
  *  title: string | null;
  *  btn1: { text: string; onClick: () => void };
  *  btn2: { text: string; onClick: () => void };
  *  btn3: { text: string; onClick: () => void };
+ * children?:React.ReactNode
  * }} props
  */
 export default function HeaderSettings(props) {
@@ -40,10 +41,16 @@ export default function HeaderSettings(props) {
 				)}
 				{props.variant === 'settingOrder' && (
 					<>
-						<ButtonWithIcon onClick={props.btn1.onClick} icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}>
+						<ButtonWithIcon
+							onClick={props.btn1.onClick}
+							icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}
+						>
 							{t('Update Status')}
 						</ButtonWithIcon>
-						<ButtonWithIcon onClick={props.btn2.onClick} icon={<PrintIcon className='p-0.5 fill-pri-dark' />}>
+						<ButtonWithIcon
+							onClick={props.btn2.onClick}
+							icon={<PrintIcon className='p-0.5 fill-pri-dark' />}
+						>
 							{t('Print Invoice')}
 						</ButtonWithIcon>
 						<IconButton onClick={props.btn3.onClick}>
@@ -88,6 +95,11 @@ export default function HeaderSettings(props) {
 						<Button onClick={props.btn2.onClick} variant='pri'>
 							{props.btn2.text}
 						</Button>
+					</>
+				)}
+				{props.variant === 'customerInfowithIcons' && (
+					<>
+						{props.children}
 					</>
 				)}
 			</div>
