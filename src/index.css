@@ -89,7 +89,8 @@
 	.customer-border{
 		@apply w-[70%] bg-white rounded-[12px] py-[.7rem] border border-[constrained] flex flex-col
 	}
-	.flex-row-global{
+	.flex-row-global
+	{
 		@apply flex flex-row items-center
 	}
 	.flex-row-global-items-start{

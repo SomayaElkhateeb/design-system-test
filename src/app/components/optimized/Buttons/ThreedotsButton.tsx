@@ -7,21 +7,14 @@ export default function ThreeDotsButton({
 	sortMenus,
 	selectedOption,
 	handelSelect,
-	onClick,
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
 	handelSelect: (e: string) => void;
-	onClick: (e: string) => void;
 }) {
 	return (
 		<PopoverComponent button={<MoreIcon className='fill-subtitle' />}>
-			<Menu
-				options={sortMenus}
-				selectedOption={selectedOption}
-				onSelect={handelSelect}
-				onClick={onClick}
-			/>
+			<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handelSelect} />
 		</PopoverComponent>
 	);
 }

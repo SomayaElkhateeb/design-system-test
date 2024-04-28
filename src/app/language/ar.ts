@@ -250,7 +250,7 @@ export const arabic = {
 	'Add New Food': 'اضف طعام جديد',
 	'change Food visibility to customers': 'تغيير رؤية الغذاء للعملاء',
 	Food: 'الطعام',
-
+"Popular":"الشائع",
 	'publish all': 'نشر الكل',
 	'Submit & Reply': 'رد وإرسال',
 	'Submit & Publish': 'نشر وإرسال',

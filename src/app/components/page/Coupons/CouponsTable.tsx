@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import BaseTable from '../Customers/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import { Coupon } from 'src/app/interface/CouponInterface';
 import { MdDelete } from 'react-icons/md';
@@ -65,31 +65,16 @@ export default function CouponsTable({
 				return {
 					item: e,
 					elements: [
-						<TableCell
+						<GlobalTableCell
 							sx={{
-								fontSize: '14px',
 								fontWeight: 600,
 							}}
 						>
 							{e.name}
-						</TableCell>,
+						</GlobalTableCell>,
 
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.value}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.date}
-						</TableCell>,
+						<GlobalTableCell>{e.value}</GlobalTableCell>,
+						<GlobalTableCell>{e.date}</GlobalTableCell>,
 
 						<TableCell>
 							<Switch
@@ -98,22 +83,8 @@ export default function CouponsTable({
 								inputProps={{ 'aria-label': 'controlled' }}
 							/>
 						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.sales}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.used}
-						</TableCell>,
+						<GlobalTableCell>{e.sales}</GlobalTableCell>,
+						<GlobalTableCell>{e.used}</GlobalTableCell>,
 
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>

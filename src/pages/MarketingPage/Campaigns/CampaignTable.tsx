@@ -4,7 +4,7 @@ import { Button } from 'src/app/components/optimized';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CampaignDataInterface, CampaignTableInterface } from 'src/app/interface/CampaignTableInterface';
 import { Box, TableCell } from '@mui/material';
-import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
@@ -96,31 +96,22 @@ const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 								{handelCampainStatus(e.status)}
 							</TableCell>,
 
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
+							<GlobalTableCell
+								
 							>
 								SAR {e.sales}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
+							</GlobalTableCell>,
+							<GlobalTableCell
+								
 							>
 								SAR {e.expenses}
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
+							<GlobalTableCell
+								
 							>
 								SAR {e.netProfit}
-							</TableCell>,
+							</GlobalTableCell>,
 						],
 					};
 				})}

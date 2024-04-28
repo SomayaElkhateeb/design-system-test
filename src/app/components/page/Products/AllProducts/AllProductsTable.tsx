@@ -11,7 +11,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import CustomTableHeaderCheckbox from '../../Customers/CustomTableHeaderChckbox';
-import BaseTable from '../../Customers/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from '../../Customers/CustomTableBodyChckbox';
 import { Product } from 'src/app/interface/ProductInterface';
 
@@ -109,32 +109,17 @@ export default function AllProductsTable({
 								</div>
 							</div>
 						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						<GlobalTableCell>
 							<p className='text-title'>{e.SKU}</p>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						</GlobalTableCell>,
+						<GlobalTableCell>
 							<p className={e.quantity === 0 ? 'text-error' : 'text-black'}>
 								{e.quantity > 0 ? e.quantity : t('Out of stock')}
 							</p>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						</GlobalTableCell>,
+						<GlobalTableCell>
 							<span className='text-primary'>SAR</span> {e.price}
-						</TableCell>,
+						</GlobalTableCell>,
 
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>

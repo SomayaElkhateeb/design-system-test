@@ -20,6 +20,7 @@ export const english = {
 	'For more information about setup guide': 'For more information about setup guide',
 	'Learn more': 'Learn more',
 	'Most popular': 'Most popular',
+	"Popular":"Popular",
 	Google: 'Google',
 	'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.':
 		'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.',

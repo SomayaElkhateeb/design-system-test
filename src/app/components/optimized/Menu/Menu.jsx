@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckIcon } from 'src/app/utils/icons';
 
-const Menu = ({ options, onSelect, selectedOption, onClick }) => {
+const Menu = ({ options, onSelect, selectedOption }) => {
 	return (
 		<ul className='  rounded  shadow-md py-2 flex flex-col '>
 			{options.map((option) => (
