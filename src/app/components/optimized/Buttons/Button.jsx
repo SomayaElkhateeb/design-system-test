@@ -22,6 +22,7 @@ const handleIconVariant = cva(undefined, {
 			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
 			primary: 'fill-white',
 			default: 'fill-white',
+			LearnButton:""
 		},
 	},
 	defaultVariants: { variant: 'default' },
@@ -34,6 +35,7 @@ const handleTextVariant = cva(undefined, {
 			tertiary: 'fill-pri-dark',
 			primary: 'fill-white',
 			default: 'mx-1 text-sm',
+			LearnButton:""
 		},
 	},
 	defaultVariants: { variant: 'default' },
@@ -50,7 +52,7 @@ const handleTextVariant = cva(undefined, {
  *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
- *  text?: never
+ *  text?: never |string
  * } & import("react").ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants} props - Props for the Button component.
  *
  * @example

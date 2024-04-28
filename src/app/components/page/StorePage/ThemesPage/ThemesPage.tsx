@@ -1,17 +1,51 @@
-
-import TopCustomizeSection from "./TopCustomizesection";
+import CategoryButton from 'src/app/components/optimized/Buttons/CategoryButton';
+import TopCustomizeSection from './TopCustomizesection';
+import PriceButton from 'src/app/components/optimized/Buttons/PriceButton';
+import { nanoid } from 'nanoid';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import ThemesCard from './ThemesCard';
+import { useSearchParams } from 'react-router-dom';
+import { getImageUrl } from 'src/app/utils';
 
 export default function ThemesPage() {
-    const array=[...Array(3)]
+	//  hooks
+	const array = [...Array(4)];
+
+	//  Menus
+	const Menus = [
+		{ id: nanoid(), text: 'Today' },
+		{ id: nanoid(), text: 'Last week' },
+		{ id: nanoid(), text: 'Last month' },
+		{ id: nanoid(), text: 'Specify date' },
+	];
+	//  custom hook for select arrang item
+
+	const { selectedOption, handleSelect } = useSelectBox();
 	return (
-        <div className="flex-col-top-section-pages">
-            <TopCustomizeSection/>
+		<div className='flex-col-top-section-pages'>
+			<TopCustomizeSection />
 
-            <hr/>
+			{/*  actions buttons */}
+			<div className='flex  items-center gap-[1rem]'>
+				<CategoryButton
+					selectedOption={selectedOption}
+					handelSelect={handleSelect}
+					sortMenus={Menus}
+				/>
+				<PriceButton
+					selectedOption={selectedOption}
+					handelSelect={handleSelect}
+					sortMenus={Menus}
+				/>
+			</div>
+			<hr />
 
-            <div className="grid grid-cols-4 gap-4">
-
-            </div>
-        </div>
-    )
+			<div className='grid lg:grid-cols-4 sm:grid-cols-1 gap-4'>
+				{array.map((e, i) => (
+					<ThemesCard key={i} />
+				))}
+			</div>
+		</div>
+	
+	);
 }

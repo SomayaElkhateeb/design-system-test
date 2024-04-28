@@ -44,6 +44,7 @@ export const english = {
 	"This is the theme customers see when they visit your store.":"This is the theme customers see when they visit your store.",
 	'Reach more customers': 'Reach more customers',
 	"Customize design":"Customize design",
+
 	'Install now': 'Install now',
 	'Marketing/google/google-setup': 'Marketing/google/google-setup',
 	'View All': 'View All',
@@ -155,6 +156,9 @@ export const english = {
 	Arabic: 'Arabic',
 	Search: 'Search',
 	Price: 'Price',
+	"Apply template":"Apply template",
+	"All services":"All services",
+	"Purchased services":"Purchased services",
 	Addons: 'Addons',
 	'Make more options for your customers': 'Make more options for your customers',
 	Addon: 'Addon',
