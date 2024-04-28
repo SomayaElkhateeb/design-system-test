@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
-import BaseTable from '../../Customers/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import { Switch, TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,8 +14,6 @@ import { FaRegEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
-import { useState } from 'react';
-import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 
 export default function DiscountsTable({
 	discounts,
@@ -58,7 +56,7 @@ export default function DiscountsTable({
 	];
 
 	const deleteItem = (id) => {
-		dispatch(deleteDiscount(id));
+		// dispatch(deleteDiscount(id));
 		// setShowPopup(false);
 	};
 	return (
@@ -72,34 +70,16 @@ export default function DiscountsTable({
 					return {
 						item: e,
 						elements: [
-							<TableCell
+							<GlobalTableCell
 								sx={{
-									fontSize: '14px',
 									fontWeight: 600,
 								}}
 							>
 								{e.name}
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.value}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{/* {`${e.date.$Y}-${(e.date.$M + 1).toString().padStart(2, '0')}-${
-								e.date.$D ? e.date.$D.toString().padStart(2, '0') : ''
-							}`} */}
-								{e.date}
-							</TableCell>,
+							<GlobalTableCell>{e.value}</GlobalTableCell>,
+							<GlobalTableCell>{e.date}</GlobalTableCell>,
 
 							<TableCell>
 								<Switch
@@ -108,14 +88,7 @@ export default function DiscountsTable({
 									inputProps={{ 'aria-label': 'controlled' }}
 								/>
 							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.sales}
-							</TableCell>,
+							<GlobalTableCell>{e.sales}</GlobalTableCell>,
 
 							<TableCell>
 								<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
@@ -128,7 +101,7 @@ export default function DiscountsTable({
 										sortMenus={settingMenus}
 										selectedOption={selectedOption}
 										handelSelect={handleSelect}
-										onClick={() => dispatch(deleteDiscount(e?.id))}
+										// onClick={() => dispatch(deleteDiscount(e?.id))}
 									/>
 									{language === 'ar' ? (
 										<IoIosArrowBack

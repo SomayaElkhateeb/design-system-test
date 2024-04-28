@@ -8,9 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 
 export default function ThemesPage() {
-	//  hooks
 	const array = [...Array(4)];
-
 	//  Menus
 	const Menus = [
 		{ id: nanoid(), text: 'Today' },
@@ -46,6 +44,5 @@ export default function ThemesPage() {
 				))}
 			</div>
 		</div>
-	
 	);
 }
