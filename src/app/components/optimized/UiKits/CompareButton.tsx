@@ -3,9 +3,10 @@ import PopoverComponenet from '../../page/Customers/Popover';
 // import Button from "./Button";
 import Menu from '../Menu/Menu';
 import { Button } from '..';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-	sortMenus: { id: string; text: string }[];
+	sortMenus: { text: string }[];
 	selectedOption: string;
 	variant?: any;
 	// handelSelect: () => void;
@@ -15,11 +16,12 @@ interface Props {
 export default function CompareButton({ sortMenus, selectedOption, variant, handleSelect }: Props) {
 	switch (variant) {
 		case 'link':
+			const { t } = useTranslation();
 			return (
 				<PopoverComponenet
 					button={
 						<Button variant={variant} RightIcon={DownIcon}>
-							{selectedOption}
+							{selectedOption ? selectedOption : t('Today')}
 						</Button>
 					}
 				>

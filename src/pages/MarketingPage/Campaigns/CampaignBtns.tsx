@@ -54,7 +54,7 @@ const CampaignBtns = ({
 
 	return (
 		<div className='flex flex-col gap-5'>
-			<div className='  flex justify-between items-center '>
+			<div className='flex justify-between items-center'>
 				<Button
 					onClick={() => {
 						navigate('/marketing/campaigns/addCampaign');

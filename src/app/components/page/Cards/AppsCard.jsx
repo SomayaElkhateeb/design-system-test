@@ -36,7 +36,10 @@ export default function AppsCard(props) {
 	const statusPadge = props.status === 'available' ? 'free' : 'installed';
 
 	return (
-		<Link to={props.url} className='flex gap-3 p-3 bg-white border rounded-lg shadow-md border-border-color'>
+		<Link
+			to={props.url}
+			className='flex gap-3 p-3 bg-white border rounded-lg shadow-md border-borders-lines'
+		>
 			<div className='size-[60px] grid place-content-center min-w-[60px] rounded-lg border border-light-2 overflow-hidden'>
 				<img src={props.image} className='object-cover w-full' />
 			</div>

@@ -1,5 +1,6 @@
 import { comparisonMenus } from 'src/app/utils/constants';
 import { ArrangeButton } from '..';
+import { useTranslation } from 'react-i18next';
 
 // how to use
 
@@ -18,6 +19,14 @@ import { ArrangeButton } from '..';
 // };
 
 const CompareBar = ({ selectedComparisonOption, handleComparisonChange }) => {
+	const {t} = useTranslation()
+
+	const comparisonMenus = [
+		{ text: t('Today') },
+		{ text: t('Last week') },
+		{ text: t('Last month') },
+		{ text: t('Specify date') },
+	];
 	return (
 		<div className='mb-4 flex items-center gap-2'>
 			<ArrangeButton
@@ -26,10 +35,11 @@ const CompareBar = ({ selectedComparisonOption, handleComparisonChange }) => {
 				handelSelect={handleComparisonChange}
 			/>
 			<div className='flex gap-2'>
-				<p className='paragraph text-subtitle'>Compared to:</p>
-				<p className='paragraph text-title'>{selectedComparisonOption}</p>
+				<p className='paragraph text-subtitle'>{t('Compared to')}:</p>
+				<p className='paragraph text-title'>{selectedComparisonOption? selectedComparisonOption : t('Today')}</p>
 			</div>
 		</div>
 	);
 };
 export default CompareBar;
+

@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 // how to use
 // import { ComponentToBeUsed } from "../"
@@ -8,7 +7,15 @@ import { useState } from 'react';
 // 	return <SlideCard items={statsData} title='Title' itemsPerSlide={4} SlideComponent={ComponentToBeUsed} />;
 // };
 
-const SlideCard = ({ items, title, itemsPerSlide, SlideComponent }) => {
+interface SlideCardProps<T> {
+	items: T[];
+	title: string;
+	itemsPerSlide: number;
+	SlideComponent: React.ComponentType<T>;
+	children?: ReactNode;
+}
+
+function SlideCard<T>({ items, title, itemsPerSlide, SlideComponent, children }: SlideCardProps<T>) {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const totalSlide = Math.ceil(items.length / itemsPerSlide);
 
@@ -17,17 +24,15 @@ const SlideCard = ({ items, title, itemsPerSlide, SlideComponent }) => {
 	const end = (currentSlide + 1) * itemsPerSlide;
 	const slicedItems = items.slice(start, end);
 
-	// Determine the number of columns based on itemsPerSlide
-	// const gridColumns = itemsPerSlide === 1 ? 'grid-cols-1' : 'grid-cols-2';
-// max-w-[26rem]
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines h-full min-w-[20rem] w-full flex flex-col justify-between p-4'>
-			<div className=' flex flex-col flex-1'>
-				<div className='flex justify-between items-center mb-2'>
-					<h2 className='title text-lg'>{title}</h2>
+			<div className='flex flex-col flex-1'>
+				<div className='flex justify-between items-center mb-3'>
+					<h2 className='title text-lg capitalize'>{title}</h2>
 				</div>
+				{children}
 				<div
-					className={`overflow-hidden flex-1 grid gap-2 `}
+					className="overflow-hidden flex-1 grid gap-2"
 					style={{
 						gridTemplateColumns: 'repeat(auto-fit, minmax(8rem, 1fr))',
 					}}
@@ -51,5 +56,5 @@ const SlideCard = ({ items, title, itemsPerSlide, SlideComponent }) => {
 		</div>
 	);
 };
+
 export default SlideCard;
-// ${gridColumns}

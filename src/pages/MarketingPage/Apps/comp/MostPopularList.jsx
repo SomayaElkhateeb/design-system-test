@@ -36,9 +36,9 @@ const BigAppsCard = ({ image, name, description, url, status }) => {
 	const statusPadge = status === 'available' ? 'free' : 'installed';
 	return (
 		<Link to={url} rel='noopener noreferrer'>
-			<div className='cursor-pointer border border-border-color p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white min-h-[379px]'>
+			<div className='cursor-pointer border border-borders-lines p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white min-h-[379px]'>
 				<div className='flex flex-col items-start'>
-					<div className='border border-border-color w-full h-[213px] grid place-content-center  rounded-lg'>
+					<div className='border border-borders-lines w-full h-[213px] grid place-content-center  rounded-lg'>
 						<img src={image} alt={name} className='h-[180px]' />
 					</div>
 					<h2 className='mt-4 title text-[16px]'>{t(name)}</h2>

@@ -63,7 +63,8 @@ export const mostPopularApps = [
 		name: 'Twitter',
 		url: '/apps/twitter',
 		status: 'available',
-		description: 'Connect with Twitter to launch an ad campaign to show your products in front of potential customers.',
+		description:
+			'Connect with Twitter to launch an ad campaign to show your products in front of potential customers.',
 	},
 	{
 		id: nanoid(),
@@ -149,7 +150,8 @@ export const socialMediaContent = {
 	twitter: {
 		name: 'Twitter',
 		image: getImageUrl('social/twitter-X.svg'),
-		description: 'Twitter is a social media platform for creating, sharing, and discovering short posts.',
+		description:
+			'Twitter is a social media platform for creating, sharing, and discovering short posts.',
 		videoUrl: 'https://www.youtube.com/embed/TzFvB35n8To',
 		features: [
 			{
@@ -159,7 +161,8 @@ export const socialMediaContent = {
 			},
 			{
 				title: 'Increase your revenue',
-				description: 'Merchants see an average increase of 15% in revenue when selling on Facebook.',
+				description:
+					'Merchants see an average increase of 15% in revenue when selling on Facebook.',
 			},
 			{
 				title: 'Easy checkout',
@@ -190,7 +193,8 @@ export const socialMediaContent = {
 			},
 			{
 				title: 'Increase your revenue',
-				description: 'Merchants see an average increase of 15% in revenue when selling on Facebook.',
+				description:
+					'Merchants see an average increase of 15% in revenue when selling on Facebook.',
 			},
 			{
 				title: 'Easy checkout',
@@ -313,10 +317,10 @@ export const check = [
 
 // Comparison Menus
 export const comparisonMenus = [
-	{ id: nanoid(), text: 'Today' },
-	{ id: nanoid(), text: 'Last week' },
-	{ id: nanoid(), text: 'Last month' },
-	{ id: nanoid(), text: 'Specify date' },
+	{ text: 'Today' },
+	{ text: 'Last week' },
+	{ text: 'Last month' },
+	{ text: 'Specify date' },
 ];
 
 //           DATA DISCOUNT

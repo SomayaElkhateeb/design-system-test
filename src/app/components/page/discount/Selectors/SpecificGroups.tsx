@@ -4,7 +4,7 @@ import { Button, SelectItems } from 'src/app/components/optimized';
 import { FaChevronRight } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import { getSelectCustomerGroups } from 'src/app/store/slices/marketing/groups/groupsAsyncThunks';
+import { getSelectcustomer_groups } from 'src/app/store/slices/marketing/groups/groupsAsyncThunks';
 import CategoryViewSelect from 'src/app/components/page/discount/Selectors/CategoryViewSelect';
 
 const SpecificGroups: React.FC = () => {
@@ -19,7 +19,7 @@ const SpecificGroups: React.FC = () => {
 	const { showSelect, showPopup, selectedItem } = state;
 
 	useEffect(() => {
-		dispatch(getSelectCustomerGroups());
+		dispatch(getSelectcustomer_groups());
 	}, [dispatch]);
 
 	// show select
@@ -55,7 +55,11 @@ const SpecificGroups: React.FC = () => {
 	return (
 		<div className='mt-[1rem] flex flex-col gap-[1rem]'>
 			<div>
-				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setState({ ...state, showSelect: true })}>
+				<Button
+					variant='secondary'
+					RightIcon={FaChevronRight}
+					onClick={() => setState({ ...state, showSelect: true })}
+				>
 					{t('select groups')}
 				</Button>
 

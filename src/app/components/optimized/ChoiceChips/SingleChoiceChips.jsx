@@ -70,8 +70,9 @@ export default function SingleChoiceChips(props) {
 
 function Chip(props) {
 	// Base styles for the chip
-	const baseStyle = 'flex items-center border p-1 pr-2 w-fit rounded-full cursor-pointer transition-all';
-	const notSelectedStyle = 'bg-white border-border-color text-subtitle hover:bg-gray-100';
+	const baseStyle =
+		'flex items-center border p-1 pr-2 w-fit rounded-full cursor-pointer transition-all';
+	const notSelectedStyle = 'bg-white border-borders-lines text-subtitle hover:bg-gray-100';
 	const selectedStyle = 'bg-secondary border-secondary text-white';
 
 	return (
@@ -80,7 +81,9 @@ function Chip(props) {
 			onClick={() => props.onSelect(props.label)}
 		>
 			{props.icon && <div className='mr-1'>{props.icon}</div>}
-			<span className={`paragraph ${props.isSelected ? 'text-white' : 'text-subtitle'} `}>{props.label}</span>
+			<span className={`paragraph ${props.isSelected ? 'text-white' : 'text-subtitle'} `}>
+				{props.label}
+			</span>
 		</div>
 	);
 }

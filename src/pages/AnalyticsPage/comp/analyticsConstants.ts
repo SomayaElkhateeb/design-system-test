@@ -18,7 +18,12 @@ export const ordersTableHeaders = [
 	'delivered',
 	'returned quantity',
 ];
-export const customersTableHeaders = ['day', 'new customers', 'purchasing customers', 'customer groups'];
+export const customersTableHeaders = [
+	'day',
+	'new customers',
+	'purchasing customers',
+	'customer groups',
+];
 
 export const productsSortMenus = [
 	{ id: nanoid(), text: 'Quantity Descending' },
@@ -59,9 +64,21 @@ export const customersSortMenus = [
 	{ id: nanoid(), text: 'Customer groups Ascending' },
 ];
 
-//todo export const productsSortFunctions = {}
-
-export const ordersSortFunctions = {
+export const productsSortFunctions: Record<string, (a: any, b: any) => number> = {
+	'Quantity Descending': (a, b) => b.quantity - a.quantity,
+	'Quantity Ascending': (a, b) => a.quantity - b.quantity,
+	'Price Low in first': (a, b) => parseFloat(a.price) - parseFloat(b.price),
+	'Price High in first': (a, b) => parseFloat(b.price) - parseFloat(a.price),
+	'Searches Descending': (a, b) => b.searches - a.searches,
+	'Searches Ascending': (a, b) => a.searches - b.searches,
+	'Views Descending': (a, b) => b.views - a.views,
+	'Views Ascending': (a, b) => a.views - b.views,
+	'Quantity sold Descending': (a, b) => b.quantity_sold - a.quantity_sold,
+	'Quantity sold Ascending': (a, b) => a.quantity_sold - b.quantity_sold,
+	'Returns Descending': (a, b) => b.returns - a.returns,
+	'Returns Ascending': (a, b) => a.returns - b.returns,
+};
+export const ordersSortFunctions: Record<string, (a: any, b: any) => number> = {
 	'Date Added': (a, b) => parseDate(b.day) - parseDate(a.day),
 	'Date (Oldest)': (a, b) => parseDate(a.day) - parseDate(b.day),
 	'Orders Descending': (a, b) => b.orders - a.orders,
@@ -78,7 +95,7 @@ export const ordersSortFunctions = {
 	'Returned quantity Ascending': (a, b) => a.returned_quantity - b.returned_quantity,
 };
 
-export const customersSortFunctions = {
+export const customersSortFunctions: Record<string, (a: any, b: any) => number> = {
 	'Date Added': (a, b) => parseDate(b.day) - parseDate(a.day),
 	'Date (Oldest)': (a, b) => parseDate(a.day) - parseDate(b.day),
 	'New customers Descending': (a, b) => b.new_customers - a.new_customers,

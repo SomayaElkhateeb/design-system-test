@@ -88,7 +88,7 @@ export default function ProductsTable({ data }: { data: data[] }) {
 								fontWeight: 400,
 							}}
 						>
-							<p className='text-title'>{e.quantitySold}</p>
+							<p className='text-title'>{e.quantity_sold}</p>
 						</TableCell>,
 						<TableCell
 							sx={{
