@@ -12,7 +12,7 @@ import { getImageUrl } from 'src/app/utils';
 
 const ServicesPage = () => {
 	//  hooks
-	const {t}=useTranslation()
+	const { t } = useTranslation();
 	return (
 		<Tabs
 			body={
@@ -23,16 +23,13 @@ const ServicesPage = () => {
 					<TabPanel value='2'>
 						<DesignPage />
 					</TabPanel>
-					
 				</>
 			}
 		>
 			{/*  children */}
 			<Tab label={t('All services')} value='1' />
 			<Tab label={t('Purchased services')} value='2' />
-			
 		</Tabs>
 	);
 };
-
 export default ServicesPage;

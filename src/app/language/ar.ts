@@ -362,7 +362,7 @@ export const arabic = {
 		'الحد الأقصى لعدد المرات التي يمكن فيها استخدام اجمالي هذا الكوبون',
 	'Usage number': 'رقم الاستخدام',
 	'Limit to one use per customer': 'الحد من الاستخدام مرة واحدة لكل عميل',
-	"Add Order":"اضافه منتج",
+	'Add Order': 'اضافه منتج',
 	Link: 'الرابط',
 	Description: 'الوصف',
 	Available: 'متاح',
@@ -380,6 +380,7 @@ export const arabic = {
 	"All services":"جميع الخدمات",
 	"Purchased services":"الخدمات المشتراة",
 	"Payment":"تفتصيل الدفع",
+
 	'Added to cart': 'تمت الإضافة إلى السلة',
 	'Awaiting Payment': 'في انتظار الدفع',
 	'Orders received': 'الطلبات المستلمة',
@@ -409,4 +410,7 @@ export const arabic = {
 	'This Week': 'هذا الاسبوع',
 	Select: 'تحديد',
 	add: 'اضافه',
+	'Create your online store in two steps': 'أنشئ متجرك الإلكتروني في خطوتين',
+	'Tell us about yourself': 'أخبرنا عن نفسك',
+	'Tell us about your business': 'أخبرنا عن عملك',
 } satisfies typeof english;
