@@ -3,6 +3,7 @@ import platforms from '../../_comp/data.json';
 import MailchimpAudienceSelect from '../tabs/MailchimpAudienceSelect';
 import MailchimpBeforeInstalling from '../tabs/MailchimpBeforeInstalling';
 import MailchimpCreateAccount from '../tabs/MailchimpCreateAccount';
+import { BeforeInstallingNote } from '../../sendgrid/_comp/getSendgridSetup';
 
 interface MailchimpTab {
 	title: string;
@@ -21,7 +22,11 @@ interface MailchimpSetupData {
 		}[];
 		before_installing: {
 			title: string;
-			notes: string[];
+			note_1: BeforeInstallingNote;
+			note_2: BeforeInstallingNote;
+			note_3: BeforeInstallingNote;
+			note_4: BeforeInstallingNote;
+			note_5: BeforeInstallingNote;
 		};
 		create_account: {
 			title: string;

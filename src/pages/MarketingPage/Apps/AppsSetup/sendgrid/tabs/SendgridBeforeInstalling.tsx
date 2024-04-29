@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Button } from 'src/app/components/optimized';
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { BeforeInstallingNote } from '../../sendgrid/_comp/getSendgridSetup';
+import { BeforeInstallingNote } from '../_comp/getSendgridSetup';
 
 interface Props {
 	data: {
@@ -23,7 +23,7 @@ const NoteComponent: React.FC<{ children: ReactNode }> = ({ children }) => {
 	);
 };
 
-const MailchimpBeforeInstalling: React.FC<Props> = ({ data }) => {
+const SendgridBeforeInstalling: React.FC<Props> = ({ data }) => {
 	const { note_1, note_2, note_3, note_4, note_5 } = data;
 	return (
 		<div>
@@ -63,6 +63,4 @@ const MailchimpBeforeInstalling: React.FC<Props> = ({ data }) => {
 	);
 };
 
-export default MailchimpBeforeInstalling;
-
-
+export default SendgridBeforeInstalling;
