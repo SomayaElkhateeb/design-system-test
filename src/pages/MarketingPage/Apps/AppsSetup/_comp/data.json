@@ -307,13 +307,36 @@
 			},
 			"before_installing": {
 				"title": "Before Installing",
-				"notes": [
-					"Before you begin, you must archive (not just pause) any automated welcome emails to prevent redundant welcome messages from being sent to your Shopify customers. Other types of automations will be migrated automatically.",
-					"Manager access or higher will be required to configure this integration. Learn more about Mailchimp's user levels.",
-					"Note that any existing abandoned cart email sequences will not migrate and need to be recreated after installation.",
-					"To save time, you can save your existing welcome and abandoned cart emails as a template to speed up the recreation process.",
-					"If you're syncing to an existing audience, create a backup of that audience, just to be safe."
-				]
+				"note_1": {
+					"text_1": "Important: Before you begin, you must archive (not just pause) any automated",
+					"text_2": "to prevent redundant welcome messages from being sent to your Shopify customers. Other types of automations will be migrated automatically.",
+					"linkText": "welcome emails",
+					"linkURL": "#"
+				},
+				"note_2": {
+					"text_1": "Manager access or higher will be required to configure this integration. Learn more about Mailchimp",
+					"text_2": "",
+					"linkText": "user levels",
+					"linkURL": "#"
+				},
+				"note_3": {
+					"text_1": "Note that any existing abandoned cart email sequences will not migrate and need to be recreated after installation.",
+					"text_2": "",
+					"linkText": "",
+					"linkURL": "#"
+				},
+				"note_4": {
+					"text_1": "To save time, you can save your existing welcome and abandoned cart emails as a",
+					"text_2": "to speed up the recreation process.",
+					"linkText": "template",
+					"linkURL": "#"
+				},
+				"note_5": {
+					"text_1": "If you're syncing to an existing audience,",
+					"text_2": "of that audience, just to be safe.",
+					"linkText": "create a backup",
+					"linkURL": "#"
+				}
 			},
 			"create_account": {
 				"title": "Connect to your Mailchimp account",
@@ -322,6 +345,106 @@
 			"audience_select": {
 				"title": "Select an audience",
 				"description": "Choose an audience to sync your customers and their purchase data to Mailchimp. Please note, you can only connect one store with one Mailchimp audience.",
+				"store_list": [
+					{
+						"name": "Fan Al Taalouq",
+						"url": "FanAlTaalouq.dookan.net"
+					},
+					{
+						"name": "Rasma",
+						"url": "Rasma.dookan.net"
+					}
+				]
+			}
+		}
+	},
+	"sendGrid": {
+		"sendgrid_title": "Setup Sendgrid sales",
+		"mega_title": "You are about to add Sendgrid",
+		"sendgrid_settings": {
+			"settings_title": "Sendgrid will be able to:",
+			"sendgrid_intro": [
+				{
+					"title": "View Dookan account data",
+					"linkURL": "#",
+					"linkText": "View Details"
+				},
+				{
+					"title": "View products",
+					"linkURL": "#",
+					"linkText": "View Details"
+				},
+				{
+					"title": "Edit marketing",
+					"linkURL": "#",
+					"linkText": "View Details"
+				},
+				{
+					"title": "Edit store analytics",
+					"linkURL": "#",
+					"linkText": "View Details"
+				},
+				{
+					"title": "Edit your online store",
+					"linkURL": "#",
+					"linkText": "View Details"
+				},
+				{
+					"title": "Edit Other data",
+					"linkURL": "#",
+					"linkText": "View Details"
+				}
+			],
+			"privacy_notice": {
+				"text": "To erase your customers’ personal information from Sendgrid, Remove the app. After 48 hours, a request will be sent to Sendgrid to erase this data.",
+				"linkText": "Learn more about data Privacy",
+				"linkURL": "#"
+			},
+			"agreement_terms": {
+				"text": "By proceeding, you are agreeing to the",
+				"linkText": "Dookan Terms of Service",
+				"linkURL": "#"
+			},
+			"before_installing": {
+				"title": "Before Installing",
+				"note_1": {
+					"text_1": "Important: Before you begin, you must archive (not just pause) any automated",
+					"text_2": "to prevent redundant welcome messages from being sent to your Shopify customers. Other types of automations will be migrated automatically.",
+					"linkText": "welcome emails",
+					"linkURL": "#"
+				},
+				"note_2": {
+					"text_1": "Manager access or higher will be required to configure this integration. Learn more about Sendgrid's",
+					"text_2": "",
+					"linkText": "user levels",
+					"linkURL": "#"
+				},
+				"note_3": {
+					"text_1": "Note that any existing abandoned cart email sequences will not migrate and need to be recreated after installation.",
+					"text_2": "",
+					"linkText": "",
+					"linkURL": "#"
+				},
+				"note_4": {
+					"text_1": "To save time, you can save your existing welcome and abandoned cart emails as a",
+					"text_2": "to speed up the recreation process.",
+					"linkText": "template",
+					"linkURL": "#"
+				},
+				"note_5": {
+					"text_1": "If you're syncing to an existing audience,",
+					"text_2": "of that audience, just to be safe.",
+					"linkText": "create a backup",
+					"linkURL": "#"
+				}
+			},
+			"connect_API": {
+				"title": "Connect to your Sendgrid account",
+				"description": "or connect to your existing Sendgrid Account to authenticate and sync to Sendgrid. Learn more about installation."
+			},
+			"audience_select": {
+				"title": "Select an audience",
+				"description": "Choose an audience to sync your customers and their purchase data to Sendgrid. Please note, you can only connect one store with one Sendgrid audience.",
 				"store_list": [
 					{
 						"name": "Fan Al Taalouq",
