@@ -34,7 +34,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				marginTop: '20px',
 				backgroundColor: '#F9FAFC',
 				maxHeight: 700,
-				minHeight: 100,
+				minHeight: 200,
 			}}
 		>
 			<Fade in={isLoading}>
@@ -65,7 +65,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				</TableHead>
 
 				{rows?.length > 0 && (
-					<TableBody sx={{ backgroundColor: '#F9FAFC', transform: 'translateY(20px)' }}>
+					<TableBody sx={{ backgroundColor: '#F9FAFC' }}>
 						{/*Rows*/}
 						{!isLoading &&
 							rows?.map((e: ReactMetaElement<T>, i: number) => (
@@ -109,8 +109,7 @@ export default BaseTable;
 export const GlobalTableCell = styled(TableCell)(({ theme }) => ({
 	fontSize: '14px',
 	fontWeight: '400',
-	border: '0px solid black',
+	borderBottom: '20px solid #F9FAFC',
 	backgroundColor: 'white',
-	marginTop: '50px',
-	marginBottom: '50px',
+	
 }));
