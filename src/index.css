@@ -89,11 +89,15 @@
 	.customer-border{
 		@apply w-[70%] bg-white rounded-[12px] py-[.7rem] border border-[constrained] flex flex-col
 	}
-	.flex-row-global{
+	.flex-row-global
+	{
 		@apply flex flex-row items-center
 	}
 	.flex-row-global-items-start{
 		@apply flex flex-row items-start
+	}
+	.flex-col-top-section-pages{
+		@apply flex flex-col gap-[1rem]
 	}
 	.iconClass{
 	@apply	text-[1.2rem] text-subtitle

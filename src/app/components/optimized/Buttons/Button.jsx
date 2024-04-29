@@ -8,6 +8,7 @@ const handleButtonVariant = cva(undefined, {
 			secondary: 'btn-sec flex items-center gap-1 p-2',
 			primary: 'text-white bg-primary flex items-center p-2 gap-2 rounded',
 			tertiary: 'text-title text-sm capitalize font-semibold flex items-center gap-1.5',
+			LearnButton: 'text-[.8rem] text-white rounded-[.2rem]    border border-white bg-transparent flex items-center gap-1.5',
 			default: 'relative btn-pri flex px-1 items-center ',
 		},
 	},
@@ -22,6 +23,7 @@ const handleIconVariant = cva(undefined, {
 			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
 			primary: 'fill-white',
 			default: 'fill-white',
+			LearnButton:""
 		},
 	},
 	defaultVariants: { variant: 'default' },
@@ -34,6 +36,7 @@ const handleTextVariant = cva(undefined, {
 			tertiary: 'fill-pri-dark',
 			primary: 'fill-white',
 			default: 'mx-1 text-sm',
+			LearnButton:""
 		},
 	},
 	defaultVariants: { variant: 'default' },
@@ -50,7 +53,7 @@ const handleTextVariant = cva(undefined, {
  *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
- *  text?: never
+ *  text?: never |string
  * } & import("react").ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants} props - Props for the Button component.
  *
  * @example

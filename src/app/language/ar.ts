@@ -250,7 +250,7 @@ export const arabic = {
 	'Add New Food': 'اضف طعام جديد',
 	'change Food visibility to customers': 'تغيير رؤية الغذاء للعملاء',
 	Food: 'الطعام',
-
+	Popular: 'الشائع',
 	'publish all': 'نشر الكل',
 	'Submit & Reply': 'رد وإرسال',
 	'Submit & Publish': 'نشر وإرسال',
@@ -371,6 +371,16 @@ export const arabic = {
 	billing: 'الدفع',
 	Delivery: 'التوصيل',
 	Payment: 'تفتصيل الدفع',
+	Themes: 'الواجهات',
+	Design: 'التصميم',
+	Preferences: 'التفضيلات',
+	'CURRENT THEME': 'التصميم الحالي',
+	'This is the theme customers see when they visit your store.':
+		'هذا هو الشكل الذي يراه العملاء عند زيارتهم لمتجرك.',
+	'Customize design': 'تفعيل الديزاين',
+	'Apply template': 'طلب التصميم',
+	'All services': 'جميع الخدمات',
+	'Purchased services': 'الخدمات المشتراة',
 	'Added to cart': 'تمت الإضافة إلى السلة',
 	'Awaiting Payment': 'في انتظار الدفع',
 	'Orders received': 'الطلبات المستلمة',
@@ -450,4 +460,7 @@ export const arabic = {
 	'sales by channel': 'المبيعات حسب القناة',
 	Recent: 'الأحدث',
 	'Recent activity': 'النشاط الأخير',
+	'Create your online store in two steps': 'أنشئ متجرك الإلكتروني في خطوتين',
+	'Tell us about yourself': 'أخبرنا عن نفسك',
+	'Tell us about your business': 'أخبرنا عن عملك',
 } satisfies typeof english;

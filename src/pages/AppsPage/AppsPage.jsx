@@ -1,8 +1,5 @@
-
 const AppsPage = () => {
-  return (
-    <div>AppsPage</div>
-  )
-}
+	return <div>AppsPage</div>;
+};
 
-export default AppsPage
+export default AppsPage;

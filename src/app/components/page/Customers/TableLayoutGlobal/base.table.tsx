@@ -8,6 +8,7 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	styled,
 } from '@mui/material';
 
 import { Model } from 'src/app/types/model.type';
@@ -107,3 +108,8 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 );
 
 export default BaseTable;
+
+export const GlobalTableCell = styled(TableCell)(({ theme }) => ({
+	fontSize:"14px",
+	fontWeight:"400"
+  }));

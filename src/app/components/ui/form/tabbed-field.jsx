@@ -61,10 +61,13 @@ function CustomFormMessage(props) {
  * ```
  */
 export default function TabbedFormField(props) {
-	const [activeName, setActiveName] = useState(/** @type {Keys} */ (props.defaultName ?? props.keys[0]?.name));
+	const [activeName, setActiveName] = useState(
+		/** @type {Keys} */ (props.defaultName ?? props.keys[0]?.name),
+	);
 	const controlRef = useRef(/** @type {HTMLInputElement | null} */ (null));
 	const reactId = useId();
-	const getUniqueClassName = /** @param {string} prefix */ (prefix) => `${reactId.replace(/:/g, '')}-${prefix}`;
+	const getUniqueClassName = /** @param {string} prefix */ (prefix) =>
+		`${reactId.replace(/:/g, '')}-${prefix}`;
 
 	return (
 		<FormField
@@ -80,7 +83,9 @@ export default function TabbedFormField(props) {
 						: (event) => {
 								if (event.altKey && event.key.toUpperCase() === 'T') {
 									event.preventDefault();
-									const currentActiveNameIndex = props.keys.findIndex((item) => item.name === activeName);
+									const currentActiveNameIndex = props.keys.findIndex(
+										(item) => item.name === activeName,
+									);
 
 									if (currentActiveNameIndex === -1) {
 										return;
@@ -106,12 +111,12 @@ export default function TabbedFormField(props) {
 			label={
 				<div className='flex justify-between'>
 					<span>{props.label}</span>
-					<div className='flex text-black bg-gray-200/70 p-0.5 -mb-2 rounded-t-lg me-2'>
+					<div className='flex text-black h-fit self-end bg-gray-200/70 p-0.5 -mb-2 rounded-t-lg me-2'>
 						{props.keys.map((key) => (
 							<button
 								key={key.name}
 								type='button'
-								className={cn('cursor-pointer min-w-8 py-0.5 px-4', {
+								className={cn('cursor-pointer min-w-8 h-fit py-0.5 px-4', {
 									'bg-white text-slate-900 rounded': activeName === key.name,
 								})}
 								onClick={() => {
@@ -127,9 +132,17 @@ export default function TabbedFormField(props) {
 			}
 			render={(field) => (
 				<>
-					{props.renderer({ ...field, className: cn(getUniqueClassName(activeName), 'relative z-[1]') })}
+					{props.renderer({
+						...field,
+						className: cn(getUniqueClassName(activeName), 'relative z-[1]'),
+					})}
 					{props.keys.map((item) => (
-						<CustomFormMessage key={item.name} label={item.label} name={item.name} baseId={field.id} />
+						<CustomFormMessage
+							key={item.name}
+							label={item.label}
+							name={item.name}
+							baseId={field.id}
+						/>
 					))}
 				</>
 			)}

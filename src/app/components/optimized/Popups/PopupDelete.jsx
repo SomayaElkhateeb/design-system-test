@@ -24,7 +24,7 @@ export default function PopupDelete({
 			<div className='fixed inset-0 bg-black opacity-50' onClick={onClose}></div>
 
 			{/* Popup Content */}
-			<div className='relative flex flex-col content-between border border-error rounded-md w-[420px] h-[149px]  p-5 bg-white'>
+			<div className='relative flex flex-col content-between border border-error rounded-md w-[26.3rem] h-[9.3rem]  p-5 bg-white'>
 				<h3 className='font-semibold text-title'>{title}</h3>
 				<p className='mt-2 text-sm text-title'>{subTitle}</p>
 				<div className='flex items-center justify-end gap-2 mt-5'>

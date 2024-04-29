@@ -72,7 +72,9 @@ function MenuItem(props) {
 		>
 			<span
 				className={`text-sm ${
-					props.selected ? 'text-sec-pressed flex gap-[.5rem] items-center' : 'flex gap-[.5rem] items-center'
+					props.selected
+						? 'text-sec-pressed flex gap-[.5rem] items-center'
+						: 'flex gap-[.5rem] items-center'
 				}`}
 			>
 				{props.icon}
