@@ -17,6 +17,7 @@ import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
+import { ToggleSwitch } from '../../optimized';
 export default function CustomersGroupTable() {
 	//  hooks
 	const navigate = useNavigate();
@@ -103,11 +104,7 @@ export default function CustomersGroupTable() {
 						</TableCell>,
 
 						<TableCell>
-							<Switch
-								checked={e.active}
-								// onChange={handleChange}
-								inputProps={{ 'aria-label': 'controlled' }}
-							/>
+							<ToggleSwitch checked={e.active}  handleToggle={()=>console.log("change")}/>
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>

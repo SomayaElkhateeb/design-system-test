@@ -6,7 +6,7 @@
  */
 function ToggleSwitch(props) {
 	return (
-		<label className='flex items-center mb-4 cursor-pointer ' onClick={props.handleToggle}>
+		<label className='flex items-center  cursor-pointer ' onClick={props.handleToggle}>
 			<span
 				className={`relative rounded-full w-8 h-[17px] mr-2 flex items-center px-1 ${
 					props.checked ? 'bg-secondary' : 'bg-inactive'

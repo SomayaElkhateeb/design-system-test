@@ -14,6 +14,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { ToggleSwitch } from 'src/app/components/optimized';
 
 export default function DiscountsTable({
 	discounts,
@@ -82,11 +83,7 @@ export default function DiscountsTable({
 							<GlobalTableCell>{e.date}</GlobalTableCell>,
 
 							<TableCell>
-								<Switch
-									checked={e.active}
-									// onChange={handleChange}
-									inputProps={{ 'aria-label': 'controlled' }}
-								/>
+								<ToggleSwitch checked={e.active} handleToggle={() => console.log('change')} />
 							</TableCell>,
 							<GlobalTableCell>{e.sales}</GlobalTableCell>,
 
