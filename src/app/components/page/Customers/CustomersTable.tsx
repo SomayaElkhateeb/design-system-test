@@ -16,6 +16,7 @@ import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { MdDelete } from 'react-icons/md';
+import { ToggleSwitch } from '../../optimized';
 
 export default function CustomersTable() {
 	//  hooks
@@ -97,11 +98,7 @@ export default function CustomersTable() {
 						<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
 						<TableCell>
-							<Switch
-								checked={e['E-Subscription']}
-								// onChange={handleChange}
-								inputProps={{ 'aria-label': 'controlled' }}
-							/>
+							<ToggleSwitch checked={e['E-Subscription']}  handleToggle={()=>console.log("change")}/>
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>

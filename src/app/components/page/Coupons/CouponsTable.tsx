@@ -15,6 +15,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useDispatch } from 'react-redux';
 import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import { ToggleSwitch } from '../../optimized';
 
 export default function CouponsTable({
 	coupons,
@@ -76,13 +77,9 @@ export default function CouponsTable({
 						<GlobalTableCell>{e.value}</GlobalTableCell>,
 						<GlobalTableCell>{e.date}</GlobalTableCell>,
 
-						<TableCell>
-							<Switch
-								checked={e.active}
-								// onChange={handleChange}
-								inputProps={{ 'aria-label': 'controlled' }}
-							/>
-						</TableCell>,
+						<GlobalTableCell>
+							<ToggleSwitch checked={e.active} handleToggle={() => console.log('change')} />
+						</GlobalTableCell>,
 						<GlobalTableCell>{e.sales}</GlobalTableCell>,
 						<GlobalTableCell>{e.used}</GlobalTableCell>,
 
