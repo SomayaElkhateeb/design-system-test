@@ -10,7 +10,7 @@ export default function ArrangeButton({
 	selectedOption,
 	handelSelect,
 }: {
-	sortMenus: { id: string; text: string }[];
+	sortMenus: { id?: string; text: string }[];
 	selectedOption: string;
 	handelSelect: (e: string) => void;
 }) {

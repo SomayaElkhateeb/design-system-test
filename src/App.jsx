@@ -24,6 +24,7 @@ import i18n from './app/language/i18n';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
+import OrdersTabs from './app/components/page/Orders/OrdersTabs';
 
 const router = createBrowserRouter([
 	{
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
 				element: <ProductsPage />,
 				children: [{ path: ':tab', element: <ProductsTabs /> }],
 			},
+			{
+				path: '/orders',
+				element: <OrdersPage />,
+				children: [{ path: ':tab', element: <OrdersTabs /> }],
+			},
 			{ path: '/customers', element: <CustomersPage /> },
 			{ path: '/customers/:id', element: <CustomerInfo /> },
 			{ path: '/addCustomer', element: <AddCustomerPage /> },
@@ -53,7 +59,11 @@ const router = createBrowserRouter([
 				element: <MarketingPage />,
 				children: [{ path: ':tab', element: <MarketingTabs /> }],
 			},
-			{ path: '/analytics', element: <AnalyticsPage />, children: [{ path: ':tab', element: <AnalyticsTabs /> }] },
+			{
+				path: '/analytics',
+				element: <AnalyticsPage />,
+				children: [{ path: ':tab', element: <AnalyticsTabs /> }],
+			},
 			{ path: '/apps/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 		],

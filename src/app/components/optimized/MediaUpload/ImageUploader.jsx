@@ -93,7 +93,11 @@ export default function ImageUploader({ onImageUpload, onImageDelete }) {
 		<div
 			className={`relative size-[100px] rounded border overflow-hidden flex justify-center items-center ${
 				dragActive ? 'bg-gray-100' : 'bg-white'
-			} ${isLoading || selectedImage ? 'border-solid	bg-light-1 border-border-color' : 'border-dashed border-hint'}`}
+			} ${
+				isLoading || selectedImage
+					? 'border-solid	bg-light-1 border-borders-lines'
+					: 'border-dashed border-hint'
+			}`}
 			onDragOver={handleDragOver}
 			onDragEnter={handleDrag}
 			onDragLeave={handleDrag}
@@ -143,7 +147,7 @@ export default function ImageUploader({ onImageUpload, onImageDelete }) {
 			<div
 					className={`relative size-[100px] rounded border overflow-hidden flex justify-center items-center ${
 							dragActive ? 'bg-gray-100' : 'bg-white'
-					} ${isLoading || selectedImage ? 'border-solid bg-light-1 border-border-color' : 'border-dashed border-hint'}`}
+					} ${isLoading || selectedImage ? 'border-solid bg-light-1 border-borders-lines' : 'border-dashed border-hint'}`}
 					onDragOver={handleDragOver}
 					onDragEnter={handleDrag}
 					onDragLeave={handleDrag}

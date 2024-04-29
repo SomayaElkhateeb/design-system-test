@@ -1,15 +1,6 @@
 import { useState } from 'react';
 
-import {
-	BoxIcon,
-	ChatIcon,
-	DownIcon,
-	FaqIcon,
-	NavIcon,
-	NotifiIcon,
-	SearchIcon,
-	ViewIcon,
-} from 'src/app/utils/icons';
+import { NavIcon } from 'src/app/utils/icons';
 
 // HeaderSearchBar Icon
 import { GoSearch } from 'react-icons/go';
@@ -17,22 +8,44 @@ import { IoLogoElectron } from 'react-icons/io5';
 import { GiClothes } from 'react-icons/gi';
 import { RxHome } from 'react-icons/rx';
 import { MdAllInclusive } from 'react-icons/md';
-import { getImageUrl } from 'src/app/utils';
 import { useLocation } from 'react-router-dom';
-import { TbWorld } from 'react-icons/tb';
-import { UseLanguage } from '../CustomHook/LanguageHook';
 import { useTranslation } from 'react-i18next';
+import HelpCenterBtn from '../optimized/Buttons/HelpCenterBtn';
+import ViewBtn from '../optimized/Buttons/ViewBtn';
+import ChatBtn from '../optimized/Buttons/ChatBtn';
+import NotificationBtn from '../optimized/Buttons/NotificationBtn';
+import ProfileBtn from '../optimized/Buttons/ProfileBtn';
 const Header = ({ setIsOpen }) => {
 	//  hooks
 	const { pathname } = useLocation();
 	const { t } = useTranslation();
+	let activeModule = '';
+	const modules = [
+		{ path: '/', name: t('Home') },
+		{ path: 'products', name: t('Products') },
+		{ path: 'orders', name: t('Orders') },
+		{ path: 'customers', name: t('Customers') },
+		{ path: 'analytics', name: t('Analytics') },
+		{ path: 'reviews', name: t('Reviews') },
+		{ path: 'pages', name: t('Pages') },
+		{ path: 'marketing', name: t('Marketing') },
+		{ path: 'apps', name: t('Apps') },
+		{ path: 'services', name: t('Services') },
+		{ path: 'settings', name: t('Settings') },
+		{ path: 'store', name: t('Store') },
+	];
+	modules.forEach((module) => {
+		if (pathname.startsWith(`/${module.path}`) || pathname === `${module.path}`) {
+			activeModule = module.name;
+		}
+	});
 
 	//  handel active header
-	const activeModule =
-		pathname === '/' ? t('Home') : t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
+	// const activeModule =
+	// 	pathname === '/' ? t('Home') : t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
 
 	return (
-		<div className='h-[70px] container flex justify-between items-center  mx-auto bg-white'>
+		<div className='h-[70px] px-4 flex justify-between items-center  mx-auto bg-white'>
 			<div className='flex  items-center gap-3'>
 				<button className='max-lg:hidden' onClick={setIsOpen}>
 					<NavIcon className='fill-pri-dark' />
@@ -115,39 +128,13 @@ HeaderSearchBar.defaultProps = {
 
 // ProfileInfo
 const ProfileInfo = () => {
-	//  handel language
-	const language = UseLanguage();
-
-	const handelLanguage = () => {
-		if (language === 'ar') {
-			window.location.reload();
-			localStorage.setItem('language', 'en');
-		} else {
-			window.location.reload();
-			localStorage.setItem('language', 'ar');
-		}
-	};
-
 	return (
-		<div className='flex items-center gap-[14px]'>
-			<TbWorld className=' text-[30px] cursor-pointer' onClick={handelLanguage} />
-			<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
-				<FaqIcon />
-			</button>
-			<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
-				<ViewIcon />
-			</button>
-			<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center relative'>
-				<span className='absolute p-1 rounded-full bg-error top-1 right-1'></span>
-				<ChatIcon />
-			</button>
-			<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center relative'>
-				<span className='absolute p-1 rounded-full bg-error top-1 right-1'></span>
-				<NotifiIcon />
-			</button>
-			<div className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
-				<img src={getImageUrl('images/profile.png')} alt='logo' className=' object-cover h-full ' />
-			</div>
+		<div className='flex items-center'>
+			<HelpCenterBtn />
+			<ViewBtn />
+			<ChatBtn />
+			<NotificationBtn />
+			<ProfileBtn />
 		</div>
 	);
 };

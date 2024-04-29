@@ -1,4 +1,5 @@
 import ReactApexChart from 'react-apexcharts';
+import { useTranslation } from 'react-i18next';
 import { capitalizeFirstLetter } from 'src/app/utils';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
@@ -62,14 +63,15 @@ import { BackAndroidIcon } from 'src/app/utils/icons';
 //  * ```
 //  */
 export default function LineChart(props) {
+	const { t } = useTranslation();
 	const {
-		title = 'sales',
+		title = t('sales'),
 		percentage,
 		negative,
 		categories = ['Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7'],
 		colors = ['#C0C7D6', '#55C397'],
-		nameA = 'Last Week',
-		nameB = 'This Week',
+		nameA = t('Last Week'),
+		nameB = t('This Week'),
 		dataA = [220, 230, 250, 200, 210, 180, 220],
 		dataB = [200, 210, 230, 240, 250, 230, 240],
 	} = props;
@@ -118,12 +120,16 @@ export default function LineChart(props) {
 		],
 	};
 	return (
-		<div className='p-5 bg-white h-80 rounded-xl border border-borders-lines '>
+
+		<div className='p-5 bg-white h-full rounded-xl border border-borders-lines '>
+
 			<div className='flex items-center justify-between mb-1'>
 				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
 				<div className='flex'>
 					<BackAndroidIcon
-						className={`fill-${negative ? 'error' : 'success'}  ${negative ? '-rotate-90' : 'rotate-90'}`}
+						className={`fill-${negative ? 'error' : 'success'}  ${
+							negative ? '-rotate-90' : 'rotate-90'
+						}`}
 					/>
 					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
 				</div>

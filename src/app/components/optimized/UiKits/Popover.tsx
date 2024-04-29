@@ -24,7 +24,7 @@ export default function PopoverComponent({
 	const id = open ? 'simple-popover' : undefined;
 	return (
 		<>
-			<Button sx={{ color: 'black', minWidth: '2px' }} aria-describedby={id} onClick={handleClick}>
+			<Button sx={{ color: 'black', minWidth: '0px',px:"0" }} aria-describedby={id} onClick={handleClick}>
 				{button}
 			</Button>
 			<Popover

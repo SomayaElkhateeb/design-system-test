@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getCoupons, postCoupons, deleteCoupons } from './couponsAsyncThunks';
+import { getCoupons, postCoupons, updateCoupon, deleteCoupons } from './couponsAsyncThunks';
 import { CouponsState } from './couponSlice';
 
 export const getCouponsReducer = (builder: ActionReducerMapBuilder<CouponsState>) => {
@@ -31,6 +31,24 @@ export const getCouponsReducer = (builder: ActionReducerMapBuilder<CouponsState>
 			}
 		})
 		.addCase(postCoupons.rejected, (state, action) => {
+			state.isLoading = false;
+			state.error = action.payload;
+		})
+		// update coupon
+		.addCase(updateCoupon.pending, (state) => {
+			state.isLoading = true;
+			state.error = null;
+		})
+		.addCase(updateCoupon.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.coupons = state.coupons.map((coupon) => {
+				if (coupon.id === action.payload.id) {
+					return action.payload;
+				}
+				return coupon;
+			});
+		})
+		.addCase(updateCoupon.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Button, Menu } from 'src/app/components/optimized';
 import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
 
@@ -10,12 +12,20 @@ interface SlideCardProps {
 }
 
 const SlideCard: React.FC<SlideCardProps> = (props) => {
+	const { t } = useTranslation();
+	const language = UseLanguage();
 	const [menu, setMenu] = useState(false);
 	const [activeIndex, setActiveIndex] = useState<number>(0);
-	const [selectedOption, setSelectedOption] = useState('Today');
+	const [selectedOption, setSelectedOption] = useState(language === 'ar' ? 'اليوم' : 'Today');
 	const handleSelect = (selectedOption: string) => {
 		setSelectedOption(selectedOption);
 	};
+
+	const sortMenus = [
+		{ id: 1, text: t('Today') },
+		{ id: 2, text: t('Last week') },
+		{ id: 3, text: t('Last month') },
+	];
 	return (
 		<div className='bg-white rounded-xl border p-5 border-borders-lines h-96'>
 			<header className='flex justify-between items-center mb-2'>
@@ -25,7 +35,9 @@ const SlideCard: React.FC<SlideCardProps> = (props) => {
 						<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
 							{selectedOption}
 						</Button>
-						{menu && <Menu options={props.sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />}
+						{menu && (
+							<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
+						)}
 					</>
 				) : null}
 			</header>
@@ -77,7 +89,11 @@ const SlideCard: React.FC<SlideCardProps> = (props) => {
 
 			<div className='flex justify-center py-2'>
 				{props.slides.map((_: any, index: number) => (
-					<Bullet key={index} active={index === activeIndex} onClick={() => setActiveIndex(index)} />
+					<Bullet
+						key={index}
+						active={index === activeIndex}
+						onClick={() => setActiveIndex(index)}
+					/>
 				))}
 			</div>
 		</div>
@@ -94,7 +110,9 @@ interface BulletProps {
 
 const Bullet: React.FC<BulletProps> = ({ active, onClick }) => (
 	<button
-		className={`mx-1 size-3 rounded-full ${active ? 'bg-primary' : 'border border-primary bg-white'}`}
+		className={`mx-1 size-3 rounded-full ${
+			active ? 'bg-primary' : 'border border-primary bg-white'
+		}`}
 		onClick={onClick}
 	/>
 );

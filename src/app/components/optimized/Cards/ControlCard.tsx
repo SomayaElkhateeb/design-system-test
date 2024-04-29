@@ -1,74 +1,106 @@
+// import { platform } from 'os';
+import { useTranslation } from 'react-i18next';
 import { Button, ToggleSwitch } from 'src/app/components/optimized';
+
+import { getImageUrl } from 'src/app/utils';
 import { AddFillIcon, EditIcon, LinkIcon } from 'src/app/utils/icons';
+// interface Platform {
+// 	id: number;
+// 	imageUrl: string;
+// 	platformName: string;
+// 	description: string;
+// }
 
-/**
- * @param {object} props - Props for the AppsCard component
- * @param {string} props.image - The image URL for the app
- * @param {string} props.name - The name of the app
- * @param {string} props.description - The description of the app
- * @param {string} props.status - The status of the app (available or installed)
- * @param {string} props.url - The URL to navigate to when clicked
- * @param {boolean} props.isOpen
- *
- * @description
- *
- * Usage Example:
- *
- * ```jsx
- *
- * import AppsCard from "./AppsCard";
- * import { FaTelegram } from "react-icons/fa";
- *
- * export default function MyComponent() {
- *   return (
- *     <AppsCard
- *       image="/path/to/image.jpg"
- *       name="Telegram"
- *       description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
- *       status="available"
- *       url="/app/telegram"
- *     />
- *   );
- * };
- * ```
- */
+// interface ControlCardProps {
+// 	platform: Platform;
+// 	onCardClick: (platform: Platform) => void
+// }
 
-interface ControlCardProps {
-	image: string;
-	name: string;
-	url: string;
-	description: string;
-	isOpen: boolean;
-}
+// export default function ControlCard({ platform, onCardClick }:ControlCardProps) => {
 
-const ControlCard: React.FC<ControlCardProps> = ({ image, name, url, description, isOpen, clickBtn }) => {
+// 	const {id,imageUrl,platformName,description} = platform
+
+// 	return (
+// 		<div className='flex gap-3 p-3 bg-white border rounded-lg border-borders-lines'>
+// 			<div className='size-[60px] grid place-items-center min-w-[60px] rounded-lg border border-light-2 overflow-hidden p-3'>
+// 				<img src={getImageUrl(imageUrl)} alt={platformName} className='object-cover w-full' />
+// 			</div>
+// 			<div className='flex flex-col justify-between gap-1'>
+// 				<div className='flex flex-col items-start'>
+// 					<h3 className='mb-2 text-title font-semibold'>{platformName}</h3>
+// 					<Button
+// 						variant='link'
+// 						RightIcon={LinkIcon}
+// 						// onClick={}
+// 					>
+// 						Learn More
+// 					</Button>
+// 					<p className='paragraph text-subtitle mb-3'>{description}</p>
+// 				</div>
+// 				<div>
+// 					{activated ? (
+// 						<div className='flex justify-between'>
+// 							<Button variant='tertiary' LeftIcon={EditIcon} onClick={clickBtn}>
+// 								Add ID
+// 							</Button>
+// 							<span className='mt-5'>
+// 								<ToggleSwitch checked />
+// 							</span>
+// 						</div>
+// 					) : (
+// 						<Button variant='tertiary' LeftIcon={AddFillIcon} onClick={() => onCardClick(id)}>
+// 							Add ID
+// 						</Button>
+// 					)}
+// 				</div>
+// 			</div>
+// 		</div>
+// 	);
+// };
+
+export default function ControlCard({ platform, onOpenPopup, isActive }) {
+	const { t } = useTranslation();
 	return (
-		<div className='flex gap-3 p-3 bg-white border rounded-lg border-border-color'>
-			<div className='size-[60px] grid place-content-center min-w-[60px] rounded-lg border border-light-2 overflow-hidden p-3'>
-				<img src={image} alt={name} className='object-cover w-full' />
+		<div className='flex gap-3 p-3 bg-white border rounded-lg border-borders-lines'>
+			<div className='size-[60px] grid place-items-center min-w-[60px] rounded-lg border border-light-2 overflow-hidden p-3'>
+				<img
+					src={getImageUrl(platform.imageUrl)}
+					alt={platform.platformName}
+					className='object-cover w-full'
+				/>
 			</div>
-			<div className='flex flex-col justify-between'>
-				<div>
-					<h3 className='mb-1 text-title font-semibold'>{name}</h3>
-					<Button variant='link' RightIcon={LinkIcon} onClick={url}>
-						Learn More
-					</Button>
+			<div className='flex flex-col justify-between gap-1'>
+				<div className='flex flex-col items-start'>
+					<h3 className='mb-2 text-title font-semibold'>{platform.platformName}</h3>
+					<Button
+						variant='link'
+						RightIcon={LinkIcon}
+						// onClick={}
+						text={t('Learn more')}
+						// text={t('Export')}
+					/>
+					<p className='paragraph text-subtitle mb-3'>{platform.description}</p>
 				</div>
-				<p className='paragraph text-subtitle mt-1 mb-5'>{description}</p>
-
 				<div>
-					{isOpen ? (
+					{isActive ? (
 						<div className='flex justify-between'>
-							<Button variant='tertiary' LeftIcon={EditIcon} onClick={clickBtn}>
+							<Button
+								variant='tertiary'
+								LeftIcon={EditIcon}
+								onClick={() => onOpenPopup(platform.id)}
+							>
 								Add ID
 							</Button>
-
 							<span className='mt-5'>
 								<ToggleSwitch checked />
 							</span>
 						</div>
 					) : (
-						<Button variant='tertiary' LeftIcon={AddFillIcon} onClick={clickBtn}>
+						<Button
+							variant='tertiary'
+							LeftIcon={AddFillIcon}
+							onClick={() => onOpenPopup(platform.id)}
+						>
 							Add ID
 						</Button>
 					)}
@@ -76,6 +108,4 @@ const ControlCard: React.FC<ControlCardProps> = ({ image, name, url, description
 			</div>
 		</div>
 	);
-};
-
-export default ControlCard;
+}

@@ -7,11 +7,17 @@ import CustomTableBodyCheckbox from '../../Customers/CustomTableBodyChckbox';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import { TableCell } from '@mui/material';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import BaseTable from '../../Customers/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
 
-export default function InventoryTable({ array, setArray }: { array: string[]; setArray: (e: string[]) => void }) {
+export default function InventoryTable({
+	array,
+	setArray,
+}: {
+	array: string[];
+	setArray: (e: string[]) => void;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const navigate = useNavigate();
@@ -75,7 +81,13 @@ export default function InventoryTable({ array, setArray }: { array: string[]; s
 
 	const inventoryHeaders = [
 		{
-			icon: <CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={products?.map((e) => e.id)} />,
+			icon: (
+				<CustomTableHeaderCheckbox
+					array={array}
+					setArray={setArray}
+					mainArray={products?.map((e) => e.id)}
+				/>
+			),
 			title: t('Product & Category'),
 		},
 		{ title: t('SKU') },
@@ -106,7 +118,11 @@ export default function InventoryTable({ array, setArray }: { array: string[]; s
 								<div className='flex flex-col gap-[.4rem] items-center'>
 									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 									<button onClick={toggleFavorite}>
-										{isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
+										{isFavorite ? (
+											<StarActiveIcon className='fill-neutral-1' />
+										) : (
+											<StarIcon className='fill-hint' />
+										)}
 									</button>
 								</div>
 								<div className='relative'>
@@ -123,32 +139,17 @@ export default function InventoryTable({ array, setArray }: { array: string[]; s
 								</div>
 							</div>
 						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						<GlobalTableCell>
 							<p className='text-title'>{e.SKU}</p>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						</GlobalTableCell>,
+						<GlobalTableCell>
 							<p className={e.quantity === 0 ? 'text-error' : 'text-black'}>
 								{e.quantity > 0 ? e.quantity : t('Out of stock')}
 							</p>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						</GlobalTableCell>,
+						<GlobalTableCell>
 							<span className='text-primary'>SAR</span> {e.price}
-						</TableCell>,
+						</GlobalTableCell>,
 
 						<TableCell>
 							{language === 'ar' ? (

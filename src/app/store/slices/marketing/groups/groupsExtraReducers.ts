@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getSelectCustomerGroups } from './groupsAsyncThunks';
+import { getSelectcustomer_groups } from './groupsAsyncThunks';
 
 interface GroupsState {
 	isLoading: boolean;
@@ -9,15 +9,15 @@ interface GroupsState {
 
 export const getGroupsReducer = (builder: ActionReducerMapBuilder<GroupsState>) => {
 	builder
-		.addCase(getSelectCustomerGroups.pending, (state) => {
+		.addCase(getSelectcustomer_groups.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getSelectCustomerGroups.fulfilled, (state, action) => {
+		.addCase(getSelectcustomer_groups.fulfilled, (state, action) => {
 			state.isLoading = false;
 			state.groups = action.payload;
 		})
-		.addCase(getSelectCustomerGroups.rejected, (state, action) => {
+		.addCase(getSelectcustomer_groups.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});

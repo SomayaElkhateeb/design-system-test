@@ -62,7 +62,8 @@ export const mostPopularApps = [
 		image: getImageUrl('social/twitter-X.svg'),
 		name: 'Twitter',
 		url: '/apps/twitter',
-		status: 'free',
+		status: 'available',
+		tatus: 'free',
 		description:
 			'Connect with Twitter to launch an ad campaign to show your products in front of potential customers.',
 	},
@@ -333,35 +334,8 @@ export const check = [
 
 // Comparison Menus
 export const comparisonMenus = [
-	{ id: nanoid(), text: 'Today' },
-	{ id: nanoid(), text: 'Last week' },
-	{ id: nanoid(), text: 'Last month' },
-	{ id: nanoid(), text: 'Specify date' },
+	{ text: 'Today' },
+	{ text: 'Last week' },
+	{ text: 'Last month' },
+	{ text: 'Specify date' },
 ];
-
-//           DATA DISCOUNT
-
-// Discount Basic Info
-// export const DiscountBasicInfo = [
-
-//   {
-//     id: nanoid(),
-//     title: "Discount Type",
-//     btns: [
-//       { id: nanoid(), textBtn: "Percentage", component: null },
-//       { id: nanoid(), textBtn: "Fixed amount", component: FixedAmount },
-//       { id: nanoid(), textBtn: "Free shipping", component: null },
-//     ]
-//   },
-//   {
-//     id: nanoid(),
-//     title: "Apply to",
-//     btns: [
-//       {id: nanoid(), textBtn: "All products"},
-//       {id: nanoid(), textBtn: "Specific category"},
-//       {id: nanoid(), textBtn: "Specific products"},
-//       {id: nanoid(), textBtn: "Buy x get y"},
-//     ]
-//   }
-
-// ]

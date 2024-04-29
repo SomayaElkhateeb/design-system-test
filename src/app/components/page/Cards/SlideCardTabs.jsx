@@ -1,7 +1,4 @@
-
 import { useState } from 'react';
-
-
 // how to use
 // const ParentComponent = () => {
 // 	const slides = [
@@ -15,17 +12,25 @@ import { useState } from 'react';
 
 // };
 
-const SlideCardTabs = ({ slides }) => {
+const SlideCardTabs = ({ slides, title }) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	return (
-		<div className='bg-white rounded-xl border border-borders-lines p-5 h-[350px] flex flex-col'>
-			<div className='flex items-center justify-between border-b border-borders-lines'>
+		<div className='bg-white rounded-xl border border-borders-lines p-5 h-full min-w-[20rem] w-full grid gap-3'>
+			<div className='flex justify-between items-center '>
+				<h2 className='title text-lg capitalize'>{title}</h2>
+			</div>
+			<div className='flex items-center justify-between border-b border-borders-lines '>
 				{slides.map((slide, index) => (
-					<Tab key={index} title={slide.title} active={index === activeIndex} onClick={() => setActiveIndex(index)} />
+					<Tab
+						key={index}
+						title={slide.title}
+						active={index === activeIndex}
+						onClick={() => setActiveIndex(index)}
+					/>
 				))}
 			</div>
-			<div className='p-5'>
+			<div className='grid gap-3'>
 				{slides.map((slide, index) => (
 					<div key={index} className={`${index === activeIndex ? 'block' : 'hidden'}`}>
 						{slide.content}
@@ -41,7 +46,9 @@ const Tab = ({ title, active, onClick }) => {
 	return (
 		<button
 			className={`px-4 py-2 focus:outline-none ${
-				active ? 'title text-primary  border-b-2 border-primary' : 'paragraph text-hint hover:text-primary'
+				active
+					? 'title text-primary  border-b-2 border-primary'
+					: 'paragraph text-hint hover:text-primary'
 			}`}
 			onClick={onClick}
 		>

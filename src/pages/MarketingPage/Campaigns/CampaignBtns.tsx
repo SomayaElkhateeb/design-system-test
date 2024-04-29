@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import { Button } from 'src/app/components/optimized';
-import * as XLSX from 'xlsx/xlsx.mjs';
 import { useReactToPrint } from 'react-to-print';
 
 import { AddBgIcon } from 'src/app/utils/icons';
@@ -8,15 +7,22 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ActionsButtonsCampains from './ActionsButtonsCampains';
 import { RefObject } from 'react';
+import ActionHandler from 'src/app/utils/ActionMethods';
 
 interface CampaignBtnsInterface {
 	selectedOption: string;
 	onSelectOption: (e: string) => void;
 	data: any;
 	campaignTableRef: RefObject<HTMLElement | undefined>;
-	activity?:boolean
+	activity?: boolean;
 }
-const CampaignBtns = ({ data, campaignTableRef, selectedOption, onSelectOption,activity }: CampaignBtnsInterface) => {
+const CampaignBtns = ({
+	data,
+	campaignTableRef,
+	selectedOption,
+	onSelectOption,
+	activity,
+}: CampaignBtnsInterface) => {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -35,25 +41,20 @@ const CampaignBtns = ({ data, campaignTableRef, selectedOption, onSelectOption,a
 	];
 
 	//  deal with excel
-	//  notice :this function will be handeled to be global in future
 
 	const handleExportFile = () => {
-		const expotData = data?.length > 0 ? data : [];
-		const worksheet = XLSX.utils.json_to_sheet(expotData);
-		const workbook = XLSX.utils.book_new();
-		XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-		XLSX.writeFile(workbook, 'data.xlsx');
+		ActionHandler.exportToExcel(data, 'campaigns_data.xlsx');
 	};
 
-	const handlePrint = useReactToPrint({
-		content: () => campaignTableRef.current,
-		documentTitle: 'Campaigns Data',
-		removeAfterPrint: true,
-	});
+	//  deal with print action
+
+	const handlePrint = () => {
+		ActionHandler.PrintTable();
+	};
 
 	return (
 		<div className='flex flex-col gap-5'>
-			<div className='  flex justify-between items-center '>
+			<div className='flex justify-between items-center'>
 				<Button
 					onClick={() => {
 						navigate('/marketing/campaigns/addCampaign');
@@ -61,7 +62,7 @@ const CampaignBtns = ({ data, campaignTableRef, selectedOption, onSelectOption,a
 					variant='primary'
 					LeftIcon={AddBgIcon}
 				>
-					{!activity?t('Add Campaign'):t('Add Activity')}
+					{!activity ? t('Add Campaign') : t('Add Activity')}
 				</Button>
 
 				<ActionsButtonsCampains

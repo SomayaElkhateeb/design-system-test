@@ -12,6 +12,7 @@ import { cn } from 'src/app/utils';
  * @param {boolean} [props.success] - Indicates if the input field has succeeded.
  * @param {string} props.value - The value of the input field.
  * @param {(value: string) => void} props.handleOnChange - The function to handle onChange events for the input field.
+ * @param {string} props.placeholder - The value of the input field.
  * @param {import('react').RefObject<HTMLInputElement>} [props._ref] - The ref object for the input field.
  * @returns {JSX.Element} The InputRow component.
  */

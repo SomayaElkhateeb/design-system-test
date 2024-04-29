@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import BaseTable from './TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from './TableLayoutGlobal/base.table';
 import { Checkbox, Switch, TableCell } from '@mui/material';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { FaRegEdit } from 'react-icons/fa';
@@ -11,7 +11,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from 'react';
 import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
 import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
-import ThreeDotsButton from './ThreedotsButton';
+import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
@@ -30,8 +30,12 @@ export default function CustomersTable() {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const settingMenus = [
-		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle'/> },
-		{ id: nanoid(), text: 'Delete customer', icon: <MdDelete className='text-[red] text-[1.3rem]' /> },
+		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+		{
+			id: nanoid(),
+			text: 'Delete customer',
+			icon: <MdDelete className='text-[red] text-[1.3rem]' />,
+		},
 	];
 
 	//  rows
@@ -51,7 +55,13 @@ export default function CustomersTable() {
 
 	const customersHeaders = [
 		{
-			icon: <CustomTableHeaderCheckbox array={array} setArray={setArray} mainArray={customers?.map((e) => e.id)} />,
+			icon: (
+				<CustomTableHeaderCheckbox
+					array={array}
+					setArray={setArray}
+					mainArray={customers?.map((e) => e.id)}
+				/>
+			),
 			title: t('Customer Name'),
 		},
 		{ title: t('Mobile') },
@@ -62,7 +72,8 @@ export default function CustomersTable() {
 	];
 
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn = 'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleEn =
+		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
 			language={language}
@@ -72,12 +83,7 @@ export default function CustomersTable() {
 				return {
 					item: e,
 					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.2rem]'>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 								<div className='flex flex-col gap-2'>
@@ -85,31 +91,10 @@ export default function CustomersTable() {
 									<p className='text-subtitle text-[.8rem]'>{e.email}</p>
 								</div>
 							</div>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.mobile}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.city}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.Orders}
-						</TableCell>,
+						</GlobalTableCell>,
+						<GlobalTableCell>{e.mobile}</GlobalTableCell>,
+						<GlobalTableCell>{e.city}</GlobalTableCell>,
+						<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
 						<TableCell>
 							<Switch
@@ -120,12 +105,25 @@ export default function CustomersTable() {
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<FaRegEdit className="text-subtitle" onClick={() => navigate(`/addCustomer?id=${e?.id}`)} />
-								<ThreeDotsButton  sortMenus={settingMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+								<FaRegEdit
+									className='text-subtitle'
+									onClick={() => navigate(`/addCustomer?id=${e?.id}`)}
+								/>
+								<ThreeDotsButton
+									sortMenus={settingMenus}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
 								{language === 'ar' ? (
-									<IoIosArrowBack className="text-subtitle" onClick={() => navigate(`/customers/${e?.id}`)} />
+									<IoIosArrowBack
+										className='text-subtitle'
+										onClick={() => navigate(`/customers/${e?.id}`)}
+									/>
 								) : (
-									<IoIosArrowForward className="text-subtitle" onClick={() => navigate(`/customers/${e?.id}`)} />
+									<IoIosArrowForward
+										className='text-subtitle'
+										onClick={() => navigate(`/customers/${e?.id}`)}
+									/>
 								)}
 							</div>
 						</TableCell>,

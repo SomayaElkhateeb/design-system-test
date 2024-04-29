@@ -2,5 +2,8 @@ import type { ApexOptions } from 'apexcharts';
 
 export interface ReactApexCompProps {
 	options: ApexOptions;
-	series: ApexOptions['series'];
+	series: { name: string, data: number[] }[];
+	title?: string
+	negative?: boolean
+	percentage?: string
 }

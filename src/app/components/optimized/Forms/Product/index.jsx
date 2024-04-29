@@ -1,9 +1,10 @@
 import { z } from 'zod';
 import { Form } from '../../../ui/form';
-import { useTranslation } from 'react-i18next';
 import { useForm } from 'src/app/utils/hooks/form';
-import ProductFormMediaSection from './MediaSection';
-import ProductFormBasicInfo from './BasicInfo';
+import ProductFormMediaSection from './sections/Media';
+import ProductFormBasicInfoSection from './sections/BasicInfo';
+import ProductFormDescriptionAndSpecificationsSection from './sections/DescriptionAndSpecifications';
+import ProductFormPricingSection from './sections/Pricing';
 
 const ProductSchema = {
 	generalInfo: z.object({
@@ -38,23 +39,25 @@ const ProductSchema = {
 		descriptionAr: z.string().min(10).max(1000),
 		// specification
 		// pricing
-		price: z.number().min(0),
-		discountPrice: z.preprocess((arg) => (!arg ? undefined : arg), z.number().min(0).optional()),
-		costPrice: z.number().min(0),
+		price: z.coerce.number().min(0).default(0),
+		discountPrice: z.coerce.number().min(0).optional(),
+		costPrice: z.coerce.number().min(0),
 		isTaxable: z.boolean().default(true),
 		// add bulk pricing???
 		// Stock
-		quantity: z.number().min(0),
+		quantity: z.coerce.number().min(0),
 		canContinueSellingWhenOutOfStock: z.boolean().default(false),
-		branches: z.array(z.object({ id: z.string(), name: z.string(), quantity: z.number().min(0) })),
+		branches: z.array(
+			z.object({ id: z.string(), name: z.string(), quantity: z.coerce.number().min(0) }),
+		),
 		// Shipping
 		isShippableOrPickupable: z.boolean().default(true),
-		weight: z.number().min(0),
+		weight: z.coerce.number().min(0),
 		weightUnit: z.enum(['kg', 'g', 'lb', 'oz']),
 		dimensions: z.object({
-			length: z.number().min(0),
-			width: z.number().min(0),
-			height: z.number().min(0),
+			length: z.coerce.number().min(0),
+			width: z.coerce.number().min(0),
+			height: z.coerce.number().min(0),
 		}),
 		dimensionUnit: z.enum(['cm', 'm', 'mm', 'in', 'ft']),
 		// more advanced shipping options???
@@ -98,7 +101,6 @@ const ProductSchema = {
  * ```
  */
 export default function ProductForm(props) {
-	const { t } = useTranslation();
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: props.handleSubmit,
@@ -106,6 +108,7 @@ export default function ProductForm(props) {
 			...props.defaultValues,
 			generalInfo: {
 				isTaxable: true,
+				price: 0,
 				canContinueSellingWhenOutOfStock: false,
 				isShippableOrPickupable: true,
 				...props.defaultValues?.generalInfo,
@@ -117,7 +120,9 @@ export default function ProductForm(props) {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col gap-4'>
 				<ProductFormMediaSection formStore={formStore} />
-				<ProductFormBasicInfo formStore={formStore} />
+				<ProductFormBasicInfoSection formStore={formStore} />
+				<ProductFormDescriptionAndSpecificationsSection formStore={formStore} />
+				<ProductFormPricingSection formStore={formStore} />
 			</form>
 		</Form>
 	);

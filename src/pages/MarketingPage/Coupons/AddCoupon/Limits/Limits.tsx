@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckBox } from 'src/app/components/optimized';
-import InputRow from 'src/app/components/optimized/InputsFields/InputRow';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { DiscountFormStore } from '../AddCoupon';

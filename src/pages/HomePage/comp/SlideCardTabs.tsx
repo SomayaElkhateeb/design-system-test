@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Button, Menu } from 'src/app/components/optimized';
-import { DownIcon, MoreIcon } from 'src/app/utils/icons';
+import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { DeleteExitIcon, DownIcon, MoreIcon } from 'src/app/utils/icons';
 
 interface Slide {
 	title: string;
@@ -15,14 +19,47 @@ interface SlideCardTabsProps {
 }
 
 const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
+	const language = UseLanguage();
+	const { t } = useTranslation();
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const [menu, setMenu] = useState(false);
-	const [selectedOption, setSelectedOption] = useState('Today');
+	const [selectedOption, setSelectedOption] = useState(language === 'ar' ? 'اليوم' : 'Today');
+	const [show, setShow] = useState(false);
+
+	const [state, setState] = useState({
+		showPopup: false,
+		selectedItem: [],
+	});
+
+	const { showPopup, selectedItem } = state;
+	const sortMenus = [
+		{ id: 1, text: t('Today') },
+		{ id: 2, text: t('Last week') },
+		{ id: 3, text: t('Last month') },
+	];
 
 	const handleSelect = (selectedOption) => {
 		setSelectedOption(selectedOption);
 	};
 
+	const option = [
+		{
+			id: 1,
+			text: t('Delete'),
+			icon: <DeleteExitIcon />,
+			onClick: () => setState({ ...state, showPopup: true }),
+		},
+	];
+
+	// delete item
+	const handleDeleteItem = (idToDelete: number) => {
+		const updatedItems = selectedItem.filter((el) => el.id !== idToDelete);
+		setState({
+			...state,
+			selectedItem: updatedItems,
+			showPopup: false,
+		});
+	};
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines p-5 h-96 flex flex-col'>
 			<header className='flex justify-between items-center mb-2'>
@@ -33,13 +70,20 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 						<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
 							{selectedOption}
 						</Button>
-						{menu && <Menu options={props.sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />}
+						{menu && (
+							<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
+						)}
 					</>
 				) : null}
 			</header>
 			<div className='flex justify-between items-center border-b border-borders-lines'>
 				{props.slides.map((slide, index) => (
-					<Tab key={index} title={slide.title} active={index === activeIndex} onClick={() => setActiveIndex(index)} />
+					<Tab
+						key={index}
+						title={slide.title}
+						active={index === activeIndex}
+						onClick={() => setActiveIndex(index)}
+					/>
 				))}
 			</div>
 
@@ -68,12 +112,19 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 												</div>
 											</div>
 
-											<div className='flex flex-col justify-between'>
+											<div className='flex flex-col justify-between relative'>
 												<span className='flex justify-end cursor-pointer'>
-													<MoreIcon />
+													<MoreIcon onClick={() => setShow(true)} />
 												</span>
 												<p className='text-title text-sm'>SAR {price}</p>
 											</div>
+											{show && <MenuOption options={option} />}
+											{showPopup && (
+												<PopupDelete
+													onClose={() => setState({ ...state, showPopup: false })}
+													onDelete={() => handleDeleteItem(id)}
+												/>
+											)}
 										</div>
 									);
 								})
@@ -99,7 +150,9 @@ const Tab: React.FC<TabProps> = ({ title, active, onClick }) => {
 	return (
 		<button
 			className={`px-4 py-2 focus:outline-none ${
-				active ? 'title text-primary  border-b-2 border-primary' : 'paragraph text-hint hover:text-primary'
+				active
+					? 'title text-primary  border-b-2 border-primary'
+					: 'paragraph text-hint hover:text-primary'
 			}`}
 			onClick={onClick}
 		>

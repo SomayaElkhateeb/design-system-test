@@ -15,7 +15,7 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { MdFacebook } from 'react-icons/md';
 import { getImageUrl } from 'src/app/utils';
 
-const CampaignElementTable = forwardRef(({ sortBy }: CampaignTableInterface, ref) => {
+const CampaignElementTable = ({ sortBy }: CampaignTableInterface, ref) => {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -49,7 +49,7 @@ const CampaignElementTable = forwardRef(({ sortBy }: CampaignTableInterface, ref
 		);
 	};
 	return (
-		<Box ref={ref}>
+		<Box className='print-only'>
 			<BaseTable
 				language={language}
 				color='#55607A'
@@ -73,7 +73,11 @@ const CampaignElementTable = forwardRef(({ sortBy }: CampaignTableInterface, ref
 								}}
 							>
 								<div className='border border-borders-lines rounded-lg size-10 flex items-center justify-center'>
-								<img src={getImageUrl('social/facebook.svg')} alt='Platform Logo' className='w-6 h-6' />
+									<img
+										src={getImageUrl('social/facebook.svg')}
+										alt='Platform Logo'
+										className='w-6 h-6'
+									/>
 								</div>
 								{e.name}
 							</TableCell>,
@@ -121,5 +125,5 @@ const CampaignElementTable = forwardRef(({ sortBy }: CampaignTableInterface, ref
 			/>
 		</Box>
 	);
-});
+};
 export default CampaignElementTable;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { Button } from 'src/app/components/optimized';
 import SelectItems from 'src/app/components/optimized/SelectItems/SelectItems';
 import { useDispatch, useSelector } from 'react-redux';
@@ -56,8 +56,12 @@ const SpecificProducts: React.FC<SpecificProductsProps> = ({ name = 'select prod
 	return (
 		<div className='mt-[1rem] flex flex-col gap-[1rem]'>
 			<div>
-				<Button variant='secondary' RightIcon={FaChevronRight} onClick={() => setState({ ...state, showSelect: true })}>
-					{name}
+				<Button
+					variant='secondary'
+					RightIcon={'ltr' ? FaChevronRight : FaChevronLeft}
+					onClick={() => setState({ ...state, showSelect: true })}
+				>
+					{t(name)}
 				</Button>
 
 				{showSelect && (
