@@ -1,15 +1,27 @@
-
-
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 import AnalyticsTableActions from '../comp/AnalyticsTableActions';
 import { ColumnChart } from 'src/app/components/optimized';
-import useAnalyticsData from '../comp/useAnalyticsData';
+
 // import ProductTable from './comp/ProductTable';
 import data from '../comp/data.json';
 import ProductsTable from './comp/ProductsTable';
 import { useTranslation } from 'react-i18next';
+import useAnalyticsData from '../comp/useAnalyticsData';
 
+export interface AnaylticesProduct {
+	id: string;
+	product_name: string;
+	category: string;
+	quantity: number;
+	price: string;
+	searches: number;
+	views: number;
+	quantity_sold: number;
+	returns: number;
+	imageUrl: string;
+}
 const Products = () => {
+	//  hooks
 	const { t } = useTranslation();
 
 	const productsSortMenus = [
@@ -26,7 +38,10 @@ const Products = () => {
 		{ text: t('Returns Descending') },
 		{ text: t('Returns Ascending') },
 	];
-	const productsSortFunctions: Record<string, (a: any, b: any) => number> = {
+	const productsSortFunctions: Record<
+		string,
+		(a: AnaylticesProduct, b: AnaylticesProduct) => number
+	> = {
 		[t('Quantity Descending')]: (a, b) => b.quantity - a.quantity,
 		[t('Quantity Ascending')]: (a, b) => a.quantity - b.quantity,
 		[t('Price Low in first')]: (a, b) => parseFloat(a.price) - parseFloat(b.price),
@@ -40,20 +55,12 @@ const Products = () => {
 		[t('Returns Descending')]: (a, b) => b.returns - a.returns,
 		[t('Returns Ascending')]: (a, b) => a.returns - b.returns,
 	};
-	const {
-		arrange,
-		tableData,
-		handleArrangeChange,
-		handleComparisonChange,
-		selectedComparisonOption,
-	} = useAnalyticsData(data.productsAnalyticsTable, productsSortFunctions);
+	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
+		useAnalyticsData<AnaylticesProduct>(data.productsAnalyticsTable, productsSortFunctions);
 	return (
 		<div className='p-5 grid gap-5'>
-			<CompareBar
-				selectedComparisonOption={selectedComparisonOption}
-				handleComparisonChange={handleComparisonChange}
-			/>
-			<ColumnChart />
+			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
+			<ColumnChart  percentage="5"/>
 			<AnalyticsTableActions
 				data={tableData}
 				sortMenus={productsSortMenus}

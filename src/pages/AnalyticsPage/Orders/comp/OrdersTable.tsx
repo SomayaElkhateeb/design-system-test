@@ -1,9 +1,12 @@
 import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import { AnaylticesOrder } from '../Orders';
 
-export default function OrdersTable({ tableData }) {
+export default function OrdersTable({ tableData }: { tableData: AnaylticesOrder[] }) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -27,55 +30,13 @@ export default function OrdersTable({ tableData }) {
 					return {
 						item: e,
 						elements: [
-							<TableCell
-								sx={{
-									fontSize: '13px',
-									fontWeight: 400,
-								}}
-							>
-								{e.day}
-							</TableCell>,
-							<TableCell sx={{ fontSize: '13px', fontWeight: 400 }}></TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.orders}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.average_units_ordered}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.average_order_value}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.delivered}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.returned_quantity}
-							</TableCell>,
+							<GlobalTableCell>{e.day}</GlobalTableCell>,
+
+							<GlobalTableCell>{e.orders}</GlobalTableCell>,
+							<GlobalTableCell>{e.average_units_ordered}</GlobalTableCell>,
+							<GlobalTableCell>{e.average_order_value}</GlobalTableCell>,
+							<GlobalTableCell>{e.delivered}</GlobalTableCell>,
+							<GlobalTableCell>{e.returned_quantity}</GlobalTableCell>,
 						],
 					};
 				})}

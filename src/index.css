@@ -84,7 +84,31 @@
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
-
+.css-giud8b-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-14frp6t-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-1xdmxkw-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-u7l27r-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-1ex1afd-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
 @layer components {
 	.customer-border{
 		@apply w-[70%] bg-white rounded-[12px] py-[.7rem] border border-[constrained] flex flex-col

@@ -8,11 +8,8 @@ import ProductsAnalyticsCard from './comp/ProductsAnalyticsCard';
 import AnalyticsReviews from './comp/AnalyticsReviews';
 import { useTranslation } from 'react-i18next';
 
-// style={{
-// 				gridTemplateColumns: 'repeat(auto-fill, minmax(22rem, 1fr))',
-// 			}}
-
 const Overview = () => {
+	//  hooks
 	const { t } = useTranslation();
 
 	return (
