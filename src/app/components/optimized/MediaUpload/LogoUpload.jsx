@@ -32,7 +32,9 @@ export default function LogoUpload(props) {
 	return (
 		<div
 			className={`p-3 size-[100px] rounded border text-center grid place-items-center relative cursor-pointer ${
-				props.isUploading || loaded ? 'border-solid	bg-light-1 border-border-color' : 'border-dashed border-hint'
+				props.isUploading || loaded
+					? 'border-solid	bg-light-1 border-borders-lines'
+					: 'border-dashed border-hint'
 			}`}
 		>
 			{!props.isUploading ||

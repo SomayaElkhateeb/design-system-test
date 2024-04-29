@@ -16,8 +16,9 @@ const handleButtonVariant = cva(undefined, {
 });
 const handleIconVariant = cva(undefined, {
 	variants: {
+		//  mt-1
 		variant: {
-			link: 'fill-primary p-0.5  mt-1',
+			link: 'fill-primary p-0.5 ',
 			secondary: 'fill-pri-dark h-3 w-3 ml-1',
 			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
 			primary: 'fill-white',

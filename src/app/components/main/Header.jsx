@@ -26,10 +26,34 @@ const Header = ({ setIsOpen }) => {
 	//  hooks
 	const { pathname } = useLocation();
 	const { t } = useTranslation();
+	let activeModule = '';
+	const modules = [
+		{ path: '/', name: t('Home') },
+		{ path: 'products', name: t('Products') },
+		{ path: 'orders', name: t('Orders') },
+		{ path: 'customers', name: t('Customers') },
+		{ path: 'analytics', name: t('Analytics') },
+		{ path: 'reviews', name: t('Reviews') },
+		{ path: 'pages', name: t('Pages') },
+		{ path: 'marketing', name: t('Marketing') },
+		{ path: 'apps', name: t('Apps') },
+		{ path: 'services', name: t('Services') },
+		{ path: 'settings', name: t('Settings') },
+		{ path: 'store', name: t('Store') },
+	];
+	modules.forEach((module) => {
+		if (
+			pathname.startsWith(`/${module.path}`) ||
+			pathname === `${module.path}`
+		) {
+			activeModule = module.name;
+		}
+	});
 
 	//  handel active header
-	const activeModule =
-		pathname === '/' ? t('Home') : t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
+	// const activeModule =
+	// 	pathname === '/' ? t('Home') : t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
+
 	return (
 		<div className='h-[70px] px-4 flex justify-between items-center  mx-auto bg-white'>
 			<div className='flex  items-center gap-3'>

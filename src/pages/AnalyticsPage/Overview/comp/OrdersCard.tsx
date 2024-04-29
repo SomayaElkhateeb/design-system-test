@@ -5,6 +5,7 @@ import { comparisonMenus } from 'src/app/utils/constants';
 import { InputRow } from 'src/app/components/optimized';
 import { SearchIcon } from 'src/app/utils/icons';
 import Avatar from './Avatar';
+import { useTranslation } from 'react-i18next';
 
 // Define the type for the order object
 interface Order {
@@ -26,7 +27,7 @@ interface OrdersCardProps {
 
 export default function OrdersCard({ latestOrders }: OrdersCardProps) {
 	// State for selected comparison option
-	const [selectedComparisonOption, setSelectedComparisonOption] = useState('Today');
+	const [selectedComparisonOption, setSelectedComparisonOption] = useState();
 	// State for search query
 	const [searchQuery, setSearchQuery] = useState('');
 
@@ -70,19 +71,29 @@ interface HeaderProps {
 	handleSelect: (option: string) => void;
 	selectedOption: string;
 	onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	dropdown?: any;
 }
 
-function Header({ handleSelect, selectedOption, onSearch }: HeaderProps) {
+function Header({ handleSelect, selectedOption, onSearch, dropdown = false }: HeaderProps) {
+	const { t } = useTranslation();
+	const comparisonMenus = [
+		{ text: t('Today') },
+		{ text: t('Last week') },
+		{ text: t('Last month') },
+		{ text: t('Specify date') },
+	];
 	return (
 		<header className='flex justify-between items-center'>
-			<h2 className='text-title font-semibold text-lg'>Latest Orders</h2>
+			<h2 className='text-title font-semibold text-lg'>{t('Latest Orders')}</h2>
 			<div className='flex justify-between items-center gap-4'>
-				<CompareButton
-					sortMenus={comparisonMenus}
-					selectedOption={selectedOption}
-					handleSelect={handleSelect}
-					variant='link'
-				/>
+				{dropdown && (
+					<CompareButton
+						sortMenus={comparisonMenus}
+						selectedOption={selectedOption}
+						handleSelect={handleSelect}
+						variant='link'
+					/>
+				)}
 				<InputRow leftIcon={<SearchIcon />} placeholder='Search' onChange={onSearch} />
 			</div>
 		</header>
@@ -90,11 +101,18 @@ function Header({ handleSelect, selectedOption, onSearch }: HeaderProps) {
 }
 
 function OrderItem({ order }: { order: Order }) {
-	const { id, imageUrl, firstName, lastName, orderStatus, orderNumber, price, currency, date } = order;
+	const { id, imageUrl, firstName, lastName, orderStatus, orderNumber, price, currency, date } =
+		order;
 	return (
 		<div key={id} className='flex justify-between py-0.5'>
 			<div className='flex justify-between gap-3'>
-				<Avatar variant='user' firstName={firstName} lastName={lastName} imageUrl={imageUrl} size='lg' />
+				<Avatar
+					variant='user'
+					firstName={firstName}
+					lastName={lastName}
+					imageUrl={imageUrl}
+					size='lg'
+				/>
 				<div className='flex flex-col justify-between'>
 					<h2 className='text-title text-sm'>
 						{firstName} {lastName} <span className='text-xs text-subtitle'>{orderNumber}</span>

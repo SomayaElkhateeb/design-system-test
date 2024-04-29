@@ -20,22 +20,21 @@ export default function HorizontalTabsLink(props) {
 
 	/**@param {string} tab */
 	const handelTabs = (tab) => {
-		if (!tabName?.includes('orders')) {
-			return (
-				<>
-					{tab !== 'AllProducts'
-						? t(tab.charAt(0).toUpperCase() + tab.slice(1))
-						: t('All Products')}
-				</>
-			);
-		} else {
-			return;
-			<p>{t(tab.charAt(0).toUpperCase() + tab.slice(1))}</p>;
-		}
+		// if (!tabName?.includes('orders')) {
+		// 	return (
+		// 		<>
+		// 			{tab !== 'AllProducts'
+		// 				? t(tab.charAt(0).toUpperCase() + tab.slice(1))
+		// 				: t('All Products')}
+		// 		</>
+		// 	);
+		// } else {
+			return<p>{t(tab.charAt(0).toUpperCase() + tab.slice(1))}</p>
+		// }
 	};
 	return (
 		<div>
-			<div className='bg-white border-b border-border-color '>
+			<div className='bg-white border-b border-borders-lines '>
 				<ul className='flex flex-wrap font-medium text-center  ml-[18px]'>
 					{props.tabs.map((tab) => (
 						<li key={tab} className='mr-2'>

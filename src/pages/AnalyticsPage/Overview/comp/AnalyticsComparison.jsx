@@ -6,7 +6,7 @@ import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
 
 const AnalyticsComparison = () => {
-	const [selectedComparisonOption, setSelectedComparisonOption] = useState("Today");
+	const [selectedComparisonOption, setSelectedComparisonOption] = useState();
 	const handleComparisonChange = (option) => {
 		setSelectedComparisonOption(option);
 	};
@@ -22,3 +22,5 @@ const AnalyticsComparison = () => {
 	);
 };
 export default AnalyticsComparison;
+
+

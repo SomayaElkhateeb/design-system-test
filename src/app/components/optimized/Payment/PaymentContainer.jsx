@@ -58,7 +58,7 @@ export default function PaymentContainer() {
 	];
 
 	return (
-		<form className='bg-white border border-border-color rounded-lg px-4 py-6 w-[718px]'>
+		<form className='bg-white border border-borders-lines rounded-lg px-4 py-6 w-[718px]'>
 			<h2 className='mb-4 text-lg font-bold title'>Select payment method</h2>
 			{/* Mapping on Payment Methods */}
 			<div className='mb-4 space-y-4'>

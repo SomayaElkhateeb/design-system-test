@@ -23,7 +23,7 @@ interface AvatarProps {
 	firstName?: string;
 	lastName?: string;
 	imageUrl?: string;
-	size: 'sm' | 'lg';
+	size?: 'sm' | 'lg';
 }
 
 export default function Avatar({

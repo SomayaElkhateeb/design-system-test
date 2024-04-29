@@ -1,69 +1,52 @@
-import { useState } from 'react';
+
+
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
+import AnalyticsTableActions from '../comp/AnalyticsTableActions';
 import { ColumnChart } from 'src/app/components/optimized';
-
-import ProductsTable from 'src/app/components/page/Analytics/ProductsTable';
-import { getImageUrl } from 'src/app/utils';
-
-//  dumy data
-const data = [
-	{
-		id: '1',
-		title: 'DJI Mavic Pro 2',
-		category: 'Blankets',
-		quantity: 10,
-		price: 1000,
-		searches: 500,
-		views: 62,
-		quantitySold: 452,
-		returns: 180,
-		img: getImageUrl('images/product.png'),
-	},
-	{
-		id: '2',
-		title: 'DJI Mavic Pro 2',
-		category: 'Blankets',
-		quantity: 225,
-		price: 1000,
-		searches: 500,
-		views: 62,
-		quantitySold: 452,
-		returns: 180,
-		img: getImageUrl('images/product.png'),
-	},
-	{
-		id: '3',
-		title: 'DJI Mavic Pro 2',
-		category: 'Blankets',
-		quantity: 75,
-		price: 1000,
-		searches: 500,
-		views: 62,
-		quantitySold: 452,
-		returns: 180,
-		img: getImageUrl('images/product.png'),
-	},
-	{
-		id: '4',
-		title: 'DJI Mavic Pro 2',
-		category: 'Blankets',
-		quantity: 62,
-		price: 1000,
-		searches: 500,
-		views: 62,
-		quantitySold: 452,
-		returns: 180,
-		img: getImageUrl('images/product.png'),
-	},
-];
+import useAnalyticsData from '../comp/useAnalyticsData';
+// import ProductTable from './comp/ProductTable';
+import data from '../comp/data.json';
+import ProductsTable from './comp/ProductsTable';
+import { useTranslation } from 'react-i18next';
 
 const Products = () => {
-	//  hooks
-	const [selectedComparisonOption, setSelectedComparisonOption] = useState(null);
+	const { t } = useTranslation();
 
-	const handleComparisonChange = (option: string) => {
-		setSelectedComparisonOption(option);
+	const productsSortMenus = [
+		{ text: t('Quantity Descending') },
+		{ text: t('Quantity Ascending') },
+		{ text: t('Price Low in first') },
+		{ text: t('Price High in first') },
+		{ text: t('Searches Descending') },
+		{ text: t('Searches Ascending') },
+		{ text: t('Views Descending') },
+		{ text: t('Views Ascending') },
+		{ text: t('Quantity sold Descending') },
+		{ text: t('Quantity sold Ascending') },
+		{ text: t('Returns Descending') },
+		{ text: t('Returns Ascending') },
+	];
+	const productsSortFunctions: Record<string, (a: any, b: any) => number> = {
+		[t('Quantity Descending')]: (a, b) => b.quantity - a.quantity,
+		[t('Quantity Ascending')]: (a, b) => a.quantity - b.quantity,
+		[t('Price Low in first')]: (a, b) => parseFloat(a.price) - parseFloat(b.price),
+		[t('Price High in first')]: (a, b) => parseFloat(b.price) - parseFloat(a.price),
+		[t('Searches Descending')]: (a, b) => b.searches - a.searches,
+		[t('Searches Ascending')]: (a, b) => a.searches - b.searches,
+		[t('Views Descending')]: (a, b) => b.views - a.views,
+		[t('Views Ascending')]: (a, b) => a.views - b.views,
+		[t('Quantity sold Descending')]: (a, b) => b.quantity_sold - a.quantity_sold,
+		[t('Quantity sold Ascending')]: (a, b) => a.quantity_sold - b.quantity_sold,
+		[t('Returns Descending')]: (a, b) => b.returns - a.returns,
+		[t('Returns Ascending')]: (a, b) => a.returns - b.returns,
 	};
+	const {
+		arrange,
+		tableData,
+		handleArrangeChange,
+		handleComparisonChange,
+		selectedComparisonOption,
+	} = useAnalyticsData(data.productsAnalyticsTable, productsSortFunctions);
 	return (
 		<div className='p-5 grid gap-5'>
 			<CompareBar
@@ -71,8 +54,15 @@ const Products = () => {
 				handleComparisonChange={handleComparisonChange}
 			/>
 			<ColumnChart />
-
-			<ProductsTable data={data} />
+			<AnalyticsTableActions
+				data={tableData}
+				sortMenus={productsSortMenus}
+				selectedOption={arrange}
+				onSelectOption={handleArrangeChange}
+				documentTitle='Products Table Data'
+			/>
+			<ProductsTable tableData={tableData} />
+			{/* <ProductTable data={tableData} headers={productsTableHeaders} /> */}
 		</div>
 	);
 };

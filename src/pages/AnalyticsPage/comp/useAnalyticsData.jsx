@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 const useAnalyticsData = (initialData, sortFunctions) => {
-  const [selectedComparisonOption, setSelectedComparisonOption] = useState("Today");
+  const [selectedComparisonOption, setSelectedComparisonOption] = useState();
   const [arrange, setArrange] = useState();
   const [tableData, setTableData] = useState(initialData);
-  const AnalyticsTableRef = useRef();
 
   const handleComparisonChange = (option) => {
     setSelectedComparisonOption(option);
@@ -20,14 +19,11 @@ const useAnalyticsData = (initialData, sortFunctions) => {
 
   return {
     selectedComparisonOption,
-    setSelectedComparisonOption,
     arrange,
-    setArrange,
     tableData,
     setTableData,
     handleComparisonChange,
     handleArrangeChange,
-    AnalyticsTableRef
   };
 };
 
