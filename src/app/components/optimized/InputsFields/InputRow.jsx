@@ -3,57 +3,17 @@ import { ClipLoader } from 'react-spinners';
 import { cn } from 'src/app/utils';
 
 /**
- * @param {{
- *  label?: import("react").ReactNode;
- *  leftIcon?: JSX.Element;
- *  rightIcon?: JSX.Element;
- *  loading?: boolean;
- *  error?: string;
- *  success?: boolean;
- *  value?: string;
- *  handleOnChange?: (value: string) => void;
- * _ref?: any;
- * } & Omit<import('react').InputHTMLAttributes<HTMLInputElement>, "onChange">} props - Props for the InputRow component
- *
- * How to Use:
- *
- * Example:
- *
- * ```jsx
- * import { FaUser, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
- *
- * const MyComponent = () => {
- *   const [value, setValue] = useState("");
- *   const [error, setError] = useState("");
- *   const [success, setSuccess] = useState("");
- *   const [loading, setLoading] = useState(false);
- *
- *   return (
- *     <div>
- *       <InputRow
- *         label="Username"
- *         leftIcon={<FaUser />}
- *         rightIcon={<FaCheckCircle />}
- *         loading={loading}
- *         error={error}
- *         success={success}
- *         value={value}
- *         onChange={value => setValue(value)}
- *       />
- *     </div>
- *   );
- * };
- * ```
- *
- * Explanation:
- * - label: The text label displayed above the input field.
- * - leftIcon: An optional icon to display on the left side of the input field.
- * - rightIcon: An optional icon to display on the right side of the input field.
- * - loading: A boolean flag indicating whether the input field is in a loading state.
- * - error: An optional error message to display below the input field when there is an error.
- * - success: An optional success message to display below the input field when the input is successful.
- * - value: The current value of the input field.
- * - handleSelectChange: A function to handle changes to the input field value.
+ * @param {Object} props - The props object.
+ * @param {string} [props.label] - The label for the input field.
+ * @param {import('react').ReactNode} [props.leftIcon] - The icon to display on the left side of the input field.
+ * @param {import('react').ReactNode}  [props.rightIcon] - The icon to display on the right side of the input field.
+ * @param {boolean} [props.loading] - Indicates if the input field is in a loading state.
+ * @param {string} [props.error] - The error message to display.
+ * @param {boolean} [props.success] - Indicates if the input field has succeeded.
+ * @param {string} props.value - The value of the input field.
+ * @param {Function} props.handleOnChange - The function to handle onChange events for the input field.
+ * @param {import('react').RefObject<HTMLInputElement>} [props._ref] - The ref object for the input field.
+ * @returns {JSX.Element} The InputRow component.
  */
 
 export default function InputRow({
@@ -91,7 +51,9 @@ export default function InputRow({
 				)}
 				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
-						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>}
+						{leftIcon && (
+							<div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>
+						)}
 						<input
 							ref={_ref}
 							className={`${
@@ -113,9 +75,39 @@ export default function InputRow({
 						)}
 					</div>
 				</div>
-				{error && <small className='group-[.error:focus-within]:hidden text-xs text-red-500 '>{error}</small>}
-				{success && <small className='group-[.success:focus-within]:hidden text-xs text-green-500 '>Success</small>}
+				{error && (
+					<small className='group-[.error:focus-within]:hidden text-xs text-red-500 '>
+						{error}
+					</small>
+				)}
+				{success && (
+					<small className='group-[.success:focus-within]:hidden text-xs text-green-500 '>
+						Success
+					</small>
+				)}
 			</div>
 		</>
 	);
 }
+
+/*
+import { FaUser, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+
+How to Use:
+
+const [value, setValue] = useState('');
+const [error, setError] = useState('');
+const [success, setSuccess] = useState('');
+const [loading, setLoading] = useState(false);
+<InputRow
+	label='Username'
+	leftIcon={<FaUser />}
+	rightIcon={<FaCheckCircle />}
+	loading={loading}
+	error={error}
+	success={success}
+	value={value}
+	onChange={(value) => setValue(value)}
+/>;
+
+*/
