@@ -1,10 +1,13 @@
-import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { getImageUrl } from 'src/app/utils';
+import { AnaylticesProduct } from '../Products';
 
-export default function ProductsTable({ tableData }) {
+export default function ProductsTable({ tableData }: { tableData: AnaylticesProduct[] }) {
+	//  hooks
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -29,7 +32,7 @@ export default function ProductsTable({ tableData }) {
 					return {
 						item: e,
 						elements: [
-							<TableCell
+							<GlobalTableCell
 								sx={{
 									fontSize: '13px',
 									fontWeight: 400,
@@ -48,64 +51,15 @@ export default function ProductsTable({ tableData }) {
 										<p className='paragraph text-subtitle'>{e.category}</p>
 									</div>
 								</div>
-							</TableCell>,
-							<TableCell sx={{ fontSize: '13px', fontWeight: 400 }}></TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.quantity}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.price}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.searches}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.delivered}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.views}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.quantity_sold}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.returns}
-							</TableCell>,
+							</GlobalTableCell>,
+
+							<GlobalTableCell>{e.quantity}</GlobalTableCell>,
+							<GlobalTableCell>{e.price}</GlobalTableCell>,
+							<GlobalTableCell>{e.searches}</GlobalTableCell>,
+
+							<GlobalTableCell>{e.views}</GlobalTableCell>,
+							<GlobalTableCell>{e.quantity_sold}</GlobalTableCell>,
+							<GlobalTableCell>{e.returns}</GlobalTableCell>,
 						],
 					};
 				})}

@@ -15,7 +15,14 @@ interface SlideCardProps<T> {
 	children?: ReactNode;
 }
 
-function SlideCard<T>({ items, title, itemsPerSlide, SlideComponent, children }: SlideCardProps<T>) {
+function SlideCard<T>({
+	items,
+	title,
+	itemsPerSlide,
+	SlideComponent,
+	children,
+}: SlideCardProps<T>) {
+	//  hooks
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const totalSlide = Math.ceil(items.length / itemsPerSlide);
 
@@ -32,7 +39,7 @@ function SlideCard<T>({ items, title, itemsPerSlide, SlideComponent, children }:
 				</div>
 				{children}
 				<div
-					className="overflow-hidden flex-1 grid gap-2"
+					className='overflow-hidden flex-1 grid gap-2'
 					style={{
 						gridTemplateColumns: 'repeat(auto-fit, minmax(8rem, 1fr))',
 					}}
@@ -55,6 +62,6 @@ function SlideCard<T>({ items, title, itemsPerSlide, SlideComponent, children }:
 			</div>
 		</div>
 	);
-};
+}
 
 export default SlideCard;

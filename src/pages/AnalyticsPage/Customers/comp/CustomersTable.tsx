@@ -1,9 +1,11 @@
-import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import { AnaylticesCustomer } from '../Customers';
 
-export default function CustomersTable({ tableData }) {
+export default function CustomersTable({ tableData }: { tableData: AnaylticesCustomer[] }) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -25,39 +27,11 @@ export default function CustomersTable({ tableData }) {
 					return {
 						item: e,
 						elements: [
-							<TableCell
-								sx={{
-									fontSize: '13px',
-									fontWeight: 400,
-								}}
-							>
-								{e.day}
-							</TableCell>,
-							<TableCell sx={{ fontSize: '13px', fontWeight: 400 }}></TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.new_customers}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.purchasing_customers}
-							</TableCell>,
-							<TableCell
-								sx={{
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-							>
-								{e.customer_groups}
-							</TableCell>,
+							<GlobalTableCell>{e.day}</GlobalTableCell>,
+
+							<GlobalTableCell>{e.new_customers}</GlobalTableCell>,
+							<GlobalTableCell>{e.purchasing_customers}</GlobalTableCell>,
+							<GlobalTableCell>{e.customer_groups}</GlobalTableCell>,
 						],
 					};
 				})}
@@ -65,4 +39,3 @@ export default function CustomersTable({ tableData }) {
 		</div>
 	);
 }
-

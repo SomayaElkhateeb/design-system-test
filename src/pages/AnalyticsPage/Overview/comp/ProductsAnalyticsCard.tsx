@@ -19,7 +19,7 @@ interface Product {
 }
 
 export default function ProductsAnalyticsCard({ data }: ProductAnalyticsProps) {
-	const {t} = useTranslation()
+	const { t } = useTranslation();
 	const renderProducts = (products: Product[]) => (
 		<div className='grid gap-2'>
 			{products.slice(0, 3).map((product) => (

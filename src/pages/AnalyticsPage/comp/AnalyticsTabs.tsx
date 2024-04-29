@@ -6,7 +6,7 @@ import Customers from '../Customers/Customers';
 import Integrations from '../Integrations/Integrations';
 
 export default function AnalyticsTabs() {
-	const { tab } = useParams<{ tab: string }>();
+	const { tab } = useParams();
 	switch (tab) {
 		case 'orders':
 			return <Orders />;
