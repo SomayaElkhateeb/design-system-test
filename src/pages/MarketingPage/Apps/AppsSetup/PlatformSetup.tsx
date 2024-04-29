@@ -6,6 +6,8 @@ import { getTikTokSetup } from './tiktok/_comp/getTikTokSetup';
 import { useSearchParams } from 'react-router-dom';
 import SnapchatSetup from './snapchat/SnapchatSetup';
 import { getSnapchatSetup } from './snapchat/_comp/getSnapchatSetup';
+import MailchimpSetup from './mailchimp/MailchimpSetup';
+import { getMailchimpSetup } from './mailchimp/_comp/getMailchimpSetup';
 
 interface PlatformSetupProps {
 	platform: string;
@@ -30,6 +32,9 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 		case 'snapchat':
 			({ snapchat_title: title, snapchat_tabs: tabs } = getSnapchatSetup(platform));
 			break;
+		case 'mailchimp':
+			({ mailchimp_title: title, mailchimp_tabs: tabs } = getMailchimpSetup(platform));
+			break;
 		default:
 			return <section>All</section>;
 	}
@@ -41,6 +46,8 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 					return <TikTokSetup platform={platform} />;
 				case 'snapchat':
 					return <SnapchatSetup platform={platform} />;
+				case 'mailchimp':
+					return <MailchimpSetup platform={platform} />;
 				default:
 					return <VerticalTabs tabs={tabs} />;
 			}
