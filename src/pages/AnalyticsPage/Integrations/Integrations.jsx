@@ -1,56 +1,167 @@
-import { useState } from 'react';
-import facebook from 'src/app/assets/social/facebook.svg';
-import google from 'src/app/assets/social/google.svg';
-import snap from 'src/app/assets/social/snapchat.svg';
-import twitter from 'src/app/assets/social/twitter.svg';
+import { useEffect, useState } from 'react';
+
 import ControlCard from 'src/app/components/optimized/Cards/ControlCard';
-import PopupActivate from 'src/app/components/optimized/Popups/PopupActivate';
+import data from '.././comp/data.json';
+import { useTranslation } from 'react-i18next';
+import { InputRow } from 'src/app/components/optimized';
 
-const data = [
-	{
-		id: 1,
-		image: facebook,
-		name: 'Facebook Pixel',
-		description:
-			'Facebook pixel lets you track your store visitors and their behavior to optimize your Facebook ads, so you can retarget them and track your ad results.',
-	},
-	{
-		id: 2,
-		image: google,
-		name: 'Google Analytics',
-		description:
-			'Google Remarketing lets you follow up with people who have already visited your website, and deliver ad content.',
-	},
-	{
-		id: 3,
-		image: snap,
-		name: 'Snapchat Pixel',
-		description:
-			'Measure your Snapchat ads impact on the sales. Add a Snap Pixel to see how many snapchatters interact with your store after viewing your ads.',
-	},
-	{
-		id: 4,
-		image: twitter,
-		name: 'Twitter Pixel',
-		description:
-			'Measure your Snapchat ads impact on the sales. Add a Snap Pixel to see how many snapchatters interact with your store after viewing your ads.',
-		isOpen: true,
-	},
-];
+// const Integrations = () => {
 
-const Integrations = () => {
-	const [showPopup, setShowPopup] = useState(false);
-	// const [name, setName] = useState([data.map{e => {
-	// 	return e.name;
-	// }}]);
+// const [activatedPlatforms, setActivatedPlatforms] = useState([]);
+
+// const [showPopup, setShowPopup] = useState(false);
+
+// const [selectedPlatform, setSelectedPlatform] = useState(null);
+
+// const handleActivate = (platformId) => {
+
+// 		setActivatedPlatforms((prevState) =>return  [...prevState, platformId]);
+// 		setShowPopup(false);
+// };
+
+// const handleCardClick = (platform) => {
+// 		setSelectedPlatform(platform);
+// 		setShowPopup(true);
+// };
+
+// return (
+// 	<section
+// 		className='grid gap-5 p-5'
+// 		style={{
+// 			gridTemplateColumns: 'repeat(auto-fill, minmax(23rem, 1fr))',
+// 		}}
+// 	>
+{
+	/* {data.paltformIntegrations.map((item) => (
+				<ControlCard key={item.id} platform={item} onCardClick={handleCardClick} />
+			))}
+
+			{showPopup && (
+				<PopupActivate
+					platform={selectedPlatform}
+					onActivate={handleActivate}
+					onClose={() => setShowPopup(false)}
+				/>
+			)} */
+}
+// 		</section>
+// 	);
+// };
+
+// export default Integrations;
+
+export default function Integrations() {
+	const { t } = useTranslation();
+
+	const [activePlatformId, setActivePlatformId] = useState(false);
+	const [activatedPlatforms, setActivatedPlatforms] = useState({}); // Track activated platforms
+
+	const handleOpenPopup = (platformId) => {
+		setActivePlatformId(platformId);
+	};
+
+	const handleClosePopup = () => {
+		setActivePlatformId(null);
+	};
+
+	const handleActivate = (platformName, integrationId) => {
+		// Implement logic to activate the platform using the provided ID and integration ID (e.g., API call)
+		console.log('Activating platform:', platformName, integrationId);
+		setActivatedPlatforms({ ...activatedPlatforms, [platformName]: true }); // Update activatedPlatforms state
+	};
 	return (
-		<section className='grid grid-cols-3 gap-5 p-5'>
-			{data.map((item) => {
-				return <ControlCard key={item.id} {...item} clickBtn={() => setShowPopup(!showPopup)} />;
-			})}
-			{showPopup && <PopupActivate name='facebook' onClose={() => setShowPopup(false)} />}
+		<section
+			className='grid gap-5 p-5'
+			style={{
+				gridTemplateColumns: 'repeat(auto-fill, minmax(23rem, 1fr))',
+			}}
+		>
+			{data.paltformIntegrations.map((platform) => (
+				<ControlCard
+					key={platform.id}
+					platform={platform}
+					onOpenPopup={handleOpenPopup}
+					isActive={activatedPlatforms[platform.platformName]}
+				/>
+			))}
+			{activePlatformId && (
+				<Popup
+					platformId={activePlatformId}
+					onClose={handleClosePopup}
+					onActivate={handleActivate}
+					platforms={data.paltformIntegrations}
+				/>
+			)}
 		</section>
 	);
-};
+}
 
-export default Integrations;
+const Popup = ({ platformId, onClose, onActivate, platforms }) => {
+	const { t } = useTranslation();
+
+	const [integrationId, setIntegrationId] = useState('');
+	const [isOpen, setIsOpen] = useState(false);
+	const [selectedPlatform, setSelectedPlatform] = useState(null);
+
+	useEffect(() => {
+		if (platformId) {
+			setIsOpen(true);
+			setSelectedPlatform(findPlatformById(platformId)); // Find platform object based on ID
+		} else {
+			setIsOpen(false);
+			setSelectedPlatform(null);
+		}
+	}, [platformId]); // Update isOpen and selectedPlatform based on platformId changes
+
+	const findPlatformById = (id) => {
+		// Implement logic to find the platform object based on the provided ID (e.g., search platforms array)
+		// Replace with your actual data access logic
+		return platforms.find((platform) => platform.id === id);
+	};
+
+	const handleInputChange = (event) => {
+		setIntegrationId(event.target.value);
+	};
+
+	const handleActivation = () => {
+		onActivate(selectedPlatform.platformName, integrationId); // Pass platform ID and integration ID
+		onClose(); // Close popup after activation
+	};
+
+	return (
+		isOpen && (
+			<div className='fixed inset-0 z-50 flex items-center justify-center'>
+				{/* Overlay */}
+				<div className='fixed inset-0 bg-black opacity-50' onClick={onClose}></div>
+
+				{/* Popup Content */}
+				<div className='relative flex flex-col content-between rounded-md  w-[35rem] p-5 bg-white'>
+					<h3 className='font-semibold text-title capitalize mb-5'>
+						{t('Activate')} {selectedPlatform?.platformName} {t('Pixel')}
+					</h3>
+					<div className='w-96'>
+						<InputRow
+							label={t('Pixle ID')}
+							value={integrationId}
+							onChange={(e) => setPixelId(e.target.value)}
+						/>
+					</div>
+					<p className='mt-2 text-sm text-title'>
+						{t('You can copy it from')}{' '}
+						<span className='capitalize'>{selectedPlatform?.platformName}</span> {t('ads manager')}
+					</p>
+
+					<div className='flex items-center justify-end gap-2 mt-5'>
+						<button className='btn-ter' onClick={onClose}>
+							{t('Cancel')}
+						</button>
+
+						<button className='btn-pri' onClick={handleActivation}>
+							{t('Activate')}
+						</button>
+					</div>
+				</div>
+			</div>
+		)
+	);
+};

@@ -63,14 +63,24 @@ export default function MultiChoiceChips(props) {
  * }} props
  */
 function Chip(props) {
-	const baseStyle = 'py-1 pr-2 flex items-center border w-fit rounded-full cursor-pointer transition-all';
-	const notSelectedStyle = 'bg-white border-border-color text-subtitle hover:bg-gray-100';
+	const baseStyle =
+		'py-1 pr-2 flex items-center border w-fit rounded-full cursor-pointer transition-all';
+	const notSelectedStyle = 'bg-white border-borders-lines text-subtitle hover:bg-gray-100';
 	const selectedStyle = 'border-sec-pressed text-sec-pressed bg-sec-light';
 
 	return (
-		<div className={`${baseStyle} ${props.isSelected ? selectedStyle : notSelectedStyle}`} onClick={props.handleToggle}>
-			{props.isSelected ? <CheckIcon className='fill-sec-pressed' /> : <AddIcon className='fill-hint' />}
-			<span className={`paragraph ${props.isSelected ? 'text-sec-pressed' : 'text-subtitle'}`}>{props.label}</span>
+		<div
+			className={`${baseStyle} ${props.isSelected ? selectedStyle : notSelectedStyle}`}
+			onClick={props.handleToggle}
+		>
+			{props.isSelected ? (
+				<CheckIcon className='fill-sec-pressed' />
+			) : (
+				<AddIcon className='fill-hint' />
+			)}
+			<span className={`paragraph ${props.isSelected ? 'text-sec-pressed' : 'text-subtitle'}`}>
+				{props.label}
+			</span>
 		</div>
 	);
 }

@@ -1,10 +1,9 @@
 // @ts-nocheck
 import { forwardRef } from 'react';
-
-const Table = forwardRef(({ data, headers }, ref) => {
+const Table = forwardRef(({ data, headers }) => {
 	const formattedHeaders = headers.map((header) => header.replace(/\s+/g, '_'));
 	return (
-		<table ref={ref} className='w-full table-auto border-separate border-spacing-y-3'>
+		<table  className='w-full table-auto border-separate border-spacing-y-3 print-only'>
 			<thead>
 				<tr className='text-left bg-white'>
 					{headers.map((header, index) => (

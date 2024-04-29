@@ -43,26 +43,28 @@ export default function TopSectionOrdersPage({
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export Orders', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import Orders', icon: <FiUploadCloud className='iconClass' /> },
-		
 	];
 
 	return (
-		<div className='flex-row-global justify-between'>
-			{/*  left dropdow */}
+		<div className='flex-col-top-section-pages'>
+			<div className='flex-row-global justify-between'>
+				{/*  left dropdow */}
 
-			<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
-				{addButton}
-			</Button>
-			{/*  actions filter arrange,... */}
-			<div className='flex-row-global  gap-[1.2rem]'>
-				<ActionsComp
-					filterMenus={sortMenus}
-					sortMenus={sortMenus}
-					ActionsMenus={ActionsMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+				<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+					{addButton}
+				</Button>
+				{/*  actions filter arrange,... */}
+				<div className='flex-row-global  gap-[1.2rem]'>
+					<ActionsComp
+						filterMenus={sortMenus}
+						sortMenus={sortMenus}
+						ActionsMenus={ActionsMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</div>
 			</div>
+			<hr />
 		</div>
 	);
 }

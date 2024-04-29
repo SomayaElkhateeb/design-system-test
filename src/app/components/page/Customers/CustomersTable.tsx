@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import BaseTable from './TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from './TableLayoutGlobal/base.table';
 import { Checkbox, Switch, TableCell } from '@mui/material';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { FaRegEdit } from 'react-icons/fa';
@@ -83,12 +83,7 @@ export default function CustomersTable() {
 				return {
 					item: e,
 					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.2rem]'>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 								<div className='flex flex-col gap-2'>
@@ -96,31 +91,10 @@ export default function CustomersTable() {
 									<p className='text-subtitle text-[.8rem]'>{e.email}</p>
 								</div>
 							</div>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.mobile}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.city}
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.Orders}
-						</TableCell>,
+						</GlobalTableCell>,
+						<GlobalTableCell>{e.mobile}</GlobalTableCell>,
+						<GlobalTableCell>{e.city}</GlobalTableCell>,
+						<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
 						<TableCell>
 							<Switch

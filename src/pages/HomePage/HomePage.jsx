@@ -5,7 +5,8 @@ import SlideCard from './comp/SlideCard';
 import CustomDetails from './comp/CustomDetails';
 // import { data, slidesContent, slidesTabs } from './comp/data';
 import SlideCardTabs from './comp/SlideCardTabs';
-import GetStartedCard from './comp/GetStartedCard';
+import Slider from 'src/app/components/optimized/UiKits/Slider';
+import { useEffect, useState } from 'react';
 
 const HomePage = () => {
 	const { t } = useTranslation();
@@ -132,9 +133,24 @@ const HomePage = () => {
 			date: '5/6/2021',
 		},
 	];
+	const [screenSize, setScreenSize] = useState('');
+
+	useEffect(() => {
+		const handleResize = () => {
+			const width = window.innerWidth;
+			setScreenSize(width < 1100 ? 'mid' : 'full');
+		};
+
+		handleResize(); // Set initial screen size
+		window.addEventListener('resize', handleResize); // Add event listener for window resize
+
+		return () => {
+			window.removeEventListener('resize', handleResize); // Remove event listener on component unmount
+		};
+	}, []);
 	return (
 		<div className='w-full h-full px-4 py-6'>
-			<div className='grid lg:grid-cols-3 gap-5 md:grid-cols-1 sm:grid-cols-1'>
+			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1'>
 				<div className='col-span-2'>
 					<Setups />
 				</div>
@@ -145,8 +161,15 @@ const HomePage = () => {
 				<SlideCardTabs slides={slidesTabs} text={t('Products')} btn />
 			</div>
 
-			<div className='mt-6 bg-white border rounded-xl border-borders-lines h-fit'>
-				<GetStartedCard size='mini' slides={slides} title={t('Get started with dookan')} />
+			<div
+				className='mt-6 bg-white border rounded-xl border-borders-lines h-fit'
+				style={{ width: '100%' }}
+			>
+				{screenSize === 'mid' ? (
+					<Slider size='mid' slides={slides} title={t('Get started with dookan')} />
+				) : (
+					<Slider size='full' slides={slides} title={t('Get started with dookan')} />
+				)}
 			</div>
 		</div>
 	);

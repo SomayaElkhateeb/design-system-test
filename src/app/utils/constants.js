@@ -53,7 +53,7 @@ export const mostPopularApps = [
 		image: getImageUrl('social/google.svg'),
 		name: 'Google',
 		url: '/apps/google',
-		status: 'available',
+		status: 'free',
 		description:
 			'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.',
 	},
@@ -63,7 +63,9 @@ export const mostPopularApps = [
 		name: 'Twitter',
 		url: '/apps/twitter',
 		status: 'available',
-		description: 'Connect with Twitter to launch an ad campaign to show your products in front of potential customers.',
+		tatus: 'free',
+		description:
+			'Connect with Twitter to launch an ad campaign to show your products in front of potential customers.',
 	},
 	{
 		id: nanoid(),
@@ -91,7 +93,7 @@ export const socialApps = [
 		name: 'Google',
 		description: 'Connect with Google to get to millions of customers',
 		image: getImageUrl('social/google.svg'),
-		status: 'available',
+		status: 'free',
 		url: '/apps/google',
 	},
 	{
@@ -107,7 +109,7 @@ export const socialApps = [
 		name: 'TikTok',
 		description: 'Connect with TikTok to get to millions of customers',
 		image: getImageUrl('social/tiktok.svg'),
-		status: 'available',
+		status: 'free',
 		url: '/apps/tiktok',
 	},
 	{
@@ -123,7 +125,7 @@ export const socialApps = [
 		name: 'WhatsApp',
 		description: 'Connect with WhatsApp to get to millions of customers',
 		image: getImageUrl('social/whatsapp.svg'),
-		status: 'available',
+		status: 'free',
 		url: '/apps/whatsapp',
 	},
 	{
@@ -139,8 +141,24 @@ export const socialApps = [
 		name: 'Twitter',
 		description: 'Connect with Twitter to get to millions of customers',
 		image: getImageUrl('social/twitter-X.svg'),
-		status: 'available',
+		status: 'free',
 		url: '/apps/twitter',
+	},
+	{
+		id: nanoid(),
+		name: 'Mailchimp',
+		description: 'Connect with Mailchimp to get to millions of customers',
+		image: getImageUrl('social/mailchimp.svg'),
+		status: 'free',
+		url: '/apps/mailchimp',
+	},
+	{
+		id: nanoid(),
+		name: 'Sendgrid',
+		description: 'Connect with Sendgrid to get to millions of customers',
+		image: getImageUrl('social/sendgrid.svg'),
+		status: 'free',
+		url: '/apps/sendgrid',
 	},
 ];
 
@@ -149,7 +167,8 @@ export const socialMediaContent = {
 	twitter: {
 		name: 'Twitter',
 		image: getImageUrl('social/twitter-X.svg'),
-		description: 'Twitter is a social media platform for creating, sharing, and discovering short posts.',
+		description:
+			'Twitter is a social media platform for creating, sharing, and discovering short posts.',
 		videoUrl: 'https://www.youtube.com/embed/TzFvB35n8To',
 		features: [
 			{
@@ -159,7 +178,8 @@ export const socialMediaContent = {
 			},
 			{
 				title: 'Increase your revenue',
-				description: 'Merchants see an average increase of 15% in revenue when selling on Facebook.',
+				description:
+					'Merchants see an average increase of 15% in revenue when selling on Facebook.',
 			},
 			{
 				title: 'Easy checkout',
@@ -190,7 +210,8 @@ export const socialMediaContent = {
 			},
 			{
 				title: 'Increase your revenue',
-				description: 'Merchants see an average increase of 15% in revenue when selling on Facebook.',
+				description:
+					'Merchants see an average increase of 15% in revenue when selling on Facebook.',
 			},
 			{
 				title: 'Easy checkout',
@@ -313,35 +334,8 @@ export const check = [
 
 // Comparison Menus
 export const comparisonMenus = [
-	{ id: nanoid(), text: 'Today' },
-	{ id: nanoid(), text: 'Last week' },
-	{ id: nanoid(), text: 'Last month' },
-	{ id: nanoid(), text: 'Specify date' },
+	{ text: 'Today' },
+	{ text: 'Last week' },
+	{ text: 'Last month' },
+	{ text: 'Specify date' },
 ];
-
-//           DATA DISCOUNT
-
-// Discount Basic Info
-// export const DiscountBasicInfo = [
-
-//   {
-//     id: nanoid(),
-//     title: "Discount Type",
-//     btns: [
-//       { id: nanoid(), textBtn: "Percentage", component: null },
-//       { id: nanoid(), textBtn: "Fixed amount", component: FixedAmount },
-//       { id: nanoid(), textBtn: "Free shipping", component: null },
-//     ]
-//   },
-//   {
-//     id: nanoid(),
-//     title: "Apply to",
-//     btns: [
-//       {id: nanoid(), textBtn: "All products"},
-//       {id: nanoid(), textBtn: "Specific category"},
-//       {id: nanoid(), textBtn: "Specific products"},
-//       {id: nanoid(), textBtn: "Buy x get y"},
-//     ]
-//   }
-
-// ]

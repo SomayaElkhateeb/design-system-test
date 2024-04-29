@@ -8,7 +8,7 @@ export function cn(...inputs) {
 	return twMerge(clsx(inputs));
 }
 
-export const truncateString = (str, maxLength) => {
+export const truncateString = (str: string, maxLength: number) => {
 	if (str.length <= maxLength) {
 		return str;
 	} else {
@@ -16,7 +16,7 @@ export const truncateString = (str, maxLength) => {
 	}
 };
 
-export const capitalizeFirstLetter = (inputString) => {
+export const capitalizeFirstLetter = (inputString: string) => {
 	if (!inputString) {
 		return inputString;
 	}
@@ -24,11 +24,11 @@ export const capitalizeFirstLetter = (inputString) => {
 	return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 };
 
-export const getImageUrl = (name) => {
+export const getImageUrl = (name: string) => {
 	return new URL(`../assets/${name}`, import.meta.url).href;
 };
 
-export function formatLikes(num) {
+export function formatLikes(num: number) {
 	if (num < 1000) {
 		return num.toString();
 	} else if (num < 1000000) {
@@ -76,8 +76,8 @@ export const calculateAverageRating = (reviews: { rating: number }[]): string =>
 
 export const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
-export const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
-export const parseDate = (dateString) => new Date(dateString);
+export const getNumericValue = (str: string) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
+export const parseDate = (dateString: string) => new Date(dateString);
 
 export const exportToExcel = (data: any[], filename: string) => {
 	// Convert data to worksheet

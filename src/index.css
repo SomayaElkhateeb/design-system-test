@@ -84,16 +84,44 @@
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
-
+.css-giud8b-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-14frp6t-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-1xdmxkw-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-u7l27r-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
+.css-1ex1afd-MuiTableCell-root{
+	border:0px solid black !important;
+	background-color: white !important;
+	margin-bottom: 50px !important;
+}
 @layer components {
 	.customer-border{
 		@apply w-[70%] bg-white rounded-[12px] py-[.7rem] border border-[constrained] flex flex-col
 	}
-	.flex-row-global{
+	.flex-row-global
+	{
 		@apply flex flex-row items-center
 	}
 	.flex-row-global-items-start{
 		@apply flex flex-row items-start
+	}
+	.flex-col-top-section-pages{
+		@apply flex flex-col gap-[1rem]
 	}
 	.iconClass{
 	@apply	text-[1.2rem] text-subtitle
@@ -142,6 +170,7 @@
 	.active {
 		@apply bg-pri-light;
 	}
+
 	.border-gradient {
 		border-image: linear-gradient(313.9deg, #0d53fc -2.74%, #55c397 140.56%) 1;
 		border-radius: 0.375rem;

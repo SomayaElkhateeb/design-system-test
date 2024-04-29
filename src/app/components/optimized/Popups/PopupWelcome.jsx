@@ -13,7 +13,9 @@ import image from 'src/app/assets/brand/cloud.svg';
 export default function PopupWelcome(props) {
 	const { t } = useTranslation();
 	return (
-		<div className='grid grid-row-3 border border-constrained rounded-md w-[420px] h-[247px] p-5 bg-white'>
+		<div className='grid grid-row-3 border z-50 border-constrained rounded-md w-[26.3rem] h-[15.5rem] p-5 bg-white'>
+			{/* Overlay */}
+			<div className='fixed inset-0 bg-black opacity-50' onClick={props.onClose}></div>
 			<div className='flex items-center justify-center w-full mb-5 rounded'>
 				<img className='w-[95.04px] h-[65.54px]' src={image} alt='' />
 			</div>

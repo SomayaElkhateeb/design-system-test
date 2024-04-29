@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Button, Menu } from 'src/app/components/optimized';
-import { DownIcon, MoreIcon } from 'src/app/utils/icons';
+import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { DeleteExitIcon, DownIcon, MoreIcon } from 'src/app/utils/icons';
 
 interface Slide {
 	title: string;
@@ -22,16 +24,42 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const [menu, setMenu] = useState(false);
 	const [selectedOption, setSelectedOption] = useState(language === 'ar' ? 'اليوم' : 'Today');
+	const [show, setShow] = useState(false);
 
+	const [state, setState] = useState({
+		showPopup: false,
+		selectedItem: [],
+	});
+
+	const { showPopup, selectedItem } = state;
 	const sortMenus = [
 		{ id: 1, text: t('Today') },
 		{ id: 2, text: t('Last week') },
 		{ id: 3, text: t('Last month') },
 	];
+
 	const handleSelect = (selectedOption) => {
 		setSelectedOption(selectedOption);
 	};
 
+	const option = [
+		{
+			id: 1,
+			text: t('Delete'),
+			icon: <DeleteExitIcon />,
+			onClick: () => setState({ ...state, showPopup: true }),
+		},
+	];
+
+	// delete item
+	const handleDeleteItem = (idToDelete: number) => {
+		const updatedItems = selectedItem.filter((el) => el.id !== idToDelete);
+		setState({
+			...state,
+			selectedItem: updatedItems,
+			showPopup: false,
+		});
+	};
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines p-5 h-96 flex flex-col'>
 			<header className='flex justify-between items-center mb-2'>
@@ -84,12 +112,19 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 												</div>
 											</div>
 
-											<div className='flex flex-col justify-between'>
+											<div className='flex flex-col justify-between relative'>
 												<span className='flex justify-end cursor-pointer'>
-													<MoreIcon />
+													<MoreIcon onClick={() => setShow(true)} />
 												</span>
 												<p className='text-title text-sm'>SAR {price}</p>
 											</div>
+											{show && <MenuOption options={option} />}
+											{showPopup && (
+												<PopupDelete
+													onClose={() => setState({ ...state, showPopup: false })}
+													onDelete={() => handleDeleteItem(id)}
+												/>
+											)}
 										</div>
 									);
 								})

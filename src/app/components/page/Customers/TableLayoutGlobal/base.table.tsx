@@ -8,6 +8,7 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
+	styled,
 } from '@mui/material';
 
 import { Model } from 'src/app/types/model.type';
@@ -31,43 +32,40 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 		<TableContainer
 			sx={{
 				marginTop: '20px',
-				backgroundColor: 'white',
-				maxHeight: 600,
+				backgroundColor: '#F9FAFC',
+				maxHeight: 700,
 				minHeight: 100,
 			}}
 		>
 			<Fade in={isLoading}>
 				<LinearProgress color='primary' />
 			</Fade>
-			<Table stickyHeader aria-label='sticky table'>
-				<TableHead>
+			<Table sx={{ backgroundColor: '#F9FAFC' }} stickyHeader aria-label='sticky table'>
+				<TableHead sx={{ backgroundColor: 'white' }}>
 					<TableRow>
 						{headers?.map((header: header, i: any) => (
-							<TableCell
-								sx={{
-									color: color,
-									fontSize: '14px',
-									fontWeight: 400,
-								}}
-								key={`h-${i}`}
-							>
+							<GlobalTableCell sx={{ color: color }} key={`h-${i}`}>
 								<Box
 									sx={{
 										display: 'flex',
-										justifyContent: header.icon ? 'flex-start' : language === 'ar' ? 'flex-end' : 'flex-start',
+										justifyContent: header.icon
+											? 'flex-start'
+											: language === 'ar'
+											? 'flex-end'
+											: 'flex-start',
 										alignItems: 'center',
 									}}
 								>
 									{header.icon && header.icon}
 									{header.title?.toUpperCase()}
 								</Box>
-							</TableCell>
+							</GlobalTableCell>
 						))}
 					</TableRow>
 				</TableHead>
 
 				{rows?.length > 0 && (
-					<TableBody>
+					<TableBody sx={{ backgroundColor: '#F9FAFC', transform: 'translateY(20px)' }}>
 						{/*Rows*/}
 						{!isLoading &&
 							rows?.map((e: ReactMetaElement<T>, i: number) => (
@@ -81,7 +79,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				)}
 			</Table>
 		</TableContainer>
-		{rows?.length === 0 && (
+		{rows?.length === 0 && !isLoading && (
 			<Box
 				sx={{
 					display: 'flex',
@@ -107,3 +105,12 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 );
 
 export default BaseTable;
+// #F9FAFC
+export const GlobalTableCell = styled(TableCell)(({ theme }) => ({
+	fontSize: '14px',
+	fontWeight: '400',
+	border: '0px solid black',
+	backgroundColor: 'white',
+	marginTop: '50px',
+	marginBottom: '50px',
+}));

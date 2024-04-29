@@ -24,7 +24,7 @@ export default function CustomersGroupTable() {
 	const language = UseLanguage();
 	const [array, setArray] = useState<string[]>([]);
 	//  rows
-	const customerGroups: CustomerGroupInterface[] = [
+	const customer_groups: CustomerGroupInterface[] = [
 		{
 			id: '1',
 			name: 'group1',
@@ -57,7 +57,7 @@ export default function CustomersGroupTable() {
 				<CustomTableHeaderCheckbox
 					array={array}
 					setArray={setArray}
-					mainArray={customerGroups?.map((e) => e.id)}
+					mainArray={customer_groups?.map((e) => e.id)}
 				/>
 			),
 			title: t('Group Name'),
@@ -75,7 +75,7 @@ export default function CustomersGroupTable() {
 		<BaseTable
 			color='#55607A'
 			headers={customersHeaders}
-			rows={customerGroups?.map((e: CustomerGroupInterface, i: number) => {
+			rows={customer_groups?.map((e: CustomerGroupInterface, i: number) => {
 				return {
 					item: e,
 					elements: [

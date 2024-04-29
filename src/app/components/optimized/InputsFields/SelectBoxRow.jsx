@@ -1,56 +1,22 @@
 import { useId, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
-
 /**
- * @param {{
- *  label?: import("react").ReactNode;
- *  leftIcon?: JSX.Element;
- *  rightIcon?: JSX.Element;
- *  loading?: boolean;
- *  error?: string;
- *  success?: boolean;
- *  value?: string;
- *  handleOnChange?: (value: string) => void;
- * _ref?: any;
- *  options: Array<{ value: string, label: string }>;
- *  selectedValue?: string;
- * } & Omit<import('react').SelectHTMLAttributes<HTMLSelectElement>, "onChange">} props - Props for the SelectBoxRow component
- *
- * @description
- *
- * Usage Example:
- *
- * ```jsx
- * import { useState } from "react";
- * import SelectBoxRow from "./SelectBoxRow";
- *
- * export default function MyComponent() {
- *   const [selectedOption, setSelectedOption] = useState("");
- *
- *   const handleSelectChange = (value) => {
- *     setSelectedOption(value);
- *   };
- *
- *   return (
- *     <div>
- *       <SelectBoxRow
- *         label="Select an option"
- *         options={[
- *           { value: "option1", label: "Option 1" },
- *           { value: "option2", label: "Option 2" },
- *           { value: "option3", label: "Option 3" },
- *         ]}
- *         loading={false}
- *         error={false}
- *         success={false}
- *         selectedValue={selectedOption}
- *         handleSelectChange={handleSelectChange}
- *       />
- *     </div>
- *   );
- * };
- * ```
+ * SelectBoxRow component for rendering a select box with various features.
+ * @param {Object} props - The props object.
+ * @param {string} props.label - The label for the select box.
+ * @param {Array<Object>} props.options - The options for the select box.
+ * @param {boolean} props.loading - Indicates if the select box is in a loading state.
+ * @param {boolean} props.error - Indicates if the select box has encountered an error.
+ * @param {boolean} props.success - Indicates if the select box has succeeded.
+ * @param {import('react').ReactNode} props.leftIcon - The icon to display on the left side of the select box.
+ * @param {import('react').ReactNode} props.rightIcon - The icon to display on the right side of the select box.
+ * @param {string} props.selectedValue - The currently selected value of the select box.
+ * @param {string} props.defaultValue - The default value for the select box.
+ * @param {Function} props.handleOnChange - The function to handle onChange events for the select box.
+ * @param {import('react').RefObject<HTMLSelectElement>} props._ref - The ref object for the select box.
+ * @returns {JSX.Element} The SelectBoxRow component.
  */
+
 export default function SelectBoxRow({
 	label,
 	options,
@@ -60,6 +26,7 @@ export default function SelectBoxRow({
 	leftIcon,
 	rightIcon,
 	selectedValue,
+	defaultValue,
 	handleOnChange,
 	_ref,
 	...rest
@@ -89,7 +56,11 @@ export default function SelectBoxRow({
 				</label>
 				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
-						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-5 bg-gray-200 '>{leftIcon}</div>}
+						{leftIcon && (
+							<div className='absolute inset-y-0 left-0 flex items-center p-5 bg-gray-200 '>
+								{leftIcon}
+							</div>
+						)}
 						<select
 							ref={_ref}
 							className={`block w-full px-3 py-2 border rounded focus:outline-none border-none outline-none ${
@@ -103,17 +74,19 @@ export default function SelectBoxRow({
 							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
 							{...rest}
 						>
-							<option disabled value=''>
-								{selectedValue}
+							<option className='p-3 bg-white' disabled value={defaultValue}>
+								{defaultValue}
 							</option>
 							{options?.map((option) => (
-								<option key={option.value} value={option.value}>
+								<option className='p-3 bg-white' key={option.value} value={option.value}>
 									{option.label}
 								</option>
 							))}
 						</select>
 						{rightIcon && !loading && (
-							<div className='absolute inset-y-0 right-0 flex items-center p-5 bg-gray-200'>{rightIcon}</div>
+							<div className='absolute inset-y-0 right-0 flex items-center p-5 bg-gray-200'>
+								{rightIcon}
+							</div>
 						)}
 						{loading && (
 							<div className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -129,3 +102,27 @@ export default function SelectBoxRow({
 		</>
 	);
 }
+
+/*
+Usage Example:
+
+const [selectedOption, setSelectedOption] = useState("select an option");
+const handleOnChange = (value) => {
+	setSelectedOption(value);
+};
+
+<SelectBoxRow
+	label="Select an option"
+	options={[
+	{ value: "option1", label: "Option 1" },
+	{ value: "option2", label: "Option 2" },
+	{ value: "option3", label: "Option 3" },
+	]}
+	loading={false}
+	error={false}
+	success={false}
+	selectedValue={selectedOption}
+	defaultValue={'select an option'}
+	handleSelectChange={handleOnChange}
+/>
+*/
