@@ -32,8 +32,8 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 		<TableContainer
 			sx={{
 				marginTop: '20px',
-				backgroundColor: 'white',
-				maxHeight: 600,
+				backgroundColor: '#F9FAFC',
+				maxHeight: 700,
 				minHeight: 100,
 			}}
 		>
@@ -41,10 +41,10 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				<LinearProgress color='primary' />
 			</Fade>
 			<Table sx={{ backgroundColor: '#F9FAFC' }} stickyHeader aria-label='sticky table'>
-				<TableHead sx={{backgroundColor:"white",mb:"50px"}}>
+				<TableHead sx={{ backgroundColor: 'white' }}>
 					<TableRow>
 						{headers?.map((header: header, i: any) => (
-							<GlobalTableCell sx={{color:color}} key={`h-${i}`}>
+							<GlobalTableCell sx={{ color: color }} key={`h-${i}`}>
 								<Box
 									sx={{
 										display: 'flex',
@@ -65,7 +65,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				</TableHead>
 
 				{rows?.length > 0 && (
-					<TableBody sx={{backgroundColor: '#F9FAFC',mt:"50px"}}>
+					<TableBody sx={{ backgroundColor: '#F9FAFC', transform: 'translateY(20px)' }}>
 						{/*Rows*/}
 						{!isLoading &&
 							rows?.map((e: ReactMetaElement<T>, i: number) => (
@@ -79,7 +79,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				)}
 			</Table>
 		</TableContainer>
-		{rows?.length === 0 && (
+		{rows?.length === 0 && !isLoading && (
 			<Box
 				sx={{
 					display: 'flex',
@@ -109,9 +109,8 @@ export default BaseTable;
 export const GlobalTableCell = styled(TableCell)(({ theme }) => ({
 	fontSize: '14px',
 	fontWeight: '400',
-	border:"0px solid black",
-	backgroundColor:"white",
-	marginTop:"50px",
-	marginBottom:"50px"
-	
+	border: '0px solid black',
+	backgroundColor: 'white',
+	marginTop: '50px',
+	marginBottom: '50px',
 }));
