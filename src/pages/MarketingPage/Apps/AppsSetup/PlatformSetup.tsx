@@ -8,6 +8,8 @@ import SnapchatSetup from './snapchat/SnapchatSetup';
 import { getSnapchatSetup } from './snapchat/_comp/getSnapchatSetup';
 import MailchimpSetup from './mailchimp/MailchimpSetup';
 import { getMailchimpSetup } from './mailchimp/_comp/getMailchimpSetup';
+import SendgridSetup from './sendgrid/SendgridSetup';
+import { getSendgridSetup } from './sendgrid/_comp/getSendgridSetup';
 
 interface PlatformSetupProps {
 	platform: string;
@@ -35,9 +37,13 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 		case 'mailchimp':
 			({ mailchimp_title: title, mailchimp_tabs: tabs } = getMailchimpSetup(platform));
 			break;
+		case 'sendGrid':
+			({ sendgrid_title: title, sendgrid_tabs: tabs } = getSendgridSetup(platform));
+			break;
 		default:
 			return <section>All</section>;
 	}
+console.log('title', title);
 
 	const renderSetupOrTabs = () => {
 		if (!hasConfirmed) {
@@ -48,6 +54,8 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 					return <SnapchatSetup platform={platform} />;
 				case 'mailchimp':
 					return <MailchimpSetup platform={platform} />;
+				case 'sendGrid':
+					return <SendgridSetup platform={platform} />;
 				default:
 					return <VerticalTabs tabs={tabs} />;
 			}
