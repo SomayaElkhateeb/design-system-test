@@ -13,19 +13,19 @@ const Setups = () => {
 	const { t } = useTranslation();
 	const basicMethod = [
 		{
+			Icon: SettingsIcon,
 			title: t('general settings'),
 			description: t('Set your store general information'),
-			buttonText: t('Activate'),
 		},
 		{
+			Icon: ProductsIcon,
 			title: t('Products'),
 			description: t('Add at least 1 product to your store'),
-			buttonText: t('Add'),
 		},
 		{
+			Icon: InventoryIcon,
 			title: t('Inventory'),
 			description: t('Create at least 1 inventory to locate and manage'),
-			buttonText: t('Add'),
 		},
 	];
 	const basicIcons = {
@@ -33,6 +33,7 @@ const Setups = () => {
 		[t('Products')]: ProductsIcon,
 		[t('Inventory')]: InventoryIcon,
 	};
+
 	const servicesMethod = [
 		{
 			title: t('shipping'),
@@ -86,9 +87,7 @@ const Setups = () => {
 	return (
 		<div>
 			{isFinished ? (
-				<div className='bg-red h-96'>
-					<LineChart percentage='50' />
-				</div>
+				<LineChart percentage='50' />
 			) : (
 				<>
 					<h2 className='text-title text-lg font-semibold'>{t('Get ready for your first sale')}</h2>

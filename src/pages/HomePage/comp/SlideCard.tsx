@@ -1,55 +1,88 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import { Button, Menu } from 'src/app/components/optimized';
+import { Button } from 'src/app/components/optimized';
 import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
+import classNames from 'classnames';
+import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
 
+/**
+ * Props for the SlideCard component.
+ */
 interface SlideCardProps {
-	slides: any;
-	text: string;
-	sortMenus: any;
-	btn: any;
+	slides: any; // Data for the slides
+	text: string; // Header text
+	sortMenus: any; // Sorting menu options
+	btn: any; // Flag to show button
 }
 
-const SlideCard: React.FC<SlideCardProps> = (props) => {
-	const { t } = useTranslation();
+/**
+ * Component representing a slide card with dynamic content.
+ * @param {SlideCardProps} props - Props for the SlideCard component.
+ */
+const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) => {
 	const language = UseLanguage();
-	const [menu, setMenu] = useState(false);
-	const [activeIndex, setActiveIndex] = useState<number>(0);
-	const [selectedOption, setSelectedOption] = useState(language === 'ar' ? 'اليوم' : 'Today');
+	const [state, setState] = useState({
+		activeIndex: 0, // Index of the active slide
+		menu: false, // Flag to show/hide menu
+		selectedOption: language === 'ar' ? 'اليوم' : 'Today', // Selected option for menu
+	});
+
+	const { activeIndex, menu, selectedOption } = state;
+
+	/**
+	 * Handles the selection of an option from the menu.
+	 * @param {string} selectedOption - The selected option.
+	 */
 	const handleSelect = (selectedOption: string) => {
-		setSelectedOption(selectedOption);
+		setState({ ...state, selectedOption, menu: false });
 	};
 
-	const sortMenus = [
-		{ id: 1, text: t('Today') },
-		{ id: 2, text: t('Last week') },
-		{ id: 3, text: t('Last month') },
-	];
+	/**
+	 * Sets the active slide index.
+	 * @param {number} index - The index of the active slide.
+	 */
+	const handleSetActiveIndex = (index: number) => {
+		setState({ ...state, activeIndex: index });
+	};
+
 	return (
 		<div className='bg-white rounded-xl border p-5 border-borders-lines h-96'>
 			<header className='flex justify-between items-center mb-2'>
-				<h2 className='text-title font-semibold text-lg'>{props.text}</h2>
-				{props.btn ? (
-					<>
-						<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
+				<h2 className='text-title font-semibold text-lg'>{text}</h2>
+				{btn ? (
+					<div className='relative'>
+						<Button
+							variant='link'
+							RightIcon={DownIcon}
+							onClick={() => setState({ ...state, menu: true })}
+						>
 							{selectedOption}
 						</Button>
 						{menu && (
-							<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
+							<MenuOption
+								options={sortMenus}
+								selectedOption={selectedOption}
+								onSelect={handleSelect}
+							/>
 						)}
-					</>
+					</div>
 				) : null}
 			</header>
 			<div>
-				{props.slides.length < 1 ? (
+				{slides.length < 1 ? (
 					<div className='flex justify-center items-center h-full'>
-						<p className='text-subtitle text-sm'>No {props.text} yet</p>
+						<p className='text-subtitle text-sm'>No {text} yet</p>
 					</div>
 				) : (
 					<section>
-						{props.slides.map((slide: any, index: number) => (
-							<div key={index} className={`flex-1 ${index === activeIndex ? 'block' : 'hidden'}`}>
+						{slides.map((slide: any, index: number) => (
+							<div
+								key={index}
+								className={classNames('flex-1', {
+									block: index === activeIndex,
+									hidden: index !== activeIndex,
+								})}
+							>
 								<div className='grid grid-cols-2 gap-4 mt-4'>
 									{Array.isArray(slide.content) ? (
 										slide.content.map((item: any) => {
@@ -58,17 +91,20 @@ const SlideCard: React.FC<SlideCardProps> = (props) => {
 												<div key={id} className='h-32'>
 													{percentage && (
 														<div className='flex items-center'>
-															{positive ? (
-																<>
-																	<BackAndroidIcon className='fill-success rotate-90' />
-																	<h2 className='text-success'>{percentage}%</h2>
-																</>
-															) : (
-																<>
-																	<BackAndroidIcon className='fill-error -rotate-90' />
-																	<h2 className='text-error'>{percentage}%</h2>
-																</>
-															)}
+															<BackAndroidIcon
+																className={classNames({
+																	'fill-success rotate-90': positive,
+																	'fill-error -rotate-90': !positive,
+																})}
+															/>
+															<h2
+																className={classNames({
+																	'text-success': positive,
+																	'text-error': !positive,
+																})}
+															>
+																{percentage}%
+															</h2>
 														</div>
 													)}
 
@@ -88,11 +124,11 @@ const SlideCard: React.FC<SlideCardProps> = (props) => {
 			</div>
 
 			<div className='flex justify-center py-2'>
-				{props.slides.map((_: any, index: number) => (
+				{slides.map((_: any, index: number) => (
 					<Bullet
 						key={index}
 						active={index === activeIndex}
-						onClick={() => setActiveIndex(index)}
+						onClick={() => handleSetActiveIndex(index)}
 					/>
 				))}
 			</div>
@@ -102,17 +138,21 @@ const SlideCard: React.FC<SlideCardProps> = (props) => {
 
 export default SlideCard;
 
-// Bullet component
+/**
+ * Bullet component representing a bullet point for slide navigation.
+ * @param {BulletProps} props - Props for the Bullet component.
+ */
 interface BulletProps {
-	active: boolean;
-	onClick: () => void;
+	active: boolean; // Flag to indicate if the bullet is active
+	onClick: () => void; // Function to handle click event
 }
 
 const Bullet: React.FC<BulletProps> = ({ active, onClick }) => (
 	<button
-		className={`mx-1 size-3 rounded-full ${
-			active ? 'bg-primary' : 'border border-primary bg-white'
-		}`}
+		className={classNames('mx-1 size-3 rounded-full', {
+			'bg-primary': active,
+			'border border-primary bg-white': !active,
+		})}
 		onClick={onClick}
 	/>
 );

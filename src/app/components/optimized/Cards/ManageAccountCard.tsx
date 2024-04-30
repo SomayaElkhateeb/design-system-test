@@ -5,7 +5,7 @@ import { TfiWorld } from 'react-icons/tfi';
 import { CopyIcon, LogoutIcon, Person } from 'src/app/utils/icons';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoCloseCircleOutline } from 'react-icons/io5';
-import MenuOption from '../Menu/MenuOption';
+import MenuSelect from '../Menu/MenuSelect';
 const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
 	const language = UseLanguage();
 
@@ -81,7 +81,7 @@ const CollapsibleSection = () => {
 	};
 	const sortMenus = [
 		{
-			id: '1',
+			id: 1,
 			text: language === 'ar' ? 'English' : 'العربيه',
 			onClick: handelLanguage,
 		},
@@ -97,7 +97,7 @@ const CollapsibleSection = () => {
 			) : (
 				<FaAngleRight onClick={() => setShow(true)} className='cursor-pointer' />
 			)}
-			{show && <MenuOption options={sortMenus} />}
+			{show && <MenuSelect options={sortMenus} />}
 		</div>
 	);
 };
