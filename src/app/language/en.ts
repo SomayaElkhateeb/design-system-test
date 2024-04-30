@@ -21,6 +21,9 @@ export const english = {
 	'Learn more': 'Learn more',
 	'Most popular': 'Most popular',
 	Popular: 'Popular',
+	"Navigation":"Navigation",
+	"Blog posts":"Blog posts",
+	"Add post":"Add post",
 	Google: 'Google',
 	'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.':
 		'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.',
@@ -141,6 +144,8 @@ export const english = {
 	Category: 'Category',
 	'Add Category Name': 'Add Category Name',
 	'Category List': 'Category List',
+	"Visibility":"Visibility",
+	"Add Page":"Add Page",
 	'change category visibility to customers': 'change category visibility to customers',
 	edit: 'edit',
 	Name: 'Name',

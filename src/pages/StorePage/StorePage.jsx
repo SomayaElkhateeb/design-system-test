@@ -2,7 +2,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-import {  HeaderSettings } from 'src/app/components/optimized';
+import { HeaderSettings } from 'src/app/components/optimized';
 
 import Tabs from 'src/app/components/page/Customers/Tabs';
 import DesignPage from 'src/app/components/page/StorePage/DesignPage';

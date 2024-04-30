@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Button } from 'src/app/components/optimized';
 import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
-import classNames from 'classnames';
 import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
+import { cn } from 'src/app/utils';
 
 /**
  * Props for the SlideCard component.
@@ -78,7 +78,7 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) =
 						{slides.map((slide: any, index: number) => (
 							<div
 								key={index}
-								className={classNames('flex-1', {
+								className={cn('flex-1', {
 									block: index === activeIndex,
 									hidden: index !== activeIndex,
 								})}
@@ -92,13 +92,13 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) =
 													{percentage && (
 														<div className='flex items-center'>
 															<BackAndroidIcon
-																className={classNames({
+																className={cn({
 																	'fill-success rotate-90': positive,
 																	'fill-error -rotate-90': !positive,
 																})}
 															/>
 															<h2
-																className={classNames({
+																className={cn({
 																	'text-success': positive,
 																	'text-error': !positive,
 																})}
@@ -149,7 +149,7 @@ interface BulletProps {
 
 const Bullet: React.FC<BulletProps> = ({ active, onClick }) => (
 	<button
-		className={classNames('mx-1 size-3 rounded-full', {
+		className={cn('mx-1 size-3 rounded-full', {
 			'bg-primary': active,
 			'border border-primary bg-white': !active,
 		})}
