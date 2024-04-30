@@ -5,7 +5,7 @@ import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import { Switch, TableCell } from '@mui/material';
+import {  TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -13,7 +13,8 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 
 import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
-import { ToggleSwitch } from 'src/app/components/optimized';
+import { Switch } from 'src/app/components/ui/switch';
+
 export default function BrandsTable() {
 	//  hooks
 	const language = UseLanguage();
@@ -72,7 +73,7 @@ export default function BrandsTable() {
 						<GlobalTableCell>{e.productsNo}</GlobalTableCell>,
 
 						<TableCell>
-							<ToggleSwitch checked={e.available} handleToggle={() => console.log('change')} />
+							<Switch checked={e.available} />
 						</TableCell>,
 
 						<TableCell>

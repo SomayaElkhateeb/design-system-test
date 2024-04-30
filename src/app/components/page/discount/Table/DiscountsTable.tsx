@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import { Switch, TableCell } from '@mui/material';
+import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import { IoIosArrowForward } from 'react-icons/io';
@@ -13,8 +13,7 @@ import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { FaRegEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
-import { ToggleSwitch } from 'src/app/components/optimized';
+import { Switch } from 'src/app/components/ui/switch';
 
 export default function DiscountsTable({
 	discounts,
@@ -27,8 +26,7 @@ export default function DiscountsTable({
 	const language = UseLanguage();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	// const [showPopup, setShowPopup] = useState(false);
+
 	//  headers
 
 	const DiscountsHeaders = [
@@ -56,10 +54,6 @@ export default function DiscountsTable({
 		},
 	];
 
-	const deleteItem = (id) => {
-		// dispatch(deleteDiscount(id));
-		// setShowPopup(false);
-	};
 	return (
 		<>
 			<BaseTable
@@ -83,7 +77,7 @@ export default function DiscountsTable({
 							<GlobalTableCell>{e.date}</GlobalTableCell>,
 
 							<TableCell>
-								<ToggleSwitch checked={e.active} handleToggle={() => console.log('change')} />
+								<Switch checked={e.active} />
 							</TableCell>,
 							<GlobalTableCell>{e.sales}</GlobalTableCell>,
 
@@ -113,19 +107,10 @@ export default function DiscountsTable({
 									)}
 								</div>
 							</TableCell>,
-							// <TableCell>
-							// 	<button onClick={() => deleteItem(e?.id)}>delete</button>
-							// </TableCell>,
 						],
 					};
 				})}
 			/>
-
-			{/* {
-				showPopup && (
-					<PopupDelete onClose={() => setShowPopup(false)} onDelete={() => deleteItem(e?.id)} />
-				);
-					} */}
 		</>
 	);
 }
