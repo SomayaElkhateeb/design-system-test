@@ -1,9 +1,8 @@
-import React from 'react';
 import { CheckIcon } from 'src/app/utils/icons';
 
 const Menu = ({ options, onSelect, selectedOption }) => {
 	return (
-		<ul className='  rounded  shadow-md py-2 flex flex-col '>
+		<ul className='rounded shadow-md py-2 flex flex-col'>
 			{options.map((option) => (
 				<MenuItem
 					key={option.id}
