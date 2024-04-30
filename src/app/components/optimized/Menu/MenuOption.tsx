@@ -1,46 +1,90 @@
-import React from 'react';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 
-const MenuOption = ({ options }: { options: any[] }) => {
+const MenuOption = ({ options, onSelect, selectedOption }) => {
 	const language = UseLanguage();
 	return (
 		<ul
-			className={`rounded shadow-md p-2 flex flex-col min-w-48 bg-white w-fit absolute top-16 ${
+			className={`rounded shadow-md py-2 flex flex-col absolute z-50 bg-white min-w-40 top-10 ${
 				language === 'ar' ? 'left-0' : 'right-0'
-			}  z-50`}
+			} `}
 		>
 			{options.map((option) => (
 				<MenuItem
 					key={option.id}
 					text={option.text}
-					icon={option.icon}
-					onClick={option.onClick}
-					id={option.id}
+					icon={option?.icon}
+					onClick={() => onSelect(option.text)}
+					selected={selectedOption === option.text}
 				/>
 			))}
 		</ul>
 	);
 };
-
 export default MenuOption;
 
-interface MenuItemProps {
-	text: string;
-	icon: React.ReactNode;
-	onClick: () => void;
-	id: string;
-}
+// md:w-[341px]
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
+// 			{options.map((option) => (
+// 				<MenuItem
+// 					key={option.id}
+// 					text={option.text}
+// 					onClick={() => onSelect(option.text)}
+// 					selected={selectedOption === option.text}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
 
-function MenuItem({ text, icon, onClick, id }: MenuItemProps) {
+/**
+ * @param {{
+ *  options: string[];
+ *  onSelect: (option: string) => void;
+ *  selectedOption?: string | null;
+ * }} props
+ */
+// export default function Menu(props) {
+// 	return (
+// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 md:w-[341px]'>
+// 			{props.options.map((option, index) => (
+// 				<MenuItem
+// 					key={index}
+// 					text={option}
+// 					onClick={() => props.onSelect(option)}
+// 					selected={props.selectedOption === option}
+// 				/>
+// 			))}
+// 		</ul>
+// 	);
+// }
+
+/**
+ * @param {{
+ *  text: string;
+ *  onClick: () => void;
+ *  selected: boolean;
+ * icon?:React.ReactNode
+ * }} props
+ */
+function MenuItem(props) {
 	return (
 		<li
-			onClick={onClick}
-			className='flex text-title cursor-pointer gap-3 
-            items-center px-4 py-3 hover:bg-light-3 transition-all'
-			id={id}
+			onClick={props.onClick}
+			className={`flex text-title cursor-pointer justify-between items-center hover:bg-sec-light px-4 py-3 transition-all ${
+				props.selected ? 'bg-sec-light' : ''
+			}`}
 		>
-			{icon}
-			{text}
+			<span
+				className={`text-sm ${
+					props.selected
+						? 'text-sec-pressed flex gap-[.5rem] items-center'
+						: 'flex gap-[.5rem] items-center'
+				}`}
+			>
+				{props.icon}
+				{props.text}
+			</span>
+			{/* {props.selected && <CheckIcon className='fill-sec-pressed' />} */}
 		</li>
 	);
 }

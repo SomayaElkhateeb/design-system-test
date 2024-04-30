@@ -1,15 +1,32 @@
-// @ts-nocheck
-import { useTranslation } from 'react-i18next';
 import Setups from './comp/Setups';
 import SlideCard from './comp/SlideCard';
 import CustomDetails from './comp/CustomDetails';
-// import { data, slidesContent, slidesTabs } from './comp/data';
 import SlideCardTabs from './comp/SlideCardTabs';
 import Slider from 'src/app/components/optimized/UiKits/Slider';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
+	// hook
 	const { t } = useTranslation();
+	const [screenSize, setScreenSize] = useState('');
+
+	// resize slider
+	useEffect(() => {
+		const handleResize = () => {
+			const width = window.innerWidth;
+			setScreenSize(width < 1250 ? 'mid' : 'full');
+		};
+
+		handleResize();
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	//  all data
 	const slides = [
 		{
 			image: 'https://placehold.co/600x400',
@@ -133,32 +150,23 @@ const HomePage = () => {
 			date: '5/6/2021',
 		},
 	];
-	const [screenSize, setScreenSize] = useState('');
+	const sortMenus = [
+		{ id: 1, text: t('Today') },
+		{ id: 2, text: t('Last week') },
+		{ id: 3, text: t('Last month') },
+	];
 
-	useEffect(() => {
-		const handleResize = () => {
-			const width = window.innerWidth;
-			setScreenSize(width < 1100 ? 'mid' : 'full');
-		};
-
-		handleResize(); // Set initial screen size
-		window.addEventListener('resize', handleResize); // Add event listener for window resize
-
-		return () => {
-			window.removeEventListener('resize', handleResize); // Remove event listener on component unmount
-		};
-	}, []);
 	return (
 		<div className='w-full h-full px-4 py-6'>
 			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1'>
 				<div className='col-span-2'>
 					<Setups />
 				</div>
-				<SlideCard slides={slidesContent} text={t('Reports')} btn />
+				<SlideCard slides={slidesContent} text={t('Reports')} btn sortMenus={sortMenus} />
 				<div className='col-span-2'>
-					<CustomDetails data={data} text={t('Latest Orders')} />
+					<CustomDetails data={data} text={t('Latest Orders')} btn />
 				</div>
-				<SlideCardTabs slides={slidesTabs} text={t('Products')} btn />
+				<SlideCardTabs slides={slidesTabs} text={t('Products')} btn sortMenus={sortMenus} />
 			</div>
 
 			<div

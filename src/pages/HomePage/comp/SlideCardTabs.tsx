@@ -1,79 +1,111 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import { Button, Menu } from 'src/app/components/optimized';
+import { Button } from 'src/app/components/optimized';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
-import { DeleteExitIcon, DownIcon, MoreIcon } from 'src/app/utils/icons';
+import { DownIcon, MoreIcon } from 'src/app/utils/icons';
 
+import { FaTrashAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import MenuSelect from 'src/app/components/optimized/Menu/MenuSelect';
+/**
+ * Interface for each slide in the SlideCardTabs component.
+ */
 interface Slide {
-	title: string;
-	content: JSX.Element;
+	title: string; // Title of the slide
+	content: JSX.Element; // Content of the slide
 }
 
+/**
+ * Props for the SlideCardTabs component.
+ */
 interface SlideCardTabsProps {
 	slides: Slide[];
 	sortMenus: any;
 	text: string;
 	btn: any;
+	control?: any;
 }
 
+/**
+ * Component representing a card with tabs and dynamic content.
+ * @param {SlideCardTabsProps} props - Props for the SlideCardTabs component.
+ */
 const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 	const language = UseLanguage();
 	const { t } = useTranslation();
-	const [activeIndex, setActiveIndex] = useState<number>(0);
-	const [menu, setMenu] = useState(false);
-	const [selectedOption, setSelectedOption] = useState(language === 'ar' ? 'اليوم' : 'Today');
-	const [show, setShow] = useState(false);
-
+	// State hook
 	const [state, setState] = useState({
+		activeIndex: 0,
+		menu: false,
+		menuList: false,
+		selectedOption: language === 'ar' ? 'اليوم' : 'Today',
 		showPopup: false,
-		selectedItem: [],
+		itemToDelete: null,
+		items: props.slides,
 	});
 
-	const { showPopup, selectedItem } = state;
-	const sortMenus = [
-		{ id: 1, text: t('Today') },
-		{ id: 2, text: t('Last week') },
-		{ id: 3, text: t('Last month') },
-	];
+	// Destructure state variables
+	const { activeIndex, menu, menuList, selectedOption, showPopup, itemToDelete, items } = state;
 
-	const handleSelect = (selectedOption) => {
-		setSelectedOption(selectedOption);
+	/**
+	 * Handles the selection of an option from the menu.
+	 * @param {string} selectedOption - The selected option.
+	 */
+	const handleSelect = (selectedOption: string) => {
+		setState({ ...state, selectedOption, menu: false });
 	};
 
-	const option = [
+	/**
+	 * Shows the delete popup when MoreIcon is clicked.
+	 * @param {any} item - The item to be deleted.
+	 */
+	const handleShowPopupDelete = (item: any) => {
+		setState({ ...state, itemToDelete: item, showPopup: true });
+	};
+
+	/**
+	 * Handles the deletion of an item.
+	 * @param {number} id - The ID of the item to be deleted.
+	 */
+
+	const handleDeleteItem = (id: number) => {
+		console.log('Deleting item:', id);
+		const updatedItems = items.filter((item) => item.id !== id);
+		setState({ ...state, items: updatedItems, showPopup: false });
+	};
+	const options = [
 		{
 			id: 1,
 			text: t('Delete'),
-			icon: <DeleteExitIcon />,
-			onClick: () => setState({ ...state, showPopup: true }),
+			icon: <FaTrashAlt className='text-warning' />,
+			onClick: handleShowPopupDelete,
 		},
 	];
 
-	// delete item
-	const handleDeleteItem = (idToDelete: number) => {
-		const updatedItems = selectedItem.filter((el) => el.id !== idToDelete);
-		setState({
-			...state,
-			selectedItem: updatedItems,
-			showPopup: false,
-		});
-	};
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines p-5 h-96 flex flex-col'>
 			<header className='flex justify-between items-center mb-2'>
 				<h2 className='text-title font-semibold text-lg'>{props.text}</h2>
 
 				{props.btn ? (
-					<>
-						<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
+					<div className='relative'>
+						<Button
+							variant='link'
+							RightIcon={DownIcon}
+							onClick={() => setState({ ...state, menu: true })}
+						>
 							{selectedOption}
 						</Button>
 						{menu && (
-							<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
+							<MenuOption
+								options={props.sortMenus}
+								selectedOption={selectedOption}
+								onSelect={handleSelect}
+							/>
 						)}
-					</>
+					</div>
 				) : null}
 			</header>
 			<div className='flex justify-between items-center border-b border-borders-lines'>
@@ -82,7 +114,7 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 						key={index}
 						title={slide.title}
 						active={index === activeIndex}
-						onClick={() => setActiveIndex(index)}
+						onClick={() => setState({ ...state, activeIndex: index })}
 					/>
 				))}
 			</div>
@@ -112,13 +144,13 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 												</div>
 											</div>
 
-											<div className='flex flex-col justify-between relative'>
-												<span className='flex justify-end cursor-pointer'>
-													<MoreIcon onClick={() => setShow(true)} />
-												</span>
+											<div className='flex flex-col justify-between items-end relative'>
+												<button onClick={() => setState({ ...state, menuList: true })}>
+													<MoreIcon />
+												</button>
+												{menuList && <MenuSelect options={options} />}
 												<p className='text-title text-sm'>SAR {price}</p>
 											</div>
-											{show && <MenuOption options={option} />}
 											{showPopup && (
 												<PopupDelete
 													onClose={() => setState({ ...state, showPopup: false })}
@@ -140,12 +172,19 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 };
 export default SlideCardTabs;
 
+/**
+ * Component representing a tab in the SlideCardTabs component.
+ */
 interface TabProps {
-	title: string;
-	active: boolean;
-	onClick: () => void;
+	title: string; // Title of the tab
+	active: boolean; // Flag to indicate if the tab is active
+	onClick: () => void; // Function to handle click event
 }
 
+/**
+ * Component representing a tab in the SlideCardTabs component.
+ * @param {TabProps} props - Props for the Tab component.
+ */
 const Tab: React.FC<TabProps> = ({ title, active, onClick }) => {
 	return (
 		<button

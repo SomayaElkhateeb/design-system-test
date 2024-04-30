@@ -1,8 +1,9 @@
 import { DownIcon, SearchIcon } from 'src/app/utils/icons';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, Avatars, Button, InputRow } from 'src/app/components/optimized';
+import { Avatars, Button, InputRow } from 'src/app/components/optimized';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
 
 interface ItemData {
 	id: number;
@@ -20,6 +21,7 @@ interface Props {
 	data: ItemData[];
 	text: string;
 	sortMenus: [];
+	btn: any;
 }
 
 const CustomDetails: React.FC<Props> = (props) => {
@@ -33,8 +35,9 @@ const CustomDetails: React.FC<Props> = (props) => {
 		{ id: 2, text: t('Last week') },
 		{ id: 3, text: t('Last month') },
 	];
-	const handleSelect = (selectedOption) => {
+	const handleSelect = (selectedOption: string) => {
 		setSelectedOption(selectedOption);
+		setMenu(false);
 	};
 
 	const filteredData = props.data.filter(
@@ -48,12 +51,20 @@ const CustomDetails: React.FC<Props> = (props) => {
 				<h2 className='text-title font-semibold text-lg'>{props.text}</h2>
 
 				<div className='flex justify-between items-center gap-4'>
-					<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
-						{selectedOption}
-					</Button>
-					{menu && (
-						<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
-					)}
+					{props.btn ? (
+						<div className='relative'>
+							<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
+								{selectedOption}
+							</Button>
+							{menu && (
+								<MenuOption
+									options={sortMenus}
+									selectedOption={selectedOption}
+									onSelect={handleSelect}
+								/>
+							)}
+						</div>
+					) : null}
 					<InputRow
 						leftIcon={<SearchIcon />}
 						placeholder={t('Search')}
