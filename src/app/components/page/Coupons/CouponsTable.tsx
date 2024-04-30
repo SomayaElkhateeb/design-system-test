@@ -108,9 +108,9 @@ export default function CouponsTable({
 								)}
 							</div>
 						</TableCell>,
-						<TableCell>
-							<button onClick={() => dispatch(deleteCoupons(e?.id))}>delete</button>
-						</TableCell>,
+						// <TableCell>
+						// 	<button onClick={() => dispatch(deleteCoupons(e?.id))}>delete</button>
+						// </TableCell>,
 					],
 				};
 			})}

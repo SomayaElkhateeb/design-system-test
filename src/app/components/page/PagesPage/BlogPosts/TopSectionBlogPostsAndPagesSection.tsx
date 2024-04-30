@@ -1,11 +1,12 @@
 import { IoIosAddCircle } from 'react-icons/io';
-import { Button } from '../../optimized';
-import ActionsComp from '../../optimized/Buttons/ActionsComp';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
+
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { Button } from 'src/app/components/optimized';
+import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 
-export default function TopSectionDiscountAndCoupons({
+export default function TopSectionBlogPostsAndSection({
 	addButton,
 	path,
 }: {
@@ -38,7 +39,6 @@ export default function TopSectionDiscountAndCoupons({
 				<div className='flex-row-global  gap-[1.2rem]'>
 					<ActionsComp
 						sortMenus={sortMenus}
-						filterMenus={sortMenus}
 						selectedOption={selectedOption}
 						handelSelect={handleSelect}
 					/>
