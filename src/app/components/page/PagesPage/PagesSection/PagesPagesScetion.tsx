@@ -5,6 +5,7 @@ import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
 import BlogPostsTable from '../BlogPosts/BlogPostsTable';
 import TopSectionBlogPostsAndSection from '../BlogPosts/TopSectionBlogPostsAndPagesSection';
 import PagesPagesTable from './PagesPagesSectionTable';
+import LegalPagesSection from './LegalPagesSection';
 
 export default function PagesPagesSection() {
 	//  hooks
@@ -21,7 +22,10 @@ export default function PagesPagesSection() {
 	];
 	return (
 		<div className='flex flex-col'>
-			<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='add_page' />
+			<div className='flex flex-col gap-[1rem]'>
+				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='add_page' />
+				<LegalPagesSection />
+			</div>
 			<PagesPagesTable data={data} />
 		</div>
 	);
