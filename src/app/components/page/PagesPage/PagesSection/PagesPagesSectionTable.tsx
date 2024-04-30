@@ -14,6 +14,7 @@ import { ToggleSwitch } from 'src/app/components/optimized';
 import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
 import { CameraIcon } from 'src/app/utils/icons';
 import { IoEyeOutline } from 'react-icons/io5';
+import { Switch } from 'src/app/components/ui/switch';
 
 export default function PagesPagesTable({
 	data,
@@ -63,7 +64,8 @@ export default function PagesPagesTable({
 							</GlobalTableCell>,
 
 							<TableCell>
-								<ToggleSwitch checked={e.visibility} handleToggle={() => console.log('change')} />
+								
+								<Switch checked={e.visibility} />
 							</TableCell>,
 
 							<TableCell>

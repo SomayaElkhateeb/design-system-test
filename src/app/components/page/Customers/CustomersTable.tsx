@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import BaseTable, { GlobalTableCell } from './TableLayoutGlobal/base.table';
-import { Checkbox, Switch, TableCell } from '@mui/material';
+import { Checkbox, TableCell } from '@mui/material';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { FaRegEdit } from 'react-icons/fa';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
@@ -16,7 +16,7 @@ import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { MdDelete } from 'react-icons/md';
-import { ToggleSwitch } from '../../optimized';
+import { Switch } from '../../ui/switch';
 
 export default function CustomersTable() {
 	//  hooks
@@ -98,7 +98,7 @@ export default function CustomersTable() {
 						<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
 						<TableCell>
-							<ToggleSwitch checked={e['E-Subscription']}  handleToggle={()=>console.log("change")}/>
+							<Switch checked={e['E-Subscription']} />
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>

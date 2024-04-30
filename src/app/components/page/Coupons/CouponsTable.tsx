@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import { Switch, TableCell } from '@mui/material';
+import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import { IoIosArrowForward } from 'react-icons/io';
@@ -14,8 +14,8 @@ import { FaRegEdit } from 'react-icons/fa';
 
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useDispatch } from 'react-redux';
-import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
-import { ToggleSwitch } from '../../optimized';
+
+import { Switch } from '../../ui/switch';
 
 export default function CouponsTable({
 	coupons,
@@ -78,7 +78,7 @@ export default function CouponsTable({
 						<GlobalTableCell>{e.date}</GlobalTableCell>,
 
 						<GlobalTableCell>
-							<ToggleSwitch checked={e.active} handleToggle={() => console.log('change')} />
+							<Switch checked={e.active} />
 						</GlobalTableCell>,
 						<GlobalTableCell>{e.sales}</GlobalTableCell>,
 						<GlobalTableCell>{e.used}</GlobalTableCell>,
