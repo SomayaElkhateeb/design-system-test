@@ -2,6 +2,7 @@ import React from 'react';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 
 const MenuSelect = ({ options }: { options: any[] }) => {
+	console.log('options', options);
 	const language = UseLanguage();
 	return (
 		<ul

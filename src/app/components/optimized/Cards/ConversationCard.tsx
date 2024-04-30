@@ -6,7 +6,7 @@ import { UseLanguage } from '../../CustomHook/LanguageHook';
 const ConversationCard = () => {
 	const language = UseLanguage();
 	return (
-		<div className='w-72 h-[40rem] bg-white'>
+		<div className='w-72 h-[40rem] bg-white z-50'>
 			<div className='flex justify-between items-center p-3 border-b border-constrained'>
 				<h3 className='text-title text-lg font-semibold flex items-center gap-2'>
 					{language === 'ar' ? (
