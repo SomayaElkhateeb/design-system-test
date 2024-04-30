@@ -113,9 +113,9 @@ export default function DiscountsTable({
 									)}
 								</div>
 							</TableCell>,
-							<TableCell>
-								<button onClick={() => deleteItem(e?.id)}>delete</button>
-							</TableCell>,
+							// <TableCell>
+							// 	<button onClick={() => deleteItem(e?.id)}>delete</button>
+							// </TableCell>,
 						],
 					};
 				})}
