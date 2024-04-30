@@ -144,6 +144,23 @@ function VTab(props) {
 					{/* content */}
 					<LayoutCard>
 						{props.content}
+						{/* Next & Prev */}
+						{/* <div className='flex justify-end mt-4'>
+							{props.index !== 0 && (
+								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ml-5'>
+									{t('Prev')}
+								</Button>
+							)}
+
+							<Button
+								onClick={
+									props.index === props.tabs.length - 1 ? () => alert(t('Finish')) : props.onNext
+								}
+							>
+								{props.index === props.tabs.length - 1 ? t('Finish') : t('Next')}
+							</Button>
+						</div> */}
+
 						{/* Render next and previous buttons */}
 						<div className='flex justify-end mt-4'>
 							{props.index !== 0 && (
