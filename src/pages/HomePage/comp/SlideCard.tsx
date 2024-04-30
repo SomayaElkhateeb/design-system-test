@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Button } from 'src/app/components/optimized';
 import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
-import classNames from 'classnames';
 import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
+import { cn } from 'src/app/utils';
 
 /**
  * Props for the SlideCard component.
@@ -78,7 +78,7 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) =
 						{slides.map((slide: any, index: number) => (
 							<div
 								key={index}
-								className={classNames('flex-1', {
+								className={cn('flex-1', {
 									block: index === activeIndex,
 									hidden: index !== activeIndex,
 								})}
