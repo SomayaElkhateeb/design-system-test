@@ -1,15 +1,17 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
-const Menu = ({ options, onSelect, selectedOption }) => {
+/** @param {{ selectedOption: string; onSelect:(e:string)=>void; options: import('./optionInterface').option[]; }} props */
+
+const Menu = (props) => {
 	return (
-		<ul className='rounded shadow-md py-2 flex flex-col'>
-			{options.map((option) => (
+		<ul className='rounded shadow-md py-2 flex flex-col min-w-[13rem]'>
+			{props.options.map((option) => (
 				<MenuItem
 					key={option.id}
 					text={option.text}
 					icon={option?.icon}
-					onClick={() => onSelect(option.text)}
-					selected={selectedOption === option.text}
+					onClick={() => props.onSelect(option.text)}
+					selected={props.selectedOption === option.text}
 				/>
 			))}
 		</ul>
