@@ -108,11 +108,8 @@ export default function InventoryTable({
 				return {
 					item: e,
 					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
+						<GlobalTableCell
+							
 						>
 							<div className=' flex  items-center gap-[.4rem] '>
 								<div className='flex flex-col gap-[.4rem] items-center'>
@@ -138,7 +135,7 @@ export default function InventoryTable({
 									</p>
 								</div>
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 						<GlobalTableCell>
 							<p className='text-title'>{e.SKU}</p>
 						</GlobalTableCell>,

@@ -92,13 +92,13 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) =
 													{percentage && (
 														<div className='flex items-center'>
 															<BackAndroidIcon
-																className={classNames({
+																className={cn({
 																	'fill-success rotate-90': positive,
 																	'fill-error -rotate-90': !positive,
 																})}
 															/>
 															<h2
-																className={classNames({
+																className={cn({
 																	'text-success': positive,
 																	'text-error': !positive,
 																})}
@@ -149,7 +149,7 @@ interface BulletProps {
 
 const Bullet: React.FC<BulletProps> = ({ active, onClick }) => (
 	<button
-		className={classNames('mx-1 size-3 rounded-full', {
+		className={cn('mx-1 size-3 rounded-full', {
 			'bg-primary': active,
 			'border border-primary bg-white': !active,
 		})}
