@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { Button } from 'src/app/components/optimized';
 import { BackAndroidIcon, DownIcon } from 'src/app/utils/icons';
-import classNames from 'classnames';
+// fclassNames
 import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
 
 /**
@@ -78,10 +78,10 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) =
 						{slides.map((slide: any, index: number) => (
 							<div
 								key={index}
-								className={classNames('flex-1', {
-									block: index === activeIndex,
-									hidden: index !== activeIndex,
-								})}
+								// className={classNames('flex-1', {
+								// 	block: index === activeIndex,
+								// 	hidden: index !== activeIndex,
+								// })}
 							>
 								<div className='grid grid-cols-2 gap-4 mt-4'>
 									{Array.isArray(slide.content) ? (
