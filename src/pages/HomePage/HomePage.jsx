@@ -29,27 +29,27 @@ const HomePage = () => {
 	//  all data
 	const slides = [
 		{
-			image: 'https://placehold.co/600x400',
+			image: '/Rectangle.png',
 			title: t('How to finish steps'),
 			description: 'Description for Card 1.',
 		},
 		{
-			image: 'https://placehold.co/600x400',
+			image: '/Rectangle.png',
 			title: t('How to register domain'),
 			description: 'Description for Card 1.',
 		},
 		{
-			image: 'https://placehold.co/600x400',
+			image: '/Rectangle.png',
 			title: t('SEO in details'),
 			description: 'Description for Card 1.',
 		},
 		{
-			image: 'https://placehold.co/600x400',
+			image: '/Rectangle.png',
 			title: t('How to finish steps'),
 			description: 'Description for Card 1.',
 		},
 		{
-			image: 'https://placehold.co/600x400',
+			image: '/Rectangle.png',
 			title: t('How to finish steps'),
 			description: 'Description for Card 1.',
 		},
