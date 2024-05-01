@@ -24,7 +24,7 @@ const NotificationsCard = ({ onClose }: { onClose: () => void }) => {
 	return (
 		<div
 			id='notifications-card'
-			className={`bg-white w-80 pt-3 pb-5 absolute shadow-lg top-[4.5rem] ${
+			className={`bg-white w-80 pt-3 pb-5 absolute shadow-lg top-[4.5rem] z-50 ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
 					: 'rounded-tl-md rounded-bl-md right-2'

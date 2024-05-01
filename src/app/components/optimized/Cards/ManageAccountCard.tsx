@@ -6,9 +6,10 @@ import { CopyIcon, LogoutIcon, Person } from 'src/app/utils/icons';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import MenuSelect from '../Menu/MenuSelect';
+import { useTranslation } from 'react-i18next';
 const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
 	const language = UseLanguage();
-
+	const { t } = useTranslation();
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			const card = document.getElementById('ManageAccount-card');
@@ -33,14 +34,14 @@ const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
 			<div className='p-4 flex justify-between items-center'>
 				<div className='flex gap-3 items-center'>
 					<Person />
-					<h2 className='text-sm text-title'>Manage account</h2>
+					<h2 className='text-sm text-title'>{t('Manage account')}</h2>
 				</div>
 				<IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />
 			</div>
 			<hr />
 
 			<div className='flex justify-between p-4'>
-				<h3 className='font-semibold text-title text-sm'>Stores</h3>
+				<h3 className='font-semibold text-title text-sm'>{t('Stores')}</h3>
 				<IoAddCircle size={18} className='cursor-pointer text-title' />
 			</div>
 
@@ -56,7 +57,7 @@ const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
 			<div className='p-4 text-title'>
 				<div className='flex gap-3 items-center'>
 					<LogoutIcon />
-					<h3 className='cursor-pointer'>Sign Out</h3>
+					<h3 className='cursor-pointer'>{t('Sign Out')}</h3>
 				</div>
 			</div>
 		</div>
