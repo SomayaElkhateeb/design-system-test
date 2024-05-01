@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GroupIcons } from '..';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,6 @@ import { IoIosArrowForward } from 'react-icons/io';
 /**
  *
  * @param {{
- *  to: import('react-router-dom').To;
  *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
  *  title: string | null;
  *  btn1?: { text: string; onClick: () => void };
@@ -22,10 +21,13 @@ export default function HeaderSettings(props) {
 	//  hooks
 	const { t } = useTranslation();
 	const language = UseLanguage();
+	const navigate = useNavigate();
 	return (
 		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
 			<div className='flex items-center gap-1' onClick={props.onClick}>
-				<Link to={props.to}>{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}</Link>
+				<p className='cursor-pointer' onClick={() => navigate(-1)}>
+					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
+				</p>
 				<h2 className='font-semibold capitalize text-title'>{props.title}</h2>
 			</div>
 

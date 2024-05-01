@@ -256,6 +256,7 @@ export const arabic = {
 	"Visibility":"الرؤيه",
 	"Add Page":"اضافه صفحه",
 	"Add new item":"اضافه عنصر جديد",
+	"Service details":"تفاصيل الخدمه",
 	"Blog posts":"المقالات",
 	'publish all': 'نشر الكل',
 	'Submit & Reply': 'رد وإرسال',

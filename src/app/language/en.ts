@@ -147,6 +147,7 @@ export const english = {
 	"Visibility":"Visibility",
 	"Add Page":"Add Page",
 	"Add new item":"Add new item",
+	"Service details":"Service details",
 	'change category visibility to customers': 'change category visibility to customers',
 	edit: 'edit',
 	Name: 'Name',

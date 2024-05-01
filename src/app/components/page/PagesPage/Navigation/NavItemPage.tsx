@@ -11,19 +11,19 @@ export default function NavItemPage() {
 	//  hooks
 	const { t } = useTranslation();
 
+	//  dummy array
 	const array = [...Array(2)];
 
 	return (
 		<div className='flex-col-top-section-pages gap-[2rem]'>
 			{/*  top setion */}
-			<HeaderSettings title='Main menu' variant='customerInfowithIcons' to={-1}>
+			<HeaderSettings title='Main menu' variant='customerInfowithIcons'>
 				<Button variant='primary' LeftIcon={IoIosAddCircle}>
 					{t('Add new item')}
 				</Button>
 			</HeaderSettings>
-
+			{/*  bottom Section */}
 			<div className='container mx-auto'>
-				{/*  bottom Section */}
 				<div className='w-[60%]'>
 					<LegalPageParentCard title={t('Items')}>
 						<div className='flex-col-top-section-pages'>
