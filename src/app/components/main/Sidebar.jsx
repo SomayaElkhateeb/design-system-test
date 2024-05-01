@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
@@ -6,6 +7,7 @@ import { sidebarLinks, socialLinks } from 'src/app/utils/constants';
 const Sidebar = ({ isOpen }) => {
 	//  hooks
 	const { t } = useTranslation();
+
 	return (
 		<aside
 			className={`min-h-screen h-full duration-200 transition-all max-lg:min-w-16 max-lg:w-16 px-2 py-3 bg-white ${
