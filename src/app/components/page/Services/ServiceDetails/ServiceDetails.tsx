@@ -3,6 +3,7 @@ import { HeaderSettings } from '../../../optimized';
 import { getImageUrl } from 'src/app/utils';
 import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';
+import RecentReview from 'src/pages/ReviewsPage/StoreReviews/_comp/RecentReview';
 
 
 export default function ServiceDetails() {
@@ -23,11 +24,14 @@ export default function ServiceDetails() {
 			<div className='container mx-auto'>
 				<div className='flex-col-top-section-pages '>
 					{/*  middle section */}
-					<div className='grid grid-cols-3 gap-4'>
-						<div className='col-span-2'>
+					<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>
+						<div className='lg:col-span-2'>
 							<ServiceDetailsSales/>
 						</div>
 						<ServiceProviderSection/>
+						<div className='lg:col-span-2'>
+							<RecentReview/>
+						</div>
 					</div>
 				</div>
 			</div>
