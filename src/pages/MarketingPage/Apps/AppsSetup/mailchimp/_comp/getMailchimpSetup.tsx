@@ -11,9 +11,9 @@ interface MailchimpTab {
 }
 
 interface MailchimpSetupData {
-	mailchimp_title: string;
+	title: string;
 	mega_title: string;
-	mailchimp_settings: {
+	settings: {
 		settings_title: string;
 		mailchimp_intro: {
 			title: string;
@@ -41,7 +41,7 @@ interface MailchimpSetupData {
 			}[];
 		};
 	};
-	mailchimp_tabs: MailchimpTab[];
+	tabs: MailchimpTab[];
 }
 
 export const getMailchimpSetup = (platform: string): MailchimpSetupData | null => {
@@ -49,10 +49,10 @@ export const getMailchimpSetup = (platform: string): MailchimpSetupData | null =
 
 	if (!platformData) return null;
 
-	const { mailchimp_title, mega_title, mailchimp_settings } = platformData;
-	const { create_account, before_installing, audience_select } = mailchimp_settings;
+	const { title, mega_title, settings } = platformData;
+	const { create_account, before_installing, audience_select } = settings;
 
-	const mailchimp_tabs: MailchimpTab[] = [
+	const tabs: MailchimpTab[] = [
 		{
 			title: before_installing.title,
 			content: <MailchimpBeforeInstalling data={before_installing} />,
@@ -67,5 +67,5 @@ export const getMailchimpSetup = (platform: string): MailchimpSetupData | null =
 		},
 	];
 
-	return { mailchimp_title, mega_title, mailchimp_settings, mailchimp_tabs };
+	return { title, mega_title, settings, tabs };
 };

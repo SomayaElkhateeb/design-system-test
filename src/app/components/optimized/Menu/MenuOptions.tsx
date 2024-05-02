@@ -6,9 +6,16 @@ import { MenuItem as BaseMenuItem, menuItemClasses } from '@mui/base/MenuItem';
 import { styled } from '@mui/system';
 import { CssTransition } from '@mui/base/Transitions';
 import { PopupContext } from '@mui/base/Unstable_Popup';
-import { MoreIcon } from 'src/app/utils/icons';
 
-export default function MenuOptions({ options, handle }: { options: any; handle: () => void }) {
+export default function MenuOptions({
+	options,
+	handle,
+	btn,
+}: {
+	options: any;
+	handle: () => void;
+	btn: any;
+}) {
 	const createHandleMenuClick = (menuItem: string) => {
 		return () => {
 			console.log(`Clicked on ${menuItem}`);
@@ -18,9 +25,7 @@ export default function MenuOptions({ options, handle }: { options: any; handle:
 
 	return (
 		<Dropdown>
-			<MenuButton>
-				<MoreIcon />
-			</MenuButton>
+			<MenuButton>{btn}</MenuButton>
 
 			<Menu slots={{ listbox: AnimatedListbox }}>
 				{options.map((item: any) => {
@@ -31,45 +36,19 @@ export default function MenuOptions({ options, handle }: { options: any; handle:
 	);
 }
 
-const blue = {
-	50: '#F0F7FF',
-	100: '#C2E0FF',
-	200: '#99CCF3',
-	300: '#66B2FF',
-	400: '#3399FF',
-	500: '#007FFF',
-	600: '#0072E6',
-	700: '#0059B3',
-	800: '#004C99',
-	900: '#003A75',
-};
-
-const grey = {
-	50: '#F3F6F9',
-	100: '#E5EAF2',
-	200: '#DAE2ED',
-	300: '#C7D0DD',
-	400: '#B0B8C4',
-	500: '#9DA8B7',
-	600: '#6B7A90',
-	700: '#434D5B',
-	800: '#303740',
-	900: '#1C2025',
-};
-
 const Listbox = styled('ul')(
-	({ theme }) => `
+	() => `
   box-sizing: border-box;
   padding: 6px;
-  margin: 12px 0;
+  margin: 12px;
   min-width: 200px;
  text-transform: capitalize;
   overflow: auto;
   outline: 0px;
-  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-  box-shadow: 0px 4px 30px ${theme.palette.mode === 'dark' ? grey[900] : grey[200]};
+  background: #fff;
+  border: 1px solid #E8EBF2;
+  color: #002042;
+  box-shadow: 0px 5px 15px 0px #7C82B90D;
   z-index: 1;
 
   .closed & {
@@ -77,7 +56,7 @@ const Listbox = styled('ul')(
     transform: scale(0.95, 0.8);
     transition: opacity 200ms ease-in, transform 200ms ease-in;
   }
-  
+
   .open & {
     opacity: 1;
     transform: scale(1, 1);
@@ -121,7 +100,7 @@ const AnimatedListbox = React.forwardRef(function AnimatedListbox(
 });
 
 const MenuItem = styled(BaseMenuItem)(
-	({ theme }) => `
+	() => `
   list-style: none;
   padding: 8px;
   cursor: pointer;
@@ -132,18 +111,18 @@ const MenuItem = styled(BaseMenuItem)(
   }
 
   &.${menuItemClasses.focusVisible} {
-    outline: 3px solid ${theme.palette.mode === 'dark' ? blue[600] : blue[200]};
-    background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    outline: 3px solid  #002042;
+    background-color: #EEF9F5;
+    color:  #002042;
   }
 
   &.${menuItemClasses.disabled} {
-    color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    color:  #002042;
   }
 
   &:hover:not(.${menuItemClasses.disabled}) {
-    background-color: ${theme.palette.mode === 'dark' ? blue[900] : blue[50]};
-    color: ${theme.palette.mode === 'dark' ? blue[100] : blue[900]};
+    background-color: #EEF9F5;
+    color:  #002042;
   }
   `,
 );
@@ -153,7 +132,6 @@ const MenuButton = styled(BaseMenuButton)(
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.5;
-  padding: 8px 16px;
   color: white;
   transition: all 150ms ease;
   cursor: pointer;

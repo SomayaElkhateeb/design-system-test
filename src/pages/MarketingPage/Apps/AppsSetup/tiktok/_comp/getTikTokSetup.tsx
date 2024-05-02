@@ -10,9 +10,9 @@ export interface TikTokTab {
 	content: React.ReactNode;
 }
 interface TikTokData {
-	tikTok_title: string;
+	title: string;
 	mega_title: string;
-	tikTok_settings: {
+	settings: {
 		settings_title: string;
 		tikTok_intro: {
 			title: string;
@@ -58,7 +58,7 @@ interface TikTokData {
 		};
 	};
 
-	tikTok_tabs: TikTokTab[];
+	tabs: TikTokTab[];
 }
 
 export const getTikTokSetup = (platform: string): TikTokData | null => {
@@ -66,11 +66,11 @@ export const getTikTokSetup = (platform: string): TikTokData | null => {
 
 	if (!platformData) return null;
 
-	const { tikTok_title, mega_title, tikTok_settings } = platformData;
+	const { title, mega_title, settings } = platformData;
 	const { create_account, business_account, data_sharing, payment_method, target_location } =
-		tikTok_settings;
+		settings;
 
-	const tikTok_tabs = [
+	const tabs = [
 		{
 			title: create_account.title,
 			content: <TikCreateAccount data={create_account} />,
@@ -93,5 +93,5 @@ export const getTikTokSetup = (platform: string): TikTokData | null => {
 		},
 	];
 
-	return { tikTok_title, mega_title, tikTok_settings, tikTok_tabs };
+	return { title, mega_title, settings, tabs };
 };
