@@ -1,4 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 export default function ServiceDetailsSales() {
+	//  hooks
+	const { t } = useTranslation();
+
+	const parentDivClassName = 'flex-col-top-section-pages gap-[.3rem]';
+	const headerClassName = 'text-[.9rem]  text-title font-bold';
+	const describtionClassName = 'text-[.65rem]  text-title ';
 	return (
 		<div className='serviceDetails-sharedClass py-[1rem]'>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
@@ -10,27 +18,25 @@ export default function ServiceDetailsSales() {
 					<hr />
 
 					<div className='flex-col-top-section-pages gap-[.7rem] px-[1rem]'>
-						<p className='text-[.9rem]  text-title'>Description</p>
+						<p className='text-[.9rem]  text-title'>{t('Description')}</p>
 						<div className='flex-col-top-section-pages gap-[1.5rem]'>
-                        <div className='flex-col-top-section-pages gap-[.3rem]'>
-								<p className='text-[.9rem]  text-title font-bold'>Easy checkout</p>
-								<p className='text-[.65rem]  text-title '>
+							<div className={parentDivClassName}>
+								<p className={headerClassName}>Easy checkout</p>
+								<p className={describtionClassName}>
 									With Facebook Shop, your customers will be able to easily browse products on
 									mobile and checkout on any device.
 								</p>
 							</div>
-							<div className='flex-col-top-section-pages gap-[.3rem]'>
-								<p className='text-[.9rem]  text-title font-bold'>Increase your revenue</p>
-								<p className='text-[.65rem]  text-title '>
+							<div className={parentDivClassName}>
+								<p className={headerClassName}>Increase your revenue</p>
+								<p className={describtionClassName}>
 									Merchants see an average increase of 15% in revenue when selling on Facebook.
 								</p>
 							</div>
 
-							
-
-							<div className='flex-col-top-section-pages gap-[.3rem]'>
-								<p className='text-[.9rem]  text-title font-bold'>Grow your reach</p>
-								<p className='text-[.65rem]  text-title '>
+							<div className={parentDivClassName}>
+								<p className={headerClassName}>Grow your reach</p>
+								<p className={describtionClassName}>
 									Advertise and sell your products directly through your Facebook page and reach
 									billions of potential customers.
 								</p>
