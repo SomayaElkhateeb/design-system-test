@@ -3,17 +3,17 @@ import { ClipLoader } from 'react-spinners';
 /**
  * SelectBoxRow component for rendering a select box with various features.
  * @param {Object} props - The props object.
- * @param {string} props.label - The label for the select box.
+ * @param {string} [props.label] - The label for the select box.
  * @param {Array<Object>} props.options - The options for the select box.
- * @param {boolean} props.loading - Indicates if the select box is in a loading state.
- * @param {boolean} props.error - Indicates if the select box has encountered an error.
- * @param {boolean} props.success - Indicates if the select box has succeeded.
- * @param {import('react').ReactNode} props.leftIcon - The icon to display on the left side of the select box.
- * @param {import('react').ReactNode} props.rightIcon - The icon to display on the right side of the select box.
+ * @param {boolean} [props.loading] - Indicates if the select box is in a loading state.
+ * @param {boolean} [props.error] - Indicates if the select box has encountered an error.
+ * @param {boolean} [props.success] - Indicates if the select box has succeeded.
+ * @param {import('react').ReactNode} [props.leftIcon] - The icon to display on the left side of the select box.
+ * @param {import('react').ReactNode} [props.rightIcon] - The icon to display on the right side of the select box.
  * @param {string} props.selectedValue - The currently selected value of the select box.
  * @param {string} props.defaultValue - The default value for the select box.
  * @param {Function} props.handleOnChange - The function to handle onChange events for the select box.
- * @param {import('react').RefObject<HTMLSelectElement>} props._ref - The ref object for the select box.
+ * @param {import('react').RefObject<HTMLSelectElement>} [props._ref] - The ref object for the select box.
  * @returns {JSX.Element} The SelectBoxRow component.
  */
 
@@ -50,8 +50,8 @@ export default function SelectBoxRow({
 
 	return (
 		<>
-			<div className='flex flex-col'>
-				<label htmlFor={controlId} className='block text-sm '>
+			<div className='flex flex-col w-full'>
+				<label htmlFor={controlId} className='block text-sm mb-1 font-medium'>
 					{label}
 				</label>
 				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
