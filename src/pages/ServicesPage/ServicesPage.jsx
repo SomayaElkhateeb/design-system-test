@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import Tabs from 'src/app/components/page/Customers/Tabs';
 import AllServices from 'src/app/components/page/Services/AllServices';
 import PurchaseServices from 'src/app/components/page/Services/PurchaseServices';
-import ServiceDetails from 'src/app/components/page/Services/ServiceDetails';
+import ServiceDetails from 'src/app/components/page/Services/ServiceDetails/ServiceDetails';
 
 const ServicesPage = () => {
 	//  hooks
