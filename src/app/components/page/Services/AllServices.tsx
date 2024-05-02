@@ -7,9 +7,13 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { BackIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import RatedCard from '../../optimized/Cards/RatedCard';
+import { useNavigate } from 'react-router-dom';
+// import RatedCard from '../../optimized/Cards/RatedCard';
 export default function AllServices() {
 	//  hooks
 	const { t } = useTranslation();
+	const navigate = useNavigate();
+	//  dummy array
 	const array = [...Array(3)];
 
 	//  Menus
@@ -53,7 +57,7 @@ export default function AllServices() {
 
 				<div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-[1.1rem]'>
 					{array.map((e, i) => (
-						<RatedCard key={i} />
+						<RatedCard onClick={() => navigate('?service_id=1')} key={i} />
 					))}
 				</div>
 			</div>

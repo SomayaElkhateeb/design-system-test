@@ -80,7 +80,6 @@ const NewDiscount = () => {
 			<Form {...formStore} onSubmit={onSubmit}>
 				<HeaderSettings
 					variant='settingTwoBtns'
-					to={-1}
 					title={t('Add Discount')}
 					btn1={{ text: t('Discard'), onClick: () => {} }}
 					btn2={{ text: t('Save Changes'), onClick: handleSaveChanges }}

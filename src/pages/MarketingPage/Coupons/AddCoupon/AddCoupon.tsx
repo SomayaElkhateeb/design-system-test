@@ -58,7 +58,6 @@ const AddCoupon = () => {
 		<div>
 			<HeaderSettings
 				variant='settingTwoBtns'
-				to={-1}
 				title={t('Add coupon')}
 				btn1={{ text: t('Discard'), onClick: () => {} }}
 				btn2={{
