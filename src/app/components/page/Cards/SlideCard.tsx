@@ -1,4 +1,6 @@
 import { ReactNode, useState } from 'react';
+import CompareButton from '../../optimized/UiKits/CompareButton';
+import { useTranslation } from 'react-i18next';
 
 // how to use
 // import { ComponentToBeUsed } from "../"
@@ -13,6 +15,9 @@ interface SlideCardProps<T> {
 	itemsPerSlide: number;
 	SlideComponent: React.ComponentType<T>;
 	children?: ReactNode;
+	dropdown?: boolean;
+	selectedOption?: string;
+	handleSelect?: (option: string) => void;
 }
 
 function SlideCard<T>({
@@ -21,8 +26,12 @@ function SlideCard<T>({
 	itemsPerSlide,
 	SlideComponent,
 	children,
+	dropdown,
+	selectedOption,
+	handleSelect,
 }: SlideCardProps<T>) {
 	//  hooks
+	const { t } = useTranslation();
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const totalSlide = Math.ceil(items.length / itemsPerSlide);
 
@@ -31,11 +40,24 @@ function SlideCard<T>({
 	const end = (currentSlide + 1) * itemsPerSlide;
 	const slicedItems = items.slice(start, end);
 
+	const comparisonMenus = [
+		{ text: t('Today') },
+		{ text: t('Last week') },
+		{ text: t('Last month') },
+	];
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines h-full min-w-[20rem] w-full flex flex-col justify-between p-4'>
 			<div className='flex flex-col flex-1'>
 				<div className='flex justify-between items-center mb-3'>
 					<h2 className='title text-lg capitalize'>{title}</h2>
+					{dropdown && (
+						<CompareButton
+							sortMenus={comparisonMenus}
+							selectedOption={selectedOption}
+							handleSelect={handleSelect}
+							variant='link'
+						/>
+					)}
 				</div>
 				{children}
 				<div

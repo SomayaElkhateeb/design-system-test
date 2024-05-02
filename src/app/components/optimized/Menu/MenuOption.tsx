@@ -1,18 +1,33 @@
+import React from 'react';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 
-const MenuOption = ({ options, onSelect, selectedOption }) => {
+/**
+ * Component representing a menu option list.
+ * @param {MenuOptionProps} props - Props for the MenuOption component.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const MenuOption = ({
+	options,
+	onSelect,
+	selectedOption,
+}: {
+	options: any;
+	onSelect: any;
+	selectedOption: any;
+}) => {
 	const language = UseLanguage();
+
 	return (
 		<ul
 			className={`rounded shadow-md py-2 flex flex-col absolute z-50 bg-white min-w-40 top-10 ${
 				language === 'ar' ? 'left-0' : 'right-0'
 			} `}
 		>
-			{options.map((option) => (
+			{options.map((option: any) => (
 				<MenuItem
 					key={option.id}
 					text={option.text}
-					icon={option?.icon}
+					icon={option.icon}
 					onClick={() => onSelect(option.text)}
 					selected={selectedOption === option.text}
 				/>
@@ -20,53 +35,25 @@ const MenuOption = ({ options, onSelect, selectedOption }) => {
 		</ul>
 	);
 };
+
 export default MenuOption;
 
-// md:w-[341px]
-// 	return (
-// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
-// 			{options.map((option) => (
-// 				<MenuItem
-// 					key={option.id}
-// 					text={option.text}
-// 					onClick={() => onSelect(option.text)}
-// 					selected={selectedOption === option.text}
-// 				/>
-// 			))}
-// 		</ul>
-// 	);
+/**
+ * Props for the MenuItem component.
+ */
+interface MenuItemProps {
+	text: string;
+	onClick: () => void;
+	selected: boolean;
+	icon?: React.ReactNode;
+}
 
 /**
- * @param {{
- *  options: string[];
- *  onSelect: (option: string) => void;
- *  selectedOption?: string | null;
- * }} props
+ * Component representing a menu item.
+ * @param {MenuItemProps} props - Props for the MenuItem component.
+ * @returns {JSX.Element} - Rendered component.
  */
-// export default function Menu(props) {
-// 	return (
-// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 md:w-[341px]'>
-// 			{props.options.map((option, index) => (
-// 				<MenuItem
-// 					key={index}
-// 					text={option}
-// 					onClick={() => props.onSelect(option)}
-// 					selected={props.selectedOption === option}
-// 				/>
-// 			))}
-// 		</ul>
-// 	);
-// }
-
-/**
- * @param {{
- *  text: string;
- *  onClick: () => void;
- *  selected: boolean;
- * icon?:React.ReactNode
- * }} props
- */
-function MenuItem(props) {
+function MenuItem(props: MenuItemProps) {
 	return (
 		<li
 			onClick={props.onClick}
@@ -84,7 +71,6 @@ function MenuItem(props) {
 				{props.icon}
 				{props.text}
 			</span>
-			{/* {props.selected && <CheckIcon className='fill-sec-pressed' />} */}
 		</li>
 	);
 }

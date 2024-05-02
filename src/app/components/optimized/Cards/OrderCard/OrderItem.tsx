@@ -1,4 +1,4 @@
-import Avatar from "./Avatar";
+import Avatar from '../../UiKits/Avatar';
 
 // Define the type for the order object
 export interface Order {

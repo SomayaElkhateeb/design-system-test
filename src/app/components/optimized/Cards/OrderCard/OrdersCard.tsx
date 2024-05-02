@@ -1,16 +1,16 @@
 import { useState } from 'react';
-
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import Header from './Header';
 import OrderItem, { Order } from './OrderItem';
-import { Console } from 'console';
 
 // Define the type for the OrdersCard props
 interface OrdersCardProps {
 	latestOrders: Order[];
+	title: string;
+	dropdown?: boolean;
 }
 
-export default function OrdersCard({ latestOrders }: OrdersCardProps) {
+export default function OrdersCard({ latestOrders, title, dropdown }: OrdersCardProps) {
 	// State for search query
 	const [searchQuery, setSearchQuery] = useState('');
 
@@ -35,9 +35,11 @@ export default function OrdersCard({ latestOrders }: OrdersCardProps) {
 	return (
 		<section className='grid content-start gap-2 p-4 h-full min-h-[22rem] rounded-xl border border-borders-lines bg-white'>
 			<Header
+				title={title}
 				selectedOption={selectedOption}
 				handleSelect={handleSelect}
 				onSearch={handleSearchChange}
+				dropdown={dropdown}
 			/>
 			<section className='grid gap-3 overflow-auto'>
 				{filteredOrders.map((order) => (
