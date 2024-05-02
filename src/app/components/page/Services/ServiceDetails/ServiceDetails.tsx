@@ -5,12 +5,11 @@ import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';
 import RecentReview from 'src/pages/ReviewsPage/StoreReviews/_comp/RecentReview';
 
-
 export default function ServiceDetails() {
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-top-section-pages mb-[2rem]'>
 			{/*  top section */}
 			<div className='flex flex-col'>
 				<HeaderSettings
@@ -26,11 +25,11 @@ export default function ServiceDetails() {
 					{/*  middle section */}
 					<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>
 						<div className='lg:col-span-2'>
-							<ServiceDetailsSales/>
+							<ServiceDetailsSales />
 						</div>
-						<ServiceProviderSection/>
+						<ServiceProviderSection />
 						<div className='lg:col-span-2'>
-							<RecentReview/>
+							<RecentReview />
 						</div>
 					</div>
 				</div>
