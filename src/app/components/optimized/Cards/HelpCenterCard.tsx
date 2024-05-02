@@ -9,28 +9,18 @@ import {
 } from 'src/app/utils/icons';
 import { InputRow } from '..';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LinkCards from './LinkCards';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import Slider from '../UiKits/Slider';
+import { useClickOutsideWithId } from 'src/app/utils';
 
 const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
-	const { t } = useTranslation();
 	const [searchValue, setSearchValue] = useState('');
+	const { t } = useTranslation();
 	const language = UseLanguage();
-
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			const card = document.getElementById('HelpCenter-card');
-			if (card && !card.contains(event.target as Node)) {
-				onClose();
-			}
-		};
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, [onClose]);
+	const id = 'HelpCenter-card';
+	useClickOutsideWithId(id, onClose);
 
 	const slides = [
 		{
@@ -59,17 +49,19 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 			description: 'Description for Card 1.',
 		},
 	];
+
 	return (
 		<div
-			id='HelpCenter-card'
-			className={`bg-white w-80 p-3 pb-5 absolute shadow-lg top-[4.5rem] z-50${
+			id={id}
+			className={`bg-white w-80 p-3 pb-5 absolute shadow-lg top-[4.5rem] z-50 max-h-[32rem] overflow-hidden${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
 					: 'rounded-tl-md rounded-bl-md right-2'
 			} `}
+			style={{ overflowY: 'auto' }}
 		>
-			<div className=' flex flex-col gap-4 '>
-				<div className='flex justify-between items-center '>
+			<div className='flex flex-col gap-4'>
+				<div className='flex justify-between items-center'>
 					<h3 className='text-title text-lg font-semibold'>{t('Help center')}</h3>
 					<IoCloseCircleOutline onClick={onClose} className='text-pri-dark size-5 cursor-pointer' />
 				</div>
@@ -79,9 +71,9 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 					value={searchValue}
 					onChange={(e) => setSearchValue(e.target.value)}
 				/>
+				{/* link cards */}
 				<div>
 					<h4 className='font-semibold text-title'>{t('Get started')}</h4>
-
 					<div className='grid grid-cols-2 gap-2 mt-4'>
 						<LinkCards to='/store' Icon={StoresIcon} title={t('Creating store')} />
 						<LinkCards to='/products' Icon={ProductsIcon} title={t('Products')} />
@@ -89,11 +81,13 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 						<LinkCards to='/customers' Icon={CustomersIcon} title={t('Customers')} />
 					</div>
 				</div>
-
+				{/* slider videos */}
 				<div>
 					<Slider size='mini' slides={slides} title={t('Video tutorials')} />
 				</div>
 			</div>
+
+			{/* contact */}
 			<div className='flex justify-between items-center'>
 				<h4>{t('Contact Us')}</h4>
 				<button onClick={() => console.log('aa')}>

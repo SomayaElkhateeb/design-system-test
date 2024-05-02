@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
-import { InputRow } from "src/app/components/optimized";
-import CompareButton from "src/app/components/optimized/UiKits/CompareButton";
-import { SearchIcon } from "src/app/utils/icons";
+import { useTranslation } from 'react-i18next';
+import { InputRow } from 'src/app/components/optimized';
+import CompareButton from 'src/app/components/optimized/UiKits/CompareButton';
+import { SearchIcon } from 'src/app/utils/icons';
 
 // Define the type for the Header props
 interface HeaderProps {
@@ -9,10 +9,17 @@ interface HeaderProps {
 	selectedOption: string;
 	onSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	dropdown?: any;
+	title: string;
 }
 
-export default function Header({ handleSelect, selectedOption, onSearch, dropdown = false }: HeaderProps) {
-    // hooks
+export default function Header({
+	handleSelect,
+	selectedOption,
+	onSearch,
+	title,
+	dropdown = false,
+}: HeaderProps) {
+	// hooks
 	const { t } = useTranslation();
 	const comparisonMenus = [
 		{ text: t('Today') },
@@ -22,7 +29,7 @@ export default function Header({ handleSelect, selectedOption, onSearch, dropdow
 	];
 	return (
 		<header className='flex justify-between items-center'>
-			<h2 className='text-title font-semibold text-lg'>{t('Latest Orders')}</h2>
+			<h2 className='text-title font-semibold text-lg'>{title}</h2>
 			<div className='flex justify-between items-center gap-4'>
 				{dropdown && (
 					<CompareButton
