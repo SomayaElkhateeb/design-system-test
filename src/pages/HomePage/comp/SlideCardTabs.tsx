@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ItemSlidTabs from './ItemSlidTabs';
 import Btn from './Btn';
-
 interface Slide {
 	title: string;
 	content: JSX.Element;
@@ -44,7 +43,7 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines p-5 h-96 flex flex-col'>
-			<header className='flex justify-between items-center mb-2'>
+			<header className='flex justify-between items-center space-y-2'>
 				<h2 className='text-title font-semibold text-lg'>{props.text}</h2>
 
 				{props.btn ? <Btn /> : null}

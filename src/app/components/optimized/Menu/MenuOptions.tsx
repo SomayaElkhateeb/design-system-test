@@ -40,7 +40,7 @@ const Listbox = styled('ul')(
 	() => `
   box-sizing: border-box;
   padding: 6px;
-  margin: 12px 0;
+  margin: 12px;
   min-width: 200px;
  text-transform: capitalize;
   overflow: auto;
@@ -56,7 +56,7 @@ const Listbox = styled('ul')(
     transform: scale(0.95, 0.8);
     transition: opacity 200ms ease-in, transform 200ms ease-in;
   }
-  
+
   .open & {
     opacity: 1;
     transform: scale(1, 1);
