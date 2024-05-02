@@ -12,13 +12,13 @@ const MailchimpSetup: React.FC<Props> = ({ platform }) => {
 	const [_, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
 
-	const { mega_title, mailchimp_settings } = getMailchimpSetup(platform);
+	const { mega_title, settings } = getMailchimpSetup(platform);
 
 	if (!platform) {
 		return null;
 	}
 
-	const { settings_title, mailchimp_intro, privacy_notice, agreement_terms } = mailchimp_settings;
+	const { settings_title, mailchimp_intro, privacy_notice, agreement_terms } = settings;
 
 	return (
 		<section className='w-full p-5'>

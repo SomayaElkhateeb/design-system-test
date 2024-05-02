@@ -1,7 +1,7 @@
 {
 	"facebook": {
-		"facebook_title": "Setup Facebook Ad Campaign",
-		"facebook_settings": {
+		"title": "Setup Facebook Ad Campaign",
+		"settings": {
 			"connect_account": {
 				"title": "Connect your Facebook account",
 				"description": "Connect with Facebook to get your products into your own Facebook Shop."
@@ -69,8 +69,8 @@
 		}
 	},
 	"google": {
-		"google_title": "Setup Google Ad Campaign",
-		"google_settings": {
+		"title": "Setup Google Ad Campaign",
+		"settings": {
 			"connect_account": {
 				"title": "Connect your Google account",
 				"description": "Connect with Google to get your products into your own Google merchant center."
@@ -99,9 +99,9 @@
 		}
 	},
 	"tikTok": {
-		"tikTok_title": "Setup TikTok sales",
+		"title": "Setup TikTok sales",
 		"mega_title": "You are about to add TikTok",
-		"tikTok_settings": {
+		"settings": {
 			"settings_title": "TikTok will be able to:",
 			"tikTok_intro": [
 				{
@@ -184,9 +184,9 @@
 		}
 	},
 	"snapchat": {
-		"snapchat_title": "Setup Snapchat sales",
+		"title": "Setup Snapchat sales",
 		"mega_title": "You are about to add Snapchat",
-		"snapchat_settings": {
+		"settings": {
 			"settings_title": "Snapchat will be able to:",
 			"snapchat_intro": [
 				{
@@ -259,9 +259,9 @@
 		}
 	},
 	"mailchimp": {
-		"mailchimp_title": "Setup Mailchimp sales",
+		"title": "Setup Mailchimp sales",
 		"mega_title": "You are about to add Mailchimp",
-		"mailchimp_settings": {
+		"settings": {
 			"settings_title": "Mailchimp will be able to:",
 			"mailchimp_intro": [
 				{
@@ -359,9 +359,9 @@
 		}
 	},
 	"sendGrid": {
-		"sendgrid_title": "Setup Sendgrid sales",
+		"title": "Setup Sendgrid sales",
 		"mega_title": "You are about to add Sendgrid",
-		"sendgrid_settings": {
+		"settings": {
 			"settings_title": "Sendgrid will be able to:",
 			"sendgrid_intro": [
 				{

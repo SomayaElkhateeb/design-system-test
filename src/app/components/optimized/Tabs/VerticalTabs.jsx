@@ -11,19 +11,19 @@ import { Button, LayoutCard } from '..';
 /**
  * @param {object} props - Props for the VerticalTabs component.
  * @param {Tab[]} props.tabs - An array of tab objects containing title and content.
- *
+ * @param {function(boolean): void} props.handleFinish - Function to update the review status.
  * @description
  * VerticalTabs component renders a vertical tab navigation system.
  */
 
-export default function VerticalTabs(props) {
+export default function VerticalTabs({ tabs, handleFinish }) {
 	// Destructure the state and functions returned by useVerticalTabs hook
-	const { currentTab, handleTabClick, handleNext, handlePrev } = useVerticalTabs(0, props.tabs);
+	const { currentTab, handleTabClick, handleNext, handlePrev } = useVerticalTabs(0, tabs);
 
 	return (
 		<div className='flex flex-col space-y-4'>
 			<div className='flex flex-col space-y-4'>
-				{props.tabs?.map((tab, index) => (
+				{tabs?.map((tab, index) => (
 					<VTab
 						key={index}
 						index={index}
@@ -33,7 +33,8 @@ export default function VerticalTabs(props) {
 						onClick={handleTabClick}
 						onNext={handleNext}
 						onPrev={handlePrev}
-						tabs={props.tabs}
+						tabs={tabs}
+						handleFinish={handleFinish}
 					/>
 				))}
 			</div>
@@ -88,9 +89,12 @@ function useVerticalTabs(initialTab = 0, tabs) {
  * @param {() => void} props.onNext - Function to handle next button click event.
  * @param {() => void} props.onPrev - Function to handle previous button click event.
  * @param {Tab[]} props.tabs - An array of tab objects containing title and content.
+ * @param {function(boolean): void} props.handleFinish - Function to update the review status.
  */
 
 function VTab(props) {
+	const { handleFinish } = props; // Destructure handleFinish from props
+
 	return (
 		<div className='relative'>
 			<div className='flex items-center'>
@@ -104,7 +108,11 @@ function VTab(props) {
 					}`}
 					onClick={() => props.onClick(props.index)}
 				>
-					{props.index < props.currentTab ? <span className='text-sm'>&#10003;</span> : props.index + 1}
+					{props.index < props.currentTab ? (
+						<span className='text-sm'>&#10003;</span>
+					) : (
+						props.index + 1
+					)}
 				</div>
 
 				{/* Line between tabs */}
@@ -120,7 +128,9 @@ function VTab(props) {
 
 				{/* title */}
 				<div
-					className={`flex-grow ml-2  text-md capitalize ${props.index === props.currentTab ? 'font-semibold' : ''}`}
+					className={`flex-grow ml-2  text-md capitalize ${
+						props.index === props.currentTab ? 'font-semibold' : ''
+					}`}
 				>
 					{props.title}
 				</div>
@@ -138,7 +148,11 @@ function VTab(props) {
 								</Button>
 							)}
 
-							<Button onClick={props.index === props.tabs.length - 1 ? () => alert('Finish') : props.onNext}>
+							<Button
+								onClick={
+									props.index === props.tabs.length - 1 ? () => handleFinish(true) : props.onNext
+								}
+							>
 								{props.index === props.tabs.length - 1 ? 'Finish' : 'Next'}
 							</Button>
 						</div>

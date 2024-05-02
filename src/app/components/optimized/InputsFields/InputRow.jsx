@@ -14,6 +14,7 @@ import { cn } from 'src/app/utils';
  * @param {(value: string) => void} props.handleOnChange - The function to handle onChange events for the input field.
  * @param {string} props.placeholder - The value of the input field.
  * @param {import('react').RefObject<HTMLInputElement>} [props._ref] - The ref object for the input field.
+ * @param {(value: boolean) => void} [props.onFocus] - The function to handle onFocus events for the input field.
  * @returns {JSX.Element} The InputRow component.
  */
 
@@ -46,20 +47,20 @@ export default function InputRow({
 		<>
 			<div className={containerClassName}>
 				{label && (
-					<label htmlFor={controlId} className='block text-sm mb-1.5'>
+					<label htmlFor={controlId} className='block text-sm mb-1.5 font-medium'>
 						{label}
 					</label>
 				)}
-				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
+				<div className={`${classNames} overflow-hidden rounded-md border w-full`}>
 					<div className='relative'>
 						{leftIcon && (
-							<div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>
+							<div className='absolute inset-y-0 left-0 flex items-center p-2'>{leftIcon}</div>
 						)}
 						<input
 							ref={_ref}
 							className={`${
-								leftIcon && 'pl-16'
-							} block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none`}
+								leftIcon && 'pl-12'
+							} block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none `}
 							disabled={loading}
 							value={value}
 							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
@@ -108,7 +109,7 @@ const [loading, setLoading] = useState(false);
 	error={error}
 	success={success}
 	value={value}
-	onChange={(value) => setValue(value)}
+	handleOnChange={(value) => setValue(value)}
 />;
 
 */

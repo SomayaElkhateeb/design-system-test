@@ -10,9 +10,9 @@ export interface SnapchatTab {
 }
 
 export interface SnapchatSetupData {
-	snapchat_title: string;
+	title: string;
 	mega_title: string;
-	snapchat_settings: {
+	settings: {
 		create_account: {
 			title: string;
 			description: string;
@@ -32,7 +32,7 @@ export interface SnapchatSetupData {
 			description: string;
 		};
 	};
-	snapchat_tabs: SnapchatTab[];
+	tabs: SnapchatTab[];
 }
 
 export const getSnapchatSetup = (platform: string): SnapchatSetupData | null => {
@@ -40,10 +40,10 @@ export const getSnapchatSetup = (platform: string): SnapchatSetupData | null => 
 
 	if (!platformData) return null;
 
-	const { snapchat_title, mega_title, snapchat_settings } = platformData;
-	const { create_account, business_account, data_sharing } = snapchat_settings;
+	const { title, mega_title, settings } = platformData;
+	const { create_account, business_account, data_sharing } = settings;
 
-	const snapchat_tabs: SnapchatTab[] = [
+	const tabs: SnapchatTab[] = [
 		{
 			title: create_account.title,
 			content: <SnapCreateAccount data={create_account} />,
@@ -58,5 +58,5 @@ export const getSnapchatSetup = (platform: string): SnapchatSetupData | null => 
 		},
 	];
 
-	return { snapchat_title, mega_title, snapchat_settings, snapchat_tabs };
+	return { title, mega_title, settings, tabs };
 };

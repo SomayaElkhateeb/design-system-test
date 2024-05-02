@@ -12,13 +12,13 @@ const SendgridSetup: React.FC<Props> = ({ platform }) => {
 	const [_, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
 
-	const { mega_title, sendgrid_settings } = getSendgridSetup(platform);
+	const { mega_title, settings } = getSendgridSetup(platform);
 
 	if (!platform) {
 		return null;
 	}
 
-	const { settings_title, sendgrid_intro, privacy_notice, agreement_terms } = sendgrid_settings;
+	const { settings_title, sendgrid_intro, privacy_notice, agreement_terms } = settings;
 
 	return (
 		<section className='w-full p-5'>

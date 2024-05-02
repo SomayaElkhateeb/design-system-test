@@ -12,13 +12,13 @@ const TikTokSetup: React.FC<TikTokSetupProps> = ({ platform }) => {
 	const [_, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
 
-	const { mega_title, tikTok_settings } = getTikTokSetup(platform);
+	const { mega_title, settings } = getTikTokSetup(platform);
 
 	if (!platform) {
 		return null;
 	}
 
-	const { settings_title, tikTok_intro, privacy_notice, agreement_terms } = tikTok_settings;
+	const { settings_title, tikTok_intro, privacy_notice, agreement_terms } = settings;
 
 	return (
 		<section className='w-full p-5'>

@@ -12,13 +12,13 @@ const SnapchatSetup: React.FC<Props> = ({ platform }) => {
 	const [_, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
 
-	const { mega_title, snapchat_settings }: SnapchatSetupData | null = getSnapchatSetup(platform);
+	const { mega_title, settings }: SnapchatSetupData | null = getSnapchatSetup(platform);
 
 	if (!platform) {
 		return null;
 	}
 
-	const { settings_title, snapchat_intro, privacy_notice, agreement_terms } = snapchat_settings;
+	const { settings_title, snapchat_intro, privacy_notice, agreement_terms } = settings;
 
 	return (
 		<section className='w-full p-5'>
