@@ -48,7 +48,9 @@ const ItemSlidTabs = ({
 	state: any;
 }) => {
 	return (
-		<div className='flex justify-between space-y-2'>
+		<div className='flex justify-between mb-3'>
+			{' '}
+			{/* بص بقي ظبطش معايا عير ب مارجين . وكمان في مينيو هما حطينوا  */}
 			<div className='flex gap-2'>
 				<div className='w-[3.625rem] h-[3.625rem] border border-light-3 rounded'>
 					<img src={img} className='w-full h-full' alt={title} />
@@ -60,7 +62,6 @@ const ItemSlidTabs = ({
 					<p className='text-title text-sm'>Qty: {qty}</p>
 				</div>
 			</div>
-
 			<div className='flex flex-col justify-between items-end relative'>
 				<MenuOptions
 					btn={<MoreIcon className='fill-subtitle' />}
@@ -68,13 +69,13 @@ const ItemSlidTabs = ({
 					handle={() => setState({ ...state, showDeletePopup: true, deletingItemId: id })}
 				/>
 				<p className='text-title text-sm'>SAR {price}</p>
+				{showDeletePopup && deletingItemId === id && (
+					<PopupDelete
+						onClose={() => setState({ ...state, showDeletePopup: false })}
+						onDelete={() => handleDeleteItem(id)}
+					/>
+				)}
 			</div>
-			{showDeletePopup && deletingItemId === id && (
-				<PopupDelete
-					onClose={() => setState({ ...state, showDeletePopup: false })}
-					onDelete={() => handleDeleteItem(id)}
-				/>
-			)}
 		</div>
 	);
 };
