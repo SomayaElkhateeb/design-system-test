@@ -32,9 +32,9 @@ interface SendgridStore {
 }
 
 interface SendgridSetupData {
-	sendgrid_title: string;
+	title: string;
 	mega_title: string;
-	sendgrid_settings: {
+	settings: {
 		settings_title: string;
 		sendgrid_intro: SendgridNote[];
 		privacy_notice: SendgridNote;
@@ -54,7 +54,7 @@ interface SendgridSetupData {
 			store_list: SendgridStore[];
 		};
 	};
-	sendgrid_tabs: SendgridTab[];
+	tabs: SendgridTab[];
 }
 
 export const getSendgridSetup = (platform: string): SendgridSetupData | null => {
@@ -62,11 +62,11 @@ export const getSendgridSetup = (platform: string): SendgridSetupData | null => 
 
 	if (!platformData) return null;
 
-	const { sendgrid_title, mega_title, sendgrid_settings } = platformData;
+	const { title, mega_title, settings } = platformData;
 
-	const { connect_API, before_installing, audience_select } = sendgrid_settings;
+	const { connect_API, before_installing, audience_select } = settings;
 
-	const sendgrid_tabs: SendgridTab[] = [
+	const tabs: SendgridTab[] = [
 		{
 			title: before_installing.title,
 			content: <SendgridBeforeInstalling data={before_installing} />,
@@ -81,5 +81,5 @@ export const getSendgridSetup = (platform: string): SendgridSetupData | null => 
 		},
 	];
 
-	return { sendgrid_title, mega_title, sendgrid_settings, sendgrid_tabs };
+	return { title, mega_title, settings, tabs };
 };

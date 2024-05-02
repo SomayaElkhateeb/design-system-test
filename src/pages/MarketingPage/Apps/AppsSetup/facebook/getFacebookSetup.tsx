@@ -14,8 +14,8 @@ interface FacebookTab {
 	content: React.ReactNode;
 }
 interface FacebookSetupData {
-	facebook_title: string;
-	facebook_settings: {
+	title: string;
+	settings: {
 		connect_account: {
 			title: string;
 			description: string;
@@ -60,8 +60,8 @@ interface FacebookSetupData {
 }
 
 export const getFacebookSetup = (platform: string): FacebookSetupData | null => {
-	const { facebook_settings, facebook_title } = platforms[platform];
-	if (!facebook_settings) return null;
+	const { settings, title } = platforms[platform];
+	if (!settings) return null;
 
 	const {
 		connect_account,
@@ -71,9 +71,9 @@ export const getFacebookSetup = (platform: string): FacebookSetupData | null => 
 		data_sharing,
 		commerce_account,
 		terms_and_conditions,
-	} = facebook_settings;
+	} = settings;
 
-	const facebook_tabs = [
+	const tabs = [
 		{ title: connect_account.title, content: <FBConnectAccount data={connect_account} /> },
 		{ title: business_manager.title, content: <FBBusinessManager data={business_manager} /> },
 		{
@@ -86,5 +86,5 @@ export const getFacebookSetup = (platform: string): FacebookSetupData | null => 
 		{ title: terms_and_conditions.title, content: <FBTerms data={terms_and_conditions} /> },
 	];
 
-	return { facebook_title, facebook_tabs };
+	return { title, tabs };
 };

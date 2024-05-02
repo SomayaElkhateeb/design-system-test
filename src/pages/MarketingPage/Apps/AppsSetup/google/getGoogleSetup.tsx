@@ -9,8 +9,8 @@ interface GoogleTab {
 }
 
 interface GoogleSetupData {
-	google_title: string;
-	google_settings: {
+	title: string;
+	settings: {
 		connect_account: {
 			title: string;
 			description: string;
@@ -25,7 +25,7 @@ interface GoogleSetupData {
 			}[];
 		};
 	};
-	google_tabs: GoogleTab[];
+	tabs: GoogleTab[];
 }
 
 export const getGoogleSetup = (platform: string): GoogleSetupData | null => {
@@ -34,10 +34,10 @@ export const getGoogleSetup = (platform: string): GoogleSetupData | null => {
 
 	if (!platformData) return null;
 
-	const { google_settings, google_title } = platformData;
-	const { connect_account, payment_method } = google_settings;
+	const { settings, title } = platformData;
+	const { connect_account, payment_method } = settings;
 
-	const google_tabs: GoogleTab[] = [
+	const tabs: GoogleTab[] = [
 		{
 			title: connect_account.title,
 			content: <GoConnectAccount data={connect_account} />,
@@ -48,5 +48,5 @@ export const getGoogleSetup = (platform: string): GoogleSetupData | null => {
 		},
 	];
 
-	return { google_title, google_settings, google_tabs };
+	return { title, settings, tabs };
 };
