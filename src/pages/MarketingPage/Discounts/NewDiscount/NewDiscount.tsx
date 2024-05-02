@@ -15,6 +15,7 @@ import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
 import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
 import { ErrorMessage } from '@hookform/error-message';
+import { Switch } from 'src/app/components/ui/switch';
 
 const schema = {
 	name: z.string().min(3).max(60),
@@ -93,7 +94,7 @@ const NewDiscount = () => {
 					</div>
 					<div className='bg-white w-[17rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
 						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
-						<ToggleSwitch />
+						<Switch checked />
 					</div>
 				</div>
 			</Form>

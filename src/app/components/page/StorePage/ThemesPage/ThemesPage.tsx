@@ -4,8 +4,7 @@ import PriceButton from 'src/app/components/optimized/Buttons/PriceButton';
 import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThemesCard from './ThemesCard';
-import { useSearchParams } from 'react-router-dom';
-import { getImageUrl } from 'src/app/utils';
+
 
 export default function ThemesPage() {
 	const array = [...Array(4)];

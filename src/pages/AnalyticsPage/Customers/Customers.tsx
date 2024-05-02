@@ -51,7 +51,7 @@ const Customers = () => {
 	return (
 		<div className='p-3 grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
-			<ColumnChart />
+			<ColumnChart percentage='5' />
 			<AnalyticsTableActions
 				data={tableData}
 				sortMenus={customersSortMenus}

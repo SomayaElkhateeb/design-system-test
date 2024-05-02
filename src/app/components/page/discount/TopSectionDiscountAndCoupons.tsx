@@ -26,7 +26,6 @@ export default function TopSectionDiscountAndCoupons({
 	];
 
 	return (
-		
 		<div className='flex-col-top-section-pages'>
 			<div className='flex-row-global justify-between'>
 				{/*  left dropdow */}
@@ -45,9 +44,7 @@ export default function TopSectionDiscountAndCoupons({
 					/>
 				</div>
 			</div>
-			<hr/>
+			<hr />
 		</div>
-		
-		
 	);
 }

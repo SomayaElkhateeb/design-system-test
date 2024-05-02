@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import VerticalTabs from './VerticalTabsCopy';
+import VerticalTabs from './VerticalTabs';
 import { LineChart, SetupCard } from 'src/app/components/optimized';
 import {
 	InventoryIcon,
@@ -86,13 +86,15 @@ const Setups = () => {
 	return (
 		<div>
 			{isFinished ? (
-				<LineChart percentage='50' />
+				<div className='bg-red h-96'>
+					<LineChart percentage='50' />
+				</div>
 			) : (
 				<>
 					<h2 className='text-title text-lg font-semibold'>{t('Get ready for your first sale')}</h2>
-					<p className='text-title text-sm mb-4'>
+					<p className='text-subtitle text-sm mb-4'>
 						{t('There are only 2 main steps to launch your store')},
-						<span className='btn-lin px-0 hover:bg-transparent cursor-pointer'>
+						<span className='btn-lin px-0 hover:bg-transparent cursor-pointer mx-1'>
 							{t('Follow our tips')}
 						</span>
 						{t('to get started')}

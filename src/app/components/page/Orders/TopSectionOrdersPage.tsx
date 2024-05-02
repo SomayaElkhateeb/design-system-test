@@ -9,8 +9,6 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-
-import { MdDelete } from 'react-icons/md';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import { useNavigate } from 'react-router-dom';
 export default function TopSectionOrdersPage({

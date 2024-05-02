@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import BaseTable from './TableLayoutGlobal/base.table';
-import { Checkbox, Switch, TableCell } from '@mui/material';
-import { CustomerInterface } from 'src/app/interface/CustomerInterface';
+import { TableCell } from '@mui/material';
+
 import { FaRegEdit } from 'react-icons/fa';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
+
 import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
@@ -13,10 +13,12 @@ import { useState } from 'react';
 import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
 import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
-import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
+
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
+import { Switch } from '../../ui/switch';
+
 export default function CustomersGroupTable() {
 	//  hooks
 	const navigate = useNavigate();
@@ -103,11 +105,7 @@ export default function CustomersGroupTable() {
 						</TableCell>,
 
 						<TableCell>
-							<Switch
-								checked={e.active}
-								// onChange={handleChange}
-								inputProps={{ 'aria-label': 'controlled' }}
-							/>
+							<Switch checked={e.active} />
 						</TableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>

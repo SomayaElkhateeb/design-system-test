@@ -2,9 +2,14 @@
 import { forwardRef } from 'react';
 import { Button } from 'src/app/components/optimized';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CampaignDataInterface, CampaignTableInterface } from 'src/app/interface/CampaignTableInterface';
+import {
+	CampaignDataInterface,
+	CampaignTableInterface,
+} from 'src/app/interface/CampaignTableInterface';
 import { Box, TableCell } from '@mui/material';
-import BaseTable, { GlobalTableCell } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
@@ -68,7 +73,7 @@ const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 		);
 	};
 	return (
-		<Box  className='print-only'>
+		<Box className='print-only'>
 			<BaseTable
 				language={language}
 				color='#55607A'
@@ -77,7 +82,7 @@ const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 					return {
 						item: e,
 						elements: [
-							<TableCell
+							<GlobalTableCell
 								onClick={() => {
 									localStorage.setItem('campainName', e.name);
 									navigate(`${e.id}`);
@@ -90,33 +95,21 @@ const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 								}}
 							>
 								{e.name}
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell sx={{ color: 'white', fontSize: '13px', fontWeight: 400 }}>
+							<GlobalTableCell sx={{ color: 'white', fontSize: '13px', fontWeight: 400 }}>
 								{handelCampainStatus(e.status)}
-							</TableCell>,
-
-							<GlobalTableCell
-								
-							>
-								SAR {e.sales}
-							</GlobalTableCell>,
-							<GlobalTableCell
-								
-							>
-								SAR {e.expenses}
 							</GlobalTableCell>,
 
-							<GlobalTableCell
-								
-							>
-								SAR {e.netProfit}
-							</GlobalTableCell>,
+							<GlobalTableCell>SAR {e.sales}</GlobalTableCell>,
+							<GlobalTableCell>SAR {e.expenses}</GlobalTableCell>,
+
+							<GlobalTableCell>SAR {e.netProfit}</GlobalTableCell>,
 						],
 					};
 				})}
 			/>
 		</Box>
 	);
-}
+};
 export default CampaignTable;

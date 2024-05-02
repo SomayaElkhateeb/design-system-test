@@ -62,7 +62,7 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 	return (
 		<div
 			id='HelpCenter-card'
-			className={`bg-white w-80 p-3 pb-5 absolute shadow-lg top-[4.5rem] ${
+			className={`bg-white w-80 p-3 pb-5 absolute shadow-lg top-[4.5rem] z-50${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
 					: 'rounded-tl-md rounded-bl-md right-2'
@@ -80,7 +80,7 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 					onChange={(e) => setSearchValue(e.target.value)}
 				/>
 				<div>
-					<h4 className='font-semibold text-title'>Get started</h4>
+					<h4 className='font-semibold text-title'>{t('Get started')}</h4>
 
 					<div className='grid grid-cols-2 gap-2 mt-4'>
 						<LinkCards to='/store' Icon={StoresIcon} title={t('Creating store')} />

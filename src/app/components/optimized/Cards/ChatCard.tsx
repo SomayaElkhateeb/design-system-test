@@ -39,7 +39,7 @@ const ChatCard = ({ onClose }: { onClose: () => void }) => {
 	return (
 		<div
 			id='chat-card'
-			className={`bg-white w-80 pb-5 absolute shadow-lg top-[4.5rem] ${
+			className={`bg-white w-80 pb-5 absolute shadow-lg top-[4.5rem] z-50${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-10'
 					: 'rounded-tl-md rounded-bl-md right-10'
