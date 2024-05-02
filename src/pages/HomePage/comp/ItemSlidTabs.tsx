@@ -48,7 +48,7 @@ const ItemSlidTabs = ({
 	state: any;
 }) => {
 	return (
-		<div className='flex justify-between mb-2'>
+		<div className='flex justify-between space-y-2'>
 			<div className='flex gap-2'>
 				<div className='w-[3.625rem] h-[3.625rem] border border-light-3 rounded'>
 					<img src={img} className='w-full h-full' alt={title} />
