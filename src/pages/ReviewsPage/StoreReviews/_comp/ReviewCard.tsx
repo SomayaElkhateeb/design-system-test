@@ -1,5 +1,7 @@
+import { Rating } from '@mui/material';
 import React from 'react';
-import { InitialsAvatar, Rating } from 'src/app/components/optimized';
+import { useTranslation } from 'react-i18next';
+import { InitialsAvatar } from 'src/app/components/optimized';
 
 interface ReviewCardProps {
 	reviewer: {
@@ -19,36 +21,35 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 	randomColor,
 	content,
 }) => {
+	// hooks
+	const { t } = useTranslation();
 	return (
-		<>
-			<h3 className='font-bold text-lg space-y-1'>Recent</h3>
+		<div className='flex-col-top-section-pages gap-[.65rem]'>
+			<h3 className='font-semibold text-title text-[.95rem]'>{t('Recent')}</h3>
 
-			<div
-				className={`bg-white rounded-lg border overflow-hidden flex p-2 items-center mb-3 `}
-			>
+			<div className='bg-white  overflow-hidden flex p-2 items-center'>
 				<div>
 					<InitialsAvatar
-						style={{}}
+						
 						firstName={reviewer.firstName}
 						lastName={reviewer.lastName}
 						size={50}
 						randomColor={randomColor}
 					/>
 				</div>
-				<div className='flex flex-col w-full mx-3'>
-					<div className='flex items-center'>
-						<h3 className='text-base font-bold'>
+				<div className='flex-col-top-section-pages gap-[.3rem] w-full mx-3'>
+					<div className='flex-row-global-items-start gap-[.55rem]'>
+						<h3 className='text-[.8rem] text-title font-semibold'>
 							{reviewer.firstName} {reviewer.lastName}
 						</h3>
-						<p className='text-sm text-gray-500 mx-2'>{repliedDate}</p>
+						<p className='text-[.75rem] text-subtitle'>{repliedDate}</p>
 					</div>
-					<div>
-						<Rating rating={rating} size={20} /> {/* Adjust size as needed */}
-						<p className='text-gray-700'>{content}</p>
-					</div>
+					{/* <Rating rating={rating} size={20} /> Adjust size as needed */}
+					<Rating precision={0.5} value={rating} readOnly />
+					<p className='text-[.75rem] text-subtitle'>{content}</p>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
