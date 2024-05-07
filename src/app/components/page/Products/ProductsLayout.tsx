@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const ProductsLayout = () => {
-<<<<<<< HEAD
 	const tabs = [
 		{
 			name: 'All Products',
@@ -23,24 +22,13 @@ const ProductsLayout = () => {
 	];
   return (
     <div>
-      <div className="sticky top-[70px] z-50">
+      <div className="sticky top-[70px] z-10">
         <HorizontalTabsLink tabs={tabs} path="/products" />
       </div>
       <Outlet />
     </div>
   );
-=======
-	const tabs = ['AllProducts', 'categories', 'brands', 'inventory'];
 
-	return (
-		<div>
-			<div className='sticky top-[70px] z-10'>
-				<HorizontalTabsLink tabs={tabs} path='/products' />
-			</div>
-			<Outlet />
-		</div>
-	);
->>>>>>> master
 };
 
 export default ProductsLayout;

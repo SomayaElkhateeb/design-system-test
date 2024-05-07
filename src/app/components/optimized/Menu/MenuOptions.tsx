@@ -29,7 +29,7 @@ export default function MenuOptions({
 
 			<Menu slots={{ listbox: AnimatedListbox }}>
 				{options.map((item: any) => {
-					return <MenuItem onClick={createHandleMenuClick(item.text)}>{item.text}</MenuItem>;
+					return <MenuItem key={item} onClick={createHandleMenuClick(item.text)}>{item.text}</MenuItem>;
 				})}
 			</Menu>
 		</Dropdown>
