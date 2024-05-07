@@ -39,20 +39,20 @@ export default function SocialAppsWrapper({
 	}
 	const { t } = useTranslation();
 	const language = UseLanguage();
-
+	const IconClass = 'fill-pri-dark';
 	return (
 		<div className='grid gap-3'>
 			<div className='flex justify-between'>
 				<h2 className='text-lg font-semibold text-title'>{title}</h2>
 
-				<div className='flex items-center'>
-					<button className='text-sm font-semibold text-title mx-1' onClick={onButtonClick}>
+				<div className='flex items-center gap-1'>
+					<button className='text-sm font-semibold text-title ' onClick={onButtonClick}>
 						{t('View All')}
 					</button>
 					{language === 'ar' ? (
-						<BackIcon className='fill-pri-dark' />
+						<BackIcon className={IconClass} />
 					) : (
-						<NextIcon className='fill-pri-dark' />
+						<NextIcon className={IconClass} />
 					)}
 				</div>
 			</div>

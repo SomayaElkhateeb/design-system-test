@@ -22,8 +22,10 @@ export default function PagesPagesSection() {
 	];
 	return (
 		<div className='flex flex-col'>
+
 			<div className='flex flex-col gap-[1rem]'>
 				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='AddPage' />
+
 				<LegalPagesSection />
 			</div>
 			<PagesPagesTable data={data} />

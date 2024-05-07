@@ -5,7 +5,7 @@ const ProductsLayout = () => {
 	const tabs = [
 		{
 			name: 'All Products',
-			path: 'all_products',
+			path: 'AllProducts',
 		},
 		{
 			name: 'Categories',
@@ -20,15 +20,14 @@ const ProductsLayout = () => {
 			path: 'inventory',
 		},
 	];
-  return (
-    <div>
-      <div className="sticky top-[70px] z-10">
-        <HorizontalTabsLink tabs={tabs} path="/products" />
-      </div>
-      <Outlet />
-    </div>
-  );
-
+	return (
+		<div className='flex-col-top-section-pages'>
+			<div className='Sticky_header'>
+				<HorizontalTabsLink tabs={tabs} path='/products' />
+			</div>
+			<Outlet />
+		</div>
+	);
 };
 
 export default ProductsLayout;

@@ -3,11 +3,9 @@ import { socialApps } from 'src/app/utils/constants';
 import MostPopularList from './_comp/MostPopularList';
 import SocialAppsWrapper from './_comp/SocialAppsWrapper';
 
-
-
 const Apps = () => {
 	return (
-		<div className='flex flex-col gap-8 p-5'>
+		<div className='flex-col-top-section-pages gap-8 container mx-auto'>
 			<MostPopularList />
 
 			<SocialAppsWrapper socialApps={socialApps} title='Recommended' linkTo='/' />

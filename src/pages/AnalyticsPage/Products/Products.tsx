@@ -58,7 +58,7 @@ const Products = () => {
 	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
 		useAnalyticsData<AnaylticesProduct>(data.productsAnalyticsTable, productsSortFunctions);
 	return (
-		<div className='p-5 grid gap-5'>
+		<div className='container grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
 			<ColumnChart  percentage="5"/>
 			<AnalyticsTableActions

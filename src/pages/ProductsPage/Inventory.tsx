@@ -7,7 +7,7 @@ export default function Inventory() {
     //  hooks
     const [array,setArray]=useState<string[]>([])
 	return (
-		<div className=' container mx-auto my-[0.8rem]'>
+		<div className=' container mx-auto '>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSectionInventoryTable  />
