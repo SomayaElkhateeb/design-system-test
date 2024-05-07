@@ -1,9 +1,10 @@
 import data from '../comp/data.json';
 import FilterBar from '../comp/FilterBar';
 import AllAppsView from '../comp/AllAppsView';
-import InstallCardWrapper from './comp/InstallCardWrapper';
-import SocialAppsWrapper from '../comp/SocialAppsWrapper';
+import AppsWrapper from '../comp/AppsWrapper';
 import useAppStore from '../comp/useAppStore';
+import AppsCard from 'src/app/components/page/Cards/AppsCard';
+import InstallCard from './comp/InstallCard';
 
 export default function AppStore() {
 	const {
@@ -30,28 +31,35 @@ export default function AppStore() {
 						setSelectedCategories={setSelectedCategories}
 						setSelectedPrices={setSelectedPrices}
 					/>
-					<InstallCardWrapper
-						title='Installed'
-						socialApps={installedApps}
-						onButtonClick={() => handleClickViewAll('installed')}
-					/>
-					<SocialAppsWrapper
+					<div className='grid bg-white p-4 rounded-md border border-borders-lines'>
+						<AppsWrapper
+							title='Popular'
+							socialApps={installedApps}
+							warningMessage={warningMessage}
+							onButtonClick={() => handleClickViewAll('installed')}
+							ChildrenComponent={InstallCard}
+						/>
+					</div>
+					<AppsWrapper
 						title='Popular'
 						socialApps={filteredApps}
 						warningMessage={warningMessage}
 						onButtonClick={() => handleClickViewAll('popular')}
+						ChildrenComponent={AppsCard}
 					/>
-					<SocialAppsWrapper
+					<AppsWrapper
 						title='Recommended'
 						socialApps={filteredApps}
 						warningMessage={warningMessage}
 						onButtonClick={() => handleClickViewAll('recommended')}
+						ChildrenComponent={AppsCard}
 					/>
-					<SocialAppsWrapper
+					<AppsWrapper
 						title='Sales'
 						socialApps={filteredApps}
 						warningMessage={warningMessage}
 						onButtonClick={() => handleClickViewAll('sales')}
+						ChildrenComponent={AppsCard}
 					/>
 				</>
 			)}
