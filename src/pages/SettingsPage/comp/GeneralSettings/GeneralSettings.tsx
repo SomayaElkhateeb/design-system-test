@@ -9,7 +9,6 @@ import Media from './Media';
 import SocialContacts from './SocialContacts';
 import LegalDetails from './LegalDetails';
 import AdminDefaults from './AdminDefaults';
-import InputRowTest from 'src/app/components/optimized/InputsFields/test/InputRowTest';
 
 const generalSchema = z.object({
 	storeName: z.string().min(3, { message: 'Store name is required' }),

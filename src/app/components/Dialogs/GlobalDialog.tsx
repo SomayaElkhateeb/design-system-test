@@ -1,6 +1,6 @@
 import { Box, Modal } from '@mui/material';
 
- export interface style {
+export interface style {
 	position?: string;
 	top?: string;
 	left?: string;
@@ -19,9 +19,9 @@ export default function GlobalDialog({
 	children,
 }: {
 	openDialog: boolean;
-	handleClose: (e:boolean) => void;
+	handleClose: (e: boolean) => void;
 	children: React.ReactNode;
-	style: style;
+	style?: style;
 }) {
 	const propStyle = {
 		...style,

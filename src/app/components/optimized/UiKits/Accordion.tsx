@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DownIcon, UpIcon } from 'src/app/utils/icons';
 
-export default function Accordion({ title, subtitle }) {
+export default function Accordion({ title, subtitle }: { title: String; subtitle: string }) {
 	const [open, setOpen] = useState(false);
 
 	return (
@@ -17,7 +17,11 @@ export default function Accordion({ title, subtitle }) {
 				</button>
 			</div>
 
-			{open ? <p className='pt-4 transition-all duration-500 ease-linear text-subtitle '>{subtitle}</p> : ''}
+			{open ? (
+				<p className='pt-4 transition-all duration-500 ease-linear text-subtitle '>{subtitle}</p>
+			) : (
+				''
+			)}
 		</div>
 	);
 }
