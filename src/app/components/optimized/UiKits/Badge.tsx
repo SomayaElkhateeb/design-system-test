@@ -1,7 +1,7 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
 export default function Badge({ status }: { status: string }) {
-	const installStyle = 'text-pri-hover bg-pri-top-light pl-1.5';
+	const installStyle = 'text-pri-hover bg-light-3  ';
 	const freeStyle = 'bg-sec-light text-sec-hover';
 	const classes = status === 'installed' ? installStyle : status === 'free' ? freeStyle : '';
 	return (

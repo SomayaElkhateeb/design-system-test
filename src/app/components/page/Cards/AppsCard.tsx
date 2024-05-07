@@ -21,8 +21,6 @@ import { AppData } from 'src/pages/AppsPage/AppStore/AppStore';
  * };
  */
 
-
-
 export default function AppsCard({ name, description, status, imageUrl, url }: AppData) {
 	return (
 		<Link to={url} className='flex gap-3 p-3 bg-white border rounded-lg border-borders-lines'>
