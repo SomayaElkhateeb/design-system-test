@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import AppsCard from 'src/app/components/page/Cards/AppsCard';
-import { AppsWrapperProps } from '../AppStore/AppStore';
+
 import { BackIcon, NextIcon } from 'src/app/utils/icons';
+import { AppsWrapperProps } from './useAppStore';
 
 export default function SocialAppsWrapper({
 	socialApps,
@@ -63,7 +64,6 @@ export default function SocialAppsWrapper({
 						</div>
 					))
 				) : (
-
 					<p className='text-error text-center col-span-4 font-medium text-lg'>{warningMessage}</p>
 				)}
 			</div>
