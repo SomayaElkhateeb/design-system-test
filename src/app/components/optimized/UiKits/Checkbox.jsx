@@ -1,35 +1,44 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
 /**
- * CheckBox component for a customizable checkbox with an optional label.
- * @param {Object} props - Props for the CheckBox component.
- * @param {string} [props.variant] - Variant of the checkbox. Can be "minus".
- * @param {React.ReactNode} [props.label] - Optional label for the checkbox.
- * @param {(isChecked: boolean) => void | null} props.handleOnChange - Function to handle checkbox change event.
- * @param {boolean} props.isChecked - Boolean indicating whether the checkbox is checked.
- * @returns {JSX.Element} - CheckBox component JSX.
+ * CheckBoxX component for customizable checkbox with optional label.
+ * @param {{
+ *  variant?: "minus";
+ *  label?: import("react").ReactNode;
+ *  handleOnChange: (isChecked: boolean) => void;
+ *  checked: boolean;
+ *  classes: string;
+ * } & Omit<import("react").InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked">} props - Props for the CheckBoxX component.
+ *
+ * @example
+ *
+ * ```jsx
+ * export default function ExampleComponent() {
+ *   function handleChange(isChecked) {
+ *     // Handle checkbox change event
+ *     console.log("Checkbox checked:", isChecked);
+ *   };
+ *
+ *   return (
+ *     <div>
+ *       <CheckBox
+ *         initialChecked={true} // Initial state of the checkbox
+ *         handleOnChange={handleChange} // Change event handler
+ *         label="Example Checkbox" // Optional label
+ *       />
+ *
+ *       <CheckBox
+ *         variant="minus" // Specify variant as "minus"
+ *         initialChecked={false} // Initial state of the checkbox
+ *         handleOnChange={handleChange} // Change event handler
+ *         label="Minus Checkbox" // Optional label
+ *       />
+ *     </div>
+ *   );
+ * };
+ * ```
  */
-/*
-	function handleChange(isChecked) {
-		console.log("Checkbox checked:", isChecked);
-	};
-
-	<CheckBox
-	handleOnChange={handleChange} 
-	label="Example Checkbox"
-	/>
-
-	<CheckBox
-	variant="minus" 
-	handleOnChange={handleChange} 
-	label="Minus Checkbox"
-	/>
-*/
-export default function CheckBox({ variant, label, handleOnChange, ...props }) {
-	/**
-	 * Render appropriate checkbox icon based on variant and checked state.
-	 * @returns {JSX.Element} - Icon JSX.
-	 */
+export default function CheckBox({ variant, label, handleOnChange, classes, ...props }) {
 	function renderCheckboxIcon() {
 		if (variant === 'minus' && props.isChecked) {
 			return <p className='flex items-center justify-center w-full h-full text-white'>-</p>;
@@ -38,7 +47,7 @@ export default function CheckBox({ variant, label, handleOnChange, ...props }) {
 	}
 
 	return (
-		<label className='flex items-center cursor-pointer'>
+		<label className={`flex gap-2 items-center cursor-pointer ${classes}`}>
 			<input
 				{...props}
 				type='checkbox'
@@ -53,7 +62,7 @@ export default function CheckBox({ variant, label, handleOnChange, ...props }) {
 			>
 				{renderCheckboxIcon()}
 			</div>
-			{label && <span className='ml-2 text-sm text-title'>{label}</span>}
+			{label && <span className=' text-sm text-title'>{label}</span>}
 		</label>
 	);
 }

@@ -26,12 +26,10 @@ function SlideCard<T>({
 	itemsPerSlide,
 	SlideComponent,
 	children,
-	dropdown,
-	selectedOption,
-	handleSelect,
 }: SlideCardProps<T>) {
 	//  hooks
 	const { t } = useTranslation();
+
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const totalSlide = Math.ceil(items.length / itemsPerSlide);
 

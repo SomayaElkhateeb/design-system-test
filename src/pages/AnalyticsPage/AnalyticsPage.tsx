@@ -1,11 +1,34 @@
 import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
-import AnalyticsPageGard from './comp/AnalyticsPageGard';
+import AnalyticsPageGuard from './comp/AnalyticsPageGuard';
 
 export default function AnalyticsPage() {
-	const tabs = ['overview', 'products', 'orders', 'customers', 'integrations'];
+
+	const tabs = [
+		{
+			name: 'Overview',
+			path: 'overview',
+		},
+		{
+			name: 'Products',
+			path: 'products',
+		},
+		{
+			name: 'Orders',
+			path: 'orders',
+		},
+		{
+			name: 'Customers',
+			path: 'customers',
+		},
+		{
+			name: 'Integrations',
+			path: 'integrations',
+		},
+	];
 
 	return (
+
 		<AnalyticsPageGard>
 			<div className='sticky top-[70px] z-10'>
 				<HorizontalTabsLink tabs={tabs} path='/analytics' />
@@ -14,6 +37,6 @@ export default function AnalyticsPage() {
 			<main className='page-container'>
 				<Outlet />
 			</main>
-		</AnalyticsPageGard>
+		</AnalyticsPageGuard>
 	);
 }
