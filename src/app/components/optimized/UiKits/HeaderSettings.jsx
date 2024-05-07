@@ -112,6 +112,7 @@ export default function HeaderSettings(props) {
 				{props.variant === 'settingWithIcons' && (
 					<>
 						<GroupIcons />
+
 						{props.btn1 && (
 							<Button onClick={props.btn1.onClick} variant='sec'>
 								{props.btn1.text}
@@ -122,6 +123,7 @@ export default function HeaderSettings(props) {
 								{props.btn2.text}
 							</Button>
 						)}
+
 					</>
 				)}
 				{props.variant === 'customerInfowithIcons' && <>{props.children}</>}

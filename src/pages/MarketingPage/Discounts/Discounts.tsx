@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { useTranslation } from 'react-i18next';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import DiscountsTable from 'src/app/components/page/discount/Table/DiscountsTable';
+import DiscountAndCouponLoading from 'src/app/components/page/SchimmerLoading/DiscountAndCouponLoading';
 
 const Discounts: React.FC = () => {
+	const [showLoading, setShowLoading] = useState(true);
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
@@ -18,16 +20,30 @@ const Discounts: React.FC = () => {
 		dispatch(getDiscounts());
 	}, [dispatch]);
 
-	return (
-		<div className='mx-auto my-[0.8rem] px-5'>
-			<div className=' flex flex-col '>
-				{/*  top section */}
-				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
+	// loading page
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowLoading(false);
+		}, 3000);
 
-				{/*  table section */}
-				<DiscountsTable discounts={discounts} isLoading={isLoading} />
-			</div>
-		</div>
+		return () => clearTimeout(timer); // Clear the timer on component unmount
+	}, []);
+	return (
+		<>
+			{showLoading ? (
+				<DiscountAndCouponLoading />
+			) : (
+				<div className='mx-auto my-[0.8rem] px-5'>
+					<div className=' flex flex-col '>
+						{/*  top section */}
+						<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
+
+						{/*  table section */}
+						<DiscountsTable discounts={discounts} isLoading={isLoading} />
+					</div>
+				</div>
+			)}
+		</>
 	);
 };
 

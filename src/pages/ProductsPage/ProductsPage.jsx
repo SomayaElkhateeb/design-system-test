@@ -1,11 +1,11 @@
 import ProductsLayout from 'src/app/components/page/Products/ProductsLayout';
-import ProductsPageGard from 'src/app/components/page/Products/ProductsPageGard';
+import ProductsPageGuard from 'src/app/components/page/Products/ProductsPageGuard';
 
 const ProductsPage = () => {
 	return (
-		<ProductsPageGard>
+		<ProductsPageGuard>
 			<ProductsLayout />
-		</ProductsPageGard>
+		</ProductsPageGuard>
 	);
 };
 

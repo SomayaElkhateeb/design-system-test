@@ -48,4 +48,5 @@ const PagesPage = () => {
 	};
 	return <>{handelPageWithSeacrhParams()}</>;
 };
+
 export default PagesPage;

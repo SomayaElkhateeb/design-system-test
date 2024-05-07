@@ -5,7 +5,7 @@ import { LabelIcon } from 'src/app/components/optimized';
 
 /**
  * @param {object} props - Props for the AppsCard component
- * @param {string} props.image - The image URL for the app
+ * @param {string} props.imageUrl - The image URL for the app
  * @param {string} props.name - The name of the app
  * @param {string} props.description - The description of the app
  * @param {string} props.status - The status of the app (available or installed)
@@ -38,7 +38,7 @@ export default function AppsCard(props) {
 
 		<Link to={props.url} className='flex gap-3 p-3 bg-white border rounded-lg shadow-md'>
 			<div className='size-[60px]  min-w-[60px] flex items-center'>
-				<img src={props.image} className='object-cover w-full' />
+				<img src={props.imageUrl} className='object-cover w-full' />
 			</div>
 			<div className='flex flex-col gap-[1rem]'>
 				<h3 className='mb-2 title'>{props.name}</h3>
@@ -56,7 +56,7 @@ export default function AppsCard(props) {
 }
 
 AppsCard.defaultProps = {
-	image: <FaTelegram size={48} color='#2EA6DA' />,
+	imageUrl: <FaTelegram size={48} color='#2EA6DA' />,
 	heading: 'Telegram',
 	paragraph:
 		'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum soluta,eaque ducimus perspiciatis odio repudiandae nisi cupiditate doloribus',
@@ -65,7 +65,7 @@ AppsCard.defaultProps = {
 
 //  Usage Example:
 //   <AppsCard
-//        image="/path/to/image.jpg"
+//        imageUrl="/path/to/image.jpg"
 //        name="Telegram"
 //        description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
 //        status="available"

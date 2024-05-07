@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ItemSlidTabs from './ItemSlidTabs';
 import Btn from './Btn';
+import { ToastContainer, toast } from 'react-toastify';
 interface Slide {
 	title: string;
 	content: JSX.Element;
@@ -32,6 +33,16 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 	const handleDeleteItem = (id: number) => {
 		console.log('Deleting item:', id);
 		setState({ ...state, showDeletePopup: false });
+		toast.error('The product is deleted', {
+			position: 'bottom-right',
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: false,
+			draggable: false,
+			progress: undefined,
+			theme: 'colored',
+		});
 	};
 
 	const options = [
@@ -89,6 +100,7 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 					))}
 				</div>
 			)}
+			<ToastContainer />
 		</div>
 	);
 };
