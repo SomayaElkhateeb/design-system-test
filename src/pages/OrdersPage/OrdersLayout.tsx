@@ -2,44 +2,43 @@ import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const OrdersLayout = () => {
-
 	const tabs = [
 		{
-			name: `All Products ${50}`,
-			path: 'all_products',
+			name: `All Orders ${50}`,
+			path: 'AllOrders',
 		},
 		{
-			name:`New ${50}`,
+			name: `New ${50}`,
 			path: 'new',
 		},
 		{
-			name:`Processing ${50}`,
+			name: `Processing ${50}`,
 			path: 'processing',
 		},
 		{
-			name:`Ready ${50}`,
+			name: `Ready ${50}`,
 			path: 'ready',
 		},
 		{
-			name:`Shipping ${50}`,
+			name: `Shipping ${50}`,
 			path: 'shipping',
 		},
 		{
-			name:`Delivered ${50}`,
+			name: `Delivered ${50}`,
 			path: 'delivered',
 		},
 		{
-			name:`Returned ${50}`,
+			name: `Returned ${50}`,
 			path: 'returned',
 		},
 		{
-			name:`Cancelled ${50}`,
+			name: `Cancelled ${50}`,
 			path: 'cancelled',
 		},
 	];
 	return (
-		<div>
-			<div className='sticky top-[70px] z-10'>
+		<div className='flex-col-top-section-pages'>
+			<div className='Sticky_header'>
 				<HorizontalTabsLink tabs={tabs} path='/orders' />
 			</div>
 			<Outlet />

@@ -29,21 +29,15 @@ const Discounts: React.FC = () => {
 		return () => clearTimeout(timer); // Clear the timer on component unmount
 	}, []);
 	return (
-		<>
-			{showLoading ? (
-				<DiscountAndCouponLoading />
-			) : (
-				<div className='mx-auto my-[0.8rem] px-5'>
-					<div className=' flex flex-col '>
-						{/*  top section */}
-						<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
+		<div className='mx-auto container'>
+			<div className=' flex flex-col '>
+				{/*  top section */}
+				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
 
-						{/*  table section */}
-						<DiscountsTable discounts={discounts} isLoading={isLoading} />
-					</div>
-				</div>
-			)}
-		</>
+				{/*  table section */}
+				<DiscountsTable discounts={discounts} isLoading={isLoading} />
+			</div>
+		</div>
 	);
 };
 

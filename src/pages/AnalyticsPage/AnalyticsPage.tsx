@@ -3,7 +3,6 @@ import { HorizontalTabsLink } from 'src/app/components/optimized';
 import AnalyticsPageGuard from './comp/AnalyticsPageGuard';
 
 export default function AnalyticsPage() {
-
 	const tabs = [
 		{
 			name: 'Overview',
@@ -28,15 +27,16 @@ export default function AnalyticsPage() {
 	];
 
 	return (
-
 		<AnalyticsPageGuard>
-			<div className='sticky top-[70px] z-10'>
-				<HorizontalTabsLink tabs={tabs} path='/analytics' />
+			<div className='flex-col-top-section-pages'>
+				<div className='Sticky_header'>
+					<HorizontalTabsLink tabs={tabs} path='/analytics' />
+				</div>
+				{/* AnalyticsTabs Page */}
+				<main className='page-container'>
+					<Outlet />
+				</main>
 			</div>
-			{/* AnalyticsTabs Page */}
-			<main className='page-container'>
-				<Outlet />
-			</main>
 		</AnalyticsPageGuard>
 	);
 }

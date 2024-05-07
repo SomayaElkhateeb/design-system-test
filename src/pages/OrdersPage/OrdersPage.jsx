@@ -1,10 +1,7 @@
-import OrdersLayout from "./OrdersLayout";
-import OrdersPageGuard from "./OrdersPageGuard";
-
+import OrdersLayout from './OrdersLayout';
+import OrdersPageGuard from './OrdersPageGuard';
 
 const OrdersPage = () => {
-	
-
 	return (
 		<OrdersPageGuard>
 			<OrdersLayout />
