@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { type ComponentType, type ReactNode, useState } from 'react';
 import CompareButton from '../../optimized/UiKits/CompareButton';
 import { useTranslation } from 'react-i18next';
 
@@ -13,7 +13,7 @@ interface SlideCardProps<T> {
 	items: T[];
 	title: string;
 	itemsPerSlide: number;
-	SlideComponent: React.ComponentType<T>;
+	SlideComponent: ComponentType<T>;
 	children?: ReactNode;
 	dropdown?: boolean;
 	selectedOption?: string;
@@ -26,6 +26,9 @@ function SlideCard<T>({
 	itemsPerSlide,
 	SlideComponent,
 	children,
+	dropdown,
+	selectedOption,
+	handleSelect,
 }: SlideCardProps<T>) {
 	//  hooks
 	const { t } = useTranslation();

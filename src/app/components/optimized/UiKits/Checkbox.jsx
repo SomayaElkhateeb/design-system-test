@@ -40,7 +40,7 @@ import { CheckIcon } from 'src/app/utils/icons';
  */
 export default function CheckBox({ variant, label, handleOnChange, classes, ...props }) {
 	function renderCheckboxIcon() {
-		if (variant === 'minus' && props.isChecked) {
+		if (variant === 'minus' && props.checked) {
 			return <p className='flex items-center justify-center w-full h-full text-white'>-</p>;
 		}
 		return <CheckIcon className='w-full h-full fill-white' />;
@@ -51,13 +51,13 @@ export default function CheckBox({ variant, label, handleOnChange, classes, ...p
 			<input
 				{...props}
 				type='checkbox'
-				checked={props.isChecked}
+				checked={props.checked}
 				onChange={(event) => handleOnChange(event.target.checked)}
 				className='hidden'
 			/>
 			<div
 				className={`hover:bg-sec-light w-5 h-5 border rounded ${
-					props.isChecked ? 'bg-success hover:bg-sec-pressed' : ''
+					props.checked ? 'bg-success hover:bg-sec-pressed' : ''
 				}`}
 			>
 				{renderCheckboxIcon()}

@@ -29,7 +29,7 @@ export default function AnalyticsPage() {
 
 	return (
 
-		<AnalyticsPageGard>
+		<AnalyticsPageGuard>
 			<div className='sticky top-[70px] z-10'>
 				<HorizontalTabsLink tabs={tabs} path='/analytics' />
 			</div>
