@@ -24,24 +24,26 @@ const BigAppsCard: React.FC<BigAppsCardProps> = ({ image, name, description, url
 			break;
 		default:
 			backgroundColor = 'gray';
-			textColor = 'black';
+			textColor = 'white';
 			break;
 	}
 	return (
 		<Link to={url} rel='noopener noreferrer'>
 			<div className='cursor-pointer border border-border-color p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white min-h-[379px]'>
-				<div className='flex flex-col items-start'>
+				<div className='flex flex-col items-start gap-[1rem]'>
 					<div className='border border-border-color w-full h-[213px] grid place-content-center rounded-lg'>
 						<img src={image} alt={name} className='h-[180px]' />
 					</div>
-					<h2 className='mt-4 title text-[16px]'>{name}</h2>
-					<p className='mt-2 paragraph'>{description}</p>
+					<div className='flex flex-col items-start gap-[.7rem]'>
+					<h2 className=' title text-[16px]'>{name}</h2>
+					<p className=' paragraph'>{description}</p>
 					<LabelIcon
 						text={status}
 						backgroundColor={backgroundColor}
 						textColor={textColor}
 						icon={status === 'installed' ? <FaCheck size={10} color='#0B47D9' /> : null}
 					/>
+					</div>
 				</div>
 			</div>
 		</Link>

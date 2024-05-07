@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import * as XLSX from 'xlsx';
 
@@ -8,7 +9,7 @@ export function cn(...inputs) {
 	return twMerge(clsx(inputs));
 }
 
-export const truncateString = (str, maxLength) => {
+export const truncateString = (str: string, maxLength: number) => {
 	if (str.length <= maxLength) {
 		return str;
 	} else {
@@ -16,7 +17,7 @@ export const truncateString = (str, maxLength) => {
 	}
 };
 
-export const capitalizeFirstLetter = (inputString) => {
+export const capitalizeFirstLetter = (inputString: string) => {
 	if (!inputString) {
 		return inputString;
 	}
@@ -24,11 +25,11 @@ export const capitalizeFirstLetter = (inputString) => {
 	return inputString.charAt(0).toUpperCase() + inputString.slice(1);
 };
 
-export const getImageUrl = (name) => {
+export const getImageUrl = (name: string) => {
 	return new URL(`../assets/${name}`, import.meta.url).href;
 };
 
-export function formatLikes(num) {
+export function formatLikes(num: number) {
 	if (num < 1000) {
 		return num.toString();
 	} else if (num < 1000000) {
@@ -76,8 +77,8 @@ export const calculateAverageRating = (reviews: { rating: number }[]): string =>
 
 export const randomColor = Math.floor(Math.random() * 16777215).toString(16);
 
-export const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
-export const parseDate = (dateString) => new Date(dateString);
+export const getNumericValue = (str: string) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
+export const parseDate = (dateString: string) => new Date(dateString);
 
 export const exportToExcel = (data: any[], filename: string) => {
 	// Convert data to worksheet
@@ -89,4 +90,27 @@ export const exportToExcel = (data: any[], filename: string) => {
 
 	// Save to file
 	XLSX.writeFile(wb, filename);
+};
+
+/**
+ * Hook that listens for clicks outside of a specified element identified by its ID.
+ * @param id - The ID of the element to track clicks outside of.
+ * @param onClickOutside - The function to call when a click outside of the element occurs.
+ */
+export const useClickOutsideWithId = (id: string, onClickOutside: () => void) => {
+	useEffect(() => {
+		/**
+		 * Event handler that checks if a click event occurs outside of the specified element.
+		 * @param event - The mouse event object.
+		 */
+		const handleClickOutside = (event: MouseEvent) => {
+			const card = document.getElementById(id);
+			if (card && !card.contains(event.target as Node)) {
+				onClickOutside();
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => document.removeEventListener('mousedown', handleClickOutside);
+	}, [id, onClickOutside]);
 };

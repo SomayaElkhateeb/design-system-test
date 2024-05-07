@@ -55,7 +55,6 @@
 		{ "label": "Visitors", "count": 15, "ratio": 2, "positive": false },
 		{ "label": "Product views", "count": 20, "ratio": 3, "positive": true },
 		{ "label": "Orders received", "count": 2, "ratio": 3.7, "positive": false },
-		{ "label": "Revenue", "count": 1, "ratio": 1.2, "positive": true },
 		{ "label": "Revenue", "count": 1, "ratio": 1.2, "positive": true }
 	],
 	"latestOrders": [

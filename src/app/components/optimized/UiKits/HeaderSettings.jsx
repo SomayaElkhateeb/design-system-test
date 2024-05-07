@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GroupIcons } from '..';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
@@ -8,12 +8,12 @@ import { IoIosArrowForward } from 'react-icons/io';
 /**
  *
  * @param {{
- *  to: string;
  *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
  *  title: string | null;
- *  btn1: { text: string; onClick: () => void };
- *  btn2: { text: string; onClick: () => void };
- *  btn3: { text: string; onClick: () => void };
+ *  btn1?: { text: string; onClick: () => void };
+ *  btn2?: { text: string; onClick: () => void };
+ *  btn3?: { text: string; onClick: () => void };
+ * onClick?:()=>void
  * children?:React.ReactNode
  * }} props
  */
@@ -21,87 +21,112 @@ export default function HeaderSettings(props) {
 	//  hooks
 	const { t } = useTranslation();
 	const language = UseLanguage();
+	const navigate = useNavigate();
 	return (
 		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
-			<div className='flex items-center gap-1'>
-				<Link to={props.to}>{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}</Link>
+			<div className='flex items-center gap-1' onClick={props.onClick}>
+				<p className='cursor-pointer' onClick={() => navigate(-1)}>
+					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
+				</p>
 				<h2 className='font-semibold capitalize text-title'>{props.title}</h2>
 			</div>
 
 			<div className='flex items-center gap-6'>
 				{props.variant === 'settingIcons' && (
 					<>
-						<IconButton onClick={props.btn1.onClick}>
-							<LinkIcon className='p-1 mb-2 fill-title' />
-						</IconButton>
-						<IconButton onClick={props.btn2.onClick}>
-							<MoreIcon className='fill-pri-dark' />
-						</IconButton>
+						{props.btn1 && (
+							<IconButton onClick={props.btn1.onClick}>
+								<LinkIcon className='p-1 mb-2 fill-title' />
+							</IconButton>
+						)}
+						{props.btn2 && (
+							<IconButton onClick={props.btn2.onClick}>
+								<MoreIcon className='fill-pri-dark' />
+							</IconButton>
+						)}
 					</>
 				)}
 				{props.variant === 'settingOrder' && (
 					<>
-						<ButtonWithIcon
-							onClick={props.btn1.onClick}
-							icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}
-						>
-							{t('Update Status')}
-						</ButtonWithIcon>
-						<ButtonWithIcon
-							onClick={props.btn2.onClick}
-							icon={<PrintIcon className='p-0.5 fill-pri-dark' />}
-						>
-							{t('Print Invoice')}
-						</ButtonWithIcon>
-						<IconButton onClick={props.btn3.onClick}>
-							<MoreIcon />
-						</IconButton>
+						{props.btn1 && (
+							<ButtonWithIcon
+								onClick={props.btn1.onClick}
+								icon={<LoadUpdateIcon className='p-0.5 fill-pri-dark' />}
+							>
+								{t('Update Status')}
+							</ButtonWithIcon>
+						)}
+						{props.btn2 && (
+							<ButtonWithIcon
+								onClick={props.btn2.onClick}
+								icon={<PrintIcon className='p-0.5 fill-pri-dark' />}
+							>
+								{t('Print Invoice')}
+							</ButtonWithIcon>
+						)}
+						{props.btn3 && (
+							<IconButton onClick={props.btn3.onClick}>
+								<MoreIcon />
+							</IconButton>
+						)}
 					</>
 				)}
-				{props.variant === 'settingOneBtn' && (
+				{props.variant === 'settingOneBtn' && props.btn1 && (
 					<Button onClick={props.btn1.onClick} variant='pri'>
 						{props.btn1.text}
 					</Button>
 				)}
 				{props.variant === 'settingTwoBtns' && (
 					<>
-						<Button onClick={props.btn1.onClick} variant='sec'>
-							{props.btn1.text}
-						</Button>
-						<Button onClick={props.btn2.onClick} variant='pri'>
-							{props.btn2.text}
-						</Button>
+						{props.btn1 && (
+							<Button onClick={props.btn1.onClick} variant='sec'>
+								{props.btn1.text}
+							</Button>
+						)}
+						{props.btn2 && (
+							<Button onClick={props.btn2.onClick} variant='pri'>
+								{props.btn2.text}
+							</Button>
+						)}
 					</>
 				)}
 				{props.variant === 'settingThreeBtns' && (
 					<>
-						<Button onClick={props.btn1.onClick} variant='ter'>
-							{props.btn1.text}
-						</Button>
-						<Button onClick={props.btn2.onClick} variant='sec'>
-							{props.btn2.text}
-						</Button>
-						<Button onClick={props.btn3.onClick} variant='pri'>
-							{props.btn3.text}
-						</Button>
+						{props.btn1 && (
+							<Button onClick={props.btn1.onClick} variant='ter'>
+								{props.btn1.text}
+							</Button>
+						)}
+						{props.btn2 && (
+							<Button onClick={props.btn2.onClick} variant='sec'>
+								{props.btn2.text}
+							</Button>
+						)}
+						{props.btn3 && (
+							<Button onClick={props.btn3.onClick} variant='pri'>
+								{props.btn3.text}
+							</Button>
+						)}
 					</>
 				)}
 				{props.variant === 'settingWithIcons' && (
 					<>
 						<GroupIcons />
-						<Button onClick={props.btn1.onClick} variant='sec'>
-							{props.btn1.text}
-						</Button>
-						<Button onClick={props.btn2.onClick} variant='pri'>
-							{props.btn2.text}
-						</Button>
+
+						{props.btn1 && (
+							<Button onClick={props.btn1.onClick} variant='sec'>
+								{props.btn1.text}
+							</Button>
+						)}
+						{props.btn2 && (
+							<Button onClick={props.btn2.onClick} variant='pri'>
+								{props.btn2.text}
+							</Button>
+						)}
+
 					</>
 				)}
-				{props.variant === 'customerInfowithIcons' && (
-					<>
-						{props.children}
-					</>
-				)}
+				{props.variant === 'customerInfowithIcons' && <>{props.children}</>}
 			</div>
 		</div>
 	);

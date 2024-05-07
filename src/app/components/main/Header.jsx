@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { NavIcon } from 'src/app/utils/icons';
 
@@ -15,11 +15,22 @@ import ViewBtn from '../optimized/Buttons/ViewBtn';
 import ChatBtn from '../optimized/Buttons/ChatBtn';
 import NotificationBtn from '../optimized/Buttons/NotificationBtn';
 import ProfileBtn from '../optimized/Buttons/ProfileBtn';
+import HeaderLoading from '../page/SchimmerLoading/HeaderLoading';
 const Header = ({ setIsOpen }) => {
 	//  hooks
+	const [showLoading, setShowLoading] = useState(true);
 	const { pathname } = useLocation();
 	const { t } = useTranslation();
 	let activeModule = '';
+
+	// loading header
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowLoading(false);
+		}, 3000);
+
+		return () => clearTimeout(timer); // Clear the timer on component unmount
+	}, []);
 	const modules = [
 		{ path: '/', name: t('Home') },
 		{ path: 'products', name: t('Products') },
@@ -45,16 +56,22 @@ const Header = ({ setIsOpen }) => {
 	// 	pathname === '/' ? t('Home') : t(pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2));
 
 	return (
-		<div className='h-[70px] px-4 flex justify-between items-center  mx-auto bg-white'>
-			<div className='flex  items-center gap-3'>
-				<button className='max-lg:hidden' onClick={setIsOpen}>
-					<NavIcon className='fill-pri-dark' />
-				</button>
-				<h2 className='title text-lg font-semibold'>{activeModule}</h2>
-			</div>
-			{/* <HeaderSearchBar /> */}
-			<ProfileInfo />
-		</div>
+		<>
+			{showLoading ? (
+				<HeaderLoading />
+			) : (
+				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white'>
+					<div className='flex  items-center gap-3'>
+						<button className='max-lg:hidden' onClick={setIsOpen}>
+							<NavIcon className='fill-pri-dark' />
+						</button>
+						<h2 className='title text-lg font-semibold'>{activeModule}</h2>
+					</div>
+					{/* <HeaderSearchBar /> */}
+					<ProfileInfo />
+				</div>
+			)}
+		</>
 	);
 };
 

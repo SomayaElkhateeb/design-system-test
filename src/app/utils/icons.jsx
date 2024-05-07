@@ -1254,7 +1254,7 @@ export function DomainIcon(props) {
 	return (
 		<svg
 			className={`w-6 h-6 ${props.className}`}
-			viewBox='0 0 24 24'
+			viewBox='0 0 26 26'
 			xmlns='http://www.w3.org/2000/svg'
 		>
 			<path d='M5.07531 17.6905L3.86411 17.7001L2 11H3.14496L4.50756 16.4487L5.98371 11H7.19492L8.56698 16.4198L9.93904 11H11.0935L9.14419 17.6905H7.92353L6.542 12.6269L5.07531 17.6905Z' />

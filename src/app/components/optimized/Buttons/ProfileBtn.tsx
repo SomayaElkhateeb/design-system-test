@@ -1,18 +1,18 @@
 import { getImageUrl } from 'src/app/utils';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import MenuOption from '../Menu/MenuOption';
+import ManageAccountCard from '../Cards/ManageAccountCard';
+
+/**
+ * ProfileBtn component represents a button that, when clicked, displays a user's profile image
+ * and opens the manage account card when clicked.
+ */
 const ProfileBtn = () => {
 	const [show, setShow] = useState(false);
-	const sortMenus = [
-		{
-			id: '1',
-			text: 'Profile',
-			onClick: () => setShow(false),
-		},
-	];
+
 	return (
 		<>
+			{/* Profile image button */}
 			<Button onClick={() => setShow(true)}>
 				<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
 					<img
@@ -23,8 +23,8 @@ const ProfileBtn = () => {
 				</button>
 			</Button>
 
-			{/* menu */}
-			{show && <MenuOption options={sortMenus} />}
+			{/* Display ManageAccountCard when show state is true */}
+			{show && <ManageAccountCard onClose={() => setShow(false)} />}
 		</>
 	);
 };

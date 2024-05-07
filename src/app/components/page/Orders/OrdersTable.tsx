@@ -16,7 +16,7 @@ import { FaArrowsRotate } from 'react-icons/fa6';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import { menuType } from '../../optimized/Buttons/ActionsComp';
 import CustomTableHeaderCheckbox from '../Customers/CustomTableHeaderChckbox';
-import BaseTable from '../Customers/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from '../Customers/CustomTableBodyChckbox';
 import { CiLocationOn } from 'react-icons/ci';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
@@ -105,8 +105,8 @@ export default function OrdersTable({
 								<p className='text-subtitle text-[.8rem]'>{e.payment_status}</p>
 							</div>
 						</TableCell>,
-						<TableCell sx={{ fontSize: '14px', fontweight: '400' }}>{e.order_status}</TableCell>,
-						<TableCell sx={{ fontSize: '14px', fontweight: '400' }}>SAR {e.total}</TableCell>,
+						<GlobalTableCell >{e.order_status}</GlobalTableCell>,
+						<GlobalTableCell >SAR {e.total}</GlobalTableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<FaArrowsRotate className='text-subtitle' />

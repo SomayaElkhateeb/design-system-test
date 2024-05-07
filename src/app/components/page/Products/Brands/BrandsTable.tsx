@@ -4,8 +4,8 @@ import { BrandsInterface } from 'src/app/interface/BrandInterface';
 
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
-import BaseTable from '../../Customers/TableLayoutGlobal/base.table';
-import { Switch, TableCell } from '@mui/material';
+import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
+import {  TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
@@ -13,6 +13,8 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 
 import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
+import { Switch } from 'src/app/components/ui/switch';
+
 export default function BrandsTable() {
 	//  hooks
 	const language = UseLanguage();
@@ -57,12 +59,7 @@ export default function BrandsTable() {
 				return {
 					item: e,
 					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.4rem] '>
 								<img src={e.img} loading='lazy' alt={e.title} />
 
@@ -71,23 +68,12 @@ export default function BrandsTable() {
 									<p className='text-subtitle text-[.8rem]'>{e.describtion}</p>
 								</div>
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.productsNo}
-						</TableCell>,
+						<GlobalTableCell>{e.productsNo}</GlobalTableCell>,
 
 						<TableCell>
-							<Switch
-								checked={e.available}
-								// onChange={handleChange}
-								inputProps={{ 'aria-label': 'controlled' }}
-							/>
+							<Switch checked={e.available} />
 						</TableCell>,
 
 						<TableCell>

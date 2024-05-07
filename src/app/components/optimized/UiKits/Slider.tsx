@@ -1,122 +1,36 @@
-// import { Splide, SplideSlide } from '@splidejs/react-splide';
-// import '@splidejs/react-splide/css';
-
-// const GetStartedCard = ({ size, slides, title }) => {
-// 	return (
-// 		<section className='mx-auto p-3'>
-// 			<h2 className='text-title font-semibold'>{title}</h2>
-// 			{size == 'mini' && (
-// 				<Splide
-// 					options={{
-// 						focus: 0,
-// 						perPage: 1,
-// 						perMove: 1,
-// 						drag: 'free',
-// 						type: 'loop',
-// 						// width: '100%',
-// 						// height: 300,
-// 						gap: '1rem',
-// 						// padding: "8rem",
-// 						snap: true,
-// 						omitEnd: true,
-// 					}}
-// 					aria-label='My Favorite Images'
-// 				>
-// 					{slides?.map((slide, index) => (
-// 						<SplideSlide key={index}>
-// 							<LinkCard {...slide} />
-// 						</SplideSlide>
-// 					))}
-// 				</Splide>
-// 			)}
-// 			{size == 'mid' && (
-// 				<Splide
-// 					options={{
-// 						focus: 0,
-// 						perPage: 2,
-// 						perMove: 1,
-// 						drag: 'free',
-// 						type: 'loop',
-// 						// width: 1250,
-// 						// height: 300,
-// 						gap: '1rem',
-// 						snap: true,
-// 						omitEnd: true,
-// 					}}
-// 					aria-label='My Favorite Images'
-// 				>
-// 					{slides?.map((slide, index) => (
-// 						<SplideSlide key={index} className='grid grid-cols-2 gap-2 '>
-// 							<Card {...slide} />
-// 						</SplideSlide>
-// 					))}
-// 				</Splide>
-// 			)}
-// 			{size == 'full' && (
-// 				<Splide
-// 					options={{
-// 						focus: 0,
-// 						perPage: 3,
-// 						perMove: 1,
-// 						drag: 'free',
-// 						type: 'loop',
-// 						// width: 1250,
-// 						// height: 300,
-// 						gap: '1rem',
-// 						snap: true,
-// 						omitEnd: true,
-// 					}}
-// 					aria-label='My Favorite Images'
-// 				>
-// 					{slides?.map((slide, index) => (
-// 						<SplideSlide key={index} className='grid grid-cols-3 gap-2 '>
-// 							<Card {...slide} />
-// 						</SplideSlide>
-// 					))}
-// 				</Splide>
-// 			)}
-// 		</section>
-// 	);
-// };
-
-// export default GetStartedCard;
-
-// const Card = ({ image, title, description }) => {
-// 	return (
-// 		<div className='w-96 h-24 flex'>
-// 			<div>
-// 				<img src={image} alt={title} className='w-40 h-24' />
-// 			</div>
-// 			<div className='pl-2'>
-// 				<h2 className='font-semibold mb-0.5 text-title'>{title}</h2>
-// 				<p className='text-subtitle'>{description}</p>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// const LinkCard = ({ image, title, description }) => {
-// 	return (
-// 		<div className={`bg-sky-400 shadow-sm rounded-lg overflow-hidden `}>
-// 			<div className='flex w-80 h-32'>
-// 				<div className='w-2/4'>
-// 					{/* <img className='w-full h-full object-cover object-center' src={image} alt={title} /> */}
-// 				</div>
-// 				<div className='full p-4'>
-// 					<h2 className='text-md font-semibold mb-2'>{title}</h2>
-// 					<p className='text-gray-700'>{description}</p>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
+import React from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useTranslation } from 'react-i18next';
 import { HiExternalLink } from 'react-icons/hi';
+import { UseLanguage } from '../../CustomHook/LanguageHook';
 
-const Slider = ({ size, slides, title }) => {
+/**
+ * Interface for each slide in the Slider component.
+ */
+interface Slide {
+	image: string;
+	title: string;
+	description: string;
+}
+
+/**
+ * Props for the Slider component.
+ */
+interface SliderProps {
+	size: string;
+	slides: Slide[];
+	title: string;
+}
+
+/**
+ * Component representing a slider with Splide.
+ * @param {SliderProps} props - Props for the Slider component.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const Slider: React.FC<SliderProps> = ({ size, slides, title }) => {
+	const language = UseLanguage();
+
 	return (
 		<section className='mx-auto p-3'>
 			<h2 className='text-title font-semibold'>{title}</h2>
@@ -132,6 +46,7 @@ const Slider = ({ size, slides, title }) => {
 					gap: '1rem',
 					snap: true,
 					omitEnd: true,
+					...(language === 'ar' && { direction: 'rtl' }),
 				}}
 				aria-label='My Favorite Images'
 			>
@@ -150,9 +65,14 @@ const Slider = ({ size, slides, title }) => {
 
 export default Slider;
 
-const Card = ({ image, title, description }) => {
+/**
+ * Component representing a card in the Slider component.
+ * @param {Slide} props - Props for the Card component.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const Card: React.FC<Slide> = ({ image, title, description }) => {
 	return (
-		<div className='w-96 h-24 flex'>
+		<div className='w-96 h-24 flex gap-3'>
 			<div>
 				<img src={image} alt={title} className='w-40 h-24' />
 			</div>
@@ -164,8 +84,14 @@ const Card = ({ image, title, description }) => {
 	);
 };
 
-const MiniCard = ({ image, title, description }) => {
+/**
+ * Component representing a mini card in the Slider component.
+ * @param {Slide} props - Props for the MiniCard component.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const MiniCard: React.FC<Slide> = ({ image, title, description }) => {
 	const { t } = useTranslation();
+
 	return (
 		<div className='flex border border-constrained rounded-md overflow-hidden '>
 			<div className='w-32 h-28'>

@@ -28,8 +28,9 @@ export default function AnalyticsPage() {
 	];
 
 	return (
-		<AnalyticsPageGuard>
-			<div className='sticky top-[70px] z-50'>
+
+		<AnalyticsPageGard>
+			<div className='sticky top-[70px] z-10'>
 				<HorizontalTabsLink tabs={tabs} path='/analytics' />
 			</div>
 			{/* AnalyticsTabs Page */}
@@ -38,5 +39,4 @@ export default function AnalyticsPage() {
 			</main>
 		</AnalyticsPageGuard>
 	);
-};
-
+}

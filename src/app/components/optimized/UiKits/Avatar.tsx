@@ -49,7 +49,11 @@ export default function Avatar({
 	const renderUserAvatar = () => (
 		<div className={`bg-sec-light ${baseStyle}`}>
 			{imageUrl ? (
-				<img src={getImageUrl(imageUrl)} alt={`${firstName} ${lastName}`} className='w-full h-full' />
+				<img
+					src={getImageUrl(imageUrl)}
+					alt={`${firstName} ${lastName}`}
+					className='w-full h-full'
+				/>
 			) : (
 				<span className='font-semibold text-sec-pressed'>{initials}</span>
 			)}

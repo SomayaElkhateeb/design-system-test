@@ -38,27 +38,26 @@ import { CheckIcon } from 'src/app/utils/icons';
  * };
  * ```
  */
-export default function CheckBox({ variant, label, handleOnChange,classes, ...props }) {
+export default function CheckBox({ variant, label, handleOnChange, classes, ...props }) {
 	function renderCheckboxIcon() {
-		if (variant === 'minus' && props.checked) {
+		if (variant === 'minus' && props.isChecked) {
 			return <p className='flex items-center justify-center w-full h-full text-white'>-</p>;
 		}
-
 		return <CheckIcon className='w-full h-full fill-white' />;
 	}
 
 	return (
-		<label className={`flex gap-2 items-center cursor-pointer ${classes}`} >
+		<label className={`flex gap-2 items-center cursor-pointer ${classes}`}>
 			<input
 				{...props}
 				type='checkbox'
-				checked={props.checked}
+				checked={props.isChecked}
 				onChange={(event) => handleOnChange(event.target.checked)}
 				className='hidden'
 			/>
 			<div
 				className={`hover:bg-sec-light w-5 h-5 border rounded ${
-					props.checked ? 'bg-success hover:bg-sec-pressed' : ''
+					props.isChecked ? 'bg-success hover:bg-sec-pressed' : ''
 				}`}
 			>
 				{renderCheckboxIcon()}

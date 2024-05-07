@@ -7,14 +7,20 @@ import React from 'react';
  * @param {string} props.lastName - The last name.
  * @param {string} [props.imageUrl] - The URL of the image to display.
  * @param {number} [props.size=40] - The size of the avatar in pixels (default is 40).
- * @param {React.CSSProperties} [props.style] - Additional styles to apply to the avatar container.
+ * @param {React.CSSProperties?} [props.style] - Additional styles to apply to the avatar container.
  * @param {string} [props.randomColor] - The hexadecimal color code for the background (optional).
  * @returns {JSX.Element} An avatar component displaying the initials or image.
  */
 
 const InitialsAvatar = ({ firstName, lastName, imageUrl, size = 40, style, randomColor }) => {
 	// Get the initials from the first name and last name
-	const initials = `${firstName.charAt(0) ?? ''}${lastName.charAt(0) ?? ''}`;
+	const initials = () => {
+		return (
+			<p className='text-sec'>
+				{firstName.charAt(0) ?? ''}{lastName.charAt(0) ?? ''}
+			</p>
+		);
+	};
 
 	const avatarStyle = {
 		width: `${size}px`,
@@ -26,17 +32,17 @@ const InitialsAvatar = ({ firstName, lastName, imageUrl, size = 40, style, rando
 
 	return (
 		<div
-			className={`bg-gray-500 rounded-full size-12 flex items-center justify-center text-white text-lg uppercase`}
+			className={`text-sec-pressed bg-sec-pressed bg-opacity-20 rounded-full size-12 flex items-center justify-center  text-lg uppercase`}
 			style={avatarStyle}
 		>
 			{imageUrl ? (
 				<img
 					src={imageUrl}
 					alt={`${firstName} ${lastName}`}
-					style={{ width: '100%', height: '100%', borderRadius: '50%' }}
+					className='w-full h-full rounded-[50%]'
 				/>
 			) : (
-				initials
+				initials()
 			)}
 		</div>
 	);

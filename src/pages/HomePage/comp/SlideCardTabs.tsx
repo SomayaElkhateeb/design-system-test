@@ -1,11 +1,7 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import { Button, Menu } from 'src/app/components/optimized';
-import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
-import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
-import { DeleteExitIcon, DownIcon, MoreIcon } from 'src/app/utils/icons';
-
+import React, { useState } from 'react';
+import ItemSlidTabs from './ItemSlidTabs';
+import Btn from './Btn';
+import { ToastContainer, toast } from 'react-toastify';
 interface Slide {
 	title: string;
 	content: JSX.Element;
@@ -16,65 +12,52 @@ interface SlideCardTabsProps {
 	sortMenus: any;
 	text: string;
 	btn: any;
+	control?: any;
 }
+/**
+ * SlideCardTabs component displays a tabbed view with multiple slides.
+ *
+ * @param {SlideCardTabsProps} props - Props for the SlideCardTabs component.
+ * @returns {JSX.Element} SlideCardTabs component.
+ */
 
 const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
-	const language = UseLanguage();
-	const { t } = useTranslation();
-	const [activeIndex, setActiveIndex] = useState<number>(0);
-	const [menu, setMenu] = useState(false);
-	const [selectedOption, setSelectedOption] = useState(language === 'ar' ? 'اليوم' : 'Today');
-	const [show, setShow] = useState(false);
-
 	const [state, setState] = useState({
-		showPopup: false,
-		selectedItem: [],
+		activeIndex: 0,
+		showDeletePopup: false,
+		deletingItemId: null,
 	});
 
-	const { showPopup, selectedItem } = state;
-	const sortMenus = [
-		{ id: 1, text: t('Today') },
-		{ id: 2, text: t('Last week') },
-		{ id: 3, text: t('Last month') },
-	];
+	const { activeIndex, showDeletePopup, deletingItemId } = state;
 
-	const handleSelect = (selectedOption) => {
-		setSelectedOption(selectedOption);
+	const handleDeleteItem = (id: number) => {
+		console.log('Deleting item:', id);
+		setState({ ...state, showDeletePopup: false });
+		toast.error('The product is deleted', {
+			position: 'bottom-right',
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: false,
+			draggable: false,
+			progress: undefined,
+			theme: 'colored',
+		});
 	};
 
-	const option = [
+	const options = [
 		{
 			id: 1,
-			text: t('Delete'),
-			icon: <DeleteExitIcon />,
-			onClick: () => setState({ ...state, showPopup: true }),
+			text: 'delete',
 		},
 	];
 
-	// delete item
-	const handleDeleteItem = (idToDelete: number) => {
-		const updatedItems = selectedItem.filter((el) => el.id !== idToDelete);
-		setState({
-			...state,
-			selectedItem: updatedItems,
-			showPopup: false,
-		});
-	};
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines p-5 h-96 flex flex-col'>
-			<header className='flex justify-between items-center mb-2'>
+			<header className='flex justify-between items-center space-y-2'>
 				<h2 className='text-title font-semibold text-lg'>{props.text}</h2>
 
-				{props.btn ? (
-					<>
-						<Button variant='link' RightIcon={DownIcon} onClick={() => setMenu(true)}>
-							{selectedOption}
-						</Button>
-						{menu && (
-							<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
-						)}
-					</>
-				) : null}
+				{props.btn ? <Btn /> : null}
 			</header>
 			<div className='flex justify-between items-center border-b border-borders-lines'>
 				{props.slides.map((slide, index) => (
@@ -82,7 +65,7 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 						key={index}
 						title={slide.title}
 						active={index === activeIndex}
-						onClick={() => setActiveIndex(index)}
+						onClick={() => setState({ ...state, activeIndex: index })}
 					/>
 				))}
 			</div>
@@ -97,35 +80,17 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 						<div key={index} className={`${index === activeIndex ? 'block' : 'hidden'}`}>
 							{Array.isArray(slide.content) ? (
 								slide.content.map((item) => {
-									const { id, title, img, qty, price, subtitle } = item || {};
 									return (
-										<div key={id} className='flex justify-between mb-2'>
-											<div className='flex gap-2'>
-												<div className='w-[3.625rem] h-[3.625rem] border border-light-3 rounded'>
-													<img src={img} className='w-full h-full' />
-												</div>
-
-												<div>
-													<h4 className='text-title font-semibold text-sm'>{title}</h4>
-													<p className='text-subtitle text-sm'>{subtitle}</p>
-													<p className='text-title text-sm'>Qty: {qty}</p>
-												</div>
-											</div>
-
-											<div className='flex flex-col justify-between relative'>
-												<span className='flex justify-end cursor-pointer'>
-													<MoreIcon onClick={() => setShow(true)} />
-												</span>
-												<p className='text-title text-sm'>SAR {price}</p>
-											</div>
-											{show && <MenuOption options={option} />}
-											{showPopup && (
-												<PopupDelete
-													onClose={() => setState({ ...state, showPopup: false })}
-													onDelete={() => handleDeleteItem(id)}
-												/>
-											)}
-										</div>
+										<ItemSlidTabs
+											key={item.id}
+											{...item}
+											options={options}
+											handleDeleteItem={handleDeleteItem}
+											showDeletePopup={showDeletePopup}
+											deletingItemId={deletingItemId}
+											setState={setState}
+											state={state}
+										/>
 									);
 								})
 							) : (
@@ -135,9 +100,11 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 					))}
 				</div>
 			)}
+			<ToastContainer />
 		</div>
 	);
 };
+
 export default SlideCardTabs;
 
 interface TabProps {

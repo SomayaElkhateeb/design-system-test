@@ -14,15 +14,12 @@ const LabelIcon = ({ text, icon, textColor, backgroundColor }) => {
 
 	return (
 		<div
-			className={`flex items-center px-3 py-1 rounded-full text-white mt-2`}
+			className={`flex items-center px-3 py-1 gap-[.3rem] rounded-full text-white `}
 			style={{ backgroundColor }}
 		>
-			{icon}
+			{icon && icon}
 			{text && (
-				<span
-					className='ml-1 text-sm capitalize text-center items-center flex justify-center m-auto'
-					style={{ color: textColor }}
-				>
+				<span className={` text-sm capitalize`} style={{ color: textColor }}>
 					{t(text)}
 				</span>
 			)}

@@ -8,9 +8,10 @@ const RatedCard = (props: {
 	price: number;
 	priceUnit: string;
 	description: string;
+	onClick?:()=>void
 }): JSX.Element => {
 	return (
-		<div className='bg-white shadow-md md:w-full sm:w-[90%]  rounded-lg overflow-hidden mx-auto  relative'>
+		<div onClick={props.onClick}  className='bg-white cursor-pointer shadow-md md:w-full sm:w-[90%]  rounded-lg overflow-hidden mx-auto  relative'>
 			<div className='flex items-center justify-center space-x-1 bg-white p-1  rounded-md absolute top-36 left-5'>
 				<GoStarFill size={18} color='gold' />
 				<span className='text-sm'>

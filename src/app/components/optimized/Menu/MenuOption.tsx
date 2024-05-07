@@ -1,21 +1,35 @@
 import React from 'react';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 
-const MenuOption = ({ options }: { options: any[] }) => {
+/**
+ * Component representing a menu option list.
+ * @param {MenuOptionProps} props - Props for the MenuOption component.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const MenuOption = ({
+	options,
+	onSelect,
+	selectedOption,
+}: {
+	options: any;
+	onSelect: any;
+	selectedOption: any;
+}) => {
 	const language = UseLanguage();
+
 	return (
 		<ul
-			className={`rounded shadow-md p-2 flex flex-col min-w-48 bg-white w-fit absolute top-16 ${
+			className={`rounded shadow-md py-2 flex flex-col absolute z-50 bg-white min-w-40 top-10 ${
 				language === 'ar' ? 'left-0' : 'right-0'
-			}  z-50`}
+			} `}
 		>
-			{options.map((option) => (
+			{options.map((option: any) => (
 				<MenuItem
 					key={option.id}
 					text={option.text}
 					icon={option.icon}
-					onClick={option.onClick}
-					id={option.id}
+					onClick={() => onSelect(option.text)}
+					selected={selectedOption === option.text}
 				/>
 			))}
 		</ul>
@@ -24,23 +38,39 @@ const MenuOption = ({ options }: { options: any[] }) => {
 
 export default MenuOption;
 
+/**
+ * Props for the MenuItem component.
+ */
 interface MenuItemProps {
 	text: string;
-	icon: React.ReactNode;
 	onClick: () => void;
-	id: string;
+	selected: boolean;
+	icon?: React.ReactNode;
 }
 
-function MenuItem({ text, icon, onClick, id }: MenuItemProps) {
+/**
+ * Component representing a menu item.
+ * @param {MenuItemProps} props - Props for the MenuItem component.
+ * @returns {JSX.Element} - Rendered component.
+ */
+function MenuItem(props: MenuItemProps) {
 	return (
 		<li
-			onClick={onClick}
-			className='flex text-title cursor-pointer gap-3 
-            items-center px-4 py-3 hover:bg-light-3 transition-all'
-			id={id}
+			onClick={props.onClick}
+			className={`flex text-title cursor-pointer justify-between items-center hover:bg-sec-light px-4 py-3 transition-all ${
+				props.selected ? 'bg-sec-light' : ''
+			}`}
 		>
-			{icon}
-			{text}
+			<span
+				className={`text-sm ${
+					props.selected
+						? 'text-sec-pressed flex gap-[.5rem] items-center'
+						: 'flex gap-[.5rem] items-center'
+				}`}
+			>
+				{props.icon}
+				{props.text}
+			</span>
 		</li>
 	);
 }

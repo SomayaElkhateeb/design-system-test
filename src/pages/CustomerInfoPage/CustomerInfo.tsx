@@ -25,7 +25,7 @@ export default function CustomerInfo() {
 		<div className=' container mx-auto py-[1rem]'>
 			<div className='flex flex-col gap-[1.6rem]'>
 				{/*  top section */}
-				<HeaderSettings variant='customerInfowithIcons' to={-1} title={t('Customer Info')}>
+				<HeaderSettings variant='customerInfowithIcons'  title={t('Customer Info')}>
 					<div className=' flex  items-center gap-[.8rem] '>
 						<FaRegEdit
 							className='cursor-pointer'

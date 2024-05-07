@@ -25,7 +25,7 @@ export default function AppsCard(props) {
 			break;
 		default:
 			backgroundColor = 'gray';
-			textColor = 'black';
+			textColor = 'white';
 			break;
 	}
 
@@ -40,17 +40,16 @@ export default function AppsCard(props) {
 			<div className='size-[60px]  min-w-[60px] flex items-center'>
 				<img src={props.imageUrl} className='object-cover w-full' />
 			</div>
-			<div>
+			<div className='flex flex-col gap-[1rem]'>
 				<h3 className='mb-2 title'>{props.name}</h3>
 				<p className='paragraph text-subtitle'>{props.description}</p>
-				<div className='flex'>
-					<LabelIcon
-						text={props.status}
-						backgroundColor={backgroundColor}
-						textColor={textColor}
-						icon={props.status === 'installed' ? <FaCheck size={10} color='#0B47D9' /> : null}
-					/>
-				</div>
+
+				<LabelIcon
+					text={props.status}
+					backgroundColor={backgroundColor}
+					textColor={textColor}
+					icon={props.status === 'installed' ? <FaCheck size={10} color='#0B47D9' /> : null}
+				/>
 			</div>
 		</Link>
 	);

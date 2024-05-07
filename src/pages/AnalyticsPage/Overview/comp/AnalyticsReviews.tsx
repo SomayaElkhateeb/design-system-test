@@ -1,20 +1,14 @@
 import { Rating } from '@mui/material';
-import Avatar from './Avatar';
+import Avatar from '../../../../app/components/optimized/UiKits/Avatar';
 import SlideCard from 'src/app/components/page/Cards/SlideCard';
 import { useTranslation } from 'react-i18next';
-
-interface UserReview {
-	firstName: string;
-	lastName: string;
-	date: string;
-	rating: number;
-	review: string;
-}
+import AverageRating from './AverageRating';
+import { UserReviewInterface } from './UsersReview';
 
 interface ReviewData {
 	averageRating: number;
 	totalReviews: number;
-	recentReviews: UserReview[];
+	recentReviews: UserReviewInterface[];
 }
 
 interface AnalyticsReviewsProps {
@@ -22,7 +16,8 @@ interface AnalyticsReviewsProps {
 }
 
 export default function AnalyticsReviews({ data }: AnalyticsReviewsProps) {
-	const {t} = useTranslation()
+	//  hooks
+	const { t } = useTranslation();
 
 	return (
 		<div>
@@ -38,25 +33,8 @@ export default function AnalyticsReviews({ data }: AnalyticsReviewsProps) {
 	);
 }
 
-interface AverageRating {
-	averageRating: number;
-	totalReviews: number;
-}
-
-function AverageRating({ averageRating, totalReviews }: AverageRating) {
-	return (
-		<div className='grid gap-3 mb-5'>
-			<div className='flex items-end'>
-				<h2 className='text-3xl text-title'>{averageRating}</h2>
-				<span className='subtitle text-lg'>&nbsp; ({totalReviews})</span>
-			</div>
-			<Rating precision={0.5} value={averageRating} readOnly />
-		</div>
-	);
-}
-
-function UsersReview({ firstName, lastName, date, rating, review }: UserReview) {
-	const {t} = useTranslation()
+function UsersReview({ firstName, lastName, date, rating, review }: UserReviewInterface) {
+	const { t } = useTranslation();
 
 	return (
 		<div className='grid gap-3 mb-4'>

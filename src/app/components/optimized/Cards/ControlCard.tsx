@@ -4,6 +4,7 @@ import { Button, ToggleSwitch } from 'src/app/components/optimized';
 
 import { getImageUrl } from 'src/app/utils';
 import { AddFillIcon, EditIcon, LinkIcon } from 'src/app/utils/icons';
+import { Switch } from '../../ui/switch';
 // interface Platform {
 // 	id: number;
 // 	imageUrl: string;
@@ -92,7 +93,7 @@ export default function ControlCard({ platform, onOpenPopup, isActive }) {
 								Add ID
 							</Button>
 							<span className='mt-5'>
-								<ToggleSwitch checked />
+							<Switch checked/>
 							</span>
 						</div>
 					) : (

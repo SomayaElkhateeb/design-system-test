@@ -8,6 +8,12 @@ import { useTranslation } from 'react-i18next';
 import CustomersTable from './comp/CustomersTable';
 import { getNumericValue, parseDate } from 'src/app/utils';
 
+export interface AnaylticesCustomer {
+	day: string;
+	new_customers: number;
+	purchasing_customers: string;
+	customer_groups: string;
+}
 const Customers = () => {
 	const { t } = useTranslation();
 
@@ -22,7 +28,10 @@ const Customers = () => {
 		{ text: t('Customer groups Ascending') },
 	];
 
-	const customersSortFunctions: Record<string, (a: any, b: any) => number> = {
+	const customersSortFunctions: Record<
+		string,
+		(a: AnaylticesCustomer, b: AnaylticesCustomer) => number
+	> = {
 		[t('Date Added')]: (a, b) => parseDate(b.day) - parseDate(a.day),
 		[t('Date (Oldest)')]: (a, b) => parseDate(a.day) - parseDate(b.day),
 		[t('New customers Descending')]: (a, b) => b.new_customers - a.new_customers,
@@ -31,24 +40,18 @@ const Customers = () => {
 			getNumericValue(b.purchasing_customers) - getNumericValue(a.purchasing_customers),
 		[t('Purchasing customers Ascending')]: (a, b) =>
 			getNumericValue(a.purchasing_customers) - getNumericValue(b.purchasing_customers),
-		[t('Customer groups Descending')]: (a, b) => b.customer_groups - a.customer_groups,
-		[t('Customer groups Ascending')]: (a, b) => a.customer_groups - b.customer_groups,
+		[t('Customer groups Descending')]: (a, b) =>
+			getNumericValue(b.customer_groups) - getNumericValue(a.customer_groups),
+		[t('Customer groups Ascending')]: (a, b) =>
+			getNumericValue(a.customer_groups) - getNumericValue(b.customer_groups),
 	};
-	const {
-		arrange,
-		tableData,
-		handleArrangeChange,
-		handleComparisonChange,
-		selectedComparisonOption,
-	} = useAnalyticsData(data.customersAnalyticsTable, customersSortFunctions);
+	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
+		useAnalyticsData<AnaylticesCustomer>(data.customersAnalyticsTable, customersSortFunctions);
 
 	return (
 		<div className='p-3 grid gap-5'>
-			<CompareBar
-				selectedComparisonOption={selectedComparisonOption}
-				handleComparisonChange={handleComparisonChange}
-			/>
-			<ColumnChart />
+			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
+			<ColumnChart percentage='5' />
 			<AnalyticsTableActions
 				data={tableData}
 				sortMenus={customersSortMenus}

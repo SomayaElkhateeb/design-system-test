@@ -39,7 +39,7 @@ const OrdersLayout = () => {
 	];
 	return (
 		<div>
-			<div className='sticky top-[70px] z-50'>
+			<div className='sticky top-[70px] z-10'>
 				<HorizontalTabsLink tabs={tabs} path='/orders' />
 			</div>
 			<Outlet />

@@ -17,7 +17,7 @@ const SlideCardTabs = ({ slides, title }) => {
 
 	return (
 		<div className='bg-white rounded-xl border border-borders-lines p-5 h-full min-w-[20rem] w-full grid gap-3'>
-			<div className='flex justify-between items-center '>
+			<div className='flex justify-between items-center mb-3'>
 				<h2 className='title text-lg capitalize'>{title}</h2>
 			</div>
 			<div className='flex items-center justify-between border-b border-borders-lines '>

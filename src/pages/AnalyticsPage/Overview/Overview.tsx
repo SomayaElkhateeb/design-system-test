@@ -3,16 +3,14 @@ import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
 import AnalyticsComparison from './comp/AnalyticsComparison';
 import data from '../comp/data.json';
 import AnalyticsReports from './comp/AnalyticsReports';
-import OrdersCard from './comp/OrdersCard';
+// import OrdersCard from '../../../app/components/optimized/Cards/OrderCard/OrdersCard';
 import ProductsAnalyticsCard from './comp/ProductsAnalyticsCard';
 import AnalyticsReviews from './comp/AnalyticsReviews';
 import { useTranslation } from 'react-i18next';
-
-// style={{
-// 				gridTemplateColumns: 'repeat(auto-fill, minmax(22rem, 1fr))',
-// 			}}
+import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 
 const Overview = () => {
+	//  hooks
 	const { t } = useTranslation();
 
 	return (
@@ -77,7 +75,7 @@ const Overview = () => {
 				{/* 4 */}
 				<div className='grid grid-cols-12 gap-4 max-lg:grid-rows-2 col-span-1'>
 					<div className='col-span-12 lg:col-span-7 xl:col-span-8'>
-						<OrdersCard latestOrders={data.latestOrders} />
+						<OrdersCard latestOrders={data.latestOrders} title={t('Latest Orders')} />
 					</div>
 					<div className='col-span-6 lg:col-span-5 xl:col-span-4'>
 						<ProductsAnalyticsCard data={data} />

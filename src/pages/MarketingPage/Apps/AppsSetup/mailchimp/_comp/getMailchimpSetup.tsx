@@ -3,6 +3,7 @@ import platforms from '../../_comp/data.json';
 import MailchimpAudienceSelect from '../tabs/MailchimpAudienceSelect';
 import MailchimpBeforeInstalling from '../tabs/MailchimpBeforeInstalling';
 import MailchimpCreateAccount from '../tabs/MailchimpCreateAccount';
+import { BeforeInstallingNote } from '../../sendgrid/_comp/getSendgridSetup';
 
 interface MailchimpTab {
 	title: string;
@@ -10,9 +11,9 @@ interface MailchimpTab {
 }
 
 interface MailchimpSetupData {
-	mailchimp_title: string;
+	title: string;
 	mega_title: string;
-	mailchimp_settings: {
+	settings: {
 		settings_title: string;
 		mailchimp_intro: {
 			title: string;
@@ -21,7 +22,11 @@ interface MailchimpSetupData {
 		}[];
 		before_installing: {
 			title: string;
-			notes: string[];
+			note_1: BeforeInstallingNote;
+			note_2: BeforeInstallingNote;
+			note_3: BeforeInstallingNote;
+			note_4: BeforeInstallingNote;
+			note_5: BeforeInstallingNote;
 		};
 		create_account: {
 			title: string;
@@ -36,7 +41,7 @@ interface MailchimpSetupData {
 			}[];
 		};
 	};
-	mailchimp_tabs: MailchimpTab[];
+	tabs: MailchimpTab[];
 }
 
 export const getMailchimpSetup = (platform: string): MailchimpSetupData | null => {
@@ -44,10 +49,10 @@ export const getMailchimpSetup = (platform: string): MailchimpSetupData | null =
 
 	if (!platformData) return null;
 
-	const { mailchimp_title, mega_title, mailchimp_settings } = platformData;
-	const { create_account, before_installing, audience_select } = mailchimp_settings;
+	const { title, mega_title, settings } = platformData;
+	const { create_account, before_installing, audience_select } = settings;
 
-	const mailchimp_tabs: MailchimpTab[] = [
+	const tabs: MailchimpTab[] = [
 		{
 			title: before_installing.title,
 			content: <MailchimpBeforeInstalling data={before_installing} />,
@@ -62,5 +67,5 @@ export const getMailchimpSetup = (platform: string): MailchimpSetupData | null =
 		},
 	];
 
-	return { mailchimp_title, mega_title, mailchimp_settings, mailchimp_tabs };
+	return { title, mega_title, settings, tabs };
 };

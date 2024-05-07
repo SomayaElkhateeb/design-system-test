@@ -5,7 +5,7 @@ import ActionHandler from 'src/app/utils/ActionMethods';
 import { useTranslation } from 'react-i18next';
 
 interface AnalyticsTableActionsProps {
-	sortMenus: { id: string; text: string }[];
+	sortMenus: { id?: string; text: string }[];
 	onSelectOption: (option: string) => void;
 	selectedOption: string;
 	data: any[];
