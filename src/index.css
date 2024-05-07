@@ -136,7 +136,7 @@
 	}
 
 	.flex-col-top-section-pages {
-		@apply flex flex-col gap-[1rem];
+		@apply flex flex-col gap-[1.2rem];
 	}
 
 	.iconClass {
@@ -188,7 +188,7 @@
 	}
 
 	.title {
-		@apply font-semibold text-sm text-title;
+		@apply font-semibold text-[1rem] text-title;
 	}
 
 	.subtitle {

@@ -3,10 +3,11 @@ import StatsCard from 'src/app/components/optimized/Cards/StatsCard';
 import AnalyticsComparison from './comp/AnalyticsComparison';
 import data from '../comp/data.json';
 import AnalyticsReports from './comp/AnalyticsReports';
-import OrdersCard from '../../../app/components/optimized/Cards/OrderCard/OrdersCard';
+// import OrdersCard from '../../../app/components/optimized/Cards/OrderCard/OrdersCard';
 import ProductsAnalyticsCard from './comp/ProductsAnalyticsCard';
 import AnalyticsReviews from './comp/AnalyticsReviews';
 import { useTranslation } from 'react-i18next';
+import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 
 const Overview = () => {
 	//  hooks

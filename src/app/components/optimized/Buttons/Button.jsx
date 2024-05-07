@@ -5,10 +5,11 @@ const handleButtonVariant = cva(undefined, {
 	variants: {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize gap-1',
-			secondary: 'btn-sec flex items-center gap-1 p-2',
-			primary: 'text-white bg-primary flex items-center p-2 gap-2 rounded',
+			secondary: 'btn-sec flex items-center gap-1',
+			primary: 'btn-pri text-white bg-primary flex items-center gap-2 rounded ',
 			tertiary: 'text-title text-sm capitalize font-semibold flex items-center gap-1.5',
-			LearnButton: 'text-[.8rem] text-white rounded-[.2rem]    border border-white bg-transparent flex items-center gap-1.5',
+			LearnButton:
+				'text-[.8rem] text-white rounded-[.2rem]    border border-white bg-transparent flex items-center gap-1.5',
 			default: 'relative btn-pri flex px-1 items-center ',
 		},
 	},
@@ -19,11 +20,11 @@ const handleIconVariant = cva(undefined, {
 		//  mt-1
 		variant: {
 			link: 'fill-primary p-0.5 ',
-			secondary: 'fill-pri-dark h-3 w-3 ml-1',
-			tertiary: 'fill-pri-dark ml-1 h-3 w-3',
+			secondary: 'fill-pri-dark h-3 w-3 ',
+			tertiary: 'fill-pri-dark h-3 w-3',
 			primary: 'fill-white',
 			default: 'fill-white',
-			LearnButton:""
+			LearnButton: '',
 		},
 	},
 	defaultVariants: { variant: 'default' },
@@ -36,7 +37,7 @@ const handleTextVariant = cva(undefined, {
 			tertiary: 'fill-pri-dark',
 			primary: 'fill-white',
 			default: 'mx-1 text-sm',
-			LearnButton:""
+			LearnButton: '',
 		},
 	},
 	defaultVariants: { variant: 'default' },

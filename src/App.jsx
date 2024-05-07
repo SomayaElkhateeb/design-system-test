@@ -25,7 +25,11 @@ import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
+
 import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
+
+import AppsTabs from './pages/AppsPage/comp/AppsTabs';
+
 
 const router = createBrowserRouter([
 	{
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <HomePage /> },
-			{ path: '/apps', element: <AppsPage /> },
+			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
 			{ path: '/pages', element: <PagesPage /> },
 			{ path: '/store', element: <StorePage /> },
 			{ path: '/orders', element: <OrdersPage /> },
@@ -68,7 +72,7 @@ const router = createBrowserRouter([
 				element: <AnalyticsPage />,
 				children: [{ path: ':tab', element: <AnalyticsTabs /> }],
 			},
-			{ path: '/apps/:platform', element: <SocialAppDetails /> },
+			{ path: '/apps/app_store/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 			{
 				path: '/settings/:config',
