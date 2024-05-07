@@ -3,6 +3,7 @@ import { TrialBanner } from 'src/app/components/optimized';
 import { settingsCards } from './comp/data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
 import SettingsLoading from 'src/app/components/page/SchimmerLoading/SettingsLoading';
+import GeneralSettings from './comp/GeneralSettings/GeneralSettings';
 
 /**
  * SettingsPage component represents the settings page of the application.
@@ -45,6 +46,7 @@ const SettingsPage = () => {
 				</div>
 			)}
 		</>
+		// <GeneralSettings />
 	);
 };
 
