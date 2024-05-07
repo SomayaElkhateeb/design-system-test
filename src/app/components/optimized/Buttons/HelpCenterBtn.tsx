@@ -14,9 +14,9 @@ const HelpCenterBtn = () => {
 		<>
 			{/* Help center icon button */}
 			<Button onClick={() => setShow(true)}>
-				<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
+				<span className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
 					<FaqIcon />
-				</button>
+				</span>
 			</Button>
 
 			{/* Display HelpCenterCard when show state is true */}

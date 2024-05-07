@@ -14,9 +14,9 @@ const ViewBtn = () => {
 		<>
 			{/* View icon button */}
 			<Button onClick={() => setShow(true)}>
-				<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
+				<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
 					<ViewIcon />
-				</button>
+				</p>
 			</Button>
 
 			{/* Display ManageAccountCard when show state is true */}

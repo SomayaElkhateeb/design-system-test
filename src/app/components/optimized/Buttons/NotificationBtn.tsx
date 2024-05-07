@@ -14,11 +14,11 @@ const NotificationBtn = () => {
 		<>
 			{/* Notification icon button */}
 			<Button onClick={() => setShow(true)}>
-				<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center relative'>
+				<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center relative'>
 					{/* Notification dot */}
 					<span className='absolute p-1 rounded-full bg-error top-1 right-1'></span>
 					<NotifiIcon />
-				</button>
+				</p>
 			</Button>
 
 			{/* Display NotificationsCard when show state is true */}

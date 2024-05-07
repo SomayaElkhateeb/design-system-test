@@ -1,9 +1,9 @@
 import {
-	CustomersIcon,
-	OrdersIcon,
-	ProductsIcon,
-	SearchIcon,
-	StoresIcon,
+	// CustomersIcon,
+	// OrdersIcon,
+	// ProductsIcon,
+	// SearchIcon,
+	// StoresIcon,
 	SettingsIcon,
 	ShippingIcon,
 	PaymentIcon,
@@ -21,7 +21,7 @@ import { TfiWorld } from 'react-icons/tfi';
 const settingsCards = [
 	{
 		id: 1,
-		to: '/',
+		to: 'generalSettings',
 		Icon: SettingsIcon,
 		title: 'General settings',
 		description: 'e.g., store name, logo, address...',
