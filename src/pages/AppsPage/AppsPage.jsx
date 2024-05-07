@@ -1,11 +1,9 @@
-import ConversationCard from 'src/app/components/optimized/Cards/ConversationCard';
-import SidebarLoading from 'src/app/components/page/SchimmerLoading/SidebarLoading';
+import AddDiscAndCoupLoading from 'src/app/components/page/SchimmerLoading/AddDiscAndCoupLoading';
 
 const AppsPage = () => {
 	return (
 		<div>
-			{/* <SidebarLoading /> */}
-			<ConversationCard />
+			<AddDiscAndCoupLoading />
 		</div>
 	);
 };

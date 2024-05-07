@@ -52,7 +52,7 @@ const HomePage = () => {
 			{showLoading ? (
 				<HomeLoading />
 			) : (
-				<div className='w-full  px-4 py-6'>
+				<div className='w-full px-4 py-6'>
 					<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1'>
 						<div className='col-span-2'>
 							<Setups />

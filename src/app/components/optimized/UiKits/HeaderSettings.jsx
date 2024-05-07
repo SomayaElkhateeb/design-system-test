@@ -97,11 +97,7 @@ export default function HeaderSettings(props) {
 						</Button>
 					</>
 				)}
-				{props.variant === 'customerInfowithIcons' && (
-					<>
-						{props.children}
-					</>
-				)}
+				{props.variant === 'customerInfowithIcons' && <>{props.children}</>}
 			</div>
 		</div>
 	);

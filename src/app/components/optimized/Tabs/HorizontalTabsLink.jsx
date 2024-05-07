@@ -29,13 +29,13 @@ export default function HorizontalTabsLink(props) {
 		// 		</>
 		// 	);
 		// } else {
-			return<p>{t(tab.charAt(0).toUpperCase() + tab.slice(1))}</p>
+		return <p>{t(tab.charAt(0).toUpperCase() + tab.slice(1))}</p>;
 		// }
 	};
 	return (
 		<div>
 			<div className='bg-white border-b border-borders-lines '>
-				<ul className='flex flex-wrap font-medium text-center  ml-[18px]'>
+				<ul className='flex flex-wrap font-medium text-center ml-[18px]'>
 					{props.tabs.map((tab) => (
 						<li key={tab} className='mr-2'>
 							<Link
