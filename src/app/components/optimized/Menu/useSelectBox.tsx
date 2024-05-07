@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 const useSelectBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("");
+	const [selectedOption, setSelectedOption] = useState('');
 
-	const handleSelect = (option:string) => {
+	const handleSelect = (option: string) => {
 		setSelectedOption(option);
 		setIsOpen(false);
 	};
@@ -13,7 +13,7 @@ const useSelectBox = () => {
 		setIsOpen(!isOpen);
 	};
 
-	const handleClickOutside = (event:any) => {
+	const handleClickOutside = (event: any) => {
 		if (!event.target.closest('.select-box')) {
 			setIsOpen(false);
 		}

@@ -144,8 +144,12 @@ export const english = {
 	Category: 'Category',
 	'Add Category Name': 'Add Category Name',
 	'Category List': 'Category List',
-	Visibility: 'Visibility',
-	'Add Page': 'Add Page',
+
+	"Visibility": "Visibility",
+	"Add Page": "Add Page",
+	"Add new item": "Add new item",
+	"Service details": "Service details",
+
 	'change category visibility to customers': 'change category visibility to customers',
 	edit: 'edit',
 	Name: 'Name',

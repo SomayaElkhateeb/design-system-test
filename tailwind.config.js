@@ -28,7 +28,7 @@ module.exports = {
 
 				//! Secondary Colors
 				secondary: '#55C397',
-				'sec-dark': '#004328', //secondary-dark
+				'-darseck': '#004328', //secondary-dark
 				'sec-pressed': '#3E8F6E',
 				'sec-hover': '#49A882',
 				'sec-light': '#EEF9F5',

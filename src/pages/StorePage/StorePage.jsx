@@ -45,7 +45,6 @@ const StorePage = () => {
 			<div className='container mx-auto'>
 				<HeaderSettings
 					variant='settingOneBtn'
-					to={-1}
 					title={ThemeName}
 					btn1={{ text: t('Apply template'), onClick: () => {} }}
 				/>

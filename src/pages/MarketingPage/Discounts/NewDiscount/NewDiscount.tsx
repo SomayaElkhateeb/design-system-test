@@ -85,6 +85,7 @@ const NewDiscount = () => {
 		return () => clearTimeout(timer); // Clear the timer on component unmount
 	}, []);
 	return (
+
 		<>
 			{showLoading ? (
 				<AddDiscAndCoupLoading />
@@ -111,6 +112,7 @@ const NewDiscount = () => {
 							</div>
 						</div>
 					</Form>
+
 				</div>
 			)}
 		</>

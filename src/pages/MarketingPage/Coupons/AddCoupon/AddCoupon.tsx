@@ -65,6 +65,7 @@ const AddCoupon = () => {
 	}, []);
 
 	return (
+
 		<>
 			{showLoading ? (
 				<AddDiscAndCoupLoading />
@@ -98,6 +99,7 @@ const AddCoupon = () => {
 				</>
 			)}
 		</>
+
 	);
 };
 
