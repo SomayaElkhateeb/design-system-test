@@ -117,15 +117,14 @@
 }
 
 @layer components {
-
-	.serviceDetails-sharedClass{
-		@apply border rounded-[.6rem] bg-white border-[constrained]
+	.serviceDetails-sharedClass {
+		@apply border rounded-[.6rem] bg-white border-[constrained];
 	}
 	.customer-border {
 		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-[constrained] flex flex-col;
 	}
-	.splide__pagination__page{
-		background: transparent !important
+	.splide__pagination__page {
+		background: transparent !important;
 	}
 
 	.flex-row-global {
@@ -219,8 +218,8 @@
 	.page-container {
 		@apply w-full 2xl:w-11/12 mx-auto;
 	}
-	.custom-red-toast {
-		@apply bg-error text-white;
+	.global-cards {
+		@apply bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1.5rem];
 	}
 }
 

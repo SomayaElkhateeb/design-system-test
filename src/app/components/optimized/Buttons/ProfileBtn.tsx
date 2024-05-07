@@ -14,13 +14,13 @@ const ProfileBtn = () => {
 		<>
 			{/* Profile image button */}
 			<Button onClick={() => setShow(true)}>
-				<button className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
+				<div className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
 					<img
 						src={getImageUrl('images/profile.png')}
 						alt='logo'
 						className=' object-cover h-full '
 					/>
-				</button>
+				</div>
 			</Button>
 
 			{/* Display ManageAccountCard when show state is true */}
