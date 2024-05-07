@@ -216,6 +216,9 @@
 	.page-container {
 		@apply w-full 2xl:w-11/12 mx-auto;
 	}
+	.custom-red-toast {
+		@apply bg-error text-white;
+	}
 }
 
 /* remove all default Webkit search field styling */
