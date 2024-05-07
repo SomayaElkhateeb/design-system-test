@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import CompareButton from 'src/app/components/optimized/UiKits/CompareButton';
-import { comparisonMenus } from 'src/app/utils/constants';
 import { InputRow } from 'src/app/components/optimized';
 import { SearchIcon } from 'src/app/utils/icons';
 import Avatar from './Avatar';

@@ -22,7 +22,7 @@ interface SocialAppData {
 }
 const SocialAppDetails: React.FC = () => {
 	const { platform } = useParams<string>();
-
+	
 	const [socialPlatform, setSocialPlatform] = useState<SocialAppData | null>(null);
 	const navigate = useNavigate();
 	const { t } = useTranslation();
