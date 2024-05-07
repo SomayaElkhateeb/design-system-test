@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const MarketingLayout = () => {
-
 	const tabs = [
 		{
 			name: 'Apps',
@@ -23,14 +22,13 @@ const MarketingLayout = () => {
 	];
 
 	return (
-		<div>
-			<div className='sticky top-[70px] z-10'>
+		<div className='flex-col-top-section-pages'>
+			<div className='Sticky_header'>
 				<HorizontalTabsLink tabs={tabs} path='/marketing' />
 			</div>
 			<Outlet />
 		</div>
 	);
-
 };
 
 export default MarketingLayout;

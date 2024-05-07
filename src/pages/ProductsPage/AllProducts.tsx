@@ -78,7 +78,7 @@ export default function AllProducts() {
 	];
 
 	return (
-		<div className=' container mx-auto my-[0.8rem]'>
+		<div className=' container mx-auto '>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSection verticalCard={verticalCard} setVerticalCard={setVerticalCard} />

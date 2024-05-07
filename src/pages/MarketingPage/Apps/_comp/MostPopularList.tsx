@@ -8,8 +8,8 @@ import BigAppsCard from './BigAppsCard';
 const MostPopularList: React.FC = () => {
 	const { t } = useTranslation();
 	return (
-		<>
-			<div className='mb-5'>
+		<div className='flex-col-top-section-pages gap-[.5rem]'>
+			<div className='flex-col-top-section-pages gap-[.25rem]'>
 				<h2 className='text-lg title'>{t('Most popular')}</h2>
 				<p className='paragraph text-subtitle'>
 					{t('For more information about setup guide')}{' '}
@@ -23,7 +23,7 @@ const MostPopularList: React.FC = () => {
 					<BigAppsCard key={app.id} {...app} />
 				))}
 			</div>
-		</>
+		</div>
 	);
 };
 
