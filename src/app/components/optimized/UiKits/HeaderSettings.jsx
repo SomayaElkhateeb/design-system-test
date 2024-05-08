@@ -16,6 +16,7 @@ import { IoIosArrowForward } from 'react-icons/io';
  * to?: string;
  * onClick?:()=>void
  * children?:React.ReactNode
+ * submit?:boolean
  * }} props
  */
 export default function HeaderSettings(props) {
@@ -80,7 +81,11 @@ export default function HeaderSettings(props) {
 				{props.variant === 'settingTwoBtns' && (
 					<>
 						{props.btn1 && (
-							<Button onClick={props.btn1.onClick} variant='sec'>
+							<Button
+								type={props.submit ? 'submit' : 'button'}
+								onClick={props.btn1.onClick}
+								variant='sec'
+							>
 								{props.btn1.text}
 							</Button>
 						)}

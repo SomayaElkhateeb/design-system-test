@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { AppsWrapperProps } from '../AppStore';
+
 import InstallCard from './InstallCard';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { BackIcon, NextIcon } from 'src/app/utils/icons';
+import { AppsWrapperProps } from '../../comp/useAppStore';
 
 export default function InstallCardWrapper({ socialApps, title, onButtonClick }: AppsWrapperProps) {
 	const { t } = useTranslation();
