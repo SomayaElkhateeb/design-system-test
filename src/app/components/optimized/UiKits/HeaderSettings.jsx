@@ -13,7 +13,8 @@ import { IoIosArrowForward } from 'react-icons/io';
  *  btn1?: { text: string; onClick: () => void };
  *  btn2?: { text: string; onClick: () => void };
  *  btn3?: { text: string; onClick: () => void };
- * to?: string;
+ * 	groupIcons: any;
+ * 	to?: string;
  * onClick?:()=>void
  * children?:React.ReactNode
  * submit?:boolean
@@ -117,7 +118,7 @@ export default function HeaderSettings(props) {
 				)}
 				{props.variant === 'settingWithIcons' && (
 					<>
-						<GroupIcons />
+						{props.groupIcons}
 
 						{props.btn1 && (
 							<Button onClick={props.btn1.onClick} variant='sec'>
