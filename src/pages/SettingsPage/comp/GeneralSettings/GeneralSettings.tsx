@@ -8,6 +8,7 @@ import StoreDetails from './StoreDetails';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
+import SocialContacts from './SocialContacts';
 
 export interface generalSettingsInterface {
 	storeName: string;
@@ -94,6 +95,7 @@ const GeneralSettings = () => {
 				/>
 				<div className='flex-col-top-section-pages'>
 					<StoreDetails formStore={formStore} />
+					<SocialContacts formStore={formStore} />
 				</div>
 			</form>
 		</Form>
