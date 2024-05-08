@@ -25,6 +25,7 @@ const SettingsPage = () => {
 	}, []);
 
 	return (
+
 		<div className='w-full px-4 py-6 flex flex-col gap-6'>
 			<TrialBanner
 				free={false}
@@ -38,6 +39,7 @@ const SettingsPage = () => {
 				})}
 			</div>
 		</div>
+
 	);
 };
 

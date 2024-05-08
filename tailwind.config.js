@@ -28,6 +28,8 @@ module.exports = {
 
 				//! Secondary Colors
 				secondary: '#55C397',
+				green: '#006621',
+				blue: '#1B0DAB',
 				'-darseck': '#004328', //secondary-dark
 				'sec-pressed': '#3E8F6E',
 				'sec-hover': '#49A882',
@@ -37,6 +39,8 @@ module.exports = {
 				black: '#000000',
 				title: '#002042',
 				subtitle: '#55607A',
+				gray: '#8393A2',
+
 				hint: '#8791A8', // hint, light icons,text
 				inactive: '#C0C7D6', //inactive icons
 				constrained: '#E8EBF2',

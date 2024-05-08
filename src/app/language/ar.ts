@@ -494,4 +494,11 @@ export const arabic = {
 	Messenger: 'ماسنجر',
 	'Search in': 'بحث في',
 	'Get started': 'البدء',
+	'Installed': 'المثبتة',
+	'App store': 'متجر التطبيقات',
+	'Installed apps': 'التطبيقات المثبتة',
+	'Support': 'الدعم',
+	'Service': 'الخدمة',
+	'Open Setup': 'فتح الإعدادات',
+
 } satisfies typeof english;

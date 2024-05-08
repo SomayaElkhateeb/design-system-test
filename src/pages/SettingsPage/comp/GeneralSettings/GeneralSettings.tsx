@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 // comps
 import { HeaderSettings } from 'src/app/components/optimized';
 import StoreDetails from './StoreDetails';
+
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';

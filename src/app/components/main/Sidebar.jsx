@@ -12,62 +12,72 @@ const Sidebar = ({ isOpen }) => {
 	// loading sidebar
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			<SidebarLoading />;
+			setShowLoading(false);
 		}, 3000);
 
 		return () => clearTimeout(timer); // Clear the timer on component unmount
 	}, []);
 	return (
-		<aside
-			className={`min-h-screen h-full duration-200 transition-all max-lg:min-w-16 max-lg:w-16 px-2 py-3 bg-white ${
-				isOpen ? 'w-[180px]' : 'w-16 min-w-16'
-			}`}
-		>
-			<div className='sticky top-3 overflow-hidden '>
-				<header className=' h-[42px]'>
-					<div
-						className={`w-[162px] rounded-lg h-full shadow-[0px_5px_15px_0px_#7C82B90D] max-lg:hidden place-content-center grid ${
-							!isOpen ? 'hidden' : ''
-						}`}
-					>
-						<img
-							src={getImageUrl('brand/en-light.svg')}
-							alt='logo'
-							className={`w-32 max-lg:hidden `}
-						/>
-					</div>
+		<>
+			{showLoading ? (
+				<SidebarLoading />
+			) : (
+				<aside
+					className={`min-h-screen h-full duration-200 transition-all max-lg:min-w-16 max-lg:w-16 px-2 py-3 bg-white ${
+						isOpen ? 'w-[180px]' : 'w-16 min-w-16'
+					}`}
+				>
+					<div className='sticky top-3 overflow-hidden '>
+						<header className=' h-[42px]'>
+							<div
+								className={`w-[162px] rounded-lg h-full shadow-[0px_5px_15px_0px_#7C82B90D] max-lg:hidden place-content-center grid ${
+									!isOpen ? 'hidden' : ''
+								}`}
+							>
+								<img
+									src={getImageUrl('brand/en-light.svg')}
+									alt='logo'
+									className={`w-32 max-lg:hidden `}
+								/>
+							</div>
 
-					<div
-						className={`max-lg:grid place-content-center grid h-full ${
-							isOpen ? 'hidden' : 'grid'
-						} `}
-					>
-						<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-9`} />
-					</div>
-				</header>
-				<SidebarNavLinks isOpen={isOpen} />
-
-				<div className='px-2 max-lg:p-1'>
-					<p className={`paragraph text-subtitle mb-2 max-lg:hidden ${!isOpen ? 'hidden' : ''}`}>
-						{t('Sales channel')}
-					</p>
-					<div
-						className={`grid max-lg:grid-cols-1 gap-2 ${!isOpen ? 'grid-cols-1' : 'grid-cols-3'}`}
-					>
-						{socialLinks.map((link) => (
-							<Link
-								key={link.id}
-								className={`w-10 h-10 hover:border-primary focus:border-primary focus:bg-pri-light/50 max-lg:border-0 border border-borders-lines rounded-xl grid place-content-center ${
-									!isOpen ? 'border-0' : ''
+							<div
+								className={`max-lg:grid place-content-center grid h-full ${
+									isOpen ? 'hidden' : 'grid'
 								} `}
 							>
-								<img src={link.img} alt='social' className='w-6 h-6' />
-							</Link>
-						))}
+								<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-9`} />
+							</div>
+						</header>
+						<SidebarNavLinks isOpen={isOpen} />
+
+						<div className='px-2 max-lg:p-1'>
+							<p
+								className={`paragraph text-subtitle mb-2 max-lg:hidden ${!isOpen ? 'hidden' : ''}`}
+							>
+								{t('Sales channel')}
+							</p>
+							<div
+								className={`grid max-lg:grid-cols-1 gap-2 ${
+									!isOpen ? 'grid-cols-1' : 'grid-cols-3'
+								}`}
+							>
+								{socialLinks.map((link) => (
+									<Link
+										key={link.id}
+										className={`w-10 h-10 hover:border-primary focus:border-primary focus:bg-pri-light/50 max-lg:border-0 border border-borders-lines rounded-xl grid place-content-center ${
+											!isOpen ? 'border-0' : ''
+										} `}
+									>
+										<img src={link.img} alt='social' className='w-6 h-6' />
+									</Link>
+								))}
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</aside>
+				</aside>
+			)}
+		</>
 	);
 };
 

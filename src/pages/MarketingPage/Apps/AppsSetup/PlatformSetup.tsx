@@ -2,6 +2,8 @@ import { useSearchParams } from 'react-router-dom';
 import useMarketingSetup from './_hook/useMarketingSetup';
 import TikTokSales from './tiktok/TikTokSales';
 import TikTokCatalog from './tiktok/TikTokCatalog';
+import SnapchatCatalog from './snapchat/SnapchatCatalog';
+import SnapchatSales from './snapchat/SnapchatSales';
 
 interface PlatformSetupProps {
 	platform: string;
@@ -26,13 +28,13 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 			{featuresManage && (
 				<section>
 					{platform === 'tikTok' && <TikTokSales />}
-					{/* {platform === 'snapchat' && <SnapchatSales />} */}
+					{platform === 'snapchat' && <SnapchatSales />}
 				</section>
 			)}
 			{catalogMarketing && (
 				<section>
 					{platform === 'tikTok' && <TikTokCatalog />}
-					{/* {platform === 'snapchat' && <SnapchatCatalog />} */}
+					{platform === 'snapchat' && <SnapchatCatalog />}
 				</section>
 			)}
 		</>

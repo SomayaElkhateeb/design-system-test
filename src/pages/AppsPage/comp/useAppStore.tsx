@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { type ComponentType, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import data from '../comp/data.json';
 
@@ -15,6 +15,7 @@ export interface AppsWrapperProps {
 	socialApps: AppData[];
 	warningMessage?: string;
 	onButtonClick: () => void;
+	ChildrenComponent: ComponentType<AppData>;
 }
 
 interface Option {

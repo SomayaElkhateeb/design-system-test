@@ -1,15 +1,13 @@
-// TODO: (needs to be reviewed)
 import { useTranslation } from 'react-i18next';
-import image from 'src/app/assets/brand/cloud.svg';
+import { getImageUrl } from 'src/app/utils';
 
 /**
- * @param {{
- *  onClose: () => void;
- *  isOk: () => void;
- * 	subTitle:string;
- * }} props
+ * @param {Object} props - The props object.
+ * @param {() => void} props.onClose - Function to be called when the popup is closed.
+ * @param {() => void} props.isOk - Function to be called when the "Ok" button is clicked.
+ * @param {string} props.subTitle - The subtitle of the popup.
+ * @returns {JSX.Element} - Returns the JSX for the PopupWelcome component.
  */
-
 export default function PopupWelcome(props) {
 	const { t } = useTranslation();
 	return (
@@ -17,7 +15,7 @@ export default function PopupWelcome(props) {
 			{/* Overlay */}
 			<div className='fixed inset-0 bg-black opacity-50' onClick={props.onClose}></div>
 			<div className='flex items-center justify-center w-full mb-5 rounded'>
-				<img className='w-[95.04px] h-[65.54px]' src={image} alt='' />
+				<img className='w-[95.04px] h-[65.54px]' src={getImageUrl('brand/cloud.svg')} alt='' />
 			</div>
 			<div className='mb-2 text-center'>
 				<h3 className='font-semibold text-title'>{t('Welcome to Dookan')}</h3>
@@ -34,3 +32,19 @@ export default function PopupWelcome(props) {
 		</div>
 	);
 }
+
+/*
+	const handleClose = () => {
+		// Implement your logic for closing the popup
+		console.log('Popup closed');
+	};
+
+	const handleOk = () => {
+		// Implement your logic for when the "Ok" button is clicked
+		console.log('Ok button clicked');
+	};
+
+	<div className='App'>
+		<PopupWelcome onClose={handleClose} isOk={handleOk} subTitle='Thank you for using our app!' />
+	</div>
+*/
