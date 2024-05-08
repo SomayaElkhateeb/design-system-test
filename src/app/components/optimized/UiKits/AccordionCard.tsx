@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DownIcon, UpIcon } from 'src/app/utils/icons';
 
 export default function AccordionCard({ content, title }: { content: any; title: string }) {
 	const [open, setOpen] = useState(false);
+	const { t } = useTranslation();
 
 	return (
 		<div className='transition delay-700 ease-in-out duration-500 global-cards gap-4'>
@@ -18,7 +20,7 @@ export default function AccordionCard({ content, title }: { content: any; title:
 					) : (
 						<div className='flex gap-2 items-center'>
 							<DownIcon className='fill-title' />
-							<span className='test-title text-sm font-semibold'>Edit</span>
+							<span className='test-title text-sm font-semibold'>{t('Edit')}</span>
 						</div>
 					)}
 				</button>
