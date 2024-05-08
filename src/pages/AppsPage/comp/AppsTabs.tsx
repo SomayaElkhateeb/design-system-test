@@ -10,9 +10,6 @@ export default function AppsTabs() {
 			return <AppStore />;
 		case 'installed_apps':
 			return <InstalledApps />;
-		// case 'brands':
-		// 	return <Barnds />;
-
 		default:
 			return <AppStore />;
 	}

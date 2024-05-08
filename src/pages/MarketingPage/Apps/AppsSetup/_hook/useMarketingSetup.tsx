@@ -12,10 +12,11 @@ import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { VerticalTabs } from 'src/app/components/optimized';
 
-const useMarketingSetup = (platform: string) => {
+const useMarketingSetup = (platform: string | null) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const hasConfirmed = searchParams.get('add_channel') === 'true';
 	const [_, setFinish] = useState(false);
+	const [syncStatus, setSyncStatus] = useState(false);
 
 	const handleFinish = (value: boolean) => {
 		setFinish(value);
@@ -68,7 +69,7 @@ const useMarketingSetup = (platform: string) => {
 		}
 	};
 
-	return { title, tabs, renderSetupOrTabs };
+	return { title, tabs, syncStatus, setSyncStatus, renderSetupOrTabs };
 };
 
 export default useMarketingSetup;

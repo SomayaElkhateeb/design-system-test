@@ -8,6 +8,10 @@ export const english = {
 	Apps: 'Apps',
 	Discounts: 'Discounts',
 	"Search or put a link":"Search or put a link",
+	"General settings":"General settings",
+	"Store details":"Store details",
+	"Store name":"Store name",
+	"Store contact email":"Store contact email",
 	Coupons: 'Coupons',
 	Campaigns: 'Campaigns',
 	Services: 'Services',
@@ -491,4 +495,12 @@ export const english = {
 	Messenger: 'Messenger',
 	'Search in': 'Search in',
 	'Get started': 'Get started',
+	'Installed': 'Installed',
+	'App store': 'App Store',
+	'Installed apps': 'Installed apps',
+	'Support': 'Support',
+	'Service': 'Service',
+	'Open Setup': 'Open Setup',
+
+
 };

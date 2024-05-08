@@ -4,7 +4,7 @@ import { PiUserCircleThin } from 'react-icons/pi';
 import { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
 
-function TikTokCenterAccount() {
+function TikTokMarketingCatalog() {
 	const [isBusinessCenterChecked, setBusinessCenterChecked] = useState(false);
 	const [isBusinessCenterOpen, setIsBusinessCenterOpen] = useState(true);
 	const [isCatalogLocationChecked, setCatalogLocationChecked] = useState(false);
@@ -52,9 +52,10 @@ function TikTokCenterAccount() {
 				{isPopupOpen && (
 					<PopupProceed
 						title='Approve access to your TikTok Ads Manager account'
-						buttonText='Proceed'
+						proceedBtnText="Proceed"
+						cancelBtnText="Cancel"
+						color="bg-blue-500"
 						isOpen={isPopupOpen}
-						onClose={() => setIsPopupOpen(false)}
 						onCancel={() => setIsPopupOpen(false)}
 						onProceed={handleBusinessCenterProceed}
 					>
@@ -155,4 +156,4 @@ function TikTokCenterAccount() {
 	);
 }
 
-export default TikTokCenterAccount;
+export default TikTokMarketingCatalog;

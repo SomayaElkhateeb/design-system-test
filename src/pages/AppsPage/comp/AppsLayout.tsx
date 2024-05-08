@@ -1,14 +1,16 @@
+import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 export default function AppsLayout() {
+	const { t } = useTranslation();
 	const tabs = [
 		{
-			name: 'App Store',
+			name: t('App store'),
 			path: 'app_store',
 		},
 		{
-			name: 'Installed apps',
+			name: t('Installed apps'),
 			path: 'installed_apps',
 		},
 	];

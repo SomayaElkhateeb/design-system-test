@@ -1,22 +1,29 @@
+import { useTranslation } from 'react-i18next';
+
 import data from '../comp/data.json';
 import FilterBar from '../comp/FilterBar';
+import InstallCard from './comp/InstallCard';
 import AllAppsView from '../comp/AllAppsView';
-import InstallCardWrapper from './comp/InstallCardWrapper';
-import SocialAppsWrapper from '../comp/SocialAppsWrapper';
+import AppsWrapper from '../comp/AppsWrapper';
 import useAppStore from '../comp/useAppStore';
+import AppsCard from 'src/app/components/page/Cards/AppsCard';
 
 export default function AppStore() {
+	const { t } = useTranslation();
 	const {
 		filteredApps,
 		categoryParam,
 		installedApps,
 		selectedPrices,
 		warningMessage,
-		selectedCategories,
 		setSelectedPrices,
+		selectedCategories,
 		handleClickViewAll,
 		setSelectedCategories,
 	} = useAppStore();
+
+	
+
 
 	return (
 		<div className='grid gap-5  container'>
@@ -25,31 +32,38 @@ export default function AppStore() {
 			) : (
 				<>
 					<FilterBar
-						selectedCategories={selectedCategories}
 						selectedPrices={selectedPrices}
-						setSelectedCategories={setSelectedCategories}
 						setSelectedPrices={setSelectedPrices}
+						selectedCategories={selectedCategories}
+						setSelectedCategories={setSelectedCategories}
 					/>
-					<InstallCardWrapper
-						title='Installed'
-						socialApps={installedApps}
-						onButtonClick={() => handleClickViewAll('installed')}
-					/>
-					<SocialAppsWrapper
-						title='Popular'
+					<div className='grid bg-white p-4 rounded-md border border-borders-lines'>
+						<AppsWrapper
+							title={t('Installed')}
+							socialApps={installedApps}
+							warningMessage={warningMessage}
+							ChildrenComponent={InstallCard}
+							onButtonClick={() => handleClickViewAll('installed')}
+						/>
+					</div>
+					<AppsWrapper
+						title={t('Popular')}
 						socialApps={filteredApps}
+						ChildrenComponent={AppsCard}
 						warningMessage={warningMessage}
 						onButtonClick={() => handleClickViewAll('popular')}
 					/>
-					<SocialAppsWrapper
-						title='Recommended'
+					<AppsWrapper
+						title={t('Recommended')}
 						socialApps={filteredApps}
+						ChildrenComponent={AppsCard}
 						warningMessage={warningMessage}
 						onButtonClick={() => handleClickViewAll('recommended')}
 					/>
-					<SocialAppsWrapper
-						title='Sales'
+					<AppsWrapper
+						title={t('Sales')}
 						socialApps={filteredApps}
+						ChildrenComponent={AppsCard}
 						warningMessage={warningMessage}
 						onButtonClick={() => handleClickViewAll('sales')}
 					/>

@@ -253,6 +253,10 @@ export const arabic = {
 	Popular: 'الشائع',
 	"About":"عنا",
 	"Search or put a link":"ابحث او ضع رابط",
+	"General settings":"الادوات العامه",
+	"Store name":"اسم المتجر",
+	"Store contact email":"ايميل المتجر",
+	"Store details":"تفاصيل المتجر",
 	"Navigation": "الاجزاء الثابته",
 	"Add post": "اضف مقال",
 	"Visibility": "الرؤيه",
@@ -490,4 +494,11 @@ export const arabic = {
 	Messenger: 'ماسنجر',
 	'Search in': 'بحث في',
 	'Get started': 'البدء',
+	'Installed': 'المثبتة',
+	'App store': 'متجر التطبيقات',
+	'Installed apps': 'التطبيقات المثبتة',
+	'Support': 'الدعم',
+	'Service': 'الخدمة',
+	'Open Setup': 'فتح الإعدادات',
+
 } satisfies typeof english;

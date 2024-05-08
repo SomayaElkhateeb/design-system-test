@@ -3,18 +3,26 @@ import { z } from 'zod';
 import { useTranslation } from 'react-i18next';
 import { Form } from '../../ui/form';
 import { Input } from '../../ui/input';
-import Button from '../UiKits/Button';
+// import Button from '../UiKits/Button';
 import { cn } from 'src/app/utils';
 import { Textarea } from '../../ui/textarea';
 import TabbedFormField from '../../ui/form/tabbed-field';
 import FormField from '../../ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from '../../ui/file-input';
 import { Switch } from '../../ui/switch';
+import Button from '../Buttons/Button';
 
 /** @param {import("react").SVGProps<SVGSVGElement>} props  */
 function UploadCloudIcon(props) {
 	return (
-		<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' {...props}>
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='24'
+			height='24'
+			viewBox='0 0 24 24'
+			fill='none'
+			{...props}
+		>
 			<path
 				fillRule='evenodd'
 				clipRule='evenodd'
@@ -114,7 +122,9 @@ export default function BrandForm(props) {
 								{ name: 'descriptionAr', label: 'عربي' },
 							]}
 							label={t('Description')}
-							renderer={(field) => <Textarea {...field} className={cn(field.className, 'size-full')} />}
+							renderer={(field) => (
+								<Textarea {...field} className={cn(field.className, 'size-full')} />
+							)}
 						/>
 
 						<FormField
