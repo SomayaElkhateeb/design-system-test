@@ -29,7 +29,7 @@ export default function AddNavItemDialog({
 
 	const handleSubmit = (values: EditOrAddItemSchema) => {
 		console.log(values);
-		handelclose();
+		// handelclose();
 	};
 
 	const { formStore, onSubmit } = useForm({

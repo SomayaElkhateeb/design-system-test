@@ -1,16 +1,25 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+
 import { useTranslation } from 'react-i18next';
 // comps
 import { HeaderSettings } from 'src/app/components/optimized';
 import StoreDetails from './StoreDetails';
-import Media from './Media';
-import SocialContacts from './SocialContacts';
-import LegalDetails from './LegalDetails';
-import AdminDefaults from './AdminDefaults';
 
-const generalSchema = z.object({
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'src/app/utils/hooks/form';
+import { Form } from 'src/app/components/ui/form';
+
+export interface generalSettingsInterface {
+	storeName: string;
+	storeEmail: string;
+	storeIndustry: string;
+	storeContactPhone: string;
+	facebook: string;
+	instagram: string;
+	twitter: string;
+	youtube: string;
+}
+const generalSettingsSchema = {
 	storeName: z.string().min(3, { message: 'Store name is required' }),
 	storeEmail: z.string().min(1, { message: 'Store email is required' }).email(),
 	storeIndustry: z.string(),
@@ -35,46 +44,59 @@ const generalSchema = z.object({
 		.refine((value) => /^https?:\/\/(www\.)?youtube\.com\/[a-zA-Z0-9._]+$/.test(value), {
 			message: 'Invalid YouTube URL',
 		}),
-});
-
-type TFormInputs = z.infer<typeof generalSchema>;
+};
 
 const GeneralSettings = () => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<TFormInputs>({
-		mode: 'onBlur',
-		resolver: zodResolver(generalSchema),
-	});
-	const submitForm: SubmitHandler<TFormInputs> = (data) => console.log(data);
+	//  hooks
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
-	const handleSaveChangesClick = () => {
-		handleSubmit(submitForm)();
+	const handleSubmit = (values: generalSettingsInterface) => {
+		console.log(values);
+		// handelclose();
 	};
+
+	const handelDefaultValue = () => {
+		return {
+			storeName: '',
+			storeEmail: '',
+			storeIndustry: '',
+			storeContactPhone: '',
+			facebook: '',
+			instagram: '',
+			twitter: '',
+			youtube: '',
+		};
+	};
+	const { formStore, onSubmit } = useForm({
+		schema: generalSettingsSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
+
 	return (
-		<>
-			<HeaderSettings
-				variant='settingTwoBtns'
-				to={-1}
-				title={t('General settings')}
-				btn1={{ text: t('Discard'), onClick: () => {} }}
-				btn2={{
-					text: t('Save Changes'),
-					onClick: handleSaveChangesClick,
-				}}
-			/>
-			<div className='p-4 w-3/4 gap-7 flex flex-col'>
-				<StoreDetails register={register} errors={errors} />
-				<Media />
-				{/* ?? */}
-				<SocialContacts register={register} errors={errors} />
-				<LegalDetails />
-				<AdminDefaults />
-			</div>
-		</>
+		<Form {...formStore}>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages container mx-auto'>
+				<HeaderSettings
+					submit
+					variant='settingTwoBtns'
+					title={t('General settings')}
+					btn1={{
+						text: t('Discard'),
+						onClick: () => {
+							navigate(-1);
+						},
+					}}
+					btn2={{
+						text: t('Save Changes'),
+						onClick: () => {},
+					}}
+				/>
+				<div className='flex-col-top-section-pages'>
+					<StoreDetails formStore={formStore} />
+				</div>
+			</form>
+		</Form>
 	);
 };
 

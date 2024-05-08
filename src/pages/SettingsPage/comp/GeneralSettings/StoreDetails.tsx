@@ -1,39 +1,28 @@
+import { Input } from 'src/app/components/ui/input';
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-// import SelectBox from 'src/app/components/optimized/UiKits/SelectBox';
+import FormField from 'src/app/components/ui/form/field';
+import { generalSettingsInterface } from './GeneralSettings';
 
 const options = [{ value: 'design', label: 'design' }];
-const StoreDetails = ({
-	register,
-	errors,
-}: {
-	register: (...args: any[]) => any;
-	errors: string;
-}) => {
+const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();
 	return (
-		<section className='global-cards'>
-			<h3 className='text-title font-semibold'>{t('Store details')}</h3>
-
-			<div className='w-[27rem] flex flex-col gap-7'>
-				<>
-					<input type='text' {...register('storeName')} placeholder='store name' />
-					<p className='text-red-600 text-sm'>{errors.storeName?.message || ''}</p>
-				</>
-				<>
-					<input type='email' {...register('storeEmail')} placeholder='email' />
-					<p className='text-red-600 text-sm'>{errors.storeEmail?.message || ''}</p>
-				</>
-				<select {...register('storeIndustry')}>
-					{options.map((option) => (
-						<option key={option.value} value={option.value}>
-							{option.label}
-						</option>
-					))}
-				</select>
-				<>
-					<input type='number' {...register('storeContactPhone')} placeholder='phone' />
-					<p className='text-red-600 text-sm'>{errors.storeContactPhone?.message || ''}</p>
-				</>
+		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+			<h3 className='title'>{t('Store details')}</h3>
+			<div className='flex-col-top-section-pages gap-[1rem]'>
+				<FormField
+					formStore={formStore}
+					name='storeName'
+					label={t('Store name')}
+					render={(field) => <Input {...field} placeholder={'Sary'} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='storeEmail'
+					label={t('Store contact email')}
+					render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
+				/>
 			</div>
 		</section>
 	);
