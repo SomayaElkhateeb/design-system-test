@@ -39,7 +39,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
-			{ path: '/pages', element: <PagesPage /> },
+			{ path: '/pages', element: <PagesPage />, children: [{ path: ':config', element: <PagesConfig /> }] },
 			{ path: '/store', element: <StorePage /> },
 			{ path: '/orders', element: <OrdersPage /> },
 			{ path: '/reviews', element: <ReviewsPage /> },
@@ -92,7 +92,14 @@ const App = () => {
 		language === 'ar' ? i18n.changeLanguage('ar') : i18n.changeLanguage('en');
 
 		document.dir = language === 'ar' ? 'rtl' : 'ltr';
-	}, [language]);
+		// Change font family based on language
+		const root = document.getElementById('root');
+		if (language === 'ar') {
+			root?.style.setProperty('--font-family', 'var(--font-family-ar)');
+		} else {
+			root?.style.setProperty('--font-family', 'var(--font-family-en)');
+		}
+	}, [language, i18n]);
 	return <RouterProvider router={router} />;
 };
 

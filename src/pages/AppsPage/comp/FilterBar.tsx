@@ -1,24 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import CheckMenuButton from 'src/app/components/optimized/Buttons/CheckMenuButton';
-interface Option {
-	name: string;
-	socialApps: string[];
-}
 
-const category: Option[] = [
-	{ name: 'Marketing', socialApps: ['Facebook', 'TikTok', 'Snapchat', 'Mailchimp', 'SendGrid'] },
-	{ name: 'Sales', socialApps: ['WhatsApp', 'Telegram', 'Google'] },
-	{ name: 'Support', socialApps: ['Twitter'] },
-	{ name: 'Chat', socialApps: ['WhatsApp', 'Telegram'] },
-	{ name: 'Service', socialApps: ['SMS', 'Email'] },
-	{ name: 'Design', socialApps: [] },
-];
-const price: Option[] = [
-	{
-		name: 'Free',
-		socialApps: ['Telegram', 'WhatsApp', 'Snapchat', 'TikTok', 'Mailchimp', 'SendGrid'],
-	},
-	{ name: 'Paid', socialApps: ['SMS', 'Email', 'Google', 'Twitter', 'Facebook'] },
-];
 interface FilterBarProps {
 	selectedCategories: string[];
 	selectedPrices: string[];
@@ -27,20 +9,28 @@ interface FilterBarProps {
 }
 
 export default function FilterBar(props: FilterBarProps) {
-	const Categories: string[] = category.map((item) => item.name);
-	const prices: string[] = price.map((item) => item.name);
+	const { t } = useTranslation();
+	const Categories: string[] = [
+		t('Marketing'),
+		t('Sales'),
+		t('Support'),
+		t('Chat'),
+		t('Service'),
+		t('Design'),
+	];
+	const prices: string[] = [t('Free'), t('Paid')];
 
 	return (
 		<div className='flex gap-5'>
 			<CheckMenuButton
-				text={'Category'}
+				text={t('Category')}
 				options={Categories}
 				selected={props.selectedCategories}
 				setSelected={props.setSelectedCategories}
 			/>
 
 			<CheckMenuButton
-				text={'Price'}
+				text={t('Price')}
 				options={prices}
 				selected={props.selectedPrices}
 				setSelected={props.setSelectedPrices}

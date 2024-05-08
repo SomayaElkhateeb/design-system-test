@@ -18,9 +18,14 @@ export default function BlogPosts() {
 		},
 	];
 	return (
-		<div className='flex-col-top-section-pages'>
-			<TopSectionBlogPostsAndSection addButton={t('Add post')} path='add_post' />
-			<BlogPostsTable Blogs={Blogs} />
+		<div className='flex flex-col'>
+			<TopSectionBlogPostsAndSection addButton={t('Add post')} path='add_blog' />
+
+			<div className='flex-col-top-section-pages'>
+				<TopSectionBlogPostsAndSection addButton={t('Add post')} path='add_post' />
+
+				<BlogPostsTable Blogs={Blogs} />
+			</div>
 		</div>
 	);
 }
