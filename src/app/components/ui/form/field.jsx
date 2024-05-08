@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { isValidElement, useId } from 'react';
 import {
 	FormControl,
 	FormDescription,
@@ -42,6 +42,11 @@ function getContainerProps(layout, containerProps, hasError, hasDescription) {
 				gridTemplateColumns,
 				gridTemplateAreas,
 			};
+			break;
+		}
+
+		default: {
+			newContainerProps.className = cn(newContainerProps.className, 'flex flex-col');
 		}
 	}
 
@@ -92,7 +97,13 @@ function FormField(props) {
 	const reactId = useId();
 	const controlId = `${props.controlId ?? props.name}-${reactId}`;
 
-	const labelProps = typeof props.label === 'object' ? props.label : { children: props.label };
+	const labelProps =
+		(props.label && isValidElement(props.label)) ||
+		typeof props.label === 'string' ||
+		typeof props.label === 'number' ||
+		typeof props.label === 'boolean'
+			? { children: props.label }
+			: props.label;
 
 	return (
 		<FormFieldController
@@ -108,10 +119,10 @@ function FormField(props) {
 
 				return (
 					<FormItem {...containerProps}>
-						{typeof props.label !== 'undefined' && (
+						{props.label && (
 							<FormLabel
 								htmlFor={controlId}
-								className='text-sm capitalize text-zinc-700'
+								className='text-sm capitalize text-zinc-700 font-semibold'
 								style={{ gridArea: 'label' }}
 								{...labelProps}
 							/>
