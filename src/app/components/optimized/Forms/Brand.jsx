@@ -82,11 +82,11 @@ export default function BrandForm(props) {
 									options={getDefaultFileInputOptions({
 										accept: { 'image/*': [] },
 										setError: (error) => {
-											console.log('error', error);
+											// console.log('error', error);
 											formStore.setError('image', { message: error.message });
 										},
 										onFileLoad: (params) => {
-											console.log('params', params);
+											// console.log('params', params);
 											onChange(params.file);
 										},
 									})}

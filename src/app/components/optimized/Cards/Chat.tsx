@@ -23,7 +23,7 @@ const Chat = ({ title, onClose, data }: { title: string; onClose: () => void; da
 	const language = UseLanguage();
 
 	const handleClick = (id: number) => {
-		console.log('click', id);
+		// console.log('click', id);
 		navigate('/conversation');
 	};
 
