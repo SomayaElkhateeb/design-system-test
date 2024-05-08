@@ -26,7 +26,7 @@ export default function HeaderSettings(props) {
 	const language = UseLanguage();
 	const navigate = useNavigate();
 	return (
-		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
+		<div className='flex items-center justify-between  bg-white h-14 container mx-auto'>
 			<div className='flex items-center gap-1' onClick={props.onClick}>
 				<p className='cursor-pointer' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
