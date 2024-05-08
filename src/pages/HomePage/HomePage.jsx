@@ -5,6 +5,7 @@ import SlideCardTabs from './comp/SlideCardTabs';
 import Slider from 'src/app/components/optimized/UiKits/Slider';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ProductForm from 'src/app/components/optimized/Forms/Product';
 
 const HomePage = () => {
 	// hook
@@ -25,6 +26,14 @@ const HomePage = () => {
 			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
+
+	return (
+		<ProductForm
+			handleSubmit={(values) => {
+				console.log(values);
+			}}
+		/>
+	);
 
 	//  all data
 	const slides = [

@@ -79,6 +79,56 @@
 
 /* //////////////////////////////////// */
 
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+a,
+svg,
+input,
+button,
+textarea,
+select,
+option,
+optgroup {
+	font: inherit;
+	color: inherit;
+	line-height: inherit;
+	word-spacing: inherit;
+	letter-spacing: inherit;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+	max-width: 100%;
+}
+
+/* //////////////////////////////////// */
+
 #root {
 	margin: 0 auto;
 	padding: 0;

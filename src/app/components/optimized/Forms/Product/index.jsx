@@ -5,6 +5,7 @@ import ProductFormMediaSection from './sections/Media';
 import ProductFormBasicInfoSection from './sections/BasicInfo';
 import ProductFormDescriptionAndSpecificationsSection from './sections/DescriptionAndSpecifications';
 import ProductFormPricingSection from './sections/Pricing';
+import ProductFormStockSection from './sections/Stock';
 
 const ProductSchema = {
 	generalInfo: z.object({
@@ -112,6 +113,7 @@ export default function ProductForm(props) {
 				canContinueSellingWhenOutOfStock: false,
 				isShippableOrPickupable: true,
 				...props.defaultValues?.generalInfo,
+				branches: [{ id: '1', name: 'Main Branch', quantity: 0 }],
 			},
 		},
 	});
@@ -123,6 +125,7 @@ export default function ProductForm(props) {
 				<ProductFormBasicInfoSection formStore={formStore} />
 				<ProductFormDescriptionAndSpecificationsSection formStore={formStore} />
 				<ProductFormPricingSection formStore={formStore} />
+				<ProductFormStockSection formStore={formStore} />
 			</form>
 		</Form>
 	);

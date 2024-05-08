@@ -66,9 +66,9 @@ export default function ProductFormPricingSection(props) {
 					<ProfitField formStore={props.formStore} />
 					<FormField
 						formStore={props.formStore}
-						name='generalInfo.canContinueSellingWhenOutOfStock'
+						name='generalInfo.isTaxable'
 						label={{
-							children: t('Can continue selling when out of stock'),
+							children: t('Taxable product'),
 							className: 'self-center mt-0.5',
 						}}
 						render={({ value, ...field }) => (
