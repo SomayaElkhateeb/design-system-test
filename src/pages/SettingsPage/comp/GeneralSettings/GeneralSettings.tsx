@@ -77,7 +77,7 @@ const GeneralSettings = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages container mx-auto'>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
 				<HeaderSettings
 					submit
 					variant='settingTwoBtns'
@@ -93,7 +93,7 @@ const GeneralSettings = () => {
 						onClick: () => {},
 					}}
 				/>
-				<div className='flex-col-top-section-pages'>
+				<div className='flex-col-top-section-pages container mx-auto'>
 					<StoreDetails formStore={formStore} />
 					<SocialContacts formStore={formStore} />
 				</div>

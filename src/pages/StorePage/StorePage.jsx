@@ -42,13 +42,13 @@ const StorePage = () => {
 		</Tabs>
 	) : (
 		<div className='flex-col-top-section-pages'>
-			<div className='container mx-auto'>
+			
 				<HeaderSettings
 					variant='settingOneBtn'
 					title={ThemeName}
 					btn1={{ text: t('Apply template'), onClick: () => {} }}
 				/>
-			</div>
+			
 			<img
 				src={getImageUrl('images/ThemesPage/largewebsiteimg.png')}
 				loading='lazy'
