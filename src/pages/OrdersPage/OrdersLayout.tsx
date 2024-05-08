@@ -3,19 +3,42 @@ import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const OrdersLayout = () => {
 	const tabs = [
-		`AllOrders${50}`,
-		`New${50}`,
-		`Processing${50}`,
-		`Ready${50}`,
-		`Shipping${50}`,
-		`Delivered${50}`,
-		`Returned${50}`,
-		`Cancelled${50}`,
+		{
+			name: `All Orders ${50}`,
+			path: 'AllOrders',
+		},
+		{
+			name: `New ${50}`,
+			path: 'new',
+		},
+		{
+			name: `Processing ${50}`,
+			path: 'processing',
+		},
+		{
+			name: `Ready ${50}`,
+			path: 'ready',
+		},
+		{
+			name: `Shipping ${50}`,
+			path: 'shipping',
+		},
+		{
+			name: `Delivered ${50}`,
+			path: 'delivered',
+		},
+		{
+			name: `Returned ${50}`,
+			path: 'returned',
+		},
+		{
+			name: `Cancelled ${50}`,
+			path: 'cancelled',
+		},
 	];
-
 	return (
-		<div>
-			<div className='sticky top-[70px] z-50'>
+		<div className='flex-col-top-section-pages'>
+			<div className='Sticky_header'>
 				<HorizontalTabsLink tabs={tabs} path='/orders' />
 			</div>
 			<Outlet />

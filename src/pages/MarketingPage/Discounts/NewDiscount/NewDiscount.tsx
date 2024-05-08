@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -16,6 +16,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
 import { ErrorMessage } from '@hookform/error-message';
 import { Switch } from 'src/app/components/ui/switch';
+import AddDiscAndCoupLoading from 'src/app/components/page/SchimmerLoading/AddDiscAndCoupLoading';
 
 const schema = {
 	name: z.string().min(3).max(60),
@@ -32,6 +33,7 @@ type FormValues = InferredZodSchema<typeof schema>;
 export type DiscountFormStore = UseFormReturn<FormValues>;
 
 const NewDiscount = () => {
+	const [showLoading, setShowLoading] = useState(true);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { t } = useTranslation();
@@ -74,31 +76,46 @@ const NewDiscount = () => {
 		// 	});
 		// }
 	};
+	// loading new discount page
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowLoading(false);
+		}, 3000);
 
+		return () => clearTimeout(timer); // Clear the timer on component unmount
+	}, []);
 	return (
-		<div>
-			<Form {...formStore} onSubmit={onSubmit}>
-				<HeaderSettings
-					variant='settingTwoBtns'
-					to={-1}
-					title={t('Add Discount')}
-					btn1={{ text: t('Discard'), onClick: () => {} }}
-					btn2={{ text: t('Save Changes'), onClick: handleSaveChanges }}
-				/>
-				<div className='p-4 flex justify-between gap-7'>
-					<div className='w-full flex flex-col gap-[18px]'>
-						<BasicInfo formStore={formStore} errors={errors} />
-						<CustomerSegment />
-						<MinimumRequirements formStore={formStore} />
-						<ActiveDates setState={setState} />
-					</div>
-					<div className='bg-white w-[17rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
-						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
-						<Switch checked />
-					</div>
+
+		<>
+			{showLoading ? (
+				<AddDiscAndCoupLoading />
+			) : (
+				<div>
+					<Form {...formStore} onSubmit={onSubmit}>
+						<HeaderSettings
+							variant='settingTwoBtns'
+							to={-1}
+							title={t('Add Discount')}
+							btn1={{ text: t('Discard'), onClick: () => {} }}
+							btn2={{ text: t('Save Changes'), onClick: handleSaveChanges }}
+						/>
+						<div className='p-4 flex justify-between gap-7'>
+							<div className='w-full flex flex-col gap-[18px]'>
+								<BasicInfo formStore={formStore} errors={errors} />
+								<CustomerSegment />
+								<MinimumRequirements formStore={formStore} />
+								<ActiveDates setState={setState} />
+							</div>
+							<div className='bg-white w-[17rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
+								<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
+								<Switch checked />
+							</div>
+						</div>
+					</Form>
+
 				</div>
-			</Form>
-		</div>
+			)}
+		</>
 	);
 };
 export default NewDiscount;

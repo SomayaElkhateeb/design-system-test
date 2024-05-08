@@ -1,18 +1,43 @@
+import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
 
-const SidebarLoading = () => {
+function SkeletonChildrenDemo() {
 	return (
-		<Stack spacing={1}>
-			{/* For variant="text", adjust the height via font-size */}
-			<Skeleton variant='text' sx={{ fontSize: '1rem' }} />
-
-			{/* For other variants, adjust the size with `width` and `height` */}
-			<Skeleton variant='circular' width={40} height={40} />
-			<Skeleton variant='rectangular' width={210} height={60} />
-			<Skeleton variant='rounded' width={210} height={60} />
-		</Stack>
+		<div className='min-h-screen h-full duration-200 transition-all max-lg:min-w-16 max-lg:w-16 px-2 py-3 bg-white w-[180px]'>
+			<div className='shadow p-0 h-[4rem] relative bottom-3'>
+				<Skeleton height='4.5rem' width='100%' />
+			</div>
+			<div className='flex flex-col'>
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<Skeleton height='3rem' width='90%' />
+				<div className='flex gap-4 flex-wrap'>
+					<Skeleton height='3rem' width='25%' />
+					<Skeleton height='3rem' width='25%' />
+					<Skeleton height='3rem' width='25%' />
+					<Skeleton height='3rem' width='25%' />
+				</div>
+			</div>
+		</div>
 	);
-};
+}
 
-export default SidebarLoading;
+export default function SidebarLoading() {
+	return (
+		<Grid>
+			<Grid>
+				<SkeletonChildrenDemo />
+			</Grid>
+		</Grid>
+	);
+}

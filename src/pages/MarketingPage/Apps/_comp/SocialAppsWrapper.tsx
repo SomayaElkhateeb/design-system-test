@@ -8,7 +8,7 @@ interface SocialApp {
 	id: string;
 	name: string;
 	description: string;
-	image: string;
+	imageUrl: string;
 	status: 'free' | 'installed';
 	url: string;
 }
@@ -69,7 +69,7 @@ const SocialAppsWrapper: React.FC<SocialAppsWrapperProps> = ({ socialApps, title
 					{language === 'ar' ? <FaChevronLeft /> : <FaChevronRight />}
 				</div>
 			</div>
-			<div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+			<div className='grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
 				{displayedApps?.map((app) => (
 					<div key={app.id} className='col-span-1'>
 						<AppsCard {...app} />

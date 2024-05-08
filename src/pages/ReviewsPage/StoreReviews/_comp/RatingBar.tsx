@@ -1,47 +1,41 @@
 import React from 'react';
 
-interface Rating {
-	label: string;
+export interface Rating {
+	maxValue: number;
 	value: number;
+	id: number;
 }
 
 interface RatingBarProps {
 	ratings: Rating[];
 	maxRating?: number;
-	filledColor?: string;
-	emptyColor?: string;
 }
 
-const RatingBar: React.FC<RatingBarProps> = ({
-	ratings,
-	maxRating = 5,
-	filledColor = 'yellow',
-	emptyColor = 'gray',
-}) => {
+const RatingBar: React.FC<RatingBarProps> = ({ ratings }) => {
+	const usedClassName = 'text-subtitle text-[.8rem]';
+	const progressclassName = 'bg-light-2 h-[.7rem] w-[75%] rounded-full';
 	return (
-		<div className='w-full'>
+		<div className='w-full flex-col-top-section-pages'>
 			{ratings.map((rating, index) => (
-				<div key={index} className='flex items-center mb-2'>
-					<div className='w-16'>{rating.label}</div>
-					<div className='w-96 flex items-center'>
-						<div className='bg-gray-200 h-3 w-full rounded-full mr-4'>
+				<div className='flex-row-global justify-between' key={rating.id}>
+					<p className={usedClassName}>{rating.value} stars</p>
+					{rating.value > 0 ? (
+						<div className={progressclassName}>
 							<div
-								className={`bg-${filledColor}-500 h-3 rounded-full`}
-								style={{ width: `${(rating.value / maxRating) * 100}%` }}
+								className={`bg-neutral-1 h-[.7rem] rounded-full`}
+								style={{
+									width: `${(rating.value / rating.maxValue) * 100}%`,
+								}}
 							></div>
 						</div>
-						<div className='w-8'>({rating.value})</div>
-					</div>
+					) : (
+						<div className={progressclassName}></div>
+					)}
+					<p className={usedClassName}>({rating.maxValue})</p>
 				</div>
 			))}
 		</div>
 	);
-};
-
-RatingBar.defaultProps = {
-	maxRating: 5,
-	filledColor: 'yellow',
-	emptyColor: 'gray',
 };
 
 export default RatingBar;

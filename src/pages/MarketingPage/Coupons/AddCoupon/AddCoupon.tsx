@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
 import BasicInfo from './BasicInfo/BasicInfo';
 import MinimumRequirements from '../../../../app/components/page/discount/Comp/MinimumRequirements';
@@ -13,6 +13,7 @@ import { z } from 'zod';
 import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
 import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
+import AddDiscAndCoupLoading from 'src/app/components/page/SchimmerLoading/AddDiscAndCoupLoading';
 
 const schema = {
 	name: z.string().min(3).max(60),
@@ -29,6 +30,7 @@ type FormValues = InferredZodSchema<typeof schema>;
 export type DiscountFormStore = UseFormReturn<FormValues>;
 
 const AddCoupon = () => {
+	const [showLoading, setShowLoading] = useState(true);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -53,35 +55,51 @@ const AddCoupon = () => {
 		dispatch(postCoupons(data));
 		navigate('/marketing/coupons');
 	};
+	// loading new coupon page
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowLoading(false);
+		}, 3000);
+
+		return () => clearTimeout(timer); // Clear the timer on component unmount
+	}, []);
 
 	return (
-		<div>
-			<HeaderSettings
-				variant='settingTwoBtns'
-				to={-1}
-				title={t('Add coupon')}
-				btn1={{ text: t('Discard'), onClick: () => {} }}
-				btn2={{
-					text: t('Save Changes'),
-					onClick: handleSaveChanges,
-				}}
-			/>
-			<Form {...formStore}>
-				<div className='p-4 flex justify-between gap-[1rem]'>
-					<div className='w-full flex flex-col gap-[1rem]'>
-						<BasicInfo formStore={formStore} />
-						<CustomerSegment />
-						<MinimumRequirements formStore={formStore} />
-						<Limits formStore={formStore} />
-						<ActiveDates setState={setState} />
-					</div>
-					<div className='bg-white w-[15rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
-						<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
-						<ToggleSwitch />
-					</div>
-				</div>
-			</Form>
-		</div>
+
+		<>
+			{showLoading ? (
+				<AddDiscAndCoupLoading />
+			) : (
+				<>
+					<HeaderSettings
+						variant='settingTwoBtns'
+						to={-1}
+						title={t('Add coupon')}
+						btn1={{ text: t('Discard'), onClick: () => {} }}
+						btn2={{
+							text: t('Save Changes'),
+							onClick: handleSaveChanges,
+						}}
+					/>
+					<Form {...formStore}>
+						<div className='p-4 flex justify-between gap-[1rem]'>
+							<div className='w-full flex flex-col gap-[1rem]'>
+								<BasicInfo formStore={formStore} />
+								<CustomerSegment />
+								<MinimumRequirements formStore={formStore} />
+								<Limits formStore={formStore} />
+								<ActiveDates setState={setState} />
+							</div>
+							<div className='bg-white w-[15rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
+								<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
+								<ToggleSwitch />
+							</div>
+						</div>
+					</Form>
+				</>
+			)}
+		</>
+
 	);
 };
 
