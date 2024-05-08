@@ -9,9 +9,9 @@ export default function PagesConfig() {
 	switch (config) {
 		case 'AddPage':
 			return <AddPage />;
-		case 'AddPage':
+		case 'AddNavigation':
 			return <AddNavigation />;
-		case 'AddPage':
+		case 'AddBlog':
 			return <AddBlog />;
 	}
 }
