@@ -3,11 +3,16 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { generalSettingsInterface } from './GeneralSettings';
-
+import 'react-phone-input-2/lib/material.css';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 const options = [{ value: 'design', label: 'design' }];
 const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
+	//  hooks
 	const { t } = useTranslation();
-	console.log(formStore);
+
+	const handleOnChange = (e: string) => {
+		formStore.setValue('storeContactPhone', e);
+	};
 	return (
 		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Store details')}</h3>
@@ -24,12 +29,17 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 					label={t('Store contact email')}
 					render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
 				/>
-				<FormField
-					formStore={formStore}
-					name='storeContactPhone'
-					label={t('Store contact phone')}
-					render={(field) => <Input {...field} placeholder={'85484854545'} />}
-				/>
+
+				<div className='flex-col-top-section-pages gap-[.25rem]'>
+					<p className='text-sm font-semibold'>{t('Store contact phone')}</p>
+					<CustomPhoneInput
+						value={formStore.watch('storeContactPhone')}
+						onHandleChange={handleOnChange}
+						touched={formStore.formState.touchedFields.storeContactPhone}
+						errors={formStore.formState.errors.storeContactPhone?.message}
+						// isLoading={isLoading}
+					/>
+				</div>
 			</div>
 		</section>
 	);
