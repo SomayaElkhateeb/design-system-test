@@ -51,8 +51,6 @@ import { InputRow } from 'src/app/components/optimized';
 // export default Integrations;
 
 export default function Integrations() {
-	const { t } = useTranslation();
-
 	const [activePlatformId, setActivePlatformId] = useState(false);
 	const [activatedPlatforms, setActivatedPlatforms] = useState({}); // Track activated platforms
 
@@ -66,12 +64,12 @@ export default function Integrations() {
 
 	const handleActivate = (platformName, integrationId) => {
 		// Implement logic to activate the platform using the provided ID and integration ID (e.g., API call)
-		console.log('Activating platform:', platformName, integrationId);
+
 		setActivatedPlatforms({ ...activatedPlatforms, [platformName]: true }); // Update activatedPlatforms state
 	};
 	return (
 		<section
-			className='grid gap-5 p-5'
+			className='grid gap-5 container'
 			style={{
 				gridTemplateColumns: 'repeat(auto-fill, minmax(23rem, 1fr))',
 			}}

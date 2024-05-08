@@ -3,7 +3,7 @@ import TopSectionBrandsTable from 'src/app/components/page/Products/Brands/TopSe
 
 export default function Barnds() {
 	return (
-		<div className=' container mx-auto my-[0.8rem]'>
+		<div className=' container mx-auto '>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSectionBrandsTable />

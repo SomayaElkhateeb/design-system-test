@@ -1,4 +1,4 @@
-import TikTokCenterAccount from "./_comp/TikTokCenterAccount";
+import TikTokMarketingCatalog from "./_comp/TikTokMarketingCatalog";
 
 const TikTokCatalog = () => {
 	return (
@@ -9,7 +9,7 @@ const TikTokCatalog = () => {
 			<div className='bg-[#F9FAFC] p-4 flex flex-col items-center'>
 				<div className='w-4/5'>
 					<h2 className='font-bold text-2xl mb-5'>Set Up Business Marketing Catalog </h2>
-                    <TikTokCenterAccount/>
+                    <TikTokMarketingCatalog/>
 				</div>
 			</div>
 		</section>

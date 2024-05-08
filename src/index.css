@@ -143,7 +143,10 @@
 	}
 
 	.flex-col-top-section-pages {
-		@apply flex flex-col gap-[1rem];
+		@apply flex flex-col gap-[1.2rem];
+	}
+	.Sticky_header{
+		@apply sticky top-[70px] z-10
 	}
 
 	.iconClass {
@@ -195,7 +198,7 @@
 	}
 
 	.title {
-		@apply font-semibold text-sm text-title;
+		@apply font-semibold text-[1rem] text-title;
 	}
 
 	.subtitle {
@@ -222,8 +225,8 @@
 	.page-container {
 		@apply w-full 2xl:w-11/12 mx-auto;
 	}
-	.custom-red-toast {
-		@apply bg-error text-white;
+	.global-cards {
+		@apply bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1.5rem];
 	}
 }
 

@@ -21,17 +21,17 @@ import { AppData } from 'src/pages/AppsPage/comp/useAppStore';
  * };
  */
 
-
-
 export default function AppsCard({ name, description, status, imageUrl, url }: AppData) {
 	return (
 		<Link to={url} className='flex gap-3 p-3 bg-white border rounded-lg border-borders-lines'>
 			<div className='flex justify-center items-center size-[60px] min-w-[60px] rounded-lg border border-light-2 overflow-hidden'>
 				<img src={getImageUrl(imageUrl)} className='object-cover w-5/6' />
 			</div>
-			<div className='space-y-3'>
-				<h3 className='title'>{name}</h3>
-				<p className='paragraph text-subtitle'>{description}</p>
+			<div className='flex-col-top-section-pages gap-[.75rem]'>
+				<div className='flex-col-top-section-pages gap-[.25rem]'>
+					<h3 className='title'>{name}</h3>
+					<p className='paragraph text-subtitle'>{description}</p>
+				</div>
 				<Badge status={status} />
 			</div>
 		</Link>

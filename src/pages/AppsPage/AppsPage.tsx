@@ -3,11 +3,9 @@ import AppsPageGuard from './comp/AppsPageGuard';
 
 const AppsPage = () => {
 	return (
-		<div>
-			<AppsPageGuard>
-				<AppsLayout />
-			</AppsPageGuard>
-		</div>
+		<AppsPageGuard>
+			<AppsLayout />
+		</AppsPageGuard>
 	);
 };
 export default AppsPage;

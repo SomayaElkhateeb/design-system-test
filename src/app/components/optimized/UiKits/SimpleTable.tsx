@@ -20,6 +20,8 @@ interface TableProps {
 	data: TableRow[];
 	itemsPerPage: number;
 	exportFilename: string;
+	selectedStates: TableRow[]; // New prop
+	setSelectedStates: React.Dispatch<React.SetStateAction<TableRow[]>>; // New prop
 }
 
 const style = {
@@ -51,7 +53,14 @@ const useSortableTable = (initialData: TableRow[]) => {
 };
 
 // SimpleTable
-const SimpleTable: React.FC<TableProps> = ({ columns, data, itemsPerPage, exportFilename }) => {
+const SimpleTable: React.FC<TableProps> = ({
+	columns,
+	data,
+	itemsPerPage,
+	exportFilename,
+	selectedStates,
+	setSelectedStates,
+}) => {
 	const { sortedData, sortData, sortConfig } = useSortableTable(data);
 
 	// Pagination;
@@ -70,16 +79,49 @@ const SimpleTable: React.FC<TableProps> = ({ columns, data, itemsPerPage, export
 		exportToExcel(data, exportFilename + '.xlsx');
 	};
 
+	const handleStateCheckboxChange = (
+		event: React.ChangeEvent<HTMLInputElement>,
+		rowData: TableRow,
+	) => {
+		const { checked } = event.target;
+
+		if (rowData === 'all') {
+			// If "Select All" checkbox is clicked, update all individual checkboxes
+			setSelectedStates(checked ? sortedData : []);
+		} else {
+			// Individual state checkbox is clicked
+			if (checked) {
+				setSelectedStates((prevSelectedStates) => [...prevSelectedStates, rowData]);
+			} else {
+				setSelectedStates((prevSelectedStates) =>
+					prevSelectedStates.filter((selectedRow) => selectedRow !== rowData),
+				);
+			}
+		}
+	};
+
 	const renderColumns = () => {
-		return columns.map((column, index) => {
-			const isSorted = sortConfig && sortConfig.key === column.accessor;
-			const sortIcon = isSorted ? (sortConfig.direction === 'asc' ? '▲' : '▼') : '';
-			return (
-				<th key={index} className={style.columns} onClick={() => sortData(column.accessor)}>
-					{column.header} {sortIcon}
+		return (
+			<tr>
+				<th className='w-5 bg-white pl-3'>
+					<input
+						type='checkbox'
+						checked={selectedStates?.length === sortedData.length}
+						onChange={(e) => handleStateCheckboxChange(e, 'all')}
+						className='form-checkbox h-4 w-4 text-blue-500 border-blue-400 rounded focus:ring-blue-500 cursor-pointer outline-none'
+					/>
 				</th>
-			);
-		});
+				{columns.map((column, index) => {
+					const isSorted = sortConfig && sortConfig.key === column.accessor;
+					const sortIcon = isSorted ? (sortConfig.direction === 'asc' ? '▲' : '▼') : '';
+					return (
+						<th key={index} className={style.columns} onClick={() => sortData(column.accessor)}>
+							{column.header} {sortIcon}
+						</th>
+					);
+				})}
+			</tr>
+		);
 	};
 
 	const renderRows = () => {
@@ -87,6 +129,14 @@ const SimpleTable: React.FC<TableProps> = ({ columns, data, itemsPerPage, export
 		const endIndex = startIndex + itemsPerPage;
 		return sortedData.slice(startIndex, endIndex).map((row, rowIndex) => (
 			<tr key={rowIndex}>
+				<td className='w-5 bg-white  pl-3'>
+					<input
+						type='checkbox'
+						checked={selectedStates?.includes(row)}
+						onChange={(e) => handleStateCheckboxChange(e, row)}
+						className='form-checkbox h-4 w-4 text-blue-500 border-blue-400 rounded focus:ring-blue-500 cursor-pointer outline-none'
+					/>
+				</td>
 				{columns.map((column, colIndex) => (
 					<td key={colIndex} className={style.row}>
 						{row[column.accessor]}
@@ -108,9 +158,7 @@ const SimpleTable: React.FC<TableProps> = ({ columns, data, itemsPerPage, export
 			</div>
 			<div className='print-only'>
 				<table className='table-auto w-full'>
-					<thead>
-						<tr>{renderColumns()}</tr>
-					</thead>
+					<thead>{renderColumns()}</thead>
 					<tbody>{renderRows()}</tbody>
 				</table>
 			</div>
@@ -128,26 +176,37 @@ const SimpleTable: React.FC<TableProps> = ({ columns, data, itemsPerPage, export
 export default SimpleTable;
 
 /*
+const [selectedStates, setSelectedStates] = useState<TableRow[]>([]);
+
 const columns = [
-		{ header: 'ID', accessor: 'id' },
-		{ header: 'Name', accessor: 'name' },
-		{ header: 'Age', accessor: 'age' },
-		{ header: 'Switch', accessor: 'switch' },
-		{ header: 'Actions', accessor: 'actions' },
-	];
+	{ header: 'ID', accessor: 'id' },
+	{ header: 'Name', accessor: 'name' },
+	{ header: 'Age', accessor: 'age' },
+	{ header: 'Switch', accessor: 'switch' },
+	{ header: 'Actions', accessor: 'actions' },
+];
 
-	const data = Array.from({ length: 100 }, (_, index) => ({
-		id: index + 1,
-		name: `Person ${index + 1}`,
-		age: Math.floor(Math.random() * 50) + 20, // Random age between 20 and 70
-		switch: <button onClick={() => alert('Switch')}>Switch</button>,
-		actions: (
-			<div className='flex space-x-2'>
-				<button onClick={() => alert('Edit')}>Edit</button>
-				<button onClick={() => alert('Delete')}>Delete</button>
-			</div>
-		),
-	}));
+const data = Array.from({ length: 100 }, (_, index) => ({
+	id: index + 1,
+	name: `Person ${index + 1}`,
+	age: Math.floor(Math.random() * 50) + 20, // Random age between 20 and 70
+	switch: <button onClick={() => alert('Switch')}>Switch</button>,
+	actions: (
+		<div className='flex space-x-2'>
+			<button onClick={() => alert('Edit')}>Edit</button>
+			<button onClick={() => alert('Delete')}>Delete</button>
+		</div>
+	),
+}));
 
-<SimpleTable columns={columns} data={data} itemsPerPage={5} exportFilename='test' />
+<div>
+	<SimpleTable
+		columns={columns}
+		data={data}
+		itemsPerPage={5}
+		exportFilename='test'
+		selectedStates={selectedStates}
+		setSelectedStates={setSelectedStates}
+	/>
+</div>;
 */

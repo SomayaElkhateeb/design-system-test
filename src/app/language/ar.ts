@@ -251,7 +251,8 @@ export const arabic = {
 	'change Food visibility to customers': 'تغيير رؤية الغذاء للعملاء',
 	Food: 'الطعام',
 	Popular: 'الشائع',
-
+	"About":"عنا",
+	"Search or put a link":"ابحث او ضع رابط",
 	"Navigation": "الاجزاء الثابته",
 	"Add post": "اضف مقال",
 	"Visibility": "الرؤيه",

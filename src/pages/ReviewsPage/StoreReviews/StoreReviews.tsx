@@ -2,6 +2,7 @@ import { DonutCard, SimpleTable } from 'src/app/components/optimized';
 import { columns, data } from './_comp/StoreReviewsData';
 import DonutGraph, { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
 import RecentReview from './_comp/RecentReview';
+import { useState } from 'react';
 
 const chartData: ChartData[] = [
 	{
@@ -21,11 +22,17 @@ const chartData: ChartData[] = [
 	},
 ];
 
+interface TableRow {
+	[key: string]: any;
+}
+
 const StoreReviews = () => {
+	const [selectedStates, setSelectedStates] = useState<TableRow[]>([]);
+
 	return (
 		<div className='flex-col-top-section-pages'>
 			<div className='grid lg:grid-cols-2 sm:grid-cols-1 items-start gap-4'>
-				<RecentReview/>
+				<RecentReview />
 				<DonutCard
 					title='Net Promoter Score'
 					score={4.75}
@@ -33,7 +40,14 @@ const StoreReviews = () => {
 					legends={chartData}
 				/>
 			</div>
-			<SimpleTable columns={columns} data={data} itemsPerPage={3} exportFilename='StoreReviews' />
+			<SimpleTable
+				columns={columns}
+				data={data}
+				itemsPerPage={3}
+				exportFilename='StoreReviews'
+				selectedStates={selectedStates}
+				setSelectedStates={setSelectedStates}
+			/>
 		</div>
 	);
 };

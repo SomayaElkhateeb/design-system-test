@@ -22,20 +22,10 @@ const Coupons: React.FC = () => {
 	useEffect(() => {
 		dispatch(getCoupons());
 	}, [dispatch]);
-	// loading page
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setShowLoading(false);
-		}, 3000);
-
-		return () => clearTimeout(timer); // Clear the timer on component unmount
-	}, []);
+	
 	return (
-		<>
-			{showLoading ? (
-				<DiscountAndCouponLoading />
-			) : (
-				<div className=' px-5 mx-auto my-[0.8rem]'>
+		
+				<div className='container'>
 					<div className=' flex flex-col '>
 						{/*  top section */}
 						<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
@@ -44,8 +34,7 @@ const Coupons: React.FC = () => {
 						<CouponsTable coupons={coupons} isLoading={isLoading} />
 					</div>
 				</div>
-			)}
-		</>
+			
 	);
 };
 
