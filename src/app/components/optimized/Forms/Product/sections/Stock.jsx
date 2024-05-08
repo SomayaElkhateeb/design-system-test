@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Checkbox } from '@mui/material';
 import { useFieldArray } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';

@@ -6,6 +6,9 @@ import ProductFormBasicInfoSection from './sections/BasicInfo';
 import ProductFormDescriptionAndSpecificationsSection from './sections/DescriptionAndSpecifications';
 import ProductFormPricingSection from './sections/Pricing';
 import ProductFormStockSection from './sections/Stock';
+import ProductFormShippingSection from './sections/Shipping';
+import ProductFormOptionsAndVariationsSection from './sections/OptionsAndVariations';
+import ProductFormFaqsSection from './sections/Faqs';
 
 const ProductSchema = {
 	generalInfo: z.object({
@@ -112,8 +115,10 @@ export default function ProductForm(props) {
 				price: 0,
 				canContinueSellingWhenOutOfStock: false,
 				isShippableOrPickupable: true,
-				...props.defaultValues?.generalInfo,
+				weightUnit: 'kg',
+				dimensionUnit: 'cm',
 				branches: [{ id: '1', name: 'Main Branch', quantity: 0 }],
+				...props.defaultValues?.generalInfo,
 			},
 		},
 	});
@@ -126,6 +131,9 @@ export default function ProductForm(props) {
 				<ProductFormDescriptionAndSpecificationsSection formStore={formStore} />
 				<ProductFormPricingSection formStore={formStore} />
 				<ProductFormStockSection formStore={formStore} />
+				<ProductFormShippingSection formStore={formStore} />
+				<ProductFormOptionsAndVariationsSection formStore={formStore} />
+				<ProductFormFaqsSection formStore={formStore} />
 			</form>
 		</Form>
 	);
