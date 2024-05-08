@@ -33,7 +33,7 @@ const RecentReview = () => {
 			<LayoutCard>
 				<div className='flex flex-col'>
 					<div className='w-full flex justify-between items-center space-x-2 mr-2 space-y-3 '>
-						<div className='w-1/3 '>
+						<div className='w-1/3'>
 							<div className={`text-lg  ${rating > 0 ? 'text-green-500' : 'text-red-500'}`}>
 								{rating > 0 ? (
 									<div className='flex space-x-1 items-center'>

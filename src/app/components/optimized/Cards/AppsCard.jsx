@@ -44,12 +44,14 @@ export default function AppsCard(props) {
 				<h3 className='mb-2 title'>{props.name}</h3>
 				<p className='paragraph text-subtitle'>{props.description}</p>
 
-				<LabelIcon
-					text={props.status}
-					backgroundColor={backgroundColor}
-					textColor={textColor}
-					icon={props.status === 'installed' ? <FaCheck size={10} color='#0B47D9' /> : null}
-				/>
+				<div className='flex'>
+					<LabelIcon
+						text={props.status}
+						backgroundColor={backgroundColor}
+						textColor={textColor}
+						icon={props.status === 'installed' ? <FaCheck size={10} color='#0B47D9' /> : null}
+					/>
+				</div>
 			</div>
 		</Link>
 	);

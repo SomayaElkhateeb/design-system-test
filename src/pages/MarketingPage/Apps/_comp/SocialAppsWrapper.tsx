@@ -34,6 +34,7 @@ const SocialAppsWrapper: React.FC<SocialAppsWrapperProps> = ({ socialApps, title
 
 	function getInitialItemsToRender() {
 		const screenWidth = window.innerWidth;
+
 		if (screenWidth <= 640) {
 			return 1; // mobile
 		} else if (screenWidth < 1024) {
@@ -53,6 +54,7 @@ const SocialAppsWrapper: React.FC<SocialAppsWrapperProps> = ({ socialApps, title
 
 	const { t } = useTranslation();
 	const language = UseLanguage();
+
 	const displayedApps = showAll ? socialApps : socialApps.slice(0, itemsToRender);
 
 	return (
