@@ -13,7 +13,7 @@ import { IoIosArrowForward } from 'react-icons/io';
  *  btn1?: { text: string; onClick: () => void };
  *  btn2?: { text: string; onClick: () => void };
  *  btn3?: { text: string; onClick: () => void };
- * 	groupIcons: any;
+ * 	groupIcons?: any;
  * 	to?: string;
  * onClick?:()=>void
  * children?:React.ReactNode

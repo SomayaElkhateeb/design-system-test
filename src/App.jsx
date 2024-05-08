@@ -39,7 +39,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
-			// { path: '/pages', element: <PagesPage />, children: [{ path: ':config', element: <PagesConfig /> }] },
+			{ path: '/pages', element: <PagesPage /> },
 			{ path: '/store', element: <StorePage /> },
 			{ path: '/orders', element: <OrdersPage /> },
 			{ path: '/reviews', element: <ReviewsPage /> },
