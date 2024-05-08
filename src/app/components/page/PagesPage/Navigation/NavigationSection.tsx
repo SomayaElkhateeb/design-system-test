@@ -12,17 +12,20 @@ export default function NavigationSection() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<div>
-				<Button onClick={() => navigate('add_nav')} variant='primary' LeftIcon={IoIosAddCircle}>
+				<Button
+					onClick={() => navigate('AddNavigation')}
+					variant='primary'
+					LeftIcon={IoIosAddCircle}
+				>
 					{t('Add Page')}
 				</Button>
 			</div>
 			<hr />
 			<div className='flex-col-top-section-pages'>
-                {array?.map((e,i)=>(
-                    <NavigationCard key={i} title='Main menu' sub_title1='About' sub_title2='home' id='1' />
-                ))}
-            </div>
-			
+				{array?.map((e, i) => (
+					<NavigationCard key={i} title='Main menu' sub_title1='About' sub_title2='home' id='1' />
+				))}
+			</div>
 		</div>
 	);
 }
