@@ -489,4 +489,12 @@ export const english = {
 	Messenger: 'Messenger',
 	'Search in': 'Search in',
 	'Get started': 'Get started',
+	'Installed': 'Installed',
+	'App store': 'App Store',
+	'Installed apps': 'Installed apps',
+	'Support': 'Support',
+	'Service': 'Service',
+	'Open Setup': 'Open Setup',
+
+
 };

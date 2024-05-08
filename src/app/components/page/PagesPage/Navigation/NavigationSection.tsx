@@ -12,7 +12,7 @@ export default function NavigationSection() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<div>
-				<Button onClick={() => navigate('/add_page')} variant='primary' LeftIcon={IoIosAddCircle}>
+				<Button onClick={() => navigate('add_nav')} variant='primary' LeftIcon={IoIosAddCircle}>
 					{t('Add Page')}
 				</Button>
 			</div>

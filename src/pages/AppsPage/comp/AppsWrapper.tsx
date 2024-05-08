@@ -47,8 +47,8 @@ export default function AppsWrapper({
 		<div className='grid gap-3'>
 			<div className='flex justify-between'>
 				<h2 className='text-lg font-semibold text-title'>{title}</h2>
-				<div className='flex items-center'>
-					<button className='text-sm font-semibold text-title mx-1' onClick={onButtonClick}>
+				<div className='flex items-center gap-1'>
+					<button className='text-sm font-semibold text-title' onClick={onButtonClick}>
 						{t('View All')}
 					</button>
 						<NextIcon className={`fill-pri-dark ${language === 'ar' ? "rotate-180" : ""}`} />

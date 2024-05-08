@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Badge from '../../optimized/UiKits/Badge';
 import { getImageUrl } from 'src/app/utils';
-import { AppData } from 'src/pages/AppsPage/AppStore/AppStore';
+import { AppData } from 'src/pages/AppsPage/comp/useAppStore';
 
 /**
  * Usage Example:
