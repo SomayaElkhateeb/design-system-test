@@ -1,26 +1,39 @@
+import { Input } from 'src/app/components/ui/input';
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import FormField from 'src/app/components/ui/form/field';
+import { generalSettingsInterface } from './GeneralSettings';
 
-const SocialContacts = ({
-	register,
-	errors,
-}: {
-	register: (...args: any[]) => any;
-	errors: string;
-}) => {
+const SocialContacts = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();
 	return (
-		<section className='global-cards'>
-			<h3 className='text-title font-semibold'>{t('Social contacts')}</h3>
-
-			<div className='w-[27rem] flex flex-col gap-7'>
-				<input {...register('facebook')} placeholder='http://facebook.com/username' />
-				<p className='text-red-600 text-sm'>{errors.facebook?.message || ''}</p>
-				<input {...register('instagram')} placeholder='http://instagram.com/username' />
-				<p className='text-red-600 text-sm'>{errors.instagram?.message || ''}</p>
-				<input {...register('twitter')} placeholder='http://twitter.com/username' />
-				<p className='text-red-600 text-sm'>{errors.twitter?.message || ''}</p>
-				<input {...register('youtube')} placeholder='http://youtube.com/username' />
-				<p className='text-red-600 text-sm'>{errors.youtube?.message || ''}</p>
+		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+			<h3 className='title'>{t('Social contacts')}</h3>
+			<div className='flex-col-top-section-pages gap-[1rem]'>
+				<FormField
+					formStore={formStore}
+					name='facebook'
+					label={t('Facebook link')}
+					render={(field) => <Input {...field} placeholder={'http://facebook.com/username'} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='instagram'
+					label={t('Instagram')}
+					render={(field) => <Input {...field} placeholder={'http://instagram.com/username'} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='twitter'
+					label={t('Twitter')}
+					render={(field) => <Input {...field} placeholder={'http://twitter.com/username'} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='youtube'
+					label={t('Youtube')}
+					render={(field) => <Input {...field} placeholder={'http://youtube.com/username'} />}
+				/>
 			</div>
 		</section>
 	);

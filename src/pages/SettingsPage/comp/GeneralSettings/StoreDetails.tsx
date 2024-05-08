@@ -7,6 +7,7 @@ import { generalSettingsInterface } from './GeneralSettings';
 const options = [{ value: 'design', label: 'design' }];
 const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();
+	console.log(formStore);
 	return (
 		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Store details')}</h3>
@@ -22,6 +23,12 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 					name='storeEmail'
 					label={t('Store contact email')}
 					render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='storeContactPhone'
+					label={t('Store contact phone')}
+					render={(field) => <Input {...field} placeholder={'85484854545'} />}
 				/>
 			</div>
 		</section>
