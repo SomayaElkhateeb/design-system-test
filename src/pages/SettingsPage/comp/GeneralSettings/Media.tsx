@@ -5,11 +5,11 @@ import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 
 import { TfiUpload } from 'react-icons/tfi';
-
+export const fileClassName =
+	'flex flex-col items-center justify-center gap-2 size-32 cursor-pointer';
 const Media = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();
 
-	const fileClassName = 'flex flex-col items-center justify-center gap-2 size-32 cursor-pointer';
 	return (
 		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Media')}</h3>
