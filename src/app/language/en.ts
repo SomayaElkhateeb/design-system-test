@@ -17,6 +17,7 @@ export const english = {
 	'Facebook link': 'Facebook link',
 	Instagram: 'Instagram',
 	Youtube: 'Youtube',
+
 	"Store industry": "Store industry",
 	"Admin defaults (shown to you)": "Admin defaults (shown to you)",
 	"Default currency": "Default currency",
@@ -28,6 +29,7 @@ export const english = {
 	"Upload Icon":"Upload Icon",
 	"Logo":"Logo",
 	"Icon":"Icon",
+
 	Coupons: 'Coupons',
 	Campaigns: 'Campaigns',
 	Services: 'Services',
@@ -540,4 +542,13 @@ export const english = {
 	'Apps and channels': 'Apps and channels',
 	Permissions: 'Permissions',
 	'select all': 'select all',
+	Role: 'Role',
+	Activated: 'Activated',
+	'Send invitation': 'Send invitation',
+	'Full name': 'Full name',
+	'Email address': 'Email address',
+	'New Owner': 'New Owner',
+	'You’ll lose your privleges': 'You’ll lose your privleges',
+	'Your password (for security)': 'Your password (for security)',
+	'Transfer ownership': 'Transfer ownership',
 };

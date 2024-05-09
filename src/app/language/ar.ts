@@ -500,6 +500,7 @@ export const arabic = {
 	Installed: 'المثبتة',
 	Instagram: 'الانستجرام',
 	Youtube: 'اليوتيوب',
+
 	"Store industry":"مجال المتجر",
 	"Admin defaults (shown to you)":"اساسيات المستخدم",
 	"Default currency":"العمله الاساسيه",
@@ -509,6 +510,7 @@ export const arabic = {
 	"Media":"الدعايا",
 	"UploadImage":"تحميل صوره",
 	"Upload Icon":"تحميل ايكون",
+
 	'App store': 'متجر التطبيقات',
 	"Logo":"الشعار",
 	"Icon":"الايكون",
@@ -539,4 +541,13 @@ export const arabic = {
 	'Apps and channels': 'التطبيقات والقنوات',
 	Permissions: 'الأذونات',
 	'select all': 'تحديد الكل',
+	Role: 'دور',
+	Activated: 'مفعل',
+	'Send invitation': 'إرسال دعوة',
+	'Full name': 'الاسم الكامل',
+	'Email address': 'عنوان البريد الإلكتروني',
+	'New Owner': 'مالك جديد',
+	'You’ll lose your privleges': 'سوف تفقد امتيازاتك',
+	'Your password (for security)': 'كلمة المرور الخاصة بك (للأمان)',
+	'Transfer ownership': 'نقل الملكية',
 } satisfies typeof english;
