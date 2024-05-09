@@ -9,12 +9,18 @@ const selectItems = [{ title: 'Dress' }, { title: 'Fashion' }];
 
 export default function ContentSeoPage({
 	formStore,
+	open,
 }: {
 	formStore: UseFormReturn<addPageInterface>;
+	open: boolean;
 }) {
 	const { t } = useTranslation();
 	return (
-		<div className='flex flex-col gap-4 w-[30rem]'>
+		<div
+			className={`flex flex-col gap-4 w-[30rem] ${
+				open ? 'opacity-100' : 'opacity-0'
+			} duration-75 transition ease-linear`}
+		>
 			<FormField
 				formStore={formStore}
 				name='pageTitle'

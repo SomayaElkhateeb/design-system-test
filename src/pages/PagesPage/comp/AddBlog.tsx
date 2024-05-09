@@ -86,7 +86,7 @@ export default function AddBlog() {
 					/>
 					<div className='p-4 flex gap-7 w-full justify-between'>
 						<div className=' gap-7 flex flex-col w-full'>
-							{/* <MainInfoBlog formStore={formStore} /> */}
+							<MainInfoBlog formStore={formStore} />
 							<AccordionCard
 								content={<ContentSeoPage formStore={formStore} />}
 								title={t('SEO (Search engine listing preview)')}
