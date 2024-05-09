@@ -18,7 +18,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 	const { t } = useTranslation();
 
 	return (
-		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='global-cards flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Store details')}</h3>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<FormField

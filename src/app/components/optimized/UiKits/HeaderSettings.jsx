@@ -1,5 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { GroupIcons } from '..';
+import { useNavigate } from 'react-router-dom';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
@@ -8,13 +7,13 @@ import { IoIosArrowForward } from 'react-icons/io';
 /**
  *
  * @param {{
- *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
+ *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
  *  title: string | null;
  *  btn1?: { text: string; onClick: () => void };
  *  btn2?: { text: string; onClick: () => void };
  *  btn3?: { text: string; onClick: () => void };
  * 	groupIcons?: any;
- * 	to?: string;
+ * 	to?: number;
  * onClick?:()=>void
  * children?:React.ReactNode
  * submit?:boolean
