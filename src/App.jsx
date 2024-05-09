@@ -30,6 +30,7 @@ import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
 
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
+import UsersConfig from './pages/SettingsPage/comp/UsersConfig';
 
 const router = createBrowserRouter([
 	{
@@ -79,10 +80,13 @@ const router = createBrowserRouter([
 				element: <SettingsConfig />,
 			},
 			{
+				path: '/settings/users/:config',
+				element: <UsersConfig />,
+			},
+			{
 				path: '/pages/:config',
 				element: <PagesConfig />,
 			},
-
 		],
 	},
 ]);

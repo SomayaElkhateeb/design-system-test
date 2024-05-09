@@ -62,13 +62,13 @@ export default function AddPage() {
 	});
 
 	const data = [
-		{ id: 1, title: 'Visible' },
-		{ id: 2, title: 'Show on footer' },
-		{ id: 3, title: 'Show on main menu' },
+		{ id: 1, title: t('Visible') },
+		{ id: 2, title: t('Show on footer') },
+		{ id: 3, title: t('Show on main menu') },
 	];
 
 	return (
-		<div>
+		<>
 			<Form {...formStore}>
 				<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
 					<HeaderSettings
@@ -103,6 +103,6 @@ export default function AddPage() {
 					</div>
 				</form>
 			</Form>
-		</div>
+		</>
 	);
 }

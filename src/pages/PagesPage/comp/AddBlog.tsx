@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 import AccordionCard from 'src/app/components/optimized/UiKits/AccordionCard';
 import { GroupIcons, HeaderSettings } from 'src/app/components/optimized';
@@ -8,6 +8,7 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate } from 'react-router-dom';
 import MainInfoBlog from 'src/app/components/page/PagesPage/BlogPosts/MainInfoBlog';
 import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
+import { useState } from 'react';
 
 export interface addPageInterface {
 	pageTitle: string;
@@ -20,7 +21,7 @@ export interface addPageInterface {
 	descriptionAr: string;
 }
 
-const pageSchema = z.object({
+const blogSchema = {
 	pageTitle: z.string().min(3, { message: 'Page title is required' }),
 	link: z.string().url(),
 	metaKey: z.string(),
@@ -29,9 +30,10 @@ const pageSchema = z.object({
 	titleAr: z.string().min(3).max(50),
 	descriptionEn: z.string().min(10).max(200),
 	descriptionAr: z.string().min(10).max(200),
-});
+};
 
 export default function AddBlog() {
+	const [open, setOpen] = useState(false);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
@@ -54,7 +56,7 @@ export default function AddBlog() {
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: pageSchema,
+		schema: blogSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -70,7 +72,7 @@ export default function AddBlog() {
 				<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
 					<HeaderSettings
 						variant='settingWithIcons'
-						to={-1}
+						submit
 						title={t('Add posts')}
 						groupIcons={<GroupIcons variant='view' />}
 						btn1={{
@@ -88,7 +90,9 @@ export default function AddBlog() {
 						<div className=' gap-7 flex flex-col w-full'>
 							<MainInfoBlog formStore={formStore} />
 							<AccordionCard
-								content={<ContentSeoPage formStore={formStore} />}
+								open={open}
+								setOpen={setOpen}
+								content={<ContentSeoPage formStore={formStore} open={open} />}
 								title={t('SEO (Search engine listing preview)')}
 							/>
 						</div>

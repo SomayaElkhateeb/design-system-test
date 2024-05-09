@@ -17,7 +17,11 @@ export default function MainInfoBlog({
 	return (
 		<div className='global-cards'>
 			<h3 className='text-title font-semibold'>{t('Main info')}</h3>
-			<ImageUploader />
+			<p className='text-title text-sm'>Blog image</p>
+			<ImageUploader
+				onImageUpload={() => console.log('onImageUpload')}
+				onImageDelete={() => console.log('onImageDelete')}
+			/>
 			<TabbedFormField
 				formStore={formStore}
 				keys={[

@@ -1,23 +1,12 @@
 import { Switch } from '../../ui/switch';
+import { useTranslation } from 'react-i18next';
 
-// Define the type for the data array
-type Data = {
-	id: number;
-	title: string;
-};
-
-// Define the type for the props of the QuickActions component
-type QuickActionsProps = {
-	data: Data[];
-};
-
-// Define the QuickActions component with the specified props
-export default function QuickActions({ data }: QuickActionsProps) {
+export default function QuickActions({ data }: { data: { id: number; title: string }[] }) {
+	const { t } = useTranslation();
 	return (
 		<div className='global-cards w-72'>
-			<h3 className='text-title font-semibold'>Quick actions</h3>
-			{data.map((item: Data) => {
-				// Assuming Data is the correct type for each item
+			<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
+			{data.map((item) => {
 				return (
 					<div className='flex items-center gap-3' key={item.id}>
 						<Switch />
