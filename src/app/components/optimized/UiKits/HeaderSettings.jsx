@@ -126,7 +126,11 @@ export default function HeaderSettings(props) {
 							</Button>
 						)}
 						{props.btn2 && (
-							<Button onClick={props.btn2.onClick} variant='pri'>
+							<Button
+								type={props.submit ? 'submit' : 'button'}
+								onClick={props.btn2.onClick}
+								variant='pri'
+							>
 								{props.btn2.text}
 							</Button>
 						)}
