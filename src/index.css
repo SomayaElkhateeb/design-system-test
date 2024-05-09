@@ -172,9 +172,9 @@ object {
 	background-color: white !important;
 	margin-bottom: 50px !important;
 }
-.react-tel-input .special-label{
+.react-tel-input .special-label {
 	background-color: white !important;
-	display: none !important
+	display: none !important;
 }
 
 @layer components {
@@ -195,16 +195,15 @@ object {
 	.flex-row-global-items-start {
 		@apply flex flex-row items-start;
 	}
-	.global_error{
-		@apply text-sm font-medium text-destructive
+	.global_error {
+		@apply text-sm font-medium text-destructive;
 	}
-
 
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1.2rem];
 	}
-	.Sticky_header{
-		@apply sticky top-[70px] z-10
+	.Sticky_header {
+		@apply sticky top-[70px] z-10;
 	}
 
 	.iconClass {

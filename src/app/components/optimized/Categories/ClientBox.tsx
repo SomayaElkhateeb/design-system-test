@@ -1,7 +1,7 @@
 import { capitalizeFirstLetter } from 'src/app/utils';
 
 interface Props {
-	avatar: any;
+	avatar: React.ReactNode;
 	title: string;
 	details?: string; // Making details optional
 }
