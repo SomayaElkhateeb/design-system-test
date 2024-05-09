@@ -17,13 +17,6 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 	//  hooks
 	const { t } = useTranslation();
 
-	const handleOnChange = (e: string) => {
-		formStore.setValue('storeContactPhone', e);
-	};
-
-	const selectError = formStore.formState.errors.storeIndustry?.message;
-	const selectTouched = formStore.formState.touchedFields.storeIndustry;
-
 	return (
 		<section className='global-cards flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Store details')}</h3>
@@ -60,20 +53,22 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 									<SelectItem value='theme'>Theme</SelectItem>
 								</SelectContent>
 							</Select>
-							{selectError && selectTouched && <p className='global_error'>{selectError}</p>}
 						</div>
 					)}
 				/>
-				<div className='flex-col-top-section-pages gap-[.25rem]'>
-					<p className='text-sm font-semibold'>{t('Store contact phone')}</p>
-					<CustomPhoneInput
-						value={formStore.watch('storeContactPhone')}
-						onHandleChange={handleOnChange}
-						touched={formStore.formState.touchedFields.storeContactPhone}
-						errors={formStore.formState.errors.storeContactPhone?.message}
-						// isLoading={isLoading}
-					/>
-				</div>
+				<FormField
+					formStore={formStore}
+					name='storeContactPhone'
+					label={t('Store contact phone')}
+					render={(field) => (
+						<CustomPhoneInput
+							value={field.value}
+							onHandleChange={field.onChange}
+
+							// isLoading={isLoading}
+						/>
+					)}
+				/>
 			</div>
 		</section>
 	);

@@ -6,7 +6,7 @@ interface customPhoneInput {
 	onHandleChange: (e: string) => void;
 
 	touched?: boolean | undefined;
-	errors: string | undefined;
+	errors?: string | undefined;
 	isLoading?: boolean;
 }
 const CustomPhoneInput = ({
@@ -59,7 +59,7 @@ const CustomPhoneInput = ({
 				//  disableDropdown="false"
 			/>
 
-			{errors &&  <p className='global_error'>{errors}</p>}
+			{/* {errors &&  <p className='global_error'>{errors}</p>} */}
 		</div>
 	);
 };
