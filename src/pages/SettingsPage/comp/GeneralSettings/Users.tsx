@@ -12,7 +12,7 @@ export default function Users() {
 			<HeaderSettings title={t('users & Permissions')} to={-1} />
 			<div className='p-5 w-3/4 flex flex-col gap-5'>
 				<Owner />
-				<Staff />
+				<Stuff />
 			</div>
 		</>
 	);
@@ -20,6 +20,7 @@ export default function Users() {
 
 function Owner() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	return (
 		<div className='serviceDetails-sharedClass p-5 '>
 			<h2 className='text-title font-semibold'>{t('Owner')}</h2>
@@ -33,12 +34,15 @@ function Owner() {
 					details='Active 3 days ago'
 					avatar={<Avatar variant='user' firstName='samy' />}
 				/>
-				<Button variant='tertiary'>{t('Transfer Ownership')}</Button> {/* link */}
+				<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
+					{t('Transfer Ownership')}
+				</Button>{' '}
+				{/* link */}
 			</div>
 		</div>
 	);
 }
-function Staff() {
+function Stuff() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	return (
