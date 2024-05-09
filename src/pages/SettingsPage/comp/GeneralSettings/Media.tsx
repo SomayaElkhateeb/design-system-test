@@ -1,22 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import LogoUpload from 'src/app/components/optimized/MediaUpload/LogoUpload';
+import { generalSettingsInterface } from './GeneralSettings';
+import { UseFormReturn } from 'react-hook-form';
 
-const Media = () => {
+const Media = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();
 	return (
-		<section className='global-cards'>
-			<h3 className='text-title font-semibold'>{t('Media')}</h3>
-
-			<div className='w-[27rem] flex flex-col gap-7'>
-				<div>
-					<p className='text-title text-sm pb-4'>Logo</p>
-					<LogoUpload />
-				</div>
-				<div>
-					<p className='text-title text-sm pb-4'>Icon</p>
-					<LogoUpload />
-				</div>
-			</div>
+		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+			<h3 className='title'>{t('Media')}</h3>
+			<div className='flex-col-top-section-pages gap-[1rem]'></div>
 		</section>
 	);
 };
