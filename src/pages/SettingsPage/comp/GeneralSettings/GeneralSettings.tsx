@@ -25,6 +25,8 @@ export interface generalSettingsInterface {
 	defaultCurrency: string;
 	defaultLength: string;
 	defaultWeight: string;
+	image: File;
+	icon: File;
 }
 const generalSettingsSchema = {
 	storeName: z.string().min(3, { message: 'Store name is required' }),
@@ -59,6 +61,8 @@ const generalSettingsSchema = {
 		.refine((value) => /^https?:\/\/(www\.)?youtube\.com\/[a-zA-Z0-9._]+$/.test(value), {
 			message: 'Invalid YouTube URL',
 		}),
+	image: z.instanceof(File),
+	icon: z.instanceof(File),
 };
 
 const GeneralSettings = () => {
@@ -81,6 +85,8 @@ const GeneralSettings = () => {
 			instagram: '',
 			twitter: '',
 			youtube: '',
+			image: undefined,
+			icon: undefined,
 		};
 	};
 	const { formStore, onSubmit } = useForm({
@@ -112,7 +118,6 @@ const GeneralSettings = () => {
 					<Media formStore={formStore} />
 					<SocialContacts formStore={formStore} />
 					<AdminDefaults formStore={formStore} />
-					
 				</div>
 			</form>
 		</Form>
