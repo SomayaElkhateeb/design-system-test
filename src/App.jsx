@@ -82,7 +82,6 @@ const router = createBrowserRouter([
 				path: '/pages/:config',
 				element: <PagesConfig />,
 			},
-
 		],
 	},
 ]);

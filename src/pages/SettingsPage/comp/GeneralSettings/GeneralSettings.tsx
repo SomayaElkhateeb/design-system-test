@@ -23,25 +23,29 @@ export interface generalSettingsInterface {
 const generalSettingsSchema = {
 	storeName: z.string().min(3, { message: 'Store name is required' }),
 	storeEmail: z.string().min(1, { message: 'Store email is required' }).email(),
-	storeIndustry: z.string(),
+	storeIndustry: z.string().min(1, { message: 'Store Industry is required' }),
 	storeContactPhone: z.string().min(7, { message: 'Store contact phone is required' }),
 	facebook: z
 		.string()
+		.url()
 		.refine((value) => /^https?:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9._]+$/.test(value), {
 			message: 'Invalid Facebook URL',
 		}),
 	instagram: z
 		.string()
+		.url()
 		.refine((value) => /^https?:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9._]+$/.test(value), {
 			message: 'Invalid Instagram URL',
 		}),
 	twitter: z
 		.string()
+		.url()
 		.refine((value) => /^https?:\/\/(www\.)?twitter\.com\/[a-zA-Z0-9._]+$/.test(value), {
 			message: 'Invalid Twitter URL',
 		}),
 	youtube: z
 		.string()
+		.url()
 		.refine((value) => /^https?:\/\/(www\.)?youtube\.com\/[a-zA-Z0-9._]+$/.test(value), {
 			message: 'Invalid YouTube URL',
 		}),
