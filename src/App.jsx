@@ -78,6 +78,10 @@ const router = createBrowserRouter([
 				path: '/settings/:config',
 				element: <SettingsConfig />,
 			},
+			{
+				path: '/pages/:config',
+				element: <PagesConfig />,
+			},
 		],
 	},
 ]);

@@ -17,6 +17,7 @@ export const english = {
 	'Facebook link': 'Facebook link',
 	Instagram: 'Instagram',
 	Youtube: 'Youtube',
+	"Store industry":"Store industry",
 	Coupons: 'Coupons',
 	Campaigns: 'Campaigns',
 	Services: 'Services',

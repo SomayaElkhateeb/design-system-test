@@ -5,6 +5,7 @@ import AddNavigation from './AddNavigation';
 
 export default function PagesConfig() {
 	const { config } = useParams();
+
 	switch (config) {
 		case 'AddPage':
 			return <AddPage />;

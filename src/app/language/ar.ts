@@ -500,6 +500,7 @@ export const arabic = {
 	Installed: 'المثبتة',
 	Instagram: 'الانستجرام',
 	Youtube: 'اليوتيوب',
+	"Store industry":"مجال المتجر",
 	'App store': 'متجر التطبيقات',
 	'Installed apps': 'التطبيقات المثبتة',
 	Support: 'الدعم',

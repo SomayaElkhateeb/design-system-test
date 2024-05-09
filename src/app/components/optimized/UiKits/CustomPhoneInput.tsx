@@ -58,7 +58,8 @@ const CustomPhoneInput = ({
 				dropdownStyle={{ height: '300px', width: '267px' }}
 				//  disableDropdown="false"
 			/>
-			{errors && <p className='global_error'>{errors}</p>}
+
+			{errors &&  <p className='global_error'>{errors}</p>}
 		</div>
 	);
 };
