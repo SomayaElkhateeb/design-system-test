@@ -13,7 +13,7 @@ const handleButtonVariant = cva(undefined, {
 			default: 'relative px-4 py-2 rounded  capitalize flex px-1 items-center ',
 		},
 	},
-	defaultVariants: { variant: 'default' },
+	defaultVariants: { variant: 'primary' },
 });
 const handleIconVariant = cva(undefined, {
 	variants: {

@@ -44,14 +44,22 @@ export const getDiscountReducer = (builder: ActionReducerMapBuilder<DiscountStat
 			state.isLoading = true;
 			state.error = null;
 		})
+		// .addCase(updateDiscounts.fulfilled, (state, action) => {
+		// 	state.isLoading = false;
+		// 	state.discounts = state.discounts.map((discount) => {
+		// 		if (discount.id === action.payload.id) {
+		// 			return action.payload;
+		// 		}
+		// 		return discount;
+		// 	});
+		// })
 		.addCase(updateDiscounts.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.discounts = state.discounts.map((discount) => {
-				if (discount.id === action.payload.id) {
-					return action.payload;
-				}
-				return discount;
-			});
+			// Assuming the updated discount object is returned from the backend
+			const updatedDiscount = action.payload;
+			state.discounts = state.discounts.map((discount) =>
+				discount.id === updatedDiscount.id ? updatedDiscount : discount,
+			);
 		})
 		.addCase(updateDiscounts.rejected, (state, action) => {
 			state.isLoading = false;

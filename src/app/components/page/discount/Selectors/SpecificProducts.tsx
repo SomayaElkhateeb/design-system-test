@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { Button } from 'src/app/components/optimized';
 import SelectItems from 'src/app/components/optimized/SelectItems/SelectItems';
@@ -7,9 +7,8 @@ import { getSelectProducts } from 'src/app/store/slices/marketing/products/produ
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import CategoryViewSelect from 'src/app/components/page/discount/Selectors/CategoryViewSelect';
-interface SpecificProductsProps {}
 
-const SpecificProducts: React.FC<SpecificProductsProps> = ({ name = 'select products' }) => {
+const SpecificProducts = ({ name = 'select products' }: { name?: string }) => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
 	const { products } = useSelector((state) => state.products);

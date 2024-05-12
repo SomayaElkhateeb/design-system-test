@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { CheckBox } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { DiscountFormStore } from '../AddCoupon';
-const Limits = ({ formStore }: { formStore: DiscountFormStore }) => {
+import { newCouponInterface } from '../AddCoupon';
+const Limits = ({ formStore }: { formStore: UseFormReturn<newCouponInterface> }) => {
 	const { t } = useTranslation();
 	const [isChecked, setIsChecked] = useState<boolean>(false);
 	const handleCheckboxChange = (newValue: boolean) => {
@@ -25,9 +26,7 @@ const Limits = ({ formStore }: { formStore: DiscountFormStore }) => {
 						formStore={formStore}
 						name='usage'
 						label={t('Usage number')}
-						render={(field) => {
-							return <Input {...field} type='number' />;
-						}}
+						render={(field) => <Input {...field} />}
 					/>
 				</div>
 			)}

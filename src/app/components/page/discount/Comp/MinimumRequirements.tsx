@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { CheckBox, InputRow } from 'src/app/components/optimized';
+import { CheckBox } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
-import { DiscountFormStore } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
+import { UseFormReturn } from 'react-hook-form';
+import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
 
 interface State {
 	selectedMinimumRequirements: string;
@@ -16,7 +17,7 @@ const initialState: State = {
 	isChecked: false,
 };
 
-const MinimumRequirements = ({ formStore }: { formStore: DiscountFormStore }) => {
+const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
 	const [updateState, setUpdateState] = useState<State>(initialState);
 	const { selectedMinimumRequirements, isChecked } = updateState;
@@ -54,11 +55,9 @@ const MinimumRequirements = ({ formStore }: { formStore: DiscountFormStore }) =>
 						<div className='w-[390px]'>
 							<FormField
 								formStore={formStore}
-								name='MiniPrice'
+								name='sales'
 								label={t('Mini purchase price')}
-								render={(field) => {
-									return <Input {...field} type='number' />;
-								}}
+								render={(field) => <Input {...field} />}
 							/>
 						</div>
 					)}
@@ -66,11 +65,9 @@ const MinimumRequirements = ({ formStore }: { formStore: DiscountFormStore }) =>
 						<div className='w-[390px]'>
 							<FormField
 								formStore={formStore}
-								name='MiniQuantity'
+								name='miniQuantity'
 								label={t('Mini purchase quantity')}
-								render={(field) => {
-									return <Input {...field} type='number' />;
-								}}
+								render={(field) => <Input {...field} />}
 							/>
 						</div>
 					)}

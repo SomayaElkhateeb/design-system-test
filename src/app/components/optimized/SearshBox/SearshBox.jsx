@@ -57,7 +57,7 @@ const Tag = ({ label, onRemove }) => {
 		<div className='flex items-center  bg-borders-lines p-1 pl-3 mt-1.5 rounded'>
 			<p className='paragraph text-title'>{label}</p>
 
-			<button className='ml-1' onClick={onRemove}>
+			<button className='ms-1' onClick={onRemove}>
 				<DeleteExitIcon className='fill-hint' />
 			</button>
 		</div>

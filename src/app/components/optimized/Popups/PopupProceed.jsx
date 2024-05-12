@@ -1,3 +1,5 @@
+import Button from '../Buttons/Button';
+
 /**
  * PopupProceed component for displaying a popup dialog with a proceed option.
  * @param {Object} props - Props for the PopupProceed component.
@@ -6,7 +8,7 @@
  * @param {string} [props.subTitle] - Subtitle of the popup dialog.
  * @param {JSX.Element} props.children - Content to be displayed within the popup.
  * @param {string} props.proceedBtnText - Text to display on the button to proceed.
- * @param {string} props.color - Text to display on the button color.
+ * @param {string} [props.color] - Text to display on the button color.
  * @param {string} props.cancelBtnText - Text to display on the button to cancel.
  * @param {() => void} [props.onCancel] - Function to handle cancellation. If not provided, closes the popup.
  * @param {() => void} props.onProceed - Function to proceed after confirmation.
@@ -42,9 +44,13 @@ export default function PopupProceed(props) {
 					<button className='px-4 py-2 text-sm font-semibold text-title' onClick={props.onCancel}>
 						{props.cancelBtnText}
 					</button>
-					<button className={`${props.color} text-white p-2 rounded-md`} onClick={handleProceed}>
+					<Button
+						style={{ backgroundColor: props.color }}
+						className={`text-white p-2 rounded-md`}
+						onClick={handleProceed}
+					>
 						{props.proceedBtnText}
-					</button>
+					</Button>
 				</div>
 			</div>
 		</div>

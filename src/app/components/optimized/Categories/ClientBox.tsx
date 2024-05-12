@@ -2,7 +2,7 @@ import { capitalizeFirstLetter } from 'src/app/utils';
 
 interface Props {
 	avatar: React.ReactNode;
-	title: string;
+	title?: string;
 	details?: string; // Making details optional
 }
 
@@ -12,7 +12,9 @@ export default function ClientBox({ avatar, title, details }: Props) {
 			<div className='flex items-center gap-2'>
 				{avatar}
 				<div>
-					<h5 className='text-sm font-semibold text-title'>{capitalizeFirstLetter(title)}</h5>
+					{title && (
+						<h5 className='text-sm font-semibold text-title'>{capitalizeFirstLetter(title)}</h5>
+					)}
 					{details && <p className='text-sm text-subtitle'>{details}</p>}
 				</div>
 			</div>

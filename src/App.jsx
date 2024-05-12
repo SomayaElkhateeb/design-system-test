@@ -22,14 +22,17 @@ import {
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
 import { UseLanguage } from './app/components/CustomHook/LanguageHook';
-import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
+import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
-import AddSettings from './pages/SettingsPage/comp/AddSettings';
+
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 
 import RootLayout from './pages/RootLayout';
+import PagesConfig from './pages/PagesPage/comp/PagesConfig';
+
+import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
 
 const router = createBrowserRouter([
 	{
@@ -40,6 +43,7 @@ const router = createBrowserRouter([
 			{ index: true, element: <HomePage /> },
 			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
 			{ path: '/pages', element: <PagesPage /> },
+			{ path: '/pages/:config', element: <PagesConfig /> },
 			{ path: '/store', element: <StorePage /> },
 			{ path: '/orders', element: <OrdersPage /> },
 			{ path: '/reviews', element: <ReviewsPage /> },
@@ -53,8 +57,8 @@ const router = createBrowserRouter([
 				element: <SettingsConfig />,
 			},
 			{
-				path: '/settings/:config/:add',
-				element: <AddSettings />,
+				path: '/settings/:config/:nested_page',
+				element: <Nested_pages_SettingsConfig />,
 			},
 
 			{

@@ -83,7 +83,7 @@ function SelectItems(props) {
 		>
 			<label className='w-[39rem] rounded bg-white py-[1rem]'>
 				<div>
-					<h3 className='text-title font-semibold mb-3 ml-[1rem] mr-4'>
+					<h3 className='text-title font-semibold mb-3 ms-[1rem] mr-4'>
 						{t('Select')} {capitalizeFirstLetter(props.title)}
 					</h3>
 
