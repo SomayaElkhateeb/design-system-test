@@ -25,15 +25,12 @@ import { UseLanguage } from './app/components/CustomHook/LanguageHook';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
-
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
-
 import RootLayout from './pages/RootLayout';
+import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
-
 import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
-
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -60,7 +57,10 @@ const router = createBrowserRouter([
 				path: '/settings/:config/:nested_page',
 				element: <Nested_pages_SettingsConfig />,
 			},
-
+			{
+				path: '/settings/shipping/:config',
+				element: <ShippingConfig />,
+			},
 			{
 				path: '/products',
 				element: <ProductsPage />,
