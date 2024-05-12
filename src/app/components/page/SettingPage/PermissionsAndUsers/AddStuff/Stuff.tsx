@@ -12,20 +12,19 @@ import {
 } from 'src/app/components/ui/select';
 
 export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuffInterface> }) {
+	//  hooks
 	const { t } = useTranslation();
-	const selectError = formStore.formState.errors.storeIndustry?.message;
-	const selectTouched = formStore.formState.touchedFields.storeIndustry;
+
 	return (
-		<div className='global-cards'>
-			<div className='w-[30rem]'>
+		<div className='serviceDetails-sharedClass p-5 '>
+			<div className='flex-col-top-section-pages md:w-[50%]'>
 				<FormField
 					formStore={formStore}
 					name='name'
 					label={t('Full name')}
 					render={(field) => <Input {...field} />}
 				/>
-			</div>
-			<div className='w-[30rem]'>
+
 				<FormField
 					formStore={formStore}
 					name='storeIndustry'
@@ -45,12 +44,10 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 									<SelectItem value='design'>Select role</SelectItem>
 								</SelectContent>
 							</Select>
-							{selectError && selectTouched && <p className='global_error'>{selectError}</p>}
 						</div>
 					)}
 				/>
-			</div>
-			<div className='w-[30rem]'>
+
 				<FormField
 					formStore={formStore}
 					name='email'

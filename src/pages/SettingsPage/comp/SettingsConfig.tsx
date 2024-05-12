@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import GeneralSettings from './GeneralSettings/GeneralSettings';
-import Users from './GeneralSettings/Users';
+import GeneralSettings from '../../../app/components/page/SettingPage/GeneralSettings/GeneralSettings';
+import Users from 'src/app/components/page/SettingPage/PermissionsAndUsers/Users';
 
 const SettingsConfig = () => {
 	const { config } = useParams();

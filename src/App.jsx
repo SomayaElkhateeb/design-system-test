@@ -30,7 +30,7 @@ import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
 
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
-import UsersConfig from './pages/SettingsPage/comp/UsersConfig';
+import UsersConfig from './app/components/page/SettingPage/PermissionsAndUsers/UsersConfig';
 
 const router = createBrowserRouter([
 	{

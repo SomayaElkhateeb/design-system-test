@@ -12,15 +12,18 @@ export interface addStuffInterface {
 	name: string;
 	storeIndustry: string;
 	email: string;
+	storePermissions: string[];
 }
 
 const stuffSchema = {
 	name: z.string().min(5, { message: 'Full name is required' }),
 	storeIndustry: z.string().min(1, { message: 'Store Industry is required' }),
 	email: z.string().min(1, { message: 'Stuff email is required' }).email(),
+	storePermissions: z.array(z.string().min(1, { message: 'permissions is required' })),
 };
 
 export default function AddStuff() {
+	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
@@ -32,6 +35,7 @@ export default function AddStuff() {
 			name: '',
 			storeIndustry: '',
 			email: '',
+			storePermissions: [],
 		};
 	};
 
@@ -41,11 +45,10 @@ export default function AddStuff() {
 		defaultValues: handelDefaultValue(),
 	});
 
-	const data = [{ id: 1, title: t('Activated') }];
 	return (
 		<>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit}>
+				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 					<HeaderSettings
 						variant='settingTwoBtns'
 						submit
@@ -61,13 +64,13 @@ export default function AddStuff() {
 							onClick: () => {},
 						}}
 					/>
-					<div className='p-4 flex gap-7 w-full justify-between'>
-						<div className=' gap-7 flex flex-col w-full'>
+					<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
+						<div className=' flex-col-top-section-pages lg:col-span-2'>
 							<Stuff formStore={formStore} />
-							<Permissions />
+							<Permissions formStore={formStore}/>
 						</div>
-						<div>
-							<QuickActions data={data} />
+						<div className='lg:col-span-1'>
+							<QuickActions />
 						</div>
 					</div>
 				</form>

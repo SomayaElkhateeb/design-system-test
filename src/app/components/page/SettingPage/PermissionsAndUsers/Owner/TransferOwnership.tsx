@@ -16,10 +16,10 @@ const ownerSchema = {
 	name: z.string().min(5, { message: 'Full name is required' }),
 	email: z.string().min(1, { message: 'Stuff email is required' }).email(),
 	password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
-	//   password: z.string().min(8, { message: 'Password must be at least 8 characters long' }).regex(/.*[!@#$%&^()-+{}|[|]\\:";'<>?,./].*/, { message: 'Password should contain at least 1 special character' })
 };
 
 export default function TransferOwnership() {
+	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export default function TransferOwnership() {
 	return (
 		<>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit}>
+				<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3'>
 					<HeaderSettings
 						variant='settingTwoBtns'
 						submit
@@ -59,7 +59,7 @@ export default function TransferOwnership() {
 							onClick: () => {},
 						}}
 					/>
-					<div className='p-4  w-3/4 '>
+					<div className='container mx-auto '>
 						<NewOwner formStore={formStore} />
 					</div>
 				</form>
