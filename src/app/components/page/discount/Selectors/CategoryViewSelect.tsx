@@ -1,32 +1,31 @@
-import { Avatars, ClientBox } from 'src/app/components/optimized';
+import { ClientBox } from 'src/app/components/optimized';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 import { MoreIcon } from 'src/app/utils/icons';
 
-/**
- * @param {{
- *   id: string | number;
- *   title?: string;
- *   subTitle?: string;
- *   img?: string;
- *   fName?: string;
- *   lName?: string;
- *   count?: number;
- * idToDelete?: number;
- * showPopup?: boolean;
- * 	handleDelete?:(() => void) | undefined;
- * 	handleDeleteItem?:(() => void) | undefined;
- * 	onClose?:(() => void) | undefined;
- *   variant?: "customers" | "groups";
- * }} props
- */
 export default function CategoryViewSelect(props) {
 	const title = props.title ?? `${props.fName} ${props.lName ?? ''}`;
-	const { variant, subTitle, img, fName, lName, count, handleDelete, handleDeleteItem, onClose, showPopup } = props;
+	const {
+		variant,
+		subTitle,
+		img,
+		fName,
+		lName,
+		count,
+		handleDelete,
+		handleDeleteItem,
+		onClose,
+		showPopup,
+	} = props;
 	switch (variant) {
 		case 'customers':
 			return (
 				<div className='w-full h-[3.5rem] flex items-center justify-between px-[1rem] mt-4'>
-					<ClientBox title={title} details={subTitle} avatar={<Avatars src={img} fName={fName} lName={lName} />} />
+					<ClientBox
+						title={title}
+						details={subTitle}
+						avatar={<Avatar variant='user' imageUrl={img} firstName={fName} lastName={lName} />}
+					/>
 					<button className='cursor-pointer' onClick={handleDelete}>
 						<MoreIcon />
 					</button>
@@ -38,7 +37,11 @@ export default function CategoryViewSelect(props) {
 		case 'groups':
 			return (
 				<div className='w-full h-[3.5rem] flex items-center justify-between px-[1rem] mt-4'>
-					<ClientBox title={title} details={subTitle} avatar={<Avatars variant='countAvatar' count={count} />} />
+					<ClientBox
+						title={title}
+						details={subTitle}
+						avatar={<Avatar variant='group' groupCount={count} />}
+					/>
 					<button className='cursor-pointer' onClick={handleDelete}>
 						<MoreIcon />
 					</button>

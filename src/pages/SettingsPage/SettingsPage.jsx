@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
 import { TrialBanner } from 'src/app/components/optimized';
 import { settingsCards } from './comp/data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
-import SettingsLoading from 'src/app/components/page/SchimmerLoading/SettingsLoading';
 
 /**
  * SettingsPage component represents the settings page of the application.
@@ -11,21 +9,7 @@ import SettingsLoading from 'src/app/components/page/SchimmerLoading/SettingsLoa
  * @returns {JSX.Element} SettingsPage component.
  */
 const SettingsPage = () => {
-	// State to manage loading state
-	const [showLoading, setShowLoading] = useState(true);
-
-	// Simulate loading of the settings page
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setShowLoading(false);
-		}, 3000);
-
-		// Clear the timer on component unmount
-		return () => clearTimeout(timer);
-	}, []);
-
 	return (
-
 		<div className='w-full px-4 py-6 flex flex-col gap-6'>
 			<TrialBanner
 				free={false}
@@ -39,7 +23,6 @@ const SettingsPage = () => {
 				})}
 			</div>
 		</div>
-
 	);
 };
 
