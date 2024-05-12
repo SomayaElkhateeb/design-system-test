@@ -28,7 +28,7 @@ const TikTokBusiness: React.FC = () => {
 							src='https://www.freepnglogos.com/uploads/shopify-logo-png/shopify-logo-icon-png-8.png'
 							alt='TikTok Logo'
 						/>
-						<span className='ml-6'>
+						<span className='ms-6'>
 							<FaArrowRight />
 						</span>
 						<img

@@ -15,7 +15,7 @@ const Reports = ({
 		<div className='grid gap-2 p-1 h-fit'>
 			<div className='flex items-center'>
 				<BackAndroidIcon
-					className={`-ml-1.5 ${positive ? 'fill-success rotate-90' : 'fill-error -rotate-90'}`}
+					className={`-ms-1.5 ${positive ? 'fill-success rotate-90' : 'fill-error -rotate-90'}`}
 				/>
 				<h2 className={`paragraph ${positive ? 'text-success' : 'text-error'}`}>{ratio}%</h2>
 			</div>

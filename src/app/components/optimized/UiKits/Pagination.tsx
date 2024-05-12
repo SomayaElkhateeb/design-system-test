@@ -64,7 +64,7 @@ const Pagination: React.FC<PaginationProps> = ({
 			} else {
 				pageNumbers.push(renderPageNumber(1));
 				pageNumbers.push(
-					<li key='ellipsis-start' className='px-2 py-1 opacity-50'>
+					<li key='ellipsis-start' className='px-2 py-1 opacity-50 cursor-not-allowed'>
 						...
 					</li>,
 				);
@@ -72,7 +72,7 @@ const Pagination: React.FC<PaginationProps> = ({
 					pageNumbers.push(renderPageNumber(i));
 				}
 				pageNumbers.push(
-					<li key='ellipsis-end' className='px-2 py-1 opacity-50'>
+					<li key='ellipsis-end' className='px-2 py-1 opacity-50 bg-blue-500'>
 						...
 					</li>,
 				);
@@ -90,6 +90,9 @@ const Pagination: React.FC<PaginationProps> = ({
 				className={`px-4 py-1 cursor-pointer ${
 					currentPage === pageNumber ? 'bg-blue-500 text-white' : 'hover:bg-blue-200'
 				} `}
+				style={{
+					backgroundColor: currentPage === pageNumber ? '#3B82F6' : '#fff',
+				}}
 				onClick={() => handlePageClick(pageNumber)}
 			>
 				{pageNumber}
@@ -101,7 +104,12 @@ const Pagination: React.FC<PaginationProps> = ({
 		<div className='flex justify-start mt-4 '>
 			<ul className='flex bg-white rounded-lg divide-x divide-gray-200 border'>
 				<li
-					className={`px-3 py-2 cursor-pointer ${currentPage === 1 ? 'pointer-events-none' : ''}`}
+					className={`px-3 py-2 cursor-pointer ${
+						currentPage === 1 ? 'pointer-events-none' : 'cursor-not-allowed'
+					}`}
+					style={{
+						backgroundColor: currentPage === 1 ? '#D9D9D9' : '#fff',
+					}}
 					onClick={handlePrevClick}
 				>
 					Prev
@@ -109,8 +117,11 @@ const Pagination: React.FC<PaginationProps> = ({
 				{renderPageNumbers()}
 				<li
 					className={`px-3 py-2 cursor-pointer ${
-						currentPage === totalPages ? 'pointer-events-none' : ''
+						currentPage === totalPages ? 'pointer-events-none' : 'cursor-not-allowed'
 					}`}
+					style={{
+						backgroundColor: currentPage === totalPages ? '#D9D9D9' : '#fff',
+					}}
 					onClick={handleNextClick}
 				>
 					Next
