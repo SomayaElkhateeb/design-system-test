@@ -126,9 +126,9 @@ function VerticalTabs({ onClose }: { onClose: () => void }) {
 					aria-label='Vertical tabs example'
 					sx={{ borderLeft: 1, borderColor: 'divider' }}
 				>
-					<Tab label={<InternalchatIcon className='fill-hint ml-10' />} {...a11yProps(0)} />
-					<Tab label={<WhatsappIcon className='fill-hint ml-10' />} {...a11yProps(1)} />
-					<Tab label={<MessengerIcon className='fill-hint ml-10' />} {...a11yProps(2)} />
+					<Tab label={<InternalchatIcon className='fill-hint ms-10' />} {...a11yProps(0)} />
+					<Tab label={<WhatsappIcon className='fill-hint ms-10' />} {...a11yProps(1)} />
+					<Tab label={<MessengerIcon className='fill-hint ms-10' />} {...a11yProps(2)} />
 				</Tabs>
 			) : (
 				<Tabs

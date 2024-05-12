@@ -132,7 +132,7 @@ function VTab(props) {
 
 				{/* title */}
 				<div
-					className={`flex-grow ml-2 mx-2 text-md capitalize ${
+					className={`flex-grow ms-2 mx-2 text-md capitalize ${
 						props.index === props.currentTab ? 'font-semibold' : ''
 					}`}
 				>
@@ -140,14 +140,14 @@ function VTab(props) {
 				</div>
 			</div>
 			{props.index === props.currentTab && (
-				<div className='ml-8'>
+				<div className='ms-8'>
 					{/* content */}
 					<LayoutCard>
 						{props.content}
 						{/* Render next and previous buttons */}
 						<div className='flex justify-end mt-4'>
 							{props.index !== 0 && (
-								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ml-5'>
+								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ms-5'>
 									{t('Prev')}
 								</Button>
 							)}
