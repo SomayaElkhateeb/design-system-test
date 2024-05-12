@@ -30,6 +30,7 @@ import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 
 import RootLayout from './pages/RootLayout';
+import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
 
 const router = createBrowserRouter([
 	{
@@ -56,7 +57,10 @@ const router = createBrowserRouter([
 				path: '/settings/:config/:add',
 				element: <AddSettings />,
 			},
-
+			{
+				path: '/settings/shipping/:config',
+				element: <ShippingConfig />,
+			},
 			{
 				path: '/products',
 				element: <ProductsPage />,

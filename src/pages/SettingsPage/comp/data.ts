@@ -1,12 +1,5 @@
 import {
-
-	// CustomersIcon,
-	// OrdersIcon,
-	// ProductsIcon,
-	// SearchIcon,
-	// StoresIcon,
 	LanguageIcon,
-
 	SettingsIcon,
 	ShippingIcon,
 	PaymentIcon,
@@ -19,6 +12,21 @@ import {
 	InventoryIcon,
 	WalletIcon,
 } from 'src/app/utils/icons';
+import AramexIcon from 'src/app/assets/companies/aramexred.svg';
+import AyMakanIcon from 'src/app/assets/companies/aymakan.svg';
+import DhlIcon from 'src/app/assets/companies/dhlred.svg';
+import ExpressIcon from 'src/app/assets/companies/express.svg';
+import FastloIcon from 'src/app/assets/companies/fastlo.svg';
+import RedboxIcon from 'src/app/assets/companies/redbox.svg';
+
+const images = [
+	{ id: 1, ImageURL: ExpressIcon },
+	{ id: 2, ImageURL: AramexIcon },
+	{ id: 3, ImageURL: FastloIcon },
+	{ id: 4, ImageURL: AyMakanIcon },
+	{ id: 5, ImageURL: RedboxIcon },
+	{ id: 6, ImageURL: DhlIcon },
+];
 
 const settingsCards = [
 	{
@@ -30,7 +38,7 @@ const settingsCards = [
 	},
 	{
 		id: 2,
-		path: '/',
+		path: 'shipping',
 		Icon: ShippingIcon,
 		title: 'Shipping',
 		description: 'Integration with shipping companies',
@@ -60,8 +68,6 @@ const settingsCards = [
 		id: 6,
 
 		path: 'users',
-
-
 
 		Icon: Person,
 		title: 'Users & Permissions',
@@ -94,4 +100,4 @@ const settingsCards = [
 	},
 ];
 
-export { settingsCards };
+export { settingsCards, images };
