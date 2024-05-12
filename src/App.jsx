@@ -22,7 +22,7 @@ import {
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
 import { UseLanguage } from './app/components/CustomHook/LanguageHook';
-import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
+import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 
@@ -32,7 +32,7 @@ import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import RootLayout from './pages/RootLayout';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 
-import Nested_pages_SettingsConfig from './app/components/page/SettingPage/PermissionsAndUsers/UsersConfig';
+import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
 
 const router = createBrowserRouter([
 	{
