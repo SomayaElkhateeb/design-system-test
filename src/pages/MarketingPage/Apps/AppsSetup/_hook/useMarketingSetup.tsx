@@ -16,7 +16,6 @@ const useMarketingSetup = (platform: string | null) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const hasConfirmed = searchParams.get('add_channel') === 'true';
 	const [_, setFinish] = useState(false);
-	const [syncStatus, setSyncStatus] = useState(false);
 
 	const handleFinish = (value: boolean) => {
 		setFinish(value);
@@ -69,7 +68,7 @@ const useMarketingSetup = (platform: string | null) => {
 		}
 	};
 
-	return { title, tabs, syncStatus, setSyncStatus, renderSetupOrTabs };
+	return { title, tabs, renderSetupOrTabs };
 };
 
 export default useMarketingSetup;

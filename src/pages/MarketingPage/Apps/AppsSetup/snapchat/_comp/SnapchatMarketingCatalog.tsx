@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, SelectBoxRow } from 'src/app/components/optimized';
-import useMarketingSetup from '../../_hook/useMarketingSetup';
 import { useSearchParams } from 'react-router-dom';
+import { usePlatformContext } from '../../PlatformContext';
 
 interface Option {
 	value: string;
@@ -26,8 +26,8 @@ const options: Option[] =
 
 const SnapchatMarketingCatalog = () => {
 	const [selectedOrganization, setSelectedOrganization] = useState('Select an organization');
-	const { setSyncStatus } = useMarketingSetup(null);
 	const [_, setSearchParams] = useSearchParams();
+	const { setSyncStatus } = usePlatformContext();
 
 	const handleSelectChange = (value) => {
 		setSelectedOrganization(value);
@@ -35,6 +35,7 @@ const SnapchatMarketingCatalog = () => {
 	const handleSync = () => {
 		setSyncStatus(true);
 		setSearchParams({ features_manage: 'active' });
+		setSyncStatus(true);
 	};
 
 	return (
