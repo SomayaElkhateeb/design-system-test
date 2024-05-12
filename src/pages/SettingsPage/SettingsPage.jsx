@@ -1,5 +1,5 @@
 import { TrialBanner } from 'src/app/components/optimized';
-import { settingsCards } from './comp/data';
+import { settingsCards } from './data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
 
 /**
