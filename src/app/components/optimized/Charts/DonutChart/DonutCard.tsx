@@ -16,7 +16,7 @@ interface DonutCardProps {
 
 const DonutCard: React.FC<DonutCardProps> = ({ title, score, graph, legends }) => {
 	return (
-		<div className='flex flex-col bg-white rounded-lg shadow-md p-4'>
+		<div className='flex flex-col bg-white rounded-lg shadow-sm border p-4'>
 			<div className='flex justify-between items-center pb-4'>
 				<h2 className='text-xl font-bold text-gray-800'>{title}</h2>
 				<span className={`text-lg  ${score > 0 ? 'text-green-500' : 'text-red-500'}`}>
