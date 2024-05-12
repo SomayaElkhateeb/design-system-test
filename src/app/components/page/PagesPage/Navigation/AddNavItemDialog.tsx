@@ -29,7 +29,7 @@ export default function AddNavItemDialog({
 
 	const handleSubmit = (values: EditOrAddItemSchema) => {
 		console.log(values);
-		handelclose();
+		// handelclose();
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -66,7 +66,7 @@ export default function AddNavItemDialog({
 								{t('cancel')}
 							</Button>
 
-							<Button type='submit' className='px-4 font-semibold'>
+							<Button variant={"primary"} type='submit' className='px-4 font-semibold'>
 								{t('Save Changes')}
 							</Button>
 						</div>

@@ -8,7 +8,10 @@ import ProductFormCategoryField from '../fields/Category';
 /** @param {{ formStore: import("..").ProductFormStore; }} props */
 export default function ProductFormBasicInfoSection(props) {
 	const { t } = useTranslation();
-
+	// console.log(
+	// 	"`${t('Product name')} (${t('Required')})`",
+	// 	`${t('Product name')} (${t('Required')})`,
+	// );
 	return (
 		<Card>
 			<CardHeader>

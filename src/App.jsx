@@ -30,6 +30,7 @@ import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
 
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
+import UsersConfig from './app/components/page/SettingPage/PermissionsAndUsers/UsersConfig';
 
 const router = createBrowserRouter([
 	{
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
 				element: <SettingsConfig />,
 			},
 			{
+				path: '/settings/users/:config',
+				element: <UsersConfig />,
+			},
+			{
 				path: '/pages/:config',
 				element: <PagesConfig />,
 			},
@@ -92,7 +97,14 @@ const App = () => {
 		language === 'ar' ? i18n.changeLanguage('ar') : i18n.changeLanguage('en');
 
 		document.dir = language === 'ar' ? 'rtl' : 'ltr';
-	}, [language]);
+		// Change font family based on language
+		const root = document.getElementById('root');
+		if (language === 'ar') {
+			root?.style.setProperty('--font-family', 'var(--font-family-ar)');
+		} else {
+			root?.style.setProperty('--font-family', 'var(--font-family-en)');
+		}
+	}, [language, i18n]);
 	return <RouterProvider router={router} />;
 };
 

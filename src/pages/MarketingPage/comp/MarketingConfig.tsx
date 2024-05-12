@@ -9,6 +9,7 @@ const MarketingConfig = () => {
 	const platformKey = `${platform}-setup`;
 
 	const campaignElement: number | string = Number(config);
+	
 	switch (config) {
 		case 'addDiscount':
 			return <NewDiscount />;

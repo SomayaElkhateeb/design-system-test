@@ -60,7 +60,7 @@ function CustomFormMessage(props) {
  *	/>
  * ```
  */
-export default function TabbedFormField(props) {
+export default function TabbedFormField({ formStore, ...props }) {
 	const [activeName, setActiveName] = useState(
 		/** @type {Keys} */ (props.defaultName ?? props.keys[0]?.name),
 	);
@@ -69,11 +69,12 @@ export default function TabbedFormField(props) {
 	const getUniqueClassName = /** @param {string} prefix */ (prefix) =>
 		`${reactId.replace(/:/g, '')}-${prefix}`;
 
+
 	return (
 		<FormField
 			// This is needed because react consider it to have the same value
 			key={activeName}
-			formStore={props.formStore}
+			formStore={formStore}
 			name={activeName}
 			hideError
 			container={{

@@ -1,5 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { GroupIcons } from '..';
+import { useNavigate } from 'react-router-dom';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
@@ -8,14 +7,16 @@ import { IoIosArrowForward } from 'react-icons/io';
 /**
  *
  * @param {{
- *  variant: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
+ *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
  *  title: string | null;
  *  btn1?: { text: string; onClick: () => void };
  *  btn2?: { text: string; onClick: () => void };
  *  btn3?: { text: string; onClick: () => void };
- * to?: string;
+ * 	groupIcons?: any;
+ * 	to?: number;
  * onClick?:()=>void
  * children?:React.ReactNode
+ * submit?:boolean
  * }} props
  */
 export default function HeaderSettings(props) {
@@ -24,7 +25,7 @@ export default function HeaderSettings(props) {
 	const language = UseLanguage();
 	const navigate = useNavigate();
 	return (
-		<div className='flex items-center justify-between pl-2 pr-4 bg-white h-14'>
+		<div className='flex items-center justify-between  bg-white h-14 container mx-auto'>
 			<div className='flex items-center gap-1' onClick={props.onClick}>
 				<p className='cursor-pointer' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
@@ -80,7 +81,11 @@ export default function HeaderSettings(props) {
 				{props.variant === 'settingTwoBtns' && (
 					<>
 						{props.btn1 && (
-							<Button onClick={props.btn1.onClick} variant='sec'>
+							<Button
+								type={props.submit ? 'submit' : 'button'}
+								onClick={props.btn1.onClick}
+								variant='sec'
+							>
 								{props.btn1.text}
 							</Button>
 						)}
@@ -112,7 +117,7 @@ export default function HeaderSettings(props) {
 				)}
 				{props.variant === 'settingWithIcons' && (
 					<>
-						<GroupIcons />
+						{props.groupIcons}
 
 						{props.btn1 && (
 							<Button onClick={props.btn1.onClick} variant='sec'>
@@ -120,7 +125,11 @@ export default function HeaderSettings(props) {
 							</Button>
 						)}
 						{props.btn2 && (
-							<Button onClick={props.btn2.onClick} variant='pri'>
+							<Button
+								type={props.submit ? 'submit' : 'button'}
+								onClick={props.btn2.onClick}
+								variant='pri'
+							>
 								{props.btn2.text}
 							</Button>
 						)}

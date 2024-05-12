@@ -9,6 +9,7 @@ import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard'
 import SlideCard from 'src/app/components/page/Cards/SlideCard';
 import Reports from './comp/Reports';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import ProductForm from 'src/app/components/optimized/Forms/Product';
 
 const HomePage = () => {
 	// hook
@@ -40,6 +41,7 @@ const HomePage = () => {
 
 		return () => clearTimeout(timer); // Clear the timer on component unmount
 	}, []);
+
 
 	const slidesTabs = [
 		{ title: t('Top selling'), content: data.containSelling },

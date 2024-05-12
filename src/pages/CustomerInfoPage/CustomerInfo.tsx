@@ -22,22 +22,18 @@ export default function CustomerInfo() {
 	//  fake array
 	const array = [...Array(3)];
 	return (
-		<div className=' container mx-auto py-[1rem]'>
-			<div className='flex flex-col gap-[1.6rem]'>
-				{/*  top section */}
-				<HeaderSettings variant='customerInfowithIcons'  title={t('Customer Info')}>
-					<div className=' flex  items-center gap-[.8rem] '>
-						<FaRegEdit
-							className='cursor-pointer'
-							onClick={() => navigate(`/addCustomer?id=${id}`)}
-						/>
-						<HiOutlineDotsHorizontal className='cursor-pointer' />
-					</div>
-				</HeaderSettings>
+		<div className='gap-[1.6rem] flex-col-top-section-pages'>
+			{/*  top section */}
+			<HeaderSettings variant='customerInfowithIcons' title={t('Customer Info')}>
+				<div className=' flex  items-center gap-[.8rem] '>
+					<FaRegEdit className='cursor-pointer' onClick={() => navigate(`/addCustomer?id=${id}`)} />
+					<HiOutlineDotsHorizontal className='cursor-pointer' />
+				</div>
+			</HeaderSettings>
 
-				{/*  customer section */}
-
-				<div className='customer-border gap-[0.8rem]'>
+			{/*  customer section */}
+			<div className='container mx-auto gap-[1.6rem] flex-col-top-section-pages'>
+				<div className='customer-border  gap-[0.8rem]'>
 					<p className='text-[0.8rem]  font-semibold px-[1.2rem]'>{t('Customer')}</p>
 					<hr />
 					<div className=' flex flex-col gap-[.6rem] px-[1.2rem]'>

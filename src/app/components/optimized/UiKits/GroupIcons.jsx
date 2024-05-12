@@ -1,30 +1,6 @@
-// import { CopyIcon, EditIcon, MoreIcon, NextIcon, ViewIcon } from 'src/app/utils/icons';
-
-// /** @param {{ variant?: "edit" | "copy" }} props */
-// export default function GroupIcons(props) {
-// 	if (props.variant === 'edit') {
-// 		return (
-// 			<div className='flex items-center gap-4'>
-// 				<EditIcon className='fill-subtitle p-0.5 cursor-pointer' />
-// 				<MoreIcon className='mt-1 cursor-pointer fill-subtitle' />
-// 				<NextIcon className='mt-1 cursor-pointer fill-subtitle' />
-// 			</div>
-// 		);
-// 	}
-
-// 	return (
-// 		<div className='flex gap-3'>
-// 			<ViewIcon className='cursor-pointer fill-pri-dark' />
-// 			<CopyIcon className='cursor-pointer fill-pri-dark' />
-// 			<MoreIcon className='cursor-pointer fill-pri-dark' />
-// 		</div>
-// 	);
-// }
-
-// //////////////////////////////////////
 import { CopyIcon, EditIcon, MoreIcon, NextIcon, ViewIcon } from 'src/app/utils/icons';
 
-/** @param {{ variant?: "edit" | "copy", onClick?: Function }} props */
+/** @param {{ variant?: "edit" | "copy" | "view", onClick?: Function }} props */
 export default function GroupIcons(props) {
 	const { variant, onClick } = props;
 
@@ -48,8 +24,17 @@ export default function GroupIcons(props) {
 		if (onClick) onClick('next');
 	};
 	return (
-		<div className={`flex items-center gap-4 ${variant === 'edit' ? '' : 'gap-3'}`}>
-			{variant === 'edit' ? (
+		<div
+			className={`flex items-center gap-4 ${
+				variant === 'edit' || variant === 'view' ? '' : 'gap-3'
+			}`}
+		>
+			{variant === 'view' ? (
+				<>
+					<ViewIcon className='cursor-pointer fill-pri-dark' onClick={handleViewClick} />
+					<MoreIcon className='cursor-pointer fill-pri-dark' onClick={handleMoreClick} />
+				</>
+			) : variant === 'edit' ? (
 				<>
 					<EditIcon className='fill-subtitle p-0.5 cursor-pointer' onClick={handleEditClick} />
 					<MoreIcon className='mt-1 cursor-pointer fill-subtitle' onClick={handleMoreClick} />

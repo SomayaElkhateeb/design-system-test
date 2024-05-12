@@ -1,17 +1,17 @@
 import { useParams } from 'react-router-dom';
 import AddPage from './AddPage';
-import AddNavigation from './AddNavigation';
 import AddBlog from './AddBlog';
+import AddNavigation from './AddNavigation';
 
 export default function PagesConfig() {
 	const { config } = useParams();
-	console.log(config);
+
 	switch (config) {
 		case 'AddPage':
 			return <AddPage />;
-		case 'AddPage':
+		case 'AddNavigation':
 			return <AddNavigation />;
-		case 'AddPage':
+		case 'AddBlog':
 			return <AddBlog />;
 	}
 }

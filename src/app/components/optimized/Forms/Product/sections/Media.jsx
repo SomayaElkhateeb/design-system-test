@@ -40,11 +40,11 @@ function ImagesElem(props) {
 					options={getDefaultFileInputOptions({
 						accept: { 'image/*': [] },
 						setError: (error) => {
-							console.error('error', error);
+							// console.error('error', error);
 							props.formStore.setError('generalInfo.imagesMedia', { message: error.message });
 						},
 						onFileLoad: (params) => {
-							console.log('params', params);
+							// console.log('params', params);
 							onChange([...value, params.file]);
 						},
 					})}
@@ -83,11 +83,11 @@ function FileElem(props) {
 					options={getDefaultFileInputOptions({
 						accept: props.accept,
 						setError: (error) => {
-							console.error('error', error);
+							// console.error('error', error);
 							props.formStore.setError(props.name, { message: error.message });
 						},
 						onFileLoad: (params) => {
-							console.log('params', params);
+							// console.log('params', params);
 							onChange(params.file);
 						},
 					})}

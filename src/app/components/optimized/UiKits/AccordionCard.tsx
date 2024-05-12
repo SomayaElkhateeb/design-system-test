@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DownIcon, UpIcon } from 'src/app/utils/icons';
 
-export default function AccordionCard({ content, title }: { content: any; title: string }) {
-	const [open, setOpen] = useState(false);
+export default function AccordionCard({
+	content,
+	title,
+	open,
+	setOpen,
+}: {
+	content: React.ReactNode;
+	title: string;
+	open: boolean;
+	setOpen: (e: boolean) => void;
+}) {
+	const { t } = useTranslation();
 
 	return (
-		<div className='transition delay-700 ease-in-out duration-500 global-cards gap-4'>
+		<div className='transition delay-700 ease-in-out duration-500  global-cards gap-4'>
 			{/*?? */}
 			<div className='flex justify-between'>
 				<h3 className='font-semibold text-title'>{title}</h3>
@@ -18,7 +28,7 @@ export default function AccordionCard({ content, title }: { content: any; title:
 					) : (
 						<div className='flex gap-2 items-center'>
 							<DownIcon className='fill-title' />
-							<span className='test-title text-sm font-semibold'>Edit</span>
+							<span className='test-title text-sm font-semibold'>{t('Edit')}</span>
 						</div>
 					)}
 				</button>
