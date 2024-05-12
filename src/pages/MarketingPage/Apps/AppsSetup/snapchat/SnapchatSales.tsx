@@ -4,10 +4,10 @@ import { IoClose } from 'react-icons/io5';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { LiaSyncAltSolid } from 'react-icons/lia';
-import useMarketingSetup from '../_hook/useMarketingSetup';
+import { usePlatformContext } from '../PlatformContext';
 
 const SnapchatSales = () => {
-	const { syncStatus, setSyncStatus } = useMarketingSetup(null);
+	const { syncStatus, setSyncStatus } = usePlatformContext();
 	const [showNotification, setShowNotification] = useState(true);
 	const [_, setSearchParams] = useSearchParams();
 	const [isPopupOpen, setIsPopupOpen] = useState(false);

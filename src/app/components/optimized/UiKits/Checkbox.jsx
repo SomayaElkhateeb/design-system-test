@@ -6,8 +6,8 @@ import { CheckIcon } from 'src/app/utils/icons';
  *  variant?: "minus";
  *  label?: import("react").ReactNode;
  *  handleOnChange: (isChecked: boolean) => void;
- *  checked: boolean;
- *  classes: string;
+ *  checked?: boolean;
+ *  classes?: string;
  * } & Omit<import("react").InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked">} props - Props for the CheckBoxX component.
  *
  * @example
@@ -45,7 +45,7 @@ export default function CheckBox({ variant, label, handleOnChange, classes, ...p
 		}
 		return <CheckIcon className='w-full h-full fill-white' />;
 	}
-
+console.log(handleOnChange);
 	return (
 		<label className={`flex gap-2 items-center cursor-pointer ${classes}`}>
 			<input

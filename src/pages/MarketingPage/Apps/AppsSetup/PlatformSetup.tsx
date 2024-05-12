@@ -1,12 +1,13 @@
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import useMarketingSetup from './_hook/useMarketingSetup';
 import TikTokSales from './tiktok/TikTokSales';
 import TikTokCatalog from './tiktok/TikTokCatalog';
 import SnapchatCatalog from './snapchat/SnapchatCatalog';
 import SnapchatSales from './snapchat/SnapchatSales';
+import { PlatformProvider } from './PlatformContext';
 
 interface PlatformSetupProps {
-	platform: string;
+	platform: 'tikTok' | 'snapchat' | 'facebook' | 'sendGrid' | 'mailchimp' | 'google'; // Include 'facebook' in the platform type
 }
 
 const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
@@ -15,30 +16,70 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 	const featuresManage = searchParams.get('features_manage') === 'active';
 	const catalogMarketing = searchParams.get('catalog_marketing') === 'active';
 
-	return (
+	// Render setup or tabs component based on conditions
+	const renderSetupOrTabsComponent = () => (
 		<>
-			{!featuresManage && !catalogMarketing && (
-				<section>
-					<div className='p-4 text-black bg-white'>
-						<h3 className='text-xl font-medium'>{title}</h3>
-					</div>
-					<div className='bg-[#F9FAFC] p-4 flex flex-col'>{renderSetupOrTabs()}</div>
-				</section>
-			)}
-			{featuresManage && (
-				<section>
-					{platform === 'tikTok' && <TikTokSales />}
-					{platform === 'snapchat' && <SnapchatSales />}
-				</section>
-			)}
-			{catalogMarketing && (
-				<section>
-					{platform === 'tikTok' && <TikTokCatalog />}
-					{platform === 'snapchat' && <SnapchatCatalog />}
-				</section>
-			)}
+			<div className='p-4 text-black bg-white'>
+				<h3 className='text-xl font-medium'>{title}</h3>
+			</div>
+			<div className='bg-[#F9FAFC] p-4 flex flex-col'>{renderSetupOrTabs()}</div>
 		</>
+	);
+
+	// Switch case to determine which component to render
+	const renderSales = () => {
+		switch (platform) {
+			case 'tikTok':
+				return featuresManage ? <TikTokSales /> : null;
+			case 'snapchat':
+				return featuresManage ? <SnapchatSales /> : null;
+			case 'facebook':
+				return <Navigate to='/apps/app_store/facebook' replace={true} />;
+			case 'google':
+				return <Navigate to='/apps/app_store/google' replace={true} />;
+			case 'sendGrid':
+				return <Navigate to='/apps/app_store/sendGrid' replace={true} />;
+			case 'mailchimp':
+				return <Navigate to='/apps/app_store/mailchimp' replace={true} />;
+			default:
+				return null; // Default to null if platform is not recognized
+		}
+	};
+
+	const renderCatalog = () => {
+		switch (platform) {
+			case 'tikTok':
+				return catalogMarketing ? <TikTokCatalog /> : null;
+			case 'snapchat':
+				return catalogMarketing ? <SnapchatCatalog /> : null;
+			case 'facebook':
+				return <Navigate to='/apps/app_store/facebook' replace={true} />;
+			case 'google':
+				return <Navigate to='/apps/app_store/google' replace={true} />;
+			case 'sendGrid':
+				return <Navigate to='/apps/app_store/sendGrid' replace={true} />;
+			case 'mailchimp':
+				return <Navigate to='/apps/app_store/mailchimp' replace={true} />;
+			default:
+				return null; // Default to null if platform is not recognized
+		}
+	};
+
+	return (
+		<section>
+			{!featuresManage && !catalogMarketing && renderSetupOrTabsComponent()}
+			{featuresManage && <section>{renderSales()}</section>}
+			{catalogMarketing && <section>{renderCatalog()}</section>}
+		</section>
 	);
 };
 
-export default PlatformSetup;
+const PlatformSetupWithContext: React.FC<PlatformSetupProps> = (props) => {
+	return (
+		<PlatformProvider>
+			<PlatformSetup {...props} />
+		</PlatformProvider>
+	);
+};
+
+export default PlatformSetupWithContext;

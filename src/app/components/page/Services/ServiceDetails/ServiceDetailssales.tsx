@@ -8,7 +8,7 @@ export default function ServiceDetailsSales() {
 	const headerClassName = 'text-[.9rem]  text-title font-bold';
 	const describtionClassName = 'text-[.65rem]  text-title ';
 	return (
-		<div className='serviceDetails-sharedClass py-[1rem]'>
+		<div className='global-cards py-[1rem]'>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<div className='flex-col-top-section-pages gap-[.5rem]'>
 					<div className='flex-col-top-section-pages gap-[.3rem] px-[1rem]'>

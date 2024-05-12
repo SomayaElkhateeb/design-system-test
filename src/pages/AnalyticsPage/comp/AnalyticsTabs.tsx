@@ -7,6 +7,7 @@ import Integrations from '../Integrations/Integrations';
 
 export default function AnalyticsTabs() {
 	const { tab } = useParams();
+	
 	switch (tab) {
 		case 'orders':
 			return <Orders />;

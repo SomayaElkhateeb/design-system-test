@@ -31,18 +31,27 @@ export const postDiscounts = createAsyncThunk<any[], any>(
 );
 
 // update discounts
-export const updateDiscounts = createAsyncThunk<any[], any>(
+// export const updateDiscounts = createAsyncThunk<any[], any>(
+// 	'discount/updateDiscounts',
+// 	async (requestData, thunkAPI) => {
+// 		const { rejectWithValue } = thunkAPI;
+// 		try {
+// 			const { data } = await axios.put<any[]>(`${URL}/discount/${requestData}`);
+// 			return data;
+// 		} catch (error) {
+// 			throw rejectWithValue(error.message);
+// 		}
+// 	},
+// );
+
+export const updateDiscounts = createAsyncThunk(
 	'discount/updateDiscounts',
-	async (requestData, thunkAPI) => {
-		const { rejectWithValue } = thunkAPI;
+	async ({ id, updatedData }, thunkAPI) => {
 		try {
-			const { data } = await axios.put<any[]>(
-				`${URL}/discount/${requestData.discountId}`,
-				requestData.updatedData,
-			);
-			return data;
+			const response = await axios.put(`http://localhost:3007/discount/${id}`, updatedData);
+			return response.data; // Assuming the updated data is returned from the backend
 		} catch (error) {
-			throw rejectWithValue(error.message);
+			return thunkAPI.rejectWithValue(error.message);
 		}
 	},
 );

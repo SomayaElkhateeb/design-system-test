@@ -42,8 +42,6 @@ const HomePage = () => {
 		return () => clearTimeout(timer); // Clear the timer on component unmount
 	}, []);
 
-	return <ProductForm handleSubmit={(values) => console.log(values)} />;
-
 	const slidesTabs = [
 		{ title: t('Top selling'), content: data.containSelling },
 		{ title: t('Top search'), content: data.containSelling },
