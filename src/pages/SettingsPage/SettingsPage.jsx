@@ -10,9 +10,7 @@ import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
  */
 const SettingsPage = () => {
 	return (
-
 		<div className='flex-col-top-section-pages container mx-auto'>
-
 			<TrialBanner
 				free={false}
 				daysLeft={5}

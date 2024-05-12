@@ -1,13 +1,14 @@
-import { DiscountFormStore } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
+import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { useTranslation } from 'react-i18next';
+import { UseFormReturn } from 'react-hook-form';
 
 const DiscountTypesOptions = ({
 	discountType,
 	formStore,
 }: {
-	formStore: DiscountFormStore;
+	formStore: UseFormReturn<newDiscountInterface>;
 	discountType: string;
 }) => {
 	const { t } = useTranslation();
@@ -19,9 +20,7 @@ const DiscountTypesOptions = ({
 						formStore={formStore}
 						name='percentage'
 						label={t('Percentage')}
-						render={(field) => {
-							return <Input {...field} type='number' />;
-						}}
+						render={(field) => <Input {...field} />}
 					/>
 				</div>
 			)}
@@ -29,11 +28,9 @@ const DiscountTypesOptions = ({
 				<div className='w-[24rem] pt-[1rem]'>
 					<FormField
 						formStore={formStore}
-						name='fixedAmount'
+						name='value'
 						label={t('Fixed amount')}
-						render={(field) => {
-							return <Input {...field} type='number' />;
-						}}
+						render={(field) => <Input {...field} />}
 					/>
 				</div>
 			)}

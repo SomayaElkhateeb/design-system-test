@@ -1,105 +1,111 @@
-import { useEffect, useState } from 'react';
-import { HeaderSettings, ToggleSwitch } from 'src/app/components/optimized';
+import { useState } from 'react';
+import { z } from 'zod';
+import { useForm } from 'src/app/utils/hooks/form';
+import { Form } from 'src/app/components/ui/form';
+import { HeaderSettings } from 'src/app/components/optimized';
 import BasicInfo from './BasicInfo/BasicInfo';
-import MinimumRequirements from '../../../../app/components/page/discount/Comp/MinimumRequirements';
+
 import Limits from './Limits/Limits';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 import { useTranslation } from 'react-i18next';
-import ActiveDates from 'src/app/components/page/discount/Comp/ActiveDates';
 import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegment/CustomerSegment';
-import { z } from 'zod';
-import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
-import { UseFormReturn } from 'react-hook-form';
-import { Form } from 'src/app/components/ui/form';
-import AddDiscAndCoupLoading from 'src/app/components/page/SchimmerLoading/AddDiscAndCoupLoading';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { newDiscountInterface } from '../../Discounts/NewDiscount/NewDiscount';
+import ActiveDates from 'src/app/components/page/discount/Comp/ActiveDates';
+import MinimumRequirements from 'src/app/components/page/discount/Comp/MinimumRequirements';
 
-const schema = {
+export interface newCouponInterface extends newDiscountInterface {
+	usage: number;
+}
+
+const couponSchema = {
 	name: z.string().min(3).max(60),
-	fixedAmount: z.number().min(0),
-	minimumPrice: z.number().min(0),
-	MiniPrice: z.number().min(0),
-	MiniQuantity: z.number().min(0),
-	usage: z.number().min(0),
-	percentage: z.number().min(0).max(100),
+	percentage: z.coerce.number().min(0).max(100),
+	value: z.coerce.number().min(0),
+	sales: z.coerce.number().min(0),
+	miniQuantity: z.coerce.number().min(0),
+	usage: z.coerce.number().min(0),
 	endDate: z.date().nullable().optional(),
 };
 
-type FormValues = InferredZodSchema<typeof schema>;
-export type DiscountFormStore = UseFormReturn<FormValues>;
-
 const AddCoupon = () => {
-	const [showLoading, setShowLoading] = useState(true);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [state, setState] = useState();
 
+	const handelDefaultValue = () => {
+		return {
+			name: '',
+			percentage: 0,
+			value: 0,
+			sales: 0,
+			miniQuantity: 0,
+			usage: 0,
+			endDate: null,
+		};
+	};
+
+	const handleSaveChanges = async () => {
+		try {
+			const formData = formStore.getValues();
+			await dispatch(postCoupons(formData));
+
+			navigate('/marketing/coupons');
+		} catch (error) {
+			console.error('Error while saving changes:', error);
+		}
+	};
+
+	const handleSubmit: (validatedData: newCouponInterface) => void = (
+		values: newCouponInterface,
+	) => {
+		console.log(values);
+		handleSaveChanges();
+	};
+
 	const { formStore, onSubmit } = useForm({
-		schema,
-		defaultValues: {},
-		handleSubmit(validatedData) {
-			console.log('validatedData coupon', validatedData);
-		},
+		schema: couponSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
 	});
 
-	const handleSaveChanges = () => {
-		// const data = {
-		// 	name: discountName,
-		// 	value: fixedAmount,
-		// 	date: endDate,
-		// 	used: used,
-		// 	sales: minimumPrice,
-		// };
-		dispatch(postCoupons(data));
-		navigate('/marketing/coupons');
-	};
-	// loading new coupon page
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setShowLoading(false);
-		}, 3000);
-
-		return () => clearTimeout(timer); // Clear the timer on component unmount
-	}, []);
+	const data = [{ id: 1, title: t('On') }];
 
 	return (
-
-		<>
-			{showLoading ? (
-				<AddDiscAndCoupLoading />
-			) : (
-				<>
-					<HeaderSettings
-						variant='settingTwoBtns'
-						to={-1}
-						title={t('Add coupon')}
-						btn1={{ text: t('Discard'), onClick: () => {} }}
-						btn2={{
-							text: t('Save Changes'),
-							onClick: handleSaveChanges,
-						}}
-					/>
-					<Form {...formStore}>
-						<div className='p-4 flex justify-between gap-[1rem]'>
-							<div className='w-full flex flex-col gap-[1rem]'>
-								<BasicInfo formStore={formStore} />
-								<CustomerSegment />
-								<MinimumRequirements formStore={formStore} />
-								<Limits formStore={formStore} />
-								<ActiveDates setState={setState} />
-							</div>
-							<div className='bg-white w-[15rem] h-fit border p-3 border-constrained rounded-md flex flex-col gap-[1rem]'>
-								<h3 className='text-title font-semibold'>{t('Quick actions')}</h3>
-								<ToggleSwitch />
-							</div>
-						</div>
-					</Form>
-				</>
-			)}
-		</>
-
+		<Form {...formStore}>
+			<form onSubmit={onSubmit}>
+				<HeaderSettings
+					variant='settingTwoBtns'
+					submit
+					title={t('Add coupon')}
+					btn1={{
+						text: t('Discard'),
+						onClick: () => {
+							navigate(-1);
+						},
+					}}
+					btn2={{
+						text: t('Save Changes'),
+						onClick: () => {},
+					}}
+				/>
+				<div className='p-4 flex justify-between gap-[1rem]'>
+					<div className='w-full flex flex-col gap-[1rem]'>
+						<BasicInfo formStore={formStore} />
+						<CustomerSegment />
+						<MinimumRequirements formStore={formStore} />
+						<Limits formStore={formStore} />
+						<ActiveDates setState={setState} />
+					</div>
+					<div>
+						<QuickActions data={data} />
+					</div>
+				</div>
+			</form>
+		</Form>
 	);
 };
 

@@ -8,13 +8,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
-import DiscountAndCouponLoading from 'src/app/components/page/SchimmerLoading/DiscountAndCouponLoading';
 
 const Coupons: React.FC = () => {
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
-	const [showLoading, setShowLoading] = useState(true);
 	//  selectors
 	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
 
@@ -22,19 +20,17 @@ const Coupons: React.FC = () => {
 	useEffect(() => {
 		dispatch(getCoupons());
 	}, [dispatch]);
-	
-	return (
-		
-				<div className='container'>
-					<div className=' flex flex-col '>
-						{/*  top section */}
-						<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 
-						{/*  table section */}
-						<CouponsTable coupons={coupons} isLoading={isLoading} />
-					</div>
-				</div>
-			
+	return (
+		<div className='container'>
+			<div className=' flex flex-col '>
+				{/*  top section */}
+				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
+
+				{/*  table section */}
+				<CouponsTable coupons={coupons} isLoading={isLoading} />
+			</div>
+		</div>
 	);
 };
 
