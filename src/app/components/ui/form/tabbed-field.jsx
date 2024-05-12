@@ -112,7 +112,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 			label={
 				<div className='flex justify-between'>
 					<span>{props.label}</span>
-					<div className='flex text-black h-fit self-end bg-gray-200/70 p-0.5 -mb-2 rounded-t-lg me-2'>
+					<div className='flex text-black h-fit self-end bg-borders-lines p-0.5 -mb-1 rounded-t me-2'>
 						{props.keys.map((key) => (
 							<button
 								key={key.name}
