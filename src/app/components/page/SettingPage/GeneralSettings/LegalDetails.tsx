@@ -7,6 +7,7 @@ import { TfiUpload } from 'react-icons/tfi';
 import { fileClassName } from './Media';
 import { Input } from 'src/app/components/ui/input';
 import { Button } from 'src/app/components/optimized';
+import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 
 const LegalDetails = ({
 	formStore,
@@ -32,18 +33,11 @@ const LegalDetails = ({
 			<h3 className='title'>{t('Legal details')}</h3>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>
-					<Button
-						onClick={() => handelClick('individual')}
-						className={state === 'individual' ? activeClassNme : defaultClassName}
-					>
-						{t('individual')}
-					</Button>
-					<Button
-						onClick={() => handelClick('Business')}
-						className={state === 'Business' ? activeClassNme : defaultClassName}
-					>
-						{t('Business')}
-					</Button>
+					<SingleChoiceChips
+						options={[t('individual'), t('Business')]}
+						selected={state}
+						setSelected={(option: string) => setState(option)}
+					/>
 				</div>
 				<FormField
 					formStore={formStore}

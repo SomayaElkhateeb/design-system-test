@@ -54,7 +54,6 @@ function TikTokMarketingCatalog() {
 						title='Approve access to your TikTok Ads Manager account'
 						proceedBtnText="Proceed"
 						cancelBtnText="Cancel"
-						color="bg-blue-500"
 						isOpen={isPopupOpen}
 						onCancel={() => setIsPopupOpen(false)}
 						onProceed={handleBusinessCenterProceed}

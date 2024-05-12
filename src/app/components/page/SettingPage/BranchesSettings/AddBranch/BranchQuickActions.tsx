@@ -1,6 +1,5 @@
-import  {  useState } from 'react';
+import { useState } from 'react';
 import { CheckBox } from 'src/app/components/optimized';
-
 interface LocationOptions {
 	isMainLocation: boolean;
 	showOnFooter: boolean;
@@ -14,12 +13,12 @@ export default function BranchQuickActions() {
 		availableForPickup: false,
 	});
 
-  const handleChange = (name: keyof LocationOptions) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [name]: !prevOptions[name],
-    }));
-  };
+	const handleChange = (name: keyof LocationOptions) => {
+		setOptions((prevOptions) => ({
+			...prevOptions,
+			[name]: !prevOptions[name],
+		}));
+	};
 	return (
 		<div className='grid gap-5 col-span-3 p-4 bg-white rounded-lg border border-borders-lines'>
 			<h2 className='title text-lg mb-2'>Quick Actions</h2>
@@ -38,6 +37,7 @@ export default function BranchQuickActions() {
 				handleOnChange={() => handleChange('availableForPickup')}
 				label='Available for pickup'
 			/>
+
 		</div>
 	);
 }
