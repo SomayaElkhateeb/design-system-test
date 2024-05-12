@@ -75,7 +75,7 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 					<div>
 						<h2 className='title mb-2'>Branch Type</h2>
 						<SingleChoiceChips
-							options={['Commercial branch', 'Warehouse']}
+							options={[t('Commercial branch'), t('Warehouse')]}
 							setSelected={handleBranchType}
 							selected={formStore.watch('branchType')}
 						/>
