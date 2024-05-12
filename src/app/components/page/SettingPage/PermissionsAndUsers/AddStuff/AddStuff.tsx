@@ -19,7 +19,7 @@ const stuffSchema = {
 	name: z.string().min(5, { message: 'Full name is required' }),
 	storeIndustry: z.string().min(1, { message: 'Store Industry is required' }),
 	email: z.string().min(1, { message: 'Stuff email is required' }).email(),
-	storePermissions: z.array(z.string().min(1, { message: 'permissions is required' })),
+	storePermissions: z.array(z.string()),
 };
 
 export default function AddStuff() {
@@ -67,7 +67,7 @@ export default function AddStuff() {
 					<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
 						<div className=' flex-col-top-section-pages lg:col-span-2'>
 							<Stuff formStore={formStore} />
-							<Permissions formStore={formStore}/>
+							<Permissions formStore={formStore} />
 						</div>
 						<div className='lg:col-span-1'>
 							<QuickActions />

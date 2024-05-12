@@ -1,9 +1,8 @@
-import { nanoid } from 'nanoid';
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Button, CheckBox } from 'src/app/components/optimized';
+import { Button } from 'src/app/components/optimized';
 import { addStuffInterface } from './AddStuff';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomTableBodyCheckbox from '../../../Customers/CustomTableBodyChckbox';
 
 export default function Permissions({
@@ -27,6 +26,14 @@ export default function Permissions({
 	];
 	const [array, setArray] = useState<string[]>([]);
 
+	useEffect(() => {
+		if (array?.length > 0) {
+			formStore.setValue('storePermissions', array);
+		} else {
+			formStore.setValue('storePermissions', []);
+		}
+	}, [array]);
+
 	return (
 		<div className='serviceDetails-sharedClass p-5 flex-col-top-section-pages'>
 			<div className='flex justify-between items-center'>
@@ -40,12 +47,21 @@ export default function Permissions({
 				{permissionsData.map((item) => {
 					return (
 						<div className='flex-row-global' key={item.id}>
-							<CustomTableBodyCheckbox array={array} setArray={setArray} id={item.id} />
+							<CustomTableBodyCheckbox
+								formStore={formStore}
+								array={array}
+								setArray={setArray}
+								id={item.id}
+							/>
 							<p className='text-title text-[.88rem]'>{item.label}</p>
 						</div>
 					);
 				})}
 			</div>
+
+			{formStore.watch('storePermissions').length === 0 && formStore.formState.isSubmitted && (
+				<p className='global_error'>{'choose permisson required'}</p>
+			)}
 		</div>
 	);
 }
