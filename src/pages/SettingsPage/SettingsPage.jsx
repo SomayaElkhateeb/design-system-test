@@ -10,17 +10,20 @@ import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
  */
 const SettingsPage = () => {
 	return (
-		<div className='w-full px-4 py-6 flex flex-col gap-6'>
+		<div className='flex-col-top-section-pages container mx-auto'>
 			<TrialBanner
 				free={false}
 				daysLeft={5}
 				title='You’re on free trial'
 				description='Subscribe now and open a world with no boundaries'
 			/>
-			<div className='grid grid-cols-4 gap-6'>
-				{settingsCards.map((card) => {
-					return <LinkCards key={card.id} {...card} />;
-				})}
+
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+				{settingsCards.map((card) => (
+					<LinkCards key={card.id} {...card} />
+				))}
+
+		
 			</div>
 		</div>
 	);

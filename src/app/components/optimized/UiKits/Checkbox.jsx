@@ -6,8 +6,8 @@ import { CheckIcon } from 'src/app/utils/icons';
  *  variant?: "minus";
  *  label?: import("react").ReactNode;
  *  handleOnChange: (isChecked: boolean) => void;
- *  checked: boolean;
- *  classes: string;
+ *  checked?: boolean;
+ *  classes?: string;
  * } & Omit<import("react").InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked">} props - Props for the CheckBoxX component.
  *
  * @example

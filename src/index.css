@@ -37,8 +37,9 @@
 		--ring: 222.2 84% 4.9%;
 
 		--radius: 0.5rem;
-		--font-family-ar: 'Tajawal', sans-serif;
 		/* --font-family-en: 'Tajawal', sans-serif; */
+		
+		--font-family-ar: 'Tajawal', sans-serif;
 		--font-family-en: 'Poppins', sans-serif;
 	}
 	.dark {

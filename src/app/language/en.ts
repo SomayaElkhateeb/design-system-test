@@ -7,6 +7,10 @@ export const english = {
 	Marketing: 'Marketing',
 	Apps: 'Apps',
 	Discounts: 'Discounts',
+	"individual":"individual",
+	"Business":"Business",
+	"National ID Image":"National ID Image",
+	"SEO (Search engine listing preview)":"SEO (Search engine listing preview)",
 	'Search or put a link': 'Search or put a link',
 	'General settings': 'General settings',
 	'Store details': 'Store details',
@@ -26,9 +30,14 @@ export const english = {
 	"Default time": "Default time",
 	"Media": "Media",
 	"UploadImage": "Upload Image",
-	"Upload Icon":"Upload Icon",
-	"Logo":"Logo",
-	"Icon":"Icon",
+	"Upload Icon": "Upload Icon",
+	"Logo": "Logo",
+	"Icon": "Icon",
+
+	"Legal details": "Legal details",
+	"Commercial Registration Image": "Commercial Registration Image",
+	"National ID": "National ID",
+	"Commercial Registration No": "Commercial Registration No",
 
 	Coupons: 'Coupons',
 	Campaigns: 'Campaigns',
@@ -519,6 +528,10 @@ export const english = {
 	Support: 'Support',
 	Service: 'Service',
 	'Open Setup': 'Open Setup',
+
+
+
+
 	'Add page': 'Add page',
 	'SEO (Search engine listing preview)': 'SEO (Search engine listing preview)',
 	'Main info': 'Main info',
@@ -551,4 +564,5 @@ export const english = {
 	'You’ll lose your privleges': 'You’ll lose your privleges',
 	'Your password (for security)': 'Your password (for security)',
 	'Transfer ownership': 'Transfer ownership',
+
 };

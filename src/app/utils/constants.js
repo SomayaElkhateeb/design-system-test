@@ -52,7 +52,7 @@ export const mostPopularApps = [
 		id: nanoid(),
 		image: getImageUrl('social/google.svg'),
 		name: 'Google',
-		url: '/apps/google',
+		url: '/apps/app_store/google',
 		status: 'free',
 		description:
 			'The Google channel makes it easy for you to reach the millions of shoppers that use Google to find the products they need.',
@@ -61,7 +61,7 @@ export const mostPopularApps = [
 		id: nanoid(),
 		image: getImageUrl('social/twitter-X.svg'),
 		name: 'Twitter',
-		url: '/apps/twitter',
+		url: '/apps/app_store/twitter',
 		status: 'available',
 		tatus: 'free',
 		description:
@@ -71,7 +71,7 @@ export const mostPopularApps = [
 		id: nanoid(),
 		image: getImageUrl('social/facebook.svg'),
 		name: 'Facebook & Instagram',
-		url: '/apps/facebook',
+		url: '/apps/app_store/facebook',
 		status: 'installed',
 		description:
 			'Connect with Facebook, Instagram Shop and launch an ad campaign to show your products in front of potential customers.',

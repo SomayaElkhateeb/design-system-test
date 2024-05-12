@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import i18n from './app/language/i18n';
+
 import {
 	AppsPage,
 	HomePage,
@@ -16,21 +19,17 @@ import {
 	SocialAppDetails,
 	AddCustomerPage,
 } from 'src/pages';
-import RootLayout from './pages/RootLayout';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import { UseLanguage } from './app/components/CustomHook/LanguageHook';
-import { useEffect } from 'react';
-import i18n from './app/language/i18n';
-import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
-import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
-import OrdersTabs from './app/components/page/Orders/OrdersTabs';
-
+import { UseLanguage } from './app/components/CustomHook/LanguageHook';
 import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
-
+import OrdersTabs from './app/components/page/Orders/OrdersTabs';
+import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
+import AddSettings from './pages/SettingsPage/comp/AddSettings';
+import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
-import PagesConfig from './pages/PagesPage/comp/PagesConfig';
-import UsersConfig from './pages/SettingsPage/comp/UsersConfig';
+
+import RootLayout from './pages/RootLayout';
 
 const router = createBrowserRouter([
 	{
@@ -46,8 +45,16 @@ const router = createBrowserRouter([
 			{ path: '/reviews', element: <ReviewsPage /> },
 			{ path: '/services', element: <ServicesPage /> },
 			{
-				path: '/settings',
+				path: 'settings',
 				element: <SettingsPage />,
+			},
+			{
+				path: '/settings/:config',
+				element: <SettingsConfig />,
+			},
+			{
+				path: '/settings/:config/:add',
+				element: <AddSettings />,
 			},
 
 			{
@@ -75,18 +82,6 @@ const router = createBrowserRouter([
 			},
 			{ path: '/apps/app_store/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
-			{
-				path: '/settings/:config',
-				element: <SettingsConfig />,
-			},
-			{
-				path: '/settings/users/:config',
-				element: <UsersConfig />,
-			},
-			{
-				path: '/pages/:config',
-				element: <PagesConfig />,
-			},
 		],
 	},
 ]);
