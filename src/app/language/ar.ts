@@ -505,5 +505,6 @@ export const arabic = {
 	'Support': 'الدعم',
 	'Service': 'الخدمة',
 	'Open Setup': 'فتح الإعدادات',
+	'Add Branch': 'إضافة فرع',
 
 } satisfies typeof english;

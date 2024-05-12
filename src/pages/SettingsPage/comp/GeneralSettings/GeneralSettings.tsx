@@ -69,12 +69,13 @@ const GeneralSettings = () => {
 			youtube: '',
 		};
 	};
+
 	const { formStore, onSubmit } = useForm({
 		schema: generalSettingsSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
+	console.log(formStore);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages container mx-auto'>

@@ -22,10 +22,11 @@ interface SocialAppData {
 }
 const SocialAppDetails: React.FC = () => {
 	const { platform } = useParams<string>();
-	
-	const [socialPlatform, setSocialPlatform] = useState<SocialAppData | null>(null);
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+	const language = UseLanguage();
+
+	const [socialPlatform, setSocialPlatform] = useState<SocialAppData | null>(null);
 
 	useEffect(() => {
 		const fetchSocialPlatformContent = () => {
@@ -58,8 +59,6 @@ const SocialAppDetails: React.FC = () => {
 			textColor = 'black';
 			break;
 	}
-
-	const language = UseLanguage();
 
 	return (
 		<div>

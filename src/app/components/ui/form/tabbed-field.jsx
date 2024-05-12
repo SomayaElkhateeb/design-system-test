@@ -69,7 +69,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 	const getUniqueClassName = /** @param {string} prefix */ (prefix) =>
 		`${reactId.replace(/:/g, '')}-${prefix}`;
 
-	console.log('props.label', props.label);
+	// console.log('props.label', props.label);
 	return (
 		<FormField
 			// This is needed because react consider it to have the same value
@@ -112,7 +112,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 			label={
 				<div className='flex justify-between'>
 					<span>{props.label}</span>
-					<div className='flex text-black h-fit self-end bg-gray-200/70 p-0.5 -mb-2 rounded-t-lg me-2'>
+					<div className='flex text-black h-fit self-end bg-borders-lines p-0.5 -mb-1 rounded-t me-2'>
 						{props.keys.map((key) => (
 							<button
 								key={key.name}

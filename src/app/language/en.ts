@@ -506,6 +506,7 @@ export const english = {
 	'Support': 'Support',
 	'Service': 'Service',
 	'Open Setup': 'Open Setup',
+	'Add Branch': 'Add Branch',
 
 
 };
