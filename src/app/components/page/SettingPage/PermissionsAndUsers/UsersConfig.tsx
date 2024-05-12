@@ -4,7 +4,7 @@ import TransferOwnership from 'src/app/components/page/SettingPage/PermissionsAn
 
 export default function UsersConfig() {
 	const { config } = useParams();
-
+	
 	switch (config) {
 		case 'addStuff':
 			return <AddStuff />;
