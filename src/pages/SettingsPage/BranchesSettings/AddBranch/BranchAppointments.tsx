@@ -25,10 +25,11 @@ const initialDayInfo: { [key: string]: DayInfo } = {
 	Sat: { openHours: { opens: '', closes: '' }, isClosed: false },
 };
 
-export default function BranchAppointments()  {
+export default function BranchAppointments() {
 	const [activeDay, setActiveDay] = useState<string>('Sun');
 	const [dayInfo, setDayInfo] = useState<{ [key: string]: DayInfo }>(initialDayInfo);
 	const [toggle, setToggle] = useState<boolean>(false);
+	console.log(dayInfo);
 
 	const handleDayClick = (day: string) => {
 		setActiveDay(day);
@@ -106,12 +107,8 @@ export default function BranchAppointments()  {
 								}
 								handleOnChange={(e) => handleHoursChange(e, 'closes')}
 							/>
-							<CheckBox
-								checked={dayInfo[activeDay].isClosed}
-								handleOnChange={handleClosedToggle}
-								label='Closed'
-							/>
 						</div>
+
 						{toggle && (
 							<div className='flex gap-4'>
 								<TimePicker
@@ -137,6 +134,11 @@ export default function BranchAppointments()  {
 					</div>
 				)}
 			</section>
+			<CheckBox
+				checked={dayInfo[activeDay].isClosed}
+				handleOnChange={handleClosedToggle}
+				label='Closed'
+			/>
 			<Button
 				variant='tertiary'
 				LeftIcon={toggle ? DeleteExitIcon : AddBgIcon}
@@ -145,5 +147,4 @@ export default function BranchAppointments()  {
 			/>
 		</div>
 	);
-};
-
+}
