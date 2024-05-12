@@ -45,7 +45,7 @@ export default function CheckBox({ variant, label, handleOnChange, classes, ...p
 		}
 		return <CheckIcon className='w-full h-full fill-white' />;
 	}
-
+console.log(handleOnChange);
 	return (
 		<label className={`flex gap-2 items-center cursor-pointer ${classes}`}>
 			<input
