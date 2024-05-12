@@ -1,10 +1,12 @@
 import {
+
 	// CustomersIcon,
 	// OrdersIcon,
 	// ProductsIcon,
 	// SearchIcon,
 	// StoresIcon,
 	LanguageIcon,
+
 	SettingsIcon,
 	ShippingIcon,
 	PaymentIcon,
@@ -56,7 +58,11 @@ const settingsCards = [
 	},
 	{
 		id: 6,
-		path: '/',
+
+		path: 'users',
+
+
+
 		Icon: Person,
 		title: 'Users & Permissions',
 		description: 'Users Settings',

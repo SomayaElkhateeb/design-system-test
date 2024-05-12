@@ -69,7 +69,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 	const getUniqueClassName = /** @param {string} prefix */ (prefix) =>
 		`${reactId.replace(/:/g, '')}-${prefix}`;
 
-	// console.log('props.label', props.label);
+
 	return (
 		<FormField
 			// This is needed because react consider it to have the same value

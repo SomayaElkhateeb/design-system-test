@@ -28,6 +28,7 @@ import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import AddSettings from './pages/SettingsPage/comp/AddSettings';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
+
 import RootLayout from './pages/RootLayout';
 
 const router = createBrowserRouter([
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
 				path: '/settings/:config/:add',
 				element: <AddSettings />,
 			},
-			
+
 			{
 				path: '/products',
 				element: <ProductsPage />,

@@ -22,9 +22,6 @@ export default function AppStore() {
 		setSelectedCategories,
 	} = useAppStore();
 
-	
-
-
 	return (
 		<div className='grid gap-5  container'>
 			{categoryParam ? (
