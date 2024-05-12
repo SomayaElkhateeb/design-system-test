@@ -510,7 +510,9 @@ export const arabic = {
 	"Media":"الدعايا",
 	"UploadImage":"تحميل صوره",
 	"Upload Icon":"تحميل ايكون",
-
+	"individual":"فردي",
+	"Business":"تجاري",
+	"National ID Image":"صوره البطاقه الشخصيه",
 	'App store': 'متجر التطبيقات',
 	"Logo":"الشعار",
 	"Icon":"الايكون",
