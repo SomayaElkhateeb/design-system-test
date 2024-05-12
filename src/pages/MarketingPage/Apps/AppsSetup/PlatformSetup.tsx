@@ -4,6 +4,7 @@ import TikTokSales from './tiktok/TikTokSales';
 import TikTokCatalog from './tiktok/TikTokCatalog';
 import SnapchatCatalog from './snapchat/SnapchatCatalog';
 import SnapchatSales from './snapchat/SnapchatSales';
+import { PlatformProvider } from './PlatformContext';
 
 interface PlatformSetupProps {
 	platform: 'tikTok' | 'snapchat' | 'facebook' | 'sendGrid' | 'mailchimp' | 'google'; // Include 'facebook' in the platform type
@@ -73,4 +74,12 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 	);
 };
 
-export default PlatformSetup;
+const PlatformSetupWithContext: React.FC<PlatformSetupProps> = (props) => {
+	return (
+		<PlatformProvider>
+			<PlatformSetup {...props} />
+		</PlatformProvider>
+	);
+};
+
+export default PlatformSetupWithContext;
