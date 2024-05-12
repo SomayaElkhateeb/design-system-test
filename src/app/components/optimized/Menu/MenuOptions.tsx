@@ -29,7 +29,15 @@ export default function MenuOptions({
 
 			<Menu slots={{ listbox: AnimatedListbox }}>
 				{options.map((item: any) => {
-					return <MenuItem key={item} onClick={createHandleMenuClick(item.text)}>{item.text}</MenuItem>;
+					return (
+						<MenuItem
+							key={item}
+							onClick={createHandleMenuClick(item.text)}
+							className='flex items-center gap-2'
+						>
+							{item.icon} {item.text}
+						</MenuItem>
+					);
 				})}
 			</Menu>
 		</Dropdown>

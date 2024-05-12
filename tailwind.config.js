@@ -16,6 +16,7 @@ module.exports = {
 				'2xl': '1660px',
 			},
 		},
+
 		extend: {
 			colors: {
 				//! Primary Colors
@@ -25,12 +26,11 @@ module.exports = {
 				'pri-hover': '#0B47D9',
 				'pri-light': '#E7EEFF', // primary-Light
 				'pri-top-light': '#E7EEFF', // Primary-Top light-BG
-
 				//! Secondary Colors
 				secondary: '#55C397',
 				green: '#006621',
 				blue: '#1B0DAB',
-				'-darseck': '#004328', //secondary-dark
+				'sec-dark': '#004328', //secondary-dark
 				'sec-pressed': '#3E8F6E',
 				'sec-hover': '#49A882',
 				'sec-light': '#EEF9F5',
@@ -40,7 +40,6 @@ module.exports = {
 				title: '#002042',
 				subtitle: '#55607A',
 				gray: '#8393A2',
-
 				hint: '#8791A8', // hint, light icons,text
 				inactive: '#C0C7D6', //inactive icons
 				constrained: '#E8EBF2',

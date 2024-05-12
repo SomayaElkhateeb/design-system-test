@@ -11,7 +11,7 @@ export default function HorizontalTabsLink({ tabs, path }:TabsLinkProps) {
 	return (
 		<div>
 			<div className='bg-white border-b border-borders-lines '>
-				<ul className='flex flex-wrap font-medium text-center  ml-[18px]'>
+				<ul className='flex flex-wrap font-medium text-center  ms-[18px]'>
 					{tabs.map((tab) => (
 						<li key={tab.path} className='mr-2'>
 							<Link

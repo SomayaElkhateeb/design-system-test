@@ -2,20 +2,20 @@ import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
-import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import { Coupon } from 'src/app/interface/CouponInterface';
 import { MdDelete } from 'react-icons/md';
 import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
-
-import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useDispatch } from 'react-redux';
-
 import { Switch } from '../../ui/switch';
+import MenuOptions from '../../optimized/Menu/MenuOptions';
+import { MoreIcon } from 'src/app/utils/icons';
+import PopupDelete from '../../optimized/Popups/PopupDelete';
+import { useState } from 'react';
+import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 
 export default function CouponsTable({
 	coupons,
@@ -29,6 +29,10 @@ export default function CouponsTable({
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const [state, setState] = useState({
+		showDeletePopup: false,
+		deletingItemId: '',
+	});
 	//  headers
 
 	const CouponsHeaders = [
@@ -41,19 +45,21 @@ export default function CouponsTable({
 		{ title: t('actions') },
 	];
 
-	//  custom hook for select setting item
-
-	const { selectedOption, handleSelect } = useSelectBox();
-
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn =
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
-	const settingMenus = [
+	const handleDeleteItem = (id: string) => {
+		console.log('Deleting item:', id);
+		dispatch(deleteCoupons(id));
+		setState({ ...state, showDeletePopup: false });
+	};
+
+	const options = [
 		{
 			id: nanoid(),
-			text: 'Delete permanently',
-			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+			text: 'delete',
+			icon: <MdDelete className='text-error text-[1.2rem]' />,
 		},
 	];
 	return (
@@ -90,27 +96,34 @@ export default function CouponsTable({
 									onClick={() => navigate(`addCoupon?id=${e?.id}`)}
 								/>
 
-								<ThreeDotsButton
-									sortMenus={settingMenus}
-									selectedOption={selectedOption}
-									handelSelect={handleSelect}
+								<MenuOptions
+									btn={<MoreIcon className='fill-subtitle' />}
+									options={options}
+									handle={() =>
+										setState({ ...state, showDeletePopup: true, deletingItemId: e?.id })
+									}
 								/>
+
+								{state.showDeletePopup && state.deletingItemId === e?.id && (
+									<PopupDelete
+										onClose={() => setState({ ...state, showDeletePopup: false })}
+										onDelete={() => handleDeleteItem(e?.id)}
+									/>
+								)}
+
 								{language === 'ar' ? (
 									<IoIosArrowBack
 										className='text-subtitle'
-										onClick={() => navigate(`/brands/${e?.id}`)}
+										onClick={() => navigate(`addCoupon?id=${e?.id}`)}
 									/>
 								) : (
 									<IoIosArrowForward
 										className='text-subtitle'
-										onClick={() => navigate(`/brands/${e?.id}`)}
+										onClick={() => navigate(`addCoupon?id=${e?.id}`)}
 									/>
 								)}
 							</div>
 						</TableCell>,
-						// <TableCell>
-						// 	<button onClick={() => dispatch(deleteCoupons(e?.id))}>delete</button>
-						// </TableCell>,
 					],
 				};
 			})}

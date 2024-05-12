@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import i18n from './app/language/i18n';
+
 import {
 	AppsPage,
 	HomePage,
@@ -16,21 +19,20 @@ import {
 	SocialAppDetails,
 	AddCustomerPage,
 } from 'src/pages';
-import RootLayout from './pages/RootLayout';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import { UseLanguage } from './app/components/CustomHook/LanguageHook';
-import { useEffect } from 'react';
-import i18n from './app/language/i18n';
-import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
-import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
+import { UseLanguage } from './app/components/CustomHook/LanguageHook';
+import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
+import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 
-import SettingsConfig from './pages/SettingsPage/comp/SettingsConfig';
-
+import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
+
+import RootLayout from './pages/RootLayout';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
-import UsersConfig from './app/components/page/SettingPage/PermissionsAndUsers/UsersConfig';
+
+import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
 
 const router = createBrowserRouter([
 	{
@@ -41,13 +43,22 @@ const router = createBrowserRouter([
 			{ index: true, element: <HomePage /> },
 			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
 			{ path: '/pages', element: <PagesPage /> },
+			{ path: '/pages/:config', element: <PagesConfig /> },
 			{ path: '/store', element: <StorePage /> },
 			{ path: '/orders', element: <OrdersPage /> },
 			{ path: '/reviews', element: <ReviewsPage /> },
 			{ path: '/services', element: <ServicesPage /> },
 			{
-				path: '/settings',
+				path: 'settings',
 				element: <SettingsPage />,
+			},
+			{
+				path: '/settings/:config',
+				element: <SettingsConfig />,
+			},
+			{
+				path: '/settings/:config/:nested_page',
+				element: <Nested_pages_SettingsConfig />,
 			},
 
 			{
@@ -75,18 +86,6 @@ const router = createBrowserRouter([
 			},
 			{ path: '/apps/app_store/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
-			{
-				path: '/settings/:config',
-				element: <SettingsConfig />,
-			},
-			{
-				path: '/settings/users/:config',
-				element: <UsersConfig />,
-			},
-			{
-				path: '/pages/:config',
-				element: <PagesConfig />,
-			},
 		],
 	},
 ]);

@@ -1,19 +1,24 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
-import { nanoid } from 'nanoid';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { FaRegEdit } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { Switch } from 'src/app/components/ui/switch';
+import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
+import { MoreIcon } from 'src/app/utils/icons';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
+import {
+	deleteDiscount,
+	updateDiscounts,
+} from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 
 export default function DiscountsTable({
 	discounts,
@@ -24,9 +29,15 @@ export default function DiscountsTable({
 }) {
 	//  hooks
 	const language = UseLanguage();
+	const dispatch = useDispatch();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const [state, setState] = useState({
+		showDeletePopup: false,
+		deletingItemId: '',
+	});
 
+	const { showDeletePopup, deletingItemId } = state;
 	//  headers
 
 	const DiscountsHeaders = [
@@ -38,19 +49,27 @@ export default function DiscountsTable({
 		{ title: t('actions') },
 	];
 
-	//  custom hook for select setting item
-
-	const { selectedOption, handleSelect } = useSelectBox();
-
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn =
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
-	const settingMenus = [
+	const handleDeleteItem = (id: string) => {
+		console.log('Deleting item:', id);
+		dispatch(deleteDiscount(id));
+		setState({ ...state, showDeletePopup: false });
+	};
+
+	const handleUpdateItem = (id: string) => {
+		// 	console.log(' item:', id);
+		// 	navigate(`addDiscount?id=${id}`);
+		// 	dispatch(updateDiscounts(id));
+	};
+
+	const options = [
 		{
 			id: nanoid(),
-			text: 'Delete permanently',
-			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+			text: 'delete',
+			icon: <MdDelete className='text-error text-[1.2rem]' />,
 		},
 	];
 
@@ -83,26 +102,32 @@ export default function DiscountsTable({
 
 							<TableCell>
 								<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-									<FaRegEdit
-										className='text-subtitle'
-										onClick={() => navigate(`addDiscount?id=${e?.id}`)}
+									<FaRegEdit className='text-subtitle' onClick={() => handleUpdateItem(e?.id)} />
+
+									<MenuOptions
+										btn={<MoreIcon className='fill-subtitle' />}
+										options={options}
+										handle={() =>
+											setState({ ...state, showDeletePopup: true, deletingItemId: e?.id })
+										}
 									/>
 
-									<ThreeDotsButton
-										sortMenus={settingMenus}
-										selectedOption={selectedOption}
-										handelSelect={handleSelect}
-										// onClick={() => dispatch(deleteDiscount(e?.id))}
-									/>
+									{showDeletePopup && deletingItemId === e?.id && (
+										<PopupDelete
+											onClose={() => setState({ ...state, showDeletePopup: false })}
+											onDelete={() => handleDeleteItem(e?.id)}
+										/>
+									)}
+
 									{language === 'ar' ? (
 										<IoIosArrowBack
 											className='text-subtitle'
-											onClick={() => navigate(`/brands/${e?.id}`)}
+											onClick={() => navigate(`addDiscount?id=${e?.id}`)}
 										/>
 									) : (
 										<IoIosArrowForward
 											className='text-subtitle'
-											onClick={() => navigate(`/brands/${e?.id}`)}
+											onClick={() => navigate(`addDiscount?id=${e?.id}`)}
 										/>
 									)}
 								</div>

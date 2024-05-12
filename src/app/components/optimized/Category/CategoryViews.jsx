@@ -39,7 +39,7 @@ export default function CategoryViews(props) {
 					<img src={props.imageUrl} alt={props.title} className='object-cover size-full' />
 				</div>
 				{/* Category Title and Description */}
-				<div className='flex flex-col justify-center gap-4 ml-1'>
+				<div className='flex flex-col justify-center gap-4 ms-1'>
 					<h2 className='title'>{props.title}</h2>
 					{props.description && <p className='paragraph text-subtitle'>{props.description}</p>}
 				</div>

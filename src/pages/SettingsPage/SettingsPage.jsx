@@ -1,5 +1,5 @@
 import { TrialBanner } from 'src/app/components/optimized';
-import { settingsCards } from './comp/data';
+import { settingsCards } from './data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
 
 /**
@@ -17,10 +17,11 @@ const SettingsPage = () => {
 				title='You’re on free trial'
 				description='Subscribe now and open a world with no boundaries'
 			/>
-			<div className='grid grid-cols-4 gap-4'>
-				{settingsCards.map((card) => {
-					return <LinkCards key={card.id} {...card} />;
-				})}
+
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+				{settingsCards.map((card) => (
+					<LinkCards key={card.id} {...card} />
+				))}
 			</div>
 		</div>
 	);

@@ -1,19 +1,15 @@
 import { useTranslation } from 'react-i18next';
 
-/**
- * PopupDelete component displays a confirmation popup for deleting an item.
- * @param {Object} props - The props object.
- * @param {() => void} props.onClose - Function to be called when the popup is closed.
- * @param {() => void} props.onDelete - Function to be called when the "Delete" button is clicked.
- * @param {string} [props.title='Are you sure of deleting this?'] - The title of the popup.
- * @param {string} [props.subTitle='You cannot undo this action'] - The subtitle of the popup.
- * @returns {JSX.Element} - Returns the JSX for the PopupDelete component.
- */
 export default function PopupDelete({
 	title = 'Are you sure of deleting this?',
 	subTitle = 'You cannot undo this action',
 	onClose,
 	onDelete,
+}: {
+	title?: string;
+	subTitle?: string;
+	onClose: (() => void) | undefined;
+	onDelete: (() => void) | undefined;
 }) {
 	const { t } = useTranslation();
 

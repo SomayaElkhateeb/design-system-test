@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import ApplyToOptions from './comp/ApplyToOptions';
-import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
-import { DiscountFormStore } from '../NewDiscount';
+
+import { newDiscountInterface } from '../NewDiscount';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { ErrorMessage } from '@hookform/error-message';
-const BasicInfo = ({ formStore, errors }: { formStore: DiscountFormStore; errors: string }) => {
+import { UseFormReturn } from 'react-hook-form';
+import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
+
+const BasicInfo = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
@@ -29,11 +31,8 @@ const BasicInfo = ({ formStore, errors }: { formStore: DiscountFormStore; errors
 						formStore={formStore}
 						name='name'
 						label={t('discount')}
-						render={(field) => {
-							return <Input {...field} value={field.value} onChange={field.onChange} />;
-						}}
+						render={(field) => <Input {...field} />}
 					/>
-					<ErrorMessage errors={errors} name='singleErrorInput' />
 				</div>
 			</div>
 
