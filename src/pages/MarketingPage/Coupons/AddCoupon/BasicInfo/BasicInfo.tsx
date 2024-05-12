@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import ApplyToOptions from './comp/ApplyToOptions';
 import { useTranslation } from 'react-i18next';
-import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { DiscountFormStore } from '../AddCoupon';
+import { newCouponInterface } from '../AddCoupon';
+import { UseFormReturn } from 'react-hook-form';
+import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
 
-const BasicInfo = ({ formStore }: { formStore: DiscountFormStore }) => {
+const BasicInfo = ({ formStore }: { formStore: UseFormReturn<newCouponInterface> }) => {
 	const { t } = useTranslation();
 	const [selectedOptionType, setSelectedOptionType] = useState<string>('');
 	const [selectedOptionApply, setSelectedOptionApply] = useState<string>('');
@@ -29,9 +29,7 @@ const BasicInfo = ({ formStore }: { formStore: DiscountFormStore }) => {
 						formStore={formStore}
 						name='name'
 						label={t('coupon code')}
-						render={(field) => {
-							return <Input {...field} />;
-						}}
+						render={(field) => <Input {...field} />}
 					/>
 				</div>
 			</div>

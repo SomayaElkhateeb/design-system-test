@@ -103,7 +103,7 @@ const SimpleTable: React.FC<TableProps> = ({
 	const renderColumns = () => {
 		return (
 			<tr>
-				<th className='w-5 bg-white pl-3'>
+				<th className='w-5 bg-white pl-3 border-b'>
 					<input
 						type='checkbox'
 						checked={selectedStates?.length === sortedData.length}
@@ -129,7 +129,7 @@ const SimpleTable: React.FC<TableProps> = ({
 		const endIndex = startIndex + itemsPerPage;
 		return sortedData.slice(startIndex, endIndex).map((row, rowIndex) => (
 			<tr key={rowIndex}>
-				<td className='w-5 bg-white  pl-3'>
+				<td className='w-5 bg-white  pl-3 border-b'>
 					<input
 						type='checkbox'
 						checked={selectedStates?.includes(row)}
@@ -162,13 +162,15 @@ const SimpleTable: React.FC<TableProps> = ({
 					<tbody>{renderRows()}</tbody>
 				</table>
 			</div>
-			<Pagination
-				totalItems={totalItems}
-				itemsPerPage={itemsPerPage}
-				currentPage={currentPage}
-				onPageChange={handlePageChange}
-				totalPages={totalPages}
-			/>
+			<div>
+				<Pagination
+					totalItems={totalItems}
+					itemsPerPage={itemsPerPage}
+					currentPage={currentPage}
+					onPageChange={handlePageChange}
+					totalPages={totalPages}
+				/>
+			</div>
 		</div>
 	);
 };
