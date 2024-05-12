@@ -30,6 +30,8 @@ import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 
 import RootLayout from './pages/RootLayout';
+import PagesConfig from './pages/PagesPage/comp/PagesConfig';
+import UsersConfig from './app/components/page/SettingPage/PermissionsAndUsers/UsersConfig';
 
 const router = createBrowserRouter([
 	{
@@ -40,6 +42,7 @@ const router = createBrowserRouter([
 			{ index: true, element: <HomePage /> },
 			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
 			{ path: '/pages', element: <PagesPage /> },
+			{ path: '/pages/:config', element: <PagesConfig /> },
 			{ path: '/store', element: <StorePage /> },
 			{ path: '/orders', element: <OrdersPage /> },
 			{ path: '/reviews', element: <ReviewsPage /> },
@@ -51,6 +54,10 @@ const router = createBrowserRouter([
 			{
 				path: '/settings/:config',
 				element: <SettingsConfig />,
+			},
+			{
+				path: '/settings/:users/:config',
+				element: <UsersConfig />,
 			},
 			{
 				path: '/settings/:config/:add',
