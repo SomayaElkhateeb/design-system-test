@@ -65,7 +65,10 @@ export const routes = [
 	{
 		path: '/customers',
 		element: <CustomersPage />,
-		children: [{ path: ':id', element: <CustomerInfo /> }],
+	},
+	{
+		path: '/customers/:id',
+		element: <CustomerInfo />,
 	},
 	{ path: '/addCustomer', element: <AddCustomerPage /> },
 	{

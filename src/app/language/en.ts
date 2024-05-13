@@ -21,7 +21,7 @@ export const english = {
 	'Facebook link': 'Facebook link',
 	Instagram: 'Instagram',
 	Youtube: 'Youtube',
-
+"Branches":"Branches",
 	'Store industry': 'Store industry',
 	'Admin defaults (shown to you)': 'Admin defaults (shown to you)',
 	'Default currency': 'Default currency',
@@ -547,6 +547,8 @@ export const english = {
 	Visible: 'Visible',
 	'Show on footer': 'Show on footer',
 	'Show on main menu': 'Show on main menu',
+	"Main menu":"Main menu",
+	"Add New Item":"Add New Item",
 	'Apps and channels': 'Apps and channels',
 	Permissions: 'Permissions',
 	'select all': 'select all',
