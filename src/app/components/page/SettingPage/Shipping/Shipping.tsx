@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button, HeaderSettings } from 'src/app/components/optimized';
 import { Switch } from 'src/app/components/ui/switch';
 import { EditIcon } from 'src/app/utils/icons';
-import { images } from 'src/pages/SettingsPage/comp/data';
+import { images } from 'src/pages/SettingsPage/data';
+
 
 export default function Shipping() {
 	const { t } = useTranslation();

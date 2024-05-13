@@ -9,8 +9,7 @@ export default function Nested_pages_SettingsConfig() {
 	switch (nested_page) {
 		case 'addStuff':
 			return <AddStuff />;
-		case 'transferOwnership':
-			return <TransferOwnership />;
+
 		case 'transferOwnership':
 			return <TransferOwnership />;
 		case 'add-branch':
