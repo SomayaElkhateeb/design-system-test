@@ -17,7 +17,7 @@ interface TableRow {
 
 interface TableProps {
 	columns: TableColumn[];
-	data: TableRow[];
+	rows: TableRow[];
 	itemsPerPage: number;
 	exportFilename: string;
 	selectedStates: TableRow[]; // New prop
@@ -55,13 +55,13 @@ const useSortableTable = (initialData: TableRow[]) => {
 // SimpleTable
 const SimpleTable: React.FC<TableProps> = ({
 	columns,
-	data,
+	rows,
 	itemsPerPage,
 	exportFilename,
 	selectedStates,
 	setSelectedStates,
 }) => {
-	const { sortedData, sortData, sortConfig } = useSortableTable(data);
+	const { sortedData, sortData, sortConfig } = useSortableTable(rows);
 
 	// Pagination;
 	const [currentPage, setCurrentPage] = useState(1);
@@ -76,7 +76,7 @@ const SimpleTable: React.FC<TableProps> = ({
 	};
 
 	const handleExportToExcel = () => {
-		exportToExcel(data, exportFilename + '.xlsx');
+		exportToExcel(rows, exportFilename + '.xlsx');
 	};
 
 	const handleStateCheckboxChange = (
@@ -188,7 +188,7 @@ const columns = [
 	{ header: 'Actions', accessor: 'actions' },
 ];
 
-const data = Array.from({ length: 100 }, (_, index) => ({
+const rows = Array.from({ length: 100 }, (_, index) => ({
 	id: index + 1,
 	name: `Person ${index + 1}`,
 	age: Math.floor(Math.random() * 50) + 20, // Random age between 20 and 70
@@ -204,7 +204,7 @@ const data = Array.from({ length: 100 }, (_, index) => ({
 <div>
 	<SimpleTable
 		columns={columns}
-		data={data}
+		rows={rows}
 		itemsPerPage={5}
 		exportFilename='test'
 		selectedStates={selectedStates}

@@ -1,3 +1,5 @@
+// Imports
+import React from 'react';
 import {
 	AddCustomerPage,
 	AnalyticsPage,
@@ -25,62 +27,78 @@ import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 
-// Creating browser router routes
+// Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-	{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
+	{ path: '/store', element: <StorePage /> },
+	{ path: '/addCustomer', element: <AddCustomerPage /> },
+	{ path: '/reviews', element: <ReviewsPage /> },
+	{ path: '/services', element: <ServicesPage /> },
+
+	// Customers Routes
+	{
+		path: '/customers',
+		element: <CustomersPage />,
+		children: [{ path: ':id', element: <CustomerInfo /> }],
+	},
+	// Apps Routes
+	{
+		path: '/apps',
+		element: <AppsPage />,
+		children: [
+			{ path: ':tab', element: <AppsTabs /> },
+			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
+		],
+	},
+
+	// Pages Routes
 	{
 		path: '/pages',
 		element: <PagesPage />,
+		children: [{ path: ':config', element: <PagesConfig /> }],
 	},
-	{
-		path: '/pages/:config',
-		element: <PagesConfig />,
-	},
-	{ path: '/store', element: <StorePage /> },
+
+	// Orders Routes
 	{
 		path: '/orders',
 		element: <OrdersPage />,
 		children: [{ path: ':tab', element: <OrdersTabs /> }],
 	},
-	{ path: '/reviews', element: <ReviewsPage /> },
-	{ path: '/services', element: <ServicesPage /> },
-	{
-		path: '/settings',
-		element: <SettingsPage />,
-	},
-	{
-		path: '/settings/:config',
-		element: <SettingsConfig />,
-	},
-	{
-		path: '/settings/:config/:nested_page',
-		element: <Nested_pages_SettingsConfig />,
-	},
+
+	// Products Routes
 	{
 		path: '/products',
 		element: <ProductsPage />,
 		children: [{ path: ':tab', element: <ProductsTabs /> }],
 	},
+
+	// Settings Routes
 	{
-		path: '/customers',
-		element: <CustomersPage />,
+		path: '/settings',
+		element: <SettingsPage />,
+		children: [
+			{
+				path: ':config',
+				element: <SettingsConfig />,
+				children: [{ path: ':nested_page', element: <Nested_pages_SettingsConfig /> }],
+			},
+		],
 	},
-	{
-		path: '/customers/:id',
-		element: <CustomerInfo />,
-	},
-	{ path: '/addCustomer', element: <AddCustomerPage /> },
+
+	// Marketing Routes
 	{
 		path: '/marketing',
 		element: <MarketingPage />,
-		children: [{ path: ':tab', element: <MarketingTabs /> }],
+		children: [
+			{ path: ':tab', element: <MarketingTabs /> },
+			{ path: ':tabName/:config', element: <MarketingConfig /> },
+		],
 	},
+
+	// Analytics Routes
 	{
 		path: '/analytics',
 		element: <AnalyticsPage />,
 		children: [{ path: ':tab', element: <AnalyticsTabs /> }],
 	},
-	{ path: '/apps/app_store/:platform', element: <SocialAppDetails /> },
-	{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 ];

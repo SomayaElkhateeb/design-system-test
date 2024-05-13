@@ -47,3 +47,13 @@ function HorizontalTabs({ defaultTab, tabContent }) {
 }
 
 export default HorizontalTabs;
+
+/*
+const tabContent = {
+    tab1: <div>This is content for Tab 1</div>,
+    tab2: <div>This is content for Tab 2</div>,
+    tab3: <div>This is content for Tab 3</div>,
+  };
+
+<HorizontalTabs defaultTab="tab1" tabContent={tabContent} />
+*/

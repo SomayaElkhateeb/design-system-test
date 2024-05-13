@@ -22,7 +22,7 @@ export const columns = [
 	{ header: 'Returns', accessor: 'returns' },
 ];
 
-export const data = [
+export const rows = [
 	{
 		id: 1,
 		day: 'Mon 21 April',
