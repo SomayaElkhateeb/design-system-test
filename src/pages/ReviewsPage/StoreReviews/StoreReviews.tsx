@@ -1,5 +1,5 @@
 import { DonutCard, SimpleTable } from 'src/app/components/optimized';
-import { columns, data } from './_comp/StoreReviewsData';
+import { columns, rows } from './_comp/StoreReviewsData';
 import DonutGraph, { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
 import RecentReview from './_comp/RecentReview';
 import { useState } from 'react';
@@ -29,6 +29,9 @@ interface TableRow {
 const StoreReviews = () => {
 	const [selectedStates, setSelectedStates] = useState<TableRow[]>([]);
 
+	console.log(selectedStates);
+	
+
 	return (
 		<div className='flex-col-top-section-pages'>
 			<div className='grid lg:grid-cols-2 sm:grid-cols-1 items-start gap-4'>
@@ -42,7 +45,7 @@ const StoreReviews = () => {
 			</div>
 			<SimpleTable
 				columns={columns}
-				data={data}
+				rows={rows}
 				itemsPerPage={3}
 				exportFilename='StoreReviews'
 				selectedStates={selectedStates}
