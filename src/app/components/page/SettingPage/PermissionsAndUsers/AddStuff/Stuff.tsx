@@ -16,7 +16,7 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 	const { t } = useTranslation();
 
 	return (
-		<div className='serviceDetails-sharedClass p-5 '>
+		<div className='cardDetails-sharedClass p-5 '>
 			<div className='flex-col-top-section-pages md:w-[50%]'>
 				<FormField
 					formStore={formStore}

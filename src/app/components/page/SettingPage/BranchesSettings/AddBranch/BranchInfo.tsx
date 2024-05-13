@@ -62,14 +62,10 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 		setSelectedOption(option);
 	};
 	// -------------------------------------
-	const handleOnChange = (e: string) => {
-		formStore.setValue('branchPhoneNumber', e);
-	};
-	// -------------------------------------
 
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
-			<div className='grid gap-5 col-span-3 serviceDetails-sharedClass p-5'>
+			<div className='grid gap-5 col-span-3 cardDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
 					<div>
 						<h2 className='title mb-2'>{t('Branch Type')}</h2>
@@ -86,13 +82,13 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 							{ name: 'branchNameEn', label: 'En' },
 							{ name: 'branchNameAr', label: 'عربي' },
 						]}
-						label={`${t('Branch Name')}`}
+						label={t('Branch Name')}
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
 				</section>
 				<section className='grid gap-4'>
 					<div>
-						<h2 className='title text-lg mb-2'>{t("Address")}</h2>
+						<h2 className='title text-lg mb-2'>{t('Address')}</h2>
 						<SingleChoiceChips
 							options={['Add manually', 'Use a map']}
 							setSelected={handleAddressOption}

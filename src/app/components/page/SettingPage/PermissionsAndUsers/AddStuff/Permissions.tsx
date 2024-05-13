@@ -35,7 +35,7 @@ export default function Permissions({
 	}, [array]);
 
 	return (
-		<div className='serviceDetails-sharedClass p-5 flex-col-top-section-pages'>
+		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
 			<div className='flex justify-between items-center'>
 				<h3 className='title'>{t('Permissions')}</h3>
 				<Button onClick={() => setArray(permissionsData?.map((e) => e.id))} variant='secondary'>

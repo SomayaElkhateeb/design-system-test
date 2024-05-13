@@ -34,7 +34,7 @@ export default function BranchesSettings() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	return (
-		<div className='container mx-auto'>
+		<div className='flex-col-top-section-pages'>
 			<HeaderSettings
 				btn1={{
 					text: t('Add Branch'),
@@ -45,7 +45,7 @@ export default function BranchesSettings() {
 				variant='settingOneBtn'
 				title={t('Branches')}
 			/>
-			<div className='grid grid-cols-3 p-5 '>
+			<div className='grid grid-cols-3  container mx-auto'>
 				<div className='grid gap-5 col-span-3 lg:col-span-2'>
 					{demoData.map((branch) => (
 						<BranchCard key={branch.id} {...branch} />
