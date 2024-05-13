@@ -31,12 +31,16 @@ import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 export const routes = [
 	{ path: '/', element: <HomePage /> },
 	{ path: '/store', element: <StorePage /> },
-	{ path: '/customers', element: <CustomersPage /> },
 	{ path: '/addCustomer', element: <AddCustomerPage /> },
-	{ path: '/customers/:id', element: <CustomerInfo /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
 	{ path: '/services', element: <ServicesPage /> },
 
+	// Customers Routes
+	{
+		path: '/customers',
+		element: <CustomersPage />,
+		children: [{ path: ':id', element: <CustomerInfo /> }],
+	},
 	// Apps Routes
 	{
 		path: '/apps',
