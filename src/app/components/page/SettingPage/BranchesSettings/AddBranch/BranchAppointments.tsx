@@ -29,7 +29,7 @@ export default function BranchAppointments() {
 	const [activeDay, setActiveDay] = useState<string>('Sun');
 	const [dayInfo, setDayInfo] = useState<{ [key: string]: DayInfo }>(initialDayInfo);
 	const [toggle, setToggle] = useState<boolean>(false);
-	console.log(dayInfo);
+	
 
 	const handleDayClick = (day: string) => {
 		setActiveDay(day);

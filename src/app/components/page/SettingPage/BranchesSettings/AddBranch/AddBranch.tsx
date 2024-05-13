@@ -9,39 +9,47 @@ import { Form } from 'src/app/components/ui/form';
 import BranchAppointments from './BranchAppointments';
 
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { useState } from 'react';
 
 export interface BranchSettingsInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
-	countryName: string;
-	cityName: string;
-	area: string;
-	street: string;
+	countryName?: string;
+	cityName?: string;
+	area?: string;
+	street?: string;
 	building: string;
-	landmark: string;
+	landmark?: string;
 	branchPhoneNumber: string;
 }
-const generalSettingsSchema = {
-	branchType: z.string().min(1, { message: 'Branch type is required' }),
-	branchNameEn: z.string().min(3, { message: 'Branch name is required' }),
-	branchNameAr: z.string().min(3, { message: 'Branch name is required' }),
-	countryName: z.string().min(3, { message: 'Country is required' }),
-	cityName: z.string().min(3, { message: 'City is required' }),
-	area: z.string().min(3, { message: 'Area / District is required' }),
-	street: z.string().min(3, { message: 'Street is required' }),
-	building: z.string().min(3, { message: 'Building is required' }),
-	landmark: z.string().min(3, { message: 'Landmark is required' }),
-	branchPhoneNumber: z.string().min(7, { message: 'Branch Phone Number is required' }),
-};
 
 export default function AddBranch() {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
+	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const handleSubmit = (values: BranchSettingsInterface) => {
 		console.log(values);
 		// handleClose();
+	};
+	const RequiredAddresseData = z.string().min(1);
+	const handel_RequiredAddresseData = () => {
+		return selectedOption !== 'Add manually'
+			? z.optional(RequiredAddresseData).or(z.literal(''))
+			: RequiredAddresseData;
+	};
+
+	const generalSettingsSchema = {
+		branchType: RequiredAddresseData,
+		branchNameEn: RequiredAddresseData,
+		branchNameAr: RequiredAddresseData,
+		countryName: handel_RequiredAddresseData(),
+		cityName: handel_RequiredAddresseData(),
+		area: handel_RequiredAddresseData(),
+		street: handel_RequiredAddresseData(),
+		building: RequiredAddresseData,
+		landmark: handel_RequiredAddresseData(),
+		branchPhoneNumber: z.string().min(7),
 	};
 	const handelDefaultValue = () => {
 		return {
@@ -98,7 +106,11 @@ export default function AddBranch() {
 				/>
 				<div className='grid gap-5 p-5 grid-cols-3'>
 					<div className='grid gap-5 col-span-2 lg:col-span-2'>
-						<BranchInfo formStore={formStore} />
+						<BranchInfo
+							selectedOption={selectedOption}
+							setSelectedOption={setSelectedOption}
+							formStore={formStore}
+						/>
 						<BranchAppointments />
 					</div>
 					<div className='col-span-1'>
