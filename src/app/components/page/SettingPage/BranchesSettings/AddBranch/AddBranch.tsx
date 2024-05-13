@@ -19,6 +19,7 @@ export interface BranchSettingsInterface {
 	street: string;
 	building: string;
 	landmark: string;
+	branchPhoneNumber: string;
 }
 const generalSettingsSchema = {
 	branchType: z.string().min(1, { message: 'Branch type is required' }),
@@ -63,30 +64,32 @@ export default function AddBranch() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}></form>
-			<HeaderSettings
-				variant='settingTwoBtns'
-				title={t('Add Branch')}
-				btn1={{
-					text: t('Discard'),
-					onClick: () => {
-						navigate(-1);
-					},
-				}}
-				btn2={{
-					text: t('Save Changes'),
-					onClick: () => {},
-				}}
-			/>
-			<div className='grid gap-5 p-5 grid-cols-3'>
-				<div className='grid gap-5 col-span-2 lg:col-span-2'>
-					<BranchInfo formStore={formStore} />
-					<BranchAppointments />
+			<form onSubmit={onSubmit}>
+				<HeaderSettings
+					submit
+					variant='settingTwoBtns'
+					title={t('Add Branch')}
+					btn1={{
+						text: t('Discard'),
+						onClick: () => {
+							navigate(-1);
+						},
+					}}
+					btn2={{
+						text: t('Save Changes'),
+						onClick: () => {},
+					}}
+				/>
+				<div className='grid gap-5 p-5 grid-cols-3'>
+					<div className='grid gap-5 col-span-2 lg:col-span-2'>
+						<BranchInfo formStore={formStore} />
+						<BranchAppointments />
+					</div>
+					<div className='col-span-1'>
+						<BranchQuickActions />
+					</div>
 				</div>
-				<div className='col-span-1'>
-					<BranchQuickActions />
-				</div>
-			</div>
+			</form>
 		</Form>
 	);
 }
