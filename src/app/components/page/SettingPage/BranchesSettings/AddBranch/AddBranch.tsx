@@ -12,7 +12,13 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useState } from 'react';
 
 export interface WeekSchedule {
-	[key: string]: DayInfo;
+	Mon: DayInfo;
+	Tue: DayInfo;
+	Wed: DayInfo;
+	Thu: DayInfo;
+	Fri: DayInfo;
+	Sat: DayInfo;
+	Sun: DayInfo;
 }
 export interface BranchSettingsInterface {
 	branchType: string;
@@ -93,7 +99,7 @@ export default function AddBranch() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
+	console.log(formStore.formState.errors);
 	const data = [
 		{
 			id: 1,
