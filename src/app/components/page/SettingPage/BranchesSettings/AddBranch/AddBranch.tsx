@@ -6,42 +6,78 @@ import { z } from 'zod';
 
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
-import BranchAppointments from './BranchAppointments';
+import BranchAppointments, { DayInfo, initialDayInfo } from './BranchAppointments';
 
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { useState } from 'react';
 
+export interface WeekSchedule {
+	Mon: DayInfo;
+	Tue: DayInfo;
+	Wed: DayInfo;
+	Thu: DayInfo;
+	Fri: DayInfo;
+	Sat: DayInfo;
+	Sun: DayInfo;
+}
 export interface BranchSettingsInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
-	countryName: string;
-	cityName: string;
-	area: string;
-	street: string;
+	countryName?: string;
+	cityName?: string;
+	area?: string;
+	street?: string;
 	building: string;
-	landmark: string;
+	landmark?: string;
 	branchPhoneNumber: string;
+	branchTimeSchedual: WeekSchedule;
 }
-const generalSettingsSchema = {
-	branchType: z.string().min(1, { message: 'Branch type is required' }),
-	branchNameEn: z.string().min(3, { message: 'Branch name is required' }),
-	branchNameAr: z.string().min(3, { message: 'Branch name is required' }),
-	countryName: z.string().min(3, { message: 'Country is required' }),
-	cityName: z.string().min(3, { message: 'City is required' }),
-	area: z.string().min(3, { message: 'Area / District is required' }),
-	street: z.string().min(3, { message: 'Street is required' }),
-	building: z.string().min(3, { message: 'Building is required' }),
-	landmark: z.string().min(3, { message: 'Landmark is required' }),
-	branchPhoneNumber: z.string().min(7, { message: 'Branch Phone Number is required' }),
-};
 
 export default function AddBranch() {
+	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
+	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const handleSubmit = (values: BranchSettingsInterface) => {
 		console.log(values);
 		// handleClose();
+	};
+	const RequiredAddresseData = z.string().min(1);
+	const handel_RequiredAddresseData = () => {
+		return selectedOption !== 'Add manually'
+			? z.optional(RequiredAddresseData).or(z.literal(''))
+			: RequiredAddresseData;
+	};
+
+	const DayInfoSchema = z.object({
+		openHours: z.object({
+			open: z.string(),
+			close: z.string(),
+		}),
+		isClosed: z.boolean(),
+	});
+
+	const generalSettingsSchema = {
+		branchType: RequiredAddresseData,
+		branchNameEn: RequiredAddresseData,
+		branchNameAr: RequiredAddresseData,
+		countryName: handel_RequiredAddresseData(),
+		cityName: handel_RequiredAddresseData(),
+		area: handel_RequiredAddresseData(),
+		street: handel_RequiredAddresseData(),
+		building: RequiredAddresseData,
+		landmark: handel_RequiredAddresseData(),
+		branchPhoneNumber: z.string().min(7),
+		branchTimeSchedual: z.object({
+			Mon: DayInfoSchema,
+			Tue: DayInfoSchema,
+			Wed: DayInfoSchema,
+			Thu: DayInfoSchema,
+			Fri: DayInfoSchema,
+			Sat: DayInfoSchema,
+			Sun: DayInfoSchema,
+		}),
 	};
 	const handelDefaultValue = () => {
 		return {
@@ -55,6 +91,7 @@ export default function AddBranch() {
 			building: '',
 			landmark: '',
 			branchPhoneNumber: '',
+			branchTimeSchedual: initialDayInfo,
 		};
 	};
 	const { formStore, onSubmit } = useForm({
@@ -62,7 +99,7 @@ export default function AddBranch() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
+	console.log(formStore.formState.errors);
 	const data = [
 		{
 			id: 1,
@@ -80,7 +117,7 @@ export default function AddBranch() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<HeaderSettings
 					submit
 					variant='settingTwoBtns'
@@ -96,13 +133,16 @@ export default function AddBranch() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 p-5 grid-cols-3'>
-					<div className='grid gap-5 col-span-2 lg:col-span-2'>
-						<BranchInfo formStore={formStore} />
-						<BranchAppointments />
+				<div className='grid gap-5 lg:grid-cols-3 container mx-auto '>
+					<div className='flex-col-top-section-pages lg:col-span-2'>
+						<BranchInfo
+							selectedOption={selectedOption}
+							setSelectedOption={setSelectedOption}
+							formStore={formStore}
+						/>
+						<BranchAppointments formStore={formStore} />
 					</div>
 					<div className='col-span-1'>
-						{/* <BranchQuickActions /> */}
 						<QuickActions data={data} />
 					</div>
 				</div>
