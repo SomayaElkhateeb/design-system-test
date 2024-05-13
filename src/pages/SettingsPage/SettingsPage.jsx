@@ -1,7 +1,7 @@
 import { TrialBanner } from 'src/app/components/optimized';
 import { settingsCards } from './data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 /**
  * SettingsPage component represents the settings page of the application.
@@ -10,9 +10,6 @@ import { useLocation, useParams } from 'react-router-dom';
  * @returns {JSX.Element} SettingsPage component.
  */
 const SettingsPage = () => {
-	const { pathname } = useLocation();
-	const {config}=useParams()
-	console.log(config)
 	return (
 		<div className='flex-col-top-section-pages container mx-auto'>
 			<TrialBanner

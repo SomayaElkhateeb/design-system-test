@@ -39,7 +39,10 @@ export const routes = [
 	{
 		path: '/customers',
 		element: <CustomersPage />,
-		children: [{ path: ':id', element: <CustomerInfo /> }],
+	},
+	{
+		path: '/customers/:id',
+		element: <CustomerInfo />,
 	},
 	// Apps Routes
 	{
@@ -55,7 +58,10 @@ export const routes = [
 	{
 		path: '/pages',
 		element: <PagesPage />,
-		children: [{ path: ':config', element: <PagesConfig /> }],
+	},
+	{
+		path: '/pages/:config',
+		element: <PagesConfig />,
 	},
 
 	// Orders Routes
@@ -76,13 +82,14 @@ export const routes = [
 	{
 		path: '/settings',
 		element: <SettingsPage />,
-		children: [
-			{
-				path: ':config',
-				element: <SettingsConfig />,
-				children: [{ path: ':nested_page', element: <Nested_pages_SettingsConfig /> }],
-			},
-		],
+	},
+	{
+		path: '/settings/:config',
+		element: <SettingsConfig />,
+	},
+	{
+		path: '/settings/:config/:nested_page',
+		element: <Nested_pages_SettingsConfig />,
 	},
 
 	// Marketing Routes
