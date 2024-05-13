@@ -28,7 +28,17 @@ import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 // Creating browser router routes
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-	{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
+	{
+		path: '/apps',
+		element: <AppsPage />,
+		children: [
+			{ path: ':tab', element: <AppsTabs /> },
+			{
+				path: 'app_store/:platform',
+				element: <SocialAppDetails />,
+			},
+		],
+	},
 	{
 		path: '/pages',
 		element: <PagesPage />,
@@ -67,13 +77,14 @@ export const routes = [
 	{
 		path: '/marketing',
 		element: <MarketingPage />,
-		children: [{ path: ':tab', element: <MarketingTabs /> }],
+		children: [
+			{ path: ':tab', element: <MarketingTabs /> },
+			{ path: ':tabName/:config', element: <MarketingConfig /> },
+		],
 	},
 	{
 		path: '/analytics',
 		element: <AnalyticsPage />,
 		children: [{ path: ':tab', element: <AnalyticsTabs /> }],
 	},
-	{ path: '/apps/app_store/:platform', element: <SocialAppDetails /> },
-	{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 ];

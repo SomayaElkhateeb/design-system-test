@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
 
 interface TabsLinkProps {
-	tabs: { name: String, path: string }[];
+	tabs: { name: String; path: string }[];
 	path: string;
 }
 
-export default function HorizontalTabsLink({ tabs, path }:TabsLinkProps) {
+export default function HorizontalTabsLink({ tabs, path }: TabsLinkProps) {
 	const { tab: tabName } = useParams();
 
 	return (
@@ -31,3 +31,14 @@ export default function HorizontalTabsLink({ tabs, path }:TabsLinkProps) {
 		</div>
 	);
 }
+
+/*
+const tabs = [
+	{
+		name: 'name',
+		path: 'path',
+	},
+];
+
+<HorizontalTabsLink tabs={tabs} path='/products' />;
+*/
