@@ -25,7 +25,7 @@ const LegalDetails = ({
 	
 
 	return (
-		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='cardDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Legal details')}</h3>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>

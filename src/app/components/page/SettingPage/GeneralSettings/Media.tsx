@@ -11,7 +11,7 @@ const Media = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterfac
 	const { t } = useTranslation();
 
 	return (
-		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='cardDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Media')}</h3>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<FormField

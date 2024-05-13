@@ -5,7 +5,7 @@ import { Branch } from 'src/pages/SettingsPage/BranchesSettings';
 export default function BranchCard({ name, address, city, country, phone }: Branch) {
 	const iconClassName = 'fill-pri-dark cursor-pointer';
 	return (
-		<div className=' flex justify-between  serviceDetails-sharedClass p-5'>
+		<div className=' flex justify-between  cardDetails-sharedClass p-5'>
 			<div className='flex-col-top-section-pages gap-2'>
 				<h2 className='title'>{name}</h2>
 				<div>
