@@ -6,11 +6,14 @@ import { z } from 'zod';
 
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
-import BranchAppointments from './BranchAppointments';
+import BranchAppointments, { DayInfo, initialDayInfo } from './BranchAppointments';
 
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useState } from 'react';
 
+export interface WeekSchedule {
+	[key: string]: DayInfo;
+}
 export interface BranchSettingsInterface {
 	branchType: string;
 	branchNameEn: string;
@@ -22,9 +25,11 @@ export interface BranchSettingsInterface {
 	building: string;
 	landmark?: string;
 	branchPhoneNumber: string;
+	branchTimeSchedual: WeekSchedule;
 }
 
 export default function AddBranch() {
+	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
@@ -39,6 +44,14 @@ export default function AddBranch() {
 			: RequiredAddresseData;
 	};
 
+	const DayInfoSchema = z.object({
+		openHours: z.object({
+			open: z.string(),
+			close: z.string(),
+		}),
+		isClosed: z.boolean(),
+	});
+
 	const generalSettingsSchema = {
 		branchType: RequiredAddresseData,
 		branchNameEn: RequiredAddresseData,
@@ -50,6 +63,15 @@ export default function AddBranch() {
 		building: RequiredAddresseData,
 		landmark: handel_RequiredAddresseData(),
 		branchPhoneNumber: z.string().min(7),
+		branchTimeSchedual: z.object({
+			Mon: DayInfoSchema,
+			Tue: DayInfoSchema,
+			Wed: DayInfoSchema,
+			Thu: DayInfoSchema,
+			Fri: DayInfoSchema,
+			Sat: DayInfoSchema,
+			Sun: DayInfoSchema,
+		}),
 	};
 	const handelDefaultValue = () => {
 		return {
@@ -63,6 +85,7 @@ export default function AddBranch() {
 			building: '',
 			landmark: '',
 			branchPhoneNumber: '',
+			branchTimeSchedual: initialDayInfo,
 		};
 	};
 	const { formStore, onSubmit } = useForm({
@@ -88,7 +111,7 @@ export default function AddBranch() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<HeaderSettings
 					submit
 					variant='settingTwoBtns'
@@ -104,17 +127,16 @@ export default function AddBranch() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 p-5 grid-cols-3'>
-					<div className='grid gap-5 col-span-2 lg:col-span-2'>
+				<div className='grid gap-5 lg:grid-cols-3 container mx-auto '>
+					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BranchInfo
 							selectedOption={selectedOption}
 							setSelectedOption={setSelectedOption}
 							formStore={formStore}
 						/>
-						<BranchAppointments />
+						<BranchAppointments formStore={formStore} />
 					</div>
 					<div className='col-span-1'>
-						{/* <BranchQuickActions /> */}
 						<QuickActions data={data} />
 					</div>
 				</div>

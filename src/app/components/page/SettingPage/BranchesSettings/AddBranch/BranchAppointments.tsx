@@ -1,61 +1,66 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 
 import { AddBgIcon, DeleteExitIcon } from 'src/app/utils/icons';
-import { Button, CheckBox, TimePicker } from 'src/app/components/optimized';
+import { Button, CheckBox } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import TimePickerMui from 'src/app/components/optimized/Pickers/TimePicker';
+import { BranchSettingsInterface, WeekSchedule } from './AddBranch';
+import { UseFormReturn } from 'react-hook-form';
 
-interface OpenHours {
-	opens: string;
-	closes: string;
+export interface OpenHours {
+	open: string;
+	close: string;
 }
 
-interface DayInfo {
+export interface DayInfo {
 	openHours: OpenHours;
 	isClosed: boolean;
 }
 
-const initialDayInfo: { [key: string]: DayInfo } = {
-	Sun: { openHours: { opens: '', closes: '' }, isClosed: false },
-	Mon: { openHours: { opens: '', closes: '' }, isClosed: false },
-	Tue: { openHours: { opens: '', closes: '' }, isClosed: false },
-	Wed: { openHours: { opens: '', closes: '' }, isClosed: false },
-	Thu: { openHours: { opens: '', closes: '' }, isClosed: false },
-	Fri: { openHours: { opens: '', closes: '' }, isClosed: false },
-	Sat: { openHours: { opens: '', closes: '' }, isClosed: false },
+export const initialDayInfo: WeekSchedule = {
+	Sun: { openHours: { open: '', close: '' }, isClosed: false },
+	Mon: { openHours: { open: '', close: '' }, isClosed: false },
+	Tue: { openHours: { open: '', close: '' }, isClosed: false },
+	Wed: { openHours: { open: '', close: '' }, isClosed: false },
+	Thu: { openHours: { open: '', close: '' }, isClosed: false },
+	Fri: { openHours: { open: '', close: '' }, isClosed: false },
+	Sat: { openHours: { open: '', close: '' }, isClosed: false },
 };
 
-export default function BranchAppointments() {
+
+
+interface BranchInfoProps {
+	formStore: UseFormReturn<BranchSettingsInterface>;
+}
+export default function BranchAppointments({ formStore }: BranchInfoProps) {
 	const [activeDay, setActiveDay] = useState<string>('Sun');
-	const [dayInfo, setDayInfo] = useState<{ [key: string]: DayInfo }>(initialDayInfo);
+	const [dayInfo, setDayInfo] = useState<WeekSchedule>(initialDayInfo);
 	const [toggle, setToggle] = useState<boolean>(false);
-	
+
+	useEffect(() => {
+		formStore.setValue('branchTimeSchedual', dayInfo);
+
+		if (dayInfo[activeDay].isClosed) {
+			dayInfo[activeDay].openHours.open = '';
+			dayInfo[activeDay].openHours.close = '';
+
+			formStore.setValue('branchTimeSchedual', dayInfo);
+		}
+	}, [dayInfo]);
 
 	const handleDayClick = (day: string) => {
 		setActiveDay(day);
 	};
 
-	// const handleHoursChange = (e: ChangeEvent<HTMLInputElement>, type: 'opens' | 'closes') => {
-	// 	const { value } = e.target;
-	// 	setDayInfo((prevDayInfo) => ({
-	// 		...prevDayInfo,
-	// 		[activeDay]: {
-	// 			...prevDayInfo[activeDay],
-	// 			openHours: {
-	// 				...prevDayInfo[activeDay].openHours,
-	// 				[type]: value,
-	// 			},
-	// 		},
-	// 	}));
-	// };
-	const handleHoursChange = (value: Dayjs | null, type: 'opens' | 'closes') => {
+	const handleHoursChange = (value: Dayjs | null, type: 'open' | 'close') => {
 		setDayInfo((prevDayInfo) => ({
 			...prevDayInfo,
 			[activeDay]: {
 				...prevDayInfo[activeDay],
 				openHours: {
 					...prevDayInfo[activeDay].openHours,
-					[type]: value ? value.format('HH:mm') : '',
+					[type]: value ? value : '',
 				},
 			},
 		}));
@@ -81,64 +86,73 @@ export default function BranchAppointments() {
 	};
 
 	return (
-		<div className='grid gap-4 col-span-2 p-4 bg-white rounded-lg border border-borders-lines'>
-			<h2 className='title text-lg mb-2'>Opening hours</h2>
+		<div className='grid gap-4 w-full cardDetails-sharedClass p-5'>
+			<h2 className='title text-lg '>Opening hours</h2>
 			<section>{renderDayButtons()}</section>
 
 			<section className='flex items-center gap-4'>
 				{!dayInfo[activeDay].isClosed && (
 					<div className='grid gap-4'>
-						<div className='flex gap-4'>
-							<TimePicker
+						<div className='flex gap-4 items-center'>
+							<TimePickerMui
 								label={'Opens at'}
 								value={
-									dayInfo[activeDay].openHours.opens
-										? dayjs(dayInfo[activeDay].openHours.opens)
+									dayInfo[activeDay].openHours.open
+										? dayjs(dayInfo[activeDay].openHours.open)
 										: null
 								}
-								handleOnChange={(e) => handleHoursChange(e, 'opens')}
+								handleOnChange={(e) => handleHoursChange(e, 'open')}
 							/>
-							<TimePicker
+							<TimePickerMui
 								label={'Closes at'}
 								value={
-									dayInfo[activeDay].openHours.closes
-										? dayjs(dayInfo[activeDay].openHours.closes)
+									dayInfo[activeDay].openHours.close
+										? dayjs(dayInfo[activeDay].openHours.close)
 										: null
 								}
-								handleOnChange={(e) => handleHoursChange(e, 'closes')}
+								handleOnChange={(e) => handleHoursChange(e, 'close')}
 							/>
+							<div className='mt-9'>
+								<CheckBox
+									checked={dayInfo[activeDay].isClosed}
+									handleOnChange={handleClosedToggle}
+									label='Closed'
+								/>
+							</div>
 						</div>
 
 						{toggle && (
 							<div className='flex gap-4'>
-								<TimePicker
+								<TimePickerMui
 									label={'Opens at'}
 									value={
-										dayInfo[activeDay].openHours.opens
-											? dayjs(dayInfo[activeDay].openHours.opens)
+										dayInfo[activeDay].openHours.open
+											? dayjs(dayInfo[activeDay].openHours.open)
 											: null
 									}
-									handleOnChange={(e) => handleHoursChange(e, 'opens')}
+									handleOnChange={(e) => handleHoursChange(e, 'open')}
 								/>
-								<TimePicker
+								<TimePickerMui
 									label={'Closes at'}
 									value={
-										dayInfo[activeDay].openHours.closes
-											? dayjs(dayInfo[activeDay].openHours.closes)
+										dayInfo[activeDay].openHours.close
+											? dayjs(dayInfo[activeDay].openHours.close)
 											: null
 									}
-									handleOnChange={(e) => handleHoursChange(e, 'closes')}
+									handleOnChange={(e) => handleHoursChange(e, 'close')}
 								/>
 							</div>
 						)}
 					</div>
 				)}
 			</section>
-			<CheckBox
-				checked={dayInfo[activeDay].isClosed}
-				handleOnChange={handleClosedToggle}
-				label='Closed'
-			/>
+			{dayInfo[activeDay].isClosed && (
+				<CheckBox
+					checked={dayInfo[activeDay].isClosed}
+					handleOnChange={handleClosedToggle}
+					label='Closed'
+				/>
+			)}
 			<Button
 				variant='tertiary'
 				LeftIcon={toggle ? DeleteExitIcon : AddBgIcon}
