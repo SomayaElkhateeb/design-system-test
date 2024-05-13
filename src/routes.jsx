@@ -1,5 +1,3 @@
-// Imports
-import React from 'react';
 import {
 	AddCustomerPage,
 	AnalyticsPage,
