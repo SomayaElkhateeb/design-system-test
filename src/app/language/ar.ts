@@ -507,8 +507,7 @@ export const arabic = {
 	'Open Setup': 'فتح الإعدادات',
 	'Add Branch': 'إضافة فرع',
 	Installed: 'المثبتة',
-	Instagram: 'الانستجرام',
-	Youtube: 'اليوتيوب',
+
 
 	'Store industry': 'مجال المتجر',
 	'Admin defaults (shown to you)': 'اساسيات المستخدم',
@@ -533,6 +532,7 @@ export const arabic = {
 	'Main info': 'المعلومات الرئيسية',
 	Edit: 'تعديل',
 	'Page Title': 'عنوان الصفحة',
+	"Branches": "الفروع",
 	'Meta description tag': 'علامة الوصف التعريفي',
 	'Short description': 'وصف قصير',
 	'Add posts': ' أضف مشاركات',
@@ -542,6 +542,8 @@ export const arabic = {
 		'أضف المستخدمين وحدد ما يمكنهم رؤيته أو فعله في متجرك.',
 	'Transfer Ownership': 'نقل الملكية',
 	Staff: 'طاقم العمل',
+	"Main menu":"القائمه الرئيسيه",
+	"Add New Item":"اضافه عنصر جديد",
 	'Active 3 days ago': 'نشط منذ 3 أيام',
 	manage: 'يدير',
 	'add staff': 'إضافة موظفين',

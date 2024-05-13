@@ -98,7 +98,7 @@ export default function AddPage() {
 							/>
 						</div>
 						<div>
-							<QuickActions data={data} />
+							<QuickActions />
 						</div>
 					</div>
 				</form>
