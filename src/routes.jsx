@@ -42,7 +42,10 @@ export const routes = [
 	{
 		path: '/pages',
 		element: <PagesPage />,
-		children: [{ path: ':config', element: <PagesConfig /> }],
+	},
+	{
+		path: '/pages/:config',
+		element: <PagesConfig />,
 	},
 	{ path: '/store', element: <StorePage /> },
 	{
@@ -55,13 +58,14 @@ export const routes = [
 	{
 		path: '/settings',
 		element: <SettingsPage />,
-		children: [
-			{
-				path: ':config',
-				element: <SettingsConfig />,
-				children: [{ path: ':nested_page', element: <Nested_pages_SettingsConfig /> }],
-			},
-		],
+	},
+	{
+		path: '/settings/:config',
+		element: <SettingsConfig />,
+	},
+	{
+		path: '/settings/:config/:nested_page',
+		element: <Nested_pages_SettingsConfig />,
 	},
 	{
 		path: '/products',

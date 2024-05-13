@@ -14,6 +14,8 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+
+
 const countries = [
 	{
 		name: 'Egypt',
@@ -43,6 +45,8 @@ const countries = [
 		],
 	},
 ];
+
+
 interface BranchInfoProps {
 	formStore: UseFormReturn<BranchSettingsInterface>;
 }
@@ -63,6 +67,7 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 		formStore.setValue('branchPhoneNumber', e);
 	};
 	// -------------------------------------
+	console.log(formStore.watch('countryName'));
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
 			<div className='grid gap-5 col-span-3 p-4 bg-white rounded-lg border border-borders-lines'>
@@ -70,11 +75,12 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 					<div>
 						<h2 className='title mb-2'>Branch Type</h2>
 						<SingleChoiceChips
-							options={['Commercial branch', 'Warehouse']}
+							options={[t('Commercial branch'), t('Warehouse')]}
 							setSelected={handleBranchType}
 							selected={formStore.watch('branchType')}
 						/>
 					</div>
+
 					<TabbedFormField
 						formStore={formStore}
 						keys={[
@@ -84,6 +90,8 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 						label={`${t('Branch Name')}`}
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
+
+					
 				</section>
 				<section className='grid gap-4'>
 					<div>
@@ -94,7 +102,6 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 							selected={selectedOption}
 						/>
 					</div>
-
 					<FormField
 						formStore={formStore}
 						name='countryName'

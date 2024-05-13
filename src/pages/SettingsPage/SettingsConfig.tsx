@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import Shipping from 'src/app/components/page/SettingPage/Shipping/Shipping';
 
 import BranchesSettings from './BranchesSettings';
 
@@ -17,6 +18,9 @@ const SettingsConfig = () => {
 
 		case 'users':
 			return <Users />;
+
+		case 'shipping':
+			return <Shipping />;
 	}
 };
 
