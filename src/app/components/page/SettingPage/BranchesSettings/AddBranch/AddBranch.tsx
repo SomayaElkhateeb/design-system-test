@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { DatePicker, HeaderSettings } from 'src/app/components/optimized';
+import { HeaderSettings } from 'src/app/components/optimized';
 import BranchInfo from './BranchInfo';
 import { z } from 'zod';
 
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import BranchAppointments from './BranchAppointments';
-import BranchQuickActions from './BranchQuickActions';
+
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 
 export interface BranchSettingsInterface {
 	branchType: string;
@@ -39,12 +40,12 @@ export default function AddBranch() {
 	const { t } = useTranslation();
 
 	const handleSubmit = (values: BranchSettingsInterface) => {
-		console.log('values', values.branchType);
+		console.log(values);
 		// handleClose();
 	};
 	const handelDefaultValue = () => {
 		return {
-			branchType: '',
+			branchType: 'Warehouse',
 			branchNameAr: '',
 			branchNameEn: '',
 			countryName: '',
@@ -61,6 +62,21 @@ export default function AddBranch() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+
+	const data = [
+		{
+			id: 1,
+			title: t('Assign as main location'),
+		},
+		{
+			id: 2,
+			title: t('Show on footer'),
+		},
+		{
+			id: 3,
+			title: t('Available for pickup'),
+		},
+	];
 
 	return (
 		<Form {...formStore}>
@@ -86,7 +102,8 @@ export default function AddBranch() {
 						<BranchAppointments />
 					</div>
 					<div className='col-span-1'>
-						<BranchQuickActions />
+						{/* <BranchQuickActions /> */}
+						<QuickActions data={data} />
 					</div>
 				</div>
 			</form>

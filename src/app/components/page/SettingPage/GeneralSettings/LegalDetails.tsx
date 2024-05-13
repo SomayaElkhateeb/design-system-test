@@ -21,12 +21,8 @@ const LegalDetails = ({
 	//  hooks
 	const { t } = useTranslation();
 
-	const handelClick = (e: string) => {
-		setState(e);
-	};
-	let activeClassNme = 'bg-secondary subtitle text-white  rounded-[1.5rem] hover:bg-secondary';
-	let defaultClassName =
-		'bg-white subtitle border border-constrained  rounded-[1.5rem] hover:bg-white';
+	
+	
 
 	return (
 		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>

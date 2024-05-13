@@ -15,7 +15,6 @@ import {
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 
-
 const countries = [
 	{
 		name: 'Egypt',
@@ -46,12 +45,12 @@ const countries = [
 	},
 ];
 
-
 interface BranchInfoProps {
 	formStore: UseFormReturn<BranchSettingsInterface>;
 }
 
 export default function BranchInfo({ formStore }: BranchInfoProps) {
+	//  hooks
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 
@@ -67,13 +66,13 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 		formStore.setValue('branchPhoneNumber', e);
 	};
 	// -------------------------------------
-	console.log(formStore.watch('countryName'));
+
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
-			<div className='grid gap-5 col-span-3 p-4 bg-white rounded-lg border border-borders-lines'>
+			<div className='grid gap-5 col-span-3 serviceDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
 					<div>
-						<h2 className='title mb-2'>Branch Type</h2>
+						<h2 className='title mb-2'>{t('Branch Type')}</h2>
 						<SingleChoiceChips
 							options={[t('Commercial branch'), t('Warehouse')]}
 							setSelected={handleBranchType}
@@ -90,12 +89,10 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 						label={`${t('Branch Name')}`}
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
-
-					
 				</section>
 				<section className='grid gap-4'>
 					<div>
-						<h2 className='title text-lg mb-2'>Address</h2>
+						<h2 className='title text-lg mb-2'>{t("Address")}</h2>
 						<SingleChoiceChips
 							options={['Add manually', 'Use a map']}
 							setSelected={handleAddressOption}
@@ -182,12 +179,18 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 
 					<div className='grid gap-1'>
 						<p className='text-sm font-semibold'>{t('Phone number')}</p>
-						<CustomPhoneInput
-							value={formStore.watch('branchPhoneNumber')}
-							onHandleChange={handleOnChange}
-							touched={formStore.formState.touchedFields.branchPhoneNumber}
-							errors={formStore.formState.errors.branchPhoneNumber?.message}
-							// isLoading={isLoading}
+
+						<FormField
+							formStore={formStore}
+							name='branchPhoneNumber'
+							render={(field) => (
+								<CustomPhoneInput
+									value={field.value}
+									onHandleChange={field.onChange}
+
+									// isLoading={isLoading}
+								/>
+							)}
 						/>
 					</div>
 				</section>
