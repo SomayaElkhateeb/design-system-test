@@ -73,7 +73,7 @@ function OwnerAndStaff({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className='serviceDetails-sharedClass p-5  flex-col-top-section-pages gap-2'>
+		<div className='cardDetails-sharedClass p-5  flex-col-top-section-pages gap-2'>
 			<div className='flex-col-top-section-pages gap-0'>
 				<h2 className='title'>{title}</h2>
 				<p className='text-subtitle text-sm py-3'>{describtion}</p>

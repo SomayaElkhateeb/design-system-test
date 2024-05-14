@@ -7,7 +7,7 @@ import { Input } from 'src/app/components/ui/input';
 export default function NewOwner({ formStore }: { formStore: UseFormReturn<addOwnerInterface> }) {
 	const { t } = useTranslation();
 	return (
-		<div className='serviceDetails-sharedClass p-5   md:w-[75%]'>
+		<div className='cardDetails-sharedClass p-5   md:w-[75%]'>
 			<div className='flex-col-top-section-pages gap-4 md:w-[50%]'>
 				<div>
 					<h3 className='text-title font-semibold'>{t('New Owner')}</h3>

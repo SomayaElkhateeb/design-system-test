@@ -45,6 +45,8 @@ export default function AddStuff() {
 		defaultValues: handelDefaultValue(),
 	});
 
+	const data=[{id:1,title:t('Activated')}]
+
 	return (
 		<>
 			<Form {...formStore}>
@@ -70,7 +72,7 @@ export default function AddStuff() {
 							<Permissions formStore={formStore} />
 						</div>
 						<div className='lg:col-span-1'>
-							<QuickActions />
+							<QuickActions data={data}/>
 						</div>
 					</div>
 				</form>

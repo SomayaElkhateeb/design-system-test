@@ -30,7 +30,7 @@ const RecentReview = () => {
 	const { rating, ratings } = data;
 
 	return (
-		<div className='serviceDetails-sharedClass p-[1rem] h-full shadow-sm'>
+		<div className='cardDetails-sharedClass p-5 h-full shadow-sm'>
 			<div className='flex-col-top-section-pages gap-[1.8rem]'>
 				<div className='w-full flex md:flex-row flex-col justify-between md:items-center space-x-2  space-y-3 '>
 					<div className='md:w-1/3 '>

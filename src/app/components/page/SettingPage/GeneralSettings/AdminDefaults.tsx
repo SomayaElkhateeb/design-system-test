@@ -14,7 +14,7 @@ const AdminDefaults = ({ formStore }: { formStore: UseFormReturn<generalSettings
 	const { t } = useTranslation();
 
 	return (
-		<section className='serviceDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='cardDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Admin defaults (shown to you)')}</h3>
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				{/*  default time */}

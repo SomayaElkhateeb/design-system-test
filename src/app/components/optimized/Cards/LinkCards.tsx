@@ -1,7 +1,6 @@
 import { type FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { IconProps } from 'src/app/utils/icons';
-
 
 interface LinkCardsProps {
 	path: string;
@@ -26,6 +25,3 @@ const LinkCards = ({ path, title, Icon, description }: LinkCardsProps) => {
 };
 
 export default LinkCards;
-
-
-

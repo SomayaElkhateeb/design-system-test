@@ -15,7 +15,6 @@ import {
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 
-
 const countries = [
 	{
 		name: 'Egypt',
@@ -46,14 +45,19 @@ const countries = [
 	},
 ];
 
-
 interface BranchInfoProps {
 	formStore: UseFormReturn<BranchSettingsInterface>;
+	selectedOption: string;
+	setSelectedOption: (e: string) => void;
 }
 
-export default function BranchInfo({ formStore }: BranchInfoProps) {
+export default function BranchInfo({
+	formStore,
+	selectedOption,
+	setSelectedOption,
+}: BranchInfoProps) {
+	//  hooks
 	const { t } = useTranslation();
-	const [selectedOption, setSelectedOption] = useState('Add manually');
 
 	const handleBranchType = (option: string) => {
 		formStore.setValue('branchType', option);
@@ -63,17 +67,13 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 		setSelectedOption(option);
 	};
 	// -------------------------------------
-	const handleOnChange = (e: string) => {
-		formStore.setValue('branchPhoneNumber', e);
-	};
-	// -------------------------------------
-	console.log(formStore.watch('countryName'));
+
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
-			<div className='grid gap-5 col-span-3 p-4 bg-white rounded-lg border border-borders-lines'>
+			<div className='grid gap-5 col-span-3 cardDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
 					<div>
-						<h2 className='title mb-2'>Branch Type</h2>
+						<h2 className='title mb-2'>{t('Branch Type')}</h2>
 						<SingleChoiceChips
 							options={[t('Commercial branch'), t('Warehouse')]}
 							setSelected={handleBranchType}
@@ -87,107 +87,117 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 							{ name: 'branchNameEn', label: 'En' },
 							{ name: 'branchNameAr', label: 'عربي' },
 						]}
-						label={`${t('Branch Name')}`}
+						label={t('Branch Name')}
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
-
-					
 				</section>
 				<section className='grid gap-4'>
 					<div>
-						<h2 className='title text-lg mb-2'>Address</h2>
+						<h2 className='title text-lg mb-2'>{t('Address')}</h2>
 						<SingleChoiceChips
 							options={['Add manually', 'Use a map']}
 							setSelected={handleAddressOption}
 							selected={selectedOption}
 						/>
 					</div>
-					<FormField
-						formStore={formStore}
-						name='countryName'
-						label={t('Country')}
-						render={(field) => (
-							<div className='flex'>
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
-									</SelectTrigger>
-									<SelectContent>
-										{countries.map((country) => (
-											<SelectItem key={country.value} value={country.value}>
-												{country.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-							</div>
-						)}
-					/>
-					<FormField
-						formStore={formStore}
-						name='cityName'
-						label={t('City')}
-						render={(field) => (
-							<div className='flex'>
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
-									</SelectTrigger>
-									<SelectContent>
-										{countries.map((country) => (
-											<SelectItem key={country.value} value={country.value}>
-												{country.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-							</div>
-						)}
-					/>
+					{selectedOption === 'Add manually' && (
+						<section className='grid gap-4'>
+							<FormField
+								formStore={formStore}
+								name='countryName'
+								label={t('Country')}
+								render={(field) => (
+									<div className='flex'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+												<SelectValue placeholder='Select option' />
+											</SelectTrigger>
+											<SelectContent>
+												{countries.map((country) => (
+													<SelectItem key={country.value} value={country.value}>
+														{country.name}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</div>
+								)}
+							/>
+							<FormField
+								formStore={formStore}
+								name='cityName'
+								label={t('City')}
+								render={(field) => (
+									<div className='flex'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+												<SelectValue placeholder='Select option' />
+											</SelectTrigger>
+											<SelectContent>
+												{countries.map((country) => (
+													<SelectItem key={country.value} value={country.value}>
+														{country.name}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</div>
+								)}
+							/>
 
-					<FormField
-						formStore={formStore}
-						name='area'
-						label={t('Area / District')}
-						render={(field) => <Input {...field} placeholder={'Sary'} />}
-					/>
-					<FormField
-						formStore={formStore}
-						name='street'
-						label={t('Street')}
-						render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
-					/>
+							<FormField
+								formStore={formStore}
+								name='area'
+								label={t('Area / District')}
+								render={(field) => <Input {...field} placeholder={'area'} />}
+							/>
+							<FormField
+								formStore={formStore}
+								name='street'
+								label={t('Street')}
+								render={(field) => <Input {...field} placeholder={'street'} />}
+							/>
+
+							<FormField
+								formStore={formStore}
+								name='landmark'
+								label={t('Landmark')}
+								render={(field) => <Input {...field} placeholder={'landmark'} />}
+							/>
+						</section>
+					)}
+
 					<FormField
 						formStore={formStore}
 						name='building'
 						label={t('Building')}
-						render={(field) => <Input {...field} placeholder={'Sary'} />}
-					/>
-					<FormField
-						formStore={formStore}
-						name='landmark'
-						label={t('Landmark')}
-						render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
+						render={(field) => <Input {...field} placeholder={'building'} />}
 					/>
 
 					<div className='grid gap-1'>
 						<p className='text-sm font-semibold'>{t('Phone number')}</p>
-						<CustomPhoneInput
-							value={formStore.watch('branchPhoneNumber')}
-							onHandleChange={handleOnChange}
-							touched={formStore.formState.touchedFields.branchPhoneNumber}
-							errors={formStore.formState.errors.branchPhoneNumber?.message}
-							// isLoading={isLoading}
+
+						<FormField
+							formStore={formStore}
+							name='branchPhoneNumber'
+							render={(field) => (
+								<CustomPhoneInput
+									value={field.value}
+									onHandleChange={field.onChange}
+
+									// isLoading={isLoading}
+								/>
+							)}
 						/>
 					</div>
 				</section>

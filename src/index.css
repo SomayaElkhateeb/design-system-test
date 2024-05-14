@@ -179,7 +179,7 @@ object {
 }
 
 @layer components {
-	.serviceDetails-sharedClass {
+	.cardDetails-sharedClass {
 		@apply border rounded-[.6rem] bg-white border-[constrained];
 	}
 	.customer-border {

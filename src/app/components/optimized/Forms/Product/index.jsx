@@ -9,6 +9,7 @@ import ProductFormStockSection from './sections/Stock';
 import ProductFormShippingSection from './sections/Shipping';
 import ProductFormOptionsAndVariationsSection from './sections/OptionsAndVariations';
 import ProductFormFaqsSection from './sections/Faqs';
+import SeoFormFaqsSection from './sections/Seo';
 
 const ProductSchema = {
 	generalInfo: z.object({
@@ -133,6 +134,7 @@ export default function ProductForm(props) {
 				<ProductFormStockSection formStore={formStore} />
 				<ProductFormShippingSection formStore={formStore} />
 				<ProductFormOptionsAndVariationsSection formStore={formStore} />
+				<SeoFormFaqsSection formStore={formStore} />
 				<ProductFormFaqsSection formStore={formStore} />
 			</form>
 		</Form>

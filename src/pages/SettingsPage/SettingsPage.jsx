@@ -1,6 +1,7 @@
 import { TrialBanner } from 'src/app/components/optimized';
 import { settingsCards } from './data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 /**
  * SettingsPage component represents the settings page of the application.

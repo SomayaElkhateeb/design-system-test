@@ -1,42 +1,23 @@
 import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import i18n from './app/language/i18n';
-
-import {
-	AppsPage,
-	HomePage,
-	StorePage,
-	ErrorPage,
-	PagesPage,
-	OrdersPage,
-	ReviewsPage,
-	SettingsPage,
-	ProductsPage,
-	ServicesPage,
-	AnalyticsPage,
-	CustomersPage,
-	MarketingPage,
-	SocialAppDetails,
-	AddCustomerPage,
-} from 'src/pages';
-import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import ProductsTabs from './app/components/page/Products/ProductsTabs';
 import { UseLanguage } from './app/components/CustomHook/LanguageHook';
-import SettingsConfig from './pages/SettingsPage/SettingsConfig';
-import OrdersTabs from './app/components/page/Orders/OrdersTabs';
-import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
-import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
-import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import RootLayout from './pages/RootLayout';
 import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
 import Config from './app/components/page/SettingPage/Shipping/Comp/Config';
+import { ErrorPage } from './pages';
+import { routes } from './routes';
+
+// Create browser router instance
+
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <RootLayout />,
 		errorElement: <ErrorPage />,
+
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: '/apps', element: <AppsPage />, children: [{ path: ':tab', element: <AppsTabs /> }] },
@@ -92,23 +73,30 @@ const router = createBrowserRouter([
 			{ path: '/apps/app_store/:platform', element: <SocialAppDetails /> },
 			{ path: '/marketing/:tabName/:config', element: <MarketingConfig /> },
 		],
+
+		children: routes,
+
 	},
 ]);
-// AnalyticsTabs
+
+// App component
 const App = () => {
 	const language = UseLanguage();
-	useEffect(() => {
-		language === 'ar' ? i18n.changeLanguage('ar') : i18n.changeLanguage('en');
 
-		document.dir = language === 'ar' ? 'rtl' : 'ltr';
+	useEffect(() => {
+		// Change language and direction
+		const newLanguage = language === 'ar' ? 'ar' : 'en';
+		i18n.changeLanguage(newLanguage);
+		document.dir = newLanguage === 'ar' ? 'rtl' : 'ltr';
+
 		// Change font family based on language
 		const root = document.getElementById('root');
-		if (language === 'ar') {
-			root?.style.setProperty('--font-family', 'var(--font-family-ar)');
-		} else {
-			root?.style.setProperty('--font-family', 'var(--font-family-en)');
-		}
+		root?.style.setProperty(
+			'--font-family',
+			newLanguage === 'ar' ? 'var(--font-family-ar)' : 'var(--font-family-en)',
+		);
 	}, [language, i18n]);
+
 	return <RouterProvider router={router} />;
 };
 
