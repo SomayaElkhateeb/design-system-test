@@ -6,6 +6,7 @@ import BranchesSettings from './BranchesSettings';
 import Users from 'src/pages/SettingsPage/Users';
 import GeneralSettings from './GeneralSettings';
 import LanguageSettings from './LanguageSettings';
+import ReviewsSetting from './ReviewsSettings';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
@@ -22,8 +23,12 @@ const SettingsConfig = () => {
 
 		case 'shipping':
 			return <Shipping />;
+
 		case 'language':
 			return <LanguageSettings />;
+
+		case 'reviews':
+			return <ReviewsSetting />;
 	}
 };
 

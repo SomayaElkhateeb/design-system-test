@@ -144,7 +144,13 @@ const settingsCards = [
 		title: 'Users & Permissions',
 		description: 'Users Settings',
 	},
-	{ id: 7, path: '/', Icon: ReviewsIcon, title: 'Reviews', description: 'manage posted reviews' },
+	{
+		id: 7,
+		path: 'reviews',
+		Icon: ReviewsIcon,
+		title: 'Reviews',
+		description: 'manage posted reviews',
+	},
 	{ id: 8, path: '/', Icon: QueryIcon, title: 'Queries', description: 'manage posted queries' },
 	{
 		id: 9,
