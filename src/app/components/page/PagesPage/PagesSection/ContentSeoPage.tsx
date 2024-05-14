@@ -17,7 +17,7 @@ export default function ContentSeoPage({
 	const { t } = useTranslation();
 	return (
 		<div
-			className={`flex flex-col gap-4 w-[30rem] ${
+			className={`flex flex-col gap-4 lg:w-[70%] ${
 				open ? 'opacity-100' : 'opacity-0'
 			} duration-75 transition ease-linear`}
 		>

@@ -24,20 +24,11 @@ export default function Permissions({
 		{ id: '9', label: t('Customers') },
 		{ id: '10', label: t('Marketing') },
 	];
-	const [array, setArray] = useState<string[]>([]);
-
-	// useEffect(() => {
-	// 	if (array?.length > 0) {
-	// 		formStore.setValue('storePermissions', array);
-	// 	} else {
-	// 		formStore.setValue('storePermissions', []);
-	// 	}
-	// }, [array]);
-
+	// //////////////////////////////////////////
 	const handleStorePermissions = (option: string[]) => {
 		formStore.setValue('storePermissions', option);
 	};
-
+	// ///////////////////////////////////////////
 	const handleAllStorePermissions = () => {
 		formStore.setValue(
 			'storePermissions',

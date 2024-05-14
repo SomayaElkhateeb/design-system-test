@@ -547,6 +547,8 @@ export const arabic = {
 	"Branch Type":"نوع الفرع",
 	"Landmark": "علامه",
 	"Phone number":"رقم الهاتف",
+	"Add blog":"اضافه مقال",
+	"Blog image":"صوره المقال",
 	"Branch Name": "اسم الفرع",
 	Staff: 'طاقم العمل',
 	"Commercial branch": "الفرع التجاري",
