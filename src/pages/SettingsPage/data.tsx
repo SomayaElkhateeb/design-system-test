@@ -123,7 +123,7 @@ const settingsCards = [
 	},
 	{
 		id: 4,
-		path: '/',
+		path: 'language',
 		Icon: LanguageIcon,
 		title: 'Languages & defaults',
 		description: 'Setup store language, currency, geo zones',

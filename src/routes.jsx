@@ -19,7 +19,7 @@ import {
 
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
-import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
+import Nested_pages_SettingsConfig from './pages/SettingsPage/Nested_Settings_pagesConfig';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
