@@ -583,4 +583,14 @@ export const english = {
 	'other methods': 'other methods',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself',
+	'Compare over 6 different Shipping providers and pick the one that suits your needs':
+		'Compare over 6 different Shipping providers and pick the one that suits your needs',
+	'setup providers': 'setup providers',
+	'Deliver yourself': 'Deliver yourself',
+	'open setup': 'open setup',
+	'Self pickup': 'Self pickup',
+	SMSA: 'SMSA',
+	'Saudi Arabia': 'Saudi Arabia',
+	'Discounted rates': 'Discounted rates',
+	FAQs: 'FAQs',
 };

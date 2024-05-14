@@ -26,6 +26,8 @@ import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
+import Config from './app/components/page/SettingPage/Shipping/Comp/Config';
+import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
 
 // Route Definitions
 export const routes = [
@@ -90,6 +92,14 @@ export const routes = [
 	{
 		path: '/settings/:config/:nested_page',
 		element: <Nested_pages_SettingsConfig />,
+	},
+	{
+		path: '/settings/shipping/:config',
+		element: <ShippingConfig />,
+	},
+	{
+		path: '/settings/shipping/:config/:config',
+		element: <Config />,
 	},
 
 	// Marketing Routes
