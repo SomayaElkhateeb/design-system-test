@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
  * @param {string} [props.backgroundColor] - The background color of the component.
  * @returns {JSX.Element} React element representing the LabelIcon.
  */
-const LabelIcon = ({ text, icon, textColor, backgroundColor }) => {
+const LabelIcon = ({ text, icon = null, textColor, backgroundColor }) => {
 	const { t } = useTranslation();
 
 	return (

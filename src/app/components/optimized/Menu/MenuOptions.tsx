@@ -14,7 +14,7 @@ export default function MenuOptions({
 }: {
 	options: any;
 	handle: () => void;
-	btn: any;
+	btn: React.ReactNode;
 }) {
 	const createHandleMenuClick = (menuItem: string) => {
 		return () => {

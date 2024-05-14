@@ -497,18 +497,14 @@ export const arabic = {
 	Messenger: 'ماسنجر',
 	'Search in': 'بحث في',
 	'Get started': 'البدء',
-
 	Instagram: 'الانستجرام',
 	Youtube: 'اليوتيوب',
-
 	'Installed apps': 'التطبيقات المثبتة',
 	Support: 'الدعم',
 	Service: 'الخدمة',
 	'Open Setup': 'فتح الإعدادات',
 	'Add Branch': 'إضافة فرع',
 	Installed: 'المثبتة',
-
-
 	'Store industry': 'مجال المتجر',
 	'Admin defaults (shown to you)': 'اساسيات المستخدم',
 	'Default currency': 'العمله الاساسيه',
@@ -579,4 +575,14 @@ export const arabic = {
 	'other methods': 'أساليب أخرى',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'الشحنات التي تتم معالجتها خارج متجرك عبر الإنترنت. عندما يشتري أحد العملاء طلبًا، يتعين عليك التعامل مع عملية التسليم بنفسك',
+	'Compare over 6 different Shipping providers and pick the one that suits your needs':
+		'قارن بين أكثر من 6 مزودي شحن مختلفين واختر المزود الذي يناسب احتياجاتك',
+	'setup providers': 'مقدموا الإعداد',
+	'Deliver yourself': '',
+	'open setup': 'فتح الإعداد',
+	'Self pickup': 'التقاط النفس',
+	SMSA: 'سمسا',
+	'Saudi Arabia': 'المملكة العربيه السعودية',
+	'Discounted rates': 'أسعار مخفضة',
+	FAQs: 'الأسئلة الشائعة',
 } satisfies typeof english;
