@@ -7,12 +7,13 @@ import { IoIosArrowForward } from 'react-icons/io';
 /**
  *
  * @param {{
- *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons';
+ *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons' |'settingBtnAndIcon';
  *  title: string | null;
  *  btn1?: { text: string; onClick: () => void };
  *  btn2?: { text: string; onClick: () => void };
  *  btn3?: { text: string; onClick: () => void };
  * 	groupIcons?: any;
+ * icon?: React.ReactNode;
  * 	to?: number;
  * onClick?:()=>void
  * children?:React.ReactNode
@@ -92,6 +93,20 @@ export default function HeaderSettings(props) {
 						{props.btn2 && (
 							<Button onClick={props.btn2.onClick} variant='pri'>
 								{props.btn2.text}
+							</Button>
+						)}
+					</>
+				)}
+				{props.variant === 'settingBtnAndIcon' && (
+					<>
+						{props.icon}
+						{props.btn1 && (
+							<Button
+								type={props.submit ? 'submit' : 'button'}
+								onClick={props.btn1.onClick}
+								variant='sec'
+							>
+								{props.btn1.text}
 							</Button>
 						)}
 					</>

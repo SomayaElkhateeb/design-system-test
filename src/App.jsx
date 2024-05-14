@@ -31,6 +31,7 @@ import RootLayout from './pages/RootLayout';
 import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
+import Config from './app/components/page/SettingPage/Shipping/Comp/Config';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
 			{
 				path: '/settings/shipping/:config',
 				element: <ShippingConfig />,
+			},
+			{
+				path: '/settings/shipping/:config/:config',
+				element: <Config />,
 			},
 			{
 				path: '/products',
