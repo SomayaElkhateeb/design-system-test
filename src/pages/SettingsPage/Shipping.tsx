@@ -5,7 +5,6 @@ import { Switch } from 'src/app/components/ui/switch';
 import { EditIcon } from 'src/app/utils/icons';
 import { images } from 'src/pages/SettingsPage/data';
 
-
 export default function Shipping() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
