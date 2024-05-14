@@ -19,7 +19,7 @@ export default function MainInfoPage({
 	addblog?: boolean;
 }) {
 	const { t } = useTranslation();
-
+	
 	return (
 		<div className='global-cards'>
 			<h3 className='title'>{t('Main info')}</h3>

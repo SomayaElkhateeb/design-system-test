@@ -6,7 +6,9 @@ import { Form } from 'src/app/components/ui/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate } from 'react-router-dom';
 import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
-import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
+import ContentSeoPage, {
+	selectItemsInterface,
+} from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useState } from 'react';
 
@@ -20,6 +22,7 @@ export interface addPageInterface {
 	descriptionEn: string;
 	descriptionAr: string;
 	image?: File;
+	Metakeywords: selectItemsInterface[];
 }
 
 const pageSchema = (addblog?: boolean) => {
@@ -33,6 +36,12 @@ const pageSchema = (addblog?: boolean) => {
 		descriptionEn: z.string().min(10).max(200),
 		descriptionAr: z.string().min(10).max(200),
 		image: addblog ? z.instanceof(File) : z.optional(z.instanceof(File)),
+		Metakeywords: z.array(
+			z.object({
+				id: z.string().min(1),
+				name: z.string().min(1),
+			}),
+		),
 	};
 };
 
@@ -57,6 +66,7 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 			descriptionEn: '',
 			descriptionAr: '',
 			image: undefined,
+			Metakeywords: [],
 		};
 	};
 

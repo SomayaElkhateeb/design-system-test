@@ -562,6 +562,8 @@ export const english = {
 	"Phone number":"Phone number",
 	"Add blog":"Add blog",
 	"Blog image":"Blog image",
+	"Meta keywords":"Meta keywords",
+	"Type and add":"Type and add",
 	'Apps and channels': 'Apps and channels',
 	Permissions: 'Permissions',
 	'select all': 'select all',
