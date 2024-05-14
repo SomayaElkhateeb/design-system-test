@@ -1,7 +1,7 @@
 import { HeaderSettings } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
-import { cards } from 'src/pages/SettingsPage/comp/data';
 import BigAppsCard from 'src/app/components/optimized/Cards/BigAppsCard';
+import { cards } from 'src/pages/SettingsPage/data';
 
 export default function ShippingProviders() {
 	const { t } = useTranslation();

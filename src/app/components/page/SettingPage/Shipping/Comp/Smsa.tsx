@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { Accordion, HeaderSettings, LabelIcon } from 'src/app/components/optimized';
 import ContactCard from './ContactCard';
-import { contact, pricing, smsa } from 'src/pages/SettingsPage/comp/data';
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { MoreIcon } from 'src/app/utils/icons';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { contact, pricing, smsa } from 'src/pages/SettingsPage/data';
 
 export default function Smsa() {
 	const { t } = useTranslation();
