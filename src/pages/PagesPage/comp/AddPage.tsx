@@ -6,7 +6,9 @@ import { Form } from 'src/app/components/ui/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate } from 'react-router-dom';
 import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
-import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
+import ContentSeoPage, {
+	selectItemsInterface,
+} from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useState } from 'react';
 
@@ -19,20 +21,31 @@ export interface addPageInterface {
 	titleAr: string;
 	descriptionEn: string;
 	descriptionAr: string;
+	image?: File;
+	Metakeywords: selectItemsInterface[];
 }
 
-const pageSchema = {
-	pageTitle: z.string().min(3, { message: 'Page title is required' }),
-	link: z.string().url(),
-	metaKey: z.string(),
-	metaDescription: z.string().min(7, { message: 'Meta description is required' }),
-	titleEn: z.string().min(3).max(50),
-	titleAr: z.string().min(3).max(50),
-	descriptionEn: z.string().min(10).max(200),
-	descriptionAr: z.string().min(10).max(200),
+const pageSchema = (addblog?: boolean) => {
+	return {
+		pageTitle: z.string().min(3, { message: 'Page title is required' }),
+		link: z.string().url(),
+		metaKey: z.string(),
+		metaDescription: z.string().min(7, { message: 'Meta description is required' }),
+		titleEn: z.string().min(3).max(50),
+		titleAr: z.string().min(3).max(50),
+		descriptionEn: z.string().min(10).max(200),
+		descriptionAr: z.string().min(10).max(200),
+		image: addblog ? z.instanceof(File) : z.optional(z.instanceof(File)),
+		Metakeywords: z.array(
+			z.object({
+				id: z.string().min(1),
+				name: z.string().min(1),
+			}),
+		),
+	};
 };
 
-export default function AddPage() {
+export default function AddPage({ addblog }: { addblog?: boolean }) {
 	const [open, setOpen] = useState(false);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -52,11 +65,13 @@ export default function AddPage() {
 			titleAr: '',
 			descriptionEn: '',
 			descriptionAr: '',
+			image: undefined,
+			Metakeywords: [],
 		};
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: pageSchema,
+		schema: pageSchema(addblog),
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -74,7 +89,7 @@ export default function AddPage() {
 					<HeaderSettings
 						variant='settingWithIcons'
 						submit
-						title={t('Add page')}
+						title={!addblog ? t('Add page') : t('Add blog')}
 						groupIcons={<GroupIcons variant='view' />}
 						btn1={{
 							text: t('Discard'),
@@ -87,9 +102,9 @@ export default function AddPage() {
 							onClick: () => {},
 						}}
 					/>
-					<div className='p-4 flex gap-7 w-full justify-between'>
-						<div className=' gap-7 flex flex-col w-full'>
-							<MainInfoPage formStore={formStore} />
+					<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
+						<div className='flex-col-top-section-pages lg:col-span-2'>
+							<MainInfoPage addblog={addblog} formStore={formStore} />
 							<AccordionCard
 								open={open}
 								setOpen={setOpen}
@@ -97,8 +112,8 @@ export default function AddPage() {
 								title={t('SEO (Search engine listing preview)')}
 							/>
 						</div>
-						<div>
-							<QuickActions />
+						<div className='lg:col-span-1'>
+							<QuickActions data={data} />
 						</div>
 					</div>
 				</form>

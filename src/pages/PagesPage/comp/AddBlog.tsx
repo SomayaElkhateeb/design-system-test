@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import MainInfoBlog from 'src/app/components/page/PagesPage/BlogPosts/MainInfoBlog';
 import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
 import { useState } from 'react';
+import AddPage from './AddPage';
 
 export interface addPageInterface {
 	pageTitle: string;
@@ -33,75 +34,5 @@ const blogSchema = {
 };
 
 export default function AddBlog() {
-	const [open, setOpen] = useState(false);
-	const { t } = useTranslation();
-	const navigate = useNavigate();
-
-	const handleSubmit = (values: addPageInterface) => {
-		console.log(values);
-		// handelclose();
-	};
-
-	const handelDefaultValue = () => {
-		return {
-			pageTitle: '',
-			link: '',
-			metaKey: '',
-			metaDescription: '',
-			titleEn: '',
-			titleAr: '',
-			descriptionEn: '',
-			descriptionAr: '',
-		};
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: blogSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-
-	const data = [
-		{ id: 1, title: 'Visible' },
-		{ id: 2, title: 'Show on blog header' },
-	];
-
-	return (
-		<div>
-			<Form {...formStore}>
-				<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
-					<HeaderSettings
-						variant='settingWithIcons'
-						submit
-						title={t('Add posts')}
-						groupIcons={<GroupIcons variant='view' />}
-						btn1={{
-							text: t('Discard'),
-							onClick: () => {
-								navigate(-1);
-							},
-						}}
-						btn2={{
-							text: t('Save Changes'),
-							onClick: () => {},
-						}}
-					/>
-					<div className='p-4 flex gap-7 w-full justify-between'>
-						<div className=' gap-7 flex flex-col w-full'>
-							<MainInfoBlog formStore={formStore} />
-							<AccordionCard
-								open={open}
-								setOpen={setOpen}
-								content={<ContentSeoPage formStore={formStore} open={open} />}
-								title={t('SEO (Search engine listing preview)')}
-							/>
-						</div>
-						<div>
-							<QuickActions data={data} />
-						</div>
-					</div>
-				</form>
-			</Form>
-		</div>
-	);
+	return <AddPage addblog/>;
 }
