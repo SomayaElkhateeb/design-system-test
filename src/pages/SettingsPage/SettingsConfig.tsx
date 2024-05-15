@@ -7,6 +7,7 @@ import Users from 'src/pages/SettingsPage/Users';
 import GeneralSettings from './GeneralSettings';
 import LanguageSettings from './LanguageSettings';
 import ReviewsSetting from './ReviewsSettings';
+import QueriesSetting from './QueriesSettings';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
@@ -29,6 +30,8 @@ const SettingsConfig = () => {
 
 		case 'reviews':
 			return <ReviewsSetting />;
+			case 'queries':
+			return <QueriesSetting />;
 	}
 };
 

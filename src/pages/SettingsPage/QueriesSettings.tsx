@@ -7,51 +7,46 @@ import { useNavigate } from 'react-router-dom';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useTranslation } from 'react-i18next';
 import ReviewSectionForm from 'src/app/components/page/SettingPage/ReviewsSettings/ReviewSection';
-export interface reviewInterface {
-	name_en: string;
-	name_ar: string;
-	email: string;
+import QueriesSectionForm from 'src/app/components/page/SettingPage/QueriesSettings/QueriesSection';
+export interface queriesInterface {
+	describtion_en: string;
+	describtion_ar: string;
+
 	enable: boolean;
-	day: number;
 }
 
-const ReviewSchema = {
-	name_en: z.string().min(5).max(100),
-	name_ar: z.string().min(5).max(100),
+const QueriesSchema = {
+	describtion_en: z.string().min(5).max(100),
+	describtion_ar: z.string().min(5).max(100),
 	enable: z.boolean().default(false),
-	day: z.coerce.number().min(0),
-	email: z.string().min(1, { message: 'email is required' }).email(),
 };
-export default function ReviewsSetting() {
+export default function QueriesSetting() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	const handleSubmit = (values: reviewInterface) => {
+	const handleSubmit = (values: queriesInterface) => {
 		console.log(values);
 	};
 	const handelDefaultValue = () => {
 		return {
-			name_en: '',
-			name_ar: '',
-			storeIndustry: '',
-			email: '',
+			describtion_en: '',
+			describtion_ar: '',
+
 			enable: false,
-			day: 0,
 		};
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: ReviewSchema,
+		schema: QueriesSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
 
 	const data = [
 		{ id: 1, title: t('Enabled') },
-		{ id: 1, title: t('Auto publish reviews') },
-		{ id: 1, title: t('Notify me new reviews') },
-		{ id: 1, title: t('Net promoter score') },
+
+		{ id: 1, title: t('Notify me new queries') },
 	];
 	return (
 		<Form {...formStore}>
@@ -59,7 +54,7 @@ export default function ReviewsSetting() {
 				<HeaderSettings
 					variant='settingTwoBtns'
 					submit
-					title={t('Reviews')}
+					title={t('Queries')}
 					btn1={{
 						text: t('Discard'),
 						onClick: () => {
@@ -73,7 +68,7 @@ export default function ReviewsSetting() {
 				/>
 				<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
-						<ReviewSectionForm formStore={formStore} />
+						<QueriesSectionForm formStore={formStore} />
 					</div>
 					<div className='lg:col-span-1'>
 						<QuickActions data={data} />

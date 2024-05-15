@@ -151,7 +151,7 @@ const settingsCards = [
 		title: 'Reviews',
 		description: 'manage posted reviews',
 	},
-	{ id: 8, path: '/', Icon: QueryIcon, title: 'Queries', description: 'manage posted queries' },
+	{ id: 8, path: 'queries', Icon: QueryIcon, title: 'Queries', description: 'manage posted queries' },
 	{
 		id: 9,
 		path: '/',

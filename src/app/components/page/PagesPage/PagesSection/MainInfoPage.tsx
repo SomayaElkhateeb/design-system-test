@@ -1,6 +1,6 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
+
 import { Input } from 'src/app/components/ui/input';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { cn } from 'src/app/utils';
@@ -10,6 +10,7 @@ import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { fileClassName } from '../../SettingPage/GeneralSettings/Media';
 import { TfiUpload } from 'react-icons/tfi';
+import { Textarea } from 'src/app/components/ui/textarea';
 
 export default function MainInfoPage({
 	formStore,
@@ -67,7 +68,7 @@ export default function MainInfoPage({
 					{ name: 'descriptionAr', label: 'عربي' },
 				]}
 				label={t('Description')}
-				renderer={(field) => <Textarea {...field} className={cn(field.className, 'size-full')} />}
+				renderer={(field) => <Textarea {...field}  />}
 			/>
 		</div>
 	);
