@@ -37,7 +37,7 @@ export default function QueriesSectionForm({
 				/>
 			</div>
 
-			<div className='flex-col-top-section-pages  gap-[1.3rem]'>
+			
 				<TabbedFormField
 					formStore={formStore}
 					keys={[
@@ -47,7 +47,7 @@ export default function QueriesSectionForm({
 					label={t('Reply description')}
 					renderer={(field) => <Textarea {...field} placeholder={'reply'} />}
 				/>
-			</div>
+			
 		</div>
 	);
 }

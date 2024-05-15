@@ -19,7 +19,7 @@ export default function ThemesPage() {
 
 	const { selectedOption, handleSelect } = useSelectBox();
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-top-section-pages container mx-auto'>
 			<TopCustomizeSection />
 			
 

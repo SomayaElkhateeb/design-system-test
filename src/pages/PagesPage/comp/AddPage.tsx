@@ -83,7 +83,7 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 	];
 
 	return (
-		<>
+	
 			<Form {...formStore}>
 				<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
 					<HeaderSettings
@@ -118,6 +118,6 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 					</div>
 				</form>
 			</Form>
-		</>
+		
 	);
 }

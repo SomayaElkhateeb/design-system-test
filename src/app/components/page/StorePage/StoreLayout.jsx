@@ -3,7 +3,7 @@ import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const StoreLayout = () => {
 	const { pathname } = useLocation();
-	console.log(!pathname.includes("id"))
+
 	const tabs = [
 		{
 			name: 'Themes',
