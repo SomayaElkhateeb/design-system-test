@@ -7,6 +7,8 @@ import { z } from 'zod';
 import { Form } from 'src/app/components/ui/form';
 import MaintainanceSection from './MaintainanceSection';
 import PasswordSection from './PasswordSection';
+import SocialSharingSection from './SocialSharingSection';
+import RecaptchaEnable from './CaptchaEnable';
 
 export interface preferncesInterface {
 	pageTitle: string;
@@ -15,21 +17,24 @@ export interface preferncesInterface {
 	maintainanceMessageEn: string;
 	maintainanceMessageAr: string;
 	passwordEnable: boolean;
-	password:string
+	password: string;
 	passwordMessageEn: string;
 	passwordMessageAr: string;
+	image: File;
+	captchaEnable: boolean;
 }
 
 const pageSchema = () => {
 	return {
 		pageTitle: z.string().min(3, { message: 'Page title is required' }),
-
+		image: z.instanceof(File),
 		metaDescription: z.string().min(7, { message: 'Meta description is required' }),
 		maintainanceEnable: z.boolean(),
 		maintainanceMessageEn: z.string().min(3).max(1000),
 
 		maintainanceMessageAr: z.string().min(3).max(1000),
 		passwordEnable: z.boolean(),
+		captchaEnable: z.boolean(),
 		passwordMessageEn: z.string().min(3).max(1000),
 		password: z.string().min(3).max(1000),
 
@@ -49,15 +54,16 @@ export default function PreferencesPage() {
 	const handelDefaultValue = () => {
 		return {
 			pageTitle: '',
-
+			image: undefined,
 			metaDescription: '',
 			maintainanceEnable: false,
 			maintainanceMessageEn: '',
 			maintainanceMessageAr: '',
-			password:'',
+			password: '',
 			passwordEnable: false,
 			passwordMessageEn: '',
 			passwordMessageAr: '',
+			captchaEnable: false,
 		};
 	};
 
@@ -85,9 +91,11 @@ export default function PreferencesPage() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='container mx-auto f grid gap-5 lg:grid-cols-3'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+				<div className='container mx-auto  grid gap-5 grid-cols-1'>
+					<div className='flex-col-top-section-pages lg:w-[75%] '>
 						<SeoSearchSection formStore={formStore} />
+						<SocialSharingSection formStore={formStore} />
+						<RecaptchaEnable formStore={formStore} />
 						<PasswordSection formStore={formStore} />
 						<MaintainanceSection formStore={formStore} />
 					</div>
