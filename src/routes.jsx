@@ -28,11 +28,13 @@ import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 import Config from './app/components/page/SettingPage/Shipping/Comp/Config';
 import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
+import StoreTabs from './app/components/page/StorePage/StoreTabs';
+import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-	{ path: '/store', element: <StorePage /> },
+	
 	{ path: '/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
 	{ path: '/services', element: <ServicesPage /> },
@@ -109,6 +111,16 @@ export const routes = [
 		children: [
 			{ path: ':tab', element: <MarketingTabs /> },
 			{ path: ':tabName/:config', element: <MarketingConfig /> },
+		],
+	},
+
+	// store Routes
+	{
+		path: '/store',
+		element: <StorePage />,
+		children: [
+			{ path: ':tab', element: <StoreTabs /> },
+			{ path: ':tabName/:id', element: <StoreConfig /> },
 		],
 	},
 

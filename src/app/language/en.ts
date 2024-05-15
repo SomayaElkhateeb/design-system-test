@@ -15,6 +15,7 @@ export const english = {
 	"Queries":"Queries",
 	"Notify me new queries":"Notify me new queries",
 	"Reply description":"Reply description",
+	"Store preferences":"Store preferences",
 	Marketing: 'Marketing',
 	Apps: 'Apps',
 	Discounts: 'Discounts',

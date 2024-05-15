@@ -569,6 +569,7 @@ export const arabic = {
 	"Queries":"الاستعلامات",
 	"Notify me new queries":"أعلمني بالاستفسارات الجديدة",
 	"Reply description":"وصف الرد",
+	"Store preferences":"تفضيلات المتجر",
 	"You can send an email for customers who purchased from you to review": "يمكنك إرسال بريد إلكتروني للعملاء الذين اشتروا منك للمراجعة",
 	"Notify me new reviews": "أعلمني بالمراجعات الجديدة",
 	"Net promoter score": "صافي نقاط المروج",

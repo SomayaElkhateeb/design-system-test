@@ -4,8 +4,7 @@ import PriceButton from 'src/app/components/optimized/Buttons/PriceButton';
 import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThemesCard from './ThemesCard';
-import { TrialBanner } from 'src/app/components/optimized';
-import { getImageUrl } from 'src/app/utils';
+
 
 export default function ThemesPage() {
 	const array = [...Array(4)];
@@ -22,13 +21,7 @@ export default function ThemesPage() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<TopCustomizeSection />
-			{/* <TrialBanner
-				image={getImageUrl('images/product.png')}
-				free={false}
-				daysLeft={5}
-				title='You’re on free trial'
-				description='Subscribe now and open a world with no boundaries'
-			/> */}
+			
 
 			{/*  actions buttons */}
 			<div className='flex  items-center gap-[1rem]'>
