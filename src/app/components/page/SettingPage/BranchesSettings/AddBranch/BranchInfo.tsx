@@ -15,7 +15,7 @@ import {
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 
-const countries = [
+export const countries = [
 	{
 		name: 'Egypt',
 		value: 'eg',
