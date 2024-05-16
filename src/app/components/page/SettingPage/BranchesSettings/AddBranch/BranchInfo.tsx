@@ -95,7 +95,7 @@ export default function BranchInfo({
 					<div>
 						<h2 className='title text-lg mb-2'>{t('Address')}</h2>
 						<SingleChoiceChips
-							options={['Add manually', 'Use a map']}
+							options={[t('Add manually'), t('Use a map')]}
 							setSelected={handleAddressOption}
 							selected={selectedOption}
 						/>

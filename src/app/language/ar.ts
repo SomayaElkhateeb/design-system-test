@@ -537,7 +537,6 @@ export const arabic = {
 	'Add users and define what can they see or do in your store.':
 		'أضف المستخدمين وحدد ما يمكنهم رؤيته أو فعله في متجرك.',
 	'Transfer Ownership': 'نقل الملكية',
-
 	Country: 'المدينه',
 	'Area / District': 'منطقه / حي ',
 	Street: 'شارع',
@@ -546,10 +545,14 @@ export const arabic = {
 	'Phone number': 'رقم الهاتف',
 	'Branch Name': 'اسم الفرع',
 	Staff: 'طاقم العمل',
-
+	'Commercial branch': 'الفرع التجاري',
+	Warehouse: 'مستودع',
+	'Main menu': 'القائمه الرئيسيه',
+	'Add New Item': 'اضافه عنصر جديد',
+	'Assign as main location': 'تعيين كموقع رئيسي',
+	'Available for pickup': 'متاح للاستلام',
 	"Type and add": "النوع والاضافه",
 	"Commercial branch": "الفرع التجاري",
-
 	"Main menu": "القائمه الرئيسيه",
 	"Add New Item": "اضافه عنصر جديد",
 	"Languages & defaults": "اللغات && الافتراضي",
@@ -591,20 +594,9 @@ export const arabic = {
 	"Make your store only available for cutomers who have the password": "اجعل متجرك متاحًا فقط للعملاء الذين لديهم كلمة المرور",
 	"Password protection": "حمايه الرقم السري",
 	"Net promoter score": "صافي نقاط المروج",
-
 	'Add blog': 'اضافه مقال',
 	'Blog image': 'صوره المقال',
 	'Meta keywords': 'كلمات دلالية',
-
-
-
-
-
-
-
-
-
-
 	'Active 3 days ago': 'نشط منذ 3 أيام',
 	manage: 'يدير',
 	'add staff': 'إضافة موظفين',
@@ -629,69 +621,4 @@ export const arabic = {
 	'other methods': 'أساليب أخرى',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'الشحنات التي تتم معالجتها خارج متجرك عبر الإنترنت. عندما يشتري أحد العملاء طلبًا، يتعين عليك التعامل مع عملية التسليم بنفسك',
-	'Compare over 6 different Shipping providers and pick the one that suits your needs':
-		'قارن بين أكثر من 6 مزودي شحن مختلفين واختر المزود الذي يناسب احتياجاتك',
-	'setup providers': 'مقدموا الإعداد',
-	'Deliver yourself': '',
-	'open setup': 'فتح الإعداد',
-	'Self pickup': 'التقاط النفس',
-	SMSA: 'سمسا',
-	'Saudi Arabia': 'المملكة العربيه السعودية',
-	'Discounted rates': 'أسعار مخفضة',
-	FAQs: 'الأسئلة الشائعة',
-	'Make sure you have SMSA account if you have an account you can proceed,if you don’t,':
-		'تأكد من أن لديك حساب سمسا إذا كان لديك حساب يمكنك المتابعة، إذا لم يكن لديك،',
-	'Create an account': 'إنشاء حساب',
-	'and proceed': 'والمضي قدما',
-	'What you need': 'ماذا تحتاج',
-	'Residency identification': 'تحديد الإقامة',
-	'For Individuals': 'للأفراد',
-	'You should provide them:': 'يجب أن توفر لهم:',
-	'i have an account': 'لدي حساب',
-	'Tax ID': 'الرقم الضريبي',
-	'Commercial Registration': 'التسجيل التجاري',
-	'For businesses': 'للشركات',
-	General: 'عام',
-	'Gulf & Egypt': 'الخليج ومصر',
-	'Europe & US': 'أوروبا والولايات المتحدة',
-	'Rates(2)': 'الأسعار(2)',
-	'add rate': 'إضافة معدل',
-	'Setup info': 'معلومات الإعداد',
-	'Api Key': 'مفتاح API',
-	'You can copy it from you SMSA dashboard': 'يمكنك نسخها من لوحة تحكم سمسا الخاصة بك',
-	'Name on checkout': 'الاسم عند الخروج',
-	'SMSA shipping': 'الشحن عبر سمسا',
-	'Applies to': 'ينطبق على',
-	'SAR 0 to SAR 30': '0 ريال سعودي إلى 30 ريال سعودي',
-	'2 to 4 business days': '2 إلى 4 أيام عمل',
-	'SAR 20': '20 ريال سعودي',
-	'SAR 30 and up': '30 ريال سعودي وما فوق',
-	setup: 'يثبت',
-	'delete rate': 'معدل الحذف',
-	Standard: 'معيار',
-	Order: 'طلب',
-	'Name is required': 'الاسم مطلوب',
-	'Api Key is required': 'مفتاح API مطلوب',
-	'Rate is required': 'السعر مطلوب',
-	'Add rate': 'إضافة معدل',
-	'Order Weight': 'وزن الطلب',
-	'Order price': 'سعر الطلب',
-	'Install SMSA': 'تثبيت سمسا',
-	weight: 'وزن',
-	SAR: 'ريال سعودي',
-	'Maximum price': 'أقصي سعر',
-	'No limit': 'لا حدود',
-	'Rate name': 'اسم المعدل',
-	'Shipping speed': 'سرعة الشحن',
-	'Supported Cities': 'المدن المدعومة',
-	Riyadh: 'الرياض',
-	Geddah: 'جدة',
-	'Shipping Price': 'سعر الشحن',
-	'Add conditions': 'إضافة شروط',
-	'e.g., Free shipping': 'على سبيل المثال، الشحن المجاني',
-	'deliver yourself': '',
-	Location: 'الموقع',
-	Main: 'رئيسي',
-	'view inventory': 'عرض المخزون',
-	'self pickup': '',
 } satisfies typeof english;

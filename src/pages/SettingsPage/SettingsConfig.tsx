@@ -3,6 +3,7 @@ import Shipping from 'src/pages/SettingsPage/Shipping';
 
 import BranchesSettings from './BranchesSettings';
 
+import PaymentSettings from './PaymentSettings/PaymentSettings';
 import Users from 'src/pages/SettingsPage/Users';
 import GeneralSettings from './GeneralSettings';
 import LanguageSettings from './LanguageSettings';
@@ -11,9 +12,8 @@ import QueriesSetting from './QueriesSettings';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
-
 	switch (config) {
-		case 'general':
+		case '/settings/general':
 			return <GeneralSettings />;
 
 		case 'branches':
@@ -24,6 +24,8 @@ const SettingsConfig = () => {
 
 		case 'shipping':
 			return <Shipping />;
+		case 'payment':
+			return <PaymentSettings />;
 
 		case 'language':
 			return <LanguageSettings />;
