@@ -137,9 +137,7 @@ const settingsCards = [
 	},
 	{
 		id: 6,
-
 		path: 'users',
-
 		Icon: Person,
 		title: 'Users & Permissions',
 		description: 'Users Settings',
@@ -151,7 +149,13 @@ const settingsCards = [
 		title: 'Reviews',
 		description: 'manage posted reviews',
 	},
-	{ id: 8, path: 'queries', Icon: QueryIcon, title: 'Queries', description: 'manage posted queries' },
+	{
+		id: 8,
+		path: 'queries',
+		Icon: QueryIcon,
+		title: 'Queries',
+		description: 'manage posted queries',
+	},
 	{
 		id: 9,
 		path: '/',
@@ -162,7 +166,7 @@ const settingsCards = [
 	{ id: 10, path: '/', Icon: TaxIcon, title: 'Taxes', description: 'Taxes rate & Classes' },
 	{
 		id: 11,
-		path: '/',
+		path: 'billing',
 		Icon: WalletIcon,
 		title: 'Billing & plans',
 		description: 'Manage and pay your bills',

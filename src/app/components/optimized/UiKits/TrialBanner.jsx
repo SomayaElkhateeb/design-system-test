@@ -8,7 +8,7 @@ import { getImageUrl } from 'src/app/utils';
 /**
  * @param {{
  *  free: boolean;
- *  daysLeft: number;
+ *  daysLeft?: number;
  *  title: string;
  *  description: string;
  * image?: string;
