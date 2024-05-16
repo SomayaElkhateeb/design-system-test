@@ -38,7 +38,7 @@
 
 		--radius: 0.5rem;
 		/* --font-family-en: 'Tajawal', sans-serif; */
-		
+
 		--font-family-ar: 'Tajawal', sans-serif;
 		--font-family-en: 'Poppins', sans-serif;
 	}
@@ -285,6 +285,12 @@ object {
 	}
 	.global-cards {
 		@apply bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1.5rem];
+	}
+	.toast-message {
+		background: 'tips';
+		color: #fff;
+		font-size: 20px;
+		width: 100%;
 	}
 }
 

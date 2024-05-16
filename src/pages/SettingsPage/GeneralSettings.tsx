@@ -3,12 +3,11 @@ import { z } from 'zod';
 import { useTranslation } from 'react-i18next';
 // comps
 import { HeaderSettings } from 'src/app/components/optimized';
-import StoreDetails from './StoreDetails';
-
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
-import SocialContacts from './SocialContacts';
+import StoreDetails from 'src/app/components/page/SettingPage/GeneralSettings/StoreDetails';
+import SocialContacts from 'src/app/components/page/SettingPage/GeneralSettings/SocialContacts';
 
 export interface generalSettingsInterface {
 	storeName: string;

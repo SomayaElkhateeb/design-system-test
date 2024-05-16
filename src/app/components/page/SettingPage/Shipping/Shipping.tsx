@@ -5,7 +5,6 @@ import { Switch } from 'src/app/components/ui/switch';
 import { EditIcon } from 'src/app/utils/icons';
 import { images } from 'src/pages/SettingsPage/data';
 
-
 export default function Shipping() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -45,7 +44,11 @@ export default function Shipping() {
 					<div className='flex justify-between items-center py-1'>
 						<h3 className='title text-sm'>{t('Deliver yourself')}</h3>
 						<div className='flex items-center gap-4'>
-							<Button variant='tertiary' LeftIcon={EditIcon}>
+							<Button
+								variant='tertiary'
+								LeftIcon={EditIcon}
+								onClick={() => navigate('deliverYourself')}
+							>
 								{t('open setup')}
 							</Button>
 							<Switch />
@@ -54,7 +57,9 @@ export default function Shipping() {
 					<hr />
 					<div className='flex justify-between items-center pt-1'>
 						<h3 className='title text-sm'>{t('Self pickup')} </h3>
-						<Button variant='secondary'>{t('Activate')}</Button>
+						<Button variant='secondary' onClick={() => navigate('selfPickup')}>
+							{t('Activate')}
+						</Button>
 					</div>
 				</CardShipping>
 			</div>

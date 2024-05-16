@@ -71,7 +71,7 @@ export default function Permissions({
 			</div>
 
 			{formStore.watch('storePermissions').length === 0 && formStore.formState.isSubmitted && (
-				<p className='global_error'>{'choose permisson required'}</p>
+				<p className='global_error'>{'choose permission required'}</p>
 			)}
 		</div>
 	);
