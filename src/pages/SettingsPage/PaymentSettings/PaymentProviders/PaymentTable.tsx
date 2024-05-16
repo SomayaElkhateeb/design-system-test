@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { getImageUrl } from 'src/app/utils';
-import { paymentProvidersData } from '../../data';
 import { NextIcon } from 'src/app/utils/icons';
 import { Button } from 'src/app/components/optimized';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import { paymentProvidersData } from '../../data';
 
 const feeFormat = (fee: string | number): string => {
 	return fee ? `SAR ${fee}` : 'free';
