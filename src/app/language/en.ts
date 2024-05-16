@@ -252,6 +252,7 @@ export const english = {
 	'Order Status': 'Order Status',
 
 	'Add New Group': 'Add New Group',
+	"Choose Customers":"Choose Customers",
 	Addresses: 'Addresses',
 	'Add new address': 'Add new address',
 	'Show on map': 'Show on map',
