@@ -300,6 +300,9 @@ export const english = {
 	'New Customer': 'New Customer',
 	'Full Name': 'Full Name',
 	'Phone Number': 'Phone Number',
+	"Add primary address":"Add primary address",
+	"Email subscribtion":"Email subscribtion",
+	"Customer agreed to receive marketing emails":"Customer agreed to receive marketing emails",
 	'Email Address': 'Email Address',
 	'Delivery Info': 'Delivery Info',
 	'Address Type': 'Address Type',
@@ -337,6 +340,7 @@ export const english = {
 	'to get started': 'to get started',
 	'Basic setup': 'Basic setup',
 	'general settings': 'general settings',
+	"General Info":"General Info",
 	'Set your store general information': 'Set your store general information',
 	Activate: 'Activate',
 	'Add at least 1 product to your store': 'Add at least 1 product to your store',
@@ -589,11 +593,6 @@ export const english = {
 	Street: 'Street',
 	Landmark: 'Landmark',
 	'Phone number': 'Phone number',
-	'Add blog': 'Add blog',
-	'Blog image': 'Blog image',
-	'Meta keywords': 'Meta keywords',
-	'Type and add': 'Type and add',
-
 	'Apps and channels': 'Apps and channels',
 	'Languages & defaults': 'Languages & defaults',
 	Languages: 'Languages',
@@ -608,7 +607,9 @@ export const english = {
 	'Add Branch': 'Add Branch',
 	Activated: 'Activated',
 	'Send invitation': 'Send invitation',
-	'Full name': 'Full name',
+	'Full name': 'Full Name',
+	"Male":"Male",
+	"Female":"Female",
 	'Email address': 'Email address',
 	'New Owner': 'New Owner',
 	'You’ll lose your privleges': 'You’ll lose your privleges',
@@ -620,6 +621,7 @@ export const english = {
 	'other methods': 'other methods',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself',
+
 	'Compare over 6 different Shipping providers and pick the one that suits your needs':
 		'Compare over 6 different Shipping providers and pick the one that suits your needs',
 	'setup providers': 'setup providers',
@@ -710,4 +712,5 @@ export const english = {
 	'Card number': 'Card number',
 	'Expiry date': 'Expiry date',
 	'Add payment method': 'Add payment method',
+
 };

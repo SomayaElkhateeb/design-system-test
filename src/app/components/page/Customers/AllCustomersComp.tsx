@@ -46,7 +46,7 @@ export default function AllCustomers() {
 					variant='primary'
 					LeftIcon={IoIosAddCircle}
 					onClick={() => {
-						navigate('/addCustomer');
+						navigate('/customers/addCustomer');
 					}}
 				>
 					{t('Add New Customer')}

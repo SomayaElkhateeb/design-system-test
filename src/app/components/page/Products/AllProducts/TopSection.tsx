@@ -131,7 +131,7 @@ export default function TopSection({
 									<div className='flex flex-col gap-[.2rem] cursor-pointer'>
 										<div className='flex-row-global gap-[.4rem]'>
 											<p className=' text-[.9rem] font-semibold'>{e.title}</p>
-											{e.shipping && <img src={getImageUrl(`padges/shipped.svg`)} alt='status' />}
+											{e.shipping && <img src={getImageUrl(`badges/shipped.svg`)} alt='status' />}
 										</div>
 
 										<p className='text-[.7rem]'>{e.describtion}</p>

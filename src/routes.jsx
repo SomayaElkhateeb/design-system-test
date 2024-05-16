@@ -37,8 +37,6 @@ import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-
-	{ path: '/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
 	{ path: '/services', element: <ServicesPage /> },
 
@@ -51,14 +49,27 @@ export const routes = [
 		path: '/customers/:id',
 		element: <CustomerInfo />,
 	},
+	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
 	// Apps Routes
+	// {
+	// 	path: '/apps',
+	// 	element: <AppsPage />,
+	// 	children: [
+	// 		{ path: ':tab', element: <AppsTabs /> },
+	// 		{ path: 'app_store/:platform', element: <SocialAppDetails /> },
+	// 	],
+	// },
 	{
-		path: '/apps',
-		element: <AppsPage />,
-		children: [
-			{ path: ':tab', element: <AppsTabs /> },
-			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
-		],
+		path: 'settings',
+		element: <SettingsPage />,
+	},
+	{
+		path: '/settings/:config',
+		element: <SettingsConfig />,
+	},
+	{
+		path: '/settings/:config/:nested_page',
+		element: <Nested_pages_SettingsConfig />,
 	},
 
 	// Pages Routes
