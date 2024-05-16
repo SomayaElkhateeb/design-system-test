@@ -1,5 +1,4 @@
 // Imports
-import React from 'react';
 import {
 	AddCustomerPage,
 	AnalyticsPage,
@@ -26,15 +25,17 @@ import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
 import PagesConfig from './pages/PagesPage/comp/PagesConfig';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
-import Config from './app/components/page/SettingPage/Shipping/Comp/Config';
 import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
+import SetupOpenConfig from './app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
+import SetupConfig from './app/components/page/SettingPage/Shipping/OpenSetup/Setup/SetupConfig';
+import Config from './app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';
 import StoreTabs from './app/components/page/StorePage/StoreTabs';
 import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-	
+
 	{ path: '/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
 	{ path: '/services', element: <ServicesPage /> },
@@ -103,7 +104,14 @@ export const routes = [
 		path: '/settings/shipping/:config/:config',
 		element: <Config />,
 	},
-
+	{
+		path: '/settings/shipping/:config/:config/:setup',
+		element: <SetupOpenConfig />,
+	},
+	{
+		path: '/settings/shipping/:config/:config/:setup/:config',
+		element: <SetupConfig />,
+	},
 	// Marketing Routes
 	{
 		path: '/marketing',

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ItemSlidTabs from './ItemSlidTabs';
 import Btn from './Btn';
 import { ToastContainer, toast } from 'react-toastify';
+import Tab from 'src/app/components/optimized/Tabs/Tab';
 interface Slide {
 	title: string;
 	content: JSX.Element;
@@ -106,24 +107,3 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 };
 
 export default SlideCardTabs;
-
-interface TabProps {
-	title: string;
-	active: boolean;
-	onClick: () => void;
-}
-
-const Tab: React.FC<TabProps> = ({ title, active, onClick }) => {
-	return (
-		<button
-			className={`px-4 py-2 focus:outline-none ${
-				active
-					? 'title text-primary  border-b-2 border-primary'
-					: 'paragraph text-hint hover:text-primary'
-			}`}
-			onClick={onClick}
-		>
-			{title}
-		</button>
-	);
-};

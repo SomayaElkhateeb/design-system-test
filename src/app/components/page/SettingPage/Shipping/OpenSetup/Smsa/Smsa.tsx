@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Accordion, HeaderSettings, LabelIcon } from 'src/app/components/optimized';
-import ContactCard from './ContactCard';
+
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
@@ -8,10 +8,13 @@ import { MoreIcon } from 'src/app/utils/icons';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { contact, pricing, smsa } from 'src/pages/SettingsPage/data';
+import { useNavigate } from 'react-router-dom';
+import ContactCard from '../../Comp/ContactCard';
 
 export default function Smsa() {
 	const { t } = useTranslation();
 	const [install, setInstall] = useState(false);
+	const navigate = useNavigate();
 
 	// Determine the status based on the install state
 	const status = install ? 'installed' : 'free';
@@ -35,7 +38,7 @@ export default function Smsa() {
 	const options = [
 		{
 			id: 1,
-			text: 'delete',
+			text: t('delete'),
 			icon: <RiDeleteBin5Line color='pri-dark' />,
 		},
 	];
@@ -46,9 +49,9 @@ export default function Smsa() {
 					title={t('SMSA')}
 					variant='settingBtnAndIcon'
 					btn1={{
-						text: t('Install now'),
+						text: t('open setup'),
 						onClick: () => {
-							setInstall(true);
+							navigate('openSetup');
 						},
 					}}
 					icon={
@@ -71,9 +74,9 @@ export default function Smsa() {
 					}}
 				/>
 			)}
-			<div className='flex justify-between gap-5 w-full px-5'>
-				<div className='w-3/4 flex flex-col gap-5'>
-					<section className='serviceDetails-sharedClass p-5'>
+			<div className='grid gap-5 lg:grid-cols-3 container mx-auto '>
+				<div className='flex-col-top-section-pages lg:col-span-2'>
+					<section className='cardDetails-sharedClass p-5'>
 						<div className='flex gap-3 pb-2'>
 							<img src={getImageUrl('companies/express.svg')} className='w-44' />
 							<div>
@@ -105,7 +108,7 @@ export default function Smsa() {
 						</div>
 					</section>
 					{/* FAQs */}
-					<section className='serviceDetails-sharedClass p-5'>
+					<section className='cardDetails-sharedClass p-5'>
 						<h3>{t('FAQs')}</h3>
 						<div className='flex flex-col gap-4 pt-5'>
 							<Accordion title='Do they deliver in 1 day?' subtitle='Do they deliver in 1 day?' />
@@ -116,7 +119,8 @@ export default function Smsa() {
 						</div>
 					</section>
 				</div>
-				<div className='flex flex-col gap-5 w-1/4'>
+
+				<div className='col-span-1'>
 					<ContactCard title='Pricing' data={pricing} contacts={false} id={0} />
 					<ContactCard title='Contact' data={contact} contacts={true} id={0} />
 				</div>

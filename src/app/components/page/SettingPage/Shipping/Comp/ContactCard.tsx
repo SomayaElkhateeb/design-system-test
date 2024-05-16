@@ -11,7 +11,7 @@ interface IData {
 
 const ContactCard: React.FC<IData> = ({ data, title, contacts }) => {
 	return (
-		<div className='serviceDetails-sharedClass p-5'>
+		<div className='cardDetails-sharedClass p-5'>
 			<h3 className='text-title font-semibold'>{title}</h3>
 
 			{contacts ? (
