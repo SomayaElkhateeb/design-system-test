@@ -32,6 +32,8 @@ import Config from './app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Co
 import StoreTabs from './app/components/page/StorePage/StoreTabs';
 import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
+import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
+
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
@@ -104,9 +106,14 @@ export const routes = [
 		element: <SettingsConfig />,
 	},
 	{
+		path: '/settings/billing',
+		element: <BillingAndPlans />,
+	},
+	{
 		path: '/settings/:config/:nested_page',
 		element: <Nested_pages_SettingsConfig />,
 	},
+
 	{
 		path: '/settings/shipping/:config',
 		element: <ShippingConfig />,

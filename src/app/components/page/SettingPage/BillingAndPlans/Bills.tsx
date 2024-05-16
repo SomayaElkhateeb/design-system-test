@@ -1,0 +1,39 @@
+import { useTranslation } from 'react-i18next';
+
+export default function Bills() {
+	const { t } = useTranslation();
+	return (
+		<section className='cardDetails-sharedClass p-5 flex flex-col gap-3'>
+			<div>
+				<h2 className='text-title font-semibold text-lg'>{t('Bills')}</h2>
+				<p className='text-subtitle text-sm pt-1'>{t('Next bill will be issued in')}: 7 Oct 2022</p>
+			</div>
+
+			<RowBills paid={true} />
+			<hr />
+			<RowBills paid={false} />
+		</section>
+	);
+}
+
+function RowBills({ paid }: { paid: boolean }) {
+	const { t } = useTranslation();
+	return (
+		<div className='flex items-start justify-between'>
+			<div>
+				<div className='flex items-center gap-2'>
+					<h2 className='text-title font-semibold text-sm'>{t('Monthly bill issued')}</h2>
+					<span
+						className={`text-white ${
+							paid ? 'bg-secondary' : 'bg-error'
+						}  rounded text-xs py-1 px-2`}
+					>
+						{paid ? t('Paid') : t('Cancelled')}
+					</span>
+				</div>
+				<p className='text-subtitle text-sm pt-1'>7 Oct 2022</p>
+			</div>
+			<p className='text-title text-sm'>#965646545</p>
+		</div>
+	);
+}

@@ -18,7 +18,7 @@ export default function GlobalDialog({
 	style,
 	children,
 }: {
-	openDialog: boolean;
+	openDialog?: boolean;
 	handleClose: (e: boolean) => void;
 	children: React.ReactNode;
 	style?: style;
