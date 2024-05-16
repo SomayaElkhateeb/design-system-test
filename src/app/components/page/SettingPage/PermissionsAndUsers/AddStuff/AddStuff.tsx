@@ -48,7 +48,7 @@ export default function AddStuff() {
 	const data=[{id:1,title:t('Activated')}]
 
 	return (
-		<>
+		
 			<Form {...formStore}>
 				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 					<HeaderSettings
@@ -77,6 +77,6 @@ export default function AddStuff() {
 					</div>
 				</form>
 			</Form>
-		</>
+	
 	);
 }

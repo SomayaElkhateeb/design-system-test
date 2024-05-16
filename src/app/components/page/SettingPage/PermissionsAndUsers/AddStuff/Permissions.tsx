@@ -24,21 +24,23 @@ export default function Permissions({
 		{ id: '9', label: t('Customers') },
 		{ id: '10', label: t('Marketing') },
 	];
-	const [array, setArray] = useState<string[]>([]);
-
-	useEffect(() => {
-		if (array?.length > 0) {
-			formStore.setValue('storePermissions', array);
-		} else {
-			formStore.setValue('storePermissions', []);
-		}
-	}, [array]);
+	// //////////////////////////////////////////
+	const handleStorePermissions = (option: string[]) => {
+		formStore.setValue('storePermissions', option);
+	};
+	// ///////////////////////////////////////////
+	const handleAllStorePermissions = () => {
+		formStore.setValue(
+			'storePermissions',
+			permissionsData?.map((e) => e.id),
+		);
+	};
 
 	return (
 		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
 			<div className='flex justify-between items-center'>
 				<h3 className='title'>{t('Permissions')}</h3>
-				<Button onClick={() => setArray(permissionsData?.map((e) => e.id))} variant='secondary'>
+				<Button onClick={() => handleAllStorePermissions()} variant='secondary'>
 					{t('select all')}
 				</Button>
 			</div>
@@ -49,8 +51,8 @@ export default function Permissions({
 						<div className='flex-row-global' key={item.id}>
 							<CustomTableBodyCheckbox
 								formStore={formStore}
-								array={array}
-								setArray={setArray}
+								array={formStore.watch('storePermissions')}
+								setArray={handleStorePermissions}
 								id={item.id}
 							/>
 							<p className='text-title text-[.88rem]'>{item.label}</p>
@@ -60,7 +62,7 @@ export default function Permissions({
 			</div>
 
 			{formStore.watch('storePermissions').length === 0 && formStore.formState.isSubmitted && (
-				<p className='global_error'>{'choose permisson required'}</p>
+				<p className='global_error'>{'choose permission required'}</p>
 			)}
 		</div>
 	);

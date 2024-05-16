@@ -18,7 +18,7 @@ export default function AccordionCard({
 		<div className='transition delay-700 ease-in-out duration-500  global-cards gap-4'>
 			{/*?? */}
 			<div className='flex justify-between'>
-				<h3 className='font-semibold text-title'>{title}</h3>
+				<h3 className='title'>{title}</h3>
 				<button
 					className='transition delay-700 ease-in-out duration-500'
 					onClick={() => setOpen(!open)}

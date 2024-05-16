@@ -47,12 +47,17 @@ const countries = [
 
 interface BranchInfoProps {
 	formStore: UseFormReturn<BranchSettingsInterface>;
+	selectedOption: string;
+	setSelectedOption: (e: string) => void;
 }
 
-export default function BranchInfo({ formStore }: BranchInfoProps) {
+export default function BranchInfo({
+	formStore,
+	selectedOption,
+	setSelectedOption,
+}: BranchInfoProps) {
 	//  hooks
 	const { t } = useTranslation();
-	const [selectedOption, setSelectedOption] = useState('Add manually');
 
 	const handleBranchType = (option: string) => {
 		formStore.setValue('branchType', option);
@@ -95,82 +100,88 @@ export default function BranchInfo({ formStore }: BranchInfoProps) {
 							selected={selectedOption}
 						/>
 					</div>
-					<FormField
-						formStore={formStore}
-						name='countryName'
-						label={t('Country')}
-						render={(field) => (
-							<div className='flex'>
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
-									</SelectTrigger>
-									<SelectContent>
-										{countries.map((country) => (
-											<SelectItem key={country.value} value={country.value}>
-												{country.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-							</div>
-						)}
-					/>
-					<FormField
-						formStore={formStore}
-						name='cityName'
-						label={t('City')}
-						render={(field) => (
-							<div className='flex'>
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
-									</SelectTrigger>
-									<SelectContent>
-										{countries.map((country) => (
-											<SelectItem key={country.value} value={country.value}>
-												{country.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-							</div>
-						)}
-					/>
+					{selectedOption === 'Add manually' && (
+						<section className='grid gap-4'>
+							<FormField
+								formStore={formStore}
+								name='countryName'
+								label={t('Country')}
+								render={(field) => (
+									<div className='flex'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+												<SelectValue placeholder='Select option' />
+											</SelectTrigger>
+											<SelectContent>
+												{countries.map((country) => (
+													<SelectItem key={country.value} value={country.value}>
+														{country.name}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</div>
+								)}
+							/>
+							<FormField
+								formStore={formStore}
+								name='cityName'
+								label={t('City')}
+								render={(field) => (
+									<div className='flex'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+												<SelectValue placeholder='Select option' />
+											</SelectTrigger>
+											<SelectContent>
+												{countries.map((country) => (
+													<SelectItem key={country.value} value={country.value}>
+														{country.name}
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</div>
+								)}
+							/>
 
-					<FormField
-						formStore={formStore}
-						name='area'
-						label={t('Area / District')}
-						render={(field) => <Input {...field} placeholder={'Sary'} />}
-					/>
-					<FormField
-						formStore={formStore}
-						name='street'
-						label={t('Street')}
-						render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
-					/>
+							<FormField
+								formStore={formStore}
+								name='area'
+								label={t('Area / District')}
+								render={(field) => <Input {...field} placeholder={'area'} />}
+							/>
+							<FormField
+								formStore={formStore}
+								name='street'
+								label={t('Street')}
+								render={(field) => <Input {...field} placeholder={'street'} />}
+							/>
+
+							<FormField
+								formStore={formStore}
+								name='landmark'
+								label={t('Landmark')}
+								render={(field) => <Input {...field} placeholder={'landmark'} />}
+							/>
+						</section>
+					)}
+
 					<FormField
 						formStore={formStore}
 						name='building'
 						label={t('Building')}
-						render={(field) => <Input {...field} placeholder={'Sary'} />}
-					/>
-					<FormField
-						formStore={formStore}
-						name='landmark'
-						label={t('Landmark')}
-						render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
+						render={(field) => <Input {...field} placeholder={'building'} />}
 					/>
 
 					<div className='grid gap-1'>

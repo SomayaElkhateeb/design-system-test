@@ -1,11 +1,14 @@
 import { useParams } from 'react-router-dom';
-import Shipping from 'src/app/components/page/SettingPage/Shipping/Shipping';
+import Shipping from 'src/pages/SettingsPage/Shipping';
 
 import BranchesSettings from './BranchesSettings';
 
-import GeneralSettings from '../../app/components/page/SettingPage/GeneralSettings/GeneralSettings';
-import Users from 'src/app/components/page/SettingPage/PermissionsAndUsers/Users';
 import PaymentSettings from './PaymentSettings/PaymentSettings';
+import Users from 'src/pages/SettingsPage/Users';
+import GeneralSettings from './GeneralSettings';
+import LanguageSettings from './LanguageSettings';
+import ReviewsSetting from './ReviewsSettings';
+import QueriesSetting from './QueriesSettings';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
@@ -23,6 +26,14 @@ const SettingsConfig = () => {
 			return <Shipping />;
 		case 'payment':
 			return <PaymentSettings />;
+
+		case 'language':
+			return <LanguageSettings />;
+
+		case 'reviews':
+			return <ReviewsSetting />;
+			case 'queries':
+			return <QueriesSetting />;
 	}
 };
 

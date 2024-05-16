@@ -7,6 +7,7 @@ import { ErrorPage } from './pages';
 import { routes } from './routes';
 
 // Create browser router instance
+
 const router = createBrowserRouter([
 	{
 		path: '/',

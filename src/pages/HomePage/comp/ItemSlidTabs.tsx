@@ -49,8 +49,6 @@ const ItemSlidTabs = ({
 }) => {
 	return (
 		<div className='flex justify-between mb-3'>
-			{' '}
-			{/* بص بقي ظبطش معايا عير ب مارجين . وكمان في مينيو هما حطينوا  */}
 			<div className='flex gap-2'>
 				<div className='w-[3.625rem] h-[3.625rem] border border-light-3 rounded'>
 					<img src={img} className='w-full h-full' alt={title} />

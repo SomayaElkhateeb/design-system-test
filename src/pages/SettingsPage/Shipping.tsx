@@ -5,7 +5,6 @@ import { Switch } from 'src/app/components/ui/switch';
 import { EditIcon } from 'src/app/utils/icons';
 import { images } from 'src/pages/SettingsPage/data';
 
-
 export default function Shipping() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -43,18 +42,24 @@ export default function Shipping() {
 				>
 					<hr />
 					<div className='flex justify-between items-center py-1'>
-						<h3 className='title text-sm'>Deliver yourself</h3>
+						<h3 className='title text-sm'>{t('Deliver yourself')}</h3>
 						<div className='flex items-center gap-4'>
-							<Button variant='tertiary' LeftIcon={EditIcon}>
-								open setup
+							<Button
+								variant='tertiary'
+								LeftIcon={EditIcon}
+								onClick={() => navigate('deliverYourself')}
+							>
+								{t('open setup')}
 							</Button>
 							<Switch />
 						</div>
 					</div>
 					<hr />
 					<div className='flex justify-between items-center pt-1'>
-						<h3 className='title text-sm'>Self pickup </h3>
-						<Button variant='secondary'>activate</Button>
+						<h3 className='title text-sm'>{t('Self pickup')} </h3>
+						<Button variant='secondary' onClick={() => navigate('selfPickup')}>
+							{t('Activate')}
+						</Button>
 					</div>
 				</CardShipping>
 			</div>
@@ -62,23 +67,29 @@ export default function Shipping() {
 	);
 }
 
-function CardShipping({
-	title,
-	description,
-	children,
-}: {
-	title: string;
-	description: string;
-	children: React.ReactNode;
-}) {
+function CardShipping({ title, description, buttonLabel, onClick, children }: CardShippingProps) {
 	return (
 		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages gap-2'>
 			<div className='flex-col-top-section-pages gap-0'>
 				<h2 className='title'>{title}</h2>
 				<p className='text-title text-sm py-3 w-[60%]'>{description}</p>
 			</div>
-
 			{children}
+			{buttonLabel && (
+				<div>
+					<Button variant='primary' onClick={onClick}>
+						{buttonLabel}
+					</Button>
+				</div>
+			)}
 		</div>
 	);
+}
+
+interface CardShippingProps {
+	title: string;
+	description: string;
+	buttonLabel?: string;
+	onClick?: () => void;
+	children: React.ReactNode;
 }
