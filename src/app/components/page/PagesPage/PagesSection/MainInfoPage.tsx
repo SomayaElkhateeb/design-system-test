@@ -1,21 +1,56 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
+
 import { Input } from 'src/app/components/ui/input';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { cn } from 'src/app/utils';
 import { addPageInterface } from 'src/pages/PagesPage/comp/AddPage';
 
+import FormField from 'src/app/components/ui/form/field';
+import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
+import { fileClassName } from '../../SettingPage/GeneralSettings/Media';
+import { TfiUpload } from 'react-icons/tfi';
+import { Textarea } from 'src/app/components/ui/textarea';
+
 export default function MainInfoPage({
 	formStore,
+	addblog,
 }: {
 	formStore: UseFormReturn<addPageInterface>;
+	addblog?: boolean;
 }) {
 	const { t } = useTranslation();
-
+	
 	return (
 		<div className='global-cards'>
-			<h3 className='text-title font-semibold'>{t('Main info')}</h3>
+			<h3 className='title'>{t('Main info')}</h3>
+			{addblog && (
+				<FormField
+					label={t('Blog image')}
+					formStore={formStore}
+					name='image'
+					render={({ onChange, value, ...field }) => (
+						<FileInput
+							className={fileClassName}
+							{...field}
+							options={getDefaultFileInputOptions({
+								accept: { 'image/*': [] },
+								setError: (error) => {
+									// console.log('error', error);
+									formStore.setError('image', { message: error.message });
+								},
+								onFileLoad: (params) => {
+									// console.log('params', params);
+									onChange(params.file);
+								},
+							})}
+						>
+							<TfiUpload className='text-[1.5rem]' />
+							<p>{t('UploadImage')}</p>
+						</FileInput>
+					)}
+				/>
+			)}
 			<TabbedFormField
 				formStore={formStore}
 				keys={[
@@ -33,7 +68,7 @@ export default function MainInfoPage({
 					{ name: 'descriptionAr', label: 'عربي' },
 				]}
 				label={t('Description')}
-				renderer={(field) => <Textarea {...field} className={cn(field.className, 'size-full')} />}
+				renderer={(field) => <Textarea {...field}  />}
 			/>
 		</div>
 	);

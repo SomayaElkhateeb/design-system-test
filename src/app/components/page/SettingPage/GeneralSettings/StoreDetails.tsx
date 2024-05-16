@@ -2,7 +2,7 @@ import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
-import { generalSettingsInterface } from './GeneralSettings';
+
 import 'react-phone-input-2/lib/material.css';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import {
@@ -12,6 +12,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
+import { generalSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings';
 
 const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	//  hooks

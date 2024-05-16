@@ -18,7 +18,7 @@ import {
 
 import OrdersTabs from './app/components/page/Orders/OrdersTabs';
 import ProductsTabs from './app/components/page/Products/ProductsTabs';
-import Nested_pages_SettingsConfig from './app/components/page/SettingPage/Nested_Settings_pagesConfig';
+import Nested_pages_SettingsConfig from './pages/SettingsPage/Nested_Settings_pagesConfig';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
@@ -29,11 +29,13 @@ import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingC
 import SetupOpenConfig from './app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
 import SetupConfig from './app/components/page/SettingPage/Shipping/OpenSetup/Setup/SetupConfig';
 import Config from './app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';
+import StoreTabs from './app/components/page/StorePage/StoreTabs';
+import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-	{ path: '/store', element: <StorePage /> },
+
 	{ path: '/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
 	{ path: '/services', element: <ServicesPage /> },
@@ -117,6 +119,16 @@ export const routes = [
 		children: [
 			{ path: ':tab', element: <MarketingTabs /> },
 			{ path: ':tabName/:config', element: <MarketingConfig /> },
+		],
+	},
+
+	// store Routes
+	{
+		path: '/store',
+		element: <StorePage />,
+		children: [
+			{ path: ':tab', element: <StoreTabs /> },
+			{ path: ':tabName/:id', element: <StoreConfig /> },
 		],
 	},
 

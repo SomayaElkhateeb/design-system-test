@@ -99,7 +99,7 @@ export default function AddBranch() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-	console.log(formStore.formState.errors);
+	
 	const data = [
 		{
 			id: 1,
