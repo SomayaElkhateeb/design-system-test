@@ -286,12 +286,6 @@ object {
 	.global-cards {
 		@apply bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1.5rem];
 	}
-	.toast-message {
-		background: 'tips';
-		color: #fff;
-		font-size: 20px;
-		width: 100%;
-	}
 }
 
 /* remove all default Webkit search field styling */
