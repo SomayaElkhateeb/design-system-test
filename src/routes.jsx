@@ -35,7 +35,7 @@ import StoreConfig from './app/components/page/StorePage/StoreConfig';
 export const routes = [
 	{ path: '/', element: <HomePage /> },
 	
-	{ path: '/addCustomer', element: <AddCustomerPage /> },
+	
 	{ path: '/reviews', element: <ReviewsPage /> },
 	{ path: '/services', element: <ServicesPage /> },
 
@@ -48,6 +48,7 @@ export const routes = [
 		path: '/customers/:id',
 		element: <CustomerInfo />,
 	},
+	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
 	// Apps Routes
 	{
 		path: '/apps',
