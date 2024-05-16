@@ -5,12 +5,12 @@ import BranchesSettings from './BranchesSettings';
 
 import GeneralSettings from '../../app/components/page/SettingPage/GeneralSettings/GeneralSettings';
 import Users from 'src/app/components/page/SettingPage/PermissionsAndUsers/Users';
+import PaymentSettings from './PaymentSettings/PaymentSettings';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
-
 	switch (config) {
-		case 'general':
+		case '/settings/general':
 			return <GeneralSettings />;
 
 		case 'branches':
@@ -21,6 +21,8 @@ const SettingsConfig = () => {
 
 		case 'shipping':
 			return <Shipping />;
+		case 'payment':
+			return <PaymentSettings />;
 	}
 };
 

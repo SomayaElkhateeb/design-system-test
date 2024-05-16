@@ -42,13 +42,25 @@ export const routes = [
 		children: [{ path: ':id', element: <CustomerInfo /> }],
 	},
 	// Apps Routes
+	// {
+	// 	path: '/apps',
+	// 	element: <AppsPage />,
+	// 	children: [
+	// 		{ path: ':tab', element: <AppsTabs /> },
+	// 		{ path: 'app_store/:platform', element: <SocialAppDetails /> },
+	// 	],
+	// },
 	{
-		path: '/apps',
-		element: <AppsPage />,
-		children: [
-			{ path: ':tab', element: <AppsTabs /> },
-			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
-		],
+		path: 'settings',
+		element: <SettingsPage />,
+	},
+	{
+		path: '/settings/:config',
+		element: <SettingsConfig />,
+	},
+	{
+		path: '/settings/:config/:nested_page',
+		element: <Nested_pages_SettingsConfig />,
 	},
 
 	// Pages Routes

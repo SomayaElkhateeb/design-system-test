@@ -4,6 +4,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { AddBgIcon, DeleteExitIcon } from 'src/app/utils/icons';
 import { Button, CheckBox, TimePicker } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import { useTranslation } from 'react-i18next';
 
 interface OpenHours {
 	opens: string;
@@ -14,7 +15,6 @@ interface DayInfo {
 	openHours: OpenHours;
 	isClosed: boolean;
 }
-
 const initialDayInfo: { [key: string]: DayInfo } = {
 	Sun: { openHours: { opens: '', closes: '' }, isClosed: false },
 	Mon: { openHours: { opens: '', closes: '' }, isClosed: false },
@@ -24,30 +24,17 @@ const initialDayInfo: { [key: string]: DayInfo } = {
 	Fri: { openHours: { opens: '', closes: '' }, isClosed: false },
 	Sat: { openHours: { opens: '', closes: '' }, isClosed: false },
 };
-
 export default function BranchAppointments() {
+	const { t } = useTranslation();
+
 	const [activeDay, setActiveDay] = useState<string>('Sun');
 	const [dayInfo, setDayInfo] = useState<{ [key: string]: DayInfo }>(initialDayInfo);
 	const [toggle, setToggle] = useState<boolean>(false);
-	console.log(dayInfo);
 
 	const handleDayClick = (day: string) => {
 		setActiveDay(day);
 	};
 
-	// const handleHoursChange = (e: ChangeEvent<HTMLInputElement>, type: 'opens' | 'closes') => {
-	// 	const { value } = e.target;
-	// 	setDayInfo((prevDayInfo) => ({
-	// 		...prevDayInfo,
-	// 		[activeDay]: {
-	// 			...prevDayInfo[activeDay],
-	// 			openHours: {
-	// 				...prevDayInfo[activeDay].openHours,
-	// 				[type]: value,
-	// 			},
-	// 		},
-	// 	}));
-	// };
 	const handleHoursChange = (value: Dayjs | null, type: 'opens' | 'closes') => {
 		setDayInfo((prevDayInfo) => ({
 			...prevDayInfo,
@@ -55,7 +42,7 @@ export default function BranchAppointments() {
 				...prevDayInfo[activeDay],
 				openHours: {
 					...prevDayInfo[activeDay].openHours,
-					[type]: value ? value.format('HH:mm') : '',
+					[type]: value ? value.format('hh:mm') : '',
 				},
 			},
 		}));
@@ -73,6 +60,7 @@ export default function BranchAppointments() {
 	const renderDayButtons = () => {
 		return (
 			<SingleChoiceChips
+				// options={[t('Sun'), t('Mon'), t('Tue'), t('Wed'), t('Thu'), t('Fri'), t('Sat')]}
 				options={Object.keys(initialDayInfo)}
 				setSelected={handleDayClick}
 				selected={activeDay}
@@ -82,27 +70,28 @@ export default function BranchAppointments() {
 
 	return (
 		<div className='grid gap-4 col-span-2 p-4 bg-white rounded-lg border border-borders-lines'>
-			<h2 className='title text-lg mb-2'>Opening hours</h2>
+			<h2 className='title text-lg mb-2'>{t('Opening hours')}</h2>
 			<section>{renderDayButtons()}</section>
 
 			<section className='flex items-center gap-4'>
-				{!dayInfo[activeDay].isClosed && (
+				{/* {!dayInfo[activeDay].isClosed && ( */}
+				{dayInfo[activeDay]?.isClosed === false && (
 					<div className='grid gap-4'>
 						<div className='flex gap-4'>
 							<TimePicker
-								label={'Opens at'}
+								label={t('Opens at')}
 								value={
-									dayInfo[activeDay].openHours.opens
-										? dayjs(dayInfo[activeDay].openHours.opens)
+									dayInfo[activeDay]?.openHours.opens
+										? dayjs(dayInfo[activeDay]?.openHours.opens)
 										: null
 								}
 								handleOnChange={(e) => handleHoursChange(e, 'opens')}
 							/>
 							<TimePicker
-								label={'Closes at'}
+								label={t('Closes at')}
 								value={
-									dayInfo[activeDay].openHours.closes
-										? dayjs(dayInfo[activeDay].openHours.closes)
+									dayInfo[activeDay]?.openHours.closes
+										? dayjs(dayInfo[activeDay]?.openHours.closes)
 										: null
 								}
 								handleOnChange={(e) => handleHoursChange(e, 'closes')}
@@ -112,19 +101,19 @@ export default function BranchAppointments() {
 						{toggle && (
 							<div className='flex gap-4'>
 								<TimePicker
-									label={'Opens at'}
+									label={t('Opens at')}
 									value={
-										dayInfo[activeDay].openHours.opens
-											? dayjs(dayInfo[activeDay].openHours.opens)
+										dayInfo[activeDay]?.openHours.opens
+											? dayjs(dayInfo[activeDay]?.openHours.opens)
 											: null
 									}
 									handleOnChange={(e) => handleHoursChange(e, 'opens')}
 								/>
 								<TimePicker
-									label={'Closes at'}
+									label={t('Closes at')}
 									value={
-										dayInfo[activeDay].openHours.closes
-											? dayjs(dayInfo[activeDay].openHours.closes)
+										dayInfo[activeDay]?.openHours.closes
+											? dayjs(dayInfo[activeDay]?.openHours.closes)
 											: null
 									}
 									handleOnChange={(e) => handleHoursChange(e, 'closes')}
@@ -135,14 +124,14 @@ export default function BranchAppointments() {
 				)}
 			</section>
 			<CheckBox
-				checked={dayInfo[activeDay].isClosed}
+				checked={dayInfo[activeDay]?.isClosed}
 				handleOnChange={handleClosedToggle}
-				label='Closed'
+				label={t('Closed')}
 			/>
 			<Button
 				variant='tertiary'
 				LeftIcon={toggle ? DeleteExitIcon : AddBgIcon}
-				text={toggle ? 'Delete Hours' : 'Add More Hours'}
+				text={toggle ? t('Delete Hours') : t('Add More Hours')}
 				onClick={() => setToggle(!toggle)}
 			/>
 		</div>

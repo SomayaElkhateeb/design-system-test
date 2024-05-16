@@ -102,7 +102,6 @@ export default function AddBranch() {
 						<BranchAppointments />
 					</div>
 					<div className='col-span-1'>
-						{/* <BranchQuickActions /> */}
 						<QuickActions data={data} />
 					</div>
 				</div>
@@ -110,3 +109,4 @@ export default function AddBranch() {
 		</Form>
 	);
 }
+
