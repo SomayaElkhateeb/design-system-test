@@ -17,9 +17,11 @@ export interface IAddPayment {
 export default function AddPayment({ handleClose }: { handleClose: (e: boolean) => void }) {
 	const { t } = useTranslation();
 	const addPaymentSchema = {
-		name: z.string().min(10, { message: t('Name is required') }),
+		name: z.string().min(10, { message: t('Name on card is required') }),
 		cardNumber: z.coerce.number().min(16),
-		expiryDate: z.string().date(),
+		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
+			message: 'Date must be in the format MM/YYYY',
+		}),
 		cvv: z.coerce.number().min(3),
 	};
 	const handleSubmit = (values: IAddPayment) => {
