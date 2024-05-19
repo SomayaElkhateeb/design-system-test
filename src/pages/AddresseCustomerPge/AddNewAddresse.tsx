@@ -27,6 +27,8 @@ export default function AddNewAddresseCustomer() {
 	const navigate = useNavigate();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const [sendGift, setSendGift] = useState(false);
+	// ///////////////////
+	// //////////////////
 	const handleSubmit = (values: AddaddresseInterface) => {
 		console.log(values);
 		

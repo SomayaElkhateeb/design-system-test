@@ -1,6 +1,6 @@
 import { UseFormReturn } from 'react-hook-form';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { BranchSettingsInterface } from './AddBranch';
+
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import { BranchSettingsInterface } from './HookForAddBranchForm';
 
 export const countries = [
 	{
@@ -75,7 +76,7 @@ export default function BranchInfo({
 					<div>
 						<h2 className='title mb-2'>{t('Branch Type')}</h2>
 						<SingleChoiceChips
-							options={[t('Commercial branch'), t('Warehouse')]}
+							options={['Commercial branch', 'Warehouse']}
 							setSelected={handleBranchType}
 							selected={formStore.watch('branchType')}
 						/>
