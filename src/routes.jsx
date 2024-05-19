@@ -23,7 +23,7 @@ import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import PagesConfig from './pages/PagesPage/comp/PagesConfig';
+import PagesConfig from './app/components/page/PagesPage/comp/PagesConfig';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
 import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
 import SetupOpenConfig from './app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
@@ -38,7 +38,6 @@ import PurchaseConfig from './app/components/page/Services/PurchaseServices/Purc
 
 import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
-
 
 // Route Definitions
 export const routes = [

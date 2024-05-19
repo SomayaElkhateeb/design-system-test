@@ -259,6 +259,7 @@ export const english = {
 	"Add manually": "Add manually",
 	"Meta keywords": "Meta keywords",
 	"Send as a gift": "Send as a gift",
+	"Add blog":"Add blog",
 	"Gift receiver name": "Gift receiver name",
 	"Third party payment providers": "Third party payment providers",
 	"Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.": "Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.",

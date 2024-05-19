@@ -1,6 +1,4 @@
 import { HeaderSettings } from 'src/app/components/optimized';
-
-import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +6,7 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useTranslation } from 'react-i18next';
 
 import QueriesSectionForm from 'src/app/components/page/SettingPage/QueriesSettings/QueriesSection';
-import useCustomHookQueriesSettings from 'src/app/components/page/SettingPage/QueriesSettings/HookForQueriesSettings';
+import useCustomHookQueriesSettings, { queriesInterface } from 'src/app/components/page/SettingPage/QueriesSettings/HookForQueriesSettings';
 
 export default function QueriesSetting() {
 	//  hooks
