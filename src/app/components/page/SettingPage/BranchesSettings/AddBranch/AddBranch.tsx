@@ -99,7 +99,7 @@ export default function AddBranch() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-	
+
 	const data = [
 		{
 			id: 1,
@@ -150,4 +150,3 @@ export default function AddBranch() {
 		</Form>
 	);
 }
-
