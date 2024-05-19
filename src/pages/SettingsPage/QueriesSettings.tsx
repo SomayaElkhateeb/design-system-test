@@ -6,43 +6,34 @@ import { Form } from 'src/app/components/ui/form';
 import { useNavigate } from 'react-router-dom';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useTranslation } from 'react-i18next';
-import ReviewSectionForm from 'src/app/components/page/SettingPage/ReviewsSettings/ReviewSection';
+
 import QueriesSectionForm from 'src/app/components/page/SettingPage/QueriesSettings/QueriesSection';
-export interface queriesInterface {
-	describtion_en: string;
-	describtion_ar: string;
+import useCustomHookQueriesSettings from 'src/app/components/page/SettingPage/QueriesSettings/HookForQueriesSettings';
 
-	enable: boolean;
-}
-
-const QueriesSchema = {
-	describtion_en: z.string().min(5).max(100),
-	describtion_ar: z.string().min(5).max(100),
-	enable: z.boolean().default(false),
-};
 export default function QueriesSetting() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
+	// ////////////////////////////////
+	// /////////////////////////////////
 	const handleSubmit = (values: queriesInterface) => {
 		console.log(values);
 	};
-	const handelDefaultValue = () => {
-		return {
-			describtion_en: '',
-			describtion_ar: '',
+	// //////////////////////////
+	// //////////////////////////
 
-			enable: false,
-		};
-	};
-
+	//  custom hook
+	const { QueriesSchema, handelDefaultValue } = useCustomHookQueriesSettings();
+	// /////////////
+	// /////////////
 	const { formStore, onSubmit } = useForm({
 		schema: QueriesSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
+	// ////////////////////////////
+	// ///////////////////////////
 	const data = [
 		{ id: 1, title: t('Enabled') },
 
