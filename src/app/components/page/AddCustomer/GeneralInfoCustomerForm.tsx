@@ -1,12 +1,13 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { addcustomerSettingsInterface } from 'src/pages/AddCustomerPage/AddCustomerPage';
+
 import SingleChoiceChips from '../../optimized/ChoiceChips/SingleChoiceChips';
 import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import CustomAutoComplete from '../../optimized/InputsFields/AutoCompleteMultiple';
 import { CheckBox } from '../../optimized';
+import { addCustomerInterface } from './HookForAddCustomerForm';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
@@ -18,7 +19,7 @@ const selectItems = [
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<addcustomerSettingsInterface>;
+	formStore: UseFormReturn<addCustomerInterface>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -28,10 +29,8 @@ export default function GeneralInfoCustomerForm({
 	// ///////////////////////////
 	const handelAutoCompleteError = () => {
 		return (
-			formStore.watch('groupCustomer').length === 0 &&
-			formStore.formState.isSubmitted && (
-				<p className='global_error'>{'choose group customer required'}</p>
-			)
+			formStore.watch('groupMeta').length === 0 &&
+			formStore.formState.isSubmitted && <p className='global_error'>{'choose Meta required'}</p>
 		);
 	};
 
@@ -60,15 +59,15 @@ export default function GeneralInfoCustomerForm({
 				<div className='flex-col-top-section-pages gap-0'>
 					<FormField
 						formStore={formStore}
-						name='groupCustomer'
+						name='groupMeta'
 						label={t('Meta keywords')}
 						render={(field) => (
 							<CustomAutoComplete<selectItemsInterface>
 								placeholder={'Select or add new'}
-								getvalue={(value) => formStore.setValue('groupCustomer', value)}
-								name='groupCustomer'
+								getvalue={(value) => formStore.setValue('groupMeta', value)}
+								name='groupMeta'
 								array={selectItems}
-								MainValue={formStore.watch('groupCustomer')}
+								MainValue={formStore.watch('groupMeta')}
 							/>
 						)}
 					/>

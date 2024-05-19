@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
 import { UseFormReturn } from 'react-hook-form';
-import { addCustomerGroupInterface } from 'src/pages/AddCustomerGroupPage/AddCustomerGroup';
+
 import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import { Switch } from '../../ui/switch';
 import { Textarea } from '../../ui/textarea';
+import { addCustomerGroupInterface } from './HookForAddCustomerGroupForm';
 
 export default function GeneralInfoCustomerGroupInfo({
 	formStore,

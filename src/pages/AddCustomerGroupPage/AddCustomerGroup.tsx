@@ -1,49 +1,27 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import ChooseCustomers from 'src/app/components/page/AddCustomerGroup/ChooseCustomers';
 import GeneralInfoCustomerGroupInfo from 'src/app/components/page/AddCustomerGroup/GeneralInfo';
+import useCustomHookAddCustomerGroupForm, { addCustomerGroupInterface } from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
-export interface addCustomerGroupInterface {
-	groupName: string;
-	description: string;
-	active: boolean;
-	Customers: selectItemsInterface[];
-}
+
 export default function AddCustomerGroup() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	const generalInfosSchema = {
-		Customers: z.array(
-			z.object({
-				id: z.string().min(1),
-				name: z.string().min(1),
-			}),
-		),
-		groupName: z.string().min(1),
-		description: z.string().min(1),
-		active: z.boolean(),
-	};
-	const handelDefaultValue = () => {
-		return {
-			groupName: '',
-			description: '',
-			active: false,
-			Customers: [],
-		};
-	};
+	//  custome hook
+	const { generalInfoSchema, handelDefaultValue } = useCustomHookAddCustomerGroupForm();
 	const handleSubmit = (values: addCustomerGroupInterface) => {
 		console.log(values);
 		// handleClose();
 	};
 	const { formStore, onSubmit } = useForm({
-		schema: generalInfosSchema,
+		schema: generalInfoSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});

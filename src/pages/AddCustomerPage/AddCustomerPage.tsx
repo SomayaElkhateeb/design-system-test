@@ -1,84 +1,24 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-import GeneralInfoCustomerForm, {
-	selectItemsInterface,
-} from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
+import GeneralInfoCustomerForm from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
+import useCustomHookAddCustomerForm, {
+	addCustomerInterface,
+} from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
 import PrimaryAddresseForm from 'src/app/components/page/AddCustomer/PrimaryAddresseForm';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import { z } from 'zod';
-export interface addcustomerSettingsInterface {
-	humanType: string;
-	fullName: string;
-	email: string;
-	groupCustomer: selectItemsInterface[];
-	PhoneNumber: string;
-	fullNameAddresse: string;
-	countryName: string;
-	cityName: string;
-	area: string;
-	street: string;
-	building: string;
-	landmark: string;
-	addressePhoneNumber: string;
-	emailSubescribe: boolean;
-}
-
 export default function AddCustomerPage() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const handleSubmit = (values: addcustomerSettingsInterface) => {
+	const handleSubmit = (values: addCustomerInterface) => {
 		console.log(values);
 		// handleClose();
 	};
 
-	const RequiredAddresseData = z.string().min(1);
-
-	const generalInfoSchema = {
-		humanType: RequiredAddresseData,
-		fullName: RequiredAddresseData,
-		email: z.string().min(1).email(),
-		PhoneNumber: z.string().min(7),
-
-		groupCustomer: z.array(
-			z.object({
-				id: z.string().min(1),
-				name: z.string().min(1),
-			}),
-		),
-		fullNameAddresse: RequiredAddresseData,
-		countryName: RequiredAddresseData,
-		cityName: RequiredAddresseData,
-		area: RequiredAddresseData,
-		street: RequiredAddresseData,
-		building: RequiredAddresseData,
-		landmark: RequiredAddresseData,
-		addressePhoneNumber: z.string().min(7),
-		emailSubescribe: z.boolean(),
-	};
-	// /////////////////////////////////////
-	///////////////////////////////////////
-	const handelDefaultValue = () => {
-		return {
-			humanType: 'Male',
-			fullName: '',
-			email: '',
-			PhoneNumber: '',
-			groupCustomer: [],
-			fullNameAddresse: '',
-			countryName: '',
-			cityName: '',
-			area: '',
-			street: '',
-			building: '',
-			landmark: '',
-			addressePhoneNumber: '',
-			emailSubescribe: false,
-		};
-	};
-	// ////////////////////////////////
+	//  custome hook
+	const { generalInfoSchema, handelDefaultValue } = useCustomHookAddCustomerForm();
 	// ////////////////////////////////
 	const { formStore, onSubmit } = useForm({
 		schema: generalInfoSchema,
