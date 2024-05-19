@@ -42,12 +42,11 @@ import SuccessfullyPurchased from './app/components/page/Services/PurchaseServic
 
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
 
-
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
-	// Customers Routes
+	// services Routes
 	{ path: '/services', element: <ServicesPage /> },
 	{ path: '/services/:config', element: <PurchaseConfig /> },
 	{ path: '/services/:config/:config', element: <SuccessfullyPurchased /> },
@@ -75,18 +74,6 @@ export const routes = [
 			{ path: ':tab', element: <AppsTabs /> },
 			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
 		],
-	},
-	{
-		path: 'settings',
-		element: <SettingsPage />,
-	},
-	{
-		path: '/settings/:config',
-		element: <SettingsConfig />,
-	},
-	{
-		path: '/settings/:config/:nested_page',
-		element: <Nested_pages_SettingsConfig />,
 	},
 
 	// Pages Routes
