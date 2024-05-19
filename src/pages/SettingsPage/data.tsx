@@ -166,7 +166,7 @@ const settingsCards = [
 	{ id: 10, path: '/', Icon: TaxIcon, title: 'Taxes', description: 'Taxes rate & Classes' },
 	{
 		id: 11,
-		path: '/',
+		path: 'billing',
 		Icon: WalletIcon,
 		title: 'Billing & plans',
 		description: 'Manage and pay your bills',

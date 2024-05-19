@@ -95,7 +95,7 @@ export default function BranchInfo({
 					<div>
 						<h2 className='title text-lg mb-2'>{t('Address')}</h2>
 						<SingleChoiceChips
-							options={[t('Add manually'), t('Use a map')]}
+							options={['Add manually', 'Use a map']}
 							setSelected={handleAddressOption}
 							selected={selectedOption}
 						/>
@@ -184,22 +184,19 @@ export default function BranchInfo({
 						render={(field) => <Input {...field} placeholder={'building'} />}
 					/>
 
-					<div className='grid gap-1'>
-						<p className='text-sm font-semibold'>{t('Phone number')}</p>
+					<FormField
+						formStore={formStore}
+						label={t('Phone number')}
+						name='branchPhoneNumber'
+						render={(field) => (
+							<CustomPhoneInput
+								value={field.value}
+								onHandleChange={field.onChange}
 
-						<FormField
-							formStore={formStore}
-							name='branchPhoneNumber'
-							render={(field) => (
-								<CustomPhoneInput
-									value={field.value}
-									onHandleChange={field.onChange}
-
-									// isLoading={isLoading}
-								/>
-							)}
-						/>
-					</div>
+								// isLoading={isLoading}
+							/>
+						)}
+					/>
 				</section>
 			</div>
 		</div>

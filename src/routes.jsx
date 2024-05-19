@@ -32,11 +32,21 @@ import Config from './app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Co
 import StoreTabs from './app/components/page/StorePage/StoreTabs';
 import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
+import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
+
+import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
+
+import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
+import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
+
+
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
+	// Customers Routes
 	{ path: '/services', element: <ServicesPage /> },
+	{ path: '/services/:config', element: <PurchaseConfig /> },
 
 	// Customers Routes
 	{
@@ -47,16 +57,21 @@ export const routes = [
 		path: '/customers/:id',
 		element: <CustomerInfo />,
 	},
+	{
+		path: '/customers/:id/addNewAddresse',
+		element: <AddNewAddresseCustomer />,
+	},
 	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
+	{ path: '/customers/addGroupCustomer', element: <AddCustomerGroup /> },
 	// Apps Routes
-	// {
-	// 	path: '/apps',
-	// 	element: <AppsPage />,
-	// 	children: [
-	// 		{ path: ':tab', element: <AppsTabs /> },
-	// 		{ path: 'app_store/:platform', element: <SocialAppDetails /> },
-	// 	],
-	// },
+	{
+		path: '/apps',
+		element: <AppsPage />,
+		children: [
+			{ path: ':tab', element: <AppsTabs /> },
+			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
+		],
+	},
 	{
 		path: 'settings',
 		element: <SettingsPage />,
@@ -104,9 +119,14 @@ export const routes = [
 		element: <SettingsConfig />,
 	},
 	{
+		path: '/settings/billing',
+		element: <BillingAndPlans />,
+	},
+	{
 		path: '/settings/:config/:nested_page',
 		element: <Nested_pages_SettingsConfig />,
 	},
+
 	{
 		path: '/settings/shipping/:config',
 		element: <ShippingConfig />,

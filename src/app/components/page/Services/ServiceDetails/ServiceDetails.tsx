@@ -4,17 +4,24 @@ import { getImageUrl } from 'src/app/utils';
 import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';
 import RecentReview from 'src/pages/ReviewsPage/StoreReviews/_comp/RecentReview';
+import { useNavigate } from 'react-router-dom';
 
 export default function ServiceDetails() {
 	//  hooks
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	return (
 		<div className='flex-col-top-section-pages mb-[2rem]'>
 			{/*  top section */}
 			<div className='flex flex-col'>
 				<HeaderSettings
 					title={t('Service details')}
-					btn1={{ text: 'Purchase service', onClick: () => {} }}
+					btn1={{
+						text: 'Purchase service',
+						onClick: () => {
+							navigate('purchaseServicesPage');
+						},
+					}}
 					variant={'settingOneBtn'}
 				/>
 

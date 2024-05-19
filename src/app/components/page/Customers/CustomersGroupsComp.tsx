@@ -36,7 +36,7 @@ export default function CustomersGroups() {
 					variant='primary'
 					LeftIcon={IoIosAddCircle}
 					onClick={() => {
-						navigate('/addCustomer');
+						navigate('/customers/addGroupCustomer');
 					}}
 				>
 					{t('Add New Group')}
