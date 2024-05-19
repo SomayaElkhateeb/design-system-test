@@ -158,7 +158,7 @@ const settingsCards = [
 	},
 	{
 		id: 9,
-		path: '/',
+		path: 'customizations',
 		Icon: EditIcon,
 		title: 'Customizations',
 		description: 'Customize checkout, products and orders options',

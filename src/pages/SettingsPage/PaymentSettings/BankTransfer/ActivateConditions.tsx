@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
-import { FormProps } from './ActivateBankTransfer';
+import { PaymentFormProps } from './ActivateBankTransfer';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
 import SpecificCustomers from 'src/app/components/page/discount/Selectors/SpecificCustomers';
 
-export default function ActivateConditions({ formStore }: FormProps) {
+export default function ActivateConditions({ formStore }: PaymentFormProps) {
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('All');
 

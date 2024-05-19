@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
 import { z } from 'zod';
-import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
-import { HeaderSettings } from 'src/app/components/optimized';
+
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { HeaderSettings } from 'src/app/components/optimized';
 import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
-import { UseFormReturn } from 'react-hook-form';
+import { useForm } from 'src/app/utils/hooks/form';
+import { Form } from 'src/app/components/ui/form';
 
 interface bankTransferInterface {
 	accountNumber: number;
@@ -19,7 +19,7 @@ interface bankTransferInterface {
 	orderItems: number;
 	price: number;
 }
-export interface FormProps {
+export interface PaymentFormProps {
 	formStore: UseFormReturn<bankTransferInterface>;
 }
 
