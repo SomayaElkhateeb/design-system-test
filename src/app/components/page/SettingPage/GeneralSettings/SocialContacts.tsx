@@ -2,7 +2,7 @@ import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
-import { generalSettingsInterface } from './GeneralSettings';
+import { generalSettingsInterface } from './HookForGeneralForm';
 
 const SocialContacts = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();

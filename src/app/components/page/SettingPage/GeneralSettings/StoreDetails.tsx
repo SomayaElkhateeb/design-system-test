@@ -12,7 +12,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import { generalSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings';
+import { generalSettingsInterface } from './HookForGeneralForm';
+
 
 const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	//  hooks
