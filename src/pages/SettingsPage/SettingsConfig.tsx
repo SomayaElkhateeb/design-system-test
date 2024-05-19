@@ -13,7 +13,7 @@ import QueriesSetting from './QueriesSettings';
 const SettingsConfig = () => {
 	const { config } = useParams();
 	switch (config) {
-		case '/settings/general':
+		case 'general':
 			return <GeneralSettings />;
 
 		case 'branches':
