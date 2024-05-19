@@ -37,7 +37,11 @@ import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
 import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
 
 import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
+
+import SuccessfullyPurchased from './app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
+
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
+
 
 
 // Route Definitions
@@ -47,6 +51,7 @@ export const routes = [
 	// Customers Routes
 	{ path: '/services', element: <ServicesPage /> },
 	{ path: '/services/:config', element: <PurchaseConfig /> },
+	{ path: '/services/:config/:config', element: <SuccessfullyPurchased /> },
 
 	// Customers Routes
 	{

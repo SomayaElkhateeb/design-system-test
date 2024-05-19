@@ -180,6 +180,7 @@ export const arabic = {
 	'Add Activity': 'اضافه نشاط',
 	'Add New Group': 'اضافه مجموعه جديده',
 	"Choose Customers": "اختار عملاء",
+
 	Addresses: 'العناوين',
 	"Use a map": "استخدم الخريطه",
 	"Add manually": "اضف يدويا",
@@ -569,17 +570,25 @@ export const arabic = {
 	'Assign as main location': 'تعيين كموقع رئيسي',
 	'Available for pickup': 'متاح للاستلام',
 	'Type and add': 'النوع والاضافه',
+
+	'Languages & defaults': 'اللغات && الافتراضي',
+	'Store defaults (shown to cutomers)': 'افتراضيات المتجر (بامكان العميل ان يراها)',
+
+
 	'Commercial branch': 'الفرع التجاري',
 	'Main menu': 'القائمه الرئيسيه',
 	'Add New Item': 'اضافه عنصر جديد',
 	'Languages & defaults': 'اللغات && الافتراضي',
 	'Store defaults (shown to cutomers)': 'افتراضيات المتجر (بامكان العميل ان يراها)',
 	'Assign as main location': 'تعيين كموقع رئيسي',
+
 	'Default country': 'البلد الرئيسي',
 	Languages: 'اللغات',
 	'Your store language defines what language your store communicates in with customers.':
 		'تحدد لغة متجرك اللغة التي يتواصل بها متجرك مع العملاء.',
+
 	'Available for pickup': 'متاح للاستلام',
+
 	'Store default': 'افتراضي المتجر',
 	Enabled: 'ممكّن',
 	'Auto publish reviews': 'نشر المراجعات تلقائيًا',
@@ -792,4 +801,26 @@ export const arabic = {
 	'Card number': 'رقم البطاقة',
 	'Expiry date': 'تاريخ الانتهاء',
 	'Add payment method': 'إضافة طريقة دفع',
+
+	Number: 'رقم',
+	'Account number must be at least 14 numbers': 'رقم الحساب يجب أن لا يقل عن 14 رقم',
+	'Date must be in the format MM/YYYY': 'يجب أن يكون التاريخ بالتنسيق MM/YYYY',
+	'CVV must be 3 digits': 'CVV  يجب أن يتكون من 3 أرقام',
+	'Credit/Debit Card': 'بطاقة الائتمان/الخصم',
+	'Apple Pay': 'أبل باي',
+	'STC Pay': 'شركة الاتصالات السعودية باي',
+	'Select payment method': 'اختار طريقة الدفع',
+	'I agree to': 'أوافق على',
+	'Terms and Conditions, Privacy Policy': 'الشروط والأحكام، سياسة الخصوصية',
+	and: 'و',
+	'Selling policy': 'سياسة البيع',
+	'Number of hours': 'عدد الساعات',
+	Hours: 'ساعات',
+	'Confirm Purchase': 'تأكيد الشراء',
+	'Purchase service': 'خدمة الشراء',
+	'Hour price': 'سعر الساعة',
+	'Let’s generate sales': 'دعونا نحقق مبيعات',
+	'Service is successfully purchased': 'تم شراء الخدمة بنجاح',
+	'send message': 'إرسال رسالة',
+
 } satisfies typeof english;
