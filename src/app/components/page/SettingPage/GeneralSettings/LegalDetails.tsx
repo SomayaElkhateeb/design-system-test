@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { generalSettingsInterface } from './GeneralSettings';
+import { generalSettingsInterface } from './HookForGeneralForm';
 import { UseFormReturn } from 'react-hook-form';
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';

@@ -8,27 +8,37 @@ import { Checkbox } from '@mui/material';
 import { Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { TooltipIcon } from 'src/app/utils/icons';
+import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 export interface IAddPayment {
 	name: string;
 	cardNumber: number;
 	expiryDate: string;
 	cvv: number;
 }
-export default function AddPayment({ handleClose }: { handleClose: (e: boolean) => void }) {
+export default function AddPayment({
+	handleClose,
+	showPayment,
+}: {
+	handleClose: () => void;
+	showPayment: boolean;
+}) {
+	//  hooks
 	const { t } = useTranslation();
+
+	// //////////////////////////////////
 	const addPaymentSchema = {
-		name: z.string().min(10, { message: t('Name on card is required') }),
+		name: z.string().min(10),
 		cardNumber: z.coerce.number().min(16),
 		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
 			message: 'Date must be in the format MM/YYYY',
 		}),
 		cvv: z.coerce.number().min(3),
 	};
+	// /////////////////////
 	const handleSubmit = (values: IAddPayment) => {
 		console.log(values);
-		handleClose();
 	};
-
+	// ////////////////////////////
 	const handelDefaultValue = () => {
 		return {
 			name: '',
@@ -37,19 +47,26 @@ export default function AddPayment({ handleClose }: { handleClose: (e: boolean) 
 			cvv: 0,
 		};
 	};
+	// //////////////////////////////
 	const { formStore, onSubmit } = useForm({
 		schema: addPaymentSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
 
+	//   style of dialog
+	const style = {
+		height: { md: '27.5rem', xs: '17.5rem' },
+
+		width: { md: '40rem', xs: '25.8rem' },
+	};
+
 	return (
-		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='fixed inset-0 z-50 flex items-center justify-center'>
-				<div className='fixed inset-0 bg-black opacity-50' onClick={handleClose}></div>
-				<div className='relative flex flex-col content-between rounded-md lg:w-[50%] md:w-[80%]  p-5 bg-white'>
-					<h3 className='font-semibold text-title capitalize mb-5'>{t('Add payment method')}</h3>
-					<div className='w-[60%] flex flex-col gap-4'>
+		<GlobalDialog openDialog={showPayment} handleClose={handleClose} style={style}>
+			<Form {...formStore}>
+				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+					<h3 className='title capitalize '>{t('Add payment method')}</h3>
+					<div className='md:w-[60%] flex flex-col gap-4'>
 						<FormField
 							formStore={formStore}
 							name='name'
@@ -62,8 +79,8 @@ export default function AddPayment({ handleClose }: { handleClose: (e: boolean) 
 							label={QuantityLabel}
 							render={(field) => <Input {...field} placeholder='0000 0000 0000 0000' />}
 						/>
-						<div className='flex items-start justify-between w-full'>
-							<div>
+						<div className='md:flex-row-global-items-start flex-col-top-section-pages  md:justify-between '>
+							<div className='md:w-[49%]'>
 								<FormField
 									formStore={formStore}
 									name='expiryDate'
@@ -71,7 +88,7 @@ export default function AddPayment({ handleClose }: { handleClose: (e: boolean) 
 									render={(field) => <Input {...field} placeholder='MM/YY' />}
 								/>
 							</div>
-							<div>
+							<div className='md:w-[49%]'>
 								<FormField
 									formStore={formStore}
 									name='cvv'
@@ -86,16 +103,16 @@ export default function AddPayment({ handleClose }: { handleClose: (e: boolean) 
 						<span className='text-title text-sm'>Assign as main</span>
 					</div>
 					<div className='flex items-center justify-end gap-6'>
-						<Button variant='tertiary' onClick={handleClose}>
+						<Button variant='tertiary' onClick={() => handleClose()}>
 							{t('Cancel')}
 						</Button>
 						<Button variant='primary' onClick={onSubmit}>
 							{t('Add')}
 						</Button>
 					</div>
-				</div>
-			</form>
-		</Form>
+				</form>
+			</Form>
+		</GlobalDialog>
 	);
 }
 

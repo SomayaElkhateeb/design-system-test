@@ -1,16 +1,15 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { addcustomerSettingsInterface } from 'src/pages/AddCustomerPage/AddCustomerPage';
 import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import { countries } from '../SettingPage/BranchesSettings/AddBranch/BranchInfo';
-
+import { addCustomerInterface } from './HookForAddCustomerForm';
 export default function PrimaryAddresseForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<addcustomerSettingsInterface>;
+	formStore: UseFormReturn<addCustomerInterface>;
 }) {
 	//  hooks
 	const { t } = useTranslation();

@@ -179,8 +179,25 @@ export const arabic = {
 	'Order Status': 'حاله الطلب',
 	'Add Activity': 'اضافه نشاط',
 	'Add New Group': 'اضافه مجموعه جديده',
-	'Choose Customers': 'اختار عملاء',
+	"Choose Customers": "اختار عملاء",
+
 	Addresses: 'العناوين',
+	"Use a map": "استخدم الخريطه",
+	"Add manually": "اضف يدويا",
+	"Meta keywords": "مفاتيح السيرش",
+	"Send as a gift": "ارسال كهديه",
+	"Gift receiver name": "اسم مستقبل الهديه",
+	"Third party payment providers": "مقدمو خدمات الدفع من الطرف الثالث",
+	"Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.": "مقدمو الخدمات الذين يمكّنونك من قبول طرق الدفع بسعر يحدده الطرف الثالث. سيتم تطبيق رسوم إضافية على الطلبات الجديدة بمجرد تحديد الخطة.",
+	"Compare over 8 different payment gateway providers and pick the one that suits your needs.": "قارن بين أكثر من 8 موفري بوابات دفع مختلفين واختر المزود الذي يناسب احتياجاتك.",
+	"Setup providers": "موفري الإعداد",
+	"Accept payments using our plugin": "قبول المدفوعات باستخدام البرنامج المساعد لدينا",
+	"Accept payments on your store using the": "قبول المدفوعات على متجرك باستخدام",
+	"plugin, it provide you with International and local payment methods": "البرنامج الإضافي، فهو يوفر لك طرق الدفع الدولية والمحلية",
+	"Supported methods with fees": "الطرق المدعومة مع الرسوم",
+
+	"Supported banks": "البنوك المدعومة",
+	"Setup Dookan pay": "إعداد Dookan الدفع",
 	'Last month': 'الشهر الاخير',
 	'Last week': 'الاسبوع الاخير ',
 	Campaign: 'الحمله',
@@ -553,13 +570,24 @@ export const arabic = {
 	'Assign as main location': 'تعيين كموقع رئيسي',
 	'Available for pickup': 'متاح للاستلام',
 	'Type and add': 'النوع والاضافه',
+
 	'Languages & defaults': 'اللغات && الافتراضي',
 	'Store defaults (shown to cutomers)': 'افتراضيات المتجر (بامكان العميل ان يراها)',
+
+
+	'Commercial branch': 'الفرع التجاري',
+	'Main menu': 'القائمه الرئيسيه',
+	'Add New Item': 'اضافه عنصر جديد',
+	'Languages & defaults': 'اللغات && الافتراضي',
+	'Store defaults (shown to cutomers)': 'افتراضيات المتجر (بامكان العميل ان يراها)',
+	'Assign as main location': 'تعيين كموقع رئيسي',
 
 	'Default country': 'البلد الرئيسي',
 	Languages: 'اللغات',
 	'Your store language defines what language your store communicates in with customers.':
 		'تحدد لغة متجرك اللغة التي يتواصل بها متجرك مع العملاء.',
+
+	'Available for pickup': 'متاح للاستلام',
 
 	'Store default': 'افتراضي المتجر',
 	Enabled: 'ممكّن',
@@ -627,7 +655,64 @@ export const arabic = {
 	'other methods': 'أساليب أخرى',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'الشحنات التي تتم معالجتها خارج متجرك عبر الإنترنت. عندما يشتري أحد العملاء طلبًا، يتعين عليك التعامل مع عملية التسليم بنفسك',
-
+	Customizations: 'التخصيصات',
+	Checkout: 'الدفع',
+	'Customize the way you want your customers to check out':
+		'قم بتخصيص الطريقة التي تريد بها عملاءك الدفع',
+	'Guest checkout': 'دفع الزائر',
+	'Allow customers to check out as guests': 'السماح للعملاء بالدفع كزوار',
+	'Only collect shipping address': 'جمع عنوان الشحن فقط',
+	'Use the shipping address as the billing address by default':
+		'استخدم عنوان الشحن كعنوان فوترة بشكل افتراضي',
+	'Minimum order subtotal': 'الحد الأدنى لإجمالي الطلب',
+	'Set minimum allowed order subtotal': 'تعيين الحد الأدنى لإجمالي الطلب المسموح به',
+	'Control what your customers can purchase': 'التحكم في ما يمكن لعملائك شراؤه',
+	'Ask for the company name': 'طلب اسم الشركة',
+	'Ask for a ZIP/postal code': 'طلب الرمز البريدي',
+	'Customer can check out with': 'يمكن للعميل الدفع بواسطة',
+	'Email & phone': 'البريد الإلكتروني والهاتف',
+	'Email only': 'البريد الإلكتروني فقط',
+	'Phone only': 'الهاتف فقط',
+	'Hide out of stock products': 'إخفاء المنتجات غير المتوفرة في المخزون',
+	'Activate product comparison': 'تفعيل مقارنة المنتجات',
+	'Maximum comparisons': 'أقصى عدد للمقارنات',
+	'Automatically archive the order': 'أرشفة الطلب تلقائيًا',
+	'Delivered orders will be automatically assigned as closed.':
+		'سيتم تعيين الطلبات المُسلمة تلقائيًا كمغلقة.',
+	'Show product stock in product page': 'إظهار مخزون المنتج في صفحة المنتج',
+	'Show when product stock reach defined limit': 'إظهار عندما يصل مخزون المنتج إلى الحد المحدد',
+	'Show when product purchases reach defined limit':
+		'إظهار عندما تصل مشتريات المنتج إلى الحد المحدد',
+	'Product stock limit': 'حد المخزون للمنتج',
+	'Show purchases number in product page': 'إظهار عدد المشتريات في صفحة المنتج',
+	'When purchases number exceeds': 'عند تجاوز عدد المشتريات',
+	'Limit number of download attempts for digital products':
+		'تحديد عدد محاولات التنزيل للمنتجات الرقمية',
+	'Maximum number of attempts': 'أقصى عدد للمحاولات',
+	Product: 'المنتج',
+	'Customize product listing': 'تخصيص قائمة المنتجات',
+	'Show tax number': 'إظهار رقم الضريبة',
+	'Tax number': 'رقم الضريبة',
+	'Hide product images': 'إخفاء صور المنتج',
+	'Show products description': 'إظهار وصف المنتجات',
+	'Show SKU': 'إظهار SKU',
+	'Show contacts': 'إظهار جهات الاتصال',
+	'Customize invoice sent to customers': 'تخصيص الفاتورة المرسلة للعملاء',
+	'Order invoice': 'فاتورة الطلب',
+	'Double opt-in': 'التحقق المزدوج للاشتراك',
+	'Ask for customers consent for receiving email or SMS newsletter':
+		'طلب موافقة العملاء على تلقي النشرة الإخبارية عبر البريد الإلكتروني أو الرسائل النصية القصيرة',
+	'Require customers to confirm their': 'يتطلب من العملاء تأكيد',
+	'Email subscription': 'الاشتراك في البريد الإلكتروني',
+	'SMS subscription': 'الاشتراك في الرسائل النصية القصيرة',
+	'Show an option to subscribe at': 'إظهار خيار الاشتراك عند',
+	Registration: 'التسجيل',
+	'Never show': 'عدم الإظهار أبدًا',
+	'Text label': 'تسمية النص',
+	'Keep me up to date on news and exclusive offers': 'أبقني على اطلاع بالأخبار والعروض الحصرية',
+	'Preselect the option for customers': 'اختيار الخيار مسبقًا للعملاء',
+	'Show email newsletter input in footer':
+		'إظهار إدخال النشرة الإخبارية بالبريد الإلكتروني في التذييل',
 	'Compare over 6 different Shipping providers and pick the one that suits your needs':
 		'قارن بين أكثر من 6 مزودي شحن مختلفين واختر المزود الذي يناسب احتياجاتك',
 	'setup providers': 'مقدموا الإعداد',
@@ -716,6 +801,7 @@ export const arabic = {
 	'Card number': 'رقم البطاقة',
 	'Expiry date': 'تاريخ الانتهاء',
 	'Add payment method': 'إضافة طريقة دفع',
+
 	Number: 'رقم',
 	'Account number must be at least 14 numbers': 'رقم الحساب يجب أن لا يقل عن 14 رقم',
 	'Date must be in the format MM/YYYY': 'يجب أن يكون التاريخ بالتنسيق MM/YYYY',
@@ -736,4 +822,5 @@ export const arabic = {
 	'Let’s generate sales': 'دعونا نحقق مبيعات',
 	'Service is successfully purchased': 'تم شراء الخدمة بنجاح',
 	'send message': 'إرسال رسالة',
+
 } satisfies typeof english;

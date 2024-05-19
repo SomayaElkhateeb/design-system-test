@@ -104,7 +104,7 @@ export default function CustomersTable() {
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<FaRegEdit
 									className='text-subtitle'
-									onClick={() => navigate(`/addCustomer?id=${e?.id}`)}
+									onClick={() => navigate(`addCustomer?id=${e?.id}`)}
 								/>
 								<ThreeDotsButton
 									sortMenus={settingMenus}

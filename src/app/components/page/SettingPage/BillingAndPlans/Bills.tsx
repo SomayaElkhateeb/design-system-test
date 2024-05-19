@@ -19,10 +19,10 @@ export default function Bills() {
 function RowBills({ paid }: { paid: boolean }) {
 	const { t } = useTranslation();
 	return (
-		<div className='flex items-start justify-between'>
-			<div>
-				<div className='flex items-center gap-2'>
-					<h2 className='text-title font-semibold text-sm'>{t('Monthly bill issued')}</h2>
+		<div className='flex-row-global-items-start justify-between'>
+			<div className='flex-col-top-section-pages gap-1'>
+				<div className='flex-row-global gap-2'>
+					<h2 className='title text-sm'>{t('Monthly bill issued')}</h2>
 					<span
 						className={`text-white ${
 							paid ? 'bg-secondary' : 'bg-error'
@@ -31,9 +31,9 @@ function RowBills({ paid }: { paid: boolean }) {
 						{paid ? t('Paid') : t('Cancelled')}
 					</span>
 				</div>
-				<p className='text-subtitle text-sm pt-1'>7 Oct 2022</p>
+				<p className='subtitle text-sm text-sm'>7 Oct 2022</p>
 			</div>
-			<p className='text-title text-sm'>#965646545</p>
+			<p className='subtitle text-sm'>#965646545</p>
 		</div>
 	);
 }

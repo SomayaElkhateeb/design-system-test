@@ -9,9 +9,9 @@ export default function PaymentSettings() {
 	const { t } = useTranslation();
 
 	return (
-		<div>
+	<div className='flex-col-top-section-pages'>
 			<HeaderSettings title={t('Payment')} />
-			<div className='container grid grid-cols-2 gap-5 p-5'>
+			<div className='container mx-auto grid grid-cols-2 gap-5 '>
 				<div className='col-span-2 lg:col-span-1 '>
 					<PaymentProvidersCard />
 				</div>

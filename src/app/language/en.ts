@@ -252,9 +252,28 @@ export const english = {
 	'Order Status': 'Order Status',
 
 	'Add New Group': 'Add New Group',
+
 	'Choose Customers': 'Choose Customers',
+
 	Addresses: 'Addresses',
 	'Add new address': 'Add new address',
+	"Use a map": "Use a map",
+	"Add manually": "Add manually",
+	"Meta keywords": "Meta keywords",
+	"Send as a gift": "Send as a gift",
+	"Gift receiver name": "Gift receiver name",
+	"Third party payment providers": "Third party payment providers",
+	"Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.": "Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.",
+	"Compare over 8 different payment gateway providers and pick the one that suits your needs.": "Compare over 8 different payment gateway providers and pick the one that suits your needs.",
+	"Setup providers": "Setup providers",
+
+	"Accept payments using our plugin": "Accept payments using our plugin",
+	"Accept payments on your store using the": "Accept payments on your store using the",
+	"plugin, it provide you with International and local payment methods": "plugin, it provide you with International and local payment methods",
+	"Supported methods with fees": "Supported methods with fees",
+
+	"Supported banks": "Supported banks",
+	"Setup Dookan pay": "Setup Dookan pay",
 	'Show on map': 'Show on map',
 	'Add new order': 'Add new order',
 	'Group Name': 'Group Name',
@@ -622,7 +641,64 @@ export const english = {
 	'other methods': 'other methods',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself',
-
+	Customizations: 'Customizations',
+	Checkout: 'Checkout',
+	'Customize the way you want your customers to check out':
+		'Customize the way you want your customers to check out',
+	'Guest checkout': 'Guest checkout',
+	'Allow customers to check out as guests': 'Allow customers to check out as guests',
+	'Only collect shipping address': 'Only collect shipping address',
+	'Use the shipping address as the billing address by default':
+		'Use the shipping address as the billing address by default',
+	'Minimum order subtotal': 'Minimum order subtotal',
+	'Set minimum allowed order subtotal': 'Set minimum allowed order subtotal',
+	'Control what your customers can purchase': 'Control what your customers can purchase',
+	'Ask for the company name': 'Ask for the company name',
+	'Ask for a ZIP/postal code': 'Ask for a ZIP/postal code',
+	'Customer can check out with': 'Customer can check out with',
+	'Email & phone': 'Email & phone',
+	'Email only': 'Email only',
+	'Phone only': 'Phone only',
+	'Hide out of stock products': 'Hide out of stock products',
+	'Activate product comparison': 'Activate product comparison',
+	'Maximum comparisons': 'Maximum comparisons',
+	'Automatically archive the order': 'Automatically archive the order',
+	'Delivered orders will be automatically assigned as closed.':
+		'Delivered orders will be automatically assigned as closed.',
+	'Show when product stock reach defined limit': 'Show when product stock reach defined limit',
+	'Product stock limit': 'Product stock limit',
+	'Show purchases number in product page': 'Show purchases number in product page',
+	'Show when product purchases reach defined limit':
+		'Show when product purchases reach defined limit',
+	'Show product stock in product page': 'Show product stock in product page',
+	'When purchases number exceeds': 'When purchases number exceeds',
+	'Limit number of download attempts for digital products':
+		'Limit number of download attempts for digital products',
+	'Maximum number of attempts': 'Maximum number of attempts',
+	Product: 'Product',
+	'Customize product listing': 'Customize product listing',
+	'Show tax number': 'Show tax number',
+	'Tax number': 'Tax number',
+	'Hide product images': 'Hide product images',
+	'Show products description': 'Show products description',
+	'Show SKU': 'Show SKU',
+	'Show contacts': 'Show contacts',
+	'Customize invoice sent to customers': 'Customize invoice sent to customers',
+	'Order invoice': 'Order invoice',
+	'Double opt-in': 'Double opt-in',
+	'Ask for cutomers consent for receiving email or SMS newsletter':
+		'Ask for cutomers consent for receiving email or SMS newsletter',
+	'Require customers to confirm their': 'Require customers to confirm their',
+	'Email subscription': 'Email subscription',
+	'SMS subscription': 'SMS subscription',
+	'Show an option to subscribe at': 'Show an option to subscribe at',
+	Registration: 'Registration',
+	'Never show': 'Never show',
+	'Text label': 'Text label',
+	'Keep me up to date on news and exclusive offers':
+		'Keep me up to date on news and exclusive offers',
+	'Preselect the option for customers': 'Preselect the option for customers',
+	'Show email newsletter input in footer': 'Show email newsletter input in footer',
 	'Compare over 6 different Shipping providers and pick the one that suits your needs':
 		'Compare over 6 different Shipping providers and pick the one that suits your needs',
 	'setup providers': 'setup providers',
@@ -713,6 +789,7 @@ export const english = {
 	'Card number': 'Card number',
 	'Expiry date': 'Expiry date',
 	'Add payment method': 'Add payment method',
+
 	Number: 'Number',
 	'Account number must be at least 14 numbers': 'Account number must be at least 14 numbers',
 	'Date must be in the format MM/YYYY': 'Date must be in the format MM/YYYY',
@@ -733,4 +810,5 @@ export const english = {
 	'Let’s generate sales': 'Let’s generate sales',
 	'Service is successfully purchased': 'Service is successfully purchased',
 	'send message': 'send message',
+
 };
