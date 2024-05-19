@@ -179,6 +179,7 @@ export const arabic = {
 	'Order Status': 'حاله الطلب',
 	'Add Activity': 'اضافه نشاط',
 	'Add New Group': 'اضافه مجموعه جديده',
+	"Choose Customers":"اختار عملاء",
 	Addresses: 'العناوين',
 	'Last month': 'الشهر الاخير',
 	'Last week': 'الاسبوع الاخير ',

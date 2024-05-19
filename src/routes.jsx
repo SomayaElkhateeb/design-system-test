@@ -33,7 +33,11 @@ import StoreTabs from './app/components/page/StorePage/StoreTabs';
 import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
 import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
+
 import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
+
+import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
+
 
 // Route Definitions
 export const routes = [
@@ -53,15 +57,16 @@ export const routes = [
 		element: <CustomerInfo />,
 	},
 	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
+	{ path: '/customers/addGroupCustomer', element: <AddCustomerGroup /> },
 	// Apps Routes
-	// {
-	// 	path: '/apps',
-	// 	element: <AppsPage />,
-	// 	children: [
-	// 		{ path: ':tab', element: <AppsTabs /> },
-	// 		{ path: 'app_store/:platform', element: <SocialAppDetails /> },
-	// 	],
-	// },
+	{
+		path: '/apps',
+		element: <AppsPage />,
+		children: [
+			{ path: ':tab', element: <AppsTabs /> },
+			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
+		],
+	},
 	{
 		path: 'settings',
 		element: <SettingsPage />,
