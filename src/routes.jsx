@@ -37,15 +37,19 @@ import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
 import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
 
 import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
+
+import SuccessfullyPurchased from './app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
+
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
-	// Customers Routes
+	// services Routes
 	{ path: '/services', element: <ServicesPage /> },
 	{ path: '/services/:config', element: <PurchaseConfig /> },
+	{ path: '/services/:config/:config', element: <SuccessfullyPurchased /> },
 
 	// Customers Routes
 	{
@@ -70,18 +74,6 @@ export const routes = [
 			{ path: ':tab', element: <AppsTabs /> },
 			{ path: 'app_store/:platform', element: <SocialAppDetails /> },
 		],
-	},
-	{
-		path: 'settings',
-		element: <SettingsPage />,
-	},
-	{
-		path: '/settings/:config',
-		element: <SettingsConfig />,
-	},
-	{
-		path: '/settings/:config/:nested_page',
-		element: <Nested_pages_SettingsConfig />,
 	},
 
 	// Pages Routes

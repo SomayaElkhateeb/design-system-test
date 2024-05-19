@@ -16,7 +16,7 @@ export default function PopupDelete({
 	return (
 		<div className='fixed inset-0 z-50 flex items-center justify-center'>
 			{/* Overlay */}
-			<div className='fixed inset-0 bg-black opacity-50' onClick={onClose}></div>
+			<div className='fixed inset-0 bg-black opacity-50' onClick={onClose} />
 
 			{/* Popup Content */}
 			<div className='relative flex flex-col content-between border border-error rounded-md w-[26.3rem] h-[9.3rem] p-5 bg-white'>
