@@ -6,8 +6,7 @@ import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 
 import { Switch } from 'src/app/components/ui/switch';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { queriesInterface } from 'src/pages/SettingsPage/QueriesSettings';
-
+import { queriesInterface } from './HookForQueriesSettings';
 
 export default function QueriesSectionForm({
 	formStore,
@@ -37,17 +36,15 @@ export default function QueriesSectionForm({
 				/>
 			</div>
 
-			
-				<TabbedFormField
-					formStore={formStore}
-					keys={[
-						{ name: 'describtion_en', label: 'En' },
-						{ name: 'describtion_ar', label: 'عربي' },
-					]}
-					label={t('Reply description')}
-					renderer={(field) => <Textarea {...field} placeholder={'reply'} />}
-				/>
-			
+			<TabbedFormField
+				formStore={formStore}
+				keys={[
+					{ name: 'describtion_en', label: 'En' },
+					{ name: 'describtion_ar', label: 'عربي' },
+				]}
+				label={t('Reply description')}
+				renderer={(field) => <Textarea {...field} placeholder={'reply'} />}
+			/>
 		</div>
 	);
 }

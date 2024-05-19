@@ -4,13 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { Input } from 'src/app/components/ui/input';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { cn } from 'src/app/utils';
-import { addPageInterface } from 'src/pages/PagesPage/comp/AddPage';
+
 
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { fileClassName } from '../../SettingPage/GeneralSettings/Media';
 import { TfiUpload } from 'react-icons/tfi';
 import { Textarea } from 'src/app/components/ui/textarea';
+import { addPageInterface } from '../HookForAddBlogOrPageForm';
 
 export default function MainInfoPage({
 	formStore,
@@ -20,7 +21,7 @@ export default function MainInfoPage({
 	addblog?: boolean;
 }) {
 	const { t } = useTranslation();
-	
+
 	return (
 		<div className='global-cards'>
 			<h3 className='title'>{t('Main info')}</h3>
@@ -68,7 +69,7 @@ export default function MainInfoPage({
 					{ name: 'descriptionAr', label: 'عربي' },
 				]}
 				label={t('Description')}
-				renderer={(field) => <Textarea {...field}  />}
+				renderer={(field) => <Textarea {...field} />}
 			/>
 		</div>
 	);
