@@ -116,7 +116,7 @@ const settingsCards = [
 	},
 	{
 		id: 3,
-		path: '/',
+		path: 'payment',
 		Icon: PaymentIcon,
 		title: 'Payment',
 		description: 'Enable and integration payment gateways',
