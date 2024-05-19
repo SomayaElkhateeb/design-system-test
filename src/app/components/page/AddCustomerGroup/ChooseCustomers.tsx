@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
 import { UseFormReturn } from 'react-hook-form';
-import { addCustomerGroupInterface } from 'src/pages/AddCustomerGroupPage/AddCustomerGroup';
+
 import FormField from '../../ui/form/field';
 
 import CustomAutoComplete from '../../optimized/InputsFields/AutoCompleteMultiple';
+import { addCustomerGroupInterface } from './HookForAddCustomerGroupForm';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
