@@ -6,6 +6,7 @@ import { AddFillIcon, MoreIcon } from 'src/app/utils/icons';
 import AddPayment from './AddPayment';
 
 export default function PaymentMethods() {
+	//  hooks
 	const [showPayment, setShowPayment] = useState(false);
 	const { t } = useTranslation();
 
@@ -46,7 +47,7 @@ export default function PaymentMethods() {
 				</Button>
 			</div>
 
-			{showPayment && <AddPayment handleClose={handleClose} />}
+			{showPayment && <AddPayment showPayment={showPayment} handleClose={handleClose} />}
 		</section>
 	);
 }
