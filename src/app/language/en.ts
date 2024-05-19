@@ -252,7 +252,9 @@ export const english = {
 	'Order Status': 'Order Status',
 
 	'Add New Group': 'Add New Group',
-	"Choose Customers": "Choose Customers",
+
+	'Choose Customers': 'Choose Customers',
+
 	Addresses: 'Addresses',
 	'Add new address': 'Add new address',
 	"Use a map": "Use a map",
@@ -788,4 +790,26 @@ export const english = {
 	'Card number': 'Card number',
 	'Expiry date': 'Expiry date',
 	'Add payment method': 'Add payment method',
+
+	Number: 'Number',
+	'Account number must be at least 14 numbers': 'Account number must be at least 14 numbers',
+	'Date must be in the format MM/YYYY': 'Date must be in the format MM/YYYY',
+	'CVV must be 3 digits': 'CVV must be 3 digits',
+	'Credit/Debit Card': 'Credit/Debit Card',
+	'Apple Pay': 'Apple Pay',
+	'STC Pay': 'STC Pay',
+	'Select payment method': 'Select payment method',
+	'I agree to': 'I agree to',
+	'Terms and Conditions, Privacy Policy': 'Terms and Conditions, Privacy Policy',
+	and: 'and',
+	'Selling policy': 'Selling policy',
+	'Number of hours': 'Number of hours',
+	Hours: 'Hours',
+	'Confirm Purchase': 'Confirm Purchase',
+	'Purchase service': 'Purchase service',
+	'Hour price': 'Hour price',
+	'Let’s generate sales': 'Let’s generate sales',
+	'Service is successfully purchased': 'Service is successfully purchased',
+	'send message': 'send message',
+
 };

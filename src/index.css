@@ -228,7 +228,6 @@ object {
 	}
 
 	.btn-lin {
-		/* hover:bg-light-3   don't work! */
 		@apply border-2 border-transparent bg-transparent px-[15px] py-2 rounded hover:bg-light-3 font-normal text-primary text-sm capitalize active:bg-pri-light focus:border-2 focus:border-pri-light;
 	}
 
