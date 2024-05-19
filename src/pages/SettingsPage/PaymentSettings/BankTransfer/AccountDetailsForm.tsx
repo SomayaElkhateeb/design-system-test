@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
+
 import {
 	Select,
 	SelectContent,
@@ -8,9 +9,9 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import { Input } from 'src/app/components/ui/input';
-import { FormProps } from './ActivateBankTransfer';
+import { PaymentFormProps } from './ActivateBankTransfer';
 
-export default function AccountDetailsForm({ formStore }: FormProps) {
+export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 	const { t } = useTranslation();
 	const banks = ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'];
 
