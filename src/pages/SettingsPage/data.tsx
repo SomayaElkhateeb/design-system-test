@@ -116,7 +116,7 @@ const settingsCards = [
 	},
 	{
 		id: 3,
-		path: '/',
+		path: 'payment',
 		Icon: PaymentIcon,
 		title: 'Payment',
 		description: 'Enable and integration payment gateways',
@@ -137,9 +137,7 @@ const settingsCards = [
 	},
 	{
 		id: 6,
-
 		path: 'users',
-
 		Icon: Person,
 		title: 'Users & Permissions',
 		description: 'Users Settings',
@@ -151,10 +149,16 @@ const settingsCards = [
 		title: 'Reviews',
 		description: 'manage posted reviews',
 	},
-	{ id: 8, path: 'queries', Icon: QueryIcon, title: 'Queries', description: 'manage posted queries' },
+	{
+		id: 8,
+		path: 'queries',
+		Icon: QueryIcon,
+		title: 'Queries',
+		description: 'manage posted queries',
+	},
 	{
 		id: 9,
-		path: '/',
+		path: 'customizations',
 		Icon: EditIcon,
 		title: 'Customizations',
 		description: 'Customize checkout, products and orders options',
@@ -176,5 +180,316 @@ const settingsCards = [
 		description: 'manage notifications sent to users',
 	},
 ];
-
-export { settingsCards, images, cards, pricing, contact, smsa };
+const paymentProvidersData = [
+	{
+		provider: { name: 'payTabs', url: '/payTabs' },
+		monthlyFees: { planOne: '', planTwo: '' },
+		setupFees: { planOne: 938, planTwo: '' },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+	{
+		provider: { name: 'moyasar', url: '/moyasar' },
+		monthlyFees: { planOne: 200, planTwo: '' },
+		setupFees: { planOne: 1000, planTwo: '' },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+	{
+		provider: { name: 'hyperPay', url: '/hyperPay' },
+		monthlyFees: { planOne: '', planTwo: 500 },
+		setupFees: { planOne: '', planTwo: 5000 },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+	{
+		provider: { name: 'amazonServices', url: '/amazonServices' },
+		monthlyFees: { planOne: 200, planTwo: 400 },
+		setupFees: { planOne: '', planTwo: 1500 },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+	{
+		provider: { name: 'checkout', url: '/checkout' },
+		monthlyFees: { planOne: '', planTwo: '' },
+		setupFees: { planOne: '', planTwo: '' },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+];
+export { settingsCards, images, cards, pricing, contact, smsa, paymentProvidersData };
