@@ -33,14 +33,20 @@ import StoreTabs from './app/components/page/StorePage/StoreTabs';
 import StoreConfig from './app/components/page/StorePage/StoreConfig';
 
 import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
+
+import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
+
 import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
+
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
+	// Customers Routes
 	{ path: '/services', element: <ServicesPage /> },
+	{ path: '/services/:config', element: <PurchaseConfig /> },
 
 	// Customers Routes
 	{
