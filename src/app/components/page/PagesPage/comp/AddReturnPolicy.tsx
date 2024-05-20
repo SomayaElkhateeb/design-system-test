@@ -5,10 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate } from 'react-router-dom';
-import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
-import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
+
 import { useForm } from 'src/app/utils/hooks/form';
-import { useState } from 'react';
+
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Textarea } from 'src/app/components/ui/textarea';
 export interface addReturnPloicyInterface {

@@ -583,6 +583,7 @@ export const english = {
 	"Sent to to notify the customer that the purchased items are on their way.":"Sent to to notify the customer that the purchased items are on their way.",
 	"Order is ready for pickup":"Order is ready for pickup",
 	"Sent to notify the customer that purchased items are ready for pickup.":"Sent to notify the customer that purchased items are ready for pickup.",
+	"Email subject":"Email subject",
 	
 	New: 'New',
 	'learn more': 'learn more',
