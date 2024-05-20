@@ -1,7 +1,5 @@
-import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { ISetupInfo } from '../SetupInfo';
 import { AiOutlineQuestion } from 'react-icons/ai';
 import Tab from 'src/app/components/optimized/Tabs/Tab';
 import General from '../Tabs/General';
