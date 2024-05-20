@@ -53,7 +53,7 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 	return (
 		<div
 			id={id}
-			className={`bg-white w-80 p-3 pb-5 absolute shadow-lg top-[4.5rem] z-50 max-h-[32rem] overflow-hidden${
+			className={`bg-white w-[21rem] p-3 pb-5 absolute shadow-lg top-[4.5rem] z-50 max-h-[32rem] overflow-hidden${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
 					: 'rounded-tl-md rounded-bl-md right-2'
@@ -75,10 +75,10 @@ const HelpCenterCard = ({ onClose }: { onClose: () => void }) => {
 				<div>
 					<h4 className='font-semibold text-title'>{t('Get started')}</h4>
 					<div className='grid grid-cols-2 gap-2 mt-4'>
-						<LinkCards to='/store' Icon={StoresIcon} title={t('Creating store')} />
-						<LinkCards to='/products' Icon={ProductsIcon} title={t('Products')} />
-						<LinkCards to='/orders' Icon={OrdersIcon} title={t('Orders')} />
-						<LinkCards to='/customers' Icon={CustomersIcon} title={t('Customers')} />
+						<LinkCards path='/store' Icon={StoresIcon} title={t('Creating store')} />
+						<LinkCards path='/products' Icon={ProductsIcon} title={t('Products')} />
+						<LinkCards path='/orders' Icon={OrdersIcon} title={t('Orders')} />
+						<LinkCards path='/customers' Icon={CustomersIcon} title={t('Customers')} />
 					</div>
 				</div>
 				{/* slider videos */}

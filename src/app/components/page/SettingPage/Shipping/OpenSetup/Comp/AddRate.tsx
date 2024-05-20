@@ -1,53 +1,20 @@
 import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
-
 import TextFields from './TextFields';
 import { Button } from 'src/app/components/optimized';
-
 import AppliesBasedOn from '../Rate/AppliesBasedOn';
-
-export interface IAddRate {
-	rateNameEn: string;
-	rateNameAr: string;
-	shippingSpeed: string;
-	supportedCities?: string;
-	shippingPrice: number;
-	weight: number;
-	minimumPrice: number;
-	maximumPrice: number;
-}
+import useCustomHookAddRate, { IAddRate } from './HookForAddRate';
 
 export default function AddRate({ saudi, onClose }: { saudi?: boolean; onClose: () => void }) {
+	// hook
 	const { t } = useTranslation();
-
-	const rateSchema = {
-		rateNameEn: z.string().min(3, { message: t('Rate is required') }),
-		rateNameAr: z.string().min(3, { message: t('Rate is required') }),
-		shippingSpeed: z.string(),
-		supportedCities: z.string().optional(),
-		shippingPrice: z.coerce.number().min(0),
-		weight: z.coerce.number().min(0),
-		minimumPrice: z.coerce.number().min(0),
-		maximumPrice: z.coerce.number().min(0),
-	};
+	//custom hook
+	const { handelDefaultValue, rateSchema } = useCustomHookAddRate();
 	const handleSubmit = (values: IAddRate) => {
 		console.log(values);
 	};
 
-	const handelDefaultValue = () => {
-		return {
-			rateNameEn: '',
-			rateNameAr: '',
-			shippingSpeed: '',
-			supportedCities: '',
-			shippingPrice: 0,
-			weight: 0,
-			minimumPrice: 0,
-			maximumPrice: 0,
-		};
-	};
 	const { formStore, onSubmit } = useForm({
 		schema: rateSchema,
 		handleSubmit: handleSubmit,

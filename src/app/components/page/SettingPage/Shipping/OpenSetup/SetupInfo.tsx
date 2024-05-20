@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
@@ -10,37 +9,27 @@ import AppliesOption from './Comp/AppliesOption';
 import Rates from './Comp/Rates';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-
-export interface ISetupInfo {
-	name: string;
-	apiKey: number;
-}
+import useCustomHookSetupInfo, { ISetupInfo } from './HookForSetupInfo';
 
 export default function SetupInfo({ gap, rates }: { gap: boolean; rates: boolean }) {
+	// hook
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState<string>('');
+	// custom hook
+	const { handelDefaultValue, SetupInfoSchema } = useCustomHookSetupInfo();
 	const options = [t('All products'), t('Specific products')];
 
-	const SetupInfoSchema = {
-		name: z.string().min(3, { message: t('Name is required') }),
-		apiKey: z.coerce.number().min(7, { message: t('Api Key is required') }),
-	};
 	const handleSubmit = (values: ISetupInfo) => {
 		console.log(values);
 	};
 
-	const handelDefaultValue = () => {
-		return {
-			name: '',
-			apiKey: 0,
-		};
-	};
 	const { formStore, onSubmit } = useForm({
 		schema: SetupInfoSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col gap-5'>

@@ -9,7 +9,7 @@ import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { contact, pricing, smsa } from 'src/pages/SettingsPage/data';
 import { useNavigate } from 'react-router-dom';
-import ContactCard from '../../Comp/ContactCard';
+import ContactCard from '../Comp/ContactCard';
 
 export default function Smsa() {
 	const { t } = useTranslation();
