@@ -10,7 +10,7 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 	const { t } = useTranslation();
 
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages grid grid-cols-2'>
+		<div className='global-cards grid grid-cols-2'>
 			<div className='col-span-2'>
 				<h2 className='title  mb-2'>{t('Product')}</h2>
 				<p className='paragraph'>{t('Customize product listing')}</p>

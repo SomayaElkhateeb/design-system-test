@@ -5,7 +5,7 @@ import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 export default function Summary() {
 	const { t } = useTranslation();
 	return (
-		<div className='cardDetails-sharedClass p-5 flex flex-col gap-3'>
+		<div className='global-cards '>
 			<h4 className='text-sm text-subtitle'>{t('Summary')}</h4>
 
 			<div className='flex items-center justify-between text-title'>

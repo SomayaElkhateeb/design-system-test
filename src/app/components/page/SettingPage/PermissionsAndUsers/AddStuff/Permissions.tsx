@@ -37,7 +37,7 @@ export default function Permissions({
 	};
 
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
+		<div className='global-cards gap-[1.2rem]'>
 			<div className='flex justify-between items-center'>
 				<h3 className='title'>{t('Permissions')}</h3>
 				<Button onClick={() => handleAllStorePermissions()} variant='secondary'>

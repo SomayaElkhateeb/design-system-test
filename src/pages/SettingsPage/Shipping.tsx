@@ -11,7 +11,7 @@ export default function Shipping() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<HeaderSettings title={t('shipping')} />
-			<div className='flex-col-top-section-pages container mx-auto'>
+			<div className='flex-col-top-section-pages custom_container'>
 				{/* providers */}
 				<CardShipping
 					title={t('Third party shipping providers')}
@@ -69,7 +69,7 @@ export default function Shipping() {
 
 function CardShipping({ title, description, buttonLabel, onClick, children }: CardShippingProps) {
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages gap-2'>
+		<div className='global-cards gap-2'>
 			<div className='flex-col-top-section-pages gap-0'>
 				<h2 className='title'>{title}</h2>
 				<p className='text-title text-sm py-3 w-[60%]'>{description}</p>

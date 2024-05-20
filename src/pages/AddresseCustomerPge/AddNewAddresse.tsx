@@ -69,7 +69,7 @@ export default function AddNewAddresseCustomer() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 lg:grid-cols-3 container mx-auto'>
+				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='global-cards lg:col-span-2 '>
 						<SingleChoiceChips
 							options={['Add manually', 'Use a map']}

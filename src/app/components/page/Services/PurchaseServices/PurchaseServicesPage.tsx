@@ -8,7 +8,7 @@ export default function PurchaseServicesPage() {
 	return (
 		<>
 			<HeaderSettings title={t('Purchase service')} />
-			<div className='container py-5'>
+			<div className='custom_container py-5'>
 				<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>
 					<div className='lg:col-span-2'>
 						<PaymentCard />

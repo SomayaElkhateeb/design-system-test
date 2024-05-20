@@ -16,7 +16,7 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 	const banks = ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'];
 
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages grid grid-cols-2'>
+		<div className='global-cards grid grid-cols-2'>
 			<div className='col-span-2'>
 				<h2 className='title mb-2'>{t('Account details')}</h2>
 				<p className='paragraph'>

@@ -47,7 +47,7 @@ export default function SelfPickup() {
 				}}
 			/>
 
-			<div className='grid gap-5 lg:grid-cols-3 container mx-auto py-5'>
+			<div className='grid gap-5 lg:grid-cols-3 custom_container py-5'>
 				<div className='flex-col-top-section-pages lg:col-span-2'>
 					<SetupInfo gap={true} rates={false} />
 					<div className='cardDetails-sharedClass p-5 flex flex-col gap-3'>

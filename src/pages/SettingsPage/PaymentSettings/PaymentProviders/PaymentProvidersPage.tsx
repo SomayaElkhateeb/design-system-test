@@ -7,7 +7,7 @@ export default function PaymentProvidersPage() {
 	return (
 		<div>
 			<HeaderSettings title={t('Third party payment providers')} />
-			<div className='container p-5'>
+			<div className='custom_container'>
 				<PaymentTable />
 			</div>
 		</div>

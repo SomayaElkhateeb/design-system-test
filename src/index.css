@@ -179,7 +179,7 @@ object {
 }
 
 /* Custom media query */
-@layer utilities {
+/* @layer utilities {
 	.max-w-xl {
 		max-width: 1400px;
 	}
@@ -187,9 +187,9 @@ object {
 	.max-w-2xl {
 		max-width: 1600px;
 	}
-}
+} */
 /* screen */
-@media (min-width: 990px) {
+/* @media (min-width: 990px) {
 	.custom-md {
 		@apply px-5 bg-green;
 	}
@@ -211,14 +211,18 @@ object {
 	.custom-2xl {
 		@apply mx-auto max-w-2xl bg-black;
 	}
-}
+} */
 
 @layer components {
+
+	.custom_container {
+		@apply xl:max-w-[145rem] xl:px-5  container mx-auto
+	}
 	.cardDetails-sharedClass {
-		@apply border rounded-[.6rem] bg-white border-[constrained];
+		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
 	.customer-border {
-		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-[constrained] flex flex-col;
+		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
 	}
 	.splide__pagination__page {
 		background: transparent !important;
