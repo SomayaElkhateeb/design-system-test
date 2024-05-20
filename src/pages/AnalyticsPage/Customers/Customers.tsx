@@ -49,7 +49,7 @@ const Customers = () => {
 		useAnalyticsData<AnaylticesCustomer>(data.customersAnalyticsTable, customersSortFunctions);
 
 	return (
-		<div className='custom_container grid gap-5'>
+		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
 			<ColumnChart percentage='5' />
 			<AnalyticsTableActions

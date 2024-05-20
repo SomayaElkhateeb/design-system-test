@@ -6,10 +6,11 @@ export default function EmailNotification() {
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='flex-col-top-section-pages md:w-[70%]'>
+		<div className='flex-col-top-section-pages '>
 			<HeaderSettings title={t('Notifications')} />
-            <div className="custom_container">
+            <div className="grid gap-5 lg:grid-cols-3 custom_container">
             <CustomerOrderNotifcation/>
+            
             </div>
             
 		</div>
