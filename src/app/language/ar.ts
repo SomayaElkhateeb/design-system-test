@@ -211,7 +211,7 @@ export const arabic = {
 	"Sent to to notify the customer that the purchased items are on their way.": "يتم الإرسال إلى لإعلام العميل بأن العناصر المشتراة في طريقها.",
 	"Order is ready for pickup": "الطلب جاهز للاستلام",
 	"Sent to notify the customer that purchased items are ready for pickup.": "يتم إرساله لإعلام العميل بأن العناصر التي تم شراؤها جاهزة للاستلام.",
-
+	"Email subject":"موضوع الايميل",
 
 
 

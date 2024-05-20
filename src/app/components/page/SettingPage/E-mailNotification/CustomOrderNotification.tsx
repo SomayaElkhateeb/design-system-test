@@ -1,11 +1,17 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 
+interface data {
+	id: string;
+	title: string;
+	description: string;
+}
 export default function CustomerOrderNotifcation() {
 	//  hooks
 	const { t } = useTranslation();
-
-	const fixedData = [
+	const navigate = useNavigate();
+	const fixedData: data[] = [
 		{
 			id: '1',
 			title: t('Order confirmation'),
@@ -29,6 +35,11 @@ export default function CustomerOrderNotifcation() {
 			description: t('Sent to notify the customer that purchased items are ready for pickup.'),
 		},
 	];
+
+	const handelClick = (el: data) => {
+		localStorage.setItem('notificationTitle', el?.title);
+		navigate(`?id=${el?.id}`);
+	};
 	return (
 		<div className='global-cards lg:col-span-2'>
 			<div className='flex-col-top-section-pages  gap-0'>
@@ -47,7 +58,14 @@ export default function CustomerOrderNotifcation() {
 								<h3 className='title text-sm'>{el.title}</h3>
 								<p className='subtitle text-[.7rem]'>{el.description}</p>
 							</div>
-							<Button variant='secondary'>{t('Activate')}</Button>
+							<Button
+								variant='secondary'
+								onClick={() => {
+									handelClick(el);
+								}}
+							>
+								{t('Activate')}
+							</Button>
 						</div>
 						{i !== fixedData.length - 1 ? <hr /> : ''}
 					</div>
