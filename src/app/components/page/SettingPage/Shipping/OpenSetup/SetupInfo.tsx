@@ -47,8 +47,8 @@ export default function SetupInfo({ gap, rates }: { gap: boolean; rates: boolean
 						onClick: () => {},
 					}}
 				/> */}
-				<div className='cardDetails-sharedClass p-5 w-full flex flex-col gap-4'>
-					<h3 className='text-title font-semibold'>{t('Setup info')}</h3>
+				<div className='global-cards w-full  gap-4'>
+					<h3 className='title'>{t('Setup info')}</h3>
 					<div className='w-[50%]'>
 						<FormField
 							formStore={formStore}

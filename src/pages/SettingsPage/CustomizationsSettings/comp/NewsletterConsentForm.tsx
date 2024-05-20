@@ -29,7 +29,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 	// };
 
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages grid grid-cols-2'>
+		<div className='global-cards grid grid-cols-2'>
 			<div className='col-span-2'>
 				<h2 className='title  mb-2'>{t('Double opt-in')}</h2>
 				<p className='paragraph'>

@@ -219,10 +219,10 @@ object {
 		@apply xl:max-w-[145rem] xl:px-5  container mx-auto
 	}
 	.cardDetails-sharedClass {
-		@apply border rounded-[.6rem] bg-white border-[constrained];
+		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
 	.customer-border {
-		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-[constrained] flex flex-col;
+		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
 	}
 	.splide__pagination__page {
 		background: transparent !important;
