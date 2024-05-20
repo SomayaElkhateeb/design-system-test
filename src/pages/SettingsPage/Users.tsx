@@ -11,7 +11,7 @@ export default function Users() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<HeaderSettings title={t('users & Permissions')} />
-			<div className='flex-col-top-section-pages container mx-auto'>
+			<div className='flex-col-top-section-pages custom_container'>
 				{/*  owner section */}
 				<OwnerAndStaff
 					title={t('Owner')}

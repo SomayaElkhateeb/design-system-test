@@ -11,8 +11,8 @@ import { Outlet, useLocation, useParams, useNavigate } from 'react-router-dom';
  */
 const SettingsPage = () => {
 	return (
-		// <div className='flex-col-top-section-pages container mx-auto'>
-		<div className='custom-lg custom-xl custom-2xl custom-md'>
+		<div className='flex-col-top-section-pages custom_container'>
+		{/* <div className='custom-lg custom-xl custom-2xl custom-md'> */}
 			<TrialBanner
 				free={false}
 				daysLeft={5}

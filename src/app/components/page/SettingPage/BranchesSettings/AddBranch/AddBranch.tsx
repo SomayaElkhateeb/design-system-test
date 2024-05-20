@@ -68,7 +68,7 @@ export default function AddBranch() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 lg:grid-cols-3 container mx-auto'>
+				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BranchInfo
 							selectedOption={selectedOption}

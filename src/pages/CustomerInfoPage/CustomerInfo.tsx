@@ -35,7 +35,7 @@ export default function CustomerInfo() {
 			</HeaderSettings>
 
 			{/*  customer section */}
-			<div className='container mx-auto gap-[1.6rem] flex-col-top-section-pages'>
+			<div className='custom_container gap-[1.6rem] flex-col-top-section-pages'>
 				<div className='customer-border  gap-[0.8rem]'>
 					<p className='text-[0.8rem]  font-semibold px-[1.2rem]'>{t('Customer')}</p>
 					<hr />

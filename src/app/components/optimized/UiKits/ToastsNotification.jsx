@@ -9,7 +9,7 @@
 const ToastsNotification = ({ icon, children, backgroundColor, action }) => {
 	return (
 		<div
-			className='container mx-auto px-4 py-2 rounded-md flex items-center justify-between'
+			className='custom_container px-4 py-2 rounded-md flex items-center justify-between'
 			style={{ backgroundColor }}
 		>
 			<div className='flex items-center'>

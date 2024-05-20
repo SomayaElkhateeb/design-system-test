@@ -27,7 +27,7 @@ export default function ServiceDetails() {
 
 				<img loading='lazy' alt='img' src={getImageUrl('Services/poster.svg')} />
 			</div>
-			<div className='container mx-auto'>
+			<div className='custom_container'>
 				<div className='flex-col-top-section-pages '>
 					{/*  middle section */}
 					<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>

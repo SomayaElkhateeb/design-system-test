@@ -59,7 +59,7 @@ export default function TransferOwnership() {
 							onClick: () => {},
 						}}
 					/>
-					<div className='container mx-auto '>
+					<div className='custom_container '>
 						<NewOwner formStore={formStore} />
 					</div>
 				</form>

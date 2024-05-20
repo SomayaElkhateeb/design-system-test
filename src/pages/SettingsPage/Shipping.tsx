@@ -11,7 +11,7 @@ export default function Shipping() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<HeaderSettings title={t('shipping')} />
-			<div className='flex-col-top-section-pages container mx-auto'>
+			<div className='flex-col-top-section-pages custom_container'>
 				{/* providers */}
 				<CardShipping
 					title={t('Third party shipping providers')}

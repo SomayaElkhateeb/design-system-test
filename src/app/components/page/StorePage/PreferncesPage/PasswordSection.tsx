@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { preferncesInterface } from './PreferencesPage';
+
 import { UseFormReturn } from 'react-hook-form';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { Switch } from 'src/app/components/ui/switch';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
+import { preferncesInterface } from './HookForPreferncePageForm';
 
 export default function PasswordSection({
 	formStore,

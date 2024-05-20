@@ -53,7 +53,7 @@ const LanguageSettings = () => {
 						onClick: () => {},
 					}}
 				/>
-				<div className='flex-col-top-section-pages container mx-auto'>
+				<div className='flex-col-top-section-pages custom_container'>
 					<DefaultLanguageSection formStore={formStore} />
 					<AdminOrLanguageDefaults
 						language

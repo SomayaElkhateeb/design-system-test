@@ -19,7 +19,7 @@ export default function OpenSetup() {
 	return (
 		<div>
 			<HeaderSettings title={t('Install SMSA')} />
-			<div className='container mx-auto'>
+			<div className='custom_container'>
 				<VerticalTabs tabs={tabs} />
 			</div>
 		</div>
