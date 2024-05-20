@@ -174,7 +174,7 @@ const settingsCards = [
 	{ id: 12, path: '/', Icon: DomainIcon, title: 'Domains', description: 'Setup store domains' },
 	{
 		id: 13,
-		path: '/',
+		path: 'notification',
 		Icon: ReviewsIcon,
 		title: 'E-Mail Notifications',
 		description: 'manage notifications sent to users',

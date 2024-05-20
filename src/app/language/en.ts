@@ -572,6 +572,18 @@ export const english = {
 	Stores: 'Stores',
 	'Sign Out': 'Sign Out',
 	Notifications: 'Notifications',
+	"Customer order notifications":"Customer order notifications",
+	"These email notifications are sent to customers to confirm their orders and keep them informed about the order progress":"These email notifications are sent to customers to confirm their orders and keep them informed about the order progress",
+	
+	"Order confirmation":"Order confirmation",
+	"Sent to the customers after they place their order.":"Sent to the customers after they place their order.",
+	"Order status changed":"Order status changed",
+	"Sent on the order's status change to inform the customer about the progress in order.":"Sent on the order's status change to inform the customer about the progress in order.",
+	"Order shipped":"Order shipped",
+	"Sent to to notify the customer that the purchased items are on their way.":"Sent to to notify the customer that the purchased items are on their way.",
+	"Order is ready for pickup":"Order is ready for pickup",
+	"Sent to notify the customer that purchased items are ready for pickup.":"Sent to notify the customer that purchased items are ready for pickup.",
+	
 	New: 'New',
 	'learn more': 'learn more',
 	'download app': 'download app',

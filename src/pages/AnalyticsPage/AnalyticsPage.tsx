@@ -33,7 +33,7 @@ export default function AnalyticsPage() {
 					<HorizontalTabsLink tabs={tabs} path='/analytics' />
 				</div>
 				{/* AnalyticsTabs Page */}
-				<main className='custom-container'>
+				<main className='custom_container'>
 					<Outlet />
 				</main>
 			</div>
