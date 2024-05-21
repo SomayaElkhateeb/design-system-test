@@ -36,8 +36,9 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					{t('Ask for customers consent for receiving email or SMS newsletter')}
 				</p>
 			</div>
+
 			<div className='col-span-2'>
-				<h3 className='title text-base'>{t('Show an option to subscribe at')}</h3>
+				<h3 className='title text-base'>{t('Require customers to confirm their')}</h3>
 				<MultiChoiceChips
 					options={[t('Email subscription'), t('SMS subscription')]}
 					setSelected={(option: string) => {
@@ -46,6 +47,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					selected={formStore.watch('subscriptionConfirm')}
 				/>
 			</div>
+
 			<div className='col-span-2'>
 				<h3 className='title text-base'>{t('Show an option to subscribe at')}</h3>
 				<SingleChoiceChips

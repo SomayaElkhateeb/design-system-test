@@ -4,7 +4,7 @@ export interface style {
 	position?: string;
 	top?: string;
 	left?: string;
-	height: { md: string; xs: string };
+	height?: { md: string; xs: string };
 	overflowY?: string;
 	transform?: string;
 	width: { lg?: string; md: string; xs: string };

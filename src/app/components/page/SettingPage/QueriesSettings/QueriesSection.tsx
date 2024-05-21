@@ -24,6 +24,7 @@ export default function QueriesSectionForm({
 						{t('You can send an email for customers who purchased from you to review')}
 					</p>
 				</div>
+				
 				<FormField
 					formStore={formStore}
 					name='enable'
