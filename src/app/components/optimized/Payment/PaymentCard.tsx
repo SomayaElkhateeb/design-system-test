@@ -5,25 +5,25 @@ import { useNavigate } from 'react-router-dom';
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import { getImageUrl } from 'src/app/utils';
-import { Checkbox, FormControlLabel } from '@mui/material';
+
 import FormField from '../../ui/form/field';
 import PaymentInputs from './PaymentInputs';
 import PaymentAccordion from './PaymentAccordion';
 import { PaymentIcon } from 'src/app/utils/icons';
-import { Button } from '..';
-import useCustomHookPayment, { IPaymentCard } from './HookForPayment';
+import { Button, CheckBox } from '..';
+import useCustomHookPayment, { IPaymentCardInterface } from './HookForPayment';
 
 export default function PaymentCard() {
 	// hook
 	const [agreeToTerms, setAgreeToTerms] = useState(false);
-	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
+	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string |null>(null);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	// custom hook
 	const { handelDefaultValue, paymentSchema } = useCustomHookPayment();
 
-	const handleSubmit = (values: IPaymentCard) => {
+	const handleSubmit = (values: IPaymentCardInterface) => {
 		console.log(values);
 		navigate('successfullyPurchased');
 	};
@@ -62,10 +62,10 @@ export default function PaymentCard() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5'>
-				<h2 className='text-lg font-semibold text-title'>{t('Select payment method')}</h2>
+			<form onSubmit={onSubmit} className='global-cards'>
+				<h2 className='title'>{t('Select payment method')}</h2>
 
-				<div className='py-5'>
+				<div className='flex-col-top-section-pages'>
 					{paymentMethods.map((item) => (
 						<PaymentAccordion
 							key={item.id}
@@ -79,27 +79,28 @@ export default function PaymentCard() {
 					))}
 				</div>
 
-				<div className='flex flex-col gap-4'>
-					<FormControlLabel
-						control={<Checkbox checked={agreeToTerms} onChange={handleTermsCheckbox} />}
+				<div className='flex-col-top-section-pages gap-4'>
+					<CheckBox
+						checked={agreeToTerms}
+						handleOnChange={handleTermsCheckbox}
 						label={
 							<div className='flex items-center text-sm text-subtitle gap-1'>
 								<span className='text-title'>{t('I agree to')}</span>
 								<p className='text-primary cursor-pointer'>
 									{t('Terms and Conditions, Privacy Policy')}
-									<span className='text-title'>{t('and')} </span>
+									<span className='text-title px-[.2rem]'>{t('and')} </span>
 									{t('Selling policy')}
 								</p>
 							</div>
 						}
 					/>
 					{agreeToTerms && (
-						<div className='w-[50%]'>
+						<div className='md:w-[50%]'>
 							<FormField
 								formStore={formStore}
 								name='hours'
 								label={t('Number of hours')}
-								render={(field) => <Input {...field} placeholder={t('Hours')} />}
+								render={(field) => <Input type='number' {...field} placeholder={t('Hours')} />}
 							/>
 						</div>
 					)}

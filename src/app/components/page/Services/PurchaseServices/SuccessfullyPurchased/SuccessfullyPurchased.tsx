@@ -10,26 +10,26 @@ export default function SuccessfullyPurchased() {
 	const { t } = useTranslation();
 	return (
 		<>
-			<div className='flex justify-center items-center w-full h-screen '>
-				<div className='flex flex-col gap-5 w-[50%] px-5'>
+			<div className='flex-row-global justify-center  h-screen '>
+				<div className='flex-col-top-section-pages  gap-12 md:w-[50%] '>
 					{/* card */}
-					<div className='cardDetails-sharedClass p-5 w-[24rem] mx-auto relative'>
+					<div className=' global-cards gap-[.3rem] w-[24rem] mx-auto relative'>
 						<ClientBox
-							avatar={<Avatar variant='user' firstName='Samy' size='lg' />}
+							avatar={<Avatar variant='user' firstName='Samy' lastName='Ryan' size='lg' />}
 							title='Samy Ryan'
 							details='Identity designer'
 						/>
-						<p className='pt-2 text-title text-sm'>{t('Let’s generate sales')}</p>
+						<p className='title font-normal text-sm'>{t('Let’s generate sales')}</p>
 						<div className='size-[3.5rem] bg-secondary rounded-full absolute left-[42%] -bottom-[35%] shadow-lg flex justify-center items-center'>
 							<FaCheck color='white' size='20' />
 						</div>
 					</div>
 					{/* title */}
-					<div>
-						<h2 className='text-title text-[1.375rem] font-semibold text-center pt-8 pb-4'>
+					<div className='px-5'>
+						<h2 className='text-title text-[1.375rem] font-semibold text-center '>
 							{t('Service is successfully purchased')}
 						</h2>
-						<p className='text-subtitle text-sm  px-5 text-center'>
+						<p className='text-subtitle text-sm  text-center'>
 							Samy is supposed to reply to you in 2 business days at most, you can save the hassle
 							and send him any message or question
 						</p>
