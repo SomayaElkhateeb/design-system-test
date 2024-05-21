@@ -1,22 +1,33 @@
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { getImageUrl } from 'src/app/utils';
 import { NextIcon } from 'src/app/utils/icons';
+import { paymentProvidersData } from '../../data';
 import { Button } from 'src/app/components/optimized';
+import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
-import { paymentProvidersData } from '../../data';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
+const style = {
+	width: { md: '40rem', xs: '22rem' },
+};
 const feeFormat = (fee: string | number): string => {
 	return fee ? `SAR ${fee}` : 'free';
 };
 
-const remainingCount = (items: string[], limit: number): JSX.Element | null => {
+const remainingCount = (
+	items: string[],
+	limit: number,
+	handlePopups: () => void,
+): JSX.Element | null => {
 	return items.length > limit ? (
-		<span className='paragraph text-primary'>{items.length - limit}+ more</span>
+		<Button variant='link' onClick={handlePopups}>
+			{items.length - limit}+ more
+		</Button>
 	) : null;
 };
 interface Fee {
@@ -37,6 +48,10 @@ const transactionFormat = (fee: Fee) => {
 };
 
 const methodsTransactions = (methodsTransactions) => {
+	const [isOpen, setIsOpen] = useState(false);
+	const handlePopups = () => {
+		setIsOpen(!isOpen);
+	};
 	const limit = 4;
 	return (
 		<div className='grid place-items-start gap-1 max-w-72'>
@@ -48,23 +63,49 @@ const methodsTransactions = (methodsTransactions) => {
 					</span>
 				))}
 			</div>
-			{remainingCount(methodsTransactions, limit)}
+			{remainingCount(methodsTransactions, limit, handlePopups)}
+			<GlobalDialog openDialog={isOpen} handleClose={handlePopups} style={style}>
+				{methodsTransactions.map((item, index) => (
+					<span key={index} className='flex items-center rounded bg-constrained w-fit'>
+						<img src={getImageUrl(`companies/${item.method}.svg`)} alt='Transaction method' />
+						<span className='paragraph px-2'>{transactionFormat(item.fee)}</span>
+					</span>
+				))}
+			</GlobalDialog>
 		</div>
 	);
 };
 
 const banks = (banks: string[]) => {
+	const [isOpen, setIsOpen] = useState(false);
+	const handlePopups = () => {
+		setIsOpen(!isOpen);
+	};
 	const limit = 6;
-	const banksDisplay = banks.slice(0, limit).map((item, index) => (
-		<span className='rounded bg-constrained w-fit paragraph py-1 px-2' key={index}>
-			{item}
-		</span>
-	));
+	// const banksDisplay = banks.slice(0, limit).map((item, index) => (
+	// 	<span className='rounded bg-constrained w-fit paragraph py-1 px-2' key={index}>
+	// 		{item}
+	// 	</span>
+	// ));
 
 	return (
 		<div className='grid place-items-start gap-1 max-w-72'>
-			<div className='flex flex-wrap gap-2'>{banksDisplay}</div>
-			{remainingCount(banks, limit)}
+			<div className='flex flex-wrap gap-2'>
+				{/* {banksDisplay} */}
+				{banks.slice(0, limit).map((item) => (
+					<span key={item} className='rounded bg-constrained w-fit paragraph py-1 px-2'>
+						{item}
+					</span>
+				))}
+			</div>
+			{remainingCount(banks, limit, handlePopups)}
+			<GlobalDialog openDialog={isOpen} handleClose={handlePopups} style={style}>
+				{banks.map((item) => (
+					<span key={item} className='rounded bg-constrained w-fit paragraph py-1 px-2'>
+						{item}
+					</span>
+				))}
+			</GlobalDialog>
 		</div>
 	);
 };
