@@ -163,7 +163,7 @@ const settingsCards = [
 		title: 'Customizations',
 		description: 'Customize checkout, products and orders options',
 	},
-	{ id: 10, path: '/', Icon: TaxIcon, title: 'Taxes', description: 'Taxes rate & Classes' },
+	{ id: 10, path: 'taxes', Icon: TaxIcon, title: 'Taxes', description: 'Taxes rate & Classes' },
 	{
 		id: 11,
 		path: 'billing',

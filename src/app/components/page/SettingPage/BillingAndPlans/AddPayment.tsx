@@ -57,7 +57,6 @@ export default function AddPayment({
 	//   style of dialog
 	const style = {
 		height: { md: '27.5rem', xs: '17.5rem' },
-
 		width: { md: '40rem', xs: '25.8rem' },
 	};
 
