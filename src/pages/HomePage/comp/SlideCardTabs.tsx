@@ -107,3 +107,17 @@ const SlideCardTabs: React.FC<SlideCardTabsProps> = (props) => {
 };
 
 export default SlideCardTabs;
+
+//  <Tabs
+// 	body={
+// 		<>
+// 			<TabPanel value={'1'}>{props.slides}</TabPanel>
+// 			<TabPanel value={'2'}>{props.slides}</TabPanel>
+// 			<TabPanel value={'3'}>{props.slides}</TabPanel>
+// 		</>
+// 	}
+// >
+// 	<Tab label={t('Top selling')} value={'1'} />
+// 	<Tab label={t('Top search')} value={'2'} />
+// 	<Tab label={t('Top reviews')} value={'3'} />
+// </Tabs>;

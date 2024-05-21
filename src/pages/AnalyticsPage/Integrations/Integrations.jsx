@@ -69,7 +69,7 @@ export default function Integrations() {
 	};
 	return (
 		<section
-			className='grid gap-5 container'
+			className='grid gap-5 '
 			style={{
 				gridTemplateColumns: 'repeat(auto-fill, minmax(23rem, 1fr))',
 			}}

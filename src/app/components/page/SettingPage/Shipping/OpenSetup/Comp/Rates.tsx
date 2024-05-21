@@ -1,9 +1,8 @@
-import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { ISetupInfo } from '../SetupInfo';
+import TabPanel from '@mui/lab/TabPanel';
+import { Tab } from '@mui/material';
+import Tabs from 'src/app/components/page/Customers/Tabs';
 import { AiOutlineQuestion } from 'react-icons/ai';
-import Tab from 'src/app/components/optimized/Tabs/Tab';
 import General from '../Tabs/General';
 import SaudiArabia from '../Tabs/SaudiArabia';
 import GulfAndEgypt from '../Tabs/GulfAndEgypt';
@@ -11,26 +10,9 @@ import EuropeAndUS from '../Tabs/EuropeAndUS';
 
 export default function Rates({ addStyle }: { addStyle: boolean }) {
 	const { t } = useTranslation();
-	const [activeIndex, setActiveIndex] = useState(0);
-
-	const slidesTabs = [
-		{ title: t('General'), content: <General /> },
-		{
-			title: t('Saudi Arabia'),
-			content: <SaudiArabia />,
-		},
-		{
-			title: t('Gulf & Egypt'),
-			content: <GulfAndEgypt />,
-		},
-		{
-			title: t('Europe & US'),
-			content: <EuropeAndUS />,
-		},
-	];
 
 	return (
-		<div className={addStyle ? 'cardDetails-sharedClass p-5 flex flex-col gap-4' : ''}>
+		<div className={addStyle ? 'global-cards gap-4' : ''}>
 			{addStyle === false && <hr className='pb-5' />}
 			<h3 className='text-title font-semibold flex gap-2 items-center'>
 				{t('Rates(2)')}
@@ -39,20 +21,30 @@ export default function Rates({ addStyle }: { addStyle: boolean }) {
 				</span>
 			</h3>
 
-			{/* tabs */}
-			<div className='flex justify-between items-center border-b border-borders-lines w-fit'>
-				{slidesTabs.map((slide, index) => (
-					<Tab
-						key={index}
-						title={slide.title}
-						active={index === activeIndex}
-						onClick={() => setActiveIndex(index)}
-					/>
-				))}
-			</div>
-
-			{/* Render active tab content */}
-			<div className={addStyle ? '' : 'pt-5'}>{slidesTabs[activeIndex].content}</div>
+			<Tabs
+				body={
+					<>
+						<TabPanel value={'1'}>
+							<General />
+						</TabPanel>
+						<TabPanel value={'2'}>
+							<SaudiArabia />
+						</TabPanel>
+						<TabPanel value={'3'}>
+							<GulfAndEgypt />
+						</TabPanel>
+						<TabPanel value={'4'}>
+							<EuropeAndUS />
+						</TabPanel>
+					</>
+				}
+			>
+				{/*  children */}
+				<Tab label={t('General')} value={'1'} />
+				<Tab label={t('Saudi Arabia')} value={'2'} />
+				<Tab label={t('Gulf & Egypt')} value={'3'} />
+				<Tab label={t('Europe & US')} value={'4'} />
+			</Tabs>
 		</div>
 	);
 }

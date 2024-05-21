@@ -7,7 +7,7 @@ export interface style {
 	height?: { md: string; xs: string };
 	overflowY?: string;
 	transform?: string;
-	width: { md: string; xs: string };
+	width: { lg: string; md: string; xs: string };
 	bgcolor?: string;
 	p?: number;
 	borderRadius?: string;
@@ -18,7 +18,7 @@ export default function GlobalDialog({
 	style,
 	children,
 }: {
-	openDialog: boolean;
+	openDialog?: boolean | undefined;
 	handleClose: (e: boolean) => void;
 	children: React.ReactNode;
 	style?: style;

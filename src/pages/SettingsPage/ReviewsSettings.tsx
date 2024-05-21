@@ -57,7 +57,7 @@ export default function ReviewsSetting() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
+				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
 						<ReviewSectionForm formStore={formStore} />
 					</div>

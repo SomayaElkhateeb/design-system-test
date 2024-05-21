@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { z } from 'zod';
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import { getImageUrl } from 'src/app/utils';
@@ -12,42 +11,22 @@ import PaymentInputs from './PaymentInputs';
 import PaymentAccordion from './PaymentAccordion';
 import { PaymentIcon } from 'src/app/utils/icons';
 import { Button } from '..';
-
-export interface IPaymentCard {
-	number: number;
-	expiryDate: string;
-	cvv: number;
-	hours: number;
-}
+import useCustomHookPayment, { IPaymentCard } from './HookForPayment';
 
 export default function PaymentCard() {
+	// hook
 	const [agreeToTerms, setAgreeToTerms] = useState(false);
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	// zod validation
-	const paymentSchema = {
-		number: z.coerce.number().min(14, { message: t('Account number must be at least 14 numbers') }),
-		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
-			message: t('Date must be in the format MM/YYYY'),
-		}),
-		cvv: z.coerce.number().refine((val) => /^\d{3}$/.test(val.toString()), {
-			message: t('CVV must be 3 digits'),
-		}),
-		hours: z.coerce.number(),
-	};
+	// custom hook
+	const { handelDefaultValue, paymentSchema } = useCustomHookPayment();
+
 	const handleSubmit = (values: IPaymentCard) => {
 		console.log(values);
 		navigate('successfullyPurchased');
 	};
-
-	const handelDefaultValue = () => ({
-		number: 0,
-		expiryDate: '',
-		cvv: 0,
-		hours: 0,
-	});
 
 	const { formStore, onSubmit } = useForm({
 		schema: paymentSchema,

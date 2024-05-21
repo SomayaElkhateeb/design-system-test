@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import { useNavigate } from 'react-router-dom';
@@ -12,45 +10,17 @@ import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegme
 import { postDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import MinimumRequirements from 'src/app/components/page/discount/Comp/MinimumRequirements';
-
-export interface newDiscountInterface {
-	name: string;
-	value: number;
-	sales: number;
-	miniQuantity: number;
-	percentage: number;
-	percentageGets?: number;
-	date?: Date | null;
-}
-
-const discountSchema = {
-	name: z.string().min(3).max(60),
-	value: z.coerce.number().min(0),
-	sales: z.coerce.number().min(0),
-	miniQuantity: z.coerce.number().min(0),
-	percentage: z.coerce.number().min(0).max(100),
-	percentageGets: z.coerce.number().min(0).max(100).optional(),
-	date: z.date().nullable().optional(),
-};
+import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
 
 const NewDiscount = () => {
+	// hook
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { t } = useTranslation();
-	const [state, setState] = useState();
-	const data = [{ id: 1, title: t('On') }];
 
-	const handelDefaultValue = () => {
-		return {
-			name: '',
-			value: 0,
-			sales: 0,
-			miniQuantity: 0,
-			percentage: 0,
-			percentageGets: 0,
-			date: null,
-		};
-	};
+	// custom hook
+	const { handelDefaultValue, discountSchema } = useCustomHookNewDiscount();
+	const data = [{ id: 1, title: t('On') }];
 
 	const handleSaveChanges = async () => {
 		try {
@@ -94,7 +64,7 @@ const NewDiscount = () => {
 						<BasicInfo formStore={formStore} />
 						<CustomerSegment />
 						<MinimumRequirements formStore={formStore} />
-						<ActiveDates setState={setState} />
+						<ActiveDates formStore={formStore} />
 					</div>
 					<div>
 						<QuickActions data={data} />

@@ -1,5 +1,3 @@
-
-
 import { useTranslation } from 'react-i18next';
 import { HeaderSettings } from 'src/app/components/optimized';
 
@@ -9,7 +7,9 @@ import { Form } from 'src/app/components/ui/form';
 
 import AdminOrLanguageDefaults from 'src/app/components/page/SettingPage/GeneralSettings/AdminOrLanguageDefaults';
 import DefaultLanguageSection from 'src/app/components/page/SettingPage/LanguageSettings/DefaultLanguage';
-import useCustomHookLanguageSettings, { languageSettingsInterface } from 'src/app/components/page/SettingPage/LanguageSettings/HookForLanguageSettings';
+import useCustomHookLanguageSettings, {
+	languageSettingsInterface,
+} from 'src/app/components/page/SettingPage/LanguageSettings/HookForLanguageSettings';
 
 const LanguageSettings = () => {
 	//  hooks
@@ -53,7 +53,7 @@ const LanguageSettings = () => {
 						onClick: () => {},
 					}}
 				/>
-				<div className='flex-col-top-section-pages container mx-auto'>
+				<div className='flex-col-top-section-pages custom_container'>
 					<DefaultLanguageSection formStore={formStore} />
 					<AdminOrLanguageDefaults
 						language

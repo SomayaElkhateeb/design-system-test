@@ -82,7 +82,7 @@ export default function AllProducts() {
 	];
 
 	return (
-		<div className=' container mx-auto '>
+		<div className='custom_container'>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSection verticalCard={verticalCard} setVerticalCard={setVerticalCard} />

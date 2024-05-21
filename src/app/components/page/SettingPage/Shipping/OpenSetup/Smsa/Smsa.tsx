@@ -9,7 +9,7 @@ import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { contact, pricing, smsa } from 'src/pages/SettingsPage/data';
 import { useNavigate } from 'react-router-dom';
-import ContactCard from '../../Comp/ContactCard';
+import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 
 export default function Smsa() {
 	const { t } = useTranslation();
@@ -74,7 +74,7 @@ export default function Smsa() {
 					}}
 				/>
 			)}
-			<div className='grid gap-5 lg:grid-cols-3 container mx-auto '>
+			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 				<div className='flex-col-top-section-pages lg:col-span-2'>
 					<section className='cardDetails-sharedClass p-5'>
 						<div className='flex gap-3 pb-2'>
@@ -120,7 +120,7 @@ export default function Smsa() {
 					</section>
 				</div>
 
-				<div className='col-span-1'>
+				<div className='col-span-1 flex flex-col gap-5'>
 					<ContactCard title='Pricing' data={pricing} contacts={false} id={0} />
 					<ContactCard title='Contact' data={contact} contacts={true} id={0} />
 				</div>

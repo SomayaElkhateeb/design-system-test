@@ -179,28 +179,51 @@ export const arabic = {
 	'Order Status': 'حاله الطلب',
 	'Add Activity': 'اضافه نشاط',
 	'Add New Group': 'اضافه مجموعه جديده',
-	"Choose Customers": "اختار عملاء",
-
+	'Choose Customers': 'اختار عملاء',
 	Addresses: 'العناوين',
-	"Use a map": "استخدم الخريطه",
-	"Add manually": "اضف يدويا",
-	"Meta keywords": "مفاتيح السيرش",
-	"Send as a gift": "ارسال كهديه",
-	"Gift receiver name": "اسم مستقبل الهديه",
-	"Third party payment providers": "مقدمو خدمات الدفع من الطرف الثالث",
-	"Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.": "مقدمو الخدمات الذين يمكّنونك من قبول طرق الدفع بسعر يحدده الطرف الثالث. سيتم تطبيق رسوم إضافية على الطلبات الجديدة بمجرد تحديد الخطة.",
-	"Compare over 8 different payment gateway providers and pick the one that suits your needs.": "قارن بين أكثر من 8 موفري بوابات دفع مختلفين واختر المزود الذي يناسب احتياجاتك.",
-	"Setup providers": "موفري الإعداد",
-	"Blog image":"صوره المقال",
-	"Add blog":"اضف مقال",
-	"Type and add":"النوع والاضافه",
-	"Accept payments using our plugin": "قبول المدفوعات باستخدام البرنامج المساعد لدينا",
-	"Accept payments on your store using the": "قبول المدفوعات على متجرك باستخدام",
-	"plugin, it provide you with International and local payment methods": "البرنامج الإضافي، فهو يوفر لك طرق الدفع الدولية والمحلية",
-	"Supported methods with fees": "الطرق المدعومة مع الرسوم",
+	'Use a map': 'استخدم الخريطه',
+	'Add manually': 'اضف يدويا',
+	'Meta keywords': 'مفاتيح السيرش',
+	'Send as a gift': 'ارسال كهديه',
+	'Gift receiver name': 'اسم مستقبل الهديه',
+	'Third party payment providers': 'مقدمو خدمات الدفع من الطرف الثالث',
+	'Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.':
+		'مقدمو الخدمات الذين يمكّنونك من قبول طرق الدفع بسعر يحدده الطرف الثالث. سيتم تطبيق رسوم إضافية على الطلبات الجديدة بمجرد تحديد الخطة.',
+	'Compare over 8 different payment gateway providers and pick the one that suits your needs.':
+		'قارن بين أكثر من 8 موفري بوابات دفع مختلفين واختر المزود الذي يناسب احتياجاتك.',
+	'Setup providers': 'موفري الإعداد',
+	'Blog image': 'صوره المقال',
+	'Add blog': 'اضف مقال',
+	'Type and add': 'النوع والاضافه',
+	'Accept payments using our plugin': 'قبول المدفوعات باستخدام البرنامج المساعد لدينا',
+	'Accept payments on your store using the': 'قبول المدفوعات على متجرك باستخدام',
+	'plugin, it provide you with International and local payment methods':
+		'البرنامج الإضافي، فهو يوفر لك طرق الدفع الدولية والمحلية',
+	'Supported methods with fees': 'الطرق المدعومة مع الرسوم',
 
-	"Supported banks": "البنوك المدعومة",
-	"Setup Dookan pay": "إعداد Dookan الدفع",
+	'Return policy': 'سياسة العائدات',
+	'Privacy policy': 'سياسة الخصوصية',
+	'Terms of service': 'شروط الخدمة',
+	'Shipping policy': 'سياسة الشحن',
+	'Customer order notifications': 'إشعارات طلبات العملاء',
+	'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress':
+		'يتم إرسال إشعارات البريد الإلكتروني هذه إلى العملاء لتأكيد طلباتهم وإبقائهم على اطلاع بتقدم الطلب',
+
+	'Order confirmation': 'تأكيد الطلب',
+	'Sent to the customers after they place their order.': 'يتم إرسالها إلى العملاء بعد تقديم طلبهم.',
+	'Order status changed': 'تغيرت حالة الطلب',
+	"Sent on the order's status change to inform the customer about the progress in order.":
+		'يتم إرساله عند تغيير حالة الطلب لإعلام العميل بتقدم الطلب.',
+	'Order shipped': 'Order shipped',
+	'Sent to to notify the customer that the purchased items are on their way.':
+		'يتم الإرسال إلى لإعلام العميل بأن العناصر المشتراة في طريقها.',
+	'Order is ready for pickup': 'الطلب جاهز للاستلام',
+	'Sent to notify the customer that purchased items are ready for pickup.':
+		'يتم إرساله لإعلام العميل بأن العناصر التي تم شراؤها جاهزة للاستلام.',
+	'Email subject': 'موضوع الايميل',
+
+	'Supported banks': 'البنوك المدعومة',
+	'Setup Dookan pay': 'إعداد Dookan الدفع',
 	'Last month': 'الشهر الاخير',
 	'Last week': 'الاسبوع الاخير ',
 	Campaign: 'الحمله',
@@ -572,25 +595,12 @@ export const arabic = {
 	'Add New Item': 'اضافه عنصر جديد',
 	'Assign as main location': 'تعيين كموقع رئيسي',
 	'Available for pickup': 'متاح للاستلام',
-	'Type and add': 'النوع والاضافه',
-
 	'Languages & defaults': 'اللغات && الافتراضي',
 	'Store defaults (shown to cutomers)': 'افتراضيات المتجر (بامكان العميل ان يراها)',
-
-
-	'Commercial branch': 'الفرع التجاري',
-	'Main menu': 'القائمه الرئيسيه',
-	'Add New Item': 'اضافه عنصر جديد',
-	'Languages & defaults': 'اللغات && الافتراضي',
-	'Store defaults (shown to cutomers)': 'افتراضيات المتجر (بامكان العميل ان يراها)',
-	'Assign as main location': 'تعيين كموقع رئيسي',
-
 	'Default country': 'البلد الرئيسي',
 	Languages: 'اللغات',
 	'Your store language defines what language your store communicates in with customers.':
 		'تحدد لغة متجرك اللغة التي يتواصل بها متجرك مع العملاء.',
-
-	'Available for pickup': 'متاح للاستلام',
 
 	'Store default': 'افتراضي المتجر',
 	Enabled: 'ممكّن',
@@ -631,9 +641,6 @@ export const arabic = {
 		'اجعل متجرك متاحًا فقط للعملاء الذين لديهم كلمة المرور',
 	'Password protection': 'حمايه الرقم السري',
 	'Net promoter score': 'صافي نقاط المروج',
-	'Add blog': 'اضافه مقال',
-	'Blog image': 'صوره المقال',
-	'Meta keywords': 'كلمات دلالية',
 	'Active 3 days ago': 'نشط منذ 3 أيام',
 	manage: 'يدير',
 	'add staff': 'إضافة موظفين',
@@ -825,5 +832,5 @@ export const arabic = {
 	'Let’s generate sales': 'دعونا نحقق مبيعات',
 	'Service is successfully purchased': 'تم شراء الخدمة بنجاح',
 	'send message': 'إرسال رسالة',
-
+	'show on map': 'عرض على الخريطة',
 } satisfies typeof english;

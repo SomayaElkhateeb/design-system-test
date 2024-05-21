@@ -69,9 +69,9 @@ const cards = [
 ];
 
 const pricing = [
-	{ id: nanoid(), name: 'Setup fees', price: 200 },
-	{ id: nanoid(), name: 'first 15 KG', price: 15 },
-	{ id: nanoid(), name: '1 KG after 15 KG', price: 20 },
+	{ id: nanoid(), name: 'Setup fees', value: 200 },
+	{ id: nanoid(), name: 'first 15 KG', value: 15 },
+	{ id: nanoid(), name: '1 KG after 15 KG', value: 20 },
 ];
 
 const contact = [
@@ -174,7 +174,7 @@ const settingsCards = [
 	{ id: 12, path: '/', Icon: DomainIcon, title: 'Domains', description: 'Setup store domains' },
 	{
 		id: 13,
-		path: '/',
+		path: 'notification',
 		Icon: ReviewsIcon,
 		title: 'E-Mail Notifications',
 		description: 'manage notifications sent to users',

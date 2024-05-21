@@ -3,7 +3,7 @@ import { ClockIcon } from 'src/app/utils/icons';
 export default function Wallet() {
 	const { t } = useTranslation();
 	return (
-		<div className='cardDetails-sharedClass p-5 flex flex-col gap-3'>
+		<div className='global-cards gap-3'>
 			<h3 className='title text-lg'>{t('Wallet')}</h3>
 			<h2 className='title font-normal text-[2.25rem]'>{t('SAR')} 200</h2>
 			<div className='flex-row-global gap-2'>
