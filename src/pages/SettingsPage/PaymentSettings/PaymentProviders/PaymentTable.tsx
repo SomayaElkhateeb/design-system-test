@@ -24,9 +24,9 @@ const remainingCount = (
 	limit: number,
 	handlePopups: () => void,
 ): JSX.Element | null => {
-	return items.length > limit ? (
+	return items?.length > limit ? (
 		<Button variant='link' onClick={handlePopups}>
-			{items.length - limit}+ more
+			{items?.length - limit}+ more
 		</Button>
 	) : null;
 };
@@ -56,7 +56,7 @@ const methodsTransactions = (paymentMethodsTransactions) => {
 	return (
 		<div className='grid place-items-start gap-1 max-w-72'>
 			<div className='flex flex-wrap gap-2'>
-				{paymentMethodsTransactions.slice(0, limit).map((item, index) => (
+				{paymentMethodsTransactions?.slice(0, limit).map((item, index) => (
 					<span key={index} className='flex items-center rounded bg-constrained w-fit'>
 						<img src={getImageUrl(`companies/${item.method}.svg`)} alt='Transaction method' />
 						<span className='paragraph px-2'>{transactionFormat(item.fee)}</span>
@@ -65,7 +65,7 @@ const methodsTransactions = (paymentMethodsTransactions) => {
 			</div>
 			{remainingCount(paymentMethodsTransactions, limit, handlePopups)}
 			<GlobalDialog openDialog={isOpen} handleClose={handlePopups} style={style}>
-				{paymentMethodsTransactions.map((item, index) => (
+				{paymentMethodsTransactions?.map((item, index) => (
 					<span key={index} className='flex items-center rounded bg-constrained w-fit'>
 						<img src={getImageUrl(`companies/${item.method}.svg`)} alt='Transaction method' />
 						<span className='paragraph px-2'>{transactionFormat(item.fee)}</span>
