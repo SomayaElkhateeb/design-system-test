@@ -5,7 +5,7 @@ import { CheckBox } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 
 export default function TaxOptionsForm({ formStore }: TaxesProps) {
-	const { t } = useTranslation();it 
+	const { t } = useTranslation(); 
 	return (
 		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
 			<h2 className='title'>{t('Tax applies to')}</h2>
