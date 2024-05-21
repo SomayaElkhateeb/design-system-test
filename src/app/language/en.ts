@@ -858,4 +858,10 @@ export const english = {
 	'Service is successfully purchased': 'Service is successfully purchased',
 	'send message': 'send message',
 	'show on map': 'show on map',
+	'Provider':	'Provider',
+	'Monthly fees':'Monthly fees',
+	'Setup fees':'Setup fees',
+	'Credit transactions':'Credit transactions',
+	'Methods transactions':'Methods transactions',
+	'Banks':'Banks',
 };
