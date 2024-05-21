@@ -9,7 +9,7 @@ import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { contact, pricing, smsa } from 'src/pages/SettingsPage/data';
 import { useNavigate } from 'react-router-dom';
-import ContactCard from '../Comp/ContactCard';
+import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 
 export default function Smsa() {
 	const { t } = useTranslation();
@@ -120,7 +120,7 @@ export default function Smsa() {
 					</section>
 				</div>
 
-				<div className='col-span-1'>
+				<div className='col-span-1 flex flex-col gap-5'>
 					<ContactCard title='Pricing' data={pricing} contacts={false} id={0} />
 					<ContactCard title='Contact' data={contact} contacts={true} id={0} />
 				</div>

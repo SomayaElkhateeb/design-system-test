@@ -28,7 +28,7 @@ export default function DeliverYourself() {
 
 			<div className='grid gap-5 lg:grid-cols-3 container mx-auto py-5'>
 				<div className='flex-col-top-section-pages lg:col-span-2'>
-					<SetupInfo gap={true} rates={true} />
+					<SetupInfo gap={true} rates={false} ratesDeliver={true} />
 				</div>
 				<div className='col-span-1'>
 					<QuickActions data={data} />

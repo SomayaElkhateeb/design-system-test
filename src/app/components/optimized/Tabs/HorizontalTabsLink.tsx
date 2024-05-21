@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 
 interface TabsLinkProps {
 	tabs: { name: String; path: string }[];
-	path: string;
+	path?: string;
 }
 
 export default function HorizontalTabsLink({ tabs, path }: TabsLinkProps) {
