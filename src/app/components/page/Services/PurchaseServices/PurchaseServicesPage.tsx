@@ -4,16 +4,17 @@ import PaymentCard from 'src/app/components/optimized/Payment/PaymentCard';
 import Summary from './Summary';
 
 export default function PurchaseServicesPage() {
+	//  hooks
 	const { t } = useTranslation();
 	return (
 		<>
 			<HeaderSettings title={t('Purchase service')} />
 			<div className='custom_container py-5'>
-				<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>
+				<div className='grid lg:grid-cols-3  items-start gap-4'>
 					<div className='lg:col-span-2'>
 						<PaymentCard />
 					</div>
-					<div className='lg:col-span-1'>
+					<div className='col-span-1'>
 						<Summary />
 					</div>
 				</div>
