@@ -5,7 +5,7 @@ import SocialAppsWrapper from './_comp/SocialAppsWrapper';
 
 const Apps = () => {
 	return (
-		<div className='flex-col-top-section-pages gap-8 container mx-auto'>
+		<div className='flex-col-top-section-pages gap-8 custom_container'>
 			<MostPopularList />
 
 			<SocialAppsWrapper socialApps={socialApps} title='Recommended' linkTo='/' />

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 export default function Bills() {
 	const { t } = useTranslation();
 	return (
-		<section className='cardDetails-sharedClass p-5 flex flex-col gap-3'>
+		<section className='global-cards gap-3'>
 			<div>
 				<h2 className='text-title font-semibold text-lg'>{t('Bills')}</h2>
 				<p className='text-subtitle text-sm pt-1'>{t('Next bill will be issued in')}: 7 Oct 2022</p>

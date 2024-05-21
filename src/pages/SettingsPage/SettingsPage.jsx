@@ -1,7 +1,6 @@
 import { TrialBanner } from 'src/app/components/optimized';
 import { settingsCards } from './data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
-import { Outlet, useLocation, useParams, useNavigate } from 'react-router-dom';
 
 /**
  * SettingsPage component represents the settings page of the application.
@@ -11,8 +10,7 @@ import { Outlet, useLocation, useParams, useNavigate } from 'react-router-dom';
  */
 const SettingsPage = () => {
 	return (
-		// <div className='flex-col-top-section-pages container mx-auto'>
-		<div className='custom-lg custom-xl custom-2xl custom-md'>
+		<div className='flex-col-top-section-pages custom_container'>
 			<TrialBanner
 				free={false}
 				daysLeft={5}

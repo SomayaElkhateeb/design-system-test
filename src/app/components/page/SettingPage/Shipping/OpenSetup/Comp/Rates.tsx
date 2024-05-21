@@ -12,7 +12,7 @@ export default function Rates({ addStyle }: { addStyle: boolean }) {
 	const { t } = useTranslation();
 
 	return (
-		<div className={addStyle ? 'cardDetails-sharedClass p-5 flex flex-col gap-4' : ''}>
+		<div className={addStyle ? 'global-cards gap-4' : ''}>
 			{addStyle === false && <hr className='pb-5' />}
 			<h3 className='text-title font-semibold flex gap-2 items-center'>
 				{t('Rates(2)')}

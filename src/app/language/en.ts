@@ -415,6 +415,8 @@ export const english = {
 	Sessions: 'Sessions',
 	Activity: 'Activity',
 	Export: 'Export',
+	'Ask for customers consent for receiving email or SMS newsletter':
+		'Ask for customers consent for receiving email or SMS newsletter',
 	'There is no discount available!': 'There is no discount available!',
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',
@@ -423,7 +425,13 @@ export const english = {
 	'select groups': 'select groups',
 	'Basic info': 'Basic info',
 	'Discount Type': 'Discount Type',
+
 	'Type and add': 'Type and add',
+	'Return policy': 'Return policy',
+	'Privacy policy': 'Privacy policy',
+	'Terms of service': 'Terms of service',
+	'Shipping policy': 'Shipping policy',
+
 	'Apply to': 'Apply to',
 	'select products x': 'select products x',
 	'select products y': 'select products y',
@@ -571,6 +579,24 @@ export const english = {
 	Stores: 'Stores',
 	'Sign Out': 'Sign Out',
 	Notifications: 'Notifications',
+	'Customer order notifications': 'Customer order notifications',
+	'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress':
+		'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress',
+
+	'Order confirmation': 'Order confirmation',
+	'Sent to the customers after they place their order.':
+		'Sent to the customers after they place their order.',
+	'Order status changed': 'Order status changed',
+	"Sent on the order's status change to inform the customer about the progress in order.":
+		"Sent on the order's status change to inform the customer about the progress in order.",
+	'Order shipped': 'Order shipped',
+	'Sent to to notify the customer that the purchased items are on their way.':
+		'Sent to to notify the customer that the purchased items are on their way.',
+	'Order is ready for pickup': 'Order is ready for pickup',
+	'Sent to notify the customer that purchased items are ready for pickup.':
+		'Sent to notify the customer that purchased items are ready for pickup.',
+	'Email subject': 'Email subject',
+
 	New: 'New',
 	'learn more': 'learn more',
 	'download app': 'download app',

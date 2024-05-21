@@ -5,21 +5,24 @@ import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate } from 'react-router-dom';
-import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
-import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
-import { useForm } from 'src/app/utils/hooks/form';
-import { useState } from 'react';
-import useCustomHookAddBlogOrPage, { addPageInterface } from '../HookForAddBlogOrPageForm';
 
-export default function AddPage({ addblog }: { addblog?: boolean }) {
+import { useForm } from 'src/app/utils/hooks/form';
+
+import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
+import { Textarea } from 'src/app/components/ui/textarea';
+export interface addReturnPloicyInterface {
+	descriptionEn: string;
+	descriptionAr: string;
+}
+
+export default function AddReturnPloicy() {
 	// /hooks
-	const [open, setOpen] = useState(false);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	// ////////////////////////////
 	// ////////////////////////////
-	const handleSubmit = (values: addPageInterface) => {
+	const handleSubmit = (values: addReturnPloicyInterface) => {
 		console.log(values);
 		// handelclose();
 	};
@@ -27,13 +30,22 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 	// /////////////////////
 	// ////////////////////
 
-	// custom hook
+	const handelDefaultValue = () => {
+		return {
+			descriptionEn: '',
+			descriptionAr: '',
+		};
+	};
+	// //////////////////////////////////////////
+	const ReturnPloicySchema = {
+		descriptionEn: z.string().min(10).max(200),
+		descriptionAr: z.string().min(10).max(200),
+	};
 
-	const { pageSchema, handelDefaultValue } = useCustomHookAddBlogOrPage(addblog);
 	// ////////////////////////////
 	// ////////////////////////////
 	const { formStore, onSubmit } = useForm({
-		schema: pageSchema,
+		schema: ReturnPloicySchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -50,7 +62,7 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 				<HeaderSettings
 					variant='settingWithIcons'
 					submit
-					title={!addblog ? t('Add page') : t('Add blog')}
+					title={t('Return policy')}
 					groupIcons={<GroupIcons variant='view' />}
 					btn1={{
 						text: t('Discard'),
@@ -63,15 +75,21 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 						onClick: () => {},
 					}}
 				/>
-				<div className='custom_container grid lg:grid-cols-3 gap-5'>
+				<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
-						<MainInfoPage addblog={addblog} formStore={formStore} />
-						<AccordionCard
-							open={open}
-							setOpen={setOpen}
-							content={<ContentSeoPage formStore={formStore} open={open} />}
-							title={t('SEO (Search engine listing preview)')}
-						/>
+						<div className='global-cards'>
+							<h3 className='title'>{t('Main info')}</h3>
+
+							<TabbedFormField
+								formStore={formStore}
+								keys={[
+									{ name: 'descriptionEn', label: 'En' },
+									{ name: 'descriptionAr', label: 'عربي' },
+								]}
+								label={t('Description')}
+								renderer={(field) => <Textarea {...field} />}
+							/>
+						</div>
 					</div>
 					<div className='lg:col-span-1'>
 						<QuickActions data={data} />

@@ -10,6 +10,7 @@ import LanguageSettings from './LanguageSettings';
 import ReviewsSetting from './ReviewsSettings';
 import QueriesSetting from './QueriesSettings';
 import CustomizationsSettings from './CustomizationsSettings/CustomizationsSettings';
+import EmailNotification from './EmailNotification';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
@@ -32,6 +33,8 @@ const SettingsConfig = () => {
 			return <QueriesSetting />;
 		case 'customizations':
 			return <CustomizationsSettings />;
+			case 'notification':
+			return <EmailNotification />;
 	}
 };
 

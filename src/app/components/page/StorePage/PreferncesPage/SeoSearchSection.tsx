@@ -2,8 +2,9 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { preferncesInterface } from './PreferencesPage';
+
 import { Input } from 'src/app/components/ui/input';
+import { preferncesInterface } from './HookForPreferncePageForm';
 
 export default function SeoSearchSection({
 	formStore,

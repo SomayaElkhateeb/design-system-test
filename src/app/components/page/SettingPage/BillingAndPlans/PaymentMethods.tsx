@@ -14,7 +14,7 @@ export default function PaymentMethods() {
 		setShowPayment(false);
 	};
 	return (
-		<section className='cardDetails-sharedClass p-5 flex flex-col gap-4'>
+		<section className='global-cards gap-4'>
 			<div>
 				<h2 className='text-title font-semibold text-lg'>{t('Payment methods')}</h2>
 				<p className='text-subtitle text-sm pt-1'>{t('For bills and purchases')}</p>

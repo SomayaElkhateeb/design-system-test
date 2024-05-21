@@ -6,7 +6,7 @@ export default function ThemesDetails() {
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='container mx-auto'>
+		<div className='custom_container'>
 			<div className='flex-col-top-section-pages'>
 				<HeaderSettings
 					variant='settingOneBtn'
