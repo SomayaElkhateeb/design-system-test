@@ -69,9 +69,9 @@ const cards = [
 ];
 
 const pricing = [
-	{ id: nanoid(), name: 'Setup fees', price: 200 },
-	{ id: nanoid(), name: 'first 15 KG', price: 15 },
-	{ id: nanoid(), name: '1 KG after 15 KG', price: 20 },
+	{ id: nanoid(), name: 'Setup fees', value: 200 },
+	{ id: nanoid(), name: 'first 15 KG', value: 15 },
+	{ id: nanoid(), name: '1 KG after 15 KG', value: 20 },
 ];
 
 const contact = [

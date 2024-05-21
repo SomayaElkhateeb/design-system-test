@@ -10,8 +10,17 @@ import Rates from './Comp/Rates';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
 import useCustomHookSetupInfo, { ISetupInfo } from './HookForSetupInfo';
+import RatesDeliver from './Comp/RatesDeliver';
 
-export default function SetupInfo({ gap, rates }: { gap: boolean; rates: boolean }) {
+export default function SetupInfo({
+	gap,
+	rates,
+	ratesDeliver,
+}: {
+	gap: boolean;
+	rates: boolean;
+	ratesDeliver?: boolean;
+}) {
 	// hook
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -32,7 +41,7 @@ export default function SetupInfo({ gap, rates }: { gap: boolean; rates: boolean
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex flex-col gap-5'>
+			<form onSubmit={onSubmit} className='flex flex-col gap-3'>
 				{/* <HeaderSettings
 					variant='settingTwoBtns'
 					title={t('SMSA')}
@@ -78,6 +87,7 @@ export default function SetupInfo({ gap, rates }: { gap: boolean; rates: boolean
 					{rates && gap === false ? <Rates addStyle={false} /> : ''}
 				</div>
 				<div>{rates && gap ? <Rates addStyle={true} /> : ''}</div>
+				<div>{ratesDeliver ? <RatesDeliver /> : ''}</div>
 			</form>
 		</Form>
 	);
