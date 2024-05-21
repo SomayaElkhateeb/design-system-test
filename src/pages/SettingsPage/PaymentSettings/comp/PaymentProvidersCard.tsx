@@ -19,7 +19,7 @@ export default function PaymentProvidersCard() {
 		<div className='flex-col-top-section-pages items-start p-5 gap-5 cardDetails-sharedClass'>
 			<div className='grid  gap-5'>
 				<h2 className='title'>{t('Third party payment providers')}</h2>
-				<p className='paragraph max-w-[34rem]'>
+				<p className='paragraph'>
 					{t(
 						'Providers that enable you to accept payment methods at a rate set by the third-party. An additional fee will apply to new orders once you select a plan.',
 					)}

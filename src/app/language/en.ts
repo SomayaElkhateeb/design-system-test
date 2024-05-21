@@ -584,6 +584,21 @@ export const english = {
 		'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress',
 
 	'Order confirmation': 'Order confirmation',
+
+
+	"Cash on pickup":"Cash on pickup",
+	"Other methods":"Other methods",
+	"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.":"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.",
+	"Cash on delivery":"Cash on delivery",
+	"Bank Transfer":"Bank Transfer",
+
+	"Details & instructions (optional)":"Details & instructions (optional)",
+	"Applies when":"Applies when",
+"Minimum Price":"Minimum Price",
+"Maximum Price":"Maximum Price",
+
+
+
 	'Sent to the customers after they place their order.':
 		'Sent to the customers after they place their order.',
 	'Order status changed': 'Order status changed',

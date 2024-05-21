@@ -196,7 +196,7 @@ const paymentProvidersData = [
 				percentageFee: 2.7,
 			},
 		},
-		methodsTransactions: [
+		paymentMethodsTransactions: [
 			{
 				method: 'mada',
 				fee: {
