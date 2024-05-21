@@ -209,6 +209,18 @@ export const arabic = {
 	'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress':
 		'يتم إرسال إشعارات البريد الإلكتروني هذه إلى العملاء لتأكيد طلباتهم وإبقائهم على اطلاع بتقدم الطلب',
 
+
+		"Cash on pickup":"الدفع عند الإستلام",
+		"Other methods":"طرق اخري",
+		"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.":"المدفوعات التي تتم معالجتها خارج متجرك عبر الإنترنت. عندما يقوم أحد العملاء بالدفع اليدوي، يتعين عليك الموافقة على طلبه قبل إتمامه.",
+		"Cash on delivery":"الدفع عند الاستلام",
+		"Bank Transfer":"التحويل المصرفي",
+
+		"Details & instructions (optional)":"التفاصيل والتعليمات (اختياري)",
+		"Applies when":"ينطبق عندما",
+	"Minimum Price":"سعر الحد الأدنى",
+	"Maximum Price":"الحد الأقصى للسعر",
+
 	'Order confirmation': 'تأكيد الطلب',
 	'Sent to the customers after they place their order.': 'يتم إرسالها إلى العملاء بعد تقديم طلبهم.',
 	'Order status changed': 'تغيرت حالة الطلب',
