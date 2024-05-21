@@ -47,7 +47,7 @@ const transactionFormat = (fee: Fee) => {
 	}
 };
 
-const methodsTransactions = (methodsTransactions) => {
+const methodsTransactions = (paymentMethodsTransactions) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const handlePopups = () => {
 		setIsOpen(!isOpen);
@@ -56,16 +56,16 @@ const methodsTransactions = (methodsTransactions) => {
 	return (
 		<div className='grid place-items-start gap-1 max-w-72'>
 			<div className='flex flex-wrap gap-2'>
-				{methodsTransactions.slice(0, limit).map((item, index) => (
+				{paymentMethodsTransactions.slice(0, limit).map((item, index) => (
 					<span key={index} className='flex items-center rounded bg-constrained w-fit'>
 						<img src={getImageUrl(`companies/${item.method}.svg`)} alt='Transaction method' />
 						<span className='paragraph px-2'>{transactionFormat(item.fee)}</span>
 					</span>
 				))}
 			</div>
-			{remainingCount(methodsTransactions, limit, handlePopups)}
+			{remainingCount(paymentMethodsTransactions, limit, handlePopups)}
 			<GlobalDialog openDialog={isOpen} handleClose={handlePopups} style={style}>
-				{methodsTransactions.map((item, index) => (
+				{paymentMethodsTransactions.map((item, index) => (
 					<span key={index} className='flex items-center rounded bg-constrained w-fit'>
 						<img src={getImageUrl(`companies/${item.method}.svg`)} alt='Transaction method' />
 						<span className='paragraph px-2'>{transactionFormat(item.fee)}</span>
@@ -82,12 +82,6 @@ const banks = (banks: string[]) => {
 		setIsOpen(!isOpen);
 	};
 	const limit = 6;
-	// const banksDisplay = banks.slice(0, limit).map((item, index) => (
-	// 	<span className='rounded bg-constrained w-fit paragraph py-1 px-2' key={index}>
-	// 		{item}
-	// 	</span>
-	// ));
-
 	return (
 		<div className='grid place-items-start gap-1 max-w-72'>
 			<div className='flex flex-wrap gap-2'>
@@ -178,7 +172,7 @@ export default function PaymentTable() {
 									</p>
 								</div>
 							</GlobalTableCell>,
-							<GlobalTableCell>{methodsTransactions(e.methodsTransactions)}</GlobalTableCell>,
+							<GlobalTableCell>{methodsTransactions(e.paymentMethodsTransactions)}</GlobalTableCell>,
 							<GlobalTableCell>{banks(e.banks)}</GlobalTableCell>,
 						],
 					};
