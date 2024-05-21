@@ -833,4 +833,12 @@ export const arabic = {
 	'Service is successfully purchased': 'تم شراء الخدمة بنجاح',
 	'send message': 'إرسال رسالة',
 	'show on map': 'عرض على الخريطة',
+	'Payment details (Online)': 'تفاصيل الدفع (عبر الإنترنت)',
+	'Bank transfer': 'التحويل المصرفي',
+	'Delivery method': 'طريقة التوصيل',
+	Shipping: 'شحن',
+	'Shipping method': 'طريقة الشحن',
+	DHL: 'دي إتش إل',
+	main: 'رئيسي',
+	District: 'يصرف',
 } satisfies typeof english;
