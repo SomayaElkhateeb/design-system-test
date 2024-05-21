@@ -833,4 +833,10 @@ export const arabic = {
 	'Service is successfully purchased': 'تم شراء الخدمة بنجاح',
 	'send message': 'إرسال رسالة',
 	'show on map': 'عرض على الخريطة',
+	Provider: 'مزود الخدمة',
+	'Monthly fees': 'الرسوم الشهرية',
+	'Setup fees': 'رسوم الإعداد',
+	'Credit transactions': 'المعاملات الائتمانية',
+	'Methods transactions': 'طرق المعاملات',
+	Banks: 'البنوك',
 } satisfies typeof english;

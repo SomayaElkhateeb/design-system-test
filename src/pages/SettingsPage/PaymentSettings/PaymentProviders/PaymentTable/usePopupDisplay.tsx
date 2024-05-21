@@ -1,0 +1,49 @@
+import { useState } from 'react';
+import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import { getImageUrl } from 'src/app/utils';
+import { DeleteExitIcon } from 'src/app/utils/icons';
+
+const dialogStyle = {
+	width: { md: '40rem', xs: '22rem' },
+};
+
+interface UsePopupDisplayProps {
+	items: string[];
+	limit: number;
+	title: string;
+	provider: string;
+	renderItem: (item: string, index: number) => JSX.Element;
+}
+
+const usePopupDisplay = ({ items, limit, title, provider, renderItem }: UsePopupDisplayProps) => {
+	const [isOpen, setIsOpen] = useState(false);
+	const handlePopups = () => {
+		setIsOpen(!isOpen);
+	};
+	const displayedItems = items.slice(0, limit);
+	const overflowCount = items.length > limit ? items.length - limit : 0;
+	return {
+		displayedItems,
+		overflowCount,
+		isOpen,
+		handlePopups,
+		renderPopup: (
+			<GlobalDialog openDialog={isOpen} handleClose={handlePopups} style={dialogStyle}>
+				<div className='grid gap-4'>
+					<div className='flex items-center justify-between'>
+						<h2 className='title'>{title}</h2>
+						<button onClick={handlePopups}>
+							<DeleteExitIcon className='fill-hint' />
+						</button>
+					</div>
+					<img src={getImageUrl(`paymentProviders/${provider}.svg`)} alt='' />
+					<div className='flex flex-wrap gap-2'>
+						{items.map((item, index) => renderItem(item, index))}
+					</div>
+				</div>
+			</GlobalDialog>
+		),
+	};
+};
+
+export default usePopupDisplay;
