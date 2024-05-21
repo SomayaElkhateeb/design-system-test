@@ -21,6 +21,7 @@ export default function Shipping() {
 						{images.map((e) => {
 							return <img src={e.ImageURL} key={e.id} />;
 						})}
+						
 					</div>
 					<p className='text-subtitle text-sm py-3 w-[50%] leading-6'>
 						{t(
