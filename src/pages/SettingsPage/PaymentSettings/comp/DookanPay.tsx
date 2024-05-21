@@ -14,6 +14,7 @@ export default function DookanPay() {
 
 	const gridClass = 'grid gap-2';
 	const globalFlex = 'flex flex-wrap gap-2';
+	const spanClassName = 'rounded bg-constrained w-fit';
 	return (
 		<div className='grid place-items-start gap-4 p-5 cardDetails-sharedClass '>
 			<img
@@ -22,7 +23,7 @@ export default function DookanPay() {
 				className='h-[2.6rem] w-[9.75rem]'
 			/>
 			<h2 className='title'>{t('Accept payments using our plugin')}</h2>
-			<p className='paragraph max-w-[34rem]'>
+			<p className='paragraph'>
 				{t('Accept payments on your store using the')} <strong>Dookan pay</strong>{' '}
 				{t('plugin, it provide you with International and local payment methods')}
 			</p>
@@ -31,19 +32,20 @@ export default function DookanPay() {
 				<div className={gridClass}>
 					<h3 className='subtitle'>{t('Supported methods with fees')}</h3>
 					<div className={globalFlex}>
-						{supportedMethods.map((item, index) => (
-							<span key={index} className='flex items-center rounded bg-constrained w-fit'>
+						{supportedMethods?.map((item, index) => (
+							<span key={index} className={`${spanClassName} flex items-center`}>
 								<img src={getImageUrl(`companies/${item.badge}.svg`)} alt='PaymentProvider' />
 								<span className='paragraph px-2'>{item.fees}</span>
 							</span>
 						))}
 					</div>
 				</div>
+				{/* //////////////////////////////// */}
 				<div className={gridClass}>
 					<h3 className='subtitle'>{t('Supported banks')}</h3>
 					<div className={globalFlex}>
 						{supportedBanks.map((item, index) => (
-							<span key={index} className='rounded bg-constrained w-fit paragraph py-1 px-2'>
+							<span key={index} className={`${spanClassName} paragraph py-1 px-2`}>
 								{item}
 							</span>
 						))}
@@ -55,3 +57,4 @@ export default function DookanPay() {
 		</div>
 	);
 }
+
