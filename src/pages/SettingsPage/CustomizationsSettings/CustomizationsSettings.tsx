@@ -15,7 +15,7 @@ export default function CustomizationsSettings() {
 	const { formStore, onSubmit } = useCustomization();
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className="flex-col-top-section-pages">
 				<HeaderSettings
 					submit
 					variant='settingTwoBtns'
@@ -30,7 +30,7 @@ export default function CustomizationsSettings() {
 						text: t('Save Changes'),
 					}}
 				/>
-				<div className='grid p-5 grid-cols-3'>
+				<div className='grid custom_container grid-cols-3'>
 					<div className='grid gap-5 col-span-3 lg:col-span-2'>
 						<CheckoutCustomizeForm formStore={formStore} />
 						<ProductCustomizeForm formStore={formStore} />

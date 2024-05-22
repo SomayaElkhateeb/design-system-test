@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { UseFormReturn, Path, PathValue } from 'react-hook-form';
+import { UseFormReturn, Path, PathValue, FieldValues } from 'react-hook-form';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 
-interface FormChoiceChipsProps<T> {
+interface FormChoiceChipsProps<T extends FieldValues> {
 	formStore: UseFormReturn<T>;
 	name: Path<T>;
 	label: string;
@@ -10,7 +10,7 @@ interface FormChoiceChipsProps<T> {
 	description?: string;
 }
 
-export default function FormChoiceChips<T>({
+export default function FormChoiceChips<T extends FieldValues>({
 	formStore,
 	name,
 	label,

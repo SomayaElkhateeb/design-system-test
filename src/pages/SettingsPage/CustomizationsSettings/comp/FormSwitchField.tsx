@@ -1,17 +1,17 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
+import { FieldValues, Path } from 'react-hook-form';
 import FormField from 'src/app/components/ui/form/field';
 import { Switch } from 'src/app/components/ui/switch';
 
-interface FormSwitchFieldProps<T> {
-  formStore: UseFormReturn<T>;
-  description?: string;
-  label: string;
-  name: keyof T;
+interface FormSwitchFieldProps<T extends FieldValues> {
+	formStore: UseFormReturn<T>;
+	description?: string;
+	label: string;
+	name: Path<T>;
 }
 
-export default function FormSwitchField<T>({
+export default function FormSwitchField<T extends FieldValues>({
 	formStore,
 	name,
 	label,

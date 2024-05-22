@@ -11,8 +11,8 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 
 	return (
 		<div className='global-cards grid grid-cols-2'>
-			<div className='col-span-2'>
-				<h2 className='title mb-2'>{t('Checkout')}</h2>
+			<div className='col-span-2 flex-col-top-section-pages gap-[.5rem]'>
+				<h2 className='title '>{t('Checkout')}</h2>
 				<p className='paragraph'>{t('Customize the way you want your customers to check out')}</p>
 			</div>
 			<FormSwitchField<customizationsInterface>
@@ -32,7 +32,7 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 					formStore={formStore}
 					name='minimumOrderSubtotal'
 					label={t('Minimum order subtotal')}
-					render={(field) => <Input {...field} />}
+					render={(field) => <Input type="number" {...field} />}
 				/>
 			</div>
 			<FormSwitchField<customizationsInterface>
@@ -52,11 +52,11 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 				label='Ask for a ZIP/postal code'
 			/>
 			<FormChoiceChips<customizationsInterface>
-        formStore={formStore}
-        name='checkOutWith'
-        label='Customer can check out with'
-        options={['Email & phone', 'Email only', 'Phone only']}
-      />
+				formStore={formStore}
+				name='checkOutWith'
+				label='Customer can check out with'
+				options={['Email & phone', 'Email only', 'Phone only']}
+			/>
 		</div>
 	);
 }
