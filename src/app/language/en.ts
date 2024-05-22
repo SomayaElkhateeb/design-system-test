@@ -858,10 +858,21 @@ export const english = {
 	'Service is successfully purchased': 'Service is successfully purchased',
 	'send message': 'send message',
 	'show on map': 'show on map',
+
+	'Payment details (Online)': 'Payment details (Online)',
+	'Bank transfer': 'Bank transfer',
+	'Delivery method': 'Delivery method',
+	Shipping: 'Shipping',
+	'Shipping method': 'Shipping method',
+	DHL: 'DHL',
+	main: 'main',
+	District: 'District',
+
 	'Provider':	'Provider',
 	'Monthly fees':'Monthly fees',
 	'Setup fees':'Setup fees',
 	'Credit transactions':'Credit transactions',
 	'Methods transactions':'Methods transactions',
 	'Banks':'Banks',
+
 };

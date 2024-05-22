@@ -1,3 +1,9 @@
 export default function OrderNo() {
-	return <div>OrderNo</div>;
+	return (
+		<div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	);
 }

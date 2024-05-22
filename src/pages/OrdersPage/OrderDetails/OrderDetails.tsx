@@ -1,15 +1,39 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { Button, HeaderSettings } from 'src/app/components/optimized';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
-import { CustomerNote, OrderHistory, OrderItems, OrderNo } from 'src/app/components/page';
+import {
+	AddressForm,
+	Checkout,
+	CheckoutForm,
+	CustomerForm,
+	CustomerNote,
+	OrderHistory,
+	OrderItems,
+	OrderNo,
+} from 'src/app/components/page';
 import { contact } from 'src/pages/SettingsPage/data';
 import { address, info } from './data';
+import { EditIcon, LocationIcon } from 'src/app/utils/icons';
+import { useState } from 'react';
 
 export default function OrderDetails() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const [state, setState] = useState({
+		showCustomer: false,
+		showAddress: false,
+		showCheckout: false,
+	});
 
+	const { showCustomer, showAddress, showCheckout } = state;
+
+	const handleCustomerForm = () => {
+		setState({ ...state, showCustomer: !showCustomer });
+	};
+	const handleAddressForm = () => {
+		setState({ ...state, showAddress: !showAddress });
+	};
 	return (
 		<div>
 			<HeaderSettings
@@ -27,31 +51,65 @@ export default function OrderDetails() {
 
 			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 p-5'>
 				<div className='col-span-2'>
-					{/* order No */}
 					<OrderNo />
-					{/* order items */}
 					<OrderItems />
-					{/* customer note */}
 					<CustomerNote />
-					{/* order history */}
 					<OrderHistory />
 				</div>
-				<div className='col-span-1'>
-					{/* customer */}
-					<ContactCard title='Customer' data={contact} contacts={true} id={0} isEdit={true} />
-					{/* address */}
+				<div className='col-span-1 flex flex-col gap-5'>
 					<ContactCard
+						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
+						form={showCustomer}
+						title='Customer'
+						data={contact}
+						contacts={true}
+						children={
+							<Button
+								LeftIcon={EditIcon}
+								variant='tertiary'
+								onClick={() => setState({ ...state, showCustomer: !showCustomer })}
+							>
+								{t('edit')}
+							</Button>
+						}
+					/>
+
+					<ContactCard
+						contain={showAddress && <AddressForm handleAddressForm={handleAddressForm} />}
+						form={showAddress}
 						title='Address'
 						data={address}
 						contacts={false}
-						id={0}
-						isEdit={true}
-						isLocation
+						isLocation={
+							<Button className='pt-3' LeftIcon={LocationIcon} variant='tertiary'>
+								{t('show on map')}
+							</Button>
+						}
+						children={
+							<Button
+								LeftIcon={EditIcon}
+								variant='tertiary'
+								onClick={() => setState({ ...state, showAddress: !showAddress })}
+							>
+								{t('edit')}
+							</Button>
+						}
 					/>
-					{/* checkout */}
-
-					{/* info */}
-					<ContactCard title='Additional Info' data={info} contacts={false} id={0} />
+					<Checkout
+						contain={showCheckout && <CheckoutForm />}
+						form={showCheckout}
+						title='Checkout'
+						children={
+							<Button
+								LeftIcon={EditIcon}
+								variant='tertiary'
+								onClick={() => setState({ ...state, showCheckout: !showCheckout })}
+							>
+								{t('edit')}
+							</Button>
+						}
+					/>
+					<ContactCard title='Additional Info' data={info} contacts={false} />
 					{/* update order */}
 				</div>
 			</div>
