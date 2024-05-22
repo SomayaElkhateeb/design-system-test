@@ -1,35 +1,40 @@
-import { useTranslation } from 'react-i18next';
-import { Button } from '..';
-import { EditIcon, LocationIcon } from 'src/app/utils/icons';
-
-interface IData {
-	data: Data[];
-	title: string;
+interface Data {
+	id: string | number;
 	icon?: React.ReactNode;
 	contact?: string | number;
 	name?: string;
 	value?: number | string;
-	id: string | number;
-	contacts: boolean;
-	isEdit?: boolean;
-	isLocation?: boolean;
 }
 
-const ContactCard: React.FC<IData> = ({ data, title, contacts, isEdit, isLocation }) => {
-	const { t } = useTranslation();
+interface IData {
+	data: Data[];
+	title: string;
+	contacts: boolean;
+	isLocation?: React.ReactNode;
+	children?: React.ReactNode;
+	form?: boolean;
+	contain?: React.ReactNode;
+}
+
+const ContactCard: React.FC<IData> = ({
+	data,
+	title,
+	contacts,
+	isLocation,
+	children,
+	form,
+	contain,
+}) => {
 	return (
 		<div className='cardDetails-sharedClass p-5'>
 			<div className='flex justify-between items-center'>
 				<h3 className='text-title font-semibold'>{title}</h3>
-				{/* is edit */}
-				{isEdit && (
-					<Button LeftIcon={EditIcon} variant='tertiary'>
-						{t('edit')}
-					</Button>
-				)}
+				{form ? ' ' : children}
 			</div>
 
-			{contacts ? (
+			{form ? (
+				contain
+			) : contacts ? (
 				<div className='flex flex-col gap-3 pt-4'>
 					{data.map((e) => (
 						<div className='flex items-center gap-2' key={e.id}>
@@ -46,11 +51,7 @@ const ContactCard: React.FC<IData> = ({ data, title, contacts, isEdit, isLocatio
 							<span className='text-title text-sm'>SAR {e.value}</span>
 						</p>
 					))}
-					{isLocation && (
-						<Button className='pt-3' LeftIcon={LocationIcon} variant='tertiary'>
-							{t('show on map')}
-						</Button>
-					)}
+					{isLocation}
 				</div>
 			)}
 		</div>

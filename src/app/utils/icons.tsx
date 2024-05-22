@@ -1,6 +1,5 @@
-
 export interface IconProps {
-  className?: string;
+	className?: string;
 }
 
 export function OrdersIcon(props: IconProps) {
@@ -17,7 +16,6 @@ export function OrdersIcon(props: IconProps) {
 	);
 }
 
-
 export function SubtractIcon(props: IconProps) {
 	return (
 		<svg
@@ -33,7 +31,6 @@ export function SubtractIcon(props: IconProps) {
 	);
 }
 
-
 export function CustomersIcon(props: IconProps) {
 	return (
 		<svg
@@ -45,7 +42,6 @@ export function CustomersIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function AnalyticsIcon(props: IconProps) {
 	return (
@@ -59,7 +55,6 @@ export function AnalyticsIcon(props: IconProps) {
 	);
 }
 
-
 export function AdsIcon(props: IconProps) {
 	return (
 		<svg
@@ -72,7 +67,6 @@ export function AdsIcon(props: IconProps) {
 	);
 }
 
-
 export function DashboardIcon(props: IconProps) {
 	return (
 		<svg
@@ -84,7 +78,6 @@ export function DashboardIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ReviewsIcon(props: IconProps) {
 	return (
@@ -101,7 +94,6 @@ export function ReviewsIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function QueryIcon(props: IconProps) {
 	return (
@@ -131,7 +123,6 @@ export function BoxIcon(props: IconProps) {
 	);
 }
 
-
 export function PagesIcon(props: IconProps) {
 	return (
 		<svg
@@ -149,7 +140,6 @@ export function PagesIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function SettingsIcon(props: IconProps) {
 	return (
@@ -210,7 +200,6 @@ export function AppsIcon(props: IconProps) {
 	);
 }
 
-
 export function NotifiIcon(props: IconProps) {
 	return (
 		<svg
@@ -222,7 +211,6 @@ export function NotifiIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ChatIcon(props: IconProps) {
 	return (
@@ -239,7 +227,6 @@ export function ChatIcon(props: IconProps) {
 	);
 }
 
-
 export function ViewIcon(props: IconProps) {
 	return (
 		<svg
@@ -253,7 +240,6 @@ export function ViewIcon(props: IconProps) {
 	);
 }
 
-
 export function UnseeIcon(props: IconProps) {
 	return (
 		<svg
@@ -265,7 +251,6 @@ export function UnseeIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function FaqIcon(props: IconProps) {
 	return (
@@ -280,7 +265,6 @@ export function FaqIcon(props: IconProps) {
 	);
 }
 
-
 export function DownIcon(props: IconProps) {
 	return (
 		<svg
@@ -293,7 +277,6 @@ export function DownIcon(props: IconProps) {
 	);
 }
 
-
 export function DownIconSm(props: IconProps) {
 	return (
 		<svg
@@ -305,7 +288,6 @@ export function DownIconSm(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function UpDownIcon(props: IconProps) {
 	return (
@@ -320,7 +302,6 @@ export function UpDownIcon(props: IconProps) {
 	);
 }
 
-
 export function UpIcon(props: IconProps) {
 	return (
 		<svg
@@ -332,7 +313,6 @@ export function UpIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function NextIcon(props: IconProps) {
 	return (
@@ -346,7 +326,6 @@ export function NextIcon(props: IconProps) {
 	);
 }
 
-
 export function BackIcon(props: IconProps) {
 	return (
 		<svg
@@ -358,7 +337,6 @@ export function BackIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function NextIconSm(props: IconProps) {
 	return (
@@ -372,7 +350,6 @@ export function NextIconSm(props: IconProps) {
 	);
 }
 
-
 export function BackIconSm(props: IconProps) {
 	return (
 		<svg
@@ -384,7 +361,6 @@ export function BackIconSm(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function BackAndroidIcon(props: IconProps) {
 	return (
@@ -399,7 +375,6 @@ export function BackAndroidIcon(props: IconProps) {
 	);
 }
 
-
 export function SearchIcon(props: IconProps) {
 	return (
 		<svg
@@ -411,7 +386,6 @@ export function SearchIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function NavIcon(props: IconProps) {
 	return (
@@ -427,7 +401,6 @@ export function NavIcon(props: IconProps) {
 	);
 }
 
-
 export function AddIcon(props: IconProps) {
 	return (
 		<svg
@@ -440,7 +413,6 @@ export function AddIcon(props: IconProps) {
 	);
 }
 
-
 export function DeleteExitIcon(props: IconProps) {
 	return (
 		<svg
@@ -452,7 +424,6 @@ export function DeleteExitIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function EditIcon(props: IconProps) {
 	return (
@@ -473,7 +444,6 @@ export function EditIcon(props: IconProps) {
 	);
 }
 
-
 export function CopyIcon(props: IconProps) {
 	return (
 		<svg
@@ -485,7 +455,6 @@ export function CopyIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function MoreIcon(props: IconProps) {
 	return (
@@ -501,7 +470,6 @@ export function MoreIcon(props: IconProps) {
 	);
 }
 
-
 export function CircledAddIcon(props: IconProps) {
 	return (
 		<svg
@@ -514,7 +482,6 @@ export function CircledAddIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function CancelExitIcon(props: IconProps) {
 	return (
@@ -529,7 +496,6 @@ export function CancelExitIcon(props: IconProps) {
 	);
 }
 
-
 export function StarIcon(props: IconProps) {
 	return (
 		<svg
@@ -542,7 +508,6 @@ export function StarIcon(props: IconProps) {
 	);
 }
 
-
 export function StarActiveIcon(props: IconProps) {
 	return (
 		<svg
@@ -554,7 +519,6 @@ export function StarActiveIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function GridviewIcon(props: IconProps) {
 	return (
@@ -570,7 +534,6 @@ export function GridviewIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ListviewIcon(props: IconProps) {
 	return (
@@ -589,7 +552,6 @@ export function ListviewIcon(props: IconProps) {
 	);
 }
 
-
 export function ArrangeIcon(props: IconProps) {
 	return (
 		<svg
@@ -606,7 +568,6 @@ export function ArrangeIcon(props: IconProps) {
 	);
 }
 
-
 export function FilterIcon(props: IconProps) {
 	return (
 		<svg
@@ -621,7 +582,6 @@ export function FilterIcon(props: IconProps) {
 	);
 }
 
-
 export function InfinteIcon(props: IconProps) {
 	return (
 		<svg
@@ -634,7 +594,6 @@ export function InfinteIcon(props: IconProps) {
 	);
 }
 
-
 export function TooltipIcon(props: IconProps) {
 	return (
 		<svg
@@ -646,7 +605,6 @@ export function TooltipIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function SuccessIcon(props: IconProps) {
 	return (
@@ -677,7 +635,6 @@ export function CheckIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function DashIcon(props: IconProps) {
 	return (
@@ -725,7 +682,6 @@ export function AddBgIcon(props: IconProps) {
 	);
 }
 
-
 export function AddFillIcon(props: IconProps) {
 	return (
 		<svg
@@ -742,7 +698,6 @@ export function AddFillIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function AddFillIconWhite(props: IconProps) {
 	return (
@@ -764,7 +719,6 @@ export function AddFillIconWhite(props: IconProps) {
 	);
 }
 
-
 export function PhoneIcon(props: IconProps) {
 	return (
 		<svg
@@ -779,7 +733,6 @@ export function PhoneIcon(props: IconProps) {
 	);
 }
 
-
 export function LocationIcon(props: IconProps) {
 	return (
 		<svg
@@ -793,7 +746,6 @@ export function LocationIcon(props: IconProps) {
 	);
 }
 
-
 export function NameIcon(props: IconProps) {
 	return (
 		<svg
@@ -805,7 +757,6 @@ export function NameIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function EmailIcon(props: IconProps) {
 	return (
@@ -820,7 +771,6 @@ export function EmailIcon(props: IconProps) {
 	);
 }
 
-
 export function PasswordIcon(props: IconProps) {
 	return (
 		<svg
@@ -832,7 +782,6 @@ export function PasswordIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function InventoryIcon(props: IconProps) {
 	return (
@@ -846,7 +795,6 @@ export function InventoryIcon(props: IconProps) {
 	);
 }
 
-
 export function ShippingIcon(props: IconProps) {
 	return (
 		<svg
@@ -858,7 +806,6 @@ export function ShippingIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function PaymentIcon(props: IconProps) {
 	return (
@@ -872,19 +819,24 @@ export function PaymentIcon(props: IconProps) {
 	);
 }
 
-
 export function BanktransferIcon(props: IconProps) {
 	return (
 		<svg
 			className={`w-6 h-6 ${props.className}`}
-			viewBox='0 0 24 24'
+			width='16'
+			height='11'
+			viewBox='0 0 16 11'
+			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>
-			<path d='M19.9281 14.189C20.4204 14.3532 20.7553 14.5325 20.9466 14.7209C21.1379 14.9063 21.2334 15.1325 21.2334 15.4047C21.2334 15.7331 21.1219 15.9828 20.9038 16.1661C20.6835 16.3511 20.3743 16.4497 19.964 16.4497C19.5474 16.4497 19.2401 16.3336 19.0268 16.1145C18.8132 15.8951 18.6994 15.5758 18.6994 15.1412V15.0393H17.5927V15.1412C17.5927 15.8037 17.7694 16.3419 18.1322 16.7426C18.4791 17.1191 18.9481 17.3394 19.5302 17.4095V18.3518H20.4563V17.4085C21.0256 17.3345 21.481 17.1322 21.8128 16.7941C22.1667 16.4367 22.3401 15.9668 22.3401 15.3949C22.3401 15.037 22.2708 14.7196 22.1288 14.4456C21.9897 14.1712 21.7723 13.9347 21.4813 13.7349C21.1932 13.5317 20.7955 13.3507 20.2932 13.1898C19.8039 13.0288 19.4638 12.8554 19.2615 12.6745C19.0709 12.4981 18.9727 12.2617 18.9727 11.9544C18.9727 11.6166 19.0694 11.3671 19.2497 11.1925C19.4298 11.0153 19.6965 10.9192 20.0665 10.9192C20.409 10.9192 20.6733 11.0421 20.8705 11.2863C21.0697 11.5331 21.1749 11.8725 21.1749 12.3155V12.4174H22.2766V12.3155C22.2766 11.6338 22.1204 11.0833 21.7959 10.6759C21.4916 10.2899 21.0716 10.0536 20.5441 9.96362V8.8755H19.6132V9.95712C19.0918 10.0357 18.6699 10.2445 18.356 10.5878C18.0273 10.9511 17.866 11.4144 17.866 11.969C17.866 12.515 18.032 12.9742 18.3672 13.337C18.7029 13.6934 19.2274 13.975 19.9281 14.189ZM20.354 18.2499H20.3544V17.3178C20.3543 17.3178 20.3541 17.3178 20.354 17.3179V18.2499ZM20.7973 17.2404C21.1839 17.1418 21.4981 16.9692 21.74 16.7225C22.0718 16.3874 22.2378 15.9449 22.2378 15.395C22.2378 15.0502 22.1711 14.7492 22.0377 14.4922C21.9075 14.2352 21.7026 14.0107 21.4228 13.8187C21.1462 13.6235 20.7591 13.4462 20.2613 13.2868C19.7667 13.1241 19.4105 12.9452 19.1925 12.7499C18.9778 12.5515 18.8704 12.2863 18.8704 11.9545C18.8704 11.5966 18.9729 11.3184 19.1779 11.1199C19.302 10.9978 19.4596 10.9126 19.6506 10.8644C19.4597 10.9126 19.3023 10.9977 19.1783 11.1198C18.9733 11.3183 18.8708 11.5965 18.8708 11.9544C18.8708 12.2862 18.9782 12.5514 19.1929 12.7498C19.4109 12.9451 19.7671 13.124 20.2617 13.2867C20.7595 13.4461 21.1466 13.6234 21.4232 13.8186C21.703 14.0106 21.9079 14.2351 22.0381 14.4921C22.1715 14.7491 22.2382 15.0501 22.2382 15.3949C22.2382 15.9448 22.0722 16.3873 21.7404 16.7224C21.4984 16.9692 21.184 17.1418 20.7973 17.2404ZM17.6947 15.1413H18.5971C18.5971 15.5935 18.7159 15.9416 18.9534 16.1856C19.1909 16.4297 19.5276 16.5517 19.9636 16.5517C20.1451 16.5517 20.3102 16.5331 20.4586 16.4959C20.3103 16.533 20.1454 16.5516 19.964 16.5516C19.528 16.5516 19.1913 16.4296 18.9538 16.1855C18.7163 15.9415 18.5975 15.5934 18.5975 15.1412H17.6947C17.6947 15.1412 17.6947 15.1412 17.6947 15.1413ZM22.1747 12.3155H22.1743C22.1743 11.6486 22.0214 11.1232 21.7156 10.7393C21.413 10.3554 20.9884 10.126 20.4418 10.0512V8.97751H19.7151V8.97741H20.4422V10.0511C20.9888 10.1259 21.4134 10.3553 21.716 10.7392C22.0061 11.1033 22.1586 11.5948 22.1735 12.2136C22.1743 12.2472 22.1747 12.2812 22.1747 12.3155ZM19.7147 10.0462C19.598 10.0602 19.4867 10.0806 19.3807 10.1073C19.4867 10.0806 19.598 10.0603 19.7147 10.0463V10.0462ZM14.8578 10.9546V17.3325H16.1334C16.3682 17.3325 16.5586 17.5228 16.5586 17.7577C16.5586 17.9568 16.4217 18.1239 16.2369 18.1702C16.4215 18.1238 16.5582 17.9567 16.5582 17.7578C16.5582 17.5229 16.3678 17.3326 16.133 17.3326H14.8574V10.9546H14.8578ZM16.2369 10.9418C16.4217 10.8956 16.5586 10.7285 16.5586 10.5293V8.82856C16.5586 8.66751 16.4676 8.52029 16.3235 8.44826L9.52038 5.0467C9.42864 5.00083 9.32446 4.99011 9.22691 5.01455C9.32434 4.99024 9.42837 5.00099 9.51998 5.0468L16.3231 8.44836C16.4672 8.52039 16.5582 8.66761 16.5582 8.82866V10.5294C16.5582 10.7284 16.4215 10.8955 16.2369 10.9418ZM3.80229 17.3325H2.5271C2.49126 17.3325 2.45645 17.3369 2.42319 17.3453C2.45633 17.337 2.491 17.3326 2.52671 17.3326H3.80229V17.3325ZM2.5271 17.2306H3.70078V11.0564H2.5271C2.23599 11.0564 2 10.8205 2 10.5293V8.82856C2 8.62891 2.11281 8.4464 2.29138 8.35711L9.09451 4.95555C9.2429 4.88135 9.41756 4.88135 9.56595 4.95555L16.3691 8.35711C16.5477 8.4464 16.6605 8.62891 16.6605 8.82856V10.5293C16.6605 10.8205 16.4245 11.0564 16.1334 11.0564H14.9597V17.2306H16.1334C16.4245 17.2306 16.6605 17.4666 16.6605 17.7577C16.6605 18.0488 16.4245 18.2848 16.1334 18.2848H2.5271C2.23599 18.2848 2 18.0488 2 17.7577C2 17.4666 2.23599 17.2306 2.5271 17.2306ZM2.9523 9.09135V10.1041H15.7078V10.1042H2.9519V9.09145L9.32983 5.90248L9.32993 5.90253L2.9523 9.09135ZM3.05421 9.15433V10.0022H15.6063V9.15433L9.33023 6.01632L3.05421 9.15433ZM11.4562 10.9546H11.4558V17.3326H14.007V17.3325H11.4562V10.9546ZM13.9055 17.2306H11.5581V11.0564H13.9055V17.2306ZM8.05464 10.9546H8.05424V17.3326H10.6054V17.3325H8.05464V10.9546ZM10.5039 11.0564V17.2306H8.15655V11.0564H10.5039ZM7.20385 17.3325H4.65308V10.9546H4.65268V17.3326H7.20385V17.3325ZM7.10234 17.2306H4.75499V11.0564H7.10234V17.2306Z' />
+			<path
+				fill-rule='evenodd'
+				clip-rule='evenodd'
+				d='M13.9461 7.7895C14.3153 7.91253 14.5664 8.04686 14.71 8.18799C14.8534 8.32691 14.9251 8.49633 14.9251 8.7003C14.9251 8.94631 14.8415 9.13342 14.6778 9.27073C14.5126 9.40934 14.2808 9.48319 13.973 9.48319C13.6605 9.48319 13.4301 9.39626 13.2701 9.23206C13.1099 9.06769 13.0246 8.82851 13.0246 8.50286V8.42651H12.1946V8.50286C12.1946 8.99922 12.3271 9.40246 12.5991 9.70269C12.8593 9.98472 13.2111 10.1498 13.6477 10.2023V10.9083H14.3422V10.2015C14.7692 10.1461 15.1108 9.99458 15.3596 9.74123C15.625 9.4735 15.7551 9.12146 15.7551 8.69299C15.7551 8.42485 15.7031 8.18699 15.5966 7.98175C15.4923 7.77614 15.3292 7.59895 15.111 7.44932C14.8949 7.29702 14.5967 7.16142 14.2199 7.04086C13.8529 6.92026 13.5979 6.79037 13.4461 6.65482C13.3032 6.52264 13.2295 6.34558 13.2295 6.1153C13.2295 5.86227 13.302 5.67533 13.4373 5.54449C13.5723 5.41173 13.7724 5.33973 14.0498 5.33973C14.3067 5.33973 14.505 5.43182 14.6529 5.61481C14.8023 5.79972 14.8811 6.05398 14.8811 6.38587V6.46222H15.7075V6.38587C15.7075 5.87514 15.5903 5.46274 15.3469 5.15746C15.1187 4.86828 14.8037 4.69121 14.4081 4.62383V3.80861H13.7099V4.61896C13.3189 4.6778 13.0024 4.83429 12.767 5.0915C12.5205 5.36368 12.3995 5.71077 12.3995 6.12627C12.3995 6.5353 12.524 6.87935 12.7754 7.15121C13.0272 7.41817 13.4206 7.62919 13.9461 7.7895ZM14.2655 10.8319H14.2658V10.1336C14.2657 10.1336 14.2656 10.1336 14.2655 10.1336V10.8319ZM14.5864 10.0785C14.8816 10.0052 15.1211 9.87487 15.305 9.68758C15.5539 9.43651 15.6783 9.10501 15.6783 8.69307C15.6783 8.43469 15.6283 8.20922 15.5283 8.01665C15.4307 7.82409 15.2769 7.6559 15.0671 7.51208C14.8597 7.36583 14.5693 7.23298 14.196 7.11354C13.8251 6.99167 13.5579 6.8576 13.3944 6.71135C13.2333 6.56266 13.1528 6.364 13.1528 6.11537C13.1528 5.84725 13.2297 5.63884 13.3834 5.49015C13.4765 5.39861 13.5947 5.3348 13.7379 5.2987C13.5948 5.33481 13.4767 5.3986 13.3837 5.49007C13.23 5.63876 13.1531 5.84717 13.1531 6.1153C13.1531 6.36393 13.2336 6.56259 13.3947 6.71128C13.5582 6.85753 13.8254 6.99159 14.1963 7.11347C14.5696 7.23291 14.86 7.36576 15.0674 7.51201C15.2772 7.65582 15.431 7.82401 15.5286 8.01658C15.6286 8.20914 15.6786 8.43461 15.6786 8.69299C15.6786 9.10494 15.5542 9.43644 15.3053 9.68751C15.1214 9.87486 14.8818 10.0052 14.5864 10.0785ZM12.271 8.50294H12.9478C12.9478 8.84176 13.0369 9.10257 13.215 9.28539C13.3932 9.4682 13.6457 9.55961 13.9727 9.55961C14.1088 9.55961 14.2326 9.54568 14.344 9.51781C14.2327 9.54563 14.109 9.55954 13.973 9.55954C13.646 9.55954 13.3935 9.46813 13.2153 9.28531C13.0372 9.1025 12.9481 8.84168 12.9481 8.50286H12.271C12.271 8.50289 12.271 8.50291 12.271 8.50294ZM15.631 6.38587H15.6307C15.6307 5.88621 15.5161 5.49257 15.2867 5.20496C15.0598 4.91733 14.7413 4.74548 14.3314 4.68942V3.88503H13.7863V3.88496H14.3317V4.68934C14.7416 4.74541 15.0601 4.91725 15.287 5.20488C15.5045 5.4777 15.6189 5.84591 15.6301 6.30952C15.6307 6.33468 15.631 6.36013 15.631 6.38587ZM13.786 4.68572C13.6985 4.6962 13.615 4.71146 13.5355 4.73149C13.615 4.71147 13.6985 4.69623 13.786 4.68576V4.68572ZM10.1433 5.3663V10.1446H11.1C11.2761 10.1446 11.4189 10.2872 11.4189 10.4632C11.4189 10.6123 11.3163 10.7376 11.1777 10.7722C11.3161 10.7375 11.4186 10.6123 11.4186 10.4632C11.4186 10.2873 11.2758 10.1447 11.0997 10.1447H10.143V5.3663H10.1433ZM11.1777 5.35672C11.3163 5.32209 11.4189 5.19686 11.4189 5.04767V3.77344C11.4189 3.65278 11.3507 3.54248 11.2426 3.48852L6.14028 0.940059C6.07146 0.905682 5.99329 0.89766 5.9201 0.915992C5.9932 0.897756 6.07125 0.905803 6.13999 0.940134L11.2423 3.4886C11.3504 3.54256 11.4186 3.65286 11.4186 3.77352V5.04775C11.4186 5.19683 11.3161 5.32199 11.1777 5.35672ZM1.85172 10.1446H0.895328C0.868443 10.1446 0.842335 10.1479 0.817394 10.1542C0.842245 10.148 0.868252 10.1447 0.895029 10.1447H1.85172V10.1446ZM0.895328 10.0682H1.77559V5.44258H0.895328C0.676994 5.44258 0.5 5.26577 0.5 5.04767V3.77344C0.5 3.62386 0.584606 3.48712 0.718535 3.42023L5.82088 0.87177C5.93217 0.816181 6.06317 0.816181 6.17446 0.87177L11.2768 3.42023C11.4107 3.48712 11.4953 3.62386 11.4953 3.77344V5.04767C11.4953 5.26577 11.3183 5.44258 11.1 5.44258H10.2198V10.0682H11.1C11.3183 10.0682 11.4953 10.2451 11.4953 10.4632C11.4953 10.6813 11.3183 10.8581 11.1 10.8581H0.895328C0.676994 10.8581 0.5 10.6813 0.5 10.4632C0.5 10.2451 0.676995 10.0682 0.895328 10.0682ZM1.21422 3.97032V4.72912H10.7808V4.72919H1.21393V3.9704L5.99737 1.58122L5.99745 1.58125L1.21422 3.97032ZM1.29066 4.01751V4.65277H10.7047V4.01751L5.99767 1.6665L1.29066 4.01751ZM7.59215 5.3663H7.59186V10.1447H9.50523V10.1446H7.59215V5.3663ZM9.4291 10.0682H7.66859V5.44258H9.4291V10.0682ZM6.95406 10.1446H5.04098V5.3663H5.04068V10.1447H6.95406V10.1446ZM6.87793 10.0682H5.11741V5.44258H6.87793V10.0682ZM4.40289 10.1446H2.48981V5.3663H2.48951V10.1447H4.40289V10.1446ZM4.32676 10.0682H2.56624V5.44258H4.32676V10.0682Z'
+			/>
 		</svg>
 	);
 }
-
 
 export function CameraIcon(props: IconProps) {
 	return (
@@ -898,7 +850,6 @@ export function CameraIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ExportIcon(props: IconProps) {
 	return (
@@ -917,7 +868,6 @@ export function ExportIcon(props: IconProps) {
 	);
 }
 
-
 export function LinkIcon(props: IconProps) {
 	return (
 		<svg
@@ -931,7 +881,6 @@ export function LinkIcon(props: IconProps) {
 	);
 }
 
-
 export function CalenderIcon(props: IconProps) {
 	return (
 		<svg
@@ -944,7 +893,6 @@ export function CalenderIcon(props: IconProps) {
 	);
 }
 
-
 export function ImportIcon(props: IconProps) {
 	return (
 		<svg
@@ -956,7 +904,6 @@ export function ImportIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function RemoveIcon(props: IconProps) {
 	return (
@@ -973,7 +920,6 @@ export function RemoveIcon(props: IconProps) {
 	);
 }
 
-
 export function DangerIcon(props: IconProps) {
 	return (
 		<svg
@@ -987,7 +933,6 @@ export function DangerIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ErrorIcon(props: IconProps) {
 	return (
@@ -1003,7 +948,6 @@ export function ErrorIcon(props: IconProps) {
 	);
 }
 
-
 export function InternalchatIcon(props: IconProps) {
 	return (
 		<svg
@@ -1018,7 +962,6 @@ export function InternalchatIcon(props: IconProps) {
 	);
 }
 
-
 export function MessengerIcon(props: IconProps) {
 	return (
 		<svg
@@ -1031,7 +974,6 @@ export function MessengerIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function WhatsappIcon(props: IconProps) {
 	return (
@@ -1046,7 +988,6 @@ export function WhatsappIcon(props: IconProps) {
 	);
 }
 
-
 export function SendIcon(props: IconProps) {
 	return (
 		<svg
@@ -1058,7 +999,6 @@ export function SendIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function UploadIcon(props: IconProps) {
 	return (
@@ -1072,7 +1012,6 @@ export function UploadIcon(props: IconProps) {
 	);
 }
 
-
 export function MoveIcon(props: IconProps) {
 	return (
 		<svg
@@ -1084,7 +1023,6 @@ export function MoveIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function PrintIcon(props: IconProps) {
 	return (
@@ -1099,7 +1037,6 @@ export function PrintIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ZoomIcon(props: IconProps) {
 	return (
@@ -1129,7 +1066,6 @@ export function LoadUpdateIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ImageIcon(props: IconProps) {
 	return (
@@ -1179,7 +1115,6 @@ export function LogoutIcon(props: IconProps) {
 	);
 }
 
-
 export function DataIcon(props: IconProps) {
 	return (
 		<svg
@@ -1194,7 +1129,6 @@ export function DataIcon(props: IconProps) {
 	);
 }
 
-
 export function ClockIcon(props: IconProps) {
 	return (
 		<svg
@@ -1208,7 +1142,6 @@ export function ClockIcon(props: IconProps) {
 	);
 }
 
-
 export function ReplyIcon(props: IconProps) {
 	return (
 		<svg
@@ -1220,7 +1153,6 @@ export function ReplyIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function DiscountIcon(props: IconProps) {
 	return (
@@ -1235,7 +1167,6 @@ export function DiscountIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function LanguageIcon(props: IconProps) {
 	return (
@@ -1253,7 +1184,6 @@ export function LanguageIcon(props: IconProps) {
 	);
 }
 
-
 export function DomainIcon(props: IconProps) {
 	return (
 		<svg
@@ -1270,7 +1200,6 @@ export function DomainIcon(props: IconProps) {
 	);
 }
 
-
 export function TaxIcon(props: IconProps) {
 	return (
 		<svg
@@ -1286,7 +1215,6 @@ export function TaxIcon(props: IconProps) {
 	);
 }
 
-
 export function PremiumIcon(props: IconProps) {
 	return (
 		<svg
@@ -1298,7 +1226,6 @@ export function PremiumIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function ServicesIcon(props: IconProps) {
 	return (
@@ -1314,7 +1241,6 @@ export function ServicesIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function StoresIcon(props: IconProps) {
 	return (
@@ -1332,7 +1258,6 @@ export function StoresIcon(props: IconProps) {
 	);
 }
 
-
 export function WalletIcon(props: IconProps) {
 	return (
 		<svg
@@ -1348,7 +1273,6 @@ export function WalletIcon(props: IconProps) {
 		</svg>
 	);
 }
-
 
 export function BusinessIcon(props: IconProps) {
 	return (
