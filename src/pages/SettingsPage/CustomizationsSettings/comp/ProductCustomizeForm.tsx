@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { CustomizationsFormProps } from '../CustomizationsSettings';
+import { CustomizationsFormProps, customizationsInterface } from './useCustomization';
 import FormField from 'src/app/components/ui/form/field';
-import { Switch } from 'src/app/components/ui/switch';
 import { Input } from 'src/app/components/ui/input';
+import FormSwitchField from './FormSwitchField';
 
 export default function ProductCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
@@ -15,37 +14,16 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 				<h2 className='title  mb-2'>{t('Product')}</h2>
 				<p className='paragraph'>{t('Customize product listing')}</p>
 			</div>
-
-			<div className='flex justify-between items-center  mb-3 col-span-2'>
-				<div className='grid gap-1'>
-					<h3 className='title text-base'>{t('Hide out of stock products')}</h3>
-				</div>
-				<FormField
-					formStore={formStore}
-					name='hideOutOfStock'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='paragraph  mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
-			</div>
-			<div className='flex justify-between items-center  mb-3 col-span-2'>
-				<div className='grid gap-1'>
-					<h3 className='title text-base'>{t('Activate product comparison')}</h3>
-				</div>
-				<FormField
-					formStore={formStore}
-					name='activateProductComparison'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='paragraph  mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
-			</div>
+      <FormSwitchField<customizationsInterface>
+        formStore={formStore}
+        name='hideOutOfStock'
+        label='Hide out of stock products'
+      />
+      <FormSwitchField<customizationsInterface>
+        formStore={formStore}
+        name='activateProductComparison'
+        label='Activate product comparison'
+      />
 			<div className='col-span-1'>
 				<FormField
 					formStore={formStore}
@@ -54,43 +32,18 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 					render={(field) => <Input {...field} />}
 				/>
 			</div>
-
-			<div className='flex justify-between items-center col-span-2'>
-				<div className='grid gap-1'>
-					<h3 className='title text-base'>{t('Automatically archive the order')}</h3>
-					<p className='paragraph text-subtitle'>
-						{t('Delivered orders will be automatically assigned as closed.')}
-					</p>
-				</div>
-				<FormField
-					formStore={formStore}
-					name='autoArchiveOrder'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='paragraph  mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
-			</div>
-			<div className='flex justify-between items-center col-span-2'>
-				<div className='grid gap-1'>
-					<h3 className='title text-base'>{t('Show product stock in product page')}</h3>
-					<p className='paragraph text-subtitle'>
-						{t('Show when product stock reach defined limit')}
-					</p>
-				</div>
-				<FormField
-					formStore={formStore}
-					name='showProductStock'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='paragraph  mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
-			</div>
+			<FormSwitchField<customizationsInterface>
+        formStore={formStore}
+        name='autoArchiveOrder'
+        label='Automatically archive the order'
+        description='Delivered orders will be automatically assigned as closed.'
+      />
+      <FormSwitchField<customizationsInterface>
+        formStore={formStore}
+        name='showProductStock'
+        label='Show product stock in product page'
+        description='Show when product stock reach defined limit'
+      />
 			<div className='col-span-1'>
 				<FormField
 					formStore={formStore}
@@ -99,25 +52,12 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 					render={(field) => <Input {...field} />}
 				/>
 			</div>
-
-			<div className='flex justify-between items-center col-span-2'>
-				<div className='grid gap-1'>
-					<h3 className='title text-base'>{t('Show purchases number in product page')}</h3>
-					<p className='paragraph text-subtitle'>
-						{t('Show when product purchases reach defined limit')}
-					</p>
-				</div>
-				<FormField
-					formStore={formStore}
-					name='showPurchasesNum'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='paragraph  mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
-			</div>
+      <FormSwitchField<customizationsInterface>
+        formStore={formStore}
+        name='showPurchasesNum'
+        label='Show purchases number in product page'
+        description='Show when product purchases reach defined limit'
+      />
 			<div className='col-span-1'>
 				<FormField
 					formStore={formStore}
@@ -126,23 +66,11 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 					render={(field) => <Input {...field} />}
 				/>
 			</div>
-			<div className='flex justify-between items-center mb-3 col-span-2'>
-				<div className='grid gap-1'>
-					<h3 className='title text-base'>
-						{t('Limit number of download attempts for digital products')}
-					</h3>
-				</div>
-				<FormField
-					formStore={formStore}
-					name='limitDownloadAttempts'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='paragraph  mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
-			</div>
+			<FormSwitchField<customizationsInterface>
+        formStore={formStore}
+        name='limitDownloadAttempts'
+        label='Limit number of download attempts for digital products'
+      />
 			<div className='col-span-1'>
 				<FormField
 					formStore={formStore}

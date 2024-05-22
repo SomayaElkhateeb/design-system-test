@@ -43,8 +43,8 @@ export default function EuropeAndUS() {
 			<RowItem type={t('SAR 20')} order={t('SAR 30 and up')} period={t('2 to 4 business days')} />
 			{location.pathname !== '/settings/shipping/setupProviders/smsa/openSetup/setup' && (
 				<div className='pt-5 flex justify-end w-full'>
-					<Button variant='primary' onClick={() => navigate('setup')}>
-						{t('setup')}
+					<Button variant='primary' onClick={() => navigate('Setup')}>
+						{t('Setup')}
 					</Button>
 				</div>
 			)}

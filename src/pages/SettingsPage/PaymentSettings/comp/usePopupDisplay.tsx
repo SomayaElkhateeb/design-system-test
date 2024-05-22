@@ -10,13 +10,14 @@ const dialogStyle = {
 interface UsePopupDisplayProps {
 	items: string[];
 	limit: number;
-	title: string;
-	provider: string;
+	popupTitle: string;
+	provider?: string;
 	renderItem: (item: string, index: number) => JSX.Element;
 }
 
-const usePopupDisplay = ({ items, limit, title, provider, renderItem }: UsePopupDisplayProps) => {
+const usePopupDisplay = ({ items, limit, popupTitle, provider, renderItem }: UsePopupDisplayProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+
 	const handlePopups = () => {
 		setIsOpen(!isOpen);
 	};
@@ -31,7 +32,7 @@ const usePopupDisplay = ({ items, limit, title, provider, renderItem }: UsePopup
 			<GlobalDialog openDialog={isOpen} handleClose={handlePopups} style={dialogStyle}>
 				<div className='grid gap-4'>
 					<div className='flex items-center justify-between'>
-						<h2 className='title'>{title}</h2>
+						<h2 className='title'>{popupTitle}</h2>
 						<button onClick={handlePopups}>
 							<DeleteExitIcon className='fill-hint' />
 						</button>

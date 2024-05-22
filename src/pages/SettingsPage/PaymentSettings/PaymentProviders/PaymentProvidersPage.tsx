@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { HeaderSettings } from 'src/app/components/optimized';
-import PaymentTable from './PaymentTable';
+import PaymentTable from './PaymentTable/PaymentTable';
 
 export default function PaymentProvidersPage() {
 	const { t } = useTranslation();
