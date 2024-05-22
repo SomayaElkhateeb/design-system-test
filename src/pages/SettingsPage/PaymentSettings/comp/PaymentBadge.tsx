@@ -1,7 +1,7 @@
 import { getImageUrl } from 'src/app/utils';
 import { transactionFormat } from '../PaymentProviders/PaymentTable/utils';
 
-export function TransactionsBadge({ item }:{item:{method:string,fee:string}}) {
+export function TransactionsBadge({ item }:{item:{method:string,fee:string|number}}) {
 	return (
 		<span className='flex items-center rounded bg-constrained w-fit'>
 			<img src={getImageUrl(`companies/${item.method}.svg`)} alt='Transaction method' />
