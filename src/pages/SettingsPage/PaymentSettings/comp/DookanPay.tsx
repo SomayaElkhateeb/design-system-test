@@ -1,22 +1,45 @@
 import { useTranslation } from 'react-i18next';
+
+import { BankBadge, TransactionsBadge } from './PaymentBadge';
 import { Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
+import RenderItems from './RenderItems';
 
 export default function DookanPay() {
 	const { t } = useTranslation();
 	const supportedBanks = ['Riyadh', 'Al Ahly', 'The Saudi Investment', 'Al-Rajhi'];
 	const supportedMethods = [
-		{ fees: 'Free', badge: 'apple' },
-		{ fees: '2.35%', badge: 'knet' },
-		{ fees: '1.70%', badge: 'stcPay' },
-		{ fees: '1.75%', badge: 'mada' },
+		{
+			method: 'apple',
+			fee: {
+				flatFee: '',
+				percentageFee: '',
+			},
+		},
+		{
+			method: 'knet',
+			fee: {
+				flatFee: '',
+				percentageFee: '1.7',
+			},
+		},
+		{
+			method: 'stcPay',
+			fee: {
+				flatFee: '',
+				percentageFee: 1.7,
+			},
+		},
+		{
+			method: 'mada',
+			fee: {
+				flatFee: '',
+				percentageFee: 1.75,
+			},
+		},
 	];
-
-	const gridClass = 'grid gap-2';
-	const globalFlex = 'flex flex-wrap gap-2';
-	const spanClassName = 'rounded bg-constrained w-fit';
 	return (
-		<div className='grid place-items-start gap-4 p-5 cardDetails-sharedClass '>
+		<div className='grid place-items-start h-full gap-4 p-5 cardDetails-sharedClass '>
 			<img
 				src={getImageUrl(`badges/dookan-pay.svg`)}
 				alt='PaymentProvider'
@@ -27,34 +50,21 @@ export default function DookanPay() {
 				{t('Accept payments on your store using the')} <strong>Dookan pay</strong>{' '}
 				{t('plugin, it provide you with International and local payment methods')}
 			</p>
-
-			<section className='flex justify-between gap-7'>
-				<div className={gridClass}>
-					<h3 className='subtitle'>{t('Supported methods with fees')}</h3>
-					<div className={globalFlex}>
-						{supportedMethods?.map((item, index) => (
-							<span key={index} className={`${spanClassName} flex items-center`}>
-								<img src={getImageUrl(`companies/${item.badge}.svg`)} alt='PaymentProvider' />
-								<span className='paragraph px-2'>{item.fees}</span>
-							</span>
-						))}
-					</div>
-				</div>
-				{/* //////////////////////////////// */}
-				<div className={gridClass}>
-					<h3 className='subtitle'>{t('Supported banks')}</h3>
-					<div className={globalFlex}>
-						{supportedBanks.map((item, index) => (
-							<span key={index} className={`${spanClassName} paragraph py-1 px-2`}>
-								{item}
-							</span>
-						))}
-					</div>
-				</div>
+			<section className='flex justify-between gap-7 w-full'>
+				<RenderItems
+					items={supportedMethods}
+					RenderItem={TransactionsBadge}
+					title='Supported methods with fees'
+					limit={supportedMethods.length}
+				/>
+				<RenderItems
+					items={supportedBanks}
+					RenderItem={BankBadge}
+					title='Supported banks'
+					limit={supportedBanks.length}
+				/>
 			</section>
-
 			<Button variant='primary' text={t('Setup Dookan pay')} />
 		</div>
 	);
 }
-

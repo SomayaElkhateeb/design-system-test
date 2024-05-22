@@ -585,19 +585,17 @@ export const english = {
 
 	'Order confirmation': 'Order confirmation',
 
+	'Cash on pickup': 'Cash on pickup',
+	'Other methods': 'Other methods',
+	'Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.':
+		'Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.',
+	'Cash on delivery': 'Cash on delivery',
+	'Bank Transfer': 'Bank Transfer',
 
-	"Cash on pickup":"Cash on pickup",
-	"Other methods":"Other methods",
-	"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.":"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.",
-	"Cash on delivery":"Cash on delivery",
-	"Bank Transfer":"Bank Transfer",
-
-	"Details & instructions (optional)":"Details & instructions (optional)",
-	"Applies when":"Applies when",
-"Minimum Price":"Minimum Price",
-"Maximum Price":"Maximum Price",
-
-
+	'Details & instructions (optional)': 'Details & instructions (optional)',
+	'Applies when': 'Applies when',
+	'Minimum Price': 'Minimum Price',
+	'Maximum Price': 'Maximum Price',
 
 	'Sent to the customers after they place their order.':
 		'Sent to the customers after they place their order.',
@@ -784,7 +782,7 @@ export const english = {
 	'2 to 4 business days': '2 to 4 business days',
 	'SAR 20': 'SAR 20',
 	'SAR 30 and up': 'SAR 30 and up',
-	setup: 'setup',
+	Setup: 'Setup',
 	'delete rate': 'delete rate',
 	Standard: 'Standard',
 	Order: 'Order',
@@ -858,4 +856,44 @@ export const english = {
 	'Service is successfully purchased': 'Service is successfully purchased',
 	'send message': 'send message',
 	'show on map': 'show on map',
+
+	Provider: 'Provider',
+	'Monthly fees': 'Monthly fees',
+	'Setup fees': 'Setup fees',
+	'Credit transactions': 'Credit transactions',
+	'Methods transactions': 'Methods transactions',
+	Banks: 'Banks',
+	More: 'More',
+	'Account details': 'Account details',
+	'Fill in your account details, for customers to pay through':
+		'Fill in your account details, for customers to pay through',
+	'Account number': 'Account number',
+	'Account name': 'Account name',
+	'Bank name': 'Bank name',
+	'Select option': 'Select option',
+	'Additional details & instructions': 'Additional details & instructions',
+	'Activate if': 'Activate if',
+	'you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults':
+		'you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults',
+	'Price is more than': 'Price is more than',
+	'Order items are more than': 'Order items are more than',
+	'Apply with': 'Apply with',
+	All: 'All',
+	'Specific products': 'Specific products',
+	'Specific customers': 'Specific customers',
+	'Payment details (Online)': 'Payment details (Online)',
+	'Bank transfer': 'Bank transfer',
+	'Delivery method': 'Delivery method',
+	Shipping: 'Shipping',
+	'Shipping method': 'Shipping method',
+	DHL: 'DHL',
+	main: 'main',
+	District: 'District',
+
+	'Provider':	'Provider',
+	'Monthly fees':'Monthly fees',
+	'Setup fees':'Setup fees',
+	'Credit transactions':'Credit transactions',
+	'Methods transactions':'Methods transactions',
+	'Banks':'Banks',
 };

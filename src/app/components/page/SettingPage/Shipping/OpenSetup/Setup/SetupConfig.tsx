@@ -5,7 +5,7 @@ export default function SetupConfig() {
 	const { config } = useParams();
 
 	switch (config) {
-		case 'setup':
+		case 'Setup':
 			return <Setup />;
 	}
 }

@@ -10,9 +10,10 @@ import { PrevNextBtn } from '..';
  * @param {{
  *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons' |'settingBtnAndIcon';
  *  title: string | null;
- *  btn1?: { text: string; onClick: () => void };
- *  btn2?: { text: string; onClick: () => void };
- *  btn3?: { text: string; onClick: () => void };
+ *  btn1?: { text: string; onClick?: () => void };
+ *  btn2?: { text: string; onClick?: () => void };
+ *  btn3?: { text: string; onClick?: () => void };
+
  *  btn4?: { onClickPrev: () => void; onClickNext: () => void };
  * onClickPrev?:{ onClick: () => void};
  * onClickNext?:  { onClick: () => void};
