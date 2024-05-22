@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button, LayoutCard } from '..';
+import { cn } from 'src/app/utils';
 
 /**
  * @typedef {{
@@ -118,11 +119,12 @@ function VTab(props) {
 				{/* Line between tabs */}
 				{props.index < props.tabs.length - 1 && (
 					<span
-						className={`h-full w-0.5 absolute left-[15px] top-4 ${
+						className={cn(
+							'h-full w-0.5 absolute left-[15px] top-4 ',
 							props.index === props.currentTab || props.index <= props.currentTab
 								? 'bg-blue-600' // Blue line for active tab
-								: 'bg-gray-300' // Gray line for inactive tab
-						}`}
+								: 'bg-gray-300', // Gray line for inactive tab
+						)}
 					></span>
 				)}
 
