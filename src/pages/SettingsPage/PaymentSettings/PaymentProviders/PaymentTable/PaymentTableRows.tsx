@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import FeeDisplay from './FeeDisplay';
-import RenderBanks from './RenderBanks';
 import { getImageUrl } from 'src/app/utils';
 import { NextIcon } from 'src/app/utils/icons';
+import RenderItems from '../../comp/RenderItems';
+
 import CreditTransactions from './CreditTransactions';
 import { Button } from 'src/app/components/optimized';
-import RenderMethodsTransactions from './RenderMethodsTransactions';
+import { BankBadge, TransactionsBadge } from '../../comp/PaymentBadge';
 import { GlobalTableCell } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 
 interface CreateTableRowsProps {
@@ -42,10 +43,22 @@ export default function PaymentTableRows({ data }: CreateTableRowsProps) {
 				/>
 			</GlobalTableCell>,
 			<GlobalTableCell>
-				<RenderMethodsTransactions methodsTransactions={e.methodsTransactions} provider={e.provider.name}/>
+				<RenderItems
+					items={e.methodsTransactions}
+					RenderItem={TransactionsBadge}
+					popupTitle='Methods transactions'
+					limit={4}
+					provider={e.provider.name}
+				/>
 			</GlobalTableCell>,
 			<GlobalTableCell>
-				<RenderBanks banks={e.banks} provider={e.provider.name}/>
+				<RenderItems
+					items={e.banks}
+					RenderItem={BankBadge}
+					popupTitle='Banks'
+					limit={6}
+					provider={e.provider.name}
+				/>
 			</GlobalTableCell>,
 		],
 	}));

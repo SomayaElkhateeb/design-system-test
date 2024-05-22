@@ -3,7 +3,7 @@ import SpecificCategory from '../../../../../../app/components/page/discount/Sel
 import SpecificProducts from '../../../../../../app/components/page/discount/Selectors/SpecificProducts';
 import BuyXGetY from './BuyXGetY';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from '../../NewDiscount';
+import { newDiscountInterface } from '../../HookForNewDiscount';
 
 const ApplyToOptions = ({
 	applyTo,
@@ -15,9 +15,9 @@ const ApplyToOptions = ({
 	const { t } = useTranslation();
 	return (
 		<div>
-			{applyTo === t('Specific category') && <SpecificCategory />}
-			{applyTo === t('Specific products') && <SpecificProducts />}
-			{applyTo === t('Buy x get y') && <BuyXGetY formStore={formStore} />}
+			{applyTo === 'Specific category' && <SpecificCategory formStore={formStore} />}
+			{applyTo === 'Specific products' && <SpecificProducts formStore={formStore} />}
+			{applyTo === 'Buy x get y' && <BuyXGetY formStore={formStore} />}
 		</div>
 	);
 };
