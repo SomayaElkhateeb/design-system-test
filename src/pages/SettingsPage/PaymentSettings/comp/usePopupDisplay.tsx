@@ -7,15 +7,16 @@ const dialogStyle = {
 	width: { md: '40rem', xs: '22rem' },
 };
 
-interface UsePopupDisplayProps {
-	items: string[];
+interface UsePopupDisplayProps<T> {
+	items: T[];
 	limit: number;
 	popupTitle: string;
 	provider?: string;
-	renderItem: (item: string, index: number) => JSX.Element;
+	renderItem: (item: T, index: number) => JSX.Element;
 }
 
-const usePopupDisplay = ({ items, limit, popupTitle, provider, renderItem }: UsePopupDisplayProps) => {
+ export default function usePopupDisplay<T>({ items, limit, popupTitle, provider, renderItem }: UsePopupDisplayProps<T>)  {
+	
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handlePopups = () => {
@@ -47,4 +48,4 @@ const usePopupDisplay = ({ items, limit, popupTitle, provider, renderItem }: Use
 	};
 };
 
-export default usePopupDisplay;
+
