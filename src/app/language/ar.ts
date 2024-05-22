@@ -209,17 +209,17 @@ export const arabic = {
 	'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress':
 		'يتم إرسال إشعارات البريد الإلكتروني هذه إلى العملاء لتأكيد طلباتهم وإبقائهم على اطلاع بتقدم الطلب',
 
+	'Cash on pickup': 'الدفع عند الإستلام',
+	'Other methods': 'طرق اخري',
+	'Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.':
+		'المدفوعات التي تتم معالجتها خارج متجرك عبر الإنترنت. عندما يقوم أحد العملاء بالدفع اليدوي، يتعين عليك الموافقة على طلبه قبل إتمامه.',
+	'Cash on delivery': 'الدفع عند الاستلام',
+	'Bank Transfer': 'التحويل المصرفي',
 
-	"Cash on pickup": "الدفع عند الإستلام",
-	"Other methods": "طرق اخري",
-	"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.": "المدفوعات التي تتم معالجتها خارج متجرك عبر الإنترنت. عندما يقوم أحد العملاء بالدفع اليدوي، يتعين عليك الموافقة على طلبه قبل إتمامه.",
-	"Cash on delivery": "الدفع عند الاستلام",
-	"Bank Transfer": "التحويل المصرفي",
-
-	"Details & instructions (optional)": "التفاصيل والتعليمات (اختياري)",
-	"Applies when": "ينطبق عندما",
-	"Minimum Price": "سعر الحد الأدنى",
-	"Maximum Price": "الحد الأقصى للسعر",
+	'Details & instructions (optional)': 'التفاصيل والتعليمات (اختياري)',
+	'Applies when': 'ينطبق عندما',
+	'Minimum Price': 'سعر الحد الأدنى',
+	'Maximum Price': 'الحد الأقصى للسعر',
 
 	'Order confirmation': 'تأكيد الطلب',
 	'Sent to the customers after they place their order.': 'يتم إرسالها إلى العملاء بعد تقديم طلبهم.',
@@ -859,6 +859,24 @@ export const arabic = {
 	'Credit transactions': 'المعاملات الائتمانية',
 	'Methods transactions': 'طرق المعاملات',
 	Banks: 'البنوك',
+
+	'Update order status': 'تحديث حالة الطلب',
+	'Order status': 'حالة الطلب',
+	Processing: 'يعالج',
+	'Comment (optional)': 'التعليق (اختياري)',
+	'Notify customer': 'بإخطار العملاء',
+	'order No': 'رقم الطلب',
+	'payment status': 'حالة السداد',
+	'awaiting payment': 'انتظار الدفع',
+	'order status': 'حالة الطلب',
+	processing: 'يعالج',
+	at: 'في',
+	'Order History': 'تاريخ الطلب',
+	'Order is in': 'الأمر موجود في',
+	'Customer note': 'ملاحظة العميل',
+	'There are no notes': 'لا توجد ملاحظات',
+	'Order items': 'طلب بضاعة',
+
 	More:'أكثر',
 	'Account details': 'تفاصيل الحساب',
   'Fill in your account details, for customers to pay through': 'املأ تفاصيل حسابك، ليتمكن العملاء من الدفع من خلاله',
