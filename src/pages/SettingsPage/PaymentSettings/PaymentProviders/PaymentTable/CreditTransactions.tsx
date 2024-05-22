@@ -5,14 +5,11 @@ interface Fee {
   flatFee: string | number;
   percentageFee: string | number;
 }
-
 interface CreditTransactionsProps {
   paymentCards: string[];
   local: Fee;
   global: Fee;
 }
-
-
 export default function CreditTransactions({ paymentCards, local, global }:CreditTransactionsProps)  {
   return (
     <div className='grid gap-2'>

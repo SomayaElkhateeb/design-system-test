@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { TaxesProps } from './TaxesSettings';
 import { CheckBox } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import FormChoiceChips from '../CustomizationsSettings/comp/FormChoiceChips';
 
 export default function TaxOptionsForm({ formStore }: TaxesProps) {
-	const { t } = useTranslation(); 
+	const { t } = useTranslation();
 	return (
 		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
 			<h2 className='title'>{t('Tax applies to')}</h2>
@@ -59,6 +60,12 @@ export default function TaxOptionsForm({ formStore }: TaxesProps) {
 					selected={formStore.watch('zoneDefinedBy')}
 				/>
 			</div>
+			<FormChoiceChips<customizationsInterface>
+				formStore={formStore}
+				name='checkOutWith'
+				label='Customer can check out with'
+				options={['Email & phone', 'Email only', 'Phone only']}
+			/>
 		</div>
 	);
 }
