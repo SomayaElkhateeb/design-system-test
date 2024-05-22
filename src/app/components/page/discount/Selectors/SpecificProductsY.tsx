@@ -7,7 +7,7 @@ interface selectItemsInterface {
 	id: string;
 	name: string;
 }
-const SpecificProducts = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const SpecificProductsY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
 	const selectItems = [
 		{ id: '1', name: 'Dress' },
@@ -15,9 +15,9 @@ const SpecificProducts = ({ formStore }: { formStore: UseFormReturn<newDiscountI
 	];
 	const handelAutoCompleteError = () => {
 		return (
-			formStore.watch('specificProducts') &&
-			formStore?.watch('specificProducts')?.length === 0 && (
-				<p className='global_error'>{'choose products required'}</p>
+			formStore.watch('selectProductsY') &&
+			formStore?.watch('selectProductsY')?.length === 0 && (
+				<p className='global_error'>{'choose products X required'}</p>
 			)
 		);
 	};
@@ -26,15 +26,15 @@ const SpecificProducts = ({ formStore }: { formStore: UseFormReturn<newDiscountI
 		<div className='flex-col-top-section-pages gap-0'>
 			<FormField
 				formStore={formStore}
-				name='specificProducts'
-				label={t('select products')}
+				name='selectProductsY'
+				label={t('select products y')}
 				render={(field) => (
 					<CustomAutoComplete<selectItemsInterface>
 						placeholder={t('products')}
-						getvalue={(value) => formStore.setValue('specificProducts', value)}
-						name='specificProducts'
+						getvalue={(value) => formStore.setValue('selectProductsY', value)}
+						name='selectProductsY'
 						array={selectItems}
-						MainValue={formStore.watch('specificProducts')}
+						MainValue={formStore.watch('selectProductsY')}
 					/>
 				)}
 			/>
@@ -43,4 +43,4 @@ const SpecificProducts = ({ formStore }: { formStore: UseFormReturn<newDiscountI
 	);
 };
 
-export default SpecificProducts;
+export default SpecificProductsY;

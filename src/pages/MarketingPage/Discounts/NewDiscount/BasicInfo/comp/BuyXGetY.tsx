@@ -1,43 +1,51 @@
-import { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { useTranslation } from 'react-i18next';
-import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
 
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from '../../NewDiscount';
+import { newDiscountInterface } from '../../HookForNewDiscount';
+import SpecificProductsX from 'src/app/components/page/discount/Selectors/SpecificProductsX';
+import SpecificProductsY from 'src/app/components/page/discount/Selectors/SpecificProductsY';
 
 const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
-	const [selectedCustomerGets, setSelectedCustomerGets] = useState<string>('');
-	const customerGetsOptions = [t('Free'), t('50% offer'), t('Specify percentage')];
 
+	const customerGetsOptions = ['Free', '50% offer', 'Specify percentage'];
+
+	const handleApplyTo = (option: string) => {
+		formStore.setValue('ProductXToProductYType', option);
+	};
 	return (
-		<div className='mt-[1rem] flex flex-col gap-[1rem]'>
-			<div>
-				<SpecificProducts name={t('select products x')} />
+		<div className='flex-col-top-section-pages gap-[1rem]'>
+			<div className='flex-col-top-section-pages gap-[.5rem]'>
+				<SpecificProductsX formStore={formStore} />
 				<div>
 					<SingleChoiceChips
 						options={customerGetsOptions}
-						selected={selectedCustomerGets}
-						setSelected={(option: string) => setSelectedCustomerGets(option)}
+						setSelected={handleApplyTo}
+						selected={formStore.watch('ProductXToProductYType') ?? 'free'}
 					/>
 				</div>
-				{selectedCustomerGets === 'Specify percentage' && (
-					<div className='w-[24rem]  '>
+				{formStore.watch('ProductXToProductYType') === 'Specify percentage' && (
+					<div className='md:w-[24rem] flex-col-top-section-pages  gap-[.4rem]'>
 						<FormField
 							formStore={formStore}
 							name='percentageGets'
 							label={t('Percentage')}
-							render={(field) => <Input {...field} />}
+							render={(field) => <Input type='number' {...field} />}
+						/>
+
+						<FormField
+							formStore={formStore}
+							name='quantityGets'
+							label={t('quantity')}
+							render={(field) => <Input type='number' {...field} />}
 						/>
 					</div>
 				)}
 			</div>
-			<div className='-mt-[1rem]'>
-				<SpecificProducts name={t('select products y')} />
-			</div>
+			<SpecificProductsY formStore={formStore} />
 		</div>
 	);
 };
