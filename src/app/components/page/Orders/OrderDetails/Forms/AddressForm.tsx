@@ -18,7 +18,6 @@ import { Checkbox } from '@mui/material';
 
 export default function AddressForm({ handleAddressForm }: { handleAddressForm: () => void }) {
 	const { t } = useTranslation();
-	const style = 'flex justify-between items-center w-full';
 	const title = 'text-sm text-title';
 	// custom hook
 	const { handelDefaultValue, addressSchema } = useCustomAddressForm();
@@ -45,113 +44,102 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 						<Checkbox />
 						<span className='text-sm text-title'>{t('Send as a gift')}</span>
 					</div>
-					<div className={style}>
-						<h2 className={title}>{t('Name')}</h2>
-						<FormField
-							formStore={formStore}
-							name='name'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
+					<div className='flex items-center justify-between'>
+						<div className='flex flex-col justify-between h-[22.5rem]'>
+							<h2 className={title}>{t('Name')}</h2>
+							<h2 className={title}>{t('Country')}</h2>
+							<h2 className={title}>{t('City')}</h2>
+							<h2 className={title}>{t('District')}</h2>
+							<h2 className={title}>{t('Street')}</h2>
+							<h2 className={title}>{t('Building')}</h2>
+							<h2 className={title}>{t('Landmark')}</h2>
+							<h2 className={title}>{t('Phone')}</h2>
+						</div>
+						<div className='flex flex-col gap-2'>
+							<FormField
+								formStore={formStore}
+								name='name'
+								render={(field) => <Input {...field} placeholder={''} />}
+							/>
 
-					<div className={style}>
-						<h2 className={title}>{t('Country')}</h2>
+							<FormField
+								formStore={formStore}
+								name='country'
+								render={(field) => (
+									<div className='flex-col-top-section-pages gap-[.2rem]'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+												<SelectValue placeholder='Egypt' />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value='egypt'>Egypt</SelectItem>
+												<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
+											</SelectContent>
+										</Select>
+									</div>
+								)}
+							/>
 
-						<FormField
-							formStore={formStore}
-							name='country'
-							render={(field) => (
-								<div className='flex-col-top-section-pages gap-[.2rem]'>
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Egypt' />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value='egypt'>Egypt</SelectItem>
-											<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
-										</SelectContent>
-									</Select>
-								</div>
-							)}
-						/>
-					</div>
+							<FormField
+								formStore={formStore}
+								name='city'
+								render={(field) => (
+									<div className='flex-col-top-section-pages gap-[.2rem]'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+												<SelectValue placeholder='Cairo' />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value='cairo'>Cairo</SelectItem>
+												<SelectItem value='riyadh'>Riyadh</SelectItem>
+											</SelectContent>
+										</Select>
+									</div>
+								)}
+							/>
 
-					<div className={style}>
-						<h2 className={title}>{t('City')}</h2>
-						<FormField
-							formStore={formStore}
-							name='city'
-							render={(field) => (
-								<div className='flex-col-top-section-pages gap-[.2rem]'>
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Cairo' />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value='cairo'>Cairo</SelectItem>
-											<SelectItem value='riyadh'>Riyadh</SelectItem>
-										</SelectContent>
-									</Select>
-								</div>
-							)}
-						/>
-					</div>
+							<FormField
+								formStore={formStore}
+								name='district'
+								render={(field) => <Input {...field} placeholder={''} />}
+							/>
 
-					<div className={style}>
-						<h2 className={title}>{t('District')}</h2>
-						<FormField
-							formStore={formStore}
-							name='district'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
+							<FormField
+								formStore={formStore}
+								name='street'
+								render={(field) => <Input {...field} placeholder={''} />}
+							/>
 
-					<div className={style}>
-						<h2 className={title}>{t('Street')}</h2>
-						<FormField
-							formStore={formStore}
-							name='street'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
+							<FormField
+								formStore={formStore}
+								name='building'
+								render={(field) => <Input {...field} placeholder={''} />}
+							/>
 
-					<div className={style}>
-						<h2 className={title}>{t('Building')}</h2>
-						<FormField
-							formStore={formStore}
-							name='building'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
+							<FormField
+								formStore={formStore}
+								name='landmark'
+								render={(field) => <Input {...field} placeholder={''} />}
+							/>
 
-					<div className={style}>
-						<h2 className={title}>{t('Landmark')}</h2>
-						<FormField
-							formStore={formStore}
-							name='landmark'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
-
-					<div className={style}>
-						<h2 className={title}>{t('Phone')}</h2>
-						<FormField
-							formStore={formStore}
-							name='phone'
-							render={(field) => (
-								<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
-							)}
-						/>
+							<FormField
+								formStore={formStore}
+								name='phone'
+								render={(field) => (
+									<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
+								)}
+							/>
+						</div>
 					</div>
 				</div>
 				{/* btns */}

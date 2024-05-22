@@ -50,7 +50,7 @@ export default function OrderDetails() {
 			/>
 
 			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 p-5'>
-				<div className='col-span-2'>
+				<div className='col-span-2 flex flex-col gap-5'>
 					<OrderNo />
 					<OrderItems />
 					<CustomerNote />

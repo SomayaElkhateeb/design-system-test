@@ -585,19 +585,17 @@ export const english = {
 
 	'Order confirmation': 'Order confirmation',
 
+	'Cash on pickup': 'Cash on pickup',
+	'Other methods': 'Other methods',
+	'Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.':
+		'Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.',
+	'Cash on delivery': 'Cash on delivery',
+	'Bank Transfer': 'Bank Transfer',
 
-	"Cash on pickup":"Cash on pickup",
-	"Other methods":"Other methods",
-	"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.":"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.",
-	"Cash on delivery":"Cash on delivery",
-	"Bank Transfer":"Bank Transfer",
-
-	"Details & instructions (optional)":"Details & instructions (optional)",
-	"Applies when":"Applies when",
-"Minimum Price":"Minimum Price",
-"Maximum Price":"Maximum Price",
-
-
+	'Details & instructions (optional)': 'Details & instructions (optional)',
+	'Applies when': 'Applies when',
+	'Minimum Price': 'Minimum Price',
+	'Maximum Price': 'Maximum Price',
 
 	'Sent to the customers after they place their order.':
 		'Sent to the customers after they place their order.',
@@ -868,11 +866,26 @@ export const english = {
 	main: 'main',
 	District: 'District',
 
-	'Provider':	'Provider',
-	'Monthly fees':'Monthly fees',
-	'Setup fees':'Setup fees',
-	'Credit transactions':'Credit transactions',
-	'Methods transactions':'Methods transactions',
-	'Banks':'Banks',
-
+	Provider: 'Provider',
+	'Monthly fees': 'Monthly fees',
+	'Setup fees': 'Setup fees',
+	'Credit transactions': 'Credit transactions',
+	'Methods transactions': 'Methods transactions',
+	Banks: 'Banks',
+	'Update order status': 'Update order status',
+	'Order status': 'Order status',
+	Processing: 'Processing',
+	'Comment (optional)': 'Comment (optional)',
+	'Notify customer': 'Notify customer',
+	'order No': 'order No',
+	'payment status': 'payment status',
+	'awaiting payment': 'awaiting payment',
+	'order status': 'order status',
+	processing: 'processing',
+	at: 'at',
+	'Order History': 'Order History',
+	'Order is in': 'Order is in',
+	'Customer note': 'Customer note',
+	'There are no notes': 'There are no notes',
+	'Order items': 'Order items',
 };
