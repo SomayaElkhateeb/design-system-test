@@ -17,9 +17,7 @@ export default function PaymentAccordion({
 	children,
 }: PaymentAccordionProps) {
 	return (
-		<div
-			className={`border border-borders-lines rounded mb-4 ${isOpen ? 'bg-light-1' : 'bg-white'}`}
-		>
+		<div className={`cardDetails-sharedClass  ${isOpen ? 'bg-light-1' : 'bg-white'}`}>
 			<button
 				type='button'
 				className='flex items-center justify-between w-full p-4 text-left focus:outline-none'

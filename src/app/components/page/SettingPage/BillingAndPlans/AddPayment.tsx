@@ -28,11 +28,16 @@ export default function AddPayment({
 	// //////////////////////////////////
 	const addPaymentSchema = {
 		name: z.string().min(10),
-		cardNumber: z.coerce.number().min(16),
+		cardNumber: z.coerce
+			.number()
+			.min(14, { message: t('Account number must be at least 14 numbers') })
+			.refine((val) => /^\d{14}$/.test(val.toString())),
 		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
 			message: 'Date must be in the format MM/YYYY',
 		}),
-		cvv: z.coerce.number().min(3),
+		cvv: z.coerce.number().refine((val) => /^\d{3}$/.test(val.toString()), {
+			message: t('CVV must be 3 digits'),
+		}),
 	};
 	// /////////////////////
 	const handleSubmit = (values: IAddPayment) => {
@@ -57,7 +62,6 @@ export default function AddPayment({
 	//   style of dialog
 	const style = {
 		height: { md: '27.5rem', xs: '17.5rem' },
-
 		width: { md: '40rem', xs: '25.8rem' },
 	};
 
@@ -77,7 +81,9 @@ export default function AddPayment({
 							formStore={formStore}
 							name='cardNumber'
 							label={QuantityLabel}
-							render={(field) => <Input {...field} placeholder='0000 0000 0000 0000' />}
+							render={(field) => (
+								<Input type='number' {...field} placeholder='0000 0000 0000 0000' />
+							)}
 						/>
 						<div className='md:flex-row-global-items-start flex-col-top-section-pages  md:justify-between '>
 							<div className='md:w-[49%]'>
@@ -85,7 +91,7 @@ export default function AddPayment({
 									formStore={formStore}
 									name='expiryDate'
 									label={t('Expiry date')}
-									render={(field) => <Input {...field} placeholder='MM/YY' />}
+									render={(field) => <Input {...field} placeholder='MM/YYYY' />}
 								/>
 							</div>
 							<div className='md:w-[49%]'>
@@ -93,7 +99,7 @@ export default function AddPayment({
 									formStore={formStore}
 									name='cvv'
 									label={CvvLabel}
-									render={(field) => <Input {...field} placeholder='123' />}
+									render={(field) => <Input {...field} type='number' placeholder='123' />}
 								/>
 							</div>
 						</div>
@@ -116,7 +122,7 @@ export default function AddPayment({
 	);
 }
 
-function CreditTransactions() {
+export function CreditTransactions() {
 	return (
 		<div className='flex gap-1'>
 			<img src={getImageUrl('companies/mada.svg')} className='w-5 h-4' />
@@ -127,7 +133,7 @@ function CreditTransactions() {
 	);
 }
 
-const CvvLabel = (
+export const CvvLabel = (
 	<span className='flex'>
 		CVV&nbsp;
 		<TooltipIcon className='fill-secondary' />

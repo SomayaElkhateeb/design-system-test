@@ -584,6 +584,21 @@ export const english = {
 		'These email notifications are sent to customers to confirm their orders and keep them informed about the order progress',
 
 	'Order confirmation': 'Order confirmation',
+
+
+	"Cash on pickup":"Cash on pickup",
+	"Other methods":"Other methods",
+	"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.":"Payments that are processed outside your online store. When a customer makes a manual payment, you need to approve their order before fulfilling.",
+	"Cash on delivery":"Cash on delivery",
+	"Bank Transfer":"Bank Transfer",
+
+	"Details & instructions (optional)":"Details & instructions (optional)",
+	"Applies when":"Applies when",
+"Minimum Price":"Minimum Price",
+"Maximum Price":"Maximum Price",
+
+
+
 	'Sent to the customers after they place their order.':
 		'Sent to the customers after they place their order.',
 	'Order status changed': 'Order status changed',
@@ -843,6 +858,7 @@ export const english = {
 	'Service is successfully purchased': 'Service is successfully purchased',
 	'send message': 'send message',
 	'show on map': 'show on map',
+
 	'Payment details (Online)': 'Payment details (Online)',
 	'Bank transfer': 'Bank transfer',
 	'Delivery method': 'Delivery method',
@@ -851,4 +867,12 @@ export const english = {
 	DHL: 'DHL',
 	main: 'main',
 	District: 'District',
+
+	'Provider':	'Provider',
+	'Monthly fees':'Monthly fees',
+	'Setup fees':'Setup fees',
+	'Credit transactions':'Credit transactions',
+	'Methods transactions':'Methods transactions',
+	'Banks':'Banks',
+
 };
