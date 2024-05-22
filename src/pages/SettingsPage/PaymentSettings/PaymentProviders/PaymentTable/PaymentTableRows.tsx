@@ -5,7 +5,7 @@ import FeeDisplay from './FeeDisplay';
 import { getImageUrl } from 'src/app/utils';
 import { NextIcon } from 'src/app/utils/icons';
 import RenderItems from '../../comp/RenderItems';
-import RenderBanks from '../../comp/RenderBanks';
+
 import CreditTransactions from './CreditTransactions';
 import { Button } from 'src/app/components/optimized';
 import { BankBadge, TransactionsBadge } from '../../comp/PaymentBadge';
