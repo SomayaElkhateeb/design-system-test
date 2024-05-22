@@ -1,11 +1,14 @@
+import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
 import { EditIcon, RemoveIcon, ViewIcon } from 'src/app/utils/icons';
 import { Branch } from 'src/pages/SettingsPage/BranchesSettings';
 
 export default function BranchCard({ name, address, city, country, phone }: Branch) {
 	const iconClassName = 'fill-pri-dark cursor-pointer';
+	const { t } = useTranslation();
+
 	return (
-		<div className=' flex justify-between  serviceDetails-sharedClass p-5'>
+		<div className='flex justify-between cardDetails-sharedClass p-5'>
 			<div className='flex-col-top-section-pages gap-2'>
 				<h2 className='title'>{name}</h2>
 				<div>
@@ -25,7 +28,7 @@ export default function BranchCard({ name, address, city, country, phone }: Bran
 						<EditIcon className={iconClassName} />
 					</div>
 				</div>
-				<Button variant='tertiary' text='View inventory' LeftIcon={ViewIcon} />
+				<Button variant='tertiary' text={t('View Inventory')}  LeftIcon={ViewIcon} />
 			</div>
 		</div>
 	);

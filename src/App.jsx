@@ -9,6 +9,7 @@ import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
 import LoginPage from './pages/AuthPage/Login/LoginPage';
 
 // Create browser router instance
+
 const router = createBrowserRouter([
 	// RootLayout Routes
 	{

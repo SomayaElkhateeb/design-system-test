@@ -19,7 +19,7 @@ const Discounts: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='mx-auto container'>
+		<div className='custom_container'>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />

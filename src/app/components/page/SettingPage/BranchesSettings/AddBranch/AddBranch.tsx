@@ -2,63 +2,35 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
 import BranchInfo from './BranchInfo';
-import { z } from 'zod';
 
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import BranchAppointments from './BranchAppointments';
 
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-
-export interface BranchSettingsInterface {
-	branchType: string;
-	branchNameEn: string;
-	branchNameAr: string;
-	countryName: string;
-	cityName: string;
-	area: string;
-	street: string;
-	building: string;
-	landmark: string;
-	branchPhoneNumber: string;
-}
-const generalSettingsSchema = {
-	branchType: z.string().min(1, { message: 'Branch type is required' }),
-	branchNameEn: z.string().min(3, { message: 'Branch name is required' }),
-	branchNameAr: z.string().min(3, { message: 'Branch name is required' }),
-	countryName: z.string().min(3, { message: 'Country is required' }),
-	cityName: z.string().min(3, { message: 'City is required' }),
-	area: z.string().min(3, { message: 'Area / District is required' }),
-	street: z.string().min(3, { message: 'Street is required' }),
-	building: z.string().min(3, { message: 'Building is required' }),
-	landmark: z.string().min(3, { message: 'Landmark is required' }),
-	branchPhoneNumber: z.string().min(7, { message: 'Branch Phone Number is required' }),
-};
+import { useState } from 'react';
+import useCustomHookAddBranchForm, { BranchSettingsInterface } from './HookForAddBranchForm';
 
 export default function AddBranch() {
+	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
+	const [selectedOption, setSelectedOption] = useState('Add manually');
+	// //////////////////////////////////////
+	// //////////////////////////
 	const handleSubmit = (values: BranchSettingsInterface) => {
 		console.log(values);
 		// handleClose();
 	};
-	const handelDefaultValue = () => {
-		return {
-			branchType: 'Warehouse',
-			branchNameAr: '',
-			branchNameEn: '',
-			countryName: '',
-			cityName: '',
-			area: '',
-			street: '',
-			building: '',
-			landmark: '',
-			branchPhoneNumber: '',
-		};
-	};
+
+	// /////////////////////////
+	//   custom hook
+
+	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(selectedOption);
+	// ///////////////////////
+
 	const { formStore, onSubmit } = useForm({
-		schema: generalSettingsSchema,
+		schema: branchSettingsSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -80,7 +52,7 @@ export default function AddBranch() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<HeaderSettings
 					submit
 					variant='settingTwoBtns'
@@ -96,13 +68,16 @@ export default function AddBranch() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 p-5 grid-cols-3'>
-					<div className='grid gap-5 col-span-2 lg:col-span-2'>
-						<BranchInfo formStore={formStore} />
-						<BranchAppointments />
+				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
+					<div className='flex-col-top-section-pages lg:col-span-2'>
+						<BranchInfo
+							selectedOption={selectedOption}
+							setSelectedOption={setSelectedOption}
+							formStore={formStore}
+						/>
+						<BranchAppointments formStore={formStore} />
 					</div>
 					<div className='col-span-1'>
-						{/* <BranchQuickActions /> */}
 						<QuickActions data={data} />
 					</div>
 				</div>

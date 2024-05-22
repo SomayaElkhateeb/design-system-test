@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
-import ShippingProviders from './ShippingProviders/ShippingProviders';
+import ShippingProviders from './OpenSetup/Providers/ShippingProviders';
+import DeliverYourself from './OpenSetup/Providers/DeliverYourself';
+import SelfPickup from './OpenSetup/Providers/SelfPickup';
 
 export default function ShippingConfig() {
 	const { config } = useParams();
@@ -7,5 +9,9 @@ export default function ShippingConfig() {
 	switch (config) {
 		case 'setupProviders':
 			return <ShippingProviders />;
+		case 'deliverYourself':
+			return <DeliverYourself />;
+		case 'selfPickup':
+			return <SelfPickup />;
 	}
 }

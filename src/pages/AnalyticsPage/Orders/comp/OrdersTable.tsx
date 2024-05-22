@@ -1,4 +1,3 @@
-import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import BaseTable, {

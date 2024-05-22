@@ -9,7 +9,7 @@ import { AddIcon, CheckIcon } from 'src/app/utils/icons';
  * @example
  *
  * ```jsx
- * const Component = () => {
+ * const ParentComponent = () => {
  *   const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
  *   const [selected, setSelected] = useState([]);
  *
@@ -25,26 +25,28 @@ import { AddIcon, CheckIcon } from 'src/app/utils/icons';
  * };
  * ```
  */
+
 export default function MultiChoiceChips(props) {
-	// Toggle the selection state of an option
 	/** @param {string} option */
+	// Toggle the selection state of an option
 	function toggleOption(option) {
-		const currentIndex = props.selected.indexOf(option);
-		const newSelectedOptions = [...props.options]; // Clone the array to avoid mutation
-		if (currentIndex === -1) {
-			newSelectedOptions.push(option); // Add option if not already selected
+		const isSelected = props.selected.includes(option);
+		let newSelectedOptions;
+		if (isSelected) {
+			// If already selected, remove it
+			newSelectedOptions = props.selected.filter((item) => item !== option);
 		} else {
-			newSelectedOptions.splice(currentIndex, 1); // Remove option if already selected
+			// If not selected, add it
+			newSelectedOptions = [...props.selected, option];
 		}
 		props.setSelected(newSelectedOptions);
 	}
-
 	return (
 		<div>
 			<div className='flex flex-wrap gap-2 p-2'>
-				{props.options.map((option, index) => (
+				{props.options.map((option) => (
 					<Chip
-						key={index}
+						key={option}
 						label={option}
 						isSelected={props.selected.includes(option)}
 						handleToggle={() => toggleOption(option)}

@@ -44,12 +44,12 @@ export { default as DatePicker } from './Pickers/DatePicker';
 export { default as Accordion } from './UiKits/Accordion';
 export { default as Menu } from './Menu/Menu';
 //? Ahmed
-export { default as PaymentMethodAccordion } from './Payment/PaymentMethodAccordion';
+
 export { default as MultiImageUploader } from './MediaUpload/MultiImageUploader';
 export { default as MobileProductViews } from './Products/MobileProductViews.tsx';
 export { default as MultiChoiceChips } from './ChoiceChips/MultiChoiceChips';
 export { default as MobileProductCard } from './Products/MobileProductCard';
-export { default as PaymentContainer } from './Payment/PaymentContainer';
+
 export { default as ProductCategory } from './Category/ProductCategory';
 export { default as ImageUploader } from './MediaUpload/ImageUploader';
 export { default as MopileSetupCard } from './Cards/MopileSetupCard';

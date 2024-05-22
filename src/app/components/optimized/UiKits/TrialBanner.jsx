@@ -8,7 +8,7 @@ import { getImageUrl } from 'src/app/utils';
 /**
  * @param {{
  *  free: boolean;
- *  daysLeft: number;
+ *  daysLeft?: number;
  *  title: string;
  *  description: string;
  * image?: string;
@@ -43,7 +43,7 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 									</p>
 								</div>
 							) : (
-								<img src={getImageUrl('padges/premium-light.svg')} alt='premium' />
+								<img src={getImageUrl('badges/premium-light.svg')} alt='premium' />
 							)}
 						</div>
 						<div className='flex flex-col gap-2'>
@@ -69,7 +69,7 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 								</p>
 							</div>
 						) : (
-							<img src={getImageUrl('padges/premium-light.svg')} alt='premium' />
+							<img src={getImageUrl('badges/premium-light.svg')} alt='premium' />
 						)}
 					</div>
 					<div className='flex flex-col gap-2'>

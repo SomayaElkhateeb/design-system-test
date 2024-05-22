@@ -19,7 +19,7 @@ export default function TopCustomizeSection() {
 						</p>
 					</div>
                     <div className='flex flex-row items-center gap-[1rem]'>
-					<Button className='w-[8.9rem] h-[2rem] flex items-center justify-center text-[.8rem] font-semibold'>
+					<Button className=' h-[2rem] flex items-center justify-center text-[.8rem] font-semibold'>
 						{t('Customize design')}
 					</Button>
 

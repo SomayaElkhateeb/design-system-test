@@ -4,10 +4,10 @@ export interface style {
 	position?: string;
 	top?: string;
 	left?: string;
-	height: { md: string; xs: string };
+	height?: { md: string; xs: string };
 	overflowY?: string;
 	transform?: string;
-	width: { md: string; xs: string };
+	width: { lg?: string; md: string; xs: string };
 	bgcolor?: string;
 	p?: number;
 	borderRadius?: string;
@@ -21,7 +21,7 @@ export default function GlobalDialog({
 	openDialog: boolean;
 	handleClose: (e: boolean) => void;
 	children: React.ReactNode;
-	style?: style;
+	style: style;
 }) {
 	const propStyle = {
 		...style,

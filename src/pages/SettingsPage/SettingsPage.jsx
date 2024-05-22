@@ -1,7 +1,6 @@
 import { TrialBanner } from 'src/app/components/optimized';
 import { settingsCards } from './data';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
-import { useLocation, useParams } from 'react-router-dom';
 
 /**
  * SettingsPage component represents the settings page of the application.
@@ -10,11 +9,8 @@ import { useLocation, useParams } from 'react-router-dom';
  * @returns {JSX.Element} SettingsPage component.
  */
 const SettingsPage = () => {
-	const { pathname } = useLocation();
-	const {config}=useParams()
-	console.log(config)
 	return (
-		<div className='flex-col-top-section-pages container mx-auto'>
+		<div className='flex-col-top-section-pages custom_container'>
 			<TrialBanner
 				free={false}
 				daysLeft={5}
@@ -32,3 +28,33 @@ const SettingsPage = () => {
 };
 
 export default SettingsPage;
+
+// const SettingsPage = () => {
+// 	const { pathname } = useLocation();
+
+// 	// console.log(pathname);
+// 	if (pathname === '/settings') {
+// 		return (
+// 			<div className='flex-col-top-section-pages container mx-auto'>
+// 				<TrialBanner
+// 					free={false}
+// 					daysLeft={5}
+// 					title='You’re on free trial'
+// 					description='Subscribe now and open a world with no boundaries'
+// 				/>
+
+// 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+// 					{settingsCards.map((card) => (
+// 						<LinkCards key={card.id} {...card} />
+// 					))}
+// 				</div>
+// 			</div>
+// 		);
+// 	} else {
+// 		return (
+// 			<main>
+// 				<Outlet />
+// 			</main>
+// 		);
+// 	}
+// };

@@ -38,7 +38,7 @@
 
 		--radius: 0.5rem;
 		/* --font-family-en: 'Tajawal', sans-serif; */
-		
+
 		--font-family-ar: 'Tajawal', sans-serif;
 		--font-family-en: 'Poppins', sans-serif;
 	}
@@ -178,12 +178,51 @@ object {
 	display: none !important;
 }
 
+/* Custom media query */
+/* @layer utilities {
+	.max-w-xl {
+		max-width: 1400px;
+	}
+
+	.max-w-2xl {
+		max-width: 1600px;
+	}
+} */
+/* screen */
+/* @media (min-width: 990px) {
+	.custom-md {
+		@apply px-5 bg-green;
+	}
+}
+
+@media (min-width: 1200px) {
+	.custom-lg {
+		@apply px-5 bg-red-500;
+	}
+}
+
+@media (min-width: 1440px) {
+	.custom-xl {
+		@apply mx-auto max-w-xl bg-sky-500;
+	}
+}
+
+@media (min-width: 1660px) {
+	.custom-2xl {
+		@apply mx-auto max-w-2xl bg-black;
+	}
+} */
+
 @layer components {
-	.serviceDetails-sharedClass {
-		@apply border rounded-[.6rem] bg-white border-[constrained];
+
+	.custom_container {
+		@apply xl:max-w-[145rem] xl:px-5  container mx-auto
+	}
+	.cardDetails-sharedClass {
+		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
 	.customer-border {
-		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-[constrained] flex flex-col;
+		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
 	}
 	.splide__pagination__page {
 		background: transparent !important;
@@ -228,7 +267,6 @@ object {
 	}
 
 	.btn-lin {
-		/* hover:bg-light-3   don't work! */
 		@apply border-2 border-transparent bg-transparent px-[15px] py-2 rounded hover:bg-light-3 font-normal text-primary text-sm capitalize active:bg-pri-light focus:border-2 focus:border-pri-light;
 	}
 
@@ -284,7 +322,7 @@ object {
 		@apply w-full 2xl:w-11/12 mx-auto;
 	}
 	.global-cards {
-		@apply bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1.5rem];
+		@apply bg-white w-full border border-constrained rounded-[.6rem] p-[1rem] flex flex-col gap-[1.5rem];
 	}
 }
 

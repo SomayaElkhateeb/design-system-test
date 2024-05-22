@@ -26,13 +26,16 @@ export default function CustomerInfo() {
 			{/*  top section */}
 			<HeaderSettings variant='customerInfowithIcons' title={t('Customer Info')}>
 				<div className=' flex  items-center gap-[.8rem] '>
-					<FaRegEdit className='cursor-pointer' onClick={() => navigate(`/addCustomer?id=${id}`)} />
+					<FaRegEdit
+						className='cursor-pointer'
+						onClick={() => navigate(`/customers/addCustomer?id=${id}`)}
+					/>
 					<HiOutlineDotsHorizontal className='cursor-pointer' />
 				</div>
 			</HeaderSettings>
 
 			{/*  customer section */}
-			<div className='container mx-auto gap-[1.6rem] flex-col-top-section-pages'>
+			<div className='custom_container gap-[1.6rem] flex-col-top-section-pages'>
 				<div className='customer-border  gap-[0.8rem]'>
 					<p className='text-[0.8rem]  font-semibold px-[1.2rem]'>{t('Customer')}</p>
 					<hr />
@@ -55,8 +58,11 @@ export default function CustomerInfo() {
 
 				<div className='customer-border gap-[0.8rem]'>
 					<div className='flex-row-global justify-between px-[1.2rem]'>
-						<p className='text-[0.8rem]  font-semibold '>{t('Addresses')}</p>
-						<div className='flex-row-global gap-[.4rem] cursor-pointer'>
+						<p className='title'>{t('Addresses')}</p>
+						<div
+							onClick={() => navigate('addNewAddresse')}
+							className='flex-row-global gap-[.4rem] cursor-pointer'
+						>
 							<IoIosAddCircle />
 							<p className='text-[0.8rem] font-semibold'>{t('Add new address')}</p>
 						</div>
