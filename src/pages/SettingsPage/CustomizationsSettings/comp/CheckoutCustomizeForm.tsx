@@ -1,9 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
 import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
-import { CustomizationsTypes } from './HookForCustomizationsettings';
-import { CustomizationsFormProps } from './useCustomization';
-
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
