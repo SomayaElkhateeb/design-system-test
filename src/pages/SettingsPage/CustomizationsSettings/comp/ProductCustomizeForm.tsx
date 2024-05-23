@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 
+import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
+
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
-import { CustomizationsFormProps } from './useCustomization';
-import { customizationsInterface } from './HookForCustomizationsettings';
+
 export default function ProductCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 
@@ -14,12 +15,14 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 				<h2 className='title  flex-col-top-section-pages  gap-[.3rem]'>{t('Product')}</h2>
 				<p className='paragraph'>{t('Customize product listing')}</p>
 			</div>
-			<FormSwitchField<customizationsInterface>
+
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='hideOutOfStock'
 				label='Hide out of stock products'
 			/>
-			<FormSwitchField<customizationsInterface>
+
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='activateProductComparison'
 				label='Activate product comparison'
@@ -32,13 +35,15 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
-			<FormSwitchField<customizationsInterface>
+
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='autoArchiveOrder'
 				label='Automatically archive the order'
 				description='Delivered orders will be automatically assigned as closed.'
 			/>
-			<FormSwitchField<customizationsInterface>
+
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='showProductStock'
 				label='Show product stock in product page'
@@ -52,7 +57,8 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
-			<FormSwitchField<customizationsInterface>
+
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='showPurchasesNum'
 				label='Show purchases number in product page'
@@ -66,7 +72,8 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 					render={(field) => <Input {...field} />}
 				/>
 			</div>
-			<FormSwitchField<customizationsInterface>
+
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='limitDownloadAttempts'
 				label='Limit number of download attempts for digital products'

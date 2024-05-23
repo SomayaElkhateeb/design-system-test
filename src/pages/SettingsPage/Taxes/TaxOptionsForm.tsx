@@ -47,6 +47,7 @@ export default function TaxOptionsForm({ formStore }: TaxesProps) {
 				label={t('Zone defines by')}
 				options={['Shipping address', 'Payment address']}
 			/>
+
 			<FormChoiceChips<TaxesSettingsInterface>
 				formStore={formStore}
 				name='checkOutWith'

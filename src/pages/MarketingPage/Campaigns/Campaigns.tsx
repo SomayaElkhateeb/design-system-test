@@ -22,7 +22,6 @@ const Campaigns = () => {
 					data={campaindata}
 					campaignTableRef={campaignTableRef}
 				/>
-
 				<CampaignTable sortBy={selectedOption} ref={campaignTableRef} />
 			</div>
 		</>

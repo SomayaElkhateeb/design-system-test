@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
-
+import CardHeader from 'src/app/components/optimized/UiKits/CardHeader';
 import {
 	Select,
 	SelectContent,
@@ -9,7 +9,7 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import { Input } from 'src/app/components/ui/input';
-import { PaymentFormProps } from './ActivateBankTransfer';
+import { PaymentFormProps } from './useBankTransfer';
 
 export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 	const { t } = useTranslation();
@@ -17,12 +17,11 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 
 	return (
 		<div className='global-cards grid grid-cols-2'>
-			<div className='col-span-2'>
-				<h2 className='title mb-2'>{t('Account details')}</h2>
-				<p className='paragraph'>
-					{t('Fill in your account details, for customers to pay through')}
-				</p>
-			</div>
+			<CardHeader
+				title='Account details'
+				className='col-span-2'
+				description='Fill in your account details, for customers to pay through'
+			/>
 			<div className='grid gap-4 col-span-2 xl:col-span-1'>
 				<FormField
 					formStore={formStore}

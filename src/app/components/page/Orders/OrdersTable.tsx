@@ -123,12 +123,12 @@ export default function OrdersTable({
 								{language === 'ar' ? (
 									<IoIosArrowBack
 										className='text-subtitle'
-										onClick={() => navigate(`orderDetails/${e?.id}`)}
+										onClick={() => navigate(`/orders/AllOrders/orderDetails/${e?.id}`)}
 									/>
 								) : (
 									<IoIosArrowForward
 										className='text-subtitle'
-										onClick={() => navigate(`orderDetails/${e?.id}`)}
+										onClick={() => navigate(`/orders/AllOrders/orderDetails/${e?.id}`)}
 									/>
 								)}
 							</div>

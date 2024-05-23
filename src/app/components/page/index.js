@@ -12,3 +12,4 @@ export { default as CustomerNoteForm } from './Orders/OrderDetails/Forms/Custome
 export { default as OrderItemForm } from './Orders/OrderDetails/Forms/OrderItemForm';
 export { default as RowOrderItems } from './Orders/OrderDetails/Comp/RowOrderItems';
 export { default as ProductItem } from './Orders/OrderDetails/Comp/ProductItem';
+export { default as OrderItemContain } from './Orders/OrderDetails/Comp/OrderItemContain';

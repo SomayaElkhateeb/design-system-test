@@ -835,7 +835,6 @@ export const english = {
 	'Card number': 'Card number',
 	'Expiry date': 'Expiry date',
 	'Add payment method': 'Add payment method',
-
 	Number: 'Number',
 	'Account number must be at least 14 numbers': 'Account number must be at least 14 numbers',
 	'Date must be in the format MM/YYYY': 'Date must be in the format MM/YYYY',
@@ -857,7 +856,6 @@ export const english = {
 	'Service is successfully purchased': 'Service is successfully purchased',
 	'send message': 'send message',
 	'show on map': 'show on map',
-
 	Provider: 'Provider',
 	'Monthly fees': 'Monthly fees',
 
@@ -881,12 +879,14 @@ export const english = {
 	'Order items are more than': 'Order items are more than',
 	'Apply with': 'Apply with',
 	All: 'All',
+
 	"Taxes":"Taxes",
 	"Tax applies to":"Tax applies to",
 "Include tax in product prices":"Include tax in product prices",
 "Default Tax Class":"Default Tax Class",
 "Tax display in checkout":"Tax display in checkout",
 "Zone defines by":"Zone defines by",
+
 
 	'Payment details (Online)': 'Payment details (Online)',
 	'Bank transfer': 'Bank transfer',
@@ -897,8 +897,44 @@ export const english = {
 	main: 'main',
 	District: 'District',
 
-
-
+	'Campaign name': 'Campaign name',
+	'Activity name': 'Activity name',
+	'Ad text': 'Ad text',
+	'Target who is similar to people': 'Target who is similar to people',
+	'Specific interests': 'Specific interests',
+	Budget: 'Budget',
+	'Start date': 'Start date',
+	'Start time ': 'Start time ',
+	'End date': 'End date',
+	'End time': 'End time',
+	'Campaign details': 'Campaign details',
+	'Budget & Active dates': 'Budget & Active dates',
+	'Purchased from you': 'Purchased from you',
+	'Visited your store': 'Visited your store',
+	'liked your page': 'liked your page',
+	Targeting: 'Targeting',
+	'Select up to 5 products to promote.': 'Select up to 5 products to promote.',
+	'having specific interests': 'having specific interests',
+	"Women's Clothing": "Women's Clothing",
+	'Beauty Products': 'Beauty Products',
+	'Home Appliances': 'Home Appliances',
+	"Men's Clothing": "Men's Clothing",
+	Accessories: 'Accessories',
+	Electronics: 'Electronics',
+	Kitchenware: 'Kitchenware',
+	Furniture: 'Furniture',
+	Fashion: 'Fashion',
+	Shoes: 'Shoes',
+	dress: 'dress',
+	'Account number must be a positive number': 'Account number must be a positive number',
+	'Price number must be a positive number': 'Price number must be a positive number',
+	'Order items number must be a positive number': 'Order items number must be a positive number',
+	'Instructions cannot be empty': 'Instructions cannot be empty',
+	'Account name cannot be empty': 'Account name cannot be empty',
+	'Bank name cannot be empty': 'Bank name cannot be empty',
+	'IBAN cannot be empty': 'IBAN cannot be empty',
+	'Apply with cannot be empty': 'Apply with cannot be empty',
+	'Activate bank transfer': 'Activate bank transfer',
 
 	'Update order status': 'Update order status',
 	'Order status': 'Order status',
@@ -916,9 +952,5 @@ export const english = {
 	'Customer note': 'Customer note',
 	'There are no notes': 'There are no notes',
 	'Order items': 'Order items',
-
-
-
-
 
 };
