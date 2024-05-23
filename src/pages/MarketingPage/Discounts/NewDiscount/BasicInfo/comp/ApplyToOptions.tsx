@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import SpecificCategory from '../../../../../../app/components/page/discount/Selectors/SpecificCategory';
-import SpecificProducts from '../../../../../../app/components/page/discount/Selectors/SpecificProducts';
-import BuyXGetY from './BuyXGetY';
 import { UseFormReturn } from 'react-hook-form';
+
+import BuyXGetY from './BuyXGetY';
 import { newDiscountInterface } from '../../HookForNewDiscount';
+import { SpecificCategory, SpecificProducts } from 'src/app/components/page';
 
 const ApplyToOptions = ({
 	applyTo,

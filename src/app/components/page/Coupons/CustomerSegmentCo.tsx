@@ -1,10 +1,10 @@
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import CustomerSegmentOptions from './comp/CustomerSegmentOptions';
 import { useTranslation } from 'react-i18next';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
 import { UseFormReturn } from 'react-hook-form';
+import { addCouponInterface } from 'src/pages/MarketingPage/Coupons/AddCoupon/HookForAddCoupon';
+import CustomerSegmentOptionsCo from './CustomerSegmentOptionsCo';
 
-const CustomerSegment = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const CustomerSegmentCo = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> }) => {
 	const { t } = useTranslation();
 
 	const customerSegmentOptions = [
@@ -27,7 +27,7 @@ const CustomerSegment = ({ formStore }: { formStore: UseFormReturn<newDiscountIn
 					selected={formStore.watch('customerSegment')}
 				/>
 
-				<CustomerSegmentOptions
+				<CustomerSegmentOptionsCo
 					formStore={formStore}
 					segmentOptions={formStore.watch('customerSegment')}
 				/>
@@ -36,4 +36,4 @@ const CustomerSegment = ({ formStore }: { formStore: UseFormReturn<newDiscountIn
 	);
 };
 
-export default CustomerSegment;
+export default CustomerSegmentCo;

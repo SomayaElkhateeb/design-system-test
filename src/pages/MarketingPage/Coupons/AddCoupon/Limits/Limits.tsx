@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { CheckBox } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { newCouponInterface } from '../AddCoupon';
-const Limits = ({ formStore }: { formStore: UseFormReturn<newCouponInterface> }) => {
+import { addCouponInterface } from '../HookForAddCoupon';
+
+const Limits = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> }) => {
 	const { t } = useTranslation();
 	const [isChecked, setIsChecked] = useState<boolean>(false);
 	const handleCheckboxChange = (newValue: boolean) => {
@@ -24,9 +25,9 @@ const Limits = ({ formStore }: { formStore: UseFormReturn<newCouponInterface> })
 				<div className='w-[24rem]'>
 					<FormField
 						formStore={formStore}
-						name='usage'
+						name='limit'
 						label={t('Usage number')}
-						render={(field) => <Input {...field} />}
+						render={(field) => <Input type='number' {...field} />}
 					/>
 				</div>
 			)}
