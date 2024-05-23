@@ -7,7 +7,6 @@ import { MultiChoiceChips } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
 import FormChoiceChips from './FormChoiceChips';
-import { CustomizationsTypes } from './HookForCustomizationsettings';
 export default function NewsletterConsentForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 
