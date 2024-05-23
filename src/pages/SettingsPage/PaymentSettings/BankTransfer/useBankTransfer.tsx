@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { UseFormReturn } from 'react-hook-form';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
+import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 
 export interface PaymentFormProps {
 	formStore: UseFormReturn<BankTransferTypes>;
@@ -15,9 +16,11 @@ export interface BankTransferTypes {
 	bankName: string;
 	price: number;
 	iban: string;
+	specificProducts?: selectItemsInterface[];
+	specificCustomers?: selectItemsInterface[];
 }
 
-export default function useBankTransfer() {
+export default function useBankTransfer(applyWith: string) {
 	//  hooks
 	const { t } = useTranslation();
 	const bankTransferSchema = {
@@ -33,6 +36,38 @@ export default function useBankTransfer() {
 		applyWith: z.string().min(1, { message: t('Apply with cannot be empty') }),
 		bankName: z.string().min(1, { message: t('Bank name cannot be empty') }),
 		iban: z.string().min(1, { message: t('IBAN cannot be empty') }),
+		specificProducts:
+			applyWith === 'Specific products'
+				? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+				  )
+				: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+				  ),
+		specificCustomers:
+			applyWith === 'Specific customers'
+				? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+				  )
+				: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+				  ),
 	};
 	const handelDefaultValue = (): BankTransferTypes => {
 		return {
@@ -44,6 +79,8 @@ export default function useBankTransfer() {
 			bankName: '',
 			price: 0,
 			iban: '',
+			specificProducts: [],
+			specificCustomers: [],
 		};
 	};
 	const handleSubmit = (values: BankTransferTypes) => {
