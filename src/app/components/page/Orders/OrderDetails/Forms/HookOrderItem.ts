@@ -16,9 +16,9 @@ export default function useOrderItemForm() {
 	};
 
 	const orderItemSchema = {
-		quantity: z.coerce.number().min(1),
-		discount: z.coerce.number().min(1).optional(),
-		shipping: z.coerce.number().min(1).optional(),
+		quantity: z.coerce.number().positive().min(1),
+		discount: z.coerce.number().positive().min(1).optional(),
+		shipping:z.coerce.number().positive().min(1).optional(),
 	};
 
 	return {

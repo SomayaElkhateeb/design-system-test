@@ -10,34 +10,33 @@ import ApplyToOptions from './ApplyToOptions';
 export default function ActivateConditions({ formStore }: PaymentFormProps) {
 	const { t } = useTranslation();
 	return (
-		<div className='global-cards grid grid-cols-2'>
+		<div className='global-cards grid lg:grid-cols-2'>
 			<CardHeader
 				title='Activate if'
 				className='col-span-2'
 				description='you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults'
 			/>
-			<div className='grid gap-4 col-span-2 xl:col-span-1'>
+			<div className='  flex-col-top-section-pages '>
 				<FormField
 					formStore={formStore}
 					name='price'
 					label={t('Price is more than')}
-					render={(field) => <Input {...field} />}
+					render={(field) => <Input type='number' {...field} />}
 				/>
 				<FormField
 					formStore={formStore}
 					name='orderItems'
 					label={t('Order items are more than')}
-					render={(field) => <Input {...field} />}
+					render={(field) => <Input type='number' {...field} />}
 				/>
-				<div>
-					<FormChoiceChips<BankTransferTypes>
-						formStore={formStore}
-						name='applyWith'
-						label='Apply with'
-						options={['All', 'Specific products', 'Specific customers']}
-					/>
-					<ApplyToOptions applyTo={formStore.watch('applyWith')} />
-				</div>
+
+				<FormChoiceChips<BankTransferTypes>
+					formStore={formStore}
+					name='applyWith'
+					label='Apply with'
+					options={['All', 'Specific products', 'Specific customers']}
+				/>
+				{/* <ApplyToOptions applyTo={formStore.watch('applyWith')} /> */}
 			</div>
 		</div>
 	);

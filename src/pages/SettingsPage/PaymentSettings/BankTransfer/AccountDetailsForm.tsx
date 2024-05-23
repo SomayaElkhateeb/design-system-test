@@ -12,6 +12,7 @@ import { Input } from 'src/app/components/ui/input';
 import { PaymentFormProps } from './useBankTransfer';
 
 export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
+	//  hooks
 	const { t } = useTranslation();
 	const banks = ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'];
 
@@ -27,7 +28,7 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 					formStore={formStore}
 					name='accountNumber'
 					label={t('Account number')}
-					render={(field) => <Input {...field} />}
+					render={(field) => <Input type='number' {...field} />}
 				/>
 				<FormField
 					formStore={formStore}
@@ -40,25 +41,23 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 					name='bankName'
 					label={t('Bank name')}
 					render={(field) => (
-						<div className='flex'>
-							<Select
-								onValueChange={field.onChange}
-								value={field.value}
-								required={field.required}
-								name={field.name}
-							>
-								<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-									<SelectValue placeholder={t('Select option')} />
-								</SelectTrigger>
-								<SelectContent>
-									{banks.map((bank, index) => (
-										<SelectItem key={index} value={bank}>
-											{bank}
-										</SelectItem>
-									))}
-								</SelectContent>
-							</Select>
-						</div>
+						<Select
+							onValueChange={field.onChange}
+							value={field.value}
+							required={field.required}
+							name={field.name}
+						>
+							<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+								<SelectValue placeholder={t('Select option')} />
+							</SelectTrigger>
+							<SelectContent>
+								{banks.map((bank, index) => (
+									<SelectItem key={index} value={bank}>
+										{bank}
+									</SelectItem>
+								))}
+							</SelectContent>
+						</Select>
 					)}
 				/>
 				<FormField
