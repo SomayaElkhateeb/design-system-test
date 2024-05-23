@@ -22,8 +22,7 @@ export { default as DiscountsTable } from './discount/Table/DiscountsTable';
 export { default as ActiveDates } from './discount/Comp/ActiveDates';
 export { default as MinimumRequirements } from './discount/Comp/MinimumRequirements';
 export { default as CustomerSegment } from './discount/Comp/CustomerSegment/CustomerSegment';
-export { default as SpecificCategory } from './discount/Selectors/SpecificCategory';
-export { default as SpecificProducts } from './discount/Selectors/SpecificProducts';
+
 export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as DiscountTypesOptionsCo } from './Coupons/DiscountTypesOptionsCo';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';

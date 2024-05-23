@@ -42,6 +42,7 @@ import SuccessfullyPurchased from './app/components/page/Services/PurchaseServic
 
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
 import OrderDetailsConfig from './pages/OrdersPage/OrderDetails/OrderDetailsConfig';
+import OrderDetails from './pages/OrdersPage/OrderDetails/OrderDetails';
 
 // Route Definitions
 export const routes = [
@@ -98,9 +99,10 @@ export const routes = [
 			},
 		],
 	},
+	// /orders/AllOrders/orderDetails/#8965742
 	{
-		path: 'orders/:config/:id',
-		element: <OrderDetailsConfig />,
+		path: '/order/:id',
+		element: <OrderDetails />,
 	},
 
 	// Products Routes
