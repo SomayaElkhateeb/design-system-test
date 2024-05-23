@@ -22,8 +22,8 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 			<div className='col-span-2'>
 				<h3 className='title text-base'>{t('Require customers to confirm their')}</h3>
 				<MultiChoiceChips
-					options={[t('Email subscription'), t('SMS subscription')]}
-					setSelected={(option: string) => {
+					options={['Email subscription', 'SMS subscription']}
+					setSelected={(option) => {
 						formStore.setValue('subscriptionConfirm', option);
 					}}
 					selected={formStore.watch('subscriptionConfirm')}
