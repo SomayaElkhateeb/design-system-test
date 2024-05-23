@@ -10,6 +10,7 @@ import ActivateConditions from './ActivateConditions';
 import { Form } from 'src/app/components/ui/form';
 import useBankTransfer from './useBankTransfer';
 export default function ActivateBankTransfer() {
+	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { formStore, onSubmit } = useBankTransfer();
@@ -45,7 +46,7 @@ export default function ActivateBankTransfer() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 p-5 grid-cols-3'>
+				<div className='grid gap-5 custom_container grid-cols-3'>
 					<div className='grid gap-5 col-span-2 lg:col-span-2'>
 						<AccountDetailsForm formStore={formStore} />
 						<ActivateConditions formStore={formStore} />

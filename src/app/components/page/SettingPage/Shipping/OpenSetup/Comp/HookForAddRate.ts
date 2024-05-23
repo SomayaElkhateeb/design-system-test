@@ -32,10 +32,10 @@ export default function useCustomHookAddRate() {
 		rateNameAr: z.string().min(3, { message: t('Rate is required') }),
 		shippingSpeed: z.string(),
 		supportedCities: z.string().optional(),
-		shippingPrice: z.coerce.number().min(0),
-		weight: z.coerce.number().min(0),
-		minimumPrice: z.coerce.number().min(0),
-		maximumPrice: z.coerce.number().min(0),
+		shippingPrice: z.coerce.number().positive().min(0),
+		weight:z.coerce.number().positive().min(0),
+		minimumPrice:z.coerce.number().positive().min(0),
+		maximumPrice: z.coerce.number().positive().min(0),
 	};
 
 	return {

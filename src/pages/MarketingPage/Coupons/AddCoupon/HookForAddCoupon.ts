@@ -90,12 +90,12 @@ export default function useCustomHookNewDiscount() {
 			discountType: z.string().min(3),
 			discountValue:
 				discountType === 'Fixed amount'
-					? z.coerce.number().min(1)
-					: z.optional(z.coerce.number().min(1)).or(z.literal(0)),
+					? z.coerce.number().positive().min(1)
+					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			discountPercentage:
 				discountType === 'Percentage'
-					? z.coerce.number().min(1)
-					: z.optional(z.coerce.number().min(1)).or(z.literal(0)),
+					? z.coerce.number().positive().min(1)
+					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			applyToType: z.string().min(3),
 
 			specificCategories:
@@ -152,12 +152,12 @@ export default function useCustomHookNewDiscount() {
 					: z.optional(z.string().min(1)).or(z.literal('')),
 			percentageGets:
 				productXtoYType === 'Specify percentage'
-					? z.coerce.number().min(0).max(100)
-					: z.optional(z.coerce.number().min(0).max(100)),
+					? z.coerce.number().positive().min(0).max(100)
+					: z.optional(z.coerce.number().positive().min(0).max(100)),
 			quantityGets:
 				productXtoYType === 'Specify percentage'
-					? z.coerce.number().min(0).max(100)
-					: z.optional(z.coerce.number().min(0).max(100)),
+					? z.coerce.number().positive().min(0).max(100)
+					: z.optional(z.coerce.number().positive().min(0).max(100)),
 
 			selectProductsY:
 				applyToType === 'Buy x get y'
@@ -175,15 +175,15 @@ export default function useCustomHookNewDiscount() {
 								}),
 							),
 					  ),
-			sales: z.coerce.number().min(1),
+			sales: z.coerce.number().positive().min(1),
 
-			miniQuantity: z.coerce.number().min(0),
+			miniQuantity: z.coerce.number().positive().min(0),
 
 			date: z
 				.object({
-					year: z.number().min(2024),
-					month: z.number().min(1).max(12),
-					day: z.number().min(1).max(31),
+					year: z.coerce.number().positive().min(2024),
+					month: z.coerce.number().positive().min(1).max(12),
+					day:z.coerce.number().positive().min(1).max(31),
 				})
 				.nullable()
 				.optional(),

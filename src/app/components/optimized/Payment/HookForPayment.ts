@@ -17,14 +17,14 @@ export default function useCustomHookPayment() {
 	});
 
 	const paymentSchema = {
-		number: z.coerce.number().min(14, { message: t('Account number must be at least 14 numbers') }).refine((val) => /^\d{14}$/.test(val.toString())),
+		number: z.coerce.number().positive().min(14, { message: t('Account number must be at least 14 numbers') }).refine((val) => /^\d{14}$/.test(val.toString())),
 		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
 			message: t('Date must be in the format MM/YYYY'),
 		}),
-		cvv: z.coerce.number().refine((val) => /^\d{3}$/.test(val.toString()), {
+		cvv: z.coerce.number().positive().refine((val) => /^\d{3}$/.test(val.toString()), {
 			message: t('CVV must be 3 digits'),
 		}),
-		hours: z.coerce.number().min(1),
+		hours: z.coerce.number().positive().min(1),
 	};
 
 	return {

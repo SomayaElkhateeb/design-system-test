@@ -18,11 +18,16 @@ export interface BankTransferTypes {
 }
 
 export default function useBankTransfer() {
+	//  hooks
 	const { t } = useTranslation();
 	const bankTransferSchema = {
-		accountNumber: z.number().positive({ message: t('Account number must be a positive number') }),
-		orderItems: z.number().positive({ message: t('Order items number must be a positive number') }),
-		price: z.number().positive({ message: t('Price number must be a positive number') }),
+		accountNumber: z.coerce
+			.number()
+			.positive({ message: t('Account number must be a positive number') }),
+		orderItems: z.coerce
+			.number()
+			.positive({ message: t('Order items number must be a positive number') }),
+		price: z.coerce.number().positive({ message: t('Price number must be a positive number') }),
 		instructions: z.string().min(1, { message: t('Instructions cannot be empty') }),
 		accountName: z.string().min(1, { message: t('Account name cannot be empty') }),
 		applyWith: z.string().min(1, { message: t('Apply with cannot be empty') }),

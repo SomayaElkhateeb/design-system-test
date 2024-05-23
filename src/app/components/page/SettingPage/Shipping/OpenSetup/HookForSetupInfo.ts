@@ -17,7 +17,7 @@ export default function useCustomHookSetupInfo() {
 
 	const SetupInfoSchema = {
 		name: z.string().min(3, { message: t('Name is required') }),
-		apiKey: z.coerce.number().min(7, { message: t('Api Key is required') }),
+		apiKey: z.coerce.number().positive().min(7, { message: t('Api Key is required') }),
 	};
 
 	return {
