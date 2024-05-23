@@ -5,8 +5,8 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { newDiscountInterface } from '../../HookForNewDiscount';
-import SpecificProductsX from 'src/app/components/page/discount/Selectors/SpecificProductsX';
-import SpecificProductsY from 'src/app/components/page/discount/Selectors/SpecificProductsY';
+
+import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
 
 const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
@@ -19,7 +19,11 @@ const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface
 	return (
 		<div className='flex-col-top-section-pages gap-[1rem]'>
 			<div className='flex-col-top-section-pages gap-[.5rem]'>
-				<SpecificProductsX formStore={formStore} />
+				<SpecificAutoCompleteInput<newDiscountInterface>
+					name='selectProductsX'
+					label={t('select products x')}
+					formStore={formStore}
+				/>
 				<div>
 					<SingleChoiceChips
 						options={customerGetsOptions}
@@ -45,7 +49,11 @@ const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface
 					</div>
 				)}
 			</div>
-			<SpecificProductsY formStore={formStore} />
+			<SpecificAutoCompleteInput<newDiscountInterface>
+				name='selectProductsY'
+				label={t('select products y')}
+				formStore={formStore}
+			/>
 		</div>
 	);
 };

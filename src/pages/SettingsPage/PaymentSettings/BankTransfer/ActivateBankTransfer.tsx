@@ -9,11 +9,13 @@ import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
 import { Form } from 'src/app/components/ui/form';
 import useBankTransfer from './useBankTransfer';
+import { useEffect, useState } from 'react';
 export default function ActivateBankTransfer() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { formStore, onSubmit } = useBankTransfer();
+	const [applyWith, setApplyWith] = useState('All');
+	const { formStore, onSubmit } = useBankTransfer(applyWith);
 	const data = [
 		{
 			id: 1,
@@ -28,6 +30,10 @@ export default function ActivateBankTransfer() {
 			title: t('Available for pickup'),
 		},
 	];
+
+	useEffect(() => {
+		setApplyWith(formStore.watch('applyWith'));
+	}, []);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
@@ -46,12 +52,12 @@ export default function ActivateBankTransfer() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 custom_container grid-cols-3'>
-					<div className='grid gap-5 col-span-2 lg:col-span-2'>
+				<div className='grid gap-5 custom_container lg:grid-cols-3'>
+					<div className='grid gap-5 lg:col-span-2 '>
 						<AccountDetailsForm formStore={formStore} />
 						<ActivateConditions formStore={formStore} />
 					</div>
-					<div className='col-span-1'>
+					<div className='lg:col-span-1'>
 						<QuickActions data={data} />
 					</div>
 				</div>

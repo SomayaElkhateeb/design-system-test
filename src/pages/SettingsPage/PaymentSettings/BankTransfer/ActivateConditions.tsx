@@ -5,12 +5,13 @@ import { BankTransferTypes, PaymentFormProps } from './useBankTransfer';
 import CardHeader from 'src/app/components/optimized/UiKits/CardHeader';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import ApplyToOptions from './ApplyToOptions';
+import ApplyToOptionsBankTransfer from './ApplyToOptions';
 
 export default function ActivateConditions({ formStore }: PaymentFormProps) {
+	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='global-cards grid lg:grid-cols-2'>
+		<div className='global-cards grid lg:grid-cols-2 '>
 			<CardHeader
 				title='Activate if'
 				className='col-span-2'
@@ -36,7 +37,8 @@ export default function ActivateConditions({ formStore }: PaymentFormProps) {
 					label='Apply with'
 					options={['All', 'Specific products', 'Specific customers']}
 				/>
-				{/* <ApplyToOptions applyTo={formStore.watch('applyWith')} /> */}
+				
+				<ApplyToOptionsBankTransfer formStore={formStore} applyTo={formStore.watch('applyWith')}  />
 			</div>
 		</div>
 	);

@@ -1,17 +1,37 @@
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import SpecificCustomers from 'src/app/components/page/discount/Selectors/SpecificCustomers';
-import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
+import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import { BankTransferTypes } from './useBankTransfer';
 
 interface ApplyToOptions {
 	applyTo: string;
+	formStore: UseFormReturn<BankTransferTypes>;
 }
-export default function ApplyToOptions({ applyTo }: ApplyToOptions) {
+export default function ApplyToOptionsBankTransfer({ applyTo,formStore }: ApplyToOptions) {
 	const { t } = useTranslation();
-	return (
-		<div>
-			{applyTo === t('Specific customers') && <SpecificCustomers />}
-			{applyTo === t('Specific products') && <SpecificProducts />}
-			{applyTo === t('All') && null}
-		</div>
-	);
+
+	const handelRenderingComponentWithApplyTo = () => {
+		switch (applyTo) {
+			case 'All':
+				return '';
+			case 'Specific products':
+				return (
+					<SpecificAutoCompleteInput<BankTransferTypes>
+						name='specificProducts'
+						label={t('select products')}
+						formStore={formStore}
+					/>
+				);
+			case 'Specific customers':
+				return (
+					<SpecificAutoCompleteInput<BankTransferTypes>
+						name='specificCustomers'
+						label={t('Specific customers')}
+						formStore={formStore}
+					/>
+				);
+		}
+	};
+
+	return handelRenderingComponentWithApplyTo();
 }
