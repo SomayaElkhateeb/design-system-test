@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-
-import { CustomizationsFormProps, customizationsInterface } from './useCustomization';
+import { customizationsInterface } from './HookForCustomizationsettings';
+import { CustomizationsFormProps } from './useCustomization';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
@@ -32,7 +32,7 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 					formStore={formStore}
 					name='minimumOrderSubtotal'
 					label={t('Minimum order subtotal')}
-					render={(field) => <Input type="number" {...field} />}
+					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
 			<FormSwitchField<customizationsInterface>

@@ -489,6 +489,7 @@ export const english = {
 	quantity: 'quantity',
 	views: 'views',
 	'quantity sold': 'quantity sold',
+	"Customizations":"Customizations",
 	returns: 'returns',
 
 	'define minimum requirements': 'define minimum requirements',
