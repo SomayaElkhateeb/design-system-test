@@ -489,7 +489,7 @@ export const english = {
 	quantity: 'quantity',
 	views: 'views',
 	'quantity sold': 'quantity sold',
-	"Customizations":"Customizations",
+	"Customizations": "Customizations",
 	returns: 'returns',
 
 	'define minimum requirements': 'define minimum requirements',
@@ -687,7 +687,7 @@ export const english = {
 	'other methods': 'other methods',
 	'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself':
 		'Shipments that are processed outside your online store. When a customer purchases an order, you need to handle the delivery yourself',
-	Customizations: 'Customizations',
+
 	Checkout: 'Checkout',
 	'Customize the way you want your customers to check out':
 		'Customize the way you want your customers to check out',
@@ -860,6 +860,7 @@ export const english = {
 
 	Provider: 'Provider',
 	'Monthly fees': 'Monthly fees',
+
 	'Setup fees': 'Setup fees',
 	'Credit transactions': 'Credit transactions',
 	'Methods transactions': 'Methods transactions',
@@ -880,8 +881,13 @@ export const english = {
 	'Order items are more than': 'Order items are more than',
 	'Apply with': 'Apply with',
 	All: 'All',
-	'Specific products': 'Specific products',
-	'Specific customers': 'Specific customers',
+	"Taxes":"Taxes",
+	"Tax applies to":"Tax applies to",
+"Include tax in product prices":"Include tax in product prices",
+"Default Tax Class":"Default Tax Class",
+"Tax display in checkout":"Tax display in checkout",
+"Zone defines by":"Zone defines by",
+
 	'Payment details (Online)': 'Payment details (Online)',
 	'Bank transfer': 'Bank transfer',
 	'Delivery method': 'Delivery method',
@@ -890,12 +896,10 @@ export const english = {
 	DHL: 'DHL',
 	main: 'main',
 	District: 'District',
-	Provider: 'Provider',
-	'Monthly fees': 'Monthly fees',
-	'Setup fees': 'Setup fees',
-	'Credit transactions': 'Credit transactions',
-	'Methods transactions': 'Methods transactions',
-	Banks: 'Banks',
+
+
+
+
 	'Update order status': 'Update order status',
 	'Order status': 'Order status',
 	Processing: 'Processing',
@@ -912,11 +916,9 @@ export const english = {
 	'Customer note': 'Customer note',
 	'There are no notes': 'There are no notes',
 	'Order items': 'Order items',
-	'Provider':	'Provider',
-	'Monthly fees':'Monthly fees',
-	'Setup fees':'Setup fees',
-	'Credit transactions':'Credit transactions',
-	'Methods transactions':'Methods transactions',
-	'Banks':'Banks',
+
+
+
+
 
 };

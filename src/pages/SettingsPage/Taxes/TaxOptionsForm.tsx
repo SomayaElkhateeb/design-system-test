@@ -2,65 +2,52 @@ import { useTranslation } from 'react-i18next';
 
 import { TaxesProps } from './TaxesSettings';
 import { CheckBox } from 'src/app/components/optimized';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import FormChoiceChips from '../CustomizationsSettings/comp/FormChoiceChips';
 
+import FormChoiceChips from '../CustomizationsSettings/comp/FormChoiceChips';
+import { TaxesSettingsInterface } from './TaxesSettings';
 export default function TaxOptionsForm({ formStore }: TaxesProps) {
 	const { t } = useTranslation();
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
-			<h2 className='title'>{t('Tax applies to')}</h2>
-			<div>
-				<h3 className='title text-base'>{t('Tax applies to')}</h3>
-				<SingleChoiceChips
-					options={[t('Subtotal'), t('Subtotal + shipping')]}
-					setSelected={(option: string) => {
-						formStore.setValue('taxAppliesTo', option);
-					}}
-					selected={formStore.watch('taxAppliesTo')}
-				/>
-			</div>
+		<div className='global-cards'>
+			<FormChoiceChips<TaxesSettingsInterface>
+				formStore={formStore}
+				name='taxAppliesTo'
+				label={t('Tax applies to')}
+				options={['Subtotal', 'Subtotal + shipping']}
+			/>
 			<CheckBox
 				label={t('Include tax in product prices')}
 				checked={formStore.watch('includeTaxInProductPrices')}
-				handleOnChange={(option: string) => {
+				handleOnChange={(option) => {
 					formStore.setValue('includeTaxInProductPrices', option);
 				}}
 			/>
 			<div>
-				<h3 className='title text-base'>{t('Default Tax Class ')}</h3>
-				<SingleChoiceChips
-					options={[t('None'), t('Taxable goods')]}
-					setSelected={(option: string) => {
-						formStore.setValue('defaultTaxClass', option);
-					}}
-					selected={formStore.watch('defaultTaxClass')}
+				<FormChoiceChips<TaxesSettingsInterface>
+					formStore={formStore}
+					name='defaultTaxClass'
+					label={t('Default Tax Class')}
+					options={['None', 'Taxable goods']}
 				/>
 				<p className='paragraph text-subtitle'>
 					This tax class will be applied automatically to any new added product.
 				</p>
 			</div>
-			<div>
-				<h3 className='title text-base'>{t('Tax display in checkout')}</h3>
-				<SingleChoiceChips
-					options={[t('Hide tax'), t('Show tax value'), t('Only show “included tax” text')]}
-					setSelected={(option: string) => {
-						formStore.setValue('taxDisplayInCheckout', option);
-					}}
-					selected={formStore.watch('taxDisplayInCheckout')}
-				/>
-			</div>
-			<div>
-				<h3 className='title text-base'>{t('Zone defines by')}</h3>
-				<SingleChoiceChips
-					options={[t('Shipping address'), t('Payment address')]}
-					setSelected={(option: string) => {
-						formStore.setValue('zoneDefinedBy', option);
-					}}
-					selected={formStore.watch('zoneDefinedBy')}
-				/>
-			</div>
-			<FormChoiceChips<customizationsInterface>
+
+			<FormChoiceChips<TaxesSettingsInterface>
+				formStore={formStore}
+				name='taxDisplayInCheckout'
+				label={t('Tax display in checkout')}
+				options={['Hide tax', 'Show tax value', 'Only show “included tax” text']}
+			/>
+
+			<FormChoiceChips<TaxesSettingsInterface>
+				formStore={formStore}
+				name='zoneDefinedBy'
+				label={t('Zone defines by')}
+				options={['Shipping address', 'Payment address']}
+			/>
+			<FormChoiceChips<TaxesSettingsInterface>
 				formStore={formStore}
 				name='checkOutWith'
 				label='Customer can check out with'
