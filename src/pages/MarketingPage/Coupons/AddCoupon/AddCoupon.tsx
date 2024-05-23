@@ -49,7 +49,7 @@ const AddCoupon = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<HeaderSettings
 					variant='settingTwoBtns'
 					submit
@@ -65,15 +65,15 @@ const AddCoupon = () => {
 						onClick: () => {},
 					}}
 				/>
-				<div className='p-4 flex justify-between gap-[1rem]'>
-					<div className='w-full flex flex-col gap-[1rem]'>
+				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
+					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BasicInfo formStore={formStore} />
 						<CustomerSegment />
 						<MinimumRequirements formStore={formStore} />
 						<Limits formStore={formStore} />
 						{/* <ActiveDates formStore={formStore} /> */}
 					</div>
-					<div>
+					<div className='col-span-1'>
 						<QuickActions data={data} />
 					</div>
 				</div>

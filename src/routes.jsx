@@ -91,10 +91,15 @@ export const routes = [
 	{
 		path: '/orders',
 		element: <OrdersPage />,
-		children: [{ path: ':tab', element: <OrdersTabs /> }],
+		children: [
+			{
+				path: ':tab',
+				element: <OrdersTabs />,
+			},
+		],
 	},
 	{
-		path: '/orders/:config/:id',
+		path: 'orders/:config/:id',
 		element: <OrderDetailsConfig />,
 	},
 
