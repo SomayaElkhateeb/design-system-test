@@ -99,9 +99,13 @@ export const routes = [
 		],
 	},
 	{
-		path: 'orders/:config/:id',
+		path: '/orders/:tab/:id',
 		element: <OrderDetailsConfig />,
 	},
+	// {
+	// 	path: 'orders/:config/:id',
+	// 	element: <OrderDetailsConfig />,
+	// },
 
 	// Products Routes
 	{
