@@ -4,7 +4,7 @@ import { CampaignFormProps } from '../useCampaign';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { Textarea } from 'src/app/components/ui/textarea';
-import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
+
 
 export default function CampaignDetails({ formStore }: CampaignFormProps) {
 	const { t } = useTranslation();
@@ -26,7 +26,7 @@ export default function CampaignDetails({ formStore }: CampaignFormProps) {
 					render={(field) => <Input {...field} />}
 				/>
 				<div>
-					<SpecificProducts />
+					{/* <SpecificProducts /> */}
 					<p className='paragraph text-subtitle'>{t('Select up to 5 products to promote.')}</p>
 				</div>
 				<FormField
