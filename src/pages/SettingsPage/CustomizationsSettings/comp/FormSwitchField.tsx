@@ -7,8 +7,10 @@ import { Switch } from 'src/app/components/ui/switch';
 interface FormSwitchFieldProps<T extends FieldValues> {
 	formStore: UseFormReturn<T>;
 	description?: string;
-	label: string;
+	label?: string;
 	name: Path<T>;
+	enable?: boolean;
+	fieldLabel?: string;
 }
 
 export default function FormSwitchField<T extends FieldValues>({
@@ -16,21 +18,27 @@ export default function FormSwitchField<T extends FieldValues>({
 	name,
 	label,
 	description,
+	enable,
+	fieldLabel,
 }: FormSwitchFieldProps<T>) {
 	const { t } = useTranslation();
 	return (
 		<div className='flex justify-between items-center col-span-2'>
-			<div className='grid gap-1'>
-				<h3 className='title text-base'>{t(label)}</h3>
-				{description && <p className='paragraph text-subtitle'>{t(description)}</p>}
-			</div>
+			{(label ||
+				description) && (
+					<div className='grid gap-1'>
+						{label && <h3 className='title text-base'>{t(label as any)}</h3>}
+						{description && <p className='paragraph text-subtitle'>{t(description as any)}</p>}
+					</div>
+				)}
 			<FormField
+				label={fieldLabel}
 				formStore={formStore}
 				name={name}
 				render={(field) => (
 					<div className='flex gap-2 items-center'>
 						<Switch checked={field.value} onCheckedChange={field.onChange} />
-						<p className='paragraph mt-[.1rem]'>{t('Enabled')}</p>
+						{!enable && <p className='paragraph mt-[.1rem]'>{t('Enabled')}</p>}
 					</div>
 				)}
 			/>

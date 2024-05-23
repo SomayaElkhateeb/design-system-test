@@ -7,6 +7,7 @@ import { Input } from '../../ui/input';
 import { Switch } from '../../ui/switch';
 import { Textarea } from '../../ui/textarea';
 import { addCustomerGroupInterface } from './HookForAddCustomerGroupForm';
+import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 
 export default function GeneralInfoCustomerGroupInfo({
 	formStore,
@@ -32,19 +33,18 @@ export default function GeneralInfoCustomerGroupInfo({
 					label={t('Description')}
 					render={(field) => <Textarea {...field} placeholder={''} />}
 				/>
-				<FormField
-					formStore={formStore}
-					label={t('Active?')}
-					name='active'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />
-							<p className='text-title text-sm font-normal mt-[.1rem] '>
-								{formStore.watch('active') ? 'on' : 'off'}
-							</p>
-						</div>
-					)}
-				/>
+
+				<div className="flex gap-[.2rem] items-end">
+					<FormSwitchField<addCustomerGroupInterface>
+						formStore={formStore}
+						name='active'
+						fieldLabel={t('Active?')}
+						enable
+					/>
+					<p className='text-title text-sm font-normal  '>
+						{formStore.watch('active') ? 'on' : 'off'}
+					</p>
+				</div>
 			</div>
 		</div>
 	);

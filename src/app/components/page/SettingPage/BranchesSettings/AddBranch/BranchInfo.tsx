@@ -15,6 +15,7 @@ import {
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { BranchSettingsInterface } from './HookForAddBranchForm';
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 
 export const countries = [
 	{
@@ -60,10 +61,6 @@ export default function BranchInfo({
 	//  hooks
 	const { t } = useTranslation();
 
-	const handleBranchType = (option: string) => {
-		formStore.setValue('branchType', option);
-	};
-
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
 	};
@@ -73,14 +70,12 @@ export default function BranchInfo({
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
 			<div className='grid gap-5 col-span-3 cardDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
-					<div>
-						<h2 className='title mb-2'>{t('Branch Type')}</h2>
-						<SingleChoiceChips
-							options={['Commercial branch', 'Warehouse']}
-							setSelected={handleBranchType}
-							selected={formStore.watch('branchType')}
-						/>
-					</div>
+					<FormChoiceChips<BranchSettingsInterface>
+						formStore={formStore}
+						name='branchType'
+						label={t('Branch Type')}
+						options={['Commercial branch', 'Warehouse']}
+					/>
 
 					<TabbedFormField
 						formStore={formStore}
