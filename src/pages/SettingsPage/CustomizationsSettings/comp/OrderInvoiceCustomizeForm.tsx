@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { CustomizationsFormProps, customizationsInterface } from './useCustomization';
+import { CustomizationsFormProps } from './useCustomization';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
-
+import { customizationsInterface } from './HookForCustomizationsettings';
 export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 	return (
@@ -23,7 +23,7 @@ export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsF
 					formStore={formStore}
 					name='taxNumber'
 					label={t('Tax number')}
-					render={(field) => <Input {...field} />}
+					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
 			<FormSwitchField<customizationsInterface>

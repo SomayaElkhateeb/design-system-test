@@ -2,20 +2,21 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { Form } from 'src/app/components/ui/form';
-import useCustomization from './comp/useCustomization';
+
 import { HeaderSettings } from 'src/app/components/optimized';
 import ProductCustomizeForm from './comp/ProductCustomizeForm';
 import CheckoutCustomizeForm from './comp/CheckoutCustomizeForm';
 import NewsletterConsentForm from './comp/NewsletterConsentForm';
 import OrderInvoiceCustomizeForm from './comp/OrderInvoiceCustomizeForm';
+import UseCustomization from './comp/useCustomization';
 
 export default function CustomizationsSettings() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { formStore, onSubmit } = useCustomization();
+	const { formStore, onSubmit } = UseCustomization();
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className="flex-col-top-section-pages">
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<HeaderSettings
 					submit
 					variant='settingTwoBtns'
