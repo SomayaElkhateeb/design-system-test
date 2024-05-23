@@ -1,25 +1,25 @@
-import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { useTranslation } from 'react-i18next';
 import CustomAutoComplete from 'src/app/components/optimized/InputsFields/AutoCompleteMultiple';
 import FormField from 'src/app/components/ui/form/field';
+import { addCouponInterface } from 'src/pages/MarketingPage/Coupons/AddCoupon/HookForAddCoupon';
+
 interface selectItemsInterface {
 	id: string;
 	name: string;
 }
-
-const SpecificCustomers = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const SpecificCategoryCO = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> }) => {
+	//  hooks
 	const { t } = useTranslation();
-
 	const selectItems = [
 		{ id: '1', name: 'Dress' },
 		{ id: '2', name: 'Fashion' },
 	];
 	const handelAutoCompleteError = () => {
 		return (
-			formStore.watch('specificCustomer') &&
-			formStore?.watch('specificCustomer')?.length === 0 && (
-				<p className='global_error'>{'choose Customer required'}</p>
+			formStore.watch('specificCategories') &&
+			formStore?.watch('specificCategories')?.length === 0 && (
+				<p className='global_error'>{'choose categories required'}</p>
 			)
 		);
 	};
@@ -28,15 +28,15 @@ const SpecificCustomers = ({ formStore }: { formStore: UseFormReturn<newDiscount
 		<div className='flex-col-top-section-pages gap-0'>
 			<FormField
 				formStore={formStore}
-				name='specificCustomer'
-				label={t('Select Customers')}
+				name='specificCategories'
+				label={t('Select Category')}
 				render={(field) => (
 					<CustomAutoComplete<selectItemsInterface>
-						placeholder={t('Customers')}
-						getvalue={(value) => formStore.setValue('specificCustomer', value)}
-						name='specificCustomer'
+						placeholder={t('Category')}
+						getvalue={(value) => formStore.setValue('specificCategories', value)}
+						name='specificCategories'
 						array={selectItems}
-						MainValue={formStore.watch('specificCustomer')}
+						MainValue={formStore.watch('specificCategories')}
 					/>
 				)}
 			/>
@@ -45,4 +45,4 @@ const SpecificCustomers = ({ formStore }: { formStore: UseFormReturn<newDiscount
 	);
 };
 
-export default SpecificCustomers;
+export default SpecificCategoryCO;

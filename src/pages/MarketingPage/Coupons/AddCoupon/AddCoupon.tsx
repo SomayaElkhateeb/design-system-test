@@ -1,51 +1,41 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'src/app/utils/hooks/form';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import useCustomHookAddCoupon, { newCouponInterface } from './HookForAddCoupon';
 import { Form } from 'src/app/components/ui/form';
-import { postCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 import { HeaderSettings } from 'src/app/components/optimized';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Limits from './Limits/Limits';
-import CustomerSegment from 'src/app/components/page/discount/Comp/CustomerSegment/CustomerSegment';
-import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import ActiveDates from 'src/app/components/page/discount/Comp/ActiveDates';
-import MinimumRequirements from 'src/app/components/page/discount/Comp/MinimumRequirements';
+import useCustomHookAddCoupon, { addCouponInterface } from './HookForAddCoupon';
+import { ActiveDatesCo, CustomerSegmentCo, MinimumRequirementsCo } from 'src/app/components/page';
+import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 
 const AddCoupon = () => {
 	// hook
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	// custom hook
+	const [discountType, setDiscountType] = useState('Free shipping');
+	const [applyToType, setApplyToType] = useState('All products');
+	const [customerSegment, setCustomerSegment] = useState('All customers');
+
 	const { handelDefaultValue, couponSchema } = useCustomHookAddCoupon();
 
-	const handleSaveChanges = async () => {
-		try {
-			const formData = formStore.getValues();
-			await dispatch(postCoupons(formData));
-
-			navigate('/marketing/coupons');
-		} catch (error) {
-			console.error('Error while saving changes:', error);
-		}
-	};
-
-	const handleSubmit: (validatedData: newCouponInterface) => void = (
-		values: newCouponInterface,
+	const handleSubmit: (validatedData: addCouponInterface) => void = (
+		values: addCouponInterface,
 	) => {
 		console.log(values);
-		handleSaveChanges();
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: couponSchema,
+		schema: couponSchema(discountType, applyToType, customerSegment),
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
-	const data = [{ id: 1, title: t('On') }];
+	useEffect(() => {
+		setDiscountType(formStore.watch('discountType'));
+		setApplyToType(formStore.watch('applyToType'));
+		setCustomerSegment(formStore?.watch('customerSegment'));
+	}, [formStore]);
 
 	return (
 		<Form {...formStore}>
@@ -68,13 +58,21 @@ const AddCoupon = () => {
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BasicInfo formStore={formStore} />
-						<CustomerSegment />
-						<MinimumRequirements formStore={formStore} />
+						<CustomerSegmentCo formStore={formStore} />
+						<MinimumRequirementsCo formStore={formStore} />
 						<Limits formStore={formStore} />
-						{/* <ActiveDates formStore={formStore} /> */}
+						<ActiveDatesCo formStore={formStore} />
 					</div>
 					<div className='col-span-1'>
-						<QuickActions data={data} />
+						<div className='global-cards flex-col-top-section-pages'>
+							<h3 className='title'>{t('Quick actions')}</h3>
+							<div className='flex gap-[.2rem] items-end'>
+								<FormSwitchField<addCouponInterface> formStore={formStore} name='active' enable />
+								<p className='text-title text-sm font-normal '>
+									{formStore.watch('active') ? 'on' : 'off'}
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</form>

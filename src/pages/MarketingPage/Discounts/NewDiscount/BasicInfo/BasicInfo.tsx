@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import ApplyToOptions from './comp/ApplyToOptions';
-
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
-import DiscountTypesOptions from 'src/app/components/page/discount/Comp/DiscountTypesOptions';
 import { newDiscountInterface } from '../HookForNewDiscount';
+import { DiscountTypesOptions } from 'src/app/components/page';
 
 const BasicInfo = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
