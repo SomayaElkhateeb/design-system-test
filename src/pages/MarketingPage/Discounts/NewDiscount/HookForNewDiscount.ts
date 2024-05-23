@@ -77,51 +77,51 @@ export default function useCustomHookNewDiscount() {
 			specificCategories:
 				applyToType === 'Specific category'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 			ProductXToProductYType:
 				applyToType === 'Buy x get y'
 					? z.string().min(1)
@@ -129,7 +129,7 @@ export default function useCustomHookNewDiscount() {
 			percentageGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(zz.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)),
 			quantityGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
@@ -138,18 +138,10 @@ export default function useCustomHookNewDiscount() {
 			selectProductsY:
 				applyToType === 'Buy x get y'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-
 					  )
 					: z.optional(
 							z.array(
@@ -181,18 +173,10 @@ export default function useCustomHookNewDiscount() {
 			specificCustomer:
 				customerSegment === 'Specific customers'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-
 					  )
 					: z.optional(
 							z.array(
@@ -202,9 +186,9 @@ export default function useCustomHookNewDiscount() {
 								}),
 							),
 					  ),
+
 			miniPrice: z.coerce.number().min(1),
 			miniQuantity: z.coerce.number().min(1),
-
 
 			date: z
 				.object({
