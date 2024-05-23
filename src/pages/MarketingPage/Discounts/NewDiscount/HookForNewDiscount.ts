@@ -129,7 +129,7 @@ export default function useCustomHookNewDiscount() {
 			percentageGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(zz.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)),
 			quantityGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
@@ -150,77 +150,64 @@ export default function useCustomHookNewDiscount() {
 								name: z.string().min(1),
 							}),
 
-					  )
-					: z.optional(
-							z.array(
+						)),
+
+
+						customerSegment: z.string().min(3),
+						specificCustomerGroup:
+						customerSegment === 'Specific customer groups'
+							? z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
+							)
+							: z.optional(
+								z.array(
+									z.object({
+										id: z.string().min(1),
+										name: z.string().min(1),
+									}),
+								),
 							),
-					  ),
 
-			customerSegment: z.string().min(3),
-			specificCustomerGroup:
-				customerSegment === 'Specific customer groups'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
+						specificCustomer:
+						customerSegment === 'Specific customers'
+							? z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							),
-					  ),
+							)
+							: z.optional(
+								z.array(
+									z.object({
+										id: z.string().min(1),
+										name: z.string().min(1),
+									}),
 
-			specificCustomer:
-				customerSegment === 'Specific customers'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
-			miniPrice: z.coerce.number().min(1),
+								)
+					
+								),
+		miniPrice: z.coerce.number().min(1),
 			miniQuantity: z.coerce.number().min(1),
 
 
-			date: z
-				.object({
-					year: z.coerce.number().positive().min(2024),
-					month: z.coerce.number().positive().min(1).max(12),
-					day: z.coerce.number().positive().min(1).max(31),
-				})
-				.nullable()
-				.optional(),
+				date: z
+					.object({
+						year: z.coerce.number().positive().min(2024),
+						month: z.coerce.number().positive().min(1).max(12),
+						day: z.coerce.number().positive().min(1).max(31),
+					})
+					.nullable()
+					.optional(),
 
-			active: z.boolean(),
+					active: z.boolean(),
 		};
 	};
 
-	return {
-		handelDefaultValue,
-		discountSchema,
-	};
+return {
+	handelDefaultValue,
+	discountSchema,
+};
 }
