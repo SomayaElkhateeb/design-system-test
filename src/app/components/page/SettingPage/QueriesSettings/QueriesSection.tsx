@@ -7,6 +7,7 @@ import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Switch } from 'src/app/components/ui/switch';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { queriesInterface } from './HookForQueriesSettings';
+import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 
 export default function QueriesSectionForm({
 	formStore,
@@ -25,16 +26,7 @@ export default function QueriesSectionForm({
 					</p>
 				</div>
 				
-				<FormField
-					formStore={formStore}
-					name='enable'
-					render={(field) => (
-						<div className='flex gap-2 items center'>
-							<Switch checked={field.value} onCheckedChange={field.onChange} />{' '}
-							<p className='text-title text-sm font-normal mt-[.1rem] '>{t('Enabled')}</p>
-						</div>
-					)}
-				/>
+				<FormSwitchField<queriesInterface> formStore={formStore} name='enable' />
 			</div>
 
 			<TabbedFormField

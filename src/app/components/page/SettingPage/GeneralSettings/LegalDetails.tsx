@@ -6,7 +6,7 @@ import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/fil
 import { TfiUpload } from 'react-icons/tfi';
 import { fileClassName } from './Media';
 import { Input } from 'src/app/components/ui/input';
-import { Button } from 'src/app/components/optimized';
+
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 
 const LegalDetails = ({
@@ -21,9 +21,6 @@ const LegalDetails = ({
 	//  hooks
 	const { t } = useTranslation();
 
-	
-	
-
 	return (
 		<section className='cardDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Legal details')}</h3>
@@ -35,6 +32,7 @@ const LegalDetails = ({
 						setSelected={(option: string) => setState(option)}
 					/>
 				</div>
+				
 				<FormField
 					formStore={formStore}
 					name='NationalID'

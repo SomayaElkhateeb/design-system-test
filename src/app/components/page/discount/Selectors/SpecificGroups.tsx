@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, SelectItems } from 'src/app/components/optimized';
 import { FaChevronRight } from 'react-icons/fa';
@@ -6,9 +6,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { getSelectcustomer_groups } from 'src/app/store/slices/marketing/groups/groupsAsyncThunks';
 import CategoryViewSelect from 'src/app/components/page/discount/Selectors/CategoryViewSelect';
+import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { UseFormReturn } from 'react-hook-form';
 
-const SpecificGroups: React.FC = () => {
+interface selectItemsInterface {
+	id: string;
+	name: string;
+}
+
+const SpecificGroups = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
+	const selectItems = [
+		{ id: '1', name: 'Dress' },
+		{ id: '2', name: 'Fashion' },
+	];
+	const handelAutoCompleteError = () => {
+		return (
+			formStore.watch('specificCategories') &&
+			formStore?.watch('specificCategories')?.length === 0 && (
+				<p className='global_error'>{'choose categories required'}</p>
+			)
+		);
+	};
 	const dispatch = useDispatch();
 	const { groups } = useSelector((state) => state.groups);
 	const [state, setState] = useState({

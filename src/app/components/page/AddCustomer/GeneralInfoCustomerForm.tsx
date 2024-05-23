@@ -8,6 +8,7 @@ import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import CustomAutoComplete from '../../optimized/InputsFields/AutoCompleteMultiple';
 import { CheckBox } from '../../optimized';
 import { addCustomerInterface } from './HookForAddCustomerForm';
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
@@ -23,9 +24,7 @@ export default function GeneralInfoCustomerForm({
 }) {
 	//  hooks
 	const { t } = useTranslation();
-	const handleBranchType = (option: string) => {
-		formStore.setValue('humanType', option);
-	};
+	
 	// ///////////////////////////
 	const handelAutoCompleteError = () => {
 		return (
@@ -39,10 +38,11 @@ export default function GeneralInfoCustomerForm({
 			<h2 className='title'>{t('General Info')}</h2>
 
 			<div className='flex-col-top-section-pages md:w-[65%]'>
-				<SingleChoiceChips
-					options={[t('Male'), t('Female')]}
-					setSelected={handleBranchType}
-					selected={formStore.watch('humanType')}
+				<FormChoiceChips<addCustomerInterface>
+					formStore={formStore}
+					name='humanType'
+					label='Customer can check out with'
+					options={['Male', 'Female']}
 				/>
 				<FormField
 					formStore={formStore}

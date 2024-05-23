@@ -2,6 +2,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { languageSettingsInterface } from './HookForLanguageSettings';
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 
 export default function DefaultLanguageSection({
 	formStore,
@@ -25,14 +26,13 @@ export default function DefaultLanguageSection({
 					)}
 				</p>
 			</div>
-			<div className={sharedClass}>
-				<h3 className='title'>{t('Store default')}</h3>
-				<SingleChoiceChips
-					options={['English', 'Arabic']}
-					setSelected={handleLanguageType}
-					selected={formStore.watch('defaultLanguage')}
-				/>
-			</div>
+
+			<FormChoiceChips<languageSettingsInterface>
+				formStore={formStore}
+				name='defaultLanguage'
+				label={t('Store default')}
+				options={['English', 'Arabic']}
+			/>
 		</section>
 	);
 }
