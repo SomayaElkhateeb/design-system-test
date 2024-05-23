@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { CustomizationsFormProps, CustomizationsInterface } from './useCustomization';
-import { customizationsInterface } from './HookForCustomizationsettings';
+import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
+import { CustomizationsTypes } from './HookForCustomizationsettings';
 import { CustomizationsFormProps } from './useCustomization';
 
 import FormField from 'src/app/components/ui/form/field';
@@ -18,13 +18,13 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 				<h2 className='title '>{t('Checkout')}</h2>
 				<p className='paragraph'>{t('Customize the way you want your customers to check out')}</p>
 			</div>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='guestCheckout'
 				label='Guest checkout'
 				description='Allow customers to check out as guests'
 			/>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='collectShippingAddress'
 				label='Only collect shipping address'
@@ -38,23 +38,23 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='controlOrderPurchase'
 				label='Set minimum allowed order subtotal'
 				description='Control what your customers can purchase'
 			/>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='askForCompanyName'
 				label='Ask for the company name'
 			/>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='askForPostalCode'
 				label='Ask for a ZIP/postal code'
 			/>
-			<FormChoiceChips<CustomizationsInterface>
+			<FormChoiceChips<CustomizationsTypes>
 				formStore={formStore}
 				name='checkOutWith'
 				label='Customer can check out with'

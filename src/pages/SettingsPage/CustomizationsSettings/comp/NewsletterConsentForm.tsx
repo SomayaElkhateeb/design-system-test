@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-
-import { CustomizationsFormProps, CustomizationsInterface } from './useCustomization';
+import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
 
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { MultiChoiceChips } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
 import FormChoiceChips from './FormChoiceChips';
-import { customizationsInterface } from './HookForCustomizationsettings';
+import { CustomizationsTypes } from './HookForCustomizationsettings';
 export default function NewsletterConsentForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 
@@ -30,7 +29,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					selected={formStore.watch('subscriptionConfirm')}
 				/>
 			</div>
-			<FormChoiceChips<CustomizationsInterface>
+			<FormChoiceChips<CustomizationsTypes>
 				formStore={formStore}
 				name='showSubscribeOptionAt'
 				label='Show an option to subscribe at'
@@ -49,12 +48,12 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					)}
 				/>
 			</div>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='preselectOption'
 				label='Preselect the option for customers'
 			/>
-			<FormSwitchField<CustomizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='showNewsletterFooter'
 				label='Show email newsletter input in footer'

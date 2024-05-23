@@ -1,7 +1,6 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-
-export interface customizationsInterface {
+export interface CustomizationsTypes {
 	activateProductComparison: boolean;
 	showProductsDescription: boolean;
 	collectShippingAddress: boolean;
@@ -33,12 +32,8 @@ export interface customizationsInterface {
 	showSKU: boolean;
 }
 
-
 export default function useCustomHookCustomizationSettings() {
-
-
-	//  
-	const booleanValidation = z.boolean().default(false)
+	const booleanValidation = z.boolean().default(false);
 	const customizationsSchema = {
 		activateProductComparison: booleanValidation,
 		showProductsDescription: booleanValidation,

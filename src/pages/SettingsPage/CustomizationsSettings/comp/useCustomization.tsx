@@ -1,15 +1,11 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useForm } from 'src/app/utils/hooks/form';
-
-import useCustomHookCustomizationSettings, {
-	customizationsInterface,
-} from './HookForCustomizationsettings';
+import { z } from 'zod';
 
 export interface CustomizationsFormProps {
-	formStore: UseFormReturn<CustomizationsInterface>;
+	formStore: UseFormReturn<CustomizationsTypes>;
 }
-
-export interface CustomizationsInterface {
+export interface CustomizationsTypes {
 	activateProductComparison: boolean;
 	showProductsDescription: boolean;
 	collectShippingAddress: boolean;
@@ -42,34 +38,35 @@ export interface CustomizationsInterface {
 }
 
 export default function useCustomization() {
+	const booleanValidation = z.boolean().default(false);
 	const customizationsSchema = {
-		activateProductComparison: z.boolean().default(false),
-		showProductsDescription: z.boolean().default(false),
-		collectShippingAddress: z.boolean().default(false),
-		limitDownloadAttempts: z.boolean().default(false),
-		showNewsletterFooter: z.boolean().default(false),
-		controlOrderPurchase: z.boolean().default(false),
+		activateProductComparison: booleanValidation,
+		showProductsDescription: booleanValidation,
+		collectShippingAddress: booleanValidation,
+		limitDownloadAttempts: booleanValidation,
+		showNewsletterFooter: booleanValidation,
+		controlOrderPurchase: booleanValidation,
 		subscriptionConfirm: z.array(z.string()).min(1),
-		minimumOrderSubtotal: z.coerce.number().min(0),
-		hideProductImages: z.boolean().default(false),
-		askForCompanyName: z.boolean().default(false),
-		purchasesNumExceeds: z.coerce.number().min(0),
-		maxDownloadAttempts: z.coerce.number().min(0),
-		askForPostalCode: z.boolean().default(false),
-		showProductStock: z.boolean().default(false),
-		autoArchiveOrder: z.boolean().default(false),
-		showPurchasesNum: z.boolean().default(false),
-		productStockLimit: z.coerce.number().min(0),
-		preselectOption: z.boolean().default(false),
-		hideOutOfStock: z.boolean().default(false),
-		guestCheckout: z.boolean().default(false),
-		showTaxNumber: z.boolean().default(false),
-		showContacts: z.boolean().default(false),
-		maxComparisons: z.coerce.number().min(0),
+		minimumOrderSubtotal: z.coerce.number().min(1),
+		hideProductImages: booleanValidation,
+		askForCompanyName: booleanValidation,
+		purchasesNumExceeds: z.coerce.number().min(1),
+		maxDownloadAttempts: z.coerce.number().min(1),
+		askForPostalCode: booleanValidation,
+		showProductStock: booleanValidation,
+		autoArchiveOrder: booleanValidation,
+		showPurchasesNum: booleanValidation,
+		productStockLimit: z.coerce.number().min(1),
+		preselectOption: booleanValidation,
+		hideOutOfStock: booleanValidation,
+		guestCheckout: booleanValidation,
+		showTaxNumber: booleanValidation,
+		showContacts: booleanValidation,
+		maxComparisons: z.coerce.number().min(1),
 		showSubscribeOptionAt: z.string().min(1),
 		newsletterTextEn: z.string().min(1),
-		taxNumber: z.coerce.number().min(0),
-		showSKU: z.boolean().default(false),
+		taxNumber: z.coerce.number().min(1),
+		showSKU: booleanValidation,
 		newsletterTextAr: z.string().min(1),
 		checkOutWith: z.string().min(1),
 	};
@@ -81,7 +78,7 @@ export default function useCustomization() {
 			limitDownloadAttempts: false,
 			showNewsletterFooter: false,
 			controlOrderPurchase: false,
-			showSubscribeOptionAt: '',
+			showSubscribeOptionAt: 'Registration',
 			hideProductImages: false,
 			askForCompanyName: false,
 			askForPostalCode: false,
@@ -101,29 +98,21 @@ export default function useCustomization() {
 			newsletterTextAr: '',
 			showContacts: false,
 			maxComparisons: 0,
-			checkOutWith: '',
+			checkOutWith: 'Email & phone',
 			showSKU: false,
 			taxNumber: 0,
 		};
 	};
 
-
-const handleSubmit = (values: CustomizationsInterface) => {
+	const handleSubmit = (values: CustomizationsTypes) => {
 		console.log(values);
 	};
 
-export default function UseCustomization() {
-	const handleSubmit = (values: customizationsInterface) => {
-
-		console.log(values);
-	};
-
-	//  custom hooks
-	const { customizationsSchema, handelDefaultValue } = useCustomHookCustomizationSettings();
 	const { formStore, onSubmit } = useForm({
 		handleSubmit: handleSubmit,
 		schema: customizationsSchema,
 		defaultValues: handelDefaultValue(),
 	});
+
 	return { formStore, onSubmit };
 }

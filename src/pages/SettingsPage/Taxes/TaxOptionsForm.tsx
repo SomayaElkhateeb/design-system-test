@@ -60,7 +60,7 @@ export default function TaxOptionsForm({ formStore }: TaxesProps) {
 					selected={formStore.watch('zoneDefinedBy')}
 				/>
 			</div>
-			<FormChoiceChips<CustomizationsInterface>
+			<FormChoiceChips<CustomizationsTypes>
 				formStore={formStore}
 				name='checkOutWith'
 				label='Customer can check out with'
