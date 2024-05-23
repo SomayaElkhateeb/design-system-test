@@ -1,27 +1,21 @@
-import { useState } from 'react';
-
 import { useTranslation } from 'react-i18next';
-import { Input } from 'src/app/components/ui/input';
+
+import FormChoiceChips from '../../CustomizationsSettings/comp/FormChoiceChips';
+import { BankTransferTypes, PaymentFormProps } from './useBankTransfer';
+import CardHeader from 'src/app/components/optimized/UiKits/CardHeader';
 import FormField from 'src/app/components/ui/form/field';
-import { PaymentFormProps } from './ActivateBankTransfer';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
-import SpecificCustomers from 'src/app/components/page/discount/Selectors/SpecificCustomers';
+import { Input } from 'src/app/components/ui/input';
+import ApplyToOptions from './ApplyToOptions';
 
 export default function ActivateConditions({ formStore }: PaymentFormProps) {
 	const { t } = useTranslation();
-	const [selectedOption, setSelectedOption] = useState('All');
-
 	return (
 		<div className='global-cards grid grid-cols-2'>
-			<div className='col-span-2'>
-				<h2 className='title  mb-2'>{t('Activate if')}</h2>
-				<p className='paragraph'>
-					{t(
-						'you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults',
-					)}
-				</p>
-			</div>
+			<CardHeader
+				title='Activate if'
+				className='col-span-2'
+				description='you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults'
+			/>
 			<div className='grid gap-4 col-span-2 xl:col-span-1'>
 				<FormField
 					formStore={formStore}
@@ -36,19 +30,15 @@ export default function ActivateConditions({ formStore }: PaymentFormProps) {
 					render={(field) => <Input {...field} />}
 				/>
 				<div>
-					<SingleChoiceChips
-						options={[t('All'), t('Specific products'), t('Specific customers')]}
-						setSelected={(option: string) => setSelectedOption(option)}
-						selected={selectedOption}
+					<FormChoiceChips<BankTransferTypes>
+						formStore={formStore}
+						name='applyWith'
+						label='Apply with'
+						options={['All', 'Specific products', 'Specific customers']}
 					/>
-					{selectedOption === t('Specific products') ? (
-						<SpecificProducts />
-					) : selectedOption === t('Specific customers') ? (
-						<SpecificCustomers />
-					) : null}
+					<ApplyToOptions applyTo={formStore.watch('applyWith')} />
 				</div>
 			</div>
 		</div>
 	);
 }
-

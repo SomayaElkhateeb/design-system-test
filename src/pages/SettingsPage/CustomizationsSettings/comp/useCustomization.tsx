@@ -2,11 +2,10 @@ import { z } from 'zod';
 import { UseFormReturn } from 'react-hook-form';
 import { useForm } from 'src/app/utils/hooks/form';
 
-
 export interface CustomizationsFormProps {
-	formStore: UseFormReturn<customizationsInterface>;
+	formStore: UseFormReturn<CustomizationsInterface>;
 }
-export interface customizationsInterface {
+export interface CustomizationsInterface {
 	activateProductComparison: boolean;
 	showProductsDescription: boolean;
 	collectShippingAddress: boolean;
@@ -104,7 +103,7 @@ export default function useCustomization() {
 		};
 	};
 
-	const handleSubmit = (values: customizationsInterface) => {
+	const handleSubmit = (values: CustomizationsInterface) => {
 		console.log(values);
 	};
 	const { formStore, onSubmit } = useForm({

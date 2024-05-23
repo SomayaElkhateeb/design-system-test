@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { CustomizationsFormProps, customizationsInterface } from './useCustomization';
+import { CustomizationsFormProps, CustomizationsInterface } from './useCustomization';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
@@ -15,13 +15,13 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 				<h2 className='title mb-2'>{t('Checkout')}</h2>
 				<p className='paragraph'>{t('Customize the way you want your customers to check out')}</p>
 			</div>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='guestCheckout'
 				label='Guest checkout'
 				description='Allow customers to check out as guests'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='collectShippingAddress'
 				label='Only collect shipping address'
@@ -35,28 +35,28 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 					render={(field) => <Input {...field} />}
 				/>
 			</div>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='controlOrderPurchase'
 				label='Set minimum allowed order subtotal'
 				description='Control what your customers can purchase'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='askForCompanyName'
 				label='Ask for the company name'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='askForPostalCode'
 				label='Ask for a ZIP/postal code'
 			/>
-			<FormChoiceChips<customizationsInterface>
-        formStore={formStore}
-        name='checkOutWith'
-        label='Customer can check out with'
-        options={['Email & phone', 'Email only', 'Phone only']}
-      />
+			<FormChoiceChips<CustomizationsInterface>
+				formStore={formStore}
+				name='checkOutWith'
+				label='Customer can check out with'
+				options={['Email & phone', 'Email only', 'Phone only']}
+			/>
 		</div>
 	);
 }

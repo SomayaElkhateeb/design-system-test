@@ -22,7 +22,7 @@ const MarketingLayout = () => {
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='grid'>
 			<div className='Sticky_header'>
 				<HorizontalTabsLink tabs={tabs} path='/marketing' />
 			</div>
