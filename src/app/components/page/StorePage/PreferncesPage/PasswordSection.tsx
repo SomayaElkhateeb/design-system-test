@@ -7,6 +7,7 @@ import { Switch } from 'src/app/components/ui/switch';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { preferncesInterface } from './HookForPreferncePageForm';
+import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 
 export default function PasswordSection({
 	formStore,
@@ -23,16 +24,8 @@ export default function PasswordSection({
 					{t('Make your store only available for cutomers who have the password')}
 				</p>
 			</div>
-			<FormField
-				formStore={formStore}
-				name='passwordEnable'
-				render={(field) => (
-					<div className='flex gap-2 items center'>
-						<Switch checked={field.value} onCheckedChange={field.onChange} />{' '}
-						<p className='text-title text-sm font-normal mt-[.1rem] '>{t('Enabled')}</p>
-					</div>
-				)}
-			/>
+			
+			<FormSwitchField<preferncesInterface> formStore={formStore} name='passwordEnable' />
 			<FormField
 				formStore={formStore}
 				name='password'
