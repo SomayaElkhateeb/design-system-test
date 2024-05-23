@@ -1,19 +1,21 @@
 import { useTranslation } from 'react-i18next';
 
+
 import { CustomizationsFormProps, CustomizationsInterface } from './useCustomization';
+
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { MultiChoiceChips } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
 import FormChoiceChips from './FormChoiceChips';
-
+import { customizationsInterface } from './HookForCustomizationsettings';
 export default function NewsletterConsentForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 
 	return (
 		<div className='global-cards grid grid-cols-2'>
-			<div className='col-span-2'>
-				<h2 className='title  mb-2'>{t('Double opt-in')}</h2>
+			<div className='col-span-2 flex-col-top-section-pages  gap-[.3rem]'>
+				<h2 className='title '>{t('Double opt-in')}</h2>
 				<p className='paragraph'>
 					{t('Ask for customers consent for receiving email or SMS newsletter')}
 				</p>

@@ -1,10 +1,14 @@
-import { z } from 'zod';
 import { UseFormReturn } from 'react-hook-form';
 import { useForm } from 'src/app/utils/hooks/form';
+
+import useCustomHookCustomizationSettings, {
+	customizationsInterface,
+} from './HookForCustomizationsettings';
 
 export interface CustomizationsFormProps {
 	formStore: UseFormReturn<CustomizationsInterface>;
 }
+
 export interface CustomizationsInterface {
 	activateProductComparison: boolean;
 	showProductsDescription: boolean;
@@ -103,9 +107,19 @@ export default function useCustomization() {
 		};
 	};
 
-	const handleSubmit = (values: CustomizationsInterface) => {
+
+const handleSubmit = (values: CustomizationsInterface) => {
 		console.log(values);
 	};
+
+export default function UseCustomization() {
+	const handleSubmit = (values: customizationsInterface) => {
+
+		console.log(values);
+	};
+
+	//  custom hooks
+	const { customizationsSchema, handelDefaultValue } = useCustomHookCustomizationSettings();
 	const { formStore, onSubmit } = useForm({
 		handleSubmit: handleSubmit,
 		schema: customizationsSchema,
