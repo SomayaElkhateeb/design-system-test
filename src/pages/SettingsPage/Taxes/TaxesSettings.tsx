@@ -16,7 +16,7 @@ export interface TaxesSettingsInterface {
 	defaultTaxClass: string;
 	taxDisplayInCheckout: string;
 	zoneDefinedBy: string;
-	checkOutWith:string
+	checkOutWith: string;
 }
 
 export interface TaxesProps {
@@ -58,7 +58,7 @@ export default function TaxesSettings() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='page-container p-5 grid grid-cols-3'>
+				<div className='custom_container grid grid-cols-3'>
 					<div className='col-span-2  grid gap-5'>
 						<TaxRates />
 						<TaxOptionsForm formStore={formStore} />
