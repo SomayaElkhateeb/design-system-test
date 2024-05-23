@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
 import CustomAutoComplete from 'src/app/components/optimized/InputsFields/AutoCompleteMultiple';
 import FormField from 'src/app/components/ui/form/field';
+import { addCouponInterface } from 'src/pages/MarketingPage/Coupons/AddCoupon/HookForAddCoupon';
 interface selectItemsInterface {
 	id: string;
 	name: string;
 }
 
-const SpecificCustomers = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const SpecificCustomersCo = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> }) => {
 	const { t } = useTranslation();
 
 	const selectItems = [
@@ -45,4 +45,4 @@ const SpecificCustomers = ({ formStore }: { formStore: UseFormReturn<newDiscount
 	);
 };
 
-export default SpecificCustomers;
+export default SpecificCustomersCo;

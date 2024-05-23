@@ -5,7 +5,7 @@ import { CheckBox } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { addCouponInterface } from 'src/pages/MarketingPage/Coupons/AddCoupon/HookForAddCoupon';
 interface State {
 	selectedMinimumRequirements: string;
 	isChecked: boolean;
@@ -16,7 +16,7 @@ const initialState: State = {
 	isChecked: false,
 };
 
-const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const MinimumRequirementsCo = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> }) => {
 	const { t } = useTranslation();
 	const [updateState, setUpdateState] = useState<State>(initialState);
 	const { selectedMinimumRequirements, isChecked } = updateState;
@@ -76,4 +76,4 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 	);
 };
 
-export default MinimumRequirements;
+export default MinimumRequirementsCo;

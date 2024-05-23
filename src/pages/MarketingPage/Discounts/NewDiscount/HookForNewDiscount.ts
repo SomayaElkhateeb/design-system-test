@@ -14,19 +14,20 @@ export interface newDiscountInterface {
 	quantityGets?: number;
 	percentageGets?: number;
 	selectProductsY?: selectItemsInterface[];
-	sales: number; //
-	miniQuantity: number; //
-
-	//
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
+	miniPrice: number;
+	miniQuantity: number;
 
+	//?
 	date?: {
 		year: number;
 		month: number;
 		day: number;
 	} | null;
+
+	active: boolean;
 }
 
 export default function useCustomHookNewDiscount() {
@@ -44,14 +45,13 @@ export default function useCustomHookNewDiscount() {
 			quantityGets: 0,
 			percentageGets: 0,
 			selectProductsY: [],
-			sales: 0, //
-			miniQuantity: 0, //
-			//
 			customerSegment: 'All customers',
 			specificCustomerGroup: [],
 			specificCustomer: [],
-
+			miniPrice: 0,
+			miniQuantity: 0,
 			date: null,
+			active: false,
 		};
 	};
 
@@ -59,6 +59,7 @@ export default function useCustomHookNewDiscount() {
 		discountType: string,
 		applyToType: string,
 		productXtoYType: string | undefined,
+		customerSegment: string,
 	) => {
 		return {
 			discountName: z.string().min(3).max(60),
@@ -148,16 +149,37 @@ export default function useCustomHookNewDiscount() {
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
-			sales: z.coerce.number().positive().min(1), //
 
-			miniQuantity: z.coerce.number().positive().min(0), //
-			//
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
+
 			customerSegment: z.string().min(3),
-
 			specificCustomerGroup:
-				customerSegment === 'Specific group'
+				customerSegment === 'Specific customer groups'
+					? z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
+
+			specificCustomer:
+				customerSegment === 'Specific customers'
 					? z.array(
 						z.object({
 							id: z.string().min(1),
@@ -170,8 +192,20 @@ export default function useCustomHookNewDiscount() {
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
+			miniPrice: z.coerce.number().min(1),
+			miniQuantity: z.coerce.number().min(1),
+
+
 			date: z
 				.object({
 					year: z.coerce.number().positive().min(2024),
@@ -180,6 +214,8 @@ export default function useCustomHookNewDiscount() {
 				})
 				.nullable()
 				.optional(),
+
+			active: z.boolean(),
 		};
 	};
 
