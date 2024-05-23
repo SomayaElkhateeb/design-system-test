@@ -44,25 +44,25 @@ const ProductSchema = {
 		descriptionAr: z.string().min(10).max(1000),
 		// specification
 		// pricing
-		price: z.coerce.number().min(0).default(0),
-		discountPrice: z.coerce.number().min(0).optional(),
-		costPrice: z.coerce.number().min(0),
+		price: z.coerce.number().positive().min(0).default(0),
+		discountPrice: z.coerce.number().positive().min(0).optional(),
+		costPrice: z.coerce.number().positive().min(0),
 		isTaxable: z.boolean().default(true),
 		// add bulk pricing???
 		// Stock
-		quantity: z.coerce.number().min(0),
+		quantity: z.coerce.number().positive().min(0),
 		canContinueSellingWhenOutOfStock: z.boolean().default(false),
 		branches: z.array(
-			z.object({ id: z.string(), name: z.string(), quantity: z.coerce.number().min(0) }),
+			z.object({ id: z.string(), name: z.string(), quantity: z.coerce.number().positive().min(0) }),
 		),
 		// Shipping
 		isShippableOrPickupable: z.boolean().default(true),
-		weight: z.coerce.number().min(0),
+		weight: z.coerce.number().positive().min(0),
 		weightUnit: z.enum(['kg', 'g', 'lb', 'oz']),
 		dimensions: z.object({
-			length: z.coerce.number().min(0),
-			width: z.coerce.number().min(0),
-			height: z.coerce.number().min(0),
+			length: z.coerce.number().positive().min(0),
+			width:z.coerce.number().positive().min(0),
+			height: z.coerce.number().positive().min(0),
 		}),
 		dimensionUnit: z.enum(['cm', 'm', 'mm', 'in', 'ft']),
 		// more advanced shipping options???

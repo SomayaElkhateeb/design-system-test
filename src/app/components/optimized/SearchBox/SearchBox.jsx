@@ -1,14 +1,15 @@
 import { DeleteExitIcon } from 'src/app/utils/icons';
 import InputRow from '../InputsFields/InputRow';
-import useSearshBox from './useSearshBox';
+import useSearchBox from './useSearchBox';
+import { useTranslation } from 'react-i18next';
 
 // how to use
 // const handleSelectedOptions = (selectedOptions) => {
 //   console.log('Selected options:', selectedOptions);
 // };
-//  <SearshBox options={['Option 1', 'Option 2', 'Option 3', 'Option 4']} onSelectedOptions={handleSelectedOptions}  />
+//  <SearchBox options={['Option 1', 'Option 2', 'Option 3', 'Option 4']} onSelectedOptions={handleSelectedOptions}  />
 
-const SearshBox = ({ options, onSelectedOptions, label }) => {
+const SearchBox = ({ options, onSelectedOptions, label }) => {
 	const {
 		selectedOptions,
 		searchTerm,
@@ -18,7 +19,7 @@ const SearshBox = ({ options, onSelectedOptions, label }) => {
 		handleTagRemove,
 		handleInputFocus,
 		availableOptions,
-	} = useSearshBox(options, onSelectedOptions);
+	} = useSearchBox(options, onSelectedOptions);
 
 	return (
 		<div className='relative'>
@@ -50,12 +51,13 @@ const SearshBox = ({ options, onSelectedOptions, label }) => {
 		</div>
 	);
 };
-export default SearshBox;
+export default SearchBox;
 
 const Tag = ({ label, onRemove }) => {
+	const { t } = useTranslation();
 	return (
 		<div className='flex items-center  bg-borders-lines p-1 pl-3 mt-1.5 rounded'>
-			<p className='paragraph text-title'>{label}</p>
+			<p className='paragraph text-title'>{t(label)}</p>
 
 			<button className='ms-1' onClick={onRemove}>
 				<DeleteExitIcon className='fill-hint' />

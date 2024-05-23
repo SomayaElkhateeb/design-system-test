@@ -5,7 +5,6 @@ import FeeDisplay from './FeeDisplay';
 import { getImageUrl } from 'src/app/utils';
 import { NextIcon } from 'src/app/utils/icons';
 import RenderItems from '../../comp/RenderItems';
-
 import CreditTransactions from './CreditTransactions';
 import { Button } from 'src/app/components/optimized';
 import { BankBadge, TransactionsBadge } from '../../comp/PaymentBadge';
@@ -37,26 +36,26 @@ export default function PaymentTableRows({ data }: CreateTableRowsProps) {
 			</GlobalTableCell>,
 			<GlobalTableCell>
 				<CreditTransactions
-					paymentCards={e.creditTransactions.paymentCards}
 					local={e.creditTransactions.local}
 					global={e.creditTransactions.global}
+					paymentCards={e.creditTransactions.paymentCards}
 				/>
 			</GlobalTableCell>,
 			<GlobalTableCell>
 				<RenderItems
+					limit={4}
+					provider={e.provider.name}
 					items={e.methodsTransactions}
 					RenderItem={TransactionsBadge}
 					popupTitle='Methods transactions'
-					limit={4}
-					provider={e.provider.name}
 				/>
 			</GlobalTableCell>,
 			<GlobalTableCell>
 				<RenderItems
-					items={e.banks}
-					RenderItem={BankBadge}
-					popupTitle='Banks'
 					limit={6}
+					items={e.banks}
+					popupTitle='Banks'
+					RenderItem={BankBadge}
 					provider={e.provider.name}
 				/>
 			</GlobalTableCell>,

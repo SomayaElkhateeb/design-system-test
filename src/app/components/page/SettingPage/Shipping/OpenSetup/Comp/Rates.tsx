@@ -13,7 +13,7 @@ export default function Rates({ addStyle }: { addStyle: boolean }) {
 
 	return (
 		<div className={addStyle ? 'global-cards gap-4' : ''}>
-			{addStyle === false && <hr className='pb-5' />}
+			{!addStyle  && <hr className='pb-5' />}
 			<h3 className='text-title font-semibold flex gap-2 items-center'>
 				{t('Rates(2)')}
 				<span className='bg-secondary rounded-full size-[18px] flex items-center justify-center cursor-pointer'>
@@ -28,13 +28,13 @@ export default function Rates({ addStyle }: { addStyle: boolean }) {
 							<General />
 						</TabPanel>
 						<TabPanel value={'2'}>
-							<SaudiArabia />
+							<SaudiArabia addStyle={addStyle}/>
 						</TabPanel>
 						<TabPanel value={'3'}>
-							<GulfAndEgypt />
+							<GulfAndEgypt addStyle={addStyle}/>
 						</TabPanel>
 						<TabPanel value={'4'}>
-							<EuropeAndUS />
+							<EuropeAndUS addStyle={addStyle}/>
 						</TabPanel>
 					</>
 				}

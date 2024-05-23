@@ -51,12 +51,12 @@ export default function useCustomHookAddCoupon() {
 			discountType: z.string().min(3),
 			discountValue:
 				discountType === 'Fixed amount'
-					? z.coerce.number().min(1)
-					: z.optional(z.coerce.number().min(1)).or(z.literal(0)),
+					? z.coerce.number().positive().min(1)
+					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			discountPercentage:
 				discountType === 'Percentage'
-					? z.coerce.number().min(1)
-					: z.optional(z.coerce.number().min(1)).or(z.literal(0)),
+					? z.coerce.number().positive().min(1)
+					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			applyToType: z.string().min(3),
 
 			specificCategories:
@@ -110,6 +110,7 @@ export default function useCustomHookAddCoupon() {
 							),
 					  ),
 
+
 			specificCustomer:
 				customerSegment === 'Specific customers'
 					? z.array(
@@ -126,15 +127,17 @@ export default function useCustomHookAddCoupon() {
 								}),
 							),
 					  ),
+
 			miniPrice: z.coerce.number().min(1),
 			miniQuantity: z.coerce.number().min(1),
 			limit: z.coerce.number().min(1),
 
+
 			date: z
 				.object({
-					year: z.number().min(2024),
-					month: z.number().min(1).max(12),
-					day: z.number().min(1).max(31),
+					year: z.coerce.number().positive().min(2024),
+					month: z.coerce.number().positive().min(1).max(12),
+					day:z.coerce.number().positive().min(1).max(31),
 				})
 				.nullable()
 				.optional(),

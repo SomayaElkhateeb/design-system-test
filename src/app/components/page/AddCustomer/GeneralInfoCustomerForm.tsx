@@ -1,7 +1,5 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
-import SingleChoiceChips from '../../optimized/ChoiceChips/SingleChoiceChips';
 import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';

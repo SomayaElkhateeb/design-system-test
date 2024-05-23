@@ -26,7 +26,7 @@ export default function useCustomHookReviewSettings() {
 		name_en: z.string().min(5).max(100),
 		name_ar: z.string().min(5).max(100),
 		enable: z.boolean().default(false),
-		day: z.coerce.number().min(0),
+		day: z.coerce.number().positive().min(1),
 		email: z.string().min(1).email(),
 	};
     return {

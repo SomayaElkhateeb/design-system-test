@@ -22,7 +22,7 @@ export default function RowItem({
 	];
 	return (
 		<div className='flex justify-between items-center py-2'>
-			<div>
+			<div className='flex-col-top-section-pages  gap-[.3rem]'>
 				<h3 className='text-title font-semibold text-sm pt-2'>
 					{t('Standard')} ({type})
 				</h3>
