@@ -32,7 +32,7 @@ export default function RenderItems<T>({
 
 	return (
 		<div className='grid place-items-start gap-2 max-w-72'>
-			<h3 className='subtitle'>{t(title)}</h3>
+			{title && <h3 className='subtitle'>{t(title)}</h3>}
 			<div className='flex flex-wrap gap-2'>
 				{displayedItems.map((item, index) => (
 					<RenderItem item={item} key={index} />

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useSearshBox = (initialOptions, onSelectedOptions) => {
+const useSearchBox = (initialOptions, onSelectedOptions) => {
 	const [selectedOptions, setSelectedOptions] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [showOptions, setShowOptions] = useState(false);
@@ -34,7 +34,9 @@ const useSearshBox = (initialOptions, onSelectedOptions) => {
 		return options.filter((option) => option.toLowerCase().includes(searchTerm.toLowerCase()));
 	};
 
-	const availableOptions = filterOptions(initialOptions).filter((option) => !selectedOptions.includes(option));
+	const availableOptions = filterOptions(initialOptions).filter(
+		(option) => !selectedOptions.includes(option),
+	);
 
 	return {
 		selectedOptions,
@@ -47,4 +49,4 @@ const useSearshBox = (initialOptions, onSelectedOptions) => {
 		availableOptions,
 	};
 };
-export default useSearshBox;
+export default useSearchBox;

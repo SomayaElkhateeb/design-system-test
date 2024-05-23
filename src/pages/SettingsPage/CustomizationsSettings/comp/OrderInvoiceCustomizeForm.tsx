@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { CustomizationsFormProps } from './useCustomization';
+import { CustomizationsFormProps, CustomizationsInterface } from './useCustomization';
+
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
@@ -13,7 +14,7 @@ export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsF
 				<h2 className='title  mb-2'>{t('Order invoice')}</h2>
 				<p className='paragraph'>{t('Customize invoice sent to customers')}</p>
 			</div>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='showTaxNumber'
 				label='Show tax number'
@@ -26,22 +27,22 @@ export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsF
 					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='hideProductImages'
 				label='Hide product images'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='showProductsDescription'
 				label='Show products description'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='showSKU'
 				label='Show SKU'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsInterface>
 				formStore={formStore}
 				name='showContacts'
 				label='Show contacts'

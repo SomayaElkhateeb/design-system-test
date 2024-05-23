@@ -25,7 +25,7 @@ const MarketingLayout = () => {
 	console.log(pathname);
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='grid'>
 			{!pathname.includes('addDiscount') && (
 				<div className='Sticky_header'>
 					<HorizontalTabsLink tabs={tabs} path='/marketing' />
