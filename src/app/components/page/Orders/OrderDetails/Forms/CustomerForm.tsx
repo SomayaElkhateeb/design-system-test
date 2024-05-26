@@ -5,15 +5,15 @@ import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useForm } from 'src/app/utils/hooks/form';
-import useCustomCustomerForm, { customerFormInterface } from './HookCustomerForm';
+import useOrderCustomerForm, { OrdercustomerFormInterface } from './HookCustomerForm';
 
 export default function CustomerForm({ handleCustomerForm }: { handleCustomerForm: () => void }) {
 	const { t } = useTranslation();
 
 	// custom hook
-	const { handelDefaultValue, customerSchema } = useCustomCustomerForm();
+	const { handelDefaultValue, customerSchema } = useOrderCustomerForm();
 
-	const handleSubmit = (values: customerFormInterface) => {
+	const handleSubmit = (values: OrdercustomerFormInterface) => {
 		console.log(values);
 	};
 
