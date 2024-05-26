@@ -22,7 +22,7 @@ const MarketingLayout = () => {
 			path: 'campaigns',
 		},
 	];
-	console.log(pathname);
+	
 
 	return (
 		<div className='grid'>
