@@ -19,13 +19,6 @@ export default function TargetingDetails({ formStore }: CampaignFormProps) {
 	// todo:  Linking the interest array to the formStore.
 	//!---------------------------------------------------
 
-
-	const [selectedInterests, setSelectedInterests] = useState('');
-	const handleSelectedInterests = (selectedInterests) => {
-		setSelectedInterests(selectedInterests);
-	};
-
-
 	return (
 		<div className='global-cards grid grid-cols-2'>
 			<h2 className='title text-lg'>{t('Targeting')}</h2>

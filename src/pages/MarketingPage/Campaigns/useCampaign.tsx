@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
 
@@ -23,12 +23,10 @@ export interface CampaignInputsTypes {
 	budget: number;
 	activeDates: ActiveDates;
 	details: string;
-	budget: number;
 	selectedInterests?: selectItemsInterface[];
 	products: selectItemsInterface[];
 }
 type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
-
 
 const ActiveDatesValues = {
 	startActivation: { startDate: new Date(), startTime: '00:00' },
@@ -50,22 +48,21 @@ const activeDatesSchema = z.object({
 	}),
 });
 // time picker in HH:MM format
+
 export default function useCampaign(target: string) {
 	const { t } = useTranslation();
+
 	const newCampaignSchema = {
-    
-const newCampaignSchema = {
-	budget: z.coerce.number().positive().min(1),
-	campaignName: z.string().min(1, { message: 'Campaign name is required' }),
-	activityName: z.string().min(1, { message: 'Activity name is required' }),
-	targetSimilarPeople: z
-		.string()
-		.min(1, { message: 'Target similar people selection is required' }),
-	adText: z.string().min(1, { message: 'Ad text is required' }),
-	specificInterests: z.array(z.string()).nonempty(),
-	activeDates: activeDatesSchema,
-   details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')), 
-   specificInterests:
+		budget: z.coerce.number().positive().min(1),
+		campaignName: z.string().min(1, { message: 'Campaign name is required' }),
+		activityName: z.string().min(1, { message: 'Activity name is required' }),
+		targetSimilarPeople: z
+			.string()
+			.min(1, { message: 'Target similar people selection is required' }),
+		adText: z.string().min(1, { message: 'Ad text is required' }),
+		activeDates: activeDatesSchema,
+		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
+		specificInterests:
 			target === 'having specific interests'
 				? z.array(
 						z.object({
@@ -88,9 +85,8 @@ const newCampaignSchema = {
 				id: z.string().min(1),
 				name: z.string().min(1),
 			}),
-		), 
-};
-
+		),
+	};
 
 	const handelDefaultValue = () => {
 		return {
@@ -98,9 +94,8 @@ const newCampaignSchema = {
 			specificInterests: [],
 			campaignName: '',
 			activityName: '',
-	  	adText: '',
+			adText: '',
 			products: [],
-			campaignName: '',
 			details: '',
 			budget: 0,
 			activeDates: ActiveDatesValues,
