@@ -17,7 +17,7 @@ export default function RateRow({ rate }: RateRowProps) {
 		},
 	];
 	return (
-		<div className='flex justify-between items-center py-1 h-15'>
+		<div className='flex justify-between items-center  h-15'>
 			<div className='grid gap-1'>
 				<h3 className='title text-sm'>{rate.category}</h3>
 				<p className='text-subtitle paragraph'>{rate.condition}</p>

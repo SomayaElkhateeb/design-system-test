@@ -8,6 +8,7 @@ import useTaxPrograms, { addRateTypes } from './useTaxPrograms';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import FormChoiceChips from '../../CustomizationsSettings/comp/FormChoiceChips';
+import { useEffect, useState } from 'react';
 
 const style = {
 	width: { md: '40rem', xs: '22rem' },
@@ -20,8 +21,12 @@ interface Props {
 
 export default function RatePopup({ onClose, isOpen, title }: Props) {
 	const { t } = useTranslation();
-	const { formStore, onSubmit } = useTaxPrograms();
+	const [type, setType] = useState('Percentage');
+	const { formStore, onSubmit } = useTaxPrograms(type);
 
+	useEffect(() => {
+		setType(formStore.watch('rateType'));
+	}, [formStore]);
 	return (
 		<GlobalDialog openDialog={isOpen} handleClose={onClose} style={style}>
 			<Form {...formStore}>
