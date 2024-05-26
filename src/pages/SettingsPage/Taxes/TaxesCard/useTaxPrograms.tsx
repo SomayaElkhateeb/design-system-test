@@ -17,8 +17,8 @@ export interface addRateTypes {
 	rateNameAr: string;
 	rateNameEn: string;
 	rateType: string;
-	percentage: number;
-	fixedAmount: number;
+	percentage?: number;
+	fixedAmount?: number;
 }
 export default function useTaxPrograms(type: string) {
 	const { t } = useTranslation();

@@ -938,6 +938,7 @@ export const arabic = {
 	
 	"Sub Total":"المجموع الفرعي",
 	"Edit Shipping":"تعديل الشحن",
+	"VAT":"مصاريف شحن",
 	"Tax":"مصاريف اضافيه",
 	"total":"المبلغ الكلي",
 
