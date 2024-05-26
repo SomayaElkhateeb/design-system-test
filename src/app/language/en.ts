@@ -489,7 +489,7 @@ export const english = {
 	quantity: 'quantity',
 	views: 'views',
 	'quantity sold': 'quantity sold',
-	"Customizations": "Customizations",
+	Customizations: 'Customizations',
 	returns: 'returns',
 
 	'define minimum requirements': 'define minimum requirements',
@@ -880,13 +880,12 @@ export const english = {
 	'Apply with': 'Apply with',
 	All: 'All',
 
-	"Taxes":"Taxes",
-	"Tax applies to":"Tax applies to",
-"Include tax in product prices":"Include tax in product prices",
-"Default Tax Class":"Default Tax Class",
-"Tax display in checkout":"Tax display in checkout",
-"Zone defines by":"Zone defines by",
-
+	Taxes: 'Taxes',
+	'Tax applies to': 'Tax applies to',
+	'Include tax in product prices': 'Include tax in product prices',
+	'Default Tax Class': 'Default Tax Class',
+	'Tax display in checkout': 'Tax display in checkout',
+	'Zone defines by': 'Zone defines by',
 
 	'Payment details (Online)': 'Payment details (Online)',
 	'Bank transfer': 'Bank transfer',
@@ -933,7 +932,7 @@ export const english = {
 	'Account name cannot be empty': 'Account name cannot be empty',
 	'Bank name cannot be empty': 'Bank name cannot be empty',
 	'IBAN cannot be empty': 'IBAN cannot be empty',
-	"IBAN":"IBAN",
+	IBAN: 'IBAN',
 	'Apply with cannot be empty': 'Apply with cannot be empty',
 	'Activate bank transfer': 'Activate bank transfer',
 
@@ -953,5 +952,9 @@ export const english = {
 	'Customer note': 'Customer note',
 	'There are no notes': 'There are no notes',
 	'Order items': 'Order items',
-
+	'order details': 'order details',
+	customer: 'customer',
+	address: 'address',
+	checkout: 'checkout',
+	'add new order': 'add new order',
 };

@@ -35,10 +35,10 @@ export default function OrderDetails() {
 		setState({ ...state, showAddress: !showAddress });
 	};
 	return (
-		<div>
+		<>
 			<HeaderSettings
 				variant='settingOrder'
-				title='Order Details'
+				title={t('order details')}
 				onClick={() => navigate(-1)}
 				btn1={{ onClick: () => console.log('Update Status') }}
 				btn2={{ onClick: () => console.log('Print Invoice') }}
@@ -113,6 +113,6 @@ export default function OrderDetails() {
 					{/* update order */}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

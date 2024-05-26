@@ -791,13 +791,13 @@ export const arabic = {
 	'Shipping speed': 'سرعة الشحن',
 	'Supported Cities': 'المدن المدعومة',
 	Riyadh: 'الرياض',
-	"Taxes": "الضرائب",
+	Taxes: 'الضرائب',
 
-	"Tax applies to": "تنطبق الضريبة على",
-	"Include tax in product prices": "تضمين الضريبة في أسعار المنتجات",
-	"Default Tax Class": "فئة الضريبة الافتراضية",
-	"Tax display in checkout": "عرض الضريبة في الخروج",
-	"Zone defines by": "يتم تعريف المنطقة بواسطة",
+	'Tax applies to': 'تنطبق الضريبة على',
+	'Include tax in product prices': 'تضمين الضريبة في أسعار المنتجات',
+	'Default Tax Class': 'فئة الضريبة الافتراضية',
+	'Tax display in checkout': 'عرض الضريبة في الخروج',
+	'Zone defines by': 'يتم تعريف المنطقة بواسطة',
 
 	Geddah: 'جدة',
 	'Shipping Price': 'سعر الشحن',
@@ -880,16 +880,9 @@ export const arabic = {
 	'Customer note': 'ملاحظة العميل',
 	'There are no notes': 'لا توجد ملاحظات',
 	'Order items': 'طلب بضاعة',
-
-
-	More: 'أكثر',
-	'Account details': 'تفاصيل الحساب',
-	'Fill in your account details, for customers to pay through': 'املأ تفاصيل حسابك، ليتمكن العملاء من الدفع من خلاله',
-
 	'Account details': 'تفاصيل الحساب',
 	'Fill in your account details, for customers to pay through':
 		'املأ تفاصيل حسابك، ليتمكن العملاء من الدفع من خلاله',
-
 	'Account number': 'رقم الحساب',
 	'Account name': 'اسم الحساب',
 	'Bank name': 'اسم البنك',
@@ -897,18 +890,13 @@ export const arabic = {
 	'Additional details & instructions': 'تفاصيل وتعليمات إضافية',
 	'Activate if': 'تفعيل إذا',
 
-	'you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults': 'ستحتاج هذا إذا كنت تريد تفعيل هذه الطريقة بشروط معينة، وإلا فاحتفظ بالإعدادات الافتراضية',
-	'Price is more than': 'السعر أكثر من',
-	'Order items are more than': 'عدد عناصر الطلب أكثر من',
-	'Apply with': 'تطبيق مع',
-	'All': 'الكل',
-
 	'you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults':
 		'ستحتاج هذا إذا كنت تريد تفعيل هذه الطريقة بشروط معينة، وإلا فاحتفظ بالإعدادات الافتراضية',
 	'Price is more than': 'السعر أكثر من',
 	'Order items are more than': 'عدد عناصر الطلب أكثر من',
 	'Apply with': 'تطبيق مع',
 	All: 'الكل',
+
 	'Campaign name': 'اسم الحملة',
 	'Activity name': 'اسم النشاط',
 	'Ad text': 'نص الإعلان',
@@ -947,5 +935,9 @@ export const arabic = {
 	'Bank name cannot be empty': 'لا يمكن أن يكون اسم البنك فارغًا',
 	'IBAN cannot be empty': 'لا يمكن أن يكون رقم الآيبان فارغًا',
 	'Apply with cannot be empty': 'لا يمكن أن تكون طريقة التطبيق فارغة',
-
+	'order details': 'تفاصيل الطلب',
+	customer: 'عميل',
+	address: 'العنوان',
+	checkout: 'الدفع',
+	'add new order': 'إضافة طلب جديد',
 } satisfies typeof english;
