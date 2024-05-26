@@ -41,8 +41,8 @@ import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
 import SuccessfullyPurchased from './app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
 
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
-import OrderDetailsConfig from './pages/OrdersPage/OrderDetails/OrderDetailsConfig';
 import OrderDetails from './pages/OrdersPage/OrderDetails/OrderDetails';
+import AddOrder from './pages/OrdersPage/AddOrder/AddOrder';
 
 // Route Definitions
 export const routes = [
@@ -103,6 +103,10 @@ export const routes = [
 	{
 		path: '/orders/orderDetails/:id',
 		element: <OrderDetails />,
+	},
+	{
+		path: '/order/addOrder',
+		element: <AddOrder />,
 	},
 
 	// Products Routes

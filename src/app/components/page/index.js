@@ -15,6 +15,12 @@ export { default as RowOrderItems } from './Orders/OrderDetails/Comp/RowOrderIte
 export { default as ProductItem } from './Orders/OrderDetails/Comp/ProductItem';
 export { default as OrderItemContain } from './Orders/OrderDetails/Comp/OrderItemContain';
 
+// ADD ORDER
+export { default as Customer } from './Orders/AddOrder/Customer';
+export { default as Products } from './Orders/AddOrder/Products';
+export { default as Address } from './Orders/AddOrder/Address';
+export { default as AddCheckout } from './Orders/AddOrder/AddCheckout';
+
 // MARKETING PAGE
 // Discount and Coupon page
 export { default as TopSectionDiscountAndCoupons } from './discount/TopSectionDiscountAndCoupons';
@@ -22,13 +28,10 @@ export { default as DiscountsTable } from './discount/Table/DiscountsTable';
 export { default as ActiveDates } from './discount/Comp/ActiveDates';
 export { default as MinimumRequirements } from './discount/Comp/MinimumRequirements';
 export { default as CustomerSegment } from './discount/Comp/CustomerSegment/CustomerSegment';
-
 export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as DiscountTypesOptionsCo } from './Coupons/DiscountTypesOptionsCo';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';
 export { default as DiscountTypesOptions } from './discount/Comp/DiscountTypesOptions';
-export { default as SpecificCategoryCo } from './Coupons/SelectorsCo/SpecificCategoryCo';
-export { default as SpecificProductsCo } from './Coupons/SelectorsCo/SpecificProductsCo';
 export { default as CustomerSegmentCo } from './Coupons/CustomerSegmentCo';
 export { default as CustomerSegmentOptions } from './Coupons/CustomerSegmentOptionsCo';
 export { default as SpecificCustomersCo } from './Coupons/SelectorsCo/SpecificCustomersCo';

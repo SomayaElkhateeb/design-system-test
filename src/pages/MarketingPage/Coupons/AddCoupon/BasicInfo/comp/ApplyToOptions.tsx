@@ -1,11 +1,8 @@
-
-// import SpecificCategory from 'src/app/components/page/discount/Selectors/SpecificCategory';
-// import SpecificProducts from 'src/app/components/page/discount/Selectors/SpecificProducts';
-
 import { UseFormReturn } from 'react-hook-form';
-import { SpecificCategoryCo, SpecificProductsCo } from 'src/app/components/page';
-import { addCouponInterface } from '../../HookForAddCoupon';
 
+import { addCouponInterface } from '../../HookForAddCoupon';
+import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import { useTranslation } from 'react-i18next';
 
 const ApplyToOptions = ({
 	applyTo,
@@ -14,17 +11,30 @@ const ApplyToOptions = ({
 	applyTo: string;
 	formStore: UseFormReturn<addCouponInterface>;
 }) => {
-	return (
-		<div>
-
-			{/* {applyTo === 'Specific category' && <SpecificCategory />} */}
-			{/* {applyTo === 'Specific products' && <SpecificProducts />} */}
-
-			{applyTo === 'Specific category' && <SpecificCategoryCo formStore={formStore} />}
-			{applyTo === 'Specific products' && <SpecificProductsCo formStore={formStore} />}
-
-		</div>
-	);
+	//  hooks
+	const { t } = useTranslation();
+	// /////////////////////////////////////
+	const handelRenderingComponentWithApplyTo = () => {
+		switch (applyTo) {
+			case 'Specific category':
+				return (
+					<SpecificAutoCompleteInput<addCouponInterface>
+						name='specificCategories'
+						label={t('Select Category')}
+						formStore={formStore}
+					/>
+				);
+			case 'Specific products':
+				return (
+					<SpecificAutoCompleteInput<addCouponInterface>
+						name='specificProducts'
+						label={t('select products')}
+						formStore={formStore}
+					/>
+				);
+		}
+	};
+	return handelRenderingComponentWithApplyTo();
 };
 
 export default ApplyToOptions;

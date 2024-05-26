@@ -38,7 +38,7 @@ export default function Smsa() {
 	const options = [
 		{
 			id: 1,
-			text: t('delete'),
+			text: t('Delete'),
 			icon: <RiDeleteBin5Line color='pri-dark' />,
 		},
 	];
@@ -121,8 +121,8 @@ export default function Smsa() {
 				</div>
 
 				<div className='col-span-1 flex flex-col gap-5'>
-					<ContactCard title='Pricing' data={pricing} contacts={false} id={0} />
-					<ContactCard title='Contact' data={contact} contacts={true} id={0} />
+					<ContactCard title='Pricing' data={pricing} contacts={false} />
+					<ContactCard title='Contact' data={contact} contacts={true} />
 				</div>
 			</div>
 		</div>
