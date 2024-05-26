@@ -1,6 +1,5 @@
-
-import Rates from 'src/app/components/page/SettingPage/Shipping/OpenSetup/Comp/Rates';
+import TaxesAndRates from './TaxesCard/TaxesAndRates';
 
 export default function TaxRates() {
-	return <Rates addStyle={true} />;
+	return <TaxesAndRates title='Tax rates' />;
 }

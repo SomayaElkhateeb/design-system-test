@@ -30,6 +30,7 @@ export default function RowItem({
 					{t('Order')}: {order}
 				</p>
 			</div>
+
 			<div>
 				<div className='flex justify-end pb-2'>
 					<MenuOptions
@@ -40,6 +41,7 @@ export default function RowItem({
 				</div>
 				<p className='text-subtitle text-sm'>{period}</p>
 			</div>
+
 		</div>
 	);
 }
