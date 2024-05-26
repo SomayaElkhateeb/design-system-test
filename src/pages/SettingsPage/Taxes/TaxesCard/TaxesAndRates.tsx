@@ -31,7 +31,7 @@ export default function TaxesAndRates({ title, integrated = false }: TaxesAndRat
 				}
 			>
 				{tabsData.map((tab) => (
-					<Tab key={tab.value} label={t(tab.label)} value={tab.value} />
+					<Tab key={tab.value} label={t(tab.label as any)} value={tab.value} />
 				))}
 			</Tabs>
 		</div>

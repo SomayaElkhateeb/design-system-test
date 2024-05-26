@@ -58,7 +58,7 @@ export default function TaxesSettings() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='custom_container grid grid-cols-3'>
+				<div className='custom_container grid md:grid-cols-3'>
 					<div className='col-span-2  grid gap-5'>
 						<TaxRates />
 						<TaxOptionsForm formStore={formStore} />

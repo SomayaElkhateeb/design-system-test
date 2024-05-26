@@ -311,6 +311,7 @@ export const english = {
 	'Addon Cost': 'Addon Cost',
 	Subtotal: 'Subtotal',
 	'VAT/TAX': 'VAT/TAX',
+	"VAT":"VAT",
 	Discount: 'Discount',
 	'Delivery Fee': 'Delivery Fee',
 	Total: 'Total',
