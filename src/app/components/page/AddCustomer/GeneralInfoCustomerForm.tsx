@@ -7,14 +7,12 @@ import CustomAutoComplete from '../../optimized/InputsFields/AutoCompleteMultipl
 import { CheckBox } from '../../optimized';
 import { addCustomerInterface } from './HookForAddCustomerForm';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
 }
-const selectItems = [
-	{ id: '1', name: 'Dress' },
-	{ id: '2', name: 'Fashion' },
-];
+
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
@@ -22,14 +20,8 @@ export default function GeneralInfoCustomerForm({
 }) {
 	//  hooks
 	const { t } = useTranslation();
-	
+
 	// ///////////////////////////
-	const handelAutoCompleteError = () => {
-		return (
-			formStore.watch('groupMeta').length === 0 &&
-			formStore.formState.isSubmitted && <p className='global_error'>{'choose Meta required'}</p>
-		);
-	};
 
 	return (
 		<div className='global-cards gap-[1.3rem]'>
@@ -54,23 +46,12 @@ export default function GeneralInfoCustomerForm({
 					label={t('Email')}
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
-				<div className='flex-col-top-section-pages gap-0'>
-					<FormField
-						formStore={formStore}
-						name='groupMeta'
-						label={t('Meta keywords')}
-						render={(field) => (
-							<CustomAutoComplete<selectItemsInterface>
-								placeholder={'Select or add new'}
-								getvalue={(value) => formStore.setValue('groupMeta', value)}
-								name='groupMeta'
-								array={selectItems}
-								MainValue={formStore.watch('groupMeta')}
-							/>
-						)}
-					/>
-					{handelAutoCompleteError()}
-				</div>
+
+				<SpecificAutoCompleteInput<addCustomerInterface>
+					name='groupMeta'
+					label={t('Meta keywords')}
+					formStore={formStore}
+				/>
 				<FormField
 					formStore={formStore}
 					name='PhoneNumber'
