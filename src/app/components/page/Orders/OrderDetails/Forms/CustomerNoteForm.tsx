@@ -34,7 +34,7 @@ export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col gap-3 p-3'>
-				<div className='w-[50%]'>
+				<div className='lg:w-[65%] w-full'>
 					<FormField
 						formStore={formStore}
 						name='note'

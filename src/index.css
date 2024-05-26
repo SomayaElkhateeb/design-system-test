@@ -214,9 +214,8 @@ object {
 } */
 
 @layer components {
-
 	.custom_container {
-		@apply xl:max-w-[145rem] xl:px-5  container mx-auto
+		@apply xl:max-w-[145rem] xl:px-5  container mx-auto;
 	}
 	.cardDetails-sharedClass {
 		@apply border rounded-[.6rem] bg-white border-constrained;
@@ -241,6 +240,9 @@ object {
 
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1.2rem];
+	}
+	.flex-end {
+		@apply flex flex-col justify-between items-end;
 	}
 	.Sticky_header {
 		@apply sticky top-[70px] z-10;
