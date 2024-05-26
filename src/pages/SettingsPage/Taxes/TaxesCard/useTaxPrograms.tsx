@@ -20,7 +20,7 @@ export interface addRateTypes {
 	percentage?: number;
 	fixedAmount?: number;
 }
-export default function useTaxPrograms(type: string) {
+export default function useTaxPrograms(type?: string) {
 	const { t } = useTranslation();
 
 	const tabsData: TabData[] = [

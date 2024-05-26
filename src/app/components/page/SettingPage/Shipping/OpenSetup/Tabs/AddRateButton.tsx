@@ -24,7 +24,7 @@ export default function AddRateButton() {
 				<AddRate
 				showRate={showRate}
 					saudi={false}
-					sho
+					
 					onClose={() => {
 						setShowRate(false);
 					}}

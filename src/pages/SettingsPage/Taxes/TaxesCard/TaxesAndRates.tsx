@@ -14,7 +14,7 @@ interface TaxesAndRatesProps {
 export default function TaxesAndRates({ title, integrated = false }: TaxesAndRatesProps) {
 	const classes = integrated ? '' : 'global-cards';
 	const { t } = useTranslation();
-	const { tabsData } = useTaxPrograms();
+	const { tabsData } = useTaxPrograms('');
 
 	return (
 		<div className={classes}>
