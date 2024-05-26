@@ -9,7 +9,7 @@ export default function OrderItems() {
 	const [edit, setEdit] = useState(false);
 	return (
 		<div className='cardDetails-sharedClass'>
-			<div className={`flex items-center justify-between p-3 ${edit && 'pb-0'}`}>
+			<div className={`flex-row-global justify-between p-3 ${edit && 'pb-0'}`}>
 				<h2 className='title capitalize'>{t('Order items')} (1)</h2>
 
 				{edit ? (

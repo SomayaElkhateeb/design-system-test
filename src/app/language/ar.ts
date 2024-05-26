@@ -935,9 +935,20 @@ export const arabic = {
 	'Bank name cannot be empty': 'لا يمكن أن يكون اسم البنك فارغًا',
 	'IBAN cannot be empty': 'لا يمكن أن يكون رقم الآيبان فارغًا',
 	'Apply with cannot be empty': 'لا يمكن أن تكون طريقة التطبيق فارغة',
-	'order details': 'تفاصيل الطلب',
+
 	customer: 'عميل',
 	address: 'العنوان',
 	checkout: 'الدفع',
 	'add new order': 'إضافة طلب جديد',
+
+
+    "Order Details":"تفاصيل الاوردر",
+	
+	"Sub Total":"المجموع الفرعي",
+	"Edit Shipping":"تعديل الشحن",
+	"VAT":"مصاريف شحن",
+	"Tax":"مصاريف اضافيه",
+	"total":"المبلغ الكلي",
+
+
 } satisfies typeof english;

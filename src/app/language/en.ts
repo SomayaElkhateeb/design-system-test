@@ -311,6 +311,7 @@ export const english = {
 	'Addon Cost': 'Addon Cost',
 	Subtotal: 'Subtotal',
 	'VAT/TAX': 'VAT/TAX',
+	"VAT":"VAT",
 	Discount: 'Discount',
 	'Delivery Fee': 'Delivery Fee',
 	Total: 'Total',
@@ -932,7 +933,14 @@ export const english = {
 	'Account name cannot be empty': 'Account name cannot be empty',
 	'Bank name cannot be empty': 'Bank name cannot be empty',
 	'IBAN cannot be empty': 'IBAN cannot be empty',
-	IBAN: 'IBAN',
+
+	"IBAN":"IBAN",
+	"Order Details":"Order Details",
+	"Sub Total":"Sub Total",
+	"Edit Shipping":"Edit Shipping",
+	"Tax":"Tax",
+	"total":"total",
+
 	'Apply with cannot be empty': 'Apply with cannot be empty',
 	'Activate bank transfer': 'Activate bank transfer',
 

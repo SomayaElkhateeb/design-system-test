@@ -322,7 +322,7 @@ object {
 		@apply w-full 2xl:w-11/12 mx-auto;
 	}
 	.global-cards {
-		@apply bg-white w-full border border-constrained rounded-[.6rem] p-[1rem] flex flex-col gap-[1.5rem];
+		@apply bg-white w-full border border-borders-lines rounded-[.75rem] p-[1.125rem] flex flex-col gap-4;
 	}
 }
 

@@ -33,6 +33,7 @@ export default function GlobalDialog({
 		left: '50%',
 		overflowY: 'auto',
 		transform: 'translate(-50%, -50%)',
+		cursor: 'default'
 	};
 	return (
 		<Modal
