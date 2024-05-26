@@ -9,9 +9,10 @@ import CreditTransactions from './CreditTransactions';
 import { Button } from 'src/app/components/optimized';
 import { BankBadge, TransactionsBadge } from '../../comp/PaymentBadge';
 import { GlobalTableCell } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import { PaymentProvider } from './utils';
 
 interface CreateTableRowsProps {
-	data: any[];
+	data: PaymentProvider[];
 }
 
 export default function PaymentTableRows({ data }: CreateTableRowsProps) {

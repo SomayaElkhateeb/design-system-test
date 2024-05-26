@@ -34,6 +34,7 @@ const MarketingLayout = () => {
 			<Outlet />
 		</div>
 	);
+	
 };
 
 export default MarketingLayout;

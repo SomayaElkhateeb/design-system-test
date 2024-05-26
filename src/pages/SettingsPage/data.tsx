@@ -17,6 +17,7 @@ import {
 	InventoryIcon,
 	WalletIcon,
 } from 'src/app/utils/icons';
+import { PaymentProvider } from './PaymentSettings/PaymentProviders/PaymentTable/utils';
 
 const images = [
 	{ id: 1, ImageURL: getImageUrl('companies/express.svg') },
@@ -180,7 +181,7 @@ const settingsCards = [
 		description: 'manage notifications sent to users',
 	},
 ];
-const paymentProvidersData = [
+const paymentProvidersData: PaymentProvider[] = [
 	{
 		provider: { name: 'payTabs', url: '/payTabs' },
 		monthlyFees: { planOne: '', planTwo: '' },
@@ -369,3 +370,6 @@ const paymentProvidersData = [
 	},
 ];
 export { settingsCards, images, cards, pricing, contact, smsa, paymentProvidersData };
+
+
+

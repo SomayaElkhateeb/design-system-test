@@ -89,6 +89,7 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 			Sun: DayInfoSchema,
 		}),
 	};
+	
 	const handelDefaultValue = () => {
 		return {
 			branchType: 'Warehouse',
