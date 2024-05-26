@@ -889,12 +889,14 @@ export const arabic = {
 	'Select option': 'اختر الخيار',
 	'Additional details & instructions': 'تفاصيل وتعليمات إضافية',
 	'Activate if': 'تفعيل إذا',
+
 	'you’ll need this If you want this method to activate with certain conditions, otherwise keep defaults':
 		'ستحتاج هذا إذا كنت تريد تفعيل هذه الطريقة بشروط معينة، وإلا فاحتفظ بالإعدادات الافتراضية',
 	'Price is more than': 'السعر أكثر من',
 	'Order items are more than': 'عدد عناصر الطلب أكثر من',
 	'Apply with': 'تطبيق مع',
 	All: 'الكل',
+
 	'Campaign name': 'اسم الحملة',
 	'Activity name': 'اسم النشاط',
 	'Ad text': 'نص الإعلان',
@@ -933,4 +935,20 @@ export const arabic = {
 	'Bank name cannot be empty': 'لا يمكن أن يكون اسم البنك فارغًا',
 	'IBAN cannot be empty': 'لا يمكن أن يكون رقم الآيبان فارغًا',
 	'Apply with cannot be empty': 'لا يمكن أن تكون طريقة التطبيق فارغة',
+
+	customer: 'عميل',
+	address: 'العنوان',
+	checkout: 'الدفع',
+	'add new order': 'إضافة طلب جديد',
+
+
+    "Order Details":"تفاصيل الاوردر",
+	
+	"Sub Total":"المجموع الفرعي",
+	"Edit Shipping":"تعديل الشحن",
+	"VAT":"مصاريف شحن",
+	"Tax":"مصاريف اضافيه",
+	"total":"المبلغ الكلي",
+
+
 } satisfies typeof english;

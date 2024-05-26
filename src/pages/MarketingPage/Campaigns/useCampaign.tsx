@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
 
 import { useForm } from 'src/app/utils/hooks/form';
+import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 
 export interface CampaignFormProps {
 	formStore: UseFormReturn<CampaignInputsTypes>;
@@ -21,13 +22,19 @@ export interface CampaignInputsTypes {
 	adText: string;
 	budget: number;
 	activeDates: ActiveDates;
+	details: string;
+	budget: number;
+	selectedInterests?: selectItemsInterface[];
+	products: selectItemsInterface[];
 }
 type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
+
 
 const ActiveDatesValues = {
 	startActivation: { startDate: new Date(), startTime: '00:00' },
 	endActivation: { endDate: new Date(), endTime: '00:00' },
 };
+
 const activeDatesSchema = z.object({
 	startActivation: z.object({
 		startDate: z.date({ required_error: 'Start date is required' }),
@@ -43,6 +50,10 @@ const activeDatesSchema = z.object({
 	}),
 });
 // time picker in HH:MM format
+export default function useCampaign(target: string) {
+	const { t } = useTranslation();
+	const newCampaignSchema = {
+    
 const newCampaignSchema = {
 	budget: z.coerce.number().positive().min(1),
 	campaignName: z.string().min(1, { message: 'Campaign name is required' }),
@@ -53,17 +64,44 @@ const newCampaignSchema = {
 	adText: z.string().min(1, { message: 'Ad text is required' }),
 	specificInterests: z.array(z.string()).nonempty(),
 	activeDates: activeDatesSchema,
+   details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')), 
+   specificInterests:
+			target === 'having specific interests'
+				? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+				  )
+				: z
+						.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+						)
+						.or(z.literal('')),
+		products: z.array(
+			z.object({
+				id: z.string().min(1),
+				name: z.string().min(1),
+			}),
+		), 
 };
 
-export default function useCampaign() {
-	const { t } = useTranslation();
+
 	const handelDefaultValue = () => {
 		return {
 			targetSimilarPeople: t('having specific interests'),
 			specificInterests: [],
 			campaignName: '',
 			activityName: '',
-			adText: '',
+	  	adText: '',
+			products: [],
+			campaignName: '',
+			details: '',
 			budget: 0,
 			activeDates: ActiveDatesValues,
 		};

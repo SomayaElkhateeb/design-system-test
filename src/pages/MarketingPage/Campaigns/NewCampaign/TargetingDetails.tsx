@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { SearchBox } from 'src/app/components/optimized';
 import { CampaignInputsTypes, CampaignFormProps } from '../useCampaign';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
 
 const targetingOptions = [
 	'Purchased from you',
@@ -14,28 +13,18 @@ const targetingOptions = [
 
 export default function TargetingDetails({ formStore }: CampaignFormProps) {
 	const { t } = useTranslation();
-	const interests = [
-		t("Women's Clothing"),
-		t('Beauty Products'),
-		t('Home Appliances'),
-		t("Men's Clothing"),
-		t('Accessories'),
-		t('Electronics'),
-		t('Kitchenware'),
-		t('Furniture'),
-		t('Fashion'),
-		t('Shoes'),
-		t('dress'),
-	];
+
 	//!---------------------------------------------------
 	// todo:  didn't finish yet.
 	// todo:  Linking the interest array to the formStore.
 	//!---------------------------------------------------
 
+
 	const [selectedInterests, setSelectedInterests] = useState('');
 	const handleSelectedInterests = (selectedInterests) => {
 		setSelectedInterests(selectedInterests);
 	};
+
 
 	return (
 		<div className='global-cards grid grid-cols-2'>
@@ -46,14 +35,12 @@ export default function TargetingDetails({ formStore }: CampaignFormProps) {
 				label='Target who is similar to people'
 				options={targetingOptions}
 			/>
-			{formStore.watch('targetSimilarPeople') === t('having specific interests') && (
-				<div>
-					<SearchBox
-						options={interests}
-						onSelectedOptions={handleSelectedInterests}
-						label={t('Specific interests')}
-					/>
-				</div>
+			{formStore.watch('targetSimilarPeople') === 'having specific interests' && (
+				<SpecificAutoCompleteInput<CampaignFormProps>
+					name='specificInterests'
+					label={t('Specific interests')}
+					formStore={formStore}
+				/>
 			)}
 		</div>
 	);

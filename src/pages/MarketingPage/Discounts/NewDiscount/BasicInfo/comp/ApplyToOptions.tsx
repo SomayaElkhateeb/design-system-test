@@ -2,8 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
 import BuyXGetY from './BuyXGetY';
 import { newDiscountInterface } from '../../HookForNewDiscount';
-
-import { SpecificCategory, SpecificProducts } from 'src/app/components/page';
 import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
 
 const ApplyToOptions = ({
@@ -42,4 +40,3 @@ const ApplyToOptions = ({
 };
 
 export default ApplyToOptions;
-

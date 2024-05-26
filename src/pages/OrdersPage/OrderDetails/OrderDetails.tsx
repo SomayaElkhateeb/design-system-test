@@ -35,11 +35,13 @@ export default function OrderDetails() {
 		setState({ ...state, showAddress: !showAddress });
 	};
 	return (
-		<div>
+		<>
 			<HeaderSettings
 				variant='settingOrder'
-				title='Order Details'
+
+				title={t('order details')}
 				onClick={() => navigate(-1)}
+
 				btn1={{ onClick: () => console.log('Update Status') }}
 				btn2={{ onClick: () => console.log('Print Invoice') }}
 				btn3={{ onClick: () => console.log('More Options') }}
@@ -49,7 +51,7 @@ export default function OrderDetails() {
 				}}
 			/>
 
-			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 p-5'>
+			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 custom_container'>
 				<div className='col-span-2 flex flex-col gap-5'>
 					<OrderNo />
 					<OrderItems />
@@ -113,6 +115,6 @@ export default function OrderDetails() {
 					{/* update order */}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

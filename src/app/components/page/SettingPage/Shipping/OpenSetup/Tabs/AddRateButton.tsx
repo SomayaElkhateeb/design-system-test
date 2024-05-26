@@ -22,7 +22,9 @@ export default function AddRateButton() {
 
 			{showRate && (
 				<AddRate
+				showRate={showRate}
 					saudi={false}
+					
 					onClose={() => {
 						setShowRate(false);
 					}}

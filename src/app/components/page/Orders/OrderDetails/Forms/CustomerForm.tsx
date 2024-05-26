@@ -25,13 +25,13 @@ export default function CustomerForm({ handleCustomerForm }: { handleCustomerFor
 
 	const handleSubmitBtn = () => {
 		onSubmit();
-		handleCustomerForm(); // ?? check zod?
+		// handleCustomerForm();
 	};
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex flex-col gap-3'>
-				<div className='flex flex-col gap-3'>
+			<form onSubmit={onSubmit} className='flex flex-col gap-4'>
+				<div className='flex flex-col gap-4'>
 					<div className='flex justify-between items-center w-full'>
 						<h2 className='text-sm text-title'>{t('Name')}</h2>
 						<FormField

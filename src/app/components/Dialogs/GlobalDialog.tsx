@@ -26,6 +26,7 @@ export default function GlobalDialog({
 	const propStyle = {
 		...style,
 		bgcolor: 'white',
+		zIndex: 50,
 		p: 2.5,
 		borderRadius: '10px',
 		position: 'absolute',
@@ -33,11 +34,11 @@ export default function GlobalDialog({
 		left: '50%',
 		overflowY: 'auto',
 		transform: 'translate(-50%, -50%)',
-		cursor: 'default'
+		cursor: 'default',
 	};
 	return (
 		<Modal
-			className='cursor-pointer'
+			className='cursor-pointer z-40'
 			open={openDialog}
 			onClose={handleClose}
 			aria-labelledby='modal-modal-title'
