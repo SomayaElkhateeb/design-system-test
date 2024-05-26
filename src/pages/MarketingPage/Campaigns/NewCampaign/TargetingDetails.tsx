@@ -35,7 +35,6 @@ export default function TargetingDetails({ formStore }: CampaignFormProps) {
 	const [selectedInterests, setSelectedInterests] = useState('');
 	const handleSelectedInterests = (selectedInterests) => {
 		setSelectedInterests(selectedInterests);
-		console.log('Selected Interests:', selectedInterests);
 	};
 
 	return (
