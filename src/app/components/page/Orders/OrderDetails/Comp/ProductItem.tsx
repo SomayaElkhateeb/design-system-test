@@ -15,7 +15,7 @@ export default function ProductItem({ formStore }: { formStore: UseFormReturn<IO
 						<div className='size-[4.6875rem] rounded-md overflow-hidden'>
 							<img src={getImageUrl('product/product.png')} />
 						</div>
-						<div className='flex flex-col gap-2'>
+						<div className='flex-col-top-section-pages gap-2'>
 							<h3 className='title text-sm text-ellipsis overflow-hidden w-[24rem]'>
 								{/* text-ellipsis ?? */}
 								{title.slice(0, 24)}...
@@ -32,7 +32,7 @@ export default function ProductItem({ formStore }: { formStore: UseFormReturn<IO
 					render={(field) => <Input type='number' {...field} placeholder={''} />}
 				/>
 			</div>
-			<div className='lg:col-span-1 md:col-span-1 sm:col-span-1 lg:flex-end flex items-center gap-2'>
+			<div className='lg:col-span-1  lg:flex-end flex items-center gap-2'>
 				<RemoveIcon className='fill-pri-dark cursor-pointer' />
 				<p className='text-title text-sm '>SAR 450.00</p>
 			</div>

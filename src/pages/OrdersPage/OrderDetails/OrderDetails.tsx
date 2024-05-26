@@ -52,13 +52,13 @@ export default function OrderDetails() {
 			/>
 
 			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 custom_container'>
-				<div className='col-span-2 flex flex-col gap-5'>
+				<div className='col-span-2 flex-col-top-section-pages gap-5'>
 					<OrderNo />
 					<OrderItems />
 					<CustomerNote />
 					<OrderHistory />
 				</div>
-				<div className='col-span-1 flex flex-col gap-5'>
+				<div className='col-span-1 flex-col-top-section-pages gap-5'>
 					<ContactCard
 						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
 						form={showCustomer}
