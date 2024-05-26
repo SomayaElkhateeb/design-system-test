@@ -6,10 +6,11 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 
 export default function ProductItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
+	const title = 'Solid Anti-Pilling Sweatshirt with Round Sweatshirt';
 	return (
-		<div className='grid grid-cols-5'>
+		<div className='grid grid-cols-5 '>
 			<div className='col-span-3'>
-				<div className='flex justify-between pt-2'>
+				<div className='flex justify-between '>
 					<div className='flex items-start gap-2'>
 						<div className='size-[4.6875rem] rounded-md overflow-hidden'>
 							<img src={getImageUrl('product/product.png')} />
@@ -17,7 +18,7 @@ export default function ProductItem({ formStore }: { formStore: UseFormReturn<IO
 						<div className='flex flex-col gap-2'>
 							<h3 className='title text-sm text-ellipsis overflow-hidden w-[24rem]'>
 								{/* text-ellipsis ?? */}
-								Solid Anti-Pilling Sweatshirt with Round Sweatshirt
+								{title.slice(0, 24)}...
 							</h3>
 							<p className='text-subtitle text-sm'>SKU: SF1133569600-1</p>
 						</div>
