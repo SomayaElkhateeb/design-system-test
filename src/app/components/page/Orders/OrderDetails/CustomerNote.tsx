@@ -10,7 +10,7 @@ export default function CustomerNote() {
 	return (
 		<div className='cardDetails-sharedClass'>
 			<div>
-				<div className={`flex items-center justify-between p-3 ${edit && 'pb-0'}`}>
+				<div className={`flex-row-global  justify-between p-3 ${edit && 'pb-0'}`}>
 					<h2 className='title capitalize'>{t('Customer note')}</h2>
 
 					{edit ? (
@@ -27,7 +27,7 @@ export default function CustomerNote() {
 			) : (
 				<div>
 					<hr />
-					<div className='p-3 h-20 flex items-center justify-center'>
+					<div className='p-3 h-20 flex-row-global  justify-center'>
 						<p className='text-sm text-hint'>{t('There are no notes')}</p>
 					</div>
 				</div>
