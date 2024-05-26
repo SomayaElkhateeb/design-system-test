@@ -16,11 +16,9 @@ export interface ActiveDates {
 }
 export interface CampaignInputsTypes {
 	targetSimilarPeople: string;
-	specificInterests: string[];
+
 	campaignName: string;
 	activityName: string;
-	adText: string;
-	budget: number;
 	activeDates: ActiveDates;
 	details: string;
 	budget: number;
@@ -28,7 +26,6 @@ export interface CampaignInputsTypes {
 	products: selectItemsInterface[];
 }
 type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
-
 
 const ActiveDatesValues = {
 	startActivation: { startDate: new Date(), startTime: '00:00' },
@@ -52,20 +49,18 @@ const activeDatesSchema = z.object({
 // time picker in HH:MM format
 export default function useCampaign(target: string) {
 	const { t } = useTranslation();
+
 	const newCampaignSchema = {
-    
-const newCampaignSchema = {
-	budget: z.coerce.number().positive().min(1),
-	campaignName: z.string().min(1, { message: 'Campaign name is required' }),
-	activityName: z.string().min(1, { message: 'Activity name is required' }),
-	targetSimilarPeople: z
-		.string()
-		.min(1, { message: 'Target similar people selection is required' }),
-	adText: z.string().min(1, { message: 'Ad text is required' }),
-	specificInterests: z.array(z.string()).nonempty(),
-	activeDates: activeDatesSchema,
-   details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')), 
-   specificInterests:
+		budget: z.coerce.number().positive().min(1),
+		campaignName: z.string().min(1, { message: 'Campaign name is required' }),
+		activityName: z.string().min(1, { message: 'Activity name is required' }),
+		targetSimilarPeople: z
+			.string()
+			.min(1, { message: 'Target similar people selection is required' }),
+
+		activeDates: activeDatesSchema,
+		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
+		selectedInterests:
 			target === 'having specific interests'
 				? z.array(
 						z.object({
@@ -88,19 +83,17 @@ const newCampaignSchema = {
 				id: z.string().min(1),
 				name: z.string().min(1),
 			}),
-		), 
-};
-
+		),
+	};
 
 	const handelDefaultValue = () => {
 		return {
 			targetSimilarPeople: t('having specific interests'),
-			specificInterests: [],
+			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
-	  	adText: '',
+
 			products: [],
-			campaignName: '',
 			details: '',
 			budget: 0,
 			activeDates: ActiveDatesValues,
@@ -120,6 +113,8 @@ const newCampaignSchema = {
 
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
+			console.log(value.toDate());
+			console.log(type)
 			const updatedDates = { ...activeDates };
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();
