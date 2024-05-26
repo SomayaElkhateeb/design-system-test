@@ -933,4 +933,8 @@ export const arabic = {
 	'Bank name cannot be empty': 'لا يمكن أن يكون اسم البنك فارغًا',
 	'IBAN cannot be empty': 'لا يمكن أن يكون رقم الآيبان فارغًا',
 	'Apply with cannot be empty': 'لا يمكن أن تكون طريقة التطبيق فارغة',
+
+    "Order Details":"تفاصيل الاوردر",
+
+
 } satisfies typeof english;

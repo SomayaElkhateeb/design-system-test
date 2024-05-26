@@ -10,9 +10,9 @@ import { PrevNextBtn } from '..';
  * @param {{
  *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons' |'settingBtnAndIcon';
  *  title: string | null;
- *  btn1?: { text: string; onClick?: () => void };
- *  btn2?: { text: string; onClick?: () => void };
- *  btn3?: { text: string; onClick?: () => void };
+ *  btn1?: { text?: string; onClick?: () => void };
+ *  btn2?: { text?: string; onClick?: () => void };
+ *  btn3?: { text?: string; onClick?: () => void };
 
  *  btn4?: { onClickPrev: () => void; onClickNext: () => void };
  * onClickPrev?:{ onClick: () => void};
@@ -31,7 +31,7 @@ export default function HeaderSettings(props) {
 	const language = UseLanguage();
 	const navigate = useNavigate();
 	return (
-		<div className='flex items-center justify-between  bg-white h-14 container mx-auto'>
+		<div className='flex items-center justify-between  bg-white h-14 custom_container'>
 			<div className='flex items-center gap-1' onClick={props.onClick}>
 				<p className='cursor-pointer' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}

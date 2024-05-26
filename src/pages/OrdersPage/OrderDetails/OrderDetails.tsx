@@ -38,8 +38,7 @@ export default function OrderDetails() {
 		<div>
 			<HeaderSettings
 				variant='settingOrder'
-				title='Order Details'
-				onClick={() => navigate(-1)}
+				title={t('Order Details')}
 				btn1={{ onClick: () => console.log('Update Status') }}
 				btn2={{ onClick: () => console.log('Print Invoice') }}
 				btn3={{ onClick: () => console.log('More Options') }}
@@ -49,7 +48,7 @@ export default function OrderDetails() {
 				}}
 			/>
 
-			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 p-5'>
+			<div className='grid gap-5 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 custom_container'>
 				<div className='col-span-2 flex flex-col gap-5'>
 					<OrderNo />
 					<OrderItems />
