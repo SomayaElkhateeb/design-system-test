@@ -6,7 +6,7 @@ import { OrderStatus } from '../..';
 export default function OrderNo() {
 	const [showOrderStatus, setShowOrderStatus] = useState(false);
 	const { t } = useTranslation();
-	const flexClass = 'flex gap-1.5 items-center';
+	const flexClass = 'flex gap-1.5 items-center md:flex';
 	return (
 		<div className='capitalize global-cards grid lg:grid-cols-6'>
 			<div className='col-span-1  flex-col-top-section-pages  gap-2 relative after:absolute after:h-[100%] after:lg:w-[1px] after:bg-constrained after:right-[-10%] after:top-0'>
@@ -14,7 +14,7 @@ export default function OrderNo() {
 				<p className='title  '>#8965742</p>
 			</div>
 
-			<div className='lg:col-span-3 flex-col-top-section-pages  gap-2 subtitle'>
+			<div className='lg:col-span-3 flex-col-top-section-pages gap-2 subtitle px-2'>
 				<div className={flexClass}>
 					<p>{t('payment status')}:</p>
 					<button onClick={() => setShowOrderStatus(true)} className='flex text-warning capitalize'>
@@ -36,7 +36,9 @@ export default function OrderNo() {
 				</p>
 			</div>
 
-			{showOrderStatus && <OrderStatus   showOrderStatus={showOrderStatus} onClose={() => setShowOrderStatus(false)} />}
+			{showOrderStatus && (
+				<OrderStatus showOrderStatus={showOrderStatus} onClose={() => setShowOrderStatus(false)} />
+			)}
 		</div>
 	);
 }

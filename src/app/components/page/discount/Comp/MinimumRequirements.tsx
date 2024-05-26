@@ -40,7 +40,11 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
 
-			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
+			<CheckBox
+				label={t('define minimum requirements')}
+				handleOnChange={handleCheckboxChange}
+				checked={false}
+			/>
 
 			{isChecked && (
 				<>
