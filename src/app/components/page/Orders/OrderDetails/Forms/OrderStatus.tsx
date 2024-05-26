@@ -15,7 +15,13 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 
-export default function OrderStatus({ onClose }: { onClose: () => void }) {
+export default function OrderStatus({
+	onClose,
+	showOrderStatus,
+}: {
+	onClose: () => void;
+	showOrderStatus: boolean;
+}) {
 	const { t } = useTranslation();
 	const { handelDefaultValue, orderSchema } = useCustomOrderForm();
 
@@ -31,32 +37,34 @@ export default function OrderStatus({ onClose }: { onClose: () => void }) {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit}>
-				<GlobalDialog openDialog={onClose} handleClose={onClose} style={{ width: '50%' }}>
-					<div className='flex flex-col gap-3'>
+				<GlobalDialog
+					openDialog={showOrderStatus}
+					handleClose={onClose}
+					style={{ width: { md: '50%', xs: '70%' } }}
+				>
+					<div className='flex-col-top-section-pages  gap-3'>
 						<h3 className='title'>{t('Update order status')}</h3>
 
-						<div className='w-[70%]'>
+						<div className='flex-col-top-section-pages  md:w-[70%]'>
 							<FormField
 								formStore={formStore}
 								name='status'
 								label={t('Order status')}
 								render={(field) => (
-									<div className='flex-col-top-section-pages gap-[.2rem]'>
-										<Select
-											onValueChange={field.onChange}
-											value={field.value}
-											required={field.required}
-											name={field.name}
-										>
-											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-												<SelectValue placeholder={t('Processing')} />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectItem value='processing'>Processing</SelectItem>
-												<SelectItem value='awaitingPayment'>Awaiting Payment</SelectItem>
-											</SelectContent>
-										</Select>
-									</div>
+									<Select
+										onValueChange={field.onChange}
+										value={field.value}
+										required={field.required}
+										name={field.name}
+									>
+										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+											<SelectValue placeholder={t('Processing')} />
+										</SelectTrigger>
+										<SelectContent>
+											<SelectItem value='processing'>Processing</SelectItem>
+											<SelectItem value='awaitingPayment'>Awaiting Payment</SelectItem>
+										</SelectContent>
+									</Select>
 								)}
 							/>
 
