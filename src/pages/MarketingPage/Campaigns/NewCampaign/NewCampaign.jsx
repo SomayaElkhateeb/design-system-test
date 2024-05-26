@@ -8,6 +8,7 @@ import TargetingDetails from './TargetingDetails';
 import { Form } from 'src/app/components/ui/form';
 import { HeaderSettings } from 'src/app/components/optimized';
 
+
 const NewCampaign = () => {
 	const [target, setTarget] = useState('having specific interests');
 	const { t } = useTranslation();

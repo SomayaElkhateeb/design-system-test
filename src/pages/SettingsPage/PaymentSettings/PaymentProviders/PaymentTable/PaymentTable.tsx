@@ -1,3 +1,4 @@
+
 import { useTranslation } from 'react-i18next';
 import PaymentTableRows from './PaymentTableRows';
 import { paymentProvidersData } from '../../../data';
@@ -16,6 +17,8 @@ export default function PaymentTable() {
 		{ title: t('Methods transactions') },
 		{ title: t('Banks') },
 	];
+	
+
 	const rows = PaymentTableRows({ data: paymentProvidersData });
 	return (
 		<div className='print-only'>
