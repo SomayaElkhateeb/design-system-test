@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export interface addressFormInterface {
+	sendGift: boolean;
 	name: string;
 	country: string;
 	city: string;
@@ -14,6 +15,7 @@ export interface addressFormInterface {
 export default function useCustomAddressForm() {
 	const handelDefaultValue = () => {
 		return {
+			sendGift: false,
 			name: '',
 			country: '',
 			city: '',
@@ -26,6 +28,7 @@ export default function useCustomAddressForm() {
 	};
 
 	const addressSchema = {
+		sendGift: z.boolean().default(false),
 		name: z.string().min(5, { message: 'Full name is required' }),
 		country: z.string().min(5, { message: 'Country is required' }),
 		city: z.string().min(5, { message: 'City is required' }),

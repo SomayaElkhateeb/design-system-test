@@ -5,8 +5,7 @@ import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
-import { Button } from 'src/app/components/optimized';
-import { Checkbox } from '@mui/material';
+import { Button, CheckBox } from 'src/app/components/optimized';
 import {
 	Select,
 	SelectContent,
@@ -77,8 +76,13 @@ export default function OrderStatus({
 						</div>
 
 						<div>
-							<Checkbox />
-							<span className='text-sm text-title'>{t('Notify customer')}</span>
+							<CheckBox
+								label={t('Notify customer')}
+								checked={formStore.watch('notifyCustomer')}
+								handleOnChange={(option) => {
+									formStore.setValue('notifyCustomer', option);
+								}}
+							/>
 						</div>
 
 						<div className='flex justify-end items-center gap-4'>
