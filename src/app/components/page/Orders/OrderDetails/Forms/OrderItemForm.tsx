@@ -8,6 +8,7 @@ import useOrderItemForm, { IOrderItemForm } from './HookOrderItem';
 import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
 import ProductItem from '../Comp/ProductItem';
+
 export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 	const { t } = useTranslation();
 	const { handelDefaultValue, orderItemSchema } = useOrderItemForm();
@@ -23,11 +24,11 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 	});
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
-				<div className='p-3 flex flex-col gap-3'>
+			<form onSubmit={onSubmit} className="flex-col-top-section-pages">
+				<div className='px-3 flex flex-col gap-3'>
 					<div>
 						<Button variant='secondary' RightIcon={'ltr' ? FaChevronRight : FaChevronLeft}>
-							{t('Add product')}
+							{t('Add Product')}
 						</Button>
 					</div>
 
@@ -35,7 +36,7 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 					<div>
 						<hr />
 						<div className='flex items-center justify-between pt-3'>
-							<p className='text-subtitle text-sm'>Sub Total</p>
+							<p className='text-subtitle text-sm'>{t('Sub Total')}</p>
 							<p className='text-title text-sm'>SAR 450.00</p>
 						</div>
 					</div>
@@ -44,14 +45,14 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 					<FormItem formStore={formStore} />
 
 					<div className='flex items-center justify-between'>
-						<p className='text-subtitle text-sm'>Tax</p>
+						<p className='text-subtitle text-sm'>{t('Tax')}</p>
 						<p className='text-title text-sm'>SAR 450.00</p>
 					</div>
 
 					<div>
 						<hr />
 						<div className='flex items-center justify-between py-3'>
-							<p className='text-subtitle text-sm uppercase'>total</p>
+							<p className='text-subtitle text-sm uppercase'>{t('total')}</p>
 							<p className='text-title text-sm'>SAR 450.00</p>
 						</div>
 					</div>
@@ -70,15 +71,17 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 }
 
 function FormItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
+	//  hooks
+	const { t } = useTranslation();
 	const textInput = (
 		<div className='text-pri-dark text-sm flex items-center justify-between'>
-			<p>Discount price (optional)</p>
+			<p>{t('Discount price (optional)')}</p>
 			<p>% off</p>
 		</div>
 	);
 
 	return (
-		<div className='grid grid-cols-2 gap-5'>
+		<div className='grid md:grid-cols-2 gap-5'>
 			<FormField
 				formStore={formStore}
 				label={textInput}

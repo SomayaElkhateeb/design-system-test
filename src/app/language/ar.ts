@@ -935,6 +935,10 @@ export const arabic = {
 	'Apply with cannot be empty': 'لا يمكن أن تكون طريقة التطبيق فارغة',
 
     "Order Details":"تفاصيل الاوردر",
-
+	
+	"Sub Total":"المجموع الفرعي",
+	"Edit Shipping":"تعديل الشحن",
+	"Tax":"مصاريف اضافيه",
+	"total":"المبلغ الكلي",
 
 } satisfies typeof english;

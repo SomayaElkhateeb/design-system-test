@@ -935,6 +935,10 @@ export const english = {
 	'IBAN cannot be empty': 'IBAN cannot be empty',
 	"IBAN":"IBAN",
 	"Order Details":"Order Details",
+	"Sub Total":"Sub Total",
+	"Edit Shipping":"Edit Shipping",
+	"Tax":"Tax",
+	"total":"total",
 	'Apply with cannot be empty': 'Apply with cannot be empty',
 	'Activate bank transfer': 'Activate bank transfer',
 
