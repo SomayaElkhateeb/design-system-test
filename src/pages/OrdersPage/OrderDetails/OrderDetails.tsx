@@ -35,7 +35,7 @@ export default function OrderDetails() {
 		setState({ ...state, showAddress: !showAddress });
 	};
 	return (
-		<>
+		<div className="flex-col-top-section-pages">
 			<HeaderSettings
 				variant='settingOrder'
 
@@ -115,6 +115,6 @@ export default function OrderDetails() {
 					{/* update order */}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

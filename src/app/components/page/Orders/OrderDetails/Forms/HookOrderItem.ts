@@ -17,8 +17,8 @@ export default function useOrderItemForm() {
 
 	const orderItemSchema = {
 		quantity: z.coerce.number().positive().min(1),
-		discount: z.coerce.number().positive().min(0).optional(),
-		shipping:z.coerce.number().positive().min(0).optional(),
+		discount: z.optional(z.coerce.number().positive().min(0)).or(z.literal(0)),
+		shipping:z.optional(z.coerce.number().positive().min(0)).or(z.literal(0)),
 	};
 
 	return {
