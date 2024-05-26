@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from 'src/app/components/optimized';
+import { Button, CheckBox } from 'src/app/components/optimized';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
@@ -14,7 +14,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import { Checkbox } from '@mui/material';
 
 export default function AddressForm({ handleAddressForm }: { handleAddressForm: () => void }) {
 	const { t } = useTranslation();
@@ -33,19 +32,23 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 
 	const handleSubmitBtn = () => {
 		onSubmit();
-		handleAddressForm(); // ?? check zod?
+		// handleAddressForm();
 	};
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex flex-col gap-3'>
-				<div className='flex flex-col gap-3'>
-					<div>
-						<Checkbox />
-						<span className='text-sm text-title'>{t('Send as a gift')}</span>
-					</div>
+			<form onSubmit={onSubmit} className='flex flex-col gap-4 pt-5'>
+				<div className='flex flex-col gap-4'>
+					<CheckBox
+						label={t('Send as a gift')}
+						checked={formStore.watch('sendGift')}
+						handleOnChange={(option) => {
+							formStore.setValue('sendGift', option);
+						}}
+					/>
+
 					<div className='flex items-center justify-between'>
-						<div className='flex flex-col justify-between h-[22.5rem]'>
+						<div className='flex-col-top-section-pages gap-9'>
 							<h2 className={title}>{t('Name')}</h2>
 							<h2 className={title}>{t('Country')}</h2>
 							<h2 className={title}>{t('City')}</h2>
@@ -55,7 +58,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 							<h2 className={title}>{t('Landmark')}</h2>
 							<h2 className={title}>{t('Phone')}</h2>
 						</div>
-						<div className='flex flex-col gap-2'>
+						<div className='flex flex-col gap-4'>
 							<FormField
 								formStore={formStore}
 								name='name'
