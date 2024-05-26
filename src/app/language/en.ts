@@ -311,7 +311,7 @@ export const english = {
 	'Addon Cost': 'Addon Cost',
 	Subtotal: 'Subtotal',
 	'VAT/TAX': 'VAT/TAX',
-	"VAT":"VAT",
+	VAT: 'VAT',
 	Discount: 'Discount',
 	'Delivery Fee': 'Delivery Fee',
 	Total: 'Total',
@@ -934,12 +934,12 @@ export const english = {
 	'Bank name cannot be empty': 'Bank name cannot be empty',
 	'IBAN cannot be empty': 'IBAN cannot be empty',
 
-	"IBAN":"IBAN",
-	"Order Details":"Order Details",
-	"Sub Total":"Sub Total",
-	"Edit Shipping":"Edit Shipping",
-	"Tax":"Tax",
-	"total":"total",
+	IBAN: 'IBAN',
+	'Order Details': 'Order Details',
+	'Sub Total': 'Sub Total',
+	'Edit Shipping': 'Edit Shipping',
+	Tax: 'Tax',
+	total: 'total',
 
 	'Apply with cannot be empty': 'Apply with cannot be empty',
 	'Activate bank transfer': 'Activate bank transfer',
@@ -965,4 +965,5 @@ export const english = {
 	address: 'address',
 	checkout: 'checkout',
 	'add new order': 'add new order',
+	'Discount price (optional)': 'Discount price (optional)',
 };
