@@ -32,9 +32,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 	const handleCheckboxChange = (newValue: boolean) => {
 		update({ isChecked: newValue });
 	};
-	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map(
-		(option) => option,
-	);
+	const minimumRequirementsOptions = ['Minimum price', 'Minimum quantity']
 
 	return (
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
@@ -53,7 +51,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 						setSelected={(option: string) => update({ selectedMinimumRequirements: option })}
 					/>
 
-					{selectedMinimumRequirements === t('Minimum price') && (
+					{selectedMinimumRequirements === 'Minimum price' && (
 						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}
@@ -63,7 +61,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 							/>
 						</div>
 					)}
-					{selectedMinimumRequirements === t('Minimum quantity') && (
+					{selectedMinimumRequirements === 'Minimum quantity' && (
 						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}

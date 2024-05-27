@@ -39,6 +39,8 @@ const NewDiscount = () => {
 		setCustomerSegment(formStore?.watch('customerSegment'));
 	}, [formStore]);
 
+
+	
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
