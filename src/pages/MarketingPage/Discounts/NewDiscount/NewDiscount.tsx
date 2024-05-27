@@ -8,6 +8,8 @@ import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDisc
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
 import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
+import Limits from 'src/app/components/page/discount/Comp/Limits';
+
 const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
 	const navigate = useNavigate();
@@ -17,6 +19,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	const [productXtoYType, setProductXtoYType] = useState<string | undefined>('Free');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
 	const [updateState, setUpdateState] = useState<State>(initialState);
+	const [isCheck, setIsCheck] = useState<boolean>(false);
 
 	const { selectedMinimumRequirements } = updateState;
 
@@ -27,6 +30,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		productXtoYType,
 		customerSegment,
 		selectedMinimumRequirements,
+		isCheck
 	);
 
 	/////////////////////
@@ -74,6 +78,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 							setUpdateState={setUpdateState}
 							formStore={formStore}
 						/>
+						{ coupon && <Limits isCheck={isCheck} setIsCheck={setIsCheck} formStore={formStore}/>}
 						<ActiveDates />
 					</div>
 					<div className='col-span-1'>
