@@ -30,23 +30,38 @@ const LoginPage = () => {
 	);
 };
 
-const AccountSchema = z.object({
-	email: z.string().min(1, 'Email is required').email('Invalid email address').optional(),
-	phone: z
-		.string()
-		.min(1, 'Phone is required')
-		.min(11, 'Phone number must be at least 11 digits')
-		.max(15, 'Phone number is too long')
-		.optional(),
-});
+// z.object({
+// 	email: z.string().min(1, 'Email is required').email('Invalid email address').optional(),
+// 	phone: z
+// 		.string()
+// 		.min(1, 'Phone is required')
+// 		.min(11, 'Phone number must be at least 11 digits')
+// 		.max(15, 'Phone number is too long')
+// 		.optional(),
+// });
+
+const AccountSchema = z.discriminatedUnion('type', [
+	z.object({
+		type: z.literal('email'),
+		email: z.string().min(1, 'Email is required').email('Invalid email address'),
+	}),
+	z.object({
+		type: z.literal('phone-number'),
+		phoneNumber: z
+			.string()
+			.min(1, 'Phone is required')
+			.min(11, 'Phone number must be at least 11 digits')
+			.max(15, 'Phone number is too long'),
+	}),
+]);
 
 const Account = ({ setStep }: { setStep: React.Dispatch<React.SetStateAction<number>> }) => {
 	const { formStore, onSubmit } = useForm({
-		schema: AccountSchema.shape,
+		schema: AccountSchema,
 		handleSubmit: (validatedData) => {
 			setStep(2);
 		},
-		defaultValues: {},
+		defaultValues: { type: 'email' },
 	});
 
 	const [usePhone, setUsePhone] = useState<boolean>(false);
@@ -57,6 +72,7 @@ const Account = ({ setStep }: { setStep: React.Dispatch<React.SetStateAction<num
 
 			formStore.setValue('phone', undefined);
 			formStore.setValue('email', undefined);
+			formStore.setValue('type', newValue? 'phone-number' : 'email');
 
 			return newValue;
 		});
