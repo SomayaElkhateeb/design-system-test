@@ -48,7 +48,11 @@ export default function TopSectionOrdersPage({
 			<div className='flex-row-global justify-between'>
 				{/*  left dropdow */}
 
-				<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+				<Button
+					onClick={() => navigate('/order/addOrder')}
+					variant='primary'
+					LeftIcon={IoIosAddCircle}
+				>
 					{addButton}
 				</Button>
 				{/*  actions filter arrange,... */}

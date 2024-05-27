@@ -1,19 +1,19 @@
 import { useTranslation } from 'react-i18next';
 
-import { CustomizationsFormProps, customizationsInterface } from './useCustomization';
+import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
+
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { MultiChoiceChips } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from './FormSwitchField';
 import FormChoiceChips from './FormChoiceChips';
-
 export default function NewsletterConsentForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 
 	return (
 		<div className='global-cards grid grid-cols-2'>
-			<div className='col-span-2'>
-				<h2 className='title  mb-2'>{t('Double opt-in')}</h2>
+			<div className='col-span-2 flex-col-top-section-pages  gap-[.3rem]'>
+				<h2 className='title '>{t('Double opt-in')}</h2>
 				<p className='paragraph'>
 					{t('Ask for customers consent for receiving email or SMS newsletter')}
 				</p>
@@ -21,14 +21,14 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 			<div className='col-span-2'>
 				<h3 className='title text-base'>{t('Require customers to confirm their')}</h3>
 				<MultiChoiceChips
-					options={[t('Email subscription'), t('SMS subscription')]}
-					setSelected={(option: string) => {
+					options={['Email subscription', 'SMS subscription']}
+					setSelected={(option) => {
 						formStore.setValue('subscriptionConfirm', option);
 					}}
 					selected={formStore.watch('subscriptionConfirm')}
 				/>
 			</div>
-			<FormChoiceChips<customizationsInterface>
+			<FormChoiceChips<CustomizationsTypes>
 				formStore={formStore}
 				name='showSubscribeOptionAt'
 				label='Show an option to subscribe at'
@@ -47,12 +47,12 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					)}
 				/>
 			</div>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='preselectOption'
 				label='Preselect the option for customers'
 			/>
-			<FormSwitchField<customizationsInterface>
+			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
 				name='showNewsletterFooter'
 				label='Show email newsletter input in footer'

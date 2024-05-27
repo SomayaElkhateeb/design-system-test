@@ -1,21 +1,18 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
-import SingleChoiceChips from '../../optimized/ChoiceChips/SingleChoiceChips';
 import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import CustomAutoComplete from '../../optimized/InputsFields/AutoCompleteMultiple';
 import { CheckBox } from '../../optimized';
 import { addCustomerInterface } from './HookForAddCustomerForm';
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
 }
-const selectItems = [
-	{ id: '1', name: 'Dress' },
-	{ id: '2', name: 'Fashion' },
-];
+
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
@@ -23,26 +20,19 @@ export default function GeneralInfoCustomerForm({
 }) {
 	//  hooks
 	const { t } = useTranslation();
-	const handleBranchType = (option: string) => {
-		formStore.setValue('humanType', option);
-	};
+
 	// ///////////////////////////
-	const handelAutoCompleteError = () => {
-		return (
-			formStore.watch('groupMeta').length === 0 &&
-			formStore.formState.isSubmitted && <p className='global_error'>{'choose Meta required'}</p>
-		);
-	};
 
 	return (
 		<div className='global-cards gap-[1.3rem]'>
 			<h2 className='title'>{t('General Info')}</h2>
 
 			<div className='flex-col-top-section-pages md:w-[65%]'>
-				<SingleChoiceChips
-					options={[t('Male'), t('Female')]}
-					setSelected={handleBranchType}
-					selected={formStore.watch('humanType')}
+				<FormChoiceChips<addCustomerInterface>
+					formStore={formStore}
+					name='humanType'
+					label='Customer can check out with'
+					options={['Male', 'Female']}
 				/>
 				<FormField
 					formStore={formStore}
@@ -56,23 +46,12 @@ export default function GeneralInfoCustomerForm({
 					label={t('Email')}
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
-				<div className='flex-col-top-section-pages gap-0'>
-					<FormField
-						formStore={formStore}
-						name='groupMeta'
-						label={t('Meta keywords')}
-						render={(field) => (
-							<CustomAutoComplete<selectItemsInterface>
-								placeholder={'Select or add new'}
-								getvalue={(value) => formStore.setValue('groupMeta', value)}
-								name='groupMeta'
-								array={selectItems}
-								MainValue={formStore.watch('groupMeta')}
-							/>
-						)}
-					/>
-					{handelAutoCompleteError()}
-				</div>
+
+				<SpecificAutoCompleteInput<addCustomerInterface>
+					name='groupMeta'
+					label={t('Meta keywords')}
+					formStore={formStore}
+				/>
 				<FormField
 					formStore={formStore}
 					name='PhoneNumber'

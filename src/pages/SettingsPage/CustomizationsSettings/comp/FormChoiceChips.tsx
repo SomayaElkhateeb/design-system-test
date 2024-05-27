@@ -1,16 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { UseFormReturn, Path, PathValue } from 'react-hook-form';
+import { UseFormReturn, Path, PathValue, FieldValues } from 'react-hook-form';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 
-interface FormChoiceChipsProps<T> {
+interface FormChoiceChipsProps<T extends FieldValues> {
 	formStore: UseFormReturn<T>;
 	name: Path<T>;
-	label: string;
+	label?: string;
 	options: string[];
 	description?: string;
 }
 
-export default function FormChoiceChips<T>({
+export default function FormChoiceChips<T extends FieldValues>({
 	formStore,
 	name,
 	label,
@@ -25,9 +25,9 @@ export default function FormChoiceChips<T>({
 
 	return (
 		<div className='grid gap-2 col-span-2'>
-			<h3 className='title text-base'>{t(label as any)}</h3>
+			{label && <h3 className='title text-base'>{t(label as any)}</h3>}
 			<SingleChoiceChips
-				options={options.map((option) => t(option as any))}
+				options={options.map((option) => option)}
 				setSelected={handleChoiceChange}
 				selected={formStore.watch(name) as unknown as string}
 			/>

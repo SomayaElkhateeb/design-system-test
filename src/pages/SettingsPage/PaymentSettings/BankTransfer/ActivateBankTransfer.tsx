@@ -7,40 +7,15 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { HeaderSettings } from 'src/app/components/optimized';
 import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
-import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
-
-interface bankTransferInterface {
-	accountNumber: number;
-	accountName: string;
-	bankName: string;
-	iban: string;
-	instructions: string;
-	orderItems: number;
-	price: number;
-}
-export interface PaymentFormProps {
-	formStore: UseFormReturn<bankTransferInterface>;
-}
-
+import useBankTransfer from './useBankTransfer';
+import { useEffect, useState } from 'react';
 export default function ActivateBankTransfer() {
+	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-
-	const handelDefaultValue = () => {
-		return {
-			accountNumber: '',
-			accountName: '',
-			bankName: '',
-			iban: '',
-			instructions: '',
-			orderItems: '',
-			price: '',
-		};
-	};
-	const handleSubmit = (values: bankTransferInterface) => {
-		console.log(values);
-	};
+	const [applyWith, setApplyWith] = useState('All');
+	const { formStore, onSubmit } = useBankTransfer(applyWith);
 	const data = [
 		{
 			id: 1,
@@ -56,24 +31,9 @@ export default function ActivateBankTransfer() {
 		},
 	];
 
-	const bankTransferSchema = {
-		accountNumber: z.number().min(1, { message: t('Account number must be a positive number') }),
-		accountName: z.string().min(1, { message: t('Account name cannot be empty') }),
-		bankName: z.string().min(1, { message: t('Bank name cannot be empty') }),
-		iban: z.string().min(1, { message: t('IBAN cannot be empty') }),
-		instructions: z.string().min(1, { message: t('Instructions cannot be empty') }),
-		orderItems: z
-			.string()
-			.min(1, { message: t('Order items Account number must be a positive number') }),
-		price: z.string().min(1, { message: t('Price number must be a positive number') }),
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: bankTransferSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-
+	useEffect(() => {
+		setApplyWith(formStore.watch('applyWith'));
+	}, []);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
@@ -92,12 +52,12 @@ export default function ActivateBankTransfer() {
 						onClick: () => {},
 					}}
 				/>
-				<div className='grid gap-5 p-5 grid-cols-3'>
-					<div className='grid gap-5 col-span-2 lg:col-span-2'>
+				<div className='grid gap-5 custom_container lg:grid-cols-3'>
+					<div className='grid gap-5 lg:col-span-2 '>
 						<AccountDetailsForm formStore={formStore} />
 						<ActivateConditions formStore={formStore} />
 					</div>
-					<div className='col-span-1'>
+					<div className='lg:col-span-1'>
 						<QuickActions data={data} />
 					</div>
 				</div>

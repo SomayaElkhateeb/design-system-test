@@ -7,7 +7,15 @@ import AppliesBasedOn from '../Rate/AppliesBasedOn';
 import useCustomHookAddRate, { IAddRate } from './HookForAddRate';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 
-export default function AddRate({ saudi, onClose }: { saudi?: boolean; onClose: () => void }) {
+export default function AddRate({
+	saudi,
+	onClose,
+	showRate,
+}: {
+	saudi?: boolean;
+	onClose: () => void;
+	showRate: boolean;
+}) {
 	// hook
 	const { t } = useTranslation();
 	//custom hook
@@ -27,12 +35,16 @@ export default function AddRate({ saudi, onClose }: { saudi?: boolean; onClose: 
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit}>
-				<GlobalDialog openDialog={onClose} handleClose={onClose} style={{ width: '50%' }}>
-					<h2 className='text-title font-semibold pb-5'>{t('Add rate')}</h2>
+				<GlobalDialog
+					openDialog={showRate}
+					handleClose={onClose}
+					style={{ width: { md: '50%', xs: '70%' } }}
+				>
+					<h2 className='text-title font-semibold '>{t('Add rate')}</h2>
 					<TextFields formStore={formStore} saudi={saudi} />
 					<AppliesBasedOn formStore={formStore} />
 
-					<div className='flex items-center justify-end pt-5 gap-5'>
+					<div className='flex items-center justify-end  gap-5'>
 						<Button variant='tertiary' onClick={onClose}>
 							{t('cancel')}
 						</Button>

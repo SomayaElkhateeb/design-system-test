@@ -6,6 +6,7 @@ import { Textarea } from 'src/app/components/ui/textarea';
 import { Switch } from 'src/app/components/ui/switch';
 import FormField from 'src/app/components/ui/form/field';
 import { preferncesInterface } from './HookForPreferncePageForm';
+import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 
 export default function MaintainanceSection({
 	formStore,
@@ -24,16 +25,8 @@ export default function MaintainanceSection({
 					)}
 				</p>
 			</div>
-			<FormField
-				formStore={formStore}
-				name='maintainanceEnable'
-				render={(field) => (
-					<div className='flex gap-2 items center'>
-						<Switch checked={field.value} onCheckedChange={field.onChange} />{' '}
-						<p className='text-title text-sm font-normal mt-[.1rem] '>{t('Enabled')}</p>
-					</div>
-				)}
-			/>
+
+			<FormSwitchField<preferncesInterface> formStore={formStore} name='maintainanceEnable' />
 			<TabbedFormField
 				formStore={formStore}
 				keys={[

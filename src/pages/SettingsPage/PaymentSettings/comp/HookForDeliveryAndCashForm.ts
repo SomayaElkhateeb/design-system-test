@@ -16,11 +16,11 @@ export default function useCustomHookDeliveryAndCashForm(addCondition: boolean) 
 		return {
 			instructions: z.string().optional(),
 			minimumPrice: addCondition
-				? z.coerce.number().min(1)
-				: z.optional(z.coerce.number().min(1)).or(z.literal(0)),
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			maximumPrice: addCondition
-				? z.coerce.number().min(1)
-				: z.optional(z.coerce.number().min(1)).or(z.literal(0)),
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 		};
 	};
 

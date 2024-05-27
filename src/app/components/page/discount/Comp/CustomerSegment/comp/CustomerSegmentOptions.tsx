@@ -1,17 +1,20 @@
 import { useTranslation } from 'react-i18next';
-import SpecificCustomers from '../../../Selectors/SpecificCustomers';
-import SpecificGroups from '../../../Selectors/SpecificGroups';
+import { UseFormReturn } from 'react-hook-form';
+import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { SpecificGroups, SpecificCustomers } from 'src/app/components/page';
 
-interface CustomerSegmentOptionsProps {
+const CustomerSegmentOptions = ({
+	segmentOptions,
+	formStore,
+}: {
 	segmentOptions: string;
-}
-
-const CustomerSegmentOptions: React.FC<CustomerSegmentOptionsProps> = ({ segmentOptions }) => {
+	formStore: UseFormReturn<newDiscountInterface>;
+}) => {
 	const { t } = useTranslation();
 	return (
 		<div>
-			{segmentOptions === t('Specific customer groups') && <SpecificGroups />}
-			{segmentOptions === t('Specific customers') && <SpecificCustomers />}
+			{segmentOptions === t('Specific customer groups') && <SpecificGroups formStore={formStore} />}
+			{segmentOptions === t('Specific customers') && <SpecificCustomers formStore={formStore} />}
 		</div>
 	);
 };

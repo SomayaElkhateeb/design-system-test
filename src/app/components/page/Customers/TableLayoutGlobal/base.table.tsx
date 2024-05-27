@@ -34,7 +34,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				marginTop: '20px',
 				backgroundColor: '#F9FAFC',
 				maxHeight: 700,
-				minHeight: rows.length===0?50:300,
+				minHeight: rows.length === 0 ? 50 : 300,
 			}}
 		>
 			<Fade in={isLoading}>
@@ -111,5 +111,4 @@ export const GlobalTableCell = styled(TableCell)(({ theme }) => ({
 	fontWeight: '400',
 	borderBottom: '20px solid #F9FAFC',
 	backgroundColor: 'white',
-	
 }));

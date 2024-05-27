@@ -28,14 +28,13 @@ export default function AddPayment({
 	// //////////////////////////////////
 	const addPaymentSchema = {
 		name: z.string().min(10),
-		cardNumber: z.coerce
-			.number()
+		cardNumber:z.coerce.number().positive()
 			.min(14, { message: t('Account number must be at least 14 numbers') })
 			.refine((val) => /^\d{14}$/.test(val.toString())),
 		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
 			message: 'Date must be in the format MM/YYYY',
 		}),
-		cvv: z.coerce.number().refine((val) => /^\d{3}$/.test(val.toString()), {
+		cvv: z.coerce.number().positive().refine((val) => /^\d{3}$/.test(val.toString()), {
 			message: t('CVV must be 3 digits'),
 		}),
 	};

@@ -1,41 +1,50 @@
-import { Button } from 'src/app/components/optimized';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
+import useCampaign from '../useCampaign';
 import BudgetDetails from './BudgetDetails';
 import CampaignDetails from './CampaignDetails';
 import TargetingDetails from './TargetingDetails';
-import { IoIosArrowForward } from 'react-icons/io';
-import { BackIcon } from 'src/app/utils/icons';
-import { Link } from 'react-router-dom';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { Form } from 'src/app/components/ui/form';
+import { HeaderSettings } from 'src/app/components/optimized';
 
 const NewCampaign = () => {
-	const language = UseLanguage();
-	return (
-		<form>
-			<div className='flex justify-between items-center bg-white px-4 py-3'>
-				<div className='flex justify-between items-center'>
-					<Link to={-1}>{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}</Link>
-					<h2 className='text-lg font-semibold capitalize text-title'>Add activity</h2>
-				</div>
-				<div className='flex  gap-2'>
-					<Button
-						variant='secondary'
-						text='Discard'
-						// onClick={}
-					/>
-					<Button
-						variant='primary'
-						text='Publish'
-						// onClick={}
-					/>
-				</div>
-			</div>
+	const [target, setTarget] = useState('having specific interests');
+	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const { formStore, onSubmit } = useCampaign(target);
 
-			<div className='p-5 grid gap-5'>
-				<CampaignDetails />
-				<TargetingDetails />
-				<BudgetDetails />
-			</div>
-		</form>
+	useEffect(() => {
+		setTarget(formStore.watch('targetSimilarPeople'));
+	}, [formStore]);
+
+	console.log(formStore.formState.errors)
+	return (
+		<Form {...formStore}>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+				<HeaderSettings
+					submit
+					variant='settingTwoBtns'
+					title={t('Add Activity')}
+					btn1={{
+						text: t('Discard'),
+						onClick: () => {
+							navigate(-1);
+						},
+					}}
+					btn2={{
+						text: t('Publish'),
+					}}
+				/>
+				<div className='grid custom_container grid-cols-3'>
+					<div className='grid gap-5 col-span-3 lg:col-span-2'>
+						<CampaignDetails formStore={formStore} />
+						<TargetingDetails formStore={formStore} />
+						<BudgetDetails formStore={formStore} />
+					</div>
+				</div>
+			</form>
+		</Form>
 	);
 };
 

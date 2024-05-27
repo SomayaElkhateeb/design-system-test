@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { CheckBox } from 'src/app/components/optimized';
-import { useTranslation } from 'react-i18next';
-import FormField from 'src/app/components/ui/form/field';
-import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/NewDiscount';
-
+import { useTranslation } from 'react-i18next';
+import { CheckBox } from 'src/app/components/optimized';
+import { Input } from 'src/app/components/ui/input';
+import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import FormField from 'src/app/components/ui/form/field';
+import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
 interface State {
 	selectedMinimumRequirements: string;
 	isChecked: boolean;
@@ -41,8 +40,11 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
 			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
 
-			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
-
+			<CheckBox
+				label={t('define minimum requirements')}
+				handleOnChange={handleCheckboxChange}
+				checked={isChecked}
+			/>
 			{isChecked && (
 				<>
 					<SingleChoiceChips
@@ -52,22 +54,22 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 					/>
 
 					{selectedMinimumRequirements === t('Minimum price') && (
-						<div className='w-[390px]'>
+						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}
-								name='sales'
+								name='miniPrice'
 								label={t('Mini purchase price')}
-								render={(field) => <Input {...field} />}
+								render={(field) => <Input type='number' {...field} />}
 							/>
 						</div>
 					)}
 					{selectedMinimumRequirements === t('Minimum quantity') && (
-						<div className='w-[390px]'>
+						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}
 								name='miniQuantity'
 								label={t('Mini purchase quantity')}
-								render={(field) => <Input {...field} />}
+								render={(field) => <Input type='number' {...field} />}
 							/>
 						</div>
 					)}
