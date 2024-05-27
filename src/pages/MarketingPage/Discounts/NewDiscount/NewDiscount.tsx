@@ -8,7 +8,6 @@ import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
-
 const NewDiscount = () => {
 	// hook
 	const navigate = useNavigate();

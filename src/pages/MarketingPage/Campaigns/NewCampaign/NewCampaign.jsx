@@ -8,7 +8,6 @@ import TargetingDetails from './TargetingDetails';
 import { Form } from 'src/app/components/ui/form';
 import { HeaderSettings } from 'src/app/components/optimized';
 
-
 const NewCampaign = () => {
 	const [target, setTarget] = useState('having specific interests');
 	const { t } = useTranslation();
@@ -18,6 +17,7 @@ const NewCampaign = () => {
 	useEffect(() => {
 		setTarget(formStore.watch('targetSimilarPeople'));
 	}, [formStore]);
+	return;
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>

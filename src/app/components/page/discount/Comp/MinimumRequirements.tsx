@@ -43,9 +43,8 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 			<CheckBox
 				label={t('define minimum requirements')}
 				handleOnChange={handleCheckboxChange}
-				checked={false}
+				checked={isChecked}
 			/>
-
 			{isChecked && (
 				<>
 					<SingleChoiceChips
