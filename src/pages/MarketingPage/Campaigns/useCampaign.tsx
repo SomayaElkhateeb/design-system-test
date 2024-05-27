@@ -16,14 +16,10 @@ export interface ActiveDates {
 }
 export interface CampaignInputsTypes {
 	targetSimilarPeople: string;
-
 	campaignName: string;
 	activityName: string;
-
-	adText: string;
-
 	activeDates: ActiveDates;
-	details: string;
+	details?: string;
 	budget: number;
 	selectedInterests?: selectItemsInterface[];
 	products: selectItemsInterface[];
@@ -61,17 +57,10 @@ export default function useCampaign(target: string) {
 			.string()
 			.min(1, { message: 'Target similar people selection is required' }),
 
-		adText: z.string().min(1, { message: 'Ad text is required' }),
-		specificInterests: z.array(z.string()).nonempty(),
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
-		specificInterests:
 
-
-		activeDates: activeDatesSchema,
-		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 		selectedInterests:
-
 			target === 'having specific interests'
 				? z.array(
 						z.object({
@@ -88,7 +77,7 @@ export default function useCampaign(target: string) {
 								}),
 							),
 						)
-						.or(z.literal('')),
+						.or(z.literal("")),
 		products: z.array(
 			z.object({
 				id: z.string().min(1),
@@ -103,8 +92,6 @@ export default function useCampaign(target: string) {
 			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
-			adText: '',
-
 			products: [],
 			details: '',
 			budget: 0,
@@ -125,8 +112,8 @@ export default function useCampaign(target: string) {
 
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
-			console.log(value.toDate());
-			console.log(type)
+			// console.log(value.toDate());
+			// console.log(type);
 			const updatedDates = { ...activeDates };
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();
