@@ -84,7 +84,7 @@ export default function useCustomHookNewDiscount() {
 									name: z.string().min(1),
 								}),
 							),
-					  ),
+					  ).or(z.literal("")),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z.array(
@@ -100,7 +100,7 @@ export default function useCustomHookNewDiscount() {
 									name: z.string().min(1),
 								}),
 							),
-					  ),
+					  ).or(z.literal("")),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z.array(
@@ -116,7 +116,7 @@ export default function useCustomHookNewDiscount() {
 									name: z.string().min(1),
 								}),
 							),
-					  ),
+					  ).or(z.literal("")),
 			ProductXToProductYType:
 				applyToType === 'Buy x get y'
 					? z.string().min(1)
@@ -124,11 +124,11 @@ export default function useCustomHookNewDiscount() {
 			percentageGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
 			quantityGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
 
 			selectProductsY:
 				applyToType === 'Buy x get y'
@@ -145,7 +145,7 @@ export default function useCustomHookNewDiscount() {
 									name: z.string().min(1),
 								}),
 							),
-					  ),
+					  ).or(z.literal("")),
 
 			customerSegment: z.string().min(3),
 			specificCustomerGroup:
