@@ -1,4 +1,4 @@
-import { useForm } from 'src/app/utils/hooks/form';
+
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -17,20 +17,12 @@ const NewDiscount = () => {
 	const [productXtoYType, setProductXtoYType] = useState<string | undefined>('Free');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
 	// custom hook
-	const { handelDefaultValue, discountSchema } = useCustomHookNewDiscount();
-
-	const handleSubmit: (validatedData: newDiscountInterface) => void = (
-		values: newDiscountInterface,
-	) => {
-		console.log(values);
-		// handleSaveChanges();
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: discountSchema(discountType, applyToType, productXtoYType, customerSegment),
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
+	const { onSubmit, formStore, updatedDates } = useCustomHookNewDiscount(
+		discountType,
+		applyToType,
+		productXtoYType,
+		customerSegment,
+	);
 
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
@@ -39,8 +31,17 @@ const NewDiscount = () => {
 		setCustomerSegment(formStore?.watch('customerSegment'));
 	}, [formStore]);
 
+	useEffect(() => {
+		formStore.setValue('activeDates', updatedDates);
+	}, [
+		updatedDates.startActivation.startDate,
+		updatedDates.startActivation.startTime,
+		updatedDates.endActivation.endDate,
+		updatedDates.endActivation.endTime
+	]);
 
-	
+
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
