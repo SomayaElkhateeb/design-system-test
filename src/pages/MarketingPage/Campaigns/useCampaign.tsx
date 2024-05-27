@@ -19,6 +19,9 @@ export interface CampaignInputsTypes {
 
 	campaignName: string;
 	activityName: string;
+
+	adText: string;
+
 	activeDates: ActiveDates;
 	details: string;
 	budget: number;
@@ -58,9 +61,17 @@ export default function useCampaign(target: string) {
 			.string()
 			.min(1, { message: 'Target similar people selection is required' }),
 
+		adText: z.string().min(1, { message: 'Ad text is required' }),
+		specificInterests: z.array(z.string()).nonempty(),
+		activeDates: activeDatesSchema,
+		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
+		specificInterests:
+
+
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 		selectedInterests:
+
 			target === 'having specific interests'
 				? z.array(
 						z.object({
@@ -92,6 +103,7 @@ export default function useCampaign(target: string) {
 			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
+			adText: '',
 
 			products: [],
 			details: '',

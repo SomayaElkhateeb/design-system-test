@@ -15,12 +15,9 @@ export interface addCouponInterface {
 	miniPrice: number;
 	miniQuantity: number;
 	limit: number;
-	date?: {
-		year: number;
-		month: number;
-		day: number;
-	} | null;
-
+	limitUser: boolean;
+	startActivation: { startDate: Date; startTime: string };
+	endActivation: { endDate: Date; endTime: string };
 	active: boolean;
 }
 
@@ -41,6 +38,9 @@ export default function useCustomHookAddCoupon() {
 			miniQuantity: 0,
 			limit: 0,
 			date: null,
+			limitUser: false,
+			startActivation: { startDate: new Date(), startTime: '00:00' },
+			endActivation: { endDate: new Date(), endTime: '00:00' },
 			active: false,
 		};
 	};
@@ -110,7 +110,6 @@ export default function useCustomHookAddCoupon() {
 							),
 					  ),
 
-
 			specificCustomer:
 				customerSegment === 'Specific customers'
 					? z.array(
@@ -132,17 +131,28 @@ export default function useCustomHookAddCoupon() {
 			miniQuantity: z.coerce.number().min(1),
 			limit: z.coerce.number().min(1),
 
-
 			date: z
 				.object({
 					year: z.coerce.number().positive().min(2024),
 					month: z.coerce.number().positive().min(1).max(12),
-					day:z.coerce.number().positive().min(1).max(31),
+					day: z.coerce.number().positive().min(1).max(31),
 				})
 				.nullable()
 				.optional(),
-
-			active: z.boolean(),
+			limitUser: z.boolean().default(false),
+			startActivation: z.object({
+				startDate: z.date({ required_error: 'Start date is required' }),
+				startTime: z
+					.string()
+					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid start time format' }),
+			}),
+			endActivation: z.object({
+				endDate: z.date({ required_error: 'End date is required' }),
+				endTime: z
+					.string()
+					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
+			}),
+			active: z.boolean().default(false),
 		};
 	};
 

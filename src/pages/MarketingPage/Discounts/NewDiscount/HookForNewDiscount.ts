@@ -19,14 +19,8 @@ export interface newDiscountInterface {
 	specificCustomer?: selectItemsInterface[];
 	miniPrice: number;
 	miniQuantity: number;
-
-	//?
-	date?: {
-		year: number;
-		month: number;
-		day: number;
-	} | null;
-
+	startActivation: { startDate: Date; startTime: string };
+	endActivation: { endDate: Date; endTime: string };
 	active: boolean;
 }
 
@@ -50,7 +44,8 @@ export default function useCustomHookNewDiscount() {
 			specificCustomer: [],
 			miniPrice: 0,
 			miniQuantity: 0,
-			date: null,
+			startActivation: { startDate: new Date(), startTime: '00:00' },
+			endActivation: { endDate: new Date(), endTime: '00:00' },
 			active: false,
 		};
 	};
@@ -189,20 +184,22 @@ export default function useCustomHookNewDiscount() {
 
 			miniPrice: z.coerce.number().min(1),
 			miniQuantity: z.coerce.number().min(1),
-
-			date: z
-				.object({
-					year: z.coerce.number().positive().min(2024),
-					month: z.coerce.number().positive().min(1).max(12),
-					day: z.coerce.number().positive().min(1).max(31),
-				})
-				.nullable()
-				.optional(),
+			startActivation: z.object({
+				startDate: z.date({ required_error: 'Start date is required' }),
+				startTime: z
+					.string()
+					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid start time format' }),
+			}),
+			endActivation: z.object({
+				endDate: z.date({ required_error: 'End date is required' }),
+				endTime: z
+					.string()
+					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
+			}),
 
 			active: z.boolean(),
 		};
 	};
-
 	return {
 		handelDefaultValue,
 		discountSchema,

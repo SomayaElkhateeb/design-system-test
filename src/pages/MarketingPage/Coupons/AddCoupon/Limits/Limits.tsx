@@ -19,6 +19,7 @@ const Limits = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> })
 			<CheckBox
 				label={t('Limit number of times this coupon can be used in total')}
 				handleOnChange={handleCheckboxChange}
+				checked={isChecked}
 			/>
 
 			{isChecked && (
@@ -31,8 +32,13 @@ const Limits = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> })
 					/>
 				</div>
 			)}
-
-			<CheckBox label={t('Limit to one use per customer')} />
+			<CheckBox
+				label={t('Limit to one use per customer')}
+				checked={formStore.watch('limitUser')}
+				handleOnChange={(option) => {
+					formStore.setValue('limitUser', option);
+				}}
+			/>
 		</section>
 	);
 };
