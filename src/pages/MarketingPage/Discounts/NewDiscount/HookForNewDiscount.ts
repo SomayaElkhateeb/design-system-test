@@ -17,8 +17,8 @@ export interface newDiscountInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
-	miniPrice: number;
-	miniQuantity: number;
+	miniPrice?: number;
+	miniQuantity?: number;
 	startActivation: { startDate: Date; startTime: string };
 	endActivation: { endDate: Date; endTime: string };
 	active: boolean;

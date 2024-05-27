@@ -1,6 +1,6 @@
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
-import useCustomOrderForm, { orderFormInterface } from './HookOrderStatus';
+
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
@@ -13,6 +13,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
+import useOrderStatusForm, { orderStatusFormInterface } from './HookOrderStatus';
 
 export default function OrderStatus({
 	onClose,
@@ -22,14 +23,14 @@ export default function OrderStatus({
 	showOrderStatus: boolean;
 }) {
 	const { t } = useTranslation();
-	const { handelDefaultValue, orderSchema } = useCustomOrderForm();
+	const { handelDefaultValue, orderStatusSchema } = useOrderStatusForm();
 
-	const handleSubmit = (values: orderFormInterface) => {
+	const handleSubmit = (values: orderStatusFormInterface) => {
 		console.log(values);
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: orderSchema,
+		schema: orderStatusSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -57,11 +58,11 @@ export default function OrderStatus({
 										name={field.name}
 									>
 										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder={t('Processing')} />
+											<SelectValue placeholder='Egypt' />
 										</SelectTrigger>
 										<SelectContent>
-											<SelectItem value='processing'>Processing</SelectItem>
-											<SelectItem value='awaitingPayment'>Awaiting Payment</SelectItem>
+											<SelectItem value='egypt'>Egypt</SelectItem>
+											<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
 										</SelectContent>
 									</Select>
 								)}
