@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import { FaChevronLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { Button } from 'src/app/components/optimized';
-import { Form } from 'src/app/components/ui/form';
-import FormField from 'src/app/components/ui/form/field';
-import { Input } from 'src/app/components/ui/input';
+import { FaEye, FaEyeSlash, FaChevronLeft } from 'react-icons/fa';
 import { useForm } from 'src/app/utils/hooks/form';
-import { z } from 'zod';
+import { Form } from 'src/app/components/ui/form';
+import { Input } from 'src/app/components/ui/input';
+import FormField from 'src/app/components/ui/form/field';
+import { Button } from 'src/app/components/optimized';
+import { Link } from 'react-router-dom';
+import { z, ZodObject, ZodRawShape } from 'zod';
 
-const passwordSchema = z.object({
+const PasswordSchema: ZodObject<ZodRawShape> = z.object({
 	password: z.string().min(8, 'Password must be at least 8 characters long'),
 });
 
-type PasswordType = z.infer<typeof passwordSchema>;
+type PasswordType = z.infer<typeof PasswordSchema>;
 
 const PasswordForm: React.FC = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
+
 	const { formStore, onSubmit } = useForm<PasswordType>({
-		schema: passwordSchema.shape,
+		schema: PasswordSchema,
 		handleSubmit: (validatedData) => console.log(validatedData),
 		defaultValues: { password: '' },
 	});
@@ -63,7 +64,7 @@ const PasswordForm: React.FC = () => {
 						<div className='flex items-center justify-between mb-4'>
 							<Link
 								className='inline-block align-baseline font-semibold text-sm text-primary hover:text-blue-800'
-								to='/forget_password'
+								to='/forgot_password'
 							>
 								Forgot Password?
 							</Link>
