@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
 
@@ -24,14 +24,14 @@ export interface CampaignInputsTypes {
 	selectedInterests?: selectItemsInterface[];
 	products: selectItemsInterface[];
 }
-type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
+export type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
 
-const ActiveDatesValues = {
+export const ActiveDatesValues = {
 	startActivation: { startDate: new Date(), startTime: '00:00' },
 	endActivation: { endDate: new Date(), endTime: '00:00' },
 };
 
-const activeDatesSchema = z.object({
+export const activeDatesSchema = z.object({
 	startActivation: z.object({
 		startDate: z.date({ required_error: 'Start date is required' }),
 		startTime: z
@@ -46,7 +46,7 @@ const activeDatesSchema = z.object({
 	}),
 });
 // time picker in HH:MM format
-export default function useCampaign(target: string) {
+export default function useCampaign(target?: string) {
 	const { t } = useTranslation();
 
 	const newCampaignSchema = {
@@ -60,9 +60,6 @@ export default function useCampaign(target: string) {
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 
-		activeDates: activeDatesSchema,
-		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
-
 		selectedInterests:
 			target === 'having specific interests'
 				? z.array(
@@ -71,16 +68,14 @@ export default function useCampaign(target: string) {
 							name: z.string().min(1),
 						}),
 				  )
-				: z
-						.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-						)
-						.or(z.literal('')),
+				: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+				  ),
 		products: z.array(
 			z.object({
 				id: z.string().min(1),
@@ -113,9 +108,9 @@ export default function useCampaign(target: string) {
 		defaultValues: handelDefaultValue(),
 	});
 
+	const updatedDates = { ...activeDates };
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
-			const updatedDates = { ...activeDates };
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();
 			} else if (type === 'startTime') {
@@ -126,12 +121,12 @@ export default function useCampaign(target: string) {
 				updatedDates.endActivation.endTime = value.format('HH:mm');
 			}
 			setActiveDates(updatedDates);
-			formStore.setValue('activeDates', updatedDates);
 		}
 	};
 	return {
 		formStore,
 		onSubmit,
+		updatedDates,
 		activeDates,
 		endDateEnabled,
 		setEndDateEnabled,
