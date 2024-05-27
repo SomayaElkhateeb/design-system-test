@@ -21,9 +21,13 @@ export interface newDiscountInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
-	miniPrice?: number;
-	miniQuantity?: number;
-	activeDates: ActiveDates;
+
+	miniReq: boolean;
+	miniPrice: number | undefined;
+	miniQuantity: number | undefined;
+	startActivation: { startDate: Date; startTime: string };
+	endActivation: { endDate: Date; endTime: string };
+
 	active: boolean;
 }
 
@@ -48,6 +52,7 @@ export default function useCustomHookNewDiscount(discountType?: string,
 			customerSegment: 'All customers',
 			specificCustomerGroup: [],
 			specificCustomer: [],
+			miniReq: false,
 			miniPrice: 0,
 			miniQuantity: 0,
 			activeDates: ActiveDatesValues,
@@ -56,6 +61,12 @@ export default function useCustomHookNewDiscount(discountType?: string,
 	};
 
 	const discountSchema = (
+
+		discountType: string,
+		applyToType: string,
+		productXtoYType: string | undefined,
+		customerSegment: string,
+		miniReq: boolean,
 
 	) => {
 		return {
@@ -184,9 +195,31 @@ export default function useCustomHookNewDiscount(discountType?: string,
 						),
 					),
 
-			miniPrice: z.coerce.number().min(1),
-			miniQuantity: z.coerce.number().min(1),
-			activeDates: activeDatesSchema,
+
+			miniReq: z.boolean().default(false),
+
+			miniPrice: miniReq
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+
+			miniQuantity: miniReq
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+
+			// miniPrice: z.coerce.number().min(1),
+			// miniQuantity: z.coerce.number().min(1),
+			startActivation: z.object({
+				startDate: z.date({ required_error: 'Start date is required' }),
+				startTime: z
+					.string()
+					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid start time format' }),
+			}),
+			endActivation: z.object({
+				endDate: z.date({ required_error: 'End date is required' }),
+				endTime: z
+					.string()
+					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
+			}),
 
 
 			active: z.boolean(),

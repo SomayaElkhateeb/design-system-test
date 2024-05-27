@@ -17,6 +17,8 @@ const AddCoupon = () => {
 	const [discountType, setDiscountType] = useState('Free shipping');
 	const [applyToType, setApplyToType] = useState('All products');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
+	const [miniReq, setMiniReq] = useState(false);
+	const [showLimit, setShowLimit] = useState(false);
 
 	const { handelDefaultValue, couponSchema } = useCustomHookAddCoupon();
 
@@ -27,7 +29,7 @@ const AddCoupon = () => {
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: couponSchema(discountType, applyToType, customerSegment),
+		schema: couponSchema(discountType, applyToType, customerSegment, miniReq, showLimit),
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -35,6 +37,8 @@ const AddCoupon = () => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
 		setCustomerSegment(formStore?.watch('customerSegment'));
+		setMiniReq(formStore.watch('miniReq'));
+		setShowLimit(formStore.watch('showLimit'));
 	}, [formStore]);
 
 	return (
