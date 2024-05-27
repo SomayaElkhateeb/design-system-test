@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -8,7 +7,10 @@ import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
-const NewDiscount = () => {
+import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
+import Limits from 'src/app/components/page/discount/Comp/Limits';
+
+const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -16,43 +18,41 @@ const NewDiscount = () => {
 	const [applyToType, setApplyToType] = useState('All products');
 	const [productXtoYType, setProductXtoYType] = useState<string | undefined>('Free');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
-	const [miniReq, setMiniReq] = useState(false);
+	const [updateState, setUpdateState] = useState<State>(initialState);
+	const [isCheck, setIsCheck] = useState<boolean>(false);
+
+	const { selectedMinimumRequirements } = updateState;
+
 	// custom hook
+	const { onSubmit, formStore, updatedDates } = useCustomHookNewDiscount(
+		discountType,
+		applyToType,
+		productXtoYType,
+		customerSegment,
+		selectedMinimumRequirements,
+		isCheck
+	);
 
-	const { handelDefaultValue, discountSchema } = useCustomHookNewDiscount();
-
-	const handleSubmit: (validatedData: newDiscountInterface) => void = (
-		values: newDiscountInterface,
-	) => {
-		console.log(values);
-		// handleSaveChanges();
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: discountSchema(discountType, applyToType, productXtoYType, customerSegment, miniReq),
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-
-
+	/////////////////////
+	// /////////////////
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
 		setProductXtoYType(formStore?.watch('ProductXToProductYType'));
 		setCustomerSegment(formStore?.watch('customerSegment'));
-		setMiniReq(formStore?.watch('miniReq'));
 	}, [formStore]);
 
+	//////////////////
+	// ///////////////
+	//  handel active date
 	useEffect(() => {
 		formStore.setValue('activeDates', updatedDates);
 	}, [
 		updatedDates.startActivation.startDate,
 		updatedDates.startActivation.startTime,
 		updatedDates.endActivation.endDate,
-		updatedDates.endActivation.endTime
+		updatedDates.endActivation.endTime,
 	]);
-
-
 
 	return (
 		<Form {...formStore}>
@@ -60,7 +60,7 @@ const NewDiscount = () => {
 				<HeaderSettings
 					variant='settingTwoBtns'
 					submit
-					title={t('Add Discount')}
+					title={coupon ? t('Add coupon') : t('Add Discount')}
 					btn1={{
 						text: t('Discard'),
 						onClick: () => {
@@ -71,10 +71,15 @@ const NewDiscount = () => {
 				/>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
-						<BasicInfo formStore={formStore} />
+						<BasicInfo coupon={coupon} formStore={formStore} />
 						<CustomerSegment formStore={formStore} />
-						<MinimumRequirements formStore={formStore} />
-						<ActiveDates formStore={formStore} />
+						<MinimumRequirements
+							updateState={updateState}
+							setUpdateState={setUpdateState}
+							formStore={formStore}
+						/>
+						{ coupon && <Limits isCheck={isCheck} setIsCheck={setIsCheck} formStore={formStore}/>}
+						<ActiveDates />
 					</div>
 					<div className='col-span-1'>
 						<div className='global-cards flex-col-top-section-pages'>

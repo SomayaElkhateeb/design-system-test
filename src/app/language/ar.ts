@@ -943,6 +943,7 @@ export const arabic = {
 	"End Date":"تاريخ النهايه",
 	"End Time":"توقيت النهايه",
 	"Remove End Date":"حذف تاريخ النهايه",
+	"Coupon Type":"نوع الكود",
 	"Add End Date":"اضافه تاريخ النهايه",
 	'add new order': 'إضافة طلب جديد',
 	'Order Details': 'تفاصيل الاوردر',

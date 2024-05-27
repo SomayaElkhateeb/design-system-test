@@ -6,38 +6,45 @@ import { Input } from 'src/app/components/ui/input';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
-interface State {
+export interface State {
 	selectedMinimumRequirements: string;
 	isChecked: boolean;
 }
 
-const initialState: State = {
+export const initialState: State = {
 	selectedMinimumRequirements: '',
 	isChecked: false,
 };
 
-const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const MinimumRequirements = ({
+	formStore,
+	updateState,
+	setUpdateState,
+}: {
+	formStore: UseFormReturn<newDiscountInterface>;
+	updateState:State,
+	setUpdateState:(e:any)=>void
+}) => {
 	const { t } = useTranslation();
-	const [updateState, setUpdateState] = useState<State>(initialState);
+
 	const { selectedMinimumRequirements, isChecked } = updateState;
 
 	// Update state
 	const update = (newValue: Partial<State>) => {
-		setUpdateState((prevState) => ({ ...prevState, ...newValue }));
+		setUpdateState((prevState:State) => ({ ...prevState, ...newValue }));
 	};
 
 	const handleCheckboxChange = (newValue: boolean) => {
-		setUpdateState((prevState) => ({
+		setUpdateState((prevState:State) => ({
 			...prevState,
 			isChecked: newValue,
 		}));
-		formStore.setValue('miniReq', newValue);
 	};
-	const minimumRequirementsOptions = ['Minimum price', 'Minimum quantity']
+	const minimumRequirementsOptions = ['Minimum price', 'Minimum quantity'];
 
 	return (
 		<section className='global-cards'>
-			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
+			<h3 className='title'>{t('Minimum requirements')}</h3>
 
 			<CheckBox
 				label={t('define minimum requirements')}

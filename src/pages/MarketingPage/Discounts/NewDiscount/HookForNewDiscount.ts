@@ -1,6 +1,11 @@
 import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import { z } from 'zod';
-import { ActiveDates, ActiveDatesValues, DateTimeType, activeDatesSchema } from '../../Campaigns/useCampaign';
+import {
+	ActiveDates,
+	ActiveDatesValues,
+	DateTimeType,
+	activeDatesSchema,
+} from '../../Campaigns/useCampaign';
 import { useState } from 'react';
 import { Dayjs } from 'dayjs';
 import { useForm } from 'src/app/utils/hooks/form';
@@ -22,19 +27,22 @@ export interface newDiscountInterface {
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
 
-	miniReq: boolean;
-	miniPrice: number | undefined;
-	miniQuantity: number | undefined;
-	startActivation: { startDate: Date; startTime: string };
-	endActivation: { endDate: Date; endTime: string };
-
+	miniPrice?: number;
+	miniQuantity?: number;
+	activeDates: ActiveDates;
 	active: boolean;
+	limitOneCustomer: boolean
+	UsageNumber?: number
 }
 
-export default function useCustomHookNewDiscount(discountType?: string,
+export default function useCustomHookNewDiscount(
+	discountType?: string,
 	applyToType?: string,
 	productXtoYType?: string | undefined,
-	customerSegment?: string) {
+	customerSegment?: string,
+	selectedMinimumRequirements?: string,
+	isCheck?: boolean
+) {
 	const handelDefaultValue = () => {
 		return {
 			discountName: '',
@@ -52,21 +60,16 @@ export default function useCustomHookNewDiscount(discountType?: string,
 			customerSegment: 'All customers',
 			specificCustomerGroup: [],
 			specificCustomer: [],
-			miniReq: false,
 			miniPrice: 0,
 			miniQuantity: 0,
 			activeDates: ActiveDatesValues,
 			active: false,
+			limitOneCustomer: false,
+			UsageNumber: 0
 		};
 	};
 
 	const discountSchema = (
-
-		discountType: string,
-		applyToType: string,
-		productXtoYType: string | undefined,
-		customerSegment: string,
-		miniReq: boolean,
 
 	) => {
 		return {
@@ -196,39 +199,31 @@ export default function useCustomHookNewDiscount(discountType?: string,
 					),
 
 
-			miniReq: z.boolean().default(false),
 
-			miniPrice: miniReq
-				? z.coerce.number().min(1)
+			miniPrice: selectedMinimumRequirements === "Minimum price"
+				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
-			miniQuantity: miniReq
-				? z.coerce.number().min(1)
+			miniQuantity: selectedMinimumRequirements === "Minimum quantity"
+				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
-			// miniPrice: z.coerce.number().min(1),
-			// miniQuantity: z.coerce.number().min(1),
-			startActivation: z.object({
-				startDate: z.date({ required_error: 'Start date is required' }),
-				startTime: z
-					.string()
-					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid start time format' }),
-			}),
-			endActivation: z.object({
-				endDate: z.date({ required_error: 'End date is required' }),
-				endTime: z
-					.string()
-					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
-			}),
-
+			activeDates: activeDatesSchema,
 
 			active: z.boolean(),
+			limitOneCustomer: z.boolean().default(false),
+
+			UsageNumber: isCheck
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 		};
 	};
 	// ///////////////////////////////////
 	// ////////////////////////////////////
 	const [activeDates, setActiveDates] = useState<ActiveDates>(ActiveDatesValues);
 	const [endDateEnabled, setEndDateEnabled] = useState(false);
+	// //////////////////////
+	// /////////////////////
 	const handleSubmit = (values: newDiscountInterface) => {
 		console.log(values);
 	};
@@ -242,7 +237,6 @@ export default function useCustomHookNewDiscount(discountType?: string,
 	const updatedDates = { ...activeDates };
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
-			
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();
 			} else if (type === 'startTime') {
@@ -253,7 +247,6 @@ export default function useCustomHookNewDiscount(discountType?: string,
 				updatedDates.endActivation.endTime = value.format('HH:mm');
 			}
 			setActiveDates(updatedDates);
-			
 		}
 	};
 
@@ -265,6 +258,6 @@ export default function useCustomHookNewDiscount(discountType?: string,
 		endDateEnabled,
 		setEndDateEnabled,
 		handleDateTimeChange,
-		updatedDates
+		updatedDates,
 	};
 }
