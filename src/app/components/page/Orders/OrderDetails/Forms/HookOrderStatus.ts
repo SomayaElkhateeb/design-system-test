@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-export interface orderFormInterface {
+export interface orderStatusFormInterface {
 	status: string;
 	comment?: string;
 	notifyCustomer: boolean;
 }
 
-export default function useCustomOrderForm() {
+export default function useOrderStatusForm() {
 	const handelDefaultValue = () => {
 		return {
 			status: '',
@@ -15,14 +15,14 @@ export default function useCustomOrderForm() {
 		};
 	};
 
-	const orderSchema = {
+	const orderStatusSchema = {
 		status: z.string().min(5, { message: 'Please choose order status is required' }),
-		comment: z.string().optional(),
+		comment: z.optional(z.string().min(5)).or(z.literal("")),
 		notifyCustomer: z.boolean().default(false),
 	};
 
 	return {
 		handelDefaultValue,
-		orderSchema,
+		orderStatusSchema,
 	};
 }
