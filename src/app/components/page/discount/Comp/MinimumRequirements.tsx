@@ -33,9 +33,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 		}));
 		formStore.setValue('miniReq', newValue);
 	};
-	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map(
-		(option) => option,
-	);
+	const minimumRequirementsOptions = ['Minimum price', 'Minimum quantity']
 
 	return (
 		<section className='global-cards'>
@@ -54,7 +52,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 						setSelected={(option: string) => update({ selectedMinimumRequirements: option })}
 					/>
 
-					{selectedMinimumRequirements === t('Minimum price') && (
+					{selectedMinimumRequirements === 'Minimum price' && (
 						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}
@@ -64,7 +62,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 							/>
 						</div>
 					)}
-					{selectedMinimumRequirements === t('Minimum quantity') && (
+					{selectedMinimumRequirements === 'Minimum quantity' && (
 						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}

@@ -1,5 +1,9 @@
 import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import { z } from 'zod';
+import { ActiveDates, ActiveDatesValues, DateTimeType, activeDatesSchema } from '../../Campaigns/useCampaign';
+import { useState } from 'react';
+import { Dayjs } from 'dayjs';
+import { useForm } from 'src/app/utils/hooks/form';
 
 export interface newDiscountInterface {
 	discountName: string;
@@ -17,15 +21,20 @@ export interface newDiscountInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
+
 	miniReq: boolean;
 	miniPrice: number | undefined;
 	miniQuantity: number | undefined;
 	startActivation: { startDate: Date; startTime: string };
 	endActivation: { endDate: Date; endTime: string };
+
 	active: boolean;
 }
 
-export default function useCustomHookNewDiscount() {
+export default function useCustomHookNewDiscount(discountType?: string,
+	applyToType?: string,
+	productXtoYType?: string | undefined,
+	customerSegment?: string) {
 	const handelDefaultValue = () => {
 		return {
 			discountName: '',
@@ -46,18 +55,19 @@ export default function useCustomHookNewDiscount() {
 			miniReq: false,
 			miniPrice: 0,
 			miniQuantity: 0,
-			startActivation: { startDate: new Date(), startTime: '00:00' },
-			endActivation: { endDate: new Date(), endTime: '00:00' },
+			activeDates: ActiveDatesValues,
 			active: false,
 		};
 	};
 
 	const discountSchema = (
+
 		discountType: string,
 		applyToType: string,
 		productXtoYType: string | undefined,
 		customerSegment: string,
 		miniReq: boolean,
+
 	) => {
 		return {
 			discountName: z.string().min(3).max(60),
@@ -75,51 +85,51 @@ export default function useCustomHookNewDiscount() {
 			specificCategories:
 				applyToType === 'Specific category'
 					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						),
+					),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						),
+					),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						),
+					),
 			ProductXToProductYType:
 				applyToType === 'Buy x get y'
 					? z.string().min(1)
@@ -127,63 +137,64 @@ export default function useCustomHookNewDiscount() {
 			percentageGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
 			quantityGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
 
 			selectProductsY:
 				applyToType === 'Buy x get y'
 					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						),
+					),
 
 			customerSegment: z.string().min(3),
 			specificCustomerGroup:
 				customerSegment === 'Specific customer groups'
 					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						),
+					),
 
 			specificCustomer:
 				customerSegment === 'Specific customers'
 					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						),
+					),
+
 
 			miniReq: z.boolean().default(false),
 
@@ -210,11 +221,50 @@ export default function useCustomHookNewDiscount() {
 					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
 			}),
 
+
 			active: z.boolean(),
 		};
 	};
+	// ///////////////////////////////////
+	// ////////////////////////////////////
+	const [activeDates, setActiveDates] = useState<ActiveDates>(ActiveDatesValues);
+	const [endDateEnabled, setEndDateEnabled] = useState(false);
+	const handleSubmit = (values: newDiscountInterface) => {
+		console.log(values);
+	};
+	const { formStore, onSubmit } = useForm({
+		schema: discountSchema(),
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
+	// ////////////////////////
+	// ///////////////////////
+	const updatedDates = { ...activeDates };
+	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
+		if (value) {
+			
+			if (type === 'startDate') {
+				updatedDates.startActivation.startDate = value.toDate();
+			} else if (type === 'startTime') {
+				updatedDates.startActivation.startTime = value.format('HH:mm');
+			} else if (type === 'endDate') {
+				updatedDates.endActivation.endDate = value.toDate();
+			} else if (type === 'endTime') {
+				updatedDates.endActivation.endTime = value.format('HH:mm');
+			}
+			setActiveDates(updatedDates);
+			
+		}
+	};
+
 	return {
-		handelDefaultValue,
+		formStore,
+		onSubmit,
 		discountSchema,
+		activeDates,
+		endDateEnabled,
+		setEndDateEnabled,
+		handleDateTimeChange,
+		updatedDates
 	};
 }

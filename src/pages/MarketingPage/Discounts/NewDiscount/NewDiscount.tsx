@@ -1,4 +1,4 @@
-import { useForm } from 'src/app/utils/hooks/form';
+
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -18,6 +18,7 @@ const NewDiscount = () => {
 	const [customerSegment, setCustomerSegment] = useState('All customers');
 	const [miniReq, setMiniReq] = useState(false);
 	// custom hook
+
 	const { handelDefaultValue, discountSchema } = useCustomHookNewDiscount();
 
 	const handleSubmit: (validatedData: newDiscountInterface) => void = (
@@ -33,6 +34,7 @@ const NewDiscount = () => {
 		defaultValues: handelDefaultValue(),
 	});
 
+
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
@@ -40,6 +42,17 @@ const NewDiscount = () => {
 		setCustomerSegment(formStore?.watch('customerSegment'));
 		setMiniReq(formStore?.watch('miniReq'));
 	}, [formStore]);
+
+	useEffect(() => {
+		formStore.setValue('activeDates', updatedDates);
+	}, [
+		updatedDates.startActivation.startDate,
+		updatedDates.startActivation.startTime,
+		updatedDates.endActivation.endDate,
+		updatedDates.endActivation.endTime
+	]);
+
+
 
 	return (
 		<Form {...formStore}>

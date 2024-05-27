@@ -26,7 +26,7 @@ const ContactCard: React.FC<IData> = ({
 	contain,
 }) => {
 	return (
-		<div className='cardDetails-sharedClass flex-col-top-section-pages gap-4 p-5'>
+		<div className='cardDetails-sharedClass  flex-col-top-section-pages gap-4 p-5'>
 			<div className='flex-row-global justify-between '>
 				<h3 className='title'>{title}</h3>
 				{form ? ' ' : children}
