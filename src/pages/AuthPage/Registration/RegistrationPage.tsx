@@ -1,13 +1,14 @@
-import { VerticalTabs } from 'src/app/components/optimized';
+import { getImageUrl } from 'src/app/utils';
 import AboutYourBusiness from './tabs/AboutYourBusiness';
 import AboutYourself from './tabs/AboutYourself';
-import { getImageUrl } from 'src/app/utils';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import TabX from 'src/app/components/optimized/Tabs/NewTab/TabX';
+import { useTranslation } from 'react-i18next';
 
 const RegistrationPage = () => {
 	const [currentTab, setCurrentTab] = useState(0);
 	const [reviewStatus, setReviewStatus] = useState(false);
+	const { t } = useTranslation();
 
 	const handleTabClick = (index) => {
 		setCurrentTab(index);
@@ -26,6 +27,7 @@ const RegistrationPage = () => {
 	};
 	const handleFinish = (status) => {
 		setReviewStatus(status);
+		alert(status);
 	};
 
 	const tabs = [
@@ -34,8 +36,12 @@ const RegistrationPage = () => {
 	];
 
 	return (
-		<section className='flex space-x-4 w-full py-12 space-y-12 bg-white m-auto justify-center mt-12'>
-			<div className='w-3/4 '>
+		<section className='flex flex-col space-x-4 w-full py-12 space-y-16 bg-white m-auto items-center'>
+			<div className='flex justify-between items-center w-4/5'>
+				<img src={getImageUrl('brand/en-light.svg')} alt='' />
+				<button className='text-xl font-semibold'>{t('العربية')}</button>
+			</div>
+			<div className='w-4/5'>
 				<TabX
 					tabs={tabs}
 					currentTab={currentTab}

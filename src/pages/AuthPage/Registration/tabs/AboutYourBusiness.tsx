@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import { FC } from 'react';
+import { Button } from 'src/app/components/optimized';
+import { Form } from 'src/app/components/ui/form';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 import { getImageUrl } from 'src/app/utils';
+import { useForm } from 'src/app/utils/hooks/form';
+import { z, ZodObject, ZodRawShape } from 'zod';
 
-const AboutYourBusiness = () => {
+const AboutYourBusiness: FC = () => {
 	return (
-		<section className='flex  justify-between items-center'>
-			<div>{CreateStoreForm()}</div>
+		<section className='flex justify-between w-full items-center'>
+			<div className='w-2/6'>
+				<CreateStoreForm />
+			</div>
 			<div className='w-3/6'>
-				<img src={getImageUrl('images/register_2.svg')} alt='' />;
+				<img src={getImageUrl('images/register_2.svg')} alt='' />
 			</div>
 		</section>
 	);
@@ -14,108 +22,107 @@ const AboutYourBusiness = () => {
 
 export default AboutYourBusiness;
 
-const CreateStoreForm = () => {
-	const [storeName, setStoreName] = useState('');
-	const [storeLink, setStoreLink] = useState('');
-	const [industry, setIndustry] = useState('Select industry');
-	const [agreed, setAgreed] = useState(false);
+const createStoreSchema: ZodObject<ZodRawShape> = z.object({
+	storeName: z.string().min(3, 'Store name is required'),
+	storeLink: z.string().min(3, 'Store link is required'),
+	industry: z.string().min(3, 'Industry is required'),
+	agreed: z.boolean().refine((val) => val, 'You must agree to the terms and conditions'),
+});
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		// Handle form submission logic here
-	};
+const CreateStoreForm: FC = () => {
+	const { formStore, onSubmit } = useForm({
+		schema: createStoreSchema.shape,
+		handleSubmit: (validatedData) => {
+			console.log(validatedData);
+		},
+		defaultValues: {
+			storeName: '',
+			storeLink: '',
+			industry: '',
+			agreed: false,
+		},
+	});
 
 	return (
-		<form onSubmit={handleSubmit} className='max-w-md mx-auto p-4 bg-white rounded-md'>
-			<div className='mb-4'>
-				{/* <label htmlFor='storeName' className='block text-sm font-medium text-gray-700'>
-					Store name
-				</label> */}
-				<input
-					placeholder='Store name'
-					type='text'
-					id='storeName'
-					className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
-					value={storeName}
-					onChange={(e) => setStoreName(e.target.value)}
-					required
-				/>
-			</div>
-
-			<div className='mb-4'>
-				{/* <label htmlFor='storeLink' className='block text-sm font-medium text-gray-700'>
-					Store link (in English)
-				</label> */}
-				<div className='flex mt-1'>
-					<input
-						placeholder='Store link (in English)'
-						type='text'
-						id='storeLink'
-						className='flex-grow px-3 py-2 border border-gray-300 rounded-l-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
-						value={storeLink}
-						onChange={(e) => setStoreLink(e.target.value)}
-						required
+		<div className='flex justify-center items-center'>
+			<Form {...formStore}>
+				<form className='bg-white rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg' onSubmit={onSubmit}>
+					<FormField
+						container={{ className: 'mb-4' }}
+						formStore={formStore}
+						name='storeName'
+						render={(field) => (
+							<Input {...field} id='storeName' type='text' placeholder='Store name' />
+						)}
 					/>
-					<span className='inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm'>
-						.dookan.net
-					</span>
-				</div>
-			</div>
-
-			<div className='mb-4'>
-				{/* <label htmlFor='industry' className='block text-sm font-medium text-gray-700'>
-					Select industry
-				</label> */}
-				<select
-					id='industry'
-					className='mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
-					value={industry}
-					onChange={(e) => setIndustry(e.target.value)}
-					required
-				>
-					<option selected disabled className='text-gray-500'>
-						Select industry
-					</option>
-					<option value='fashion'>Fashion</option>
-					<option value='electronics'>Electronics</option>
-					<option value='groceries'>Groceries</option>
-				</select>
-			</div>
-
-			<div className='mb-4'>
-				<label className='flex items-center'>
-					<input
-						type='checkbox'
-						className='h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500'
-						checked={agreed}
-						onChange={(e) => setAgreed(e.target.checked)}
-						required
+					<FormField
+						container={{ className: 'mb-4' }}
+						formStore={formStore}
+						name='storeLink'
+						render={(field) => (
+							<div className='flex mt-1'>
+								<Input
+									{...field}
+									id='storeLink'
+									type='text'
+									placeholder='Store link (in English)'
+									className='flex-grow'
+								/>
+								<span className='inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm'>
+									.dookan.net
+								</span>
+							</div>
+						)}
 					/>
-					<span className='ml-2 text-sm text-gray-600'>
-						I agree to{' '}
-						<a href='#' className='text-indigo-600 hover:underline'>
-							Terms and Conditions
-						</a>
-						,{' '}
-						<a href='#' className='text-indigo-600 hover:underline'>
-							Privacy Policy
-						</a>
-						, and{' '}
-						<a href='#' className='text-indigo-600 hover:underline'>
-							Selling policy
-						</a>
-					</span>
-				</label>
-			</div>
-
-			<div>
-				<button
-					type='submit'
-					className='w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-				>
-					Create Store
-				</button>
-			</div>
-		</form>
+					<FormField
+						container={{ className: 'mb-4' }}
+						formStore={formStore}
+						name='industry'
+						render={(field) => (
+							<select
+								{...field}
+								id='industry'
+								className='mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+							>
+								<option value='' disabled>
+									Select industry
+								</option>
+								<option value='fashion'>Fashion</option>
+								<option value='electronics'>Electronics</option>
+								<option value='groceries'>Groceries</option>
+							</select>
+						)}
+					/>
+					<div className='mb-4'>
+						<label className='flex items-center'>
+							<input
+								type='checkbox'
+								className='h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500'
+								{...formStore.register('agreed')}
+							/>
+							<span className='ml-2 text-sm text-gray-600'>
+								I agree to{' '}
+								<a href='#' className='text-indigo-600 hover:underline'>
+									Terms and Conditions
+								</a>
+								,{' '}
+								<a href='#' className='text-indigo-600 hover:underline'>
+									Privacy Policy
+								</a>
+								, and{' '}
+								<a href='#' className='text-indigo-600 hover:underline'>
+									Selling policy
+								</a>
+							</span>
+						</label>
+					</div>
+					<div className='flex items-center justify-end'>
+						<Button variant='primary' type='submit'>
+							Create Store
+						</Button>
+					</div>
+				</form>
+			</Form>
+		</div>
 	);
 };
