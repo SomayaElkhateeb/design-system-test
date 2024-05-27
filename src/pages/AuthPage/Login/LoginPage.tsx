@@ -30,7 +30,7 @@ const LoginPage = () => {
 	);
 };
 
-const AccountSchema: ZodObject<ZodRawShape> = z.object({
+const AccountSchema = z.object({
 	email: z.string().min(1, 'Email is required').email('Invalid email address').optional(),
 	phone: z
 		.string()
@@ -40,22 +40,26 @@ const AccountSchema: ZodObject<ZodRawShape> = z.object({
 		.optional(),
 });
 
-type AccountSchemaType = z.infer<typeof AccountSchema>;
-
 const Account = ({ setStep }: { setStep: React.Dispatch<React.SetStateAction<number>> }) => {
-	const { formStore, onSubmit } = useForm<AccountSchemaType>({
+	const { formStore, onSubmit } = useForm({
 		schema: AccountSchema.shape,
 		handleSubmit: (validatedData) => {
-			console.log(validatedData);
 			setStep(2);
 		},
-		defaultValues: { email: '', phone: '' },
+		defaultValues: {},
 	});
 
 	const [usePhone, setUsePhone] = useState<boolean>(false);
 
 	const handleToggle = () => {
-		setUsePhone((prev) => !prev);
+		setUsePhone((prev) => {
+			const newValue = !prev;
+
+			formStore.setValue('phone', undefined);
+			formStore.setValue('email', undefined);
+
+			return newValue;
+		});
 	};
 
 	return (
@@ -104,7 +108,7 @@ const Account = ({ setStep }: { setStep: React.Dispatch<React.SetStateAction<num
 						</div>
 						<div className='text-center mt-4'>
 							<p className='text-gray-600 text-sm'>
-								Don’t have an account?{' '}
+								Don&apos;t have an account?{' '}
 								<Link
 									to='/register'
 									className='font-semibold text-blue-500 hover:text-blue-800 text-primary'
