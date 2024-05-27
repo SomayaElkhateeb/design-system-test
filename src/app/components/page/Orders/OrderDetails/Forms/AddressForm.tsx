@@ -36,8 +36,8 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex flex-col gap-4 pt-5'>
-				<div className='flex flex-col gap-4'>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-4 '>
+				<div className='flex-col-top-section-pages gap-4'>
 					<CheckBox
 						label={t('Send as a gift')}
 						checked={formStore.watch('sendGift')}
@@ -46,7 +46,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 						}}
 					/>
 
-					<div className='flex flex-col gap-4'>
+					<div className='flex-col-top-section-pages gap-4'>
 						<FormField
 							formStore={formStore}
 							label={t('Name')}
@@ -59,7 +59,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 							label={t('Country')}
 							name='country'
 							render={(field) => (
-								<div className='flex-col-top-section-pages gap-[.2rem]'>
+								
 									<Select
 										onValueChange={field.onChange}
 										value={field.value}
@@ -74,7 +74,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 											<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
 										</SelectContent>
 									</Select>
-								</div>
+								
 							)}
 						/>
 
@@ -83,7 +83,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 							label={t('City')}
 							name='city'
 							render={(field) => (
-								<div className='flex-col-top-section-pages gap-[.2rem]'>
+								
 									<Select
 										onValueChange={field.onChange}
 										value={field.value}
@@ -98,7 +98,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 											<SelectItem value='riyadh'>Riyadh</SelectItem>
 										</SelectContent>
 									</Select>
-								</div>
+								
 							)}
 						/>
 

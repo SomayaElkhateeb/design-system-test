@@ -17,7 +17,8 @@ const NewCampaign = () => {
 	useEffect(() => {
 		setTarget(formStore.watch('targetSimilarPeople'));
 	}, [formStore]);
-	return;
+
+	console.log(formStore.formState.errors)
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
