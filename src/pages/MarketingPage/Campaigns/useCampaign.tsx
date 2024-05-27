@@ -60,6 +60,9 @@ export default function useCampaign(target: string) {
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 
+		activeDates: activeDatesSchema,
+		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
+
 		selectedInterests:
 			target === 'having specific interests'
 				? z.array(
@@ -77,7 +80,7 @@ export default function useCampaign(target: string) {
 								}),
 							),
 						)
-						.or(z.literal("")),
+						.or(z.literal('')),
 		products: z.array(
 			z.object({
 				id: z.string().min(1),
@@ -112,8 +115,6 @@ export default function useCampaign(target: string) {
 
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
-			// console.log(value.toDate());
-			// console.log(type);
 			const updatedDates = { ...activeDates };
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();

@@ -46,7 +46,7 @@ const ContactCard: React.FC<IData> = ({
 			) : (
 				<div className='flex-col-top-section-pages gap-1.5 '>
 					{data.map((e) => (
-						<p className='flex-col-top-section-pages justify-between' key={e.id}>
+						<p className='flex-col-top-section-pages justify-between flex-row' key={e.id}>
 							<span className='text-subtitle text-sm'>{e.name}:</span>
 							<span className='text-title text-sm'>SAR {e.value}</span>
 						</p>
