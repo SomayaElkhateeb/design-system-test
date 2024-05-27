@@ -7,6 +7,7 @@ import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
+import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
 const NewDiscount = () => {
 	// hook
 	const navigate = useNavigate();
@@ -15,8 +16,9 @@ const NewDiscount = () => {
 	const [applyToType, setApplyToType] = useState('All products');
 	const [productXtoYType, setProductXtoYType] = useState<string | undefined>('Free');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
-	const [miniReq, setMiniReq] = useState(false);
+	const [updateState, setUpdateState] = useState<State>(initialState);
 	// custom hook
+	const { selectedMinimumRequirements } = updateState;
 
 	// custom hook
 	const { onSubmit, formStore, updatedDates } = useCustomHookNewDiscount(
@@ -24,7 +26,7 @@ const NewDiscount = () => {
 		applyToType,
 		productXtoYType,
 		customerSegment,
-		miniReq,
+		selectedMinimumRequirements,
 	);
 
 	useEffect(() => {
@@ -32,7 +34,6 @@ const NewDiscount = () => {
 		setApplyToType(formStore.watch('applyToType'));
 		setProductXtoYType(formStore?.watch('ProductXToProductYType'));
 		setCustomerSegment(formStore?.watch('customerSegment'));
-		setMiniReq(formStore?.watch('miniReq'));
 	}, [formStore]);
 
 	useEffect(() => {
@@ -63,8 +64,12 @@ const NewDiscount = () => {
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BasicInfo formStore={formStore} />
 						<CustomerSegment formStore={formStore} />
-						<MinimumRequirements formStore={formStore} />
-						<ActiveDates formStore={formStore} />
+						<MinimumRequirements
+							updateState={updateState}
+							setUpdateState={setUpdateState}
+							formStore={formStore}
+						/>
+						<ActiveDates />
 					</div>
 					<div className='col-span-1'>
 						<div className='global-cards flex-col-top-section-pages'>

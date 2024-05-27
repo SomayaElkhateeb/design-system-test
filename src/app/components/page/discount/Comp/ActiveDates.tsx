@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import { Button, DatePicker, TimePicker } from 'src/app/components/optimized';
+
 import useCustomHookNewDiscount from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
-import dayjs from 'dayjs';
-import { AddBgIcon, DeleteExitIcon } from 'src/app/utils/icons';
+
+
 import SharedActiveDate from '../SharedActiveDate';
 
 const ActiveDates = () => {
