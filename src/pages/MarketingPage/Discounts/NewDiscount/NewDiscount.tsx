@@ -8,7 +8,7 @@ import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDisc
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
 import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
-const NewDiscount = () => {
+const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -17,7 +17,7 @@ const NewDiscount = () => {
 	const [productXtoYType, setProductXtoYType] = useState<string | undefined>('Free');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
 	const [updateState, setUpdateState] = useState<State>(initialState);
-	// custom hook
+
 	const { selectedMinimumRequirements } = updateState;
 
 	// custom hook
@@ -29,6 +29,8 @@ const NewDiscount = () => {
 		selectedMinimumRequirements,
 	);
 
+	/////////////////////
+	// /////////////////
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
@@ -36,6 +38,9 @@ const NewDiscount = () => {
 		setCustomerSegment(formStore?.watch('customerSegment'));
 	}, [formStore]);
 
+	//////////////////
+	// ///////////////
+	//  handel active date
 	useEffect(() => {
 		formStore.setValue('activeDates', updatedDates);
 	}, [
@@ -51,7 +56,7 @@ const NewDiscount = () => {
 				<HeaderSettings
 					variant='settingTwoBtns'
 					submit
-					title={t('Add Discount')}
+					title={coupon ? t('Add coupon') : t('Add Discount')}
 					btn1={{
 						text: t('Discard'),
 						onClick: () => {
@@ -62,7 +67,7 @@ const NewDiscount = () => {
 				/>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
-						<BasicInfo formStore={formStore} />
+						<BasicInfo coupon={coupon} formStore={formStore} />
 						<CustomerSegment formStore={formStore} />
 						<MinimumRequirements
 							updateState={updateState}

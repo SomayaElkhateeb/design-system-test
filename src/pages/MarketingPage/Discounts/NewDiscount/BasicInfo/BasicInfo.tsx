@@ -7,7 +7,13 @@ import { UseFormReturn } from 'react-hook-form';
 import { newDiscountInterface } from '../HookForNewDiscount';
 import { DiscountTypesOptions } from 'src/app/components/page';
 
-const BasicInfo = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const BasicInfo = ({
+	formStore,
+	coupon,
+}: {
+	formStore: UseFormReturn<newDiscountInterface>;
+	coupon?: boolean;
+}) => {
 	const { t } = useTranslation();
 
 	const applyToOptions = ['All products', 'Specific category', 'Specific products', 'Buy x get y'];
@@ -29,14 +35,14 @@ const BasicInfo = ({ formStore }: { formStore: UseFormReturn<newDiscountInterfac
 					<FormField
 						formStore={formStore}
 						name='discountName'
-						label={t('discount name')}
+						label={coupon ? t('coupon code') : t('discount name')}
 						render={(field) => <Input {...field} />}
 					/>
 				</div>
 			</div>
 
 			<section className='flex-col-top-section-pages gap-[.5rem]'>
-				<h5 className='text-sm title'>{t('Discount Type')}</h5>
+				<h5 className='text-sm title'>{!coupon ? t('Discount Type') : t('Coupon Type')}</h5>
 
 				<SingleChoiceChips
 					options={discountTypesOptions}
