@@ -31,6 +31,8 @@ export interface newDiscountInterface {
 	miniQuantity?: number;
 	activeDates: ActiveDates;
 	active: boolean;
+	limitOneCustomer: boolean
+	UsageNumber?: number
 }
 
 export default function useCustomHookNewDiscount(
@@ -38,8 +40,8 @@ export default function useCustomHookNewDiscount(
 	applyToType?: string,
 	productXtoYType?: string | undefined,
 	customerSegment?: string,
-	selectedMinimumRequirements?: string
-
+	selectedMinimumRequirements?: string,
+	isCheck?: boolean
 ) {
 	const handelDefaultValue = () => {
 		return {
@@ -62,6 +64,8 @@ export default function useCustomHookNewDiscount(
 			miniQuantity: 0,
 			activeDates: ActiveDatesValues,
 			active: false,
+			limitOneCustomer: false,
+			UsageNumber: 0
 		};
 	};
 
@@ -197,16 +201,21 @@ export default function useCustomHookNewDiscount(
 
 
 			miniPrice: selectedMinimumRequirements === "Minimum price"
-				? z.coerce.number().min(1)
+				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
 			miniQuantity: selectedMinimumRequirements === "Minimum quantity"
-				? z.coerce.number().min(1)
+				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
 			activeDates: activeDatesSchema,
 
 			active: z.boolean(),
+			limitOneCustomer: z.boolean().default(false),
+
+			UsageNumber: isCheck
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 		};
 	};
 	// ///////////////////////////////////
