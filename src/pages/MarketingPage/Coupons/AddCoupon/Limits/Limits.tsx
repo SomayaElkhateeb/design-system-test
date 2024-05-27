@@ -8,18 +8,20 @@ import { addCouponInterface } from '../HookForAddCoupon';
 
 const Limits = ({ formStore }: { formStore: UseFormReturn<addCouponInterface> }) => {
 	const { t } = useTranslation();
-	const [isChecked, setIsChecked] = useState<boolean>(false);
+	const [isChecked, setIsChecked] = useState<boolean>(formStore.watch('miniReq'));
+
 	const handleCheckboxChange = (newValue: boolean) => {
 		setIsChecked(newValue);
+		formStore.setValue('miniReq', newValue);
 	};
 
 	return (
-		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
+		<section className='global-cards'>
 			<h3 className='text-title font-semibold'>{t('Limits')}</h3>
 			<CheckBox
 				label={t('Limit number of times this coupon can be used in total')}
-				handleOnChange={handleCheckboxChange}
 				checked={isChecked}
+				handleOnChange={handleCheckboxChange}
 			/>
 
 			{isChecked && (

@@ -16,19 +16,31 @@ const NewDiscount = () => {
 	const [applyToType, setApplyToType] = useState('All products');
 	const [productXtoYType, setProductXtoYType] = useState<string | undefined>('Free');
 	const [customerSegment, setCustomerSegment] = useState('All customers');
+	const [miniReq, setMiniReq] = useState(false);
 	// custom hook
-	const { onSubmit, formStore, updatedDates } = useCustomHookNewDiscount(
-		discountType,
-		applyToType,
-		productXtoYType,
-		customerSegment,
-	);
+
+	const { handelDefaultValue, discountSchema } = useCustomHookNewDiscount();
+
+	const handleSubmit: (validatedData: newDiscountInterface) => void = (
+		values: newDiscountInterface,
+	) => {
+		console.log(values);
+		// handleSaveChanges();
+	};
+
+	const { formStore, onSubmit } = useForm({
+		schema: discountSchema(discountType, applyToType, productXtoYType, customerSegment, miniReq),
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
+
 
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
 		setProductXtoYType(formStore?.watch('ProductXToProductYType'));
 		setCustomerSegment(formStore?.watch('customerSegment'));
+		setMiniReq(formStore?.watch('miniReq'));
 	}, [formStore]);
 
 	useEffect(() => {

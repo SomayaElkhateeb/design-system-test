@@ -18,7 +18,7 @@ const CustomerSegmentCo = ({ formStore }: { formStore: UseFormReturn<addCouponIn
 	};
 
 	return (
-		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
+		<div className='global-cards'>
 			<h3 className='text-title font-semibold'>{t('Customer segment')}</h3>
 			<section>
 				<SingleChoiceChips
