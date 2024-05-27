@@ -472,6 +472,7 @@ export const english = {
 	'Mini purchase price': 'Mini purchase price',
 	'Mini purchase quantity': 'Mini purchase quantity',
 	'coupon code': 'coupon code',
+	"Coupon Type":"Coupon Type",
 	'coupon name': 'coupon name',
 	used: 'used',
 	'select category': 'select category',
