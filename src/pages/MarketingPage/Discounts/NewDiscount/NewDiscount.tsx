@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -19,21 +18,14 @@ const NewDiscount = () => {
 	const [miniReq, setMiniReq] = useState(false);
 	// custom hook
 
-	const { handelDefaultValue, discountSchema } = useCustomHookNewDiscount();
-
-	const handleSubmit: (validatedData: newDiscountInterface) => void = (
-		values: newDiscountInterface,
-	) => {
-		console.log(values);
-		// handleSaveChanges();
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: discountSchema(discountType, applyToType, productXtoYType, customerSegment, miniReq),
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-
+	// custom hook
+	const { onSubmit, formStore, updatedDates } = useCustomHookNewDiscount(
+		discountType,
+		applyToType,
+		productXtoYType,
+		customerSegment,
+		miniReq,
+	);
 
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
@@ -49,10 +41,8 @@ const NewDiscount = () => {
 		updatedDates.startActivation.startDate,
 		updatedDates.startActivation.startTime,
 		updatedDates.endActivation.endDate,
-		updatedDates.endActivation.endTime
+		updatedDates.endActivation.endTime,
 	]);
-
-
 
 	return (
 		<Form {...formStore}>

@@ -1,6 +1,11 @@
 import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import { z } from 'zod';
-import { ActiveDates, ActiveDatesValues, DateTimeType, activeDatesSchema } from '../../Campaigns/useCampaign';
+import {
+	ActiveDates,
+	ActiveDatesValues,
+	DateTimeType,
+	activeDatesSchema,
+} from '../../Campaigns/useCampaign';
 import { useState } from 'react';
 import { Dayjs } from 'dayjs';
 import { useForm } from 'src/app/utils/hooks/form';
@@ -21,20 +26,20 @@ export interface newDiscountInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
-
 	miniReq: boolean;
 	miniPrice: number | undefined;
 	miniQuantity: number | undefined;
-	startActivation: { startDate: Date; startTime: string };
-	endActivation: { endDate: Date; endTime: string };
-
+	activeDates: ActiveDates;
 	active: boolean;
 }
 
-export default function useCustomHookNewDiscount(discountType?: string,
+export default function useCustomHookNewDiscount(
+	discountType?: string,
 	applyToType?: string,
 	productXtoYType?: string | undefined,
-	customerSegment?: string) {
+	customerSegment?: string,
+	miniReq: boolean,
+) {
 	const handelDefaultValue = () => {
 		return {
 			discountName: '',
@@ -61,13 +66,11 @@ export default function useCustomHookNewDiscount(discountType?: string,
 	};
 
 	const discountSchema = (
-
 		discountType: string,
 		applyToType: string,
 		productXtoYType: string | undefined,
 		customerSegment: string,
 		miniReq: boolean,
-
 	) => {
 		return {
 			discountName: z.string().min(3).max(60),
@@ -85,51 +88,51 @@ export default function useCustomHookNewDiscount(discountType?: string,
 			specificCategories:
 				applyToType === 'Specific category'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 			ProductXToProductYType:
 				applyToType === 'Buy x get y'
 					? z.string().min(1)
@@ -146,55 +149,54 @@ export default function useCustomHookNewDiscount(discountType?: string,
 			selectProductsY:
 				applyToType === 'Buy x get y'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 
 			customerSegment: z.string().min(3),
 			specificCustomerGroup:
 				customerSegment === 'Specific customer groups'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 
 			specificCustomer:
 				customerSegment === 'Specific customers'
 					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-					),
-
+					  )
+					: z.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+					  ),
 
 			miniReq: z.boolean().default(false),
 
@@ -206,21 +208,7 @@ export default function useCustomHookNewDiscount(discountType?: string,
 				? z.coerce.number().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
-			// miniPrice: z.coerce.number().min(1),
-			// miniQuantity: z.coerce.number().min(1),
-			startActivation: z.object({
-				startDate: z.date({ required_error: 'Start date is required' }),
-				startTime: z
-					.string()
-					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid start time format' }),
-			}),
-			endActivation: z.object({
-				endDate: z.date({ required_error: 'End date is required' }),
-				endTime: z
-					.string()
-					.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
-			}),
-
+			activeDates: activeDatesSchema,
 
 			active: z.boolean(),
 		};
@@ -242,7 +230,6 @@ export default function useCustomHookNewDiscount(discountType?: string,
 	const updatedDates = { ...activeDates };
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
-			
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();
 			} else if (type === 'startTime') {
@@ -253,7 +240,6 @@ export default function useCustomHookNewDiscount(discountType?: string,
 				updatedDates.endActivation.endTime = value.format('HH:mm');
 			}
 			setActiveDates(updatedDates);
-			
 		}
 	};
 
@@ -265,6 +251,6 @@ export default function useCustomHookNewDiscount(discountType?: string,
 		endDateEnabled,
 		setEndDateEnabled,
 		handleDateTimeChange,
-		updatedDates
+		updatedDates,
 	};
 }
