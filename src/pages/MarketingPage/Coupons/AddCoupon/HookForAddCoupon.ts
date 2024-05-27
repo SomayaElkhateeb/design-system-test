@@ -12,8 +12,10 @@ export interface addCouponInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
+	miniReq: boolean;
 	miniPrice: number;
 	miniQuantity: number;
+	showLimit: boolean;
 	limit: number;
 	limitUser: boolean;
 	startActivation: { startDate: Date; startTime: string };
@@ -34,8 +36,10 @@ export default function useCustomHookAddCoupon() {
 			customerSegment: 'All customers',
 			specificCustomerGroup: [],
 			specificCustomer: [],
+			miniReq: false,
 			miniPrice: 0,
 			miniQuantity: 0,
+			showLimit: false,
 			limit: 0,
 			date: null,
 			limitUser: false,
@@ -45,7 +49,13 @@ export default function useCustomHookAddCoupon() {
 		};
 	};
 
-	const couponSchema = (discountType: string, applyToType: string, customerSegment: string) => {
+	const couponSchema = (
+		discountType: string,
+		applyToType: string,
+		customerSegment: string,
+		miniReq: boolean,
+		showLimit: boolean,
+	) => {
 		return {
 			couponCode: z.string().min(3).max(60),
 			discountType: z.string().min(3),
@@ -126,10 +136,21 @@ export default function useCustomHookAddCoupon() {
 								}),
 							),
 					  ),
+			miniReq: z.boolean().default(false),
 
-			miniPrice: z.coerce.number().min(1),
-			miniQuantity: z.coerce.number().min(1),
-			limit: z.coerce.number().min(1),
+			miniPrice: miniReq
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+
+			miniQuantity: miniReq
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+
+			showLimit: z.boolean().default(false),
+
+			limit: showLimit
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
 			date: z
 				.object({

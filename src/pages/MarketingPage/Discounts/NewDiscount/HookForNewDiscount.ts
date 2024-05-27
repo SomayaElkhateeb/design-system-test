@@ -17,8 +17,9 @@ export interface newDiscountInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
-	miniPrice: number;
-	miniQuantity: number;
+	miniReq: boolean;
+	miniPrice: number | undefined;
+	miniQuantity: number | undefined;
 	startActivation: { startDate: Date; startTime: string };
 	endActivation: { endDate: Date; endTime: string };
 	active: boolean;
@@ -42,6 +43,7 @@ export default function useCustomHookNewDiscount() {
 			customerSegment: 'All customers',
 			specificCustomerGroup: [],
 			specificCustomer: [],
+			miniReq: false,
 			miniPrice: 0,
 			miniQuantity: 0,
 			startActivation: { startDate: new Date(), startTime: '00:00' },
@@ -55,6 +57,7 @@ export default function useCustomHookNewDiscount() {
 		applyToType: string,
 		productXtoYType: string | undefined,
 		customerSegment: string,
+		miniReq: boolean,
 	) => {
 		return {
 			discountName: z.string().min(3).max(60),
@@ -182,8 +185,18 @@ export default function useCustomHookNewDiscount() {
 							),
 					  ),
 
-			miniPrice: z.coerce.number().min(1),
-			miniQuantity: z.coerce.number().min(1),
+			miniReq: z.boolean().default(false),
+
+			miniPrice: miniReq
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+
+			miniQuantity: miniReq
+				? z.coerce.number().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+
+			// miniPrice: z.coerce.number().min(1),
+			// miniQuantity: z.coerce.number().min(1),
 			startActivation: z.object({
 				startDate: z.date({ required_error: 'Start date is required' }),
 				startTime: z

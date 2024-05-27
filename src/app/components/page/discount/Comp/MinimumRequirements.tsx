@@ -23,21 +23,22 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 
 	// Update state
 	const update = (newValue: Partial<State>) => {
-		setUpdateState((prevState) => ({
-			...prevState,
-			...newValue,
-		}));
+		setUpdateState((prevState) => ({ ...prevState, ...newValue }));
 	};
 
 	const handleCheckboxChange = (newValue: boolean) => {
-		update({ isChecked: newValue });
+		setUpdateState((prevState) => ({
+			...prevState,
+			isChecked: newValue,
+		}));
+		formStore.setValue('miniReq', newValue);
 	};
 	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map(
 		(option) => option,
 	);
 
 	return (
-		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
+		<section className='global-cards'>
 			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
 
 			<CheckBox
