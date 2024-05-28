@@ -1,6 +1,6 @@
 import { getImageUrl } from 'src/app/utils';
-import AboutYourBusiness from './tabs/AboutYourBusiness';
-import AboutYourself from './tabs/AboutYourself';
+import AboutYourBusiness from './_comp/tabs/AboutYourBusiness';
+import AboutYourself from './_comp/tabs/AboutYourself';
 import { useState } from 'react';
 import TabX from 'src/app/components/optimized/Tabs/NewTab/TabX';
 import { useTranslation } from 'react-i18next';
