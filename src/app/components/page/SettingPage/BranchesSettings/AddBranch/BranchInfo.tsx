@@ -16,6 +16,7 @@ import {
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { BranchSettingsInterface } from './HookForAddBranchForm';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 
 export const countries = [
 	{
@@ -59,6 +60,8 @@ export default function BranchInfo({
 	setSelectedOption,
 }: BranchInfoProps) {
 	//  hooks
+	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
+	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const { t } = useTranslation();
 
 	const handleAddressOption = (option: string) => {
@@ -172,6 +175,13 @@ export default function BranchInfo({
 							/>
 						</section>
 					)}
+					{selectedOption !== 'Add manually' && (
+							<GoogleMapComponent
+								setLocationEnabled={setLocationEnabled}
+								setDisablePickButton={setDisablePickButton}
+								height='300px'
+							/>
+						)}
 
 					<FormField
 						formStore={formStore}

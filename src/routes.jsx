@@ -98,7 +98,7 @@ export const routes = [
 			},
 		],
 	},
-	// /orders/AllOrders/orderDetails/#8965742
+	// /orders/orderDetails/8965742
 	{
 		path: '/orders/orderDetails/:id',
 		element: <OrderDetails />,
