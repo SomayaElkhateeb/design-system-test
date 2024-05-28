@@ -101,7 +101,9 @@ export default function CustomerInfo() {
 						<p className='text-[0.8rem]  font-semibold '>{t('Orders')}</p>
 						<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 							<IoIosAddCircle />
-							<p className='text-[0.8rem] font-semibold'>{t('Add new order')}</p>
+							<p onClick={() => navigate('/order/addOrder')} className='text-[0.8rem] font-semibold'>
+								{t('Add new order')}
+							</p>
 						</div>
 					</div>
 
