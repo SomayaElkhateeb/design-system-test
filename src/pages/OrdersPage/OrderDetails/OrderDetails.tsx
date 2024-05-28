@@ -34,6 +34,9 @@ export default function OrderDetails() {
 	const handleAddressForm = () => {
 		setState({ ...state, showAddress: !showAddress });
 	};
+	const handleChckOutFormForm = () => {
+		setState({ ...state, showCheckout: !showCheckout });
+	};
 	return (
 		<div className="flex-col-top-section-pages">
 			<HeaderSettings
@@ -98,7 +101,7 @@ export default function OrderDetails() {
 						}
 					/>
 					<Checkout
-						contain={showCheckout && <CheckoutForm />}
+						contain={showCheckout && <CheckoutForm handleChckOutFormForm={handleChckOutFormForm}/>}
 						form={showCheckout}
 						title='Checkout'
 						children={

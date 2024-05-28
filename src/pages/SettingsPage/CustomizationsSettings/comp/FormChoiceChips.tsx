@@ -8,6 +8,7 @@ interface FormChoiceChipsProps<T extends FieldValues> {
 	label?: string;
 	options: string[];
 	description?: string;
+	checkoutForm?: boolean;
 }
 
 export default function FormChoiceChips<T extends FieldValues>({
@@ -16,6 +17,7 @@ export default function FormChoiceChips<T extends FieldValues>({
 	label,
 	options,
 	description,
+	checkoutForm,
 }: FormChoiceChipsProps<T>) {
 	const { t } = useTranslation();
 
@@ -24,8 +26,12 @@ export default function FormChoiceChips<T extends FieldValues>({
 	};
 
 	return (
-		<div className='grid gap-2 col-span-2'>
-			{label && <h3 className='title text-base'>{t(label as any)}</h3>}
+		<div className={`grid ${checkoutForm ? 'gap-[.25rem]' : 'gap-3'} col-span-2`}>
+			{label && (
+				<h3 className={`title text-base ${checkoutForm ? 'font-normal' : 'font-semibold'}`}>
+					{t(label as any)}
+				</h3>
+			)}
 			<SingleChoiceChips
 				options={options.map((option) => option)}
 				setSelected={handleChoiceChange}
