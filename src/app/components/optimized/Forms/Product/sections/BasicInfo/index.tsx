@@ -4,19 +4,21 @@ import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import ProductFormCategoryField from '../../fields/Category';
+import { Props } from './types';
+import ProductFormBrandField from '../../fields/Brand';
 
 /**
  * @template TFormStore
  *
- * @param {import('./types').ProductBasicInfoProps<TFormStore>} props
+ * @param {import('./types.ts').Props<TFormStore>} props
  */
-export default function ProductFormBasicInfoSection(props) {
+export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFormStore>) {
 	const { t } = useTranslation();
 
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>{t('Basic Info')}</CardTitle>
+				<CardTitle>{t('Basic info')}</CardTitle>
 			</CardHeader>
 			<CardContent>
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
@@ -26,18 +28,19 @@ export default function ProductFormBasicInfoSection(props) {
 							{ name: 'nameEn', label: 'En' },
 							{ name: 'nameAr', label: 'عربي' },
 						]}
-						label={`${t('Product name')} (${t('Required')})`}
+						label={`${t('Product Name')} (${t('Required')})`}
 						renderer={(field) => <Input {...field} required />}
 					/>
 					<FormField
 						formStore={props.formStore}
 						name='sku'
-						label={t('Sku')}
+						label={t('SKU')}
 						render={(field) => <Input {...field} />}
 					/>
 					{/* Category field will be here */}
 					<ProductFormCategoryField formStore={props.formStore} />
 					{/* Brand field will be here */}
+					<ProductFormBrandField formStore={props.formStore} />
 				</div>
 			</CardContent>
 		</Card>

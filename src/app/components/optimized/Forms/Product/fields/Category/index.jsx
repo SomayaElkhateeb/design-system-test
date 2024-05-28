@@ -41,7 +41,7 @@ function CategoryDialog() {
 /**
  * @template TFormStore
  *
- * @param {import('./types').ProductFormCategoryFieldProps<TFormStore>} props
+ * @param {import('./types').Props<TFormStore>} props
  */
 export default function ProductFormCategoryField(props) {
 	const { t } = useTranslation();

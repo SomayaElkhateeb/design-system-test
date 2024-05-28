@@ -6,10 +6,14 @@ import {
 	CardHeader,
 	CardTitle,
 } from 'src/app/components/ui/card';
-import Button from '../../../Buttons/Button';
+import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 export default function ProductFormFaqsSection(props) {
 	const { t } = useTranslation();
 
@@ -18,7 +22,7 @@ export default function ProductFormFaqsSection(props) {
 			<CardHeader>
 				<CardTitle>{t('FAQs')}</CardTitle>
 				<CardDescription className='text-gray-400'>
-					{t('Answer qustions people frequently ask about your product')}
+					{t('Answer questions people frequently ask about your product')}
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='flex flex-col gap-4'>

@@ -8,3 +8,8 @@ export type ValidFormStoreByValues<
 		? TFormStore
 		: UseFormReturn<DesiredValues>
 	: UseFormReturn<DesiredValues>;
+
+// export type ValidValuesToFormStore<
+// 	TValues,
+// 	DesiredValues extends FieldValues,
+// > = TValues extends DesiredValues ? UseFormReturn<TValues> : UseFormReturn<DesiredValues>;

@@ -32,7 +32,7 @@ function ImagesElem(props) {
 	return (
 		<FormField
 			formStore={props.formStore}
-			name='generalInfo.imagesMedia'
+			name='imagesMedia'
 			render={({ onChange, value, ...field }) => (
 				<FileInput
 					className='flex flex-col items-center justify-center h-32 gap-2'
@@ -41,7 +41,7 @@ function ImagesElem(props) {
 						accept: { 'image/*': [] },
 						setError: (error) => {
 							// console.error('error', error);
-							props.formStore.setError('generalInfo.imagesMedia', { message: error.message });
+							props.formStore.setError('imagesMedia', { message: error.message });
 						},
 						onFileLoad: (params) => {
 							// console.log('params', params);
@@ -65,7 +65,7 @@ function ImagesElem(props) {
 /**
  * @param {{
  *  formStore: import("..").ProductFormStore;
- * 	name: "generalInfo.videoMedia" | "generalInfo.threeDModelMedia" | "generalInfo.threeSixtyViewMedia";
+ * 	name: "videoMedia" | "threeDModelMedia" | "threeSixtyViewMedia";
  *  accept: import('react-dropzone').Accept
  *  title: import('react').ReactNode;
  * }} props
@@ -118,7 +118,7 @@ const tabsItems = [
 			return (
 				<FileElem
 					formStore={props.formStore}
-					name='generalInfo.videoMedia'
+					name='videoMedia'
 					accept={{ 'video/*': [] }}
 					title={t('Upload Video')}
 				/>
@@ -132,7 +132,7 @@ const tabsItems = [
 			return (
 				<FileElem
 					formStore={props.formStore}
-					name='generalInfo.threeSixtyViewMedia'
+					name='threeSixtyViewMedia'
 					accept={{
 						'image/*': ['.jpg', '.jpeg', '.png'],
 						'video/*': ['.mp4', '.webm'],
@@ -155,7 +155,7 @@ const tabsItems = [
 			return (
 				<FileElem
 					formStore={props.formStore}
-					name='generalInfo.threeDModelMedia'
+					name='threeDModelMedia'
 					// FIXME: Add 3D model file types
 					accept={{ '': ['.obj, .stl, .fbx, .glb, .gltf, .dae'] }}
 					title={t('Upload 3D View')}

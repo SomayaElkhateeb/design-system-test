@@ -14,13 +14,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from 'src/app/components/ui/
  * @template {unknown} [ElemProps=undefined]
  *
  * @param {{
- *  items: TabsBuilderItem<ElemProps>
+ *  items: TabsBuilderItem<ElemProps>[]
  *  sharedProps?: ElemProps;
  * }} props
  */
 export default function TabsBuilder(props) {
 	const sharedProps = props.sharedProps;
 	const { t } = useTranslation();
+
 	return (
 		<Tabs defaultValue={props.items[0].title} className='space-y-4'>
 			<TabsList className='justify-start w-full h-auto max-w-full gap-6 p-0 overflow-auto bg-transparent border-b rounded-none border-inactive'>

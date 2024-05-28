@@ -1,8 +1,8 @@
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
+import { productSeoSchema } from './utils';
 import { ValidFormStoreByValues } from 'src/utils/types';
-import { productCategorySchema } from './utils';
 
-type Values = InferredZodSchema<typeof productCategorySchema>;
+export type Values = InferredZodSchema<typeof productSeoSchema>;
 
 export type Props<TFormStore> = {
 	formStore: ValidFormStoreByValues<TFormStore, Values>;
