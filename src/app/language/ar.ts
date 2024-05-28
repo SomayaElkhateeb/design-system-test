@@ -403,6 +403,7 @@ export const arabic = {
 	'Mini purchase price': 'أقل سعر شراء',
 	'Mini purchase quantity': 'أقل كميه شراء',
 	'coupon code': 'رمز الكوبون',
+	"Purchase method":"وسائل الاستلام",
 	'coupon name': 'اسم الكوبون',
 	used: 'مستخدم',
 	'select category': 'اختر الفئة',

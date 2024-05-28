@@ -834,6 +834,7 @@ export const english = {
 	'Monthly bill issued': 'Monthly bill issued',
 	Cancelled: 'Cancelled',
 	'Payment methods': 'Payment methods',
+	"Purchase method":"Purchase method",
 	'For bills and purchases': 'For bills and purchases',
 	'Visa card': 'Visa card',
 	Mada: 'Mada',

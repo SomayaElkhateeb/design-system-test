@@ -3,42 +3,73 @@ import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Button } from 'src/app/components/optimized';
 import useCustomCheckOutForm, { checkOutInterface } from './HookCheckoutForm';
-import ChoosePurchase from '../Comp/ChoosePurchase';
-import { EditIcon } from 'src/app/utils/icons';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { useEffect, useState } from 'react';
-import { getImageUrl } from 'src/app/utils';
+import { useState, useEffect } from 'react';
+
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import {
+	Select,
+	SelectTrigger,
+	SelectValue,
+	SelectContent,
+	SelectItem,
+} from 'src/app/components/ui/select';
+import FormField from 'src/app/components/ui/form/field';
 export default function CheckoutForm({
 	handleChckOutFormForm,
 }: {
 	handleChckOutFormForm: () => void;
 }) {
 	const { t } = useTranslation();
-
+	const [purchase, setPurchase] = useState('branch');
 	// custom hook
-	const { handelDefaultValue, checkOutSchema } = useCustomCheckOutForm();
+	const { handelDefaultValue, checkOutSchema } = useCustomCheckOutForm(purchase);
 
 	const handleSubmit = (values: checkOutInterface) => {
 		console.log(values);
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: checkOutSchema,
+		schema: checkOutSchema(),
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
 
+	useEffect(() => {
+		setPurchase(formStore.watch('purchase'));
+	}, [formStore.watch('purchase')]);
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-5'>
-				<div className='flex-col-top-section-pages gap-4'>
-					{/* <FormChoiceChips<checkOutInterface>
+				<div className='flex-col-top-section-pages gap-5'>
+					<FormChoiceChips<checkOutInterface>
+						checkoutForm
 						formStore={formStore}
 						name='purchase'
-						label={t('Payment methods')}
-						options={['Commercial branch', 'Warehouse']}
-					/> */}
+						label={t('Purchase method')}
+						options={['branch', 'onLine']}
+					/>
+					{purchase === 'branch' && (
+						<FormField
+							formStore={formStore}
+							name='branch'
+							render={(field) => (
+								<Select
+									onValueChange={field.onChange}
+									value={field.value}
+									required={field.required}
+									name={field.name}
+								>
+									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+										<SelectValue placeholder='Select branch' />
+									</SelectTrigger>
+									<SelectContent>
+										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
+									</SelectContent>
+								</Select>
+							)}
+						/>
+					)}
 				</div>
 
 				<FormChoiceChips<checkOutInterface>
@@ -76,37 +107,3 @@ export default function CheckoutForm({
 	);
 }
 
-function Row({ title, arrOptions }: { title: string; arrOptions: string[] | React.ReactNode[] }) {
-	const { t } = useTranslation();
-	const [selectedOption, setSelectedOption] = useState('');
-
-	const handleOptionSelect = (option) => {
-		setSelectedOption(option);
-	};
-	return (
-		<div className='flex flex-col gap-0'>
-			<div className='flex items-center justify-between'>
-				<h4 className='text-title text-sm'>{title}</h4>
-				<Button LeftIcon={EditIcon} variant='tertiary' className='font-normal'>
-					{t('edit')}
-				</Button>
-			</div>
-
-			<SingleChoiceChips
-				options={arrOptions}
-				setSelected={handleOptionSelect}
-				selected={selectedOption}
-			/>
-		</div>
-	);
-}
-
-// const Dhl = () => {
-// 	return (
-// 		<div className='rounded-lg border border-constrained w-[2.6875rem] h-[2.4375rem] relative'>
-// 			<img src={getImageUrl('companies/dhl.svg')} alt='DHL Logo' />
-// 			<span>DHL</span>
-// 			<span>(main)</span>
-// 		</div>
-// 	);
-// };
