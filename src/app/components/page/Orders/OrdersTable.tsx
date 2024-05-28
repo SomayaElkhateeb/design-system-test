@@ -105,8 +105,8 @@ export default function OrdersTable({
 								<p className='text-subtitle text-[.8rem]'>{e.payment_status}</p>
 							</div>
 						</TableCell>,
-						<GlobalTableCell >{e.order_status}</GlobalTableCell>,
-						<GlobalTableCell >SAR {e.total}</GlobalTableCell>,
+						<GlobalTableCell>{e.order_status}</GlobalTableCell>,
+						<GlobalTableCell>SAR {e.total}</GlobalTableCell>,
 						<TableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<FaArrowsRotate className='text-subtitle' />
@@ -123,12 +123,12 @@ export default function OrdersTable({
 								{language === 'ar' ? (
 									<IoIosArrowBack
 										className='text-subtitle'
-										onClick={() => navigate(`/products/${e?.id}`)}
+										onClick={() => navigate(`/orders/orderDetails/11111`)}
 									/>
 								) : (
 									<IoIosArrowForward
 										className='text-subtitle'
-										onClick={() => navigate(`/products/${e?.id}`)}
+										onClick={() => navigate(`/orders/orderDetails/11111`)}
 									/>
 								)}
 							</div>

@@ -17,6 +17,7 @@ import {
 	InventoryIcon,
 	WalletIcon,
 } from 'src/app/utils/icons';
+import { PaymentProvider } from './PaymentSettings/PaymentProviders/PaymentTable/utils';
 
 const images = [
 	{ id: 1, ImageURL: getImageUrl('companies/express.svg') },
@@ -69,9 +70,9 @@ const cards = [
 ];
 
 const pricing = [
-	{ id: nanoid(), name: 'Setup fees', price: 200 },
-	{ id: nanoid(), name: 'first 15 KG', price: 15 },
-	{ id: nanoid(), name: '1 KG after 15 KG', price: 20 },
+	{ id: nanoid(), name: 'Setup fees', value: 200 },
+	{ id: nanoid(), name: 'first 15 KG', value: 15 },
+	{ id: nanoid(), name: '1 KG after 15 KG', value: 20 },
 ];
 
 const contact = [
@@ -116,7 +117,7 @@ const settingsCards = [
 	},
 	{
 		id: 3,
-		path: '/',
+		path: 'payment',
 		Icon: PaymentIcon,
 		title: 'Payment',
 		description: 'Enable and integration payment gateways',
@@ -137,9 +138,7 @@ const settingsCards = [
 	},
 	{
 		id: 6,
-
 		path: 'users',
-
 		Icon: Person,
 		title: 'Users & Permissions',
 		description: 'Users Settings',
@@ -151,18 +150,24 @@ const settingsCards = [
 		title: 'Reviews',
 		description: 'manage posted reviews',
 	},
-	{ id: 8, path: '/', Icon: QueryIcon, title: 'Queries', description: 'manage posted queries' },
+	{
+		id: 8,
+		path: 'queries',
+		Icon: QueryIcon,
+		title: 'Queries',
+		description: 'manage posted queries',
+	},
 	{
 		id: 9,
-		path: '/',
+		path: 'customizations',
 		Icon: EditIcon,
 		title: 'Customizations',
 		description: 'Customize checkout, products and orders options',
 	},
-	{ id: 10, path: '/', Icon: TaxIcon, title: 'Taxes', description: 'Taxes rate & Classes' },
+	{ id: 10, path: 'taxes', Icon: TaxIcon, title: 'Taxes', description: 'Taxes rate & Classes' },
 	{
 		id: 11,
-		path: '/',
+		path: 'billing',
 		Icon: WalletIcon,
 		title: 'Billing & plans',
 		description: 'Manage and pay your bills',
@@ -170,11 +175,201 @@ const settingsCards = [
 	{ id: 12, path: '/', Icon: DomainIcon, title: 'Domains', description: 'Setup store domains' },
 	{
 		id: 13,
-		path: '/',
+		path: 'notification',
 		Icon: ReviewsIcon,
 		title: 'E-Mail Notifications',
 		description: 'manage notifications sent to users',
 	},
 ];
+const paymentProvidersData: PaymentProvider[] = [
+	{
+		provider: { name: 'payTabs', url: '/payTabs' },
+		monthlyFees: { planOne: '', planTwo: '' },
+		setupFees: { planOne: 938, planTwo: '' },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+	{
+		provider: { name: 'moyasar', url: '/moyasar' },
+		monthlyFees: { planOne: 200, planTwo: '' },
+		setupFees: { planOne: 1000, planTwo: '' },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+	{
+		provider: { name: 'hyperPay', url: '/hyperPay' },
+		monthlyFees: { planOne: '', planTwo: 500 },
+		setupFees: { planOne: '', planTwo: 5000 },
+		creditTransactions: {
+			paymentCards: ['visa', 'amex', 'masterCard'],
+			local: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+			global: {
+				flatFee: 1,
+				percentageFee: 2.7,
+			},
+		},
+		methodsTransactions: [
+			{
+				method: 'mada',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'stcPay',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'apple',
+				fee: {
+					flatFee: '',
+					percentageFee: 1.7,
+				},
+			},
+			{
+				method: 'knet',
+				fee: {
+					flatFee: 1,
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'amex',
+				fee: {
+					flatFee: '',
+					percentageFee: '',
+				},
+			},
+			{
+				method: 'visa',
+				fee: {
+					flatFee: 1,
+					percentageFee: 1.45,
+				},
+			},
+			{ method: 'masterCard', fee: 2.1 },
+		],
+		banks: ['Riyadh', 'Al Ahly', 'Al-Rajhi', 'Al Enmaa', 'El Belad', 'SAB', 'ANB', 'QNB'],
+	},
+];
+export { settingsCards, images, cards, pricing, contact, smsa, paymentProvidersData };
 
-export { settingsCards, images, cards, pricing, contact, smsa };
+
+

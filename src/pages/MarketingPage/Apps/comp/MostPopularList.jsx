@@ -33,7 +33,7 @@ const BigAppsCard = ({ image, name, description, url, status }) => {
 	//  hooks
 	const { t } = useTranslation();
 	//  handel card status
-	const statusPadge = status === 'available' ? 'free' : 'installed';
+	const statusbadge = status === 'available' ? 'free' : 'installed';
 	return (
 		<Link to={url} rel='noopener noreferrer'>
 			<div className='cursor-pointer border border-borders-lines p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white min-h-[379px]'>
@@ -43,7 +43,7 @@ const BigAppsCard = ({ image, name, description, url, status }) => {
 					</div>
 					<h2 className='mt-4 title text-[16px]'>{t(name)}</h2>
 					<p className='mt-2 paragraph'>{t(description)}</p>
-					<img src={getImageUrl(`padges/${statusPadge}.svg`)} alt='status' className='mt-3 h-7' />
+					<img src={getImageUrl(`badges/${statusbadge}.svg`)} alt='status' className='mt-3 h-7' />
 				</div>
 			</div>
 		</Link>

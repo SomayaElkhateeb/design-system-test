@@ -1,6 +1,6 @@
 import { UseFormReturn } from 'react-hook-form';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { BranchSettingsInterface } from './AddBranch';
+
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
@@ -14,8 +14,11 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import { BranchSettingsInterface } from './HookForAddBranchForm';
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 
-const countries = [
+export const countries = [
 	{
 		name: 'Egypt',
 		value: 'eg',
@@ -57,11 +60,9 @@ export default function BranchInfo({
 	setSelectedOption,
 }: BranchInfoProps) {
 	//  hooks
+	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
+	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const { t } = useTranslation();
-
-	const handleBranchType = (option: string) => {
-		formStore.setValue('branchType', option);
-	};
 
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
@@ -72,14 +73,12 @@ export default function BranchInfo({
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
 			<div className='grid gap-5 col-span-3 cardDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
-					<div>
-						<h2 className='title mb-2'>{t('Branch Type')}</h2>
-						<SingleChoiceChips
-							options={[t('Commercial branch'), t('Warehouse')]}
-							setSelected={handleBranchType}
-							selected={formStore.watch('branchType')}
-						/>
-					</div>
+					<FormChoiceChips<BranchSettingsInterface>
+						formStore={formStore}
+						name='branchType'
+						label={t('Branch Type')}
+						options={['Commercial branch', 'Warehouse']}
+					/>
 
 					<TabbedFormField
 						formStore={formStore}
@@ -176,6 +175,13 @@ export default function BranchInfo({
 							/>
 						</section>
 					)}
+					{selectedOption !== 'Add manually' && (
+							<GoogleMapComponent
+								setLocationEnabled={setLocationEnabled}
+								setDisablePickButton={setDisablePickButton}
+								height='300px'
+							/>
+						)}
 
 					<FormField
 						formStore={formStore}
@@ -184,22 +190,19 @@ export default function BranchInfo({
 						render={(field) => <Input {...field} placeholder={'building'} />}
 					/>
 
-					<div className='grid gap-1'>
-						<p className='text-sm font-semibold'>{t('Phone number')}</p>
+					<FormField
+						formStore={formStore}
+						label={t('Phone number')}
+						name='branchPhoneNumber'
+						render={(field) => (
+							<CustomPhoneInput
+								value={field.value}
+								onHandleChange={field.onChange}
 
-						<FormField
-							formStore={formStore}
-							name='branchPhoneNumber'
-							render={(field) => (
-								<CustomPhoneInput
-									value={field.value}
-									onHandleChange={field.onChange}
-
-									// isLoading={isLoading}
-								/>
-							)}
-						/>
-					</div>
+								// isLoading={isLoading}
+							/>
+						)}
+					/>
 				</section>
 			</div>
 		</div>

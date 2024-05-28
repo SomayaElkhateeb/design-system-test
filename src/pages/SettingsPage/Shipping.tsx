@@ -11,7 +11,7 @@ export default function Shipping() {
 	return (
 		<div className='flex-col-top-section-pages'>
 			<HeaderSettings title={t('shipping')} />
-			<div className='flex-col-top-section-pages container mx-auto'>
+			<div className='flex-col-top-section-pages custom_container'>
 				{/* providers */}
 				<CardShipping
 					title={t('Third party shipping providers')}
@@ -21,6 +21,7 @@ export default function Shipping() {
 						{images.map((e) => {
 							return <img src={e.ImageURL} key={e.id} />;
 						})}
+						
 					</div>
 					<p className='text-subtitle text-sm py-3 w-[50%] leading-6'>
 						{t(
@@ -44,7 +45,11 @@ export default function Shipping() {
 					<div className='flex justify-between items-center py-1'>
 						<h3 className='title text-sm'>{t('Deliver yourself')}</h3>
 						<div className='flex items-center gap-4'>
-							<Button variant='tertiary' LeftIcon={EditIcon}>
+							<Button
+								variant='tertiary'
+								LeftIcon={EditIcon}
+								onClick={() => navigate('deliverYourself')}
+							>
 								{t('open setup')}
 							</Button>
 							<Switch />
@@ -53,7 +58,9 @@ export default function Shipping() {
 					<hr />
 					<div className='flex justify-between items-center pt-1'>
 						<h3 className='title text-sm'>{t('Self pickup')} </h3>
-						<Button variant='secondary'>{t('Activate')}</Button>
+						<Button variant='secondary' onClick={() => navigate('selfPickup')}>
+							{t('Activate')}
+						</Button>
 					</div>
 				</CardShipping>
 			</div>
@@ -63,7 +70,7 @@ export default function Shipping() {
 
 function CardShipping({ title, description, buttonLabel, onClick, children }: CardShippingProps) {
 	return (
-		<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages gap-2'>
+		<div className='global-cards gap-2'>
 			<div className='flex-col-top-section-pages gap-0'>
 				<h2 className='title'>{title}</h2>
 				<p className='text-title text-sm py-3 w-[60%]'>{description}</p>

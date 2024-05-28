@@ -1,5 +1,3 @@
-// Imports
-import React from 'react';
 import {
 	AddCustomerPage,
 	AnalyticsPage,
@@ -24,18 +22,35 @@ import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import AppsTabs from './pages/AppsPage/comp/AppsTabs';
 import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import PagesConfig from './pages/PagesPage/comp/PagesConfig';
+import PagesConfig from './app/components/page/PagesPage/comp/PagesConfig';
 import SettingsConfig from './pages/SettingsPage/SettingsConfig';
-import Config from './app/components/page/SettingPage/Shipping/Comp/Config';
 import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
+import SetupOpenConfig from './app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
+import SetupConfig from './app/components/page/SettingPage/Shipping/OpenSetup/Setup/SetupConfig';
+import Config from './app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';
+import StoreTabs from './app/components/page/StorePage/StoreTabs';
+import StoreConfig from './app/components/page/StorePage/StoreConfig';
+
+import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
+
+import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
+
+import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
+
+import SuccessfullyPurchased from './app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
+
+import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
+import OrderDetails from './pages/OrdersPage/OrderDetails/OrderDetails';
+import AddOrder from './pages/OrdersPage/AddOrder/AddOrder';
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
-	{ path: '/store', element: <StorePage /> },
-	{ path: '/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/reviews', element: <ReviewsPage /> },
+	// services Routes
 	{ path: '/services', element: <ServicesPage /> },
+	{ path: '/services/:config', element: <PurchaseConfig /> },
+	{ path: '/services/:config/:config', element: <SuccessfullyPurchased /> },
 
 	// Customers Routes
 	{
@@ -46,6 +61,12 @@ export const routes = [
 		path: '/customers/:id',
 		element: <CustomerInfo />,
 	},
+	{
+		path: '/customers/:id/addNewAddresse',
+		element: <AddNewAddresseCustomer />,
+	},
+	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
+	{ path: '/customers/addGroupCustomer', element: <AddCustomerGroup /> },
 	// Apps Routes
 	{
 		path: '/apps',
@@ -70,7 +91,21 @@ export const routes = [
 	{
 		path: '/orders',
 		element: <OrdersPage />,
-		children: [{ path: ':tab', element: <OrdersTabs /> }],
+		children: [
+			{
+				path: ':tab',
+				element: <OrdersTabs />,
+			},
+		],
+	},
+	// /orders/orderDetails/8965742
+	{
+		path: '/orders/orderDetails/:id',
+		element: <OrderDetails />,
+	},
+	{
+		path: '/order/addOrder',
+		element: <AddOrder />,
 	},
 
 	// Products Routes
@@ -90,9 +125,14 @@ export const routes = [
 		element: <SettingsConfig />,
 	},
 	{
+		path: '/settings/billing',
+		element: <BillingAndPlans />,
+	},
+	{
 		path: '/settings/:config/:nested_page',
 		element: <Nested_pages_SettingsConfig />,
 	},
+
 	{
 		path: '/settings/shipping/:config',
 		element: <ShippingConfig />,
@@ -101,7 +141,14 @@ export const routes = [
 		path: '/settings/shipping/:config/:config',
 		element: <Config />,
 	},
-
+	{
+		path: '/settings/shipping/:config/:config/:setup',
+		element: <SetupOpenConfig />,
+	},
+	{
+		path: '/settings/shipping/:config/:config/:setup/:config',
+		element: <SetupConfig />,
+	},
 	// Marketing Routes
 	{
 		path: '/marketing',
@@ -109,6 +156,16 @@ export const routes = [
 		children: [
 			{ path: ':tab', element: <MarketingTabs /> },
 			{ path: ':tabName/:config', element: <MarketingConfig /> },
+		],
+	},
+
+	// store Routes
+	{
+		path: '/store',
+		element: <StorePage />,
+		children: [
+			{ path: ':tab', element: <StoreTabs /> },
+			{ path: ':tabName/:id', element: <StoreConfig /> },
 		],
 	},
 

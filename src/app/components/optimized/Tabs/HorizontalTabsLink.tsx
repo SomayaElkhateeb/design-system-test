@@ -1,12 +1,14 @@
 import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface TabsLinkProps {
-	tabs: { name: String; path: string }[];
-	path: string;
+	tabs: { name: string; path: string }[];
+	path?: string;
 }
 
 export default function HorizontalTabsLink({ tabs, path }: TabsLinkProps) {
-	const { tab: tabName } = useParams();
+	const { tab: tabName } = useParams<{ tab: string }>();
+	const { t } = useTranslation();
 
 	return (
 		<div>
@@ -22,7 +24,7 @@ export default function HorizontalTabsLink({ tabs, path }: TabsLinkProps) {
 								}`}
 								to={`${path}/${tab.path}`}
 							>
-								{tab.name}
+								{t(tab.name)}
 							</Link>
 						</li>
 					))}
@@ -31,14 +33,3 @@ export default function HorizontalTabsLink({ tabs, path }: TabsLinkProps) {
 		</div>
 	);
 }
-
-/*
-const tabs = [
-	{
-		name: 'name',
-		path: 'path',
-	},
-];
-
-<HorizontalTabsLink tabs={tabs} path='/products' />;
-*/

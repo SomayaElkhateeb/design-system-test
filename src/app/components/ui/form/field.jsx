@@ -122,7 +122,7 @@ function FormField(props) {
 						{props.label && (
 							<FormLabel
 								htmlFor={controlId}
-								className='text-sm capitalize text-zinc-700 font-semibold'
+								className='text-sm capitalize text-zinc-700 '
 								style={{ gridArea: 'label' }}
 								{...labelProps}
 							/>
@@ -148,5 +148,3 @@ function FormField(props) {
 }
 
 export default FormField;
-
-

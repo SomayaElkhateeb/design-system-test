@@ -5,36 +5,14 @@ import { AddBgIcon, DeleteExitIcon } from 'src/app/utils/icons';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import TimePickerMui from 'src/app/components/optimized/Pickers/TimePicker';
-import { BranchSettingsInterface, WeekSchedule } from './AddBranch';
-import { UseFormReturn } from 'react-hook-form';
+
+
 import FormField from 'src/app/components/ui/form/field';
+import { BranchInfoProps, WeekSchedule, fixedDay, initialDayInfo } from './HookForAddBranchForm';
 
-export interface OpenHours {
-	open: string;
-	close: string;
-}
 
-export interface DayInfo {
-	openHours: OpenHours;
-	isClosed: boolean;
-}
 
-export const initialDayInfo: WeekSchedule = {
-	Sun: { openHours: { open: '', close: '' }, isClosed: false },
-	Mon: { openHours: { open: '', close: '' }, isClosed: false },
-	Tue: { openHours: { open: '', close: '' }, isClosed: false },
-	Wed: { openHours: { open: '', close: '' }, isClosed: false },
-	Thu: { openHours: { open: '', close: '' }, isClosed: false },
-	Fri: { openHours: { open: '', close: '' }, isClosed: false },
-	Sat: { openHours: { open: '', close: '' }, isClosed: false },
-};
 
-interface BranchInfoProps {
-	formStore: UseFormReturn<BranchSettingsInterface>;
-}
-export interface fixedDay {
-	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
-}
 export default function BranchAppointments({ formStore }: BranchInfoProps) {
 	const [activeDay, setActiveDay] = useState<fixedDay['day']>('Sun');
 	const [dayInfo, setDayInfo] = useState<WeekSchedule>(initialDayInfo);

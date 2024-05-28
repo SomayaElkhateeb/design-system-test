@@ -45,6 +45,7 @@ const HomePage = () => {
 		{ title: t('Top selling'), content: data.containSelling },
 		{ title: t('Top search'), content: data.containSelling },
 		{ title: t('Top reviews'), content: data.containSelling },
+
 	];
 
 	return (

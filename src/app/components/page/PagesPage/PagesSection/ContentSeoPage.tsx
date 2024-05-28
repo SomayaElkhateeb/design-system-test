@@ -3,17 +3,16 @@ import { UseFormReturn } from 'react-hook-form';
 
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { addPageInterface } from 'src/pages/PagesPage/comp/AddPage';
+
 import CustomAutoComplete from 'src/app/components/optimized/InputsFields/AutoCompleteMultiple';
+import { addPageInterface } from '../HookForAddBlogOrPageForm';
+import SpecificAutoCompleteInput from '../../discount/Selectors/SpecificAutoCompleteInput';
 
 export interface selectItemsInterface {
 	id: string;
 	name: string;
 }
-const selectItems = [
-	{ id: '1', name: 'Dress' },
-	{ id: '2', name: 'Fashion' },
-];
+
 
 export default function ContentSeoPage({
 	formStore,
@@ -24,14 +23,7 @@ export default function ContentSeoPage({
 }) {
 	const { t } = useTranslation();
 
-	const handelAutoCompleteError = () => {
-		return (
-			formStore.watch('Metakeywords').length === 0 &&
-			formStore.formState.isSubmitted && (
-				<p className='global_error'>{'choose meta keywords required'}</p>
-			)
-		);
-	};
+	
 
 	return (
 		<div
@@ -52,23 +44,12 @@ export default function ContentSeoPage({
 				render={(field) => <Input {...field} />}
 			/>
 
-			<div className='flex-col-top-section-pages gap-0'>
-				<FormField
-					formStore={formStore}
-					name='Metakeywords'
-					label={t('Meta keywords')}
-					render={(field) => (
-						<CustomAutoComplete<selectItemsInterface>
-							placeholder={t('Type and add')}
-							getvalue={(value) => formStore.setValue('Metakeywords', value)}
-							name='Metakeywords'
-							array={selectItems}
-							MainValue={formStore.watch('Metakeywords')}
-						/>
-					)}
-				/>
-				{handelAutoCompleteError()}
-			</div>
+			
+			<SpecificAutoCompleteInput<addPageInterface>
+				name='Metakeywords'
+				label={t('Meta keywords')}
+				formStore={formStore}
+			/>
 			<FormField
 				formStore={formStore}
 				name='metaDescription'

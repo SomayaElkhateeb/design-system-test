@@ -43,7 +43,7 @@
  */
 export default function SingleChoiceChips(props) {
 	return (
-		<div className='flex gap-2 py-2'>
+		<div className='flex flex-wrap gap-2  '>
 			{/* Render each option as a chip */}
 			{props.options.map((option, index) => (
 				<Chip
@@ -69,7 +69,7 @@ export default function SingleChoiceChips(props) {
 function Chip(props) {
 	// Base styles for the chip
 	const baseStyle =
-		'flex items-center border py-1.5 px-3 w-fit rounded-full cursor-pointer transition-all';
+		'flex items-center border py-1.5 px-3 min-w-fit rounded-full cursor-pointer transition-all';
 	const notSelectedStyle = 'bg-white border-borders-lines text-subtitle hover:bg-gray-100';
 	const selectedStyle = 'bg-secondary border-secondary text-white';
 

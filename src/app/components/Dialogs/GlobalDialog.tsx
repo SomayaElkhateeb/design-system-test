@@ -4,10 +4,10 @@ export interface style {
 	position?: string;
 	top?: string;
 	left?: string;
-	height: { md: string; xs: string };
+	height?: { md: string; xs: string };
 	overflowY?: string;
 	transform?: string;
-	width: { md: string; xs: string };
+	width: { lg?: string; md: string; xs: string };
 	bgcolor?: string;
 	p?: number;
 	borderRadius?: string;
@@ -21,11 +21,12 @@ export default function GlobalDialog({
 	openDialog: boolean;
 	handleClose: (e: boolean) => void;
 	children: React.ReactNode;
-	style?: style;
+	style: style;
 }) {
 	const propStyle = {
 		...style,
 		bgcolor: 'white',
+		zIndex: 50,
 		p: 2.5,
 		borderRadius: '10px',
 		position: 'absolute',
@@ -33,9 +34,11 @@ export default function GlobalDialog({
 		left: '50%',
 		overflowY: 'auto',
 		transform: 'translate(-50%, -50%)',
+		cursor: 'default',
 	};
 	return (
 		<Modal
+			className='cursor-pointer z-40'
 			open={openDialog}
 			onClose={handleClose}
 			aria-labelledby='modal-modal-title'

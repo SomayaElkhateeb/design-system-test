@@ -1,27 +1,33 @@
-import { useState } from 'react';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import CustomerSegmentOptions from './comp/CustomerSegmentOptions';
 import { useTranslation } from 'react-i18next';
+import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { UseFormReturn } from 'react-hook-form';
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 
-const CustomerSegment = () => {
+const CustomerSegment = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
-	const [selectedSegmentType, setSelectedSegmentType] = useState<string>('');
+
 	const customerSegmentOptions = [
-		t('All customers'),
-		t('Specific customer groups'),
-		t('Specific customers'),
+		'All customers',
+		'Specific customer groups',
+		'Specific customers',
 	];
+
 	return (
-		<div className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
-			<h3 className='text-title font-semibold'>{t('Customer segment')}</h3>
+		<div className='global-cards'>
 			<section>
-				<SingleChoiceChips
+				<FormChoiceChips<newDiscountInterface>
+					formStore={formStore}
+					name='customerSegment'
+					label={t('Customer segment')}
 					options={customerSegmentOptions}
-					selected={selectedSegmentType}
-					setSelected={(option: string) => setSelectedSegmentType(option)}
 				/>
 
-				<CustomerSegmentOptions segmentOptions={selectedSegmentType} />
+				<CustomerSegmentOptions
+					formStore={formStore}
+					segmentOptions={formStore.watch('customerSegment')}
+				/>
 			</section>
 		</div>
 	);

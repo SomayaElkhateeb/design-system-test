@@ -66,3 +66,4 @@ export default function CheckBox({ variant, label, handleOnChange, classes, ...p
 		</label>
 	);
 }
+

@@ -56,7 +56,7 @@ export default function Orders() {
 		useAnalyticsData<AnaylticesOrder>(data.ordersAnalyticsTable, ordersSortFunctions);
 
 	return (
-		<div className='container mx-auto grid gap-5'>
+		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
 			<ColumnChart percentage="5" />
 			<AnalyticsTableActions

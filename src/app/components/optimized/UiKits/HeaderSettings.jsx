@@ -3,15 +3,20 @@ import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoIosArrowForward } from 'react-icons/io';
+import { PrevNextBtn } from '..';
 
 /**
  *
  * @param {{
  *  variant?: 'settingIcons' | 'settingOrder' | 'settingOneBtn' | 'settingTwoBtns' | 'settingThreeBtns' | 'settingWithIcons' |'customerInfowithIcons' |'settingBtnAndIcon';
  *  title: string | null;
- *  btn1?: { text: string; onClick: () => void };
- *  btn2?: { text: string; onClick: () => void };
- *  btn3?: { text: string; onClick: () => void };
+ *  btn1?: { text?: string; onClick?: () => void };
+ *  btn2?: { text?: string; onClick?: () => void };
+ *  btn3?: { text?: string; onClick?: () => void };
+
+ *  btn4?: { onClickPrev: () => void; onClickNext: () => void };
+ * onClickPrev?:{ onClick: () => void};
+ * onClickNext?:  { onClick: () => void};
  * 	groupIcons?: any;
  * icon?: React.ReactNode;
  * 	to?: number;
@@ -26,7 +31,7 @@ export default function HeaderSettings(props) {
 	const language = UseLanguage();
 	const navigate = useNavigate();
 	return (
-		<div className='flex items-center justify-between  bg-white h-14 container mx-auto'>
+		<div className='flex items-center justify-between  bg-white h-14 custom_container'>
 			<div className='flex items-center gap-1' onClick={props.onClick}>
 				<p className='cursor-pointer' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
@@ -49,6 +54,7 @@ export default function HeaderSettings(props) {
 						)}
 					</>
 				)}
+
 				{props.variant === 'settingOrder' && (
 					<>
 						{props.btn1 && (
@@ -67,11 +73,19 @@ export default function HeaderSettings(props) {
 								{t('Print Invoice')}
 							</ButtonWithIcon>
 						)}
-						{props.btn3 && (
-							<IconButton onClick={props.btn3.onClick}>
-								<MoreIcon />
-							</IconButton>
-						)}
+						<div className='flex items-center gap-4'>
+							{props.btn3 && (
+								<IconButton onClick={props.btn3.onClick}>
+									<MoreIcon />
+								</IconButton>
+							)}
+							{props.btn4 && (
+								<PrevNextBtn
+									onClickPrev={props.btn4.onClickPrev}
+									onClickNext={props.btn4.onClickNext}
+								/>
+							)}
+						</div>
 					</>
 				)}
 				{props.variant === 'settingOneBtn' && props.btn1 && (

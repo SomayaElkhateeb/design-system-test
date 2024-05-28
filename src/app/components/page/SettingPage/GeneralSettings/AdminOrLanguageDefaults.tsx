@@ -9,8 +9,9 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
+import { languageSettingsInterface } from '../LanguageSettings/HookForLanguageSettings';
 
-import { languageSettingsInterface } from 'src/pages/SettingsPage/LanguageSettings';
+
 export default function AdminOrLanguageDefaults({
 	formStore,
 	title,

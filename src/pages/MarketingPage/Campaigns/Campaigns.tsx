@@ -13,7 +13,7 @@ const Campaigns = () => {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages container mx-auto gap-4'>
+			<div className='flex-col-top-section-pages custom_container gap-4'>
 				<CampaignStatus />
 
 				<CampaignBtns
@@ -22,7 +22,6 @@ const Campaigns = () => {
 					data={campaindata}
 					campaignTableRef={campaignTableRef}
 				/>
-
 				<CampaignTable sortBy={selectedOption} ref={campaignTableRef} />
 			</div>
 		</>
