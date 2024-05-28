@@ -6,17 +6,18 @@ import useCustomCheckOutForm, { checkOutInterface } from './HookCheckoutForm';
 import ChoosePurchase from '../Comp/ChoosePurchase';
 import { EditIcon } from 'src/app/utils/icons';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getImageUrl } from 'src/app/utils';
-export default function CheckoutForm() {
+import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+export default function CheckoutForm({
+	handleChckOutFormForm,
+}: {
+	handleChckOutFormForm: () => void;
+}) {
 	const { t } = useTranslation();
-	const [purchase, setPurchase] = useState('onLine');
+
 	// custom hook
 	const { handelDefaultValue, checkOutSchema } = useCustomCheckOutForm();
-
-	useEffect(() => {
-		setPurchase(formStore.watch('purchase'));
-	}, [formStore]);
 
 	const handleSubmit = (values: checkOutInterface) => {
 		console.log(values);
@@ -30,24 +31,42 @@ export default function CheckoutForm() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3'>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-5'>
 				<div className='flex-col-top-section-pages gap-4'>
-					<ChoosePurchase formStore={formStore} />
+					{/* <FormChoiceChips<checkOutInterface>
+						formStore={formStore}
+						name='purchase'
+						label={t('Payment methods')}
+						options={['Commercial branch', 'Warehouse']}
+					/> */}
 				</div>
-				<Row title={t('Payment method')} arrOptions={['Cash']} />
-				<Row title={t('Delivery method')} arrOptions={['Shipping']} />
-				<Row
-					title={t('Shipping method')}
-					arrOptions={[
-						<div className='flex items-center gap-1'>
-							<img src={getImageUrl('companies/dhl.svg')} alt='DHL Logo' />
-							DHL (main)
-						</div>,
-					]}
+
+				<FormChoiceChips<checkOutInterface>
+					checkoutForm
+					formStore={formStore}
+					name='payment'
+					label={t('Payment methods')}
+					options={['Cash']}
+				/>
+				<FormChoiceChips<checkOutInterface>
+					checkoutForm
+					formStore={formStore}
+					name='delivery'
+					label={t('Delivery method')}
+					options={['Shipping']}
+				/>
+				<FormChoiceChips<checkOutInterface>
+					checkoutForm
+					formStore={formStore}
+					name='shipping'
+					label={t('Shipping method')}
+					options={['DHL (main)']}
 				/>
 
 				<div className='flex-btn-end'>
-					<Button variant='secondary'>{t('Discard')}</Button>
+					<Button onClick={handleChckOutFormForm} variant='secondary'>
+						{t('Discard')}
+					</Button>
 					<Button onClick={onSubmit} variant='primary'>
 						{t('Save')}
 					</Button>
