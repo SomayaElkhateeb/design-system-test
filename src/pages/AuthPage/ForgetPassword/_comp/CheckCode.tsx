@@ -6,6 +6,7 @@ import { Input } from 'src/app/components/ui/input';
 import { getImageUrl } from 'src/app/utils';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z, ZodObject, ZodRawShape } from 'zod';
+import AuthImage from '../../_comp/AuthImage';
 
 interface CheckCodeProps {
 	usePhone: boolean;
@@ -45,9 +46,9 @@ const CheckCode: FC<CheckCodeProps> = ({ usePhone, setIsVerified }) => {
 	});
 
 	return (
-		<section className='flex justify-between w-full items-center'>
-			<div className='w-2/6'>
-				<div className='w-full max-w-sm bg-white p-8 rounded-md shadow-md'>
+		<section className='flex flex-col items-center w-full py-12 lg:flex-row lg:justify-between lg:space-x-8'>
+			<div className='w-full lg:w-2/5 p-3'>
+				<div className='w-full mx-w-xl bg-white p-8 rounded-md shadow-md'>
 					<h2 className='mb-6 text-2xl font-semibold text-gray-800'>
 						Check your {usePhone ? 'phone' : 'email'}
 					</h2>
@@ -88,9 +89,7 @@ const CheckCode: FC<CheckCodeProps> = ({ usePhone, setIsVerified }) => {
 					</Form>
 				</div>
 			</div>
-			<div className='w-3/6 flex justify-center'>
-				<img src={getImageUrl('images/register_1.svg')} alt='Verification' />
-			</div>
+			<AuthImage path='images/register_1.svg' />
 		</section>
 	);
 };

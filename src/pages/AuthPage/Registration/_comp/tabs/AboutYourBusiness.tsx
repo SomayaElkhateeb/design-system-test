@@ -3,19 +3,18 @@ import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { getImageUrl } from 'src/app/utils';
 import { useForm } from 'src/app/utils/hooks/form';
+import AuthImage from 'src/pages/AuthPage/_comp/AuthImage';
 import { z, ZodObject, ZodRawShape } from 'zod';
 
 const AboutYourBusiness: FC = () => {
 	return (
-		<section className='flex justify-between w-full items-center'>
-			<div className='w-2/6'>
+		<section className='flex flex-col lg:flex-row justify-between w-full items-center py-12 space-y-16 lg:space-y-0 lg:space-x-8'>
+			<div className='w-full lg:w-2/5'>
 				<CreateStoreForm />
 			</div>
-			<div className='w-3/6'>
-				<img src={getImageUrl('images/register_2.svg')} alt='' />
-			</div>
+
+			<AuthImage path='images/register_2.svg' />
 		</section>
 	);
 };

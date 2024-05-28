@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Steps from 'src/app/components/optimized/UiKits/Steps';
-import { getImageUrl } from 'src/app/utils';
 import StepOne from '../steps/StepOne';
 import StepTwo from '../steps/StepTwo';
+import AuthImage from 'src/pages/AuthPage/_comp/AuthImage';
 
 const AboutYourself = () => {
 	const [login, setLogin] = useState(false);
@@ -48,8 +48,8 @@ const CreateStore = () => {
 
 const LoginStep = ({ setLogin }) => {
 	return (
-		<section className='flex justify-between w-full'>
-			<div className='flex flex-col bg-gray-100 p-4 py-8 w-3/6'>
+		<section className='flex flex-col lg:flex-row justify-between w-full items-center py-12 space-y-16 lg:space-y-0 lg:space-x-8'>
+			<div className='flex flex-col bg-gray-100 p-4 py-8 w-full lg:w-2/5 items-center'>
 				<button
 					className='w-full max-w-xs py-2 mb-4 text-white bg-primary rounded-md'
 					onClick={() => setLogin(true)}
@@ -84,9 +84,7 @@ const LoginStep = ({ setLogin }) => {
 					</a>
 				</div>
 			</div>
-			<div className='w-3/6'>
-				<img src={getImageUrl('images/register_1.svg')} alt='' />;
-			</div>
+			<AuthImage path='images/register_1.svg' />
 		</section>
 	);
 };
