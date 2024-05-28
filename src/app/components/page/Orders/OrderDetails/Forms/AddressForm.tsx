@@ -59,22 +59,20 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 							label={t('Country')}
 							name='country'
 							render={(field) => (
-								
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Egypt' />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value='egypt'>Egypt</SelectItem>
-											<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
-										</SelectContent>
-									</Select>
-								
+								<Select
+									onValueChange={field.onChange}
+									value={field.value}
+									required={field.required}
+									name={field.name}
+								>
+									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+										<SelectValue placeholder='Egypt' />
+									</SelectTrigger>
+									<SelectContent>
+										<SelectItem value='egypt'>Egypt</SelectItem>
+										<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
+									</SelectContent>
+								</Select>
 							)}
 						/>
 
@@ -83,22 +81,20 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 							label={t('City')}
 							name='city'
 							render={(field) => (
-								
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Cairo' />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value='cairo'>Cairo</SelectItem>
-											<SelectItem value='riyadh'>Riyadh</SelectItem>
-										</SelectContent>
-									</Select>
-								
+								<Select
+									onValueChange={field.onChange}
+									value={field.value}
+									required={field.required}
+									name={field.name}
+								>
+									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+										<SelectValue placeholder='Cairo' />
+									</SelectTrigger>
+									<SelectContent>
+										<SelectItem value='cairo'>Cairo</SelectItem>
+										<SelectItem value='riyadh'>Riyadh</SelectItem>
+									</SelectContent>
+								</Select>
 							)}
 						/>
 
@@ -141,7 +137,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 					</div>
 				</div>
 
-				<div className='flex justify-end items-center gap-4'>
+				<div className='flex-btn-end'>
 					<Button onClick={handleAddressForm} variant='secondary'>
 						{t('Discard')}
 					</Button>

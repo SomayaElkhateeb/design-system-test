@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 import CampaignInfoCard from '../Campaigns/CampaignInfoCard';
 import { useTranslation } from 'react-i18next';
 
-export default function CampainElement() {
+export default function CampaignElement() {
 	//  hooks
 	const {t}=useTranslation()
 	const [searchParams] = useSearchParams();

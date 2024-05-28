@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+
 import { NewCampaign, NewDiscount, PlatformSetup } from '.';
 import CampainElement from '../CampainElement/CampainElement';
 
@@ -18,7 +19,7 @@ const MarketingConfig = () => {
 		case platformKey:
 			return <PlatformSetup platform={platform} />;
 		default:
-			return <CampainElement />;
+			return <CampaignElement />;
 	}
 };
 
