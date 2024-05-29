@@ -77,7 +77,7 @@ const OtpVerification: FC<OtpVerificationProps> = ({ onFinish }) => {
 						<div className='text-center mb-4'>
 							<p className='text-gray-600 text-sm'>
 								Didn’t receive the code?
-								<button onClick={handleResend} className='text-primary hover:text-blue-700 ml-1'>
+								<button onClick={handleResend} className='text-primary hover:text-blue-700 ms-1'>
 									Resend
 								</button>
 							</p>

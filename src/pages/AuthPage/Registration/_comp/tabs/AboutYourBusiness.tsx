@@ -99,7 +99,7 @@ const CreateStoreForm: FC = () => {
 								className='h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500'
 								{...formStore.register('agreed')}
 							/>
-							<span className='ml-2 text-sm text-gray-600'>
+							<span className='ms-2 text-sm text-gray-600'>
 								I agree to{' '}
 								<a href='#' className='text-indigo-600 hover:underline'>
 									Terms and Conditions

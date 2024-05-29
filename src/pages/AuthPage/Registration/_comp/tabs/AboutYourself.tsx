@@ -65,7 +65,7 @@ const LoginStep = ({ setLogin }) => {
 					<img
 						src='https://www.google.com/images/icons/product/search-32.gif'
 						alt='Google Icon'
-						className='w-5 h-5 mr-2'
+						className='w-5 h-5 me-2'
 					/>
 					Continue with Google
 				</button>
@@ -73,7 +73,7 @@ const LoginStep = ({ setLogin }) => {
 					<img
 						src='https://www.facebook.com/images/fb_icon_325x325.png'
 						alt='Facebook Icon'
-						className='w-5 h-5 mr-2'
+						className='w-5 h-5 me-2'
 					/>
 					Continue with Facebook
 				</button>
