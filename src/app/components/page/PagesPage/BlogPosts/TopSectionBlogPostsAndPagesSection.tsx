@@ -28,7 +28,7 @@ export default function TopSectionBlogPostsAndSection({
 
 	return (
 		<div className='flex-col-top-section-pages'>
-			<div className='flex-row-global justify-between'>
+			<div className='topTable'>
 				{/*  left dropdow */}
 
 				<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>

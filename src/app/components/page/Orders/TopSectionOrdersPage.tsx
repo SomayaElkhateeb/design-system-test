@@ -45,7 +45,7 @@ export default function TopSectionOrdersPage({
 
 	return (
 		<div className='flex-col-top-section-pages'>
-			<div className='flex-row-global justify-between'>
+			<div className='topTable'>
 				{/*  left dropdow */}
 
 				<Button
