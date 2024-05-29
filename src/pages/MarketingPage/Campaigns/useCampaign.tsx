@@ -64,12 +64,14 @@ export default function useCampaign(target: string) {
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 		specificInterests:
 			target === 'having specific interests'
-				? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-				  )
+				? z
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.default([])
 				: z
 						.optional(
 							z.array(
@@ -79,18 +81,20 @@ export default function useCampaign(target: string) {
 								}),
 							),
 						)
+						.default([])
 						.or(z.literal('')),
-		products: z.array(
-			z.object({
-				id: z.string().min(1),
-				name: z.string().min(1),
-			}),
-		),
+		products: z
+			.array(
+				z.object({
+					id: z.string().min(1),
+					name: z.string().min(1),
+				}),
+			)
+			.default([]),
 	};
-
-	const handelDefaultValue = () => {
+	const handleDefaultValue = () => {
 		return {
-			targetSimilarPeople: t('having specific interests'),
+			targetSimilarPeople: 'having specific interests',
 			specificInterests: [],
 			campaignName: '',
 			activityName: '',
@@ -109,8 +113,8 @@ export default function useCampaign(target: string) {
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: newCampaignSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
+		handleSubmit: handleSubmit, //error
+		defaultValues: handleDefaultValue(),
 	});
 
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
