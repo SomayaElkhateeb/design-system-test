@@ -26,27 +26,27 @@ const ContactCard: React.FC<IData> = ({
 	contain,
 }) => {
 	return (
-		<div className='cardDetails-sharedClass p-5'>
-			<div className='flex justify-between items-center'>
-				<h3 className='text-title font-semibold'>{title}</h3>
+		<div className='cardDetails-sharedClass  flex-col-top-section-pages gap-4 p-5'>
+			<div className='flex-row-global justify-between '>
+				<h3 className='title'>{title}</h3>
 				{form ? ' ' : children}
 			</div>
 
 			{form ? (
 				contain
 			) : contacts ? (
-				<div className='flex flex-col gap-3 pt-4'>
+				<div className='flex-col-top-section-pages gap-3 '>
 					{data.map((e) => (
-						<div className='flex items-center gap-2' key={e.id}>
+						<div className='flex-row-global gap-2' key={e.id}>
 							{e.icon}
 							<p className='text-title text-sm'>{e.contact}</p>
 						</div>
 					))}
 				</div>
 			) : (
-				<div className='flex flex-col gap-1.5 pt-4'>
+				<div className='flex-col-top-section-pages gap-1.5 '>
 					{data.map((e) => (
-						<p className='flex items-center justify-between' key={e.id}>
+						<p className='flex-col-top-section-pages justify-between flex-row' key={e.id}>
 							<span className='text-subtitle text-sm'>{e.name}:</span>
 							<span className='text-title text-sm'>SAR {e.value}</span>
 						</p>

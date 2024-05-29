@@ -32,8 +32,7 @@ export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as DiscountTypesOptionsCo } from './Coupons/DiscountTypesOptionsCo';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';
 export { default as DiscountTypesOptions } from './discount/Comp/DiscountTypesOptions';
-export { default as CustomerSegmentCo } from './Coupons/CustomerSegmentCo';
-export { default as CustomerSegmentOptions } from './Coupons/CustomerSegmentOptionsCo';
+
 export { default as SpecificCustomersCo } from './Coupons/SelectorsCo/SpecificCustomersCo';
 export { default as SpecificGroupCo } from './Coupons/SelectorsCo/SpecificGroupsCo';
 export { default as MinimumRequirementsCo } from './Coupons/MinimumRequirementsCo';

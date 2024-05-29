@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import AccordionCard from 'src/app/components/optimized/UiKits/AccordionCard';
 import { GroupIcons, HeaderSettings } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';

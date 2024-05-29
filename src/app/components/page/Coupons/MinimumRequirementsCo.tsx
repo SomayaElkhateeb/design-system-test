@@ -37,11 +37,13 @@ const MinimumRequirementsCo = ({ formStore }: { formStore: UseFormReturn<addCoup
 	);
 
 	return (
-		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
+		<section className='global-cards'>
 			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
-
-			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
-
+			<CheckBox
+				label={t('define minimum requirements')}
+				handleOnChange={handleCheckboxChange}
+				checked={isChecked}
+			/>
 			{isChecked && (
 				<>
 					<SingleChoiceChips

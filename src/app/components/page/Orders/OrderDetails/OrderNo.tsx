@@ -6,15 +6,15 @@ import { OrderStatus } from '../..';
 export default function OrderNo() {
 	const [showOrderStatus, setShowOrderStatus] = useState(false);
 	const { t } = useTranslation();
-	const flexClass = 'flex gap-1.5 items-center';
+	const flexClass = 'flex gap-1.5 items-center md:flex';
 	return (
 		<div className='capitalize global-cards grid lg:grid-cols-6'>
-			<div className='col-span-1  flex-col-top-section-pages  gap-2 relative after:absolute after:h-[100%] after:lg:w-[1px] after:bg-constrained after:right-[-10%] after:top-0'>
+			<div className='col-span-1  flex-col-top-section-pages  gap-2 relative after:absolute after:h-[100%] after:lg:w-[1px] after:bg-constrained after:right-[-5%] after:top-0'>
 				<p className='subtitle'>{t('order No')}.</p>
 				<p className='title  '>#8965742</p>
 			</div>
 
-			<div className='lg:col-span-3 flex-col-top-section-pages  gap-2 subtitle'>
+			<div className='col-span-3 flex-col-top-section-pages gap-2 subtitle '>
 				<div className={flexClass}>
 					<p>{t('payment status')}:</p>
 					<button onClick={() => setShowOrderStatus(true)} className='flex text-warning capitalize'>
@@ -29,14 +29,16 @@ export default function OrderNo() {
 					</button>
 				</div>
 			</div>
-			<div className='lg:col-span-2 flex-col-top-section-pages lg:items-end justify-between gap-2'>
+			<div className='col-span-2 flex-col-top-section-pages lg:items-end justify-between gap-2'>
 				<h2 className='title  '>SAR 1000.00</h2>
 				<p className='subtitle'>
 					<span>15/10/2020</span> {t('at')} <span>12:05</span> AM
 				</p>
 			</div>
 
-			{showOrderStatus && <OrderStatus   showOrderStatus={showOrderStatus} onClose={() => setShowOrderStatus(false)} />}
+			{showOrderStatus && (
+				<OrderStatus showOrderStatus={showOrderStatus} onClose={() => setShowOrderStatus(false)} />
+			)}
 		</div>
 	);
 }

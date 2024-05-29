@@ -6,42 +6,51 @@ import { Input } from 'src/app/components/ui/input';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
-interface State {
+export interface State {
 	selectedMinimumRequirements: string;
 	isChecked: boolean;
 }
 
-const initialState: State = {
+export const initialState: State = {
 	selectedMinimumRequirements: '',
 	isChecked: false,
 };
 
-const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
+const MinimumRequirements = ({
+	formStore,
+	updateState,
+	setUpdateState,
+}: {
+	formStore: UseFormReturn<newDiscountInterface>;
+	updateState:State,
+	setUpdateState:(e:any)=>void
+}) => {
 	const { t } = useTranslation();
-	const [updateState, setUpdateState] = useState<State>(initialState);
+
 	const { selectedMinimumRequirements, isChecked } = updateState;
 
 	// Update state
 	const update = (newValue: Partial<State>) => {
-		setUpdateState((prevState) => ({
-			...prevState,
-			...newValue,
-		}));
+		setUpdateState((prevState:State) => ({ ...prevState, ...newValue }));
 	};
 
 	const handleCheckboxChange = (newValue: boolean) => {
-		update({ isChecked: newValue });
+		setUpdateState((prevState:State) => ({
+			...prevState,
+			isChecked: newValue,
+		}));
 	};
-	const minimumRequirementsOptions = [t('Minimum price'), t('Minimum quantity')].map(
-		(option) => option,
-	);
+	const minimumRequirementsOptions = ['Minimum price', 'Minimum quantity'];
 
 	return (
-		<section className='bg-white w-full border border-constrained rounded-md p-[1rem] flex flex-col gap-[1rem]'>
-			<h3 className='text-title font-semibold'>{t('Minimum requirements')}</h3>
+		<section className='global-cards'>
+			<h3 className='title'>{t('Minimum requirements')}</h3>
 
-			<CheckBox label={t('define minimum requirements')} handleOnChange={handleCheckboxChange} />
-
+			<CheckBox
+				label={t('define minimum requirements')}
+				handleOnChange={handleCheckboxChange}
+				checked={isChecked}
+			/>
 			{isChecked && (
 				<>
 					<SingleChoiceChips
@@ -50,7 +59,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 						setSelected={(option: string) => update({ selectedMinimumRequirements: option })}
 					/>
 
-					{selectedMinimumRequirements === t('Minimum price') && (
+					{selectedMinimumRequirements === 'Minimum price' && (
 						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}
@@ -60,7 +69,7 @@ const MinimumRequirements = ({ formStore }: { formStore: UseFormReturn<newDiscou
 							/>
 						</div>
 					)}
-					{selectedMinimumRequirements === t('Minimum quantity') && (
+					{selectedMinimumRequirements === 'Minimum quantity' && (
 						<div className='md:w-[24rem]'>
 							<FormField
 								formStore={formStore}

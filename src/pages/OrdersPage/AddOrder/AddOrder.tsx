@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { HeaderSettings, VerticalTabs } from 'src/app/components/optimized';
 import { AddCheckout, Address, Customer, Products } from 'src/app/components/page';
+import { Form } from 'src/app/components/ui/form';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
@@ -25,8 +26,8 @@ export default function AddOrder() {
 	];
 	return (
 		<>
-			<HeaderSettings title={t('add new order')} />
-			<div className='container mx-auto py-5'>
+			<HeaderSettings title={t('add new order')} submit />
+			<div className='container mx-0 py-5 w-3/4'>
 				<VerticalTabs tabs={tabs} />
 			</div>
 		</>

@@ -10,7 +10,7 @@ const address = [
 ];
 
 const info = [
-	{ id: nanoid(), name: 'IP Address: ', value: '213.156.160.96' },
-	{ id: nanoid(), name: 'Accepts email marketing:', value: 'No' },
+	{ id: nanoid(), name: 'IP Address ', value: '213.156.160.96' },
+	{ id: nanoid(), name: 'Accepts email marketing', value: 'No' },
 ];
 export { address, info };

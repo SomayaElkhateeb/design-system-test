@@ -5,16 +5,24 @@ import { UseLanguage } from './app/components/CustomHook/LanguageHook';
 import RootLayout from './pages/RootLayout';
 import { ErrorPage } from './pages';
 import { routes } from './routes';
+import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
+import LoginPage from './pages/AuthPage/Login/LoginPage';
+import ForgetPassword from './pages/AuthPage/ForgetPassword/ForgetPassword';
 
 // Create browser router instance
 
 const router = createBrowserRouter([
+	// RootLayout Routes
 	{
 		path: '/',
 		element: <RootLayout />,
 		errorElement: <ErrorPage />,
 		children: routes,
 	},
+	// Registration Routes
+	{ path: '/register', element: <RegistrationPage /> },
+	{ path: '/login', element: <LoginPage /> },
+	{ path: '/forget_password', element: <ForgetPassword /> },
 ]);
 
 // App component

@@ -11,14 +11,14 @@ export default function CustomerForm({ handleCustomerForm }: { handleCustomerFor
 	const { t } = useTranslation();
 
 	// custom hook
-	const { handelDefaultValue, customerSchema } = useOrderCustomerForm();
+	const { handelDefaultValue, orderCustomerSchema } = useOrderCustomerForm();
 
 	const handleSubmit = (values: OrdercustomerFormInterface) => {
 		console.log(values);
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: customerSchema,
+		schema: orderCustomerSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -30,43 +30,37 @@ export default function CustomerForm({ handleCustomerForm }: { handleCustomerFor
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex flex-col gap-4'>
-				<div className='flex flex-col gap-4'>
-					<div className='flex justify-between items-center w-full'>
-						<h2 className='text-sm text-title'>{t('Name')}</h2>
-						<FormField
-							formStore={formStore}
-							name='name'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-4 '>
+				<div className='flex-col-top-section-pages gap-4'>
+					<FormField
+						formStore={formStore}
+						label={t('Name')}
+						name='name'
+						render={(field) => <Input {...field} placeholder={''} />}
+					/>
 
-					<div className='flex justify-between items-center'>
-						<h2 className='text-sm text-title'>{t('Email')}</h2>
-						<FormField
-							formStore={formStore}
-							name='email'
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					</div>
+					<FormField
+						formStore={formStore}
+						label={t('Email')}
+						name='email'
+						render={(field) => <Input {...field} placeholder={''} />}
+					/>
 
-					<div className='flex justify-between items-center'>
-						<h2 className='text-sm text-title'>{t('Phone')}</h2>
-						<FormField
-							formStore={formStore}
-							name='phone'
-							render={(field) => (
-								<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
-							)}
-						/>
-					</div>
+					<FormField
+						formStore={formStore}
+						label={t('Phone')}
+						name='phone'
+						render={(field) => (
+							<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
+						)}
+					/>
 				</div>
 				{/* btns */}
 				<div className='flex justify-end items-center gap-4'>
 					<Button onClick={handleCustomerForm} variant='secondary'>
 						{t('Discard')}
 					</Button>
-					<Button onClick={handleSubmitBtn} variant='primary'>
+					<Button  onClick={handleSubmitBtn} variant='primary'>
 						{t('Save')}
 					</Button>
 				</div>

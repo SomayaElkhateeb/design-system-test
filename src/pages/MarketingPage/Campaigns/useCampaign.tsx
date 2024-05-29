@@ -16,24 +16,21 @@ export interface ActiveDates {
 }
 export interface CampaignInputsTypes {
 	targetSimilarPeople: string;
-	specificInterests: string[];
 	campaignName: string;
 	activityName: string;
-	adText: string;
-	budget: number;
 	activeDates: ActiveDates;
-	details: string;
+	details?: string;
+	budget: number;
 	selectedInterests?: selectItemsInterface[];
 	products: selectItemsInterface[];
 }
-type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
-
-const ActiveDatesValues = {
+export type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
+export const ActiveDatesValues = {
 	startActivation: { startDate: new Date(), startTime: '00:00' },
 	endActivation: { endDate: new Date(), endTime: '00:00' },
 };
 
-const activeDatesSchema = z.object({
+export const activeDatesSchema = z.object({
 	startActivation: z.object({
 		startDate: z.date({ required_error: 'Start date is required' }),
 		startTime: z
@@ -49,7 +46,8 @@ const activeDatesSchema = z.object({
 });
 // time picker in HH:MM format
 
-export default function useCampaign(target: string) {
+export default function useCampaign(target?: string) {
+
 	const { t } = useTranslation();
 
 	const newCampaignSchema = {
@@ -59,13 +57,21 @@ export default function useCampaign(target: string) {
 		targetSimilarPeople: z
 			.string()
 			.min(1, { message: 'Target similar people selection is required' }),
+
 		adText: z.string().min(1, { message: 'Ad text is required' }),
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
-		specificInterests:
+		selectedInterests:
 			target === 'having specific interests'
-				? z
-						.array(
+				? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+				  )
+				: z.optional(
+						z.array(
+
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
@@ -90,15 +96,15 @@ export default function useCampaign(target: string) {
 					name: z.string().min(1),
 				}),
 			)
-			.default([]),
 	};
-	const handleDefaultValue = () => {
+			
+	const handelDefaultValue = () => {
 		return {
-			targetSimilarPeople: 'having specific interests',
-			specificInterests: [],
+			targetSimilarPeople: t('having specific interests'),
+			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
-			adText: '',
+      adText: '',
 			products: [],
 			details: '',
 			budget: 0,
@@ -117,9 +123,9 @@ export default function useCampaign(target: string) {
 		defaultValues: handleDefaultValue(),
 	});
 
+	const updatedDates = { ...activeDates };
 	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
 		if (value) {
-			const updatedDates = { ...activeDates };
 			if (type === 'startDate') {
 				updatedDates.startActivation.startDate = value.toDate();
 			} else if (type === 'startTime') {
@@ -130,12 +136,12 @@ export default function useCampaign(target: string) {
 				updatedDates.endActivation.endTime = value.format('HH:mm');
 			}
 			setActiveDates(updatedDates);
-			formStore.setValue('activeDates', updatedDates);
 		}
 	};
 	return {
 		formStore,
 		onSubmit,
+		updatedDates,
 		activeDates,
 		endDateEnabled,
 		setEndDateEnabled,
