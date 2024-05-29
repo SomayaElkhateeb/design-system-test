@@ -11,7 +11,9 @@ import SharedActiveDate from 'src/app/components/page/discount/SharedActiveDate'
 
 export default function BudgetDetails({ formStore }: CampaignFormProps) {
 	const { t } = useTranslation();
+
 	const { activeDates, endDateEnabled, setEndDateEnabled, handleDateTimeChange } = useCampaign('');
+
 	return (
 		<div className='global-cards grid grid-cols-2'>
 			<h2 className='title text-lg col-span-2'>{t('Budget & Active dates')}</h2>
