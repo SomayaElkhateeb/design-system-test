@@ -12,11 +12,11 @@ const NewCampaign = () => {
 	const [target, setTarget] = useState('having specific interests');
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { formStore, onSubmit,updatedDates } = useCampaign(target);
+	const { formStore, onSubmit, updatedDates } = useCampaign(target);
 
 	useEffect(() => {
 		setTarget(formStore.watch('targetSimilarPeople'));
-	}, [formStore]);
+	}, [formStore.watch('targetSimilarPeople')]);
 
 	useEffect(() => {
 		formStore.setValue('activeDates', updatedDates);
@@ -24,9 +24,9 @@ const NewCampaign = () => {
 		updatedDates.startActivation.startDate,
 		updatedDates.startActivation.startTime,
 		updatedDates.endActivation.endDate,
-		updatedDates.endActivation.endTime
+		updatedDates.endActivation.endTime,
 	]);
-	
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>

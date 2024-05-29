@@ -44,10 +44,9 @@ export const activeDatesSchema = z.object({
 			.regex(/^([01]\d|2[0-3]):([0-5]\d)$/, { message: 'Invalid end time format' }),
 	}),
 });
-// time picker in HH:MM format
+
 
 export default function useCampaign(target?: string) {
-
 	const { t } = useTranslation();
 
 	const newCampaignSchema = {
@@ -57,8 +56,6 @@ export default function useCampaign(target?: string) {
 		targetSimilarPeople: z
 			.string()
 			.min(1, { message: 'Target similar people selection is required' }),
-
-		adText: z.string().min(1, { message: 'Ad text is required' }),
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 		selectedInterests:
@@ -69,15 +66,6 @@ export default function useCampaign(target?: string) {
 							name: z.string().min(1),
 						}),
 				  )
-				: z.optional(
-						z.array(
-
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						)
-						.default([])
 				: z
 						.optional(
 							z.array(
@@ -87,24 +75,22 @@ export default function useCampaign(target?: string) {
 								}),
 							),
 						)
-						.default([])
-						.or(z.literal('')),
-		products: z
-			.array(
-				z.object({
-					id: z.string().min(1),
-					name: z.string().min(1),
-				}),
-			)
+						.default([]),
+
+		products: z.array(
+			z.object({
+				id: z.string().min(1),
+				name: z.string().min(1),
+			}),
+		),
 	};
-			
+
 	const handelDefaultValue = () => {
 		return {
-			targetSimilarPeople: t('having specific interests'),
+			targetSimilarPeople:'having specific interests',
 			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
-      adText: '',
 			products: [],
 			details: '',
 			budget: 0,
@@ -119,8 +105,8 @@ export default function useCampaign(target?: string) {
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: newCampaignSchema,
-		handleSubmit: handleSubmit, //error
-		defaultValues: handleDefaultValue(),
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
 	});
 
 	const updatedDates = { ...activeDates };
