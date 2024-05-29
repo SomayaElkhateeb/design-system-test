@@ -43,7 +43,7 @@
  */
 export default function SingleChoiceChips(props) {
 	return (
-		<div className='flex flex-wrap gap-2 py-2'>
+		<div className='flex flex-wrap gap-2  '>
 			{/* Render each option as a chip */}
 			{props.options.map((option, index) => (
 				<Chip
@@ -86,7 +86,7 @@ function Chip(props) {
 	);
 }
 
-SingleChoiceChips.defaultProps = {
-	icon: null,
-	type: 'array',
-};
+// SingleChoiceChips.defaultProps = {
+// 	icon: null,
+// 	type: 'array',
+// };

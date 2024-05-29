@@ -27,7 +27,7 @@ const LegalDetails = ({
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>
 					<SingleChoiceChips
-						options={[t('individual'), t('Business')]}
+						options={['individual', 'Business']}
 						selected={state}
 						setSelected={(option: string) => setState(option)}
 					/>

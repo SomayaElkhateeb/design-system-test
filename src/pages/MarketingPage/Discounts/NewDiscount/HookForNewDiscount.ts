@@ -1,5 +1,14 @@
 import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import { z } from 'zod';
+import {
+	ActiveDates,
+	ActiveDatesValues,
+	DateTimeType,
+	activeDatesSchema,
+} from '../../Campaigns/useCampaign';
+import { useState } from 'react';
+import { Dayjs } from 'dayjs';
+import { useForm } from 'src/app/utils/hooks/form';
 
 export interface newDiscountInterface {
 	discountName: string;
@@ -17,20 +26,23 @@ export interface newDiscountInterface {
 	customerSegment: string;
 	specificCustomerGroup?: selectItemsInterface[];
 	specificCustomer?: selectItemsInterface[];
-	miniPrice: number;
-	miniQuantity: number;
 
-	//?
-	date?: {
-		year: number;
-		month: number;
-		day: number;
-	} | null;
-
+	miniPrice?: number;
+	miniQuantity?: number;
+	activeDates: ActiveDates;
 	active: boolean;
+	limitOneCustomer: boolean
+	UsageNumber?: number
 }
 
-export default function useCustomHookNewDiscount() {
+export default function useCustomHookNewDiscount(
+	discountType?: string,
+	applyToType?: string,
+	productXtoYType?: string | undefined,
+	customerSegment?: string,
+	selectedMinimumRequirements?: string,
+	isCheck?: boolean
+) {
 	const handelDefaultValue = () => {
 		return {
 			discountName: '',
@@ -50,17 +62,117 @@ export default function useCustomHookNewDiscount() {
 			specificCustomer: [],
 			miniPrice: 0,
 			miniQuantity: 0,
-			date: null,
+			activeDates: ActiveDatesValues,
 			active: false,
+			limitOneCustomer: false,
+			UsageNumber: 0
 		};
 	};
 
 	const discountSchema = (
-		discountType: string,
-		applyToType: string,
-		productXtoYType: string | undefined,
-		customerSegment: string,
 	) => {
+		const arrayValidation = {
+			specificCategories:
+				applyToType === 'Specific category'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					),
+			specificProducts:
+				applyToType === 'Specific products'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					),
+			selectProductsX:
+				applyToType === 'Buy x get y'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					),
+			selectProductsY:
+				applyToType === 'Buy x get y'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					),
+			specificCustomerGroup:
+				customerSegment === 'Specific customer groups'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					),
+
+			specificCustomer:
+				customerSegment === 'Specific customers'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					),
+		}
+
+		// /////////////////////
+		// /////////////////////
 		return {
 			discountName: z.string().min(3).max(60),
 			discountType: z.string().min(3),
@@ -74,54 +186,7 @@ export default function useCustomHookNewDiscount() {
 					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			applyToType: z.string().min(3),
 
-			specificCategories:
-				applyToType === 'Specific category'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
-			specificProducts:
-				applyToType === 'Specific products'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
-			selectProductsX:
-				applyToType === 'Buy x get y'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+
 			ProductXToProductYType:
 				applyToType === 'Buy x get y'
 					? z.string().min(1)
@@ -129,82 +194,71 @@ export default function useCustomHookNewDiscount() {
 			percentageGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)),
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
 			quantityGets:
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)),
-
-			selectProductsY:
-				applyToType === 'Buy x get y'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
-
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
 			customerSegment: z.string().min(3),
-			specificCustomerGroup:
-				customerSegment === 'Specific customer groups'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+			miniPrice: selectedMinimumRequirements === "Minimum price"
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
-			specificCustomer:
-				customerSegment === 'Specific customers'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
-					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+			miniQuantity: selectedMinimumRequirements === "Minimum quantity"
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 
-			miniPrice: z.coerce.number().min(1),
-			miniQuantity: z.coerce.number().min(1),
-
-			date: z
-				.object({
-					year: z.coerce.number().positive().min(2024),
-					month: z.coerce.number().positive().min(1).max(12),
-					day: z.coerce.number().positive().min(1).max(31),
-				})
-				.nullable()
-				.optional(),
+			activeDates: activeDatesSchema,
 
 			active: z.boolean(),
+			limitOneCustomer: z.boolean().default(false),
+
+			UsageNumber: isCheck
+				? z.coerce.number().positive().min(1)
+				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+			...arrayValidation
 		};
+	};
+	// ///////////////////////////////////
+	// ////////////////////////////////////
+	const [activeDates, setActiveDates] = useState<ActiveDates>(ActiveDatesValues);
+	const [endDateEnabled, setEndDateEnabled] = useState(false);
+	// //////////////////////
+	// /////////////////////
+	const handleSubmit = (values: newDiscountInterface) => {
+		console.log(values);
+	};
+	const { formStore, onSubmit } = useForm({
+		schema: discountSchema(),
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
+	// ////////////////////////
+	// ///////////////////////
+	const updatedDates = { ...activeDates };
+	const handleDateTimeChange = (type: DateTimeType, value: Dayjs | null) => {
+		if (value) {
+			if (type === 'startDate') {
+				updatedDates.startActivation.startDate = value.toDate();
+			} else if (type === 'startTime') {
+				updatedDates.startActivation.startTime = value.format('HH:mm');
+			} else if (type === 'endDate') {
+				updatedDates.endActivation.endDate = value.toDate();
+			} else if (type === 'endTime') {
+				updatedDates.endActivation.endTime = value.format('HH:mm');
+			}
+			setActiveDates(updatedDates);
+		}
 	};
 
 	return {
-		handelDefaultValue,
+		formStore,
+		onSubmit,
 		discountSchema,
+		activeDates,
+		endDateEnabled,
+		setEndDateEnabled,
+		handleDateTimeChange,
+		updatedDates,
 	};
 }

@@ -14,11 +14,6 @@ const targetingOptions = [
 export default function TargetingDetails({ formStore }: CampaignFormProps) {
 	const { t } = useTranslation();
 
-	//!---------------------------------------------------
-	// todo:  didn't finish yet.
-	// todo:  Linking the interest array to the formStore.
-	//!---------------------------------------------------
-
 	return (
 		<div className='global-cards grid grid-cols-2'>
 			<h2 className='title text-lg'>{t('Targeting')}</h2>
@@ -30,7 +25,7 @@ export default function TargetingDetails({ formStore }: CampaignFormProps) {
 			/>
 			{formStore.watch('targetSimilarPeople') === 'having specific interests' && (
 				<SpecificAutoCompleteInput<CampaignFormProps>
-					name='specificInterests'
+					name='selectedInterests'
 					label={t('Specific interests')}
 					formStore={formStore}
 				/>

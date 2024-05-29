@@ -33,8 +33,8 @@ export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 	});
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex flex-col gap-3 p-3'>
-				<div className='w-[50%]'>
+			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3 p-3'>
+				<div className='lg:w-[65%] w-full'>
 					<FormField
 						formStore={formStore}
 						name='note'
@@ -42,7 +42,7 @@ export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 						render={(field) => <Textarea {...field} placeholder={'Type a note'} />}
 					/>
 				</div>
-				<div className='flex justify-end items-center gap-4'>
+				<div className='flex-row-global justify-end  gap-4'>
 					<Button onClick={onClose} variant='secondary'>
 						{t('Discard')}
 					</Button>

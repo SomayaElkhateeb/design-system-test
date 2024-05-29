@@ -33,29 +33,10 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 					</div>
 
 					<ProductItem formStore={formStore} />
-					<div>
-						<hr />
-						<div className='flex items-center justify-between pt-3'>
-							<p className='text-subtitle text-sm'>{t('Sub Total')}</p>
-							<p className='text-title text-sm'>SAR 450.00</p>
-						</div>
-					</div>
-
-					{/* form */}
+					<Row title={t('Sub Total')} hr />
 					<FormItem formStore={formStore} />
-
-					<div className='flex items-center justify-between'>
-						<p className='text-subtitle text-sm'>{t('Tax')}</p>
-						<p className='text-title text-sm'>SAR 450.00</p>
-					</div>
-
-					<div>
-						<hr />
-						<div className='flex items-center justify-between py-3'>
-							<p className='text-subtitle text-sm uppercase'>{t('total')}</p>
-							<p className='text-title text-sm'>SAR 450.00</p>
-						</div>
-					</div>
+					<Row title={t('Tax')} />
+					<Row title={t('total')} hr />
 					<div className='flex justify-end items-center gap-4'>
 						<Button onClick={onClose} variant='secondary'>
 							{t('Discard')}
@@ -94,6 +75,18 @@ function FormItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
 				name='shipping'
 				render={(field) => <Input type='number' {...field} placeholder={''} />}
 			/>
+		</div>
+	);
+}
+
+function Row({ title, price = 450, hr }: { title: string; price?: number; hr?: React.ReactNode }) {
+	return (
+		<div>
+			{hr && <hr />}
+			<div className='flex items-center justify-between py-3'>
+				<p className='text-subtitle text-sm uppercase'>{title}</p>
+				<p className='text-title text-sm'>SAR {price}.00</p>
+			</div>
 		</div>
 	);
 }
