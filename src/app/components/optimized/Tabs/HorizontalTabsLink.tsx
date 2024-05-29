@@ -19,12 +19,12 @@ export default function HorizontalTabsLink({ tabs, path }: TabsLinkProps) {
 							<Link
 								className={`inline-block p-2 rounded-t-lg  ${
 									tabName === tab.path
-										? 'text-primary title border-b-2 border-primary'
-										: 'text-hint paragraph hover:text-primary'
+										? 'text-primary md:font-semibold font-[500] md:border-b-2 border-b-[.08rem] md:text-[1rem] text-[.6rem] border-primary'
+										: 'text-hint md:paragraph text-[.5rem] hover:text-primary'
 								}`}
 								to={`${path}/${tab.path}`}
 							>
-								{t(tab.name)}
+								{t(tab.name as any)}
 							</Link>
 						</li>
 					))}
