@@ -6,6 +6,7 @@ import { productInventoryBranchesSchema } from './sections/Stock/utils';
 import { productShippingSchema } from './sections/Shipping/utils';
 import { productSeoSchema } from './sections/Seo/utils';
 import { productFaqsSchema } from './sections/Faqs/utils';
+import { productOptionsAndVariationsSchema } from './sections/OptionsAndVariations/utils';
 
 export const ProductSchema = {
 	imagesMedia: z.array(z.instanceof(File)),
@@ -19,7 +20,7 @@ export const ProductSchema = {
 	...productInventoryBranchesSchema,
 	...productShippingSchema,
 	// more advanced shipping options???
-	// Options & Variants
+	...productOptionsAndVariationsSchema,
 	// options: z.array(
 	...productSeoSchema,
 	...productFaqsSchema,

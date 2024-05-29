@@ -994,6 +994,9 @@ export const english = {
 	'Answer questions people frequently ask about your product':
 		'Answer questions people frequently ask about your product',
 	'Meta Description': 'Meta Description',
-	'Answer questions people frequently ask about your product':
-		'Answer questions people frequently ask about your product',
+	'Options & Variations': 'Options & Variations',
+	'Allow your customers to select from options such as Size and Color on your website.':
+		'Allow your customers to select from options such as Size and Color on your website.',
+	'Add Option': 'Add Option',
+	'Add Question': 'Add Question',
 };
