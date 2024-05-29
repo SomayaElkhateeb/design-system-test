@@ -64,14 +64,12 @@ export default function useCampaign(target: string) {
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
 		specificInterests:
 			target === 'having specific interests'
-				? z
-						.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						)
-						.default([])
+				? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+				  )
 				: z
 						.optional(
 							z.array(
@@ -81,16 +79,13 @@ export default function useCampaign(target: string) {
 								}),
 							),
 						)
-						.default([])
 						.or(z.literal('')),
-		products: z
-			.array(
-				z.object({
-					id: z.string().min(1),
-					name: z.string().min(1),
-				}),
-			)
-			.default([]),
+		products: z.array(
+			z.object({
+				id: z.string().min(1),
+				name: z.string().min(1),
+			}),
+		),
 	};
 	const handleDefaultValue = () => {
 		return {
