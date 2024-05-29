@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 import DeliveryPayment from './DeliveryPayment';
-import HandelWithBankAndCashButton from './handelWithBankAndCashButton';
+import HandelWithBankAndCashButton from './HandelWithBankAndCashButton';
 interface PopupState {
 	delivery: boolean;
 	pickup: boolean;

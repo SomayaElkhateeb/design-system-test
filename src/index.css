@@ -186,7 +186,7 @@ object {
 		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
 	.customer-border {
-		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
+		@apply md:w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
 	}
 	.splide__pagination__page {
 		background: transparent !important;
@@ -201,6 +201,9 @@ object {
 	}
 	.global_error {
 		@apply text-sm font-medium text-destructive;
+	}
+	.topTable{
+		@apply md:flex-row-global flex-col-top-section-pages items-start justify-between
 	}
 
 	.flex-col-top-section-pages {

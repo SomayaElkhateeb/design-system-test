@@ -4,21 +4,25 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from 'src/app/components/ui/card';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import Button from '../../../Buttons/Button';
+import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { Label } from 'src/app/components/ui/label';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
-function InventoryBranches(props) {
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
+function ProductInventoryBranches(props) {
 	const { t } = useTranslation();
 	const { fields, append, remove, prepend } = useFieldArray({
 		control: props.formStore.control,
-		name: 'generalInfo.branches',
+		name: 'branches',
 	});
 
 	return (
 		<>
-			<Label className='font-semibold '>{t('Inventory Branches')}</Label>
+			<Label className='font-semibold capitalize'>{t('Inventory branches')}</Label>
 
 			<table>
 				<thead>
@@ -33,7 +37,7 @@ function InventoryBranches(props) {
 							<td className='w-10/12 py-2'>
 								<FormField
 									formStore={props.formStore}
-									name={`generalInfo.branches.${index}.name`}
+									name={`branches.${index}.name`}
 									render={(field) => (
 										<Input
 											{...field}
@@ -47,7 +51,7 @@ function InventoryBranches(props) {
 							<td className='w-2/12 py-2'>
 								<FormField
 									formStore={props.formStore}
-									name={`generalInfo.branches.${index}.quantity`}
+									name={`branches.${index}.quantity`}
 									render={(field) => (
 										<Input
 											{...field}
@@ -72,13 +76,17 @@ function InventoryBranches(props) {
 				className='px-0 border-0'
 			>
 				<FaCirclePlus className='size-5' />
-				{t('AddAdd New branch')}
+				{t('Add New branch')}
 			</Button>
 		</>
 	);
 }
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 export default function ProductFormStockSection(props) {
 	const { t } = useTranslation();
 
@@ -90,13 +98,13 @@ export default function ProductFormStockSection(props) {
 			<CardContent className='flex flex-col gap-4'>
 				<FormField
 					formStore={props.formStore}
-					name='generalInfo.quantity'
+					name='quantity'
 					label={t('Price')}
 					render={(field) => <Input {...field} type='number' />}
 				/>
 				<FormField
 					formStore={props.formStore}
-					name='generalInfo.canContinueSellingWhenOutOfStock'
+					name='canContinueSellingWhenOutOfStock'
 					label={{
 						children: t('Can continue selling when out of stock'),
 						className: 'self-center mt-0.5',
@@ -114,7 +122,7 @@ export default function ProductFormStockSection(props) {
 				/>
 				{/* ??? */}
 				{/* TODO: to be implemented */}
-				<InventoryBranches formStore={props.formStore} />
+				<ProductInventoryBranches formStore={props.formStore} />
 			</CardContent>
 		</Card>
 	);

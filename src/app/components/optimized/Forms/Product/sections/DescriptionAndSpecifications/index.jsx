@@ -4,7 +4,11 @@ import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Textarea } from 'src/app/components/ui/textarea';
 import TabsBuilder from 'src/app/components/builders/Tabs';
 
-/** @type {import('src/app/components/builders/Tabs').TabsBuilderItem<{ formStore: import("..").ProductFormStore; }>[]} */
+/**
+ * @template TFormStore
+ *
+ * @type {import('src/app/components/builders/Tabs').TabsBuilderItem<import('./types.ts').Props<TFormStore>>[]}
+ */
 const tabsItems = [
 	{
 		title: 'Description',
@@ -14,10 +18,10 @@ const tabsItems = [
 				<TabbedFormField
 					formStore={props.formStore}
 					keys={[
-						{ name: 'generalInfo.descriptionEn', label: 'En' },
-						{ name: 'generalInfo.descriptionAr', label: 'عربي' },
+						{ name: 'descriptionEn', label: 'En' },
+						{ name: 'descriptionAr', label: 'عربي' },
 					]}
-					label={`${t('Product name')} (${t('Required')})`}
+					label={`${t('Product Name')} (${t('Required')})`}
 					renderer={(field) => <Textarea {...field} required />}
 				/>
 			);
@@ -32,7 +36,11 @@ const tabsItems = [
 	},
 ];
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types.ts').Props<TFormStore>} props
+ */
 export default function ProductFormDescriptionAndSpecificationsSection(props) {
 	return (
 		<Card>

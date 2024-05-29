@@ -32,7 +32,7 @@ export default function TopSectionInventoryTable() {
 
 	return (
 		<div className='flex-col-top-section-pages'>
-			<div className='flex-row-global justify-between'>
+			<div className='topTable'>
 				{/*  left select box */}
 
 				<FormControl sx={{ width: '12rem', backgroundColor: 'white' }}>

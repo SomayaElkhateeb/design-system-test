@@ -70,21 +70,8 @@ export default function useCustomHookNewDiscount(
 	};
 
 	const discountSchema = (
-
 	) => {
-		return {
-			discountName: z.string().min(3).max(60),
-			discountType: z.string().min(3),
-			discountValue:
-				discountType === 'Fixed amount'
-					? z.coerce.number().positive().min(1)
-					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
-			discountPercentage:
-				discountType === 'Percentage'
-					? z.coerce.number().positive().min(1)
-					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
-			applyToType: z.string().min(3),
-
+		const arrayValidation = {
 			specificCategories:
 				applyToType === 'Specific category'
 					? z.array(
@@ -100,7 +87,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z.array(
@@ -116,7 +103,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z.array(
@@ -132,20 +119,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
-			ProductXToProductYType:
-				applyToType === 'Buy x get y'
-					? z.string().min(1)
-					: z.optional(z.string().min(1)).or(z.literal('')),
-			percentageGets:
-				productXtoYType === 'Specify percentage'
-					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
-			quantityGets:
-				productXtoYType === 'Specify percentage'
-					? z.coerce.number().positive().min(0).max(100)
-					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
-
+					).default([]),
 			selectProductsY:
 				applyToType === 'Buy x get y'
 					? z.array(
@@ -161,9 +135,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
-
-			customerSegment: z.string().min(3),
+					).default([]),
 			specificCustomerGroup:
 				customerSegment === 'Specific customer groups'
 					? z.array(
@@ -179,7 +151,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 
 			specificCustomer:
 				customerSegment === 'Specific customers'
@@ -196,10 +168,38 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
+		}
+
+		// /////////////////////
+		// /////////////////////
+		return {
+			discountName: z.string().min(3).max(60),
+			discountType: z.string().min(3),
+			discountValue:
+				discountType === 'Fixed amount'
+					? z.coerce.number().positive().min(1)
+					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+			discountPercentage:
+				discountType === 'Percentage'
+					? z.coerce.number().positive().min(1)
+					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+			applyToType: z.string().min(3),
 
 
-
+			ProductXToProductYType:
+				applyToType === 'Buy x get y'
+					? z.string().min(1)
+					: z.optional(z.string().min(1)).or(z.literal('')),
+			percentageGets:
+				productXtoYType === 'Specify percentage'
+					? z.coerce.number().positive().min(0).max(100)
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
+			quantityGets:
+				productXtoYType === 'Specify percentage'
+					? z.coerce.number().positive().min(0).max(100)
+					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
+			customerSegment: z.string().min(3),
 			miniPrice: selectedMinimumRequirements === "Minimum price"
 				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
@@ -216,6 +216,7 @@ export default function useCustomHookNewDiscount(
 			UsageNumber: isCheck
 				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+			...arrayValidation
 		};
 	};
 	// ///////////////////////////////////

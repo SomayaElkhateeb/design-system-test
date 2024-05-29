@@ -31,3 +31,10 @@ export { default as CustomerSegment } from './discount/Comp/CustomerSegment/Cust
 export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';
 export { default as DiscountTypesOptions } from './discount/Comp/DiscountTypesOptions';
+
+
+export { default as SpecificCustomersCo } from './Coupons/SelectorsCo/SpecificCustomersCo';
+export { default as SpecificGroupCo } from './Coupons/SelectorsCo/SpecificGroupsCo';
+export { default as MinimumRequirementsCo } from './Coupons/MinimumRequirementsCo';
+export { default as ActiveDatesCo } from './Coupons/ActiveDatesCo';
+

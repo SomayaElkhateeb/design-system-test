@@ -6,19 +6,23 @@ import {
 	CardHeader,
 	CardTitle,
 } from 'src/app/components/ui/card';
-import Button from '../../../Buttons/Button';
+import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
-export default function ProductFormOptionsAndVariationsSection(props) {
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
+export default function ProductFormFaqsSection(props) {
 	const { t } = useTranslation();
 
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>{t('Options & Variations')}</CardTitle>
+				<CardTitle>{t('FAQs')}</CardTitle>
 				<CardDescription className='text-gray-400'>
-					{t('Allow your customers to select from options such as Size and Color on your website.')}
+					{t('Answer questions people frequently ask about your product')}
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='flex flex-col gap-4'>
@@ -30,7 +34,7 @@ export default function ProductFormOptionsAndVariationsSection(props) {
 					className='px-0 border-0'
 				>
 					<FaCirclePlus className='size-5' />
-					{t('Add Option')}
+					{t('Add Question')}
 				</Button>
 			</CardContent>
 		</Card>

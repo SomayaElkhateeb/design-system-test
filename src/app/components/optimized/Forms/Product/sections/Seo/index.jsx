@@ -13,15 +13,19 @@ import { Textarea } from 'src/app/components/ui/textarea';
 import { useWatch } from 'react-hook-form';
 import { useState } from 'react';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 function SearchResultsPreview(props) {
 	const title = useWatch({
 		control: props.formStore.control,
-		name: 'generalInfo.pageTitle',
+		name: 'pageTitle',
 	});
 	const metaDescription = useWatch({
 		control: props.formStore.control,
-		name: 'generalInfo.metaDescription',
+		name: 'metaDescription',
 	});
 
 	return (
@@ -69,12 +73,16 @@ function SearchResultsPreview(props) {
 	// );
 }
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 function MetaKeywordsFormField(props) {
 	const { t } = useTranslation();
 	const metaKeywords = useWatch({
 		control: props.formStore.control,
-		name: 'generalInfo.metaKeywords',
+		name: 'metaKeywords',
 	});
 	const [keyword, setKeyword] = useState('');
 
@@ -93,7 +101,7 @@ function MetaKeywordsFormField(props) {
 					onClick={() => {
 						const newKeywords = new Set(metaKeywords);
 						newKeywords.add(keyword);
-						props.formStore.setValue('generalInfo.metaKeywords', [...newKeywords]);
+						props.formStore.setValue('metaKeywords', [...newKeywords]);
 					}}
 				>
 					<FaCirclePlus className='text-primary-500' />
@@ -111,7 +119,7 @@ function MetaKeywordsFormField(props) {
 						className='text-gray-300'
 						onClick={() => {
 							const newKeywords = metaKeywords.filter((key) => key !== keyword);
-							props.formStore.setValue('generalInfo.metaKeywords', newKeywords);
+							props.formStore.setValue('metaKeywords', newKeywords);
 						}}
 					>
 						x<span className='sr-only'>{t('Remove')}</span>
@@ -122,7 +130,11 @@ function MetaKeywordsFormField(props) {
 	);
 }
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 export default function SeoFormFaqsSection(props) {
 	const { t } = useTranslation();
 
@@ -131,27 +143,27 @@ export default function SeoFormFaqsSection(props) {
 			<CardHeader>
 				<CardTitle>{t('SEO (Search engine listing preview)')}</CardTitle>
 				<CardDescription className='text-gray-400'>
-					{t('Answer qustions people frequently ask about your product')}
+					{t('Answer questions people frequently ask about your product')}
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='flex flex-col gap-4'>
 				<SearchResultsPreview formStore={props.formStore} />
 				<FormField
 					formStore={props.formStore}
-					name='generalInfo.pageTitle'
+					name='pageTitle'
 					label={t('Page Title')}
 					render={(field) => <Input {...field} placeholder={t('e.g., T-Shirt')} />}
 				/>
 				{/* <FormField
 						formStore={props.formStore}
-						name='generalInfo.link'
+						name='link'
 						label={t('Link')}
 						render={(field) => <Input {...field} placeholder={t('e.g., https://artisan.dookan.net/t-shirt')} />}
 					/> */}
 				<MetaKeywordsFormField formStore={props.formStore} />
 				<FormField
 					formStore={props.formStore}
-					name='generalInfo.metaDescription'
+					name='metaDescription'
 					label={t('Meta Description')}
 					render={(field) => <Textarea {...field} placeholder={t('Short description')} />}
 				/>

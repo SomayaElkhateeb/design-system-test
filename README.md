@@ -1,4 +1,4 @@
-- [Figma Design](https://www.figma.com/file/wZrZGIUg1Ui6ePJBXjBW27/Dookan?type=design&node-id=0%3A1&mode=dev&t=48iiEkLA13ccyQt5-1)
+- [Figma Design](https://www.figma.com/design/wZrZGIUg1Ui6ePJBXjBW27/Dookan?node-id=0-1&t=32di23QMb3eQtsVF-0)
 
 import { LiaSearchSolid } from "react-icons/lia";
 

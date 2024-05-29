@@ -10,11 +10,10 @@ const CustomerSegmentOptions = ({
 	segmentOptions: string;
 	formStore: UseFormReturn<newDiscountInterface>;
 }) => {
-	const { t } = useTranslation();
 	return (
 		<div>
-			{segmentOptions === t('Specific customer groups') && <SpecificGroups formStore={formStore} />}
-			{segmentOptions === t('Specific customers') && <SpecificCustomers formStore={formStore} />}
+			{segmentOptions === 'Specific customer groups' && <SpecificGroups formStore={formStore} />}
+			{segmentOptions === 'Specific customers' && <SpecificCustomers formStore={formStore} />}
 		</div>
 	);
 };

@@ -1,51 +1,43 @@
 import { z } from 'zod';
-import { selectItemsInterface } from '../../../AddCustomer/GeneralInfoCustomerForm';
+
 
 export interface checkOutInterface {
-	purchase: string;
-	onLine: boolean;
-	branch: selectItemsInterface[];
-	payment: boolean;
-	delivery: boolean;
-	shipping: boolean;
+	purchase: string
+	branch?: string;
+	payment: string;
+	delivery: string;
+	shipping: string;
 }
 
-export default function useCustomCheckOutForm() {
+export default function useCustomCheckOutForm(purchase: string) {
 	const handelDefaultValue = () => {
 		return {
-			purchase: 'onLine',
-			onLine: false,
-			branch: [],
-			payment: false,
-			delivery: false,
-			shipping: false,
+			purchase: 'branch',
+			branch: "",
+			payment: "Cash",
+			delivery: "Shipping",
+			shipping: "DHL (main)",
 		};
 	};
 
-	const checkOutSchema = (purchase: string) => {
-		return {
-			purchase: z.string().min(3),
-			onLine: purchase === 'onLine' ? z.boolean().default(true) : z.boolean().default(false),
+	const checkOutSchema = () => {
+		const stringValidation = z.string().min(3)
+		const branchValidation = {
 			branch:
 				purchase === 'branch'
-					? z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-					  )
+					? stringValidation
 					: z.optional(
-							z.array(
-								z.object({
-									id: z.string().min(1),
-									name: z.string().min(1),
-								}),
-							),
-					  ),
+						stringValidation
+					).or(z.literal("")),
 
-			payment: z.boolean().default(false),
-			delivery: z.boolean().default(false),
-			shipping: z.boolean().default(false),
+		}
+
+		return {
+			purchase: stringValidation,
+			...branchValidation,
+			payment: stringValidation,
+			delivery: stringValidation,
+			shipping: stringValidation,
 		};
 	};
 
