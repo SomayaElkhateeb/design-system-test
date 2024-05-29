@@ -78,7 +78,7 @@ export default function GeneralInfoCustomerForm({
 						)}
 					/>
 					<div className='flex-col-top-section-pages gap-[.25rem]'>
-						<h2 className='title text-sm'>{t('Email subscribtion')}</h2>
+						<h2 className='title text-sm'>{t('Email subscription')}</h2>
 						<p className='subtitle text-sm'>{t('Customer agreed to receive marketing emails')}</p>
 					</div>
 				</div>
