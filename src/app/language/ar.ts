@@ -979,4 +979,10 @@ export const arabic = {
 		'السماح لعملائك باختيار الخيارات مثل الحجم واللون على موقع الويب الخاص بك.',
 	'Add Option': 'إضافة خيار',
 	'Add Question': 'إضافة سؤال',
+	Pricing: 'التسعير',
+	'Discount price': 'سعر الخصم',
+	Optional: 'اختياري',
+	'Cost price': 'سعر التكلفة',
+	'Taxable product': 'منتج خاضع للضريبة',
+	'Add Bulk Pricing': 'إضافة تسعير الجملة',
 } satisfies typeof english;

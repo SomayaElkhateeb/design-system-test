@@ -999,4 +999,10 @@ export const english = {
 		'Allow your customers to select from options such as Size and Color on your website.',
 	'Add Option': 'Add Option',
 	'Add Question': 'Add Question',
+	Pricing: 'Pricing',
+	'Discount price': 'Discount price',
+	Optional: 'Optional',
+	'Cost price': 'Cost price',
+	'Taxable product': 'Taxable product',
+	'Add Bulk Pricing': 'Add Bulk Pricing',
 };
