@@ -30,7 +30,7 @@ export default function CustomersGroups() {
 	return (
 		<div className=' flex flex-col gap-[1rem]'>
 			{/*  top section */}
-			<div className='flex justify-between items-center'>
+			<div className='topTable'>
 				{/*  add customers button */}
 				<Button
 					variant='primary'

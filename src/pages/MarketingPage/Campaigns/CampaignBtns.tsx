@@ -53,8 +53,8 @@ const CampaignBtns = ({
 	};
 
 	return (
-		<div className='flex flex-col gap-5'>
-			<div className='flex justify-between items-center'>
+		<div className='flex-col-top-section-pages'>
+			<div className='topTable'>
 				<Button
 					onClick={() => {
 						navigate('/marketing/campaigns/addCampaign');

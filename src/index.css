@@ -202,6 +202,9 @@ object {
 	.global_error {
 		@apply text-sm font-medium text-destructive;
 	}
+	.topTable{
+		@apply md:flex-row-global flex-col-top-section-pages items-start justify-between
+	}
 
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1.2rem];

@@ -14,7 +14,6 @@ import {
 } from 'src/app/components/ui/select';
 import { generalSettingsInterface } from './HookForGeneralForm';
 
-
 const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	//  hooks
 	const { t } = useTranslation();
