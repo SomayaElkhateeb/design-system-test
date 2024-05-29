@@ -7,18 +7,50 @@ import {
 	SelectValue,
 	SelectItem,
 } from 'src/app/components/ui/select';
-import Button from '../../../Buttons/Button';
+import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { Dialog, DialogContent, DialogTrigger } from 'src/app/components/ui/dialog';
+import BrandForm from '../../../Brand';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
-export default function ProductFormCategoryField(props) {
+function BrandDialog() {
+	const { t } = useTranslation();
+
+	return (
+		<Dialog>
+			<DialogTrigger>
+				<Button
+					variant='secondary'
+					textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
+					className='border-input border-s-0 rounded-s-none'
+				>
+					<FaCirclePlus className='size-5' />
+					{t('Add New')}
+				</Button>
+			</DialogTrigger>
+			<DialogContent className='p-8'>
+				<BrandForm
+					handleSubmit={(values) => {
+						console.log(values);
+					}}
+				/>
+			</DialogContent>
+		</Dialog>
+	);
+}
+
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
+export default function ProductFormBrandField(props) {
 	const { t } = useTranslation();
 
 	return (
 		<FormField
 			formStore={props.formStore}
-			name='generalInfo.category'
-			label={t('Category')}
+			name='Brand'
+			label={t('Brand')}
 			render={(field) => (
 				<div className='flex'>
 					<Select
@@ -41,14 +73,7 @@ export default function ProductFormCategoryField(props) {
 							<SelectItem value='system'>System</SelectItem>
 						</SelectContent>
 					</Select>
-					<Button
-						variant='secondary'
-						textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-						className='border-input border-s-0 rounded-s-none'
-					>
-						<FaCirclePlus className='size-5' />
-						{t('Add New')}
-					</Button>
+					<BrandDialog />
 				</div>
 			)}
 		/>

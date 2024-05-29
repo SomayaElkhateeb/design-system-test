@@ -3,40 +3,44 @@ import { Card, CardContent, CardHeader, CardTitle } from 'src/app/components/ui/
 import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
-import ProductFormCategoryField from '../fields/Category';
+import ProductFormCategoryField from '../../fields/Category';
+import { Props } from './types';
+import ProductFormBrandField from '../../fields/Brand';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
-export default function ProductFormBasicInfoSection(props) {
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types.ts').Props<TFormStore>} props
+ */
+export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFormStore>) {
 	const { t } = useTranslation();
-	// console.log(
-	// 	"`${t('Product name')} (${t('Required')})`",
-	// 	`${t('Product name')} (${t('Required')})`,
-	// );
+
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>{t('Basic Info')}</CardTitle>
+				<CardTitle>{t('Basic info')}</CardTitle>
 			</CardHeader>
 			<CardContent>
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
 					<TabbedFormField
 						formStore={props.formStore}
 						keys={[
-							{ name: 'generalInfo.nameEn', label: 'En' },
-							{ name: 'generalInfo.nameAr', label: 'عربي' },
+							{ name: 'nameEn', label: 'En' },
+							{ name: 'nameAr', label: 'عربي' },
 						]}
-						label={`${t('Product name')} (${t('Required')})`}
+						label={`${t('Product Name')} (${t('Required')})`}
 						renderer={(field) => <Input {...field} required />}
 					/>
 					<FormField
 						formStore={props.formStore}
-						name='generalInfo.sku'
-						label={t('Sku')}
+						name='sku'
+						label={t('SKU')}
 						render={(field) => <Input {...field} />}
 					/>
 					{/* Category field will be here */}
 					<ProductFormCategoryField formStore={props.formStore} />
 					{/* Brand field will be here */}
+					<ProductFormBrandField formStore={props.formStore} />
 				</div>
 			</CardContent>
 		</Card>

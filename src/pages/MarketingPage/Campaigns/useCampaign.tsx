@@ -25,7 +25,6 @@ export interface CampaignInputsTypes {
 	products: selectItemsInterface[];
 }
 export type DateTimeType = 'startDate' | 'startTime' | 'endDate' | 'endTime';
-
 export const ActiveDatesValues = {
 	startActivation: { startDate: new Date(), startTime: '00:00' },
 	endActivation: { endDate: new Date(), endTime: '00:00' },
@@ -46,7 +45,9 @@ export const activeDatesSchema = z.object({
 	}),
 });
 // time picker in HH:MM format
+
 export default function useCampaign(target?: string) {
+
 	const { t } = useTranslation();
 
 	const newCampaignSchema = {
@@ -57,9 +58,9 @@ export default function useCampaign(target?: string) {
 			.string()
 			.min(1, { message: 'Target similar people selection is required' }),
 
+		adText: z.string().min(1, { message: 'Ad text is required' }),
 		activeDates: activeDatesSchema,
 		details: z.optional(z.string().min(1, { message: 'Ad text is required' })).or(z.literal('')),
-
 		selectedInterests:
 			target === 'having specific interests'
 				? z.array(
@@ -70,26 +71,40 @@ export default function useCampaign(target?: string) {
 				  )
 				: z.optional(
 						z.array(
+
 							z.object({
 								id: z.string().min(1),
 								name: z.string().min(1),
 							}),
-						),
-				  ),
-		products: z.array(
-			z.object({
-				id: z.string().min(1),
-				name: z.string().min(1),
-			}),
-		),
+						)
+						.default([])
+				: z
+						.optional(
+							z.array(
+								z.object({
+									id: z.string().min(1),
+									name: z.string().min(1),
+								}),
+							),
+						)
+						.default([])
+						.or(z.literal('')),
+		products: z
+			.array(
+				z.object({
+					id: z.string().min(1),
+					name: z.string().min(1),
+				}),
+			)
 	};
-
+			
 	const handelDefaultValue = () => {
 		return {
 			targetSimilarPeople: t('having specific interests'),
 			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
+      adText: '',
 			products: [],
 			details: '',
 			budget: 0,
@@ -104,8 +119,8 @@ export default function useCampaign(target?: string) {
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: newCampaignSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
+		handleSubmit: handleSubmit, //error
+		defaultValues: handleDefaultValue(),
 	});
 
 	const updatedDates = { ...activeDates };

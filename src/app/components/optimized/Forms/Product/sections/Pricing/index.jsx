@@ -4,22 +4,26 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from 'src/app/components/ui/card';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import Button from '../../../Buttons/Button';
+import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 function ProfitField(props) {
 	const { t } = useTranslation();
-	const price = useWatch({ name: 'generalInfo.price' });
-	const discountPrice = useWatch({ name: 'generalInfo.discountPrice' });
-	const costPrice = useWatch({ name: 'generalInfo.costPrice' });
+	const price = useWatch({ name: 'price', control: props.formStore.control });
+	const discountPrice = useWatch({ name: 'discountPrice', control: props.formStore.control });
+	const costPrice = useWatch({ name: 'costPrice', control: props.formStore.control });
 
 	const profit = Number(price || 0) + Number(costPrice || 0) - Number(discountPrice || 0);
 
 	return (
 		<FormField
 			formStore={props.formStore}
-			name='generalInfo.price'
+			name='price'
 			label={t('Profit')}
 			render={() => (
 				<Input
@@ -34,7 +38,11 @@ function ProfitField(props) {
 	);
 }
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 export default function ProductFormPricingSection(props) {
 	const { t } = useTranslation();
 
@@ -47,26 +55,26 @@ export default function ProductFormPricingSection(props) {
 				<div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
 					<FormField
 						formStore={props.formStore}
-						name='generalInfo.price'
+						name='price'
 						label={t('Price')}
 						render={(field) => <Input {...field} type='number' />}
 					/>
 					<FormField
 						formStore={props.formStore}
-						name='generalInfo.discountPrice'
+						name='discountPrice'
 						label={`${t('Discount price')} (${t('Optional')})`}
 						render={(field) => <Input {...field} type='number' />}
 					/>
 					<FormField
 						formStore={props.formStore}
-						name='generalInfo.costPrice'
+						name='costPrice'
 						label={`${t('Cost price')} (${t('Optional')})`}
 						render={(field) => <Input {...field} type='number' />}
 					/>
 					<ProfitField formStore={props.formStore} />
 					<FormField
 						formStore={props.formStore}
-						name='generalInfo.isTaxable'
+						name='isTaxable'
 						label={{
 							children: t('Taxable product'),
 							className: 'self-center mt-0.5',

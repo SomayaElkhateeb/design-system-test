@@ -39,7 +39,8 @@ const CategorySchema = {
 	link: z.string().url(),
 	descriptionEn: z.string().min(10).max(1000),
 	descriptionAr: z.string().min(10).max(1000),
-	image: z.instanceof(File),
+	groupPosterImage: z.instanceof(File),
+	bannerImage: z.instanceof(File),
 	isAvailable: z.boolean().default(true),
 };
 
@@ -71,31 +72,62 @@ export default function CategoryForm(props) {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col'>
 				<div className='flex gap-4'>
-					<div>
-						<FormField
-							formStore={formStore}
-							name='image'
-							render={({ onChange, value, ...field }) => (
-								<FileInput
-									className='flex flex-col items-center justify-center gap-2 size-32'
-									{...field}
-									options={getDefaultFileInputOptions({
-										accept: { 'image/*': [] },
-										setError: (error) => {
-											// console.log('error', error);
-											formStore.setError('image', { message: error.message });
-										},
-										onFileLoad: (params) => {
-											// console.log('params', params);
-											onChange(params.file);
-										},
-									})}
-								>
-									<UploadCloudIcon />
-									<p>Category poster</p>
-								</FileInput>
-							)}
-						/>
+					<div className='flex flex-col gap-4 w-28'>
+						<div>
+							<FormField
+								formStore={formStore}
+								name='groupPosterImage'
+								render={({ onChange, value, ...field }) => (
+									<FileInput
+										className='flex flex-col items-center justify-center text-center gap-2 h-28'
+										{...field}
+										options={getDefaultFileInputOptions({
+											accept: { 'image/*': [] },
+											setError: (error) => {
+												// console.log('error', error);
+												formStore.setError('groupPosterImage', { message: error.message });
+											},
+											onFileLoad: (params) => {
+												// console.log('params', params);
+												onChange(params.file);
+											},
+										})}
+									>
+										<UploadCloudIcon />
+										<p>{t('Group poster')}</p>
+									</FileInput>
+								)}
+							/>
+							<p className='textx-gray text-center'>{t('1:1 Size')}</p>
+						</div>
+
+						<div>
+							<FormField
+								formStore={formStore}
+								name='bannerImage'
+								render={({ onChange, value, ...field }) => (
+									<FileInput
+										className='flex flex-col items-center justify-center text-center gap-2 h-24'
+										{...field}
+										options={getDefaultFileInputOptions({
+											accept: { 'image/*': [] },
+											setError: (error) => {
+												// console.log('error', error);
+												formStore.setError('bannerImage', { message: error.message });
+											},
+											onFileLoad: (params) => {
+												// console.log('params', params);
+												onChange(params.file);
+											},
+										})}
+									>
+										<UploadCloudIcon />
+										<p>{t('Add banner')}</p>
+									</FileInput>
+								)}
+							/>
+							<p className='textx-gray text-center'>{t('16:9 Size')}</p>
+						</div>
 					</div>
 					<div className='flex flex-col flex-grow gap-4'>
 						<TabbedFormField
@@ -141,6 +173,7 @@ export default function CategoryForm(props) {
 					</div>
 				</div>
 				<div className='flex justify-end'>
+					{}
 					<Button type='submit' className='px-4'>
 						{t('Add')}
 					</Button>
