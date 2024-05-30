@@ -5,16 +5,16 @@ import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import {  TableCell } from '@mui/material';
+import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import { IoIosArrowBack } from 'react-icons/io';
-
-import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
 import { Switch } from 'src/app/components/ui/switch';
-
+import { nanoid } from 'nanoid';
+import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
+import { MdDelete } from 'react-icons/md';
 export default function BrandsTable() {
 	//  hooks
 	const language = UseLanguage();
@@ -49,7 +49,19 @@ export default function BrandsTable() {
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn =
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	// //////////////////////
+	// /////////////////////
+	const settingMenus = [
+		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
+		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+		{ id: nanoid(), text: 'brand products', icon: <OrdersIcon className='fill-subtitle' /> },
 
+		{
+			id: nanoid(),
+			text: 'Delete brand',
+			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+		},
+	];
 	return (
 		<BaseTable
 			language={language}

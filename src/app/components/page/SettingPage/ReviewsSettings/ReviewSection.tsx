@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
-import { Switch } from 'src/app/components/ui/switch';
+
 import { reviewInterface } from './HookForReviewSettings';
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 
