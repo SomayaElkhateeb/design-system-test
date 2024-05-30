@@ -11,11 +11,13 @@ import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import { MdDelete } from 'react-icons/md';
+import AddBrandItem from '../Brands/AddBrandItem';
+import { useState } from 'react';
 
 export default function TopSectionCategoriesTable() {
 	//  hooks
 	const { t } = useTranslation();
-
+	const [openDialog, setOpenDialog] = useState(false);
 	//  custom hook for select arrang item
 
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -38,26 +40,35 @@ export default function TopSectionCategoriesTable() {
 		},
 	];
 
+	//  close add brand dialog
+	const handleClose = () => {
+		setOpenDialog(false);
+	};
+
 	return (
-		<div className='flex-col-top-section-pages'>
-			<div className='topTable'>
-				{/*  left dropdow */}
+		<>
+			<div className='flex-col-top-section-pages'>
+				<div className='topTable'>
+					{/*  left dropdow */}
 
-				<Button variant='primary' LeftIcon={IoIosAddCircle}>
-					{t('Add Category')}
-				</Button>
+					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
+						{t('Add Category')}
+					</Button>
 
-				{/*  actions  arrange,... */}
-				<div className='flex-row-global  gap-[1.2rem]'>
-					<ActionsComp
-						sortMenus={sortMenus}
-						ActionsMenus={ActionsMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
+					{/*  actions  arrange,... */}
+					<div className='flex-row-global  gap-[1.2rem]'>
+						<ActionsComp
+							sortMenus={sortMenus}
+							ActionsMenus={ActionsMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</div>
 				</div>
+				<hr />
 			</div>
-			<hr />
-		</div>
+
+			{openDialog && <AddBrandItem openDialog={openDialog} handleClose={handleClose} />}
+		</>
 	);
 }
