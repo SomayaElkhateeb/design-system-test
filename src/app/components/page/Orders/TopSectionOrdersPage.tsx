@@ -11,6 +11,8 @@ import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import FilterSideBar from '../../SideBar/FilterSideBar';
 export default function TopSectionOrdersPage({
 	addButton,
 	path,
@@ -19,6 +21,7 @@ export default function TopSectionOrdersPage({
 	path: string;
 }) {
 	//  hooks
+	const [openDrawer, setOpenDrawer] = useState(false);
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
@@ -43,30 +46,47 @@ export default function TopSectionOrdersPage({
 		{ id: nanoid(), text: 'Import Orders', icon: <FiUploadCloud className='iconClass' /> },
 	];
 
-	return (
-		<div className='flex-col-top-section-pages'>
-			<div className='topTable'>
-				{/*  left dropdow */}
+	//  open sideDrawer
+	const HandelopenDrawer = () => {
+		setOpenDrawer(true);
+	};
+	//  close sideDrawer
+	const HandelCloseDrawer = () => {
+		setOpenDrawer(false);
+	};
 
-				<Button
-					onClick={() => navigate('/order/addOrder')}
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-				>
-					{addButton}
-				</Button>
-				{/*  actions filter arrange,... */}
-				<div className='flex-row-global  gap-[1.2rem]'>
-					<ActionsComp
-						filterMenus={sortMenus}
-						sortMenus={sortMenus}
-						ActionsMenus={ActionsMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
+	return (
+		<>
+			<div className='flex-col-top-section-pages'>
+				<div className='topTable'>
+					{/*  left dropdow */}
+
+					<Button
+						onClick={() => navigate('/order/addOrder')}
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+					>
+						{addButton}
+					</Button>
+					{/*  actions filter arrange,... */}
+					<div className='flex-row-global  gap-[1.2rem]'>
+						<ActionsComp
+							HandelopenDrawer={HandelopenDrawer}
+							filter
+							sortMenus={sortMenus}
+							ActionsMenus={ActionsMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</div>
 				</div>
+				<hr />
 			</div>
-			<hr />
-		</div>
+			{openDrawer && (
+				<FilterSideBar handelClose={HandelCloseDrawer} sideDrawerOpen={openDrawer}>
+					hhh
+				</FilterSideBar>
+			)}
+		</>
 	);
 }

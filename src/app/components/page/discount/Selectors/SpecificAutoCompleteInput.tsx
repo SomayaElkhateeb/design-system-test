@@ -43,7 +43,7 @@ export default function SpecificAutoCompleteInput<T extends FieldValues>({
 						getvalue={(value: any) => formStore.setValue(name, value)}
 						name={name}
 						array={selectItems}
-						MainValue={formStore.watch(name)}
+						MainValue={field.value}
 					/>
 				)}
 			/>
