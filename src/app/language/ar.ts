@@ -407,6 +407,7 @@ export const arabic = {
 	"Brand name":"اسم البراند",
 	"Brand link (Slug)":"رابط البراند",
 	"Brand description":"وصف البراند",
+	"Brand logo":"صوره البراند",
 	'coupon name': 'اسم الكوبون',
 	used: 'مستخدم',
 	'select category': 'اختر الفئة',

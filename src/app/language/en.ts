@@ -13,6 +13,7 @@ export const english = {
 	"Brand name":"Brand name",
 	"Brand link (Slug)":"Brand link (Slug)",
 	"Brand description":"Brand description",
+	"Brand logo":"Brand logo",
 	'Email description': 'Email description',
 	'Send after purchase': 'Send after purchase',
 	Queries: 'Queries',
