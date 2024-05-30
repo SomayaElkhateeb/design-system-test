@@ -24,7 +24,7 @@ import { TrashIcon } from 'lucide-react';
  * 	handleSubmit: (values: import('src/app/utils/hooks/form').InferredZodSchema<typeof faqRawSchema>) => void;
  * }} props
  */
-function AddQuestionManager(props) {
+function AddQAManager(props) {
 	const { t } = useTranslation();
 	const [isAdding, setIsAdding] = useState(false);
 	const { formStore, onSubmit } = useForm({
@@ -133,14 +133,13 @@ function AddQuestionManager(props) {
  *
  * @param {import('./types').Props<TFormStore>} props
  */
-function QAList(props) {
+function QasList(props) {
 	const { t } = useTranslation();
-	const { fields, remove, update } = useFieldArray({
+	const { fields, remove } = useFieldArray({
 		control: props.formStore.control,
 		name: 'faqs',
 	});
 
-	console.log('___ fields', fields);
 	return (
 		<Accordion type='multiple' defaultValue={[fields[0]?.tempId]} className='flex flex-col gap-4'>
 			{fields.map((item, index) => (
@@ -206,8 +205,8 @@ export default function ProductFormFaqsSection(props) {
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='flex flex-col gap-4'>
-				<QAList formStore={props.formStore} />
-				<AddQuestionManager
+				<QasList formStore={props.formStore} />
+				<AddQAManager
 					handleSubmit={(values) => {
 						props.formStore.setValue('faqs', [...props.formStore.getValues('faqs'), values.faq]);
 					}}
