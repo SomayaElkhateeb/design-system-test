@@ -75,7 +75,7 @@ export default function useCampaign(target?: string) {
 								}),
 							),
 						)
-						.default([]),
+						.or(z.literal('')),
 
 		products: z.array(
 			z.object({
@@ -85,12 +85,15 @@ export default function useCampaign(target?: string) {
 		),
 	};
 
-	const handelDefaultValue = () => {
+
+	const handleDefaultValue = () => {
+
 		return {
 			targetSimilarPeople:'having specific interests',
 			selectedInterests: [],
 			campaignName: '',
 			activityName: '',
+			adText: '',
 			products: [],
 			details: '',
 			budget: 0,
@@ -106,7 +109,7 @@ export default function useCampaign(target?: string) {
 	const { formStore, onSubmit } = useForm({
 		schema: newCampaignSchema,
 		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
+		defaultValues: handleDefaultValue(),
 	});
 
 	const updatedDates = { ...activeDates };

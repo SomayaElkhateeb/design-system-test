@@ -86,7 +86,7 @@ function Chip(props) {
 	);
 }
 
-SingleChoiceChips.defaultProps = {
-	icon: null,
-	type: 'array',
-};
+// SingleChoiceChips.defaultProps = {
+// 	icon: null,
+// 	type: 'array',
+// };

@@ -36,7 +36,7 @@ import { SuccessIcon } from 'src/app/utils/icons';
  *   return (
  *     <div className="flex gap-4">
  *       {method.map((item, index) => (
- *         <MopileSetupCard
+ *         <MobileSetupCard
  *           key={index}
  *           Icon={iconMap[item.title]} // Pass the corresponding icon component based on the title
  *           {...item}
@@ -73,15 +73,23 @@ export default function SetupCard(props) {
 					<props.Icon className={`w-8 h-8 ${isStepDone ? 'fill-white' : 'fill-primary'}`} />
 				</div>
 				<div className='w-full mb-3'>
-					<h5 className={`font-semibold mb-1 text-sm ${isStepDone ? 'text-white' : ' text-title'}`}>{props.title}</h5>
-					<p className={`font-normal text-sm ${isStepDone ? 'text-white' : 'text-title'}`}>{props.description}</p>
+					<h5 className={`font-semibold mb-1 text-sm ${isStepDone ? 'text-white' : ' text-title'}`}>
+						{props.title}
+					</h5>
+					<p className={`font-normal text-sm ${isStepDone ? 'text-white' : 'text-title'}`}>
+						{props.description}
+					</p>
 				</div>
 			</div>
 			<div>
 				{isStepDone ? (
 					<SuccessIcon className='fill-white' />
 				) : (
-					<Button className='text-sm place-self-start' onClick={handleStepCompletion} variant='link'>
+					<Button
+						className='text-sm place-self-start'
+						onClick={handleStepCompletion}
+						variant='link'
+					>
 						{props.buttonText}
 					</Button>
 				)}

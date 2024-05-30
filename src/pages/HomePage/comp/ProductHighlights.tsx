@@ -18,7 +18,7 @@ interface Product {
 	price: number;
 }
 
-export default function Products({ data }: ProductProps) {
+export default function ProductHighlights({ data }: ProductProps) {
 	const { t } = useTranslation();
 
 	const renderProducts = (products: Product[]) => (

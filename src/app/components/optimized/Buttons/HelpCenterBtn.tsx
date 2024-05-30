@@ -11,7 +11,7 @@ const HelpCenterBtn = () => {
 	const [show, setShow] = useState(false);
 
 	return (
-		<>
+		<div className='sixth-step'>
 			{/* Help center icon button */}
 			<Button onClick={() => setShow(true)}>
 				<span className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
@@ -21,7 +21,7 @@ const HelpCenterBtn = () => {
 
 			{/* Display HelpCenterCard when show state is true */}
 			{show && <HelpCenterCard onClose={() => setShow(false)} />}
-		</>
+		</div>
 	);
 };
 
