@@ -46,29 +46,8 @@ export default function ProductForm(props) {
 			dimensionUnit: 'cm',
 			branches: [{ id: '1', name: 'Main Branch', quantity: 0 }],
 			metaKeywords: [],
-			options: [
-				{
-					tempId: '17170196345830.08869498755538041',
-					type: 'text',
-					values: [
-						{
-							tempId: '17170197021430.5009182178058251',
-							value: 'Red',
-							nameEn: 'Red',
-							nameAr: 'أحمر',
-						},
-						{
-							tempId: '17170197021430.6915686753370636',
-							value: 'Green',
-							nameEn: 'Green',
-							nameAr: 'أخضر',
-						},
-					],
-					name: 'color',
-					id: '3a37cdfa-5e07-4a34-a50f-21902f5d0bf1',
-					isRequired: true,
-				},
-			],
+			options: [],
+			variations: [],
 			...props.defaultValues,
 		},
 	});

@@ -8,8 +8,9 @@ import {
 } from 'src/app/components/ui/card';
 import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
-import { useId, useMemo, useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem } from 'src/app/components/ui/accordion';
+import { useId, useMemo, useState, useCallback } from 'react';
+import { Accordion } from 'src/app/components/ui/accordion';
+import CustomAccordionItem from 'src/app/components/ui/accordion/custom-item';
 import {
 	optionNameCollection,
 	optionNameMap,
@@ -27,10 +28,8 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import { useFieldArray, useWatch } from 'react-hook-form';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDown, TrashIcon } from 'lucide-react';
+import { TrashIcon } from 'lucide-react';
 import { Checkbox } from '@mui/material';
-import { cn } from 'src/app/utils';
 import {
 	Dialog,
 	DialogContent,
@@ -42,72 +41,7 @@ import {
 import { FormLabel } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-
-/**
- * @param {{
- * 	start?: import('react').ReactNode;
- * 	startSeparator?: boolean;
- * 	end?: import('react').ReactNode;
- * 	endSeparator?: boolean;
- * 	children: import('react').ReactNode;
- * }} props
- */
-function ControllerContainer(props) {
-	return (
-		<div className={cn('flex border rounded-md', props.start && 'ps-2.5', props.end && 'pe-2.5')}>
-			{props.start}
-			{props.start && props.startSeparator && (
-				<div className='border-r h-[80%] my-[1.25%] border-gray-200 ps-2.5' />
-			)}
-			{props.children}
-			{props.end && props.endSeparator && (
-				<div className='border-l h-[80%] my-[1.25%] border-gray-200 pe-2.5' />
-			)}
-			{props.end}
-		</div>
-	);
-}
-
-/**
- * @param {{
- * 	start: {
- * 		trigger: import('react').ReactNode;
- * 		after?: import('react').ReactNode;
- * 	}
- *  end: {
- *  	before?: import('react').ReactNode;
- *  }
- * 	children: import('react').ReactNode;
- * } & Parameters<typeof AccordionItem>[0]} props
- */
-function CustomAccordionItem({ start, end, children, ...props }) {
-	return (
-		<AccordionItem
-			{...props}
-			className={cn(
-				'data-[state=open]:bg-[#F9FAFC] border-gray/50 p-2 rounded-xl border data-[state=open]:px-4',
-				props.className,
-			)}
-		>
-			<AccordionPrimitive.Header className='flex py-2 justify-between'>
-				<div className='flex items-center gap-2'>
-					<AccordionPrimitive.Trigger className='flex items-center gap-2'>
-						{start.trigger}
-					</AccordionPrimitive.Trigger>
-					{start.after}
-				</div>
-
-				<div className='flex items-center gap-2'>
-					{end.before}
-					<AccordionPrimitive.Trigger className='[&[data-state=open]>svg]:rotate-180'>
-						<ChevronDown className='h-4 w-4 shrink-0 transition-transform duration-200' />
-					</AccordionPrimitive.Trigger>
-				</div>
-			</AccordionPrimitive.Header>
-			<AccordionContent className='pt-6'>{children}</AccordionContent>
-		</AccordionItem>
-	);
-}
+import ControllerContainer from 'src/app/components/ui/form/controller-container';
 
 const defaultOptionValuesByName = {
 	[optionNameMap.color]: [
@@ -275,12 +209,13 @@ function OptionValuesManager(props) {
 
 /**
  * @param {{
- * 	handleSubmit: (values: import('./types').ProductOptionValues) => void,
+ * 	handleSubmit: (values: import('./types').ProductOptionValues) => void;
+ *  getOptionValuesNames: () => string[];
  * }} props
  */
 function AddOptionManager(props) {
 	const { t } = useTranslation();
-	const [isAdding, setIsAdding] = useState(true);
+	const [isAdding, setIsAdding] = useState(false);
 	const { formStore } = useForm({
 		schema: productOptionSchema,
 		defaultValues: {
@@ -292,6 +227,25 @@ function AddOptionManager(props) {
 		},
 		handleSubmit: props.handleSubmit,
 	});
+
+	const getOptionValuesNames = props.getOptionValuesNames;
+
+	const filteredOptionNameCollection = useMemo(() => {
+		// Should use a watched value instead?
+		const values = getOptionValuesNames();
+		if (!values || values.length === 0) {
+			return optionNameCollection;
+		}
+
+		const valuesMap = values.reduce((acc, val) => {
+			acc[val] = true;
+			return acc;
+		}, /** @type {Record<string, boolean>} */ ({}));
+
+		return optionNameCollection.filter((item) => {
+			return !valuesMap[item];
+		});
+	}, [getOptionValuesNames]);
 
 	if (!isAdding) {
 		return (
@@ -326,7 +280,7 @@ function AddOptionManager(props) {
 									<SelectValue placeholder={t('Select Size, Color or add new')} />
 								</SelectTrigger>
 								<SelectContent>
-									{optionNameCollection.map((item) => {
+									{filteredOptionNameCollection.map((item) => {
 										return (
 											<SelectItem key={item} value={item}>
 												{t(item)}
@@ -399,7 +353,7 @@ function AddOptionManager(props) {
  */
 function OptionsList(props) {
 	const { t } = useTranslation();
-	const { fields, append, remove, prepend, update } = useFieldArray({
+	const { fields, remove, update } = useFieldArray({
 		control: props.formStore.control,
 		name: 'options',
 	});
@@ -470,11 +424,12 @@ function OptionsList(props) {
 									>
 										<div className='flex items-center gap-4 col-span-3 pb-4'>
 											<div
-												className='size-4 rounded-full flex'
+												className='size-4 rounded-full flex translate-y-3/4'
 												style={{ backgroundColor: value.value }}
 											/>
 											<TabbedFormField
 												formStore={props.formStore}
+												container={{ className: 'flex-grow' }}
 												keys={[
 													{ name: `options.${index}.values.${valueIndex}.nameEn`, label: 'En' },
 													{
@@ -488,18 +443,14 @@ function OptionsList(props) {
 										<div className='pb-4 col-span-2'>
 											<FormField
 												formStore={props.formStore}
-												name={`options.${index}.values.${valueIndex}.priceDifference`}
+												name={`options.${index}.values.${valueIndex}.differentInPrice`}
+												container={{ className: 'flex-grow' }}
 												render={(field) => (
-													<Input
-														{...field}
-														value={field.value ?? 0}
-														type='number'
-														className='w-32'
-													/>
+													<Input {...field} value={field.value ?? 0} type='number' />
 												)}
 											/>
 										</div>
-										<div className='pb-4'>
+										<div className='pb-4 flex'>
 											<button
 												type='button'
 												onClick={() => {
@@ -526,7 +477,7 @@ function OptionsList(props) {
 /**
  * @param {import('src/app/utils/hooks/form').InferredZodSchema<typeof import('./utils').productOptionSchema>['option'][]} options
  * @param {number} currentIndex
- * @param {typeof options[0]['values']} currentVariation
+ * @param {import('src/app/utils/hooks/form').InferredZodSchema<typeof productOptionSchema>['option']['values']} currentVariation
  * @param {import('src/app/utils/hooks/form').InferredZodSchema<typeof import('./utils').productVariationSchema>['variation'][]} allVariations
  *
  * @description
@@ -545,7 +496,7 @@ function generateVariations(options, currentIndex = 0, currentVariation = [], al
 			price: undefined,
 			discountPrice: undefined,
 		});
-		return;
+		return allVariations;
 	}
 
 	const currentOption = options[currentIndex];
@@ -583,7 +534,7 @@ function VariationsManager(props) {
 	// 	control: props.formStore.control,
 	// 	name: 'variations',
 	// });
-	const variations = useWatch({
+	const { fields, remove } = useFieldArray({
 		control: props.formStore.control,
 		name: 'variations',
 	});
@@ -591,8 +542,74 @@ function VariationsManager(props) {
 	return (
 		<div className='flex flex-col gap-4'>
 			<Accordion type='multiple' className='flex flex-col gap-4'>
-				{/* {fields.map((option, index) => (<CustomAccordionItem></CustomAccordionItem>)} */}
-				{/* Test */}
+				{fields.map((option, index) => {
+					const key = option.forOptionValuesTempIds.join('|');
+
+					return (
+						<CustomAccordionItem
+							start={{ trigger: option.forOptionValuesNames }}
+							end={{
+								before: (
+									<button type='button' onClick={() => remove(index)}>
+										<TrashIcon />
+									</button>
+								),
+							}}
+							key={key}
+							value={key}
+						>
+							<div className='flex flex-col gap-4'>
+								<div className='flex flex-col gap-1'>
+									<strong>{t('Stock')}</strong>
+								</div>
+								<div className='flex flex-col overflow-x-auto'>
+									<div className='grid grid-cols-4 grid-col-4 items-end gap-8 pb-4'>
+										<p>{t('Price')}</p>
+										<p>
+											{t('Discount price')} ({t('Optional')})
+										</p>
+										<p>{t('SKU')}</p>
+										<p>{t('Quantity')}</p>
+									</div>
+									<div className='grid grid-cols-4 grid-col-4 items-end gap-8 pb-4'>
+										<FormField
+											formStore={props.formStore}
+											container={{ className: 'flex-grow' }}
+											name={`variations.${index}.price`}
+											render={(field) => (
+												<Input {...field} value={field.value ?? 0} type='number' />
+											)}
+										/>
+										<FormField
+											formStore={props.formStore}
+											container={{ className: 'flex-grow' }}
+											name={`variations.${index}.discountPrice`}
+											render={(field) => (
+												<Input {...field} value={field.value ?? 0} type='number' />
+											)}
+										/>
+										<FormField
+											formStore={props.formStore}
+											container={{ className: 'flex-grow' }}
+											name={`variations.${index}.sku`}
+											render={(field) => <Input {...field} />}
+										/>
+										<FormField
+											formStore={props.formStore}
+											container={{ className: 'flex-grow' }}
+											name={`variations.${index}.quantity`}
+											render={(field) => (
+												<ControllerContainer end={<>&infin;</>}>
+													<Input {...field} />
+												</ControllerContainer>
+											)}
+										/>
+									</div>
+								</div>
+							</div>
+						</CustomAccordionItem>
+					);
+				})}
 			</Accordion>
 		</div>
 	);
@@ -605,6 +622,11 @@ function VariationsManager(props) {
  */
 export default function ProductFormOptionsAndVariationsSection(props) {
 	const { t } = useTranslation();
+
+	const getOptionValuesNames = useCallback(() => {
+		const options = props.formStore.getValues('options');
+		return options.map((option) => option.name);
+	}, [props.formStore]);
 
 	return (
 		<Card>
@@ -619,6 +641,7 @@ export default function ProductFormOptionsAndVariationsSection(props) {
 				{/* // TODO: To be implemented  */}
 				<OptionsList formStore={props.formStore} />
 				<AddOptionManager
+					getOptionValuesNames={getOptionValuesNames}
 					handleSubmit={(values) => {
 						const options = props.formStore.getValues('options');
 						props.formStore.setValue('options', [...options, values.option]);
