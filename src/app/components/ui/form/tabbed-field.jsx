@@ -33,6 +33,7 @@ function CustomFormMessage(props) {
  *  formStore: import('react-hook-form').UseFormReturn<Values>;
  *  defaultName?: Keys;
  *  label?: string;
+ * 	container?: import('react').HTMLAttributes<HTMLDivElement>;
  *  renderer: (field: Parameters<import('./field').FormFieldProps<Values, Keys>['render']>[0] & { className: string }) => JSX.Element
  * }} props
  *
@@ -60,7 +61,7 @@ function CustomFormMessage(props) {
  *	/>
  * ```
  */
-export default function TabbedFormField({ formStore, ...props }) {
+export default function TabbedFormField({ formStore, container, ...props }) {
 	const [activeName, setActiveName] = useState(
 		/** @type {Keys} */ (props.defaultName ?? props.keys[0]?.name),
 	);
@@ -77,6 +78,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 			name={activeName}
 			hideError
 			container={{
+				...container,
 				onKeyDown:
 					props.keys.length <= 1
 						? undefined
@@ -110,7 +112,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 			}}
 			label={
 				<div className='flex justify-between'>
-					{props.label && <span>{props.label}</span>}
+					{props.label ? <span>{props.label}</span> : <span />}
 					<div className='flex text-black h-fit self-end bg-borders-lines p-0.5 -mb-1 rounded-t me-2'>
 						{props.keys.map((key) => (
 							<button
