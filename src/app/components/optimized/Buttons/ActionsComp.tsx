@@ -1,10 +1,11 @@
 //  global componenet used in multi compoenents like AllCustomersComp
 
 import ArrangeButton from './ArrangeButton';
+import { Button } from '..';
 
-import FilterButton from './FilterButton';
 import ActionsButton from './ActionsButton';
-
+import { useTranslation } from 'react-i18next';
+import { FilterIcon } from 'src/app/utils/icons';
 export interface menuType {
 	id: string;
 	text: string;
@@ -16,6 +17,8 @@ export default function ActionsComp({
 	sortMenus,
 	ActionsMenus,
 	filterMenus,
+	HandelopenDrawer,
+	filter,
 }: {
 	selectedOption: string;
 	handelSelect: (e: string) => void;
@@ -23,9 +26,13 @@ export default function ActionsComp({
 	sortMenus?: menuType[];
 	ActionsMenus?: menuType[];
 	filterMenus?: menuType[];
+	HandelopenDrawer?: () => void;
+	filter?: boolean;
 }) {
+	//  hooks
+	const { t } = useTranslation();
 	return (
-		<div className='flex gap-4 '>
+		<div className='flex sm:flex-row flex-col sm:h-10    gap-4  '>
 			{/*   arrange button */}
 
 			{sortMenus && sortMenus?.length > 0 && (
@@ -38,13 +45,12 @@ export default function ActionsComp({
 
 			{/*  filter button */}
 
-			{filterMenus && filterMenus?.length > 0 && (
-				<FilterButton
-					sortMenus={filterMenus}
-					selectedOption={selectedOption}
-					handelSelect={handelSelect}
-				/>
+			{filter && (
+				<Button onClick={HandelopenDrawer} variant='secondary' LeftIcon={FilterIcon}>
+					{t('filter')}
+				</Button>
 			)}
+
 			{/*  actions button */}
 			{ActionsMenus && ActionsMenus?.length > 0 && (
 				<ActionsButton
