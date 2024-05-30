@@ -32,7 +32,7 @@ function CustomFormMessage(props) {
  *  keys: ({ [Key in Keys]: { name: Key; label: string; } })[Keys][];
  *  formStore: import('react-hook-form').UseFormReturn<Values>;
  *  defaultName?: Keys;
- *  label: string;
+ *  label?: string;
  *  renderer: (field: Parameters<import('./field').FormFieldProps<Values, Keys>['render']>[0] & { className: string }) => JSX.Element
  * }} props
  *
@@ -68,7 +68,6 @@ export default function TabbedFormField({ formStore, ...props }) {
 	const reactId = useId();
 	const getUniqueClassName = /** @param {string} prefix */ (prefix) =>
 		`${reactId.replace(/:/g, '')}-${prefix}`;
-
 
 	return (
 		<FormField
@@ -111,7 +110,7 @@ export default function TabbedFormField({ formStore, ...props }) {
 			}}
 			label={
 				<div className='flex justify-between'>
-					<span>{props.label}</span>
+					{props.label && <span>{props.label}</span>}
 					<div className='flex text-black h-fit self-end bg-borders-lines p-0.5 -mb-1 rounded-t me-2'>
 						{props.keys.map((key) => (
 							<button

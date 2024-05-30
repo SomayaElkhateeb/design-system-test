@@ -87,7 +87,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z.array(
@@ -103,7 +103,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z.array(
@@ -119,7 +119,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 			selectProductsY:
 				applyToType === 'Buy x get y'
 					? z.array(
@@ -135,7 +135,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 			specificCustomerGroup:
 				customerSegment === 'Specific customer groups'
 					? z.array(
@@ -151,7 +151,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 
 			specificCustomer:
 				customerSegment === 'Specific customers'
@@ -168,7 +168,7 @@ export default function useCustomHookNewDiscount(
 								name: z.string().min(1),
 							}),
 						),
-					),
+					).default([]),
 		}
 
 		// /////////////////////

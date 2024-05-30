@@ -50,9 +50,9 @@ export default function CustomerInfo() {
 			{/*  customer section */}
 			<div className='custom_container gap-[1.6rem] flex-col-top-section-pages'>
 				<div className='customer-border  gap-[0.8rem]'>
-					<p className='text-[0.8rem]  font-semibold px-[1.2rem]'>{t('Customer')}</p>
+					<p className='title px-[1.2rem]'>{t('Customer')}</p>
 					<hr />
-					<div className=' flex flex-col gap-[.6rem] px-[1.2rem]'>
+					<div className=' flex-col-top-section-pages gap-[.6rem] px-[1.2rem]'>
 						{customerData?.map((el, i) => (
 							<CustomerData key={i} data={el.data} icon={el.icon} />
 						))}
@@ -69,7 +69,7 @@ export default function CustomerInfo() {
 							className='flex-row-global gap-[.4rem] cursor-pointer'
 						>
 							<IoIosAddCircle />
-							<p className='text-[0.8rem] font-semibold'>{t('Add new address')}</p>
+							<p className='title'>{t('Add new address')}</p>
 						</div>
 					</div>
 
@@ -85,14 +85,14 @@ export default function CustomerInfo() {
 								<br />
 								+96841564566
 							</p>
-							<div className='flex flex-col items-end gap-[2rem]'>
+							<div className='flex-col-top-section-pages items-end gap-[2rem]'>
 								<div className='flex-row-global gap-[1.2rem]'>
 									<RiDeleteBin6Line className='cursor-pointer' />
 									<FiEdit className='cursor-pointer' />
 								</div>
 								<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 									<IoLocationOutline />
-									<p className='text-[0.8rem] font-semibold'>{t('Show on map')}</p>
+									<p className='title'>{t('Show on map')}</p>
 								</div>
 							</div>
 						</div>
@@ -103,12 +103,12 @@ export default function CustomerInfo() {
 
 				<div className='customer-border gap-[0.8rem]'>
 					<div className='flex-row-global justify-between px-[1.2rem]'>
-						<p className='text-[0.8rem]  font-semibold '>{t('Orders')}</p>
+						<p className='title '>{t('Orders')}</p>
 						<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 							<IoIosAddCircle />
 							<p
 								onClick={() => navigate('/order/addOrder')}
-								className='text-[0.8rem] font-semibold'
+								className='title'
 							>
 								{t('Add new order')}
 							</p>

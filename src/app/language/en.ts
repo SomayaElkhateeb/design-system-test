@@ -10,6 +10,10 @@ export const english = {
 	'You can send an email for customers who purchased from you to review':
 		'You can send an email for customers who purchased from you to review',
 	Pages: 'Pages',
+	"Brand name":"Brand name",
+	"Brand link (Slug)":"Brand link (Slug)",
+	"Brand description":"Brand description",
+	"Brand logo":"Brand logo",
 	'Email description': 'Email description',
 	'Send after purchase': 'Send after purchase',
 	Queries: 'Queries',
@@ -994,6 +998,15 @@ export const english = {
 	'Answer questions people frequently ask about your product':
 		'Answer questions people frequently ask about your product',
 	'Meta Description': 'Meta Description',
-	'Answer questions people frequently ask about your product':
-		'Answer questions people frequently ask about your product',
+	'Options & Variations': 'Options & Variations',
+	'Allow your customers to select from options such as Size and Color on your website.':
+		'Allow your customers to select from options such as Size and Color on your website.',
+	'Add Option': 'Add Option',
+	'Add Question': 'Add Question',
+	Pricing: 'Pricing',
+	'Discount price': 'Discount price',
+	Optional: 'Optional',
+	'Cost price': 'Cost price',
+	'Taxable product': 'Taxable product',
+	'Add Bulk Pricing': 'Add Bulk Pricing',
 };

@@ -404,6 +404,10 @@ export const arabic = {
 	'Mini purchase quantity': 'أقل كميه شراء',
 	'coupon code': 'رمز الكوبون',
 	'Purchase method': 'وسائل الاستلام',
+	"Brand name":"اسم البراند",
+	"Brand link (Slug)":"رابط البراند",
+	"Brand description":"وصف البراند",
+	"Brand logo":"صوره البراند",
 	'coupon name': 'اسم الكوبون',
 	used: 'مستخدم',
 	'select category': 'اختر الفئة',
@@ -974,6 +978,15 @@ export const arabic = {
 	'Answer questions people frequently ask about your product':
 		'أجب عن الأسئلة التي يطرحها الأشخاص بشكل متكرر حول منتجك',
 	'Meta Description': 'ميتا الوصف',
-	'Answer questions people frequently ask about your product':
-		'أجب عن الأسئلة التي يطرحها الأشخاص بشكل متكرر حول منتجك',
+	'Options & Variations': 'الخيارات والتباينات',
+	'Allow your customers to select from options such as Size and Color on your website.':
+		'السماح لعملائك باختيار الخيارات مثل الحجم واللون على موقع الويب الخاص بك.',
+	'Add Option': 'إضافة خيار',
+	'Add Question': 'إضافة سؤال',
+	Pricing: 'التسعير',
+	'Discount price': 'سعر الخصم',
+	Optional: 'اختياري',
+	'Cost price': 'سعر التكلفة',
+	'Taxable product': 'منتج خاضع للضريبة',
+	'Add Bulk Pricing': 'إضافة تسعير الجملة',
 } satisfies typeof english;
