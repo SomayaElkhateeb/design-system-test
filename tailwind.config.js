@@ -40,6 +40,7 @@ module.exports = {
 				title: '#002042',
 				subtitle: '#55607A',
 				gray: '#8393A2',
+				grayIcon: '#666666',
 				hint: '#8791A8', // hint, light icons,text
 				inactive: '#C0C7D6', //inactive icons
 				constrained: '#E8EBF2',

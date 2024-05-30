@@ -4,7 +4,6 @@ import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { useForm } from 'src/app/utils/hooks/form';
-
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { Button } from 'src/app/components/optimized';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
@@ -24,7 +23,7 @@ export default function AddCustomer({
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: addCustomerSchema,
+		schema: addCustomerSchema(),
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});

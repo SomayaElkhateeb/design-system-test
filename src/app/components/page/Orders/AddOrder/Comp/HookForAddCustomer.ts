@@ -14,15 +14,13 @@ export default function useCustomHookAddCustomer() {
 		};
 	};
 
+	// /////////////////////////////
+	const RequireData = z.string().min(5);
 	const addCustomerSchema = () => {
 		return {
-			fullName: z
-				.string()
-				.min(5, { message: 'Full name is required and should be at least 5 characters' }),
-			phone: z
-				.string()
-				.min(7, { message: 'Phone is required and should be at least 7 characters' }),
-			email: z.string().min(1, { message: 'Valid email is required' }).email(),
+			fullName: RequireData,
+			phone: RequireData,
+			email: RequireData.email(),
 		};
 	};
 
