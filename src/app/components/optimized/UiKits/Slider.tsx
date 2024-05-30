@@ -28,12 +28,13 @@ interface SliderProps {
  * @param {SliderProps} props - Props for the Slider component.
  * @returns {JSX.Element} - Rendered component.
  */
-const Slider: React.FC<SliderProps> = ({ size, slides, title }) => {
+export default function Slider({ size, slides, title }:SliderProps)  {
 	const language = UseLanguage();
+	const { t } = useTranslation();
 
 	return (
 		<section className='mx-auto p-3'>
-			<h2 className='text-title font-semibold'>{title}</h2>
+			<h2 className='text-title font-semibold'>{t(title)}</h2>
 
 			{/* Splide Slider based on size */}
 			<Splide
@@ -63,7 +64,6 @@ const Slider: React.FC<SliderProps> = ({ size, slides, title }) => {
 	);
 };
 
-export default Slider;
 
 /**
  * Component representing a card in the Slider component.

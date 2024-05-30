@@ -2,6 +2,14 @@ import { useTranslation } from 'react-i18next';
 import { MobileProductViews } from 'src/app/components/optimized';
 import SlideCardTabs from 'src/app/components/page/Cards/SlideCardTabs';
 
+interface Product {
+	name: string;
+	imageUrl: string;
+	category: string;
+	quantity: number;
+	price: number;
+}
+
 interface ProductAnalyticsProps {
 	data: {
 		topSellingProducts: Product[];
@@ -10,13 +18,7 @@ interface ProductAnalyticsProps {
 	};
 }
 
-interface Product {
-	name: string;
-	imageUrl: string;
-	category: string;
-	quantity: number;
-	price: number;
-}
+
 
 export default function ProductsAnalyticsCard({ data }: ProductAnalyticsProps) {
 	const { t } = useTranslation();

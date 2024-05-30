@@ -11,7 +11,7 @@ const ViewBtn = () => {
 	const [show, setShow] = useState(false);
 
 	return (
-		<>
+		<div className='fifth-step'>
 			{/* View icon button */}
 			<Button onClick={() => setShow(true)}>
 				<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
@@ -21,7 +21,7 @@ const ViewBtn = () => {
 
 			{/* Display ManageAccountCard when show state is true */}
 			{show && <ManageAccountCard onClose={() => setShow(false)} />}
-		</>
+		</div>
 	);
 };
 

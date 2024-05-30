@@ -50,7 +50,7 @@ function SlideCard<T>({
 		<div className='bg-white rounded-xl border border-borders-lines h-full min-w-[20rem] w-full flex flex-col justify-between p-4'>
 			<div className='flex flex-col flex-1'>
 				<div className='flex justify-between items-center mb-3'>
-					<h2 className='title text-lg capitalize'>{title}</h2>
+					<h2 className='title text-lg capitalize'>{t(title)}</h2>
 					{dropdown && (
 						<CompareButton
 							sortMenus={comparisonMenus}

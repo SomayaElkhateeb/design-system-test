@@ -14,7 +14,7 @@ const Overview = () => {
 	const { t } = useTranslation();
 
 	return (
-		<div className=' grid gap-5'>
+		<div className='grid gap-5'>
 			<AnalyticsComparison />
 			<div className='grid grid-cols-1 gap-5'>
 				{/* 1 */}

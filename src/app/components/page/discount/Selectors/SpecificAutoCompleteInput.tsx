@@ -9,7 +9,7 @@ interface selectItemsInterface {
 
 interface FormAutoCompleteFieldProps<T extends FieldValues> {
 	formStore: UseFormReturn<T>;
-	label: string;
+	label?: string;
 	name: Path<T>;
 }
 export default function SpecificAutoCompleteInput<T extends FieldValues>({
