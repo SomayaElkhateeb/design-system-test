@@ -414,3 +414,30 @@ button.splide__arrow--prev {
 		top: 0;
 	}
 }
+
+/* Style for the first step */
+.my-first-step {
+  background-color: #ffeb3b; /* Yellow background */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+/* Style for the second step */
+.my-second-step {
+  background-color: #8bc34a; /* Light green background */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+
+/* Style for the third step */
+.my-third-step {
+  background-color: #03a9f4; /* Light blue background */
+  color: white; /* White text color */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  border: none;
+  cursor: pointer;
+}

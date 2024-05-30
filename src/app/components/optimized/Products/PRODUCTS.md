@@ -11,13 +11,13 @@ It is intended for use in mobile applications or environments where space is lim
 2. Example:
 
 ```jsx
-import MobileProductCard from "./MobileProductCard";
+import MobileProductCard from './MobileProductCard';
 <MobileProductCard
-  imageUrl="images/product1.jpg"
-  productName="DJI Mavic Pro 2"
-  category="Sportswear"
-  price="SAR 10000.00"
-  quantity={50}
+	imageUrl='images/product1.jpg'
+	productName='DJI Mavic Pro 2'
+	category='Sportswear'
+	price='SAR 10000.00'
+	quantity={50}
 />;
 ```
 
@@ -39,14 +39,14 @@ import MobileProductCard from "./MobileProductCard";
 2. Example:
 
 ```jsx
-import ProductCategory from "./ProductCategory";
+import ProductCategory from './ProductCategory';
 
 <ProductCategory
-  imageUrl="images/category1.jpg"
-  title="Electronics"
-  category="Gadgets"
-  quantity={10}
-  price="$499.99"
+	imageUrl='images/category1.jpg'
+	title='Electronics'
+	category='Gadgets'
+	quantity={10}
+	price='$499.99'
 />;
 ```
 
@@ -68,49 +68,49 @@ import ProductCategory from "./ProductCategory";
 2. Example:
 
 ```jsx
-import ProductCard from "./ProductCard";
+import ProductCard from './ProductCard';
 
 <ProductCard
-  id={1}
-  name="DJI Mavic Pro 2"
-  imageUrl="images/mavic-pro.jpg"
-  category="Electronics"
-  options={2}
-  sku="SF1133569600-1"
-  quantity={500}
-  price="$1000.00"
+	id={1}
+	name='DJI Mavic Pro 2'
+	imageUrl='images/mavic-pro.jpg'
+	category='Electronics'
+	options={2}
+	sku='SF1133569600-1'
+	quantity={500}
+	price='$1000.00'
 />;
 ```
 
 =========================================================================
 
-## MopileProductViews Component
+## MobileProductViews Component
 
 `Author => Ahmed Hassan`
-The `MopileProductViews` component is a reusable React component designed to display mobile-friendly views of product information.
+The `MobileProductViews` component is a reusable React component designed to display mobile-friendly views of product information.
 
 1. Usage:
 
-- Import the `MopileProductViews` component into your desired React component file.
+- Import the `MobileProductViews` component into your desired React component file.
 - Pass the necessary props **(name, imageUrl, category, quantity, price)** to customize the product card information.
 
 ### Example
 
 ```jsx
-import MopileProductViews from "./TrialBanner";
+import MobileProductViews from './TrialBanner';
 
 const ExampleComponent = () => {
-  return (
-    <div>
-      <MopileProductViews
-        name="Product Name"
-        imageUrl="path/to/image"
-        category="Product Category"
-        quantity={50}
-        price="100.00"
-      />
-    </div>
-  );
+	return (
+		<div>
+			<MobileProductViews
+				name='Product Name'
+				imageUrl='path/to/image'
+				category='Product Category'
+				quantity={50}
+				price='100.00'
+			/>
+		</div>
+	);
 };
 ```
 
@@ -133,15 +133,15 @@ The `ProductViews` component is designed to display product information. It allo
 2. Example:
 
 ```jsx
-import ProductViews from "./ProductViews";
+import ProductViews from './ProductViews';
 
 <ProductViews
-  name="Product Name"
-  imageUrl="product_image_url.jpg"
-  category="Product Category"
-  options={2} // Number of available options
-  sku="SKU Number"
-  quantity={50} // Available quantity
-  price="SAR 100.00"
+	name='Product Name'
+	imageUrl='product_image_url.jpg'
+	category='Product Category'
+	options={2} // Number of available options
+	sku='SKU Number'
+	quantity={50} // Available quantity
+	price='SAR 100.00'
 />;
 ```

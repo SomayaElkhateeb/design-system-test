@@ -29,7 +29,7 @@ export default function Header({
 	];
 	return (
 		<header className='flex justify-between items-center'>
-			<h2 className='text-title font-semibold text-lg'>{title}</h2>
+			<h2 className='text-title font-semibold text-lg'>{t(title)}</h2>
 			<div className='flex justify-between items-center gap-4'>
 				{dropdown && (
 					<CompareButton

@@ -145,7 +145,7 @@ function VTab(props) {
 					<LayoutCard>
 						{props.content}
 						{/* Render next and previous buttons */}
-						<div className='flex justify-end mt-4'>
+						<div className='flex justify-end mt-4 gap-4'>
 							{props.index !== 0 && (
 								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ms-5'>
 									{t('Prev')}

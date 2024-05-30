@@ -11,7 +11,7 @@ const ChatBtn = () => {
 	const [show, setShow] = useState(false);
 
 	return (
-		<>
+		<div className='fourth-step'>
 			{/* Chat icon button */}
 			<Button onClick={() => setShow(true)}>
 				<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center relative'>
@@ -23,7 +23,7 @@ const ChatBtn = () => {
 
 			{/* Display ChatCard when show state is true */}
 			{show && <ChatCard onClose={() => setShow(false)} />}
-		</>
+		</div>
 	);
 };
 
