@@ -31,7 +31,7 @@ export const optionBaseValuesSchema = z.object({
 	value: z.string(),
 });
 
-export const productOptionSchema = {
+export const productOptionRawSchema = {
 	option: z.discriminatedUnion('name', [
 		z.object({
 			tempId: z.string(),
@@ -50,7 +50,7 @@ export const productOptionSchema = {
 	]),
 };
 
-export const productVariationSchema = {
+export const productVariationRawSchema = {
 	variation: z.object({
 		forOptionValuesNames: z.string(),
 		forOptionValuesTempIds: z.array(z.string()),
@@ -61,7 +61,7 @@ export const productVariationSchema = {
 	}),
 };
 
-export const productOptionsAndVariationsSchema = {
-	options: z.array(productOptionSchema.option),
-	variations: z.array(productVariationSchema.variation),
+export const productOptionsAndVariationsRawSchema = {
+	options: z.array(productOptionRawSchema.option),
+	variations: z.array(productVariationRawSchema.variation),
 };

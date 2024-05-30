@@ -48,6 +48,15 @@ export default function ProductForm(props) {
 			metaKeywords: [],
 			options: [],
 			variations: [],
+			faqs: [
+				{
+					tempId: '1',
+					questionEn: 'Test?',
+					answerEn: 'Test.',
+					questionAr: 'اختبار؟',
+					answerAr: 'اختبار.',
+				},
+			],
 			...props.defaultValues,
 		},
 	});
