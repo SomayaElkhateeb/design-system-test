@@ -1,14 +1,14 @@
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
-import { productOptionSchema, productOptionsAndVariationsSchema } from './utils';
+import { productOptionRawSchema, productOptionsAndVariationsRawSchema } from './utils';
 import { ValidFormStoreByValues } from 'src/utils/types';
 
-export type Values = InferredZodSchema<typeof productOptionsAndVariationsSchema>;
+export type Values = InferredZodSchema<typeof productOptionsAndVariationsRawSchema>;
 
 export type Props<TFormStore> = {
 	formStore: ValidFormStoreByValues<TFormStore, Values>;
 };
 
-export type ProductOptionValues = InferredZodSchema<typeof productOptionSchema>;
+export type ProductOptionValues = InferredZodSchema<typeof productOptionRawSchema>;
 export type ProductOptionFormStore<TFormStore> = ValidFormStoreByValues<
 	TFormStore,
 	ProductOptionValues
