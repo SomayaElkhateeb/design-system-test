@@ -1,8 +1,6 @@
 import { z } from 'zod';
-
-
-export interface checkOutInterface {
-	purchase: string
+export interface checkOutDetailsInterface {
+	purchase: string;
 	branch?: string;
 	payment: string;
 	delivery: string;
@@ -13,24 +11,19 @@ export default function useCustomCheckOutForm(purchase: string) {
 	const handelDefaultValue = () => {
 		return {
 			purchase: 'branch',
-			branch: "",
-			payment: "Cash",
-			delivery: "Shipping",
-			shipping: "DHL (main)",
+			branch: '',
+			payment: 'Cash',
+			delivery: 'Shipping',
+			shipping: 'DHL (main)',
 		};
 	};
 
 	const checkOutSchema = () => {
-		const stringValidation = z.string().min(3)
+		const stringValidation = z.string().min(3);
 		const branchValidation = {
 			branch:
-				purchase === 'branch'
-					? stringValidation
-					: z.optional(
-						stringValidation
-					).or(z.literal("")),
-
-		}
+				purchase === 'branch' ? stringValidation : z.optional(stringValidation).or(z.literal('')),
+		};
 
 		return {
 			purchase: stringValidation,

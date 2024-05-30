@@ -5,7 +5,7 @@ import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import {
 	AddressForm,
 	Checkout,
-	CheckoutForm,
+	CheckoutDetailsForm,
 	CustomerForm,
 	CustomerNote,
 	OrderHistory,
@@ -38,13 +38,11 @@ export default function OrderDetails() {
 		setState({ ...state, showCheckout: !showCheckout });
 	};
 	return (
-		<div className="flex-col-top-section-pages">
+		<div className='flex-col-top-section-pages'>
 			<HeaderSettings
 				variant='settingOrder'
-
 				title={t('order details')}
 				onClick={() => navigate(-1)}
-
 				btn1={{ onClick: () => console.log('Update Status') }}
 				btn2={{ onClick: () => console.log('Print Invoice') }}
 				btn3={{ onClick: () => console.log('More Options') }}
@@ -54,14 +52,14 @@ export default function OrderDetails() {
 				}}
 			/>
 
-			<div className='grid gap-5 lg:grid-cols-3  custom_container'>
-				<div className='col-span-2 flex-col-top-section-pages gap-5'>
+			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
+				<div className='lg:col-span-2 flex-col-top-section-pages gap-5'>
 					<OrderNo />
 					<OrderItems />
 					<CustomerNote />
 					<OrderHistory />
 				</div>
-				<div className='col-span-1 flex-col-top-section-pages gap-5'>
+				<div className='lg:col-span-1  flex-col-top-section-pages gap-5'>
 					<ContactCard
 						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
 						form={showCustomer}
@@ -101,7 +99,9 @@ export default function OrderDetails() {
 						}
 					/>
 					<Checkout
-						contain={showCheckout && <CheckoutForm handleChckOutFormForm={handleChckOutFormForm}/>}
+						contain={
+							showCheckout && <CheckoutDetailsForm handleChckOutFormForm={handleChckOutFormForm} />
+						}
 						form={showCheckout}
 						title='Checkout'
 						children={
