@@ -12,6 +12,7 @@ import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { useWatch } from 'react-hook-form';
 import { useState } from 'react';
+import ControllerContainer from 'src/app/components/ui/form/controller-container';
 
 /**
  * @template TFormStore
@@ -88,7 +89,21 @@ function MetaKeywordsFormField(props) {
 
 	return (
 		<div className='flex flex-col gap-1'>
-			<div className='flex gap-2 border border-input rounded-md overflow-hidden'>
+			<ControllerContainer
+				end={
+					<button
+						type='button'
+						onClick={() => {
+							const newKeywords = new Set(metaKeywords);
+							newKeywords.add(keyword);
+							props.formStore.setValue('metaKeywords', [...newKeywords]);
+						}}
+					>
+						<FaCirclePlus className='text-primary-500' />
+						<span className='sr-only'>{t('Add')}</span>
+					</button>
+				}
+			>
 				<Input
 					placeholder={t('e.g., T-Shirt, Clothes, Fashion')}
 					className='border-0 rounded-none'
@@ -96,36 +111,27 @@ function MetaKeywordsFormField(props) {
 					value={keyword}
 					onChange={(e) => setKeyword(e.target.value)}
 				/>
-				<button
-					type='button'
-					onClick={() => {
-						const newKeywords = new Set(metaKeywords);
-						newKeywords.add(keyword);
-						props.formStore.setValue('metaKeywords', [...newKeywords]);
-					}}
-				>
-					<FaCirclePlus className='text-primary-500' />
-					<span className='sr-only'>{t('Add')}</span>
-				</button>
-			</div>
-			{metaKeywords.map((keyword) => (
-				<div
-					key={keyword}
-					className='flex gap-2 justify-center items-center rounded-md text-pri-dark bg-gray-700 p-2'
-				>
-					<span>{keyword}</span>
-					<button
-						type='button'
-						className='text-gray-300'
-						onClick={() => {
-							const newKeywords = metaKeywords.filter((key) => key !== keyword);
-							props.formStore.setValue('metaKeywords', newKeywords);
-						}}
+			</ControllerContainer>
+			<div className='flex flex-wrap gap-2'>
+				{metaKeywords.map((keyword) => (
+					<div
+						key={keyword}
+						className='flex gap-2 justify-center items-center rounded-md text-white bg-gray px-2 py-1'
 					>
-						x<span className='sr-only'>{t('Remove')}</span>
-					</button>
-				</div>
-			))}
+						<span>{keyword}</span>
+						<button
+							type='button'
+							className='text-gray-300'
+							onClick={() => {
+								const newKeywords = metaKeywords.filter((key) => key !== keyword);
+								props.formStore.setValue('metaKeywords', newKeywords);
+							}}
+						>
+							x<span className='sr-only'>{t('Remove')}</span>
+						</button>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
