@@ -22,14 +22,7 @@ export default function SpecificAutoCompleteInput<T extends FieldValues>({
 		{ id: '1', name: 'Dress' },
 		{ id: '2', name: 'Fashion' },
 	];
-	const handelAutoCompleteError = () => {
-		return (
-			formStore.watch(name) &&
-			formStore?.watch(name)?.length === 0 && (
-				<p className='global_error'>{'choose item required'}</p>
-			)
-		);
-	};
+	
 
 	return (
 		<div className='flex-col-top-section-pages gap-0'>
@@ -47,7 +40,6 @@ export default function SpecificAutoCompleteInput<T extends FieldValues>({
 					/>
 				)}
 			/>
-			{handelAutoCompleteError()}
 		</div>
 	);
 }

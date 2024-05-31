@@ -82,7 +82,7 @@ export default function useCampaign(target?: string) {
 				id: z.string().min(1),
 				name: z.string().min(1),
 			}),
-		),
+		).min(1),
 	};
 
 

@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next';
 import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
-import CustomAutoComplete from '../../optimized/InputsFields/AutoCompleteMultiple';
+
 import { CheckBox } from '../../optimized';
-import { addCustomerInterface } from './HookForAddCustomerForm';
+
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
+import { InferredZodSchema } from 'src/app/utils/hooks/form';
+import { AddCustomerPageSchema } from './AddCustomerPageSchema';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
@@ -16,19 +18,20 @@ export interface selectItemsInterface {
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<addCustomerInterface>;
+	formStore: UseFormReturn<InferredZodSchema<typeof AddCustomerPageSchema>>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
 
-	// ///////////////////////////
+
+
 
 	return (
 		<div className='global-cards gap-[1.3rem]'>
 			<h2 className='title'>{t('General Info')}</h2>
 
 			<div className='flex-col-top-section-pages md:w-[65%]'>
-				<FormChoiceChips<addCustomerInterface>
+				<FormChoiceChips<InferredZodSchema<typeof AddCustomerPageSchema>>
 					formStore={formStore}
 					name='humanType'
 					label='Customer can check out with'
@@ -47,7 +50,7 @@ export default function GeneralInfoCustomerForm({
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 
-				<SpecificAutoCompleteInput<addCustomerInterface>
+				<SpecificAutoCompleteInput<InferredZodSchema<typeof AddCustomerPageSchema>>
 					name='groupMeta'
 					label={t('Meta keywords')}
 					formStore={formStore}

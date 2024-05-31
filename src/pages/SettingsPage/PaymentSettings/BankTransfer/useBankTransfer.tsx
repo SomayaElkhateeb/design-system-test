@@ -43,7 +43,7 @@ export default function useBankTransfer(applyWith: string) {
 							id: z.string().min(1),
 							name: z.string().min(1),
 						}),
-				  )
+				  ).min(1)
 				: z.optional(
 						z.array(
 							z.object({
@@ -59,7 +59,7 @@ export default function useBankTransfer(applyWith: string) {
 							id: z.string().min(1),
 							name: z.string().min(1),
 						}),
-				  )
+				  ).min(1)
 				: z.optional(
 						z.array(
 							z.object({
