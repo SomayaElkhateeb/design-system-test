@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { adminSchema } from "./AdminSchema";
 
 
 export interface generalSettingsInterface {
@@ -14,6 +15,7 @@ export interface generalSettingsInterface {
     defaultCurrency: string;
     defaultLength: string;
     defaultWeight: string;
+    defaultCountry?: string
     image: File;
     icon: File;
     NationalID: string;
@@ -21,6 +23,9 @@ export interface generalSettingsInterface {
     CommercialRegistrationImage?: File;
     NationalIDImage?: File;
 }
+
+
+
 // ////////////////////////
 export default function useCustomHookGeneralForm(state: string) {
 
@@ -53,6 +58,7 @@ export default function useCustomHookGeneralForm(state: string) {
             defaultCurrency: '',
             defaultLength: '',
             defaultWeight: '',
+            defaultCountry: '',
             image: undefined,
             icon: undefined,
             NationalID: '',
@@ -67,10 +73,7 @@ export default function useCustomHookGeneralForm(state: string) {
         storeEmail: z.string().min(1, { message: 'Store email is required' }).email(),
         storeIndustry: z.string().min(1, { message: 'Store Industry is required' }),
         storeContactPhone: z.string().min(7, { message: 'Store contact phone is required' }),
-        defaultTime: z.string().min(1),
-        defaultCurrency: z.string().min(1),
-        defaultLength: z.string().min(1),
-        defaultWeight: z.string().min(1),
+        ...adminSchema,
         facebook: z
             .string()
             .url()
