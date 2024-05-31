@@ -6,13 +6,15 @@ import FormField from '../../ui/form/field';
 import { Input } from '../../ui/input';
 import { Switch } from '../../ui/switch';
 import { Textarea } from '../../ui/textarea';
-import { addCustomerGroupInterface } from './HookForAddCustomerGroupForm';
+
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import { InferredZodSchema } from 'src/app/utils/hooks/form';
+import { AddCustomerGroupPageSchema } from './AddCustomerGroupSchema';
 
 export default function GeneralInfoCustomerGroupInfo({
 	formStore,
 }: {
-	formStore: UseFormReturn<addCustomerGroupInterface>;
+	formStore: UseFormReturn<InferredZodSchema<typeof AddCustomerGroupPageSchema>>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -34,8 +36,8 @@ export default function GeneralInfoCustomerGroupInfo({
 					render={(field) => <Textarea {...field} placeholder={''} />}
 				/>
 
-				<div className="flex gap-[.2rem] items-end">
-					<FormSwitchField<addCustomerGroupInterface>
+				<div className='flex gap-[.2rem] items-end'>
+					<FormSwitchField<InferredZodSchema<typeof AddCustomerGroupPageSchema>>
 						formStore={formStore}
 						name='active'
 						fieldLabel={t('Active?')}
