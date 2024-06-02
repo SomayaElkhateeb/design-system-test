@@ -4,6 +4,8 @@ import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 
 export default function TopSectionDiscountAndCoupons({
 	addButton,
@@ -13,9 +15,10 @@ export default function TopSectionDiscountAndCoupons({
 	path: string;
 }) {
 	//  hooks
-	const navigate = useNavigate();
-	//  custom hook for select arrang item
 
+	const navigate = useNavigate();
+	//  custom hook
+	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
@@ -26,25 +29,32 @@ export default function TopSectionDiscountAndCoupons({
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
-			<div className='topTable'>
-				{/*  left dropdow */}
+		<>
+			<div className='flex-col-top-section-pages'>
+				<div className='topTable'>
+					{/*  left dropdow */}
 
-				<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
-					{addButton}
-				</Button>
+					<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+						{addButton}
+					</Button>
 
-				{/*  actions  arrange,... */}
-				<div className='flex-row-global  gap-[1.2rem]'>
-					<ActionsComp
-						sortMenus={sortMenus}
-						filterMenus={sortMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
+					{/*  actions  arrange,... */}
+					<div className='flex-row-global  gap-[1.2rem]'>
+						<ActionsComp
+							HandelopenDrawer={HandelopenDrawer}
+							filter
+							sortMenus={sortMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</div>
 				</div>
+				<hr />
 			</div>
-			<hr />
-		</div>
+			{/* open filter drawer */}
+			{openDrawer && (
+				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+			)}
+		</>
 	);
 }
