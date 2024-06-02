@@ -1,3 +1,4 @@
+import { InferredZodSchema } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
 const Requiredstring = z.string().min(1);
@@ -15,3 +16,4 @@ export const AddCustomerGroupPageSchema = {
 	description: Requiredstring,
 	active: z.boolean().default(false),
 };
+export type AddCustomerGroupPageSchemaValues = InferredZodSchema<typeof AddCustomerGroupPageSchema>;

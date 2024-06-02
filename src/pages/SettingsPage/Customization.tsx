@@ -7,7 +7,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { Switch } from 'src/app/components/ui/switch';
 import { useForm } from 'src/app/utils/hooks/form';
 import { EditIcon } from 'src/app/utils/icons';
-import useCustomCustomizeForm, { customizationInterface } from './HookCustomization';
+import useCustomCustomizeForm, { customizationInterface } from '../../app/components/page/SettingPage/Customizations/HookCustomization';
 import { Input } from 'src/app/components/ui/input';
 import { Form } from 'src/app/components/ui/form';
 import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
