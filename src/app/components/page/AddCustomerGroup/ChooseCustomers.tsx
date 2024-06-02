@@ -2,16 +2,13 @@ import { useTranslation } from 'react-i18next';
 
 import { UseFormReturn } from 'react-hook-form';
 import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
-import { InferredZodSchema } from 'src/app/utils/hooks/form';
-import { AddCustomerGroupPageSchema } from './AddCustomerGroupSchema';
-export interface selectItemsInterface {
-	id: string;
-	name: string;
-}
+
+import { AddCustomerGroupPageSchemaValues } from './AddCustomerGroupSchema';
+
 export default function ChooseCustomers({
 	formStore,
 }: {
-	formStore: UseFormReturn<InferredZodSchema<typeof AddCustomerGroupPageSchema>>;
+	formStore: UseFormReturn<AddCustomerGroupPageSchemaValues>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -23,7 +20,7 @@ export default function ChooseCustomers({
 			<h2 className='title'>
 				{t('Customers')}({formStore.watch('Customers')?.length})
 			</h2>
-			<SpecificAutoCompleteInput<InferredZodSchema<typeof AddCustomerGroupPageSchema>>
+			<SpecificAutoCompleteInput<AddCustomerGroupPageSchemaValues>
 				name='Customers'
 				label={t('Customers')}
 				formStore={formStore}

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-import { AddCustomerPageSchema } from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
+import { AddCustomerPageSchema, AddCustomerPageSchemaValues } from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
 import GeneralInfoCustomerForm from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import useCustomHookAddCustomerForm from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
 import PrimaryAddresseForm from 'src/app/components/page/AddCustomer/PrimaryAddresseForm';
@@ -11,7 +11,7 @@ export default function AddCustomerPage() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const handleSubmit = (values: InferredZodSchema<typeof AddCustomerPageSchema>) => {
+	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
 		console.log(values);
 		// handleClose();
 	};

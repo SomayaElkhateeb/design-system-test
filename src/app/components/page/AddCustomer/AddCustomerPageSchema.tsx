@@ -1,3 +1,4 @@
+import { InferredZodSchema } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
 const RequiredAddresseData = z.string().min(1);
@@ -26,3 +27,4 @@ export const AddCustomerPageSchema = {
 	addressePhoneNumber: z.string().min(7),
 	emailSubescribe: z.boolean(),
 };
+export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPageSchema>;

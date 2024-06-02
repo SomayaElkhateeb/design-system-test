@@ -5,13 +5,11 @@ import { Input } from '../../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import { countries } from '../SettingPage/BranchesSettings/AddBranch/BranchInfo';
-
-import { InferredZodSchema } from 'src/app/utils/hooks/form';
-import { AddCustomerPageSchema } from './AddCustomerPageSchema';
+import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export default function PrimaryAddresseForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<InferredZodSchema<typeof AddCustomerPageSchema>>;
+	formStore: UseFormReturn<AddCustomerPageSchemaValues>;
 }) {
 	//  hooks
 	const { t } = useTranslation();

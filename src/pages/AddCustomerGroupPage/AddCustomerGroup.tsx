@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-import { AddCustomerGroupPageSchema } from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
+import { AddCustomerGroupPageSchema, AddCustomerGroupPageSchemaValues } from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
 import ChooseCustomers from 'src/app/components/page/AddCustomerGroup/ChooseCustomers';
 import GeneralInfoCustomerGroupInfo from 'src/app/components/page/AddCustomerGroup/GeneralInfo';
 import useCustomHookAddCustomerGroupForm from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
@@ -15,7 +15,7 @@ export default function AddCustomerGroup() {
 
 	//  custome hook
 	const { handelDefaultValue } = useCustomHookAddCustomerGroupForm();
-	const handleSubmit = (values: InferredZodSchema<typeof AddCustomerGroupPageSchema>) => {
+	const handleSubmit = (values: AddCustomerGroupPageSchemaValues) => {
 		console.log(values);
 		// handleClose();
 	};
