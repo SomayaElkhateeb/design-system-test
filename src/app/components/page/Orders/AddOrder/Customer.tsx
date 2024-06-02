@@ -56,7 +56,7 @@ export default function Customer() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='search customer' />
+										<SelectValue placeholder={t('search customer')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='design'>Design</SelectItem>

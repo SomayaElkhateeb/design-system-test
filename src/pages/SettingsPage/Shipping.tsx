@@ -17,11 +17,10 @@ export default function Shipping() {
 					title={t('Third party shipping providers')}
 					description={t('Providers that enable you to ship products to your customers')}
 				>
-					<div className='flex gap-2'>
+					<div className='flex flex-wrap gap-2'>
 						{images.map((e) => {
 							return <img src={e.ImageURL} key={e.id} />;
 						})}
-						
 					</div>
 					<p className='text-subtitle text-sm py-3 w-[50%] leading-6'>
 						{t(
@@ -42,7 +41,7 @@ export default function Shipping() {
 					)}
 				>
 					<hr />
-					<div className='flex justify-between items-center py-1'>
+					<div className='flex flex-col py-1 gap-4 md:flex-row md:justify-between md:items-center'>
 						<h3 className='title text-sm'>{t('Deliver yourself')}</h3>
 						<div className='flex items-center gap-4'>
 							<Button
@@ -56,11 +55,13 @@ export default function Shipping() {
 						</div>
 					</div>
 					<hr />
-					<div className='flex justify-between items-center pt-1'>
+					<div className='flex flex-col py-1 gap-4 md:flex-row md:justify-between md:items-center'>
 						<h3 className='title text-sm'>{t('Self pickup')} </h3>
-						<Button variant='secondary' onClick={() => navigate('selfPickup')}>
-							{t('Activate')}
-						</Button>
+						<div>
+							<Button variant='secondary' onClick={() => navigate('selfPickup')}>
+								{t('Activate')}
+							</Button>
+						</div>
 					</div>
 				</CardShipping>
 			</div>

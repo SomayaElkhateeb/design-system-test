@@ -78,7 +78,7 @@ export default function AddCheckout() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select branch' />
+										<SelectValue placeholder={t('Select branch')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
@@ -110,7 +110,7 @@ export default function AddCheckout() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
+										<SelectValue placeholder={t('Select option')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
@@ -123,7 +123,7 @@ export default function AddCheckout() {
 							formStore={formStore}
 							name='creditCardNote'
 							label={t('Payment method')}
-							render={(field) => <Textarea {...field} placeholder='Type note' />}
+							render={(field) => <Textarea {...field} placeholder={t('Type note')} />}
 						/>
 					</>
 				)}
@@ -159,7 +159,7 @@ export default function AddCheckout() {
 						<FormField
 							formStore={formStore}
 							name='dhlStatus'
-							label={t('Order status')}
+							label={t('Order Status')}
 							render={(field) => (
 								<Select
 									onValueChange={field.onChange}
@@ -168,7 +168,7 @@ export default function AddCheckout() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
+										<SelectValue placeholder={t('Select option')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
@@ -181,7 +181,7 @@ export default function AddCheckout() {
 							formStore={formStore}
 							name='dhlNote'
 							label={t('Customer note')}
-							render={(field) => <Textarea {...field} placeholder='Type note' />}
+							render={(field) => <Textarea {...field} placeholder={t('Type note')} />}
 						/>
 					</>
 				)}
@@ -200,7 +200,7 @@ export default function AddCheckout() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select option' />
+										<SelectValue placeholder={t('Select option')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
@@ -213,7 +213,7 @@ export default function AddCheckout() {
 							formStore={formStore}
 							name='aramexNote'
 							label={t('Customer note')}
-							render={(field) => <Textarea {...field} placeholder='Type note' />}
+							render={(field) => <Textarea {...field} placeholder={t('Type note')} />}
 						/>
 					</>
 				)}

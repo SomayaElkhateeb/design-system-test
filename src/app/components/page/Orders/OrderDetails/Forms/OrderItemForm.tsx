@@ -8,10 +8,14 @@ import useOrderItemForm, { IOrderItemForm } from './HookOrderItem';
 import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
 import ProductItem from '../Comp/ProductItem';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 export default function OrderItemForm({ onClose }: { onClose: () => void }) {
-	const { t } = useTranslation();
 	const { handelDefaultValue, orderItemSchema } = useOrderItemForm();
+	const { t } = useTranslation();
+	const language = UseLanguage();
+	const iconProps =
+		language === 'ar' ? { RightIcon: FaChevronLeft } : { RightIcon: FaChevronRight };
 
 	const handleSubmit = (values: IOrderItemForm) => {
 		console.log(values);
@@ -27,7 +31,7 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
 				<div className='px-3 flex flex-col gap-3 p-5'>
 					<div>
-						<Button variant='secondary' RightIcon={'ltr' ? FaChevronRight : FaChevronLeft}>
+						<Button variant='secondary' {...iconProps}>
 							{t('Add Product')}
 						</Button>
 					</div>
@@ -54,10 +58,11 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 function FormItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
 	//  hooks
 	const { t } = useTranslation();
+
 	const textInput = (
 		<div className='text-pri-dark text-sm flex items-center justify-between'>
 			<p>{t('Discount price (optional)')}</p>
-			<p>% off</p>
+			<p>% {t('off')}</p>
 		</div>
 	);
 
@@ -71,7 +76,7 @@ function FormItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
 			/>
 			<FormField
 				formStore={formStore}
-				label='Shipping (optional)'
+				label={t('Shipping (optional)')}
 				name='shipping'
 				render={(field) => <Input type='number' {...field} placeholder={''} />}
 			/>
@@ -80,12 +85,16 @@ function FormItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
 }
 
 function Row({ title, price = 450, hr }: { title: string; price?: number; hr?: React.ReactNode }) {
+	const { t } = useTranslation();
+	const language = UseLanguage();
 	return (
 		<div>
 			{hr && <hr />}
 			<div className='flex items-center justify-between py-3'>
 				<p className='text-subtitle text-sm uppercase'>{title}</p>
-				<p className='text-title text-sm'>SAR {price}.00</p>
+				<p className='text-title text-sm'>
+					{language === 'ar' ? `${price}.00 ${t('SAR')}` : `${t('SAR')} ${price}.00`}
+				</p>
 			</div>
 		</div>
 	);

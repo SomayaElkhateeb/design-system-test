@@ -2,14 +2,20 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DownIcon } from 'src/app/utils/icons';
 import { OrderStatus } from '../..';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 export default function OrderNo() {
 	const [showOrderStatus, setShowOrderStatus] = useState(false);
 	const { t } = useTranslation();
+	const language = UseLanguage();
 	const flexClass = 'flex gap-1.5 items-center md:flex';
 	return (
 		<div className='capitalize global-cards grid lg:grid-cols-6'>
-			<div className='col-span-1  flex-col-top-section-pages  gap-2 relative after:absolute after:h-[100%] after:lg:w-[1px] after:bg-constrained after:right-[-5%] after:top-0'>
+			<div
+				className={`col-span-1  flex-col-top-section-pages gap-2 relative after:absolute after:h-[100%] after:lg:w-[1px] after:bg-constrained ${
+					language === 'ar' ? 'after:left-0' : 'after:right-[-5%]'
+				} after:top-0`}
+			>
 				<p className='subtitle'>{t('order No')}.</p>
 				<p className='title  '>#8965742</p>
 			</div>

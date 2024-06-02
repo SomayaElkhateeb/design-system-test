@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function LegalPagesSection() {
 	//  hooks
-	const {t}=useTranslation()
+	const { t } = useTranslation();
 	const data = [
 		{
 			title: t('Return policy'),
@@ -29,7 +29,7 @@ export default function LegalPagesSection() {
 		},
 	];
 	return (
-		<LegalPageParentCard title='Legal pages'>
+		<LegalPageParentCard title={t('Legal pages')}>
 			<div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4'>
 				{data?.map((el, i) => (
 					<LegalPagesCard key={i} header={el.title} path={el.path} img={el.img} />

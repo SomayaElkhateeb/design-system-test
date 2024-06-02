@@ -1,25 +1,35 @@
-import { BackIconSm, NextIconSm } from 'src/app/utils/icons';
-
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { UseLanguage } from '../../CustomHook/LanguageHook';
 export default function PrevNextBtn({
 	onClickPrev,
 	onClickNext,
 }: {
-	onClickPrev?: () => void,
-	onClickNext?: () => void,
+	onClickPrev?: () => void;
+	onClickNext?: () => void;
 }) {
+	const language = UseLanguage();
+	const borderStyle = 'flex items-center justify-center w-full border border-pri-dark';
 	return (
 		<div className='flex w-[67px] h-[34px]'>
 			<button
 				onClick={onClickPrev}
-				className='flex items-center justify-center w-full border rounded-l border-pri-dark'
+				className={` ${borderStyle} ${language === 'ar' ? 'rounded-r' : 'rounded-l'}`}
 			>
-				<BackIconSm className=' fill-pri-dark ms-1 mt-1.5' />
+				{language === 'ar' ? (
+					<RiArrowRightSLine color='#032C58' />
+				) : (
+					<RiArrowLeftSLine color='#032C58' />
+				)}
 			</button>
 			<button
 				onClick={onClickNext}
-				className='flex items-center justify-center w-full border rounded-r border-pri-dark'
+				className={` ${borderStyle} ${language === 'ar' ? 'rounded-l' : 'rounded-r'}`}
 			>
-				<NextIconSm className=' fill-pri-dark ms-1.5 mt-1.5' />
+				{language === 'ar' ? (
+					<RiArrowLeftSLine color='#032C58' />
+				) : (
+					<RiArrowRightSLine color='#032C58' />
+				)}
 			</button>
 		</div>
 	);

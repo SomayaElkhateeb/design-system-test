@@ -13,7 +13,7 @@ export interface INoteForm {
 export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 	const { t } = useTranslation();
 	const noteSchema = {
-		note: z.string().min(5, { message: 'Customer note is required' }),
+		note: z.string().min(5, { message: t('Customer note is required') }),
 	};
 
 	const handelDefaultValue = () => {
@@ -39,7 +39,7 @@ export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 						formStore={formStore}
 						name='note'
 						label={t('Customer note')}
-						render={(field) => <Textarea {...field} placeholder={'Type a note'} />}
+						render={(field) => <Textarea {...field} placeholder={t('Type a note')} />}
 					/>
 				</div>
 				<div className='flex-row-global justify-end  gap-4'>
