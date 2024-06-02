@@ -414,6 +414,7 @@ export const arabic = {
 	"Brand":"البراند",
 	"Product type":"نوع المنتج",
 	"Show Results":"اظهار المنتج",
+	"Saved Filters":"التصفيات المحفوظه",
 	'coupon name': 'اسم الكوبون',
 	used: 'مستخدم',
 	'select category': 'اختر الفئة',

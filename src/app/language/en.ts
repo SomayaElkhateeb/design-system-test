@@ -20,6 +20,7 @@ export const english = {
 	"Brand":"Brand",
 	"Product type":"Product type",
 	"Show Results":"Show Results",
+	"Saved Filters":"Saved Filters",
 	'Email description': 'Email description',
 	'Send after purchase': 'Send after purchase',
 	Queries: 'Queries',
