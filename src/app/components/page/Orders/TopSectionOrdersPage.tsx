@@ -13,6 +13,8 @@ import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import FilterSideBar from '../../SideBar/FilterSideBar';
+import FilterOrdersComponent from './FilterOrder/FilterOrdersComponent';
+import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
 export default function TopSectionOrdersPage({
 	addButton,
 	path,
@@ -21,12 +23,12 @@ export default function TopSectionOrdersPage({
 	path: string;
 }) {
 	//  hooks
-	const [openDrawer, setOpenDrawer] = useState(false);
+
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
-	//  custom hook for select arrang item
-
+	//  custom hook
+	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
@@ -45,15 +47,6 @@ export default function TopSectionOrdersPage({
 		{ id: nanoid(), text: 'Export Orders', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import Orders', icon: <FiUploadCloud className='iconClass' /> },
 	];
-
-	//  open sideDrawer
-	const HandelopenDrawer = () => {
-		setOpenDrawer(true);
-	};
-	//  close sideDrawer
-	const HandelCloseDrawer = () => {
-		setOpenDrawer(false);
-	};
 
 	return (
 		<>
@@ -82,10 +75,10 @@ export default function TopSectionOrdersPage({
 				</div>
 				<hr />
 			</div>
+
+			{/* open filter drawer */}
 			{openDrawer && (
-				<FilterSideBar handelClose={HandelCloseDrawer} sideDrawerOpen={openDrawer}>
-					hhh
-				</FilterSideBar>
+				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
 			)}
 		</>
 	);

@@ -9,6 +9,8 @@ import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
 import CustomersTable from './CustomersTable';
+import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -16,8 +18,8 @@ export default function AllCustomers() {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
-	//  custom hook for select arrang item
-
+	//  custom hook
+	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
@@ -38,33 +40,41 @@ export default function AllCustomers() {
 	];
 
 	return (
-		<div className=' flex flex-col gap-[1rem]'>
-			{/*  top section */}
-			<div className='topTable'>
-				{/*  add customers button */}
-				<Button
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-					onClick={() => {
-						navigate('/customers/addCustomer');
-					}}
-				>
-					{t('Add New Customer')}
-				</Button>
+		<>
+			<div className=' flex flex-col gap-[1rem]'>
+				{/*  top section */}
+				<div className='topTable'>
+					{/*  add customers button */}
+					<Button
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+						onClick={() => {
+							navigate('/customers/addCustomer');
+						}}
+					>
+						{t('Add New Customer')}
+					</Button>
 
-				{/*  actions filter arrange,... */}
-				<ActionsComp
-					filterMenus={sortMenus}
-					sortMenus={sortMenus}
-					ActionsMenus={ActionsMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+					{/*  actions filter arrange,... */}
+					<ActionsComp
+						HandelopenDrawer={HandelopenDrawer}
+						filter
+						sortMenus={sortMenus}
+						ActionsMenus={ActionsMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</div>
+				<hr />
+
+				{/*  customers table */}
+				<CustomersTable />
 			</div>
-			<hr />
 
-			{/*  customers table */}
-			<CustomersTable />
-		</div>
+			{/* open filter drawer */}
+			{openDrawer && (
+				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+			)}
+		</>
 	);
 }

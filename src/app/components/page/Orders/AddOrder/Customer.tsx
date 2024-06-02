@@ -13,7 +13,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
-import AddCustomer from './Comp/AddCustomer';
+import AddCustomerinAddOrder from './Comp/AddCustomerInAddOrder';
 
 interface IAddOrder {
 	selectCustomer?: string;
@@ -88,7 +88,7 @@ export default function Customer() {
 					</div>
 
 					{addNewCustomer && (
-						<AddCustomer
+						<AddCustomerinAddOrder
 							onClose={() => {
 								setAddNewCustomer(false);
 							}}
