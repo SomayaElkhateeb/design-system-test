@@ -4,10 +4,16 @@ import FilterSideBar from '../../../SideBar/FilterSideBar';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useState } from 'react';
 import { Switch } from '../../../ui/switch';
-import DropDownMenu from './DropDownMenu';
 import FilterQuantity from './FilterQuantity';
 import FilterPrice from './FilterPrice';
 import { Button } from 'src/app/components/optimized';
+import ProductStatusFilter from './ProductStatusFilter';
+import CategoryStatusFilter from './CategoryStatusFilter';
+import AccessoriesStatusFilter from './AccessoriesStatusFilter';
+import BrandStatusFilter from './BrandStatusFilter';
+
+import SalesStatusFilter from './SalesStatusFilter';
+import ProductTypeStatusFilter from './ProductTypeStatusFilter';
 
 export default function FilterOrdersComponent({
 	HandelCloseDrawer,
@@ -38,12 +44,12 @@ export default function FilterOrdersComponent({
 					<Switch checked={checked} onCheckedChange={() => setChecked(!checked)} />
 				</div>
 				<hr />
-				<DropDownMenu title={t('Product status')}></DropDownMenu>
-				<DropDownMenu title={t('Category')}></DropDownMenu>
-				<DropDownMenu title={t('Accessories')}></DropDownMenu>
-				<DropDownMenu title={t('Brand')}></DropDownMenu>
-				<DropDownMenu title={t('Sales')}></DropDownMenu>
-				<DropDownMenu title={t('Product type')}></DropDownMenu>
+				<ProductStatusFilter />
+				<CategoryStatusFilter />
+				<AccessoriesStatusFilter />
+				<BrandStatusFilter />
+				<SalesStatusFilter />
+				<ProductTypeStatusFilter />
 
 				<FilterPrice />
 				<FilterQuantity />
