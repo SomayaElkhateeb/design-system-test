@@ -1,4 +1,4 @@
-import { Drawer } from '@mui/material';
+import { Box, Drawer } from '@mui/material';
 
 export default function FilterSideBar({
 	sideDrawerOpen,
@@ -15,9 +15,13 @@ export default function FilterSideBar({
 			open={sideDrawerOpen}
 			onClose={handelClose}
 			variant='temporary'
-			sx={{ zIndex: '1400' }}
+			style={{width:"366px"}}
+			
 		>
+			<Box sx={{width:"22rem",p:"1.2rem"}}>
 			{children}
+			</Box>
+			
 		</Drawer>
 	);
 }

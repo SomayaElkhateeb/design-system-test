@@ -8,7 +8,7 @@ import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInp
 import { Button } from 'src/app/components/optimized';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 
-export default function AddCustomer({
+export default function AddCustomerinAddOrder({
 	onClose,
 	addNewCustomer,
 }: {
