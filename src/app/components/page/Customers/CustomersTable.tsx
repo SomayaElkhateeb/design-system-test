@@ -84,7 +84,7 @@ export default function CustomersTable() {
 				return {
 					item: e,
 					elements: [
-						<GlobalTableCell>
+						<GlobalTableCell >
 							<div className=' flex  items-center gap-[.2rem]'>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 								<div className='flex flex-col gap-2'>
