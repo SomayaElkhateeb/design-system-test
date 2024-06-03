@@ -14,7 +14,7 @@ const ViewBtn = () => {
 		<div className='fifth-step'>
 			{/* View icon button */}
 			<Button onClick={() => setShow(true)}>
-				<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
+				<p className='rounded-lg lg:border lg:border-light-2 size-[42px] grid place-content-center'>
 					<ViewIcon />
 				</p>
 			</Button>

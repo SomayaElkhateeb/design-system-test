@@ -1,13 +1,13 @@
-import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
-import AnalyticsTableActions from '../comp/AnalyticsTableActions';
-import { ColumnChart } from 'src/app/components/optimized';
-
-// import ProductTable from './comp/ProductTable';
-import data from '../comp/data.json';
-import ProductsTable from './comp/ProductsTable';
 import { useTranslation } from 'react-i18next';
 import useAnalyticsData from '../comp/useAnalyticsData';
-
+import { ColumnChart } from 'src/app/components/optimized';
+import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
+import AnalyticsTableActions from '../comp/AnalyticsTableActions';
+import data from '../comp/data.json';
+import ProductsTable from './comp/ProductsTable';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsTable } from 'src/app/store/slices/productsPage/productsTable/productsTableAsyncThunks';
+import { useEffect } from 'react';
 export interface AnaylticesProduct {
 	id: string;
 	product_name: string;
@@ -23,6 +23,13 @@ export interface AnaylticesProduct {
 const Products = () => {
 	//  hooks
 	const { t } = useTranslation();
+	const dispatch = useDispatch();
+	//  selectors
+	const { isLoading, products, error } = useSelector((state) => state.products);
+
+	useEffect(() => {
+		dispatch(getProductsTable());
+	}, [dispatch]);
 
 	const productsSortMenus = [
 		{ text: t('Quantity Descending') },
@@ -60,7 +67,7 @@ const Products = () => {
 	return (
 		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
-			<ColumnChart  percentage="5"/>
+			<ColumnChart percentage='5' />
 			<AnalyticsTableActions
 				data={tableData}
 				sortMenus={productsSortMenus}
@@ -69,7 +76,6 @@ const Products = () => {
 				documentTitle='Products Table Data'
 			/>
 			<ProductsTable tableData={tableData} />
-			{/* <ProductTable data={tableData} headers={productsTableHeaders} /> */}
 		</div>
 	);
 };

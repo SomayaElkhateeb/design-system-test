@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react';
-// get coupons
-import { useDispatch, useSelector } from 'react-redux';
-import {
-	getCoupons,
-	deleteCoupons,
-} from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
 

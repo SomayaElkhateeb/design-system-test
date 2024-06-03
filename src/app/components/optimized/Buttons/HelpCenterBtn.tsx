@@ -14,7 +14,7 @@ const HelpCenterBtn = () => {
 		<div className='sixth-step'>
 			{/* Help center icon button */}
 			<Button onClick={() => setShow(true)}>
-				<span className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
+				<span className='rounded-lg size-[20px] border border-light-2 lg:size-[42px] grid place-content-center'>
 					<FaqIcon />
 				</span>
 			</Button>
