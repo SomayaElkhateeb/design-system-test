@@ -47,8 +47,6 @@ const slides = [
 	},
 ];
 
-
-
 export default function HomePage() {
 	const { showLoading, startTour, handleSetup, handleJoyrideCallback, run, isSetup } =
 		useHomePage();
@@ -56,7 +54,7 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-	return <SidebarMob />;
+
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
 			<div className='custom-grid-parent'>
@@ -79,11 +77,13 @@ export default function HomePage() {
 					<ProductHighlights data={data} />
 				</div>
 			</div>
+
 			<CustomSlider
 				slides={data.slides}
 				title='Get started with dookan'
 				SlideComponent={CalloutCard}
 			/>
+
 			<Joyride
 				steps={tourSteps}
 				run={run}
