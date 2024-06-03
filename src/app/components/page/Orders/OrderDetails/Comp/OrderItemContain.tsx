@@ -1,10 +1,12 @@
 import { Button } from 'src/app/components/optimized';
 import RowOrderItems from './RowOrderItems';
 import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 export default function OrderItemContain() {
 	//  hooks
 	const { t } = useTranslation();
+	const language = UseLanguage();
 	return (
 		<div className='flex-col-top-section-pages gap-2.5'>
 			<RowOrderItems />
@@ -18,10 +20,10 @@ export default function OrderItemContain() {
 						<p>{t('Tax')}</p>
 					</div>
 					<div className='text-title text-sm flex-col-top-section-pages gap-1'>
-						<p>SAR 450.00</p>
+						<p>{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}</p>
 						<p>% ------</p>
-						<p>SAR 450.00</p>
-						<p>SAR 450.00</p>
+						<p>{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}</p>
+						<p>{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}</p>
 					</div>
 				</div>
 			</div>
@@ -30,7 +32,9 @@ export default function OrderItemContain() {
 				<hr />
 				<div className='flex-row-global justify-between '>
 					<p className='subtitle uppercase'>{t('total')}</p>
-					<p className='text-title text-sm'>SAR 450.00</p>
+					<p className='text-title text-sm'>
+						{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}
+					</p>
 				</div>
 			</div>
 		</div>

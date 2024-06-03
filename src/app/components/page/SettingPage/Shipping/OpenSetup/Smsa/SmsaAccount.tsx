@@ -7,7 +7,7 @@ import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 export default function SmsaAccount() {
 	const { t } = useTranslation();
 	return (
-		<div className='cardDetails-sharedClass p-5 w-3/4'>
+		<div className='cardDetails-sharedClass p-5 w-full lg:w-3/4'>
 			<img src={getImageUrl('companies/express.svg')} />
 			<p className='text-title text-sm pt-1.5 pb-3 w-[65%]'>
 				{t('Make sure you have SMSA account if you have an account you can proceed,if you don’t,')}

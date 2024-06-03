@@ -2,11 +2,12 @@ import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
-import { FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SelectTable from './Comp/SelectTable';
 import { useState } from 'react';
 import SelectProducts from './Comp/SelectProducts';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 export interface IQuantity {
 	quantity: number;
 }
@@ -21,6 +22,7 @@ const handelDefaultValue = {
 export default function Products() {
 	const [selectProducts, setSelectProducts] = useState(false);
 	const { t } = useTranslation();
+	const language = UseLanguage();
 
 	const handleSubmit: (validatedData: IQuantity) => void = (values: IQuantity) => {
 		console.log(values);
@@ -37,7 +39,7 @@ export default function Products() {
 				<div>
 					<Button
 						variant='secondary'
-						RightIcon={FaChevronRight}
+						RightIcon={language === 'ar' ? FaChevronLeft : FaChevronRight}
 						onClick={() => setSelectProducts(true)}
 					>
 						{t('select products')}

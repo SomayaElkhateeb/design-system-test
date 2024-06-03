@@ -48,7 +48,7 @@ const ContactCard: React.FC<IData> = ({
 					{data.map((e) => (
 						<p className='flex-col-top-section-pages justify-between flex-row' key={e.id}>
 							<span className='text-subtitle text-sm'>{e.name}:</span>
-							<span className='text-title text-sm'>SAR {e.value}</span>
+							<span className='text-title text-sm'>{e.value}</span>
 						</p>
 					))}
 					{isLocation}

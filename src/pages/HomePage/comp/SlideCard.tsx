@@ -46,7 +46,7 @@ const SlideCard: React.FC<SlideCardProps> = ({ slides, text, sortMenus, btn }) =
 	};
 
 	return (
-		<div className='bg-white rounded-xl border p-5 border-borders-lines h-96'>
+		<div className='cardDetails-sharedClass p-5 h-96'>
 			<header className='flex justify-between items-center mb-2'>
 				<h2 className='text-title font-semibold text-lg'>{text}</h2>
 				{btn ? (

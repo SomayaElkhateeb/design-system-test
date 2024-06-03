@@ -14,8 +14,8 @@ const items = [
 	{ id: '1', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 1 },
 	{ id: '2', title: 'product', subtitle: 'Blankets', countOption: 2 },
 	{ id: '3', title: 'Blankets', subtitle: 'Blankets', countOption: 2 },
-	// { id: '4', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 2 },
-	// { id: '5', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 2 },
+	{ id: '4', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 2 },
+	{ id: '5', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 2 },
 ];
 export default function SelectProducts({
 	onClose,
@@ -24,8 +24,6 @@ export default function SelectProducts({
 	onClose: () => void;
 	addNewCustomer: boolean;
 }) {
-	const [searchQuery, setSearchQuery] = useState('');
-	const [filteredItems, setFilteredItems] = useState(items);
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 	const [isChecked, setIsChecked] = useState<boolean>(false);
 	const { t } = useTranslation();
@@ -53,21 +51,6 @@ export default function SelectProducts({
 		setSelectedPaymentMethod(method === selectedPaymentMethod ? null : method);
 	};
 
-	// search
-	const handleSearchChange = (query: string) => {
-		setSearchQuery(query);
-	};
-
-	useEffect(() => {
-		if (searchQuery) {
-			setFilteredItems(
-				items.filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase())),
-			);
-		} else {
-			setFilteredItems(items);
-		}
-	}, [searchQuery]);
-
 	return (
 		<GlobalDialog
 			openDialog={addNewCustomer}
@@ -76,16 +59,16 @@ export default function SelectProducts({
 		>
 			<Form {...formStore}>
 				<form onSubmit={onSubmit} className='flex flex-col gap-4'>
-					<h2 className='text-title font-semibold'>Select Products</h2>
+					<h2 className='text-title font-semibold'>{t('Select Products')}</h2>
 
 					<FormField
 						// handleOnChange={(e) => handleSearchChange(e.target.value)}
 						formStore={formStore}
 						name='search'
-						render={(field) => <Input {...field} placeholder='Search' />}
+						render={(field) => <Input {...field} placeholder={t('Search')} />}
 					/>
 
-					<div>
+					<div className='max-h-[19rem] lg:max-h-[25rem] overflow-auto'>
 						{items?.map((item, index) => (
 							<AccordionItems
 								key={item.id}
@@ -122,7 +105,7 @@ export default function SelectProducts({
 							{t('Cancel')}
 						</Button>
 						<Button variant='primary' onClick={onSubmit}>
-							{t('Add' + ' ')} ({items.length})
+							{t('Add')} ({items.length})
 						</Button>
 					</div>
 				</form>

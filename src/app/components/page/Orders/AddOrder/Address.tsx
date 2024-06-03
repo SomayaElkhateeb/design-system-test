@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { Button, CheckBox } from 'src/app/components/optimized';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
-
 import { Input } from 'src/app/components/ui/input';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { AddIcon, LocationIcon } from 'src/app/utils/icons';
@@ -22,9 +20,11 @@ import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleCh
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import useCustomHookAddOrderAddressForm, { orderAddressInterface } from './Comp/HookAddress';
 import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 export default function Address() {
 	const { t } = useTranslation();
+	const language = UseLanguage();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
@@ -88,7 +88,7 @@ export default function Address() {
 										name={field.name}
 									>
 										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Select option' />
+											<SelectValue placeholder={t('Select option')} />
 										</SelectTrigger>
 										<SelectContent>
 											{countries.map((country) => (
@@ -113,7 +113,7 @@ export default function Address() {
 											name={field.name}
 										>
 											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-												<SelectValue placeholder='Select option' />
+												<SelectValue placeholder={t('Select option')} />
 											</SelectTrigger>
 											<SelectContent>
 												{countries.map((country) => (
@@ -131,13 +131,13 @@ export default function Address() {
 								formStore={formStore}
 								name='area'
 								label={t('Area / District')}
-								render={(field) => <Input {...field} placeholder={'area'} />}
+								render={(field) => <Input {...field} placeholder={t('Area')} />}
 							/>
 							<FormField
 								formStore={formStore}
 								name='street'
 								label={t('Street')}
-								render={(field) => <Input {...field} placeholder={'street'} />}
+								render={(field) => <Input {...field} placeholder={t('Street')} />}
 							/>
 						</section>
 					)}
@@ -148,18 +148,23 @@ export default function Address() {
 								setLocationEnabled={setLocationEnabled}
 								setDisablePickButton={setDisablePickButton}
 								height='300px'
-								// position='relative'
 							/>
-							{/* <div className='p-3 absolute w-full h-full flex items-start justify-between top-0 z-0'> */}
+
 							<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
-								<p className='text-title font-semibold p-2 border-r border-constrained'>Map</p>
-								<p className='text-subtitle p-2'>Satellite</p>
+								<p
+									className={`text-title font-semibold p-2 ${
+										language === 'ar' ? 'border-l' : 'border-r'
+									} border-constrained`}
+								>
+									{t('Map')}
+								</p>
+								<p className='text-subtitle p-2'>{t('Satellite')}</p>
 							</div>
-							<div className=' absolute top-2 left-[40%]'>
+							<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
 								<FormField
 									formStore={formStore}
 									name='search'
-									render={(field) => <Input {...field} placeholder='Search' />}
+									render={(field) => <Input {...field} placeholder={t('Search')} />}
 								/>
 							</div>
 							<div className='flex flex-col items-end justify-between h-full'>
@@ -178,10 +183,9 @@ export default function Address() {
 									LeftIcon={LocationIcon}
 									className='bg-white absolute bottom-2 right-2'
 								>
-									Locate Me
+									<span className='hidden md:inline'>{t('Locate Me')}</span>
 								</Button>
 							</div>
-							{/* </div> */}
 						</div>
 					)}
 
@@ -189,13 +193,13 @@ export default function Address() {
 						formStore={formStore}
 						name='building'
 						label={t('Building')}
-						render={(field) => <Input {...field} placeholder={'building'} />}
+						render={(field) => <Input {...field} placeholder={t('Building')} />}
 					/>
 					<FormField
 						formStore={formStore}
 						name='landmark'
 						label={t('Landmark')}
-						render={(field) => <Input {...field} placeholder={'landmark'} />}
+						render={(field) => <Input {...field} placeholder={t('Landmark')} />}
 					/>
 					<FormField
 						formStore={formStore}
@@ -214,7 +218,7 @@ export default function Address() {
 				<div className='flex-btn-end'>
 					<Button variant='secondary'>{t('back')}</Button>
 					<Button onClick={onSubmit} variant='primary'>
-						{t('next')}
+						{t('Next')}
 					</Button>
 				</div>
 			</form>
