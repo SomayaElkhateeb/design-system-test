@@ -44,7 +44,6 @@ const slides = [
 	},
 ];
 
-
 export default function HomePage() {
 	const { screenSize, showLoading } = useHomePage();
 	const [isSetup, setIsSetup] = useState(false);
@@ -59,9 +58,8 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-	return <SidebarMob />;
-	return (
 
+	return (
 		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
 			<div className='custom-grid-parent'>
 				<div className='grid-left'>
@@ -70,7 +68,6 @@ export default function HomePage() {
 					) : (
 						<Setups startTour={startTour} handleSetup={handleSetup} />
 					)}
-
 				</div>
 				<div className='grid-right'>
 					<HomeReports />
@@ -84,11 +81,7 @@ export default function HomePage() {
 					<ProductHighlights data={data} />
 				</div>
 			</div>
-			<CustomSlider
-				slides={slides}
-				title='Get started with dookan'
-				SlideComponent={CalloutCard}
-			/>
+			<CustomSlider slides={slides} title='Get started with dookan' SlideComponent={CalloutCard} />
 			<Joyride
 				steps={tourSteps}
 				run={run}
