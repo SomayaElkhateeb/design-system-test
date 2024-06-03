@@ -4,6 +4,7 @@ import '@splidejs/react-splide/css';
 import { useTranslation } from 'react-i18next';
 import { HiExternalLink } from 'react-icons/hi';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
+import CalloutCard from '../Cards/CalloutCard';
 
 /**
  * Interface for each slide in the Slider component.
@@ -35,7 +36,6 @@ export default function Slider({ size, slides, title }:SliderProps)  {
 	return (
 		<section className='mx-auto p-3'>
 			<h2 className='text-title font-semibold'>{t(title)}</h2>
-
 			{/* Splide Slider based on size */}
 			<Splide
 				options={{
@@ -56,7 +56,8 @@ export default function Slider({ size, slides, title }:SliderProps)  {
 						key={index}
 						className={`grid grid-cols-${size === 'mini' ? 1 : size === 'mid' ? 2 : 3} gap-2 `}
 					>
-						{size === 'mini' ? <MiniCard {...slide} /> : <Card {...slide} />}
+						{/* {size === 'mini' ? <MiniCard {...slide} /> : <Card {...slide} />} */}
+						< CalloutCard/>
 					</SplideSlide>
 				))}
 			</Splide>
@@ -89,9 +90,9 @@ const Card: React.FC<Slide> = ({ image, title, description }) => {
  * @param {Slide} props - Props for the MiniCard component.
  * @returns {JSX.Element} - Rendered component.
  */
+
 const MiniCard: React.FC<Slide> = ({ image, title, description }) => {
 	const { t } = useTranslation();
-
 	return (
 		<div className='flex border border-constrained rounded-md overflow-hidden '>
 			<div className='w-32 h-28'>
@@ -111,3 +112,6 @@ const MiniCard: React.FC<Slide> = ({ image, title, description }) => {
 		</div>
 	);
 };
+
+
+

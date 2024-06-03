@@ -456,3 +456,12 @@ button.splide__arrow--prev {
 	border: none;
 	cursor: pointer;
 }
+
+/* =============================== */
+/* React Slick Slider */
+
+.slick-prev,
+.slick-next {
+	display: none !important;
+}
+
