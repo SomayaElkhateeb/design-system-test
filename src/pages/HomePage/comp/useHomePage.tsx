@@ -1,30 +1,22 @@
 import { useEffect, useState } from 'react';
 
-type ScreenSize = 'mini' | 'mid' | 'full';
-const screenSizeThreshold = 1400;
-const smScreenSizeThreshold = 750;
-
+import { CallBackProps } from 'react-joyride';
 export function useHomePage() {
-	const [screenSize, setScreenSize] = useState<ScreenSize>('full');
 	const [showLoading, setShowLoading] = useState(true);
+	const [isSetup, setIsSetup] = useState(false);
+	const [run, setRun] = useState(true);
 
-	useEffect(() => {
-		const handleResize = () => {
-			const width = window.innerWidth;
-			if (width < smScreenSizeThreshold) {
-				setScreenSize('mini');
-			} else if (width < screenSizeThreshold) {
-				setScreenSize('mid');
-			} else {
-				setScreenSize('full');
-			}
-		};
-		handleResize();
-		window.addEventListener('resize', handleResize);
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
+	const startTour = () => {
+		setRun(true);
+	};
+	const handleJoyrideCallback = (data: CallBackProps) => {
+		if (data.status === 'finished' || data.status === 'skipped') {
+			setRun(false);
+		}
+	};
+	const handleSetup = () => {
+		setIsSetup(true);
+	};
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -33,5 +25,5 @@ export function useHomePage() {
 		return () => clearTimeout(timer);
 	}, []);
 
-	return { screenSize, showLoading };
+	return { showLoading, startTour, handleSetup, handleJoyrideCallback, run, isSetup };
 }
