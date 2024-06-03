@@ -13,6 +13,42 @@ import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard'
 import { HomeLoading } from 'src/app/components/page/SchimmerLoading/HomeLoading';
 import { joyrideStyles, tourSteps } from 'src/app/components/TourGuide/tourSteps';
 
+import TourCard from 'src/app/components/TourGuide/TourCard';
+
+import { LineChart } from 'src/app/components/optimized';
+import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
+import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
+
+const slides = [
+	{
+		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
+		title: 'How to finish steps',
+		description: 'In 2 mins, learn how to launch your store',
+	},
+	{
+		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
+		title: 'How to register domain',
+		description: 'In 2 mins, learn how to launch your store',
+	},
+	{
+		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
+		title: 'SEO in details',
+		description: 'In 2 mins, learn how to launch your store',
+	},
+	{
+		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
+		title: 'How to finish steps',
+		description: 'In 2 mins, learn how to launch your store',
+	},
+	{
+		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
+		title: 'How to finish steps',
+		description: 'In 2 mins, learn how to launch your store',
+	},
+];
+
+
+
 export default function HomePage() {
 	const { showLoading, startTour, handleSetup, handleJoyrideCallback, run, isSetup } =
 		useHomePage();
@@ -20,7 +56,7 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-
+	return <SidebarMob />;
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
 			<div className='custom-grid-parent'>

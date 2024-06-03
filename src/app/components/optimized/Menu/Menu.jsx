@@ -19,26 +19,10 @@ const Menu = (props) => {
 };
 export default Menu;
 
-// md:w-[341px]
-// 	return (
-// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
-// 			{options.map((option) => (
-// 				<MenuItem
-// 					key={option.id}
-// 					text={option.text}
-// 					onClick={() => onSelect(option.text)}
-// 					selected={selectedOption === option.text}
-// 				/>
-// 			))}
-// 		</ul>
-// 	);
+
 
 /**
- * @param {{
- *  options: string[];
- *  onSelect: (option: string) => void;
- *  selectedOption?: string | null;
- * }} props
+
  */
 // export default function Menu(props) {
 // 	return (

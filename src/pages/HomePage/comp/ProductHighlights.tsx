@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { MobileProductViews } from 'src/app/components/optimized';
 import SlideCardTabs from 'src/app/components/page/Cards/SlideCardTabs';
+import { Product } from 'src/app/interface/ProductInterface';
+import { RemoveIcon } from 'src/app/utils/icons';
 
 interface ProductProps {
 	data: {
@@ -10,21 +12,17 @@ interface ProductProps {
 	};
 }
 
-interface Product {
-	name: string;
-	imageUrl: string;
-	category: string;
-	quantity: number;
-	price: number;
-}
+
 
 export default function ProductHighlights({ data }: ProductProps) {
 	const { t } = useTranslation();
-
+	const settingMenus = [
+		{ id: '1', text: 'Delete product', icon: <RemoveIcon className='fill-error' /> },
+	];
 	const renderProducts = (products: Product[]) => (
 		<div className='grid gap-2'>
 			{products.slice(0, 3).map((product) => (
-				<MobileProductViews key={product.name} {...product} />
+				<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />
 			))}
 		</div>
 	);

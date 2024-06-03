@@ -36,7 +36,7 @@ export default function HeaderSettings(props) {
 				<p className='cursor-pointer' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
 				</p>
-				<h2 className='font-semibold capitalize text-title'>{props.title}</h2>
+				<h2 className='title capitalize '>{props.title}</h2>
 			</div>
 
 			<div className='flex items-center gap-6'>

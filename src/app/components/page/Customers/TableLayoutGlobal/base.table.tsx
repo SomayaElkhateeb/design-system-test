@@ -35,6 +35,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				backgroundColor: '#F9FAFC',
 				maxHeight: 700,
 				minHeight: rows.length === 0 ? 50 : 300,
+				display:{sm:"block",xs:"none"}
 			}}
 		>
 			<Fade in={isLoading}>

@@ -29,7 +29,7 @@ export default function FilterOrdersComponent({
 	const titleClass = 'text-title font-normal text-[.8rem]';
 	return (
 		<FilterSideBar handelClose={HandelCloseDrawer} sideDrawerOpen={openDrawer}>
-			<div className='flex-col-top-section-pages gap-[1.2rem]'>
+			<div className='flex-col-top-section-pages '>
 				{/*  top section */}
 				<div className={divClass}>
 					<h3 className='title text-[1.2rem]'>{t('Products Filters')}</h3>
@@ -43,18 +43,18 @@ export default function FilterOrdersComponent({
 					<h3 className={titleClass}>{t('Show favorites')}</h3>
 					<Switch checked={checked} onCheckedChange={() => setChecked(!checked)} />
 				</div>
-				<hr />
-				<ProductStatusFilter />
-				<CategoryStatusFilter />
-				<AccessoriesStatusFilter />
-				<BrandStatusFilter />
-				<SalesStatusFilter />
-				<ProductTypeStatusFilter />
+				<div className='w-full'>
+					<ProductStatusFilter />
+					<CategoryStatusFilter />
+					<AccessoriesStatusFilter />
+					<BrandStatusFilter />
+					<SalesStatusFilter />
+					<ProductTypeStatusFilter />
 
-				<FilterPrice />
-				<FilterQuantity />
+					<FilterPrice />
+					<FilterQuantity />
+				</div>
 
-				<hr />
 				<div className='flex-row-global justify-between'>
 					<Button>{t('Show Results')}</Button>
 					<Button className='bg-pri-dark'>{t('Saved Filters')}</Button>

@@ -10,9 +10,10 @@ import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../../optimized/Buttons/ActionsComp';
-import { MdDelete } from 'react-icons/md';
+
 import AddBrandItem from '../Brands/AddBrandItem';
 import { useState } from 'react';
+import { RemoveIcon } from 'src/app/utils/icons';
 
 export default function TopSectionCategoriesTable() {
 	//  hooks
@@ -36,7 +37,7 @@ export default function TopSectionCategoriesTable() {
 		{
 			id: nanoid(),
 			text: 'Delete all categories',
-			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+			icon: <RemoveIcon className='fill-error' />
 		},
 	];
 
