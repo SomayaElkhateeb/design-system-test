@@ -7,9 +7,10 @@ import { FaCheck } from 'react-icons/fa';
 import { MoreIcon } from 'src/app/utils/icons';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { contact, pricing, smsa } from 'src/pages/SettingsPage/data';
+import { contact, pricing } from 'src/pages/SettingsPage/data';
 import { useNavigate } from 'react-router-dom';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
+import { nanoid } from 'nanoid';
 
 export default function Smsa() {
 	const { t } = useTranslation();
@@ -42,6 +43,31 @@ export default function Smsa() {
 			icon: <RiDeleteBin5Line color='pri-dark' />,
 		},
 	];
+
+	const smsa = [
+		{
+			id: nanoid(),
+			title: t('Grow your reach'),
+			description: t(
+				'Advertise and sell your products directly through your Facebook page and reach billions of potential customers.',
+			),
+		},
+		{
+			id: nanoid(),
+			title: t('Increase your revenue'),
+			description: t(
+				'Merchants see an average increase of 15% in revenue when selling on Facebook.',
+			),
+		},
+		{
+			id: nanoid(),
+			title: t('Easy checkout'),
+			description: t(
+				'With Facebook Shop, your customers will be able to easily browse products on mobile and checkout on any device.',
+			),
+		},
+	];
+
 	return (
 		<div className='flex-col-top-section-pages '>
 			{install ? (
@@ -121,8 +147,8 @@ export default function Smsa() {
 				</div>
 
 				<div className='col-span-1 flex flex-col gap-5'>
-					<ContactCard title='Pricing' data={pricing} contacts={false} />
-					<ContactCard title='Contact' data={contact} contacts={true} />
+					<ContactCard title={t('Pricing')} data={pricing} contacts={false} />
+					<ContactCard title={t('Contact')} data={contact} contacts={true} />
 				</div>
 			</div>
 		</div>

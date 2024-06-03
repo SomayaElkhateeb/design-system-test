@@ -53,19 +53,21 @@ export default function CustomerOrderNotifcation() {
 			<div className='flex-col-top-section-pages'>
 				{fixedData?.map((el, i) => (
 					<div className='flex-col-top-section-pages' key={el.id}>
-						<div className='flex-row-global justify-between'>
+						<div className='flexResponsive'>
 							<div>
 								<h3 className='title text-sm'>{el.title}</h3>
 								<p className='subtitle text-[.7rem]'>{el.description}</p>
 							</div>
-							<Button
-								variant='secondary'
-								onClick={() => {
-									handelClick(el);
-								}}
-							>
-								{t('Activate')}
-							</Button>
+							<div>
+								<Button
+									variant='secondary'
+									onClick={() => {
+										handelClick(el);
+									}}
+								>
+									{t('Activate')}
+								</Button>
+							</div>
 						</div>
 						{i !== fixedData.length - 1 ? <hr /> : ''}
 					</div>

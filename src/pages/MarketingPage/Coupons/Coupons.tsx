@@ -22,7 +22,7 @@ const Coupons: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='custom_container'>
+		<div className='custom_container py-5'>
 			<div className=' flex flex-col '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />

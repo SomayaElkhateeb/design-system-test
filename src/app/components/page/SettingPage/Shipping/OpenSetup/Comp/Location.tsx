@@ -23,7 +23,10 @@ export default function Location({ data }: { data: LocationProps }) {
 			{data.map((item: LocationDataItem) => {
 				const { id, title, location, city, country, phone, main } = item;
 				return (
-					<div key={id} className='cardDetails-sharedClass p-3 flex justify-between'>
+					<div
+						key={id}
+						className='cardDetails-sharedClass p-3 flex flex-col gap-5 lg:justify-between lg:flex-row'
+					>
 						<div className='text-xs text-title flex flex-col gap-0.5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='text-title font-semibold text-sm'>{title}</h4>
@@ -37,8 +40,8 @@ export default function Location({ data }: { data: LocationProps }) {
 							<p>+{phone}</p>
 						</div>
 
-						<div className='flex flex-col justify-between py-1'>
-							<div className='flex items-center justify-end gap-5 '>
+						<div className='flex flex-col justify-between py-1 gap-3'>
+							<div className='flex items-center justify-start lg:justify-end gap-5 '>
 								<RemoveIcon className='fill-pri-dark cursor-pointer' />
 
 								<EditIcon className='fill-pri-dark cursor-pointer' />

@@ -1,18 +1,15 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import VerticalTabs from './VerticalTabs';
 import { StoreLaunchStep, storeLaunchSteps } from './HomeConstants';
-import { Button, LineChart, SetupCard } from 'src/app/components/optimized';
-
-export default function Setups({ startTour }) {
+import { Button, SetupCard } from 'src/app/components/optimized';
+interface SetupsProps {
+	startTour: () => void;
+	handleSetup: () => void;
+}
+// Setups Parent Component
+export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	const { t } = useTranslation();
-	const [isFinished, setIsFinished] = useState(false);
-
-	const handleFinish = () => {
-		setIsFinished(true);
-	};
-
 	const tabs = [
 		{
 			title: t('Basic setup'),
@@ -23,36 +20,45 @@ export default function Setups({ startTour }) {
 			content: <SetupCardsWrapper items={storeLaunchSteps.servicesSetup} />,
 		},
 	];
-
 	return (
-		<div>
-			{isFinished ? (
-				<div className='bg-red h-96'>
-					<LineChart percentage='50' />
-				</div>
-			) : (
-				<>
-					<h2 className='title'>{t('Get ready for your first sale')}</h2>
-					<p className='text-subtitle text-sm mb-4'>
-						{t('There are only 2 main steps to launch your store')},
-						<Button onClick={startTour} variant='link' text={t('Follow our tips')} />
-						{t('to get started')}
-					</p>
-					<VerticalTabs tabs={tabs} handleFinish={handleFinish} />
-				</>
-			)}
-		</div>
+		<section className='grid gap-3'>
+			<SetupsHeader startTour={startTour} />
+			<VerticalTabs tabs={tabs} setIsSetup={handleSetup} />
+		</section>
 	);
 }
+
+// Header Component
+interface SetupsHeaderProps {
+	startTour: () => void;
+}
+function SetupsHeader({ startTour }: SetupsHeaderProps) {
+	const { t } = useTranslation();
+	return (
+		<h2 className='title mb-1'>
+			{t('Get ready for your first sale')}
+			<p className='text-subtitle paragraph flex'>
+				{t('There are only 2 main steps to launch your store')},&nbsp;
+				<Button onClick={startTour} variant='link' text={t('Follow our tips')} />
+				&nbsp;
+				{t('to get started')}
+			</p>
+		</h2>
+	);
+}
+
+// Wrapper Component
 interface SetupCardsWrapperProps {
 	items: StoreLaunchStep[];
 }
 function SetupCardsWrapper({ items }: SetupCardsWrapperProps) {
 	return (
-		<div className='flex gap-4'>
+		<div className='flex flex-col gap-4 lg:flex-row'>
 			{items.map((item, index) => (
 				<SetupCard key={index} Icon={item.icon} {...item} />
 			))}
 		</div>
 	);
 }
+
+

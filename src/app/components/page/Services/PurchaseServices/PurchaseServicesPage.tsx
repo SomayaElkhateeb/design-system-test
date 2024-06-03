@@ -10,11 +10,11 @@ export default function PurchaseServicesPage() {
 		<>
 			<HeaderSettings title={t('Purchase service')} />
 			<div className='custom_container py-5'>
-				<div className='grid lg:grid-cols-3  items-start gap-4'>
-					<div className='lg:col-span-2'>
+				<div className='custom-grid-parent'>
+					<div className='grid-left'>
 						<PaymentCard />
 					</div>
-					<div className='col-span-1'>
+					<div className='grid-right'>
 						<Summary />
 					</div>
 				</div>

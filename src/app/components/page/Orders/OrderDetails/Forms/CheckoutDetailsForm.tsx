@@ -61,7 +61,7 @@ export default function CheckoutDetailsForm({
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select branch' />
+										<SelectValue placeholder={t('Select branch')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>

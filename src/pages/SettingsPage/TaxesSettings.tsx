@@ -1,7 +1,6 @@
 import { HeaderSettings } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 
-
 import { UseFormReturn } from 'react-hook-form';
 
 import { useForm } from 'src/app/utils/hooks/form';

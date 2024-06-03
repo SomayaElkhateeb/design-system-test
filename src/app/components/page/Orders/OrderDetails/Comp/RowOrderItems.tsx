@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { getImageUrl } from 'src/app/utils';
 
 const data = [
@@ -25,7 +26,8 @@ const data = [
 ];
 export default function RowOrderItems() {
 	//  hooks
-	const {t}=useTranslation()
+	const { t } = useTranslation();
+	const language = UseLanguage();
 	return data.map((e) => {
 		return (
 			<div key={e.id} className='flex-col-top-section-pages gap-2.5'>
@@ -39,15 +41,20 @@ export default function RowOrderItems() {
 							<h3 className='title text-sm'>
 								{e.text}
 								<span className='text-subtitle font-normal'>
-									{' '}
 									/ {e.color} / {e.size}
 								</span>
 							</h3>
-							<p className='text-subtitle text-sm'>SKU: {e.sku}</p>
-							<p className='text-title text-sm'>{t("Qty")}: {e.quantity}</p>
+							<p className='text-subtitle text-sm'>
+								{t('SKU')}: {e.sku}
+							</p>
+							<p className='text-title text-sm'>
+								{t('Qty')}: {e.quantity}
+							</p>
 						</div>
 					</div>
-					<p className='text-title text-sm flex justify-end items-end'>SAR {e.total}.00</p>
+					<p className='text-title text-sm flex justify-end items-end'>
+						{language === 'ar' ? `${e.total}.00 ${t('SAR')}` : `${t('SAR')} ${e.total}.00`}
+					</p>
 				</div>
 			</div>
 		);

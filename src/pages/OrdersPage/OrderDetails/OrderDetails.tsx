@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import { Button, HeaderSettings } from 'src/app/components/optimized';
+import { EditIcon, LocationIcon } from 'src/app/utils/icons';
+import { contact } from 'src/pages/SettingsPage/data';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import {
 	AddressForm,
@@ -12,10 +16,6 @@ import {
 	OrderItems,
 	OrderNo,
 } from 'src/app/components/page';
-import { contact } from 'src/pages/SettingsPage/data';
-import { address, info } from './data';
-import { EditIcon, LocationIcon } from 'src/app/utils/icons';
-import { useState } from 'react';
 
 export default function OrderDetails() {
 	const { t } = useTranslation();
@@ -37,11 +37,26 @@ export default function OrderDetails() {
 	const handleChckOutFormForm = () => {
 		setState({ ...state, showCheckout: !showCheckout });
 	};
+
+	// data
+	const address = [
+		{ id: nanoid(), name: t('Country'), value: 'Saudi Arabia' },
+		{ id: nanoid(), name: t('City'), value: 'Riyadh' },
+		{ id: nanoid(), name: t('Area'), value: 'Al Jazera' },
+		{ id: nanoid(), name: t('Street'), value: 'Haroon Al Rashied' },
+		{ id: nanoid(), name: t('Building No'), value: 15 },
+		{ id: nanoid(), name: t('Landmark'), value: 'Meed Market' },
+	];
+
+	const info = [
+		{ id: nanoid(), name: `${t('IP Address')} `, value: '213.156.160.96' },
+		{ id: nanoid(), name: `${t('Accepts email marketing')} `, value: 'No' },
+	];
 	return (
 		<div className='flex-col-top-section-pages'>
 			<HeaderSettings
 				variant='settingOrder'
-				title={t('order details')}
+				title={t('Order Details')}
 				onClick={() => navigate(-1)}
 				btn1={{ onClick: () => console.log('Update Status') }}
 				btn2={{ onClick: () => console.log('Print Invoice') }}
@@ -52,18 +67,18 @@ export default function OrderDetails() {
 				}}
 			/>
 
-			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-				<div className='lg:col-span-2 flex-col-top-section-pages gap-5'>
+			<div className='custom-grid-parent custom_container'>
+				<div className='flex-col-top-section-pages grid-left'>
 					<OrderNo />
 					<OrderItems />
 					<CustomerNote />
 					<OrderHistory />
 				</div>
-				<div className='lg:col-span-1  flex-col-top-section-pages gap-5'>
+				<div className='flex-col-top-section-pages grid-right'>
 					<ContactCard
 						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
 						form={showCustomer}
-						title='Customer'
+						title={t('Customer')}
 						data={contact}
 						contacts={true}
 						children={
@@ -80,7 +95,7 @@ export default function OrderDetails() {
 					<ContactCard
 						contain={showAddress && <AddressForm handleAddressForm={handleAddressForm} />}
 						form={showAddress}
-						title='Address'
+						title={t('Address')}
 						data={address}
 						contacts={false}
 						isLocation={
@@ -103,7 +118,7 @@ export default function OrderDetails() {
 							showCheckout && <CheckoutDetailsForm handleChckOutFormForm={handleChckOutFormForm} />
 						}
 						form={showCheckout}
-						title='Checkout'
+						title={t('Checkout')}
 						children={
 							<Button
 								LeftIcon={EditIcon}
@@ -114,8 +129,7 @@ export default function OrderDetails() {
 							</Button>
 						}
 					/>
-					<ContactCard title='Additional Info' data={info} contacts={false} />
-					{/* update order */}
+					<ContactCard title={t('Additional Info')} data={info} contacts={false} />
 				</div>
 			</div>
 		</div>

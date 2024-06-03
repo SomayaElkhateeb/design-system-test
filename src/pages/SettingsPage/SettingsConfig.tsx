@@ -14,7 +14,6 @@ import CustomizationsSettings from './CustomizationsSettings/CustomizationsSetti
 import EmailNotification from './EmailNotification';
 import TaxesSettings from './TaxesSettings';
 
-
 const SettingsConfig = () => {
 	const { config } = useParams();
 	switch (config) {
@@ -38,7 +37,7 @@ const SettingsConfig = () => {
 			return <CustomizationsSettings />;
 		case 'taxes':
 			return <TaxesSettings />;
-			case 'notification':
+		case 'notification':
 			return <EmailNotification />;
 	}
 };
