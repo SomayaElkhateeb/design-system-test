@@ -41,7 +41,7 @@ export default function Shipping() {
 					)}
 				>
 					<hr />
-					<div className='flex flex-col py-1 gap-4 md:flex-row md:justify-between md:items-center'>
+					<div className='flexResponsive'>
 						<h3 className='title text-sm'>{t('Deliver yourself')}</h3>
 						<div className='flex items-center gap-4'>
 							<Button
@@ -55,7 +55,7 @@ export default function Shipping() {
 						</div>
 					</div>
 					<hr />
-					<div className='flex flex-col py-1 gap-4 md:flex-row md:justify-between md:items-center'>
+					<div className='flexResponsive'>
 						<h3 className='title text-sm'>{t('Self pickup')} </h3>
 						<div>
 							<Button variant='secondary' onClick={() => navigate('selfPickup')}>
