@@ -182,6 +182,9 @@ object {
 	.custom_container {
 		@apply xl:max-w-[145rem] xl:px-5  container mx-auto;
 	}
+	.responsive_pages{
+		@apply	custom_container flex-col-top-section-pages sm:hidden
+	}
 	.cardDetails-sharedClass {
 		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
@@ -203,7 +206,7 @@ object {
 		@apply text-sm font-medium text-destructive;
 	}
 	.topTable {
-		@apply md:flex-row-global flex-col-top-section-pages items-start justify-between;
+		@apply md:flex-row-global flex-col-top-section-pages  gap-2 items-start justify-between;
 	}
 
 	.custom-grid-parent {
@@ -276,7 +279,7 @@ object {
 	}
 
 	.title {
-		@apply font-semibold text-[1rem] text-title;
+		@apply font-semibold sm:text-[1rem] text-[.8rem] text-title;
 	}
 
 	.subtitle {

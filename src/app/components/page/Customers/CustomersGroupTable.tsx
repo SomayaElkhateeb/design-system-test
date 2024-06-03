@@ -14,12 +14,11 @@ import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
 import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 
-import { MdDelete } from 'react-icons/md';
-import { nanoid } from 'nanoid';
-import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import { Switch } from '../../ui/switch';
+import { settingMenus } from './CustomersTable';
+import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 
-export default function CustomersGroupTable() {
+export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -46,11 +45,6 @@ export default function CustomersGroupTable() {
 	//  custom hook for select setting item
 
 	const { selectedOption, handleSelect } = useSelectBox();
-
-	const settingMenus = [
-		{ id: nanoid(), text: 'Add discount', icon: <p className='text-[1.3rem]'>%</p> },
-		{ id: nanoid(), text: 'Remove group', icon: <MdDelete className='text-[red] text-[1.3rem]' /> },
-	];
 
 	//  headers
 	const customersHeaders = [

@@ -13,8 +13,8 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import { Switch } from 'src/app/components/ui/switch';
 import { nanoid } from 'nanoid';
-import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
-import { MdDelete } from 'react-icons/md';
+import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+
 export default function BrandsTable() {
 	//  hooks
 	const language = UseLanguage();
@@ -59,7 +59,7 @@ export default function BrandsTable() {
 		{
 			id: nanoid(),
 			text: 'Delete brand',
-			icon: <MdDelete className='text-[red] text-[1.2rem]' />,
+			icon: <RemoveIcon className='fill-error' />
 		},
 	];
 	return (

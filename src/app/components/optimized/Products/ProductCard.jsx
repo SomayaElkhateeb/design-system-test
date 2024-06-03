@@ -75,13 +75,12 @@ export default function ProductCard(props) {
 		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl  divide-y p-0  group '>
 			<div className='relative w-full h-[260px]'>
 				<img
-					src={getImageUrl('images/AllProductsImg/fakeImg.png')}
+					src={props.imageUrl}
 					alt={props.name}
 					className='object-cover w-full h-full'
 				/>
 				<div className='absolute flex flex-col items-center justify-between top-3 bottom-2 left-3'>
 					<div className='flex flex-col items-center gap-4 '>
-						{/* <CheckBox handleOnChange={isSelectedHandler} checked={isSelected} /> */}
 						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
 						<button onClick={toggleFavorite}>
 							{isFavorite ? (

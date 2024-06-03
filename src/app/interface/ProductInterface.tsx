@@ -1,8 +1,8 @@
 export interface Product{
-    title:string
+    name:string
     category:string
     option:number
-    img:string
+    imageUrl:string
     SKU:string
     id:string
     quantity:number

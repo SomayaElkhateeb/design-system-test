@@ -1,13 +1,14 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
-import { MdDelete } from 'react-icons/md';
+import { MobileProductViews } from 'src/app/components/optimized';
+
 import AllProductsTable from 'src/app/components/page/Products/AllProducts/AllProductsTable';
 import VerticalproductsCard from 'src/app/components/page/Products/AllProducts/AllproductsVertical';
 import TopSection from 'src/app/components/page/Products/AllProducts/TopSection';
 import { Product } from 'src/app/interface/ProductInterface';
-import { getImageUrl } from 'src/app/utils';
-import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+
+import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
 
 //  setting menus for setting button action and will be used in brands section page
 export const settingMenus = [
@@ -19,67 +20,66 @@ export const settingMenus = [
 		text: 'Export product orders XLS',
 		icon: <FiUploadCloud className='iconClass' />,
 	},
-	{ id: nanoid(), text: 'Delete product', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
+	{ id: nanoid(), text: 'Delete product', icon: <RemoveIcon className='fill-error' /> },
 ];
 
+//  dumy data
+export const products: Product[] = [
+	{
+		id: '1',
+		name: 'mohamed Mostafa',
+		category: 'blanket',
+		SKU: 'mansoura',
+		option: 10,
+		quantity: 10,
+		price: 1000,
+		imageUrl: 'images/product.png',
+	},
+	{
+		id: '2',
+		name: 'mohamed Mostafa',
+		category: 'blanket',
+		SKU: 'mansoura',
+		option: 10,
+		quantity: 0,
+		price: 1000,
+		imageUrl: 'images/product.png',
+	},
+	{
+		id: '3',
+		name: 'mohamed Mostafa',
+		category: 'blanket',
+		SKU: 'mansoura',
+		option: 10,
+		quantity: 0,
+		price: 1000,
+		imageUrl: 'images/product.png',
+	},
+	{
+		id: '4',
+		name: 'mohamed Mostafa',
+		category: 'blanket',
+		SKU: 'mansoura',
+		option: 10,
+		quantity: 0,
+		price: 1000,
+		imageUrl: 'images/product.png',
+	},
+	{
+		id: '5',
+		name: 'mohamed Mostafa',
+		category: 'blanket',
+		SKU: 'mansoura',
+		option: 10,
+		quantity: 0,
+		price: 1000,
+		imageUrl: 'images/product.png',
+	},
+];
 export default function AllProducts() {
 	//  hooks render products card
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
-
-	//  dumy data
-	const products: Product[] = [
-		{
-			id: '1',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 10,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '2',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '3',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '4',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '5',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-	];
 
 	return (
 		<div className='custom_container'>
@@ -103,6 +103,14 @@ export default function AllProducts() {
 						products={products}
 					/>
 				)}
+
+				{/*  case of small media only  */}
+
+				<div className='grid gap-2'>
+					{products?.map((product) => (
+						<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />
+					))}
+				</div>
 			</div>
 		</div>
 	);
