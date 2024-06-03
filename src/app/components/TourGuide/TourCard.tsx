@@ -1,13 +1,23 @@
-
 import { getImageUrl } from 'src/app/utils';
 import { Button } from '../optimized';
+
+interface JoyrideStep {
+  beaconComponent?: React.ElementType;
+  floaterProps?: object;
+  spotlightPadding?: number;
+  placement?: "top" | "bottom" | "left" | "right" | "center" | "auto";
+  title?: string;
+  content: string;
+  target: string;
+  disableBeacon?: boolean;
+  event?: "click" | "hover";
+  styles?: object;
+  image: string; 
+  link?: string;
+}
 interface TourCardProps {
 	index: number;
-	step: {
-		image: string;
-		content: string;
-		link?: string;
-	};
+  step: JoyrideStep;
 	backProps: object;
 	closeProps: object;
 	primaryProps: object;
@@ -15,15 +25,16 @@ interface TourCardProps {
 	size: number;
 	isLastStep: boolean;
 }
+
 export default function TourCard({
-	index,
 	step,
+	size,
+	index,
 	backProps,
+	isLastStep,
 	closeProps,
 	primaryProps,
 	tooltipProps,
-	size,
-	isLastStep,
 }: TourCardProps) {
 	const { image, content, link } = step;
 	const stepNumber = index + 1;
@@ -40,9 +51,6 @@ export default function TourCard({
 			<p className='paragraph'>
 				{content}
 				{link && (
-					// <a href={link} className='text-primary'>
-					// 	Learn More
-					// </a>
 					<Button {...closeProps} variant='link' text='Learn More' />
 				)}
 			</p>
