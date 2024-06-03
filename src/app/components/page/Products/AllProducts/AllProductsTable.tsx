@@ -21,6 +21,7 @@ import { StarIcon, StarActiveIcon, CameraIcon, CopyIcon } from 'src/app/utils/ic
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import { menuType } from '../../../optimized/Buttons/ActionsComp';
+import { getImageUrl } from 'src/app/utils';
 
 export default function AllProductsTable({
 	products,
@@ -96,14 +97,14 @@ export default function AllProductsTable({
 									</button>
 								</div>
 								<div className='relative'>
-									<img src={e.img} loading='lazy' alt={e.title} />
+									<img src={getImageUrl(e.imageUrl)} loading='lazy' alt={e.name} />
 									<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
 								</div>
 
-								<div className='flex flex-col gap-2'>
-									<p className='text-title text-[.9rem] font-semibold'>{e.title}</p>
-									<p className='text-subtitle text-[.8rem]'>{e.category}</p>
-									<p className='text-title text-[.8rem]'>
+								<div className='flex-col-top-section-pages gap-2'>
+									<p className='title text-sm'>{e.name}</p>
+									<p className='subtitle'>{e.category}</p>
+									<p className='subtitle'>
 										{e.option} {t('Options')}
 									</p>
 								</div>

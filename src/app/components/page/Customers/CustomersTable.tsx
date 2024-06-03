@@ -8,17 +8,36 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
 import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
-import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
-import { MdDelete } from 'react-icons/md';
+import { AnalyticsIcon } from 'src/app/utils/icons';
+
 import { Switch } from '../../ui/switch';
 
-export default function CustomersTable() {
+export const customers: CustomerInterface[] = [
+	{
+		id: '1',
+		name: 'mohamed Mostafa',
+		first_name: 'Mohamed',
+		last_name: 'Mostafa',
+		mobile: '01064545565',
+		city: 'mansoura',
+		Orders: 10,
+		email: 'mmmm@yahoo.com',
+		'E-Subscription': true,
+	},
+];
+
+export interface settingMenus {
+	id: string;
+	text: string;
+	icon: React.ReactNode;
+}
+export default function CustomersTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
 	const language = UseLanguage();
 	const navigate = useNavigate();
@@ -30,28 +49,6 @@ export default function CustomersTable() {
 
 	const { selectedOption, handleSelect } = useSelectBox();
 
-	const settingMenus = [
-		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
-		{
-			id: nanoid(),
-			text: 'Delete customer',
-			icon: <MdDelete className='text-[red] text-[1.3rem]' />,
-		},
-	];
-
-	//  rows
-
-	const customers: CustomerInterface[] = [
-		{
-			id: '1',
-			name: 'mohamed Mostafa',
-			mobile: '01064545565',
-			city: 'mansoura',
-			Orders: 10,
-			email: 'mmmm@yahoo.com',
-			'E-Subscription': true,
-		},
-	];
 	//  headers
 
 	const customersHeaders = [
@@ -84,7 +81,7 @@ export default function CustomersTable() {
 				return {
 					item: e,
 					elements: [
-						<GlobalTableCell >
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.2rem]'>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 								<div className='flex flex-col gap-2'>

@@ -6,13 +6,13 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
 import { Coupon } from 'src/app/interface/CouponInterface';
-import { MdDelete } from 'react-icons/md';
+
 import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Switch } from '../../ui/switch';
 import MenuOptions from '../../optimized/Menu/MenuOptions';
-import { MoreIcon } from 'src/app/utils/icons';
+import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
 import PopupDelete from '../../optimized/Popups/PopupDelete';
 import { useState } from 'react';
 import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
@@ -59,7 +59,7 @@ export default function CouponsTable({
 		{
 			id: nanoid(),
 			text: 'delete',
-			icon: <MdDelete className='text-error text-[1.2rem]' />,
+			icon: <RemoveIcon className='fill-error' />,
 		},
 	];
 	return (

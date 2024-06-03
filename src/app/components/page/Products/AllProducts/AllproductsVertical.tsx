@@ -1,6 +1,7 @@
 import { ProductCard } from 'src/app/components/optimized';
 import { Product } from 'src/app/interface/ProductInterface';
 import { menuType } from '../../../optimized/Buttons/ActionsComp';
+import { getImageUrl } from 'src/app/utils';
 
 export default function VerticalproductsCard({
 	products,
@@ -21,10 +22,10 @@ export default function VerticalproductsCard({
 					key={e.id}
 					array={array}
 					setArray={setArray}
-					imageUrl={e.img}
+					imageUrl={getImageUrl(e.imageUrl)}
 					id={e.id}
 					options={e.option}
-					name={e.title}
+					name={e.name}
 					quantity={e.quantity}
 					price={e.price}
 					sku={e.SKU}

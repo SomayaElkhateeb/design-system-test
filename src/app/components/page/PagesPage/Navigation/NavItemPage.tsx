@@ -3,8 +3,8 @@ import { IoIosAddCircle } from 'react-icons/io';
 
 import { Button, HeaderSettings } from 'src/app/components/optimized';
 import LegalPageParentCard from '../PagesSection/LegalPageParentCard';
-import { EditIcon } from 'src/app/utils/icons';
-import { MdDelete } from 'react-icons/md';
+import { EditIcon, RemoveIcon } from 'src/app/utils/icons';
+
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
 
@@ -54,7 +54,7 @@ export default function NavItemPage() {
 										</div>
 										<div className='flex-row-global gap-[1rem]'>
 											<EditIcon className='fill-subtitle cursor-pointer' />
-											<MdDelete className='text-[red] text-[1.2rem] cursor-pointer' />
+											<RemoveIcon className='fill-error' />,
 										</div>
 									</div>
 								))}

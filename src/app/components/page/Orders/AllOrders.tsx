@@ -1,16 +1,17 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 
-import { MdDelete } from 'react-icons/md';
+
 
 import TopSectionOrdersPage from './TopSectionOrdersPage';
 import { useTranslation } from 'react-i18next';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import OrdersTable from './OrdersTable';
+import { RemoveIcon } from 'src/app/utils/icons';
 
 //  setting menus for setting button action
 const settingMenus = [
-	{ id: nanoid(), text: 'Cancel Order', icon: <MdDelete className='text-[red] text-[1.2rem]' /> },
+	{ id: nanoid(), text: 'Cancel Order', icon: <RemoveIcon className='fill-error' />, },
 ];
 
 export default function AllOrders() {
