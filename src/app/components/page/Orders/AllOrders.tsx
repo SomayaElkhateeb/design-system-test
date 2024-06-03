@@ -59,8 +59,8 @@ export default function AllOrders() {
 	];
 
 	return (
-		<div className=' container mx-auto '>
-			<div className=' flex flex-col '>
+		<div className='custom_container'>
+			<div className='flex-col-top-section-pages'>
 				{/*  top section */}
 				<TopSectionOrdersPage addButton={t('Add Order')} path='/addOrder' />
 

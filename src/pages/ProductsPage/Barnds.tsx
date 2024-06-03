@@ -4,7 +4,7 @@ import TopSectionBrandsTable from 'src/app/components/page/Products/Brands/TopSe
 export default function Barnds() {
 	return (
 		<div className='custom_container'>
-			<div className=' flex flex-col '>
+			<div className='flex-col-top-section-pages '>
 				{/*  top section */}
 				<TopSectionBrandsTable />
 

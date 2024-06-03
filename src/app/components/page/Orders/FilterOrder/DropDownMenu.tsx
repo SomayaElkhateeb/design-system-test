@@ -8,9 +8,11 @@ import { useState } from 'react';
 export default function DropDownMenu({
 	children,
 	title,
+	component
 }: {
-	title: string;
+	title?: string;
 	children: React.ReactNode;
+	component?:React.ReactNode
 }) {
 	const [expanded, setExpanded] = useState(false);
 
@@ -27,6 +29,7 @@ export default function DropDownMenu({
 			sx={{
 				'& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
 				'& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+				boxShadow:"none"
 			}}
 		>
 			<AccordionSummary
@@ -34,7 +37,8 @@ export default function DropDownMenu({
 				aria-controls='panel1-content'
 				id='panel1-header'
 			>
-				<p className={titleClass}>{title}</p>
+				{title &&<p className={titleClass}>{title}</p>}
+				{component &&component}
 			</AccordionSummary>
 			<AccordionDetails>{children}</AccordionDetails>
 		</Accordion>
