@@ -3,18 +3,17 @@ import InventoryTable from 'src/app/components/page/Products/Inventory/Inventory
 import TopSectionInventoryTable from 'src/app/components/page/Products/Inventory/TopSectionInventoryTable';
 
 export default function Inventory() {
-
-    //  hooks
-    const [array,setArray]=useState<string[]>([])
+	//  hooks
+	const [array, setArray] = useState<string[]>([]);
 	return (
 		<div className='custom_container'>
-			<div className=' flex flex-col '>
+			<div className='flex-col-top-section-pages '>
 				{/*  top section */}
-				<TopSectionInventoryTable  />
+				<TopSectionInventoryTable />
 
 				{/*  table */}
 
-				<InventoryTable array={array} setArray={setArray}/>
+				<InventoryTable array={array} setArray={setArray} />
 			</div>
 		</div>
 	);

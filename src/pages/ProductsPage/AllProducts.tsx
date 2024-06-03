@@ -83,7 +83,7 @@ export default function AllProducts() {
 
 	return (
 		<div className='custom_container'>
-			<div className=' flex flex-col '>
+			<div className='flex-col-top-section-pages'>
 				{/*  top section */}
 				<TopSection verticalCard={verticalCard} setVerticalCard={setVerticalCard} />
 

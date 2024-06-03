@@ -1,13 +1,15 @@
 import { HeaderSettings } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
+
 import { UseFormReturn } from 'react-hook-form';
-import { z } from 'zod';
+
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import { useNavigate } from 'react-router-dom';
+
 import TaxRates from 'src/app/components/page/SettingPage/Taxes/TaxRates';
-import TaxOptionsForm from 'src/app/components/page/SettingPage/Taxes/TaxOptionsForm';
 import useCustomHookTaxesForm from 'src/app/components/page/SettingPage/Taxes/HookForTaxesForm';
+import TaxOptionsForm from 'src/app/components/page/SettingPage/Taxes/TaxOptionsForm';
 
 // Interfaces
 export interface TaxesSettingsInterface {

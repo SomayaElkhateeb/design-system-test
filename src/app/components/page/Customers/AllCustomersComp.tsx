@@ -41,7 +41,7 @@ export default function AllCustomers() {
 
 	return (
 		<>
-			<div className=' flex flex-col gap-[1rem]'>
+			<div className='flex-col-top-section-pages'>
 				{/*  top section */}
 				<div className='topTable'>
 					{/*  add customers button */}
