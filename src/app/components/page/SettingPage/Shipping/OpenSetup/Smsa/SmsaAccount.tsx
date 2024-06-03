@@ -16,7 +16,7 @@ export default function SmsaAccount() {
 			</p>
 
 			<h3 className='text-title font-semibold'>{t('What you need')}</h3>
-			<div className='flex gap-[6rem] py-3'>
+			<div className='flex flex-col gap-5 lg:flex-row lg:gap-[6rem] py-3'>
 				<Choose
 					ChooseOne={t('National ID')}
 					ChooseTwo={t('Residency identification')}

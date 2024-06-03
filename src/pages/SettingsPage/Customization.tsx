@@ -7,7 +7,9 @@ import FormField from 'src/app/components/ui/form/field';
 import { Switch } from 'src/app/components/ui/switch';
 import { useForm } from 'src/app/utils/hooks/form';
 import { EditIcon } from 'src/app/utils/icons';
-import useCustomCustomizeForm, { customizationInterface } from '../../app/components/page/SettingPage/Customizations/HookCustomization';
+import useCustomCustomizeForm, {
+	customizationInterface,
+} from '../../app/components/page/SettingPage/Customizations/HookCustomization';
 import { Input } from 'src/app/components/ui/input';
 import { Form } from 'src/app/components/ui/form';
 import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
@@ -34,8 +36,8 @@ export default function Customization() {
 					<h2 className='title'>{t('Customization')}</h2>
 					<p className='subtitle'>{t('Customize what’s shown in the email')}</p>
 				</div>
-				<div className='flex-col-top-section-pages'>
-					<div className='flex-row-global justify-between'>
+				<div className='flex-col-top-section-pages '>
+					<div className='flexResponsive'>
 						<p>{t('Attach invoice in email')}</p>
 						<div className='flex items-center gap-2'>
 							<Switch />
@@ -105,7 +107,7 @@ function RowCustomize({
 	return (
 		<div className='flex-col-top-section-pages'>
 			<hr />
-			<div className='flex-row-global justify-between'>
+			<div className='flexResponsive'>
 				<div>
 					<h3 className='title text-sm'>{title}</h3>
 					<p className='subtitle text-[.7rem]'>{subtitle}</p>

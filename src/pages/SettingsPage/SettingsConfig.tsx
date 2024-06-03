@@ -10,9 +10,8 @@ import LanguageSettings from './LanguageSettings';
 import ReviewsSetting from './ReviewsSettings';
 import QueriesSetting from './QueriesSettings';
 import CustomizationsSettings from './CustomizationsSettings/CustomizationsSettings';
-import TaxesSettings from './Taxes/TaxesSettings';
 import EmailNotification from './EmailNotification';
-
+import TaxesSettings from './TaxesSettings';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
@@ -37,7 +36,7 @@ const SettingsConfig = () => {
 			return <CustomizationsSettings />;
 		case 'taxes':
 			return <TaxesSettings />;
-			case 'notification':
+		case 'notification':
 			return <EmailNotification />;
 	}
 };

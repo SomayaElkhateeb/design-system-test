@@ -306,6 +306,9 @@ object {
 	.global-cards {
 		@apply bg-white w-full border border-borders-lines rounded-[.75rem] p-[1.125rem] flex flex-col gap-4;
 	}
+	.flexResponsive {
+		@apply flex flex-col gap-5 lg:flex-row lg:justify-between lg:items-center;
+	}
 }
 
 /* remove all default Webkit search field styling */
