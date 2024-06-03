@@ -13,12 +13,6 @@ import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard'
 import { HomeLoading } from 'src/app/components/page/SchimmerLoading/HomeLoading';
 import { joyrideStyles, tourSteps } from 'src/app/components/TourGuide/tourSteps';
 
-import TourCard from 'src/app/components/TourGuide/TourCard';
-
-import { LineChart } from 'src/app/components/optimized';
-import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
-import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
-
 const slides = [
 	{
 		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
@@ -78,11 +72,7 @@ export default function HomePage() {
 				</div>
 			</div>
 
-			<CustomSlider
-				slides={data.slides}
-				title='Get started with dookan'
-				SlideComponent={CalloutCard}
-			/>
+			<CustomSlider slides={slides} title='Get started with dookan' SlideComponent={CalloutCard} />
 
 			<Joyride
 				steps={tourSteps}
