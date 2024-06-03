@@ -83,7 +83,7 @@ export default function AllProducts() {
 
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages sm:hidden'>
+			<div className='flex-col-top-section-pages '>
 				{/*  top section */}
 				<TopSection verticalCard={verticalCard} setVerticalCard={setVerticalCard} />
 
@@ -106,7 +106,7 @@ export default function AllProducts() {
 
 				{/*  case of small media only  */}
 
-				<div className='grid gap-2 '>
+				<div className='sm:hidden grid gap-2 '>
 					{products?.map((product) => (
 						<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />
 					))}
