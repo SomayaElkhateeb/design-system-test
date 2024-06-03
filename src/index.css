@@ -206,6 +206,15 @@ object {
 		@apply md:flex-row-global flex-col-top-section-pages items-start justify-between;
 	}
 
+	.custom-grid-parent {
+		@apply grid grid-cols-3 col-span-1 gap-5;
+	}
+	.grid-left {
+		@apply col-span-3 xl:col-span-2;
+	}
+	.grid-right {
+		@apply col-span-3 xl:col-span-1;
+	}
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1.2rem];
 	}
@@ -296,6 +305,9 @@ object {
 	}
 	.global-cards {
 		@apply bg-white w-full border border-borders-lines rounded-[.75rem] p-[1.125rem] flex flex-col gap-4;
+	}
+	.flexResponsive {
+		@apply flex flex-col gap-5 lg:flex-row lg:justify-between lg:items-center;
 	}
 }
 
@@ -452,3 +464,4 @@ button.splide__arrow--prev {
 .slick-next {
 	display: none !important;
 }
+

@@ -13,7 +13,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
-import AddCustomer from './Comp/AddCustomer';
+import AddCustomerinAddOrder from './Comp/AddCustomerInAddOrder';
 
 interface IAddOrder {
 	selectCustomer?: string;
@@ -56,7 +56,7 @@ export default function Customer() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='search customer' />
+										<SelectValue placeholder={t('search customer')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='design'>Design</SelectItem>
@@ -88,7 +88,7 @@ export default function Customer() {
 					</div>
 
 					{addNewCustomer && (
-						<AddCustomer
+						<AddCustomerinAddOrder
 							onClose={() => {
 								setAddNewCustomer(false);
 							}}

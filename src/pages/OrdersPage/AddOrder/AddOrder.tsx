@@ -26,7 +26,7 @@ export default function AddOrder() {
 	return (
 		<>
 			<HeaderSettings title={t('add new order')} submit />
-			<div className='container mx-0 py-5 lg:w-3/4'>
+			<div className='custom_container mx-0 py-5 lg:w-3/4 sm:px-1'>
 				<VerticalTabs tabs={tabs} />
 			</div>
 		</>

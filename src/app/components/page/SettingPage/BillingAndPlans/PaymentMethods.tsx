@@ -20,7 +20,7 @@ export default function PaymentMethods() {
 				<p className='text-subtitle text-sm pt-1'>{t('For bills and purchases')}</p>
 			</div>
 
-			<div className='flex justify-between items-center'>
+			<div className='flexResponsive'>
 				<div className='flex items-center gap-2'>
 					<img src={getImageUrl('companies/visa.svg')} />
 					<p className='text-title font-semibold text-sm'>{t('Visa card')}</p>
@@ -32,7 +32,7 @@ export default function PaymentMethods() {
 				<MoreIcon className='cursor-pointer' />
 			</div>
 			<hr />
-			<div className='flex justify-between items-center'>
+			<div className='flexResponsive'>
 				<div className='flex items-center gap-2'>
 					<img src={getImageUrl('companies/mada.svg')} />
 					<p className='text-title font-semibold text-sm'>{t('Mada')}</p>

@@ -59,24 +59,26 @@ export default function HomePage() {
 	}
 
 	return (
-		<div className='container grid grid-cols-1 gap-5 p-5'>
-			<div className='grid grid-cols-3 col-span-1 gap-5'>
-				<div className='col-span-3 xl:col-span-2 h-full'>
+
+		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
+			<div className='custom-grid-parent'>
+				<div className='grid-left'>
 					{isSetup ? (
 						<LineChart percentage='50' />
 					) : (
 						<Setups startTour={startTour} handleSetup={handleSetup} />
 					)}
+
 				</div>
-				<div className='col-span-3 xl:col-span-1'>
+				<div className='grid-right'>
 					<HomeReports />
 				</div>
 			</div>
-			<div className='grid grid-cols-3 col-span-1 gap-5'>
-				<div className='col-span-3 xl:col-span-2'>
+			<div className='custom-grid-parent'>
+				<div className='grid-left'>
 					<OrdersCard latestOrders={data.latestOrders} title='Latest Orders' dropdown />
 				</div>
-				<div className='col-span-3 xl:col-span-1'>
+				<div className='grid-right'>
 					<ProductHighlights data={data} />
 				</div>
 			</div>

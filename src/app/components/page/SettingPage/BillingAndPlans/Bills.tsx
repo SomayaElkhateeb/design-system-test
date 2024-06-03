@@ -19,7 +19,7 @@ export default function Bills() {
 function RowBills({ paid }: { paid: boolean }) {
 	const { t } = useTranslation();
 	return (
-		<div className='flex-row-global-items-start justify-between'>
+		<div className='flex-row-global-items-start flexResponsive'>
 			<div className='flex-col-top-section-pages gap-1'>
 				<div className='flex-row-global gap-2'>
 					<h2 className='title text-sm'>{t('Monthly bill issued')}</h2>

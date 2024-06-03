@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
 import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
 import { SpecificGroups, SpecificCustomers } from 'src/app/components/page';

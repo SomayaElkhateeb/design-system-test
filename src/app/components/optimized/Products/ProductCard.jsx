@@ -132,7 +132,7 @@ export default function ProductCard(props) {
  * @param {{
 *   settingMenus:import('../Buttons/ActionsComp').menuType[]
 * selectedOption:string
-* handleSelect:()=>void
+* handleSelect:(e:string)=>void
 * }} props
 *
 * @example

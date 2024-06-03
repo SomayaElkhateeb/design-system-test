@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next';
-import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
-import { Button } from 'src/app/components/optimized';
-import useCustomCheckOutForm, { checkOutInterface } from './HookCheckoutForm';
 import { useState, useEffect } from 'react';
-
+import { useTranslation } from 'react-i18next';
+import { useForm } from 'src/app/utils/hooks/form';
+import { Form } from 'src/app/components/ui/form';
+import { Button } from 'src/app/components/optimized';
+import FormField from 'src/app/components/ui/form/field';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import useCustomCheckOutForm, { checkOutDetailsInterface } from './HookCheckoutDetailsForm';
 import {
 	Select,
 	SelectTrigger,
@@ -13,8 +13,8 @@ import {
 	SelectContent,
 	SelectItem,
 } from 'src/app/components/ui/select';
-import FormField from 'src/app/components/ui/form/field';
-export default function CheckoutForm({
+
+export default function CheckoutDetailsForm({
 	handleChckOutFormForm,
 }: {
 	handleChckOutFormForm: () => void;
@@ -24,7 +24,7 @@ export default function CheckoutForm({
 	// custom hook
 	const { handelDefaultValue, checkOutSchema } = useCustomCheckOutForm(purchase);
 
-	const handleSubmit = (values: checkOutInterface) => {
+	const handleSubmit = (values: checkOutDetailsInterface) => {
 		console.log(values);
 	};
 
@@ -42,7 +42,7 @@ export default function CheckoutForm({
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-5'>
 				<div className='flex-col-top-section-pages gap-5'>
-					<FormChoiceChips<checkOutInterface>
+					<FormChoiceChips<checkOutDetailsInterface>
 						checkoutForm
 						formStore={formStore}
 						name='purchase'
@@ -61,7 +61,7 @@ export default function CheckoutForm({
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='Select branch' />
+										<SelectValue placeholder={t('Select branch')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
@@ -72,21 +72,21 @@ export default function CheckoutForm({
 					)}
 				</div>
 
-				<FormChoiceChips<checkOutInterface>
+				<FormChoiceChips<checkOutDetailsInterface>
 					checkoutForm
 					formStore={formStore}
 					name='payment'
 					label={t('Payment methods')}
 					options={['Cash']}
 				/>
-				<FormChoiceChips<checkOutInterface>
+				<FormChoiceChips<checkOutDetailsInterface>
 					checkoutForm
 					formStore={formStore}
 					name='delivery'
 					label={t('Delivery method')}
 					options={['Shipping']}
 				/>
-				<FormChoiceChips<checkOutInterface>
+				<FormChoiceChips<checkOutDetailsInterface>
 					checkoutForm
 					formStore={formStore}
 					name='shipping'
@@ -106,4 +106,3 @@ export default function CheckoutForm({
 		</Form>
 	);
 }
-

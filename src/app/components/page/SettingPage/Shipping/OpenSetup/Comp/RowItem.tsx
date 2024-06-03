@@ -21,7 +21,7 @@ export default function RowItem({
 		},
 	];
 	return (
-		<div className='flex justify-between items-center py-2'>
+		<div className='flex flex-col py-2 gap-4 md:flex-row md:justify-between md:items-center'>
 			<div className='flex-col-top-section-pages  gap-[.3rem]'>
 				<h3 className='text-title font-semibold text-sm pt-2'>
 					{t('Standard')} ({type})
@@ -32,7 +32,7 @@ export default function RowItem({
 			</div>
 
 			<div>
-				<div className='flex justify-end pb-2'>
+				<div className='flex justify-start pb-2 md:justify-end'>
 					<MenuOptions
 						btn={<MoreIcon className='fill-subtitle' />}
 						options={options}
@@ -41,7 +41,6 @@ export default function RowItem({
 				</div>
 				<p className='text-subtitle text-sm'>{period}</p>
 			</div>
-
 		</div>
 	);
 }

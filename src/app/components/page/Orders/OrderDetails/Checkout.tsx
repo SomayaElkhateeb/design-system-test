@@ -16,7 +16,7 @@ const Checkout: React.FC<IData> = ({ title, form, contain, children }) => {
 		<div className='cardDetails-sharedClass p-5 flex flex-col gap-4'>
 			<div className='flex justify-between items-center'>
 				<h3 className='title'>{title}</h3>
-				{children}
+				{form ? '' : children}
 			</div>
 			{form ? contain : <Content />}
 		</div>

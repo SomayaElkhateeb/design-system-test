@@ -4,6 +4,7 @@
 
 import { ClockIcon } from 'src/app/utils/icons';
 import { getImageUrl } from 'src/app/utils';
+import { useTranslation } from 'react-i18next';
 
 /**
  * @param {{
@@ -26,6 +27,7 @@ import { getImageUrl } from 'src/app/utils';
  * ```
  */
 export default function TrialBanner({ free, daysLeft, title, description, image }) {
+	const { t } = useTranslation();
 	return (
 		<>
 			{image ? (
@@ -39,7 +41,7 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 								<div className='flex items-center gap-1'>
 									<ClockIcon className='fill-white' />
 									<p className='text-white paragraph'>
-										Ends in {daysLeft} {daysLeft === 1 ? 'day' : 'days'}
+										{t('Ends in')} {daysLeft} {daysLeft === 1 ? t('day') : t('days')}
 									</p>
 								</div>
 							) : (
@@ -51,9 +53,9 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 							<p className='paragraph text-[1rem] leading-6 text-inactive'>{description}</p>
 						</div>
 						<div className='flex gap-4'>
-							<button className='btn-pri'>Subscribe now</button>
+							<button className='btn-pri'>{t('Subscribe now')}</button>
 							<button className='text-white border-white btn-sec hover:bg-light-1/5 active:bg-light-2/5 disabled:bg-inactive/50 disabled:text-white'>
-								Learn more
+								{t('Learn more')}
 							</button>
 						</div>
 					</div>
@@ -65,7 +67,7 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 							<div className='flex items-center gap-1'>
 								<ClockIcon className='fill-white' />
 								<p className='text-white paragraph'>
-									Ends in {daysLeft} {daysLeft === 1 ? 'day' : 'days'}
+									{t('Ends in')} {daysLeft} {daysLeft === 1 ? t('day') : t('days')}
 								</p>
 							</div>
 						) : (
@@ -77,9 +79,9 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 						<p className='paragraph text-[1rem] leading-6 text-inactive'>{description}</p>
 					</div>
 					<div className='flex gap-4'>
-						<button className='btn-pri'>Subscribe now</button>
+						<button className='btn-pri'>{t('Subscribe now')}</button>
 						<button className='text-white border-white btn-sec hover:bg-light-1/5 active:bg-light-2/5 disabled:bg-inactive/50 disabled:text-white'>
-							Learn more
+							{t('Learn more')}
 						</button>
 					</div>
 				</div>

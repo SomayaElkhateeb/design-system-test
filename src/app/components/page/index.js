@@ -7,7 +7,7 @@ export { default as OrderHistory } from './Orders/OrderDetails/OrderHistory';
 export { default as Checkout } from './Orders/OrderDetails/Checkout';
 export { default as CustomerForm } from './Orders/OrderDetails/Forms/CustomerForm';
 export { default as AddressForm } from './Orders/OrderDetails/Forms/AddressForm';
-export { default as CheckoutForm } from './Orders/OrderDetails/Forms/CheckoutForm';
+export { default as CheckoutDetailsForm } from './Orders/OrderDetails/Forms/CheckoutDetailsForm';
 export { default as OrderStatus } from './Orders/OrderDetails/Forms/OrderStatus';
 export { default as CustomerNoteForm } from './Orders/OrderDetails/Forms/CustomerNoteForm';
 export { default as OrderItemForm } from './Orders/OrderDetails/Forms/OrderItemForm';
@@ -32,7 +32,3 @@ export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';
 export { default as DiscountTypesOptions } from './discount/Comp/DiscountTypesOptions';
 
-// export { default as SpecificCustomersCo } from './Coupons/SelectorsCo/SpecificCustomersCo';
-// export { default as SpecificGroupCo } from './Coupons/SelectorsCo/SpecificGroupsCo';
-// export { default as MinimumRequirementsCo } from './Coupons/MinimumRequirementsCo';
-// export { default as ActiveDatesCo } from './Coupons/ActiveDatesCo';

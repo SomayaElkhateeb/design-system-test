@@ -1,4 +1,4 @@
-import { type HTMLProps } from 'react';
+
 import { getImageUrl } from 'src/app/utils';
 import { Button } from '../optimized';
 interface TourCardProps {
@@ -27,7 +27,7 @@ export default function TourCard({
 }: TourCardProps) {
 	const { image, content, link } = step;
 	const stepNumber = index + 1;
-console.log(backProps);
+
 
 	return (
 		<div {...tooltipProps} className='w-80 h-52 p-3 global-cards flex flex-col justify-between'>

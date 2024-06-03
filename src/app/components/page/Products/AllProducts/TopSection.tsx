@@ -12,6 +12,8 @@ import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import { MdDelete } from 'react-icons/md';
 import PopoverComponenet from '../../../optimized/UiKits/Popover';
+import { useOpenFilterDrawer } from 'src/app/components/SideBar/CustomHookOpenDrawer';
+import FilterOrdersComponent from '../../Orders/FilterOrder/FilterOrdersComponent';
 export default function TopSection({
 	verticalCard,
 	setVerticalCard,
@@ -22,8 +24,8 @@ export default function TopSection({
 	//  hooks
 	const { t } = useTranslation();
 
-	//  custom hook for select arrang item
-
+	//  custom hook
+	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const dropdownMenu = [
@@ -110,53 +112,61 @@ export default function TopSection({
 		);
 	};
 	return (
-		<div className='flex-col-top-section-pages'>
-			<div className='topTable'>
-				{/*  left dropdow */}
+		<>
+			<div className='flex-col-top-section-pages'>
+				<div className='topTable'>
+					{/*  left dropdow */}
 
-				<PopoverComponenet
-					button={
-						<Button variant='primary' LeftIcon={IoIosAddCircle} RightIcon={IoMdArrowDropdown}>
-							{t('Add Product')}
-						</Button>
-					}
-				>
-					<div
-						style={{ boxShadow: '0px 10px 16px 0px #0000000D' }}
-						className='py-[.8rem] px-[.6rem] w-[20rem] h-[24rem] rounded-[.4rem] bg-white'
+					<PopoverComponenet
+						button={
+							<Button variant='primary' LeftIcon={IoIosAddCircle} RightIcon={IoMdArrowDropdown}>
+								{t('Add Product')}
+							</Button>
+						}
 					>
-						<div className=' flex flex-col gap-[1rem]'>
-							{dropdownMenu?.map((e) => (
-								<div className='flex flex-col gap-[.9rem]' key={e.id}>
-									<div className='flex flex-col gap-[.2rem] cursor-pointer'>
-										<div className='flex-row-global gap-[.4rem]'>
-											<p className=' text-[.9rem] font-semibold'>{e.title}</p>
-											{e.shipping && <img src={getImageUrl(`badges/shipped.svg`)} alt='status' />}
+						<div
+							style={{ boxShadow: '0px 10px 16px 0px #0000000D' }}
+							className='py-[.8rem] px-[.6rem] w-[20rem] h-[24rem] rounded-[.4rem] bg-white'
+						>
+							<div className=' flex flex-col gap-[1rem]'>
+								{dropdownMenu?.map((e) => (
+									<div className='flex flex-col gap-[.9rem]' key={e.id}>
+										<div className='flex flex-col gap-[.2rem] cursor-pointer'>
+											<div className='flex-row-global gap-[.4rem]'>
+												<p className=' text-[.9rem] font-semibold'>{e.title}</p>
+												{e.shipping && <img src={getImageUrl(`badges/shipped.svg`)} alt='status' />}
+											</div>
+
+											<p className='text-[.7rem]'>{e.describtion}</p>
 										</div>
-
-										<p className='text-[.7rem]'>{e.describtion}</p>
+										<hr />
 									</div>
-									<hr />
-								</div>
-							))}
+								))}
+							</div>
 						</div>
+					</PopoverComponenet>
+
+					{/*  actions filter arrange,... */}
+					<div className='flex-row-global  gap-[1.2rem]'>
+						<ActionsComp
+							HandelopenDrawer={HandelopenDrawer}
+							filter
+							sortMenus={sortMenus}
+							ActionsMenus={ActionsMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+
+						{handelListAndGridImg()}
 					</div>
-				</PopoverComponenet>
-
-				{/*  actions filter arrange,... */}
-				<div className='flex-row-global  gap-[1.2rem]'>
-					<ActionsComp
-						filterMenus={sortMenus}
-						sortMenus={sortMenus}
-						ActionsMenus={ActionsMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
-
-					{handelListAndGridImg()}
 				</div>
+				<hr />
 			</div>
-			<hr />
-		</div>
+
+			{/* open filter drawer */}
+			{openDrawer && (
+				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+			)}
+		</>
 	);
 }
