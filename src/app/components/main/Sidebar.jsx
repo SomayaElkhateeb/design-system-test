@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen }) => {
 			setShowLoading(false);
 		}, 3000);
 
-		return () => clearTimeout(timer); // Clear the timer on component unmount
+		return () => clearTimeout(timer);
 	}, []);
 	return (
 		<>

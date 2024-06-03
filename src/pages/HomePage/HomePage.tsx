@@ -11,6 +11,7 @@ import { useState } from 'react';
 import Joyride from 'react-joyride';
 import { joyrideStyles, tourSteps } from 'src/app/components/TourGuide/tourSteps';
 import TourCard from 'src/app/components/TourGuide/TourCard';
+
 import { LineChart } from 'src/app/components/optimized';
 import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
 import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
@@ -43,6 +44,7 @@ const slides = [
 	},
 ];
 
+
 export default function HomePage() {
 	const { screenSize, showLoading } = useHomePage();
 	const [isSetup, setIsSetup] = useState(false);
@@ -57,7 +59,7 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-
+	return <SidebarMob />;
 	return (
 
 		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
