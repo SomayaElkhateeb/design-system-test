@@ -202,8 +202,8 @@ object {
 	.global_error {
 		@apply text-sm font-medium text-destructive;
 	}
-	.topTable{
-		@apply md:flex-row-global flex-col-top-section-pages items-start justify-between
+	.topTable {
+		@apply md:flex-row-global flex-col-top-section-pages items-start justify-between;
 	}
 
 	.flex-col-top-section-pages {
@@ -420,27 +420,35 @@ button.splide__arrow--prev {
 
 /* Style for the first step */
 .my-first-step {
-  background-color: #ffeb3b; /* Yellow background */
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.2em;
+	background-color: #ffeb3b; /* Yellow background */
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.2em;
 }
 
 /* Style for the second step */
 .my-second-step {
-  background-color: #8bc34a; /* Light green background */
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.2em;
+	background-color: #8bc34a; /* Light green background */
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.2em;
 }
 
 /* Style for the third step */
 .my-third-step {
-  background-color: #03a9f4; /* Light blue background */
-  color: white; /* White text color */
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1.2em;
-  border: none;
-  cursor: pointer;
+	background-color: #03a9f4; /* Light blue background */
+	color: white; /* White text color */
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.2em;
+	border: none;
+	cursor: pointer;
+}
+
+/* =============================== */
+/* React Slick Slider */
+
+.slick-prev,
+.slick-next {
+	display: none !important;
 }

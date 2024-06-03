@@ -40,9 +40,10 @@ console.log(backProps);
 			<p className='paragraph'>
 				{content}
 				{link && (
-					<a href={link} className='text-primary'>
-						Learn More
-					</a>
+					// <a href={link} className='text-primary'>
+					// 	Learn More
+					// </a>
+					<Button {...closeProps} variant='link' text='Learn More' />
 				)}
 			</p>
 			<div className='flex justify-between items-end'>

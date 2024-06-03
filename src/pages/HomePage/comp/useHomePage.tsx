@@ -10,7 +10,7 @@ export function useHomePage() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setScreenSize(width < screenSizeThreshold ? 'mid' : 'full');
+      setScreenSize(width < screenSizeThreshold ? 1 : 'full');
     };
     handleResize();
     window.addEventListener('resize', handleResize);
