@@ -10,6 +10,7 @@ import LanguageSettings from './LanguageSettings';
 import ReviewsSetting from './ReviewsSettings';
 import QueriesSetting from './QueriesSettings';
 import CustomizationsSettings from './CustomizationsSettings/CustomizationsSettings';
+
 import EmailNotification from './EmailNotification';
 import TaxesSettings from './TaxesSettings';
 

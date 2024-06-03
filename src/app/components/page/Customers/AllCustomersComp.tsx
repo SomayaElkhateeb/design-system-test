@@ -8,9 +8,12 @@ import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-import CustomersTable from './CustomersTable';
+import CustomersTable, { customers } from './CustomersTable';
 import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
+import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
+import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
+
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -38,10 +41,18 @@ export default function AllCustomers() {
 		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import customers', icon: <FiUploadCloud className='iconClass' /> },
 	];
+	const settingMenus = [
+		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+		{
+			id: nanoid(),
+			text: 'Delete customer',
+			icon: <RemoveIcon className='fill-error' />,
+		},
+	];
 
 	return (
 		<>
-			<div className=' flex flex-col gap-[1rem]'>
+			<div className='flex-col-top-section-pages'>
 				{/*  top section */}
 				<div className='topTable'>
 					{/*  add customers button */}
@@ -67,8 +78,23 @@ export default function AllCustomers() {
 				</div>
 				<hr />
 
-				{/*  customers table */}
-				<CustomersTable />
+				{/*  customers table case of not small media */}
+				<CustomersTable settingMenus={settingMenus} />
+
+				{/*  case of small media */}
+				<div className='responsive_pages'>
+					{customers?.map((e, i) => (
+						<CustomersComponenet
+							id={e.id}
+							path='customers'
+							settingMenus={settingMenus}
+							key={i}
+							firstName={e.first_name}
+							lastName={e.last_name}
+							email={e.email}
+						/>
+					))}
+				</div>
 			</div>
 
 			{/* open filter drawer */}

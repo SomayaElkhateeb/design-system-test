@@ -7,6 +7,10 @@ import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import { Button } from '../../optimized';
 import { IoIosAddCircle } from 'react-icons/io';
 import CustomersGroupTable from './CustomersGroupTable';
+import { customers } from './CustomersTable';
+import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
+import { RemoveIcon } from 'src/app/utils/icons';
+
 export default function CustomersGroups() {
 	//  hooks
 	const navigate = useNavigate();
@@ -26,9 +30,13 @@ export default function CustomersGroups() {
 		{ id: nanoid(), text: 'Net profit Ascending' },
 		{ id: nanoid(), text: 'Net profit Descending' },
 	];
+	const settingMenus = [
+		{ id: nanoid(), text: 'Add discount', icon: <p className='text-[1.3rem]'>%</p> },
+		{ id: nanoid(), text: 'Remove group', icon: <RemoveIcon className='fill-error' /> },
+	];
 
 	return (
-		<div className=' flex flex-col gap-[1rem]'>
+		<div className='flex-col-top-section-pages'>
 			{/*  top section */}
 			<div className='topTable'>
 				{/*  add customers button */}
@@ -52,7 +60,21 @@ export default function CustomersGroups() {
 			<hr />
 
 			{/*  customers table */}
-			<CustomersGroupTable />
+			<CustomersGroupTable settingMenus={settingMenus} />
+
+			{/*  case of small media */}
+			<div className='responsive_pages'>
+				{customers?.map((e, i) => (
+					<CustomersComponenet
+						id={e.id}
+						settingMenus={settingMenus}
+						key={i}
+						firstName={e.first_name}
+						lastName={e.last_name}
+						email={e.email}
+					/>
+				))}
+			</div>
 		</div>
 	);
 }

@@ -37,7 +37,7 @@ export default function VerticalTabs(props) {
 						onNext={handleNext}
 						onPrev={handlePrev}
 						tabs={props.tabs}
-						handleFinish={props.handleFinish}
+						handleFinish={props.setIsSetup}
 					/>
 				))}
 			</div>

@@ -16,7 +16,7 @@ export default function ActionsComp({
 	handelSelect,
 	sortMenus,
 	ActionsMenus,
-	filterMenus,
+
 	HandelopenDrawer,
 	filter,
 }: {
@@ -25,14 +25,14 @@ export default function ActionsComp({
 
 	sortMenus?: menuType[];
 	ActionsMenus?: menuType[];
-	filterMenus?: menuType[];
+	
 	HandelopenDrawer?: () => void;
 	filter?: boolean;
 }) {
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='flex sm:flex-row flex-col sm:h-10    gap-4  '>
+		<div className='flex sm:flex-row flex-col sm:h-10    md:gap-4 gap-2  '>
 			{/*   arrange button */}
 
 			{sortMenus && sortMenus?.length > 0 && (
