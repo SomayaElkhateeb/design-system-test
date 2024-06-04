@@ -12,15 +12,21 @@ import { useState } from 'react';
 
 // };
 
-const SlideCardTabs = ({ slides, title }) => {
+const SlideCardTabs = ({
+	slides,
+	title,
+}: {
+	title: string;
+	slides: { title: string; content: React.ReactNode }[];
+}) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	return (
-		<div className='bg-white rounded-xl border border-borders-lines p-5 h-full min-w-[20rem] w-full grid gap-2'>
-			<div className='flex justify-between items-center mb-3'>
-				<h2 className='title text-lg capitalize'>{title}</h2>
+		<div className='global-cards w-full grid '>
+			<div className='flex-row-global justify-between  '>
+				<h2 className='title'>{title}</h2>
 			</div>
-			<div className='flex items-center justify-between border-b border-borders-lines '>
+			<div className='flex-row-global justify-between border-b border-borders-lines '>
 				{slides.map((slide, index) => (
 					<Tab
 						key={index}
@@ -42,7 +48,15 @@ const SlideCardTabs = ({ slides, title }) => {
 };
 export default SlideCardTabs;
 
-const Tab = ({ title, active, onClick }) => {
+const Tab = ({
+	title,
+	active,
+	onClick,
+}: {
+	title: string;
+	active: boolean;
+	onClick: () => void;
+}) => {
 	return (
 		<button
 			className={`px-4 py-2 focus:outline-none ${

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { MobileProductViews } from 'src/app/components/optimized';
 import SlideCardTabs from 'src/app/components/page/Cards/SlideCardTabs';
+
 import { Product } from 'src/app/interface/ProductInterface';
 import { RemoveIcon } from 'src/app/utils/icons';
 
@@ -11,8 +12,6 @@ interface ProductProps {
 		topReviewsProducts: Product[];
 	};
 }
-
-
 
 export default function ProductHighlights({ data }: ProductProps) {
 	const { t } = useTranslation();

@@ -33,7 +33,7 @@ export default function OrdersCard({ latestOrders, title, dropdown }: OrdersCard
 	);
 
 	return (
-		<section className='grid content-start gap-2 p-4 h-full min-h-[22rem] rounded-xl border border-borders-lines bg-white'>
+		<section className='grid content-start  p-4 h-full min-h-[22rem] global-cards'>
 			<Header
 				title={title}
 				selectedOption={selectedOption}
