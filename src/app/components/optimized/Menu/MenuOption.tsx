@@ -19,7 +19,7 @@ const MenuOption = ({
 
 	return (
 		<ul
-			className={`rounded shadow-md py-2 flex flex-col absolute z-50 bg-white min-w-40 top-10 ${
+			className={`rounded shadow-md py-2 flex flex-col absolute z-40 bg-white min-w-40 top-10 ${
 				language === 'ar' ? 'left-0' : 'right-0'
 			} `}
 		>

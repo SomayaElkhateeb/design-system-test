@@ -14,7 +14,10 @@ const NotificationBtn = ({ sm }: { sm?: boolean }) => {
 		<>
 			{/* Notification icon button */}
 			{sm ? (
-				<p className='size-[42px] grid place-content-center relative'>
+				<p
+					onClick={() => setShow(true)}
+					className='size-[42px] grid place-content-center relative cursor-pointer'
+				>
 					<span className='absolute p-1 rounded-full bg-error top-1 right-1'></span>
 					<NotifiIcon />
 				</p>

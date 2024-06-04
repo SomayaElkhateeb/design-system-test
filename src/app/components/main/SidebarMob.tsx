@@ -14,8 +14,8 @@ export default function SidebarMob() {
 	return (
 		<>
 			{openMore ? (
-				<aside className='h-dvh z-50 bg-white fixed top-0 left-0 right-0 overflow-y-auto'>
-					<header className='flex items-center justify-between p-4'>
+				<aside className='h-full z-50 bg-white fixed top-0 left-0 right-0 overflow-y-auto'>
+					<header className='flex items-center justify-between p-4 z-50'>
 						<div className=''>
 							<img src={getImageUrl('brand/en-light.svg')} alt='logo' className='w-32 ' />
 						</div>

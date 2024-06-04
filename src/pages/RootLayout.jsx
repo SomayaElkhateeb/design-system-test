@@ -22,7 +22,7 @@ const RootLayout = () => {
 						<Sidebar isOpen={sidebarIsOpen} />
 					</div>
 					<div className='w-full bg-light-1'>
-						<div className='sticky top-0 z-50'>
+						<div className='sticky top-0 z-40'>
 							<Header setIsOpen={sidebarOpenHandler} />
 						</div>
 						<main className='mb-5'>
@@ -32,14 +32,14 @@ const RootLayout = () => {
 				</div>
 			)}
 			{isMobile && (
-				<div className='flex flex-row'>
-					<div className='w-full bg-light-1'>
-						<div className='sticky top-0 z-50'>
-							<Header setIsOpen={sidebarOpenHandler} />
-						</div>
-						<main className='mb-5'>
-							<Outlet />
-						</main>
+				<div className='w-full bg-light-1'>
+					<div className='sticky top-0'>
+						<Header setIsOpen={sidebarOpenHandler} />
+					</div>
+					<main className='pb-12'>
+						<Outlet />
+					</main>
+					<div className='fixed bottom-0 bg-white w-full z-50'>
 						<SidebarMob />
 					</div>
 				</div>

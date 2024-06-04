@@ -12,9 +12,11 @@ const ViewBtn = ({ sm }: { sm?: boolean }) => {
 
 	return (
 		<div className='fifth-step'>
-			{/* View icon button */}
 			{sm ? (
-				<p className='size-[42px] grid place-content-center relative'>
+				<p
+					onClick={() => setShow(true)}
+					className='size-[42px] grid place-content-center relative cursor-pointer'
+				>
 					<ViewIcon />
 				</p>
 			) : (
