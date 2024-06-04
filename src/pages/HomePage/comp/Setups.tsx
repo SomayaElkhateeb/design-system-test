@@ -37,7 +37,7 @@ function SetupsHeader({ startTour }: SetupsHeaderProps) {
 	return (
 		<h2 className='title mb-1'>
 			{t('Get ready for your first sale')}
-			<p className='text-subtitle paragraph flex'>
+			<p className='text-subtitle paragraph sm:flex sm:flex-row flex-col'>
 				{t('There are only 2 main steps to launch your store')},&nbsp;
 				<Button onClick={startTour} variant='link' text={t('Follow our tips')} />
 				&nbsp;
@@ -53,12 +53,10 @@ interface SetupCardsWrapperProps {
 }
 function SetupCardsWrapper({ items }: SetupCardsWrapperProps) {
 	return (
-		<div className='flex flex-col gap-4 lg:flex-row'>
+		<div className='flex-col-top-section-pages lg:flex-row'>
 			{items.map((item, index) => (
 				<SetupCard key={index} Icon={item.icon} {...item} />
 			))}
 		</div>
 	);
 }
-
-

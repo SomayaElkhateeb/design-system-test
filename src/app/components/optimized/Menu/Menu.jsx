@@ -1,6 +1,6 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
-/** @param {{ selectedOption: string; onSelect:(e:string)=>void; options: import('./optionInterface').option[]; }} props */
+/** @param {{ selectedOption?: string; onSelect?:(e:string)=>void; options: import('./optionInterface').option[]; }} props */
 
 const Menu = (props) => {
 	return (
@@ -10,7 +10,7 @@ const Menu = (props) => {
 					key={option.id}
 					text={option.text}
 					icon={option?.icon}
-					onClick={() => props.onSelect(option.text)}
+					onClick={() => props?.onSelect && props.onSelect(option.text)}
 					selected={props.selectedOption === option.text}
 				/>
 			))}
@@ -18,8 +18,6 @@ const Menu = (props) => {
 	);
 };
 export default Menu;
-
-
 
 /**
 

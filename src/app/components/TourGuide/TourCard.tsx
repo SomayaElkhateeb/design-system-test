@@ -2,22 +2,22 @@ import { getImageUrl } from 'src/app/utils';
 import { Button } from '../optimized';
 
 interface JoyrideStep {
-  beaconComponent?: React.ElementType;
-  floaterProps?: object;
-  spotlightPadding?: number;
-  placement?: "top" | "bottom" | "left" | "right" | "center" | "auto";
-  title?: string;
-  content: string;
-  target: string;
-  disableBeacon?: boolean;
-  event?: "click" | "hover";
-  styles?: object;
-  image: string; 
-  link?: string;
+	beaconComponent?: React.ElementType;
+	floaterProps?: object;
+	spotlightPadding?: number;
+	placement?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'auto';
+	title?: string;
+	content: string;
+	target: string;
+	disableBeacon?: boolean;
+	event?: 'click' | 'hover';
+	styles?: object;
+	image?: string;
+	link?: string;
 }
 interface TourCardProps {
 	index: number;
-  step: JoyrideStep;
+	step: JoyrideStep;
 	backProps: object;
 	closeProps: object;
 	primaryProps: object;
@@ -39,20 +39,17 @@ export default function TourCard({
 	const { image, content, link } = step;
 	const stepNumber = index + 1;
 
-
 	return (
-		<div {...tooltipProps} className='w-80 h-52 p-3 global-cards flex flex-col justify-between'>
+		<div {...tooltipProps} className='w-80  p-3 global-cards flex flex-col justify-between'>
 			<div className='flex justify-between items-start'>
 				<div className='size-20 grid place-content-center border-light-2 border rounded-md'>
-					<img src={getImageUrl(image)} alt='icon' className='w-14' />
+					{image && <img src={getImageUrl(image)} alt='icon' className='w-14' />}
 				</div>
 				{!isLastStep && <Button {...closeProps} variant='link' text='End tour' />}
 			</div>
 			<p className='paragraph'>
 				{content}
-				{link && (
-					<Button {...closeProps} variant='link' text='Learn More' />
-				)}
+				{link && <Button {...closeProps} variant='link' text='Learn More' />}
 			</p>
 			<div className='flex justify-between items-end'>
 				<p className='subtitle'>
