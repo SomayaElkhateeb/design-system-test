@@ -7,7 +7,7 @@ import Avatar from '../UiKits/Avatar';
 const ConversationCard = ({ onClose, showChat }: { onClose: () => void; showChat: boolean }) => {
 	const language = UseLanguage();
 	return (
-		<div className='fixed inset-0 z-50 '>
+		<div className='fixed inset-0 z-40 '>
 			{/* Overlay */}
 			<div
 				className={`fixed inset-0 transition duration-300 ease-in-out bg-black ${

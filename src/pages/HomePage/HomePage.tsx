@@ -1,5 +1,4 @@
 import Joyride from 'react-joyride';
-
 import Setups from './comp/Setups';
 import data from './comp/data.json';
 import HomeReports from './comp/HomeReports';
@@ -51,7 +50,6 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 py-5'>
 			<div className='custom-grid-parent'>
