@@ -52,7 +52,7 @@ export { default as MobileProductCard } from './Products/MobileProductCard';
 
 export { default as ProductCategory } from './Category/ProductCategory';
 export { default as ImageUploader } from './MediaUpload/ImageUploader';
-export { default as MobileSetupCard } from './Cards/MobileSetupCard';
+
 export { default as CategoryViews } from './Category/CategoryViews';
 export { default as ProductViews } from './Products/ProductViews';
 export { default as MainUpload } from './MediaUpload/MainUpload';
