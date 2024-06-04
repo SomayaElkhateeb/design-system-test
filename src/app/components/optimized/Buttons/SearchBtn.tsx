@@ -3,16 +3,23 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { useClickOutsideWithId } from 'src/app/utils';
 
-const SearchBtn = () => {
+const SearchBtn = ({ sm }: { sm?: boolean }) => {
 	const [show, setShow] = useState(false);
 
 	return (
 		<div className='seventh-step'>
-			<Button onClick={() => setShow(true)}>
-				<span className='size-[42px] grid place-content-center'>
+			{sm ? (
+				<p className='size-[42px] grid place-content-center relative'>
 					<SearchIcon />
-				</span>
-			</Button>
+				</p>
+			) : (
+				<Button onClick={() => setShow(true)}>
+					<p className='size-[42px] grid place-content-center relative'>
+						<SearchIcon />
+					</p>
+				</Button>
+			)}
+
 			{show && <SearchInput onClose={() => setShow(false)} />}
 		</div>
 	);

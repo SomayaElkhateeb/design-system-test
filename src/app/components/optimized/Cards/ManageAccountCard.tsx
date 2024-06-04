@@ -14,7 +14,7 @@ import Collapsible from './ManagementCards/Collapsible';
  *
  * @param onClose Function to call when the manage account panel is closed.
  */
-const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
+const ManageAccountCard = ({ onClose, menu }: { onClose: () => void; menu?: boolean }) => {
 	const language = UseLanguage();
 	const { t } = useTranslation();
 	const id = 'ManageAccount-card';
@@ -25,7 +25,9 @@ const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
 	return (
 		<div
 			id={id}
-			className={`bg-white w-80 pt-3 pb-5 absolute shadow-lg top-[4.5rem] ${
+			className={`${
+				menu ? 'w-full bg-light-2' : 'bg-white w-80 pt-3 pb-5 absolute shadow-lg top-[4.5rem]'
+			} ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
 					: 'rounded-tl-md rounded-bl-md right-2'
@@ -36,7 +38,7 @@ const ManageAccountCard = ({ onClose }: { onClose: () => void }) => {
 					<Person />
 					<h2 className='text-sm text-title'>{t('Manage account')}</h2>
 				</div>
-				<IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />
+				{menu ? '' : <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
 			</div>
 			<hr />
 

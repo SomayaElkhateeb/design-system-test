@@ -12,6 +12,7 @@ import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 import { HomeLoading } from 'src/app/components/page/SchimmerLoading/HomeLoading';
 import { joyrideStyles, tourSteps } from 'src/app/components/TourGuide/tourSteps';
+import SidebarMob from 'src/app/components/main/SidebarMob';
 
 const slides = [
 	{
@@ -48,40 +49,40 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
+	return <SidebarMob />;
+	// return (
+	// 	<div className='custom_container grid grid-cols-1 gap-5 p-5'>
+	// 		<div className='custom-grid-parent'>
+	// 			<div className='grid-left'>
+	// 				{isSetup ? (
+	// 					<LineChart percentage='50' />
+	// 				) : (
+	// 					<Setups startTour={startTour} handleSetup={handleSetup} />
+	// 				)}
+	// 			</div>
+	// 			<div className='grid-right'>
+	// 				<HomeReports />
+	// 			</div>
+	// 		</div>
+	// 		<div className='custom-grid-parent'>
+	// 			<div className='grid-left'>
+	// 				<OrdersCard latestOrders={data.latestOrders} title='Latest Orders' dropdown />
+	// 			</div>
+	// 			<div className='grid-right'>
+	// 				<ProductHighlights data={data} />
+	// 			</div>
+	// 		</div>
 
-	return (
-		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
-			<div className='custom-grid-parent'>
-				<div className='grid-left'>
-					{isSetup ? (
-						<LineChart percentage='50' />
-					) : (
-						<Setups startTour={startTour} handleSetup={handleSetup} />
-					)}
-				</div>
-				<div className='grid-right'>
-					<HomeReports />
-				</div>
-			</div>
-			<div className='custom-grid-parent'>
-				<div className='grid-left'>
-					<OrdersCard latestOrders={data.latestOrders} title='Latest Orders' dropdown />
-				</div>
-				<div className='grid-right'>
-					<ProductHighlights data={data} />
-				</div>
-			</div>
+	// 		<CustomSlider slides={slides} title='Get started with dookan' SlideComponent={CalloutCard} />
 
-			<CustomSlider slides={slides} title='Get started with dookan' SlideComponent={CalloutCard} />
-
-			<Joyride
-				steps={tourSteps}
-				run={run}
-				continuous
-				styles={joyrideStyles}
-				tooltipComponent={TourCard}
-				callback={handleJoyrideCallback}
-			/>
-		</div>
-	);
+	// 		<Joyride
+	// 			steps={tourSteps}
+	// 			run={run}
+	// 			continuous
+	// 			styles={joyrideStyles}
+	// 			tooltipComponent={TourCard}
+	// 			callback={handleJoyrideCallback}
+	// 		/>
+	// 	</div>
+	// );
 }

@@ -10,6 +10,8 @@ import NotificationBtn from '../optimized/Buttons/NotificationBtn';
 import ProfileBtn from '../optimized/Buttons/ProfileBtn';
 import HeaderLoading from '../page/SchimmerLoading/HeaderLoading';
 import SearchBtn from '../optimized/Buttons/SearchBtn';
+import { getImageUrl } from 'src/app/utils';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 	//  hooks
@@ -17,6 +19,7 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 	const { pathname } = useLocation();
 	const { t } = useTranslation();
 	let activeModule = '';
+	const isMobile = useMediaQuery({ maxWidth: 525 });
 
 	// loading header
 	useEffect(() => {
@@ -52,10 +55,16 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 				<HeaderLoading />
 			) : (
 				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white'>
-					<div className='flex  items-center gap-3'>
+					<div className='flex items-center gap-3'>
 						<button className='max-lg:hidden' onClick={setIsOpen}>
 							<NavIcon className='fill-pri-dark' />
 						</button>
+						{isMobile && (
+							<div>
+								<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-8`} />
+							</div>
+						)}
+
 						<h2 className='title text-lg font-semibold'>{activeModule}</h2>
 					</div>
 
@@ -135,9 +144,9 @@ const ProfileInfo = () => {
 	return (
 		<>
 			<div className='flex lg:hidden items-center '>
-				<SearchBtn />
-				<ViewBtn />
-				<NotificationBtn />
+				<SearchBtn sm={true} />
+				<ViewBtn sm={true} />
+				<NotificationBtn sm={true} />
 			</div>
 			<div className='hidden lg:flex items-center'>
 				<HelpCenterBtn />

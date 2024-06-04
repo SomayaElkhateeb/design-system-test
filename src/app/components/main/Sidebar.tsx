@@ -5,7 +5,7 @@ import { getImageUrl } from 'src/app/utils';
 import { sidebarLinks, socialLinks } from 'src/app/utils/constants';
 import SidebarLoading from '../page/SchimmerLoading/SidebarLoading';
 
-const Sidebar = ({ isOpen }) => {
+const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 	//  hooks
 	const [showLoading, setShowLoading] = useState(true);
 	const { t } = useTranslation();
@@ -84,7 +84,7 @@ const Sidebar = ({ isOpen }) => {
 export default Sidebar;
 
 // SidebarNavLinks
-const SidebarNavLinks = ({ isOpen }) => {
+const SidebarNavLinks = ({ isOpen }: { isOpen?: boolean }) => {
 	return (
 		<nav className='my-4 w-full'>
 			<ul className='flex gap-2 flex-col'>
@@ -99,7 +99,17 @@ const SidebarNavLinks = ({ isOpen }) => {
 };
 
 // SidebarLink
-const SidebarLink = ({ Icon, name, path, isOpen }) => {
+const SidebarLink = ({
+	Icon,
+	name,
+	path,
+	isOpen,
+}: {
+	Icon: React.ReactNode;
+	name: string;
+	path: string;
+	isOpen?: boolean;
+}) => {
 	//  hooks
 	const { t } = useTranslation();
 	const { pathname } = useLocation();
