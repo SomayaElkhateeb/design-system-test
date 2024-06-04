@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import VerticalTabs from './VerticalTabs';
-import { StoreLaunchStep, storeLaunchSteps } from './HomeConstants';
+import StepNavigator from './StepNavigator/StepNavigator';
 import { Button, SetupCard } from 'src/app/components/optimized';
+import { StoreLaunchStep, storeLaunchSteps } from './HomeConstants';
 interface SetupsProps {
 	startTour: () => void;
 	handleSetup: () => void;
@@ -23,7 +23,7 @@ export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	return (
 		<section className='grid gap-3'>
 			<SetupsHeader startTour={startTour} />
-			<VerticalTabs tabs={tabs} setIsSetup={handleSetup} />
+			<StepNavigator steps={tabs} onFinish={handleSetup} />
 		</section>
 	);
 }

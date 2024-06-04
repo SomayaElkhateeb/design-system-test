@@ -25,7 +25,7 @@ export default function VerticalTabs(props) {
 	const { currentTab, handleTabClick, handleNext, handlePrev } = useVerticalTabs(0, props.tabs);
 
 	return (
-		<div className='flex flex-col space-y-4'>
+		<div className='flex flex-col space-y-4 bg-black'>
 			<div className='flex flex-col space-y-4'>
 				{props.tabs?.map((tab, index) => (
 					<VTab

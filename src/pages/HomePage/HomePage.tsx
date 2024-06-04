@@ -1,19 +1,19 @@
+import Joyride from 'react-joyride';
+
 import Setups from './comp/Setups';
 import data from './comp/data.json';
 import HomeReports from './comp/HomeReports';
 import { useHomePage } from './comp/useHomePage';
 import ProductHighlights from './comp/ProductHighlights';
 
+import { LineChart } from 'src/app/components/optimized';
+import TourCard from 'src/app/components/TourGuide/TourCard';
+import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
+import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
+
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 import { HomeLoading } from 'src/app/components/page/SchimmerLoading/HomeLoading';
-
-import { useState } from 'react';
-import Joyride from 'react-joyride';
 import { joyrideStyles, tourSteps } from 'src/app/components/TourGuide/tourSteps';
-import TourCard from 'src/app/components/TourGuide/TourCard';
-import { LineChart } from 'src/app/components/optimized';
-import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
-import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
 
 const slides = [
 	{
@@ -44,15 +44,8 @@ const slides = [
 ];
 
 export default function HomePage() {
-	const { screenSize, showLoading } = useHomePage();
-	const [isSetup, setIsSetup] = useState(false);
-	const [run, setRun] = useState(true);
-	const startTour = () => {
-		setRun(true);
-	};
-	const handleSetup = () => {
-		setIsSetup(true);
-	};
+	const { showLoading, startTour, handleSetup, handleJoyrideCallback, run, isSetup } =
+		useHomePage();
 
 	if (showLoading) {
 		return <HomeLoading />;
@@ -60,7 +53,9 @@ export default function HomePage() {
 
 	return (
 
+
 		<div className='custom_container grid grid-cols-1 gap-5 py-5'>
+
 			<div className='custom-grid-parent'>
 				<div className='grid-left'>
 					{isSetup ? (
@@ -68,7 +63,6 @@ export default function HomePage() {
 					) : (
 						<Setups startTour={startTour} handleSetup={handleSetup} />
 					)}
-
 				</div>
 				<div className='grid-right'>
 					<HomeReports />
@@ -82,22 +76,16 @@ export default function HomePage() {
 					<ProductHighlights data={data} />
 				</div>
 			</div>
-			<CustomSlider
-				slides={slides}
-				title='Get started with dookan'
-				SlideComponent={CalloutCard}
-			/>
+
+			<CustomSlider slides={slides} title='Get started with dookan' SlideComponent={CalloutCard} />
+
 			<Joyride
 				steps={tourSteps}
 				run={run}
 				continuous
 				styles={joyrideStyles}
 				tooltipComponent={TourCard}
-				callback={(data) => {
-					if (data.status === 'finished' || data.status === 'skipped') {
-						setRun(false);
-					}
-				}}
+				callback={handleJoyrideCallback}
 			/>
 		</div>
 	);
