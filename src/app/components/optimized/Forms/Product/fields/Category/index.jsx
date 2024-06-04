@@ -30,7 +30,7 @@ function CategoryDialog() {
 			<DialogContent className='p-8'>
 				<CategoryForm
 					handleSubmit={(values) => {
-						console.log(values);
+						// console.log(values);
 					}}
 				/>
 			</DialogContent>

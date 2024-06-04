@@ -18,7 +18,7 @@ const StepsX = ({ stepsContent }) => {
 		}
 	};
 
-	const 	 = () => {
+	const handleFinish	 = () => {
 		console.log('Finished!');
 	};
 

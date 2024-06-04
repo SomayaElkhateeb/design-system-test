@@ -4,7 +4,7 @@ import productsTableData from 'src/pages/AnalyticsPage/comp/data.json';
 
 const URL = productsTableData;
 
-console.log(URL);
+
 
 // get Products Data
 export const getProductsTable = createAsyncThunk(

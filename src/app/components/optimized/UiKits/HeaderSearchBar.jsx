@@ -26,7 +26,7 @@ export default function HeaderSearchBar(props) {
 	const [searchTerm, setSearchTerm] = useState('');
 
 	const handleSearch = () => {
-		console.log('Searching for:', searchTerm, 'in category:', selectedCategory);
+		// console.log('Searching for:', searchTerm, 'in category:', selectedCategory);
 	};
 
 	return (

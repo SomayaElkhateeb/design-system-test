@@ -30,7 +30,7 @@ function BrandDialog() {
 			<DialogContent className='p-8'>
 				<BrandForm
 					handleSubmit={(values) => {
-						console.log(values);
+						// console.log(values);
 					}}
 				/>
 			</DialogContent>
