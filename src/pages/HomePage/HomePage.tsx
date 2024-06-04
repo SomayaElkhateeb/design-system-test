@@ -52,10 +52,7 @@ export default function HomePage() {
 	}
 
 	return (
-
-
 		<div className='custom_container grid grid-cols-1 gap-5 py-5'>
-
 			<div className='custom-grid-parent'>
 				<div className='grid-left'>
 					{isSetup ? (
