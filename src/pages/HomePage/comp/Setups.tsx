@@ -37,7 +37,7 @@ function SetupsHeader({ startTour }: SetupsHeaderProps) {
 	return (
 		<h2 className='title mb-1'>
 			{t('Get ready for your first sale')}
-			<p className='text-subtitle paragraph sm:flex flex-col'>
+			<p className='text-subtitle paragraph sm:flex sm:flex-row flex-col'>
 				{t('There are only 2 main steps to launch your store')},&nbsp;
 				<Button onClick={startTour} variant='link' text={t('Follow our tips')} />
 				&nbsp;

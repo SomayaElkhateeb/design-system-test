@@ -94,7 +94,6 @@ export default function HomePage() {
 				styles={joyrideStyles}
 				tooltipComponent={TourCard}
 				callback={(data) => {
-					console.log(data)
 					if (data.status === 'finished' || data.status === 'skipped') {
 						setRun(false);
 					}
