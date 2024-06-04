@@ -3,7 +3,7 @@ import data from './comp/data.json';
 import HomeReports from './comp/HomeReports';
 import { useHomePage } from './comp/useHomePage';
 import ProductHighlights from './comp/ProductHighlights';
-import Slider from 'src/app/components/optimized/UiKits/Slider';
+
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 import { HomeLoading } from 'src/app/components/page/SchimmerLoading/HomeLoading';
 
@@ -60,7 +60,7 @@ export default function HomePage() {
 
 	return (
 
-		<div className='custom_container grid grid-cols-1 gap-5 p-5'>
+		<div className='custom_container grid grid-cols-1 gap-5 py-5'>
 			<div className='custom-grid-parent'>
 				<div className='grid-left'>
 					{isSetup ? (

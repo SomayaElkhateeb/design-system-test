@@ -23,9 +23,9 @@ interface Arrow {
 }
 
 interface Slide {
-  title: string;
-  videoUrl: string;
-  description: string;
+	title: string;
+	videoUrl: string;
+	description: string;
 }
 interface CustomSliderProps {
 	slides: Slide[];
@@ -34,7 +34,12 @@ interface CustomSliderProps {
 	SlideComponent: React.ComponentType<Slide>;
 }
 
-export function CustomSlider({ slides, title, SlideComponent ,defaultSlidesToShow = 1}: CustomSliderProps) {
+export function CustomSlider({
+	slides,
+	title,
+	SlideComponent,
+	defaultSlidesToShow = 1,
+}: CustomSliderProps) {
 	const { t } = useTranslation();
 
 	const isSmallScreen = useMediaQuery({ query: '(max-width: 890px)' });
@@ -63,7 +68,7 @@ export function CustomSlider({ slides, title, SlideComponent ,defaultSlidesToSho
 
 	return (
 		<div className='global-cards relative'>
-			<div className='absolute text-title font-semibold leading-9'>{t(title)}</div>
+			<div className='absolute title leading-9'>{t(title as any)}</div>
 			<Slider {...settings}>
 				{slides.map((slide, index) => (
 					<div key={index} className='mt-12'>
@@ -75,18 +80,18 @@ export function CustomSlider({ slides, title, SlideComponent ,defaultSlidesToSho
 	);
 }
 
-	function NextArrow({ onClick }: Arrow) {
-		return (
-			<div className={`${arrowClasses} right-0 rounded-r`} onClick={onClick}>
-				<NextIcon className='fill-pri-dark' />
-			</div>
-		);
-	}
+function NextArrow({ onClick }: Arrow) {
+	return (
+		<div className={`${arrowClasses} right-0 rounded-r`} onClick={onClick}>
+			<NextIcon className='fill-pri-dark' />
+		</div>
+	);
+}
 
-	function PrevArrow({ onClick }: Arrow) {
-		return (
-			<div className={`${arrowClasses} right-[33px] rounded-l`} onClick={onClick}>
-				<BackIcon className='fill-pri-dark' />
-			</div>
-		);
-	}
+function PrevArrow({ onClick }: Arrow) {
+	return (
+		<div className={`${arrowClasses} right-[33px] rounded-l`} onClick={onClick}>
+			<BackIcon className='fill-pri-dark' />
+		</div>
+	);
+}

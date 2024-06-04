@@ -14,6 +14,7 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 /**
  * @param {object} props - Props for the VerticalTabs component.
  * @param {Tab[]} props.tabs - An array of tab objects containing title and content.
+ *  @param {()=>void} props.setIsSetup - .
  *
  * @description
  * VerticalTabs component renders a vertical tab navigation system.
@@ -92,6 +93,7 @@ function useVerticalTabs(initialTab = 0, tabs) {
  * @param {() => void} props.onNext - Function to handle next button click event.
  * @param {() => void} props.onPrev - Function to handle previous button click event.
  * @param {Tab[]} props.tabs - An array of tab objects containing title and content.
+ * @param {()=>void} props.handleFinish - .
  */
 
 function VTab(props) {
