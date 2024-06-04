@@ -105,7 +105,7 @@ function HeaderSearchBar() {
 	];
 
 	return (
-		<div className='relative flex items-center xl:w-[600px] h-10 rounded-md border py-6'>
+		<div className='relative flex items-center xl:w-[550px] h-10 rounded-md border py-6'>
 			<input
 				className='xl:w-full pl-12 pr-3 py-2 text-sm bg-transparent border border-transparent focus:outline-none '
 				placeholder='Search on products or customers or orders...'
@@ -131,9 +131,9 @@ function HeaderSearchBar() {
 
 			<button
 				type='button'
-				className='py-[0.800rem] pr-4 rounded-r-md bg-primary focus:outline-none'
+				className='py-[0.800rem] w-12 xl:w-20 flex justify-center items-center rounded-r-md bg-primary focus:outline-none'
 			>
-				<SearchIcon className='mx-3.5 fill-white' />
+				<GoSearch size={24} color='white' style={{ transform: 'rotate(90deg)' }} />
 			</button>
 		</div>
 	);
