@@ -97,9 +97,9 @@ export default function ChannelChart(props) {
 	};
 
 	return (
-		<div className='h-full min-w-[20rem] rounded-xl border border-borders-lines bg-white p-4'>
-			<div className='flex items-center justify-between mb-1'>
-				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
+		<div className='h-full global-cards'>
+			<div className='flex-row-global justify-between '>
+				<h2 className='title'>{capitalizeFirstLetter(title)}</h2>
 
 				<div className='flex'>
 					<BackAndroidIcon
@@ -111,7 +111,7 @@ export default function ChannelChart(props) {
 				</div>
 			</div>
 
-			<div id='chart'>
+			<div id='chart' className='flex-row-global w-full'>
 				<ReactApexChart
 					options={props.options || defaultOptions}
 					series={props.series || series}
