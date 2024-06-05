@@ -3,8 +3,15 @@ import Avatar from '../../../../app/components/optimized/UiKits/Avatar';
 import SlideCard from 'src/app/components/page/Cards/SlideCard';
 import { useTranslation } from 'react-i18next';
 import AverageRating from './AverageRating';
-import { UserReviewInterface } from './UsersReview';
 
+
+interface UserReviewInterface {
+	firstName: string;
+	lastName: string
+	date: string
+	rating: number
+	review: string;
+}
 interface ReviewData {
 	averageRating: number;
 	totalReviews: number;
@@ -37,12 +44,12 @@ function UsersReview({ firstName, lastName, date, rating, review }: UserReviewIn
 	const { t } = useTranslation();
 
 	return (
-		<div className='grid gap-3 mb-4'>
-			<h2 className='title text-base capitalize'>{t('Recent')}</h2>
+		<div className='grid gap-3'>
+			<h2 className='title'>{t('Recent')}</h2>
 			<div className='flex gap-3 items-start'>
 				<Avatar variant='user' firstName={firstName} lastName={lastName} />
 				<div>
-					<h2 className='title text-lg capitalize'>
+					<h2 className='title'>
 						{firstName} {lastName} &nbsp; <span className='subtitle'>{date}</span>
 					</h2>
 					<Rating precision={0.5} value={rating} readOnly />

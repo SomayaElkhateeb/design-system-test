@@ -1,7 +1,7 @@
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import { z } from 'zod';
+
 import { selectItemsInterface } from '../../AddCustomer/GeneralInfoCustomerForm';
 import { useTranslation } from 'react-i18next';
 import Tabs from '../../Customers/Tabs';
@@ -16,6 +16,7 @@ import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { fileClassName } from '../../SettingPage/GeneralSettings/Media';
 import { TfiUpload } from 'react-icons/tfi';
+import { AddBrandSchemaValues, addBrandFormSchema } from './AddbrandsFormSchema';
 interface AddBrandItem {
 	brandNameEn: string;
 	brandNameAr: string;
@@ -36,26 +37,9 @@ export default function AddBrandItem({
 }) {
 	//  hooks
 	const { t } = useTranslation();
-	// //////////////////////////////////
-	const stringValidation = z.string().min(1);
-	const addPaymentSchema = {
-		brandNameEn: stringValidation,
-		brandNameAr: stringValidation,
-		brandDescribtionEn: stringValidation,
-		brandDescribtionAr: stringValidation,
-		brandLinkEn: z.string().url(),
-		brandLinkAr: z.string().url(),
-		image: z.instanceof(File),
-		available: z.boolean().default(false),
-		products: z.array(
-			z.object({
-				id: stringValidation,
-				name: stringValidation,
-			}),
-		),
-	};
+
 	// /////////////////////
-	const handleSubmit = (values: AddBrandItem) => {
+	const handleSubmit = (values: AddBrandSchemaValues) => {
 		console.log(values);
 	};
 	// ////////////////////////////
@@ -74,7 +58,7 @@ export default function AddBrandItem({
 	};
 	// //////////////////////////////
 	const { formStore, onSubmit } = useForm({
-		schema: addPaymentSchema,
+		schema: addBrandFormSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -154,7 +138,7 @@ export default function AddBrandItem({
 											<div className='flex-col-top-section-pages gap-2'>
 												<p>{t('Availability')}</p>
 												<div className='flex-row-global gap-2'>
-													<FormSwitchField<AddBrandItem>
+													<FormSwitchField<AddBrandSchemaValues>
 														formStore={formStore}
 														name='available'
 														enable
@@ -166,7 +150,7 @@ export default function AddBrandItem({
 									</div>
 								</TabPanel>
 								<TabPanel value='2'>
-									<SpecificAutoCompleteInput<AddBrandItem>
+									<SpecificAutoCompleteInput<AddBrandSchemaValues>
 										label={t('Products')}
 										name='products'
 										formStore={formStore}

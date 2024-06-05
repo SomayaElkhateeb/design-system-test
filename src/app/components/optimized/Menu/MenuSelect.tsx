@@ -14,7 +14,7 @@ interface MenuSelectProps {
  * @returns {JSX.Element} - Rendered component.
  */
 const MenuSelect: React.FC<MenuSelectProps> = ({ options }) => {
-	console.log('options', options);
+	// console.log('options', options);
 	const language = UseLanguage();
 
 	return (

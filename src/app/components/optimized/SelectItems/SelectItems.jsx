@@ -47,7 +47,7 @@ function SelectItems(props) {
 			? [...selectedItems, item]
 			: selectedItems.filter((item) => item.id !== item.id);
 		setSelectedItems(updatedItems);
-		console.log('Checkbox checked:', isChecked);
+		// console.log('Checkbox checked:', isChecked);
 	}
 
 	/** @param {import("react").MouseEvent<HTMLDivElement>} event */

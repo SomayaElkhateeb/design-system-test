@@ -10,6 +10,8 @@ export default function SidebarMob() {
 	const [openMore, setOpenMore] = useState(false);
 	const [openChat, setOpenChat] = useState(false);
 	const [openHelpCenter, setOpenHelpCenter] = useState(false);
+
+	console.log(openChat)
 	return (
 		<>
 			{openMore ? (
@@ -33,7 +35,7 @@ export default function SidebarMob() {
 					/>
 				</aside>
 			) : (
-				<ContainLinks open={() => setOpenMore(true)} openChat={() => setOpenChat(true)} />
+				<ContainLinks openMore={() => setOpenMore(true)} openChat={() => setOpenChat(true)} />
 			)}
 
 			{openChat && (

@@ -24,7 +24,7 @@ export default function PaymentCard() {
 	const { handelDefaultValue, paymentSchema } = useCustomHookPayment();
 
 	const handleSubmit = (values: IPaymentCardInterface) => {
-		console.log(values);
+		// console.log(values);
 		navigate('successfullyPurchased');
 	};
 
