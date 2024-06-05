@@ -16,7 +16,7 @@ export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFo
 	const { t } = useTranslation();
 
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardHeader>
 				<CardTitle>{t('Basic info')}</CardTitle>
 			</CardHeader>

@@ -15,7 +15,7 @@ export default function ProductFormShippingSection(props) {
 	const { t } = useTranslation();
 
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardHeader>
 				<CardTitle>{t('Shipping')}</CardTitle>
 			</CardHeader>

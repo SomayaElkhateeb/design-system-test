@@ -21,7 +21,6 @@ export const ProductSchema = {
 	...productShippingSchema,
 	// more advanced shipping options???
 	...productOptionsAndVariationsRawSchema,
-	// options: z.array(
 	...productSeoSchema,
 	...productFaqsSchema,
 };

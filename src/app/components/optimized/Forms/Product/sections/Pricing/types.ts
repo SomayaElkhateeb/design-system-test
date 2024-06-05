@@ -6,4 +6,5 @@ export type Values = InferredZodSchema<typeof productPricingSchema>;
 
 export type Props<TFormStore> = {
 	formStore: ValidFormStoreByValues<TFormStore, Values>;
+	id?: string;
 };

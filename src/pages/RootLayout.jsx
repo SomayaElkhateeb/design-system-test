@@ -33,7 +33,7 @@ const RootLayout = () => {
 			)}
 			{isMobile && (
 				<div className='w-full bg-light-1'>
-					<div className='sticky top-0 z-50'>
+					<div className='sticky top-0 z-50 h-20'>
 						<Header setIsOpen={sidebarOpenHandler} />
 					</div>
 					<main className='pb-15'>
