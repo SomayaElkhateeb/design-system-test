@@ -11,7 +11,7 @@ export default function SidebarMob() {
 	const [openChat, setOpenChat] = useState(false);
 	const [openHelpCenter, setOpenHelpCenter] = useState(false);
 
-	console.log(openChat)
+	console.log(openChat);
 	return (
 		<>
 			{openMore ? (
@@ -39,11 +39,19 @@ export default function SidebarMob() {
 			)}
 
 			{openChat && (
-				<div className='h-full z-50 bg-red-300 w-48'>
-					<ChatCard onClose={() => setOpenChat(false)} />
-				</div>
+				<aside className='h-full z-50 bg-white fixed top-0 left-0 right-0 overflow-y-auto'>
+					<ChatCard onClose={() => setOpenChat(false)} menu={true} />
+				</aside>
 			)}
-			{openHelpCenter && <HelpCenterCard onClose={() => setOpenHelpCenter(false)} />}
+			{openHelpCenter && (
+				<aside className='h-full z-50 bg-white fixed top-0 left-0 right-0 overflow-y-auto'>
+					<HelpCenterCard
+						onClose={() => setOpenHelpCenter(false)}
+						menu={true}
+						close={() => setOpenMore(false)}
+					/>
+				</aside>
+			)}
 		</>
 	);
 }
