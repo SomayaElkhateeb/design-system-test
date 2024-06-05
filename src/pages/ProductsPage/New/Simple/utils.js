@@ -7,6 +7,7 @@ import { productShippingSchema } from 'src/app/components/optimized/Forms/Produc
 import { productSeoSchema } from 'src/app/components/optimized/Forms/Product/sections/Seo/utils';
 import { productFaqsSchema } from 'src/app/components/optimized/Forms/Product/sections/Faqs/utils';
 import { productOptionsAndVariationsRawSchema } from 'src/app/components/optimized/Forms/Product/sections/OptionsAndVariations/utils';
+import { productQuickActionsSchema } from 'src/app/components/optimized/Forms/Product/sections/QuickActions/utils';
 
 export const ProductSchema = {
 	imagesMedia: z.array(z.instanceof(File)),
@@ -24,4 +25,5 @@ export const ProductSchema = {
 	// options: z.array(
 	...productSeoSchema,
 	...productFaqsSchema,
+	...productQuickActionsSchema,
 };

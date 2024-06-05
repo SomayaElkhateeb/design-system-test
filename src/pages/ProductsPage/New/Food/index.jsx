@@ -7,6 +7,7 @@ import ProductFormShippingSection from 'src/app/components/optimized/Forms/Produ
 import ProductFormOptionsAndVariationsSection from 'src/app/components/optimized/Forms/Product/sections/OptionsAndVariations';
 import ProductFormFaqsSection from 'src/app/components/optimized/Forms/Product/sections/Faqs';
 import SeoFormFaqsSection from 'src/app/components/optimized/Forms/Product/sections/Seo';
+import ProductFormQuickActionsSection from 'src/app/components/optimized/Forms/Product/sections/QuickActions';
 import { ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
@@ -67,6 +68,7 @@ export default function FoodProductPage() {
 			console.log(values);
 		},
 		defaultValues: {
+			bulkPrices: [],
 			isTaxable: true,
 			statesOfTheProduct: [],
 			price: 0,
@@ -86,10 +88,17 @@ export default function FoodProductPage() {
 	return (
 		<NewProductWrapper formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
-				{productsSections.map(({ Elem, id }) => (
-					// @ts-ignore
-					<Elem key={id} formStore={formStore} id={id} />
-				))}
+				<div className='flex gap-6'>
+					<div className='flex flex-col gap-4'>
+						{productsSections.map(({ Elem, id }) => (
+							// @ts-ignore
+							<Elem key={id} formStore={formStore} id={id} />
+						))}
+					</div>
+					<div className='flex-shrink-0'>
+						<ProductFormQuickActionsSection formStore={formStore} />
+					</div>
+				</div>
 			</section>
 		</NewProductWrapper>
 	);

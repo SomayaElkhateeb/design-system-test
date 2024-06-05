@@ -19,16 +19,28 @@ export const productShippingRateMap =
 
 export const productShippingMethodCollection = /** @type {const} */ (['Dhl (main)', 'Aramex']);
 
+export const productWeightUnitCollection = /** @type {const} */ (['kg', 'g', 'lb', 'oz']);
+export const productWeightUnitMap =
+	/** @type {{ [Key in typeof productWeightUnitCollection[number]]: typeof productWeightUnitCollection[number] }} */ (
+		Object.fromEntries(productWeightUnitCollection.map((unit) => [unit, unit]))
+	);
+
+export const productDimensionUnitCollection = /** @type {const} */ (['cm', 'm', 'mm', 'in', 'ft']);
+export const productDimensionUnitMap =
+	/** @type {{ [Key in typeof productDimensionUnitCollection[number]]: typeof productDimensionUnitCollection[number] }} */ (
+		Object.fromEntries(productDimensionUnitCollection.map((unit) => [unit, unit]))
+	);
+
 export const productShippingSchema = {
 	isShippableOrPickupable: z.boolean().default(true),
 	weight: z.coerce.number().min(0),
-	weightUnit: z.enum(['kg', 'g', 'lb', 'oz']),
+	weightUnit: z.enum(productWeightUnitCollection),
 	dimensions: z.object({
 		length: z.coerce.number().min(0),
 		width: z.coerce.number().min(0),
 		height: z.coerce.number().min(0),
 	}),
-	dimensionUnit: z.enum(['cm', 'm', 'mm', 'in', 'ft']),
+	dimensionUnit: z.enum(productDimensionUnitCollection),
 	statesOfTheProduct: z.array(z.enum(productStatesOfTheProductCollection)),
 	shippingRate: z.enum(productShippingRateCollection),
 	shippingRateValue: z.number().min(0).optional(),

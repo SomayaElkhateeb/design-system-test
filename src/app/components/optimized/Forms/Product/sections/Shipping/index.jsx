@@ -11,8 +11,18 @@ import {
 	productStatesOfTheProductCollection,
 	productShippingRateMap,
 	productShippingMethodCollection,
+	productDimensionUnitCollection,
+	productWeightUnitCollection,
 } from './utils';
 import { useWatch } from 'react-hook-form';
+import {
+	SelectItem,
+	Select,
+	SelectContent,
+	SelectTrigger,
+	SelectValue,
+} from 'src/app/components/ui/select';
+import ControllerContainer from 'src/app/components/ui/form/controller-container';
 
 // /*
 // import { z } from 'zod';
@@ -236,14 +246,54 @@ export default function ProductFormShippingSection(props) {
 					)}
 					layout='inline-reversed'
 				/>
-				<div className='flex flex-col items-start'>
+				<div className='flex flex-col gap-4 items-start'>
 					<FormField
 						formStore={props.formStore}
 						name='weight'
 						label={t('Weight')}
-						render={(field) => <Input {...field} type='number' />}
+						render={(field) => (
+							<ControllerContainer
+								end={
+									<FormField
+										formStore={props.formStore}
+										name='weightUnit'
+										render={(field) => (
+											<Select
+												onValueChange={(value) => {
+													// @ts-ignore
+													props.formStore.setValue('weightUnit', value);
+												}}
+												value={field.value}
+											>
+												<SelectTrigger
+													id={field.id}
+													className='border-0'
+													style={{
+														minWidth: 2 * 3.5 + 'ch',
+													}}
+												>
+													<SelectValue />
+												</SelectTrigger>
+												<SelectContent>
+													{productWeightUnitCollection.map((item) => {
+														return (
+															<SelectItem key={item} value={item}>
+																{item}
+															</SelectItem>
+														);
+													})}
+												</SelectContent>
+											</Select>
+										)}
+									/>
+								}
+								endSeparator
+							>
+								<Input {...field} type='number' className='border-0' />
+							</ControllerContainer>
+						)}
 					/>
-					<div className='max-w-[50%] w-full flex items-center text-gray'>
+					<div className='flex items-center text-gray border rounded-md px-2'>
 						<FormField
 							formStore={props.formStore}
 							name='dimensions.length'
@@ -253,6 +303,7 @@ export default function ProductFormShippingSection(props) {
 									type='number'
 									className='border-0 px-0'
 									placeholder={t('Length')}
+									style={{ width: t('Length').length * 1.2 + 'ch' }}
 									min='0'
 								/>
 							)}
@@ -267,6 +318,7 @@ export default function ProductFormShippingSection(props) {
 									type='number'
 									className='border-0 px-0'
 									placeholder={t('Width')}
+									style={{ width: t('Width').length * 1.2 + 'ch' }}
 									min='0'
 								/>
 							)}
@@ -281,6 +333,7 @@ export default function ProductFormShippingSection(props) {
 									type='number'
 									className='border-0 px-0'
 									placeholder={t('Height')}
+									style={{ width: t('Height').length * 1.2 + 'ch' }}
 									min='0'
 								/>
 							)}
@@ -290,13 +343,26 @@ export default function ProductFormShippingSection(props) {
 							formStore={props.formStore}
 							name='dimensionUnit'
 							render={(field) => (
-								<Input
-									{...field}
-									type='number'
-									className='border-0'
-									placeholder={t('Dimension unit')}
-									readOnly
-								/>
+								<Select
+									onValueChange={(value) => {
+										// @ts-ignore
+										props.formStore.setValue('dimensionUnit', value);
+									}}
+									value={field.value}
+								>
+									<SelectTrigger id={field.id} className='border-0'>
+										<SelectValue />
+									</SelectTrigger>
+									<SelectContent>
+										{productDimensionUnitCollection.map((item) => {
+											return (
+												<SelectItem key={item} value={item}>
+													{item}
+												</SelectItem>
+											);
+										})}
+									</SelectContent>
+								</Select>
 							)}
 						/>
 					</div>

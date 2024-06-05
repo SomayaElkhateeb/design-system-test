@@ -5,8 +5,42 @@ import { Card, CardContent, CardHeader, CardTitle } from 'src/app/components/ui/
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import Button from '../../../../Buttons/Button';
+import { Dialog, DialogContent, DialogTrigger } from 'src/app/components/ui/dialog';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { Label } from 'src/app/components/ui/label';
+import AddBranch from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/AddBranch';
+
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
+function AddBranchManager(props) {
+	const { t } = useTranslation();
+
+	return (
+		<Dialog>
+			<DialogTrigger>
+				<Button
+					variant='secondary'
+					textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
+					className='px-0 border-0'
+				>
+					<FaCirclePlus className='size-5' />
+					{t('Add New branch')}
+				</Button>
+			</DialogTrigger>
+			<DialogContent className='p-8 max-w-screen-lg'>
+				<AddBranch
+					handleSubmit={(values) => {
+						// console.log(values);
+					}}
+					hideHeader
+				/>
+			</DialogContent>
+		</Dialog>
+	);
+}
 
 /**
  * @template TFormStore
@@ -70,14 +104,7 @@ function ProductInventoryBranches(props) {
 				</tbody>
 			</table>
 
-			<Button
-				variant='secondary'
-				textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-				className='px-0 border-0'
-			>
-				<FaCirclePlus className='size-5' />
-				{t('Add New branch')}
-			</Button>
+			<AddBranchManager />
 		</>
 	);
 }
