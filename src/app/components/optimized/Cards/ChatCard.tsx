@@ -51,7 +51,7 @@ const data = [
  * @returns {JSX.Element} ChatCard component.
  */
 
-const ChatCard = ({ onClose }: { onClose: () => void }) => {
+const ChatCard = ({ onClose, menu }: { onClose: () => void; menu?: boolean }) => {
 	const language = UseLanguage();
 	const id = 'chat-card';
 	useClickOutsideWithId(id, onClose);
@@ -59,7 +59,11 @@ const ChatCard = ({ onClose }: { onClose: () => void }) => {
 	return (
 		<div
 			id={id}
-			className={`bg-white w-[21rem] pb-5 absolute shadow-lg top-[4.5rem] z-40 max-h-[32rem] overflow-hidden ${
+			className={`bg-white ${
+				menu
+					? 'h-full w-full'
+					: 'w-[21rem] pb-5 absolute shadow-lg top-[4.5rem] z-30 max-h-[32rem] overflow-hidden'
+			}  ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-10'
 					: 'rounded-tl-md rounded-bl-md right-10'

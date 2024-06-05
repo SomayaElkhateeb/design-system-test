@@ -38,7 +38,7 @@ export default function GlobalDialog({
 	};
 	return (
 		<Modal
-			className='cursor-pointer z-40'
+			className='cursor-pointer z-30'
 			open={openDialog}
 			onClose={handleClose}
 			aria-labelledby='modal-modal-title'
