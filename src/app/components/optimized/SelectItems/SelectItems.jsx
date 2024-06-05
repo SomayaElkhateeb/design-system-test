@@ -78,7 +78,7 @@ function SelectItems(props) {
 
 	return (
 		<div
-			className='fixed top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-black bg-opacity-50'
+			className='fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full bg-black bg-opacity-50'
 			onClick={handleClickOutside}
 		>
 			<label className='w-[39rem] rounded bg-white py-[1rem]'>
