@@ -12,6 +12,7 @@ const HelpCenterBtn = () => {
 	const [show, setShow] = useState(false);
 
 	return (
+
 		<PopoverComponenet
 			button={
 				<>
@@ -23,6 +24,7 @@ const HelpCenterBtn = () => {
 				</>
 			}
 		>
+
 			{show && <HelpCenterCard onClose={() => setShow(false)} />}
 		</PopoverComponenet>
 	);

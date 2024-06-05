@@ -10,7 +10,7 @@ export default function SmsaAccount() {
 		<div className='cardDetails-sharedClass p-5 w-full lg:w-3/4'>
 			<img src={getImageUrl('companies/express.svg')} />
 			<p className='text-title text-sm pt-1.5 pb-3 w-[65%]'>
-				{t('Make sure you have SMSA account if you have an account you can proceed,if you don’t,')}
+				{t("Make sure you have SMSA account if you have an account you can proceed,if you don't,")}
 				<span className='btn-lin p-0'> {t('Create an account')} </span>
 				{t('and proceed')}
 			</p>

@@ -12,7 +12,7 @@ export default function ServiceDetailsSales() {
 			<div className='flex-col-top-section-pages gap-[1rem]'>
 				<div className='flex-col-top-section-pages gap-[.5rem]'>
 					<div className='flex-col-top-section-pages gap-[.3rem] px-[1rem]'>
-						<p className='text-[1.2rem] font-semibold text-title'>Let’s generate sales</p>
+						<p className='text-[1.2rem] font-semibold text-title'>Let\'s generate sales</p>
 						<p className='text-[.9rem]  text-title'>SAR 200/ hour</p>
 					</div>
 					<hr />

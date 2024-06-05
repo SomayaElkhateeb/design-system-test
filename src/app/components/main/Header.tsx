@@ -145,8 +145,8 @@ const ProfileInfo = () => {
 		<>
 			<div className='flex lg:hidden items-center '>
 				<SearchBtn />
-				<ViewBtn sm={true} />
-				<NotificationBtn sm={true} />
+				<ViewBtn  />
+				<NotificationBtn  />
 			</div>
 			<div className='hidden lg:flex items-center'>
 				<HelpCenterBtn />

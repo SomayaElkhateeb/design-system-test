@@ -46,7 +46,7 @@ export default function AppsWrapper({
 	return (
 		<div className='grid gap-3'>
 			<div className='flex justify-between'>
-				<h2 className='text-lg font-semibold text-title'>{title}</h2>
+				<h2 className='title'>{title}</h2>
 				<div className='flex items-center gap-1'>
 					<button className='text-sm font-semibold text-title' onClick={onButtonClick}>
 						{t('View All')}

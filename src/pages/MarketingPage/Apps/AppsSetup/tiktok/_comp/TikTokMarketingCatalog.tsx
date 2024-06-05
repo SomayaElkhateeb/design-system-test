@@ -25,7 +25,7 @@ function TikTokMarketingCatalog() {
 	};
 
 	const handleCatalogLocation = () => {
-		if (selectedOption !== 'select an option' ) {
+		if (selectedOption !== 'select an option') {
 			setCatalogLocationChecked(true);
 			setIsCatalogLocationOpen(false);
 		}
@@ -52,8 +52,8 @@ function TikTokMarketingCatalog() {
 				{isPopupOpen && (
 					<PopupProceed
 						title='Approve access to your TikTok Ads Manager account'
-						proceedBtnText="Proceed"
-						cancelBtnText="Cancel"
+						proceedBtnText='Proceed'
+						cancelBtnText='Cancel'
 						isOpen={isPopupOpen}
 						onCancel={() => setIsPopupOpen(false)}
 						onProceed={handleBusinessCenterProceed}
@@ -104,7 +104,7 @@ function TikTokMarketingCatalog() {
 								handleOnChange={handleOnChange}
 							/>
 						</div>
-						<p className='my-1'>You can’t change the default location once you finish setup.</p>
+						<p className='my-1'>You can\'t change the default location once you finish setup.</p>
 						<div className='w-1/3 my-5'>
 							<InputRow
 								label='Additional Locations'

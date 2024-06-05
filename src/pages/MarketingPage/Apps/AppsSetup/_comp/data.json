@@ -26,7 +26,7 @@
 			},
 			"domain_verification": {
 				"title": "Domain verification",
-				"description": "Verify your Facebook domain, so they can define that you’re the owner of it"
+				"description": "Verify your Facebook domain, so they can define that you're the owner of it"
 			},
 			"facebook_page": {
 				"title": "Facebook page",
@@ -136,7 +136,7 @@
 				}
 			],
 			"privacy_notice": {
-				"text": "To erase your customers’ personal information from TikTok, Remove the app. After 48 hours, a request will be sent to TikTok to erase this data.",
+				"text": "To erase your customers' personal information from TikTok, Remove the app. After 48 hours, a request will be sent to TikTok to erase this data.",
 				"linkText": "Learn more about data Privacy",
 				"linkURL": "#"
 			},
@@ -221,7 +221,7 @@
 				}
 			],
 			"privacy_notice": {
-				"text": "To erase your customers’ personal information from Snapchat, Remove the app. After 48 hours, a request will be sent to Snapchat to erase this data.",
+				"text": "To erase your customers' personal information from Snapchat, Remove the app. After 48 hours, a request will be sent to Snapchat to erase this data.",
 				"linkText": "Learn more about data Privacy",
 				"linkURL": "#"
 			},
@@ -296,7 +296,7 @@
 				}
 			],
 			"privacy_notice": {
-				"text": "To erase your customers’ personal information from Mailchimp, Remove the app. After 48 hours, a request will be sent to Mailchimp to erase this data.",
+				"text": "To erase your customers' personal information from Mailchimp, Remove the app. After 48 hours, a request will be sent to Mailchimp to erase this data.",
 				"linkText": "Learn more about data Privacy",
 				"linkURL": "#"
 			},
@@ -396,7 +396,7 @@
 				}
 			],
 			"privacy_notice": {
-				"text": "To erase your customers’ personal information from Sendgrid, Remove the app. After 48 hours, a request will be sent to Sendgrid to erase this data.",
+				"text": "To erase your customers' personal information from Sendgrid, Remove the app. After 48 hours, a request will be sent to Sendgrid to erase this data.",
 				"linkText": "Learn more about data Privacy",
 				"linkURL": "#"
 			},

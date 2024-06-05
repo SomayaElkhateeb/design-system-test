@@ -16,6 +16,7 @@ import { UseLanguage } from '../../CustomHook/LanguageHook';
  * @returns {JSX.Element} Chat component.
  */
 
+
 const Chat = ({
 	title,
 	onClose,
@@ -27,6 +28,7 @@ const Chat = ({
 	data: any;
 	// menu?: boolean;
 }) => {
+
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -40,8 +42,8 @@ const Chat = ({
 	return (
 		<div className={`flex flex-col gap-4 ${language === 'ar' ? 'pl-5' : 'pr-5'} `}>
 			<div className='flex justify-between items-center p-3'>
-				<h3 className='text-title text-lg font-semibold'>{title}</h3>
-				<IoCloseCircleOutline onClick={onClose} className='text-pri-dark size-5 cursor-pointer' />
+				<h3 className='title'>{title}</h3>
+				<IoCloseCircleOutline  className='text-pri-dark size-5 cursor-pointer' />
 			</div>
 
 			<div className='px-3'>
