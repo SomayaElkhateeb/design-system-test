@@ -16,8 +16,8 @@ function InstalledAppsContainer() {
 	const { t } = useTranslation();
 	
 	return (
-		<div className='grid gap-5 p-5 bg-white border rounded-lg border-borders-lines w-3/4'>
-			<h2 className='title text-lg'>
+		<div className='grid gap-5 global-cards sm:w-3/4'>
+			<h2 className='title'>
 				{t('Installed')} ({15})
 			</h2>
 			{installedApps.map((app, index) => (

@@ -1,12 +1,14 @@
-/** @typedef {string} Option */
 
+
+interface props{
+	options:string[]
+	setSelected:(e:string)=>void
+	selected:string
+	type?:string
+	icon?:React.ReactNode
+}
 /**
- * @param {object} props
- * @param {Option[]} props.options An array of options to display as chips
- * @param {((option: string) => void)} props.setSelected Function to set the selected option
- * @param {Option} props.selected The selected option
- * @param {import('react').ReactNode} props.icon Optional icon component to display with each chip
- * @param {string | undefined} props.type Type of options: 'array' or 'object'
+
  *
  * @description
  *
@@ -41,7 +43,7 @@
  * export default MyComponent;
  * ```
  */
-export default function SingleChoiceChips(props) {
+export default function SingleChoiceChips(props:props) {
 	return (
 		<div className='flex flex-wrap gap-2  '>
 			{/* Render each option as a chip */}
@@ -58,15 +60,15 @@ export default function SingleChoiceChips(props) {
 	);
 }
 
-/**
- * @param {object} props
- * @param {string} props.label The value associated with the chip
- * @param {boolean} props.isSelected Boolean indicating whether the chip is selected
- * @param {import('react').ReactNode} props.icon Optional icon component to display with the chip
- * @param {((option: string) => void)} props.onSelect Function to handle chip selection
- */
 
-function Chip(props) {
+
+interface ChipProps{
+	label:string
+	isSelected:boolean
+	icon?:React.ReactNode
+	onSelect:(e:string)=>void
+}
+function Chip(props:ChipProps) {
 	// Base styles for the chip
 	const baseStyle =
 		'flex items-center border py-1.5 px-3 min-w-fit rounded-full cursor-pointer transition-all';
