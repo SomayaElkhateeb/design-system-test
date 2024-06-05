@@ -16,7 +16,7 @@ const ProfileBtn = () => {
 			button={
 				<>
 					<Button >
-						<div className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
+						<div className='roundedParentIcon'>
 							<img
 								src={getImageUrl('images/profile.png')}
 								alt='logo'

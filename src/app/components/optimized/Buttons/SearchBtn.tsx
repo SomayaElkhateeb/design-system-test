@@ -1,6 +1,6 @@
-import { useState } from 'react';
+
 import { SearchIcon } from 'src/app/utils/icons';
-import { useClickOutsideWithId } from 'src/app/utils';
+
 import PopoverComponenet from '../../page/Customers/Popover';
 import Button from '@mui/material/Button';
 
@@ -9,7 +9,7 @@ const SearchBtn = () => {
 		<PopoverComponenet
 			button={
 				<>
-					<Button className='size-[42px] grid place-content-center cursor-pointer'>
+					<Button className='roundedParentIcon'>
 						<SearchIcon />
 					</Button>
 				</>

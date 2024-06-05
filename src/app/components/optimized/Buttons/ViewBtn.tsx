@@ -9,30 +9,17 @@ import PopoverComponenet from '../../page/Customers/Popover';
  * and opens the manage account card when clicked.
  */
 const ViewBtn = ({ sm }: { sm?: boolean }) => {
-	
-
 	return (
 		<PopoverComponenet
 			button={
 				<>
-					{sm ? (
-						<Button
-							
-							className='size-[42px] grid place-content-center cursor-pointer'
-						>
-							<ViewIcon />
-						</Button>
-					) : (
-						<Button >
-							<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
-								<ViewIcon />
-							</p>
-						</Button>
-					)}
+					<p className='roundedParentIcon'>
+						<ViewIcon />
+					</p>
 				</>
 			}
 		>
-			 <ManageAccountCard />
+			<ManageAccountCard />
 		</PopoverComponenet>
 	);
 };
