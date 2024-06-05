@@ -1,7 +1,5 @@
 import { ViewIcon } from 'src/app/utils/icons';
 import ManageAccountCard from '../Cards/ManageAccountCard';
-import Button from '@mui/material/Button';
-import { useState } from 'react';
 import PopoverComponenet from '../../page/Customers/Popover';
 
 /**
