@@ -3,7 +3,6 @@ import { LogoutIcon, Person } from 'src/app/utils/icons';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next';
-import { useClickOutsideWithId } from 'src/app/utils';
 import CollapsibleSection from './ManagementCards/CollapsibleSection';
 import CopyableSection from './ManagementCards/CopyableSection';
 import Collapsible from './ManagementCards/Collapsible';
@@ -12,15 +11,12 @@ import Collapsible from './ManagementCards/Collapsible';
  * ManageAccountCard component displays a panel for managing the user's account settings.
  * It closes when a click occurs outside of its boundaries.
  *
- * @param onClose Function to call when the manage account panel is closed.
+
  */
-const ManageAccountCard = ({ onClose, menu }: { onClose: () => void; menu?: boolean }) => {
+const ManageAccountCard = ({ menu }: { menu?: boolean }) => {
 	const language = UseLanguage();
 	const { t } = useTranslation();
 	const id = 'ManageAccount-card';
-
-	// Handle click outside of the manage account panel to close it
-	useClickOutsideWithId(id, onClose);
 
 	return (
 		<div
@@ -36,7 +32,7 @@ const ManageAccountCard = ({ onClose, menu }: { onClose: () => void; menu?: bool
 					<Person />
 					<h2 className='text-sm text-title'>{t('Manage account')}</h2>
 				</div>
-				{menu ? '' : <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
+				{menu ? '' : <IoCloseCircleOutline className='text-lg cursor-pointer' />}
 			</div>
 			<hr />
 

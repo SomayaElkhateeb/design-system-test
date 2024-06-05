@@ -1,6 +1,6 @@
 import { getImageUrl } from 'src/app/utils';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+
 import ManageAccountCard from '../Cards/ManageAccountCard';
 import PopoverComponenet from '../../page/Customers/Popover';
 
@@ -9,14 +9,14 @@ import PopoverComponenet from '../../page/Customers/Popover';
  * and opens the manage account card when clicked.
  */
 const ProfileBtn = () => {
-	const [show, setShow] = useState(false);
+	
 
 	return (
 		<PopoverComponenet
 			button={
 				<>
-					<Button onClick={() => setShow(true)}>
-						<div className='rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden'>
+					<Button >
+						<div className='roundedParentIcon'>
 							<img
 								src={getImageUrl('images/profile.png')}
 								alt='logo'
@@ -27,7 +27,7 @@ const ProfileBtn = () => {
 				</>
 			}
 		>
-			{show && <ManageAccountCard onClose={() => setShow(false)} />}
+			<ManageAccountCard  />
 		</PopoverComponenet>
 	);
 };
