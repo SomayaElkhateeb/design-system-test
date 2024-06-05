@@ -68,6 +68,7 @@ export default function ConfigurableProductPage() {
 		},
 		defaultValues: {
 			isTaxable: true,
+			statesOfTheProduct: [],
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
 			isShippableOrPickupable: true,

@@ -18,7 +18,7 @@ function ProfitField(props) {
 	const discountPrice = useWatch({ name: 'discountPrice', control: props.formStore.control });
 	const costPrice = useWatch({ name: 'costPrice', control: props.formStore.control });
 
-	const profit = Number(price || 0) + Number(costPrice || 0) - Number(discountPrice || 0);
+	const profit = Number(price || 0) - Number(costPrice || 0) - Number(discountPrice || 0);
 
 	return (
 		<FormField

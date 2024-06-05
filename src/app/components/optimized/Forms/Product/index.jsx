@@ -39,6 +39,7 @@ export default function ProductForm(props) {
 		handleSubmit: props.handleSubmit,
 		defaultValues: {
 			isTaxable: true,
+			statesOfTheProduct: [],
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
 			isShippableOrPickupable: true,

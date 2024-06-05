@@ -68,6 +68,7 @@ export default function BundleProductPage() {
 		},
 		defaultValues: {
 			isTaxable: true,
+			statesOfTheProduct: [],
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
 			isShippableOrPickupable: true,
