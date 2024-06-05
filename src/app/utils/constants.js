@@ -267,7 +267,7 @@ export const socialMediaContent = {
 			{
 				title: 'Personalize Campaigns',
 				description:
-					'Reach the right customers at the right time with Dynamic Ads; get set up from either Snapchat’s Ads Manager or Shopify’s Marketing tab.',
+					"Reach the right customers at the right time with Dynamic Ads; get set up from either Snapchat's Ads Manager or Shopify's Marketing tab.",
 			},
 		],
 		status: 'free',
@@ -303,7 +303,7 @@ export const productStatus = [
 		id: nanoid(),
 		Icon: ShippingIcon,
 		text: 'Simple Product',
-		description: 'You don’t need advanced options to fill',
+		description: "You don't need advanced options to fill",
 		detailed: true,
 	},
 	{

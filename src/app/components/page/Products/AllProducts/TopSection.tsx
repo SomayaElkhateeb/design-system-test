@@ -33,7 +33,7 @@ export default function TopSection({
 		{
 			id: nanoid(),
 			title: 'Simple Product',
-			describtion: 'You don’t need advanced options to fill',
+			describtion: "You don't need advanced options to fill",
 			shipping: true,
 		},
 		{

@@ -40,7 +40,7 @@ export default function Summary() {
 					title='Samy Ryan'
 					details='Identity designer'
 				/>
-				<p className=' title text-sm font-normal'>{t('Let’s generate sales')}</p>
+				<p className=' title text-sm font-normal'>{t("Let's generate sales")}</p>
 			</div>
 		</div>
 	);

@@ -57,7 +57,7 @@ const CheckCode: FC<CheckCodeProps> = ({ usePhone, setIsVerified }) => {
 						</p>
 						{isResendVisible && (
 							<p className='text-sm text-gray-600'>
-								Didn’t receive the code?{' '}
+								Didn\'t receive the code?{' '}
 								<button
 									onClick={handleResend}
 									className='text-blue-600 hover:underline focus:outline-none'
