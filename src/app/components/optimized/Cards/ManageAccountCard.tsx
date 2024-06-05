@@ -25,9 +25,7 @@ const ManageAccountCard = ({ onClose, menu }: { onClose: () => void; menu?: bool
 	return (
 		<div
 			id={id}
-			className={`${
-				menu ? 'w-full bg-light-2' : 'bg-white w-80 pt-3 pb-5 absolute shadow-lg top-[4.5rem]'
-			} ${
+			className={`${menu ? 'w-full bg-light-2' : 'bg-white min-w-64 pt-3 pb-5 shadow-lg'} ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
 					: 'rounded-tl-md rounded-bl-md right-2'

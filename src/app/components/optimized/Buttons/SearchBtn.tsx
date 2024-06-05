@@ -1,21 +1,27 @@
-import { SearchIcon } from 'src/app/utils/icons';
 import { useState } from 'react';
+import { SearchIcon } from 'src/app/utils/icons';
 import { useClickOutsideWithId } from 'src/app/utils';
+import PopoverComponenet from '../../page/Customers/Popover';
+import Button from '@mui/material/Button';
 
 const SearchBtn = () => {
 	const [show, setShow] = useState(false);
 
 	return (
-		<div className='seventh-step'>
-			<p
-				className='size-[42px] grid place-content-center relative cursor-pointer'
-				onClick={() => setShow(true)}
-			>
-				<SearchIcon />
-			</p>
-
+		<PopoverComponenet
+			button={
+				<>
+					<Button
+						onClick={() => setShow(true)}
+						className='size-[42px] grid place-content-center cursor-pointer'
+					>
+						<SearchIcon />
+					</Button>
+				</>
+			}
+		>
 			{show && <SearchInput onClose={() => setShow(false)} />}
-		</div>
+		</PopoverComponenet>
 	);
 };
 
@@ -25,7 +31,7 @@ function SearchInput({ onClose }: { onClose: () => void }) {
 	const id = 'searchInput';
 	useClickOutsideWithId(id, onClose);
 	return (
-		<div id={id} className='absolute right-0'>
+		<div id={id}>
 			<input
 				className='text-sm p-3 rounded-lg outline-none text-title shadow-md'
 				placeholder='Search...'
