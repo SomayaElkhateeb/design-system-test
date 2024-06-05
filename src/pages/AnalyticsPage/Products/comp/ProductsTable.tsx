@@ -6,7 +6,13 @@ import BaseTable, {
 import { getImageUrl } from 'src/app/utils';
 import { AnaylticesProduct } from '../Products';
 
-export default function ProductsTable({ tableData }: { tableData: AnaylticesProduct[] }) {
+export default function ProductsTable({
+	productsAnalytics,
+	isLoading,
+}: {
+	productsAnalytics: AnaylticesProduct[];
+	isLoading: boolean;
+}) {
 	//  hooks
 	const language = UseLanguage();
 
@@ -25,10 +31,11 @@ export default function ProductsTable({ tableData }: { tableData: AnaylticesProd
 	return (
 		<div className='print-only'>
 			<BaseTable
+				isLoading={isLoading}
 				language={language}
 				color='#55607A'
 				headers={productsTableHeaders.map((h) => h)}
-				rows={tableData?.map((e) => {
+				rows={productsAnalytics?.map((e) => {
 					return {
 						item: e,
 						elements: [
