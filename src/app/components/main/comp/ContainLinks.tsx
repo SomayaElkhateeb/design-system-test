@@ -4,13 +4,13 @@ import { ChatIcon, FaqIcon, NavIcon } from 'src/app/utils/icons';
 import Links from './Links';
 
 export default function ContainLinks({
-	open,
+	openMore,
 	list,
 	close,
 	openChat,
 	openHelpCenter,
 }: {
-	open?: () => void;
+	openMore?: () => void;
 	list?: boolean;
 	close?: () => void;
 	openChat?: () => void;
@@ -59,7 +59,7 @@ export default function ContainLinks({
 							<p className={title}>{t('Chat')}</p>
 						</li>
 						<li>
-							<div onClick={open} className={style}>
+							<div onClick={openMore} className={style}>
 								<NavIcon className='fill-hint size-[24px] group-hover:fill-primary' />
 								<p className={title}>{t('More')}</p>
 							</div>

@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ReactElement } from 'react';
 
 export default function Links({
 	Icon,
@@ -31,7 +32,7 @@ export default function Links({
 				<Icon
 					className={`size-[24px] ${list ? 'fill-pri-dark' : 'fill-hint group-hover:fill-primary'}`}
 				/>
-
+               
 				<p
 					className={`text-sm ${
 						list
@@ -39,7 +40,7 @@ export default function Links({
 							: 'text-subtitle group-hover:text-primary group-[.active]:font-semibold group-[.active]:text-primary'
 					}`}
 				>
-					{t(name)}
+					{t(name as any)}
 				</p>
 			</div>
 		</NavLink>
