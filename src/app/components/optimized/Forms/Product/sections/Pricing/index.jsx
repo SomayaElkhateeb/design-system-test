@@ -47,7 +47,7 @@ export default function ProductFormPricingSection(props) {
 	const { t } = useTranslation();
 
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardHeader>
 				<CardTitle>{t('Pricing')}</CardTitle>
 			</CardHeader>

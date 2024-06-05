@@ -42,6 +42,8 @@ import SuccessfullyPurchased from './app/components/page/Services/PurchaseServic
 import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
 import OrderDetails from './pages/OrdersPage/OrderDetails/OrderDetails';
 import AddOrder from './pages/OrdersPage/AddOrder/AddOrder';
+import ConfigurableProductPage from './pages/ProductsPage/New/Configurable';
+import SimpleProductPage from './pages/ProductsPage/New/Simple';
 
 // Route Definitions
 export const routes = [
@@ -114,6 +116,16 @@ export const routes = [
 		element: <ProductsPage />,
 		children: [{ path: ':tab', element: <ProductsTabs /> }],
 	},
+	// '/products/new/configurable'
+	{ path: '/products/new/configurable', element: <ConfigurableProductPage /> },
+	// '/products/new/simple'
+	{ path: '/products/new/simple', element: <SimpleProductPage /> },
+	// '/products/new/virtual'
+	{ path: '/products/new/virtual', element: <SimpleProductPage /> },
+	// '/products/new/food'
+	{ path: '/products/new/food', element: <SimpleProductPage /> },
+	// '/products/new/bundle'
+	{ path: '/products/new/bundle', element: <SimpleProductPage /> },
 
 	// Settings Routes
 	{
