@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import { BackIcon, NextIcon } from 'src/app/utils/icons';
 
 const arrowClasses =
-	'flex justify-center items-center absolute top-0 pointer border border-pri-dark size-[34px] z-40 cursor-pointer';
+	'flex justify-center items-center absolute top-0 pointer border border-pri-dark size-[34px] z-30 cursor-pointer';
 
 // Usage Example
 // const App: React.FC = () => {

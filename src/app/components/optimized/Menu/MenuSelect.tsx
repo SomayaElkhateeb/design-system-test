@@ -21,7 +21,7 @@ const MenuSelect: React.FC<MenuSelectProps> = ({ options }) => {
 		<ul
 			className={`rounded shadow-md p-2 flex flex-col min-w-48 bg-white w-fit absolute top-16 ${
 				language === 'ar' ? 'left-0' : 'right-0'
-			}  z-40`}
+			}  z-30`}
 		>
 			{options.map((option) => (
 				<MenuItem
