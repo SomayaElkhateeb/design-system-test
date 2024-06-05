@@ -9,7 +9,7 @@ import PopoverComponenet from '../../page/Customers/Popover';
  * and opens the notifications card when clicked.
  */
 const NotificationBtn = ({ sm }: { sm?: boolean }) => {
-	const [show, setShow] = useState(false);
+	
 
 	return (
 		<PopoverComponenet
@@ -17,7 +17,7 @@ const NotificationBtn = ({ sm }: { sm?: boolean }) => {
 				<>
 					{sm ? (
 						<p
-							onClick={() => setShow(true)}
+							
 							className='size-[42px] grid place-content-center relative cursor-pointer'
 						>
 							<span className='absolute p-1 rounded-full bg-error top-1 right-1'></span>
@@ -35,7 +35,7 @@ const NotificationBtn = ({ sm }: { sm?: boolean }) => {
 			}
 		>
 			{/* Display NotificationsCard when show state is true */}
-			{show && <NotificationsCard onClose={() => setShow(false)} />}
+			<NotificationsCard  />
 		</PopoverComponenet>
 	);
 };

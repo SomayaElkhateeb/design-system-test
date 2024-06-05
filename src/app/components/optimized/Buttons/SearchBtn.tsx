@@ -5,31 +5,26 @@ import PopoverComponenet from '../../page/Customers/Popover';
 import Button from '@mui/material/Button';
 
 const SearchBtn = () => {
-	const [show, setShow] = useState(false);
-
 	return (
 		<PopoverComponenet
 			button={
 				<>
-					<Button
-						onClick={() => setShow(true)}
-						className='size-[42px] grid place-content-center cursor-pointer'
-					>
+					<Button className='size-[42px] grid place-content-center cursor-pointer'>
 						<SearchIcon />
 					</Button>
 				</>
 			}
 		>
-			{show && <SearchInput onClose={() => setShow(false)} />}
+			<SearchInput />
 		</PopoverComponenet>
 	);
 };
 
 export default SearchBtn;
 
-function SearchInput({ onClose }: { onClose: () => void }) {
+function SearchInput() {
 	const id = 'searchInput';
-	useClickOutsideWithId(id, onClose);
+
 	return (
 		<div id={id}>
 			<input

@@ -9,7 +9,7 @@ import PopoverComponenet from '../../page/Customers/Popover';
  * and opens the manage account card when clicked.
  */
 const ViewBtn = ({ sm }: { sm?: boolean }) => {
-	const [show, setShow] = useState(false);
+	
 
 	return (
 		<PopoverComponenet
@@ -17,13 +17,13 @@ const ViewBtn = ({ sm }: { sm?: boolean }) => {
 				<>
 					{sm ? (
 						<Button
-							onClick={() => setShow(true)}
+							
 							className='size-[42px] grid place-content-center cursor-pointer'
 						>
 							<ViewIcon />
 						</Button>
 					) : (
-						<Button onClick={() => setShow(true)}>
+						<Button >
 							<p className='rounded-lg border border-light-2 size-[42px] grid place-content-center'>
 								<ViewIcon />
 							</p>
@@ -32,7 +32,7 @@ const ViewBtn = ({ sm }: { sm?: boolean }) => {
 				</>
 			}
 		>
-			{show && <ManageAccountCard onClose={() => setShow(false)} />}
+			 <ManageAccountCard />
 		</PopoverComponenet>
 	);
 };
