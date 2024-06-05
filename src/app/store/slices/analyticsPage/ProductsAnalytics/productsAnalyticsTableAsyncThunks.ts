@@ -1,10 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import productsAnalyticsTable from 'src/pages/AnalyticsPage/comp/data.json';
-
-const URL = productsAnalyticsTable;
-
-console.log('url:', URL);
+import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/Products';
+const productsAnalyticsTableUrl = 'src/pages/AnalyticsPage/comp/data.json';
 
 // get Products Analytics Data
 export const getProductsAnalyticsTable = createAsyncThunk(
@@ -12,11 +9,13 @@ export const getProductsAnalyticsTable = createAsyncThunk(
 	async (_, thunkAPI) => {
 		const { rejectWithValue } = thunkAPI;
 		try {
-			const { data } = await axios.get(`${URL}/productsAnalyticsTable`);
+			const { data } = await axios.get<AnaylticesProduct[]>(
+				`${productsAnalyticsTableUrl}/productsAnalyticsTable`,
+			);
 			console.log('getProductsAnalyticsTable: ', getProductsAnalyticsTable);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			throw rejectWithValue(error.message);
 		}
 	},
 );

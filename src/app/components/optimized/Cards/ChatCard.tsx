@@ -60,9 +60,7 @@ const ChatCard = ({ onClose, menu }: { onClose: () => void; menu?: boolean }) =>
 		<div
 			id={id}
 			className={`bg-white ${
-				menu
-					? 'h-full w-full'
-					: 'w-[21rem] pb-5 absolute shadow-lg top-[4.5rem] z-30 max-h-[32rem] overflow-hidden'
+				menu ? 'h-full w-full' : 'pb-5 shadow-lg z-30 max-h-[32rem] overflow-hidden'
 			}  ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-10'
