@@ -36,7 +36,7 @@ const RootLayout = () => {
 					<div className='sticky top-0 z-50'>
 						<Header setIsOpen={sidebarOpenHandler} />
 					</div>
-					<main className='pb-20 overflow-y-auto'>
+					<main className='pb-15'>
 						<Outlet />
 					</main>
 					<div className='fixed bottom-0 bg-white w-full z-50'>
