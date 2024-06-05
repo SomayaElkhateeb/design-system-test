@@ -34,7 +34,7 @@ export default function Customization() {
 			<form onSubmit={onSubmit} className='global-cards lg:col-span-2'>
 				<div className='flex-col-top-section-pages gap-0'>
 					<h2 className='title'>{t('Customization')}</h2>
-					<p className='subtitle'>{t('Customize what’s shown in the email')}</p>
+					<p className='subtitle'>{t("Customize what's shown in the email")}</p>
 				</div>
 				<div className='flex-col-top-section-pages '>
 					<div className='flexResponsive'>
@@ -47,7 +47,7 @@ export default function Customization() {
 
 					<RowCustomize
 						submit={onSubmit}
-						title={t('Sender’s name')}
+						title={t("Sender's name")}
 						subtitle={`${t('Email shown by default')}: Notifications@dookan.net`}
 					>
 						<FormField

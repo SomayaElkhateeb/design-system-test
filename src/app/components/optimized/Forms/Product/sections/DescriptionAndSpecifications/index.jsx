@@ -23,7 +23,7 @@ function AddSpecificationManager(props) {
 	const { t } = useTranslation();
 	const [isAdding, setIsAdding] = useState(false);
 	const { formStore, onSubmit } = useForm({
-		schema: productSpecificationsRawSchema,
+		schema: productSpecificationsRawSchema.specification,
 		handleSubmit: props.handleSubmit,
 		defaultValues: {
 			specification: {

@@ -19,7 +19,7 @@ export default function SuccessfullyPurchased() {
 							title='Samy Ryan'
 							details='Identity designer'
 						/>
-						<p className='title font-normal text-sm'>{t('Let’s generate sales')}</p>
+						<p className='title font-normal text-sm'>{t("Let's generate sales")}</p>
 						<div className='size-[3.5rem] bg-secondary rounded-full absolute left-[42%] -bottom-[35%] shadow-lg flex justify-center items-center'>
 							<FaCheck color='white' size='20' />
 						</div>

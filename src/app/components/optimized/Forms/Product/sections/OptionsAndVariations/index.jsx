@@ -328,6 +328,12 @@ function AddOptionManager(props) {
 						// 	return;
 						// }
 
+						const isValid = formStore.trigger();
+
+						if (!isValid) {
+							return;
+						}
+
 						const values = formStore.getValues();
 						props.handleSubmit(values);
 						formStore.reset();

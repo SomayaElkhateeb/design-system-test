@@ -10,7 +10,7 @@ import ProductFormBrandField from '../../fields/Brand';
 /**
  * @template TFormStore
  *
- * @param {import('./types.ts').Props<TFormStore>} props
+ * @param {import('./types').Props<TFormStore>} props
  */
 export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFormStore>) {
 	const { t } = useTranslation();
@@ -37,9 +37,9 @@ export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFo
 						label={t('SKU')}
 						render={(field) => <Input {...field} />}
 					/>
-					{/* Category field will be here */}
+					{/* @ts-ignore */}
 					<ProductFormCategoryField formStore={props.formStore} />
-					{/* Brand field will be here */}
+					{/* @ts-ignore */}
 					<ProductFormBrandField formStore={props.formStore} />
 				</div>
 			</CardContent>

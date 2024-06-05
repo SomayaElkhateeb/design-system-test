@@ -124,7 +124,7 @@ const SettingsPage = () => {
 			<TrialBanner
 				free={false}
 				daysLeft={5}
-				title={t('You’re on free trial')}
+				title={t("You're on free trial")}
 				description={t('Subscribe now and open a world with no boundaries')}
 			/>
 
