@@ -20,7 +20,7 @@ const HelpCenterCard = ({
 	menu,
 	close,
 }: {
-	onClose: () => void;
+	onClose?: () => void;
 	menu?: boolean;
 	close?: () => void;
 }) => {
