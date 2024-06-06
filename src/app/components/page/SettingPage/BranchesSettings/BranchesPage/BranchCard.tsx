@@ -31,7 +31,7 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 						<EditIcon className={iconClassName} />
 					</div>
 				</div>
-				<Button variant='tertiary' text={t('View Inventory')} LeftIcon={ViewIcon} />
+				<Button variant='tertiary'  text={t('View Inventory')} LeftIcon={ViewIcon} />
 			</div>
 		</div>
 	);
