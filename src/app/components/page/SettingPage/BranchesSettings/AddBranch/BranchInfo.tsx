@@ -71,7 +71,7 @@ export default function BranchInfo({
 
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
-			<div className='grid gap-5 sm:col-span-3 cardDetails-sharedClass p-5'>
+			<div className='grid gap-5 sm:col-span-3 col-span-6 cardDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
 					<FormChoiceChips<BranchSettingsInterface>
 						formStore={formStore}
