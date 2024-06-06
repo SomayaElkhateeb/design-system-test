@@ -36,9 +36,9 @@ export default function ProductFormBasicInfoSection(props) {
 						label={t('SKU')}
 						render={(field) => <Input {...field} />}
 					/>
-					{/* @ts-ignore */}
+
 					<ProductFormCategoryField formStore={props.formStore} />
-					{/* @ts-ignore */}
+
 					<ProductFormBrandField formStore={props.formStore} />
 				</div>
 			</CardContent>

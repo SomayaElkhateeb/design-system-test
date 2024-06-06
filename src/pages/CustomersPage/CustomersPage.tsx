@@ -3,7 +3,7 @@ import { Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 import AllCustomers from 'src/app/components/page/Customers/AllCustomersComp';
-import Tabs from 'src/app/components/page/Customers/Tabs';
+import Tabs from 'src/app/components/optimized/Tabs/Tabs';
 import CustomersGroups from 'src/app/components/page/Customers/CustomersGroupsComp';
 
 const CustomersPage = () => {

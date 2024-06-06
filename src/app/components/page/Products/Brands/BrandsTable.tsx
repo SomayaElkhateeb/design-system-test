@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { BrandsInterface } from 'src/app/interface/BrandInterface';
-
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
@@ -9,14 +8,11 @@ import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
-
 import { IoIosArrowBack } from 'react-icons/io';
 import { Switch } from 'src/app/components/ui/switch';
-import { nanoid } from 'nanoid';
-import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
 import { settingMenus } from '../../Customers/CustomersTable';
 
-//  dumy data 
+//  dumy data
 export const brands: BrandsInterface[] = [
 	{
 		id: '1',
@@ -24,11 +20,18 @@ export const brands: BrandsInterface[] = [
 		describtion: '01064545565',
 		available: false,
 		productsNo: 10,
-
 		img: 'images/product.png',
 	},
 ];
-export default function BrandsTable({ settingMenus }: { settingMenus: settingMenus[] }) {
+export default function BrandsTable({
+	settingMenus,
+	brands,
+	isLoading,
+}: {
+	settingMenus: settingMenus[];
+	brands: BrandsInterface[];
+	isLoading: boolean;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
@@ -54,6 +57,7 @@ export default function BrandsTable({ settingMenus }: { settingMenus: settingMen
 
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={brandssHeaders.map((h) => h)}

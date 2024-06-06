@@ -13,7 +13,6 @@ import { useState } from 'react';
 import LinkCards from './LinkCards';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import Slider from '../UiKits/Slider';
-import { useClickOutsideWithId } from 'src/app/utils';
 
 const HelpCenterCard = ({
 	onClose,
@@ -27,8 +26,6 @@ const HelpCenterCard = ({
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
 	const language = UseLanguage();
-	const id = 'HelpCenter-card';
-	useClickOutsideWithId(id, onClose);
 
 	const slides = [
 		{
@@ -60,7 +57,6 @@ const HelpCenterCard = ({
 
 	return (
 		<div
-			id={id}
 			className={`bg-white ${
 				menu ? 'w-full h-full' : 'w-[21rem] h-[32rem] shadow-lg overflow-hidden'
 			} p-3 pb-5  z-30   ${
@@ -70,10 +66,10 @@ const HelpCenterCard = ({
 			} `}
 			style={{ overflowY: 'auto' }}
 		>
-			<div className='flex flex-col h-full justify-between'>
-				<div className='flex flex-col gap-4'>
+			<div className='flex-col-top-section-pages h-full justify-between'>
+				<div className='flex-col-top-section-pages gap-4'>
 					<div className='flex justify-between items-center'>
-						<h3 className='text-title text-lg font-semibold'>{t('Help center')}</h3>
+						<h3 className='title'>{t('Help center')}</h3>
 						<IoCloseCircleOutline
 							onClick={onClose}
 							className='text-pri-dark size-5 cursor-pointer'
@@ -87,7 +83,7 @@ const HelpCenterCard = ({
 					/>
 					{/* link cards */}
 					<div>
-						<h4 className='font-semibold text-title'>{t('Get started')}</h4>
+						<h4 className='title'>{t('Get started')}</h4>
 						<div className='grid grid-cols-2 gap-2 mt-4'>
 							<LinkCards
 								path='/store'

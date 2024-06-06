@@ -4,6 +4,8 @@ import CampaignBtns from './CampaignBtns';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { RefObject, useRef } from 'react';
 import CampaignTable from './CampaignTable';
+import { Button } from 'src/app/components/optimized';
+import { Link } from 'react-router-dom';
 
 const Campaigns = () => {
 	// Print ref to handle table print.
@@ -15,7 +17,11 @@ const Campaigns = () => {
 		<>
 			<div className='flex-col-top-section-pages custom_container gap-4'>
 				<CampaignStatus />
-
+				{/* <div className='flex'>
+					<Button variant='primary'>
+						<Link to='/marketing/email-form'>Make Email Form</Link>
+					</Button>
+				</div> */}
 				<CampaignBtns
 					onSelectOption={handleSelect}
 					selectedOption={selectedOption}

@@ -15,9 +15,13 @@ import { products } from 'src/pages/ProductsPage/AllProducts';
 export default function InventoryTable({
 	array,
 	setArray,
+	inventory,
+	isLoading,
 }: {
 	array: string[];
 	setArray: (e: string[]) => void;
+	inventory: Product[];
+	isLoading: boolean;
 }) {
 	//  hooks
 	const language = UseLanguage();
@@ -48,10 +52,11 @@ export default function InventoryTable({
 	}
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={inventoryHeaders.map((h) => h)}
-			rows={products?.map((e: Product, i: number) => {
+			rows={inventory?.map((e: Product, i: number) => {
 				return {
 					item: e,
 					elements: [

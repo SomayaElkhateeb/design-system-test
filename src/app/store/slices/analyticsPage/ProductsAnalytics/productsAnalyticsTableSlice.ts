@@ -1,21 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getProductsAnalyticsTableReducer } from './productsAnalyticsTableExtraReducers';
-import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/Products';
+import { AnalyticsProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 
-export interface IProductsAnalytics {
-	id: string;
-	product_name: string;
-	category: string;
-	quantity: number;
-	price: string;
-	searches: number;
-	views: number;
-	quantity_sold: number;
-	returns: number;
-	imageUrl: string;
-}
 export interface ProductAnalyticsStatus {
-	productsAnalytics: AnaylticesProduct[];
+	productsAnalytics: AnalyticsProduct[];
 	isLoading: boolean;
 	error: string | null | unknown;
 }
@@ -24,10 +12,10 @@ const initialState: ProductAnalyticsStatus = {
 	productsAnalytics: [
 		{
 			id: '1',
-			product_name: 'Canon EOS Rebel T7',
+			product_name: 'Canon EOS Rebel',
 			category: 'cameras',
 			quantity: 150,
-			price: '549.00',
+			price: 549.0,
 			searches: 850,
 			views: 750,
 			quantity_sold: 300,

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Button } from 'src/app/components/optimized';
-import { getImageUrl } from 'src/app/utils';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z, ZodObject, ZodRawShape } from 'zod';
+import AuthImage from '../../_comp/AuthImage';
 
 interface GetPasswordProps {
 	setIsCodeSent: (isCodeSent: boolean) => void;
@@ -34,9 +34,9 @@ const GetPassword: FC<GetPasswordProps> = ({ setIsCodeSent, setUsePhone, usePhon
 	};
 
 	return (
-		<section className='flex justify-between w-full items-center'>
-			<div className='w-2/6'>
-				<div className='w-full max-w-sm bg-white p-8 rounded-md shadow-md'>
+		<section className='flex flex-col items-center w-full py-12 lg:flex-row lg:justify-between lg:space-x-8'>
+			<div className='w-full lg:w-2/5 p-4'>
+				<div className='w-full mx-w-xl bg-white p-8 rounded-md shadow-md'>
 					<h2 className='mb-6 text-2xl font-semibold text-gray-800'>Forgot password</h2>
 					<Form {...formStore}>
 						<form onSubmit={onSubmit}>
@@ -76,9 +76,7 @@ const GetPassword: FC<GetPasswordProps> = ({ setIsCodeSent, setUsePhone, usePhon
 					</div>
 				</div>
 			</div>
-			<div className='w-3/6 flex justify-center'>
-				<img src={getImageUrl('images/register_2.svg')} alt='Forgot password illustration' />
-			</div>
+			<AuthImage path='images/register_2.svg' />
 		</section>
 	);
 };

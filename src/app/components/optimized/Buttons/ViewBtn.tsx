@@ -6,7 +6,7 @@ import PopoverComponenet from '../../page/Customers/Popover';
  * ViewBtn component represents a button that, when clicked, displays a view icon
  * and opens the manage account card when clicked.
  */
-const ViewBtn = ({ sm }: { sm?: boolean }) => {
+const ViewBtn = () => {
 	return (
 		<PopoverComponenet
 			button={

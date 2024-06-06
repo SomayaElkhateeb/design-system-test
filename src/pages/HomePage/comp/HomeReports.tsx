@@ -1,4 +1,4 @@
-import SlideCard from 'src/app/components/page/Cards/SlideCard';
+import SlideCard from 'src/app/components/optimized/Cards/SlideCard';
 import ProgressCard from 'src/app/components/optimized/Cards/ProgressCard';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 

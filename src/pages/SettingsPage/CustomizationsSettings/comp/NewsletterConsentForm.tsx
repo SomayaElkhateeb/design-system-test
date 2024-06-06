@@ -11,7 +11,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 	const { t } = useTranslation();
 
 	return (
-		<div className='global-cards grid grid-cols-2'>
+		<div className='global-cards grid sm:grid-cols-2 grid-cols-1'>
 			<div className='col-span-2 flex-col-top-section-pages  gap-[.3rem]'>
 				<h2 className='title '>{t('Double opt-in')}</h2>
 				<p className='paragraph'>
@@ -19,7 +19,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 				</p>
 			</div>
 			<div className='col-span-2'>
-				<h3 className='title text-base'>{t('Require customers to confirm their')}</h3>
+				<h3 className='title'>{t('Require customers to confirm their')}</h3>
 				<MultiChoiceChips
 					options={['Email subscription', 'SMS subscription']}
 					setSelected={(option) => {
@@ -43,7 +43,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					]}
 					label={t('Text label')}
 					renderer={(field) => (
-						<Input {...field} placeholder={t('Keep me up to date on news and exclusive offers')} />
+						<Input required {...field} placeholder={t('Keep me up to date on news and exclusive offers')} />
 					)}
 				/>
 			</div>

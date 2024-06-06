@@ -13,6 +13,7 @@ export const arabic = {
 	Campaigns: 'الحملات',
 	Services: 'الخدمات',
 	Settings: 'الادوات',
+	"View Inventory":"عرض المخزون",
 	'Compared to': 'مقارنه ب ',
 	'last Year': 'العام الاخير',
 	Store: 'المخزن',
