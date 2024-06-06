@@ -4,7 +4,7 @@ import { useForm } from 'src/app/utils/hooks/form';
 
 import { selectItemsInterface } from '../../AddCustomer/GeneralInfoCustomerForm';
 import { useTranslation } from 'react-i18next';
-import Tabs from '../../Customers/Tabs';
+import Tabs from '../../../optimized/Tabs/Tabs';
 import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { Button } from 'src/app/components/optimized';

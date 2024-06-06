@@ -3,7 +3,7 @@ import { Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
-import Tabs from 'src/app/components/page/Customers/Tabs';
+import Tabs from 'src/app/components/optimized/Tabs/Tabs';
 import AllServices from 'src/app/components/page/Services/AllServices';
 import PurchaseServices from 'src/app/components/page/Services/PurchaseServices';
 import ServiceDetails from 'src/app/components/page/Services/ServiceDetails/ServiceDetails';

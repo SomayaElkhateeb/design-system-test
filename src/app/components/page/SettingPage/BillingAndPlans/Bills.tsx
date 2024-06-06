@@ -5,7 +5,7 @@ export default function Bills() {
 	return (
 		<section className='global-cards gap-3'>
 			<div>
-				<h2 className='text-title font-semibold text-lg'>{t('Bills')}</h2>
+				<h2 className='title'>{t('Bills')}</h2>
 				<p className='text-subtitle text-sm pt-1'>{t('Next bill will be issued in')}: 7 Oct 2022</p>
 			</div>
 

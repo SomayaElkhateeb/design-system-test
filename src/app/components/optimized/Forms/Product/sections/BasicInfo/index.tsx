@@ -37,9 +37,9 @@ export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFo
 						label={t('SKU')}
 						render={(field) => <Input {...field} />}
 					/>
-					{/* @ts-ignore */}
+
 					<ProductFormCategoryField formStore={props.formStore} />
-					{/* @ts-ignore */}
+
 					<ProductFormBrandField formStore={props.formStore} />
 				</div>
 			</CardContent>
