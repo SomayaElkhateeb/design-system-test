@@ -85,10 +85,7 @@ const AnalyticsProducts = () => {
 				onSelectOption={handleArrangeChange}
 				documentTitle='Products Table Data'
 			/>
-			<AnalyticsProductsTable
-				// tableData={tableData}
-				data={productsAnalytics}
-			/>
+			<AnalyticsProductsTable isLoading={isLoading} data={productsAnalytics} />
 			{xs && <AnalyticsProductsTableMobile tableData={tableData} />}
 		</div>
 	);

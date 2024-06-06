@@ -6,7 +6,13 @@ import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.
 import { AnalyticsProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 import { getImageUrl } from 'src/app/utils';
 
-export default function AnalyticsProductsTable({ data }: { data: AnalyticsProduct[] }) {
+export default function AnalyticsProductsTable({
+	data,
+	isLoading,
+}: {
+	data: AnalyticsProduct[];
+	isLoading: boolean;
+}) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
@@ -25,6 +31,7 @@ export default function AnalyticsProductsTable({ data }: { data: AnalyticsProduc
 
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={productsHeaders.map((h) => h)}
@@ -35,7 +42,12 @@ export default function AnalyticsProductsTable({ data }: { data: AnalyticsProduc
 						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.4rem] '>
 								<div>
-									<img className='size-10' src={getImageUrl(e.imageUrl)} loading='lazy' alt={e.product_name} />
+									<img
+										className='size-10'
+										src={getImageUrl(e.imageUrl)}
+										loading='lazy'
+										alt={e.product_name}
+									/>
 								</div>
 
 								<div className='flex flex-col'>

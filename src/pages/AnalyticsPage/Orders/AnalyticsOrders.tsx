@@ -85,14 +85,7 @@ export default function AnalyticsOrders() {
 				documentTitle='Orders Table Data'
 			/>
 
-			{/* <Table data={tableData} headers={ordersTableHeaders}/> */}
-			<OrdersTable
-				// tableData={tableData}
-				ordersAnalytics={ordersAnalytics}
-				isLoading={isLoading}
-			/>
-
-			<AnalyticsOrdersTable tableData={tableData} />
+			<AnalyticsOrdersTable ordersAnalytics={ordersAnalytics} isLoading={isLoading} />
 			{xs && <AnalyticsOrdersTableMobile tableData={tableData} />}
 		</div>
 	);
