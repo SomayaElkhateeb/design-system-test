@@ -28,11 +28,11 @@ export default function CustomersTable({ customersAnalytics,
 	return (
 		<div className='print-only'>
 			<BaseTable
-				isLoading={isLoading}
+				// isLoading={isLoading}
 				language={language}
 				color='#55607A'
 				headers={customersTableHeaders.map((h) => h)}
-				rows={customersAnalytics?.map((e) => {
+				rows={tableData?.map((e) => {
 					return {
 						item: e,
 						elements: [
