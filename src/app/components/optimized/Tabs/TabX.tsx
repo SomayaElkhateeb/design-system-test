@@ -1,7 +1,7 @@
 import React, { useContext, createContext } from 'react';
 import { cn } from 'src/app/utils';
-import Button from '../../Buttons/Button';
-import LayoutCard from '../../Cards/LayoutCard';
+import Button from '../Buttons/Button';
+import LayoutCard from '../Cards/LayoutCard';
 
 interface Tab {
 	title: string;

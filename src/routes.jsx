@@ -1,49 +1,43 @@
 import {
+	AddCustomerGroup,
 	AddCustomerPage,
+	AddNewAddresseCustomer,
+	AddOrder,
 	AnalyticsPage,
 	AppsPage,
+	AppsTabs,
+	BillingAndPlans,
+	Config,
+	CustomerInfo,
 	CustomersPage,
+	EmailForm,
 	HomePage,
 	MarketingPage,
+	Nested_pages_SettingsConfig,
+	OrderDetails,
 	OrdersPage,
+	OrdersTabs,
+	PagesConfig,
 	PagesPage,
 	ProductsPage,
+	ProductsTabs,
+	PurchaseConfig,
 	ReviewsPage,
 	ServicesPage,
+	SettingsConfig,
 	SettingsPage,
+	SetupConfig,
+	SetupOpenConfig,
+	ShippingConfig,
 	SocialAppDetails,
+	StoreConfig,
 	StorePage,
+	StoreTabs,
+	SuccessfullyPurchased,
 } from 'src/pages';
 
-import OrdersTabs from './app/components/page/Orders/OrdersTabs';
-import ProductsTabs from './app/components/page/Products/ProductsTabs';
-import Nested_pages_SettingsConfig from './pages/SettingsPage/Nested_Settings_pagesConfig';
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
-import AppsTabs from './pages/AppsPage/comp/AppsTabs';
-import CustomerInfo from './pages/CustomerInfoPage/CustomerInfo';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import PagesConfig from './app/components/page/PagesPage/comp/PagesConfig';
-import SettingsConfig from './pages/SettingsPage/SettingsConfig';
-import ShippingConfig from './app/components/page/SettingPage/Shipping/ShippingConfig';
-import SetupOpenConfig from './app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
-import SetupConfig from './app/components/page/SettingPage/Shipping/OpenSetup/Setup/SetupConfig';
-import Config from './app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';
-import StoreTabs from './app/components/page/StorePage/StoreTabs';
-import StoreConfig from './app/components/page/StorePage/StoreConfig';
-
-import BillingAndPlans from './pages/SettingsPage/BillingAndPlans';
-
-import PurchaseConfig from './app/components/page/Services/PurchaseServices/PurchaseConfig';
-
-import AddCustomerGroup from './pages/AddCustomerGroupPage/AddCustomerGroup';
-
-import SuccessfullyPurchased from './app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
-
-import AddNewAddresseCustomer from './pages/AddresseCustomerPge/AddNewAddresse';
-import OrderDetails from './pages/OrdersPage/OrderDetails/OrderDetails';
-import AddOrder from './pages/OrdersPage/AddOrder/AddOrder';
-import ConfigurableProductPage from './pages/ProductsPage/New/Configurable';
-import SimpleProductPage from './pages/ProductsPage/New/Simple';
 
 // Route Definitions
 export const routes = [
@@ -168,6 +162,7 @@ export const routes = [
 		children: [
 			{ path: ':tab', element: <MarketingTabs /> },
 			{ path: ':tabName/:config', element: <MarketingConfig /> },
+			{ path: 'email-form', element: <EmailForm /> },
 		],
 	},
 

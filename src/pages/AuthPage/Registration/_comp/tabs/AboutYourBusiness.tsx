@@ -3,19 +3,18 @@ import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { getImageUrl } from 'src/app/utils';
 import { useForm } from 'src/app/utils/hooks/form';
+import AuthImage from 'src/pages/AuthPage/_comp/AuthImage';
 import { z, ZodObject, ZodRawShape } from 'zod';
 
 const AboutYourBusiness: FC = () => {
 	return (
-		<section className='flex justify-between w-full items-center'>
-			<div className='w-2/6'>
+		<section className='flex flex-col lg:flex-row justify-between w-full items-center py-12 space-y-16 lg:space-y-0 lg:space-x-8'>
+			<div className='w-full lg:w-2/5'>
 				<CreateStoreForm />
 			</div>
-			<div className='w-3/6'>
-				<img src={getImageUrl('images/register_2.svg')} alt='' />
-			</div>
+
+			<AuthImage path='images/register_2.svg' />
 		</section>
 	);
 };
@@ -100,7 +99,7 @@ const CreateStoreForm: FC = () => {
 								className='h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500'
 								{...formStore.register('agreed')}
 							/>
-							<span className='ml-2 text-sm text-gray-600'>
+							<span className='ms-2 text-sm text-gray-600'>
 								I agree to{' '}
 								<a href='#' className='text-indigo-600 hover:underline'>
 									Terms and Conditions
