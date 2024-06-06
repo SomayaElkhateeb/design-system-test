@@ -18,7 +18,7 @@ export default function ProgressCard({ label, count, ratio, positive }: Progress
 				/>
 				<h2 className={`paragraph ${positive ? 'text-success' : 'text-error'}`}>{ratio}%</h2>
 			</div>
-			<p className='paragraph text-subtitle'>{t(label)}</p>
+			<p className='paragraph text-subtitle'>{t(label as any)}</p>
 			<p className='title text-2xl'>{count}</p>
 		</div>
 	);
