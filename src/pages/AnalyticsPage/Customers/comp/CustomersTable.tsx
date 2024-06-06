@@ -8,7 +8,11 @@ import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
 
 
-export default function CustomersTable({ tableData }: { tableData: AnalyticsCustomer[] }) {
+
+export default function CustomersTable({ customersAnalytics,
+	isLoading, }: { customersAnalytics: AnalyticsCustomer[];
+	isLoading: boolean; }) {
+
 
 	const language = UseLanguage();
 
