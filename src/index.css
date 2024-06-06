@@ -179,14 +179,14 @@ object {
 }
 
 @layer components {
-	.roundedParentIcon{
-		@apply rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden
+	.roundedParentIcon {
+		@apply rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden;
 	}
 	.custom_container {
 		@apply xl:max-w-[145rem] xl:px-5  container mx-auto;
 	}
-	.responsive_pages{ 
-		@apply	custom_container flex-col-top-section-pages sm:hidden
+	.responsive_pages {
+		@apply custom_container flex-col-top-section-pages sm:hidden;
 	}
 	.cardDetails-sharedClass {
 		@apply border rounded-[.6rem] bg-white border-constrained;
@@ -216,10 +216,10 @@ object {
 		@apply grid grid-cols-3 col-span-1 gap-5;
 	}
 	.grid-left {
-		@apply col-span-3 xl:col-span-2;
+		@apply col-span-3 md:col-span-2;
 	}
 	.grid-right {
-		@apply col-span-3 xl:col-span-1;
+		@apply col-span-3 md:col-span-1;
 	}
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1rem];
@@ -281,7 +281,7 @@ object {
 		@apply border-2 border-light-2 rounded-lg p-5;
 	}
 
-	 .title {
+	.title {
 		@apply font-semibold sm:text-[1rem] text-[.8rem] text-title;
 	}
 
@@ -470,4 +470,3 @@ button.splide__arrow--prev {
 .slick-next {
 	display: none !important;
 }
-
