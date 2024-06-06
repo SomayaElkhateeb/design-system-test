@@ -23,7 +23,7 @@ const handelDefaultValue = () => {
 const schema = {
 	PixelID: z.coerce.number().positive().min(1),
 };
-export default function Integrations() {
+export default function AnalyticsIntegrations() {
 	//  hooks
 	const [openDialog, setOpendialog] = useState(false);
 	const { t } = useTranslation();

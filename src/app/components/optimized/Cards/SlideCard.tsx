@@ -1,5 +1,5 @@
 import { type ComponentType, type ReactNode, useState } from 'react';
-import CompareButton from '../../optimized/UiKits/CompareButton';
+import CompareButton from '../UiKits/CompareButton';
 import { useTranslation } from 'react-i18next';
 
 // how to use

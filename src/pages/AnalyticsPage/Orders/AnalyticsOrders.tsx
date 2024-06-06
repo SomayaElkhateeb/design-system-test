@@ -4,11 +4,11 @@ import { ColumnChart } from 'src/app/components/optimized';
 import useAnalyticsData from '../comp/useAnalyticsData';
 import data from '../comp/data.json';
 // import Table from '../comp/Table';
-import OrdersTable from './comp/OrdersTable';
+import AnalyticsOrdersTable from './comp/AnalyticsOrdersTable';
 import { useTranslation } from 'react-i18next';
 import { getNumericValue, parseDate } from 'src/app/utils';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import OrdersTableMobile from './comp/OrdersTableMobile';
+import AnalyticsOrdersTableMobile from './comp/AnalyticsOrdersTableMobile';
 
 export interface AnalyticsOrder {
 	day: string;
@@ -18,7 +18,7 @@ export interface AnalyticsOrder {
 	delivered: number;
 	returned_quantity: number;
 }
-export default function Orders() {
+export default function AnalyticsOrders() {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
@@ -70,9 +70,9 @@ export default function Orders() {
 				onSelectOption={handleArrangeChange}
 				documentTitle='Orders Table Data'
 			/>
-			{/* <Table data={tableData} headers={ordersTableHeaders}/> */}
-			<OrdersTable tableData={tableData} />
-			{xs && <OrdersTableMobile tableData={tableData} />}
+			
+			<AnalyticsOrdersTable tableData={tableData} />
+			{xs && <AnalyticsOrdersTableMobile tableData={tableData} />}
 		</div>
 	);
 }

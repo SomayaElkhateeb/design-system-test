@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/Products';
+import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 const productsAnalyticsTableUrl = 'src/pages/AnalyticsPage/comp/data.json';
 
 // get Products Analytics Data

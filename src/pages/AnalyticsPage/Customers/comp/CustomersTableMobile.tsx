@@ -1,4 +1,4 @@
-import { AnalyticsCustomer } from '../Customers';
+import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
 export default function CustomersTableMobile({ tableData }: { tableData: AnalyticsCustomer[] }) {
 	return (

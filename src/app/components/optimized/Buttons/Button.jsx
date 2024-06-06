@@ -6,10 +6,10 @@ const handleButtonVariant = cva(undefined, {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize gap-1',
 			secondary: 'btn-sec flex items-center gap-1',
-			primary: 'btn-pri text-white bg-primary flex items-center gap-2 rounded ',
+			primary:  'title btn-pri text-white bg-primary flex items-center gap-2 rounded ',
 			tertiary: 'text-title text-sm capitalize font-semibold flex items-center gap-1.5',
 			LearnButton:
-				'text-[.8rem] text-white rounded-[.2rem]  px-4 py-2   border border-white bg-transparent flex items-center gap-1.5',
+				'title text-white rounded-[.2rem]  px-4 py-2   border border-white bg-transparent flex items-center gap-1.5',
 			default: 'relative px-4 py-2 rounded  capitalize flex px-1 items-center ',
 		},
 	},

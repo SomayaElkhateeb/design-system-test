@@ -8,22 +8,22 @@ import ProductsTable from './comp/ProductsTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import ProductsTableMobile from './comp/ProductsTableMobile';
+import AnalyticsProductsTableMobile from './comp/AnalyticsProductTableMobile/AnalyticsProductsTableMobile';
 import { getProductsAnalyticsTable } from 'src/app/store/slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableAsyncThunks';
+import AnalyticsProductsTable from 'src/app/components/page/Analytics/AnalyticsProductsTable';
 export interface AnalyticsProduct {
-
 	id: string;
 	product_name: string;
 	category: string;
 	quantity: number;
-	price: string;
+	price: number;
 	searches: number;
 	views: number;
 	quantity_sold: number;
 	returns: number;
 	imageUrl: string;
 }
-const Products = () => {
+const AnalyticsProducts = () => {
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
@@ -57,8 +57,8 @@ const Products = () => {
 	> = {
 		[t('Quantity Descending')]: (a, b) => b.quantity - a.quantity,
 		[t('Quantity Ascending')]: (a, b) => a.quantity - b.quantity,
-		[t('Price Low in first')]: (a, b) => parseFloat(a.price) - parseFloat(b.price),
-		[t('Price High in first')]: (a, b) => parseFloat(b.price) - parseFloat(a.price),
+		[t('Price Low in first')]: (a, b) => a.price - b.price,
+		[t('Price High in first')]: (a, b) => b.price - a.price,
 		[t('Searches Descending')]: (a, b) => b.searches - a.searches,
 		[t('Searches Ascending')]: (a, b) => a.searches - b.searches,
 		[t('Views Descending')]: (a, b) => b.views - a.views,
@@ -82,15 +82,13 @@ const Products = () => {
 				onSelectOption={handleArrangeChange}
 				documentTitle='Products Table Data'
 			/>
-			<ProductsTable
+			<AnalyticsProductsTable
 				// tableData={tableData}
-				productsAnalytics={productsAnalytics}
-				isLoading={isLoading}
+				data={productsAnalytics}
 			/>
-        {xs && <ProductsTableMobile tableData={tableData} />}
-
+			{xs && <AnalyticsProductsTableMobile tableData={tableData} />}
 		</div>
 	);
 };
 
-export default Products;
+export default AnalyticsProducts;
