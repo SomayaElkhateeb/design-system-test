@@ -17,11 +17,11 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { Switch } from 'src/app/components/ui/switch';
 
 export default function PagesPagesTable({
-	data,
+	pages,
 	isLoading,
 }: {
-	data: BlogPostInterface[];
-	isLoading?: boolean;
+	pages: BlogPostInterface[];
+	isLoading: boolean;
 }) {
 	//  hooks
 	const language = UseLanguage();
@@ -48,7 +48,7 @@ export default function PagesPagesTable({
 				language={language}
 				color='#55607A'
 				headers={PagesSectionHeaders?.map((h) => h)}
-				rows={data?.map((e: BlogPostInterface, i: number) => {
+				rows={pages?.map((e: BlogPostInterface, i: number) => {
 					return {
 						item: e,
 						elements: [
@@ -64,7 +64,6 @@ export default function PagesPagesTable({
 							</GlobalTableCell>,
 
 							<TableCell>
-								
 								<Switch checked={e.visibility} />
 							</TableCell>,
 

@@ -7,6 +7,11 @@ import data from '../comp/data.json';
 import { useTranslation } from 'react-i18next';
 import CustomersTable from './comp/CustomersTable';
 import { getNumericValue, parseDate } from 'src/app/utils';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getCustomersAnalyticsTable } from 'src/app/store/slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableAsyncThunks';
+
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import CustomersTableMobile from './comp/CustomersTableMobile';
 
@@ -18,6 +23,17 @@ export interface AnalyticsCustomer {
 }
 const Customers = () => {
 	const { t } = useTranslation();
+
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, customersAnalytics, error } = useSelector(
+		(state) => state.customersAnalytics || {},
+	);
+
+	useEffect(() => {
+		dispatch(getCustomersAnalyticsTable());
+	}, [dispatch]);
+
 	const { xs } = useResponsive();
 
 	const customersSortMenus = [
@@ -63,7 +79,7 @@ const Customers = () => {
 				documentTitle='Customer Table Data'
 			/>
 
-			<CustomersTable tableData={tableData} />
+			<CustomersTable customersAnalytics={customersAnalytics} isLoading={isLoading} />
 			{/* <Table data={tableData} headers={customersTableHeaders} /> */}
 			{xs && <CustomersTableMobile tableData={tableData} />}
 		</div>

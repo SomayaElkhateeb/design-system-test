@@ -1,9 +1,19 @@
 import { nanoid } from 'nanoid';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CustomersComponenet from 'src/app/components/page/Customers/ResponsiveSmallMedia/CustomersComponent';
-import BrandsTable, { brands } from 'src/app/components/page/Products/Brands/BrandsTable';
+import BrandsTable from 'src/app/components/page/Products/Brands/BrandsTable';
 import TopSectionBrandsTable from 'src/app/components/page/Products/Brands/TopSectionBrandsTable';
+import { getBrandsTable } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
 import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
 export default function Barnds() {
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, brands, error } = useSelector((state) => state.brands);
+	useEffect(() => {
+		dispatch(getBrandsTable());
+	}, [dispatch]);
+
 	const settingMenus = [
 		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
@@ -15,6 +25,7 @@ export default function Barnds() {
 			icon: <RemoveIcon className='fill-error' />,
 		},
 	];
+
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-top-section-pages '>
@@ -22,7 +33,7 @@ export default function Barnds() {
 				<TopSectionBrandsTable />
 
 				{/*  table  */}
-				<BrandsTable settingMenus={settingMenus} />
+				<BrandsTable settingMenus={settingMenus} brands={brands} isLoading={isLoading} />
 
 				{/*  case of small media */}
 				<div className='flex-col-top-section-pages sm:hidden'>
