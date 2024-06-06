@@ -104,7 +104,7 @@ function ProductInventoryBranches(props) {
 				</tbody>
 			</table>
 
-			<AddBranchManager />
+			<AddBranchManager formStore={props.formStore} />
 		</>
 	);
 }
