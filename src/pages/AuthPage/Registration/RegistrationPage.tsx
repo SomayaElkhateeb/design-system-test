@@ -1,8 +1,8 @@
 import AboutYourBusiness from './_comp/tabs/AboutYourBusiness';
 import AboutYourself from './_comp/tabs/AboutYourself';
 import { useState } from 'react';
-import TabX from 'src/app/components/optimized/Tabs/NewTab/TabX';
 import AuthHeader from '../_comp/AuthHeader';
+import { TabX } from 'src/app/components/optimized';
 
 const RegistrationPage = () => {
 	const [currentTab, setCurrentTab] = useState(0);

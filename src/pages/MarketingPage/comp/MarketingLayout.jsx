@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
+import EmailForm from '../EmailForm/EmailForm';
 
 const MarketingLayout = () => {
 	//  hooks
@@ -22,11 +23,11 @@ const MarketingLayout = () => {
 			path: 'campaigns',
 		},
 	];
-	
 
+	console.log(pathname);
 	return (
 		<div className='grid'>
-			{!pathname.includes('addDiscount') && (
+			{!pathname.includes('addDiscount') && !pathname.includes('email-form') && (
 				<div className='Sticky_header'>
 					<HorizontalTabsLink tabs={tabs} path='/marketing' />
 				</div>
@@ -34,7 +35,6 @@ const MarketingLayout = () => {
 			<Outlet />
 		</div>
 	);
-	
 };
 
 export default MarketingLayout;
