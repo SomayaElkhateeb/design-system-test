@@ -1093,4 +1093,11 @@ export const arabic = {
 	dropdown: 'قائمة منسدلة',
 	Type: 'النوع',
 	Question: 'السؤال',
+	'Upload Images': 'تحميل الصور',
+	'Or just drag and drop': 'أو قم بالسحب والإفلات',
+	'Upload Video': 'تحميل الفيديو',
+	'Upload 360': 'تحميل 360',
+	View: 'عرض',
+	'Upload 3D View': 'تحميل عرض ثلاثي الأبعاد',
+	installed: 'تم التثبيت',
 } satisfies typeof english;

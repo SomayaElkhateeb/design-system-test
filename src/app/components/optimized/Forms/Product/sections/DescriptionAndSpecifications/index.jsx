@@ -234,7 +234,7 @@ const tabsItems = [
  */
 export default function ProductFormDescriptionAndSpecificationsSection(props) {
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardContent>
 				<TabsBuilder items={tabsItems} sharedProps={{ formStore: props.formStore }} />
 			</CardContent>

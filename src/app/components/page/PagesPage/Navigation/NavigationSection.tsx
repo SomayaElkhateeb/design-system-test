@@ -3,11 +3,15 @@ import { IoIosAddCircle } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 import NavigationCard from './NavigationCard';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export default function NavigationSection() {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+	const { xs } = useResponsive();
+
 	const array = [...Array(3)];
 	return (
 		<div className='flex-col-top-section-pages'>
@@ -20,6 +24,8 @@ export default function NavigationSection() {
 					{t('Add Page')}
 				</Button>
 			</div>
+			{xs && <AddButtonMobile path='AddNavigation' />}
+
 			<hr />
 			<div className='flex-col-top-section-pages'>
 				{array?.map((e, i) => (

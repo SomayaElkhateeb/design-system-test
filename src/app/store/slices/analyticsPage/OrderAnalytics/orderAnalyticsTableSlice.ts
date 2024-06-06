@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { AnaylticesOrder } from 'src/pages/AnalyticsPage/Orders/Orders';
 import { getOrderAnalyticsTableReducer } from './orderAnalyticsTableExtraReducers';
+
+import { getProductsAnalyticsTableReducer } from './productsAnalyticsTableExtraReducers';
+import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 
 export interface orderAnalyticsStatus {
 	ordersAnalytics: AnaylticesOrder[];

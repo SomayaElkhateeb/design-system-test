@@ -51,10 +51,9 @@ const data = [
  * @returns {JSX.Element} ChatCard component.
  */
 
-const ChatCard = ({ menu }: {  menu?: boolean }) => {
+const ChatCard = ({ menu }: { menu?: boolean }) => {
 	const language = UseLanguage();
 	const id = 'chat-card';
-	
 
 	return (
 		<div
@@ -68,7 +67,7 @@ const ChatCard = ({ menu }: {  menu?: boolean }) => {
 			} `}
 			style={{ overflowY: 'auto' }}
 		>
-			<VerticalTabs  />
+			<VerticalTabs />
 		</div>
 	);
 };
@@ -147,13 +146,13 @@ function VerticalTabs() {
 				</Tabs>
 			)}
 			<TabPanel value={value} index={0}>
-				<Chat data={data} title={t('Chat')}  />
+				<Chat data={data} title={t('Chat')} />
 			</TabPanel>
 			<TabPanel value={value} index={1}>
-				<Chat data={data} title={t('WhatsApp')}  />
+				<Chat data={data} title={t('WhatsApp')} />
 			</TabPanel>
 			<TabPanel value={value} index={2}>
-				<Chat data={data} title={t('Messenger')}  />
+				<Chat data={data} title={t('Messenger')} />
 			</TabPanel>
 		</Box>
 	);

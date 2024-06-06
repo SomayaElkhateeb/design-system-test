@@ -19,6 +19,8 @@ export { default as LabelIcon } from './UiKits/LabelIcon';
 export { default as Pagination } from './UiKits/Pagination';
 export { default as ToastsNotification } from './UiKits/ToastsNotification';
 export { default as DonutCard } from './Charts/DonutChart/DonutCard';
+
+export { default as TabX } from './Tabs/TabX.tsx';
 // export { default as TourCard } from "./Cards/TourCard";
 
 //? Somaya

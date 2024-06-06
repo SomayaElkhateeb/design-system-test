@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getProductsAnalyticsTableReducer } from './productsAnalyticsTableExtraReducers';
-import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/Products';
+import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 
 export interface ProductAnalyticsStatus {
 	productsAnalytics: AnaylticesProduct[];

@@ -197,7 +197,7 @@ export default function ProductFormFaqsSection(props) {
 	const { t } = useTranslation();
 
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardHeader>
 				<CardTitle>{t('FAQs')}</CardTitle>
 				<CardDescription className='text-gray-400'>

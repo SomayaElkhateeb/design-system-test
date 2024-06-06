@@ -19,12 +19,10 @@ import { UseLanguage } from '../../CustomHook/LanguageHook';
 
 const Chat = ({
 	title,
-	onClose,
 	data,
 }: // menu,
 {
 	title: string;
-	onClose: () => void;
 	data: any;
 	// menu?: boolean;
 }) => {

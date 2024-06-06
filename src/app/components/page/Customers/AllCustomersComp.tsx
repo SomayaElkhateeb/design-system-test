@@ -13,6 +13,8 @@ import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
 import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
+import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 
 //  componenet will be used in customers page
@@ -20,7 +22,7 @@ export default function AllCustomers() {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
+	const { xs } = useResponsive();
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -53,9 +55,9 @@ export default function AllCustomers() {
 	return (
 		<>
 			<div className='flex-col-top-section-pages'>
-				{/*  top section */}
+				{/* top section */}
 				<div className='topTable'>
-					{/*  add customers button */}
+					{/* add customers button */}
 					<Button
 						variant='primary'
 						LeftIcon={IoIosAddCircle}
@@ -65,7 +67,8 @@ export default function AllCustomers() {
 					>
 						{t('Add New Customer')}
 					</Button>
-
+					{/*  case of small media */}
+					{xs && <AddButtonMobile path='/customers/addCustomer' />}
 					{/*  actions filter arrange,... */}
 					<ActionsComp
 						HandelopenDrawer={HandelopenDrawer}

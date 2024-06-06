@@ -1106,4 +1106,10 @@ export const english = {
 	dropdown: 'dropdown',
 	Type: 'Type',
 	Question: 'Question',
+	'Upload Images': 'Upload Images',
+	'Or just drag and drop': 'Or just drag and drop',
+	'Upload Video': 'Upload Video',
+	'Upload 360': 'Upload 360',
+	View: 'View',
+	'Upload 3D View': 'Upload 3D View',
 };

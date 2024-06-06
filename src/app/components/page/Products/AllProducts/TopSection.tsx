@@ -15,6 +15,8 @@ import PopoverComponenet from '../../../optimized/UiKits/Popover';
 import { useOpenFilterDrawer } from 'src/app/components/SideBar/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../../Orders/FilterOrder/FilterOrdersComponent';
 import { RemoveIcon } from 'src/app/utils/icons';
+import { Link } from 'react-router-dom';
+
 export default function TopSection({
 	verticalCard,
 	setVerticalCard,
@@ -35,30 +37,35 @@ export default function TopSection({
 			title: 'Simple Product',
 			describtion: "You don't need advanced options to fill",
 			shipping: true,
+			to: '/products/new/simple',
 		},
 		{
 			id: nanoid(),
 			title: 'Configurable product',
 			describtion: 'You need all options available',
 			shipping: false,
+			to: '/products/new/configurable',
 		},
 		{
 			id: nanoid(),
 			title: 'Virtual Product',
 			describtion: 'Services, ebooks, Downloadable',
 			shipping: false,
+			to: '/products/new/virtual',
 		},
 		{
 			id: nanoid(),
 			title: 'Food',
 			describtion: 'Food & Drinks have special way shipping',
 			shipping: true,
+			to: '/products/new/food',
 		},
 		{
 			id: nanoid(),
 			title: 'Bundle',
 			describtion: 'Collection of related products',
 			shipping: false,
+			to: '/products/new/bundle',
 		},
 	];
 
@@ -131,7 +138,7 @@ export default function TopSection({
 						>
 							<div className=' flex flex-col gap-[1rem]'>
 								{dropdownMenu?.map((e) => (
-									<div className='flex flex-col gap-[.9rem]' key={e.id}>
+									<Link className='flex flex-col gap-[.9rem]' key={e.id} to={e.to}>
 										<div className='flex flex-col gap-[.2rem] cursor-pointer'>
 											<div className='flex-row-global gap-[.4rem]'>
 												<p className=' text-[.9rem] font-semibold'>{e.title}</p>
@@ -141,7 +148,7 @@ export default function TopSection({
 											<p className='text-[.7rem]'>{e.describtion}</p>
 										</div>
 										<hr />
-									</div>
+									</Link>
 								))}
 							</div>
 						</div>

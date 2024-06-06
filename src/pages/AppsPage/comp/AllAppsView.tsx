@@ -1,4 +1,5 @@
-import AppsCard from 'src/app/components/page/Cards/AppsCard';
+
+import { AppsCard } from 'src/app/components/optimized';
 import { AppData } from './useAppStore';
 
 interface AllAppsViewProps {

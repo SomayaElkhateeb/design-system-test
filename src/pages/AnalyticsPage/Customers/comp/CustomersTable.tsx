@@ -3,7 +3,8 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
-import { AnaylticesCustomer } from '../Customers';
+import { AnalyticsCustomer } from '../AnalyticsCustomers';
+
 
 export default function CustomersTable({
 	customersAnalytics,
@@ -12,6 +13,9 @@ export default function CustomersTable({
 	customersAnalytics: AnaylticesCustomer[];
 	isLoading: boolean;
 }) {
+
+export default function CustomersTable({ tableData }: { tableData: AnalyticsCustomer[] }) {
+
 	const language = UseLanguage();
 
 	const { t } = useTranslation();

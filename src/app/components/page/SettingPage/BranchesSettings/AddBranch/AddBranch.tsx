@@ -11,12 +11,15 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useState } from 'react';
 import useCustomHookAddBranchForm, { BranchSettingsInterface } from './HookForAddBranchForm';
 
-export default function AddBranch() {
+export default function AddBranch(props: {
+	hideHeader?: boolean;
+	handleSubmit?: (values: BranchSettingsInterface) => void;
+}) {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
-	
+
 	// //////////////////////////////////////
 	// //////////////////////////
 	const handleSubmit = (values: BranchSettingsInterface) => {
@@ -32,7 +35,7 @@ export default function AddBranch() {
 
 	const { formStore, onSubmit } = useForm({
 		schema: branchSettingsSchema,
-		handleSubmit: handleSubmit,
+		handleSubmit: props.handleSubmit || handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
 
@@ -54,21 +57,23 @@ export default function AddBranch() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Add Branch')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				{!props.hideHeader && (
+					<HeaderSettings
+						submit
+						variant='settingTwoBtns'
+						title={t('Add Branch')}
+						btn1={{
+							text: t('Discard'),
+							onClick: () => {
+								navigate(-1);
+							},
+						}}
+						btn2={{
+							text: t('Save Changes'),
+							onClick: () => {},
+						}}
+					/>
+				)}
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BranchInfo

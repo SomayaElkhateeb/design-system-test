@@ -185,7 +185,7 @@ object {
 	.custom_container {
 		@apply xl:max-w-[145rem] xl:px-5  container mx-auto;
 	}
-	.responsive_pages{
+	.responsive_pages{ 
 		@apply	custom_container flex-col-top-section-pages sm:hidden
 	}
 	.cardDetails-sharedClass {
@@ -222,7 +222,7 @@ object {
 		@apply col-span-3 xl:col-span-1;
 	}
 	.flex-col-top-section-pages {
-		@apply flex flex-col gap-[1.2rem];
+		@apply flex flex-col gap-[1rem];
 	}
 	.flex-end {
 		@apply flex flex-col justify-between items-end;
@@ -281,7 +281,7 @@ object {
 		@apply border-2 border-light-2 rounded-lg p-5;
 	}
 
-	.title {
+	 .title {
 		@apply font-semibold sm:text-[1rem] text-[.8rem] text-title;
 	}
 
