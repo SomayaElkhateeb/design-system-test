@@ -1129,4 +1129,5 @@ export const english = {
 	'Un list selected products': 'Un list selected products',
 	'Hide all selected products from showing in store individually':
 		'Hide all selected products from showing in store individually',
+	'Add product': 'Add product',
 };

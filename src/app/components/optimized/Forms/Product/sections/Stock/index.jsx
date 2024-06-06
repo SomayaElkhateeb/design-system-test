@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogTrigger } from 'src/app/components/ui/dial
 import { FaCirclePlus } from 'react-icons/fa6';
 import { Label } from 'src/app/components/ui/label';
 import AddBranch from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/AddBranch';
+import { ScrollArea, ScrollBar } from 'src/app/components/ui/scroll-area';
 
 /**
  * @template TFormStore
@@ -30,13 +31,16 @@ function AddBranchManager(props) {
 					{t('Add New branch')}
 				</Button>
 			</DialogTrigger>
-			<DialogContent className='p-8 max-w-screen-lg'>
-				<AddBranch
-					handleSubmit={(values) => {
-						// console.log(values);
-					}}
-					hideHeader
-				/>
+			<DialogContent>
+				<ScrollArea className='w-full max-h-[90dvh]'>
+					<AddBranch
+						handleSubmit={(values) => {
+							// console.log(values);
+						}}
+						hideHeader
+					/>
+					<ScrollBar />
+				</ScrollArea>
 			</DialogContent>
 		</Dialog>
 	);

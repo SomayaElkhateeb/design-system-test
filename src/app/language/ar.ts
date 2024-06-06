@@ -1117,4 +1117,5 @@ export const arabic = {
 	'Un list selected products': 'إلغاء قائمة المنتجات المحددة',
 	'Hide all selected products from showing in store individually':
 		'إخفاء جميع المنتجات المحددة من الظهور في المتجر بشكل فردي',
+	'Add product': 'إضافة منتج',
 } satisfies typeof english;

@@ -11,7 +11,7 @@ import ProductFormQuickActionsSection from 'src/app/components/optimized/Forms/P
 import { ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
-import NewProductWrapper from '../_comps/Wrapper';
+import ProductFormContainer from '../_comps/FormContainer';
 import { productTypeMap } from 'src/app/components/optimized/Forms/Product/config';
 import {
 	productDimensionUnitMap,
@@ -124,9 +124,9 @@ export default function BundleProductPage() {
 	});
 
 	return (
-		<NewProductWrapper formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
+		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
-				<div className='flex gap-6'>
+				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
 						{productsSections.map(({ Elem, id }) => (
 							// @ts-ignore
@@ -138,6 +138,6 @@ export default function BundleProductPage() {
 					</div>
 				</div>
 			</section>
-		</NewProductWrapper>
+		</ProductFormContainer>
 	);
 }
