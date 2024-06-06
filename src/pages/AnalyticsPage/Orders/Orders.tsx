@@ -7,6 +7,9 @@ import data from '../comp/data.json';
 import OrdersTable from './comp/OrdersTable';
 import { useTranslation } from 'react-i18next';
 import { getNumericValue, parseDate } from 'src/app/utils';
+import { getOrderAnalyticsTable } from 'src/app/store/slices/analyticsPage/OrderAnalytics/orderAnalyticsTableAsyncThunks';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export interface AnaylticesOrder {
 	day: string;
@@ -19,6 +22,14 @@ export interface AnaylticesOrder {
 export default function Orders() {
 	//  hooks
 	const { t } = useTranslation();
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, ordersAnalytics, error } = useSelector((state) => state.ordersAnalytics || {});
+
+	useEffect(() => {
+		dispatch(getOrderAnalyticsTable());
+	}, [dispatch]);
+
 	const ordersSortMenus = [
 		{ text: t('Date Added') },
 		{ text: t('Date (Oldest)') },
@@ -58,7 +69,7 @@ export default function Orders() {
 	return (
 		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
-			<ColumnChart percentage="5" />
+			<ColumnChart percentage='5' />
 			<AnalyticsTableActions
 				data={tableData}
 				sortMenus={ordersSortMenus}
@@ -67,7 +78,11 @@ export default function Orders() {
 				documentTitle='Orders Table Data'
 			/>
 			{/* <Table data={tableData} headers={ordersTableHeaders}/> */}
-			<OrdersTable tableData={tableData} />
+			<OrdersTable
+				// tableData={tableData}
+				ordersAnalytics={ordersAnalytics}
+				isLoading={isLoading}
+			/>
 		</div>
 	);
 }

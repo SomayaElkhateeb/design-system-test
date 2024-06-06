@@ -23,8 +23,8 @@ export interface AnaylticesProduct {
 const Products = () => {
 	//  hooks
 	const { t } = useTranslation();
+	// redux
 	const dispatch = useDispatch();
-	//  selectors
 	const { isLoading, productsAnalytics, error } = useSelector(
 		(state) => state.productsAnalytics || {},
 	);

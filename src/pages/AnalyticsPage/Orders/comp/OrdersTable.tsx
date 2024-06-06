@@ -5,7 +5,13 @@ import BaseTable, {
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { AnaylticesOrder } from '../Orders';
 
-export default function OrdersTable({ tableData }: { tableData: AnaylticesOrder[] }) {
+export default function OrdersTable({
+	ordersAnalytics,
+	isLoading,
+}: {
+	ordersAnalytics: AnaylticesOrder[];
+	isLoading: boolean;
+}) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -22,10 +28,11 @@ export default function OrdersTable({ tableData }: { tableData: AnaylticesOrder[
 	return (
 		<div className='print-only'>
 			<BaseTable
+				isLoading={isLoading}
 				language={language}
 				color='#55607A'
 				headers={ordersTableHeaders.map((h) => h)}
-				rows={tableData?.map((e) => {
+				rows={ordersAnalytics?.map((e) => {
 					return {
 						item: e,
 						elements: [

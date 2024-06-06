@@ -15,7 +15,7 @@ export const getProductsAnalyticsTable = createAsyncThunk(
 			console.log('getProductsAnalyticsTable: ', getProductsAnalyticsTable);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error.message);
+			throw rejectWithValue(error);
 		}
 	},
 );

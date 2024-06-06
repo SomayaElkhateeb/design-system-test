@@ -1,21 +1,21 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getProductsAnalyticsTable } from './productsAnalyticsTableAsyncThunks';
-import { ProductAnalyticsStatus } from './productsAnalyticsTableSlice';
+import { getOrderAnalyticsTable } from './orderAnalyticsTableAsyncThunks';
+import { orderAnalyticsStatus } from './orderAnalyticsTableSlice';
 
-export const getProductsAnalyticsTableReducer = (
-	builder: ActionReducerMapBuilder<ProductAnalyticsStatus>,
+export const getOrderAnalyticsTableReducer = (
+	builder: ActionReducerMapBuilder<orderAnalyticsStatus>,
 ) => {
 	builder
-		// get products analytics table
-		.addCase(getProductsAnalyticsTable.pending, (state) => {
+		// get order analytics table
+		.addCase(getOrderAnalyticsTable.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getProductsAnalyticsTable.fulfilled, (state, action) => {
+		.addCase(getOrderAnalyticsTable.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.productsAnalytics = action.payload;
+			state.ordersAnalytics = action.payload;
 		})
-		.addCase(getProductsAnalyticsTable.rejected, (state, action) => {
+		.addCase(getOrderAnalyticsTable.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});

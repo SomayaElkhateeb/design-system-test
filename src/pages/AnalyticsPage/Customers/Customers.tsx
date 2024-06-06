@@ -7,6 +7,9 @@ import data from '../comp/data.json';
 import { useTranslation } from 'react-i18next';
 import CustomersTable from './comp/CustomersTable';
 import { getNumericValue, parseDate } from 'src/app/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getCustomersAnalyticsTable } from 'src/app/store/slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableAsyncThunks';
 
 export interface AnaylticesCustomer {
 	day: string;
@@ -16,6 +19,15 @@ export interface AnaylticesCustomer {
 }
 const Customers = () => {
 	const { t } = useTranslation();
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, customersAnalytics, error } = useSelector(
+		(state) => state.customersAnalytics || {},
+	);
+
+	useEffect(() => {
+		dispatch(getCustomersAnalyticsTable());
+	}, [dispatch]);
 
 	const customersSortMenus = [
 		{ text: t('Date Added') },
@@ -60,7 +72,7 @@ const Customers = () => {
 				documentTitle='Customer Table Data'
 			/>
 
-			<CustomersTable tableData={tableData} />
+			<CustomersTable customersAnalytics={customersAnalytics} isLoading={isLoading} />
 			{/* <Table data={tableData} headers={customersTableHeaders} /> */}
 		</div>
 	);

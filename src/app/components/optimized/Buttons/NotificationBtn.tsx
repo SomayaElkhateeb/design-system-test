@@ -1,7 +1,6 @@
 import { NotifiIcon } from 'src/app/utils/icons';
 import NotificationsCard from '../Cards/NotificationsCard';
-import Button from '@mui/material/Button';
-import { useState } from 'react';
+
 import PopoverComponenet from '../../page/Customers/Popover';
 
 /**
@@ -20,7 +19,6 @@ const NotificationBtn = () => {
 				</>
 			}
 		>
-			{/* Display NotificationsCard when show state is true */}
 			<NotificationsCard />
 		</PopoverComponenet>
 	);

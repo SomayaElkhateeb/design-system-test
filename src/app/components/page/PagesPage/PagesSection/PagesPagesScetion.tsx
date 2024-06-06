@@ -6,10 +6,20 @@ import BlogPostsTable from '../BlogPosts/BlogPostsTable';
 import TopSectionBlogPostsAndSection from '../BlogPosts/TopSectionBlogPostsAndPagesSection';
 import PagesPagesTable from './PagesPagesSectionTable';
 import LegalPagesSection from './LegalPagesSection';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getPagesTable } from 'src/app/store/slices/pagesPage/pages/pagesTableAsyncThunks';
 
 export default function PagesPagesSection() {
 	//  hooks
 	const { t } = useTranslation();
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, pages, error } = useSelector((state) => state.pages || {});
+
+	useEffect(() => {
+		dispatch(getPagesTable());
+	}, [dispatch]);
 
 	const data: BlogPostInterface[] = [
 		{
@@ -22,13 +32,12 @@ export default function PagesPagesSection() {
 	];
 	return (
 		<div className='flex flex-col'>
-
 			<div className='flex flex-col gap-[1rem]'>
 				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='AddPage' />
 
 				<LegalPagesSection />
 			</div>
-			<PagesPagesTable data={data} />
+			<PagesPagesTable pages={pages} isLoading={isLoading} />
 		</div>
 	);
 }

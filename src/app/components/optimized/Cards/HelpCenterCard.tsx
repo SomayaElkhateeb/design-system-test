@@ -13,7 +13,6 @@ import { useState } from 'react';
 import LinkCards from './LinkCards';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import Slider from '../UiKits/Slider';
-import { useClickOutsideWithId } from 'src/app/utils';
 
 const HelpCenterCard = ({
 	onClose,
@@ -27,8 +26,6 @@ const HelpCenterCard = ({
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
 	const language = UseLanguage();
-	const id = 'HelpCenter-card';
-	useClickOutsideWithId(id, onClose);
 
 	const slides = [
 		{
@@ -60,7 +57,6 @@ const HelpCenterCard = ({
 
 	return (
 		<div
-			id={id}
 			className={`bg-white ${
 				menu ? 'w-full h-full' : 'w-[21rem] h-[32rem] shadow-lg overflow-hidden'
 			} p-3 pb-5  z-30   ${

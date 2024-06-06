@@ -1,54 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProductsAnalyticsTableReducer } from './productsAnalyticsTableExtraReducers';
-import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/Products';
+import { AnaylticesOrder } from 'src/pages/AnalyticsPage/Orders/Orders';
+import { getOrderAnalyticsTableReducer } from './orderAnalyticsTableExtraReducers';
 
-export interface IProductsAnalytics {
-	id: string;
-	product_name: string;
-	category: string;
-	quantity: number;
-	price: string;
-	searches: number;
-	views: number;
-	quantity_sold: number;
-	returns: number;
-	imageUrl: string;
-}
-export interface ProductAnalyticsStatus {
-	productsAnalytics: AnaylticesProduct[];
+export interface orderAnalyticsStatus {
+	ordersAnalytics: AnaylticesOrder[];
 	isLoading: boolean;
 	error: string | null | unknown;
 }
 
-const initialState: ProductAnalyticsStatus = {
-	productsAnalytics: [
+const initialState: orderAnalyticsStatus = {
+	ordersAnalytics: [
 		{
-			id: '1',
-			product_name: 'Canon EOS Rebel T7',
-			category: 'cameras',
-			quantity: 150,
-			price: '549.00',
-			searches: 850,
-			views: 750,
-			quantity_sold: 300,
-			returns: 50,
-			imageUrl: 'images/Vector.svg',
+			day: '24 Apr 2024',
+			orders: 15,
+			average_units_ordered: 200,
+			average_order_value: 'phone',
+			delivered: 20,
+			returned_quantity: 17,
 		},
 	],
 	isLoading: false,
 	error: null,
 };
 
-const productAnalyticsSlice = createSlice({
-	name: 'productsAnalytics',
+const orderAnalyticsSlice = createSlice({
+	name: 'ordersAnalytics',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		getProductsAnalyticsTableReducer(builder);
+		getOrderAnalyticsTableReducer(builder);
 	},
 });
 
-export const selectProductsAnalytics = (state: { productsAnalytics: ProductAnalyticsStatus }) =>
-	state.productsAnalytics;
+export const selectOrdersAnalytics = (state: { ordersAnalytics: orderAnalyticsStatus }) =>
+	state.ordersAnalytics;
 
-export default productAnalyticsSlice.reducer;
+export default orderAnalyticsSlice.reducer;

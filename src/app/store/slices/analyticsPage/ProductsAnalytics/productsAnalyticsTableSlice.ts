@@ -2,18 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getProductsAnalyticsTableReducer } from './productsAnalyticsTableExtraReducers';
 import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/Products';
 
-export interface IProductsAnalytics {
-	id: string;
-	product_name: string;
-	category: string;
-	quantity: number;
-	price: string;
-	searches: number;
-	views: number;
-	quantity_sold: number;
-	returns: number;
-	imageUrl: string;
-}
 export interface ProductAnalyticsStatus {
 	productsAnalytics: AnaylticesProduct[];
 	isLoading: boolean;

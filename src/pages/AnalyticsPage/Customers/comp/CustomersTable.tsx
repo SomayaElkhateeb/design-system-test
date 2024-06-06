@@ -5,7 +5,13 @@ import BaseTable, {
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { AnaylticesCustomer } from '../Customers';
 
-export default function CustomersTable({ tableData }: { tableData: AnaylticesCustomer[] }) {
+export default function CustomersTable({
+	customersAnalytics,
+	isLoading,
+}: {
+	customersAnalytics: AnaylticesCustomer[];
+	isLoading: boolean;
+}) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -20,10 +26,11 @@ export default function CustomersTable({ tableData }: { tableData: AnaylticesCus
 	return (
 		<div className='print-only'>
 			<BaseTable
+				isLoading={isLoading}
 				language={language}
 				color='#55607A'
 				headers={customersTableHeaders.map((h) => h)}
-				rows={tableData?.map((e) => {
+				rows={customersAnalytics?.map((e) => {
 					return {
 						item: e,
 						elements: [
