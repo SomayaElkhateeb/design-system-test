@@ -8,7 +8,7 @@ import ProductsTable from './comp/ProductsTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import AnalyticsProductsTableMobile from './comp/AnalyticsProductsTableMobile';
+import AnalyticsProductsTableMobile from './comp/AnalyticsProductTableMobile/AnalyticsProductsTableMobile';
 import { getProductsAnalyticsTable } from 'src/app/store/slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableAsyncThunks';
 import AnalyticsProductsTable from 'src/app/components/page/Analytics/AnalyticsProductsTable';
 export interface AnalyticsProduct {
