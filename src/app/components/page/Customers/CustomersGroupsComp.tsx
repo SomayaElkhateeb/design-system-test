@@ -10,12 +10,14 @@ import CustomersGroupTable from './CustomersGroupTable';
 import { customers } from './CustomersTable';
 import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
 import { RemoveIcon } from 'src/app/utils/icons';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
 
 export default function CustomersGroups() {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
+	const { xs } = useResponsive();
 	//  custom hook for select arrang item
 
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -49,7 +51,8 @@ export default function CustomersGroups() {
 				>
 					{t('Add New Group')}
 				</Button>
-
+				{/*  case of small media */}
+				{xs && <AddButtonMobile path='/customers/addGroupCustomer' />}
 				{/*  arrange,... */}
 				<ActionsComp
 					sortMenus={sortMenus}

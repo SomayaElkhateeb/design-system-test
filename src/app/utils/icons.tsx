@@ -669,7 +669,7 @@ export function AddBgIcon(props: IconProps) {
 	return (
 		<svg
 			className={`w-6 h-6 ${props.className}`}
-			viewBox='0 0 19 19'
+			viewBox='0 -0 19 19'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>

@@ -6,10 +6,13 @@ import BlogPostsTable from '../BlogPosts/BlogPostsTable';
 import TopSectionBlogPostsAndSection from '../BlogPosts/TopSectionBlogPostsAndPagesSection';
 import PagesPagesTable from './PagesPagesSectionTable';
 import LegalPagesSection from './LegalPagesSection';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 
 export default function PagesPagesSection() {
 	//  hooks
 	const { t } = useTranslation();
+	const { xs } = useResponsive();
 
 	const data: BlogPostInterface[] = [
 		{
@@ -25,6 +28,7 @@ export default function PagesPagesSection() {
 
 			<div className='flex flex-col gap-[1rem]'>
 				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='AddPage' />
+				{xs && <AddButtonMobile path='AddPage' />}
 
 				<LegalPagesSection />
 			</div>
