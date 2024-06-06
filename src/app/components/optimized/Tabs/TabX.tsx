@@ -2,6 +2,7 @@ import React, { useContext, createContext } from 'react';
 import { cn } from 'src/app/utils';
 import Button from '../Buttons/Button';
 import LayoutCard from '../Cards/LayoutCard';
+import { useTranslation } from 'react-i18next';
 
 interface Tab {
 	title: string;
@@ -70,8 +71,12 @@ interface VTabProps {
 	handleFinish: (isFinished: boolean) => void;
 }
 
-const VTab: React.FC<VTabProps> = (props) => {
+const VTab: React.FC<VTabProps> = ({ index, title, content, tabs, handleFinish }) => {
 	const { currentTab, handleTabClick, handleNext, handlePrev } = useContext(VerticalTabsContext);
+	const { t } = useTranslation();
+	const isActive = index === currentTab;
+	const isLastStep = index === tabs.length - 1;
+	const isCompleted = index < currentTab;
 
 	return (
 		<div className='relative'>
@@ -79,55 +84,45 @@ const VTab: React.FC<VTabProps> = (props) => {
 				{/* Render tab indicator */}
 				<div
 					className={`z-20 w-8 h-8 rounded-full flex justify-center items-center ${
-						props.index <= currentTab
-							? 'bg-blue-500 text-white' // Active or completed tab
-							: 'border-2 border-gray-500 bg-white' // Inactive tab
+						index <= currentTab
+							? 'bg-primary text-white' // Active or completed tab
+							: 'border-2 border-inactive bg-white' // Inactive tab
 					}`}
-					onClick={() => handleTabClick(props.index)}
+					onClick={() => handleTabClick(index)}
 				>
-					{props.index < currentTab ? <span className='text-sm'>&#10003;</span> : props.index + 1}
+					{isCompleted ? <span className='text-sm'>&#10003;</span> : index + 1}
 				</div>
 
 				{/* Line between tabs */}
-				{props.index < props.tabs.length - 1 && (
+				{index < tabs.length - 1 && (
 					<span
 						className={cn(
 							'h-full w-0.5 absolute left-[15px] top-4',
-							props.index <= currentTab ? 'bg-blue-600' : 'bg-gray-300',
+							index <= currentTab ? 'bg-primary' : 'bg-inactive',
 						)}
 					></span>
 				)}
 
 				{/* Title */}
-				<div
-					className={`flex-grow ms-2 text-md capitalize ${
-						props.index === currentTab ? 'font-semibold' : ''
-					}`}
-				>
-					{props.title}
+				<div className={`flex-grow ms-2 text-md capitalize ${isActive ? 'font-semibold' : ''}`}>
+					{title}
 				</div>
 			</div>
 
 			{/* Render content of the active tab */}
-			{props.index === currentTab && (
+			{isActive && (
 				<div className='ms-8'>
 					<LayoutCard>
-						{props.content}
+						{content}
 						{/* Next & Prev buttons */}
 						<div className='flex justify-end mt-4 space-x-2'>
-							{props.index > 0 && (
+							{index > 0 && (
 								<Button onClick={handlePrev} disabled={currentTab === 0} className='ms-5'>
-									Prev
+									{t('Prev')}
 								</Button>
 							)}
-							<Button
-								onClick={
-									props.index === props.tabs.length - 1
-										? () => props.handleFinish(true)
-										: handleNext
-								}
-							>
-								{props.index === props.tabs.length - 1 ? 'Finish' : 'Next'}
+							<Button onClick={isLastStep ? () => handleFinish(true) : handleNext}>
+								{isLastStep ? t('Finish') : t('Next')}
 							</Button>
 						</div>
 					</LayoutCard>
