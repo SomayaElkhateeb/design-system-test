@@ -11,6 +11,7 @@ export const english = {
 		'You can send an email for customers who purchased from you to review',
 	Pages: 'Pages',
 	'Brand name': 'Brand name',
+	"View Inventory":"View Inventory",
 	'Brand link (Slug)': 'Brand link (Slug)',
 	'Brand description': 'Brand description',
 	'Brand logo': 'Brand logo',
