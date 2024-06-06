@@ -194,11 +194,10 @@ function OtherProductShippingOptions(props) {
 												props.formStore.setValue('shipping.weightUnit', value);
 											}}
 											value={field.value}
-											className='border-0 rounded-none'
 										>
 											<SelectTrigger
 												id={field.id}
-												className='border-0'
+												className='border-0 rounded-none'
 												style={{
 													minWidth: 2 * 3.5 + 'ch',
 												}}
