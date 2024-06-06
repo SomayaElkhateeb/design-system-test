@@ -12,7 +12,7 @@ import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { useWatch } from 'react-hook-form';
 import { useState } from 'react';
-import ControllerContainer from 'src/app/components/ui/form/controller-container';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 
 /**
  * @template TFormStore
@@ -89,7 +89,7 @@ function MetaKeywordsFormField(props) {
 
 	return (
 		<div className='flex flex-col gap-1'>
-			<ControllerContainer
+			<HorizontalBox
 				end={
 					<button
 						type='button'
@@ -111,7 +111,7 @@ function MetaKeywordsFormField(props) {
 					value={keyword}
 					onChange={(e) => setKeyword(e.target.value)}
 				/>
-			</ControllerContainer>
+			</HorizontalBox>
 			<div className='flex flex-wrap gap-2'>
 				{metaKeywords.map((keyword) => (
 					<div

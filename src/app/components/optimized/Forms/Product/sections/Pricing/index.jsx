@@ -7,7 +7,7 @@ import { Input } from 'src/app/components/ui/input';
 import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { TrashIcon } from 'lucide-react';
-import ControllerContainer from 'src/app/components/ui/form/controller-container';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 
 /**
  * @template TFormStore
@@ -26,7 +26,7 @@ function BulkPricesManager(props) {
 			<Button
 				variant='secondary'
 				textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-				className='px-0 border-0'
+				className='px-0 border-0 rounded-none'
 				onClick={() =>
 					append({
 						tempId: (Date.now() + Math.random()).toString(36).substring(2),
@@ -72,7 +72,7 @@ function BulkPricesManager(props) {
 						<Button
 							variant='secondary'
 							textClassName='flex items-end justify-center gap-1.5 whitespace-nowrap'
-							className='px-0 border-0'
+							className='px-0 border-0 rounded-none'
 							onClick={() => remove(index)}
 						>
 							<TrashIcon className='size-5' />
@@ -83,7 +83,7 @@ function BulkPricesManager(props) {
 				<Button
 					variant='secondary'
 					textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-					className='px-0 border-0'
+					className='px-0 border-0 rounded-none'
 					onClick={() =>
 						append({
 							tempId: (Date.now() + Math.random()).toString(36).substring(2),
@@ -100,7 +100,7 @@ function BulkPricesManager(props) {
 			<Button
 				variant='secondary'
 				textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-				className='px-0 border-0'
+				className='px-0 border-0 rounded-none'
 				onClick={() => {
 					props.formStore.setValue('bulkPrices', []);
 				}}
@@ -130,15 +130,15 @@ function ProfitField(props) {
 			name='price'
 			label={t('Profit')}
 			render={() => (
-				<ControllerContainer start='SAR' startSeparator>
+				<HorizontalBox start={<span className='pe-2'>SAR</span>}>
 					<Input
 						value={profit}
 						type='number'
 						disabled
 						readOnly
-						className='border-0 grayscale brightness-[0.85]'
+						className='border-0 rounded-none grayscale brightness-[0.85]'
 					/>
-				</ControllerContainer>
+				</HorizontalBox>
 			)}
 		/>
 	);
@@ -164,9 +164,9 @@ export default function ProductFormPricingSection(props) {
 						name='price'
 						label={t('Price')}
 						render={(field) => (
-							<ControllerContainer start='SAR' startSeparator>
-								<Input {...field} type='number' className='border-0' />
-							</ControllerContainer>
+							<HorizontalBox start='SAR' startSeparator>
+								<Input {...field} type='number' className='border-0 rounded-none' />
+							</HorizontalBox>
 						)}
 					/>
 					<FormField
@@ -174,9 +174,9 @@ export default function ProductFormPricingSection(props) {
 						name='discountPrice'
 						label={`${t('Discount price')} (${t('Optional')})`}
 						render={(field) => (
-							<ControllerContainer start='SAR' startSeparator>
-								<Input {...field} type='number' className='border-0' />
-							</ControllerContainer>
+							<HorizontalBox start='SAR' startSeparator>
+								<Input {...field} type='number' className='border-0 rounded-none' />
+							</HorizontalBox>
 						)}
 					/>
 					<FormField
@@ -184,9 +184,9 @@ export default function ProductFormPricingSection(props) {
 						name='costPrice'
 						label={`${t('Cost price')} (${t('Optional')})`}
 						render={(field) => (
-							<ControllerContainer start='SAR' startSeparator>
-								<Input {...field} type='number' className='border-0' />
-							</ControllerContainer>
+							<HorizontalBox start='SAR'>
+								<Input {...field} type='number' className='border-0 rounded-none' />
+							</HorizontalBox>
 						)}
 					/>
 					<ProfitField formStore={props.formStore} />

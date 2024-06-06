@@ -23,7 +23,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import ControllerContainer from 'src/app/components/ui/form/controller-container';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 
 /**
  * @template TFormStore
@@ -182,7 +182,7 @@ function OtherProductShippingOptions(props) {
 					name='shipping.weight'
 					label={t('Weight')}
 					render={(field) => (
-						<ControllerContainer
+						<HorizontalBox
 							end={
 								<FormField
 									formStore={props.formStore}
@@ -194,6 +194,7 @@ function OtherProductShippingOptions(props) {
 												props.formStore.setValue('shipping.weightUnit', value);
 											}}
 											value={field.value}
+											className='border-0 rounded-none'
 										>
 											<SelectTrigger
 												id={field.id}
@@ -220,7 +221,7 @@ function OtherProductShippingOptions(props) {
 							endSeparator
 						>
 							<Input {...field} type='number' className='border-0' />
-						</ControllerContainer>
+						</HorizontalBox>
 					)}
 				/>
 				<div className='flex items-center text-gray border rounded-md px-2'>
