@@ -7,7 +7,7 @@ import FormSwitchField from './FormSwitchField';
 export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 	return (
-		<div className='global-cards grid grid-cols-2'>
+		<div className='global-cards grid sm:grid-cols-2 grid-cols-1'>
 			<div className='col-span-2'>
 				<h2 className='title  mb-2'>{t('Order invoice')}</h2>
 				<p className='paragraph'>{t('Customize invoice sent to customers')}</p>
@@ -19,6 +19,7 @@ export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsF
 			/>
 			<div className='col-span-1'>
 				<FormField
+					required
 					formStore={formStore}
 					name='taxNumber'
 					label={t('Tax number')}

@@ -16,7 +16,7 @@ export default function PaymentMethods() {
 	return (
 		<section className='global-cards gap-4'>
 			<div>
-				<h2 className='text-title font-semibold text-lg'>{t('Payment methods')}</h2>
+				<h2 className='title'>{t('Payment methods')}</h2>
 				<p className='text-subtitle text-sm pt-1'>{t('For bills and purchases')}</p>
 			</div>
 
