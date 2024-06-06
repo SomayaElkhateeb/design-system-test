@@ -7,6 +7,11 @@ import data from '../comp/data.json';
 import AnalyticsOrdersTable from './comp/AnalyticsOrdersTable';
 import { useTranslation } from 'react-i18next';
 import { getNumericValue, parseDate } from 'src/app/utils';
+
+import { getOrderAnalyticsTable } from 'src/app/store/slices/analyticsPage/OrderAnalytics/orderAnalyticsTableAsyncThunks';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AnalyticsOrdersTableMobile from './comp/AnalyticsOrdersTableMobile';
 
@@ -21,6 +26,15 @@ export interface AnalyticsOrder {
 export default function AnalyticsOrders() {
 	//  hooks
 	const { t } = useTranslation();
+
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, ordersAnalytics, error } = useSelector((state) => state.ordersAnalytics || {});
+
+	useEffect(() => {
+		dispatch(getOrderAnalyticsTable());
+	}, [dispatch]);
+
 	const { xs } = useResponsive();
 
 	const ordersSortMenus = [
@@ -70,7 +84,14 @@ export default function AnalyticsOrders() {
 				onSelectOption={handleArrangeChange}
 				documentTitle='Orders Table Data'
 			/>
-			
+
+			{/* <Table data={tableData} headers={ordersTableHeaders}/> */}
+			<OrdersTable
+				// tableData={tableData}
+				ordersAnalytics={ordersAnalytics}
+				isLoading={isLoading}
+			/>
+
 			<AnalyticsOrdersTable tableData={tableData} />
 			{xs && <AnalyticsOrdersTableMobile tableData={tableData} />}
 		</div>

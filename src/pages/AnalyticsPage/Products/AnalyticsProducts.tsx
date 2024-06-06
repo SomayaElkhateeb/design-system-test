@@ -26,9 +26,12 @@ export interface AnalyticsProduct {
 const AnalyticsProducts = () => {
 	//  hooks
 	const { t } = useTranslation();
+	// redux
 	const dispatch = useDispatch();
+
 	const { xs } = useResponsive();
 	//  selectors
+
 	const { isLoading, productsAnalytics, error } = useSelector(
 		(state) => state.productsAnalytics || {},
 	);
