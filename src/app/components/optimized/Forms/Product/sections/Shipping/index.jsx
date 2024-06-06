@@ -315,7 +315,7 @@ function VirtualProductShippingOptions(props) {
 			formStore={props.formStore}
 			name='shipping.downloadLink'
 			render={(field) => <Input {...field} type='url' />}
-			label={{ children: `${t('Download link')} (${t('optional')})` }}
+			label={{ children: `${t('Download link')} (${t('Optional')})` }}
 			container={{ className: 'md:w-1/2 gap-1' }}
 			layout='inline-reversed'
 		/>
@@ -329,10 +329,6 @@ function VirtualProductShippingOptions(props) {
  */
 export default function ProductFormShippingSection(props) {
 	const { t } = useTranslation();
-	const productType = useWatch({
-		control: props.formStore.control,
-		name: 'productType',
-	});
 	const shippingType = useWatch({
 		control: props.formStore.control,
 		name: 'shipping.type',

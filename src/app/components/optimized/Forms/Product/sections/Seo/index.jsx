@@ -164,7 +164,7 @@ export default function SeoFormFaqsSection(props) {
 						formStore={props.formStore}
 						name='link'
 						label={t('Link')}
-						render={(field) => <Input {...field} placeholder={t('e.g., https://artisan.dookan.net/t-shirt')} />}
+						render={(field) => <Input {...field} placeholder={t('e.g., https://artisan.dookan.net/t-shirt')} type='url' />}
 					/> */}
 				<MetaKeywordsFormField formStore={props.formStore} />
 				<FormField

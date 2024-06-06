@@ -10,7 +10,7 @@ export const productPricingSchema = {
 			tempId: z.string(),
 			from: z.coerce.number().min(0),
 			to: z.coerce.number().min(0),
-			currency: z.coerce.number().min(0),
+			currency: z.string(),
 		}),
 	),
 };
