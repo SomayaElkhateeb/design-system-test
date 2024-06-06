@@ -213,13 +213,13 @@ object {
 	}
 
 	.custom-grid-parent {
-		@apply grid grid-cols-3 col-span-1 gap-5;
+		@apply grid grid-cols-3 col-span-1 gap-3;
 	}
 	.grid-left {
-		@apply col-span-3 md:col-span-2;
+		@apply col-span-3 lg:col-span-2;
 	}
 	.grid-right {
-		@apply col-span-3 md:col-span-1;
+		@apply col-span-3 lg:col-span-1;
 	}
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1rem];
