@@ -7,8 +7,10 @@ import data from '../comp/data.json';
 import { useTranslation } from 'react-i18next';
 import CustomersTable from './comp/CustomersTable';
 import { getNumericValue, parseDate } from 'src/app/utils';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import CustomersTableMobile from './comp/CustomersTableMobile';
 
-export interface AnaylticesCustomer {
+export interface AnalyticsCustomer {
 	day: string;
 	new_customers: number;
 	purchasing_customers: string;
@@ -16,6 +18,7 @@ export interface AnaylticesCustomer {
 }
 const Customers = () => {
 	const { t } = useTranslation();
+	const { xs } = useResponsive();
 
 	const customersSortMenus = [
 		{ text: t('Date Added') },
@@ -30,7 +33,7 @@ const Customers = () => {
 
 	const customersSortFunctions: Record<
 		string,
-		(a: AnaylticesCustomer, b: AnaylticesCustomer) => number
+		(a: AnalyticsCustomer, b: AnalyticsCustomer) => number
 	> = {
 		[t('Date Added')]: (a, b) => parseDate(b.day) - parseDate(a.day),
 		[t('Date (Oldest)')]: (a, b) => parseDate(a.day) - parseDate(b.day),
@@ -46,7 +49,7 @@ const Customers = () => {
 			getNumericValue(a.customer_groups) - getNumericValue(b.customer_groups),
 	};
 	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
-		useAnalyticsData<AnaylticesCustomer>(data.customersAnalyticsTable, customersSortFunctions);
+		useAnalyticsData<AnalyticsCustomer>(data.customersAnalyticsTable, customersSortFunctions);
 
 	return (
 		<div className=' grid gap-5'>
@@ -62,6 +65,7 @@ const Customers = () => {
 
 			<CustomersTable tableData={tableData} />
 			{/* <Table data={tableData} headers={customersTableHeaders} /> */}
+			{xs && <CustomersTableMobile tableData={tableData} />}
 		</div>
 	);
 };

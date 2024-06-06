@@ -2,10 +2,11 @@ import Avatar from '../../UiKits/Avatar';
 
 // Define the type for the order object
 export interface Order {
-	id: number;
+	id: string;
 	imageUrl?: string;
-	firstName: string;
-	lastName: string;
+	fullName?: string;
+	firstName?: string;
+	lastName?: string;
 	orderStatus: string;
 	orderNumber: string;
 	price: number;
@@ -14,21 +15,35 @@ export interface Order {
 }
 
 export default function OrderItem({ order }: { order: Order }) {
-	const { id, imageUrl, firstName, lastName, orderStatus, orderNumber, price, currency, date } =
-		order;
+	const {
+		id,
+		imageUrl,
+		fullName,
+		firstName,
+		lastName,
+		orderStatus,
+		orderNumber,
+		price,
+		currency,
+		date,
+	} = order;
+	// Determine the name to display
+	const displayName = fullName ? fullName : `${firstName} ${lastName}`;
+
 	return (
 		<div key={id} className='flex justify-between py-0.5'>
 			<div className='flex justify-between gap-3'>
 				<Avatar
 					variant='user'
 					firstName={firstName}
+					fullName={fullName}
 					lastName={lastName}
 					imageUrl={imageUrl}
 					size='lg'
 				/>
 				<div className='flex flex-col justify-between'>
 					<h2 className='text-title text-sm'>
-						{firstName} {lastName} <span className='text-xs text-subtitle'>{orderNumber}</span>
+						{displayName} <span className='text-xs text-subtitle'>{orderNumber}</span>
 					</h2>
 					<p
 						className={`paragraph ${

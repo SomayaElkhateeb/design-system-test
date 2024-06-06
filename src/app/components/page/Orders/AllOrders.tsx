@@ -1,24 +1,24 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 
-
-
 import TopSectionOrdersPage from './TopSectionOrdersPage';
 import { useTranslation } from 'react-i18next';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import OrdersTable from './OrdersTable';
 import { RemoveIcon } from 'src/app/utils/icons';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import OrdersTableMobile from './OrdersTableMobile';
 
 //  setting menus for setting button action
 const settingMenus = [
-	{ id: nanoid(), text: 'Cancel Order', icon: <RemoveIcon className='fill-error' />, },
+	{ id: nanoid(), text: 'Cancel Order', icon: <RemoveIcon className='fill-error' /> },
 ];
 
 export default function AllOrders() {
 	//  hooks
 	const { t } = useTranslation();
 	const [array, setArray] = useState<string[]>([]);
-
+	const { xs } = useResponsive();
 	//  dumy data
 	const orders: OrderInterface[] = [
 		{
@@ -73,6 +73,7 @@ export default function AllOrders() {
 					setArray={setArray}
 					orders={orders}
 				/>
+				{xs && <OrdersTableMobile orders={orders} />}
 			</div>
 		</div>
 	);

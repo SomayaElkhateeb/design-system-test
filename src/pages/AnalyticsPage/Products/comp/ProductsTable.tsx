@@ -4,15 +4,16 @@ import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { getImageUrl } from 'src/app/utils';
-import { AnaylticesProduct } from '../Products';
+import { AnalyticsProduct } from '../Products';
 
 export default function ProductsTable({
 	productsAnalytics,
 	isLoading,
 }: {
-	productsAnalytics: AnaylticesProduct[];
+	productsAnalytics: AnalyticsProduct[];
 	isLoading: boolean;
 }) {
+
 	//  hooks
 	const language = UseLanguage();
 
@@ -74,3 +75,4 @@ export default function ProductsTable({
 		</div>
 	);
 }
+
