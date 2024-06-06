@@ -9,7 +9,7 @@ export default function AnalyticsOrdersTable({
 	ordersAnalytics,
 	isLoading,
 }: {
-	ordersAnalytics: AnaylticesOrder[];
+	ordersAnalytics: AnalyticsOrder[];
 	isLoading: boolean;
 }) {
 	const language = UseLanguage();

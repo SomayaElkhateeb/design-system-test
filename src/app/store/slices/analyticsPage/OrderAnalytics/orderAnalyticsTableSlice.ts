@@ -1,13 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import { AnaylticesOrder } from 'src/pages/AnalyticsPage/Orders/Orders';
 import { getOrderAnalyticsTableReducer } from './orderAnalyticsTableExtraReducers';
-
-import { getProductsAnalyticsTableReducer } from './productsAnalyticsTableExtraReducers';
-import { AnaylticesProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
+import { AnalyticsOrder } from 'src/pages/AnalyticsPage/Orders/AnalyticsOrders';
 
 export interface orderAnalyticsStatus {
-	ordersAnalytics: AnaylticesOrder[];
+	ordersAnalytics: AnalyticsOrder[];
 	isLoading: boolean;
 	error: string | null | unknown;
 }
