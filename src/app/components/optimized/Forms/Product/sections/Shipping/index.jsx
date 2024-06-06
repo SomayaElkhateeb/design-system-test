@@ -13,6 +13,7 @@ import {
 	productShippingMethodCollection,
 	productDimensionUnitCollection,
 	productWeightUnitCollection,
+	productShippingTypeMap,
 } from './utils';
 import { useWatch } from 'react-hook-form';
 import {
@@ -23,46 +24,6 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 import ControllerContainer from 'src/app/components/ui/form/controller-container';
-
-// /*
-// import { z } from 'zod';
-
-// export const productStatesOfTheProductCollection = /** @type {const} */ ([
-// 	'fragile',
-// 	'food',
-// 	'solid',
-// 	'Needs lower temperature',
-// ]);
-// export const productStatesOfTheProductMap =
-// 	/** @type {{ [Key in typeof productStatesOfTheProductCollection[number]]: typeof productStatesOfTheProductCollection[number] }} */ (
-// 		Object.fromEntries(productStatesOfTheProductCollection.map((state) => [state, state]))
-// 	);
-
-// export const productShippingRateCollection = /** @type {const} */ (['fixed rate', 'free shipping']);
-// export const productShippingRateMap =
-// 	/** @type {{ [Key in typeof productShippingRateCollection[number]]: typeof productShippingRateCollection[number] }} */ (
-// 		Object.fromEntries(productShippingRateCollection.map((rate) => [rate, rate]))
-// 	);
-
-// export const productShippingMethodCollection = /** @type {const} */ (['Dhl (main)', 'Aramex']);
-
-// export const productShippingSchema = {
-// 	isShippableOrPickupable: z.boolean().default(true),
-// 	weight: z.coerce.number().min(0),
-// 	weightUnit: z.enum(['kg', 'g', 'lb', 'oz']),
-// 	dimensions: z.object({
-// 		length: z.coerce.number().min(0),
-// 		width: z.coerce.number().min(0),
-// 		height: z.coerce.number().min(0),
-// 	}),
-// 	dimensionUnit: z.enum(['cm', 'm', 'mm', 'in', 'ft']),
-// 	statesOfTheProduct: z.enum(productStatesOfTheProductCollection),
-// 	shippingRate: z.enum(productShippingRateCollection),
-// 	shippingRateValue: z.number().min(0).optional(),
-// 	shippingMethod: z.enum(productShippingMethodCollection),
-// 	// more advanced shipping options???
-// };
-// */
 
 /**
  * @template TFormStore
@@ -75,7 +36,7 @@ function AdvancedShippingOptionsManager(props) {
 	const isFixedRate =
 		useWatch({
 			control: props.formStore.control,
-			name: 'shippingRate',
+			name: 'shipping.rateType',
 		}) === productShippingRateMap['fixed rate'];
 
 	if (!isActive) {
@@ -96,7 +57,7 @@ function AdvancedShippingOptionsManager(props) {
 		<>
 			<FormField
 				formStore={props.formStore}
-				name='statesOfTheProduct'
+				name='shipping.statesOfTheProduct'
 				label={{ children: t('States of the product'), className: 'font-medium text-[1.1rem]' }}
 				render={(field) => {
 					const fieldMap = Object.fromEntries((field.value ?? []).map((rate) => [rate, rate]));
@@ -129,7 +90,7 @@ function AdvancedShippingOptionsManager(props) {
 			/>
 			<FormField
 				formStore={props.formStore}
-				name='shippingRate'
+				name='shipping.rateType'
 				label={{ children: t('Shipping Rate'), className: 'font-medium text-[1.1rem]' }}
 				render={(field) => {
 					return (
@@ -146,9 +107,9 @@ function AdvancedShippingOptionsManager(props) {
 									}`}
 									onClick={() => {
 										if (rate === productShippingRateMap['fixed rate']) {
-											props.formStore.setValue('shippingRateValue', 0);
+											props.formStore.setValue('shipping.rateValue', 0);
 										} else {
-											props.formStore.setValue('shippingRateValue', undefined);
+											props.formStore.setValue('shipping.rateValue', undefined);
 										}
 										field.onChange(rate);
 									}}
@@ -163,7 +124,7 @@ function AdvancedShippingOptionsManager(props) {
 			{isFixedRate && (
 				<FormField
 					formStore={props.formStore}
-					name='shippingRateValue'
+					name='shipping.rateValue'
 					render={(field) => <Input {...field} type='number' />}
 					label={{ children: t('Shipping Rate') }}
 					container={{ className: 'md:w-1/2' }}
@@ -171,7 +132,7 @@ function AdvancedShippingOptionsManager(props) {
 			)}
 			<FormField
 				formStore={props.formStore}
-				name='shippingMethod'
+				name='shipping.method'
 				label={{ children: t('Shipping Method'), className: 'font-medium text-[1.1rem]' }}
 				render={(field) => {
 					return (
@@ -210,8 +171,172 @@ function AdvancedShippingOptionsManager(props) {
  *
  * @param {import('./types').Props<TFormStore>} props
  */
+function OtherProductShippingOptions(props) {
+	const { t } = useTranslation();
+
+	return (
+		<>
+			<div className='flex flex-col gap-4 items-start'>
+				<FormField
+					formStore={props.formStore}
+					name='shipping.weight'
+					label={t('Weight')}
+					render={(field) => (
+						<ControllerContainer
+							end={
+								<FormField
+									formStore={props.formStore}
+									name='shipping.weightUnit'
+									render={(field) => (
+										<Select
+											onValueChange={(value) => {
+												// @ts-ignore
+												props.formStore.setValue('shipping.weightUnit', value);
+											}}
+											value={field.value}
+										>
+											<SelectTrigger
+												id={field.id}
+												className='border-0'
+												style={{
+													minWidth: 2 * 3.5 + 'ch',
+												}}
+											>
+												<SelectValue />
+											</SelectTrigger>
+											<SelectContent>
+												{productWeightUnitCollection.map((item) => {
+													return (
+														<SelectItem key={item} value={item}>
+															{item}
+														</SelectItem>
+													);
+												})}
+											</SelectContent>
+										</Select>
+									)}
+								/>
+							}
+							endSeparator
+						>
+							<Input {...field} type='number' className='border-0' />
+						</ControllerContainer>
+					)}
+				/>
+				<div className='flex items-center text-gray border rounded-md px-2'>
+					<FormField
+						formStore={props.formStore}
+						name='shipping.dimensions.length'
+						render={(field) => (
+							<Input
+								{...field}
+								type='number'
+								className='border-0 px-0'
+								placeholder={t('Length')}
+								style={{ width: t('Length').length * 1.2 + 'ch' }}
+								min='0'
+							/>
+						)}
+					/>
+					<span className='me-8'>x</span>
+					<FormField
+						formStore={props.formStore}
+						name='shipping.dimensions.width'
+						render={(field) => (
+							<Input
+								{...field}
+								type='number'
+								className='border-0 px-0'
+								placeholder={t('Width')}
+								style={{ width: t('Width').length * 1.2 + 'ch' }}
+								min='0'
+							/>
+						)}
+					/>
+					<span className='me-8'>x</span>
+					<FormField
+						formStore={props.formStore}
+						name='shipping.dimensions.height'
+						render={(field) => (
+							<Input
+								{...field}
+								type='number'
+								className='border-0 px-0'
+								placeholder={t('Height')}
+								style={{ width: t('Height').length * 1.2 + 'ch' }}
+								min='0'
+							/>
+						)}
+					/>
+					<span className='me-8'>x</span>
+					<FormField
+						formStore={props.formStore}
+						name='shipping.dimensionUnit'
+						render={(field) => (
+							<Select
+								onValueChange={(value) => {
+									// @ts-ignore
+									props.formStore.setValue('shipping.dimensionUnit', value);
+								}}
+								value={field.value}
+							>
+								<SelectTrigger id={field.id} className='border-0'>
+									<SelectValue />
+								</SelectTrigger>
+								<SelectContent>
+									{productDimensionUnitCollection.map((item) => {
+										return (
+											<SelectItem key={item} value={item}>
+												{item}
+											</SelectItem>
+										);
+									})}
+								</SelectContent>
+							</Select>
+						)}
+					/>
+				</div>
+			</div>
+			<AdvancedShippingOptionsManager formStore={props.formStore} />
+		</>
+	);
+}
+
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
+function VirtualProductShippingOptions(props) {
+	const { t } = useTranslation();
+
+	return (
+		<FormField
+			formStore={props.formStore}
+			name='shipping.downloadLink'
+			render={(field) => <Input {...field} type='url' />}
+			label={{ children: `${t('Download link')} (${t('optional')})` }}
+			container={{ className: 'md:w-1/2 gap-1' }}
+			layout='inline-reversed'
+		/>
+	);
+}
+
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
 export default function ProductFormShippingSection(props) {
 	const { t } = useTranslation();
+	const productType = useWatch({
+		control: props.formStore.control,
+		name: 'productType',
+	});
+	const shippingType = useWatch({
+		control: props.formStore.control,
+		name: 'shipping.type',
+	});
 
 	return (
 		<Card id={props.id}>
@@ -221,7 +346,7 @@ export default function ProductFormShippingSection(props) {
 			<CardContent className='flex flex-col gap-4'>
 				<FormField
 					formStore={props.formStore}
-					name='isShippableOrPickupable'
+					name='shipping.isShippableOrPickupable'
 					container={{ className: 'gap-x-2' }}
 					label={{
 						children: (
@@ -246,128 +371,11 @@ export default function ProductFormShippingSection(props) {
 					)}
 					layout='inline-reversed'
 				/>
-				<div className='flex flex-col gap-4 items-start'>
-					<FormField
-						formStore={props.formStore}
-						name='weight'
-						label={t('Weight')}
-						render={(field) => (
-							<ControllerContainer
-								end={
-									<FormField
-										formStore={props.formStore}
-										name='weightUnit'
-										render={(field) => (
-											<Select
-												onValueChange={(value) => {
-													// @ts-ignore
-													props.formStore.setValue('weightUnit', value);
-												}}
-												value={field.value}
-											>
-												<SelectTrigger
-													id={field.id}
-													className='border-0'
-													style={{
-														minWidth: 2 * 3.5 + 'ch',
-													}}
-												>
-													<SelectValue />
-												</SelectTrigger>
-												<SelectContent>
-													{productWeightUnitCollection.map((item) => {
-														return (
-															<SelectItem key={item} value={item}>
-																{item}
-															</SelectItem>
-														);
-													})}
-												</SelectContent>
-											</Select>
-										)}
-									/>
-								}
-								endSeparator
-							>
-								<Input {...field} type='number' className='border-0' />
-							</ControllerContainer>
-						)}
-					/>
-					<div className='flex items-center text-gray border rounded-md px-2'>
-						<FormField
-							formStore={props.formStore}
-							name='dimensions.length'
-							render={(field) => (
-								<Input
-									{...field}
-									type='number'
-									className='border-0 px-0'
-									placeholder={t('Length')}
-									style={{ width: t('Length').length * 1.2 + 'ch' }}
-									min='0'
-								/>
-							)}
-						/>
-						<span className='me-8'>x</span>
-						<FormField
-							formStore={props.formStore}
-							name='dimensions.width'
-							render={(field) => (
-								<Input
-									{...field}
-									type='number'
-									className='border-0 px-0'
-									placeholder={t('Width')}
-									style={{ width: t('Width').length * 1.2 + 'ch' }}
-									min='0'
-								/>
-							)}
-						/>
-						<span className='me-8'>x</span>
-						<FormField
-							formStore={props.formStore}
-							name='dimensions.height'
-							render={(field) => (
-								<Input
-									{...field}
-									type='number'
-									className='border-0 px-0'
-									placeholder={t('Height')}
-									style={{ width: t('Height').length * 1.2 + 'ch' }}
-									min='0'
-								/>
-							)}
-						/>
-						<span className='me-8'>x</span>
-						<FormField
-							formStore={props.formStore}
-							name='dimensionUnit'
-							render={(field) => (
-								<Select
-									onValueChange={(value) => {
-										// @ts-ignore
-										props.formStore.setValue('dimensionUnit', value);
-									}}
-									value={field.value}
-								>
-									<SelectTrigger id={field.id} className='border-0'>
-										<SelectValue />
-									</SelectTrigger>
-									<SelectContent>
-										{productDimensionUnitCollection.map((item) => {
-											return (
-												<SelectItem key={item} value={item}>
-													{item}
-												</SelectItem>
-											);
-										})}
-									</SelectContent>
-								</Select>
-							)}
-						/>
-					</div>
-				</div>
-				<AdvancedShippingOptionsManager formStore={props.formStore} />
+				{shippingType === productShippingTypeMap.online ? (
+					<VirtualProductShippingOptions formStore={props.formStore} />
+				) : shippingType === productShippingTypeMap.pickup ? (
+					<OtherProductShippingOptions formStore={props.formStore} />
+				) : null}
 			</CardContent>
 		</Card>
 	);

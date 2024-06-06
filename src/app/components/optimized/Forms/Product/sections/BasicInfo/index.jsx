@@ -4,7 +4,6 @@ import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import ProductFormCategoryField from '../../fields/Category';
-import { Props } from './types';
 import ProductFormBrandField from '../../fields/Brand';
 
 /**
@@ -12,7 +11,7 @@ import ProductFormBrandField from '../../fields/Brand';
  *
  * @param {import('./types').Props<TFormStore>} props
  */
-export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFormStore>) {
+export default function ProductFormBasicInfoSection(props) {
 	const { t } = useTranslation();
 
 	return (

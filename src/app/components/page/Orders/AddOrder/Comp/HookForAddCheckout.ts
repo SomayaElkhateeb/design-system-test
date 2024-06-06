@@ -14,7 +14,7 @@ export interface addCheckOutInterface {
 	shipping?: string;
 	fixedRate: string;
 	// ///////////
-	shippingMethod: string;
+	method: string;
 	aramex?: string;
 	dhlStatus?: string;
 	dhlNote?: string;
@@ -28,7 +28,7 @@ export default function useCustomAddCheckOutForm(
 	payment: string,
 	delivery: string,
 	shipping: string,
-	shippingMethod: string,
+	method: string,
 ) {
 	const handelDefaultValue = () => {
 		return {
@@ -47,7 +47,7 @@ export default function useCustomAddCheckOutForm(
 			delivery: 'Pickup',
 			shipping: 'Free shipping',
 			fixedRate: '',
-			shippingMethod: 'DHL (main)',
+			method: 'DHL (main)',
 			aramex: '',
 			dhlStatus: '',
 			dhlNote: '',
@@ -91,9 +91,7 @@ export default function useCustomAddCheckOutForm(
 
 		const shippingMethodValidation = {
 			aramex:
-				shippingMethod === 'aramex'
-					? stringValidation
-					: z.optional(stringValidation).or(z.literal('')),
+				method === 'aramex' ? stringValidation : z.optional(stringValidation).or(z.literal('')),
 		};
 
 		return {
@@ -107,7 +105,7 @@ export default function useCustomAddCheckOutForm(
 			...shippingValidation,
 			shipping: z.optional(stringValidation).or(z.literal('')),
 			...shippingRateValidation,
-			shippingMethod: stringValidation,
+			method: stringValidation,
 			...shippingMethodValidation,
 			dhlStatus: stringValidation,
 			dhlNote: stringValidation,

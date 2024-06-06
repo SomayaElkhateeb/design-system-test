@@ -12,6 +12,14 @@ import { ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
 import NewProductWrapper from '../_comps/Wrapper';
+import { productTypeMap } from 'src/app/components/optimized/Forms/Product/config';
+import {
+	productDimensionUnitMap,
+	productShippingMethodMap,
+	productShippingRateMap,
+	productShippingTypeMap,
+	productWeightUnitMap,
+} from 'src/app/components/optimized/Forms/Product/sections/Shipping/utils';
 
 const productsSections = [
 	{
@@ -68,15 +76,35 @@ export default function SimpleProductPage() {
 			console.log(values);
 		},
 		defaultValues: {
+			productType: productTypeMap.simple,
 			bulkPrices: [],
+			shipping: {
+				type: productShippingTypeMap.pickup,
+				statesOfTheProduct: [],
+				isShippableOrPickupable: true,
+				weightUnit: productWeightUnitMap.kg,
+				dimensionUnit: productDimensionUnitMap.cm,
+				rateType: productShippingRateMap['fixed rate'],
+				rateValue: 0,
+				method: productShippingMethodMap['Dhl (main)'],
+				weight: 0,
+				dimensions: {
+					length: 0,
+					width: 0,
+					height: 0,
+				},
+			},
 			isTaxable: true,
-			statesOfTheProduct: [],
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
-			isShippableOrPickupable: true,
-			weightUnit: 'kg',
-			dimensionUnit: 'cm',
-			branches: [{ id: '1', name: 'Main Branch', quantity: 0 }],
+			branches:
+				// TODO: Remove this when branches feature is ready
+				// This is a temporary test data
+				// For development purposes, we are adding a default branch
+				// and should be removed when we have the branches feature ready
+				process.env.NODE_ENV === 'development'
+					? [{ id: '1', name: 'Main Branch', quantity: 0 }]
+					: [],
 			metaKeywords: [],
 			options: [],
 			variations: [],
