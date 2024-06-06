@@ -6,13 +6,7 @@ import BaseTable, {
 import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
 
-export default function CustomersTable({
-	customersAnalytics,
-	isLoading,
-}: {
-	customersAnalytics: AnaylticesCustomer[];
-	isLoading: boolean;
-}) {
+
 
 export default function CustomersTable({ tableData }: { tableData: AnalyticsCustomer[] }) {
 
