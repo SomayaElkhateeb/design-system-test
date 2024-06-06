@@ -1,27 +1,27 @@
 import { useParams } from 'react-router-dom';
-import Orders from '../Orders/Orders';
-import Products from '../Products/Products';
-import Overview from '../Overview/Overview';
-import Customers from '../Customers/Customers';
-import Integrations from '../Integrations/Integrations';
+import AnalyticsOrders from '../Orders/AnalyticsOrders';
+import AnalyticsProducts from '../Products/AnalyticsProducts';
+import AnalyticsOverview from '../Overview/AnalyticsOverview'
+import AnalyticsCustomers from '../Customers/AnalyticsCustomers';
+import AnalyticsIntegrations from '../Integrations/AnalyticsIntegrations';
 
 export default function AnalyticsTabs() {
 	const { tab } = useParams();
-	
+
 	switch (tab) {
 		case 'orders':
-			return <Orders />;
+			return <AnalyticsOrders />;
 		case 'products':
-			return <Products />;
+			return <AnalyticsProducts />;
 		case 'overview':
-			return <Overview />;
+			return <AnalyticsOverview />;
 		case 'customers':
-			return <Customers />;
+			return <AnalyticsCustomers />;
 		case 'integrations':
-			return <Integrations />;
+			return <AnalyticsIntegrations />;
 
 		default:
-			return <Orders />;
+			return <AnalyticsOrders />;
 	}
 }
 

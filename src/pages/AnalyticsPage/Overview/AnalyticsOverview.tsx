@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 import ProductHighlights from 'src/pages/HomePage/comp/ProductHighlights';
 
-const Overview = () => {
+const AnalyticsOverview = () => {
 	//  hooks
 	const { t } = useTranslation();
 
@@ -94,13 +94,13 @@ const Overview = () => {
 	);
 };
 
-export default Overview;
+export default AnalyticsOverview;
 
 const RecentActivity = () => {
 	const { t } = useTranslation();
 
 	return (
-		<div className='grid gap-5 bg-white rounded-xl border border-borders-lines p-5'>
+		<div className='grid gap-5 cardDetails-sharedClass p-5'>
 			<h2 className='title'>{t('Recent activity')}</h2>
 			<div className='flex gap-4 flex-wrap'>
 				{data.statsData.slice(0, 3).map((item, index) => (

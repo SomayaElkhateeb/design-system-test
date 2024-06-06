@@ -32,7 +32,7 @@ export default function OrderItem({ order }: { order: Order }) {
 
 	return (
 		<div key={id} className='flex justify-between items-start py-0.5'>
-			<div className=' w-[75%] flex justify-between gap-3'>
+			<div className=' w-[75%] flex  gap-3'>
 				<Avatar
 					variant='user'
 					firstName={firstName}

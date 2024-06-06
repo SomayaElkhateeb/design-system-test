@@ -18,7 +18,7 @@ export interface AnalyticsOrder {
 	delivered: number;
 	returned_quantity: number;
 }
-export default function Orders() {
+export default function AnalyticsOrders() {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();

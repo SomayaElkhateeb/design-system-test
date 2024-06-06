@@ -1,6 +1,6 @@
 export { default as AnalyticsTabs } from './AnalyticsTabs';
-export { default as Orders } from '../Orders/Orders';
-export { default as Products } from '../Products/Products';
-export { default as Overview } from '../Overview/Overview';
-export { default as Customers } from '../Customers/Customers';
-export { default as Integrations } from '../Integrations/Integrations';
+export { default as Orders } from '../Orders/AnalyticsOrders';
+export { default as Products } from '../Products/AnalyticsProducts';
+export { default as Overview } from '../Overview/AnalyticsOverview';
+export { default as Customers } from '../Customers/AnalyticsCustomers';
+export { default as Integrations } from '../Integrations/AnalyticsIntegrations';

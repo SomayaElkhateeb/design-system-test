@@ -1,4 +1,4 @@
-import { AnalyticsOrder } from '../Orders';
+import { AnalyticsOrder } from '../AnalyticsOrders';
 
 export default function OrdersTableMobile({ tableData }: { tableData: AnalyticsOrder[] }) {
 	return (
