@@ -3,9 +3,9 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
-import { AnaylticesOrder } from '../Orders';
+import { AnalyticsOrder } from '../Orders';
 
-export default function OrdersTable({ tableData }: { tableData: AnaylticesOrder[] }) {
+export default function OrdersTable({ tableData }: { tableData: AnalyticsOrder[] }) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -30,7 +30,6 @@ export default function OrdersTable({ tableData }: { tableData: AnaylticesOrder[
 						item: e,
 						elements: [
 							<GlobalTableCell>{e.day}</GlobalTableCell>,
-
 							<GlobalTableCell>{e.orders}</GlobalTableCell>,
 							<GlobalTableCell>{e.average_units_ordered}</GlobalTableCell>,
 							<GlobalTableCell>{e.average_order_value}</GlobalTableCell>,

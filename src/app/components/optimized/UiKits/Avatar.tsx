@@ -20,22 +20,35 @@ import { getImageUrl } from 'src/app/utils';
 interface AvatarProps {
 	groupCount?: number;
 	variant: 'user' | 'group';
+	fullName?: string;
 	firstName?: string;
 	lastName?: string;
 	imageUrl?: string;
 	size?: 'sm' | 'lg';
 }
-
+export const getInitials = (fullName?: string, firstName?: string, lastName?: string): string => {
+	if (fullName) {
+		return fullName
+			.split(' ')
+			.map((name) => name.charAt(0))
+			.join('');
+	} else if (firstName && lastName) {
+		return `${firstName.charAt(0)}${lastName.charAt(0)}`;
+	}
+	return '';
+};
 export default function Avatar({
 	groupCount = 0,
 	variant,
 	firstName = '',
 	lastName = '',
+	fullName = '',
 	imageUrl,
 	size,
 }: AvatarProps) {
 	// Generate initials from the first and last name.
-	const initials = `${firstName.charAt(0)}${lastName.charAt(0)}`;
+	// const initials = `${firstName.charAt(0)}${lastName.charAt(0)}`;
+	const initials = getInitials(fullName, firstName, lastName);
 
 	// Determine the count display for group avatars.
 	const count: string = groupCount! > 50 ? `+ ${groupCount}` : `${groupCount}`;
@@ -55,7 +68,7 @@ export default function Avatar({
 					className='w-full h-full'
 				/>
 			) : (
-				<span className='font-semibold text-sec-pressed'>{initials}</span>
+				<span className='font-semibold text-sec-pressed uppercase'>{initials}</span>
 			)}
 		</div>
 	);

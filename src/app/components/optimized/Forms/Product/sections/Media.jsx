@@ -166,10 +166,10 @@ const tabsItems = [
 	},
 ];
 
-/** @param {{ formStore: import("..").ProductFormStore; }} props */
+/** @param {{ formStore: import("..").ProductFormStore; id?: string; }} props */
 export default function ProductFormMediaSection(props) {
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardContent>
 				<TabsBuilder items={tabsItems} sharedProps={{ formStore: props.formStore }} />
 			</CardContent>

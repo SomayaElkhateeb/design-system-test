@@ -53,9 +53,9 @@ export default function AllCustomers() {
 	return (
 		<>
 			<div className='flex-col-top-section-pages'>
-				{/*  top section */}
+				{/* top section */}
 				<div className='topTable'>
-					{/*  add customers button */}
+					{/* add customers button */}
 					<Button
 						variant='primary'
 						LeftIcon={IoIosAddCircle}
