@@ -25,6 +25,9 @@ export { default as Nested_pages_SettingsConfig } from './SettingsPage/Nested_Se
 export { default as AppsTabs } from './AppsPage/comp/AppsTabs';
 export { default as CustomerInfo } from './CustomerInfoPage/CustomerInfo';
 export { default as EmailForm } from './MarketingPage/EmailForm/EmailForm';
+export { default as ConfigurableProductPage } from './ProductsPage/New/Configurable';
+export { default as SimpleProductPage } from './ProductsPage/New/Simple';
+
 
 // SubComponent
 export { default as SuccessfullyPurchased } from 'src/app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
