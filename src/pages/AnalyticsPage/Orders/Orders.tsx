@@ -7,8 +7,10 @@ import data from '../comp/data.json';
 import OrdersTable from './comp/OrdersTable';
 import { useTranslation } from 'react-i18next';
 import { getNumericValue, parseDate } from 'src/app/utils';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import OrdersTableMobile from './comp/OrdersTableMobile';
 
-export interface AnaylticesOrder {
+export interface AnalyticsOrder {
 	day: string;
 	orders: number;
 	average_units_ordered: number;
@@ -19,6 +21,8 @@ export interface AnaylticesOrder {
 export default function Orders() {
 	//  hooks
 	const { t } = useTranslation();
+	const { xs } = useResponsive();
+
 	const ordersSortMenus = [
 		{ text: t('Date Added') },
 		{ text: t('Date (Oldest)') },
@@ -34,7 +38,7 @@ export default function Orders() {
 		{ text: t('Returned quantity Ascending') },
 	];
 
-	const ordersSortFunctions: Record<string, (a: AnaylticesOrder, b: AnaylticesOrder) => number> = {
+	const ordersSortFunctions: Record<string, (a: AnalyticsOrder, b: AnalyticsOrder) => number> = {
 		[t('Date Added')]: (a, b) => parseDate(b.day) - parseDate(a.day),
 		[t('Date (Oldest)')]: (a, b) => parseDate(a.day) - parseDate(b.day),
 		[t('Orders Descending')]: (a, b) => b.orders - a.orders,
@@ -53,12 +57,12 @@ export default function Orders() {
 		[t('Returned quantity Ascending')]: (a, b) => a.returned_quantity - b.returned_quantity,
 	};
 	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
-		useAnalyticsData<AnaylticesOrder>(data.ordersAnalyticsTable, ordersSortFunctions);
+		useAnalyticsData<AnalyticsOrder>(data.ordersAnalyticsTable, ordersSortFunctions);
 
 	return (
 		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
-			<ColumnChart percentage="5" />
+			<ColumnChart percentage='5' />
 			<AnalyticsTableActions
 				data={tableData}
 				sortMenus={ordersSortMenus}
@@ -68,6 +72,7 @@ export default function Orders() {
 			/>
 			{/* <Table data={tableData} headers={ordersTableHeaders}/> */}
 			<OrdersTable tableData={tableData} />
+			{xs && <OrdersTableMobile tableData={tableData} />}
 		</div>
 	);
 }

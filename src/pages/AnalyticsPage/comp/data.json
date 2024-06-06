@@ -59,7 +59,7 @@
 	],
 	"latestOrders": [
 		{
-			"id": 1,
+			"id": "1",
 			"imageUrl": "images/profile.png",
 			"firstName": "walied",
 			"lastName": "sayed",
@@ -70,7 +70,7 @@
 			"date": "5/6/2021"
 		},
 		{
-			"id": 2,
+			"id": "2",
 			"firstName": "Ahmed",
 			"lastName": "Rady",
 			"orderStatus": "Canceled",
@@ -80,7 +80,7 @@
 			"date": "5/6/2021"
 		},
 		{
-			"id": 3,
+			"id": "3",
 			"imageUrl": "images/profile.png",
 			"firstName": "Samy",
 			"lastName": "Eslam",
@@ -91,7 +91,7 @@
 			"date": "5/6/2021"
 		},
 		{
-			"id": 4,
+			"id": "4",
 			"firstName": "Magdy",
 			"lastName": "Salem",
 			"orderStatus": "Paid",
@@ -101,7 +101,7 @@
 			"date": "5/6/2021"
 		},
 		{
-			"id": 5,
+			"id": "5",
 			"imageUrl": "images/profile.png",
 			"firstName": "walied",
 			"lastName": "sayed",

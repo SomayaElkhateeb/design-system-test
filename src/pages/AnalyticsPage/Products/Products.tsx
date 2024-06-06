@@ -8,7 +8,9 @@ import ProductsTable from './comp/ProductsTable';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsTable } from 'src/app/store/slices/productsPage/productsTable/productsTableAsyncThunks';
 import { useEffect } from 'react';
-export interface AnaylticesProduct {
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import ProductsTableMobile from './comp/ProductsTableMobile';
+export interface AnalyticsProduct {
 	id: string;
 	product_name: string;
 	category: string;
@@ -24,6 +26,7 @@ const Products = () => {
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
+	const { xs } = useResponsive();
 	//  selectors
 	const { isLoading, products, error } = useSelector((state) => state.products);
 
@@ -47,7 +50,7 @@ const Products = () => {
 	];
 	const productsSortFunctions: Record<
 		string,
-		(a: AnaylticesProduct, b: AnaylticesProduct) => number
+		(a: AnalyticsProduct, b: AnalyticsProduct) => number
 	> = {
 		[t('Quantity Descending')]: (a, b) => b.quantity - a.quantity,
 		[t('Quantity Ascending')]: (a, b) => a.quantity - b.quantity,
@@ -63,7 +66,7 @@ const Products = () => {
 		[t('Returns Ascending')]: (a, b) => a.returns - b.returns,
 	};
 	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
-		useAnalyticsData<AnaylticesProduct>(data.productsAnalyticsTable, productsSortFunctions);
+		useAnalyticsData<AnalyticsProduct>(data.productsAnalyticsTable, productsSortFunctions);
 	return (
 		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
@@ -76,6 +79,7 @@ const Products = () => {
 				documentTitle='Products Table Data'
 			/>
 			<ProductsTable tableData={tableData} />
+			{xs && <ProductsTableMobile tableData={tableData} />}
 		</div>
 	);
 };
