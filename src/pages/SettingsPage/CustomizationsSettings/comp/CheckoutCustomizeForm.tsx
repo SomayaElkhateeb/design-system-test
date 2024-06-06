@@ -10,9 +10,9 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 	const { t } = useTranslation();
 
 	return (
-		<div className='global-cards grid grid-cols-2'>
+		<div className='global-cards grid space-1 sm:grid-cols-2 grid-cols-1'>
 			<div className='col-span-2 flex-col-top-section-pages gap-[.5rem]'>
-				<h2 className='title '>{t('Checkout')}</h2>
+				<h2 className='title'>{t('Checkout')}</h2>
 				<p className='paragraph'>{t('Customize the way you want your customers to check out')}</p>
 			</div>
 			<FormSwitchField<CustomizationsTypes>
@@ -29,6 +29,7 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 			/>
 			<div className='col-span-1'>
 				<FormField
+				required
 					formStore={formStore}
 					name='minimumOrderSubtotal'
 					label={t('Minimum order subtotal')}
