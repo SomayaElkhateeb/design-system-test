@@ -21,7 +21,7 @@ import CustomTableBodyCheckbox from '../Customers/CustomTableBodyChckbox';
 import { CiLocationOn } from 'react-icons/ci';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 
-export default function OrdersTable({
+export default function AllOrdersTable({
 	orders,
 	array,
 	setArray,
