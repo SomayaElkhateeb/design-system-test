@@ -1,14 +1,14 @@
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
 
-import TopSectionOrdersPage from './TopSectionOrdersPage';
-import { useTranslation } from 'react-i18next';
-import { OrderInterface } from 'src/app/interface/OrderInterface';
-import OrdersTable from './OrdersTable';
-import { RemoveIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import OrdersTableMobile from './AllOrdersTableMobile';
+
 import AllOrdersTableMobile from './AllOrdersTableMobile';
+import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
+import AllOrdersTable from './AllOrdersTable';
+import { RemoveIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { OrderInterface } from 'src/app/interface/OrderInterface';
+import TopSectionOrdersPage from './TopSectionOrdersPage';
 
 //  setting menus for setting button action
 const settingMenus = [
@@ -68,13 +68,23 @@ export default function AllOrders() {
 
 				{/*  table section */}
 
-				<OrdersTable
+				<AllOrdersTable
 					settingMenus={settingMenus}
 					array={array}
 					setArray={setArray}
 					orders={orders}
 				/>
-				{xs && <AllOrdersTableMobile orders={orders} />}
+
+			
+
+				{xs && (
+					<>
+						<AllOrdersTableMobile orders={orders} />
+						<AddButtonMobile path='/order/addOrder' />
+					</>
+				)}
+
+
 			</div>
 		</div>
 	);

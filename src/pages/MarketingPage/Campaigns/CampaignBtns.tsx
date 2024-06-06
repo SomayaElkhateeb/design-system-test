@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import ActionsButtonsCampains from './ActionsButtonsCampains';
 import { RefObject } from 'react';
 import ActionHandler from 'src/app/utils/ActionMethods';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 interface CampaignBtnsInterface {
 	selectedOption: string;
@@ -26,6 +28,7 @@ const CampaignBtns = ({
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 
 	const sortMenus = [
 		{ id: nanoid(), text: 'Campaign (A-Z)' },
@@ -64,6 +67,7 @@ const CampaignBtns = ({
 				>
 					{!activity ? t('Add Campaign') : t('Add Activity')}
 				</Button>
+				{xs && <AddButtonMobile path='/marketing/campaigns/addCampaign' />}
 
 				<ActionsButtonsCampains
 					sortMenus={sortMenus}

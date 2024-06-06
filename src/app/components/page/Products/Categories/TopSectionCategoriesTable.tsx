@@ -14,10 +14,13 @@ import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import AddBrandItem from '../Brands/AddBrandItem';
 import { useState } from 'react';
 import { RemoveIcon } from 'src/app/utils/icons';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export default function TopSectionCategoriesTable() {
 	//  hooks
 	const { t } = useTranslation();
+	const { xs } = useResponsive();
 	const [openDialog, setOpenDialog] = useState(false);
 	//  custom hook for select arrang item
 
@@ -50,12 +53,12 @@ export default function TopSectionCategoriesTable() {
 		<>
 			<div className='flex-col-top-section-pages'>
 				<div className='topTable'>
-					{/*  left dropdow */}
+					{/*  left dropdown */}
 
 					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
 						{t('Add Category')}
 					</Button>
-
+					{xs && <AddButtonMobile  onClick={() => setOpenDialog(true)} />}
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>
 						<ActionsComp
