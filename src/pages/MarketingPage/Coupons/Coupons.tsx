@@ -5,7 +5,7 @@ import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncT
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
 
-const Coupons: React.FC = () => {
+const Coupons = () => {
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useDispatch();

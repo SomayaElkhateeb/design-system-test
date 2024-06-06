@@ -32,12 +32,12 @@ const StepOneRegister = () => {
 				</LoginSocialGoogle> */}
 				<GoogleLogin
 					onSuccess={(credentialResponse) => {
-						console.log(credentialResponse);
+						// console.log(credentialResponse);
 						let decoded = jwtDecode(credentialResponse);
-						console.log(decoded);
+						// console.log(decoded);
 					}}
 					onError={() => {
-						console.log('Login Failed');
+						// console.log('Login Failed');
 					}}
 				/>
 			</div>

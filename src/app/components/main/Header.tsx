@@ -54,7 +54,7 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 			{showLoading ? (
 				<HeaderLoading />
 			) : (
-				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white'>
+				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white z-40'>
 					<div className='flex items-center gap-3'>
 						<button className='max-lg:hidden' onClick={setIsOpen}>
 							<NavIcon className='fill-pri-dark' />
@@ -145,8 +145,8 @@ const ProfileInfo = () => {
 		<>
 			<div className='flex lg:hidden items-center '>
 				<SearchBtn />
-				<ViewBtn sm={true} />
-				<NotificationBtn sm={true} />
+				<ViewBtn  />
+				<NotificationBtn  />
 			</div>
 			<div className='hidden lg:flex items-center'>
 				<HelpCenterBtn />

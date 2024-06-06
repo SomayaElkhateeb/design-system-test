@@ -37,7 +37,7 @@ export default function TopSectionCategoriesTable() {
 		{
 			id: nanoid(),
 			text: 'Delete all categories',
-			icon: <RemoveIcon className='fill-error' />
+			icon: <RemoveIcon className='fill-error' />,
 		},
 	];
 

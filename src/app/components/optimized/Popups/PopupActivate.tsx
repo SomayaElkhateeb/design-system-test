@@ -27,7 +27,7 @@ export default function PopupActivate({ platform, onActivate, onClose }: Platfor
 	};
 
 	return (
-		<div className='fixed inset-0 z-40 flex items-center justify-center'>
+		<div className='fixed inset-0 z-30 flex items-center justify-center'>
 			{/* Overlay */}
 			<div
 				className='fixed inset-0 bg-black opacity-50'

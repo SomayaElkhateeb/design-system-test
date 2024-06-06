@@ -145,7 +145,7 @@ export default function SeoFormFaqsSection(props) {
 	const { t } = useTranslation();
 
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardHeader>
 				<CardTitle>{t('SEO (Search engine listing preview)')}</CardTitle>
 				<CardDescription className='text-gray-400'>

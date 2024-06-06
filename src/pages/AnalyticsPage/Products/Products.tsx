@@ -6,11 +6,12 @@ import AnalyticsTableActions from '../comp/AnalyticsTableActions';
 import data from '../comp/data.json';
 import ProductsTable from './comp/ProductsTable';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsTable } from 'src/app/store/slices/productsPage/productsTable/productsTableAsyncThunks';
 import { useEffect } from 'react';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import ProductsTableMobile from './comp/ProductsTableMobile';
+import { getProductsAnalyticsTable } from 'src/app/store/slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableAsyncThunks';
 export interface AnalyticsProduct {
+
 	id: string;
 	product_name: string;
 	category: string;
@@ -28,10 +29,12 @@ const Products = () => {
 	const dispatch = useDispatch();
 	const { xs } = useResponsive();
 	//  selectors
-	const { isLoading, products, error } = useSelector((state) => state.products);
+	const { isLoading, productsAnalytics, error } = useSelector(
+		(state) => state.productsAnalytics || {},
+	);
 
 	useEffect(() => {
-		dispatch(getProductsTable());
+		dispatch(getProductsAnalyticsTable());
 	}, [dispatch]);
 
 	const productsSortMenus = [
@@ -66,7 +69,8 @@ const Products = () => {
 		[t('Returns Ascending')]: (a, b) => a.returns - b.returns,
 	};
 	const { arrange, tableData, handleArrangeChange, handleSelect, selectedOption } =
-		useAnalyticsData<AnalyticsProduct>(data.productsAnalyticsTable, productsSortFunctions);
+		useAnalyticsData<AnalyticsProduct>(data.productsAnalyticsTable, productsSortFunctions); // ????
+
 	return (
 		<div className=' grid gap-5'>
 			<CompareBar selectedComparisonOption={selectedOption} handleComparisonChange={handleSelect} />
@@ -78,8 +82,13 @@ const Products = () => {
 				onSelectOption={handleArrangeChange}
 				documentTitle='Products Table Data'
 			/>
-			<ProductsTable tableData={tableData} />
-			{xs && <ProductsTableMobile tableData={tableData} />}
+			<ProductsTable
+				// tableData={tableData}
+				productsAnalytics={productsAnalytics}
+				isLoading={isLoading}
+			/>
+        {xs && <ProductsTableMobile tableData={tableData} />}
+
 		</div>
 	);
 };

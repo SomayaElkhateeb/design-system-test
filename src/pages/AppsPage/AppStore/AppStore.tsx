@@ -34,7 +34,7 @@ export default function AppStore() {
 						selectedCategories={selectedCategories}
 						setSelectedCategories={setSelectedCategories}
 					/>
-					<div className='grid bg-white p-4 rounded-md border border-borders-lines'>
+					<div className='grid global-cards'>
 						<AppsWrapper
 							title={t('Installed')}
 							socialApps={installedApps}

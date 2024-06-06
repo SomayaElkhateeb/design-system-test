@@ -121,10 +121,10 @@ export default function LineChart(props) {
 	};
 	return (
 
-		<div className='p-5 bg-white h-full rounded-xl border border-borders-lines '>
+		<div className='global-cards  h-full'>
 
-			<div className='flex items-center justify-between mb-1'>
-				<h2 className='text-lg font-semibold text-title'>{capitalizeFirstLetter(title)}</h2>
+			<div className='flex items-center justify-between '>
+				<h2 className='title'>{capitalizeFirstLetter(title)}</h2>
 				<div className='flex'>
 					<BackAndroidIcon
 						className={`fill-${negative ? 'error' : 'success'}  ${

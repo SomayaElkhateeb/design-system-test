@@ -147,8 +147,6 @@ function OptionValuesManager(props) {
 				endSeparator
 			>
 				<Select
-					// required={field.required}
-					// name={field.name}
 					onValueChange={(value) => {
 						const newValue = filteredOptionValues.find((item) => item.tempId === value);
 						if (!newValue) {
@@ -161,12 +159,7 @@ function OptionValuesManager(props) {
 					}}
 					value={value}
 				>
-					<SelectTrigger
-						// onBlur={field.onBlur}
-						// disabled={field.disabled}
-						id={reactId}
-						className='border-0'
-					>
+					<SelectTrigger id={reactId} className='border-0'>
 						<SelectValue placeholder={t('Select or add new')} />
 					</SelectTrigger>
 					<SelectContent>
@@ -231,7 +224,6 @@ function AddOptionManager(props) {
 	const getOptionValuesNames = props.getOptionValuesNames;
 
 	const filteredOptionNameCollection = useMemo(() => {
-		// Should use a watched value instead?
 		const values = getOptionValuesNames();
 		if (!values || values.length === 0) {
 			return optionNameCollection;
@@ -323,10 +315,12 @@ function AddOptionManager(props) {
 			<div className='flex gap-4'>
 				<Button
 					variant='primary'
-					onClick={() => {
-						// if (!formStore.formState.isValid) {
-						// 	return;
-						// }
+					onClick={async () => {
+						const isValid = await formStore.trigger();
+
+						if (!isValid) {
+							return;
+						}
 
 						const values = formStore.getValues();
 						props.handleSubmit(values);
@@ -530,12 +524,7 @@ function updateVariations(formStore) {
  * @param {import('./types').Props<TFormStore>} props
  */
 function VariationsManager(props) {
-	// It will be the every possible combination of the options values
 	const { t } = useTranslation();
-	// const { fields, append, remove, prepend, update } = useFieldArray({
-	// 	control: props.formStore.control,
-	// 	name: 'variations',
-	// });
 	const { fields, remove } = useFieldArray({
 		control: props.formStore.control,
 		name: 'variations',
@@ -631,7 +620,7 @@ export default function ProductFormOptionsAndVariationsSection(props) {
 	}, [props.formStore]);
 
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardHeader>
 				<CardTitle>{t('Options & Variations')}</CardTitle>
 				<CardDescription className='text-gray-400'>
@@ -639,8 +628,6 @@ export default function ProductFormOptionsAndVariationsSection(props) {
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='flex flex-col gap-4'>
-				{/* // ??? */}
-				{/* // TODO: To be implemented  */}
 				<OptionsList formStore={props.formStore} />
 				<AddOptionManager
 					getOptionValuesNames={getOptionValuesNames}

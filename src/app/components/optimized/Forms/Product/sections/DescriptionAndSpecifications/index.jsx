@@ -23,7 +23,7 @@ function AddSpecificationManager(props) {
 	const { t } = useTranslation();
 	const [isAdding, setIsAdding] = useState(false);
 	const { formStore, onSubmit } = useForm({
-		schema: productSpecificationsRawSchema,
+		schema: productSpecificationsRawSchema.specification,
 		handleSubmit: props.handleSubmit,
 		defaultValues: {
 			specification: {
@@ -234,7 +234,7 @@ const tabsItems = [
  */
 export default function ProductFormDescriptionAndSpecificationsSection(props) {
 	return (
-		<Card>
+		<Card id={props.id}>
 			<CardContent>
 				<TabsBuilder items={tabsItems} sharedProps={{ formStore: props.formStore }} />
 			</CardContent>

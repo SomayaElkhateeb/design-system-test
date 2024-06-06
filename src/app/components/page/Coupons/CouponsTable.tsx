@@ -50,7 +50,7 @@ export default function CouponsTable({
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 
 	const handleDeleteItem = (id: string) => {
-		console.log('Deleting item:', id);
+		// console.log('Deleting item:', id);
 		dispatch(deleteCoupons(id));
 		setState({ ...state, showDeletePopup: false });
 	};

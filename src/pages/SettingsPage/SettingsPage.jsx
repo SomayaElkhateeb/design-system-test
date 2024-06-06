@@ -124,11 +124,11 @@ const SettingsPage = () => {
 			<TrialBanner
 				free={false}
 				daysLeft={5}
-				title={t('You’re on free trial')}
+				title={t("You're on free trial")}
 				description={t('Subscribe now and open a world with no boundaries')}
 			/>
 
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-5'>
 				{settingsCards.map((card) => (
 					<LinkCards key={card.id} {...card} />
 				))}

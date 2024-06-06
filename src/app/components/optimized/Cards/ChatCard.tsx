@@ -51,22 +51,24 @@ const data = [
  * @returns {JSX.Element} ChatCard component.
  */
 
-const ChatCard = ({ onClose }: { onClose: () => void }) => {
+const ChatCard = ({ menu }: {  menu?: boolean }) => {
 	const language = UseLanguage();
 	const id = 'chat-card';
-	useClickOutsideWithId(id, onClose);
+	
 
 	return (
 		<div
 			id={id}
-			className={`bg-white w-[21rem] pb-5 absolute shadow-lg top-[4.5rem] z-40 max-h-[32rem] overflow-hidden ${
+			className={`bg-white ${
+				menu ? 'h-full w-full' : 'pb-5 shadow-lg z-30 h-[32rem] overflow-y-auto'
+			}  ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-10'
 					: 'rounded-tl-md rounded-bl-md right-10'
 			} `}
 			style={{ overflowY: 'auto' }}
 		>
-			<VerticalTabs onClose={onClose} />
+			<VerticalTabs  />
 		</div>
 	);
 };
@@ -100,7 +102,7 @@ function a11yProps(index: number) {
 	};
 }
 
-function VerticalTabs({ onClose }: { onClose: () => void }) {
+function VerticalTabs() {
 	const [value, setValue] = React.useState(0);
 	const { t } = useTranslation();
 	const language = UseLanguage();
@@ -145,13 +147,13 @@ function VerticalTabs({ onClose }: { onClose: () => void }) {
 				</Tabs>
 			)}
 			<TabPanel value={value} index={0}>
-				<Chat data={data} title={t('Chat')} onClose={onClose} />
+				<Chat data={data} title={t('Chat')}  />
 			</TabPanel>
 			<TabPanel value={value} index={1}>
-				<Chat data={data} title={t('WhatsApp')} onClose={onClose} />
+				<Chat data={data} title={t('WhatsApp')}  />
 			</TabPanel>
 			<TabPanel value={value} index={2}>
-				<Chat data={data} title={t('Messenger')} onClose={onClose} />
+				<Chat data={data} title={t('Messenger')}  />
 			</TabPanel>
 		</Box>
 	);
