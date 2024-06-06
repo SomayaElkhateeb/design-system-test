@@ -11,7 +11,7 @@ const HelpCenterBtn = () => {
 		<PopoverComponenet
 			button={
 				<>
-					<span className='rounded-lg size-[20px] border border-light-2 lg:size-[42px] grid place-content-center'>
+					<span className='roundedParentIcon'>
 						<FaqIcon />
 					</span>
 				</>
