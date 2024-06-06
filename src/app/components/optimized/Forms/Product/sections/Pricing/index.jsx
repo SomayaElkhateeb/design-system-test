@@ -7,6 +7,7 @@ import { Input } from 'src/app/components/ui/input';
 import Button from '../../../../Buttons/Button';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { TrashIcon } from 'lucide-react';
+import ControllerContainer from 'src/app/components/ui/form/controller-container';
 
 /**
  * @template TFormStore
@@ -129,13 +130,15 @@ function ProfitField(props) {
 			name='price'
 			label={t('Profit')}
 			render={() => (
-				<Input
-					value={profit}
-					type='number'
-					disabled
-					readOnly
-					className='grayscale brightness-[0.85]'
-				/>
+				<ControllerContainer start='SAR' startSeparator>
+					<Input
+						value={profit}
+						type='number'
+						disabled
+						readOnly
+						className='border-0 grayscale brightness-[0.85]'
+					/>
+				</ControllerContainer>
 			)}
 		/>
 	);
@@ -160,19 +163,31 @@ export default function ProductFormPricingSection(props) {
 						formStore={props.formStore}
 						name='price'
 						label={t('Price')}
-						render={(field) => <Input {...field} type='number' />}
+						render={(field) => (
+							<ControllerContainer start='SAR' startSeparator>
+								<Input {...field} type='number' className='border-0' />
+							</ControllerContainer>
+						)}
 					/>
 					<FormField
 						formStore={props.formStore}
 						name='discountPrice'
 						label={`${t('Discount price')} (${t('Optional')})`}
-						render={(field) => <Input {...field} type='number' />}
+						render={(field) => (
+							<ControllerContainer start='SAR' startSeparator>
+								<Input {...field} type='number' className='border-0' />
+							</ControllerContainer>
+						)}
 					/>
 					<FormField
 						formStore={props.formStore}
 						name='costPrice'
 						label={`${t('Cost price')} (${t('Optional')})`}
-						render={(field) => <Input {...field} type='number' />}
+						render={(field) => (
+							<ControllerContainer start='SAR' startSeparator>
+								<Input {...field} type='number' className='border-0' />
+							</ControllerContainer>
+						)}
 					/>
 					<ProfitField formStore={props.formStore} />
 					<FormField
