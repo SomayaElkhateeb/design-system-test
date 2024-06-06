@@ -14,10 +14,13 @@ import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 import { useState } from 'react';
 import AddBrandItem from './AddBrandItem';
 import { RemoveIcon } from 'src/app/utils/icons';
-
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 export default function TopSectionBrandsTable() {
 	//  hooks
 	const [openDialog, setOpenDialog] = useState(false);
+	const { xs } = useResponsive();
+
 	const { t } = useTranslation();
 
 	//  custom hook for select arrang item
@@ -42,7 +45,7 @@ export default function TopSectionBrandsTable() {
 		{
 			id: nanoid(),
 			text: 'Delete all brands',
-			icon: <RemoveIcon className='fill-error' />
+			icon: <RemoveIcon className='fill-error' />,
 		},
 	];
 
@@ -60,6 +63,7 @@ export default function TopSectionBrandsTable() {
 					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
 						{t('Add Brand')}
 					</Button>
+					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>

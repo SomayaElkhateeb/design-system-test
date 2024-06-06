@@ -8,7 +8,7 @@ import OrdersTable from './OrdersTable';
 import { RemoveIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import OrdersTableMobile from './OrdersTableMobile';
-
+import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
 //  setting menus for setting button action
 const settingMenus = [
 	{ id: nanoid(), text: 'Cancel Order', icon: <RemoveIcon className='fill-error' /> },
@@ -73,7 +73,13 @@ export default function AllOrders() {
 					setArray={setArray}
 					orders={orders}
 				/>
-				{xs && <OrdersTableMobile orders={orders} />}
+				{xs && (
+					<>
+						<OrdersTableMobile orders={orders} />
+						<AddButtonMobile path='/order/addOrder' />
+					</>
+				)}
+
 			</div>
 		</div>
 	);
