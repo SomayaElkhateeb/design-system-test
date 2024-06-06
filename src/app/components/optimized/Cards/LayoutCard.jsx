@@ -22,5 +22,5 @@
  * ```
  */
 export default function LayoutCard(props) {
-	return <div className='flex flex-col w-full p-2 overflow-hidden bg-white rounded-md shadow-sm'>{props.children}</div>;
+	return <div className='global-cards'>{props.children}</div>;
 }

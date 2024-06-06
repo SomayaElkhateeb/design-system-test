@@ -6,7 +6,9 @@ import InstallCard from './comp/InstallCard';
 import AllAppsView from '../comp/AllAppsView';
 import AppsWrapper from '../comp/AppsWrapper';
 import useAppStore from '../comp/useAppStore';
-import AppsCard from 'src/app/components/page/Cards/AppsCard';
+import { AppsCard } from 'src/app/components/optimized';
+
+
 
 export default function AppStore() {
 	const { t } = useTranslation();

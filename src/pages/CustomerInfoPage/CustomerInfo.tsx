@@ -75,7 +75,7 @@ export default function CustomerInfo() {
 
 					<hr />
 
-					<div className='w-[97%] mx-auto bg-white rounded-[12px] py-[.7rem] border border-[constrained] '>
+					<div className='w-[97%] mx-auto customer-border '>
 						<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
 							<p className='text-[0.7rem]'>
 								Meed Market, 15 Haroon Al Rashied st.

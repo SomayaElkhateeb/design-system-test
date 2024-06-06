@@ -7,7 +7,8 @@ import { OrderInterface } from 'src/app/interface/OrderInterface';
 import OrdersTable from './OrdersTable';
 import { RemoveIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import OrdersTableMobile from './OrdersTableMobile';
+import OrdersTableMobile from './AllOrdersTableMobile';
+import AllOrdersTableMobile from './AllOrdersTableMobile';
 
 //  setting menus for setting button action
 const settingMenus = [
@@ -25,7 +26,7 @@ export default function AllOrders() {
 			id: '#8965742',
 			customer_name: 'mohamed Mostafa',
 			order_status: 'Shipped',
-			date: '24 Apr 2020',
+			date: '24/6/2020',
 			location: 'Riyad',
 			delivery_status: 'Pickup',
 			total: 1000,
@@ -37,7 +38,7 @@ export default function AllOrders() {
 			id: '#8965741',
 			customer_name: 'mohamed Mostafa',
 			order_status: 'Shipped',
-			date: '24 Apr 2020',
+			date: '24/6/2020',
 			location: 'Riyad',
 			delivery_status: 'Pickup',
 			total: 1000,
@@ -49,7 +50,7 @@ export default function AllOrders() {
 			id: '#8965743',
 			customer_name: 'mohamed Mostafa',
 			order_status: 'Shipped',
-			date: '24 Apr 2020',
+			date: '24/6/2020',
 			location: 'Riyad',
 			delivery_status: 'Pickup',
 			total: 1000,
@@ -73,7 +74,7 @@ export default function AllOrders() {
 					setArray={setArray}
 					orders={orders}
 				/>
-				{xs && <OrdersTableMobile orders={orders} />}
+				{xs && <AllOrdersTableMobile orders={orders} />}
 			</div>
 		</div>
 	);

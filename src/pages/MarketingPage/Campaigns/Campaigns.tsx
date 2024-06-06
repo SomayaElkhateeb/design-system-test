@@ -17,11 +17,11 @@ const Campaigns = () => {
 		<>
 			<div className='flex-col-top-section-pages custom_container gap-4'>
 				<CampaignStatus />
-				<div className='flex'>
+				{/* <div className='flex'>
 					<Button variant='primary'>
 						<Link to='/marketing/email-form'>Make Email Form</Link>
 					</Button>
-				</div>
+				</div> */}
 				<CampaignBtns
 					onSelectOption={handleSelect}
 					selectedOption={selectedOption}
