@@ -8,7 +8,7 @@ const RegistrationPage = () => {
 	const [currentTab, setCurrentTab] = useState(0);
 	const [reviewStatus, setReviewStatus] = useState(false);
 
-	const handleTabClick = (index) => {
+	const handleTabClick = (index: number) => {
 		setCurrentTab(index);
 	};
 

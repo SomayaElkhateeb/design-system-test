@@ -10,17 +10,36 @@ import TikTokSetup from '../tiktok/TikTokSetup';
 import { getTikTokSetup } from '../tiktok/_comp/getTikTokSetup';
 import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
-import { VerticalTabs } from 'src/app/components/optimized';
+import { TabX } from 'src/app/components/optimized';
 
 const useMarketingSetup = (platform: string | null) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const hasConfirmed = searchParams.get('add_channel') === 'true';
+
+	const [currentTab, setCurrentTab] = useState(0);
 	const [_, setFinish] = useState(false);
+
+	const handleTabClick = (index: number) => {
+		setCurrentTab(index);
+	};
+
+	const handleNext = () => {
+		if (currentTab < tabs.length - 1) {
+			setCurrentTab(currentTab + 1);
+		}
+	};
+
+	const handlePrev = () => {
+		if (currentTab > 0) {
+			setCurrentTab(currentTab - 1);
+		}
+	};
 
 	const handleFinish = (value: boolean) => {
 		setFinish(value);
 		setSearchParams({ features_manage: 'active' });
 	};
+
 	let title: string;
 	let tabs: [];
 
@@ -50,6 +69,16 @@ const useMarketingSetup = (platform: string | null) => {
 	}
 
 	const renderSetupOrTabs = () => {
+		const Tabs = (
+			<TabX
+				tabs={tabs}
+				currentTab={currentTab}
+				handleNext={handleNext}
+				handlePrev={handlePrev}
+				handleFinish={handleFinish}
+				handleTabClick={handleTabClick}
+			/>
+		);
 		if (!hasConfirmed) {
 			switch (platform) {
 				case 'tikTok':
@@ -61,10 +90,10 @@ const useMarketingSetup = (platform: string | null) => {
 				case 'sendGrid':
 					return <SendgridSetup platform={platform} />;
 				default:
-					return <VerticalTabs tabs={tabs} handleFinish={handleFinish} />;
+					return Tabs;
 			}
 		} else {
-			return <VerticalTabs tabs={tabs} handleFinish={handleFinish} />;
+			return Tabs;
 		}
 	};
 
