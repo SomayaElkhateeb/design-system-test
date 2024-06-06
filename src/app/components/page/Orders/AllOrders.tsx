@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import TopSectionOrdersPage from './TopSectionOrdersPage';
+import { nanoid } from 'nanoid';
 
 //  setting menus for setting button action
 const settingMenus = [
