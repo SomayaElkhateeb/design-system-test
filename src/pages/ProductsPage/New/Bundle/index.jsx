@@ -20,8 +20,14 @@ import {
 	productShippingTypeMap,
 	productWeightUnitMap,
 } from 'src/app/components/optimized/Forms/Product/sections/Shipping/utils';
+import ProductFormBundleSection from 'src/app/components/optimized/Forms/Product/sections/Bundle';
 
 const productsSections = [
+	{
+		Elem: ProductFormBundleSection,
+		id: 'ProductFormBundleSection',
+		title: 'bundle',
+	},
 	{
 		Elem: ProductFormMediaSection,
 		id: 'ProductFormMediaSection',
@@ -77,6 +83,10 @@ export default function BundleProductPage() {
 		},
 		defaultValues: {
 			productType: productTypeMap.bundle,
+			bundle: {
+				items: [],
+				isSelectedProductsUnlisted: false,
+			},
 			bulkPrices: [],
 			shipping: {
 				type: productShippingTypeMap.pickup,

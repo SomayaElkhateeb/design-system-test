@@ -40,6 +40,9 @@ import {
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
+import VirtualProductPage from './pages/ProductsPage/New/Virtual';
+import FoodProductPage from './pages/ProductsPage/New/Food';
+import BundleProductPage from './pages/ProductsPage/New/Bundle';
 
 // Route Definitions
 export const routes = [
@@ -117,11 +120,11 @@ export const routes = [
 	// '/products/new/simple'
 	{ path: '/products/new/simple', element: <SimpleProductPage /> },
 	// '/products/new/virtual'
-	{ path: '/products/new/virtual', element: <SimpleProductPage /> },
+	{ path: '/products/new/virtual', element: <VirtualProductPage /> },
 	// '/products/new/food'
-	{ path: '/products/new/food', element: <SimpleProductPage /> },
+	{ path: '/products/new/food', element: <FoodProductPage /> },
 	// '/products/new/bundle'
-	{ path: '/products/new/bundle', element: <SimpleProductPage /> },
+	{ path: '/products/new/bundle', element: <BundleProductPage /> },
 
 	// Settings Routes
 	{

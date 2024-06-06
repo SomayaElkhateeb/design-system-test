@@ -1123,4 +1123,10 @@ export const english = {
 	'Shipping Method': 'Shipping Method',
 	'Less Advanced Options': 'Less Advanced Options',
 	'Download link': 'Download link',
+	'Available on store': 'Available on store',
+	'Featured on the front page': 'Featured on the front page',
+	'Products in bundle (at least 2)': 'Products in bundle (at least 2)',
+	'Un list selected products': 'Un list selected products',
+	'Hide all selected products from showing in store individually':
+		'Hide all selected products from showing in store individually',
 };

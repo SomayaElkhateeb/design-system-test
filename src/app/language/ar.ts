@@ -1111,4 +1111,10 @@ export const arabic = {
 	'Shipping Method': 'طريقة الشحن',
 	'Shipping Rate': 'سعر الشحن',
 	'States of the product': 'حالات المنتج',
+	'Available on store': 'متوفر في المتجر',
+	'Featured on the front page': 'معروض على الصفحة الأمامية',
+	'Products in bundle (at least 2)': 'المنتجات في حزمة (على الأقل 2)',
+	'Un list selected products': 'إلغاء قائمة المنتجات المحددة',
+	'Hide all selected products from showing in store individually':
+		'إخفاء جميع المنتجات المحددة من الظهور في المتجر بشكل فردي',
 } satisfies typeof english;
