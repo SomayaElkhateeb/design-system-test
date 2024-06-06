@@ -1,7 +1,7 @@
+import { z } from 'zod';
 import { useState } from 'react';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
 import {
 	Select,
 	SelectContent,
@@ -13,19 +13,22 @@ import FormField from 'src/app/components/ui/form/field';
 import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
+import AddCustomerinAddOrder from './Comp/AddCustomerInAddOrder';
 
 interface IAddOrder {
 	selectCustomer?: string;
 }
+
+const addOrderSchema = {
+	selectCustomer: z.string().min(1),
+};
+const handelDefaultValue = {
+	selectCustomer: '',
+};
+
 export default function Customer() {
 	const { t } = useTranslation();
 	const [addNewCustomer, setAddNewCustomer] = useState(false);
-	const addOrderSchema = {
-		selectCustomer: z.optional(z.string().min(1)).or(z.literal('')),
-	};
-	const handelDefaultValue = {
-		selectCustomer: '',
-	};
 
 	const handleSubmit: (validatedData: IAddOrder) => void = (values: IAddOrder) => {
 		console.log(values);
@@ -53,7 +56,7 @@ export default function Customer() {
 									name={field.name}
 								>
 									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder='search customer' />
+										<SelectValue placeholder={t('search customer')} />
 									</SelectTrigger>
 									<SelectContent>
 										<SelectItem value='design'>Design</SelectItem>
@@ -77,12 +80,21 @@ export default function Customer() {
 
 					<div className='flex-btn-end'>
 						<Button variant='tertiary' className='disabled:text-hint' disabled>
-							{t('Back')}
+							{t('back')}
 						</Button>
 						<Button variant='primary' onClick={onSubmit}>
 							{t('Next')}
 						</Button>
 					</div>
+
+					{addNewCustomer && (
+						<AddCustomerinAddOrder
+							onClose={() => {
+								setAddNewCustomer(false);
+							}}
+							addNewCustomer={addNewCustomer}
+						/>
+					)}
 				</div>
 			</form>
 		</Form>

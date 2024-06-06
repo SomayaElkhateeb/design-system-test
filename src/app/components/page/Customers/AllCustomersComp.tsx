@@ -8,7 +8,12 @@ import { nanoid } from 'nanoid';
 import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-import CustomersTable from './CustomersTable';
+import CustomersTable, { customers } from './CustomersTable';
+import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
+import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
+import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
+
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -16,8 +21,8 @@ export default function AllCustomers() {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
-	//  custom hook for select arrang item
-
+	//  custom hook
+	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
@@ -36,35 +41,66 @@ export default function AllCustomers() {
 		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import customers', icon: <FiUploadCloud className='iconClass' /> },
 	];
+	const settingMenus = [
+		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+		{
+			id: nanoid(),
+			text: 'Delete customer',
+			icon: <RemoveIcon className='fill-error' />,
+		},
+	];
 
 	return (
-		<div className=' flex flex-col gap-[1rem]'>
-			{/*  top section */}
-			<div className='flex justify-between items-center'>
-				{/*  add customers button */}
-				<Button
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-					onClick={() => {
-						navigate('/customers/addCustomer');
-					}}
-				>
-					{t('Add New Customer')}
-				</Button>
+		<>
+			<div className='flex-col-top-section-pages'>
+				{/*  top section */}
+				<div className='topTable'>
+					{/*  add customers button */}
+					<Button
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+						onClick={() => {
+							navigate('/customers/addCustomer');
+						}}
+					>
+						{t('Add New Customer')}
+					</Button>
 
-				{/*  actions filter arrange,... */}
-				<ActionsComp
-					filterMenus={sortMenus}
-					sortMenus={sortMenus}
-					ActionsMenus={ActionsMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+					{/*  actions filter arrange,... */}
+					<ActionsComp
+						HandelopenDrawer={HandelopenDrawer}
+						filter
+						sortMenus={sortMenus}
+						ActionsMenus={ActionsMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</div>
+				<hr />
+
+				{/*  customers table case of not small media */}
+				<CustomersTable settingMenus={settingMenus} />
+
+				{/*  case of small media */}
+				<div className='responsive_pages'>
+					{customers?.map((e, i) => (
+						<CustomersComponenet
+							id={e.id}
+							path='customers'
+							settingMenus={settingMenus}
+							key={i}
+							firstName={e.first_name}
+							lastName={e.last_name}
+							email={e.email}
+						/>
+					))}
+				</div>
 			</div>
-			<hr />
 
-			{/*  customers table */}
-			<CustomersTable />
-		</div>
+			{/* open filter drawer */}
+			{openDrawer && (
+				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+			)}
+		</>
 	);
 }

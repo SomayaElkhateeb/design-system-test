@@ -5,12 +5,12 @@ import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import { MdDelete } from 'react-icons/md';
+
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { FaRegEdit } from 'react-icons/fa';
 import { Switch } from 'src/app/components/ui/switch';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
-import { MoreIcon } from 'src/app/utils/icons';
+import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
@@ -69,7 +69,7 @@ export default function DiscountsTable({
 		{
 			id: nanoid(),
 			text: 'delete',
-			icon: <MdDelete className='text-error text-[1.2rem]' />,
+			icon:<RemoveIcon className='fill-error' />
 		},
 	];
 

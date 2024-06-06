@@ -1,5 +1,5 @@
 export interface option{
-	id:string
+	id?:string
 	text:string
-	icon:React.ReactNode
+	icon?:React.ReactNode
 }

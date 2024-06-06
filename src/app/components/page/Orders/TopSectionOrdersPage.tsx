@@ -11,6 +11,10 @@ import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import FilterSideBar from '../../SideBar/FilterSideBar';
+import FilterOrdersComponent from './FilterOrder/FilterOrdersComponent';
+import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
 export default function TopSectionOrdersPage({
 	addButton,
 	path,
@@ -19,11 +23,12 @@ export default function TopSectionOrdersPage({
 	path: string;
 }) {
 	//  hooks
+
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
-	//  custom hook for select arrang item
-
+	//  custom hook
+	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
@@ -44,29 +49,37 @@ export default function TopSectionOrdersPage({
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
-			<div className='flex-row-global justify-between'>
-				{/*  left dropdow */}
+		<>
+			<div className='flex-col-top-section-pages'>
+				<div className='topTable'>
+					{/*  left dropdow */}
 
-				<Button
-					onClick={() => navigate('/order/addOrder')}
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-				>
-					{addButton}
-				</Button>
-				{/*  actions filter arrange,... */}
-				<div className='flex-row-global  gap-[1.2rem]'>
-					<ActionsComp
-						filterMenus={sortMenus}
-						sortMenus={sortMenus}
-						ActionsMenus={ActionsMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
+					<Button
+						onClick={() => navigate('/order/addOrder')}
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+					>
+						{addButton}
+					</Button>
+					{/*  actions filter arrange,... */}
+					<div className='flex-row-global  gap-[1.2rem]'>
+						<ActionsComp
+							HandelopenDrawer={HandelopenDrawer}
+							filter
+							sortMenus={sortMenus}
+							ActionsMenus={ActionsMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</div>
 				</div>
+				<hr />
 			</div>
-			<hr />
-		</div>
+
+			{/* open filter drawer */}
+			{openDrawer && (
+				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+			)}
+		</>
 	);
 }

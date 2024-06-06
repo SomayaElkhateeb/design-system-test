@@ -4,8 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { CheckBox, HeaderSettings } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import useCustomHookAddCustomerAddresseForm, { AddaddresseInterface } from 'src/app/components/page/CustomerAddresseForm/HookForAddCustomerAddresse';
+import useCustomHookAddCustomerAddresseForm, {
+	AddaddresseInterface,
+} from 'src/app/components/page/CustomerAddresseForm/HookForAddCustomerAddresse';
 import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
@@ -17,21 +20,19 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 import { useForm } from 'src/app/utils/hooks/form';
-import { z } from 'zod';
-
-
 
 export default function AddNewAddresseCustomer() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
+	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
+	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const [sendGift, setSendGift] = useState(false);
 	// ///////////////////
 	// //////////////////
 	const handleSubmit = (values: AddaddresseInterface) => {
 		console.log(values);
-		
 	};
 
 	//  custom hook
@@ -168,6 +169,14 @@ export default function AddNewAddresseCustomer() {
 									render={(field) => <Input {...field} placeholder={'landmark'} />}
 								/>
 							</section>
+						)}
+
+						{selectedOption !== 'Add manually' && (
+							<GoogleMapComponent
+								setLocationEnabled={setLocationEnabled}
+								setDisablePickButton={setDisablePickButton}
+								height='300px'
+							/>
 						)}
 
 						<FormField

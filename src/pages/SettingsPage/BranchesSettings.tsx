@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-import BranchCard from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchCard';
+import BranchCard from 'src/app/components/page/SettingPage/BranchesSettings/BranchesPage/BranchCard';
 export interface Branch {
 	id: number;
 	name: string;

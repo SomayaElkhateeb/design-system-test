@@ -1,10 +1,10 @@
 export interface Product{
-    title:string
+    name:string
     category:string
-    option:number
-    img:string
-    SKU:string
-    id:string
+    option?:number
+    imageUrl:string
+    SKU?:string
+    id?:string
     quantity:number
     price:number
 }

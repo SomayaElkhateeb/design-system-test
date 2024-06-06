@@ -1,27 +1,26 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
+import { AddCustomerPageSchema, AddCustomerPageSchemaValues } from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
 import GeneralInfoCustomerForm from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
-import useCustomHookAddCustomerForm, {
-	addCustomerInterface,
-} from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
+import useCustomHookAddCustomerForm from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
 import PrimaryAddresseForm from 'src/app/components/page/AddCustomer/PrimaryAddresseForm';
 import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
+import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
 export default function AddCustomerPage() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const handleSubmit = (values: addCustomerInterface) => {
+	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
 		console.log(values);
 		// handleClose();
 	};
 
 	//  custome hook
-	const { generalInfoSchema, handelDefaultValue } = useCustomHookAddCustomerForm();
+	const { handelDefaultValue } = useCustomHookAddCustomerForm();
 	// ////////////////////////////////
 	const { formStore, onSubmit } = useForm({
-		schema: generalInfoSchema,
+		schema: AddCustomerPageSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});

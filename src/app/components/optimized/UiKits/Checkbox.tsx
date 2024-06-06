@@ -47,6 +47,7 @@ export default function CheckBox({
 	...props
 }: CheckBoxProps) {
 	function renderCheckboxIcon() {
+		// console.log('checked', checked);
 		if (variant === 'minus' && checked) {
 			return <p className='flex items-center justify-center w-full h-full text-white'>-</p>;
 		}

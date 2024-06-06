@@ -14,14 +14,14 @@ interface MenuSelectProps {
  * @returns {JSX.Element} - Rendered component.
  */
 const MenuSelect: React.FC<MenuSelectProps> = ({ options }) => {
-	console.log('options', options);
+	// console.log('options', options);
 	const language = UseLanguage();
 
 	return (
 		<ul
 			className={`rounded shadow-md p-2 flex flex-col min-w-48 bg-white w-fit absolute top-16 ${
 				language === 'ar' ? 'left-0' : 'right-0'
-			}  z-50`}
+			}  z-30`}
 		>
 			{options.map((option) => (
 				<MenuItem

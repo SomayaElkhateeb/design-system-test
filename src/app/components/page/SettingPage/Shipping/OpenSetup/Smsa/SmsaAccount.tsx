@@ -7,16 +7,16 @@ import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 export default function SmsaAccount() {
 	const { t } = useTranslation();
 	return (
-		<div className='cardDetails-sharedClass p-5 w-3/4'>
+		<div className='cardDetails-sharedClass p-5 w-full lg:w-3/4'>
 			<img src={getImageUrl('companies/express.svg')} />
 			<p className='text-title text-sm pt-1.5 pb-3 w-[65%]'>
-				{t('Make sure you have SMSA account if you have an account you can proceed,if you don’t,')}
+				{t("Make sure you have SMSA account if you have an account you can proceed,if you don't,")}
 				<span className='btn-lin p-0'> {t('Create an account')} </span>
 				{t('and proceed')}
 			</p>
 
 			<h3 className='text-title font-semibold'>{t('What you need')}</h3>
-			<div className='flex gap-[6rem] py-3'>
+			<div className='flex flex-col gap-5 lg:flex-row lg:gap-[6rem] py-3'>
 				<Choose
 					ChooseOne={t('National ID')}
 					ChooseTwo={t('Residency identification')}

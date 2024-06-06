@@ -1,4 +1,3 @@
-import { FieldValues, UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 
@@ -9,15 +8,18 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import { languageSettingsInterface } from '../LanguageSettings/HookForLanguageSettings';
 
+import { InferredZodSchema } from 'src/app/utils/hooks/form';
 
-export default function AdminOrLanguageDefaults({
+import { ValidFormStoreByValues } from 'src/utils/types';
+import { adminSchema } from './AdminSchema';
+
+export default function AdminOrLanguageDefaults<TFormStore>({
 	formStore,
 	title,
 	language,
 }: {
-	formStore: UseFormReturn<languageSettingsInterface>;
+	formStore: ValidFormStoreByValues<TFormStore, InferredZodSchema<typeof adminSchema>>;
 	title: string;
 	language?: boolean;
 }) {

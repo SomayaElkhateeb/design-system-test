@@ -6,11 +6,11 @@ import { Button } from '..';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
-	sortMenus: { text: string }[];
-	selectedOption: string;
+	sortMenus: { id: string; text: string }[];
+	selectedOption?: string;
 	variant?: any;
 	// handelSelect: () => void;
-	handleSelect: (option: string) => void;
+	handleSelect?: (option: string) => void;
 }
 
 export default function CompareButton({ sortMenus, selectedOption, variant, handleSelect }: Props) {

@@ -13,10 +13,10 @@ interface IData {
 
 const Checkout: React.FC<IData> = ({ title, form, contain, children }) => {
 	return (
-		<div className='cardDetails-sharedClass p-5 flex flex-col gap-2'>
+		<div className='cardDetails-sharedClass p-5 flex flex-col gap-4'>
 			<div className='flex justify-between items-center'>
-				<h3 className='text-title font-semibold'>{title}</h3>
-				{children}
+				<h3 className='title'>{title}</h3>
+				{form ? '' : children}
 			</div>
 			{form ? contain : <Content />}
 		</div>

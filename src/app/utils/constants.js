@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import { getImageUrl } from '.';
-
 // IMPORT ICONS FROM icons.jsx
 import {
 	DashboardIcon,
@@ -19,6 +18,8 @@ import {
 	ExportIcon,
 	RemoveIcon,
 	ShippingIcon,
+	ChatIcon,
+	NavIcon,
 } from './icons';
 
 //  SIDEBAR
@@ -26,6 +27,25 @@ export const sidebarLinks = [
 	{ id: nanoid(), path: '/', name: 'Home', Icon: DashboardIcon },
 	{ id: nanoid(), path: 'products', name: 'Products', Icon: ProductsIcon },
 	{ id: nanoid(), path: 'orders', name: 'Orders', Icon: OrdersIcon },
+	{ id: nanoid(), path: 'customers', name: 'Customers', Icon: CustomersIcon },
+	{ id: nanoid(), path: 'analytics', name: 'Analytics', Icon: AnalyticsIcon },
+	{ id: nanoid(), path: 'reviews', name: 'Reviews', Icon: ReviewsIcon },
+	{ id: nanoid(), path: 'pages', name: 'Pages', Icon: PagesIcon },
+	{ id: nanoid(), path: 'marketing', name: 'Marketing', Icon: AdsIcon },
+	{ id: nanoid(), path: 'apps', name: 'Apps', Icon: AppsIcon },
+	{ id: nanoid(), path: 'services', name: 'Services', Icon: ServicesIcon },
+	{ id: nanoid(), path: 'settings', name: 'Settings', Icon: SettingsIcon },
+	{ id: nanoid(), path: 'store', name: 'Store', Icon: StoresIcon },
+];
+
+// 	sidebar mobile
+export const sidebarLinksMob = [
+	{ id: nanoid(), path: '/', name: 'Home', Icon: DashboardIcon },
+	{ id: nanoid(), path: 'products', name: 'Products', Icon: ProductsIcon },
+	{ id: nanoid(), path: 'orders', name: 'Orders', Icon: OrdersIcon },
+];
+
+export const sidebarLinksMobDrawer = [
 	{ id: nanoid(), path: 'customers', name: 'Customers', Icon: CustomersIcon },
 	{ id: nanoid(), path: 'analytics', name: 'Analytics', Icon: AnalyticsIcon },
 	{ id: nanoid(), path: 'reviews', name: 'Reviews', Icon: ReviewsIcon },
@@ -247,7 +267,7 @@ export const socialMediaContent = {
 			{
 				title: 'Personalize Campaigns',
 				description:
-					'Reach the right customers at the right time with Dynamic Ads; get set up from either Snapchat’s Ads Manager or Shopify’s Marketing tab.',
+					"Reach the right customers at the right time with Dynamic Ads; get set up from either Snapchat's Ads Manager or Shopify's Marketing tab.",
 			},
 		],
 		status: 'free',
@@ -283,7 +303,7 @@ export const productStatus = [
 		id: nanoid(),
 		Icon: ShippingIcon,
 		text: 'Simple Product',
-		description: 'You don’t need advanced options to fill',
+		description: "You don't need advanced options to fill",
 		detailed: true,
 	},
 	{

@@ -8,13 +8,14 @@ import ProductsAnalyticsCard from './comp/ProductsAnalyticsCard';
 import AnalyticsReviews from './comp/AnalyticsReviews';
 import { useTranslation } from 'react-i18next';
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
+import ProductHighlights from 'src/pages/HomePage/comp/ProductHighlights';
 
 const Overview = () => {
 	//  hooks
 	const { t } = useTranslation();
 
 	return (
-		<div className=' grid gap-5'>
+		<div className='grid gap-5'>
 			<AnalyticsComparison />
 			<div className='grid grid-cols-1 gap-5'>
 				{/* 1 */}
@@ -30,10 +31,10 @@ const Overview = () => {
 
 				{/* 2 */}
 				<div className='grid col-span-1 gap-5 grid-cols-9 max-xl:grid-cols-6 max-xl:grid-rows-2'>
-					<div className='col-span-3'>
+					<div className='md:col-span-3 col-span-6'>
 						<ChannelChart title={t('sales by channel')} percentage='50' />
 					</div>
-					<div className='col-span-3'>
+					<div className='md:col-span-3 col-span-6'>
 						<ChannelChart
 							title={t('sales by device')}
 							percentage='36.5'
@@ -43,7 +44,7 @@ const Overview = () => {
 							series={[31, 31, 41]}
 						/>
 					</div>
-					<div className='col-span-3'>
+					<div className='md:col-span-3 col-span-6'>
 						<ChannelChart
 							title={t('sales by customer groups')}
 							percentage='48'
@@ -77,8 +78,9 @@ const Overview = () => {
 					<div className='col-span-12 lg:col-span-7 xl:col-span-8'>
 						<OrdersCard latestOrders={data.latestOrders} title={t('Latest Orders')} />
 					</div>
-					<div className='col-span-6 lg:col-span-5 xl:col-span-4'>
-						<ProductsAnalyticsCard data={data} />
+					<div className='col-span-12 lg:col-span-5 xl:col-span-4'>
+						{/* <ProductsAnalyticsCard data={data} /> */}
+						<ProductHighlights data={data} />
 					</div>
 				</div>
 				{/* 5 */}

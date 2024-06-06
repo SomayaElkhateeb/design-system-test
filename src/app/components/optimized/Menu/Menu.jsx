@@ -1,6 +1,6 @@
 import { CheckIcon } from 'src/app/utils/icons';
 
-/** @param {{ selectedOption: string; onSelect:(e:string)=>void; options: import('./optionInterface').option[]; }} props */
+/** @param {{ selectedOption?: string; onSelect?:(e:string)=>void; options: import('./optionInterface').option[]; }} props */
 
 const Menu = (props) => {
 	return (
@@ -10,7 +10,7 @@ const Menu = (props) => {
 					key={option.id}
 					text={option.text}
 					icon={option?.icon}
-					onClick={() => props.onSelect(option.text)}
+					onClick={() => props?.onSelect && props.onSelect(option.text)}
 					selected={props.selectedOption === option.text}
 				/>
 			))}
@@ -19,26 +19,8 @@ const Menu = (props) => {
 };
 export default Menu;
 
-// md:w-[341px]
-// 	return (
-// 		<ul className='absolute top-[100%] z-10 rounded bg-white shadow-md py-2 flex flex-col w-48 '>
-// 			{options.map((option) => (
-// 				<MenuItem
-// 					key={option.id}
-// 					text={option.text}
-// 					onClick={() => onSelect(option.text)}
-// 					selected={selectedOption === option.text}
-// 				/>
-// 			))}
-// 		</ul>
-// 	);
-
 /**
- * @param {{
- *  options: string[];
- *  onSelect: (option: string) => void;
- *  selectedOption?: string | null;
- * }} props
+
  */
 // export default function Menu(props) {
 // 	return (

@@ -5,11 +5,11 @@ import { Input } from '../../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import { countries } from '../SettingPage/BranchesSettings/AddBranch/BranchInfo';
-import { addCustomerInterface } from './HookForAddCustomerForm';
+import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export default function PrimaryAddresseForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<addCustomerInterface>;
+	formStore: UseFormReturn<AddCustomerPageSchemaValues>;
 }) {
 	//  hooks
 	const { t } = useTranslation();

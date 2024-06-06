@@ -10,6 +10,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
+import { products } from 'src/pages/ProductsPage/AllProducts';
 
 export default function InventoryTable({
 	array,
@@ -23,59 +24,6 @@ export default function InventoryTable({
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [isFavorite, setIsFavorite] = useState(false);
-	//  dumy data
-	const products: Product[] = [
-		{
-			id: '1',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 10,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '2',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '3',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '4',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-		{
-			id: '5',
-			title: 'mohamed Mostafa',
-			category: '01064545565',
-			SKU: 'mansoura',
-			option: 10,
-			quantity: 0,
-			price: 1000,
-			img: getImageUrl('images/product.png'),
-		},
-	];
 
 	//  headers
 
@@ -93,7 +41,6 @@ export default function InventoryTable({
 		{ title: t('SKU') },
 		{ title: t('QTY') },
 		{ title: t('Price') },
-		{ title: '' },
 	];
 
 	function toggleFavorite() {
@@ -108,11 +55,9 @@ export default function InventoryTable({
 				return {
 					item: e,
 					elements: [
-						<GlobalTableCell
-							
-						>
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.4rem] '>
-								<div className='flex flex-col gap-[.4rem] items-center'>
+								<div className='flex-col-top-section-pages gap-[.4rem] items-center'>
 									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 									<button onClick={toggleFavorite}>
 										{isFavorite ? (
@@ -123,14 +68,14 @@ export default function InventoryTable({
 									</button>
 								</div>
 								<div className='relative'>
-									<img src={e.img} loading='lazy' alt={e.title} />
+									<img src={getImageUrl(e.imageUrl)} loading='lazy' alt={e.name} />
 									<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
 								</div>
 
-								<div className='flex flex-col gap-2'>
-									<p className='text-title text-[.9rem] font-semibold'>{e.title}</p>
-									<p className='text-subtitle text-[.8rem]'>{e.category}</p>
-									<p className='text-title text-[.8rem]'>
+								<div className='flex-col-top-section-pages gap-2'>
+									<p className='title text-sm'>{e.name}</p>
+									<p className='subtitle'>{e.category}</p>
+									<p className='subtitle'>
 										{e.option} {t('Options')}
 									</p>
 								</div>

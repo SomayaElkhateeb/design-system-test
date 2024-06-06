@@ -7,10 +7,11 @@ interface LinkCardsProps {
 	title: string;
 	Icon: FC<IconProps>;
 	description?: string;
+	close?: () => void;
 }
-const LinkCards = ({ path, title, Icon, description }: LinkCardsProps) => {
+const LinkCards = ({ path, title, Icon, description, close }: LinkCardsProps) => {
 	return (
-		<Link to={path} relative='path' className='rounded-lg bg-brand-gradient p-px'>
+		<Link to={path} onClick={close} relative='path' className='rounded-lg bg-brand-gradient p-px'>
 			<div
 				className={`rounded-[calc(0.5rem-1px)] p-3 bg-white ${
 					description ? 'flex items-start' : 'flex flex-col'

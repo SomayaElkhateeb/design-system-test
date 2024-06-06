@@ -5,17 +5,30 @@ import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import {  TableCell } from '@mui/material';
+import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import { IoIosArrowBack } from 'react-icons/io';
-
-import { settingMenus } from 'src/pages/ProductsPage/AllProducts';
 import { Switch } from 'src/app/components/ui/switch';
+import { nanoid } from 'nanoid';
+import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { settingMenus } from '../../Customers/CustomersTable';
 
-export default function BrandsTable() {
+//  dumy data 
+export const brands: BrandsInterface[] = [
+	{
+		id: '1',
+		title: 'mohamed Mostafa',
+		describtion: '01064545565',
+		available: false,
+		productsNo: 10,
+
+		img: 'images/product.png',
+	},
+];
+export default function BrandsTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
@@ -33,22 +46,11 @@ export default function BrandsTable() {
 
 	const { selectedOption, handleSelect } = useSelectBox();
 
-	//  dumy data
-	const brands: BrandsInterface[] = [
-		{
-			id: '1',
-			title: 'mohamed Mostafa',
-			describtion: '01064545565',
-			available: false,
-			productsNo: 10,
-
-			img: getImageUrl('images/product.png'),
-		},
-	];
-
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn =
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	// //////////////////////
+	// /////////////////////
 
 	return (
 		<BaseTable
@@ -61,11 +63,11 @@ export default function BrandsTable() {
 					elements: [
 						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.4rem] '>
-								<img src={e.img} loading='lazy' alt={e.title} />
+								<img src={getImageUrl(e.img)} loading='lazy' alt={e.title} />
 
-								<div className='flex flex-col gap-2'>
-									<p className='text-title text-[.9rem] font-semibold'>{e.title}</p>
-									<p className='text-subtitle text-[.8rem]'>{e.describtion}</p>
+								<div className='flex-col-top-section-pages gap-2'>
+									<p className='title'>{e.title}</p>
+									<p className='subtitle'>{e.describtion}</p>
 								</div>
 							</div>
 						</GlobalTableCell>,

@@ -179,14 +179,20 @@ object {
 }
 
 @layer components {
+	.roundedParentIcon{
+		@apply rounded-lg border border-light-2 size-[42px] grid place-content-center overflow-hidden
+	}
 	.custom_container {
 		@apply xl:max-w-[145rem] xl:px-5  container mx-auto;
+	}
+	.responsive_pages{
+		@apply	custom_container flex-col-top-section-pages sm:hidden
 	}
 	.cardDetails-sharedClass {
 		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
 	.customer-border {
-		@apply w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
+		@apply md:w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
 	}
 	.splide__pagination__page {
 		background: transparent !important;
@@ -202,7 +208,19 @@ object {
 	.global_error {
 		@apply text-sm font-medium text-destructive;
 	}
+	.topTable {
+		@apply md:flex-row-global flex-col-top-section-pages  gap-2 items-start justify-between;
+	}
 
+	.custom-grid-parent {
+		@apply grid grid-cols-3 col-span-1 gap-5;
+	}
+	.grid-left {
+		@apply col-span-3 xl:col-span-2;
+	}
+	.grid-right {
+		@apply col-span-3 xl:col-span-1;
+	}
 	.flex-col-top-section-pages {
 		@apply flex flex-col gap-[1.2rem];
 	}
@@ -264,7 +282,7 @@ object {
 	}
 
 	.title {
-		@apply font-semibold text-[1rem] text-title;
+		@apply font-semibold sm:text-[1rem] text-[.8rem] text-title;
 	}
 
 	.subtitle {
@@ -293,6 +311,9 @@ object {
 	}
 	.global-cards {
 		@apply bg-white w-full border border-borders-lines rounded-[.75rem] p-[1.125rem] flex flex-col gap-4;
+	}
+	.flexResponsive {
+		@apply flex flex-col gap-5 lg:flex-row lg:justify-between lg:items-center;
 	}
 }
 
@@ -414,3 +435,39 @@ button.splide__arrow--prev {
 		top: 0;
 	}
 }
+
+/* Style for the first step */
+.my-first-step {
+	background-color: #ffeb3b; /* Yellow background */
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.2em;
+}
+
+/* Style for the second step */
+.my-second-step {
+	background-color: #8bc34a; /* Light green background */
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.2em;
+}
+
+/* Style for the third step */
+.my-third-step {
+	background-color: #03a9f4; /* Light blue background */
+	color: white; /* White text color */
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.2em;
+	border: none;
+	cursor: pointer;
+}
+
+/* =============================== */
+/* React Slick Slider */
+
+.slick-prev,
+.slick-next {
+	display: none !important;
+}
+

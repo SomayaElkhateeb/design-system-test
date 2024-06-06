@@ -35,6 +35,7 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				backgroundColor: '#F9FAFC',
 				maxHeight: 700,
 				minHeight: rows.length === 0 ? 50 : 300,
+				display: { sm: 'block', xs: 'none' },
 			}}
 		>
 			<Fade in={isLoading}>
@@ -44,7 +45,10 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 				<TableHead sx={{ backgroundColor: 'white' }}>
 					<TableRow>
 						{headers?.map((header: header, i: any) => (
-							<GlobalTableCell sx={{ color: color }} key={`h-${i}`}>
+							<GlobalTableCell
+								sx={{ color: color, fontSize: { md: '.9rem', xs: '.7rem' } }}
+								key={`h-${i}`}
+							>
 								<Box
 									sx={{
 										display: 'flex',
@@ -107,8 +111,8 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 export default BaseTable;
 // #F9FAFC
 export const GlobalTableCell = styled(TableCell)(({ theme }) => ({
-	fontSize: '14px',
+	fontSize: '.9rem',
 	fontWeight: '400',
-	borderBottom: '20px solid #F9FAFC',
+	borderBottom: '1.3rem solid #F9FAFC',
 	backgroundColor: 'white',
 }));

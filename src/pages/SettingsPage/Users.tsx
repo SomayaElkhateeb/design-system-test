@@ -17,7 +17,7 @@ export default function Users() {
 					title={t('Owner')}
 					describtion={t('Add users and define what can they see or do in your store.')}
 				>
-					<div className='flex justify-between items-center '>
+					<div className='flexResponsive'>
 						<ClientBox
 							title='Mohamed Samy'
 							details='Active 3 days ago'
@@ -35,7 +35,7 @@ export default function Users() {
 					describtion={t('Add users and define what can they see or do in your store.')}
 				>
 					<div className='flex-col-top-section-pages '>
-						<div className='flex justify-between items-center '>
+						<div className='flexResponsive'>
 							<ClientBox
 								title='Ahmed Seilamn'
 								details='Marketeer'

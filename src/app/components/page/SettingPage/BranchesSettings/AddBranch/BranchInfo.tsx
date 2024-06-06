@@ -16,6 +16,7 @@ import {
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { BranchSettingsInterface } from './HookForAddBranchForm';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 
 export const countries = [
 	{
@@ -59,6 +60,8 @@ export default function BranchInfo({
 	setSelectedOption,
 }: BranchInfoProps) {
 	//  hooks
+	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
+	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const { t } = useTranslation();
 
 	const handleAddressOption = (option: string) => {
@@ -68,7 +71,7 @@ export default function BranchInfo({
 
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
-			<div className='grid gap-5 col-span-3 cardDetails-sharedClass p-5'>
+			<div className='grid gap-5 sm:col-span-3 cardDetails-sharedClass p-5'>
 				<section className='grid gap-4'>
 					<FormChoiceChips<BranchSettingsInterface>
 						formStore={formStore}
@@ -89,7 +92,7 @@ export default function BranchInfo({
 				</section>
 				<section className='grid gap-4'>
 					<div>
-						<h2 className='title text-lg mb-2'>{t('Address')}</h2>
+						<h2 className='title mb-2'>{t('Address')}</h2>
 						<SingleChoiceChips
 							options={['Add manually', 'Use a map']}
 							setSelected={handleAddressOption}
@@ -103,25 +106,23 @@ export default function BranchInfo({
 								name='countryName'
 								label={t('Country')}
 								render={(field) => (
-									<div className='flex'>
-										<Select
-											onValueChange={field.onChange}
-											value={field.value}
-											required={field.required}
-											name={field.name}
-										>
-											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-												<SelectValue placeholder='Select option' />
-											</SelectTrigger>
-											<SelectContent>
-												{countries.map((country) => (
-													<SelectItem key={country.value} value={country.value}>
-														{country.name}
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
-									</div>
+									<Select
+										onValueChange={field.onChange}
+										value={field.value}
+										required={field.required}
+										name={field.name}
+									>
+										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+											<SelectValue placeholder='Select option' />
+										</SelectTrigger>
+										<SelectContent>
+											{countries.map((country) => (
+												<SelectItem key={country.value} value={country.value}>
+													{country.name}
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
 								)}
 							/>
 							<FormField
@@ -129,25 +130,23 @@ export default function BranchInfo({
 								name='cityName'
 								label={t('City')}
 								render={(field) => (
-									<div className='flex'>
-										<Select
-											onValueChange={field.onChange}
-											value={field.value}
-											required={field.required}
-											name={field.name}
-										>
-											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-												<SelectValue placeholder='Select option' />
-											</SelectTrigger>
-											<SelectContent>
-												{countries.map((country) => (
-													<SelectItem key={country.value} value={country.value}>
-														{country.name}
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
-									</div>
+									<Select
+										onValueChange={field.onChange}
+										value={field.value}
+										required={field.required}
+										name={field.name}
+									>
+										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+											<SelectValue placeholder='Select option' />
+										</SelectTrigger>
+										<SelectContent>
+											{countries.map((country) => (
+												<SelectItem key={country.value} value={country.value}>
+													{country.name}
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
 								)}
 							/>
 
@@ -171,6 +170,13 @@ export default function BranchInfo({
 								render={(field) => <Input {...field} placeholder={'landmark'} />}
 							/>
 						</section>
+					)}
+					{selectedOption !== 'Add manually' && (
+						<GoogleMapComponent
+							setLocationEnabled={setLocationEnabled}
+							setDisablePickButton={setDisablePickButton}
+							height='300px'
+						/>
 					)}
 
 					<FormField

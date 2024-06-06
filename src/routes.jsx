@@ -94,7 +94,7 @@ export const routes = [
 			},
 		],
 	},
-	// /orders/AllOrders/orderDetails/#8965742
+	// /orders/orderDetails/8965742
 	{
 		path: '/orders/orderDetails/:id',
 		element: <OrderDetails />,
@@ -110,6 +110,16 @@ export const routes = [
 		element: <ProductsPage />,
 		children: [{ path: ':tab', element: <ProductsTabs /> }],
 	},
+	// '/products/new/configurable'
+	{ path: '/products/new/configurable', element: <ConfigurableProductPage /> },
+	// '/products/new/simple'
+	{ path: '/products/new/simple', element: <SimpleProductPage /> },
+	// '/products/new/virtual'
+	{ path: '/products/new/virtual', element: <SimpleProductPage /> },
+	// '/products/new/food'
+	{ path: '/products/new/food', element: <SimpleProductPage /> },
+	// '/products/new/bundle'
+	{ path: '/products/new/bundle', element: <SimpleProductPage /> },
 
 	// Settings Routes
 	{

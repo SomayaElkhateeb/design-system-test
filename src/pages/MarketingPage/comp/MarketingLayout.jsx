@@ -24,10 +24,13 @@ const MarketingLayout = () => {
 		},
 	];
 
-	console.log(pathname);
+	const isAddDiscountOrAddCoupon =
+		pathname.includes('addDiscount') ||
+		pathname.includes('addCoupon') ||
+		pathname.includes('addCampaign');
 	return (
-		<div className='grid'>
-			{!pathname.includes('addDiscount') && !pathname.includes('email-form') && (
+		<div className='grid gap-4'>
+			{!isAddDiscountOrAddCoupon && (
 				<div className='Sticky_header'>
 					<HorizontalTabsLink tabs={tabs} path='/marketing' />
 				</div>

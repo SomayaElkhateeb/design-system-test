@@ -14,6 +14,7 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 /**
  * @param {object} props - Props for the VerticalTabs component.
  * @param {Tab[]} props.tabs - An array of tab objects containing title and content.
+ *  @param {()=>void} props.setIsSetup - .
  *
  * @description
  * VerticalTabs component renders a vertical tab navigation system.
@@ -24,7 +25,7 @@ export default function VerticalTabs(props) {
 	const { currentTab, handleTabClick, handleNext, handlePrev } = useVerticalTabs(0, props.tabs);
 
 	return (
-		<div className='flex flex-col space-y-4'>
+		<div className='flex flex-col space-y-4 bg-black'>
 			<div className='flex flex-col space-y-4'>
 				{props.tabs?.map((tab, index) => (
 					<VTab
@@ -37,7 +38,7 @@ export default function VerticalTabs(props) {
 						onNext={handleNext}
 						onPrev={handlePrev}
 						tabs={props.tabs}
-						handleFinish={props.handleFinish}
+						handleFinish={props.setIsSetup}
 					/>
 				))}
 			</div>
@@ -92,6 +93,7 @@ function useVerticalTabs(initialTab = 0, tabs) {
  * @param {() => void} props.onNext - Function to handle next button click event.
  * @param {() => void} props.onPrev - Function to handle previous button click event.
  * @param {Tab[]} props.tabs - An array of tab objects containing title and content.
+ * @param {()=>void} props.handleFinish - .
  */
 
 function VTab(props) {
@@ -145,7 +147,7 @@ function VTab(props) {
 					<LayoutCard>
 						{props.content}
 						{/* Render next and previous buttons */}
-						<div className='flex justify-end mt-4'>
+						<div className='flex justify-end mt-4 gap-4'>
 							{props.index !== 0 && (
 								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ms-5'>
 									{t('Prev')}

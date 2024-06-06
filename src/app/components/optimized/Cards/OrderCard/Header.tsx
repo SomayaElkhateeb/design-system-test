@@ -22,15 +22,15 @@ export default function Header({
 	// hooks
 	const { t } = useTranslation();
 	const comparisonMenus = [
-		{ text: t('Today') },
-		{ text: t('Last week') },
-		{ text: t('Last month') },
-		{ text: t('Specify date') },
+		{ id: '1', text: t('Today') },
+		{ id: '2', text: t('Last week') },
+		{ id: '3', text: t('Last month') },
+		{ id: '4', text: t('Specify date') },
 	];
 	return (
-		<header className='flex justify-between items-center'>
-			<h2 className='text-title font-semibold text-lg'>{title}</h2>
-			<div className='flex justify-between items-center gap-4'>
+		<header className='sm:flex-row-global flex-col-top-section-pages justify-between '>
+			<h2 className='title'>{t(title as any)}</h2>
+			<div className=' flex-row-global gap-4'>
 				{dropdown && (
 					<CompareButton
 						sortMenus={comparisonMenus}

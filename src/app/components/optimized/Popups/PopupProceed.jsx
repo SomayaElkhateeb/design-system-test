@@ -27,7 +27,7 @@ export default function PopupProceed(props) {
 	}
 
 	return (
-		<div className='fixed inset-0 z-50 flex items-center justify-center p-3'>
+		<div className='fixed inset-0 z-30 flex items-center justify-center p-3'>
 			{/* Overlay */}
 			<div className='fixed inset-0 bg-black opacity-50' onClick={props.onCancel}></div>
 

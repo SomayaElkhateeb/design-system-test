@@ -6,6 +6,7 @@ import ThreeDotsButton from '../Buttons/ThreedotsButton';
 import useSelectBox from '../Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
 import { RemoveIcon } from 'src/app/utils/icons';
+import { settingMenus } from '../../page/Customers/CustomersTable';
 
 /**
 
@@ -18,13 +19,13 @@ import { RemoveIcon } from 'src/app/utils/icons';
  * />
  */
 
-const settingMenus = [{ text: 'Delete product', icon: <RemoveIcon className='fill-error' /> }];
 interface ProductViewsProps {
 	imageUrl: string;
 	name: string;
 	category: string;
 	quantity: number;
 	price: number;
+	settingMenus?: settingMenus[];
 }
 export default function MobileProductViews({
 	imageUrl,
@@ -32,11 +33,11 @@ export default function MobileProductViews({
 	category,
 	quantity,
 	price,
+	settingMenus,
 }: ProductViewsProps) {
 	const { selectedOption, handleSelect } = useSelectBox();
 	const { t } = useTranslation();
 	return (
-		//! w-[343px] This class can be omitted if the component takes up the maximum width of the phone.
 		<div className='flex justify-between bg-white'>
 			<div className='flex gap-1 items-center'>
 				<div className='size-[60px] rounded-lg border border-light-2 overflow-hidden'>
@@ -51,11 +52,13 @@ export default function MobileProductViews({
 				</div>
 			</div>
 			<div className='flex flex-col items-end justify-between'>
-				<ThreeDotsButton
-					sortMenus={settingMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
+				{settingMenus && settingMenus?.length > 0 && (
+					<ThreeDotsButton
+						sortMenus={settingMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				)}
 				<p className='paragraph'>SAR {price}</p>
 			</div>
 		</div>

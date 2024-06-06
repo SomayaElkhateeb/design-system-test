@@ -6,8 +6,8 @@ const Discounts = () => {
 	const { t } = useTranslation();
 
 	return (
-		<div className='custom_container'>
-			<div className=' flex flex-col '>
+		<div className='custom_container '>
+			<div className='flex-col-top-section-pages'>
 				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
 				{/* <DiscountsTable discounts={} isLoading={} /> */}
 			</div>

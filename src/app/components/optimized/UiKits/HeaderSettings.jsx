@@ -31,12 +31,12 @@ export default function HeaderSettings(props) {
 	const language = UseLanguage();
 	const navigate = useNavigate();
 	return (
-		<div className='flex items-center justify-between  bg-white h-14 custom_container'>
+		<div className='flex md:flex-row flex-col md:gap-0 gap-[1rem] md:items-center items-start justify-between  bg-white py-[1rem] custom_container'>
 			<div className='flex items-center gap-1' onClick={props.onClick}>
 				<p className='cursor-pointer' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}
 				</p>
-				<h2 className='font-semibold capitalize text-title'>{props.title}</h2>
+				<h2 className='title capitalize '>{props.title}</h2>
 			</div>
 
 			<div className='flex items-center gap-6'>

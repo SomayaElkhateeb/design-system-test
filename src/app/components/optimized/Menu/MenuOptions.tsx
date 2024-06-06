@@ -18,7 +18,7 @@ export default function MenuOptions({
 }) {
 	const createHandleMenuClick = (menuItem: string) => {
 		return () => {
-			console.log(`Clicked on ${menuItem}`);
+			// console.log(`Clicked on ${menuItem}`);
 			handle();
 		};
 	};

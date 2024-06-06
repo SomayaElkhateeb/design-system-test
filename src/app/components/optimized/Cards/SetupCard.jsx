@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { Button } from 'src/app/components/optimized';
 import { SuccessIcon } from 'src/app/utils/icons';
 
 /**
  * @param {object} props - Props for the SetupCard component
- * @param {string} props.title - The title of the card
- * @param {string} props.description - The description of the card
- * @param {string} props.buttonText - The text to display on the button
+ * @param {any} props.title - The title of the card
+ * @param {any} props.description - The description of the card
+ * @param {any} props.buttonText - The text to display on the button
+ *  @param {string | undefined} props.classes - display class of tour guide
  * @param {import("react").ComponentType<{ className?: string; }>} props.Icon - The icon component for the card
  * @param {function} props.onButtonClick - The function to call when the button is clicked
  *
@@ -36,7 +39,7 @@ import { SuccessIcon } from 'src/app/utils/icons';
  *   return (
  *     <div className="flex gap-4">
  *       {method.map((item, index) => (
- *         <MopileSetupCard
+ *         <MobileSetupCard
  *           key={index}
  *           Icon={iconMap[item.title]} // Pass the corresponding icon component based on the title
  *           {...item}
@@ -48,6 +51,8 @@ import { SuccessIcon } from 'src/app/utils/icons';
  * ```
  */
 export default function SetupCard(props) {
+	const { t } = useTranslation();
+
 	const [isStepDone, setIsStepDone] = useState(false);
 
 	/**
@@ -60,7 +65,7 @@ export default function SetupCard(props) {
 
 	return (
 		<div
-			className={`flex flex-col justify-between p-3 rounded-xl w-full ${
+			className={`flex flex-col justify-between p-3 rounded-xl w-full ${props.classes} ${
 				isStepDone ? 'bg-brand-gradient' : 'bg-white border-2 border-light-3'
 			}`}
 		>
@@ -74,10 +79,10 @@ export default function SetupCard(props) {
 				</div>
 				<div className='w-full mb-3'>
 					<h5 className={`font-semibold mb-1 text-sm ${isStepDone ? 'text-white' : ' text-title'}`}>
-						{props.title}
+						{t(props.title)}
 					</h5>
 					<p className={`font-normal text-sm ${isStepDone ? 'text-white' : 'text-title'}`}>
-						{props.description}
+						{t(props.description)}
 					</p>
 				</div>
 			</div>
@@ -90,7 +95,7 @@ export default function SetupCard(props) {
 						onClick={handleStepCompletion}
 						variant='link'
 					>
-						{props.buttonText}
+						{t(props.buttonText)}
 					</Button>
 				)}
 			</div>

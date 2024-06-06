@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import TopHeader from 'src/app/components/page/Customers/TopHeader';
+
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { FaRegEdit } from 'react-icons/fa';
 import { CiUser } from 'react-icons/ci';
@@ -14,13 +14,26 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { HeaderSettings } from 'src/app/components/optimized';
 
 export default function CustomerInfo() {
-	//  hooks
+	// hooks
+	const { id } = useParams();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { id } = useParams();
+	const array = [...Array(2)];
 
-	//  fake array
-	const array = [...Array(3)];
+	const customerData = [
+		{
+			data: 'Mohamed Hasan',
+			icon: <CiUser className='text-hint' />,
+		},
+		{
+			data: 'web@artisan.com.sa (has active email subscribtion)',
+			icon: <MdOutlineEmail className='text-hint' />,
+		},
+		{
+			data: '966502466733',
+			icon: <FiPhoneCall className='text-hint' />,
+		},
+	];
 	return (
 		<div className='gap-[1.6rem] flex-col-top-section-pages'>
 			{/*  top section */}
@@ -37,20 +50,12 @@ export default function CustomerInfo() {
 			{/*  customer section */}
 			<div className='custom_container gap-[1.6rem] flex-col-top-section-pages'>
 				<div className='customer-border  gap-[0.8rem]'>
-					<p className='text-[0.8rem]  font-semibold px-[1.2rem]'>{t('Customer')}</p>
+					<p className='title px-[1.2rem]'>{t('Customer')}</p>
 					<hr />
-					<div className=' flex flex-col gap-[.6rem] px-[1.2rem]'>
-						{/* name */}
-						<CustomerData data='Mohamed Hasan' icon={<CiUser className='text-hint' />} />
-
-						{/* email*/}
-						<CustomerData
-							data='web@artisan.com.sa (has active email subscribtion)'
-							icon={<MdOutlineEmail className='text-hint' />}
-						/>
-
-						{/* phone */}
-						<CustomerData data='966502466733' icon={<FiPhoneCall className='text-hint' />} />
+					<div className=' flex-col-top-section-pages gap-[.6rem] px-[1.2rem]'>
+						{customerData?.map((el, i) => (
+							<CustomerData key={i} data={el.data} icon={el.icon} />
+						))}
 					</div>
 				</div>
 
@@ -64,7 +69,7 @@ export default function CustomerInfo() {
 							className='flex-row-global gap-[.4rem] cursor-pointer'
 						>
 							<IoIosAddCircle />
-							<p className='text-[0.8rem] font-semibold'>{t('Add new address')}</p>
+							<p className='title'>{t('Add new address')}</p>
 						</div>
 					</div>
 
@@ -80,14 +85,14 @@ export default function CustomerInfo() {
 								<br />
 								+96841564566
 							</p>
-							<div className='flex flex-col items-end gap-[2rem]'>
+							<div className='flex-col-top-section-pages items-end gap-[2rem]'>
 								<div className='flex-row-global gap-[1.2rem]'>
 									<RiDeleteBin6Line className='cursor-pointer' />
 									<FiEdit className='cursor-pointer' />
 								</div>
 								<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 									<IoLocationOutline />
-									<p className='text-[0.8rem] font-semibold'>{t('Show on map')}</p>
+									<p className='title'>{t('Show on map')}</p>
 								</div>
 							</div>
 						</div>
@@ -98,10 +103,15 @@ export default function CustomerInfo() {
 
 				<div className='customer-border gap-[0.8rem]'>
 					<div className='flex-row-global justify-between px-[1.2rem]'>
-						<p className='text-[0.8rem]  font-semibold '>{t('Orders')}</p>
+						<p className='title '>{t('Orders')}</p>
 						<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 							<IoIosAddCircle />
-							<p className='text-[0.8rem] font-semibold'>{t('Add new order')}</p>
+							<p
+								onClick={() => navigate('/order/addOrder')}
+								className='title'
+							>
+								{t('Add new order')}
+							</p>
 						</div>
 					</div>
 

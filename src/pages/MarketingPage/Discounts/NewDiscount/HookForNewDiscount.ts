@@ -70,8 +70,109 @@ export default function useCustomHookNewDiscount(
 	};
 
 	const discountSchema = (
-
 	) => {
+		const arrayValidation = {
+			specificCategories:
+				applyToType === 'Specific category'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					).min(1)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					).default([]),
+			specificProducts:
+				applyToType === 'Specific products'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					).min(1)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					).default([]),
+			selectProductsX:
+				applyToType === 'Buy x get y'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					).min(1)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					).default([]),
+			selectProductsY:
+				applyToType === 'Buy x get y'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					).min(1)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					).default([]),
+			specificCustomerGroup:
+				customerSegment === 'Specific customer groups'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					).min(1)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					).default([]),
+
+			specificCustomer:
+				customerSegment === 'Specific customers'
+					? z.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					).min(1)
+					: z.optional(
+						z.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						),
+					).default([]),
+		}
+
+		// /////////////////////
+		// /////////////////////
 		return {
 			discountName: z.string().min(3).max(60),
 			discountType: z.string().min(3),
@@ -85,54 +186,7 @@ export default function useCustomHookNewDiscount(
 					: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
 			applyToType: z.string().min(3),
 
-			specificCategories:
-				applyToType === 'Specific category'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-					),
-			specificProducts:
-				applyToType === 'Specific products'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-					),
-			selectProductsX:
-				applyToType === 'Buy x get y'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-					),
+
 			ProductXToProductYType:
 				applyToType === 'Buy x get y'
 					? z.string().min(1)
@@ -145,61 +199,7 @@ export default function useCustomHookNewDiscount(
 				productXtoYType === 'Specify percentage'
 					? z.coerce.number().positive().min(0).max(100)
 					: z.optional(z.coerce.number().positive().min(0).max(100)).or(z.literal(0)),
-
-			selectProductsY:
-				applyToType === 'Buy x get y'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-					),
-
 			customerSegment: z.string().min(3),
-			specificCustomerGroup:
-				customerSegment === 'Specific customer groups'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-					),
-
-			specificCustomer:
-				customerSegment === 'Specific customers'
-					? z.array(
-						z.object({
-							id: z.string().min(1),
-							name: z.string().min(1),
-						}),
-					)
-					: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-					),
-
-
-
 			miniPrice: selectedMinimumRequirements === "Minimum price"
 				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
@@ -216,6 +216,7 @@ export default function useCustomHookNewDiscount(
 			UsageNumber: isCheck
 				? z.coerce.number().positive().min(1)
 				: z.optional(z.coerce.number().positive().min(1)).or(z.literal(0)),
+			...arrayValidation
 		};
 	};
 	// ///////////////////////////////////

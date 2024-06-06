@@ -42,15 +42,15 @@ function SlideCard<T>({
 	const slicedItems = items.slice(start, end);
 
 	const comparisonMenus = [
-		{ text: t('Today') },
-		{ text: t('Last week') },
-		{ text: t('Last month') },
+		{ id: '1', text: t('Today') },
+		{ id: '2', text: t('Last week') },
+		{ id: '3', text: t('Last month') },
 	];
 	return (
-		<div className='bg-white rounded-xl border border-borders-lines h-full min-w-[20rem] w-full flex flex-col justify-between p-4'>
-			<div className='flex flex-col flex-1'>
+		<div className='global-cards h-full  justify-between '>
+			<div className='flex-col-top-section-pages flex-1'>
 				<div className='flex justify-between items-center mb-3'>
-					<h2 className='title text-lg capitalize'>{title}</h2>
+					<h2 className='title'>{t(title as any)}</h2>
 					{dropdown && (
 						<CompareButton
 							sortMenus={comparisonMenus}

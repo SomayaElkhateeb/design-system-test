@@ -30,7 +30,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		productXtoYType,
 		customerSegment,
 		selectedMinimumRequirements,
-		isCheck
+		isCheck,
 	);
 
 	/////////////////////
@@ -40,7 +40,12 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		setApplyToType(formStore.watch('applyToType'));
 		setProductXtoYType(formStore?.watch('ProductXToProductYType'));
 		setCustomerSegment(formStore?.watch('customerSegment'));
-	}, [formStore]);
+	}, [
+		formStore.watch('discountType'),
+		formStore.watch('applyToType'),
+		formStore.watch('ProductXToProductYType'),
+		formStore.watch('customerSegment'),
+	]);
 
 	//////////////////
 	// ///////////////
@@ -78,7 +83,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 							setUpdateState={setUpdateState}
 							formStore={formStore}
 						/>
-						{ coupon && <Limits isCheck={isCheck} setIsCheck={setIsCheck} formStore={formStore}/>}
+						{coupon && <Limits isCheck={isCheck} setIsCheck={setIsCheck} formStore={formStore} />}
 						<ActiveDates />
 					</div>
 					<div className='col-span-1'>

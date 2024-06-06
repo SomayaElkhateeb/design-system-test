@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react';
-// get coupons
-import { useDispatch, useSelector } from 'react-redux';
-import {
-	getCoupons,
-	deleteCoupons,
-} from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
 
-const Coupons: React.FC = () => {
+const Coupons = () => {
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
@@ -22,8 +18,8 @@ const Coupons: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='custom_container'>
-			<div className=' flex flex-col '>
+		<div className='custom_container '>
+			<div className='flex-col-top-section-pages '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 

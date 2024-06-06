@@ -1,109 +1,62 @@
 import { useTranslation } from 'react-i18next';
-import VerticalTabs from './VerticalTabs';
-import { LineChart, SetupCard } from 'src/app/components/optimized';
-import {
-	InventoryIcon,
-	PaymentIcon,
-	ProductsIcon,
-	SettingsIcon,
-	ShippingIcon,
-} from 'src/app/utils/icons';
-import { useState } from 'react';
-const Setups = () => {
-	const { t } = useTranslation();
-	const basicMethod = [
-		{
-			title: t('general settings'),
-			description: t('Set your store general information'),
-			buttonText: t('Activate'),
-		},
-		{
-			title: t('Products'),
-			description: t('Add at least 1 product to your store'),
-			buttonText: t('Add'),
-		},
-		{
-			title: t('Inventory'),
-			description: t('Create at least 1 inventory to locate and manage'),
-			buttonText: t('Add'),
-		},
-	];
-	const basicIcons = {
-		[t('general settings')]: SettingsIcon,
-		[t('Products')]: ProductsIcon,
-		[t('Inventory')]: InventoryIcon,
-	};
-	const servicesMethod = [
-		{
-			title: t('shipping'),
-			description: t(
-				'Add shipping method for your store, so you can deliver products to your customers',
-			),
-			buttonText: t('Activate'),
-		},
-		{
-			title: t('payment'),
-			description: t('Add payment method for your store, so your customers can pay you online'),
-			buttonText: t('Activate'),
-		},
-	];
-	const servicesIcons = {
-		[t('shipping')]: ShippingIcon,
-		[t('payment')]: PaymentIcon,
-	};
 
-	const basicContain = (
-		<div className='flex gap-4'>
-			{basicMethod.map((item, index) => (
-				<SetupCard key={index} Icon={basicIcons[item.title]} {...item} />
-			))}
-		</div>
-	);
-	const servicesContain = (
-		<div className='flex gap-4'>
-			{servicesMethod.map((item, index) => (
-				<SetupCard key={index} Icon={servicesIcons[item.title]} {...item} />
-			))}
-		</div>
-	);
+import StepNavigator from './StepNavigator/StepNavigator';
+import { Button, SetupCard } from 'src/app/components/optimized';
+import { StoreLaunchStep, storeLaunchSteps } from './HomeConstants';
+interface SetupsProps {
+	startTour: () => void;
+	handleSetup: () => void;
+}
+// Setups Parent Component
+export default function Setups({ startTour, handleSetup }: SetupsProps) {
+	const { t } = useTranslation();
 	const tabs = [
 		{
 			title: t('Basic setup'),
-			content: basicContain,
+			content: <SetupCardsWrapper items={storeLaunchSteps.basicSetup} />,
 		},
 		{
 			title: t('Services setup'),
-			content: servicesContain,
+			content: <SetupCardsWrapper items={storeLaunchSteps.servicesSetup} />,
 		},
 	];
-
-	const [isFinished, setIsFinished] = useState(false);
-
-	const handleFinish = () => {
-		setIsFinished(true);
-	};
-
 	return (
-		<div>
-			{isFinished ? (
-				<div className='bg-red h-96'>
-					<LineChart percentage='50' />
-				</div>
-			) : (
-				<>
-					<h2 className='text-title text-lg font-semibold'>{t('Get ready for your first sale')}</h2>
-					<p className='text-subtitle text-sm mb-4'>
-						{t('There are only 2 main steps to launch your store')},
-						<span className='btn-lin px-0 hover:bg-transparent cursor-pointer mx-1'>
-							{t('Follow our tips')}
-						</span>
-						{t('to get started')}
-					</p>
-					<VerticalTabs tabs={tabs} handleFinish={handleFinish} />
-				</>
-			)}
+		<section className='grid gap-3'>
+			<SetupsHeader startTour={startTour} />
+			<StepNavigator steps={tabs} onFinish={handleSetup} />
+		</section>
+	);
+}
+
+// Header Component
+interface SetupsHeaderProps {
+	startTour: () => void;
+}
+function SetupsHeader({ startTour }: SetupsHeaderProps) {
+	const { t } = useTranslation();
+	return (
+		<h2 className='title mb-1'>
+			{t('Get ready for your first sale')}
+			<p className='text-subtitle paragraph sm:flex sm:flex-row flex-col'>
+				{t('There are only 2 main steps to launch your store')},&nbsp;
+				<Button onClick={startTour} variant='link' text={t('Follow our tips')} />
+				&nbsp;
+				{t('to get started')}
+			</p>
+		</h2>
+	);
+}
+
+// Wrapper Component
+interface SetupCardsWrapperProps {
+	items: StoreLaunchStep[];
+}
+function SetupCardsWrapper({ items }: SetupCardsWrapperProps) {
+	return (
+		<div className='flex-col-top-section-pages lg:flex-row'>
+			{items.map((item, index) => (
+				<SetupCard key={index} Icon={item.icon} {...item} />
+			))}
 		</div>
 	);
-};
-
-export default Setups;
+}

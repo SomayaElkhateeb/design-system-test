@@ -231,14 +231,14 @@
 				"firstName": "John",
 				"lastName": "Doe",
 				"date": "5/6/2021",
-				"rating": 4.5,
+				"rating": 4,
 				"review": "Great product, highly recommended!"
 			},
 			{
 				"firstName": "Jane",
 				"lastName": "Smith",
 				"date": "5/5/2021",
-				"rating": 3.5,
+				"rating": 3,
 				"review": "Good quality, but could be better."
 			},
 			{
@@ -385,25 +385,31 @@
 			"id": 1,
 			"imageUrl": "social/facebook.svg",
 			"platformName": "Facebook Pixel",
-			"description": "Facebook pixel lets you track your store visitors and their behavior to optimize your Facebook ads, so you can retarget them and track your ad results."
+			"description": "Facebook pixel lets you track your store visitors and their behavior to optimize your Facebook ads, so you can retarget them and track your ad results.",
+			"activated":false
+		
 		},
 		{
 			"id": 2,
 			"imageUrl": "social/google.svg",
 			"platformName": "Google Analytics",
-			"description": "Google Remarketing lets you follow up with people who have already visited your website, and deliver ad content."
+			"description": "Google Remarketing lets you follow up with people who have already visited your website, and deliver ad content.",
+			"activated":false
 		},
 		{
 			"id": 3,
 			"imageUrl": "social/snapchat.svg",
 			"platformName": "Snapchat Pixel",
-			"description": "Measure your Snapchat ads impact on the sales. Add a Snap Pixel to see how many snapchatters interact with your store after viewing your ads."
+			"description": "Measure your Snapchat ads impact on the sales. Add a Snap Pixel to see how many snapchatters interact with your store after viewing your ads.",
+			"activated":false
 		},
 		{
 			"id": 4,
 			"imageUrl": "social/twitter-X.svg",
 			"platformName": "Twitter Pixel",
-			"description": "Measure your Snapchat ads impact on the sales. Add a Snap Pixel to see how many snapchatters interact with your store after viewing your ads."
+			"description": "Measure your Snapchat ads impact on the sales. Add a Snap Pixel to see how many snapchatters interact with your store after viewing your ads.",
+			"activated":true
+		
 		}
 	]
 }

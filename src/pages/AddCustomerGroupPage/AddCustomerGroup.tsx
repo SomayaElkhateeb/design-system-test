@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
+import { AddCustomerGroupPageSchema, AddCustomerGroupPageSchemaValues } from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
 import ChooseCustomers from 'src/app/components/page/AddCustomerGroup/ChooseCustomers';
 import GeneralInfoCustomerGroupInfo from 'src/app/components/page/AddCustomerGroup/GeneralInfo';
-import useCustomHookAddCustomerGroupForm, { addCustomerGroupInterface } from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
+import useCustomHookAddCustomerGroupForm from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
 import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
-
-
+import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
 
 export default function AddCustomerGroup() {
 	//  hooks
@@ -15,13 +14,13 @@ export default function AddCustomerGroup() {
 	const navigate = useNavigate();
 
 	//  custome hook
-	const { generalInfoSchema, handelDefaultValue } = useCustomHookAddCustomerGroupForm();
-	const handleSubmit = (values: addCustomerGroupInterface) => {
+	const { handelDefaultValue } = useCustomHookAddCustomerGroupForm();
+	const handleSubmit = (values: AddCustomerGroupPageSchemaValues) => {
 		console.log(values);
 		// handleClose();
 	};
 	const { formStore, onSubmit } = useForm({
-		schema: generalInfoSchema,
+		schema: AddCustomerGroupPageSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -46,7 +45,7 @@ export default function AddCustomerGroup() {
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<GeneralInfoCustomerGroupInfo formStore={formStore} />
-                        <ChooseCustomers formStore={formStore} />
+						<ChooseCustomers formStore={formStore} />
 					</div>
 				</div>
 			</form>
