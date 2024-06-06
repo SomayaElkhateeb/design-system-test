@@ -1,6 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
-import EmailForm from '../EmailForm/EmailForm';
 
 const MarketingLayout = () => {
 	//  hooks
@@ -24,17 +23,20 @@ const MarketingLayout = () => {
 		},
 	];
 
+
+	const isEmailForm = pathname.includes('EmailForm') 
 	const isAddDiscountOrAddCoupon =
 		pathname.includes('addDiscount') ||
 		pathname.includes('addCoupon') ||
 		pathname.includes('addCampaign');
 	return (
 		<div className='grid gap-4'>
-			{!isAddDiscountOrAddCoupon && (
-				<div className='Sticky_header'>
-					<HorizontalTabsLink tabs={tabs} path='/marketing' />
-				</div>
-			)}
+			{!isAddDiscountOrAddCoupon && !isEmailForm
+				&& (
+					<div className='Sticky_header'>
+						<HorizontalTabsLink tabs={tabs} path='/marketing' />
+					</div>,
+				)}
 			<Outlet />
 		</div>
 	);
