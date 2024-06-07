@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
-import SetupInfo from '../SetupInfo';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import Location from '../Comp/Location';
+import SetupInfo from '../SetupInfo';
 
 const locationData = [
 	{
@@ -32,20 +32,14 @@ export default function SelfPickup() {
 
 	return (
 		<div>
-			<HeaderSettings
-				variant='settingTwoBtns'
-				title={t('self pickup')}
-				btn1={{
-					text: t('Discard'),
-					onClick: () => {
-						navigate(-1);
-					},
-				}}
-				btn2={{
-					text: t('Save Changes'),
-					onClick: () => {},
-				}}
-			/>
+			<SubHeader title={t('Self Pickup')}>
+				<Button variant='secondary' onClick={() => navigate(-1)}>
+					{t('Discard')}
+				</Button>
+				<Button variant='primary' onClick={() => {}}>
+					{t('Save Changes')}
+				</Button>
+			</SubHeader>
 
 			<div className='grid gap-5 lg:grid-cols-3 container mx-auto py-5'>
 				<div className='flex-col-top-section-pages lg:col-span-2 gap-0'>

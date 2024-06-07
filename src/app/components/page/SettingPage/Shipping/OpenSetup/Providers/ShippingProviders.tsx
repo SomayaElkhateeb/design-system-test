@@ -1,8 +1,8 @@
-import { HeaderSettings } from 'src/app/components/optimized';
+import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
+import { SubHeader } from 'src/app/components/optimized';
 import BigAppsCard from 'src/app/components/optimized/Cards/BigAppsCard';
 import { getImageUrl } from 'src/app/utils';
-import { nanoid } from 'nanoid';
 
 export default function ShippingProviders() {
 	const { t } = useTranslation();
@@ -48,7 +48,7 @@ export default function ShippingProviders() {
 	];
 	return (
 		<div className='flex-col-top-section-pages'>
-			<HeaderSettings title={t('Third party shipping providers')} />
+			<SubHeader title={t('Third party shipping providers')} />
 			<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 px-5'>
 				{cards.map((card) => (
 					<BigAppsCard key={card.id} {...card} />

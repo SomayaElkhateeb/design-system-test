@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button, ClientBox, HeaderSettings } from 'src/app/components/optimized';
+import { Button, ClientBox, SubHeader } from 'src/app/components/optimized';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 import { IoMdAddCircle } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ export default function Users() {
 	const navigate = useNavigate();
 	return (
 		<div className='flex-col-top-section-pages'>
-			<HeaderSettings title={t('users & Permissions')} />
+			<SubHeader title={t('Users & Permissions')} />
 			<div className='flex-col-top-section-pages custom_container'>
 				{/*  owner section */}
 				<OwnerAndStaff

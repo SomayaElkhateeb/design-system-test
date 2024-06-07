@@ -6,7 +6,7 @@ import BudgetDetails from './BudgetDetails';
 import CampaignDetails from './CampaignDetails';
 import TargetingDetails from './TargetingDetails';
 import { Form } from 'src/app/components/ui/form';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { SubHeader, Button } from 'src/app/components/optimized';
 
 const NewCampaign = () => {
 	const [target, setTarget] = useState('having specific interests');
@@ -30,20 +30,14 @@ const NewCampaign = () => {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Add Activity')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Publish'),
-					}}
-				/>
+				<SubHeader title={t('Add Activity')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						{t('Publish')}
+					</Button>
+				</SubHeader>
 				<div className='grid custom_container grid-cols-3'>
 					<div className='grid gap-5 col-span-3 lg:col-span-2'>
 						<CampaignDetails formStore={formStore} />

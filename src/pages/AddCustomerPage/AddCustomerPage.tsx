@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
-import { AddCustomerPageSchema, AddCustomerPageSchemaValues } from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import {
+	AddCustomerPageSchema,
+	AddCustomerPageSchemaValues,
+} from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
 import GeneralInfoCustomerForm from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
 import useCustomHookAddCustomerForm from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
 import PrimaryAddresseForm from 'src/app/components/page/AddCustomer/PrimaryAddresseForm';
 import { Form } from 'src/app/components/ui/form';
-import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
+import { useForm } from 'src/app/utils/hooks/form';
 export default function AddCustomerPage() {
 	//  hooks
 	const { t } = useTranslation();
@@ -18,7 +21,7 @@ export default function AddCustomerPage() {
 
 	//  custome hook
 	const { handelDefaultValue } = useCustomHookAddCustomerForm();
-	// ////////////////////////////////
+
 	const { formStore, onSubmit } = useForm({
 		schema: AddCustomerPageSchema,
 		handleSubmit: handleSubmit,
@@ -27,21 +30,14 @@ export default function AddCustomerPage() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Add New Customer')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Add New Customer')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						{/*  general info section */}

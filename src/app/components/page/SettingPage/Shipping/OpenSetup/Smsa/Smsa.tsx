@@ -1,5 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { Accordion, HeaderSettings, LabelIcon } from 'src/app/components/optimized';
+import {
+	Accordion,
+	HeaderSettings,
+	LabelIcon,
+	SubHeader,
+	Button,
+} from 'src/app/components/optimized';
 
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
@@ -89,16 +95,11 @@ export default function Smsa() {
 					}
 				/>
 			) : (
-				<HeaderSettings
-					title={t('SMSA')}
-					variant='settingOneBtn'
-					btn1={{
-						text: t('Install now'),
-						onClick: () => {
-							setInstall(true);
-						},
-					}}
-				/>
+				<SubHeader title={t('SMSA')}>
+					<Button variant='primary' onClick={() => setInstall(true)}>
+						{t('Install Now')}
+					</Button>
+				</SubHeader>
 			)}
 			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 				<div className='flex-col-top-section-pages lg:col-span-2'>

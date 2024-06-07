@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { TrialBanner } from 'src/app/components/optimized';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import Bills from 'src/app/components/page/SettingPage/BillingAndPlans/Bills';
 import PaymentMethods from 'src/app/components/page/SettingPage/BillingAndPlans/PaymentMethods';
 import Plan from 'src/app/components/page/SettingPage/BillingAndPlans/Plan';
@@ -10,7 +10,7 @@ export default function BillingAndPlans() {
 	const { t } = useTranslation();
 	return (
 		<section className='flex-col-top-section-pages '>
-			<HeaderSettings title={t('Billing & plans')} />
+			<SubHeader title={t('Billing & plans')} />
 			<div className='custom_container'>
 				<TrialBanner
 					free={true}

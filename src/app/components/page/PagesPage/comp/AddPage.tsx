@@ -1,36 +1,30 @@
-import AccordionCard from 'src/app/components/optimized/UiKits/AccordionCard';
-import { GroupIcons, HeaderSettings } from 'src/app/components/optimized';
-import { useTranslation } from 'react-i18next';
-import { Form } from 'src/app/components/ui/form';
-import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import { useNavigate } from 'react-router-dom';
-import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
-import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
-import { useForm } from 'src/app/utils/hooks/form';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { LuEye } from 'react-icons/lu';
+import { RxDotsHorizontal } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import AccordionCard from 'src/app/components/optimized/UiKits/AccordionCard';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
+import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookAddBlogOrPage, { addPageInterface } from '../HookForAddBlogOrPageForm';
-
 export default function AddPage({ addblog }: { addblog?: boolean }) {
-	// /hooks
+	// hooks
 	const [open, setOpen] = useState(false);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	// ////////////////////////////
-	// ////////////////////////////
 	const handleSubmit = (values: addPageInterface) => {
 		console.log(values);
 		// handelclose();
 	};
 
-	// /////////////////////
-	// ////////////////////
-
 	// custom hook
-
 	const { pageSchema, handelDefaultValue } = useCustomHookAddBlogOrPage(addblog);
-	// ////////////////////////////
-	// ////////////////////////////
+
 	const { formStore, onSubmit } = useForm({
 		schema: pageSchema,
 		handleSubmit: handleSubmit,
@@ -46,22 +40,24 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 	return (
 		<Form {...formStore}>
 			<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
-				<HeaderSettings
-					variant='settingWithIcons'
-					submit
-					title={!addblog ? t('Add page') : t('Add blog')}
-					groupIcons={<GroupIcons variant='view' />}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={!addblog ? t('Add page') : t('Add blog')}>
+					<div className='flex space-x-3'>
+						<button>
+							<LuEye size='22' />
+						</button>
+
+						<button>
+							<RxDotsHorizontal size='22' />
+						</button>
+					</div>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
+
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<MainInfoPage addblog={addblog} formStore={formStore} />

@@ -1,15 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import { UseFormReturn } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { z } from 'zod';
-
+import { useNavigate } from 'react-router-dom';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { Form } from 'src/app/components/ui/form';
 import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
-import { Form } from 'src/app/components/ui/form';
 import useBankTransfer from './useBankTransfer';
-import { useEffect, useState } from 'react';
 export default function ActivateBankTransfer() {
 	//  hooks
 	const { t } = useTranslation();
@@ -37,21 +34,14 @@ export default function ActivateBankTransfer() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Activate bank transfer')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Activate bank transfer')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='grid gap-5 custom_container lg:grid-cols-3'>
 					<div className='grid gap-5 lg:col-span-2 '>
 						<AccountDetailsForm formStore={formStore} />
