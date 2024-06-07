@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import AppsCard from 'src/app/components/page/Cards/AppsCard';
-
 import { BackIcon, NextIcon } from 'src/app/utils/icons';
 import { AppsWrapperProps } from './useAppStore';
+import { AppsCard } from 'src/app/components/optimized';
 
 export default function SocialAppsWrapper({
 	socialApps,

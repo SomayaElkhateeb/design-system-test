@@ -14,15 +14,14 @@ import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
 import { CameraIcon } from 'src/app/utils/icons';
 import { IoEyeOutline } from 'react-icons/io5';
 
-
 import { Switch } from 'src/app/components/ui/switch';
 
 export default function BlogPostsTable({
-	Blogs,
+	blog,
 	isLoading,
 }: {
-	Blogs: BlogPostInterface[];
-	isLoading?: boolean;
+	blog: BlogPostInterface[];
+	isLoading: boolean;
 }) {
 	//  hooks
 	const language = UseLanguage();
@@ -49,7 +48,7 @@ export default function BlogPostsTable({
 				language={language}
 				color='#55607A'
 				headers={BlogPostsHeaders?.map((h) => h)}
-				rows={Blogs?.map((e: BlogPostInterface, i: number) => {
+				rows={blog?.map((e: BlogPostInterface, i: number) => {
 					return {
 						item: e,
 						elements: [
@@ -72,8 +71,6 @@ export default function BlogPostsTable({
 							</GlobalTableCell>,
 
 							<TableCell>
-							
-
 								<Switch checked={e.visibility} />
 							</TableCell>,
 

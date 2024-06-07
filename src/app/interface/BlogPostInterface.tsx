@@ -1,5 +1,5 @@
 export interface BlogPostInterface {
-	img: string;
+	img?: string;
 	visibility: boolean;
 	id: string;
 	title: string;

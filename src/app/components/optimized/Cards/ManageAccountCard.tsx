@@ -13,14 +13,12 @@ import Collapsible from './ManagementCards/Collapsible';
  *
 
  */
-const ManageAccountCard = ({ menu }: { menu?: boolean }) => {
+const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => void }) => {
 	const language = UseLanguage();
 	const { t } = useTranslation();
-	const id = 'ManageAccount-card';
 
 	return (
 		<div
-			id={id}
 			className={`${menu ? 'w-full bg-light-2' : 'bg-white min-w-64 pt-3 pb-5 shadow-lg'} ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
@@ -32,7 +30,7 @@ const ManageAccountCard = ({ menu }: { menu?: boolean }) => {
 					<Person />
 					<h2 className='text-sm text-title'>{t('Manage account')}</h2>
 				</div>
-				{menu ? '' : <IoCloseCircleOutline className='text-lg cursor-pointer' />}
+				{menu ? '' : <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
 			</div>
 			<hr />
 

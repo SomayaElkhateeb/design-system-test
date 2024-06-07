@@ -59,9 +59,8 @@ export default function AddBranch(props: {
 						</Button>
 					</SubHeader>
 				)}
-
-				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
+					<div className='flex-col-top-section-pages md:col-span-2'>
 						<BranchInfo
 							selectedOption={selectedOption}
 							setSelectedOption={setSelectedOption}

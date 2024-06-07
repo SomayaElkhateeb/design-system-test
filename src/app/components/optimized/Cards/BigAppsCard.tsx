@@ -15,6 +15,7 @@ interface BigAppsCardProps {
 	percentage?: string | number;
 }
 
+
 const BigAppsCard: React.FC<BigAppsCardProps> = ({
 	image,
 	name,
@@ -44,7 +45,7 @@ const BigAppsCard: React.FC<BigAppsCardProps> = ({
 	return (
 		<Link to={url} rel='noopener noreferrer'>
 			<div className='cursor-pointer border border-border-color p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white min-h-[379px]'>
-				<div className='flex flex-col items-start gap-[1rem]'>
+				<div className='flex-col-top-section-pages items-start gap-[1rem]'>
 					<div className='border border-border-color w-full h-[213px] grid place-content-center rounded-lg relative'>
 						<img src={image} alt={name} className='h-[180px]' />
 						{percentage && (
@@ -53,8 +54,8 @@ const BigAppsCard: React.FC<BigAppsCardProps> = ({
 							</p>
 						)}
 					</div>
-					<div className='flex flex-col items-start gap-2'>
-						<h2 className=' title text-[16px]'>{name}</h2>
+					<div className='flex-col-top-section-pages items-start gap-2'>
+						<h2 className='title'>{name}</h2>
 
 						<p className='text-title text-xs capitalize'>
 							{country} <span className='text-primary'>({count + ' ' + title})</span>

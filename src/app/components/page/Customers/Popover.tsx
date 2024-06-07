@@ -4,9 +4,11 @@ import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 export default function PopoverComponenet({
+	close,
 	button,
 	children,
 }: {
+	close?: () => void;
 	button: React.ReactNode;
 	children: React.ReactNode;
 }) {
@@ -37,7 +39,7 @@ export default function PopoverComponenet({
 					horizontal: 'left',
 				}}
 			>
-				<div onClick={handleClose}>{children}</div>
+				<div onClick={close ? undefined : handleClose}>{children}</div>
 			</Popover>
 		</>
 	);

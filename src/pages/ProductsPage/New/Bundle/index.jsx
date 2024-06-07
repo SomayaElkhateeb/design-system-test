@@ -11,9 +11,23 @@ import ProductFormQuickActionsSection from 'src/app/components/optimized/Forms/P
 import { ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
-import NewProductWrapper from '../_comps/Wrapper';
+import ProductFormContainer from '../_comps/FormContainer';
+import { productTypeMap } from 'src/app/components/optimized/Forms/Product/config';
+import {
+	productDimensionUnitMap,
+	productShippingMethodMap,
+	productShippingRateMap,
+	productShippingTypeMap,
+	productWeightUnitMap,
+} from 'src/app/components/optimized/Forms/Product/sections/Shipping/utils';
+import ProductFormBundleSection from 'src/app/components/optimized/Forms/Product/sections/Bundle';
 
 const productsSections = [
+	{
+		Elem: ProductFormBundleSection,
+		id: 'ProductFormBundleSection',
+		title: 'bundle',
+	},
 	{
 		Elem: ProductFormMediaSection,
 		id: 'ProductFormMediaSection',
@@ -68,15 +82,39 @@ export default function BundleProductPage() {
 			console.log(values);
 		},
 		defaultValues: {
+			productType: productTypeMap.bundle,
+			bundle: {
+				items: [],
+				isSelectedProductsUnlisted: false,
+			},
 			bulkPrices: [],
+			shipping: {
+				type: productShippingTypeMap.pickup,
+				statesOfTheProduct: [],
+				isShippableOrPickupable: true,
+				weightUnit: productWeightUnitMap.kg,
+				dimensionUnit: productDimensionUnitMap.cm,
+				rateType: productShippingRateMap['fixed rate'],
+				rateValue: 0,
+				method: productShippingMethodMap['Dhl (main)'],
+				weight: 0,
+				dimensions: {
+					length: 0,
+					width: 0,
+					height: 0,
+				},
+			},
 			isTaxable: true,
-			statesOfTheProduct: [],
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
-			isShippableOrPickupable: true,
-			weightUnit: 'kg',
-			dimensionUnit: 'cm',
-			branches: [{ id: '1', name: 'Main Branch', quantity: 0 }],
+			branches:
+				// TODO: Remove this when branches feature is ready
+				// This is a temporary test data
+				// For development purposes, we are adding a default branch
+				// and should be removed when we have the branches feature ready
+				process.env.NODE_ENV === 'development'
+					? [{ id: '1', name: 'Main Branch', quantity: 0 }]
+					: [],
 			metaKeywords: [],
 			options: [],
 			variations: [],
@@ -86,9 +124,9 @@ export default function BundleProductPage() {
 	});
 
 	return (
-		<NewProductWrapper formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
+		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
-				<div className='flex gap-6'>
+				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
 						{productsSections.map(({ Elem, id }) => (
 							// @ts-ignore
@@ -100,6 +138,6 @@ export default function BundleProductPage() {
 					</div>
 				</div>
 			</section>
-		</NewProductWrapper>
+		</ProductFormContainer>
 	);
 }

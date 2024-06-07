@@ -17,12 +17,9 @@ export const ProductSchema = {
 	...productBasicInfoSchema,
 	...productDescriptionAndSpecificationsRawSchema,
 	...productPricingSchema,
-	// add bulk pricing???
 	...productInventoryBranchesSchema,
 	...productShippingSchema,
-	// more advanced shipping options???
 	...productOptionsAndVariationsRawSchema,
-	// options: z.array(
 	...productSeoSchema,
 	...productFaqsSchema,
 	...productQuickActionsSchema,

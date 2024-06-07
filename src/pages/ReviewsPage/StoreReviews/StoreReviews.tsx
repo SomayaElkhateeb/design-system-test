@@ -3,6 +3,8 @@ import { columns, rows } from './_comp/StoreReviewsData';
 import DonutGraph, { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
 import RecentReview from './_comp/RecentReview';
 import { useState } from 'react';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import StoreReviewsTableMobile from './_comp/StoreReviewsTableMobile';
 
 const chartData: ChartData[] = [
 	{
@@ -22,15 +24,14 @@ const chartData: ChartData[] = [
 	},
 ];
 
-interface TableRow {
+export interface TableRow {
 	[key: string]: any;
 }
 
 const StoreReviews = () => {
 	const [selectedStates, setSelectedStates] = useState<TableRow[]>([]);
 
-	console.log(selectedStates);
-	
+	const { xs } = useResponsive();
 
 	return (
 		<div className='flex-col-top-section-pages'>
@@ -51,6 +52,7 @@ const StoreReviews = () => {
 				selectedStates={selectedStates}
 				setSelectedStates={setSelectedStates}
 			/>
+			{xs && <StoreReviewsTableMobile tableData={rows} />}
 		</div>
 	);
 };

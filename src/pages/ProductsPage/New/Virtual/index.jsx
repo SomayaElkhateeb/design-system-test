@@ -11,7 +11,9 @@ import ProductFormQuickActionsSection from 'src/app/components/optimized/Forms/P
 import { ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
-import NewProductWrapper from '../_comps/Wrapper';
+import ProductFormContainer from '../_comps/FormContainer';
+import { productTypeMap } from 'src/app/components/optimized/Forms/Product/config';
+import { productShippingTypeMap } from 'src/app/components/optimized/Forms/Product/sections/Shipping/utils';
 
 const productsSections = [
 	{
@@ -68,15 +70,23 @@ export default function VirtualProductPage() {
 			console.log(values);
 		},
 		defaultValues: {
+			productType: productTypeMap.virtual,
 			bulkPrices: [],
+			shipping: {
+				type: productShippingTypeMap.online,
+				downloadLink: '',
+			},
 			isTaxable: true,
-			statesOfTheProduct: [],
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
-			isShippableOrPickupable: true,
-			weightUnit: 'kg',
-			dimensionUnit: 'cm',
-			branches: [{ id: '1', name: 'Main Branch', quantity: 0 }],
+			branches:
+				// TODO: Remove this when branches feature is ready
+				// This is a temporary test data
+				// For development purposes, we are adding a default branch
+				// and should be removed when we have the branches feature ready
+				process.env.NODE_ENV === 'development'
+					? [{ id: '1', name: 'Main Branch', quantity: 0 }]
+					: [],
 			metaKeywords: [],
 			options: [],
 			variations: [],
@@ -86,9 +96,9 @@ export default function VirtualProductPage() {
 	});
 
 	return (
-		<NewProductWrapper formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
+		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
-				<div className='flex gap-6'>
+				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
 						{productsSections.map(({ Elem, id }) => (
 							// @ts-ignore
@@ -100,6 +110,6 @@ export default function VirtualProductPage() {
 					</div>
 				</div>
 			</section>
-		</NewProductWrapper>
+		</ProductFormContainer>
 	);
 }

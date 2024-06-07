@@ -28,7 +28,7 @@ export default function FormChoiceChips<T extends FieldValues>({
 	return (
 		<div className={`grid ${checkoutForm ? 'gap-[.25rem]' : 'gap-2'} col-span-2`}>
 			{label && (
-				<h3 className={`title text-base ${checkoutForm ? 'font-normal' : 'font-semibold'}`}>
+				<h3 className={`title  ${checkoutForm ? 'font-normal' : 'font-semibold'}`}>
 					{t(label as any)}
 				</h3>
 			)}

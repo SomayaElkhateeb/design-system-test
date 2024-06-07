@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SubscriptionOptions from './_comp/SubscriptionOptions';
-import { SubHeader } from 'src/app/components/optimized';
+
 import { useTranslation } from 'react-i18next';
 import EmailOne from './EmailOne/EmailOne';
 import PackageSubscribe from './EmailOne/_comp/PackageSubscribe';
@@ -31,7 +31,7 @@ const EmailForm = () => {
 		<section>
 			{!istemplate && !mailOne && !mailTwo && !isSubscribe && (
 				<div>
-					<SubHeader title={t('Choose email template')} />
+					{/* <SubHeader title={t('Choose email template')} /> */}
 					<SubscriptionOptions
 						currentEmails={1000}
 						options={subscriptionOptions}

@@ -1,14 +1,18 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
 import { MobileProductViews } from 'src/app/components/optimized';
 
 import AllProductsTable from 'src/app/components/page/Products/AllProducts/AllProductsTable';
 import VerticalproductsCard from 'src/app/components/page/Products/AllProducts/AllproductsVertical';
 import TopSection from 'src/app/components/page/Products/AllProducts/TopSection';
 import { Product } from 'src/app/interface/ProductInterface';
+import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 
 //  setting menus for setting button action and will be used in brands section page
 export const settingMenus = [
@@ -81,6 +85,16 @@ export default function AllProducts() {
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
 
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, allProducts, error } = useSelector((state) => state.allProducts);
+
+	useEffect(() => {
+		dispatch(getAllProductsTable());
+	}, [dispatch]);
+
+	const { xs } = useResponsive();
+
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-top-section-pages '>
@@ -93,25 +107,27 @@ export default function AllProducts() {
 						settingMenus={settingMenus}
 						array={array}
 						setArray={setArray}
-						products={products}
+						products={allProducts}
+						isLoading={isLoading}
 					/>
 				) : (
 					<VerticalproductsCard
 						settingMenus={settingMenus}
 						array={array}
 						setArray={setArray}
-						products={products}
+						products={allProducts}
 					/>
 				)}
 
 				{/*  case of small media only  */}
 
 				<div className='sm:hidden grid gap-2 '>
-					{products?.map((product) => (
+					{allProducts?.map((product) => (
 						<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />
 					))}
 				</div>
 			</div>
+			{xs && <AddButtonMobile path='/order/addOrder' />}
 		</div>
 	);
 }
