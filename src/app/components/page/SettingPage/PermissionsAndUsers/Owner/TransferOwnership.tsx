@@ -3,7 +3,7 @@ import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { SubHeader, Button } from 'src/app/components/optimized';
 import NewOwner from './NewOwner';
 
 export interface addOwnerInterface {
@@ -44,21 +44,14 @@ export default function TransferOwnership() {
 		<>
 			<Form {...formStore}>
 				<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3'>
-					<HeaderSettings
-						variant='settingTwoBtns'
-						submit
-						title={t('Transfer ownership')}
-						btn1={{
-							text: t('Discard'),
-							onClick: () => {
-								navigate(-1);
-							},
-						}}
-						btn2={{
-							text: t('Transfer ownership'),
-							onClick: () => {},
-						}}
-					/>
+					<SubHeader title={t('Transfer Ownership')}>
+						<Button variant='secondary' onClick={() => navigate(-1)}>
+							Discard
+						</Button>
+						<Button variant='primary' onClick={() => {}}>
+							{t('Transfer Ownership')}
+						</Button>
+					</SubHeader>
 					<div className='custom_container '>
 						<NewOwner formStore={formStore} />
 					</div>

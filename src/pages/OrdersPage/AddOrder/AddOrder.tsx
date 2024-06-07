@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HeaderSettings, TabX } from 'src/app/components/optimized';
+import { SubHeader, TabX } from 'src/app/components/optimized';
 import { AddCheckout, Address, Customer, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
@@ -9,6 +9,24 @@ export default function AddOrder() {
 	const [currentTab, setCurrentTab] = useState(0);
 	const [_, setFinish] = useState(false);
 
+	const tabs = [
+		{
+			title: t('customer'),
+			content: <Customer />,
+		},
+		{
+			title: t('products'),
+			content: <Products />,
+		},
+		{
+			title: t('address'),
+			content: <Address />,
+		},
+		{
+			title: t('checkout'),
+			content: <AddCheckout />,
+		},
+	];
 	const handleTabClick = (index: number) => {
 		setCurrentTab(index);
 	};
@@ -29,27 +47,9 @@ export default function AddOrder() {
 		setFinish(value);
 	};
 
-	const tabs = [
-		{
-			title: t('customer'),
-			content: <Customer />,
-		},
-		{
-			title: t('products'),
-			content: <Products />,
-		},
-		{
-			title: t('address'),
-			content: <Address />,
-		},
-		{
-			title: t('checkout'),
-			content: <AddCheckout />,
-		},
-	];
 	return (
 		<>
-			<HeaderSettings title={t('add new order')} submit />
+			<SubHeader title={t('add new order')} />
 			<div className='custom_container mx-0 py-5 lg:w-3/4 sm:px-1'>
 				<TabX
 					tabs={tabs}

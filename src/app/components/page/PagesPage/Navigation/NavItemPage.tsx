@@ -1,13 +1,10 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
-
-import { Button, HeaderSettings } from 'src/app/components/optimized';
-import LegalPageParentCard from '../PagesSection/LegalPageParentCard';
-import { EditIcon, RemoveIcon } from 'src/app/utils/icons';
-
+import { Button, SubHeader } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
-import { useState } from 'react';
-
+import { EditIcon, RemoveIcon } from 'src/app/utils/icons';
+import LegalPageParentCard from '../PagesSection/LegalPageParentCard';
 import AddNavItemDialog from './AddNavItemDialog';
 
 export default function NavItemPage() {
@@ -33,11 +30,11 @@ export default function NavItemPage() {
 		<>
 			<div className='flex-col-top-section-pages gap-[2rem]'>
 				{/*  top setion */}
-				<HeaderSettings title='Main menu' variant='customerInfowithIcons'>
+				<SubHeader title={t('Main menu')}>
 					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
 						{t('Add new item')}
 					</Button>
-				</HeaderSettings>
+				</SubHeader>
 				{/*  bottom Section */}
 				<div className='container mx-auto'>
 					<div className='w-[60%]'>

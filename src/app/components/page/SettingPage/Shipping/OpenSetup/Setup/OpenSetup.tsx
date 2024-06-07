@@ -1,8 +1,8 @@
-import { useTranslation } from 'react-i18next';
-import { HeaderSettings, TabX } from 'src/app/components/optimized';
-import SmsaAccount from '../Smsa/SmsaAccount';
-import SetupInfo from '../SetupInfo';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { SubHeader, TabX } from 'src/app/components/optimized';
+import SetupInfo from '../SetupInfo';
+import SmsaAccount from '../Smsa/SmsaAccount';
 
 export default function OpenSetup() {
 	const { t } = useTranslation();
@@ -43,7 +43,7 @@ export default function OpenSetup() {
 
 	return (
 		<div>
-			<HeaderSettings title={t('Install SMSA')} />
+			<SubHeader title={t('Install SMSA')} />
 			<div className='custom_container'>
 				<TabX
 					tabs={tabs}

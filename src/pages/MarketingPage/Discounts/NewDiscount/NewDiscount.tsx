@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
+import Limits from 'src/app/components/page/discount/Comp/Limits';
+import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
 import { Form } from 'src/app/components/ui/form';
-import { HeaderSettings } from 'src/app/components/optimized';
+import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
-import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
-import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
-import Limits from 'src/app/components/page/discount/Comp/Limits';
 
 const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
@@ -33,8 +33,6 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		isCheck,
 	);
 
-	/////////////////////
-	// /////////////////
 	useEffect(() => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
@@ -47,8 +45,6 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		formStore.watch('customerSegment'),
 	]);
 
-	//////////////////
-	// ///////////////
 	//  handel active date
 	useEffect(() => {
 		formStore.setValue('activeDates', updatedDates);
@@ -62,18 +58,14 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					variant='settingTwoBtns'
-					submit
-					title={coupon ? t('Add coupon') : t('Add Discount')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{ text: t('Save Changes'), onClick: () => {} }}
-				/>
+				<SubHeader title={coupon ? t('Add Coupon') : t('Add Discount')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<BasicInfo coupon={coupon} formStore={formStore} />

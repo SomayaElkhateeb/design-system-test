@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { HeaderSettings } from '../../../optimized';
+import { Button, SubHeader } from '../../../optimized';
 import { getImageUrl } from 'src/app/utils';
 import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';
@@ -14,16 +14,11 @@ export default function ServiceDetails() {
 		<div className='flex-col-top-section-pages mb-[2rem]'>
 			{/*  top section */}
 			<div className='flex flex-col'>
-				<HeaderSettings
-					title={t('Service details')}
-					btn1={{
-						text: 'Purchase service',
-						onClick: () => {
-							navigate('purchaseServicesPage');
-						},
-					}}
-					variant={'settingOneBtn'}
-				/>
+				<SubHeader title={t('Service details')}>
+					<Button onClick={() => navigate('purchaseServicesPage')} variant='primary'>
+						{t('Purchase service')}
+					</Button>
+				</SubHeader>
 
 				<img loading='lazy' alt='img' src={getImageUrl('Services/poster.svg')} />
 			</div>

@@ -1,16 +1,16 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { useForm } from 'src/app/utils/hooks/form';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import { useForm } from 'src/app/utils/hooks/form';
 import AppliesOption from './Comp/AppliesOption';
 import Rates from './Comp/Rates';
-import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
-import useCustomHookSetupInfo, { ISetupInfo } from './HookForSetupInfo';
 import RatesDeliver from './Comp/RatesDeliver';
+import useCustomHookSetupInfo, { ISetupInfo } from './HookForSetupInfo';
 
 export default function SetupInfo({
 	gap,
@@ -42,20 +42,14 @@ export default function SetupInfo({
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col gap-3'>
-				{/* <HeaderSettings
-					variant='settingTwoBtns'
-					title={t('SMSA')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/> */}
+				{/* <SubHeader title={t('SMSA')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						Discard
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						Save Changes
+					</Button>
+				</SubHeader> */}
 				<div className='global-cards w-full  gap-4'>
 					<h3 className='title'>{t('Setup info')}</h3>
 					<div className='w-[50%]'>

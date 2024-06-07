@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { useForm } from 'src/app/utils/hooks/form';
-import { z } from 'zod';
 import useCustomHookCustomNotificationForm, {
 	addCustomNotificationInterface,
 } from './HookForCustomNotificationForm';
@@ -17,18 +16,14 @@ export default function CustomizeNotificationForm() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	// ////////////////////////////
-	// ////////////////////////////
 	const handleSubmit = (values: addCustomNotificationInterface) => {
 		console.log(values);
 		// handelclose();
 	};
 
-	// /////////////////////
-	// ////////////////////
 	// custom hook
 	const { CustomNotifcationSchema, handelDefaultValue } = useCustomHookCustomNotificationForm();
-	// ////////////////////////////
+
 	const { formStore, onSubmit } = useForm({
 		schema: CustomNotifcationSchema,
 		handleSubmit: handleSubmit,
@@ -51,21 +46,14 @@ export default function CustomizeNotificationForm() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={title}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={title}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						Discard
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						Save Changes
+					</Button>
+				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className=' lg:col-span-2'>
 						{/*  form  */}

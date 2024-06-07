@@ -1,14 +1,12 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
-import BranchInfo from './BranchInfo';
-
-import { useForm } from 'src/app/utils/hooks/form';
-import { Form } from 'src/app/components/ui/form';
-import BranchAppointments from './BranchAppointments';
-
+import { Button, SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import { useState } from 'react';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
+import BranchAppointments from './BranchAppointments';
+import BranchInfo from './BranchInfo';
 import useCustomHookAddBranchForm, { BranchSettingsInterface } from './HookForAddBranchForm';
 
 export default function AddBranch(props: {
@@ -20,19 +18,13 @@ export default function AddBranch(props: {
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 
-	// //////////////////////////////////////
-	// //////////////////////////
 	const handleSubmit = (values: BranchSettingsInterface) => {
 		console.log(values);
 		// handleClose();
 	};
 
-	// /////////////////////////
-	//   custom hook
-
+	// custom hook
 	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(selectedOption);
-	// ///////////////////////
-
 	const { formStore, onSubmit } = useForm({
 		schema: branchSettingsSchema,
 		handleSubmit: props.handleSubmit || handleSubmit,
@@ -58,21 +50,14 @@ export default function AddBranch(props: {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				{!props.hideHeader && (
-					<HeaderSettings
-						submit
-						variant='settingTwoBtns'
-						title={t('Add Branch')}
-						btn1={{
-							text: t('Discard'),
-							onClick: () => {
-								navigate(-1);
-							},
-						}}
-						btn2={{
-							text: t('Save Changes'),
-							onClick: () => {},
-						}}
-					/>
+					<SubHeader title={t('Add Branch')}>
+						<Button variant='secondary' onClick={() => navigate(-1)}>
+							{t('Discard')}
+						</Button>
+						<Button variant='primary' onClick={() => {}}>
+							{t('Save Changes')}
+						</Button>
+					</SubHeader>
 				)}
 				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
 					<div className='flex-col-top-section-pages md:col-span-2'>

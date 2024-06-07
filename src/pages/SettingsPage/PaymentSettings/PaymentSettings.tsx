@@ -1,16 +1,15 @@
-import { HeaderSettings } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
-
-import PaymentProvidersCard from './comp/PaymentProvidersCard';
-import ManualPayment from './comp/ManualPayment';
+import { SubHeader } from 'src/app/components/optimized';
 import DookanPay from './comp/DookanPay';
+import ManualPayment from './comp/ManualPayment';
+import PaymentProvidersCard from './comp/PaymentProvidersCard';
 
 export default function PaymentSettings() {
 	const { t } = useTranslation();
 
 	return (
 		<div className='flex-col-top-section-pages'>
-			<HeaderSettings title={t('Payment')} />
+			<SubHeader title={t('Payment')} />
 			<div className='custom_container grid grid-cols-2 gap-5 '>
 				<div className='col-span-2 lg:col-span-1 '>
 					<PaymentProvidersCard />

@@ -1,17 +1,17 @@
 import { RefObject, useRef } from 'react';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import CampaignStatus from '../Campaigns/CampaignStatus';
-import CampaignBtns from '../Campaigns/CampaignBtns';
-import { campaindata } from '../Campaigns/Campaigns';
-import { HeaderSettings, StackedColumnChart } from 'src/app/components/optimized';
-import CampaignElementTable from '../Campaigns/CampaignElementTable';
-import { useSearchParams } from 'react-router-dom';
-import CampaignInfoCard from '../Campaigns/CampaignInfoCard';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
+import { StackedColumnChart, SubHeader } from 'src/app/components/optimized';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import CampaignBtns from '../Campaigns/CampaignBtns';
+import CampaignElementTable from '../Campaigns/CampaignElementTable';
+import CampaignInfoCard from '../Campaigns/CampaignInfoCard';
+import CampaignStatus from '../Campaigns/CampaignStatus';
+import { campaindata } from '../Campaigns/Campaigns';
 
 export default function CampaignElement() {
 	//  hooks
-	const {t}=useTranslation()
+	const { t } = useTranslation();
 	const [searchParams] = useSearchParams();
 	const activity = searchParams.get('activityId');
 
@@ -27,7 +27,8 @@ export default function CampaignElement() {
 	}
 	return (
 		<div className='p-4 flex flex-col gap-4'>
-			<HeaderSettings to={-1} title={!activity ? campainName : 'Facebook'} />
+			<SubHeader title={!activity ? campainName : 'Facebook'} />
+
 			{activity && <CampaignInfoCard />}
 			<CampaignStatus />
 

@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import AccordionCard from 'src/app/components/optimized/UiKits/AccordionCard';
-import { GroupIcons, HeaderSettings } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate } from 'react-router-dom';
-
+import { Button, SubHeader } from 'src/app/components/optimized';
+import { LuEye } from 'react-icons/lu';
+import { RxDotsHorizontal } from 'react-icons/rx';
 import { useForm } from 'src/app/utils/hooks/form';
 
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
@@ -20,15 +20,10 @@ export default function AddReturnPloicy() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	// ////////////////////////////
-	// ////////////////////////////
 	const handleSubmit = (values: addReturnPloicyInterface) => {
 		console.log(values);
 		// handelclose();
 	};
-
-	// /////////////////////
-	// ////////////////////
 
 	const handelDefaultValue = () => {
 		return {
@@ -36,14 +31,12 @@ export default function AddReturnPloicy() {
 			descriptionAr: '',
 		};
 	};
-	// //////////////////////////////////////////
+
 	const ReturnPloicySchema = {
 		descriptionEn: z.string().min(10).max(200),
 		descriptionAr: z.string().min(10).max(200),
 	};
 
-	// ////////////////////////////
-	// ////////////////////////////
 	const { formStore, onSubmit } = useForm({
 		schema: ReturnPloicySchema,
 		handleSubmit: handleSubmit,
@@ -59,22 +52,23 @@ export default function AddReturnPloicy() {
 	return (
 		<Form {...formStore}>
 			<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
-				<HeaderSettings
-					variant='settingWithIcons'
-					submit
-					title={t('Return policy')}
-					groupIcons={<GroupIcons variant='view' />}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Return policy')}>
+					<div className='flex space-x-3'>
+						<button>
+							<LuEye size='22' />
+						</button>
+
+						<button>
+							<RxDotsHorizontal size='22' />
+						</button>
+					</div>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						Discard
+					</Button>
+					<Button variant='primary' onClick={() => {}}>
+						Save Changes
+					</Button>
+				</SubHeader>
 				<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<div className='global-cards'>

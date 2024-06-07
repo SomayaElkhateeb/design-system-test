@@ -37,7 +37,6 @@ export default function CustomersTable({ customersAnalytics,
 						item: e,
 						elements: [
 							<GlobalTableCell>{e.day}</GlobalTableCell>,
-
 							<GlobalTableCell>{e.new_customers}</GlobalTableCell>,
 							<GlobalTableCell>{e.purchasing_customers}</GlobalTableCell>,
 							<GlobalTableCell>{e.customer_groups}</GlobalTableCell>,

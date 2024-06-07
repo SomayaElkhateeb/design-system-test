@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { HeaderSettings } from 'src/app/components/optimized';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import AddNavItemDialog from 'src/app/components/page/PagesPage/Navigation/AddNavItemDialog';
 
 export default function AddNavigation() {
@@ -17,16 +16,11 @@ export default function AddNavigation() {
 	};
 	return (
 		<div>
-			<HeaderSettings
-				variant='settingOneBtn'
-				title={t('Main menu')}
-				btn1={{
-					text: t('Add New Item'),
-					onClick: () => {
-						setShowDialog(true);
-					},
-				}}
-			/>
+			<SubHeader title={t('Main menu')}>
+				<Button variant='primary' onClick={() => setShowDialog(true)}>
+					Add New Item
+				</Button>
+			</SubHeader>
 			{showDialog && (
 				<AddNavItemDialog
 					openDialog={true}

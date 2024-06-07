@@ -1,10 +1,12 @@
+import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { GrUpdate } from 'react-icons/gr';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { IoPrintOutline } from 'react-icons/io5';
+import { RxDotsHorizontal } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-import { Button, HeaderSettings } from 'src/app/components/optimized';
-import { EditIcon, LocationIcon } from 'src/app/utils/icons';
-import { contact } from 'src/pages/SettingsPage/data';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import {
 	AddressForm,
@@ -16,7 +18,8 @@ import {
 	OrderItems,
 	OrderNo,
 } from 'src/app/components/page';
-
+import { EditIcon, LocationIcon } from 'src/app/utils/icons';
+import { contact } from 'src/pages/SettingsPage/data';
 export default function OrderDetails() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -54,18 +57,26 @@ export default function OrderDetails() {
 	];
 	return (
 		<div className='flex-col-top-section-pages'>
-			<HeaderSettings
-				variant='settingOrder'
-				title={t('Order Details')}
-				onClick={() => navigate(-1)}
-				btn1={{ onClick: () => console.log('Update Status') }}
-				btn2={{ onClick: () => console.log('Print Invoice') }}
-				btn3={{ onClick: () => console.log('More Options') }}
-				btn4={{
-					onClickPrev: () => console.log('Previous'),
-					onClickNext: () => console.log('Next'),
-				}}
-			/>
+			<SubHeader title={t('Order Details')}>
+				<Button onClick={() => {}} variant='tertiary' LeftIcon={<GrUpdate />}>
+					{t('Update Status')}
+				</Button>
+				<Button onClick={() => {}} variant='tertiary' LeftIcon={<IoPrintOutline />}>
+					{t('Print Invoice')}
+				</Button>
+				<button onClick={() => {}}>
+					<RxDotsHorizontal size='20' />
+				</button>
+
+				<div className='flex items-center '>
+					<button onClick={() => {}} className='border p-2 flex items-center justify-center'>
+						<IoIosArrowBack />
+					</button>
+					<button onClick={() => {}} className='border p-2 flex items-center justify-center'>
+						<IoIosArrowForward />
+					</button>
+				</div>
+			</SubHeader>
 
 			<div className='custom-grid-parent custom_container'>
 				<div className='flex-col-top-section-pages grid-left'>
