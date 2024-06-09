@@ -46,9 +46,9 @@ export default function TransferOwnership() {
 				<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3'>
 					<SubHeader title={t('Transfer Ownership')}>
 						<Button variant='secondary' onClick={() => navigate(-1)}>
-							Discard
+							{t("Discard")}
 						</Button>
-						<Button variant='primary' onClick={() => {}}>
+						<Button variant='primary' onClick={onSubmit}>
 							{t('Transfer Ownership')}
 						</Button>
 					</SubHeader>

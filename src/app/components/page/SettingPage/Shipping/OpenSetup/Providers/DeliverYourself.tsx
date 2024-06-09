@@ -13,7 +13,7 @@ export default function DeliverYourself() {
 		<div>
 			<SubHeader title={t('Deliver Yourself')}>
 				<Button variant='secondary' onClick={() => navigate(-1)}>
-					Discard
+					{t("Discard")}
 				</Button>
 				<Button variant='primary' onClick={() => {}}>
 					{t('Save Changes')}

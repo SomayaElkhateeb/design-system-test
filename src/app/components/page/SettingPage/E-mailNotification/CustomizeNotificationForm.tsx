@@ -48,10 +48,10 @@ export default function CustomizeNotificationForm() {
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={title}>
 					<Button variant='secondary' onClick={() => navigate(-1)}>
-						Discard
+						{t("Discard")}
 					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						Save Changes
+					<Button variant='primary' onClick={onSubmit}>
+						{t("Save Changes")}
 					</Button>
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>

@@ -49,6 +49,8 @@ export default function AddNewAddresseCustomer() {
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
 	};
+
+	
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
@@ -56,7 +58,7 @@ export default function AddNewAddresseCustomer() {
 					<Button variant='secondary' onClick={() => navigate(-1)}>
 						{t('Discard')}
 					</Button>
-					<Button variant='primary' onClick={() => {}}>
+					<Button variant='primary'  onClick={onSubmit}>
 						{t('Save Changes')}
 					</Button>
 				</SubHeader>

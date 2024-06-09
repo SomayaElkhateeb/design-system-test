@@ -3,25 +3,19 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { useNavigate } from 'react-router-dom';
 
-/**
- * SubHeader component displays a subheader with a title and optional children.
- * @param {Object} props - Component props.
- * @param {string} props.title - The title to be displayed in the subheader.
- * @param {React.ReactNode} [props.children] - Optional children components to be displayed on the right side.
- * @returns {JSX.Element} The rendered SubHeader component.
- */
 
-const SubHeader = ({ title, children }) => {
+const SubHeader = ({ title, children }: { title: string; children?: React.ReactNode }) => {
+	//  hooks
 	const language = UseLanguage();
 	const navigate = useNavigate();
 
 	return (
-		<div className='flex justify-between items-center shadow-sm py-4 px-2 bg-white mb-5'>
+		<div className='flex justify-between items-center shadow-sm py-4 px-2 bg-white '>
 			<div className='flex items-center'>
 				<button className='text-blue-600 mr-2' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <IoIosArrowBack />}
 				</button>
-				<span className='font-semibold capitalize'>{title}</span>
+				<span className='title'>{title}</span>
 			</div>
 			{children && <div className='flex space-x-3 capitalize'>{children}</div>}
 		</div>
@@ -29,9 +23,11 @@ const SubHeader = ({ title, children }) => {
 };
 export default SubHeader;
 
-{/* <SubHeader title={t('Email form')}>
+{
+	/* <SubHeader title={t('Email form')}>
   <Button onClick={() => {}} variant='primary'>Submit emails</Button>
-</SubHeader> */}
+</SubHeader> */
+}
 
 // =========================================
 // General settings
