@@ -1,22 +1,10 @@
 import { UseFormReturn } from 'react-hook-form';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-
-import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { useState } from 'react';
-import {
-	Select,
-	SelectContent,
-	SelectTrigger,
-	SelectValue,
-	SelectItem,
-} from 'src/app/components/ui/select';
-import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { BranchSettingsInterface } from './HookForAddBranchForm';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
-import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import { Address } from '../../..';
 
 export const countries = [
@@ -57,17 +45,17 @@ interface BranchInfoProps {
 
 export default function BranchInfo({
 	formStore,
-	selectedOption,
-	setSelectedOption,
-}: BranchInfoProps) {
+}: // selectedOption,
+// setSelectedOption,
+BranchInfoProps) {
 	//  hooks
-	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
-	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
+	// const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
+	// const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const { t } = useTranslation();
 
-	const handleAddressOption = (option: string) => {
-		setSelectedOption(option);
-	};
+	// const handleAddressOption = (option: string) => {
+	// 	setSelectedOption(option);
+	// };
 	// -------------------------------------
 
 	return (
