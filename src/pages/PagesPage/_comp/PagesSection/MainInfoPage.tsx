@@ -4,14 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { Input } from 'src/app/components/ui/input';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 
-
-
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
-import { fileClassName } from '../../SettingPage/GeneralSettings/Media';
+
 import { TfiUpload } from 'react-icons/tfi';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { addPageInterface } from '../HookForAddBlogOrPageForm';
+import { addPageInterface } from '../BlogPosts/HookForAddBlogOrPageForm';
+import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
 
 export default function MainInfoPage({
 	formStore,

@@ -4,8 +4,9 @@ import { IoIosAddCircle } from 'react-icons/io';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { EditIcon, RemoveIcon } from 'src/app/utils/icons';
+
+import AddNavItemDialog from './_comp/AddNavItemDialog';
 import LegalPageParentCard from '../PagesSection/LegalPageParentCard';
-import AddNavItemDialog from './AddNavItemDialog';
 
 export default function NavItemPage() {
 	//  hooks

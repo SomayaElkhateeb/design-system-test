@@ -1,6 +1,6 @@
 import { FaqIcon } from 'src/app/utils/icons';
 import HelpCenterCard from '../Cards/HelpCenterCard';
-import PopoverComponenet from '../../page/Customers/Popover';
+import PopoverComponenet from '../Popover/Popover';
 import { useState } from 'react';
 
 /**

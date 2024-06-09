@@ -2,7 +2,6 @@ export { default as HomePage } from './HomePage/HomePage';
 export { default as AppsPage } from './AppsPage/AppsPage';
 export { default as StorePage } from './StorePage/StorePage';
 export { default as ErrorPage } from './ErrorPage/ErrorPage';
-export { default as PagesPage } from './PagesPage/PagesPage';
 export { default as OrdersPage } from './OrdersPage/OrdersPage';
 export { default as ReviewsPage } from './ReviewsPage/ReviewsPage';
 export { default as SettingsPage } from './SettingsPage/SettingsPage';
@@ -38,6 +37,5 @@ export { default as Config } from 'src/app/components/page/SettingPage/Shipping/
 export { default as SetupConfig } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/Setup/SetupConfig';
 export { default as SetupOpenConfig } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
 export { default as ShippingConfig } from 'src/app/components/page/SettingPage/Shipping/ShippingConfig';
-export { default as PagesConfig } from 'src/app/components/page/PagesPage/comp/PagesConfig';
 export { default as OrdersTabs } from 'src/app/components/page/Orders/OrdersTabs';
 export { default as ProductsTabs } from 'src/app/components/page/Products/ProductsTabs';
