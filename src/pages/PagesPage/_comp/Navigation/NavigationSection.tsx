@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
-import NavigationCard from './NavigationCard';
+import NavigationCard from './_comp/NavigationCard';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 

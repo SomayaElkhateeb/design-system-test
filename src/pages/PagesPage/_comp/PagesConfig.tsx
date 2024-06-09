@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import AddPage from './AddPage';
-import AddBlog from './AddBlog';
-import AddNavigation from './AddNavigation';
-import AddReturnPloicy from './AddReturnPolicy';
+import AddPage from './PagesSection/AddPage';
+import AddNavigation from './Navigation/_comp/AddNavigation';
+import AddBlog from './BlogPosts/AddBlog';
+import AddReturnPloicy from './BlogPosts/_comp/AddReturnPolicy';
 
 export default function PagesConfig() {
 	const { config } = useParams();

@@ -1,9 +1,9 @@
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import CustomTableHeaderCheckbox from '../../Customers/CustomTableHeaderChckbox';
+import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Product } from 'src/app/interface/ProductInterface';
-import CustomTableBodyCheckbox from '../../Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import { TableCell } from '@mui/material';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';

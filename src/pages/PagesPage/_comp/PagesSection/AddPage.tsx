@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import AccordionCard from 'src/app/components/optimized/UiKits/AccordionCard';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import ContentSeoPage from 'src/app/components/page/PagesPage/PagesSection/ContentSeoPage';
-import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInfoPage';
+
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import useCustomHookAddBlogOrPage, { addPageInterface } from '../HookForAddBlogOrPageForm';
+import useCustomHookAddBlogOrPage from '../BlogPosts/HookForAddBlogOrPageForm';
+import MainInfoPage from './MainInfoPage';
+import ContentSeoPage from './ContentSeoPage';
+
 export default function AddPage({ addblog }: { addblog?: boolean }) {
 	// hooks
 	const [open, setOpen] = useState(false);

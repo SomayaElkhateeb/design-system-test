@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
-import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +14,7 @@ import { CameraIcon } from 'src/app/utils/icons';
 import { IoEyeOutline } from 'react-icons/io5';
 
 import { Switch } from 'src/app/components/ui/switch';
+import BaseTable, { GlobalTableCell } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 
 export default function BlogPostsTable({
 	blog,

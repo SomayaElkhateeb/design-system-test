@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { getImageUrl } from 'src/app/utils';
 import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
-import BlogPostsTable from '../BlogPosts/BlogPostsTable';
-import TopSectionBlogPostsAndSection from '../BlogPosts/TopSectionBlogPostsAndPagesSection';
+import BlogPostsTable from '../BlogPosts/_comp/BlogPostsTable';
+import TopSectionBlogPostsAndSection from '../BlogPosts/_comp/TopSectionBlogPostsAndPagesSection';
 import PagesPagesTable from './PagesPagesSectionTable';
 import LegalPagesSection from './LegalPagesSection';
 

@@ -1,8 +1,8 @@
 import Accordion, { AccordionSlots } from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { MdExpandMore } from "react-icons/md";
+
 import Fade from '@mui/material/Fade';
 import { useState } from 'react';
 export default function DropDownMenu({
@@ -33,7 +33,7 @@ export default function DropDownMenu({
 			}}
 		>
 			<AccordionSummary
-				expandIcon={<ExpandMoreIcon />}
+				expandIcon={<MdExpandMore />}
 				aria-controls='panel1-content'
 				id='panel1-header'
 			>

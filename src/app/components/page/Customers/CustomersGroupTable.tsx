@@ -10,8 +10,8 @@ import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useEffect, useState } from 'react';
-import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
+import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 
 import { Switch } from '../../ui/switch';

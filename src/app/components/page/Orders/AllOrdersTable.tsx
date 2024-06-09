@@ -15,9 +15,9 @@ import { FaArrowsRotate } from 'react-icons/fa6';
 
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import { menuType } from '../../optimized/Buttons/ActionsComp';
-import CustomTableHeaderCheckbox from '../Customers/CustomTableHeaderChckbox';
+import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';
 import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
-import CustomTableBodyCheckbox from '../Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import { CiLocationOn } from 'react-icons/ci';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 

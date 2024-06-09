@@ -18,7 +18,7 @@ import {
 	StarActiveIcon,
 } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
-import CustomTableBodyCheckbox from '../../page/Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import useSelectBox from '../Menu/useSelectBox';
 import ThreeDotsButton from '../Buttons/ThreedotsButton';
 
@@ -74,11 +74,7 @@ export default function ProductCard(props) {
 	return (
 		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl  divide-y p-0  group '>
 			<div className='relative w-full h-[260px]'>
-				<img
-					src={props.imageUrl}
-					alt={props.name}
-					className='object-cover w-full h-full'
-				/>
+				<img src={props.imageUrl} alt={props.name} className='object-cover w-full h-full' />
 				<div className='absolute flex flex-col items-center justify-between top-3 bottom-2 left-3'>
 					<div className='flex flex-col items-center gap-4 '>
 						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
