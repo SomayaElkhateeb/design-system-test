@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader, TabX } from 'src/app/components/optimized';
-import { AddCheckout, Address, Customer, Products } from 'src/app/components/page';
+import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
@@ -20,7 +20,7 @@ export default function AddOrder() {
 		},
 		{
 			title: t('address'),
-			content: <Address />,
+			content: <OrderAddress />,
 		},
 		{
 			title: t('checkout'),

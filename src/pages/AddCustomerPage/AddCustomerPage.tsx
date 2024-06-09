@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
+import { Address } from 'src/app/components/page';
 import {
 	AddCustomerPageSchema,
 	AddCustomerPageSchemaValues,
@@ -44,7 +45,13 @@ export default function AddCustomerPage() {
 						<GeneralInfoCustomerForm formStore={formStore} />
 
 						{/* primary addresses section */}
-						<PrimaryAddresseForm formStore={formStore} />
+						{/* <PrimaryAddresseForm formStore={formStore} /> */}
+						<div className='global-cards gap-[1.3rem]'>
+							<h2 className='title'>{t('Add primary address')}</h2>
+							<div className='flex-col-top-section-pages md:w-[65%]'>
+								<Address customer={true} />
+							</div>
+						</div>
 					</div>
 				</div>
 			</form>
