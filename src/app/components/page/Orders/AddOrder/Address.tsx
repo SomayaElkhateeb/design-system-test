@@ -192,18 +192,17 @@ export default function Address() {
 						label={t('Phone number')}
 						name='PhoneNumber'
 						render={(field) => (
-							<CustomPhoneInput
-								value={field.value}
-								onHandleChange={field.onChange}
-
-								// isLoading={isLoading}
-							/>
+							<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 						)}
 					/>
 				</div>
 				<div className='flex-btn-end'>
 					<Button variant='secondary'>{t('back')}</Button>
-					<Button type='submit' variant='primary'>
+					<Button
+						type='submit'
+						onClick={() => console.log(formStore.formState.errors)}
+						variant='primary'
+					>
 						{t('Next')}
 					</Button>
 				</div>
