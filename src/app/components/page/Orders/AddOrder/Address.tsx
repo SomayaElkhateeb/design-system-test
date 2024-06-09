@@ -21,7 +21,7 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 
-export default function Address() {
+export default function Address({ branch, customer }: { branch?: boolean; customer?: boolean }) {
 	const { t } = useTranslation();
 	const language = UseLanguage();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
@@ -38,19 +38,24 @@ export default function Address() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<div className='global-cards lg:col-span-2 '>
-					<SingleChoiceChips
-						options={['Add manually', 'Use a map']}
-						setSelected={handleAddressOption}
-						selected={selectedOption}
-					/>
+			<form onSubmit={onSubmit}>
+				<div className=' lg:col-span-2 flex flex-col gap-4'>
+					{customer ? undefined : (
+						<SingleChoiceChips
+							options={['Add manually', 'Use a map']}
+							setSelected={handleAddressOption}
+							selected={selectedOption}
+						/>
+					)}
 
-					<CheckBox
-						checked={sendGift}
-						handleOnChange={() => setSendGift(!sendGift)}
-						label={t('Send as a gift')}
-					/>
+					{branch || customer ? undefined : (
+						<CheckBox
+							checked={sendGift}
+							handleOnChange={() => setSendGift(!sendGift)}
+							label={t('Send as a gift')}
+						/>
+					)}
+
 					{sendGift && (
 						<FormField
 							formStore={formStore}
@@ -62,6 +67,15 @@ export default function Address() {
 
 					{selectedOption === 'Add manually' && (
 						<section className='grid gap-4'>
+							{customer ? (
+								<FormField
+									formStore={formStore}
+									name='name'
+									label={t('Full Name')}
+									render={(field) => <Input {...field} placeholder={''} />}
+								/>
+							) : undefined}
+
 							<FormField
 								formStore={formStore}
 								name='countryName'
@@ -86,6 +100,7 @@ export default function Address() {
 									</Select>
 								)}
 							/>
+
 							<FormField
 								formStore={formStore}
 								name='cityName'
@@ -128,52 +143,54 @@ export default function Address() {
 						</section>
 					)}
 
-					{selectedOption !== 'Add manually' && (
-						<div className='relative w-full h-[300px]'>
-							<GoogleMapComponent
-								setLocationEnabled={setLocationEnabled}
-								setDisablePickButton={setDisablePickButton}
-								height='300px'
-							/>
+					{customer
+						? ' '
+						: selectedOption !== 'Add manually' && (
+								<div className='relative w-full h-[300px]'>
+									<GoogleMapComponent
+										setLocationEnabled={setLocationEnabled}
+										setDisablePickButton={setDisablePickButton}
+										height='300px'
+									/>
 
-							<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
-								<p
-									className={`text-title font-semibold p-2 ${
-										language === 'ar' ? 'border-l' : 'border-r'
-									} border-constrained`}
-								>
-									{t('Map')}
-								</p>
-								<p className='text-subtitle p-2'>{t('Satellite')}</p>
-							</div>
-							<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
-								<FormField
-									formStore={formStore}
-									name='search'
-									render={(field) => <Input {...field} placeholder={t('Search')} />}
-								/>
-							</div>
-							<div className='flex flex-col items-end justify-between h-full'>
-								<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
-									<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
-										<AddIcon className='fill-grayIcon border-b border-hint' />
-										<FiMinus color='#666666' />
+									<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
+										<p
+											className={`text-title font-semibold p-2 ${
+												language === 'ar' ? 'border-l' : 'border-r'
+											} border-constrained`}
+										>
+											{t('Map')}
+										</p>
+										<p className='text-subtitle p-2'>{t('Satellite')}</p>
 									</div>
-									<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
-										<img src={getImageUrl('map.svg')} alt='Map Icon' />
+									<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
+										<FormField
+											formStore={formStore}
+											name='search'
+											render={(field) => <Input {...field} placeholder={t('Search')} />}
+										/>
+									</div>
+									<div className='flex flex-col items-end justify-between h-full'>
+										<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
+											<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
+												<AddIcon className='fill-grayIcon border-b border-hint' />
+												<FiMinus color='#666666' />
+											</div>
+											<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
+												<img src={getImageUrl('map.svg')} alt='Map Icon' />
+											</div>
+										</div>
+
+										<Button
+											variant='secondary'
+											LeftIcon={LocationIcon}
+											className='bg-white absolute bottom-2 right-2'
+										>
+											<span className='hidden md:inline'>{t('Locate Me')}</span>
+										</Button>
 									</div>
 								</div>
-
-								<Button
-									variant='secondary'
-									LeftIcon={LocationIcon}
-									className='bg-white absolute bottom-2 right-2'
-								>
-									<span className='hidden md:inline'>{t('Locate Me')}</span>
-								</Button>
-							</div>
-						</div>
-					)}
+						  )}
 
 					<FormField
 						formStore={formStore}
@@ -196,16 +213,18 @@ export default function Address() {
 						)}
 					/>
 				</div>
-				<div className='flex-btn-end'>
-					<Button variant='secondary'>{t('back')}</Button>
-					<Button
-						type='submit'
-						onClick={() => console.log(formStore.formState.errors)}
-						variant='primary'
-					>
-						{t('Next')}
-					</Button>
-				</div>
+				{branch || customer ? undefined : (
+					<div className='flex-btn-end'>
+						<Button variant='secondary'>{t('back')}</Button>
+						<Button
+							type='submit'
+							onClick={() => console.log(formStore.formState.errors)}
+							variant='primary'
+						>
+							{t('Next')}
+						</Button>
+					</div>
+				)}
 			</form>
 		</Form>
 	);

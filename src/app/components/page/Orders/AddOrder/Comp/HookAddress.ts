@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 
 export interface orderAddressInterface {
+	name?: string;
 	countryName?: string;
 	cityName?: string;
 	area?: string;
@@ -20,6 +21,7 @@ export default function useCustomHookAddOrderAddressForm(
 	// ////////////////////////
 	const handelDefaultValue = () => {
 		return {
+			name: '',
 			countryName: '',
 			cityName: '',
 			area: '',
@@ -43,7 +45,7 @@ export default function useCustomHookAddOrderAddressForm(
 		return !sendGift ? z.optional(RequiredAddressData).or(z.literal('')) : RequiredAddressData;
 	};
 	const AddOrderAddressSchema = {
-		branchNameAr: RequiredAddressData,
+		name: handel_RequiredAddressData(),
 		countryName: handel_RequiredAddressData(),
 		cityName: handel_RequiredAddressData(),
 		area: handel_RequiredAddressData(),

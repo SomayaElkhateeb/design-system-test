@@ -17,6 +17,7 @@ import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInp
 import { BranchSettingsInterface } from './HookForAddBranchForm';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
+import { Address } from '../../..';
 
 export const countries = [
 	{
@@ -90,115 +91,10 @@ export default function BranchInfo({
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
 				</section>
+
 				<section className='grid gap-4'>
-					<div>
-						<h2 className='title mb-2'>{t('Address')}</h2>
-						<SingleChoiceChips
-							options={['Add manually', 'Use a map']}
-							setSelected={handleAddressOption}
-							selected={selectedOption}
-						/>
-					</div>
-					{selectedOption === 'Add manually' && (
-						<section className='grid gap-4'>
-							<FormField
-								formStore={formStore}
-								name='countryName'
-								label={t('Country')}
-								render={(field) => (
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Select option' />
-										</SelectTrigger>
-										<SelectContent>
-											{countries.map((country) => (
-												<SelectItem key={country.value} value={country.value}>
-													{country.name}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								)}
-							/>
-							<FormField
-								formStore={formStore}
-								name='cityName'
-								label={t('City')}
-								render={(field) => (
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Select option' />
-										</SelectTrigger>
-										<SelectContent>
-											{countries.map((country) => (
-												<SelectItem key={country.value} value={country.value}>
-													{country.name}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								)}
-							/>
-
-							<FormField
-								formStore={formStore}
-								name='area'
-								label={t('Area / District')}
-								render={(field) => <Input {...field} placeholder={'area'} />}
-							/>
-							<FormField
-								formStore={formStore}
-								name='street'
-								label={t('Street')}
-								render={(field) => <Input {...field} placeholder={'street'} />}
-							/>
-
-							<FormField
-								formStore={formStore}
-								name='landmark'
-								label={t('Landmark')}
-								render={(field) => <Input {...field} placeholder={'landmark'} />}
-							/>
-						</section>
-					)}
-					{selectedOption !== 'Add manually' && (
-						<GoogleMapComponent
-							setLocationEnabled={setLocationEnabled}
-							setDisablePickButton={setDisablePickButton}
-							height='300px'
-						/>
-					)}
-
-					<FormField
-						formStore={formStore}
-						name='building'
-						label={t('Building')}
-						render={(field) => <Input {...field} placeholder={'building'} />}
-					/>
-
-					<FormField
-						formStore={formStore}
-						label={t('Phone number')}
-						name='branchPhoneNumber'
-						render={(field) => (
-							<CustomPhoneInput
-								value={field.value}
-								onHandleChange={field.onChange}
-
-								// isLoading={isLoading}
-							/>
-						)}
-					/>
+					<h2 className='title mb-2'>{t('Address')}</h2>
+					<Address branch={true} />
 				</section>
 			</div>
 		</div>
