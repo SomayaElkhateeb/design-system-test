@@ -6,14 +6,7 @@ export default function useCustomHookAddCustomerForm() {
 			email: '',
 			PhoneNumber: '',
 			groupMeta: [],
-			// fullNameAddresse: '',
-			// countryName: '',
-			// cityName: '',
-			// area: '',
-			// street: '',
-			// building: '',
-			// landmark: '',
-			// addressePhoneNumber: '',
+
 			emailSubescribe: false,
 		};
 	};
