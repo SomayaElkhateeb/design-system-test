@@ -1,5 +1,6 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
+import { orderAddressInterface } from '../../../Orders/AddOrder/Comp/HookAddress';
 
 export interface OpenHours {
 	open: string;
@@ -20,17 +21,10 @@ export interface WeekSchedule {
 	Sat: DayInfo;
 	Sun: DayInfo;
 }
-export interface BranchSettingsInterface {
+export interface BranchSettingsInterface extends orderAddressInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
-	// countryName?: string;
-	// cityName?: string;
-	// area?: string;
-	// street?: string;
-	// building: string;
-	// landmark?: string;
-	// branchPhoneNumber: string;
 	branchTimeSchedual: WeekSchedule;
 }
 
@@ -51,13 +45,8 @@ export interface fixedDay {
 	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 }
 // ////////////////////////
-export default function useCustomHookAddBranchForm(selectedOption: string) {
+export default function useCustomHookAddBranchForm() {
 	const RequiredAddresseData = z.string().min(1);
-	const handel_RequiredAddresseData = () => {
-		return selectedOption !== 'Add manually'
-			? z.optional(RequiredAddresseData).or(z.literal(''))
-			: RequiredAddresseData;
-	};
 
 	const DayInfoSchema = z.object({
 		openHours: z.object({
@@ -71,13 +60,6 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 		branchType: RequiredAddresseData,
 		branchNameEn: RequiredAddresseData,
 		branchNameAr: RequiredAddresseData,
-		// countryName: handel_RequiredAddresseData(),
-		// cityName: handel_RequiredAddresseData(),
-		// area: handel_RequiredAddresseData(),
-		// street: handel_RequiredAddresseData(),
-		// building: RequiredAddresseData,
-		// landmark: handel_RequiredAddresseData(),
-		// branchPhoneNumber: z.string().min(7),
 		branchTimeSchedual: z.object({
 			Mon: DayInfoSchema,
 			Tue: DayInfoSchema,
@@ -94,13 +76,6 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 			branchType: 'Warehouse',
 			branchNameAr: '',
 			branchNameEn: '',
-			// countryName: '',
-			// cityName: '',
-			// area: '',
-			// street: '',
-			// building: '',
-			// landmark: '',
-			// branchPhoneNumber: '',
 			branchTimeSchedual: initialDayInfo,
 		};
 	};
