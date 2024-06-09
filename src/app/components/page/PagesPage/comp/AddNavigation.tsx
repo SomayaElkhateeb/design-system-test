@@ -18,7 +18,7 @@ export default function AddNavigation() {
 		<div>
 			<SubHeader title={t('Main menu')}>
 				<Button variant='primary' onClick={() => setShowDialog(true)}>
-					Add New Item
+					{t("Add New Item")}
 				</Button>
 			</SubHeader>
 			{showDialog && (

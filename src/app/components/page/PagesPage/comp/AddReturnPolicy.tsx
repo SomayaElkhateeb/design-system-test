@@ -63,13 +63,13 @@ export default function AddReturnPloicy() {
 						</button>
 					</div>
 					<Button variant='secondary' onClick={() => navigate(-1)}>
-						Discard
+						{t("Discard")}
 					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						Save Changes
+					<Button variant='primary' onClick={onSubmit}>
+						{t("Save Changes")}
 					</Button>
 				</SubHeader>
-				<div className='container mx-auto grid lg:grid-cols-3 gap-5'>
+				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<div className='global-cards'>
 							<h3 className='title'>{t('Main info')}</h3>

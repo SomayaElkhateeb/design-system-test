@@ -33,9 +33,9 @@ export default function AddStuff() {
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('add staff')}>
 					<Button variant='secondary' onClick={() => navigate(-1)}>
-						Discard
+						{t("Discard")}
 					</Button>
-					<Button variant='primary' onClick={() => {}}>
+					<Button variant='primary' onClick={onSubmit}>
 						{t('Send invitation')}
 					</Button>
 				</SubHeader>

@@ -53,7 +53,7 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 					<Button variant='secondary' onClick={() => navigate(-1)}>
 						{t('Discard')}
 					</Button>
-					<Button variant='primary' onClick={() => {}}>
+					<Button variant='primary' onClick={onSubmit}>
 						{t('Save Changes')}
 					</Button>
 				</SubHeader>

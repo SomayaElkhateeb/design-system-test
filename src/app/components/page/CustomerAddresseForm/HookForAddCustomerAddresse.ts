@@ -40,7 +40,6 @@ export default function useCustomHookAddCustomerAddresseForm(
 		return !sendGift ? z.optional(RequiredAddresseData).or(z.literal('')) : RequiredAddresseData;
 	};
 	const AddCustomerAdddrsseSchema = {
-		branchNameAr: RequiredAddresseData,
 		countryName: handel_RequiredAddresseData(),
 		cityName: handel_RequiredAddresseData(),
 		area: handel_RequiredAddresseData(),
