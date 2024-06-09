@@ -35,15 +35,19 @@ interface SetupsHeaderProps {
 function SetupsHeader({ startTour }: SetupsHeaderProps) {
 	const { t } = useTranslation();
 	return (
-		<h2 className='title mb-1'>
-			{t('Get ready for your first sale')}
-			<p className='text-subtitle paragraph sm:flex sm:flex-row flex-col'>
-				{t('There are only 2 main steps to launch your store')},&nbsp;
-				<Button onClick={startTour} variant='link' text={t('Follow our tips')} />
+		<div className='flex-col gap-1'>
+			<h2 className='title'>{t('Get ready for your first sale')}</h2>
+			<div className='flex items-center'>
+				<p className='subheading '>
+					{t('There are only 2 main steps to launch your store')},&nbsp;
+				</p>
+				<Button onClick={startTour} variant='link' className='text-sm'>
+					{t('Follow our tips')}
+				</Button>
 				&nbsp;
-				{t('to get started')}
-			</p>
-		</h2>
+				<p className='subheading'>{t('to get started')}</p>
+			</div>
+		</div>
 	);
 }
 
