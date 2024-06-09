@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { useForm } from 'src/app/utils/hooks/form';
 
 export interface orderAddressInterface {
 	countryName?: string;
@@ -53,8 +54,21 @@ export default function useCustomHookAddOrderAddressForm(
 		giftName: handel_Gift_Input(),
 		search: handel_Gift_Input(),
 	};
+
+	// /////////////////////
+	const handleSubmit = (values: orderAddressInterface) => {
+		console.log('values: ', values);
+	};
+
+	const { formStore, onSubmit } = useForm({
+		schema: AddOrderAddressSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
+	// ////////////////////////
+
 	return {
-		AddOrderAddressSchema,
-		handelDefaultValue,
+		formStore,
+		onSubmit,
 	};
 }

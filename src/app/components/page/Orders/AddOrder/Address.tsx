@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Button, CheckBox } from 'src/app/components/optimized';
-import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import useCustomHookAddOrderAddressForm from './Comp/HookAddress';
+import { Button, CheckBox } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
@@ -9,6 +10,9 @@ import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInp
 import { AddIcon, LocationIcon } from 'src/app/utils/icons';
 import { getImageUrl } from 'src/app/utils';
 import { FiMinus } from 'react-icons/fi';
+import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
+import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
 import {
 	Select,
 	SelectContent,
@@ -16,11 +20,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
-import useCustomHookAddOrderAddressForm, { orderAddressInterface } from './Comp/HookAddress';
-import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
 export default function Address() {
 	const { t } = useTranslation();
@@ -30,21 +29,8 @@ export default function Address() {
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const [sendGift, setSendGift] = useState(false);
 
-	const handleSubmit = (values: orderAddressInterface) => {
-		console.log(values);
-	};
-
 	// custom hook
-	const { handelDefaultValue, AddOrderAddressSchema } = useCustomHookAddOrderAddressForm(
-		sendGift,
-		selectedOption,
-	);
-
-	const { formStore, onSubmit } = useForm({
-		schema: AddOrderAddressSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
+	const { formStore, onSubmit } = useCustomHookAddOrderAddressForm(sendGift, selectedOption);
 
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
@@ -217,7 +203,7 @@ export default function Address() {
 				</div>
 				<div className='flex-btn-end'>
 					<Button variant='secondary'>{t('back')}</Button>
-					<Button onClick={onSubmit} variant='primary'>
+					<Button type='submit' variant='primary'>
 						{t('Next')}
 					</Button>
 				</div>
