@@ -21,7 +21,17 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 
-export default function Address({ branch, customer }: { branch?: boolean; customer?: boolean }) {
+export default function Address({
+	branch,
+	customer,
+	details,
+	backBtn,
+}: {
+	branch?: boolean;
+	customer?: boolean;
+	details?: boolean;
+	backBtn?: () => void;
+}) {
 	const { t } = useTranslation();
 	const language = UseLanguage();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
@@ -40,7 +50,7 @@ export default function Address({ branch, customer }: { branch?: boolean; custom
 		<Form {...formStore}>
 			<form onSubmit={onSubmit}>
 				<div className=' lg:col-span-2 flex flex-col gap-4'>
-					{customer ? undefined : (
+					{customer || details ? undefined : (
 						<SingleChoiceChips
 							options={['Add manually', 'Use a map']}
 							setSelected={handleAddressOption}
@@ -67,7 +77,7 @@ export default function Address({ branch, customer }: { branch?: boolean; custom
 
 					{selectedOption === 'Add manually' && (
 						<section className='grid gap-4'>
-							{customer ? (
+							{customer || details ? (
 								<FormField
 									formStore={formStore}
 									name='name'
@@ -143,8 +153,8 @@ export default function Address({ branch, customer }: { branch?: boolean; custom
 						</section>
 					)}
 
-					{customer
-						? ' '
+					{customer || details
+						? undefined
 						: selectedOption !== 'Add manually' && (
 								<div className='relative w-full h-[300px]'>
 									<GoogleMapComponent
@@ -212,19 +222,22 @@ export default function Address({ branch, customer }: { branch?: boolean; custom
 							<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 						)}
 					/>
+
+					{branch || customer ? undefined : (
+						<div className='flex-btn-end'>
+							<Button variant='secondary' onClick={backBtn}>
+								{t('back')}
+							</Button>
+							<Button
+								type='submit'
+								onClick={() => console.log(formStore.formState.errors)}
+								variant='primary'
+							>
+								{t('Next')}
+							</Button>
+						</div>
+					)}
 				</div>
-				{branch || customer ? undefined : (
-					<div className='flex-btn-end'>
-						<Button variant='secondary'>{t('back')}</Button>
-						<Button
-							type='submit'
-							onClick={() => console.log(formStore.formState.errors)}
-							variant='primary'
-						>
-							{t('Next')}
-						</Button>
-					</div>
-				)}
 			</form>
 		</Form>
 	);
