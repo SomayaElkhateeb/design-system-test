@@ -45,7 +45,7 @@ export default function useCustomHookAddOrderAddressForm(
 		return !sendGift ? z.optional(RequiredAddressData).or(z.literal('')) : RequiredAddressData;
 	};
 	const AddOrderAddressSchema = {
-		name: handel_RequiredAddressData(),
+		name: z.optional(RequiredAddressData).or(z.literal('')),
 		countryName: handel_RequiredAddressData(),
 		cityName: handel_RequiredAddressData(),
 		area: handel_RequiredAddressData(),
