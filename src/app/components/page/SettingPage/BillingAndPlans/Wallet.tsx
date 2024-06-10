@@ -6,8 +6,8 @@ export default function Wallet() {
 	const language = UseLanguage();
 	return (
 		<div className='global-cards gap-3'>
-			<h3 className='title text-lg'>{t('Wallet')}</h3>
-			<h2 className='title font-normal text-[2.25rem]'>
+			<h3 className='title'>{t('Wallet')}</h3>
+			<h2 className='title font-normal md:text-[2.25rem]'>
 				{language === 'ar' ? `200 ${t('SAR')}` : `${t('SAR')} 200`}
 			</h2>
 			<div className='flex-row-global gap-2'>

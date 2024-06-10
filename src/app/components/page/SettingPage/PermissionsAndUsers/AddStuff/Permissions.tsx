@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
 import { addStuffInterface } from './AddStuff';
 import { useEffect, useState } from 'react';
-import CustomTableBodyCheckbox from '../../../Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../../../ui/form/CustomTableBodyChckbox';
 
 export default function Permissions({
 	formStore,

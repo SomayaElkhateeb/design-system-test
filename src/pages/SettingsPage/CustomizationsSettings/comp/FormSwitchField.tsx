@@ -27,7 +27,7 @@ export default function FormSwitchField<T extends FieldValues>({
 			{(label ||
 				description) && (
 					<div className='grid gap-1'>
-						{label && <h3 className='title text-base'>{t(label as any)}</h3>}
+						{label && <h3 className='title '>{t(label as any)}</h3>}
 						{description && <p className='paragraph text-subtitle'>{t(description as any)}</p>}
 					</div>
 				)}

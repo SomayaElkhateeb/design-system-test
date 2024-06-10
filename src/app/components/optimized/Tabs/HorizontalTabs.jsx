@@ -17,7 +17,7 @@ function HorizontalTabs({ defaultTab, tabContent }) {
 
 	/**
 	 * Handle click event on tab.
-	 * @param {string} tab - Tab ID.
+	 * @param {any} tab - Tab ID.
 	 */
 	const handleClick = (tab) => {
 		setActiveTab(tab);
@@ -25,7 +25,7 @@ function HorizontalTabs({ defaultTab, tabContent }) {
 
 	return (
 		<div className=''>
-			<ul className='flex flex-wrap -mb-px font-medium text-center border-b bg-white px-5'>
+			<ul className='flex  -mb-px font-medium text-center border-b bg-white px-5'>
 				{Object.keys(tabContent).map((tab) => (
 					<li key={tab} className='mr-2'>
 						<button

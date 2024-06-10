@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { SubHeader, Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 
 export default function ThemesDetails() {
@@ -8,11 +8,11 @@ export default function ThemesDetails() {
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-top-section-pages'>
-				<HeaderSettings
-					variant='settingOneBtn'
-					title={"mmm"}
-					btn1={{ text: t('Apply template'), onClick: () => {} }}
-				/>
+				<SubHeader title={t('mmm')}>
+					<Button variant='primary' onClick={() => {}}>
+						{t('Apply template')}
+					</Button>
+				</SubHeader>
 
 				<img
 					src={getImageUrl('images/ThemesPage/largewebsiteimg.png')}

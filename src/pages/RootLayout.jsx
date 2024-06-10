@@ -25,7 +25,7 @@ const RootLayout = () => {
 						<div className='sticky top-0 z-30'>
 							<Header setIsOpen={sidebarOpenHandler} />
 						</div>
-						<main>
+						<main className='pb-5'>
 							<Outlet />
 						</main>
 					</div>

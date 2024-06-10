@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { CheckBox, HeaderSettings } from 'src/app/components/optimized';
+import { CheckBox, SubHeader, Button } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import useCustomHookAddCustomerAddresseForm, {
@@ -29,8 +29,7 @@ export default function AddNewAddresseCustomer() {
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const [sendGift, setSendGift] = useState(false);
-	// ///////////////////
-	// //////////////////
+
 	const handleSubmit = (values: AddaddresseInterface) => {
 		console.log(values);
 	};
@@ -40,36 +39,29 @@ export default function AddNewAddresseCustomer() {
 		sendGift,
 		selectedOption,
 	);
-	// /////////////////
-	// /////////////////
+
 	const { formStore, onSubmit } = useForm({
 		schema: AddCustomerAdddrsseSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-	// ///////////////////
-	// //////////////////
+
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
 	};
+
+	
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Add new address')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Add new address')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary'  onClick={onSubmit}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='global-cards lg:col-span-2 '>
 						<SingleChoiceChips

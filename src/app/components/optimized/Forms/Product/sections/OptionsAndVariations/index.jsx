@@ -41,7 +41,7 @@ import {
 import { FormLabel } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-import ControllerContainer from 'src/app/components/ui/form/controller-container';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 
 const defaultOptionValuesByName = {
 	[optionNameMap.color]: [
@@ -127,7 +127,7 @@ function OptionValuesManager(props) {
 	return (
 		<div className='flex flex-col gap-1.5'>
 			<FormLabel htmlFor={reactId}>{t('Values')}</FormLabel>
-			<ControllerContainer
+			<HorizontalBox
 				end={
 					<Dialog>
 						<DialogTrigger>
@@ -159,7 +159,7 @@ function OptionValuesManager(props) {
 					}}
 					value={value}
 				>
-					<SelectTrigger id={reactId} className='border-0'>
+					<SelectTrigger id={reactId} className='border-0 rounded-none'>
 						<SelectValue placeholder={t('Select or add new')} />
 					</SelectTrigger>
 					<SelectContent>
@@ -172,7 +172,7 @@ function OptionValuesManager(props) {
 						})}
 					</SelectContent>
 				</Select>
-			</ControllerContainer>
+			</HorizontalBox>
 			{/* Values will be displayed in badges below with an `x` remove button */}
 			<div className='flex gap-2'>
 				{(selectValues ?? []).map((value) => (
@@ -244,7 +244,7 @@ function AddOptionManager(props) {
 			<Button
 				variant='secondary'
 				textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap bg-transparent border-title px-4 py-3 rounded-lg border'
-				className='px-0 border-0'
+				className='px-0 border-0 rounded-none'
 				onClick={() => setIsAdding(true)}
 			>
 				<FaCirclePlus className='size-5' />
@@ -590,9 +590,9 @@ function VariationsManager(props) {
 											container={{ className: 'flex-grow' }}
 											name={`variations.${index}.quantity`}
 											render={(field) => (
-												<ControllerContainer end={<>&infin;</>}>
+												<HorizontalBox end={<>&infin;</>}>
 													<Input {...field} />
-												</ControllerContainer>
+												</HorizontalBox>
 											)}
 										/>
 									</div>

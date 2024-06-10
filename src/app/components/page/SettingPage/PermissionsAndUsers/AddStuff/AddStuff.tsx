@@ -1,12 +1,12 @@
-import { useForm } from 'src/app/utils/hooks/form';
-import { Form } from 'src/app/components/ui/form';
-import { useNavigate } from 'react-router-dom';
-import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useTranslation } from 'react-i18next';
-import { HeaderSettings } from 'src/app/components/optimized';
-import Stuff from './Stuff';
-import Permissions from './Permissions';
+import { useNavigate } from 'react-router-dom';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookAddStuff, { addStuffInterface } from './HookForAddStuff';
+import Permissions from './Permissions';
+import Stuff from './Stuff';
 
 export default function AddStuff() {
 	//  hooks
@@ -31,21 +31,14 @@ export default function AddStuff() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					variant='settingTwoBtns'
-					submit
-					title={t('add staff')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Send invitation'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('add staff')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t("Discard")}
+					</Button>
+					<Button variant='primary' onClick={onSubmit}>
+						{t('Send invitation')}
+					</Button>
+				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
 						<Stuff formStore={formStore} />

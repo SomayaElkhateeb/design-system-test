@@ -1,32 +1,26 @@
-import { HeaderSettings } from 'src/app/components/optimized';
-import { useForm } from 'src/app/utils/hooks/form';
-import { Form } from 'src/app/components/ui/form';
-import { useNavigate } from 'react-router-dom';
-import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useTranslation } from 'react-i18next';
-import ReviewSectionForm from 'src/app/components/page/SettingPage/ReviewsSettings/ReviewSection';
+import { useNavigate } from 'react-router-dom';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import useCustomHookReviewSettings, {
 	reviewInterface,
 } from 'src/app/components/page/SettingPage/ReviewsSettings/HookForReviewSettings';
+import ReviewSectionForm from 'src/app/components/page/SettingPage/ReviewsSettings/ReviewSection';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
 
 export default function ReviewsSetting() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	// ///////////////////////
-	// //////////////////////
 	const handleSubmit = (values: reviewInterface) => {
 		console.log(values);
 	};
 
-	// //////////////////////////////
-	// ///////////////////////////////
 	// custom hook
 	const { ReviewSchema, handelDefaultValue } = useCustomHookReviewSettings();
 
-	// /////////////////////////////
-	// /////////////////////////////
 	const { formStore, onSubmit } = useForm({
 		schema: ReviewSchema,
 		handleSubmit: handleSubmit,
@@ -42,21 +36,14 @@ export default function ReviewsSetting() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					variant='settingTwoBtns'
-					submit
-					title={t('Reviews')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Reviews')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={onSubmit}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
 						<ReviewSectionForm formStore={formStore} />

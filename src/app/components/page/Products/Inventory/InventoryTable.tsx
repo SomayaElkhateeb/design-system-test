@@ -1,9 +1,9 @@
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import CustomTableHeaderCheckbox from '../../Customers/CustomTableHeaderChckbox';
+import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Product } from 'src/app/interface/ProductInterface';
-import CustomTableBodyCheckbox from '../../Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import { TableCell } from '@mui/material';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
@@ -15,9 +15,13 @@ import { products } from 'src/pages/ProductsPage/AllProducts';
 export default function InventoryTable({
 	array,
 	setArray,
+	inventory,
+	isLoading,
 }: {
 	array: string[];
 	setArray: (e: string[]) => void;
+	inventory: Product[];
+	isLoading: boolean;
 }) {
 	//  hooks
 	const language = UseLanguage();
@@ -48,10 +52,11 @@ export default function InventoryTable({
 	}
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={inventoryHeaders.map((h) => h)}
-			rows={products?.map((e: Product, i: number) => {
+			rows={inventory?.map((e: Product, i: number) => {
 				return {
 					item: e,
 					elements: [

@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HeaderSettings, VerticalTabs } from 'src/app/components/optimized';
-import { AddCheckout, Address, Customer, Products } from 'src/app/components/page';
+import { SubHeader, TabX } from 'src/app/components/optimized';
+import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
+
+	const [currentTab, setCurrentTab] = useState(0);
+	const [_, setFinish] = useState(false);
 
 	const tabs = [
 		{
@@ -16,18 +20,45 @@ export default function AddOrder() {
 		},
 		{
 			title: t('address'),
-			content: <Address />,
+			content: <OrderAddress />,
 		},
 		{
 			title: t('checkout'),
 			content: <AddCheckout />,
 		},
 	];
+	const handleTabClick = (index: number) => {
+		setCurrentTab(index);
+	};
+
+	const handleNext = () => {
+		if (currentTab < tabs.length - 1) {
+			setCurrentTab(currentTab + 1);
+		}
+	};
+
+	const handlePrev = () => {
+		if (currentTab > 0) {
+			setCurrentTab(currentTab - 1);
+		}
+	};
+
+	const handleFinish = (value: boolean) => {
+		setFinish(value);
+	};
+
 	return (
 		<>
-			<HeaderSettings title={t('add new order')} submit />
+			<SubHeader title={t('add new order')} />
 			<div className='custom_container mx-0 py-5 lg:w-3/4 sm:px-1'>
-				<VerticalTabs tabs={tabs} />
+				<TabX
+					tabs={tabs}
+					currentTab={currentTab}
+					handleNext={handleNext}
+					handlePrev={handlePrev}
+					handleFinish={handleFinish}
+					handleTabClick={handleTabClick}
+				/>
 			</div>
 		</>
 	);

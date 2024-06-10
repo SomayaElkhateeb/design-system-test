@@ -3,9 +3,17 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
-import { AnalyticsCustomer } from '../Customers';
+import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
-export default function CustomersTable({ tableData }: { tableData: AnalyticsCustomer[] }) {
+
+
+
+
+export default function CustomersTable({ customersAnalytics,
+	isLoading, }: { customersAnalytics: AnalyticsCustomer[];
+	isLoading: boolean; }) {
+
+
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
@@ -20,6 +28,7 @@ export default function CustomersTable({ tableData }: { tableData: AnalyticsCust
 	return (
 		<div className='print-only'>
 			<BaseTable
+				// isLoading={isLoading}
 				language={language}
 				color='#55607A'
 				headers={customersTableHeaders.map((h) => h)}
@@ -28,7 +37,6 @@ export default function CustomersTable({ tableData }: { tableData: AnalyticsCust
 						item: e,
 						elements: [
 							<GlobalTableCell>{e.day}</GlobalTableCell>,
-
 							<GlobalTableCell>{e.new_customers}</GlobalTableCell>,
 							<GlobalTableCell>{e.purchasing_customers}</GlobalTableCell>,
 							<GlobalTableCell>{e.customer_groups}</GlobalTableCell>,

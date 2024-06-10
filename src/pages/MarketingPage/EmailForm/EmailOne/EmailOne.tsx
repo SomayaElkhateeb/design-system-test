@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { Button } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import EmailContent from './_comp/EmailContent';
@@ -29,11 +29,11 @@ function EmailOne() {
 
 	return (
 		<section>
-			<SubHeader title={t('Email form')}>
+			{/* <SubHeader title={t('Email form')}>
 				<Button variant='primary' onClick={() => setSearchParams({ subscribe: 'active' })}>
 					Submit emails
 				</Button>
-			</SubHeader>
+			</SubHeader> */}
 
 			<div className='min-h-screen bg-gray-100 p-6 flex justify-between'>
 				<div className='w-1/2 bg-white p-6 rounded-lg shadow-md'>

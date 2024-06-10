@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Button, CheckBox } from 'src/app/components/optimized';
-import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import useCustomHookAddOrderAddressForm from './Comp/HookAddress';
+import { Button, CheckBox } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
@@ -9,6 +10,9 @@ import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInp
 import { AddIcon, LocationIcon } from 'src/app/utils/icons';
 import { getImageUrl } from 'src/app/utils';
 import { FiMinus } from 'react-icons/fi';
+import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
+import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
 import {
 	Select,
 	SelectContent,
@@ -16,13 +20,18 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
-import useCustomHookAddOrderAddressForm, { orderAddressInterface } from './Comp/HookAddress';
-import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
-export default function Address() {
+export default function Address({
+	branch,
+	customer,
+	details,
+	backBtn,
+}: {
+	branch?: boolean;
+	customer?: boolean;
+	details?: boolean;
+	backBtn?: () => void;
+}) {
 	const { t } = useTranslation();
 	const language = UseLanguage();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
@@ -30,21 +39,8 @@ export default function Address() {
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const [sendGift, setSendGift] = useState(false);
 
-	const handleSubmit = (values: orderAddressInterface) => {
-		console.log(values);
-	};
-
 	// custom hook
-	const { handelDefaultValue, AddOrderAddressSchema } = useCustomHookAddOrderAddressForm(
-		sendGift,
-		selectedOption,
-	);
-
-	const { formStore, onSubmit } = useForm({
-		schema: AddOrderAddressSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
+	const { formStore, onSubmit } = useCustomHookAddOrderAddressForm(sendGift, selectedOption);
 
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
@@ -52,19 +48,24 @@ export default function Address() {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<div className='global-cards lg:col-span-2 '>
-					<SingleChoiceChips
-						options={['Add manually', 'Use a map']}
-						setSelected={handleAddressOption}
-						selected={selectedOption}
-					/>
+			<form onSubmit={onSubmit}>
+				<div className=' lg:col-span-2 flex flex-col gap-4'>
+					{customer || details ? undefined : (
+						<SingleChoiceChips
+							options={['Add manually', 'Use a map']}
+							setSelected={handleAddressOption}
+							selected={selectedOption}
+						/>
+					)}
 
-					<CheckBox
-						checked={sendGift}
-						handleOnChange={() => setSendGift(!sendGift)}
-						label={t('Send as a gift')}
-					/>
+					{branch || customer ? undefined : (
+						<CheckBox
+							checked={sendGift}
+							handleOnChange={() => setSendGift(!sendGift)}
+							label={t('Send as a gift')}
+						/>
+					)}
+
 					{sendGift && (
 						<FormField
 							formStore={formStore}
@@ -76,6 +77,15 @@ export default function Address() {
 
 					{selectedOption === 'Add manually' && (
 						<section className='grid gap-4'>
+							{customer || details ? (
+								<FormField
+									formStore={formStore}
+									name='name'
+									label={t('Full Name')}
+									render={(field) => <Input {...field} placeholder={''} />}
+								/>
+							) : undefined}
+
 							<FormField
 								formStore={formStore}
 								name='countryName'
@@ -100,6 +110,7 @@ export default function Address() {
 									</Select>
 								)}
 							/>
+
 							<FormField
 								formStore={formStore}
 								name='cityName'
@@ -142,52 +153,54 @@ export default function Address() {
 						</section>
 					)}
 
-					{selectedOption !== 'Add manually' && (
-						<div className='relative w-full h-[300px]'>
-							<GoogleMapComponent
-								setLocationEnabled={setLocationEnabled}
-								setDisablePickButton={setDisablePickButton}
-								height='300px'
-							/>
+					{customer || details
+						? undefined
+						: selectedOption !== 'Add manually' && (
+								<div className='relative w-full h-[300px]'>
+									<GoogleMapComponent
+										setLocationEnabled={setLocationEnabled}
+										setDisablePickButton={setDisablePickButton}
+										height='300px'
+									/>
 
-							<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
-								<p
-									className={`text-title font-semibold p-2 ${
-										language === 'ar' ? 'border-l' : 'border-r'
-									} border-constrained`}
-								>
-									{t('Map')}
-								</p>
-								<p className='text-subtitle p-2'>{t('Satellite')}</p>
-							</div>
-							<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
-								<FormField
-									formStore={formStore}
-									name='search'
-									render={(field) => <Input {...field} placeholder={t('Search')} />}
-								/>
-							</div>
-							<div className='flex flex-col items-end justify-between h-full'>
-								<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
-									<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
-										<AddIcon className='fill-grayIcon border-b border-hint' />
-										<FiMinus color='#666666' />
+									<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
+										<p
+											className={`text-title font-semibold p-2 ${
+												language === 'ar' ? 'border-l' : 'border-r'
+											} border-constrained`}
+										>
+											{t('Map')}
+										</p>
+										<p className='text-subtitle p-2'>{t('Satellite')}</p>
 									</div>
-									<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
-										<img src={getImageUrl('map.svg')} alt='Map Icon' />
+									<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
+										<FormField
+											formStore={formStore}
+											name='search'
+											render={(field) => <Input {...field} placeholder={t('Search')} />}
+										/>
+									</div>
+									<div className='flex flex-col items-end justify-between h-full'>
+										<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
+											<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
+												<AddIcon className='fill-grayIcon border-b border-hint' />
+												<FiMinus color='#666666' />
+											</div>
+											<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
+												<img src={getImageUrl('map.svg')} alt='Map Icon' />
+											</div>
+										</div>
+
+										<Button
+											variant='secondary'
+											LeftIcon={LocationIcon}
+											className='bg-white absolute bottom-2 right-2'
+										>
+											<span className='hidden md:inline'>{t('Locate Me')}</span>
+										</Button>
 									</div>
 								</div>
-
-								<Button
-									variant='secondary'
-									LeftIcon={LocationIcon}
-									className='bg-white absolute bottom-2 right-2'
-								>
-									<span className='hidden md:inline'>{t('Locate Me')}</span>
-								</Button>
-							</div>
-						</div>
-					)}
+						  )}
 
 					<FormField
 						formStore={formStore}
@@ -206,20 +219,24 @@ export default function Address() {
 						label={t('Phone number')}
 						name='PhoneNumber'
 						render={(field) => (
-							<CustomPhoneInput
-								value={field.value}
-								onHandleChange={field.onChange}
-
-								// isLoading={isLoading}
-							/>
+							<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 						)}
 					/>
-				</div>
-				<div className='flex-btn-end'>
-					<Button variant='secondary'>{t('back')}</Button>
-					<Button onClick={onSubmit} variant='primary'>
-						{t('Next')}
-					</Button>
+
+					{branch || customer ? undefined : (
+						<div className='flex-btn-end'>
+							<Button variant='secondary' onClick={backBtn}>
+								{t('back')}
+							</Button>
+							<Button
+								type='submit'
+								onClick={() => console.log(formStore.formState.errors)}
+								variant='primary'
+							>
+								{t('Next')}
+							</Button>
+						</div>
+					)}
 				</div>
 			</form>
 		</Form>

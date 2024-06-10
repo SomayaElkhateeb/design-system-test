@@ -21,14 +21,14 @@ export default function AddCheckout() {
 	const [payment, setPayment] = useState('cash');
 	const [delivery, setDelivery] = useState('Pickup');
 	const [shipping, setShipping] = useState('Free shipping');
-	const [shippingMethod, setShippingMethod] = useState('DHL (main)');
+	const [method, setShippingMethod] = useState('DHL (main)');
 	// custom hook
 	const { handelDefaultValue, addCheckOutSchema } = useCustomAddCheckOutForm(
 		purchase,
 		payment,
 		delivery,
 		shipping,
-		shippingMethod,
+		method,
 	);
 
 	const handleSubmit = (values: addCheckOutInterface) => {
@@ -46,13 +46,13 @@ export default function AddCheckout() {
 		setPayment(formStore.watch('payment'));
 		setDelivery(formStore.watch('delivery'));
 		setShipping(formStore.watch('shipping'));
-		setShippingMethod(formStore.watch('shippingMethod'));
+		setShippingMethod(formStore.watch('method'));
 	}, [
 		formStore.watch('purchase'),
 		formStore.watch('payment'),
 		formStore.watch('delivery'),
 		formStore.watch('shipping'),
-		formStore.watch('shippingMethod'),
+		formStore.watch('method'),
 	]);
 	return (
 		<Form {...formStore}>
@@ -149,12 +149,12 @@ export default function AddCheckout() {
 				<FormChoiceChips<addCheckOutInterface>
 					checkoutForm
 					formStore={formStore}
-					name='shippingMethod'
+					name='method'
 					label={t('Shipping method')}
 					options={['DHL (main)', 'Aramex']}
 				/>
 
-				{shippingMethod === 'DHL (main)' && (
+				{method === 'DHL (main)' && (
 					<>
 						<FormField
 							formStore={formStore}
@@ -186,7 +186,7 @@ export default function AddCheckout() {
 					</>
 				)}
 
-				{shippingMethod === 'Aramex' && (
+				{method === 'Aramex' && (
 					<>
 						<FormField
 							formStore={formStore}

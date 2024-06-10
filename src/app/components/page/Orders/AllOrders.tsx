@@ -1,14 +1,16 @@
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
 
-import TopSectionOrdersPage from './TopSectionOrdersPage';
-import { useTranslation } from 'react-i18next';
-import { OrderInterface } from 'src/app/interface/OrderInterface';
-import OrdersTable from './OrdersTable';
-import { RemoveIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import OrdersTableMobile from './OrdersTableMobile';
+
+import AllOrdersTableMobile from './AllOrdersTableMobile';
 import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
+import AllOrdersTable from './AllOrdersTable';
+import { RemoveIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { OrderInterface } from 'src/app/interface/OrderInterface';
+import TopSectionOrdersPage from './TopSectionOrdersPage';
+import { nanoid } from 'nanoid';
+
 //  setting menus for setting button action
 const settingMenus = [
 	{ id: nanoid(), text: 'Cancel Order', icon: <RemoveIcon className='fill-error' /> },
@@ -25,7 +27,7 @@ export default function AllOrders() {
 			id: '#8965742',
 			customer_name: 'mohamed Mostafa',
 			order_status: 'Shipped',
-			date: '24 Apr 2020',
+			date: '24/6/2020',
 			location: 'Riyad',
 			delivery_status: 'Pickup',
 			total: 1000,
@@ -37,7 +39,7 @@ export default function AllOrders() {
 			id: '#8965741',
 			customer_name: 'mohamed Mostafa',
 			order_status: 'Shipped',
-			date: '24 Apr 2020',
+			date: '24/6/2020',
 			location: 'Riyad',
 			delivery_status: 'Pickup',
 			total: 1000,
@@ -49,7 +51,7 @@ export default function AllOrders() {
 			id: '#8965743',
 			customer_name: 'mohamed Mostafa',
 			order_status: 'Shipped',
-			date: '24 Apr 2020',
+			date: '24/6/2020',
 			location: 'Riyad',
 			delivery_status: 'Pickup',
 			total: 1000,
@@ -67,18 +69,22 @@ export default function AllOrders() {
 
 				{/*  table section */}
 
-				<OrdersTable
+				<AllOrdersTable
 					settingMenus={settingMenus}
 					array={array}
 					setArray={setArray}
 					orders={orders}
 				/>
+
+			
+
 				{xs && (
 					<>
-						<OrdersTableMobile orders={orders} />
+						<AllOrdersTableMobile orders={orders} />
 						<AddButtonMobile path='/order/addOrder' />
 					</>
 				)}
+
 
 			</div>
 		</div>

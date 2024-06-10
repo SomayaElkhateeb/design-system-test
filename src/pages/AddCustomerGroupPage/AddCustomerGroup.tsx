@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
-import { AddCustomerGroupPageSchema, AddCustomerGroupPageSchemaValues } from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import {
+	AddCustomerGroupPageSchema,
+	AddCustomerGroupPageSchemaValues,
+} from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
 import ChooseCustomers from 'src/app/components/page/AddCustomerGroup/ChooseCustomers';
 import GeneralInfoCustomerGroupInfo from 'src/app/components/page/AddCustomerGroup/GeneralInfo';
 import useCustomHookAddCustomerGroupForm from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
 import { Form } from 'src/app/components/ui/form';
-import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
+import { useForm } from 'src/app/utils/hooks/form';
 
 export default function AddCustomerGroup() {
 	//  hooks
@@ -27,21 +30,14 @@ export default function AddCustomerGroup() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Add New Group')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Add New Group')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={onSubmit}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						<GeneralInfoCustomerGroupInfo formStore={formStore} />

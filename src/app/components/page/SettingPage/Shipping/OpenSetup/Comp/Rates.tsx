@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
-import Tabs from 'src/app/components/page/Customers/Tabs';
+import Tabs from 'src/app/components/optimized/Tabs/Tabs';
 import { AiOutlineQuestion } from 'react-icons/ai';
 import General from '../Tabs/General';
 import SaudiArabia from '../Tabs/SaudiArabia';

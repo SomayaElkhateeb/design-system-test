@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import CustomTableHeaderCheckbox from '../../Customers/CustomTableHeaderChckbox';
+import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import CustomTableBodyCheckbox from '../../Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
 import { Product } from 'src/app/interface/ProductInterface';
 
 import { IoEyeOutline } from 'react-icons/io5';
@@ -28,11 +28,13 @@ export default function AllProductsTable({
 	array,
 	setArray,
 	settingMenus,
+	isLoading,
 }: {
 	products: Product[];
 	array: string[];
 	setArray: (e: string[]) => void;
 	settingMenus: menuType[];
+	isLoading: boolean;
 }) {
 	//  hooks
 	const language = UseLanguage();
@@ -67,11 +69,11 @@ export default function AllProductsTable({
 		{ title: t('actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleAr = 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]';
+	const actionsButtonStyleEn = 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={productsHeaders.map((h) => h)}

@@ -9,14 +9,16 @@ import { useNavigate } from 'react-router-dom';
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useState } from 'react';
-import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
+import { useEffect, useState } from 'react';
+import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 
 import { Switch } from '../../ui/switch';
 import { settingMenus } from './CustomersTable';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
 
 export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
@@ -24,6 +26,15 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const { t } = useTranslation();
 	const language = UseLanguage();
 	const [array, setArray] = useState<string[]>([]);
+
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, customersGroup, error } = useSelector((state) => state.customersGroup || {});
+
+	useEffect(() => {
+		dispatch(getCustomersGroupTable());
+	}, [dispatch]);
+
 	//  rows
 	const customer_groups: CustomerGroupInterface[] = [
 		{
@@ -69,9 +80,10 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			color='#55607A'
 			headers={customersHeaders}
-			rows={customer_groups?.map((e: CustomerGroupInterface, i: number) => {
+			rows={customersGroup?.map((e: CustomerGroupInterface, i: number) => {
 				return {
 					item: e,
 					elements: [

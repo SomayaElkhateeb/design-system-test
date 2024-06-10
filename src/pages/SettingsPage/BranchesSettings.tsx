@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { SubHeader, Button } from 'src/app/components/optimized';
 import BranchCard from 'src/app/components/page/SettingPage/BranchesSettings/BranchesPage/BranchCard';
 export interface Branch {
 	id: number;
@@ -35,16 +35,11 @@ export default function BranchesSettings() {
 	const navigate = useNavigate();
 	return (
 		<div className='flex-col-top-section-pages'>
-			<HeaderSettings
-				btn1={{
-					text: t('Add Branch'),
-					onClick: () => {
-						navigate('add-branch');
-					},
-				}}
-				variant='settingOneBtn'
-				title={t('Branches')}
-			/>
+			<SubHeader title={t('Branches')}>
+				<Button variant='primary' onClick={() => navigate('add-branch')}>
+					{t('Add Branch')}
+				</Button>
+			</SubHeader>
 			<div className='grid grid-cols-3  container mx-auto'>
 				<div className='grid gap-5 col-span-3 lg:col-span-2'>
 					{demoData.map((branch) => (

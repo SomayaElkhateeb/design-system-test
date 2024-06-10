@@ -3,42 +3,38 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { useNavigate } from 'react-router-dom';
 
-/**
- * SubHeader component displays a subheader with a title and optional children.
- * @param {Object} props - Component props.
- * @param {string} props.title - The title to be displayed in the subheader.
- * @param {React.ReactNode} [props.children] - Optional children components to be displayed on the right side.
- * @returns {JSX.Element} The rendered SubHeader component.
- */
 
-const SubHeader = ({ title, children }) => {
+const SubHeader = ({ title, children }: { title: string; children?: React.ReactNode }) => {
+	//  hooks
 	const language = UseLanguage();
 	const navigate = useNavigate();
 
 	return (
-		<div className='flex justify-between items-center shadow-sm py-4 px-2 bg-white mb-5'>
+		<div className='flex justify-between items-center shadow-sm py-4 px-2 bg-white '>
 			<div className='flex items-center'>
 				<button className='text-blue-600 mr-2' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <IoIosArrowBack />}
 				</button>
-				<span className='font-semibold'>{title}</span>
+				<span className='title'>{title}</span>
 			</div>
-			{children && <div className='flex space-x-3'>{children}</div>}
+			{children && <div className='flex space-x-3 capitalize'>{children}</div>}
 		</div>
 	);
 };
 export default SubHeader;
 
-// <SubHeader title={t('Email form')}>
-//   <Button variant='primary'>Submit emails</Button>
-// </SubHeader>
+{
+	/* <SubHeader title={t('Email form')}>
+  <Button onClick={() => {}} variant='primary'>Submit emails</Button>
+</SubHeader> */
+}
 
 // =========================================
 // General settings
 // =========================================
 // <SubHeader title={t('General settings')}>
-//   <Button variant='secondary'>Discard</Button>
-//    <Button variant='primary'>Save Changes</Button>
+//   <Button onClick={() => {}} variant='secondary'>Discard</Button>
+//    <Button onClick={() => {}} variant='primary'>Save Changes</Button>
 // </SubHeader>
 
 // =========================================
@@ -50,18 +46,18 @@ export default SubHeader;
 
 //  <SubHeader title={t('General settings')}>
 // 	<div className='flex space-x-3'>
-// 		<button>
+// 		<Button onClick={() => {}}>
 // 			<LuEye size='20' />
 // 		</button>
-// 		<button>
+// 		<Button onClick={() => {}}>
 // 			<MdCopyAll size='20' />
 // 		</button>
-// 		<button>
+// 		<Button onClick={() => {}}>
 // 			<RxDotsHorizontal size='20' />
 // 		</button>
 // 	</div>
-// 	<Button variant='secondary'>Discard</Button>
-// 	<Button variant='primary'>Save Changes</Button>
+// 	<Button onClick={() => {}} variant='secondary'>Discard</Button>
+// 	<Button onClick={() => {}} variant='primary'>Save Changes</Button>
 // </SubHeader>;
 
 // =========================================
@@ -69,9 +65,9 @@ export default SubHeader;
 // =========================================
 
 //  <SubHeader title={t('Add New Customer')}>
-//     <Button variant='tertiary'>Discard</Button>
-//     <Button variant='secondary'>Save & add new</Button>
-//     <Button variant='primary'>Save Changes</Button>
+//     <Button onClick={() => {}} variant='tertiary'>Discard</Button>
+//     <Button onClick={() => {}} variant='secondary'>Save & add new</Button>
+//     <Button onClick={() => {}} variant='primary'>Save Changes</Button>
 // </SubHeader>
 
 // =========================================
@@ -82,10 +78,10 @@ export default SubHeader;
 // import { RxDotsHorizontal } from 'react-icons/rx';
 
 // <SubHeader title={t('Customer Info')}>
-// 	<button>
+// 	<Button onClick={() => {}}>
 // 		<FiEdit size='20' />
 // 	</button>
-// 	<button>
+// 	<Button onClick={() => {}}>
 // 		<RxDotsHorizontal size='20' />
 // 	</button>
 // </SubHeader>
@@ -100,21 +96,21 @@ export default SubHeader;
 // import { GrUpdate } from 'react-icons/gr';
 
 // <SubHeader title={t('Order Details')}>
-// 	<Button variant='tertiary' LeftIcon={<GrUpdate />}>
+// 	<Button onClick={() => {}} variant='tertiary' LeftIcon={<GrUpdate />}>
 // 		Update Status
 // 	</Button>
-// 	<Button variant='tertiary' LeftIcon={<IoPrintOutline />}>
+// 	<Button onClick={() => {}} variant='tertiary' LeftIcon={<IoPrintOutline />}>
 // 		Print Invoice
 // 	</Button>
-// 	<button>
+// 	<button onClick={() => {}}>
 // 		<RxDotsHorizontal size='20' />
 // 	</button>
 
 // 	<div className='flex items-center '>
-// 		<button className='border p-2 flex items-center justify-center'>
+// 		<button onClick={() => {}} className='border p-2 flex items-center justify-center'>
 // 			<IoIosArrowBack />
 // 		</button>
-// 		<button className='border p-2 flex items-center justify-center'>
+// 		<button onClick={() => {}} className='border p-2 flex items-center justify-center'>
 // 			<IoIosArrowForward />
 // 		</button>
 // 	</div>

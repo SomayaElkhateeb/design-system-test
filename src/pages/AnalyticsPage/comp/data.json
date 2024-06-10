@@ -336,7 +336,7 @@
 			"product_name": "Canon EOS Rebel T7",
 			"category": "cameras",
 			"quantity": 150,
-			"price": "549.00",
+			"price": 549.00,
 			"searches": 850,
 			"views": 750,
 			"quantity_sold": 300,
@@ -348,7 +348,7 @@
 			"product_name": "Apple iPhone 13 Pro",
 			"category": "phones",
 			"quantity": 200,
-			"price": "999.00",
+			"price": 999.00,
 			"searches": 1200,
 			"views": 1100,
 			"quantity_sold": 500,
@@ -360,25 +360,14 @@
 			"product_name": "Samsung 65-Inch QLED TV",
 			"category": "televisions",
 			"quantity": 100,
-			"price": "1299.99",
+			"price": 1299.99,
 			"searches": 500,
 			"views": 600,
 			"quantity_sold": 200,
 			"returns": 50,
 			"imageUrl": "images/Vector.svg"
-		},
-		{
-			"id": "4",
-			"product_name": "Sony PlayStation 5",
-			"category": "gaming",
-			"quantity": 75,
-			"price": "499.99",
-			"searches": 900,
-			"views": 800,
-			"quantity_sold": 400,
-			"returns": 25,
-			"imageUrl": "images/Vector.svg"
 		}
+	
 	],
 	"paltformIntegrations": [
 		{

@@ -1,15 +1,14 @@
 import { Rating } from '@mui/material';
 import Avatar from '../../../../app/components/optimized/UiKits/Avatar';
-import SlideCard from 'src/app/components/page/Cards/SlideCard';
+import SlideCard from 'src/app/components/optimized/Cards/SlideCard';
 import { useTranslation } from 'react-i18next';
 import AverageRating from './AverageRating';
 
-
 interface UserReviewInterface {
 	firstName: string;
-	lastName: string
-	date: string
-	rating: number
+	lastName: string;
+	date: string;
+	rating: number;
 	review: string;
 }
 interface ReviewData {

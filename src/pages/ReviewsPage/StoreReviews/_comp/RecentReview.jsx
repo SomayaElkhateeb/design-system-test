@@ -1,4 +1,4 @@
-import LayoutCard from 'src/app/components/page/Cards/LayoutCard';
+
 import RatingBar from './RatingBar';
 import { GoArrowDown, GoArrowUp } from 'react-icons/go';
 
@@ -45,8 +45,8 @@ const RecentReview = () => {
 								</div>
 							)}
 						</div>
-						<div className='text-title text-[1.8rem]'>
-							4.0 <span className='text-subtitle text-[1rem]'>(54)</span>
+						<div className='title'>
+							4.0 <span className='subtitle'>(54)</span>
 						</div>
 						<Rating precision={0.5} value={rating} readOnly />
 					</div>

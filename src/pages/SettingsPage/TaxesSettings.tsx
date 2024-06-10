@@ -1,15 +1,12 @@
-import { HeaderSettings } from 'src/app/components/optimized';
-import { useTranslation } from 'react-i18next';
-
 import { UseFormReturn } from 'react-hook-form';
-
-import { useForm } from 'src/app/utils/hooks/form';
-import { Form } from 'src/app/components/ui/form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-
-import TaxRates from 'src/app/components/page/SettingPage/Taxes/TaxRates';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import useCustomHookTaxesForm from 'src/app/components/page/SettingPage/Taxes/HookForTaxesForm';
 import TaxOptionsForm from 'src/app/components/page/SettingPage/Taxes/TaxOptionsForm';
+import TaxRates from 'src/app/components/page/SettingPage/Taxes/TaxRates';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
 
 // Interfaces
 export interface TaxesSettingsInterface {
@@ -45,21 +42,14 @@ export default function TaxesSettings() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
-				<HeaderSettings
-					submit
-					variant='settingTwoBtns'
-					title={t('Taxes')}
-					btn1={{
-						text: t('Discard'),
-						onClick: () => {
-							navigate(-1);
-						},
-					}}
-					btn2={{
-						text: t('Save Changes'),
-						onClick: () => {},
-					}}
-				/>
+				<SubHeader title={t('Taxes')}>
+					<Button variant='secondary' onClick={() => navigate(-1)}>
+						{t('Discard')}
+					</Button>
+					<Button variant='primary' onClick={onSubmit}>
+						{t('Save Changes')}
+					</Button>
+				</SubHeader>
 				<div className='custom_container grid md:grid-cols-3'>
 					<div className='col-span-2  grid gap-5'>
 						<TaxRates />

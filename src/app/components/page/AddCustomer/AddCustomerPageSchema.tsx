@@ -17,14 +17,14 @@ export const AddCustomerPageSchema = {
 			}),
 		)
 		.min(1),
-	fullNameAddresse: RequiredAddresseData,
-	countryName: RequiredAddresseData,
-	cityName: RequiredAddresseData,
-	area: RequiredAddresseData,
-	street: RequiredAddresseData,
-	building: RequiredAddresseData,
-	landmark: RequiredAddresseData,
-	addressePhoneNumber: z.string().min(7),
+	// fullNameAddresse: RequiredAddresseData,
+	// countryName: RequiredAddresseData,
+	// cityName: RequiredAddresseData,
+	// area: RequiredAddresseData,
+	// street: RequiredAddresseData,
+	// building: RequiredAddresseData,
+	// landmark: RequiredAddresseData,
+	// addressePhoneNumber: z.string().min(7),
 	emailSubescribe: z.boolean(),
 };
 export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPageSchema>;

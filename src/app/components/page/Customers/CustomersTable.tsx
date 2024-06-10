@@ -1,22 +1,21 @@
 import { useTranslation } from 'react-i18next';
 import BaseTable, { GlobalTableCell } from './TableLayoutGlobal/base.table';
-import { Checkbox, TableCell } from '@mui/material';
+import { TableCell } from '@mui/material';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { FaRegEdit } from 'react-icons/fa';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
-import React, { useState } from 'react';
-import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
+import React, { useEffect, useState } from 'react';
+import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
-import { nanoid } from 'nanoid';
-import { AnalyticsIcon } from 'src/app/utils/icons';
 
 import { Switch } from '../../ui/switch';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 
 export const customers: CustomerInterface[] = [
 	{
@@ -49,6 +48,14 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 
 	const { selectedOption, handleSelect } = useSelectBox();
 
+	// redux
+	const dispatch = useDispatch();
+	const { isLoading, allCustomer, error } = useSelector((state) => state.allCustomer || {});
+
+	useEffect(() => {
+		dispatch(getAllCustomersTable());
+	}, [dispatch]);
+
 	//  headers
 
 	const customersHeaders = [
@@ -74,10 +81,11 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={customersHeaders.map((h) => h)}
-			rows={customers?.map((e: CustomerInterface, i: number) => {
+			rows={allCustomer?.map((e: CustomerInterface, i: number) => {
 				return {
 					item: e,
 					elements: [
