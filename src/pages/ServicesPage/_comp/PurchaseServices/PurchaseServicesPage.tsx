@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import RatedCard from '../../optimized/Cards/RatedCard';
+import RatedCard from 'src/app/components/optimized/Cards/RatedCard';
 
-export default function PurchaseServices() {
+
+export default function PurchaseServicesPage() {
 	//  hooks
 	const navigate = useNavigate();
 

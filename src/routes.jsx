@@ -21,9 +21,11 @@ import {
 	
 	ProductsPage,
 	ProductsTabs,
-	PurchaseConfig,
+	
 	ReviewsPage,
+	
 	ServicesPage,
+	
 	SettingsConfig,
 	SettingsPage,
 	SetupConfig,
@@ -34,7 +36,7 @@ import {
 	StoreConfig,
 	StorePage,
 	StoreTabs,
-	SuccessfullyPurchased,
+	
 } from 'src/pages';
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
@@ -47,6 +49,8 @@ import { ProductReviews } from './app/components/page';
 
 import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
 import PagesPage from './pages/PagesPage/PagesPage';
+import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
+import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
 
 
 // Route Definitions

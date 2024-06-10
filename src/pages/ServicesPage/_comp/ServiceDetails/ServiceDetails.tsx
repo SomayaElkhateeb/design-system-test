@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button, SubHeader } from '../../../optimized';
+import { Button, SubHeader } from '../../../../app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';

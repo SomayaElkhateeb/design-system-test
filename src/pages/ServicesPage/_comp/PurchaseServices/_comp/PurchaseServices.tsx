@@ -3,7 +3,7 @@ import { SubHeader } from 'src/app/components/optimized';
 import PaymentCard from 'src/app/components/optimized/Payment/PaymentCard';
 import Summary from './Summary';
 
-export default function PurchaseServicesPage() {
+export default function PurchaseServices() {
 	//  hooks
 	const { t } = useTranslation();
 	return (
