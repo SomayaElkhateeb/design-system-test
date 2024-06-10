@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
-import NavigationCard from './NavigationCard';
+import NavigationCard from './_comp/NavigationCard';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
@@ -15,15 +15,17 @@ export default function NavigationSection() {
 	const array = [...Array(3)];
 	return (
 		<div className='flex-col-top-section-pages'>
-			<div>
-				<Button
-					onClick={() => navigate('AddNavigation')}
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-				>
-					{t('Add Page')}
-				</Button>
-			</div>
+			{!xs && (
+				<div>
+					<Button
+						onClick={() => navigate('AddNavigation')}
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+					>
+						{t('Add Page')}
+					</Button>
+				</div>
+			)}
 			{xs && <AddButtonMobile path='AddNavigation' />}
 
 			<hr />

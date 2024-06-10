@@ -2,11 +2,12 @@ import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import PagesPagesSection from './_comp/PagesSection/PagesPagesScetion';
+import BlogPosts from './_comp/BlogPosts/BlogPosts';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
-import BlogPosts from 'src/app/components/page/PagesPage/BlogPosts/BlogPosts';
-import NavItemPage from 'src/app/components/page/PagesPage/Navigation/NavItemPage';
-import NavigationSection from 'src/app/components/page/PagesPage/Navigation/NavigationSection';
-import PagesPagesSection from 'src/app/components/page/PagesPage/PagesSection/PagesPagesScetion';
+import NavItemPage from './_comp/Navigation/NavItemPage';
+import NavigationSection from './_comp/Navigation/NavigationSection';
+
 
 const PagesPage = () => {
 	//  hooks

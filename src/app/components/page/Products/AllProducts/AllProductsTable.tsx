@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from 'react';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import CustomTableHeaderCheckbox from '../../Customers/CustomTableHeaderChckbox';
+import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import CustomTableBodyCheckbox from '../../Customers/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
 import { Product } from 'src/app/interface/ProductInterface';
 
 import { IoEyeOutline } from 'react-icons/io5';

@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { UseLanguage } from '../../CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
 import React, { useEffect, useState } from 'react';
-import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
+import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 

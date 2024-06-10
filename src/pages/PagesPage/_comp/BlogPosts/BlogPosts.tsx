@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import TopSectionBlogPostsAndSection from './TopSectionBlogPostsAndPagesSection';
-import BlogPostsTable from './BlogPostsTable';
+import TopSectionBlogPostsAndSection from './_comp/TopSectionBlogPostsAndPagesSection';
+import BlogPostsTable from './_comp/BlogPostsTable';
 import { getImageUrl } from 'src/app/utils';
 import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
 

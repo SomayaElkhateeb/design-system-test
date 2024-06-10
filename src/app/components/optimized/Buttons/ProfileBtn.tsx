@@ -1,7 +1,7 @@
 import { getImageUrl } from 'src/app/utils';
 
 import ManageAccountCard from '../Cards/ManageAccountCard';
-import PopoverComponenet from '../../page/Customers/Popover';
+import PopoverComponenet from '../Popover/Popover';
 import { useState } from 'react';
 
 /**

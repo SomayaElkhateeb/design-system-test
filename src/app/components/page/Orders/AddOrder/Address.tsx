@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import useCustomHookAddOrderAddressForm from './Comp/HookAddress';
+import { addAddressInterface } from './Comp/HookAddress';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
@@ -20,77 +20,114 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
+import { ValidFormStoreByValues } from 'src/utils/types';
 
-export default function Address({
-	branch,
-	customer,
-	details,
-	backBtn,
-}: {
+interface AddresseProps<TFormStore> {
+	formStore: ValidFormStoreByValues<TFormStore, addAddressInterface>;
+	sendGift: boolean;
+	setSendGift: (e: boolean) => void;
+	selectedOption: string;
+	setSelectedOption: (e: string) => void;
 	branch?: boolean;
 	customer?: boolean;
 	details?: boolean;
 	backBtn?: () => void;
-}) {
+}
+
+// /////////////////////
+// /////////////////////
+export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
+	//  props
+	const {
+		formStore,
+		sendGift,
+		setSendGift,
+		selectedOption,
+		setSelectedOption,
+		branch,
+		customer,
+		details,
+		backBtn,
+	} = props;
+	//  hooks
 	const { t } = useTranslation();
 	const language = UseLanguage();
-	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
-	const [sendGift, setSendGift] = useState(false);
-
-	// custom hook
-	const { formStore, onSubmit } = useCustomHookAddOrderAddressForm(sendGift, selectedOption);
 
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
 	};
-
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
-				<div className=' lg:col-span-2 flex flex-col gap-4'>
-					{customer || details ? undefined : (
-						<SingleChoiceChips
-							options={['Add manually', 'Use a map']}
-							setSelected={handleAddressOption}
-							selected={selectedOption}
-						/>
-					)}
+			<div className=' lg:col-span-2 flex flex-col gap-4'>
+				{customer || details ? undefined : (
+					<SingleChoiceChips
+						options={['Add manually', 'Use a map']}
+						setSelected={handleAddressOption}
+						selected={selectedOption}
+					/>
+				)}
 
-					{branch || customer ? undefined : (
-						<CheckBox
-							checked={sendGift}
-							handleOnChange={() => setSendGift(!sendGift)}
-							label={t('Send as a gift')}
-						/>
-					)}
+				{branch || customer ? undefined : (
+					<CheckBox
+						checked={sendGift}
+						handleOnChange={() => setSendGift(!sendGift)}
+						label={t('Send as a gift')}
+					/>
+				)}
 
-					{sendGift && (
-						<FormField
-							formStore={formStore}
-							name='giftName'
-							label={t('Gift receiver name')}
-							render={(field) => <Input {...field} placeholder={''} />}
-						/>
-					)}
+				{sendGift && (
+					<FormField
+						formStore={formStore}
+						name='giftName'
+						label={t('Gift receiver name')}
+						render={(field) => <Input {...field} placeholder={''} />}
+					/>
+				)}
 
-					{selectedOption === 'Add manually' && (
-						<section className='grid gap-4'>
-							{customer || details ? (
-								<FormField
-									formStore={formStore}
-									name='name'
-									label={t('Full Name')}
-									render={(field) => <Input {...field} placeholder={''} />}
-								/>
-							) : undefined}
-
+				{selectedOption === 'Add manually' && (
+					<section className='grid gap-4'>
+						{customer || details ? (
 							<FormField
 								formStore={formStore}
-								name='countryName'
-								label={t('Country')}
-								render={(field) => (
+								name='name'
+								label={t('Full Name')}
+								render={(field) => <Input {...field} placeholder={''} />}
+							/>
+						) : undefined}
+
+						<FormField
+							formStore={formStore}
+							name='countryName'
+							label={t('Country')}
+							render={(field) => (
+								<Select
+									onValueChange={field.onChange}
+									value={field.value}
+									required={field.required}
+									name={field.name}
+								>
+									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+										<SelectValue placeholder={t('Select option')} />
+									</SelectTrigger>
+									<SelectContent>
+										{countries.map((country) => (
+											<SelectItem key={country.value} value={country.value}>
+												{country.name}
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
+							)}
+						/>
+
+						<FormField
+							formStore={formStore}
+							name='cityName'
+							label={t('City')}
+							render={(field) => (
+								<div className='flex'>
 									<Select
 										onValueChange={field.onChange}
 										value={field.value}
@@ -108,137 +145,110 @@ export default function Address({
 											))}
 										</SelectContent>
 									</Select>
-								)}
-							/>
-
-							<FormField
-								formStore={formStore}
-								name='cityName'
-								label={t('City')}
-								render={(field) => (
-									<div className='flex'>
-										<Select
-											onValueChange={field.onChange}
-											value={field.value}
-											required={field.required}
-											name={field.name}
-										>
-											<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-												<SelectValue placeholder={t('Select option')} />
-											</SelectTrigger>
-											<SelectContent>
-												{countries.map((country) => (
-													<SelectItem key={country.value} value={country.value}>
-														{country.name}
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
-									</div>
-								)}
-							/>
-
-							<FormField
-								formStore={formStore}
-								name='area'
-								label={t('Area / District')}
-								render={(field) => <Input {...field} placeholder={t('Area')} />}
-							/>
-							<FormField
-								formStore={formStore}
-								name='street'
-								label={t('Street')}
-								render={(field) => <Input {...field} placeholder={t('Street')} />}
-							/>
-						</section>
-					)}
-
-					{customer || details
-						? undefined
-						: selectedOption !== 'Add manually' && (
-								<div className='relative w-full h-[300px]'>
-									<GoogleMapComponent
-										setLocationEnabled={setLocationEnabled}
-										setDisablePickButton={setDisablePickButton}
-										height='300px'
-									/>
-
-									<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
-										<p
-											className={`text-title font-semibold p-2 ${
-												language === 'ar' ? 'border-l' : 'border-r'
-											} border-constrained`}
-										>
-											{t('Map')}
-										</p>
-										<p className='text-subtitle p-2'>{t('Satellite')}</p>
-									</div>
-									<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
-										<FormField
-											formStore={formStore}
-											name='search'
-											render={(field) => <Input {...field} placeholder={t('Search')} />}
-										/>
-									</div>
-									<div className='flex flex-col items-end justify-between h-full'>
-										<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
-											<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
-												<AddIcon className='fill-grayIcon border-b border-hint' />
-												<FiMinus color='#666666' />
-											</div>
-											<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
-												<img src={getImageUrl('map.svg')} alt='Map Icon' />
-											</div>
-										</div>
-
-										<Button
-											variant='secondary'
-											LeftIcon={LocationIcon}
-											className='bg-white absolute bottom-2 right-2'
-										>
-											<span className='hidden md:inline'>{t('Locate Me')}</span>
-										</Button>
-									</div>
 								</div>
-						  )}
+							)}
+						/>
 
-					<FormField
-						formStore={formStore}
-						name='building'
-						label={t('Building')}
-						render={(field) => <Input {...field} placeholder={t('Building')} />}
-					/>
-					<FormField
-						formStore={formStore}
-						name='landmark'
-						label={t('Landmark')}
-						render={(field) => <Input {...field} placeholder={t('Landmark')} />}
-					/>
-					<FormField
-						formStore={formStore}
-						label={t('Phone number')}
-						name='PhoneNumber'
-						render={(field) => (
-							<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
-						)}
-					/>
+						<FormField
+							formStore={formStore}
+							name='area'
+							label={t('Area / District')}
+							render={(field) => <Input {...field} placeholder={t('Area')} />}
+						/>
+						<FormField
+							formStore={formStore}
+							name='street'
+							label={t('Street')}
+							render={(field) => <Input {...field} placeholder={t('Street')} />}
+						/>
+					</section>
+				)}
 
-					{branch || customer ? undefined : (
-						<div className='flex-btn-end'>
-							<Button variant='secondary' onClick={backBtn}>
-								{t('back')}
-							</Button>
-							<Button
-								type='submit'
-								onClick={() => console.log(formStore.formState.errors)}
-								variant='primary'
-							>
-								{t('Next')}
-							</Button>
-						</div>
+				{customer || details
+					? undefined
+					: selectedOption !== 'Add manually' && (
+							<div className='relative w-full h-[300px]'>
+								<GoogleMapComponent
+									setLocationEnabled={setLocationEnabled}
+									setDisablePickButton={setDisablePickButton}
+									height='300px'
+								/>
+
+								<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
+									<p
+										className={`text-title font-semibold p-2 ${
+											language === 'ar' ? 'border-l' : 'border-r'
+										} border-constrained`}
+									>
+										{t('Map')}
+									</p>
+									<p className='text-subtitle p-2'>{t('Satellite')}</p>
+								</div>
+								<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
+									<FormField
+										formStore={formStore}
+										name='search'
+										render={(field) => <Input {...field} placeholder={t('Search')} />}
+									/>
+								</div>
+								<div className='flex flex-col items-end justify-between h-full'>
+									<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
+										<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
+											<AddIcon className='fill-grayIcon border-b border-hint' />
+											<FiMinus color='#666666' />
+										</div>
+										<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
+											<img src={getImageUrl('map.svg')} alt='Map Icon' />
+										</div>
+									</div>
+
+									<Button
+										variant='secondary'
+										LeftIcon={LocationIcon}
+										className='bg-white absolute bottom-2 right-2'
+									>
+										<span className='hidden md:inline'>{t('Locate Me')}</span>
+									</Button>
+								</div>
+							</div>
+					  )}
+
+				<FormField
+					formStore={formStore}
+					name='building'
+					label={t('Building')}
+					render={(field) => <Input {...field} placeholder={t('Building')} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='landmark'
+					label={t('Landmark')}
+					render={(field) => <Input {...field} placeholder={t('Landmark')} />}
+				/>
+				<FormField
+					formStore={formStore}
+					label={t('Phone number')}
+					name='PhoneNumber'
+					render={(field) => (
+						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 					)}
-				</div>
-			</form>
+				/>
+
+				{branch || customer ? undefined : (
+					<div className='flex-btn-end'>
+						<Button variant='secondary' onClick={backBtn}>
+							{t('back')}
+						</Button>
+						<Button
+							type='submit'
+							onClick={() => console.log(formStore.formState.errors)}
+							variant='primary'
+						>
+							{t('Next')}
+						</Button>
+					</div>
+				)}
+			</div>
 		</Form>
 	);
 }

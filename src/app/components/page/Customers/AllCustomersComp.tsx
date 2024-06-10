@@ -57,15 +57,17 @@ export default function AllCustomers() {
 				{/* top section */}
 				<div className='topTable'>
 					{/* add customers button */}
-					<Button
-						variant='primary'
-						LeftIcon={IoIosAddCircle}
-						onClick={() => {
-							navigate('/customers/addCustomer');
-						}}
-					>
-						{t('Add New Customer')}
-					</Button>
+					{!xs && (
+						<Button
+							variant='primary'
+							LeftIcon={IoIosAddCircle}
+							onClick={() => {
+								navigate('/customers/addCustomer');
+							}}
+						>
+							{t('Add New Customer')}
+						</Button>
+					)}
 					{/*  case of small media */}
 					{xs && <AddButtonMobile path='/customers/addCustomer' />}
 					{/*  actions filter arrange,... */}

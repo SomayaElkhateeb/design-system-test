@@ -1,7 +1,7 @@
 import { NotifiIcon } from 'src/app/utils/icons';
 import NotificationsCard from '../Cards/NotificationsCard';
 
-import PopoverComponenet from '../../page/Customers/Popover';
+import PopoverComponenet from '../Popover/Popover';
 
 /**
  * NotificationBtn component represents a button that, when clicked, displays a notification icon

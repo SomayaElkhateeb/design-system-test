@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export default function TopSectionBlogPostsAndSection({
 	addButton,
@@ -18,6 +19,7 @@ export default function TopSectionBlogPostsAndSection({
 	//  custom hook for select arrang item
 
 	const { selectedOption, handleSelect } = useSelectBox();
+	const { xs } = useResponsive();
 
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
@@ -31,9 +33,9 @@ export default function TopSectionBlogPostsAndSection({
 			<div className='topTable'>
 				{/*  left dropdow */}
 
-				<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+				{!xs && <Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
 					{addButton}
-				</Button>
+				</Button>}
 
 				{/*  actions  arrange,... */}
 				<div className='flex-row-global  gap-[1.2rem]'>

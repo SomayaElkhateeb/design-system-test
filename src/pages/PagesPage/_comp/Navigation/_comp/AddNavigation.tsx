@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, SubHeader } from 'src/app/components/optimized';
-import AddNavItemDialog from 'src/app/components/page/PagesPage/Navigation/AddNavItemDialog';
+import AddNavItemDialog from './AddNavItemDialog';
+
 
 export default function AddNavigation() {
 	//  hooks

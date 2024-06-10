@@ -43,9 +43,6 @@ export default function AddCustomerPage() {
 					<div className='flex-col-top-section-pages lg:col-span-2'>
 						{/*  general info section */}
 						<GeneralInfoCustomerForm formStore={formStore} />
-
-						{/* primary addresses section */}
-						{/* <PrimaryAddresseForm formStore={formStore} /> */}
 						<div className='global-cards gap-[1.3rem]'>
 							<h2 className='title'>{t('Add primary address')}</h2>
 							<div className='flex-col-top-section-pages md:w-[65%]'>

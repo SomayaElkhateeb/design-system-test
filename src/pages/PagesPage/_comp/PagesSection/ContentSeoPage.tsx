@@ -5,14 +5,14 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 
 import CustomAutoComplete from 'src/app/components/optimized/InputsFields/AutoCompleteMultiple';
-import { addPageInterface } from '../HookForAddBlogOrPageForm';
-import SpecificAutoCompleteInput from '../../discount/Selectors/SpecificAutoCompleteInput';
+import { addPageInterface } from '../BlogPosts/HookForAddBlogOrPageForm';
+import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+
 
 export interface selectItemsInterface {
 	id: string;
 	name: string;
 }
-
 
 export default function ContentSeoPage({
 	formStore,
@@ -22,8 +22,6 @@ export default function ContentSeoPage({
 	open: boolean;
 }) {
 	const { t } = useTranslation();
-
-	
 
 	return (
 		<div
@@ -44,7 +42,6 @@ export default function ContentSeoPage({
 				render={(field) => <Input {...field} />}
 			/>
 
-			
 			<SpecificAutoCompleteInput<addPageInterface>
 				name='Metakeywords'
 				label={t('Meta keywords')}

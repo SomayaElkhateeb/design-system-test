@@ -1,7 +1,6 @@
-
 import { SearchIcon } from 'src/app/utils/icons';
 
-import PopoverComponenet from '../../page/Customers/Popover';
+import PopoverComponenet from '../Popover/Popover';
 import Button from '@mui/material/Button';
 
 const SearchBtn = () => {

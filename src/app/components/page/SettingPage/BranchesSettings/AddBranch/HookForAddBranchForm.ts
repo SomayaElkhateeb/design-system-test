@@ -1,6 +1,6 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
-import { orderAddressInterface } from '../../../Orders/AddOrder/Comp/HookAddress';
+import { AddAddressSchema, handelAddresseDefaultValue, orderAddressInterface } from '../../../Orders/AddOrder/Comp/HookAddress';
 
 export interface OpenHours {
 	open: string;
@@ -45,7 +45,7 @@ export interface fixedDay {
 	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 }
 // ////////////////////////
-export default function useCustomHookAddBranchForm() {
+export default function useCustomHookAddBranchForm(sendGift?: boolean,selectedOption?: string) {
 	const RequiredAddresseData = z.string().min(1);
 
 	const DayInfoSchema = z.object({
@@ -69,6 +69,7 @@ export default function useCustomHookAddBranchForm() {
 			Sat: DayInfoSchema,
 			Sun: DayInfoSchema,
 		}),
+		...AddAddressSchema(sendGift, selectedOption)
 	};
 
 	const handelDefaultValue = () => {
@@ -77,6 +78,7 @@ export default function useCustomHookAddBranchForm() {
 			branchNameAr: '',
 			branchNameEn: '',
 			branchTimeSchedual: initialDayInfo,
+			...handelAddresseDefaultValue(),
 		};
 	};
 	return {
