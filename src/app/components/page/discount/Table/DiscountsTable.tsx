@@ -1,26 +1,23 @@
+import { TableCell } from '@mui/material';
+import { nanoid } from 'nanoid';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaRegEdit } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { Switch } from 'src/app/components/ui/switch';
+import { DiscountInterface } from 'src/app/interface/DiscountInterface';
+import {
+	deleteDiscount
+} from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
-} from '../../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
-import { TableCell } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { IoIosArrowForward } from 'react-icons/io';
-import { IoIosArrowBack } from 'react-icons/io';
-
-import { DiscountInterface } from 'src/app/interface/DiscountInterface';
-import { FaRegEdit } from 'react-icons/fa';
-import { Switch } from 'src/app/components/ui/switch';
-import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
-import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
-import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
-import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
-import {
-	deleteDiscount,
-	updateDiscounts,
-} from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 
 export default function DiscountsTable({
 	discounts,

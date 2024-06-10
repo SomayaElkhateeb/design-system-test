@@ -1,13 +1,11 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import FormField from '../../../../../app/components/ui/form/field';
-import { Input } from '../../../../../app/components/ui/input';
-import CustomPhoneInput from '../../../../../app/components/optimized/UiKits/CustomPhoneInput';
-
-import { CheckBox } from '../../../../../app/components/optimized';
-
+import { CheckBox } from 'src/app/components/optimized';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
-import SpecificAutoCompleteInput from '../../../../../app/components/page/discount/Selectors/SpecificAutoCompleteInput';
 
 import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export interface selectItemsInterface {

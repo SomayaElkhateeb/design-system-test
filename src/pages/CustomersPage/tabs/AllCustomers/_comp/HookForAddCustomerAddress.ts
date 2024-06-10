@@ -10,12 +10,11 @@ export interface AddAddressInterface {
 	PhoneNumber: string;
 	giftName?: string;
 }
-// ////////////////////////
+
 export default function useCustomHookAddCustomerAddressForm(
 	sendGift: boolean,
 	selectedOption: string,
 ) {
-	// ////////////////////////
 	const handelDefaultValue = () => {
 		return {
 			countryName: '',
@@ -28,7 +27,6 @@ export default function useCustomHookAddCustomerAddressForm(
 			giftName: '',
 		};
 	};
-	// //////////////////////
 
 	const RequiredAddressData = z.string().min(1);
 	const handel_RequiredAddressData = () => {

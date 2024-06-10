@@ -1,16 +1,16 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import FormField from '../../../../../app/components/ui/form/field';
-import { Input } from '../../../../../app/components/ui/input';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from '../../../../../app/components/ui/select';
-import CustomPhoneInput from '../../../../../app/components/optimized/UiKits/CustomPhoneInput';
-import { countries } from '../../../../../app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
+} from 'src/app/components/ui/select';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
 import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export default function PrimaryAddressForm({
 	formStore,

@@ -1,28 +1,21 @@
-import { useTranslation } from 'react-i18next';
-
-import { TableCell } from '@mui/material';
-
-import { FaRegEdit } from 'react-icons/fa';
-
-import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-
-import { IoIosArrowBack } from 'react-icons/io';
+import { TableCell } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import { FaArrowsRotate } from 'react-icons/fa6';
-
 import { OrderInterface } from 'src/app/interface/OrderInterface';
-import { menuType } from '../../optimized/Buttons/ActionsComp';
-import CustomTableHeaderCheckbox from '../../../../pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
+import CustomTableBodyCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableBodyCheckbox';
+import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
-} from '../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
-import CustomTableBodyCheckbox from '../../../../pages/CustomersPage/_comp/CustomersTables/CustomTableBodyCheckbox';
-import { CiLocationOn } from 'react-icons/ci';
+} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import { menuType } from '../../optimized/Buttons/ActionsComp';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
-
+// react-icons
+import { CiLocationOn } from 'react-icons/ci';
+import { FaRegEdit } from 'react-icons/fa';
+import { FaArrowsRotate } from 'react-icons/fa6';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 export default function AllOrdersTable({
 	orders,
 	array,
@@ -40,11 +33,9 @@ export default function AllOrdersTable({
 	const { t } = useTranslation();
 
 	//  custom hook for select setting item
-
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	//  headers
-
 	const OrdersHeaders = [
 		{
 			icon: (
