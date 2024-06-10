@@ -1,11 +1,11 @@
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
-const RequiredAddresseData = z.string().min(1);
+const RequiredAddressData = z.string().min(1);
 
 export const AddCustomerPageSchema = {
-	humanType: RequiredAddresseData,
-	fullName: RequiredAddresseData,
+	humanType: RequiredAddressData,
+	fullName: RequiredAddressData,
 	email: z.string().min(1).email(),
 	PhoneNumber: z.string().min(7),
 
@@ -17,14 +17,14 @@ export const AddCustomerPageSchema = {
 			}),
 		)
 		.min(1),
-	fullNameAddresse: RequiredAddresseData,
-	countryName: RequiredAddresseData,
-	cityName: RequiredAddresseData,
-	area: RequiredAddresseData,
-	street: RequiredAddresseData,
-	building: RequiredAddresseData,
-	landmark: RequiredAddresseData,
-	addressePhoneNumber: z.string().min(7),
+	fullNameAddress: RequiredAddressData,
+	countryName: RequiredAddressData,
+	cityName: RequiredAddressData,
+	area: RequiredAddressData,
+	street: RequiredAddressData,
+	building: RequiredAddressData,
+	landmark: RequiredAddressData,
+	AddressPhoneNumber: z.string().min(7),
 	emailSubescribe: z.boolean(),
 };
 export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPageSchema>;

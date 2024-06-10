@@ -1,6 +1,5 @@
-import { z } from "zod";
-import { selectItemsInterface } from "../AddCustomer/GeneralInfoCustomerForm";
-
+import { z } from 'zod';
+import { selectItemsInterface } from '../../../../pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 
 export interface addPageInterface {
 	pageTitle: string;
@@ -15,9 +14,7 @@ export interface addPageInterface {
 	Metakeywords: selectItemsInterface[];
 }
 
-
 export default function useCustomHookAddBlogOrPage(addblog?: boolean) {
-
 	const handelDefaultValue = () => {
 		return {
 			pageTitle: '',
@@ -34,7 +31,6 @@ export default function useCustomHookAddBlogOrPage(addblog?: boolean) {
 	};
 	// //////////////////////////////////////////
 	const pageSchema = {
-
 		pageTitle: z.string().min(3, { message: 'Page title is required' }),
 		link: z.string().url(),
 		metaKey: z.string(),
@@ -54,6 +50,6 @@ export default function useCustomHookAddBlogOrPage(addblog?: boolean) {
 
 	return {
 		pageSchema,
-		handelDefaultValue
-	}
+		handelDefaultValue,
+	};
 }

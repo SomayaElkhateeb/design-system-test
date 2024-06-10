@@ -6,7 +6,7 @@ import ThreeDotsButton from '../Buttons/ThreedotsButton';
 import useSelectBox from '../Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
 import { RemoveIcon } from 'src/app/utils/icons';
-import { settingMenus } from '../../page/Customers/CustomersTable';
+import { settingMenus } from '../../../../pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 
 /**
 

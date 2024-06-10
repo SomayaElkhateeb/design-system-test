@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 
 import { UseFormReturn } from 'react-hook-form';
 
-import FormField from '../../ui/form/field';
-import { Input } from '../../ui/input';
-import { Switch } from '../../ui/switch';
-import { Textarea } from '../../ui/textarea';
+import FormField from '../../../../../app/components/ui/form/field';
+import { Input } from '../../../../../app/components/ui/input';
+import { Switch } from '../../../../../app/components/ui/switch';
+import { Textarea } from '../../../../../app/components/ui/textarea';
 
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 

@@ -4,10 +4,10 @@ import { Button, SubHeader } from 'src/app/components/optimized';
 import {
 	AddCustomerPageSchema,
 	AddCustomerPageSchemaValues,
-} from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
-import GeneralInfoCustomerForm from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
-import useCustomHookAddCustomerForm from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
-import PrimaryAddresseForm from 'src/app/components/page/AddCustomer/PrimaryAddresseForm';
+} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/AddCustomerPageSchema';
+import GeneralInfoCustomerForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
+import useCustomHookAddCustomerForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerForm';
+import PrimaryAddressForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/PrimaryAddressForm';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 export default function AddCustomerPage() {
@@ -43,8 +43,8 @@ export default function AddCustomerPage() {
 						{/*  general info section */}
 						<GeneralInfoCustomerForm formStore={formStore} />
 
-						{/* primary addresses section */}
-						<PrimaryAddresseForm formStore={formStore} />
+						{/* primary Addresss section */}
+						<PrimaryAddressForm formStore={formStore} />
 					</div>
 				</div>
 			</form>

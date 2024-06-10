@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CustomersComponenet from 'src/app/components/page/Customers/ResponsiveSmallMedia/CustomersComponent';
+import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import BrandsTable from 'src/app/components/page/Products/Brands/BrandsTable';
 import TopSectionBrandsTable from 'src/app/components/page/Products/Brands/TopSectionBrandsTable';
 import { getBrandsTable } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';

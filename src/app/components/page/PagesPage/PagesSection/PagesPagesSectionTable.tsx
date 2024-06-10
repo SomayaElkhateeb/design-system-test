@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 
-import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from '../../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 

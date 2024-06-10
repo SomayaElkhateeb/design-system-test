@@ -1,7 +1,7 @@
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
-import { settingMenus } from '../CustomersTable';
+import { settingMenus } from '../CustomersTables/CustomersTable';
 import { useNavigate } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 

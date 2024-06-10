@@ -6,7 +6,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { CiUser } from 'react-icons/ci';
 import { MdOutlineEmail } from 'react-icons/md';
 import { FiPhoneCall } from 'react-icons/fi';
-import CustomerData from 'src/app/components/page/CustomersInfo/CustomerData';
+import CustomerData from './CustomerData';
 import { IoIosAddCircle } from 'react-icons/io';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
@@ -59,13 +59,13 @@ export default function CustomerInfo() {
 					</div>
 				</div>
 
-				{/*  addresse section */}
+				{/*  Address section */}
 
 				<div className='customer-border gap-[0.8rem]'>
 					<div className='flex-row-global justify-between px-[1.2rem]'>
-						<p className='title'>{t('Addresses')}</p>
+						<p className='title'>{t('Addresss')}</p>
 						<div
-							onClick={() => navigate('addNewAddresse')}
+							onClick={() => navigate('addNewAddress')}
 							className='flex-row-global gap-[.4rem] cursor-pointer'
 						>
 							<IoIosAddCircle />
@@ -106,10 +106,7 @@ export default function CustomerInfo() {
 						<p className='title '>{t('Orders')}</p>
 						<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 							<IoIosAddCircle />
-							<p
-								onClick={() => navigate('/order/addOrder')}
-								className='title'
-							>
+							<p onClick={() => navigate('/order/addOrder')} className='title'>
 								{t('Add new order')}
 							</p>
 						</div>

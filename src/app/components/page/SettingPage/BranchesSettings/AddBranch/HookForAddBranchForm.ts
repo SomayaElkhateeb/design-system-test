@@ -1,6 +1,5 @@
-import { UseFormReturn } from "react-hook-form";
-import { z } from "zod";
-
+import { UseFormReturn } from 'react-hook-form';
+import { z } from 'zod';
 
 export interface OpenHours {
 	open: string;
@@ -13,26 +12,26 @@ export interface DayInfo {
 }
 
 export interface WeekSchedule {
-    Mon: DayInfo;
-    Tue: DayInfo;
-    Wed: DayInfo;
-    Thu: DayInfo;
-    Fri: DayInfo;
-    Sat: DayInfo;
-    Sun: DayInfo;
+	Mon: DayInfo;
+	Tue: DayInfo;
+	Wed: DayInfo;
+	Thu: DayInfo;
+	Fri: DayInfo;
+	Sat: DayInfo;
+	Sun: DayInfo;
 }
 export interface BranchSettingsInterface {
-    branchType: string;
-    branchNameEn: string;
-    branchNameAr: string;
-    countryName?: string;
-    cityName?: string;
-    area?: string;
-    street?: string;
-    building: string;
-    landmark?: string;
-    branchPhoneNumber: string;
-    branchTimeSchedual: WeekSchedule;
+	branchType: string;
+	branchNameEn: string;
+	branchNameAr: string;
+	countryName?: string;
+	cityName?: string;
+	area?: string;
+	street?: string;
+	building: string;
+	landmark?: string;
+	branchPhoneNumber: string;
+	branchTimeSchedual: WeekSchedule;
 }
 
 export const initialDayInfo: WeekSchedule = {
@@ -53,11 +52,11 @@ export interface fixedDay {
 }
 // ////////////////////////
 export default function useCustomHookAddBranchForm(selectedOption: string) {
-    const RequiredAddresseData = z.string().min(1);
-	const handel_RequiredAddresseData = () => {
+	const RequiredAddressData = z.string().min(1);
+	const handel_RequiredAddressData = () => {
 		return selectedOption !== 'Add manually'
-			? z.optional(RequiredAddresseData).or(z.literal(''))
-			: RequiredAddresseData;
+			? z.optional(RequiredAddressData).or(z.literal(''))
+			: RequiredAddressData;
 	};
 
 	const DayInfoSchema = z.object({
@@ -69,15 +68,15 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 	});
 
 	const branchSettingsSchema = {
-		branchType: RequiredAddresseData,
-		branchNameEn: RequiredAddresseData,
-		branchNameAr: RequiredAddresseData,
-		countryName: handel_RequiredAddresseData(),
-		cityName: handel_RequiredAddresseData(),
-		area: handel_RequiredAddresseData(),
-		street: handel_RequiredAddresseData(),
-		building: RequiredAddresseData,
-		landmark: handel_RequiredAddresseData(),
+		branchType: RequiredAddressData,
+		branchNameEn: RequiredAddressData,
+		branchNameAr: RequiredAddressData,
+		countryName: handel_RequiredAddressData(),
+		cityName: handel_RequiredAddressData(),
+		area: handel_RequiredAddressData(),
+		street: handel_RequiredAddressData(),
+		building: RequiredAddressData,
+		landmark: handel_RequiredAddressData(),
 		branchPhoneNumber: z.string().min(7),
 		branchTimeSchedual: z.object({
 			Mon: DayInfoSchema,
@@ -89,7 +88,7 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 			Sun: DayInfoSchema,
 		}),
 	};
-	
+
 	const handelDefaultValue = () => {
 		return {
 			branchType: 'Warehouse',
@@ -105,8 +104,8 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 			branchTimeSchedual: initialDayInfo,
 		};
 	};
-    return {
-        branchSettingsSchema,
-        handelDefaultValue
-    }
+	return {
+		branchSettingsSchema,
+		handelDefaultValue,
+	};
 }

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import BaseTable from './TableLayoutGlobal/base.table';
+import BaseTable from '../TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 
 import { FaRegEdit } from 'react-icons/fa';
@@ -7,16 +7,16 @@ import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../../app/components/CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useEffect, useState } from 'react';
-import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
+import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
+import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
+import useSelectBox from '../../../../app/components/optimized/Menu/useSelectBox';
 
-import { Switch } from '../../ui/switch';
+import { Switch } from '../../../../app/components/ui/switch';
 import { settingMenus } from './CustomersTable';
-import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
+import ThreeDotsButton from '../../../../app/components/optimized/Buttons/ThreedotsButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
 

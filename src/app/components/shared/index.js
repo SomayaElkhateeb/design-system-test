@@ -2,5 +2,5 @@
 
 export { default as TopHeader } from '../page/Customers/TopHeader';
 
-export { default as CustomTableHeaderChckbox } from '../page/Customers/CustomTableHeaderChckbox';
-export { default as CustomTableBodyChckbox } from '../page/Customers/CustomTableBodyChckbox';
+export { default as CustomTableHeaderChckbox } from '../../../pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
+export { default as CustomTableBodyChckbox } from '../../../pages/CustomersPage/_comp/CustomersTables/CustomTableBodyCheckbox';

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { UseFormReturn } from 'react-hook-form';
-import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from '../../../../../app/components/page/discount/Selectors/SpecificAutoCompleteInput';
 
 import { AddCustomerGroupPageSchemaValues } from './AddCustomerGroupSchema';
 

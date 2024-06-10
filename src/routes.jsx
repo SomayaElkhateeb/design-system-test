@@ -1,7 +1,7 @@
 import {
 	AddCustomerGroup,
 	AddCustomerPage,
-	AddNewAddresseCustomer,
+	AddNewAddressCustomer,
 	AddOrder,
 	AnalyticsPage,
 	AppsPage,
@@ -63,8 +63,8 @@ export const routes = [
 		element: <CustomerInfo />,
 	},
 	{
-		path: '/customers/:id/addNewAddresse',
-		element: <AddNewAddresseCustomer />,
+		path: '/customers/:id/addNewAddress',
+		element: <AddNewAddressCustomer />,
 	},
 	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/customers/addGroupCustomer', element: <AddCustomerGroup /> },

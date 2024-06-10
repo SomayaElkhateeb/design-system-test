@@ -3,14 +3,16 @@ import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
-import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from '../../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
 import { Switch } from 'src/app/components/ui/switch';
-import { settingMenus } from '../../Customers/CustomersTable';
+import { settingMenus } from '../../../../../pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 
 //  dumy data
 export const brands: BrandsInterface[] = [

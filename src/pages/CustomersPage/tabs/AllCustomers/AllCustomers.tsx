@@ -1,21 +1,22 @@
-import { useNavigate } from 'react-router-dom';
-import { Button } from '../../optimized';
-import { useTranslation } from 'react-i18next';
-import { IoIosAddCircle } from 'react-icons/io';
-import ActionsComp from '../../optimized/Buttons/ActionsComp';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
+import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-import CustomersTable, { customers } from './CustomersTable';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
-import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
-import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
-import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
-import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
+import { IoIosAddCircle } from 'react-icons/io';
+import { SiMicrosoftexcel } from 'react-icons/si';
+import { useNavigate } from 'react-router-dom';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-
+import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
+import { useOpenFilterDrawer } from 'src/app/components/SideBar/CustomHookOpenDrawer';
+import { Button } from 'src/app/components/optimized';
+import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import CustomersTable, {
+	customers,
+} from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
+import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
+import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/FilterOrdersComponent';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {

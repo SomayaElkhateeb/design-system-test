@@ -1,19 +1,19 @@
 import { useTranslation } from 'react-i18next';
-import BaseTable, { GlobalTableCell } from './TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../../app/components/CustomHook/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
 import React, { useEffect, useState } from 'react';
-import CustomTableHeaderCheckbox from './CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from './CustomTableBodyChckbox';
-import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
+import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
+import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
+import ThreeDotsButton from '../../../../app/components/optimized/Buttons/ThreedotsButton';
+import useSelectBox from '../../../../app/components/optimized/Menu/useSelectBox';
 
-import { Switch } from '../../ui/switch';
+import { Switch } from '../../../../app/components/ui/switch';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 

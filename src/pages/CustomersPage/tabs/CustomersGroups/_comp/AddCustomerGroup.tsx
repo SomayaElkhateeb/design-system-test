@@ -4,10 +4,10 @@ import { Button, SubHeader } from 'src/app/components/optimized';
 import {
 	AddCustomerGroupPageSchema,
 	AddCustomerGroupPageSchemaValues,
-} from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
-import ChooseCustomers from 'src/app/components/page/AddCustomerGroup/ChooseCustomers';
-import GeneralInfoCustomerGroupInfo from 'src/app/components/page/AddCustomerGroup/GeneralInfo';
-import useCustomHookAddCustomerGroupForm from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
+} from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/AddCustomerGroupSchema';
+import ChooseCustomers from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/ChooseCustomers';
+import GeneralInfoCustomerGroupInfo from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/GeneralInfo';
+import useCustomHookAddCustomerGroupForm from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/HookForAddCustomerGroupForm';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 
