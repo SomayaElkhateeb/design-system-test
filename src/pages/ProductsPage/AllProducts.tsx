@@ -9,8 +9,6 @@ import TopSection from 'src/app/components/page/Products/AllProducts/TopSection'
 import { Product } from 'src/app/interface/ProductInterface';
 
 import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
-import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 
 //  setting menus for setting button action and will be used in brands section page
 export const settingMenus = [
@@ -82,7 +80,6 @@ export default function AllProducts() {
 	//  hooks render products card
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
-	const { xs } = useResponsive();
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-top-section-pages '>
@@ -114,7 +111,6 @@ export default function AllProducts() {
 					))}
 				</div>
 			</div>
-			{xs && <AddButtonMobile path='/order/addOrder' />}
 		</div>
 	);
 }

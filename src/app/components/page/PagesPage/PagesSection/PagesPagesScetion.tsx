@@ -8,6 +8,7 @@ import PagesPagesTable from './PagesPagesSectionTable';
 import LegalPagesSection from './LegalPagesSection';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import PagesTableMobile from './PagesTableMobile';
 
 export default function PagesPagesSection() {
 	//  hooks
@@ -22,6 +23,13 @@ export default function PagesPagesSection() {
 			title: 'mohamed Mostafa',
 			describtion: '01064545565',
 		},
+		{
+			id: '1',
+			visibility: false,
+			img: getImageUrl('images/product.png'),
+			title: 'mohamed Mostafa',
+			describtion: '01064545565',
+		},
 	];
 	return (
 		<div className='flex flex-col'>
@@ -29,10 +37,10 @@ export default function PagesPagesSection() {
 			<div className='flex flex-col gap-[1rem]'>
 				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='AddPage' />
 				{xs && <AddButtonMobile path='AddPage' />}
-
 				<LegalPagesSection />
 			</div>
 			<PagesPagesTable data={data} />
+			{xs && <PagesTableMobile data={data} />}
 		</div>
 	);
 }

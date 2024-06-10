@@ -12,12 +12,15 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
 import { IoLocationOutline } from 'react-icons/io5';
 import { HeaderSettings } from 'src/app/components/optimized';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import EditButtonMobile from 'src/app/components/optimized/Buttons/EditButtonMobile';
 
 export default function CustomerInfo() {
 	// hooks
 	const { id } = useParams();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 	const array = [...Array(2)];
 
 	const customerData = [
@@ -39,14 +42,16 @@ export default function CustomerInfo() {
 			{/*  top section */}
 			<HeaderSettings variant='customerInfowithIcons' title={t('Customer Info')}>
 				<div className=' flex  items-center gap-[.8rem] '>
-					<FaRegEdit
-						className='cursor-pointer'
-						onClick={() => navigate(`/customers/addCustomer?id=${id}`)}
-					/>
+					{!xs && (
+						<FaRegEdit
+							className='cursor-pointer'
+							onClick={() => navigate(`/customers/addCustomer?id=${id}`)}
+						/>
+					)}
 					<HiOutlineDotsHorizontal className='cursor-pointer' />
 				</div>
 			</HeaderSettings>
-
+			{xs && <EditButtonMobile onClick={() => navigate(`/customers/addCustomer?id=${id}`)} />}
 			{/*  customer section */}
 			<div className='custom_container gap-[1.6rem] flex-col-top-section-pages'>
 				<div className='customer-border  gap-[0.8rem]'>
@@ -106,10 +111,7 @@ export default function CustomerInfo() {
 						<p className='title '>{t('Orders')}</p>
 						<div className='flex-row-global gap-[.4rem] cursor-pointer'>
 							<IoIosAddCircle />
-							<p
-								onClick={() => navigate('/order/addOrder')}
-								className='title'
-							>
+							<p onClick={() => navigate('/order/addOrder')} className='title'>
 								{t('Add new order')}
 							</p>
 						</div>

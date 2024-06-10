@@ -55,9 +55,9 @@ export default function TopSectionCategoriesTable() {
 				<div className='topTable'>
 					{/*  left dropdown */}
 
-					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
+					{!xs && <Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
 						{t('Add Category')}
-					</Button>
+					</Button>}
 					{xs && <AddButtonMobile  onClick={() => setOpenDialog(true)} />}
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>
