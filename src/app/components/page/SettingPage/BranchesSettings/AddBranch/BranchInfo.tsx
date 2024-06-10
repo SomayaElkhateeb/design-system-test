@@ -2,7 +2,6 @@ import { UseFormReturn } from 'react-hook-form';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-import { useState } from 'react';
 import { BranchSettingsInterface } from './HookForAddBranchForm';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 import { Address } from '../../..';
@@ -39,25 +38,21 @@ export const countries = [
 
 interface BranchInfoProps {
 	formStore: UseFormReturn<BranchSettingsInterface>;
+	sendGift: boolean;
+	setSendGift: (e: boolean) => void;
 	selectedOption: string;
 	setSelectedOption: (e: string) => void;
 }
 
 export default function BranchInfo({
 	formStore,
-}: // selectedOption,
-// setSelectedOption,
-BranchInfoProps) {
+	sendGift,
+	setSendGift,
+	selectedOption,
+	setSelectedOption,
+}: BranchInfoProps) {
 	//  hooks
-	// const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
-	// const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const { t } = useTranslation();
-
-	// const handleAddressOption = (option: string) => {
-	// 	setSelectedOption(option);
-	// };
-	// -------------------------------------
-
 	return (
 		<div className='grid  col-span-2 grid-cols-3 gap-5'>
 			<div className='grid gap-5 sm:col-span-3 col-span-6 cardDetails-sharedClass p-5'>
@@ -82,7 +77,14 @@ BranchInfoProps) {
 
 				<section className='grid gap-4'>
 					<h2 className='title mb-2'>{t('Address')}</h2>
-					<Address branch={true} />
+					<Address<BranchSettingsInterface>
+						formStore={formStore}
+						sendGift={sendGift}
+						setSendGift={setSendGift}
+						selectedOption={selectedOption}
+						setSelectedOption={setSelectedOption}
+						branch={true}
+					/>
 				</section>
 			</div>
 		</div>
