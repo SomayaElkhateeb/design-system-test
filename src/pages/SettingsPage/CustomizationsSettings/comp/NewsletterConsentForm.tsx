@@ -5,8 +5,8 @@ import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { MultiChoiceChips } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
-import FormSwitchField from './FormSwitchField';
-import FormChoiceChips from './FormChoiceChips';
+import FormSwitchField from '../../../../app/components/ui/form/FormSwitchField';
+import FormChoiceChips from '../../../../app/components/ui/form/FormChoiceChips';
 export default function NewsletterConsentForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 
@@ -43,7 +43,11 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 					]}
 					label={t('Text label')}
 					renderer={(field) => (
-						<Input required {...field} placeholder={t('Keep me up to date on news and exclusive offers')} />
+						<Input
+							required
+							{...field}
+							placeholder={t('Keep me up to date on news and exclusive offers')}
+						/>
 					)}
 				/>
 			</div>

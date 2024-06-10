@@ -7,7 +7,7 @@ import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Switch } from 'src/app/components/ui/switch';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { queriesInterface } from './HookForQueriesSettings';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 export default function QueriesSectionForm({
 	formStore,
@@ -25,7 +25,7 @@ export default function QueriesSectionForm({
 						{t('You can send an email for customers who purchased from you to review')}
 					</p>
 				</div>
-				
+
 				<FormSwitchField<queriesInterface> formStore={formStore} name='enable' />
 			</div>
 

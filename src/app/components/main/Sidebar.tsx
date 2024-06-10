@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 import { sidebarLinks, socialLinks } from 'src/app/utils/constants';
-import SidebarLoading from '../page/SchimmerLoading/SidebarLoading';
+import SidebarLoading from '../optimized/SchimmerLoading/SidebarLoading';
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 	//  hooks

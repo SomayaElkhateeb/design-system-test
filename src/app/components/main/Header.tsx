@@ -8,7 +8,7 @@ import ViewBtn from '../optimized/Buttons/ViewBtn';
 import ChatBtn from '../optimized/Buttons/ChatBtn';
 import NotificationBtn from '../optimized/Buttons/NotificationBtn';
 import ProfileBtn from '../optimized/Buttons/ProfileBtn';
-import HeaderLoading from '../page/SchimmerLoading/HeaderLoading';
+import HeaderLoading from '../optimized/SchimmerLoading/HeaderLoading';
 import SearchBtn from '../optimized/Buttons/SearchBtn';
 import { getImageUrl } from 'src/app/utils';
 import { useMediaQuery } from 'react-responsive';
@@ -145,8 +145,8 @@ const ProfileInfo = () => {
 		<>
 			<div className='flex lg:hidden items-center '>
 				<SearchBtn />
-				<ViewBtn  />
-				<NotificationBtn  />
+				<ViewBtn />
+				<NotificationBtn />
 			</div>
 			<div className='hidden lg:flex items-center'>
 				<HelpCenterBtn />

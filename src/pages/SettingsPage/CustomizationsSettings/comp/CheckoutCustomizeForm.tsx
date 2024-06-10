@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import FormSwitchField from './FormSwitchField';
-import FormChoiceChips from './FormChoiceChips';
+import FormSwitchField from '../../../../app/components/ui/form/FormSwitchField';
+import FormChoiceChips from '../../../../app/components/ui/form/FormChoiceChips';
 
 export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
@@ -29,7 +29,7 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 			/>
 			<div className='col-span-1'>
 				<FormField
-				required
+					required
 					formStore={formStore}
 					name='minimumOrderSubtotal'
 					label={t('Minimum order subtotal')}

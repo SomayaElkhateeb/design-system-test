@@ -6,7 +6,7 @@ import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/compo
 import Limits from 'src/app/components/page/discount/Comp/Limits';
 import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
 import { Form } from 'src/app/components/ui/form';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
 

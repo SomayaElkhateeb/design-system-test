@@ -7,7 +7,7 @@ import { Input } from '../../ui/input';
 import { Switch } from '../../ui/switch';
 import { Textarea } from '../../ui/textarea';
 
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 import { AddCustomerGroupPageSchemaValues } from './AddCustomerGroupSchema';
 

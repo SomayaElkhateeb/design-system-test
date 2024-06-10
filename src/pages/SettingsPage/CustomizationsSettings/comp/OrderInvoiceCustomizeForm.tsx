@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import FormSwitchField from './FormSwitchField';
+import FormSwitchField from '../../../../app/components/ui/form/FormSwitchField';
 export default function OrderInvoiceCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 	return (
