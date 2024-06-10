@@ -7,7 +7,6 @@ import { Button, SubHeader } from 'src/app/components/optimized';
 import { LuEye } from 'react-icons/lu';
 import { RxDotsHorizontal } from 'react-icons/rx';
 import { useForm } from 'src/app/utils/hooks/form';
-	const { xs } = useResponsive();
 
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Textarea } from 'src/app/components/ui/textarea';
