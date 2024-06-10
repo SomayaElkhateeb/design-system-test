@@ -4,7 +4,7 @@ import { CampaignFormProps } from '../useCampaign';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { Textarea } from 'src/app/components/ui/textarea';
-import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 export default function CampaignDetails({ formStore }: CampaignFormProps) {
 	const { t } = useTranslation();
 

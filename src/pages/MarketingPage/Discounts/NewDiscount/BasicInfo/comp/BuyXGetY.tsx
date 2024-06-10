@@ -6,7 +6,7 @@ import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { newDiscountInterface } from '../../HookForNewDiscount';
 
-import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 
 const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();

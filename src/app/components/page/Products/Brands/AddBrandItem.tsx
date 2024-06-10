@@ -8,7 +8,7 @@ import Tabs from '../../../optimized/Tabs/Tabs';
 import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { Button } from 'src/app/components/optimized';
-import SpecificAutoCompleteInput from '../../discount/Selectors/SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from '../../../ui/SpecificAutoCompleteInput';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';

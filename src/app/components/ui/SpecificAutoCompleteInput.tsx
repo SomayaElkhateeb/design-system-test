@@ -1,6 +1,6 @@
 import { FieldValues, UseFormReturn, Path } from 'react-hook-form';
 
-import CustomAutoComplete from 'src/app/components/optimized/InputsFields/AutoCompleteMultiple';
+import CustomAutoComplete from 'src/app/components/ui/AutoCompleteMultiple';
 import FormField from 'src/app/components/ui/form/field';
 interface selectItemsInterface {
 	id: string;
@@ -22,24 +22,21 @@ export default function SpecificAutoCompleteInput<T extends FieldValues>({
 		{ id: '1', name: 'Dress' },
 		{ id: '2', name: 'Fashion' },
 	];
-	
 
 	return (
-		<div className='flex-col-top-section-pages gap-0'>
-			<FormField
-				formStore={formStore}
-				name={name}
-				label={label}
-				render={(field) => (
-					<CustomAutoComplete<selectItemsInterface>
-						placeholder={label}
-						getvalue={(value: any) => formStore.setValue(name, value)}
-						name={name}
-						array={selectItems}
-						MainValue={field.value}
-					/>
-				)}
-			/>
-		</div>
+		<FormField
+			formStore={formStore}
+			name={name}
+			label={label}
+			render={(field) => (
+				<CustomAutoComplete<selectItemsInterface>
+					placeholder={label}
+					getvalue={(value: any) => formStore.setValue(name, value)}
+					name={name}
+					array={selectItems}
+					MainValue={field.value}
+				/>
+			)}
+		/>
 	);
 }

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import PaymentCard from 'src/app/components/optimized/Payment/PaymentCard';
+import PaymentCard from 'src/app/components/optimized/Cards/PaymentCard';
 import Summary from './Summary';
 
 export default function PurchaseServices() {

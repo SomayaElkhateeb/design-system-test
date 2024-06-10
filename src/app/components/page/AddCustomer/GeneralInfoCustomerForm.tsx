@@ -7,7 +7,7 @@ import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 import { CheckBox } from '../../optimized';
 
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
-import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from '../../ui/SpecificAutoCompleteInput';
 
 import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export interface selectItemsInterface {
