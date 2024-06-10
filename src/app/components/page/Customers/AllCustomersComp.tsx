@@ -16,7 +16,6 @@ import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
 import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-
 //  componenet will be used in customers page
 export default function AllCustomers() {
 	//  hooks

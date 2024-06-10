@@ -32,3 +32,10 @@ export { default as CustomerSegment } from './discount/Comp/CustomerSegment/Cust
 export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';
 export { default as DiscountTypesOptions } from './discount/Comp/DiscountTypesOptions';
+
+// REVIEWS PAGE
+export { ProductReviews } from './ReviewsPage/ProductReviews';
+export { AsksAndQueries } from './ReviewsPage/AsksAndQueries';
+export { StoreReviews } from './ReviewsPage/StoreReviews';
+export { AppReviews } from './ReviewsPage/AppReviews';
+export { ReviewsCard } from './ReviewsPage/_comp/ReviewsCard';

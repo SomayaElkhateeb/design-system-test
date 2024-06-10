@@ -43,11 +43,15 @@ import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
 import VirtualProductPage from './pages/ProductsPage/New/Virtual';
 import FoodProductPage from './pages/ProductsPage/New/Food';
 import BundleProductPage from './pages/ProductsPage/New/Bundle';
+import { ProductReviews } from './app/components/page';
 
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
+	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
+	{ path: '/reviews/ProductReviews', element: <ProductReviews /> },
+
 	// services Routes
 	{ path: '/services', element: <ServicesPage /> },
 	{ path: '/services/:config', element: <PurchaseConfig /> },

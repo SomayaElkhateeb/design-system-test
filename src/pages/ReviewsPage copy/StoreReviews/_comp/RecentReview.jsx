@@ -1,4 +1,3 @@
-
 import RatingBar from './RatingBar';
 import { GoArrowDown, GoArrowUp } from 'react-icons/go';
 
