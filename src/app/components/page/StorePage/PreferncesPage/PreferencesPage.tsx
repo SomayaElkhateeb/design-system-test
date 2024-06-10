@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { SubHeader, Button } from 'src/app/components/optimized';
 import SeoSearchSection from './SeoSearchSection';
 import { useForm } from 'src/app/utils/hooks/form';
@@ -10,11 +9,13 @@ import PasswordSection from './PasswordSection';
 import SocialSharingSection from './SocialSharingSection';
 import RecaptchaEnable from './CaptchaEnable';
 import useCustomHookPreferncePage, { preferncesInterface } from './HookForPreferncePageForm';
-
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function PreferencesPage() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 
 	const handleSubmit = (values: preferncesInterface) => {
 		console.log(values);
@@ -33,12 +34,7 @@ export default function PreferencesPage() {
 		<Form {...formStore}>
 			<form className='flex-col-top-section-pages gap-[2rem]' onSubmit={onSubmit}>
 				<SubHeader title={t('Store Preferences')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='custom_container  grid gap-5 grid-cols-1'>
 					<div className='flex-col-top-section-pages lg:w-[75%] '>
@@ -49,6 +45,7 @@ export default function PreferencesPage() {
 						<MaintainanceSection formStore={formStore} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

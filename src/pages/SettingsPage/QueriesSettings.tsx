@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import useCustomHookQueriesSettings, {
 	queriesInterface,
@@ -8,11 +7,13 @@ import useCustomHookQueriesSettings, {
 import QueriesSectionForm from 'src/app/components/page/SettingPage/QueriesSettings/QueriesSection';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function QueriesSetting() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 
 	const handleSubmit = (values: queriesInterface) => {
 		console.log(values);
@@ -36,12 +37,7 @@ export default function QueriesSetting() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Queries')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
@@ -51,6 +47,7 @@ export default function QueriesSetting() {
 						<QuickActions data={data} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

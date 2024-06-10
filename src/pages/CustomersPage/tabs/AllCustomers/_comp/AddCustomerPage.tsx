@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import {
 	AddCustomerPageSchema,
 	AddCustomerPageSchemaValues,
@@ -10,14 +9,14 @@ import useCustomHookAddCustomerForm from 'src/pages/CustomersPage/tabs/AllCustom
 import PrimaryAddressForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/PrimaryAddressForm';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { RxDotsHorizontal } from 'react-icons/rx';
-import SubHeaderActionBtns from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function AddCustomerPage() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
 		console.log(values);
 		// handleClose();
@@ -31,13 +30,11 @@ export default function AddCustomerPage() {
 		defaultValues: handelDefaultValue(),
 	});
 
-	const { xs } = useResponsive();
-
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages relative'>
 				<SubHeader title={t('Add New Customer')}>
-					{!xs ? <SubHeaderActionBtns /> : <RxDotsHorizontal />}
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
@@ -49,11 +46,7 @@ export default function AddCustomerPage() {
 					</div>
 				</div>
 
-				{xs && (
-					<div className='flex space-x-3 justify-center bg-white p-5 absolute w-full bottom-0'>
-						<SubHeaderActionBtns />
-					</div>
-				)}
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

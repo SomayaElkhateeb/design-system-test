@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
 import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
 import useBankTransfer from './useBankTransfer';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function ActivateBankTransfer() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 	const [applyWith, setApplyWith] = useState('All');
 	const { formStore, onSubmit } = useBankTransfer(applyWith);
 	const data = [
@@ -35,12 +37,7 @@ export default function ActivateBankTransfer() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
 				<SubHeader title={t('Activate bank transfer')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='grid gap-5 custom_container lg:grid-cols-3'>
 					<div className='grid gap-5 lg:col-span-2 '>
@@ -51,6 +48,7 @@ export default function ActivateBankTransfer() {
 						<QuickActions data={data} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

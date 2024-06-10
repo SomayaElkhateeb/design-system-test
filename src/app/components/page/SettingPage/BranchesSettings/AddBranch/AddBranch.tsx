@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
@@ -8,13 +7,15 @@ import { useForm } from 'src/app/utils/hooks/form';
 import BranchAppointments from './BranchAppointments';
 import BranchInfo from './BranchInfo';
 import useCustomHookAddBranchForm, { BranchSettingsInterface } from './HookForAddBranchForm';
-
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function AddBranch(props: {
 	hideHeader?: boolean;
 	handleSubmit?: (values: BranchSettingsInterface) => void;
 }) {
 	//  hooks
-	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 
@@ -51,12 +52,7 @@ export default function AddBranch(props: {
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				{!props.hideHeader && (
 					<SubHeader title={t('Add Branch')}>
-						<Button variant='secondary' onClick={() => navigate(-1)}>
-							{t('Discard')}
-						</Button>
-						<Button variant='primary' onClick={() => {}}>
-							{t('Save Changes')}
-						</Button>
+						<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 					</SubHeader>
 				)}
 				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
@@ -72,6 +68,7 @@ export default function AddBranch(props: {
 						<QuickActions data={data} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

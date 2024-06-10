@@ -5,7 +5,6 @@ import { GrUpdate } from 'react-icons/gr';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { IoPrintOutline } from 'react-icons/io5';
 import { RxDotsHorizontal } from 'react-icons/rx';
-import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import {
@@ -18,11 +17,12 @@ import {
 	OrderItems,
 	OrderNo,
 } from 'src/app/components/page';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { EditIcon, LocationIcon } from 'src/app/utils/icons';
 import { contact } from 'src/pages/SettingsPage/data';
 export default function OrderDetails() {
 	const { t } = useTranslation();
-	const navigate = useNavigate();
+	const { xs } = useResponsive();
 	const [state, setState] = useState({
 		showCustomer: false,
 		showAddress: false,
@@ -55,9 +55,10 @@ export default function OrderDetails() {
 		{ id: nanoid(), name: `${t('IP Address')} `, value: '213.156.160.96' },
 		{ id: nanoid(), name: `${t('Accepts email marketing')} `, value: 'No' },
 	];
-	return (
-		<div className='flex-col-top-section-pages'>
-			<SubHeader title={t('Order Details')}>
+
+	const SubHeaderActions = () => {
+		return (
+			<>
 				<Button onClick={() => {}} variant='tertiary' LeftIcon={<GrUpdate />}>
 					{t('Update Status')}
 				</Button>
@@ -76,6 +77,13 @@ export default function OrderDetails() {
 						<IoIosArrowForward />
 					</button>
 				</div>
+			</>
+		);
+	};
+	return (
+		<div className='flex-col-top-section-pages'>
+			<SubHeader title={t('Order Details')}>
+				{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 			</SubHeader>
 
 			<div className='custom-grid-parent custom_container'>
@@ -143,6 +151,11 @@ export default function OrderDetails() {
 					<ContactCard title={t('Additional Info')} data={info} contacts={false} />
 				</div>
 			</div>
+			{xs && (
+				<div className='flex space-x-3 justify-center bg-white p-5 absolute w-full bottom-0'>
+					<SubHeaderActions />
+				</div>
+			)}
 		</div>
 	);
 }

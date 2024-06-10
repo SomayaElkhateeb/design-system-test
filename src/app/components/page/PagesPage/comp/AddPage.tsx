@@ -11,11 +11,13 @@ import MainInfoPage from 'src/app/components/page/PagesPage/PagesSection/MainInf
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookAddBlogOrPage, { addPageInterface } from '../HookForAddBlogOrPageForm';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 export default function AddPage({ addblog }: { addblog?: boolean }) {
 	// hooks
 	const [open, setOpen] = useState(false);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 
 	const handleSubmit = (values: addPageInterface) => {
 		console.log(values);
@@ -37,25 +39,33 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 		{ id: 3, title: t('Show on main menu') },
 	];
 
+	const SubHeaderActions = () => {
+		return (
+			<>
+				<div className='flex space-x-3'>
+					<button>
+						<LuEye size='22' />
+					</button>
+
+					<button>
+						<RxDotsHorizontal size='22' />
+					</button>
+				</div>
+				<Button variant='secondary' onClick={() => navigate(-1)}>
+					{t('Discard')}
+				</Button>
+				<Button variant='primary' onClick={() => {}}>
+					{t('Save Changes')}
+				</Button>
+			</>
+		);
+	};
+
 	return (
 		<Form {...formStore}>
 			<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
 				<SubHeader title={!addblog ? t('Add page') : t('Add blog')}>
-					<div className='flex space-x-3'>
-						<button>
-							<LuEye size='22' />
-						</button>
-
-						<button>
-							<RxDotsHorizontal size='22' />
-						</button>
-					</div>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						{t('Save Changes')}
-					</Button>
+					{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 				</SubHeader>
 
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
@@ -72,6 +82,12 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 						<QuickActions data={data} />
 					</div>
 				</div>
+
+				{xs && (
+					<div className='flex space-x-3 justify-center bg-white p-5 absolute w-full bottom-0'>
+						<SubHeaderActions />
+					</div>
+				)}
 			</form>
 		</Form>
 	);

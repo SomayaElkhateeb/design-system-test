@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
 import Limits from 'src/app/components/page/discount/Comp/Limits';
 import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
@@ -9,10 +8,12 @@ import { Form } from 'src/app/components/ui/form';
 import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
 import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
-
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
-	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [discountType, setDiscountType] = useState('Free shipping');
 	const [applyToType, setApplyToType] = useState('All products');
@@ -59,12 +60,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={coupon ? t('Add Coupon') : t('Add Discount')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
@@ -90,6 +86,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 						</div>
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);
