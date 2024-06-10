@@ -66,7 +66,7 @@ export default function BrandsTable({
 					item: e,
 					elements: [
 						<GlobalTableCell>
-							<div className=' flex  items-center gap-[.4rem] '>
+							<div className='flex items-center gap-[.4rem] '>
 								<img src={getImageUrl(e.img)} loading='lazy' alt={e.title} />
 
 								<div className='flex-col-top-section-pages gap-2'>

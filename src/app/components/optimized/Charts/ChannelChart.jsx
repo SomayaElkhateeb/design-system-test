@@ -89,7 +89,7 @@ export default function ChannelChart(props) {
 				breakpoint: 480,
 				options: {
 					chart: {
-						width: 400,
+						width: 500,
 					},
 				},
 			},
@@ -113,6 +113,7 @@ export default function ChannelChart(props) {
 
 			<div id='chart' className='flex-row-global w-full'>
 				<ReactApexChart
+					className='mx-auto'
 					options={props.options || defaultOptions}
 					series={props.series || series}
 					type='donut'

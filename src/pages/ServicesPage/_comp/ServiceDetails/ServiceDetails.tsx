@@ -3,8 +3,9 @@ import { Button, SubHeader } from '../../../../app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';
-import RecentReview from 'src/pages/ReviewsPage/StoreReviews/_comp/RecentReview';
+// import RecentReview from 'src/pages/ReviewsPage/StoreReviews/_comp/RecentReview';
 import { useNavigate } from 'react-router-dom';
+import RecentReview from 'src/pages/ReviewsPage copy/StoreReviews/_comp/RecentReview';
 
 export default function ServiceDetails() {
 	//  hooks
@@ -31,7 +32,7 @@ export default function ServiceDetails() {
 						</div>
 						<ServiceProviderSection />
 						<div className='lg:col-span-2'>
-							<RecentReview />
+							<RecentReview />{' '}
 						</div>
 					</div>
 				</div>

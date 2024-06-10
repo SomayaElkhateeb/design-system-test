@@ -108,6 +108,9 @@ export default function SelectProducts({
 							{t('Add')} ({items.length})
 						</Button>
 					</div>
+
+					{/* show input */}
+					<input />
 				</form>
 			</Form>
 		</GlobalDialog>
