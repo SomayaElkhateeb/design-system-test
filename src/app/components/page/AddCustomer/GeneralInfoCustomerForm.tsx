@@ -54,7 +54,7 @@ export default function GeneralInfoCustomerForm({
 				/>
 				<FormField
 					formStore={formStore}
-					name='PhoneNumber'
+					name='Phone'
 					label={t('Phone Number')}
 					render={(field) => (
 						<CustomPhoneInput

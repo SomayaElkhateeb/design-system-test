@@ -1,6 +1,6 @@
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
-
+import { AddAddressSchema } from '../../page/Orders/AddOrder/Comp/HookAddress';
 const RequiredAddresseData = z.string().min(1);
 
 export const AddCustomerPageSchema = {
@@ -8,7 +8,6 @@ export const AddCustomerPageSchema = {
 	fullName: RequiredAddresseData,
 	email: z.string().min(1).email(),
 	PhoneNumber: z.string().min(7),
-
 	groupMeta: z
 		.array(
 			z.object({
@@ -17,14 +16,7 @@ export const AddCustomerPageSchema = {
 			}),
 		)
 		.min(1),
-	// fullNameAddresse: RequiredAddresseData,
-	// countryName: RequiredAddresseData,
-	// cityName: RequiredAddresseData,
-	// area: RequiredAddresseData,
-	// street: RequiredAddresseData,
-	// building: RequiredAddresseData,
-	// landmark: RequiredAddresseData,
-	// addressePhoneNumber: z.string().min(7),
 	emailSubescribe: z.boolean(),
+	...AddAddressSchema(sendGift, selectedOption),
 };
 export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPageSchema>;
