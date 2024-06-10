@@ -8,8 +8,8 @@ import { CheckBox } from '../../optimized';
 
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import SpecificAutoCompleteInput from '../../ui/SpecificAutoCompleteInput';
+import { AddCustomerPageInterface } from './HookForAddCustomerForm';
 
-import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
@@ -18,7 +18,7 @@ export interface selectItemsInterface {
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<AddCustomerPageSchemaValues>;
+	formStore: UseFormReturn<AddCustomerPageInterface>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -28,7 +28,7 @@ export default function GeneralInfoCustomerForm({
 			<h2 className='title'>{t('General Info')}</h2>
 
 			<div className='flex-col-top-section-pages md:w-[65%]'>
-				<FormChoiceChips<AddCustomerPageSchemaValues>
+				<FormChoiceChips<AddCustomerPageInterface>
 					formStore={formStore}
 					name='humanType'
 					label='Customer can check out with'
@@ -47,7 +47,7 @@ export default function GeneralInfoCustomerForm({
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 
-				<SpecificAutoCompleteInput<AddCustomerPageSchemaValues>
+				<SpecificAutoCompleteInput<AddCustomerPageInterface>
 					name='groupMeta'
 					label={t('Meta keywords')}
 					formStore={formStore}

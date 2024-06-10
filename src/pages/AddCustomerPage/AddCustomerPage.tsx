@@ -3,12 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import { Address } from 'src/app/components/page';
-import {
-	AddCustomerPageSchema,
-	AddCustomerPageSchemaValues,
-} from 'src/app/components/page/AddCustomer/AddCustomerPageSchema';
+
 import GeneralInfoCustomerForm from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
-import useCustomHookAddCustomerForm from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
+import useCustomHookAddCustomerForm, {
+	AddCustomerPageInterface,
+} from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
 
 import { Form } from 'src/app/components/ui/form';
 
@@ -21,7 +20,7 @@ export default function AddCustomerPage() {
 	const [isName, setIsName] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 
-	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
+	const handleSubmit = (values: AddCustomerPageInterface) => {
 		console.log(values);
 		// handleClose();
 	};
@@ -38,8 +37,6 @@ export default function AddCustomerPage() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
-	// console.log(formStore.formState.errors);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
