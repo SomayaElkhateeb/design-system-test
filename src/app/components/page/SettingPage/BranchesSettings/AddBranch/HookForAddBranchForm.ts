@@ -1,6 +1,10 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
-import { AddAddressSchema, handelAddresseDefaultValue, orderAddressInterface } from '../../../Orders/AddOrder/Comp/HookAddress';
+import {
+	AddAddressSchema,
+	handelAddresseDefaultValue,
+	addAddressInterface,
+} from '../../../Orders/AddOrder/Comp/HookAddress';
 
 export interface OpenHours {
 	open: string;
@@ -21,7 +25,7 @@ export interface WeekSchedule {
 	Sat: DayInfo;
 	Sun: DayInfo;
 }
-export interface BranchSettingsInterface extends orderAddressInterface {
+export interface BranchSettingsInterface extends addAddressInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
@@ -45,7 +49,7 @@ export interface fixedDay {
 	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 }
 // ////////////////////////
-export default function useCustomHookAddBranchForm(sendGift?: boolean,selectedOption?: string) {
+export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedOption?: string) {
 	const RequiredAddresseData = z.string().min(1);
 
 	const DayInfoSchema = z.object({
@@ -69,7 +73,7 @@ export default function useCustomHookAddBranchForm(sendGift?: boolean,selectedOp
 			Sat: DayInfoSchema,
 			Sun: DayInfoSchema,
 		}),
-		...AddAddressSchema(sendGift, selectedOption)
+		...AddAddressSchema(sendGift, selectedOption),
 	};
 
 	const handelDefaultValue = () => {

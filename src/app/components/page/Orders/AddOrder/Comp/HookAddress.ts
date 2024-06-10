@@ -43,11 +43,14 @@ const handel_RequiredAddressData = (selectedOption?: string) => {
 const handel_Gift_Input = (sendGift?: boolean) => {
 	return !sendGift ? z.optional(RequiredAddressData).or(z.literal('')) : RequiredAddressData;
 };
+
+const handel_name = (isName?: boolean) => {
+	return !isName ? z.optional(RequiredAddressData).or(z.literal('')) : RequiredAddressData;
+};
 // ///////////////////////
-export const AddAddressSchema = (sendGift?:boolean,selectedOption?:string) => {
-	
+export const AddAddressSchema = (sendGift?: boolean, selectedOption?: string, isName?: boolean) => {
 	return {
-		name: z.optional(RequiredAddressData).or(z.literal('')),
+		name: handel_name(isName),
 		countryName: handel_RequiredAddressData(selectedOption),
 		cityName: handel_RequiredAddressData(selectedOption),
 		area: handel_RequiredAddressData(selectedOption),
@@ -57,19 +60,20 @@ export const AddAddressSchema = (sendGift?:boolean,selectedOption?:string) => {
 		PhoneNumber: z.string().min(7),
 		giftName: handel_Gift_Input(sendGift),
 		search: handel_Gift_Input(sendGift),
-	}
+	};
 };
 export default function useCustomHookAddAddressForm(
-	sendGift: boolean,
-	selectedOption: string,
+	sendGift?: boolean,
+	selectedOption?: string,
+	isName?: boolean,
 ) {
 	// /////////////////////
-	const handleSubmit = (values: orderAddressInterface) => {
+	const handleSubmit = (values: addAddressInterface) => {
 		console.log('values: ', values);
 	};
 	// ///////////////////////////////////
 	const { formStore, onSubmit } = useForm({
-		schema: AddAddressSchema(sendGift,selectedOption),
+		schema: AddAddressSchema(sendGift, selectedOption, isName),
 		handleSubmit: handleSubmit,
 		defaultValues: handelAddresseDefaultValue(),
 	});

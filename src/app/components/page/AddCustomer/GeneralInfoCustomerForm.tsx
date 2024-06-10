@@ -9,7 +9,7 @@ import { CheckBox } from '../../optimized';
 import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
 
-import {  AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
+import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
@@ -54,7 +54,7 @@ export default function GeneralInfoCustomerForm({
 				/>
 				<FormField
 					formStore={formStore}
-					name='PhoneNumber'
+					name='Phone'
 					label={t('Phone Number')}
 					render={(field) => (
 						<CustomPhoneInput
