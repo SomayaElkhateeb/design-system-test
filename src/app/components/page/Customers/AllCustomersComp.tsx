@@ -9,7 +9,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
 import CustomersTable, { customers } from './CustomersTable';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import { useOpenFilterDrawer } from '../../../utils/hooks/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
 import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';

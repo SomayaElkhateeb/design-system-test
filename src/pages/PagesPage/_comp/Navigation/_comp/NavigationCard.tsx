@@ -1,6 +1,6 @@
 import { IoIosAddCircle, IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function NavigationCard({
 	title,
@@ -39,7 +39,7 @@ export default function NavigationCard({
 					<IoIosArrowBack className='text-[1rem] cursor-pointer' onClick={() => handelAction()} />
 				) : (
 					<IoIosArrowForward
-					className='text-[1rem] cursor-pointer'
+						className='text-[1rem] cursor-pointer'
 						onClick={() => handelAction()}
 					/>
 				)}

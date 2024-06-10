@@ -1,6 +1,6 @@
 import logoEn from 'src/app/assets/brand/en-light.svg';
 import logoAr from 'src/app/assets/brand/ar-light.svg';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 const HeaderAuth = () => {
 	const language = UseLanguage();

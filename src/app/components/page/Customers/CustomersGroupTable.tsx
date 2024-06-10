@@ -7,7 +7,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useOpenFilterDrawer } from 'src/app/components/SideBar/CustomHookOpenDrawer';
+import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { Button } from 'src/app/components/optimized';

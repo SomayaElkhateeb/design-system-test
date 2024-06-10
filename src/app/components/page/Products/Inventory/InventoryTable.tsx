@@ -1,4 +1,4 @@
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

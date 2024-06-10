@@ -8,7 +8,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
 import { IoIosArrowBack } from 'react-icons/io';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { FaArrowsRotate } from 'react-icons/fa6';

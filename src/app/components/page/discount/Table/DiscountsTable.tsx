@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -69,7 +69,7 @@ export default function DiscountsTable({
 		{
 			id: nanoid(),
 			text: 'delete',
-			icon:<RemoveIcon className='fill-error' />
+			icon: <RemoveIcon className='fill-error' />,
 		},
 	];
 

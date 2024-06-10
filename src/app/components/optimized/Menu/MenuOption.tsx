@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 
 /**
  * Component representing a menu option list.

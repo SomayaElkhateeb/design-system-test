@@ -17,7 +17,7 @@ import {
 	StarIcon,
 	ViewIcon,
 } from 'src/app/utils/icons';
-import { CheckBox } from '..';
+import { CheckBox } from '../../../app/components/optimized';
 
 /**
  * @param {{
@@ -68,12 +68,20 @@ export default function ProductViews(props) {
 				<div className='flex flex-col items-center gap-5'>
 					<CheckBox handleOnChange={checkBoxHandler} checked={isChecked} />
 					<button onClick={isFavoriteHandler}>
-						{isFavorite ? <StarActiveIcon className='fill-neutral-1' /> : <StarIcon className='fill-hint' />}
+						{isFavorite ? (
+							<StarActiveIcon className='fill-neutral-1' />
+						) : (
+							<StarIcon className='fill-hint' />
+						)}
 					</button>
 				</div>
 				<div className='flex items-center flex-1 gap-3'>
 					<div className='size-[68px] rounded-lg border border-light-2 relative overflow-hidden'>
-						<img src={getImageUrl(props.imageUrl)} alt={props.name} className='object-cover w-full h-full' />
+						<img
+							src={getImageUrl(props.imageUrl)}
+							alt={props.name}
+							className='object-cover w-full h-full'
+						/>
 						<div className='absolute grid w-6 h-6 bg-white border rounded-full border-light-2 bottom-1 left-1 place-content-center'>
 							<CameraIcon className='w-[18px] h-[18px]' />
 						</div>

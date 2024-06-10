@@ -2,11 +2,11 @@
 //! ===============
 // todo Action Button
 import { getImageUrl } from 'src/app/utils';
-import ThreeDotsButton from '../Buttons/ThreedotsButton';
-import useSelectBox from '../Menu/useSelectBox';
+import ThreeDotsButton from '../../../app/components/optimized/Buttons/ThreedotsButton';
+import useSelectBox from '../../../app/components/optimized/Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
 import { RemoveIcon } from 'src/app/utils/icons';
-import { settingMenus } from '../../page/Customers/CustomersTable';
+import { settingMenus } from '../../../app/components/page/Customers/CustomersTable';
 
 /**
 

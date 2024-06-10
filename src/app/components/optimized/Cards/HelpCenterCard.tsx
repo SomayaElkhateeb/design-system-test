@@ -11,7 +11,7 @@ import { InputRow } from '..';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import LinkCards from './LinkCards';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import Slider from '../UiKits/Slider';
 
 const HelpCenterCard = ({

@@ -33,9 +33,8 @@ import {
 	ShippingConfig,
 	SimpleProductPage,
 	SocialAppDetails,
-	StoreConfig,
 	StorePage,
-	StoreTabs,
+	
 	
 } from 'src/pages';
 
@@ -51,6 +50,8 @@ import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
 import PagesPage from './pages/PagesPage/PagesPage';
 import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
 import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
+import StoreTabs from './pages/StorePage/StoreTabs';
+import StoreConfig from './pages/StorePage/StoreConfig';
 
 
 // Route Definitions

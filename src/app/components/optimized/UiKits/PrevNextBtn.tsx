@@ -1,5 +1,5 @@
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 export default function PrevNextBtn({
 	onClickPrev,
 	onClickNext,
