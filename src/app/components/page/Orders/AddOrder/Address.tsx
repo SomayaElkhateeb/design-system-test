@@ -28,8 +28,8 @@ interface AddresseProps<TFormStore> {
 	setSendGift: (e: boolean) => void;
 	isName: boolean;
 	setIsName: (e: boolean) => void;
-	selectedOption?: string;
-	setSelectedOption?: (e: string) => void;
+	selectedOption: string;
+	setSelectedOption: (e: string) => void;
 	branch?: boolean;
 	customer?: boolean;
 	details?: boolean;
@@ -72,7 +72,7 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 	return (
 		<Form {...formStore}>
 			<div className=' lg:col-span-2 flex flex-col gap-4'>
-				{customer || details ? undefined : (
+				{isName && (
 					<SingleChoiceChips
 						options={['Add manually', 'Use a map']}
 						setSelected={handleAddressOption}
@@ -80,7 +80,7 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 					/>
 				)}
 
-				{branch || customer ? undefined : (
+				{branch || customer && (
 					<CheckBox
 						checked={sendGift}
 						handleOnChange={() => setSendGift(!sendGift)}
@@ -99,14 +99,14 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 
 				{selectedOption === 'Add manually' && (
 					<section className='grid gap-4'>
-						{isName ? (
+						{isName && (
 							<FormField
 								formStore={formStore}
 								name='name'
 								label={t('Full Name')}
 								render={(field) => <Input {...field} placeholder={''} />}
 							/>
-						) : undefined}
+						)}
 
 						<FormField
 							formStore={formStore}
@@ -245,9 +245,7 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 					)}
 				/>
 
-				{/* {branch || customer ? undefined : (
-					
-				)} */}
+				
 			</div>
 		</Form>
 	);

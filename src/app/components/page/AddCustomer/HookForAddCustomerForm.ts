@@ -19,7 +19,7 @@ export interface CustomersProps {
 	formStore: UseFormReturn<AddCustomerPageInterface>;
 }
 
-export default function useCustomHookAddCustomerForm(sendGift?: boolean, selectedOption?: string) {
+export default function useCustomHookAddCustomerForm(sendGift?: boolean, selectedOption?: string, isName?: boolean) {
 	const RequiredAddresseData = z.string().min(1);
 	const AddCustomerPageSchema = {
 		humanType: RequiredAddresseData,
@@ -37,7 +37,7 @@ export default function useCustomHookAddCustomerForm(sendGift?: boolean, selecte
 			.min(1),
 
 		emailSubescribe: z.boolean(),
-		...AddAddressSchema(sendGift, selectedOption),
+		...AddAddressSchema(sendGift, selectedOption, isName),
 	};
 
 	const handelDefaultValue = () => {
