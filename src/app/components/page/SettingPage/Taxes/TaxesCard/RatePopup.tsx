@@ -7,7 +7,7 @@ import FormField from 'src/app/components/ui/form/field';
 import useTaxPrograms, { addRateTypes } from './useTaxPrograms';
 import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-import FormChoiceChips from '../../../../../../pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from '../../../../ui/form/FormChoiceChips';
 import { useEffect, useState } from 'react';
 
 const style = {

@@ -4,7 +4,7 @@ import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
 import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import useCustomCheckOutForm, { checkOutDetailsInterface } from './HookCheckoutDetailsForm';
 import {
 	Select,

@@ -6,7 +6,7 @@ import { Textarea } from 'src/app/components/ui/textarea';
 import { Switch } from 'src/app/components/ui/switch';
 import FormField from 'src/app/components/ui/form/field';
 import { preferncesInterface } from './HookForPreferncePageForm';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 export default function MaintainanceSection({
 	formStore,

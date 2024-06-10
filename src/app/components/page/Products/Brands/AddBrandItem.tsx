@@ -11,7 +11,7 @@ import { Button } from 'src/app/components/optimized';
 import SpecificAutoCompleteInput from '../../discount/Selectors/SpecificAutoCompleteInput';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { fileClassName } from '../../SettingPage/GeneralSettings/Media';

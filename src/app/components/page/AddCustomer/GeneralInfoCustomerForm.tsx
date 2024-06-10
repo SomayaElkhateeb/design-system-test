@@ -6,10 +6,10 @@ import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
 
 import { CheckBox } from '../../optimized';
 
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import SpecificAutoCompleteInput from '../discount/Selectors/SpecificAutoCompleteInput';
 
-import {  AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
+import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export interface selectItemsInterface {
 	id: string;
 	name: string;

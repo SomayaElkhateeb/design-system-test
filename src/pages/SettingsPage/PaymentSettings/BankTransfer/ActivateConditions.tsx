@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import FormChoiceChips from '../../CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from '../../../../app/components/ui/form/FormChoiceChips';
 import { BankTransferTypes, PaymentFormProps } from './useBankTransfer';
 import CardHeader from 'src/app/components/optimized/UiKits/CardHeader';
 import FormField from 'src/app/components/ui/form/field';

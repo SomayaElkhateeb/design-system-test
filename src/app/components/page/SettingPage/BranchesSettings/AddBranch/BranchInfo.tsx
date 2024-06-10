@@ -3,7 +3,7 @@ import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { BranchSettingsInterface } from './HookForAddBranchForm';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import { Address } from '../../..';
 
 export const countries = [
