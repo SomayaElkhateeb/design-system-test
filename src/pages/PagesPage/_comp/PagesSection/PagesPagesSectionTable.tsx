@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +13,9 @@ import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
 import { CameraIcon } from 'src/app/utils/icons';
 import { IoEyeOutline } from 'react-icons/io5';
 import { Switch } from 'src/app/components/ui/switch';
-import BaseTable,{GlobalTableCell} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 
 export default function PagesPagesTable({
 	pages,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 
 /**
  * Props for the MenuSelect component.

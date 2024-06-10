@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import CategoryButton from '../../../../app/components/optimized/Buttons/CategoryButton';
 import PriceButton from '../../../../app/components/optimized/Buttons/PriceButton';
 import useSelectBox from '../../../../app/components/optimized/Menu/useSelectBox';
-import { UseLanguage } from '../../../../app/components/CustomHook/LanguageHook';
+import { UseLanguage } from '../../../../app/utils/hooks/LanguageHook';
 import { IoIosArrowForward } from 'react-icons/io';
 import { BackIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';

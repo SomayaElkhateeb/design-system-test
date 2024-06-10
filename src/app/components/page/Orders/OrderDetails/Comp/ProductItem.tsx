@@ -5,7 +5,7 @@ import { IOrderItemForm } from '../Forms/HookOrderItem';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 const title = 'Solid Anti-Pilling Sweatshirt with Round Sweatshirt';
 
 export default function ProductItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {

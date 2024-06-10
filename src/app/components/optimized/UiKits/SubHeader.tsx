@@ -1,8 +1,7 @@
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { useNavigate } from 'react-router-dom';
-
 
 const SubHeader = ({ title, children }: { title: string; children?: React.ReactNode }) => {
 	//  hooks

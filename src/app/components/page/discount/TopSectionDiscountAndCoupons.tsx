@@ -4,7 +4,7 @@ import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import { useOpenFilterDrawer } from '../../../utils/hooks/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
@@ -36,9 +36,11 @@ export default function TopSectionDiscountAndCoupons({
 				<div className='topTable'>
 					{/*  left dropdow */}
 
-					{!xs && <Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
-						{addButton}
-					</Button>}
+					{!xs && (
+						<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+							{addButton}
+						</Button>
+					)}
 
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>

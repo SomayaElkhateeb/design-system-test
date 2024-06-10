@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { addAddressInterface } from './Comp/HookAddress';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';

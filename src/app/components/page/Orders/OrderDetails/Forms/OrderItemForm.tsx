@@ -8,7 +8,7 @@ import useOrderItemForm, { IOrderItemForm } from './HookOrderItem';
 import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
 import ProductItem from '../Comp/ProductItem';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 	const { handelDefaultValue, orderItemSchema } = useOrderItemForm();

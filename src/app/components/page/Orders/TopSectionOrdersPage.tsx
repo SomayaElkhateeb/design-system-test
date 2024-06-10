@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import FilterSideBar from '../../SideBar/FilterSideBar';
 import FilterOrdersComponent from './FilterOrder/FilterOrdersComponent';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import { useOpenFilterDrawer } from '../../../utils/hooks/CustomHookOpenDrawer';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 export default function TopSectionOrdersPage({
 	addButton,
@@ -56,13 +56,15 @@ export default function TopSectionOrdersPage({
 				<div className='topTable'>
 					{/*  left dropdow */}
 
-					{!xs && <Button
-						onClick={() => navigate('/order/addOrder')}
-						variant='primary'
-						LeftIcon={IoIosAddCircle}
-					>
-						{addButton}
-					</Button>}
+					{!xs && (
+						<Button
+							onClick={() => navigate('/order/addOrder')}
+							variant='primary'
+							LeftIcon={IoIosAddCircle}
+						>
+							{addButton}
+						</Button>
+					)}
 					{/*  actions filter arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>
 						<ActionsComp

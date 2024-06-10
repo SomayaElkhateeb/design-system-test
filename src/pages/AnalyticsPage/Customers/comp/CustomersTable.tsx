@@ -1,19 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
-
-
-
-
-export default function CustomersTable({ customersAnalytics,
-	isLoading, }: { customersAnalytics: AnalyticsCustomer[];
-	isLoading: boolean; }) {
-
-
+export default function CustomersTable({
+	customersAnalytics,
+	isLoading,
+}: {
+	customersAnalytics: AnalyticsCustomer[];
+	isLoading: boolean;
+}) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();

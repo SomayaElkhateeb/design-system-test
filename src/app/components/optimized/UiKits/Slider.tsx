@@ -3,7 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useTranslation } from 'react-i18next';
 import { HiExternalLink } from 'react-icons/hi';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import CalloutCard from '../Cards/CalloutCard';
 
 /**
@@ -29,7 +29,7 @@ interface SliderProps {
  * @param {SliderProps} props - Props for the Slider component.
  * @returns {JSX.Element} - Rendered component.
  */
-export default function Slider({ size, slides, title }:SliderProps)  {
+export default function Slider({ size, slides, title }: SliderProps) {
 	const language = UseLanguage();
 	const { t } = useTranslation();
 
@@ -57,14 +57,13 @@ export default function Slider({ size, slides, title }:SliderProps)  {
 						className={`grid grid-cols-${size === 'mini' ? 1 : size === 'mid' ? 2 : 3} gap-2 `}
 					>
 						{/* {size === 'mini' ? <MiniCard {...slide} /> : <Card {...slide} />} */}
-						< CalloutCard/>
+						<CalloutCard />
 					</SplideSlide>
 				))}
 			</Splide>
 		</section>
 	);
-};
-
+}
 
 /**
  * Component representing a card in the Slider component.
@@ -112,6 +111,3 @@ const MiniCard: React.FC<Slide> = ({ image, title, description }) => {
 		</div>
 	);
 };
-
-
-

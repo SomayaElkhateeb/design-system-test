@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import FormField from 'src/app/components/ui/form/field';
-import { fileClassName } from '../../SettingPage/GeneralSettings/Media';
+
 import { TfiUpload } from 'react-icons/tfi';
 import { preferncesInterface } from './HookForPreferncePageForm';
+import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
 
 export default function SocialSharingSection({
 	formStore,

@@ -1,6 +1,6 @@
 import { IoAddCircle } from 'react-icons/io5';
 import { LogoutIcon, Person } from 'src/app/utils/icons';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next';
 import CollapsibleSection from './ManagementCards/CollapsibleSection';
