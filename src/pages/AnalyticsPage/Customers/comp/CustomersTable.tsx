@@ -5,15 +5,13 @@ import BaseTable, {
 } from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
 import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
-
-
-
-
-export default function CustomersTable({ customersAnalytics,
-	isLoading, }: { customersAnalytics: AnalyticsCustomer[];
-	isLoading: boolean; }) {
-
-
+export default function CustomersTable({
+	customersAnalytics,
+	isLoading,
+}: {
+	customersAnalytics: AnalyticsCustomer[];
+	isLoading: boolean;
+}) {
 	const language = UseLanguage();
 
 	const { t } = useTranslation();
