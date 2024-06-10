@@ -9,6 +9,7 @@ import VerticalproductsCard from 'src/app/components/page/Products/AllProducts/A
 import TopSection from 'src/app/components/page/Products/AllProducts/TopSection';
 import { Product } from 'src/app/interface/ProductInterface';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
 
