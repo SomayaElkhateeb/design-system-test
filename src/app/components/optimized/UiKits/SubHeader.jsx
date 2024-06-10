@@ -50,13 +50,13 @@ export default SubHeader;
 
 //  <SubHeader title={t('General settings')}>
 // 	<div className='flex space-x-3'>
-// 		<Button onClick={() => {}}>
+// 		<button onClick={() => {}}>
 // 			<LuEye size='20' />
 // 		</button>
-// 		<Button onClick={() => {}}>
+// 		<button onClick={() => {}}>
 // 			<MdCopyAll size='20' />
 // 		</button>
-// 		<Button onClick={() => {}}>
+// 		<button onClick={() => {}}>
 // 			<RxDotsHorizontal size='20' />
 // 		</button>
 // 	</div>
@@ -82,10 +82,10 @@ export default SubHeader;
 // import { RxDotsHorizontal } from 'react-icons/rx';
 
 // <SubHeader title={t('Customer Info')}>
-// 	<Button onClick={() => {}}>
+// 	<button onClick={() => {}}>
 // 		<FiEdit size='20' />
 // 	</button>
-// 	<Button onClick={() => {}}>
+// 	<button onClick={() => {}}>
 // 		<RxDotsHorizontal size='20' />
 // 	</button>
 // </SubHeader>

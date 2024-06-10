@@ -39,7 +39,7 @@ import {
 } from 'src/pages';
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
-import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
+import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
 import VirtualProductPage from './pages/ProductsPage/New/Virtual';
 import FoodProductPage from './pages/ProductsPage/New/Food';
 import BundleProductPage from './pages/ProductsPage/New/Bundle';
