@@ -29,8 +29,6 @@ export { default as SimpleProductPage } from './ProductsPage/New/Simple';
 
 
 // SubComponent
-export { default as SuccessfullyPurchased } from 'src/app/components/page/Services/PurchaseServices/SuccessfullyPurchased/SuccessfullyPurchased';
-export { default as PurchaseConfig } from 'src/app/components/page/Services/PurchaseServices/PurchaseConfig';
 export { default as StoreConfig } from 'src/app/components/page/StorePage/StoreConfig';
 export { default as StoreTabs } from 'src/app/components/page/StorePage/StoreTabs';
 export { default as Config } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';

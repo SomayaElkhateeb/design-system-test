@@ -2,11 +2,11 @@ import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
-import AllServices from 'src/app/components/page/Services/AllServices';
-import PurchaseServices from 'src/app/components/page/Services/PurchaseServices';
-import ServiceDetails from 'src/app/components/page/Services/ServiceDetails/ServiceDetails';
+import AllServices from './_comp/AllServices/AllServices';
+import ServiceDetails from './_comp/ServiceDetails/ServiceDetails';
+import PurchaseServicesPage from './_comp/PurchaseServices/PurchaseServicesPage';
+
 
 const ServicesPage = () => {
 	//  hooks
@@ -21,7 +21,7 @@ const ServicesPage = () => {
 						<AllServices />
 					</TabPanel>
 					<TabPanel value='2'>
-						<PurchaseServices />
+						<PurchaseServicesPage />
 					</TabPanel>
 				</>
 			}
