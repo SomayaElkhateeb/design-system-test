@@ -7,16 +7,16 @@ import { Input } from 'src/app/components/ui/input';
 import { getImageUrl } from 'src/app/utils';
 
 import FormField from '../../ui/form/field';
-import PaymentInputs from './PaymentInputs';
-import PaymentAccordion from './PaymentAccordion';
+import PaymentInputs from '../Payment/PaymentInputs';
+import PaymentAccordion from '../../ui/accordion/PaymentAccordion';
 import { PaymentIcon } from 'src/app/utils/icons';
 import { Button, CheckBox } from '..';
-import useCustomHookPayment, { IPaymentCardInterface } from './HookForPayment';
+import useCustomHookPayment, { IPaymentCardInterface } from '../Payment/HookForPayment';
 
 export default function PaymentCard() {
 	// hook
 	const [agreeToTerms, setAgreeToTerms] = useState(false);
-	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string |null>(null);
+	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 

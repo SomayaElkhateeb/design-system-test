@@ -1,4 +1,4 @@
-import PaymentCard from 'src/app/components/optimized/Payment/PaymentCard';
+import PaymentCard from 'src/app/components/optimized/Cards/PaymentCard';
 
 export default function PaymentPage() {
 	return (

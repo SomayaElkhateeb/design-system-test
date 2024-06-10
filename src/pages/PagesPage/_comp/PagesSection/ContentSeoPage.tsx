@@ -4,10 +4,9 @@ import { UseFormReturn } from 'react-hook-form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 
-import CustomAutoComplete from 'src/app/components/optimized/InputsFields/AutoCompleteMultiple';
+import CustomAutoComplete from 'src/app/components/ui/AutoCompleteMultiple';
 import { addPageInterface } from '../BlogPosts/HookForAddBlogOrPageForm';
-import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
-
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 
 export interface selectItemsInterface {
 	id: string;
