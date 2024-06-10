@@ -15,15 +15,17 @@ export default function NavigationSection() {
 	const array = [...Array(3)];
 	return (
 		<div className='flex-col-top-section-pages'>
-			<div>
-				<Button
-					onClick={() => navigate('AddNavigation')}
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-				>
-					{t('Add Page')}
-				</Button>
-			</div>
+			{!xs && (
+				<div>
+					<Button
+						onClick={() => navigate('AddNavigation')}
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+					>
+						{t('Add Page')}
+					</Button>
+				</div>
+			)}
 			{xs && <AddButtonMobile path='AddNavigation' />}
 
 			<hr />
