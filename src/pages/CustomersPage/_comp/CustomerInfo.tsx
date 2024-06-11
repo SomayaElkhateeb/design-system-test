@@ -46,7 +46,7 @@ export default function CustomerInfo() {
 				<HeaderSettings variant='customerInfowithIcons' title={t('Customer Info')}>
 					<div className=' flex  items-center gap-[.8rem] '>
 						{!xs && <FaRegEdit className='cursor-pointer' onClick={handelNavigateEdit} />}
-						<HiOutlineDotsHorizontal className='cursor-pointer' />
+						{!xs &&<HiOutlineDotsHorizontal className='cursor-pointer' />}
 					</div>
 				</HeaderSettings>
 

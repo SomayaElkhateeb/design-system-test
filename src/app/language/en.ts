@@ -10,6 +10,7 @@ export const english = {
 	'You can send an email for customers who purchased from you to review':
 		'You can send an email for customers who purchased from you to review',
 	Pages: 'Pages',
+	"Addresses":"Addresses",
 	'Brand name': 'Brand name',
 	'View Inventory': 'View Inventory',
 	'Brand link (Slug)': 'Brand link (Slug)',

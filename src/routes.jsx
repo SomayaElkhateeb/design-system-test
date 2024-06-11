@@ -69,7 +69,7 @@ export const routes = [
 		element: <CustomerInfo />,
 	},
 	{
-		path: '/customers/:id/addNewAddress',
+		path: '/customers/:id/addNewAddresse',
 		element: <AddNewAddressCustomer />,
 	},
 	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
