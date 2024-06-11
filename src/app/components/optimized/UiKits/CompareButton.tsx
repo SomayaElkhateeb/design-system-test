@@ -14,9 +14,9 @@ interface Props {
 }
 
 export default function CompareButton({ sortMenus, selectedOption, variant, handleSelect }: Props) {
+	const { t } = useTranslation();
 	switch (variant) {
 		case 'link':
-			const { t } = useTranslation();
 			return (
 				<PopoverComponenet
 					button={
@@ -34,7 +34,7 @@ export default function CompareButton({ sortMenus, selectedOption, variant, hand
 				<PopoverComponenet
 					button={
 						<Button variant='secondary' LeftIcon={CalenderIcon} RightIcon={DownIcon}>
-							{selectedOption}
+							{selectedOption ? selectedOption : t('Today')}
 						</Button>
 					}
 				>

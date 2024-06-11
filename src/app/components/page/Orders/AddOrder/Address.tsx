@@ -99,14 +99,14 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 
 				{selectedOption === 'Add manually' && (
 					<section className='grid gap-4'>
-						{isName ? (
+						{isName && (
 							<FormField
 								formStore={formStore}
 								name='name'
 								label={t('Full Name')}
 								render={(field) => <Input {...field} placeholder={''} />}
 							/>
-						) : undefined}
+						)}
 
 						<FormField
 							formStore={formStore}
@@ -244,10 +244,6 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 					)}
 				/>
-
-				{/* {branch || customer ? undefined : (
-					
-				)} */}
 			</div>
 		</Form>
 	);

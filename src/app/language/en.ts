@@ -1132,4 +1132,6 @@ export const english = {
 	'Add product': 'Add product',
 	'Date published': 'Date published',
 	'Sales Ascending': 'Sales Ascending',
+	'Store Reviews': 'Store Reviews',
+	'App Reviews': 'App Reviews',
 };

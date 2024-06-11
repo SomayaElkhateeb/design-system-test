@@ -1120,4 +1120,6 @@ export const arabic = {
 	'Add product': 'إضافة منتج',
 	'Date published': 'تاريخ النشر',
 	'Sales Ascending': 'تصاعد المبيعات',
+	'Store Reviews': 'مراجعات المتجر',
+	'App Reviews': 'مراجعات التطبيقات',
 } satisfies typeof english;
