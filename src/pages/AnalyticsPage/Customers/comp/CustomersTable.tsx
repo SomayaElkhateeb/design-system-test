@@ -30,7 +30,7 @@ export default function CustomersTable({
 				language={language}
 				color='#55607A'
 				headers={customersTableHeaders.map((h) => h)}
-				rows={tableData?.map((e) => {
+				rows={customersAnalytics?.map((e) => {
 					return {
 						item: e,
 						elements: [
