@@ -1,11 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
-import {
-	handelAddresseDefaultValue,
-	AddAddressSchema,
-	addAddressInterface,
-} from './../Orders/AddOrder/Comp/HookAddress';
-import { selectItemsInterface } from './GeneralInfoCustomerForm';
+import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
+import { AddAddressSchema, addAddressInterface, handelAddresseDefaultValue } from 'src/app/components/page/Orders/AddOrder/Comp/HookAddress';
 
 export interface AddCustomerPageInterface extends addAddressInterface {
 	humanType: string;
