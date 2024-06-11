@@ -24,9 +24,8 @@ export { default as Nested_pages_SettingsConfig } from './SettingsPage/Nested_Se
 export { default as AppsTabs } from './AppsPage/comp/AppsTabs';
 export { default as CustomerInfo } from './CustomersPage/_comp/CustomerInfo';
 export { default as EmailForm } from './MarketingPage/EmailForm/EmailForm';
-export { default as ConfigurableProductPage } from './ProductsPage/New/Configurable';
-export { default as SimpleProductPage } from './ProductsPage/New/Simple';
-
+export { default as ConfigurableProductPage } from './ProductsPage/addNewProduct/Configurable';
+export { default as SimpleProductPage } from './ProductsPage/addNewProduct/Simple';
 
 // SubComponent
 
@@ -35,4 +34,4 @@ export { default as SetupConfig } from 'src/app/components/page/SettingPage/Ship
 export { default as SetupOpenConfig } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
 export { default as ShippingConfig } from 'src/app/components/page/SettingPage/Shipping/ShippingConfig';
 export { default as OrdersTabs } from 'src/app/components/page/Orders/OrdersTabs';
-export { default as ProductsTabs } from 'src/app/components/page/Products/ProductsTabs';
+export { default as ProductsTabs } from 'src/pages/ProductsPage/_comp/ProductsTabs';
