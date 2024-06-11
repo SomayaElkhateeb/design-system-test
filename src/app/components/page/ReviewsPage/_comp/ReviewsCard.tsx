@@ -1,6 +1,5 @@
-import { GoStarFill } from 'react-icons/go';
-import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 import { getImageUrl } from 'src/app/utils';
+import { RatingCard } from './RatingCard';
 
 export const ReviewsCard = ({
 	header,
@@ -9,6 +8,7 @@ export const ReviewsCard = ({
 	publish,
 	reply,
 	submitReply,
+	noRating,
 }: {
 	header: React.ReactNode;
 	body: React.ReactNode;
@@ -16,6 +16,7 @@ export const ReviewsCard = ({
 	publish: React.ReactNode;
 	reply: boolean;
 	submitReply: boolean;
+	noRating?: boolean;
 }) => {
 	return (
 		<div>
@@ -38,25 +39,8 @@ export const ReviewsCard = ({
 
 			{/* body */}
 			<div className='topTable p-5 '>
-				<div className='flex items-start gap-2'>
-					<div>
-						<Avatar variant='user' fullName='walied sayed' />
-					</div>
-					<div className='flex-col-top-section-pages gap-1'>
-						<div className='flex-row-global gap-2'>
-							<h3 className='title'>Walied Sayed</h3>
-							<p className='subtitle text-sm'>5/6/2021</p>
-						</div>
-						<div className='flex-row-global'>
-							<GoStarFill size={14} color='gold' />
-							<GoStarFill size={14} color='gold' />
-							<GoStarFill size={14} color='gold' />
-							<GoStarFill size={14} color='gold' />
-							<GoStarFill size={14} color='gold' />
-						</div>
-						<p className='text-title text-sm'>Nice & Good Product</p>
-					</div>
-				</div>
+				{noRating ? <RatingCard noRating /> : <RatingCard />}
+
 				{reply ? '' : body}
 			</div>
 			{reply && children}

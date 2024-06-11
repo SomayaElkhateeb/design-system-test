@@ -9,7 +9,8 @@ interface AnalyticsTableActionsProps {
 	onSelectOption: (option: string) => void;
 	selectedOption: string;
 	data: any[];
-	documentTitle: string;
+	documentTitle?: string;
+	noBorder?: boolean;
 }
 
 export default function AnalyticsTableActions({
@@ -18,6 +19,7 @@ export default function AnalyticsTableActions({
 	selectedOption,
 	data,
 	documentTitle,
+	noBorder,
 }: AnalyticsTableActionsProps) {
 	const { t } = useTranslation();
 
@@ -35,7 +37,11 @@ export default function AnalyticsTableActions({
 		ActionHandler.PrintTable();
 	};
 	return (
-		<div className='flex gap-3 justify-end items-center mb-2 border-b border-borders-lines'>
+		<div
+			className={`flex gap-3 justify-end items-center mb-2 ${
+				noBorder ? '' : 'border-b border-borders-lines'
+			} `}
+		>
 			<ArrangeButton
 				sortMenus={sortMenus}
 				selectedOption={selectedOption}
