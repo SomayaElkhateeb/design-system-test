@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { addAddressInterface } from './Comp/HookAddress';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
@@ -26,12 +26,13 @@ interface AddresseProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, addAddressInterface>;
 	sendGift: boolean;
 	setSendGift: (e: boolean) => void;
+	isName: boolean;
+	setIsName: (e: boolean) => void;
 	selectedOption: string;
 	setSelectedOption: (e: string) => void;
 	branch?: boolean;
 	customer?: boolean;
 	details?: boolean;
-	backBtn?: () => void;
 }
 
 // /////////////////////
@@ -42,12 +43,13 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 		formStore,
 		sendGift,
 		setSendGift,
+		isName,
+		setIsName,
 		selectedOption,
 		setSelectedOption,
 		branch,
 		customer,
 		details,
-		backBtn,
 	} = props;
 	//  hooks
 	const { t } = useTranslation();
@@ -58,10 +60,19 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
 	};
+
+	useMemo(() => {
+		if (customer || details) {
+			setIsName(true);
+		} else {
+			setIsName(false);
+		}
+	}, [customer, details]);
+
 	return (
 		<Form {...formStore}>
 			<div className=' lg:col-span-2 flex flex-col gap-4'>
-				{customer || details ? undefined : (
+				{isName && (
 					<SingleChoiceChips
 						options={['Add manually', 'Use a map']}
 						setSelected={handleAddressOption}
@@ -69,7 +80,7 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 					/>
 				)}
 
-				{branch || customer ? undefined : (
+				{branch || customer && (
 					<CheckBox
 						checked={sendGift}
 						handleOnChange={() => setSendGift(!sendGift)}
@@ -88,14 +99,14 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 
 				{selectedOption === 'Add manually' && (
 					<section className='grid gap-4'>
-						{customer || details ? (
+						{isName && (
 							<FormField
 								formStore={formStore}
 								name='name'
 								label={t('Full Name')}
 								render={(field) => <Input {...field} placeholder={''} />}
 							/>
-						) : undefined}
+						)}
 
 						<FormField
 							formStore={formStore}
@@ -234,20 +245,7 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 					)}
 				/>
 
-				{branch || customer ? undefined : (
-					<div className='flex-btn-end'>
-						<Button variant='secondary' onClick={backBtn}>
-							{t('back')}
-						</Button>
-						<Button
-							type='submit'
-							onClick={() => console.log(formStore.formState.errors)}
-							variant='primary'
-						>
-							{t('Next')}
-						</Button>
-					</div>
-				)}
+				
 			</div>
 		</Form>
 	);

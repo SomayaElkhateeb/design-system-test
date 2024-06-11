@@ -181,7 +181,7 @@ export const arabic = {
 	'Add Activity': 'اضافه نشاط',
 	'Add New Group': 'اضافه مجموعه جديده',
 	'Choose Customers': 'اختار عملاء',
-	Addresses: 'العناوين',
+	Addresss: 'العناوين',
 	'Use a map': 'استخدم الخريطه',
 	'Add manually': 'اضف يدويا',
 	'Meta keywords': 'مفاتيح السيرش',

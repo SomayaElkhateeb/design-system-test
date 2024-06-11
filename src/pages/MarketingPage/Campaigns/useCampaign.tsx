@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
 
 import { useForm } from 'src/app/utils/hooks/form';
-import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
+import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 
 export interface CampaignFormProps {
 	formStore: UseFormReturn<CampaignInputsTypes>;
@@ -45,7 +45,6 @@ export const activeDatesSchema = z.object({
 	}),
 });
 
-
 export default function useCampaign(target?: string) {
 	const { t } = useTranslation();
 
@@ -77,19 +76,19 @@ export default function useCampaign(target?: string) {
 						)
 						.or(z.literal('')),
 
-		products: z.array(
-			z.object({
-				id: z.string().min(1),
-				name: z.string().min(1),
-			}),
-		).min(1),
+		products: z
+			.array(
+				z.object({
+					id: z.string().min(1),
+					name: z.string().min(1),
+				}),
+			)
+			.min(1),
 	};
 
-
 	const handleDefaultValue = () => {
-
 		return {
-			targetSimilarPeople:'having specific interests',
+			targetSimilarPeople: 'having specific interests',
 			selectedInterests: [],
 			campaignName: '',
 			activityName: '',

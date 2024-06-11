@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { ClockIcon } from 'src/app/utils/icons';
 export default function Wallet() {
 	const { t } = useTranslation();

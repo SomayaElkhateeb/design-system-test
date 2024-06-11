@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { getImageUrl } from 'src/app/utils';
 
 const data = [

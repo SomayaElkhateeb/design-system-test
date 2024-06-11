@@ -1,7 +1,7 @@
 import { Button } from 'src/app/components/optimized';
 import RowOrderItems from './RowOrderItems';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function OrderItemContain() {
 	//  hooks

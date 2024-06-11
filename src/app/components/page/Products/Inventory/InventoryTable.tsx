@@ -1,16 +1,18 @@
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
-import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Product } from 'src/app/interface/ProductInterface';
-import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
-import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import { TableCell } from '@mui/material';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
-import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
+import { Product } from 'src/app/interface/ProductInterface';
+import { getImageUrl } from 'src/app/utils';
+import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import { products } from 'src/pages/ProductsPage/AllProducts';
+import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function InventoryTable({
 	array,

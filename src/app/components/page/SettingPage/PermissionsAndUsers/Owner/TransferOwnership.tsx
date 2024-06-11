@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SubHeader, Button } from 'src/app/components/optimized';
 import NewOwner from './NewOwner';
+import { RxDotsHorizontal } from 'react-icons/rx';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export interface addOwnerInterface {
 	name: string;
@@ -22,6 +24,7 @@ export default function TransferOwnership() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 
 	const handleSubmit = (values: addOwnerInterface) => {
 		console.log(values);
@@ -40,21 +43,33 @@ export default function TransferOwnership() {
 		defaultValues: handelDefaultValue(),
 	});
 
+	const SubHeaderActions = () => {
+		return (
+			<>
+				<Button variant='secondary' onClick={() => navigate(-1)}>
+					Discard
+				</Button>
+				<Button variant='primary' onClick={() => {}}>
+					{t('Transfer Ownership')}
+				</Button>
+			</>
+		);
+	};
 	return (
 		<>
 			<Form {...formStore}>
 				<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3'>
 					<SubHeader title={t('Transfer Ownership')}>
-						<Button variant='secondary' onClick={() => navigate(-1)}>
-							{t("Discard")}
-						</Button>
-						<Button variant='primary' onClick={onSubmit}>
-							{t('Transfer Ownership')}
-						</Button>
+						{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 					</SubHeader>
 					<div className='custom_container '>
 						<NewOwner formStore={formStore} />
 					</div>
+					{xs && (
+						<div className='flex space-x-3 justify-center bg-white p-5 absolute w-full bottom-0'>
+							<SubHeaderActions />
+						</div>
+					)}
 				</form>
 			</Form>
 		</>

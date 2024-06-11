@@ -1,13 +1,14 @@
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { useNavigate } from 'react-router-dom';
-
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 const SubHeader = ({ title, children }: { title: string; children?: React.ReactNode }) => {
 	//  hooks
 	const language = UseLanguage();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 
 	return (
 		<div className='flex justify-between items-center shadow-sm py-4 px-2 bg-white '>
@@ -15,8 +16,10 @@ const SubHeader = ({ title, children }: { title: string; children?: React.ReactN
 				<button className='text-blue-600 mr-2' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <IoIosArrowBack />}
 				</button>
-				<span className='title'>{title}</span>
+				{!xs && <span className='font-semibold capitalize sm:text-center'>{title}</span>}
 			</div>
+
+			{xs && <span className='font-semibold capitalize sm:text-center'>{title}</span>}
 			{children && <div className='flex space-x-3 capitalize'>{children}</div>}
 		</div>
 	);
@@ -46,13 +49,13 @@ export default SubHeader;
 
 //  <SubHeader title={t('General settings')}>
 // 	<div className='flex space-x-3'>
-// 		<Button onClick={() => {}}>
+// 		<button onClick={() => {}}>
 // 			<LuEye size='20' />
 // 		</button>
-// 		<Button onClick={() => {}}>
+// 		<button onClick={() => {}}>
 // 			<MdCopyAll size='20' />
 // 		</button>
-// 		<Button onClick={() => {}}>
+// 		<button onClick={() => {}}>
 // 			<RxDotsHorizontal size='20' />
 // 		</button>
 // 	</div>
@@ -78,10 +81,10 @@ export default SubHeader;
 // import { RxDotsHorizontal } from 'react-icons/rx';
 
 // <SubHeader title={t('Customer Info')}>
-// 	<Button onClick={() => {}}>
+// 	<button onClick={() => {}}>
 // 		<FiEdit size='20' />
 // 	</button>
-// 	<Button onClick={() => {}}>
+// 	<button onClick={() => {}}>
 // 		<RxDotsHorizontal size='20' />
 // 	</button>
 // </SubHeader>

@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { SubHeader, Button } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import AdminOrLanguageDefaults from 'src/app/components/page/SettingPage/GeneralSettings/AdminOrLanguageDefaults';
 import DefaultLanguageSection from 'src/app/components/page/SettingPage/LanguageSettings/DefaultLanguage';
 import useCustomHookLanguageSettings, {
@@ -12,7 +15,6 @@ import { useForm } from 'src/app/utils/hooks/form';
 const LanguageSettings = () => {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 
 	const handleSubmit = (values: languageSettingsInterface) => {
 		console.log(values);
@@ -32,12 +34,7 @@ const LanguageSettings = () => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
 				<SubHeader title={t('Languages & defaults')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={onSubmit}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='flex-col-top-section-pages custom_container'>
 					<DefaultLanguageSection formStore={formStore} />
@@ -47,6 +44,7 @@ const LanguageSettings = () => {
 						formStore={formStore}
 					/>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

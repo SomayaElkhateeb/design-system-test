@@ -9,10 +9,10 @@ import {
 import { Box, TableCell } from '@mui/material';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 	// const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;

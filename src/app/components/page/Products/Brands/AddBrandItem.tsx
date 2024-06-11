@@ -2,7 +2,7 @@ import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 
-import { selectItemsInterface } from '../../AddCustomer/GeneralInfoCustomerForm';
+import { selectItemsInterface } from '../../../../../pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 import { useTranslation } from 'react-i18next';
 import Tabs from '../../../optimized/Tabs/Tabs';
 import TabPanel from '@mui/lab/TabPanel';

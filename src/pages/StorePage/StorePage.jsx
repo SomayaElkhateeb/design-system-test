@@ -1,5 +1,6 @@
-import StoreLayout from 'src/app/components/page/StorePage/StoreLayout';
-import StorePageGuard from 'src/app/components/page/StorePage/StorePageGuard';
+import StoreLayout from "./StoreLayout";
+import StorePageGuard from "./StorePageGuard";
+
 
 const StorePage = () => {
 	return (
