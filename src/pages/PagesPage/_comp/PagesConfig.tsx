@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import AddPage from './PagesSection/AddPage';
+import AddPage from './PagesSection/_comp/AddPage/AddPage';
 import AddNavigation from './Navigation/_comp/AddNavigation';
 import AddBlog from './BlogPosts/AddBlog';
 import AddReturnPloicy from './BlogPosts/_comp/AddReturnPolicy';

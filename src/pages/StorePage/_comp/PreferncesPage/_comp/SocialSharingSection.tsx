@@ -5,7 +5,7 @@ import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/fil
 import FormField from 'src/app/components/ui/form/field';
 
 import { TfiUpload } from 'react-icons/tfi';
-import { preferncesInterface } from './HookForPreferncePageForm';
+import { preferncesInterface } from '../_hook/HookForPreferncePageForm';
 import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
 
 export default function SocialSharingSection({

@@ -84,7 +84,7 @@ export default function PaymentCard() {
 						checked={agreeToTerms}
 						handleOnChange={handleTermsCheckbox}
 						label={
-							<div className='flex items-center text-sm text-subtitle gap-1'>
+							<div className='flex flex-wrap items-center text-sm text-subtitle gap-1'>
 								<span className='text-title'>{t('I agree to')}</span>
 								<p className='text-primary cursor-pointer'>
 									{t('Terms and Conditions, Privacy Policy')}

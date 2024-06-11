@@ -1,10 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 import useCustomHookQueriesSettings, {
 	queriesInterface,
 } from 'src/app/components/page/SettingPage/QueriesSettings/HookForQueriesSettings';
@@ -38,7 +36,7 @@ export default function QueriesSetting() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Queries')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
@@ -48,7 +46,7 @@ export default function QueriesSetting() {
 						<QuickActions data={data} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

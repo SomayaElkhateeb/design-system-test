@@ -43,7 +43,7 @@ const AddCustomerPage: React.FC = () => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages relative'>
 				<SubHeader title={t('Add New Customer')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
@@ -68,7 +68,7 @@ const AddCustomerPage: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

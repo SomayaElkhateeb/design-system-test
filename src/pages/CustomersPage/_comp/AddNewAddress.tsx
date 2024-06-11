@@ -37,13 +37,13 @@ export default function AddNewAddressCustomer() {
 	};
 
 	//  custom hook
-	const { handelDefaultValue, AddCustomerAdddrsseSchema } = useCustomHookAddCustomerAddressForm(
+	const { handelDefaultValue, AddCustomerAddressSchema } = useCustomHookAddCustomerAddressForm(
 		sendGift,
 		selectedOption,
 	);
 
 	const { formStore, onSubmit } = useForm({
-		schema: AddCustomerAdddrsseSchema,
+		schema: AddCustomerAddressSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -56,7 +56,7 @@ export default function AddNewAddressCustomer() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Add new address')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='global-cards lg:col-span-2 '>
@@ -189,7 +189,7 @@ export default function AddNewAddressCustomer() {
 						/>
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

@@ -4,7 +4,7 @@ import Button from '../Buttons/Button';
 import { RxDotsHorizontal } from 'react-icons/rx';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-const SubHeaderActionBtns = ({ onSubmit }) => {
+const SubHeaderActionBtns = ({ onSubmit }: { onSubmit: () => void }) => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	return (
@@ -21,18 +21,18 @@ const SubHeaderActionBtns = ({ onSubmit }) => {
 
 export default SubHeaderActionBtns;
 
-export const SubHeaderDefaultBtns = ({ onSubmit }) => {
+export const SubHeaderDefaultBtns = ({ onSubmit }: { onSubmit: () => void }) => {
 	const { xs } = useResponsive();
 
 	return <>{!xs ? <SubHeaderActionBtns onSubmit={onSubmit} /> : <RxDotsHorizontal />}</>;
 };
-export const SubHeaderMobileBtns = ({ onSubmit }) => {
+export const SubHeaderMobileBtns = ({ onSubmit }: { onSubmit: () => void }) => {
 	const { xs } = useResponsive();
 
 	return (
 		<>
 			{xs && (
-				<div className='flex space-x-3 justify-center bg-white p-5 absolute w-full bottom-0'>
+				<div className='flex space-x-3 justify-center bg-white   w-full '>
 					<SubHeaderActionBtns onSubmit={onSubmit} />
 				</div>
 			)}

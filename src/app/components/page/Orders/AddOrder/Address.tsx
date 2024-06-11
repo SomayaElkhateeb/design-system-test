@@ -26,8 +26,8 @@ interface AddresseProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, addAddressInterface>;
 	sendGift: boolean;
 	setSendGift: (e: boolean) => void;
-	isName: boolean;
-	setIsName: (e: boolean) => void;
+	isName?: boolean;
+	setIsName?: (e: boolean) => void;
 	selectedOption: string;
 	setSelectedOption: (e: string) => void;
 	branch?: boolean;
@@ -63,9 +63,9 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 
 	useMemo(() => {
 		if (customer || details) {
-			setIsName(true);
+			setIsName && setIsName(true);
 		} else {
-			setIsName(false);
+			setIsName && setIsName(false);
 		}
 	}, [customer, details]);
 
@@ -80,13 +80,14 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 					/>
 				)}
 
-				{branch || customer && (
-					<CheckBox
-						checked={sendGift}
-						handleOnChange={() => setSendGift(!sendGift)}
-						label={t('Send as a gift')}
-					/>
-				)}
+				{branch ||
+					(customer && (
+						<CheckBox
+							checked={sendGift}
+							handleOnChange={() => setSendGift(!sendGift)}
+							label={t('Send as a gift')}
+						/>
+					))}
 
 				{sendGift && (
 					<FormField
@@ -244,8 +245,6 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 					)}
 				/>
-
-				
 			</div>
 		</Form>
 	);

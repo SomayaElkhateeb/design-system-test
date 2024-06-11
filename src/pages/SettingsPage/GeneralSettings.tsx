@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
+import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import AdminOrLanguageDefaults from 'src/app/components/page/SettingPage/GeneralSettings/AdminOrLanguageDefaults';
 import useCustomHookGeneralForm, {
 	generalSettingsInterface,
@@ -11,10 +12,7 @@ import SocialContacts from 'src/app/components/page/SettingPage/GeneralSettings/
 import StoreDetails from 'src/app/components/page/SettingPage/GeneralSettings/StoreDetails';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 const GeneralSettings = () => {
 	//  hooks
 	const { t } = useTranslation();
@@ -38,7 +36,7 @@ const GeneralSettings = () => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
 				<SubHeader title={t('General settings')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='flex-col-top-section-pages container mx-auto'>
 					<StoreDetails formStore={formStore} />
@@ -51,7 +49,7 @@ const GeneralSettings = () => {
 					/>
 				</div>
 
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

@@ -1,15 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 import { Form } from 'src/app/components/ui/form';
 import CheckoutCustomizeForm from './comp/CheckoutCustomizeForm';
 import NewsletterConsentForm from './comp/NewsletterConsentForm';
 import OrderInvoiceCustomizeForm from './comp/OrderInvoiceCustomizeForm';
 import ProductCustomizeForm from './comp/ProductCustomizeForm';
 import UseCustomization from './comp/useCustomization';
+import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function CustomizationsSettings() {
 	const { t } = useTranslation();
@@ -18,7 +16,7 @@ export default function CustomizationsSettings() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Customizations')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid custom_container grid-cols-3'>
 					<div className='grid gap-5 col-span-3 lg:col-span-2'>
@@ -28,7 +26,7 @@ export default function CustomizationsSettings() {
 						<OrderInvoiceCustomizeForm formStore={formStore} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

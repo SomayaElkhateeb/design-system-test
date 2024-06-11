@@ -65,7 +65,7 @@ function SetupsHeader({ startTour }: SetupsHeaderProps) {
 	return (
 		<div className='flex-col gap-1'>
 			<h2 className='title'>{t('Get ready for your first sale')}</h2>
-			<div className='flex items-center'>
+			<div className='flex flex-wrap items-center'>
 				<p className='subheading '>
 					{t('There are only 2 main steps to launch your store')},&nbsp;
 				</p>

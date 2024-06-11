@@ -4,7 +4,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { Textarea } from 'src/app/components/ui/textarea';
 
 import { Input } from 'src/app/components/ui/input';
-import { preferncesInterface } from './HookForPreferncePageForm';
+import { preferncesInterface } from '../_hook/HookForPreferncePageForm';
 
 export default function SeoSearchSection({
 	formStore,

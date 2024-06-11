@@ -2,10 +2,12 @@ import RecentReview from 'src/pages/ReviewsPage copy/StoreReviews/_comp/RecentRe
 import { ChannelChart, DonutCard, SimpleTable } from '../../optimized';
 import DonutGraph from '../../optimized/Charts/DonutChart/DonutGraph';
 
-import StoreReviewsTableMobile from 'src/pages/ReviewsPage copy/StoreReviews/_comp/StoreReviewsTableMobile';
+// import StoreReviewsTableMobile from 'src/pages/ReviewsPage copy/StoreReviews/_comp/StoreReviewsTableMobile';
 import { useState } from 'react';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
+import StoreReviewsTableMobile from 'src/pages/ReviewsPage copy/StoreReviews/_comp/StoreReviewsTableMobile';
 import { columns, rows } from 'src/pages/ReviewsPage copy/StoreReviews/_comp/StoreReviewsData';
+// import { columns, rows } from 'src/pages/ReviewsPage copy/StoreReviews/_comp/StoreReviewsData';
 const chartData = [
 	{
 		label: 'Detractors',

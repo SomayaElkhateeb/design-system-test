@@ -34,7 +34,7 @@ export default function AddBranch(props: {
 		defaultValues: handelDefaultValue(),
 	});
 
-	console.log(formStore.formState.errors);
+	
 
 	const data = [
 		{
@@ -56,7 +56,7 @@ export default function AddBranch(props: {
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				{!props.hideHeader && (
 					<SubHeader title={t('Add Branch')}>
-						<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+						<SubHeaderDefaultBtns onSubmit={onSubmit} />
 					</SubHeader>
 				)}
 				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
@@ -74,7 +74,7 @@ export default function AddBranch(props: {
 						<QuickActions data={data} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);
