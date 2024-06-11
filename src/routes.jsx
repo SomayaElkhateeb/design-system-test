@@ -34,9 +34,9 @@ import {
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
-import VirtualProductPage from './pages/ProductsPage/New/Virtual';
-import FoodProductPage from './pages/ProductsPage/New/Food';
-import BundleProductPage from './pages/ProductsPage/New/Bundle';
+import VirtualProductPage from './pages/ProductsPage/addNewProduct/Virtual';
+import FoodProductPage from './pages/ProductsPage/addNewProduct/Food';
+import BundleProductPage from './pages/ProductsPage/addNewProduct/Bundle';
 
 import { ProductReviews } from './app/components/page';
 
