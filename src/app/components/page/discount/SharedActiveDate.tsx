@@ -1,10 +1,8 @@
-import { useTranslation } from 'react-i18next';
-
-import { Button, DatePicker, TimePicker } from 'src/app/components/optimized';
-
 import dayjs, { Dayjs } from 'dayjs';
-import { ActiveDates, DateTimeType } from 'src/pages/MarketingPage/Campaigns/useCampaign';
+import { useTranslation } from 'react-i18next';
+import { Button, DatePicker, TimePicker } from 'src/app/components/optimized';
 import { AddBgIcon, DeleteExitIcon } from 'src/app/utils/icons';
+import { ActiveDates, DateTimeType } from 'src/pages/MarketingPage/Campaigns/useCampaign';
 
 export default function SharedActiveDate({
 	activeDates,

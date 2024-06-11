@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppsCard } from 'src/app/components/optimized';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 interface SocialApp {
 	id: string;

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import useCustomHookReviewSettings, {
 	reviewInterface,
 } from 'src/app/components/page/SettingPage/ReviewsSettings/HookForReviewSettings';
@@ -12,8 +12,6 @@ import { useForm } from 'src/app/utils/hooks/form';
 export default function ReviewsSetting() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
-
 	const handleSubmit = (values: reviewInterface) => {
 		console.log(values);
 	};
@@ -37,12 +35,7 @@ export default function ReviewsSetting() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Reviews')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={onSubmit}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
@@ -52,6 +45,7 @@ export default function ReviewsSetting() {
 						<QuickActions data={data} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

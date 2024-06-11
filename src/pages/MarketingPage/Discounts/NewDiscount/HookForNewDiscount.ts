@@ -1,4 +1,4 @@
-import { selectItemsInterface } from 'src/app/components/page/AddCustomer/GeneralInfoCustomerForm';
+import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 import { z } from 'zod';
 import {
 	ActiveDates,

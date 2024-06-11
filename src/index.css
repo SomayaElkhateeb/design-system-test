@@ -282,7 +282,7 @@ object {
 	}
 
 	.title {
-		@apply font-semibold sm:text-[1rem] text-[.8rem] text-title;
+		@apply font-semibold sm:text-[1rem] text-[.9rem] text-title;
 	}
 
 	.subtitle {

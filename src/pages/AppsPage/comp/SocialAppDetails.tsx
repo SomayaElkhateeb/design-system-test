@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FaCheck } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { Button, LabelIcon } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { BackIcon } from 'src/app/utils/icons';

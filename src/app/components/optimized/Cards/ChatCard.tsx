@@ -8,7 +8,7 @@ import { InternalchatIcon, MessengerIcon, WhatsappIcon } from 'src/app/utils/ico
 import { getImageUrl, useClickOutsideWithId } from 'src/app/utils';
 // import ConversationCard from './ConversationCard';
 
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import Chat from './Chat';
 
 interface TabPanelProps {

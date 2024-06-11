@@ -6,16 +6,39 @@ import { RefObject, useRef } from 'react';
 import CampaignTable from './CampaignTable';
 import { Button } from 'src/app/components/optimized';
 import { Link } from 'react-router-dom';
-
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import CampaignsTableMobile from './comp/CampaignsTableMobile';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+const campaignsData = [
+	{
+		name: 'Summer campaign',
+		status: 'running',
+		imageUrl: 'social/facebook.svg',
+	},
+	{
+		name: 'Summer campaign',
+		status: 'ended',
+		imageUrl: 'social/facebook.svg',
+	},
+	{
+		name: 'Summer campaign',
+		status: 'in review',
+		imageUrl: 'social/facebook.svg',
+	},
+	{
+		name: 'Summer campaign',
+		status: 'refused',
+	},
+];
 const Campaigns = () => {
 	// Print ref to handle table print.
 	const campaignTableRef: RefObject<HTMLElement | undefined> = useRef();
 
 	const { selectedOption, handleSelect } = useSelectBox();
-
+	const { xs } = useResponsive();
 	return (
 		<>
-			<div className='flex-col-top-section-pages custom_container gap-4'>
+			<div className='flex-col-top-section-pages custom_container gap-4 relative'>
 				<CampaignStatus />
 
 				<CampaignBtns
@@ -25,6 +48,12 @@ const Campaigns = () => {
 					campaignTableRef={campaignTableRef}
 				/>
 				<CampaignTable sortBy={selectedOption} ref={campaignTableRef} />
+				{xs && (
+					<>
+						<AddButtonMobile campaigns path='addCampaign' />
+						<CampaignsTableMobile campaigns={campaignsData} actions={true} />
+					</>
+				)}
 			</div>
 		</>
 	);

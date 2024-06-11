@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import { useOpenFilterDrawer } from '../../../utils/hooks/CustomHookOpenDrawer';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';

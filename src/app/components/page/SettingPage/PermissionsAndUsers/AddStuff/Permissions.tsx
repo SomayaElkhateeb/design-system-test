@@ -1,9 +1,8 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
-import { addStuffInterface } from './AddStuff';
-import { useEffect, useState } from 'react';
-import CustomTableBodyCheckbox from '../../../../ui/form/CustomTableBodyChckbox';
+import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
+import { addStuffInterface } from './HookForAddStuff';
 
 export default function Permissions({
 	formStore,

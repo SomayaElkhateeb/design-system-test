@@ -46,7 +46,7 @@
 // // flex-row-reverse
 
 import { CheckIcon } from 'src/app/utils/icons';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { useTranslation } from 'react-i18next';
 
 export default function Badge({ status }: { status: string }) {

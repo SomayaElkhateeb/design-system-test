@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 const Collapsible = () => {
 	const [show, setShow] = useState(false);
 	const language = UseLanguage();
