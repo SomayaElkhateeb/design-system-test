@@ -14,6 +14,7 @@ export const arabic = {
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 	Addresses:"العناوين",
+	"Install Now":"تنزيل الان",
 	'View Inventory': 'عرض المخزون',
 	'Compared to': 'مقارنه ب ',
 	'last Year': 'العام الاخير',
