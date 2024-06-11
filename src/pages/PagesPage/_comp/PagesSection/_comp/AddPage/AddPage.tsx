@@ -9,9 +9,11 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import useCustomHookAddBlogOrPage, { addPageInterface } from '../BlogPosts/HookForAddBlogOrPageForm';
-import ContentSeoPage from './ContentSeoPage';
-import MainInfoPage from './MainInfoPage';
+import useCustomHookAddBlogOrPage, {
+	addPageInterface,
+} from '../../../BlogPosts/_hook/HookForAddBlogOrPageForm';
+import ContentSeoPage from './_comp/ContentSeoPage';
+import MainInfoPage from './_comp/MainInfoPage';
 
 export default function AddPage({ addblog }: { addblog?: boolean }) {
 	// hooks

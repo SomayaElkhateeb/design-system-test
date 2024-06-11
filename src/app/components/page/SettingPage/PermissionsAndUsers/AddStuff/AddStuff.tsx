@@ -9,6 +9,7 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import useCustomHookAddStuff, { addStuffInterface } from './HookForAddStuff';
 import Permissions from './Permissions';
 import Stuff from './Stuff';
+import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function AddStuff() {
 	//  hooks
@@ -31,23 +32,12 @@ export default function AddStuff() {
 
 	const data = [{ id: 1, title: t('Activated') }];
 	
-	const SubHeaderActions = () => {
-		return (
-			<>
-				<Button variant='secondary' onClick={() => navigate(-1)}>
-					Discard
-				</Button>
-				<Button variant='primary' onClick={() => {}}>
-					{t('Send invitation')}
-				</Button>
-			</>
-		);
-	};
+	
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('add staff')}>
-					{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
+				<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
 					<div className=' flex-col-top-section-pages lg:col-span-2'>
@@ -58,11 +48,7 @@ export default function AddStuff() {
 						<QuickActions data={data} />
 					</div>
 				</div>
-				{xs && (
-					<div className='flex space-x-3 justify-center bg-white p-5 absolute w-full bottom-0'>
-						<SubHeaderActions />
-					</div>
-				)}
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

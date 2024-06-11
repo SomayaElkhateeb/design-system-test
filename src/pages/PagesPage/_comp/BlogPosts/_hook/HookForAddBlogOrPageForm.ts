@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { selectItemsInterface } from '../../../../pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
+import { selectItemsInterface } from '../../../../CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 
 export interface addPageInterface {
 	pageTitle: string;

@@ -6,7 +6,7 @@ import { getImageUrl } from 'src/app/utils';
 import { EditIcon, RemoveIcon } from 'src/app/utils/icons';
 
 import AddNavItemDialog from './_comp/AddNavItemDialog';
-import LegalPageParentCard from '../PagesSection/LegalPageParentCard';
+import LegalPageParentCard from '../PagesSection/_comp/LegalPageParentCard';
 
 export default function NavItemPage() {
 	//  hooks

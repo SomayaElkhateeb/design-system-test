@@ -1,7 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
-import { preferncesInterface } from './HookForPreferncePageForm';
+import { preferncesInterface } from '../_hook/HookForPreferncePageForm';
 
 export default function RecaptchaEnable({
 	formStore,

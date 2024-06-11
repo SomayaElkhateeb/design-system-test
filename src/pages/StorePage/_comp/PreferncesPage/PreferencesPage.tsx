@@ -4,7 +4,7 @@ import { Button, SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import RecaptchaEnable from './_comp/CaptchaEnable';
-import useCustomHookPreferncePage, { preferncesInterface } from './_comp/HookForPreferncePageForm';
+import useCustomHookPreferncePage, { preferncesInterface } from './_hook/HookForPreferncePageForm';
 import MaintainanceSection from './_comp/MaintainanceSection';
 import PasswordSection from './_comp/PasswordSection';
 import SeoSearchSection from './_comp/SeoSearchSection';

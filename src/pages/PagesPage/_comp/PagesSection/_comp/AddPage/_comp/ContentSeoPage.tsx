@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { addPageInterface } from '../BlogPosts/HookForAddBlogOrPageForm';
+import { addPageInterface } from '../../../../BlogPosts/_hook/HookForAddBlogOrPageForm';
 
 export interface selectItemsInterface {
 	id: string;

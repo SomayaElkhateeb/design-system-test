@@ -5,7 +5,7 @@ import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { preferncesInterface } from './HookForPreferncePageForm';
+import { preferncesInterface } from '../_hook/HookForPreferncePageForm';
 
 export default function PasswordSection({
 	formStore,
