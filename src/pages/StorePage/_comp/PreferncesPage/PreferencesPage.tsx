@@ -1,16 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { SubHeader, Button } from 'src/app/components/optimized';
-import SeoSearchSection from './_comp/SeoSearchSection';
-import { useForm } from 'src/app/utils/hooks/form';
-
+import { Button, SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
+import RecaptchaEnable from './_comp/CaptchaEnable';
+import useCustomHookPreferncePage, { preferncesInterface } from './_comp/HookForPreferncePageForm';
 import MaintainanceSection from './_comp/MaintainanceSection';
 import PasswordSection from './_comp/PasswordSection';
+import SeoSearchSection from './_comp/SeoSearchSection';
 import SocialSharingSection from './_comp/SocialSharingSection';
-
-import useCustomHookPreferncePage, { preferncesInterface } from './_comp/HookForPreferncePageForm';
-import RecaptchaEnable from './_comp/CaptchaEnable';
 
 export default function PreferencesPage() {
 	//  hooks
@@ -33,11 +31,11 @@ export default function PreferencesPage() {
 	return (
 		<Form {...formStore}>
 			<form className='flex-col-top-section-pages gap-[2rem]' onSubmit={onSubmit}>
-				<SubHeader title={t('Store preferences')}>
+				<SubHeader title={t('Store Preferences')}>
 					<Button variant='secondary' onClick={() => navigate(-1)}>
 						{t('Discard')}
 					</Button>
-					<Button variant='primary' onClick={onSubmit}>
+					<Button variant='primary' onClick={() => {}}>
 						{t('Save Changes')}
 					</Button>
 				</SubHeader>

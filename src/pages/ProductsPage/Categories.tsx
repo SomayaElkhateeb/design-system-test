@@ -1,4 +1,4 @@
-import CustomersComponenet from 'src/app/components/page/Customers/ResponsiveSmallMedia/CustomersComponent';
+import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { brands } from 'src/app/components/page/Products/Brands/BrandsTable';
 import TopSectionCategoriesTable from 'src/app/components/page/Products/Categories/TopSectionCategoriesTable';
 import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';

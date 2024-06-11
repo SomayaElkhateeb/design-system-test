@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import { Switch } from 'src/app/components/ui/switch';
 import { EditIcon } from 'src/app/utils/icons';
@@ -7,7 +6,6 @@ import { images } from 'src/pages/SettingsPage/data';
 
 export default function Shipping() {
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 	return (
 		<div className='flex-col-top-section-pages'>
 			<SubHeader title={t('Shipping')} />

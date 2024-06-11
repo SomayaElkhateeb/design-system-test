@@ -147,13 +147,12 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { CheckBox, SubHeader, Button } from 'src/app/components/optimized';
+import { CheckBox, SubHeader } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import useCustomHookAddCustomerAddresseForm, {
-	AddaddresseInterface,
-} from 'src/app/components/page/CustomerAddresseForm/HookForAddCustomerAddresse';
+import useCustomHookAddCustomerAddressForm, {
+	AddAddressInterface,
+} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerAddress';
 import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import { Form } from 'src/app/components/ui/form';
@@ -167,22 +166,25 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 import { useForm } from 'src/app/utils/hooks/form';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
-export default function AddNewAddresseCustomer() {
+export default function AddNewAddressCustomer() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 	const [sendGift, setSendGift] = useState(false);
 
-	const handleSubmit = (values: AddaddresseInterface) => {
+	const handleSubmit = (values: AddAddressInterface) => {
 		console.log(values);
 	};
 
 	//  custom hook
-	const { handelDefaultValue, AddCustomerAdddrsseSchema } = useCustomHookAddCustomerAddresseForm(
+	const { handelDefaultValue, AddCustomerAdddrsseSchema } = useCustomHookAddCustomerAddressForm(
 		sendGift,
 		selectedOption,
 	);
@@ -200,12 +202,7 @@ export default function AddNewAddresseCustomer() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Add new address')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='global-cards lg:col-span-2 '>
@@ -338,6 +335,7 @@ export default function AddNewAddresseCustomer() {
 						/>
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

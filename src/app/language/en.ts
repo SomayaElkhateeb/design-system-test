@@ -267,7 +267,7 @@ export const english = {
 
 	'Choose Customers': 'Choose Customers',
 
-	Addresses: 'Addresses',
+	Addresss: 'Addresss',
 	'Add new address': 'Add new address',
 	'Use a map': 'Use a map',
 	'Add manually': 'Add manually',

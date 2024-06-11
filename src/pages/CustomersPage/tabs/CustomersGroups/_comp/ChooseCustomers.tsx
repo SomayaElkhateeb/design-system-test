@@ -1,8 +1,6 @@
-import { useTranslation } from 'react-i18next';
-
 import { UseFormReturn } from 'react-hook-form';
-import SpecificAutoCompleteInput from '../../ui/SpecificAutoCompleteInput';
-
+import { useTranslation } from 'react-i18next';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 import { AddCustomerGroupPageSchemaValues } from './AddCustomerGroupSchema';
 
 export default function ChooseCustomers({

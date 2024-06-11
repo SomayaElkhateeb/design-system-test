@@ -1,14 +1,9 @@
-import { useTranslation } from 'react-i18next';
-
 import { UseFormReturn } from 'react-hook-form';
-
-import FormField from '../../ui/form/field';
-import { Input } from '../../ui/input';
-import { Switch } from '../../ui/switch';
-import { Textarea } from '../../ui/textarea';
-
+import { useTranslation } from 'react-i18next';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
-
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import { Textarea } from 'src/app/components/ui/textarea';
 import { AddCustomerGroupPageSchemaValues } from './AddCustomerGroupSchema';
 
 export default function GeneralInfoCustomerGroupInfo({

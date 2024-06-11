@@ -11,18 +11,18 @@ export { default as AnalyticsPage } from './AnalyticsPage/AnalyticsPage';
 export { default as CustomersPage } from './CustomersPage/CustomersPage';
 export { default as MarketingPage } from './MarketingPage/MarketingPage';
 export { default as SocialAppDetails } from './AppsPage/comp/SocialAppDetails';
-export { default as AddCustomerPage } from './AddCustomerPage/AddCustomerPage';
+export { default as AddCustomerPage } from './CustomersPage/tabs/AllCustomers/_comp/AddCustomerPage';
 
 // SubPages
 export { default as AddOrder } from './OrdersPage/AddOrder/AddOrder';
 export { default as OrderDetails } from './OrdersPage/OrderDetails/OrderDetails';
-export { default as AddNewAddresseCustomer } from './AddresseCustomerPge/AddNewAddresse';
-export { default as AddCustomerGroup } from './AddCustomerGroupPage/AddCustomerGroup';
+export { default as AddNewAddressCustomer } from './CustomersPage/_comp/AddNewAddress';
+export { default as AddCustomerGroup } from './CustomersPage/tabs/CustomersGroups/_comp/AddCustomerGroup';
 export { default as BillingAndPlans } from './SettingsPage/BillingAndPlans';
 export { default as SettingsConfig } from './SettingsPage/SettingsConfig';
 export { default as Nested_pages_SettingsConfig } from './SettingsPage/Nested_Settings_pagesConfig';
 export { default as AppsTabs } from './AppsPage/comp/AppsTabs';
-export { default as CustomerInfo } from './CustomerInfoPage/CustomerInfo';
+export { default as CustomerInfo } from './CustomersPage/_comp/CustomerInfo';
 export { default as EmailForm } from './MarketingPage/EmailForm/EmailForm';
 export { default as ConfigurableProductPage } from './ProductsPage/New/Configurable';
 export { default as SimpleProductPage } from './ProductsPage/New/Simple';

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { Form } from 'src/app/components/ui/form';
@@ -22,7 +21,6 @@ export default function SetupInfo({
 	ratesDeliver?: boolean;
 }) {
 	// hook
-	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState<string>('');
 	// custom hook
@@ -42,14 +40,9 @@ export default function SetupInfo({
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col gap-3'>
-				{/* <SubHeader title={t('SMSA')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						Discard
-					</Button>
-					<Button variant='primary' onClick={() => {}}>
-						Save Changes
-					</Button>
-				</SubHeader> */}
+				<SubHeader title={t('SMSA')}>
+					{/* <SubHeaderDefaultBtns onSubmit={() => alert('Submit')} /> */}
+				</SubHeader>
 				<div className='global-cards w-full  gap-4'>
 					<h3 className='title'>{t('Setup info')}</h3>
 					<div className='w-[50%]'>
@@ -82,6 +75,7 @@ export default function SetupInfo({
 				</div>
 				<div>{rates && gap ? <Rates addStyle={true} /> : ''}</div>
 				<div>{ratesDeliver ? <RatesDeliver /> : ''}</div>
+				{/* <SubHeaderMobileBtns onSubmit={() => alert('Submit')} /> */}
 			</form>
 		</Form>
 	);

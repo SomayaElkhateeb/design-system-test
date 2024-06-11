@@ -1,14 +1,12 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import FormField from '../../ui/form/field';
-import { Input } from '../../ui/input';
-import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
-
-import { CheckBox } from '../../optimized';
-
+import { CheckBox } from 'src/app/components/optimized';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import { AddCustomerPageInterface } from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
-import SpecificAutoCompleteInput from '../../ui/SpecificAutoCompleteInput';
-import { AddCustomerPageInterface } from './HookForAddCustomerForm';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 
 export interface selectItemsInterface {
 	id: string;

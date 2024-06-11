@@ -1,12 +1,18 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import FormField from '../../ui/form/field';
-import { Input } from '../../ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
-import CustomPhoneInput from '../../optimized/UiKits/CustomPhoneInput';
-import { countries } from '../SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from 'src/app/components/ui/select';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
 import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
-export default function PrimaryAddresseForm({
+export default function PrimaryAddressForm({
 	formStore,
 }: {
 	formStore: UseFormReturn<AddCustomerPageSchemaValues>;
@@ -19,7 +25,7 @@ export default function PrimaryAddresseForm({
 			<div className='flex-col-top-section-pages md:w-[65%]'>
 				<FormField
 					formStore={formStore}
-					name='fullNameAddresse'
+					name='fullNameAddress'
 					label={t('Full name')}
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
@@ -100,7 +106,7 @@ export default function PrimaryAddresseForm({
 				/>
 				<FormField
 					formStore={formStore}
-					name='addressePhoneNumber'
+					name='AddressPhoneNumber'
 					label={t('Phone Number')}
 					render={(field) => (
 						<CustomPhoneInput

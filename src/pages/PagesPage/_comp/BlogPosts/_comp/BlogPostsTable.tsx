@@ -1,22 +1,17 @@
-import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-
 import { TableCell } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-
-import { IoIosArrowForward } from 'react-icons/io';
-import { IoIosArrowBack } from 'react-icons/io';
-
+import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-
-import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
-import { CameraIcon } from 'src/app/utils/icons';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { IoEyeOutline } from 'react-icons/io5';
-
+import { useNavigate } from 'react-router-dom';
 import { Switch } from 'src/app/components/ui/switch';
+import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import { CameraIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+
 
 export default function BlogPostsTable({
 	blog,

@@ -1,12 +1,9 @@
-import { useTranslation } from 'react-i18next';
-
 import { UseFormReturn } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { Switch } from 'src/app/components/ui/switch';
-import FormField from 'src/app/components/ui/form/field';
 import { preferncesInterface } from './HookForPreferncePageForm';
-import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 export default function MaintainanceSection({
 	formStore,

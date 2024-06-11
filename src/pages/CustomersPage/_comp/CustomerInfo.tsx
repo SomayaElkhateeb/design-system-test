@@ -1,19 +1,17 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
-
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
-import { FaRegEdit } from 'react-icons/fa';
 import { CiUser } from 'react-icons/ci';
-import { MdOutlineEmail } from 'react-icons/md';
-import { FiPhoneCall } from 'react-icons/fi';
-import CustomerData from 'src/app/components/page/CustomersInfo/CustomerData';
+import { FaRegEdit } from 'react-icons/fa';
+import { FiEdit, FiPhoneCall } from 'react-icons/fi';
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { IoIosAddCircle } from 'react-icons/io';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { FiEdit } from 'react-icons/fi';
 import { IoLocationOutline } from 'react-icons/io5';
+import { MdOutlineEmail } from 'react-icons/md';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { useNavigate, useParams } from 'react-router-dom';
 import { HeaderSettings } from 'src/app/components/optimized';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
 import EditButtonMobile from 'src/app/components/optimized/Buttons/EditButtonMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import CustomerData from './CustomerData';
 
 export default function CustomerInfo() {
 	// hooks

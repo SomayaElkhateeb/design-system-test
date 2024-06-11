@@ -1,17 +1,17 @@
 //  componenet will be used in customers page
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
-import ActionsComp from '../../optimized/Buttons/ActionsComp';
-import { Button } from '../../optimized';
+import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
-import CustomersGroupTable from './CustomersGroupTable';
-import { customers } from './CustomersTable';
-import CustomersComponenet from './ResponsiveSmallMedia/CustomersComponent';
-import { RemoveIcon } from 'src/app/utils/icons';
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'src/app/components/optimized';
+import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import CustomersGroupTable from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersGroupTable';
+import { customers } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
+import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
+import { RemoveIcon } from 'src/app/utils/icons';
 
 export default function CustomersGroups() {
 	//  hooks

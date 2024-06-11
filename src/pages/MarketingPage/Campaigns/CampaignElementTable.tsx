@@ -8,7 +8,7 @@ import {
 	CampaignTableInterface,
 } from 'src/app/interface/CampaignTableInterface';
 import { Box, TableCell } from '@mui/material';
-import BaseTable from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+import BaseTable from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';

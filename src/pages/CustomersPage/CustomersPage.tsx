@@ -1,10 +1,9 @@
 import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-
-import AllCustomers from 'src/app/components/page/Customers/AllCustomersComp';
+import AllCustomers from './tabs/AllCustomers/AllCustomers';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
-import CustomersGroups from 'src/app/components/page/Customers/CustomersGroupsComp';
+import CustomersGroups from './tabs/CustomersGroups/CustomersGroups';
 
 const CustomersPage = () => {
 	//  hooks

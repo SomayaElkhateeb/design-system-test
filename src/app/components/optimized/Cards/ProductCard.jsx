@@ -5,22 +5,18 @@
 // todo Trigger image preview logic
 
 import { useState } from 'react';
-import { getImageUrl } from 'src/app/utils';
-import { CheckBox } from '..';
+import { useTranslation } from 'react-i18next';
 import {
+	CameraIcon,
 	CopyIcon,
 	EditIcon,
-	MoreIcon,
-	NextIcon,
-	StarIcon,
-	ViewIcon,
-	CameraIcon,
 	StarActiveIcon,
+	StarIcon,
+	ViewIcon
 } from 'src/app/utils/icons';
-import { useTranslation } from 'react-i18next';
 import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
-import useSelectBox from '../Menu/useSelectBox';
 import ThreeDotsButton from '../Buttons/ThreedotsButton';
+import useSelectBox from '../Menu/useSelectBox';
 
 /**
  * @param {{

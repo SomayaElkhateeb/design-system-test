@@ -1,12 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
-
+import { useTranslation } from 'react-i18next';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-
-import CustomAutoComplete from 'src/app/components/ui/AutoCompleteMultiple';
 import { addPageInterface } from '../BlogPosts/HookForAddBlogOrPageForm';
-import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 
 export interface selectItemsInterface {
 	id: string;

@@ -1,24 +1,20 @@
-import { useTranslation } from 'react-i18next';
-import BaseTable from './TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
-
-import { FaRegEdit } from 'react-icons/fa';
-
-import { IoIosArrowForward } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
-import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
-import { IoIosArrowBack } from 'react-icons/io';
 import { useEffect, useState } from 'react';
-import CustomTableHeaderCheckbox from '../../ui/form/CustomTableHeaderChckbox';
-import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
-
-import { Switch } from '../../ui/switch';
-import { settingMenus } from './CustomersTable';
-import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
+import { useTranslation } from 'react-i18next';
+import { FaRegEdit } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { Switch } from 'src/app/components/ui/switch';
+import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
 import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import BaseTable from '../TableLayoutGlobal/base.table';
+import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
+import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
+import { settingMenus } from './CustomersTable';
 
 export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks

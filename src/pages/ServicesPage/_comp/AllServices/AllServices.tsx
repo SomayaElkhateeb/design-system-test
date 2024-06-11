@@ -1,14 +1,13 @@
 import { nanoid } from 'nanoid';
-import CategoryButton from '../../../../app/components/optimized/Buttons/CategoryButton';
-import PriceButton from '../../../../app/components/optimized/Buttons/PriceButton';
-import useSelectBox from '../../../../app/components/optimized/Menu/useSelectBox';
-import { UseLanguage } from '../../../../app/utils/hooks/LanguageHook';
+import CategoryButton from 'src/app/components/optimized/Buttons/CategoryButton';
+import PriceButton from 'src/app/components/optimized/Buttons/PriceButton';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { IoIosArrowForward } from 'react-icons/io';
 import { BackIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
-import RatedCard from '../../../../app/components/optimized/Cards/RatedCard';
+import RatedCard from 'src/app/components/optimized/Cards/RatedCard';
 import { useNavigate } from 'react-router-dom';
-// import RatedCard from '../../optimized/Cards/RatedCard';
 export default function AllServices() {
 	//  hooks
 	const { t } = useTranslation();

@@ -1,20 +1,22 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
 import {
 	AddCustomerGroupPageSchema,
 	AddCustomerGroupPageSchemaValues,
-} from 'src/app/components/page/AddCustomerGroup/AddCustomerGroupSchema';
-import ChooseCustomers from 'src/app/components/page/AddCustomerGroup/ChooseCustomers';
-import GeneralInfoCustomerGroupInfo from 'src/app/components/page/AddCustomerGroup/GeneralInfo';
-import useCustomHookAddCustomerGroupForm from 'src/app/components/page/AddCustomerGroup/HookForAddCustomerGroupForm';
-import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
+} from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/AddCustomerGroupSchema';
+import ChooseCustomers from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/ChooseCustomers';
+import GeneralInfoCustomerGroupInfo from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/GeneralInfo';
+import useCustomHookAddCustomerGroupForm from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/HookForAddCustomerGroupForm';
 
 export default function AddCustomerGroup() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 
 	//  custome hook
 	const { handelDefaultValue } = useCustomHookAddCustomerGroupForm();
@@ -31,12 +33,7 @@ export default function AddCustomerGroup() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={t('Add New Group')}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t('Discard')}
-					</Button>
-					<Button variant='primary' onClick={onSubmit}>
-						{t('Save Changes')}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-top-section-pages lg:col-span-2'>
@@ -44,6 +41,7 @@ export default function AddCustomerGroup() {
 						<ChooseCustomers formStore={formStore} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</form>
 		</Form>
 	);

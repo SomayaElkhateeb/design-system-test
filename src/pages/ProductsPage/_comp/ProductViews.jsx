@@ -17,7 +17,7 @@ import {
 	StarIcon,
 	ViewIcon,
 } from 'src/app/utils/icons';
-import { CheckBox } from '../../../app/components/optimized';
+import { CheckBox } from 'src/app/components/optimized';
 
 /**
  * @param {{
