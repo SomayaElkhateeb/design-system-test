@@ -8,6 +8,7 @@ import { Button } from 'src/app/components/optimized';
 import { Link } from 'react-router-dom';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import CampaignsTableMobile from './comp/CampaignsTableMobile';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 const campaignsData = [
 	{
 		name: 'Summer campaign',
@@ -37,7 +38,7 @@ const Campaigns = () => {
 	const { xs } = useResponsive();
 	return (
 		<>
-			<div className='flex-col-top-section-pages custom_container gap-4'>
+			<div className='flex-col-top-section-pages custom_container gap-4 relative'>
 				<CampaignStatus />
 
 				<CampaignBtns
@@ -47,7 +48,12 @@ const Campaigns = () => {
 					campaignTableRef={campaignTableRef}
 				/>
 				<CampaignTable sortBy={selectedOption} ref={campaignTableRef} />
-				{xs && <CampaignsTableMobile campaigns={campaignsData} actions={true}/>}
+				{xs && (
+					<>
+						<AddButtonMobile campaigns path='addCampaign' />
+						<CampaignsTableMobile campaigns={campaignsData} actions={true} />
+					</>
+				)}
 			</div>
 		</>
 	);
