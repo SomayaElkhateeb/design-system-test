@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { IoIosArrowForward } from 'react-icons/io';
 import { PrevNextBtn } from '..';
 

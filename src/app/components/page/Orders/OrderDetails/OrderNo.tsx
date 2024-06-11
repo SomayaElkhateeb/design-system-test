@@ -2,22 +2,22 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DownIcon } from 'src/app/utils/icons';
 import { OrderStatus } from '../..';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function OrderNo() {
 	const [showOrderStatus, setShowOrderStatus] = useState(false);
 	const { t } = useTranslation();
 	const language = UseLanguage();
-	const flexClass = 'flex gap-1.5 items-center md:flex';
+	const flexClass = 'flex gap-1.5 items-center ';
 	return (
-		<div className='capitalize global-cards grid lg:grid-cols-6'>
+		<div className='capitalize global-cards grid xl:grid-cols-6'>
 			<div
-				className={`col-span-1  flex-col-top-section-pages gap-2 relative after:absolute after:h-[100%] after:lg:w-[1px] after:bg-constrained ${
-					language === 'ar' ? 'after:left-0' : 'after:right-[-5%]'
-				} after:top-0`}
+				className={`col-span-1 flex-col-top-section-pages gap-2 relative xl:after:absolute xl:after:h-full xl:after:w-[1px] md:after:none xl:after:bg-constrained  ${
+					language === 'ar' ? 'xl:after:left-0' : 'xl:after:right-[-5%]'
+				} xl:after:top-0`}
 			>
 				<p className='subtitle'>{t('order No')}.</p>
-				<p className='title  '>#8965742</p>
+				<p className='title'>#8965742</p>
 			</div>
 
 			<div className='col-span-3 flex-col-top-section-pages gap-2 subtitle '>
@@ -35,7 +35,7 @@ export default function OrderNo() {
 					</button>
 				</div>
 			</div>
-			<div className='col-span-2 flex-col-top-section-pages lg:items-end justify-between gap-2'>
+			<div className='col-span-2 flex-col-top-section-pages xl:items-end justify-between gap-2'>
 				<h2 className='title  '>SAR 1000.00</h2>
 				<p className='subtitle'>
 					<span>15/10/2020</span> {t('at')} <span>12:05</span> AM

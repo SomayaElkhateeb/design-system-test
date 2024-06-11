@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
-import Limits from 'src/app/components/page/discount/Comp/Limits';
-import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
-import { Form } from 'src/app/components/ui/form';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
-import BasicInfo from './BasicInfo/BasicInfo';
-import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
+import Limits from 'src/app/components/page/discount/Comp/Limits';
+import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
+import { Form } from 'src/app/components/ui/form';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
+import BasicInfo from './BasicInfo/BasicInfo';
+import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
+
 const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
 	const { t } = useTranslation();

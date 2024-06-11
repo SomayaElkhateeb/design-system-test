@@ -1,4 +1,4 @@
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 const FooterAuth = () => {
 	const language = UseLanguage();

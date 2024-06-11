@@ -5,7 +5,7 @@ import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 
 import { reviewInterface } from './HookForReviewSettings';
-import FormSwitchField from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormSwitchField';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 export default function ReviewSectionForm({
 	formStore,

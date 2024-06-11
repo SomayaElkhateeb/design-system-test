@@ -58,15 +58,17 @@ const CampaignBtns = ({
 	return (
 		<div className='flex-col-top-section-pages'>
 			<div className='topTable'>
-				<Button
-					onClick={() => {
-						navigate('/marketing/campaigns/addCampaign');
-					}}
-					variant='primary'
-					LeftIcon={AddBgIcon}
-				>
-					{!activity ? t('Add Campaign') : t('Add Activity')}
-				</Button>
+				{!xs && (
+					<Button
+						onClick={() => {
+							navigate('/marketing/campaigns/addCampaign');
+						}}
+						variant='primary'
+						LeftIcon={AddBgIcon}
+					>
+						{!activity ? t('Add Campaign') : t('Add Activity')}
+					</Button>
+				)}
 				{xs && <AddButtonMobile path='/marketing/campaigns/addCampaign' />}
 
 				<ActionsButtonsCampains

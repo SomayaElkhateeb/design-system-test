@@ -2,7 +2,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { languageSettingsInterface } from './HookForLanguageSettings';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 
 export default function DefaultLanguageSection({
 	formStore,

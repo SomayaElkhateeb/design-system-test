@@ -1,12 +1,12 @@
+import { useTranslation } from 'react-i18next';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { TableCell } from '@mui/material';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { Switch } from 'src/app/components/ui/switch';

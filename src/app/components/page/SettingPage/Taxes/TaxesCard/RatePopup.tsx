@@ -1,14 +1,13 @@
-import { useTranslation } from 'react-i18next';
-
-import { Form } from 'src/app/components/ui/form';
-import { Input } from 'src/app/components/ui/input';
-import { Button } from 'src/app/components/optimized';
-import FormField from 'src/app/components/ui/form/field';
-import useTaxPrograms, { addRateTypes } from './useTaxPrograms';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
-import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-import FormChoiceChips from '../../../../../../pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import { Button } from 'src/app/components/optimized';
+import { Form } from 'src/app/components/ui/form';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
+import FormField from 'src/app/components/ui/form/field';
+import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
+import { Input } from 'src/app/components/ui/input';
+import useTaxPrograms, { addRateTypes } from './useTaxPrograms';
 
 const style = {
 	width: { md: '40rem', xs: '22rem' },

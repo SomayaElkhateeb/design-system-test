@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { UseLanguage } from "src/app/components/CustomHook/LanguageHook";
-import { Button } from "src/app/components/optimized";
-import { getImageUrl } from "src/app/utils";
-import { EditIcon } from "src/app/utils/icons";
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import { Button } from 'src/app/components/optimized';
+import { getImageUrl } from 'src/app/utils';
+import { EditIcon } from 'src/app/utils/icons';
 
 interface AppData {
 	id: number;
@@ -26,7 +26,12 @@ export default function InstallCard({ name, imageUrl, url }: AppData) {
 			<div className='flex-col-top-section-pages gap-2'>
 				<h2 className='title'>{name}</h2>
 				<Link to={url}>
-					<Button text={t('Open Setup')} variant='link' LeftIcon={EditIcon} className={language === 'ar' ? "flex-row-reverse" : ""}/>
+					<Button
+						text={t('Open Setup')}
+						variant='link'
+						LeftIcon={EditIcon}
+						className={language === 'ar' ? 'flex-row-reverse' : ''}
+					/>
 				</Link>
 			</div>
 		</div>

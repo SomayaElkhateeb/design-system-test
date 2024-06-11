@@ -60,9 +60,11 @@ export default function TopSectionBrandsTable() {
 				<div className='topTable'>
 					{/*  left dropdow */}
 
-					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
-						{t('Add Brand')}
-					</Button>
+					{!xs && (
+						<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
+							{t('Add Brand')}
+						</Button>
+					)}
 					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 
 					{/*  actions  arrange,... */}

@@ -1,5 +1,10 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
+import {
+	AddAddressSchema,
+	handelAddresseDefaultValue,
+	addAddressInterface,
+} from '../../../Orders/AddOrder/Comp/HookAddress';
 
 export interface OpenHours {
 	open: string;
@@ -20,17 +25,10 @@ export interface WeekSchedule {
 	Sat: DayInfo;
 	Sun: DayInfo;
 }
-export interface BranchSettingsInterface {
+export interface BranchSettingsInterface extends addAddressInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
-	countryName?: string;
-	cityName?: string;
-	area?: string;
-	street?: string;
-	building: string;
-	landmark?: string;
-	branchPhoneNumber: string;
 	branchTimeSchedual: WeekSchedule;
 }
 
@@ -51,13 +49,8 @@ export interface fixedDay {
 	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 }
 // ////////////////////////
-export default function useCustomHookAddBranchForm(selectedOption: string) {
-	const RequiredAddressData = z.string().min(1);
-	const handel_RequiredAddressData = () => {
-		return selectedOption !== 'Add manually'
-			? z.optional(RequiredAddressData).or(z.literal(''))
-			: RequiredAddressData;
-	};
+export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedOption?: string) {
+	const RequiredAddresseData = z.string().min(1);
 
 	const DayInfoSchema = z.object({
 		openHours: z.object({
@@ -68,16 +61,9 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 	});
 
 	const branchSettingsSchema = {
-		branchType: RequiredAddressData,
-		branchNameEn: RequiredAddressData,
-		branchNameAr: RequiredAddressData,
-		countryName: handel_RequiredAddressData(),
-		cityName: handel_RequiredAddressData(),
-		area: handel_RequiredAddressData(),
-		street: handel_RequiredAddressData(),
-		building: RequiredAddressData,
-		landmark: handel_RequiredAddressData(),
-		branchPhoneNumber: z.string().min(7),
+		branchType: RequiredAddresseData,
+		branchNameEn: RequiredAddresseData,
+		branchNameAr: RequiredAddresseData,
 		branchTimeSchedual: z.object({
 			Mon: DayInfoSchema,
 			Tue: DayInfoSchema,
@@ -87,6 +73,7 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 			Sat: DayInfoSchema,
 			Sun: DayInfoSchema,
 		}),
+		...AddAddressSchema(sendGift, selectedOption),
 	};
 
 	const handelDefaultValue = () => {
@@ -94,14 +81,8 @@ export default function useCustomHookAddBranchForm(selectedOption: string) {
 			branchType: 'Warehouse',
 			branchNameAr: '',
 			branchNameEn: '',
-			countryName: '',
-			cityName: '',
-			area: '',
-			street: '',
-			building: '',
-			landmark: '',
-			branchPhoneNumber: '',
 			branchTimeSchedual: initialDayInfo,
+			...handelAddresseDefaultValue(),
 		};
 	};
 	return {

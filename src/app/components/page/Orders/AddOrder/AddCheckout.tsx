@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'src/app/components/optimized';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import useCustomAddCheckOutForm, { addCheckOutInterface } from './Comp/HookForAddCheckout';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';

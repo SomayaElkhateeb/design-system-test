@@ -1,5 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import AdminOrLanguageDefaults from 'src/app/components/page/SettingPage/GeneralSettings/AdminOrLanguageDefaults';
 import DefaultLanguageSection from 'src/app/components/page/SettingPage/LanguageSettings/DefaultLanguage';
 import useCustomHookLanguageSettings, {
@@ -7,10 +11,7 @@ import useCustomHookLanguageSettings, {
 } from 'src/app/components/page/SettingPage/LanguageSettings/HookForLanguageSettings';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 const LanguageSettings = () => {
 	//  hooks
 	const { t } = useTranslation();

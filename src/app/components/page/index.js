@@ -19,6 +19,7 @@ export { default as OrderItemContain } from './Orders/OrderDetails/Comp/OrderIte
 export { default as Customer } from './Orders/AddOrder/Customer';
 export { default as Products } from './Orders/AddOrder/Products';
 export { default as Address } from './Orders/AddOrder/Address';
+export { OrderAddress } from './Orders/AddOrder/OrderAddress';
 export { default as AddCheckout } from './Orders/AddOrder/AddCheckout';
 
 // MARKETING PAGE
@@ -32,3 +33,9 @@ export { default as SpecificGroups } from './discount/Selectors/SpecificGroups';
 export { default as SpecificCustomers } from './discount/Selectors/SpecificCustomers';
 export { default as DiscountTypesOptions } from './discount/Comp/DiscountTypesOptions';
 
+// REVIEWS PAGE
+export { ProductReviews } from './ReviewsPage/ProductReviews';
+export { AsksAndQueries } from './ReviewsPage/AsksAndQueries';
+export { StoreReviews } from './ReviewsPage/StoreReviews';
+export { AppReviews } from './ReviewsPage/AppReviews';
+export { ReviewsCard } from './ReviewsPage/_comp/ReviewsCard';

@@ -1,5 +1,5 @@
 import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
-import PopoverComponenet from '../../page/Customers/Popover';
+import PopoverComponenet from '../Popover/Popover';
 // import Button from "./Button";
 import Menu from '../Menu/Menu';
 import { Button } from '..';

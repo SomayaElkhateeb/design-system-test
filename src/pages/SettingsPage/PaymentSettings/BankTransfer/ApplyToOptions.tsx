@@ -1,13 +1,13 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 import { BankTransferTypes } from './useBankTransfer';
 
 interface ApplyToOptions {
 	applyTo: string;
 	formStore: UseFormReturn<BankTransferTypes>;
 }
-export default function ApplyToOptionsBankTransfer({ applyTo,formStore }: ApplyToOptions) {
+export default function ApplyToOptionsBankTransfer({ applyTo, formStore }: ApplyToOptions) {
 	const { t } = useTranslation();
 
 	const handelRenderingComponentWithApplyTo = () => {

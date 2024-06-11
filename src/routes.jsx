@@ -18,11 +18,8 @@ import {
 	OrderDetails,
 	OrdersPage,
 	OrdersTabs,
-	PagesConfig,
-	PagesPage,
 	ProductsPage,
 	ProductsTabs,
-	PurchaseConfig,
 	ReviewsPage,
 	ServicesPage,
 	SettingsConfig,
@@ -32,10 +29,7 @@ import {
 	ShippingConfig,
 	SimpleProductPage,
 	SocialAppDetails,
-	StoreConfig,
 	StorePage,
-	StoreTabs,
-	SuccessfullyPurchased,
 } from 'src/pages';
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
@@ -44,10 +38,22 @@ import VirtualProductPage from './pages/ProductsPage/New/Virtual';
 import FoodProductPage from './pages/ProductsPage/New/Food';
 import BundleProductPage from './pages/ProductsPage/New/Bundle';
 
+import { ProductReviews } from './app/components/page';
+
+import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
+import PagesPage from './pages/PagesPage/PagesPage';
+import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
+import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
+import StoreTabs from './pages/StorePage/StoreTabs';
+import StoreConfig from './pages/StorePage/StoreConfig';
+
 // Route Definitions
 export const routes = [
 	{ path: '/', element: <HomePage /> },
+	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
+	{ path: '/reviews/ProductReviews', element: <ProductReviews /> },
+
 	// services Routes
 	{ path: '/services', element: <ServicesPage /> },
 	{ path: '/services/:config', element: <PurchaseConfig /> },

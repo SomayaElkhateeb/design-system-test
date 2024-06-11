@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import PaymentTableRows from './PaymentTableRows';
-import { paymentProvidersData } from '../../../data';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import { paymentProvidersData } from '../../../data';
+import PaymentTableRows from './PaymentTableRows';
 
 export default function PaymentTable() {
 	const language = UseLanguage();

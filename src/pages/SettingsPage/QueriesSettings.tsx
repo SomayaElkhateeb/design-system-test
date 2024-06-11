@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import useCustomHookQueriesSettings, {
 	queriesInterface,
 } from 'src/app/components/page/SettingPage/QueriesSettings/HookForQueriesSettings';
 import QueriesSectionForm from 'src/app/components/page/SettingPage/QueriesSettings/QueriesSection';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 export default function QueriesSetting() {
 	//  hooks
 	const { t } = useTranslation();

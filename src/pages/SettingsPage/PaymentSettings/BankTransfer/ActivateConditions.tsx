@@ -1,11 +1,10 @@
 import { useTranslation } from 'react-i18next';
-
-import FormChoiceChips from '../../CustomizationsSettings/comp/FormChoiceChips';
-import { BankTransferTypes, PaymentFormProps } from './useBankTransfer';
 import CardHeader from 'src/app/components/optimized/UiKits/CardHeader';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import ApplyToOptionsBankTransfer from './ApplyToOptions';
+import { BankTransferTypes, PaymentFormProps } from './useBankTransfer';
 
 export default function ActivateConditions({ formStore }: PaymentFormProps) {
 	//  hooks

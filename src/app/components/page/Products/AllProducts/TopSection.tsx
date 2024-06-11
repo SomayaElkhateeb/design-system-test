@@ -12,7 +12,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from '../../../optimized/Buttons/ActionsComp';
 
 import PopoverComponenet from '../../../optimized/UiKits/Popover';
-import { useOpenFilterDrawer } from 'src/app/components/SideBar/CustomHookOpenDrawer';
+import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../../Orders/FilterOrder/FilterOrdersComponent';
 import { RemoveIcon } from 'src/app/utils/icons';
 import { Link } from 'react-router-dom';

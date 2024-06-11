@@ -7,9 +7,10 @@ import { SiMicrosoftexcel } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import FilterOrdersComponent from './FilterOrder/FilterOrdersComponent';
+import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 export default function TopSectionOrdersPage({
 	addButton,
 	path,
@@ -25,6 +26,7 @@ export default function TopSectionOrdersPage({
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
+	const { xs } = useResponsive();
 
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
@@ -49,13 +51,15 @@ export default function TopSectionOrdersPage({
 				<div className='topTable'>
 					{/*  left dropdow */}
 
-					<Button
-						onClick={() => navigate('/order/addOrder')}
-						variant='primary'
-						LeftIcon={IoIosAddCircle}
-					>
-						{addButton}
-					</Button>
+					{!xs && (
+						<Button
+							onClick={() => navigate('/order/addOrder')}
+							variant='primary'
+							LeftIcon={IoIosAddCircle}
+						>
+							{addButton}
+						</Button>
+					)}
 					{/*  actions filter arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>
 						<ActionsComp

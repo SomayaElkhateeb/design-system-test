@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 import { TfiWorld } from 'react-icons/tfi';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import MenuSelect from '../../Menu/MenuSelect';
 
 const CollapsibleSection = () => {

@@ -1,15 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { Form } from 'src/app/components/ui/form';
 import CheckoutCustomizeForm from './comp/CheckoutCustomizeForm';
 import NewsletterConsentForm from './comp/NewsletterConsentForm';
 import OrderInvoiceCustomizeForm from './comp/OrderInvoiceCustomizeForm';
 import ProductCustomizeForm from './comp/ProductCustomizeForm';
 import UseCustomization from './comp/useCustomization';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 export default function CustomizationsSettings() {
 	const { t } = useTranslation();
 	const { formStore, onSubmit } = UseCustomization();

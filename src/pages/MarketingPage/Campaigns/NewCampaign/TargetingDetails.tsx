@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
 import { CampaignInputsTypes, CampaignFormProps } from '../useCampaign';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
-import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 
 const targetingOptions = [
 	'Purchased from you',

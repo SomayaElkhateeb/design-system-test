@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { Avatars, ClientBox, InputRow } from '..';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 
 /**
  * Chat component displays a list of chats with search functionality.
@@ -16,7 +16,6 @@ import { UseLanguage } from '../../CustomHook/LanguageHook';
  * @returns {JSX.Element} Chat component.
  */
 
-
 const Chat = ({
 	title,
 	data,
@@ -26,7 +25,6 @@ const Chat = ({
 	data: any;
 	// menu?: boolean;
 }) => {
-
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
 	const navigate = useNavigate();
@@ -41,7 +39,7 @@ const Chat = ({
 		<div className={`flex flex-col gap-4 ${language === 'ar' ? 'pl-5' : 'pr-5'} `}>
 			<div className='flex justify-between items-center p-3'>
 				<h3 className='title'>{title}</h3>
-				<IoCloseCircleOutline  className='text-pri-dark size-5 cursor-pointer' />
+				<IoCloseCircleOutline className='text-pri-dark size-5 cursor-pointer' />
 			</div>
 
 			<div className='px-3'>

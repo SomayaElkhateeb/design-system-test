@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-import { Form } from 'src/app/components/ui/form';
-import AccountDetailsForm from './AccountDetailsForm';
-import ActivateConditions from './ActivateConditions';
-import useBankTransfer from './useBankTransfer';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { Form } from 'src/app/components/ui/form';
+import AccountDetailsForm from './AccountDetailsForm';
+import ActivateConditions from './ActivateConditions';
+import useBankTransfer from './useBankTransfer';
+
 export default function ActivateBankTransfer() {
 	//  hooks
 	const { t } = useTranslation();

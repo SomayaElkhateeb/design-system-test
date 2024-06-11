@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
@@ -68,7 +68,7 @@ export default function BrandsTable({
 					item: e,
 					elements: [
 						<GlobalTableCell>
-							<div className=' flex  items-center gap-[.4rem] '>
+							<div className='flex items-center gap-[.4rem] '>
 								<img src={getImageUrl(e.img)} loading='lazy' alt={e.title} />
 
 								<div className='flex-col-top-section-pages gap-2'>

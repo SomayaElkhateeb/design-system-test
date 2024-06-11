@@ -1,18 +1,19 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { Form } from 'src/app/components/ui/form';
+import { useForm } from 'src/app/utils/hooks/form';
+import {
 	AddCustomerGroupPageSchema,
 	AddCustomerGroupPageSchemaValues,
 } from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/AddCustomerGroupSchema';
 import ChooseCustomers from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/ChooseCustomers';
 import GeneralInfoCustomerGroupInfo from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/GeneralInfo';
 import useCustomHookAddCustomerGroupForm from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/HookForAddCustomerGroupForm';
-import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 export default function AddCustomerGroup() {
 	//  hooks
 	const { t } = useTranslation();

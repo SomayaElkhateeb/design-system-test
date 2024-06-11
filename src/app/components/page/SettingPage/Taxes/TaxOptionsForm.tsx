@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
-
 import { CheckBox } from 'src/app/components/optimized';
-
-import FormChoiceChips from '../../../../../pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import { TaxesProps, TaxesSettingsInterface } from 'src/pages/SettingsPage/TaxesSettings';
 
 export default function TaxOptionsForm({ formStore }: TaxesProps) {

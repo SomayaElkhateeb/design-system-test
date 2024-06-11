@@ -1,10 +1,11 @@
+import { nanoid } from 'nanoid';
 import { IoIosAddCircle } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
+import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { Button } from '../../optimized';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
-import { useNavigate } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-import { useOpenFilterDrawer } from '../../SideBar/CustomHookOpenDrawer';
 import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 
 export default function TopSectionDiscountAndCoupons({
@@ -15,6 +16,7 @@ export default function TopSectionDiscountAndCoupons({
 	path: string;
 }) {
 	//  hooks
+	const { xs } = useResponsive();
 
 	const navigate = useNavigate();
 	//  custom hook
@@ -34,9 +36,11 @@ export default function TopSectionDiscountAndCoupons({
 				<div className='topTable'>
 					{/*  left dropdow */}
 
-					<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
-						{addButton}
-					</Button>
+					{!xs && (
+						<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+							{addButton}
+						</Button>
+					)}
 
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>

@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { CheckBox, SubHeader } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import useCustomHookAddCustomerAddressForm, {
-	AddAddressInterface,
-} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerAddress';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import { Form } from 'src/app/components/ui/form';
@@ -19,10 +20,10 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 import { useForm } from 'src/app/utils/hooks/form';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import useCustomHookAddCustomerAddressForm, {
+	AddAddressInterface,
+} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerAddress';
+
 export default function AddNewAddressCustomer() {
 	//  hooks
 	const { t } = useTranslation();
@@ -50,6 +51,7 @@ export default function AddNewAddressCustomer() {
 	const handleAddressOption = (option: string) => {
 		setSelectedOption(option);
 	};
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>

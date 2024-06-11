@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { BackIcon, NextIcon } from 'src/app/utils/icons';
 import { AppsWrapperProps } from './useAppStore';
 import { AppsCard } from 'src/app/components/optimized';

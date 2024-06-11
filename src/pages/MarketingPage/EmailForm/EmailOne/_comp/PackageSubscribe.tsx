@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import PaymentCard from 'src/app/components/optimized/Payment/PaymentCard';
+import PaymentCard from 'src/app/components/optimized/Cards/PaymentCard';
 import PackageSelector from './PackageSelector';
 import '../../_comp/custom-radio.css';
 

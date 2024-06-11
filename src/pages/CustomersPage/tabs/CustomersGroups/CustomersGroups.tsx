@@ -42,7 +42,7 @@ export default function CustomersGroups() {
 			{/*  top section */}
 			<div className='topTable'>
 				{/*  add customers button */}
-				<Button
+				{!xs && <Button
 					variant='primary'
 					LeftIcon={IoIosAddCircle}
 					onClick={() => {
@@ -50,7 +50,7 @@ export default function CustomersGroups() {
 					}}
 				>
 					{t('Add New Group')}
-				</Button>
+				</Button>}
 				{/*  case of small media */}
 				{xs && <AddButtonMobile path='/customers/addGroupCustomer' />}
 				{/*  arrange,... */}

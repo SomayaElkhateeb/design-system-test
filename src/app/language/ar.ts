@@ -1118,4 +1118,6 @@ export const arabic = {
 	'Hide all selected products from showing in store individually':
 		'إخفاء جميع المنتجات المحددة من الظهور في المتجر بشكل فردي',
 	'Add product': 'إضافة منتج',
+	'Date published': 'تاريخ النشر',
+	'Sales Ascending': 'تصاعد المبيعات',
 } satisfies typeof english;

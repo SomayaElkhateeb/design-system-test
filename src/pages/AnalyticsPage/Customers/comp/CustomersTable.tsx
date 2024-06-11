@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';

@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
+import { RxDotsHorizontal } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 import useCustomHookAddStuff, { addStuffInterface } from './HookForAddStuff';
 import Permissions from './Permissions';
 import Stuff from './Stuff';
-import { RxDotsHorizontal } from 'react-icons/rx';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export default function AddStuff() {
 	//  hooks

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import useCustomHookAccordion, { IAccordion } from './HookAccordionItems';
 import { useForm } from 'src/app/utils/hooks/form';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 
@@ -108,6 +108,9 @@ export default function SelectProducts({
 							{t('Add')} ({items.length})
 						</Button>
 					</div>
+
+					{/* show input */}
+					<input />
 				</form>
 			</Form>
 		</GlobalDialog>

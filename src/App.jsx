@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import i18n from './app/language/i18n';
-import { UseLanguage } from './app/components/CustomHook/LanguageHook';
+import { UseLanguage } from './app/utils/hooks/LanguageHook';
 import RootLayout from './pages/RootLayout';
 import { ErrorPage } from './pages';
 import { routes } from './routes';

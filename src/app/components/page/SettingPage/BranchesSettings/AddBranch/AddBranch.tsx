@@ -1,23 +1,25 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import BranchAppointments from './BranchAppointments';
 import BranchInfo from './BranchInfo';
 import useCustomHookAddBranchForm, { BranchSettingsInterface } from './HookForAddBranchForm';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function AddBranch(props: {
 	hideHeader?: boolean;
 	handleSubmit?: (values: BranchSettingsInterface) => void;
 }) {
 	//  hooks
-	const { t } = useTranslation();
+	const [sendGift, setSendGift] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
+
+	const { t } = useTranslation();
 
 	const handleSubmit = (values: BranchSettingsInterface) => {
 		console.log(values);
@@ -25,12 +27,14 @@ export default function AddBranch(props: {
 	};
 
 	// custom hook
-	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(selectedOption);
+	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(sendGift,selectedOption);
 	const { formStore, onSubmit } = useForm({
 		schema: branchSettingsSchema,
-		handleSubmit: props.handleSubmit || handleSubmit,
+		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+
+	console.log(formStore.formState.errors);
 
 	const data = [
 		{
@@ -58,6 +62,8 @@ export default function AddBranch(props: {
 				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
 					<div className='flex-col-top-section-pages md:col-span-2'>
 						<BranchInfo
+							sendGift={sendGift}
+							setSendGift={setSendGift}
 							selectedOption={selectedOption}
 							setSelectedOption={setSelectedOption}
 							formStore={formStore}

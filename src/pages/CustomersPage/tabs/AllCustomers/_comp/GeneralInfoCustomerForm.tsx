@@ -2,12 +2,12 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { CheckBox } from 'src/app/components/optimized';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import SpecificAutoCompleteInput from 'src/app/components/page/discount/Selectors/SpecificAutoCompleteInput';
+import { AddCustomerPageInterface } from 'src/app/components/page/AddCustomer/HookForAddCustomerForm';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import FormChoiceChips from 'src/pages/SettingsPage/CustomizationsSettings/comp/FormChoiceChips';
 
-import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export interface selectItemsInterface {
 	id: string;
 	name: string;
@@ -16,7 +16,7 @@ export interface selectItemsInterface {
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<AddCustomerPageSchemaValues>;
+	formStore: UseFormReturn<AddCustomerPageInterface>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -26,7 +26,7 @@ export default function GeneralInfoCustomerForm({
 			<h2 className='title'>{t('General Info')}</h2>
 
 			<div className='flex-col-top-section-pages md:w-[65%]'>
-				<FormChoiceChips<AddCustomerPageSchemaValues>
+				<FormChoiceChips<AddCustomerPageInterface>
 					formStore={formStore}
 					name='humanType'
 					label='Customer can check out with'
@@ -45,14 +45,14 @@ export default function GeneralInfoCustomerForm({
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 
-				<SpecificAutoCompleteInput<AddCustomerPageSchemaValues>
+				<SpecificAutoCompleteInput<AddCustomerPageInterface>
 					name='groupMeta'
 					label={t('Meta keywords')}
 					formStore={formStore}
 				/>
 				<FormField
 					formStore={formStore}
-					name='PhoneNumber'
+					name='Phone'
 					label={t('Phone Number')}
 					render={(field) => (
 						<CustomPhoneInput

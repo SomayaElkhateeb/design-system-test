@@ -1130,4 +1130,6 @@ export const english = {
 	'Hide all selected products from showing in store individually':
 		'Hide all selected products from showing in store individually',
 	'Add product': 'Add product',
+	'Date published': 'Date published',
+	'Sales Ascending': 'Sales Ascending',
 };

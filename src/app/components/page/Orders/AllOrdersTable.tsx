@@ -1,10 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
-import CustomTableBodyCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableBodyCheckbox';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
@@ -12,10 +11,12 @@ import BaseTable, {
 import { menuType } from '../../optimized/Buttons/ActionsComp';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 // react-icons
-import { CiLocationOn } from 'react-icons/ci';
 import { FaRegEdit } from 'react-icons/fa';
 import { FaArrowsRotate } from 'react-icons/fa6';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowForward } from 'react-icons/io';
+import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
+import { CiLocationOn } from 'react-icons/ci';
+import { IoIosArrowBack } from 'react-icons/io';
 export default function AllOrdersTable({
 	orders,
 	array,

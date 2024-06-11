@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
 import { UseFormReturn } from 'react-hook-form';
-import SpecificAutoCompleteInput from './SpecificAutoCompleteInput';
+import SpecificAutoCompleteInput from '../../../ui/SpecificAutoCompleteInput';
 
 const SpecificGroups = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface> }) => {
 	const { t } = useTranslation();
