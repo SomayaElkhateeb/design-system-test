@@ -4,7 +4,7 @@ import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import { useNavigate } from 'react-router-dom';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-const SubHeader = ({ title, children }: { title: string; children?: React.ReactNode }) => {
+const SubHeader = ({ title, children }: { title: string | null; children?: React.ReactNode }) => {
 	//  hooks
 	const language = UseLanguage();
 	const navigate = useNavigate();
