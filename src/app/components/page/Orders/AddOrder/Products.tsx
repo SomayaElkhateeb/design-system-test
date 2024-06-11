@@ -35,7 +35,7 @@ export default function Products() {
 	});
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5 flex-col-global'>
 				<div>
 					<Button
 						variant='secondary'

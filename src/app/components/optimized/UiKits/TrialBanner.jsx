@@ -79,17 +79,17 @@ export default function TrialBanner({ free, daysLeft, title, description, image 
 						<h2 className='title text-clamp-title leading-8 text-white'>{title}</h2>
 						<p className='paragraph text-[1rem] leading-6 text-inactive'>{description}</p>
 					</div>
-					<div className='flex sm:flex-row flex-col-top-section-pages gap-4'>
+					<div className='flex sm:flex-row flex-col-global gap-4'>
 						<div>
-						<Button variant='primary' onClick={() => console.log('')}>
-							{t('Subscribe now')}
-						</Button>
+							<Button variant='primary' onClick={() => console.log('')}>
+								{t('Subscribe now')}
+							</Button>
 						</div>
-						
+
 						<div>
-						<Button variant='LearnButton' onClick={() => console.log('')}>
-						{t('Learn more')}
-						</Button>
+							<Button variant='LearnButton' onClick={() => console.log('')}>
+								{t('Learn more')}
+							</Button>
 						</div>
 					</div>
 				</div>

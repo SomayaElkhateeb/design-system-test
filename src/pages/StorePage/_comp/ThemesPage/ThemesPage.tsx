@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThemesCard from './ThemesCard';
 
-
 export default function ThemesPage() {
 	const array = [...Array(4)];
 	//  Menus
@@ -19,9 +18,8 @@ export default function ThemesPage() {
 
 	const { selectedOption, handleSelect } = useSelectBox();
 	return (
-		<div className='flex-col-top-section-pages custom_container'>
+		<div className='flex-col-global custom_container'>
 			<TopCustomizeSection />
-			
 
 			{/*  actions buttons */}
 			<div className='flex  items-center gap-[1rem]'>

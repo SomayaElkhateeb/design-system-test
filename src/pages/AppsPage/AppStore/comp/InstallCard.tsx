@@ -23,7 +23,7 @@ export default function InstallCard({ name, imageUrl, url }: AppData) {
 			<div className='grid place-items-center size-[40px] rounded-lg border border-light-2 overflow-hidden'>
 				<img src={getImageUrl(imageUrl)} className='object-cover w-5/6' />
 			</div>
-			<div className='flex-col-top-section-pages gap-2'>
+			<div className='flex-col-global gap-2'>
 				<h2 className='title'>{name}</h2>
 				<Link to={url}>
 					<Button

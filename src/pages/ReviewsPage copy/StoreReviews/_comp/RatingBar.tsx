@@ -15,7 +15,7 @@ const RatingBar: React.FC<RatingBarProps> = ({ ratings }) => {
 	const usedClassName = 'text-subtitle text-[.8rem]';
 	const progressclassName = 'bg-light-2 h-[.7rem] w-[75%] rounded-full';
 	return (
-		<div className='w-full flex-col-top-section-pages'>
+		<div className='w-full flex-col-global'>
 			{ratings.map((rating, index) => (
 				<div className='flex-row-global justify-between' key={rating.id}>
 					<p className={usedClassName}>{rating.value} stars</p>

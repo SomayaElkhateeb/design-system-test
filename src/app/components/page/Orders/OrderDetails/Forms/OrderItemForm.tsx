@@ -28,7 +28,7 @@ export default function OrderItemForm({ onClose }: { onClose: () => void }) {
 	});
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
+			<form onSubmit={onSubmit} className='flex-col-global '>
 				<div className='px-3 flex flex-col gap-3 p-5'>
 					<div>
 						<Button variant='secondary' {...iconProps}>

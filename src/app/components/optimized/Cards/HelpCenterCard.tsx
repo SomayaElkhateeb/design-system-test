@@ -66,8 +66,8 @@ const HelpCenterCard = ({
 			} `}
 			style={{ overflowY: 'auto' }}
 		>
-			<div className='flex-col-top-section-pages h-full justify-between'>
-				<div className='flex-col-top-section-pages gap-4'>
+			<div className='flex-col-global h-full justify-between'>
+				<div className='flex-col-global gap-4'>
 					<div className='flex justify-between items-center'>
 						<h3 className='title'>{t('Help center')}</h3>
 						<IoCloseCircleOutline

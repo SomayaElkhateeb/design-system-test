@@ -4,7 +4,6 @@ import { DiscountsTable, TopSectionDiscountAndCoupons } from 'src/app/components
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import MarketingTableMobile from '../_comp/MarketingTableMobile';
 
-
 const discounts = [
 	{
 		discountName: 'Ramadan campaign',
@@ -27,7 +26,7 @@ const Discounts = () => {
 	const { xs } = useResponsive();
 	return (
 		<div className='custom_container  relative'>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
 				{/* <DiscountsTable discounts={} isLoading={} /> */}
 				{xs && (

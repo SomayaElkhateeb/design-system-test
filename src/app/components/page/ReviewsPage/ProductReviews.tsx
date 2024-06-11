@@ -23,7 +23,7 @@ export const ProductReviews = () => {
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<div className='topTable pb-3'>
 				<Button variant='primary'>{t('publish all')}</Button>
 
@@ -36,7 +36,7 @@ export const ProductReviews = () => {
 				/>
 			</div>
 
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<h5 className='subtitle uppercase'>unpublished (2)</h5>
 				<div className='cardDetails-sharedClass'>
 					<ReviewsCard
@@ -51,7 +51,7 @@ export const ProductReviews = () => {
 				</div>
 			</div>
 
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<h5 className='subtitle uppercase'>published (300)</h5>
 				<div className='cardDetails-sharedClass'>
 					<ReviewsCard

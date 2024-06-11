@@ -42,7 +42,7 @@ export default function CustomerOrderNotifcation() {
 	};
 	return (
 		<div className='global-cards lg:col-span-2'>
-			<div className='flex-col-top-section-pages  gap-0'>
+			<div className='flex-col-global  gap-0'>
 				<h2 className='title'>{t('Customer order notifications')}</h2>
 				<p className='subtitle'>
 					{t(
@@ -50,9 +50,9 @@ export default function CustomerOrderNotifcation() {
 					)}
 				</p>
 			</div>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				{fixedData?.map((el, i) => (
-					<div className='flex-col-top-section-pages' key={el.id}>
+					<div className='flex-col-global' key={el.id}>
 						<div className='flexResponsive'>
 							<div>
 								<h3 className='title text-sm'>{el.title}</h3>

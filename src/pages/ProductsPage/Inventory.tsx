@@ -18,7 +18,7 @@ export default function Inventory() {
 
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages '>
+			<div className='flex-col-global '>
 				{/*  top section */}
 				<TopSectionInventoryTable />
 

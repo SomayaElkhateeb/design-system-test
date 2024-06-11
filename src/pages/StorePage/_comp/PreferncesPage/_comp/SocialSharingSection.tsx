@@ -16,8 +16,8 @@ export default function SocialSharingSection({
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='global-cards flex-col-top-section-pages'>
-			<div className='flex-col-top-section-pages gap-[.25rem]'>
+		<div className='global-cards flex-col-global'>
+			<div className='flex-col-global gap-[.25rem]'>
 				<h3 className='title'>{t('Social sharing image preview')}</h3>
 				<p className='subtitle text-sm'>
 					{t('Customize the way you want your customers to view your website in social media')}

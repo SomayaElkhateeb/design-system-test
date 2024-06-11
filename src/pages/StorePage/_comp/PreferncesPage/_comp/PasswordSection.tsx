@@ -15,8 +15,8 @@ export default function PasswordSection({
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='global-cards flex-col-top-section-pages'>
-			<div className='flex-col-top-section-pages gap-[.25rem]'>
+		<div className='global-cards flex-col-global'>
+			<div className='flex-col-global gap-[.25rem]'>
 				<h3 className='title'>{t('Password protection')}</h3>
 				<p className='subtitle text-sm'>
 					{t('Make your store only available for cutomers who have the password')}

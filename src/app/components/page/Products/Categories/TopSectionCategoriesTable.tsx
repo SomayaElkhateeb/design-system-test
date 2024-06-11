@@ -51,14 +51,16 @@ export default function TopSectionCategoriesTable() {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<div className='topTable'>
 					{/*  left dropdown */}
 
-					{!xs && <Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
-						{t('Add Category')}
-					</Button>}
-					{xs && <AddButtonMobile  onClick={() => setOpenDialog(true)} />}
+					{!xs && (
+						<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
+							{t('Add Category')}
+						</Button>
+					)}
+					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>
 						<ActionsComp

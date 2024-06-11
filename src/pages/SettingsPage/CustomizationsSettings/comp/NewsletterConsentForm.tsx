@@ -10,7 +10,7 @@ export default function NewsletterConsentForm({ formStore }: CustomizationsFormP
 
 	return (
 		<div className='global-cards grid sm:grid-cols-2 grid-cols-1'>
-			<div className='col-span-2 flex-col-top-section-pages  gap-[.3rem]'>
+			<div className='col-span-2 flex-col-global  gap-[.3rem]'>
 				<h2 className='title '>{t('Double opt-in')}</h2>
 				<p className='paragraph'>
 					{t('Ask for customers consent for receiving email or SMS newsletter')}

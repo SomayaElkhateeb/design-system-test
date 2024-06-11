@@ -25,7 +25,7 @@ export default function GeneralInfoCustomerForm({
 		<div className='global-cards gap-[1.3rem]'>
 			<h2 className='title'>{t('General Info')}</h2>
 
-			<div className='flex-col-top-section-pages md:w-[65%]'>
+			<div className='flex-col-global md:w-[65%]'>
 				<FormChoiceChips<AddCustomerPageInterface>
 					formStore={formStore}
 					name='humanType'
@@ -75,7 +75,7 @@ export default function GeneralInfoCustomerForm({
 							/>
 						)}
 					/>
-					<div className='flex-col-top-section-pages gap-[.25rem]'>
+					<div className='flex-col-global gap-[.25rem]'>
 						<h2 className='title text-sm'>{t('Email subscription')}</h2>
 						<p className='subtitle text-sm'>{t('Customer agreed to receive marketing emails')}</p>
 					</div>

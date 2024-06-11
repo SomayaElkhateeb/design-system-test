@@ -39,11 +39,11 @@ export default function AddNavItemDialog({
 	});
 	return (
 		<GlobalDialog openDialog={openDialog} handleClose={handelclose} style={style}>
-			<div className='flex-col-top-section-pages '>
+			<div className='flex-col-global '>
 				<p className='title'>{t('About')}</p>
 				<Form {...formStore}>
-					<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
-						<div className='flex-col-top-section-pages gap-[1rem]'>
+					<form className='flex-col-global gap-[1.7rem]' onSubmit={onSubmit}>
+						<div className='flex-col-global gap-[1rem]'>
 							<FormField
 								formStore={formStore}
 								name='name'
@@ -66,7 +66,7 @@ export default function AddNavItemDialog({
 								{t('cancel')}
 							</Button>
 
-							<Button variant={"primary"} type='submit' className='px-4 font-semibold'>
+							<Button variant={'primary'} type='submit' className='px-4 font-semibold'>
 								{t('Save Changes')}
 							</Button>
 						</div>

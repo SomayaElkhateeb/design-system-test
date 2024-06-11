@@ -12,13 +12,13 @@ export default function RecaptchaEnable({
 	const { t } = useTranslation();
 	return (
 		<div className='global-cards'>
-			<div className='flex-col-top-section-pages gap-[.25rem]'>
+			<div className='flex-col-global gap-[.25rem]'>
 				<h3 className='title'>{t('Spam protection')}</h3>
 				<p className='subtitle text-sm'>{t('Protect your store from people abusing it')}</p>
 			</div>
 
 			{/* <div className='flex md:flex-row items-center  justify-between'>
-				<div className='flex-col-top-section-pages gap-[.25rem]'>
+				<div className='flex-col-global gap-[.25rem]'>
 					<h3 className='title'>{t('Enable Google reCAPTCHA')}</h3>
 					<p className='subtitle text-sm'>{t('on login, create account and password recovery pages and other pages')}</p>
 				</div>

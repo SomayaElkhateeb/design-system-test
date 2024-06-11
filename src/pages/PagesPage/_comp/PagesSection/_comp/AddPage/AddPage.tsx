@@ -66,13 +66,13 @@ export default function AddPage({ addblog }: { addblog?: boolean }) {
 
 	return (
 		<Form {...formStore}>
-			<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
+			<form className='flex-col-global gap-[1.7rem]' onSubmit={onSubmit}>
 				<SubHeader title={!addblog ? t('Add page') : t('Add blog')}>
 					{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 				</SubHeader>
 
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+					<div className='flex-col-global lg:col-span-2'>
 						<MainInfoPage addblog={addblog} formStore={formStore} />
 						<AccordionCard
 							open={open}

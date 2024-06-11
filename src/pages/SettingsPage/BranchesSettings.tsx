@@ -34,7 +34,7 @@ export default function BranchesSettings() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<SubHeader title={t('Branches')}>
 				<Button variant='primary' onClick={() => navigate('add-branch')}>
 					{t('Add Branch')}

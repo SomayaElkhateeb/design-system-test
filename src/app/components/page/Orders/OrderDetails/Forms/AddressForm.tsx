@@ -14,7 +14,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-4'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-4'>
 				<Address
 					details={true}
 					sendGift={sendGift}

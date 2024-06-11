@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
@@ -29,12 +32,12 @@ export default function AddCustomerGroup() {
 	});
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Add New Group')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+					<div className='flex-col-global lg:col-span-2'>
 						<GeneralInfoCustomerGroupInfo formStore={formStore} />
 						<ChooseCustomers formStore={formStore} />
 					</div>

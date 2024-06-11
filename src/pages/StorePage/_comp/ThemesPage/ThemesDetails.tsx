@@ -7,7 +7,7 @@ export default function ThemesDetails() {
 	const { t } = useTranslation();
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<SubHeader title={t('mmm')}>
 					<Button variant='primary' onClick={() => {}}>
 						{t('Apply template')}

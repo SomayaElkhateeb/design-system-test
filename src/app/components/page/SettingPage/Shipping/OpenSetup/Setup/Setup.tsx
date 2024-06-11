@@ -2,7 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import SetupInfo from '../SetupInfo';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function Setup() {
 	const { t } = useTranslation();
@@ -14,7 +17,7 @@ export default function Setup() {
 				<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 			</SubHeader>
 			<div className='grid gap-5 lg:grid-cols-3 custom_container py-5'>
-				<div className='flex-col-top-section-pages lg:col-span-2'>
+				<div className='flex-col-global lg:col-span-2'>
 					<SetupInfo gap={true} rates={true} />
 				</div>
 				<div className='col-span-1'>

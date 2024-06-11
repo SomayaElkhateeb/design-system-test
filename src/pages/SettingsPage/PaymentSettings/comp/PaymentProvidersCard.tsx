@@ -16,7 +16,7 @@ export default function PaymentProvidersCard() {
 		'myFatoorah',
 	];
 	return (
-		<div className='flex-col-top-section-pages justify-between items-start p-5 gap-5 cardDetails-sharedClass h-full'>
+		<div className='flex-col-global justify-between items-start p-5 gap-5 cardDetails-sharedClass h-full'>
 			<div className='grid  gap-5'>
 				<h2 className='title'>{t('Third party payment providers')}</h2>
 				<p className='paragraph'>

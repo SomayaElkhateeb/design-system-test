@@ -11,7 +11,7 @@ export default function Summary() {
 	const divClassname = 'flex items-center justify-between px-[1rem]';
 	const paragraphClassname = 'title font-normal text-[1rem]';
 	return (
-		<div className='cardDetails-sharedClass flex-col-top-section-pages gap-[1rem] py-[1rem]'>
+		<div className='cardDetails-sharedClass flex-col-global gap-[1rem] py-[1rem]'>
 			<h4 className='subtitle px-[1rem]'>{t('Summary')}</h4>
 
 			<div className={divClassname}>
@@ -34,7 +34,7 @@ export default function Summary() {
 			</div>
 			<hr />
 
-			<div className='flex-col-top-section-pages px-[1rem] gap-[.7rem]'>
+			<div className='flex-col-global px-[1rem] gap-[.7rem]'>
 				<ClientBox
 					avatar={<Avatar variant='user' firstName='Samy' size='lg' />}
 					title='Samy Ryan'

@@ -59,12 +59,12 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={coupon ? t('Add Coupon') : t('Add Discount')}>
 					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+					<div className='flex-col-global lg:col-span-2'>
 						<BasicInfo coupon={coupon} formStore={formStore} />
 						<CustomerSegment formStore={formStore} />
 						<MinimumRequirements
@@ -76,7 +76,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 						<ActiveDates />
 					</div>
 					<div className='col-span-1'>
-						<div className='global-cards flex-col-top-section-pages'>
+						<div className='global-cards flex-col-global'>
 							<h3 className='title'>{t('Quick actions')}</h3>
 							<div className='flex gap-[.2rem] items-end'>
 								<FormSwitchField<newDiscountInterface> formStore={formStore} name='active' enable />

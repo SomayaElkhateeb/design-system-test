@@ -45,7 +45,7 @@ const NewCampaign = () => {
 	};
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Add Activity')}>
 					{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 				</SubHeader>

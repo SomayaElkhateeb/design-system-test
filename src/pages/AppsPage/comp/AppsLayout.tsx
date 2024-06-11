@@ -16,7 +16,7 @@ export default function AppsLayout() {
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<div className='sticky top-[70px] z-10 '>
 				<HorizontalTabsLink tabs={tabs} path='/apps' />
 			</div>

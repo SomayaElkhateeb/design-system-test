@@ -7,7 +7,10 @@ import { Form } from 'src/app/components/ui/form';
 import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
 import useBankTransfer from './useBankTransfer';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function ActivateBankTransfer() {
 	//  hooks
@@ -34,7 +37,7 @@ export default function ActivateBankTransfer() {
 	}, []);
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
+			<form onSubmit={onSubmit} className='flex-col-global '>
 				<SubHeader title={t('Activate bank transfer')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>

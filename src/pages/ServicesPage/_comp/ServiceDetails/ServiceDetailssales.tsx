@@ -4,22 +4,22 @@ export default function ServiceDetailsSales() {
 	//  hooks
 	const { t } = useTranslation();
 
-	const parentDivClassName = 'flex-col-top-section-pages gap-[.3rem]';
+	const parentDivClassName = 'flex-col-global gap-[.3rem]';
 	const headerClassName = 'text-[.9rem]  text-title font-bold';
 	const describtionClassName = 'text-[.65rem]  text-title ';
 	return (
 		<div className='global-cards py-[1rem]'>
-			<div className='flex-col-top-section-pages gap-[1rem]'>
-				<div className='flex-col-top-section-pages gap-[.5rem]'>
-					<div className='flex-col-top-section-pages gap-[.3rem] px-[1rem]'>
+			<div className='flex-col-global gap-[1rem]'>
+				<div className='flex-col-global gap-[.5rem]'>
+					<div className='flex-col-global gap-[.3rem] px-[1rem]'>
 						<p className='text-[1.2rem] font-semibold text-title'>Let\'s generate sales</p>
 						<p className='text-[.9rem]  text-title'>SAR 200/ hour</p>
 					</div>
 					<hr />
 
-					<div className='flex-col-top-section-pages gap-[.7rem] px-[1rem]'>
+					<div className='flex-col-global gap-[.7rem] px-[1rem]'>
 						<p className='text-[.9rem]  text-title'>{t('Description')}</p>
-						<div className='flex-col-top-section-pages gap-[1.5rem]'>
+						<div className='flex-col-global gap-[1.5rem]'>
 							<div className={parentDivClassName}>
 								<p className={headerClassName}>Easy checkout</p>
 								<p className={describtionClassName}>

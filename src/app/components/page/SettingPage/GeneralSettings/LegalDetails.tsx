@@ -22,9 +22,9 @@ const LegalDetails = ({
 	const { t } = useTranslation();
 
 	return (
-		<section className='cardDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Legal details')}</h3>
-			<div className='flex-col-top-section-pages gap-[1rem]'>
+			<div className='flex-col-global gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>
 					<SingleChoiceChips
 						options={['individual', 'Business']}
@@ -32,7 +32,7 @@ const LegalDetails = ({
 						setSelected={(option: string) => setState(option)}
 					/>
 				</div>
-				
+
 				<FormField
 					formStore={formStore}
 					name='NationalID'
@@ -41,7 +41,7 @@ const LegalDetails = ({
 				/>
 
 				{state === 'Business' && (
-					<div className='flex-col-top-section-pages gap-[1rem]'>
+					<div className='flex-col-global gap-[1rem]'>
 						<FormField
 							formStore={formStore}
 							name='CommercialRegistrationNo'

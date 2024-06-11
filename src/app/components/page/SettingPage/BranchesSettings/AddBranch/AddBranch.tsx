@@ -27,14 +27,15 @@ export default function AddBranch(props: {
 	};
 
 	// custom hook
-	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(sendGift,selectedOption);
+	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(
+		sendGift,
+		selectedOption,
+	);
 	const { formStore, onSubmit } = useForm({
 		schema: branchSettingsSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
-	
 
 	const data = [
 		{
@@ -53,14 +54,14 @@ export default function AddBranch(props: {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				{!props.hideHeader && (
 					<SubHeader title={t('Add Branch')}>
 						<SubHeaderDefaultBtns onSubmit={onSubmit} />
 					</SubHeader>
 				)}
 				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
-					<div className='flex-col-top-section-pages md:col-span-2'>
+					<div className='flex-col-global md:col-span-2'>
 						<BranchInfo
 							sendGift={sendGift}
 							setSendGift={setSendGift}

@@ -48,7 +48,7 @@ function SlideCard<T>({
 	];
 	return (
 		<div className='global-cards h-full  justify-between '>
-			<div className='flex-col-top-section-pages flex-1'>
+			<div className='flex-col-global flex-1'>
 				<div className='flex justify-between items-center mb-3'>
 					<h2 className='title'>{t(title as any)}</h2>
 					{dropdown && (

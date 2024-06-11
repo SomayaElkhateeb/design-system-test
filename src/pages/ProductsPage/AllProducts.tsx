@@ -94,10 +94,9 @@ export default function AllProducts() {
 
 	const { xs } = useResponsive();
 
-
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages '>
+			<div className='flex-col-global '>
 				{/*  top section */}
 				<TopSection verticalCard={verticalCard} setVerticalCard={setVerticalCard} />
 

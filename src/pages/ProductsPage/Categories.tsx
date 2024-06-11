@@ -17,12 +17,12 @@ export default function Categories() {
 	];
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				{/*  top section */}
 				<TopSectionCategoriesTable />
 
 				{/*  case of small media */}
-				<div className='flex-col-top-section-pages sm:hidden'>
+				<div className='flex-col-global sm:hidden'>
 					{brands?.map((e, i) => (
 						<CustomersComponenet
 							noAvatar
