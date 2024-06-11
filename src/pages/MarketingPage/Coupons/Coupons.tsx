@@ -6,7 +6,8 @@ import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSe
 import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
-import MarketingTableMobile from '../comp/MarketingTableMobile';
+import MarketingTableMobile from '../_comp/MarketingTableMobile';
+
 const couponsData = [
 	{
 		customerName: 'Sam25',
