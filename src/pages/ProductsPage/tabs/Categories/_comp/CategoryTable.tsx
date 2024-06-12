@@ -7,7 +7,7 @@ import BaseTable, {
 import { Switch } from 'src/app/components/ui/switch';
 import { getImageUrl } from 'src/app/utils';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-import { AddFillIcon, DownIcon, MoreIcon, MoveIcon } from 'src/app/utils/icons';
+import { DownIcon, MoveIcon } from 'src/app/utils/icons';
 import { Category } from '../Categories';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
@@ -74,7 +74,6 @@ export const CategoryTable = ({
 						<GlobalTableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<div className='flex gap-4 items-center'>
-									<AddFillIcon className='text-subtitle' />
 									<ThreeDotsButton
 										sortMenus={Menue}
 										selectedOption={selectedOption}

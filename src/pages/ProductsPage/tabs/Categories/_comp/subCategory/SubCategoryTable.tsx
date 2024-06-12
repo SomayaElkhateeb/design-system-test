@@ -16,14 +16,7 @@ import { Switch } from 'src/app/components/ui/switch';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
-import {
-	AnalyticsIcon,
-	CopyIcon,
-	OrdersIcon,
-	RemoveIcon,
-	AddFillIcon,
-	MoveIcon,
-} from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon, MoveIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import { getImageUrl } from 'src/app/utils';
 
@@ -101,7 +94,6 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 				</TableCell>
 				<TableCell align={language === 'ar' ? 'right' : 'left'}>
 					<div className='flex gap-4 items-center'>
-						<AddFillIcon className='text-subtitle' />
 						<ThreeDotsButton
 							sortMenus={Menu}
 							selectedOption={selectedOption}
@@ -137,7 +129,6 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 											</TableCell>
 											<TableCell align='right'>
 												<div className='flex gap-4 items-center justify-end'>
-													<AddFillIcon className='text-subtitle' />
 													<ThreeDotsButton
 														sortMenus={Menu}
 														selectedOption={selectedOption}
@@ -166,7 +157,7 @@ const rows = [
 export default function SubCategoryTable() {
 	const language = UseLanguage();
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
 			<Table aria-label='collapsible table'>
 				<TableHead>
 					<TableRow>
