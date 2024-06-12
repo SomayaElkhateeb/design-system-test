@@ -17,7 +17,7 @@ export const FilterReviews = ({
 
 	return (
 		<FilterSideBar handelClose={HandelCloseDrawer} sideDrawerOpen={openDrawer}>
-			<div className='flex-col-top-section-pages justify-between h-[94vh] '>
+			<div className='flex-col-global justify-between h-[94vh] '>
 				{/*  top section */}
 				<div>
 					<div className='flex-row-global justify-between pb-3'>

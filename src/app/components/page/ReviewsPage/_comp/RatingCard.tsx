@@ -7,7 +7,7 @@ export const RatingCard = ({ noRating }: { noRating?: boolean }) => {
 			<div>
 				<Avatar variant='user' fullName='walied sayed' />
 			</div>
-			<div className='flex-col-top-section-pages gap-1'>
+			<div className='flex-col-global gap-1'>
 				<div className='flex-row-global gap-2'>
 					<h3 className='title'>Walied Sayed</h3>
 					<p className='subtitle text-sm'>5/6/2021</p>
