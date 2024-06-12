@@ -28,6 +28,8 @@ export const english = {
 	'Product type': 'Product type',
 	'Show Results': 'Show Results',
 	'Saved Filters': 'Saved Filters',
+	"Date replied":"Date replied",
+	"Reviews Filters":"Reviews Filters",
 	'Email description': 'Email description',
 	'Send after purchase': 'Send after purchase',
 	Queries: 'Queries',

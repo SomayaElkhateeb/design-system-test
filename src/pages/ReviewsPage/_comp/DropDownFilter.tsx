@@ -1,4 +1,4 @@
-import DropDownMenu from '../../Orders/FilterOrder/DropDownMenu';
+import DropDownMenu from 'src/app/components/optimized/DropDownMenu';
 
 export const DropDownFilter = ({
 	children,

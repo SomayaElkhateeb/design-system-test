@@ -5,9 +5,10 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
-import { BodyCard, Children, HeaderCard, Publish } from './_comp/ChildrenProps';
-import { ReviewsCard } from '..';
-import { FilterReviews } from './_comp/FilterReviews';
+import { BodyCard, Children, HeaderCard, Publish } from '../AskAndQueries/_comp/ChildrenProps';
+
+import { FilterReviews } from '../AskAndQueries/_comp/FilterReviews';
+import { ReviewsCard } from '../AskAndQueries/_comp/ReviewsCard';
 
 export const ProductReviews = () => {
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();

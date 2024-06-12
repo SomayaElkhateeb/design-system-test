@@ -5,6 +5,8 @@ import ReviewCard from './ReviewCard';
 import { useState } from 'react';
 import { getCurrentDate } from 'src/app/utils';
 import { Rating } from '@mui/material';
+import RateValue from 'src/pages/ReviewsPage/_comp/RateValue';
+
 
 const recentData = {
 	reviewer: { firstName: 'John', lastName: 'Doe' },
@@ -33,17 +35,7 @@ const RecentReview = () => {
 			<div className='flex-col-global gap-[1.8rem]'>
 				<div className='w-full flex md:flex-row flex-col justify-between md:items-center space-x-2  space-y-3 '>
 					<div className='md:w-1/3 '>
-						<div className={`text-lg  ${rating > 0 ? 'text-green-500' : 'text-red-500'}`}>
-							{rating > 0 ? (
-								<div className='flex space-x-1 items-center'>
-									<GoArrowUp /> {`${rating}%`}
-								</div>
-							) : (
-								<div className='flex space-x-1 items-center'>
-									<GoArrowDown /> {`${rating}%`}
-								</div>
-							)}
-						</div>
+						<RateValue rating={rating} />
 						<div className='title'>
 							4.0 <span className='subtitle'>(54)</span>
 						</div>
