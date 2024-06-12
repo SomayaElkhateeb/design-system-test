@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid';
 import { useOpenFilterDrawer } from '../../../utils/hooks/CustomHookOpenDrawer';
 import ActionsComp from '../../optimized/Buttons/ActionsComp';
-import FilterOrdersComponent from '../Orders/FilterOrder/FilterOrdersComponent';
 import useSelectBox from '../../optimized/Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
 import { ReviewsCard } from '..';
 import { HeaderAsksAnsQueries, BodyCard, Children, Publish } from './_comp/ChildrenProps';
 import { useState } from 'react';
+import { FilterReviews } from './_comp/FilterReviews';
 
 export const AsksAndQueries = () => {
 	const [reply, setReply] = useState(false);
@@ -39,15 +39,19 @@ export const AsksAndQueries = () => {
 						body={<BodyCard setReply={setReply} submitReply={submitReply} query />}
 						children={<Children setReply={setReply} setSubmitReply={setSubmitReply} query />}
 						publish={<Publish setReply={setReply} query />}
-						// props
 						reply={reply}
 						submitReply={submitReply}
+						noRating
 					/>
 				</div>
 			</div>
 
 			{openDrawer && (
-				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+				<FilterReviews
+					title={t('Q & A Filters ')}
+					openDrawer={openDrawer}
+					HandelCloseDrawer={HandelCloseDrawer}
+				/>
 			)}
 		</div>
 	);

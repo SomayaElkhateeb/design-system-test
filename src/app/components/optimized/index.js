@@ -49,15 +49,15 @@ export { default as Menu } from './Menu/Menu';
 //? Ahmed
 
 export { default as MultiImageUploader } from './MediaUpload/MultiImageUploader';
-export { default as MobileProductViews } from '../../../pages/ProductsPage/_comp/MobileProductViews.tsx';
+export { default as MobileProductViews } from '../../../pages/ProductsPage/_mobile/MobileProductViews.tsx';
 export { default as MultiChoiceChips } from './ChoiceChips/MultiChoiceChips';
-export { default as MobileProductCard } from '../../../pages/ProductsPage/_comp/MobileProductCard.jsx';
+export { default as MobileProductCard } from '../../../pages/ProductsPage/_mobile/MobileProductCard.jsx';
 
 export { default as ProductCategory } from './Category/ProductCategory';
 export { default as ImageUploader } from './MediaUpload/ImageUploader';
 
 export { default as CategoryViews } from './Category/CategoryViews';
-export { default as ProductViews } from '../../../pages/ProductsPage/_comp/ProductViews.jsx';
+export { default as ProductViews } from '../../../pages/ProductsPage/_mobile/ProductViews.jsx';
 export { default as MainUpload } from './MediaUpload/MainUpload';
 export { default as ProductCard } from './Cards/ProductCard.jsx';
 export { default as TrialBanner } from './UiKits/TrialBanner';

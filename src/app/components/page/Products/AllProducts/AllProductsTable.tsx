@@ -1,21 +1,25 @@
-import { TableCell } from '@mui/material';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { TableCell } from '@mui/material';
 import { FaRegEdit } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { IoEyeOutline } from 'react-icons/io5';
+import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { IoIosArrowBack } from 'react-icons/io';
+import { useState } from 'react';
+
+import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
+import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
 import { Product } from 'src/app/interface/ProductInterface';
+
+import { IoEyeOutline } from 'react-icons/io5';
+
+import { StarIcon, StarActiveIcon, CameraIcon, CopyIcon } from 'src/app/utils/icons';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
+import { menuType } from '../../../optimized/Buttons/ActionsComp';
 import { getImageUrl } from 'src/app/utils';
-import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
-import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
-import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
-import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
-import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function AllProductsTable({
