@@ -11,6 +11,7 @@ import { AddFillIcon, DownIcon, MoreIcon, MoveIcon } from 'src/app/utils/icons';
 import { Category } from '../Categories';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import { useNavigate } from 'react-router-dom';
 
 export const CategoryTable = ({
 	categoryData,
@@ -21,6 +22,7 @@ export const CategoryTable = ({
 }) => {
 	//  hooks
 	const language = UseLanguage();
+	const navigate = useNavigate();
 	const { t } = useTranslation();
 	//  headers
 
@@ -79,7 +81,7 @@ export const CategoryTable = ({
 										handelSelect={handleSelect}
 									/>
 								</div>
-								<div>
+								<button onClick={() => navigate(`/products/categories/SubCategories`)}>
 									<DownIcon
 										className={
 											language === 'ar'
@@ -87,7 +89,7 @@ export const CategoryTable = ({
 												: ' text-subtitle -rotate-90 cursor-pointer'
 										}
 									/>
-								</div>
+								</button>
 							</div>
 						</GlobalTableCell>,
 					],

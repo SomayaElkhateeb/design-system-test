@@ -1,12 +1,12 @@
-import { Button, Menu } from 'src/app/components/optimized';
+import { Button } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
 import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import { FaAngleDown, FaRegEdit } from 'react-icons/fa';
+import { FaRegEdit } from 'react-icons/fa';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { FiUploadCloud } from 'react-icons/fi';
-import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { RemoveIcon } from 'src/app/utils/icons';
 import { useState } from 'react';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
@@ -14,7 +14,7 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
 
-export default function TopSectionCategoriesTable() {
+export default function TopSectionCategoriesTable({ title }: { title: string }) {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
@@ -57,7 +57,7 @@ export default function TopSectionCategoriesTable() {
 
 					{!xs && (
 						<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
-							{t('Add Category')}
+							{title}
 						</Button>
 					)}
 					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
