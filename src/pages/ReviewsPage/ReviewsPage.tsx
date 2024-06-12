@@ -2,7 +2,9 @@ import { useTranslation } from 'react-i18next';
 import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
-import { AppReviews, AsksAndQueries, ProductReviews, StoreReviews } from 'src/app/components/page';
+import { ProductReviews } from './tabs/ProductReview/ProductReviews';
+import { AsksAndQueries } from './tabs/AskAndQueries/AsksAndQueries';
+import { StoreReviews } from './tabs/StoreReview/StoreReviews';
 
 const ReviewsPage = () => {
 	const { t } = useTranslation();
@@ -20,7 +22,7 @@ const ReviewsPage = () => {
 						<StoreReviews />
 					</TabPanel>
 					<TabPanel value='4'>
-						<AppReviews />
+						<StoreReviews />
 					</TabPanel>
 				</>
 			}

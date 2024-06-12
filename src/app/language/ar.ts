@@ -14,6 +14,7 @@ export const arabic = {
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 	Addresses:"العناوين",
+	"Reviews Filters":"فلتره التقييمات",
 	"Ratings No.":"عدد التقييمات",
 	"Average":"المتوسط",
 	"Top customer group":"اعلي مجموعه عميل",

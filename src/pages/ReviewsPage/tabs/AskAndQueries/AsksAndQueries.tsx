@@ -1,12 +1,14 @@
 import { nanoid } from 'nanoid';
-import { useOpenFilterDrawer } from '../../../utils/hooks/CustomHookOpenDrawer';
-import ActionsComp from '../../optimized/Buttons/ActionsComp';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
+
 import { useTranslation } from 'react-i18next';
-import { ReviewsCard } from '..';
+
 import { HeaderAsksAnsQueries, BodyCard, Children, Publish } from './_comp/ChildrenProps';
 import { useState } from 'react';
 import { FilterReviews } from './_comp/FilterReviews';
+import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { ReviewsCard } from './_comp/ReviewsCard';
+import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 
 export const AsksAndQueries = () => {
 	const [reply, setReply] = useState(false);
@@ -48,7 +50,7 @@ export const AsksAndQueries = () => {
 
 			{openDrawer && (
 				<FilterReviews
-					title={t('Q & A Filters ')}
+					title={'Q & A Filters'}
 					openDrawer={openDrawer}
 					HandelCloseDrawer={HandelCloseDrawer}
 				/>

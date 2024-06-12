@@ -38,7 +38,6 @@ import VirtualProductPage from './pages/ProductsPage/addNewProduct/Virtual';
 import FoodProductPage from './pages/ProductsPage/addNewProduct/Food';
 import BundleProductPage from './pages/ProductsPage/addNewProduct/Bundle';
 
-import { ProductReviews } from './app/components/page';
 
 import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
 import PagesPage from './pages/PagesPage/PagesPage';
@@ -52,7 +51,7 @@ export const routes = [
 	{ path: '/', element: <HomePage /> },
 	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
-	{ path: '/reviews/ProductReviews', element: <ProductReviews /> },
+	
 
 	// services Routes
 	{ path: '/services', element: <ServicesPage /> },
