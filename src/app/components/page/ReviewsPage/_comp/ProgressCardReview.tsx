@@ -12,7 +12,7 @@ export const ProgressCardReview = () => {
 
 	return (
 		<section className='cardDetails-sharedClass px-5 py-10'>
-			<div className='flex-col-top-section-pages gap-15'>
+			<div className='flex-col-global gap-15'>
 				<div className='flex flex-col gap-4 items-start w-full md:flex-row md:justify-between md:items-start'>
 					<div className='flex flex-col gap-1'>
 						<div className='flex items-end'>

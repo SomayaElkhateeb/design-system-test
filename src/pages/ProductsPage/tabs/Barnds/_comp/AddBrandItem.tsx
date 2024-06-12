@@ -16,7 +16,7 @@ import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
 import { TfiUpload } from 'react-icons/tfi';
-import { AddBrandSchemaValues, addBrandFormSchema } from './AddbrandsFormSchema';
+import { AddBrandSchemaValues, addBrandFormSchema } from '../_hook/AddbrandsFormSchema';
 interface AddBrandItem {
 	brandNameEn: string;
 	brandNameAr: string;

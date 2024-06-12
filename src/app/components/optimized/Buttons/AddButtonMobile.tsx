@@ -19,7 +19,7 @@ export default function AddButtonMobile({ path, onClick,campaigns }: Props) {
 	return (
 		<button
 			onClick={handleClick}
-			className={`flex justify-center items-center size-12 rounded-full bg-primary ${campaigns?'bottom-[-2rem]':'bottom-[-4rem]'}  right-4 absolute`}
+			className={`flex justify-center items-center size-12 rounded-full bg-primary ${campaigns?'bottom-[-1rem]':'bottom-[-4rem]'}  right-4 absolute`}
 		>
 			<AddFillIconWhite className='fill-white w-8 h-8' />
 		</button>

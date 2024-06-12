@@ -10,7 +10,7 @@ import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/i
 import { useState } from 'react';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import PopoverComponenet from 'src/app/components/optimized/Popover/Popover';
+
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
 
@@ -44,16 +44,6 @@ export default function TopSectionCategoriesTable() {
 			icon: <RemoveIcon className='iconClass' />,
 		},
 	];
-	const collapseMenus = [
-		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
-		{
-			id: nanoid(),
-			text: t('Delete category'),
-			icon: <RemoveIcon className='iconClass' />,
-		},
-	];
 	//  close add brand dialog
 	const handleClose = () => {
 		setOpenDialog(false);
@@ -61,7 +51,7 @@ export default function TopSectionCategoriesTable() {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<div className='topTable'>
 					{/*  left dropdown */}
 
@@ -79,22 +69,6 @@ export default function TopSectionCategoriesTable() {
 							selectedOption={selectedOption}
 							handelSelect={handleSelect}
 						/>
-
-						<PopoverComponenet
-							button={
-								<>
-									<Button variant='secondary' LeftIcon={FaAngleDown}>
-										{t('collapse all')}
-									</Button>
-								</>
-							}
-						>
-							<Menu
-								options={collapseMenus}
-								selectedOption={selectedOption}
-								onSelect={handleSelect}
-							/>
-						</PopoverComponenet>
 					</div>
 				</div>
 				<hr />
