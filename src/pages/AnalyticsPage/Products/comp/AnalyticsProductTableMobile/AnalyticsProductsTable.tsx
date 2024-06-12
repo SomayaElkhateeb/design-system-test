@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-
-import BaseTable, { GlobalTableCell } from '../../optimized/TableLayoutGlobal/base.table';
 import { AnalyticsProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 import { getImageUrl } from 'src/app/utils';
+import BaseTable ,{GlobalTableCell} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 
 export default function AnalyticsProductsTable({
 	data,

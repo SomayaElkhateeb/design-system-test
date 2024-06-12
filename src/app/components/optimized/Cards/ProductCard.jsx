@@ -10,9 +10,10 @@ import {
 	CameraIcon,
 	CopyIcon,
 	EditIcon,
+	NextIcon,
 	StarActiveIcon,
 	StarIcon,
-	ViewIcon
+	ViewIcon,
 } from 'src/app/utils/icons';
 import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import ThreeDotsButton from '../Buttons/ThreedotsButton';
@@ -20,14 +21,14 @@ import useSelectBox from '../Menu/useSelectBox';
 
 /**
  * @param {{
- *   id: string;
- *   name: string;
+ *   id?: string;
+ *   name?: string;
  *   imageUrl: string;
- *   category: string;
- *   options: number;
- *   sku: string;
- *   quantity: number;
- *   price: number;
+ *   category?: string;
+ *   options?: number;
+ *   sku?: string;
+ *   quantity?: number;
+ *   price?: number;
  *   array:string[];
  *   setArray:(e:string[])=>void;
  *   settingMenus:import('../Buttons/ActionsComp').menuType[]
@@ -63,7 +64,7 @@ export default function ProductCard(props) {
 
 	const info = {
 		sku: props.sku,
-		quantity: props.quantity > 0 ? props.quantity : t('Out of stock'),
+		quantity: props?.quantity && props?.quantity > 0 ? props.quantity : t('Out of stock'),
 		price: props.price,
 	};
 
