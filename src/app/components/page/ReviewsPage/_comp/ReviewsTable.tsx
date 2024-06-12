@@ -9,7 +9,7 @@ export const ReviewsTable = () => {
 	const { t } = useTranslation();
 	//  headers
 
-	const CouponsHeaders = [
+	const headers = [
 		{ title: t('day') },
 		{ title: t('Ratings No.') },
 		{ title: t('Average') },
@@ -44,7 +44,7 @@ export const ReviewsTable = () => {
 		<BaseTable
 			language={language}
 			color='#55607A'
-			headers={CouponsHeaders.map((h) => h)}
+			headers={headers.map((h) => h)}
 			rows={data?.map((e, i) => {
 				return {
 					item: e,
