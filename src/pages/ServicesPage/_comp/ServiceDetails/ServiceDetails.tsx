@@ -4,7 +4,8 @@ import { getImageUrl } from 'src/app/utils';
 import ServiceDetailsSales from './ServiceDetailssales';
 import ServiceProviderSection from './ServiceProviderSection';
 import { useNavigate } from 'react-router-dom';
-import RecentReview from 'src/pages/ReviewsPage copy/StoreReviews/_comp/RecentReview';
+import RecentReview from 'src/pages/ReviewsPage/tabs/StoreReview/_comp/RecentReview';
+
 
 export default function ServiceDetails() {
 	//  hooks

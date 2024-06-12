@@ -120,7 +120,7 @@ export default function AllProducts() {
 				{/*  case of small media only  */}
 
 				<div className='sm:hidden grid gap-2 '>
-					{allProducts?.map((product) => (
+					{allProducts?.map((product:Product) => (
 						<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />
 					))}
 				</div>

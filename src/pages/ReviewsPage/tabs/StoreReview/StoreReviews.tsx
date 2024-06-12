@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { ChannelChart } from '../../optimized';
-import { ProgressCardReview } from './_comp/ProgressCardReview';
-import CompareButton from '../../optimized/UiKits/CompareButton';
-import useSelectBox from '../../optimized/Menu/useSelectBox';
+
 import { ReviewsTable } from './_comp/ReviewsTable';
 import AnalyticsTableActions from 'src/pages/AnalyticsPage/comp/AnalyticsTableActions';
 import { useState } from 'react';
 import { getImageUrl } from 'src/app/utils';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import DonutGraph , { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
+import RecentReview from './_comp/RecentReview';
+import { DonutCard } from 'src/app/components/optimized';
+import CompareButton from 'src/app/components/optimized/UiKits/CompareButton';
+
 
 export const StoreReviews = () => {
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -31,8 +34,27 @@ export const StoreReviews = () => {
 		{ text: t('Searches Descending') },
 		{ text: t('Searches Ascending') },
 	];
+
+	const chartData: ChartData[] = [
+		{
+			label: 'Detractors',
+			value: 31,
+			color: '#e74c3c',
+		},
+		{
+			label: 'Passives',
+			value: 31,
+			color: '#F97316',
+		},
+		{
+			label: 'Promoters',
+			value: 41,
+			color: '#2ecc71',
+		},
+	];
+
 	return (
-		<div className='custom_container grid grid-cols-1 gap-5'>
+		<div className=' grid grid-cols-1 gap-5'>
 			{/* header */}
 			<div className='flex flex-col gap-2 md:flex-row-global md:justify-between'>
 				<div className='flex-row-global gap-1'>
@@ -54,18 +76,13 @@ export const StoreReviews = () => {
 			</div>
 
 			<div className=' grid grid-cols-1 lg:grid-cols-2 gap-3'>
-				<div className='col-span-1'>
-					<ProgressCardReview />
-				</div>
-				<div className='col-span-1'>
-					<ChannelChart
-						title='net promoter score'
-						percentage='4.75'
-						labels={['Detractors', 'Passives', 'Promoters']}
-						colors={['#e74c3c', '#F97316', '#2ecc71']}
-						series={[44, 55, 41]}
-					/>
-				</div>
+				<RecentReview />
+				<DonutCard
+					title='Net Promoter Score'
+					score={4.75}
+					graph={<DonutGraph chartData={chartData} />}
+					legends={chartData}
+				/>
 			</div>
 			{/* table */}
 			<div>

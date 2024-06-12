@@ -14,7 +14,7 @@ import {
 	VectorQuIcon,
 } from 'src/app/utils/icons';
 import { RiCloseFill } from 'react-icons/ri';
-import useCustomReviewsForm from './HookReviewsPage';
+import useCustomReviewsForm from '../../../_hook/HookReviewsPage';
 import { Textarea } from 'src/app/components/ui/textarea';
 import FormField from 'src/app/components/ui/form/field';
 import { Form } from 'src/app/components/ui/form';
@@ -58,7 +58,7 @@ export const BodyCard = ({
 	published,
 	query,
 }: {
-	setReply: () => void;
+	setReply: (e: boolean) => void;
 	submitReply: boolean;
 	published?: boolean;
 	query?: boolean;
@@ -93,8 +93,8 @@ export const Children = ({
 	setSubmitReply,
 	query,
 }: {
-	setReply: () => void;
-	setSubmitReply: () => void;
+	setReply: (e: boolean) => void;
+	setSubmitReply: (e:boolean) => void;
 	query?: boolean;
 }) => {
 	const handleSubmit = () => {
@@ -145,7 +145,13 @@ export const Children = ({
 	);
 };
 ////////////////////////////////////////////////////////////////////////
-export const Publish = ({ setReply, query }: { setReply: () => void; query?: boolean }) => {
+export const Publish = ({
+	setReply,
+	query,
+}: {
+	setReply: (e: boolean) => void;
+	query?: boolean;
+}) => {
 	return (
 		<div className='p-5 pt-0 flex-col-global gap-4'>
 			<div className='p-3 cardDetails-sharedClass flex items-start justify-between'>

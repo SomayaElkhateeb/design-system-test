@@ -1,6 +1,7 @@
 import { getImageUrl } from 'src/app/utils';
 import { RatingCard } from './RatingCard';
 
+
 export const ReviewsCard = ({
 	header,
 	body,
