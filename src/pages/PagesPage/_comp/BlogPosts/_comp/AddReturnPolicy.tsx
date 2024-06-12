@@ -74,12 +74,12 @@ export default function AddReturnPloicy() {
 	};
 	return (
 		<Form {...formStore}>
-			<form className='flex-col-top-section-pages gap-[1.7rem]' onSubmit={onSubmit}>
+			<form className='flex-col-global gap-[1.7rem]' onSubmit={onSubmit}>
 				<SubHeader title={t('Return policy')}>
 					{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+					<div className='flex-col-global lg:col-span-2'>
 						<div className='global-cards'>
 							<h3 className='title'>{t('Main info')}</h3>
 

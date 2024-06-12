@@ -22,7 +22,7 @@ export default function PrimaryAddressForm({
 	return (
 		<div className='global-cards gap-[1.3rem]'>
 			<h2 className='title'>{t('Add primary address')}</h2>
-			<div className='flex-col-top-section-pages md:w-[65%]'>
+			<div className='flex-col-global md:w-[65%]'>
 				<FormField
 					formStore={formStore}
 					name='fullNameAddress'

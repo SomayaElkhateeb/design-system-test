@@ -65,7 +65,7 @@ export default function PaymentCard() {
 			<form onSubmit={onSubmit} className='global-cards'>
 				<h2 className='title'>{t('Select payment method')}</h2>
 
-				<div className='flex-col-top-section-pages'>
+				<div className='flex-col-global'>
 					{paymentMethods.map((item) => (
 						<PaymentAccordion
 							key={item.id}
@@ -79,7 +79,7 @@ export default function PaymentCard() {
 					))}
 				</div>
 
-				<div className='flex-col-top-section-pages gap-4'>
+				<div className='flex-col-global gap-4'>
 					<CheckBox
 						checked={agreeToTerms}
 						handleOnChange={handleTermsCheckbox}

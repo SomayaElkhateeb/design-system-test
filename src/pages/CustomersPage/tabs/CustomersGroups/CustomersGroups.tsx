@@ -38,19 +38,21 @@ export default function CustomersGroups() {
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			{/*  top section */}
 			<div className='topTable'>
 				{/*  add customers button */}
-				{!xs && <Button
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-					onClick={() => {
-						navigate('/customers/addGroupCustomer');
-					}}
-				>
-					{t('Add New Group')}
-				</Button>}
+				{!xs && (
+					<Button
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+						onClick={() => {
+							navigate('/customers/addGroupCustomer');
+						}}
+					>
+						{t('Add New Group')}
+					</Button>
+				)}
 				{/*  case of small media */}
 				{xs && <AddButtonMobile path='/customers/addGroupCustomer' />}
 				{/*  arrange,... */}

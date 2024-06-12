@@ -20,7 +20,7 @@ const StoreLayout = () => {
 	];
 
 	return (
-		<div className={pathname !== '/store/prefernces' ? 'flex-col-top-section-pages' : ''}>
+		<div className={pathname !== '/store/prefernces' ? 'flex-col-global' : ''}>
 			<div className='Sticky_header'>
 				<HorizontalTabsLink tabs={tabs} path='/store' />
 			</div>

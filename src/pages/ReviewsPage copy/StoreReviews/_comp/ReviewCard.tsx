@@ -24,20 +24,19 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 	// hooks
 	const { t } = useTranslation();
 	return (
-		<div className='flex-col-top-section-pages gap-[.65rem]'>
+		<div className='flex-col-global gap-[.65rem]'>
 			<h3 className='font-semibold text-title text-[.95rem]'>{t('Recent')}</h3>
 
 			<div className='bg-white  overflow-hidden flex p-2 items-center'>
 				<div>
 					<InitialsAvatar
-						
 						firstName={reviewer.firstName}
 						lastName={reviewer.lastName}
 						size={50}
 						randomColor={randomColor}
 					/>
 				</div>
-				<div className='flex-col-top-section-pages gap-[.3rem] w-full mx-3'>
+				<div className='flex-col-global gap-[.3rem] w-full mx-3'>
 					<div className='flex-row-global-items-start gap-[.55rem]'>
 						<h3 className='text-[.8rem] text-title font-semibold'>
 							{reviewer.firstName} {reviewer.lastName}

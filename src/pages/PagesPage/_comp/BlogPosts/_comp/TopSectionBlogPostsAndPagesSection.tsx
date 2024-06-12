@@ -29,13 +29,15 @@ export default function TopSectionBlogPostsAndSection({
 	];
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<div className='topTable'>
 				{/*  left dropdow */}
 
-				{!xs && <Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
-					{addButton}
-				</Button>}
+				{!xs && (
+					<Button onClick={() => navigate(path)} variant='primary' LeftIcon={IoIosAddCircle}>
+						{addButton}
+					</Button>
+				)}
 
 				{/*  actions  arrange,... */}
 				<div className='flex-row-global  gap-[1.2rem]'>

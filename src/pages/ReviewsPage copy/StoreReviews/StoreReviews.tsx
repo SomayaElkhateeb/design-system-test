@@ -34,7 +34,7 @@ const StoreReviews = () => {
 	const { xs } = useResponsive();
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<div className='grid lg:grid-cols-2 sm:grid-cols-1 items-start gap-4'>
 				<RecentReview />
 				<DonutCard

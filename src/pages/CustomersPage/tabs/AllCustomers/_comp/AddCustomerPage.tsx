@@ -41,19 +41,19 @@ const AddCustomerPage: React.FC = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages relative'>
+			<form onSubmit={onSubmit} className='flex-col-global relative'>
 				<SubHeader title={t('Add New Customer')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-					<div className='flex-col-top-section-pages lg:col-span-2'>
+					<div className='flex-col-global lg:col-span-2'>
 						{/* general info section */}
 						<GeneralInfoCustomerForm formStore={formStore} />
 						{/* primary Address section */}
 						<PrimaryAddressForm formStore={formStore} />
 						<div className='global-cards gap-[1.3rem]'>
 							<h2 className='title'>{t('Add primary address')}</h2>
-							<div className='flex-col-top-section-pages md:w-[65%]'>
+							<div className='flex-col-global md:w-[65%]'>
 								<Address
 									customer
 									sendGift={sendGift}

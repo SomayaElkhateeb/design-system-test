@@ -10,7 +10,7 @@ export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormP
 
 	return (
 		<div className='global-cards grid space-1 sm:grid-cols-2 grid-cols-1'>
-			<div className='col-span-2 flex-col-top-section-pages gap-[.5rem]'>
+			<div className='col-span-2 flex-col-global gap-[.5rem]'>
 				<h2 className='title'>{t('Checkout')}</h2>
 				<p className='paragraph'>{t('Customize the way you want your customers to check out')}</p>
 			</div>

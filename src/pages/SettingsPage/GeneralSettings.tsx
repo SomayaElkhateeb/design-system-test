@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import AdminOrLanguageDefaults from 'src/app/components/page/SettingPage/GeneralSettings/AdminOrLanguageDefaults';
 import useCustomHookGeneralForm, {
 	generalSettingsInterface,
@@ -34,11 +37,11 @@ const GeneralSettings = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
+			<form onSubmit={onSubmit} className='flex-col-global '>
 				<SubHeader title={t('General settings')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='flex-col-top-section-pages container mx-auto'>
+				<div className='flex-col-global container mx-auto'>
 					<StoreDetails formStore={formStore} />
 					<Media formStore={formStore} />
 					<SocialContacts formStore={formStore} />

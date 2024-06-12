@@ -28,7 +28,7 @@ export default function ManualPayment() {
 	const { t } = useTranslation();
 	return (
 		<div className='global-cards gap-[1rem]'>
-			<div className='md:max-w-[34rem] flex-col-top-section-pages gap-[.7rem]'>
+			<div className='md:max-w-[34rem] flex-col-global gap-[.7rem]'>
 				<h2 className='title'>{t('Other methods')}</h2>
 				<p className='paragraph'>
 					{t(

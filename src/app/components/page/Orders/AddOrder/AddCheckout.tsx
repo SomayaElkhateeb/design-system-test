@@ -56,8 +56,8 @@ export default function AddCheckout() {
 	]);
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-5 p-3'>
-				<div className='flex-col-top-section-pages gap-5'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-5 p-3'>
+				<div className='flex-col-global gap-5'>
 					{/* purchase*/}
 					<FormChoiceChips<addCheckOutInterface>
 						checkoutForm

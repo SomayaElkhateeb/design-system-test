@@ -9,7 +9,7 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 
 	return (
 		<div className='flex justify-between cardDetails-sharedClass p-5'>
-			<div className='flex-col-top-section-pages gap-2'>
+			<div className='flex-col-global gap-2'>
 				<h2 className='title'>{name}</h2>
 				{isMain && (
 					<span className='bg-borders-lines text-xs text-subtitle p-1.5'>{t('Main')}</span>
@@ -31,7 +31,7 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 						<EditIcon className={iconClassName} />
 					</div>
 				</div>
-				<Button variant='tertiary'  text={t('View Inventory')} LeftIcon={ViewIcon} />
+				<Button variant='tertiary' text={t('View Inventory')} LeftIcon={ViewIcon} />
 			</div>
 		</div>
 	);

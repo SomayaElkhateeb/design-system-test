@@ -43,10 +43,10 @@ export default function OrderStatus({
 					handleClose={onClose}
 					style={{ width: { md: '50%', xs: '70%' } }}
 				>
-					<div className='flex-col-top-section-pages  gap-3'>
+					<div className='flex-col-global  gap-3'>
 						<h3 className='title'>{t('Update order status')}</h3>
 
-						<div className='flex-col-top-section-pages  md:w-[70%]'>
+						<div className='flex-col-global  md:w-[70%]'>
 							<FormField
 								formStore={formStore}
 								name='status'

@@ -7,14 +7,17 @@ import NewsletterConsentForm from './comp/NewsletterConsentForm';
 import OrderInvoiceCustomizeForm from './comp/OrderInvoiceCustomizeForm';
 import ProductCustomizeForm from './comp/ProductCustomizeForm';
 import UseCustomization from './comp/useCustomization';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function CustomizationsSettings() {
 	const { t } = useTranslation();
 	const { formStore, onSubmit } = UseCustomization();
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Customizations')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>

@@ -14,7 +14,7 @@ export default function EmailNotification() {
 	return id ? (
 		<CustomizeNotificationForm />
 	) : (
-		<div className='flex-col-top-section-pages '>
+		<div className='flex-col-global '>
 			<SubHeader title={t('Notifications')} />
 			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 				<CustomerOrderNotifcation />

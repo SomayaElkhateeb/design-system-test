@@ -14,7 +14,7 @@ export const OrderAddress = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-4'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-4'>
 				<Address
 					sendGift={sendGift}
 					setSendGift={setSendGift}

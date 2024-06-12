@@ -27,7 +27,7 @@ export default function TopSectionInventoryTable() {
 	};
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<div className='topTable'>
 				{/*  left select box */}
 

@@ -75,7 +75,7 @@ export default function Smsa() {
 	];
 
 	return (
-		<div className='flex-col-top-section-pages '>
+		<div className='flex-col-global '>
 			{install ? (
 				<HeaderSettings
 					title={t('SMSA')}
@@ -102,7 +102,7 @@ export default function Smsa() {
 				</SubHeader>
 			)}
 			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-				<div className='flex-col-top-section-pages lg:col-span-2'>
+				<div className='flex-col-global lg:col-span-2'>
 					<section className='cardDetails-sharedClass p-5'>
 						<div className='flex gap-3 pb-2'>
 							<img src={getImageUrl('companies/express.svg')} className='w-44' />

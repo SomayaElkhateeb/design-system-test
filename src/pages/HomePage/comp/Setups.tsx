@@ -85,7 +85,7 @@ interface SetupCardsWrapperProps {
 }
 function SetupCardsWrapper({ items }: SetupCardsWrapperProps) {
 	return (
-		<div className='flex-col-top-section-pages lg:flex-row'>
+		<div className='flex-col-global lg:flex-row'>
 			{items.map((item, index) => (
 				<SetupCard key={index} Icon={item.icon} {...item} />
 			))}

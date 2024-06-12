@@ -38,7 +38,7 @@ const Campaigns = () => {
 	const { xs } = useResponsive();
 	return (
 		<>
-			<div className='flex-col-top-section-pages custom_container gap-4 relative'>
+			<div className='flex-col-global custom_container gap-4 relative'>
 				<CampaignStatus />
 
 				<CampaignBtns

@@ -19,7 +19,7 @@ import { menuType } from '../../../optimized/Buttons/ActionsComp';
 import { getImageUrl } from 'src/app/utils';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function AllProductsTable({
@@ -102,7 +102,7 @@ export default function AllProductsTable({
 									<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
 								</div>
 
-								<div className='flex-col-top-section-pages gap-2'>
+								<div className='flex-col-global gap-2'>
 									<p className='title text-sm'>{e.name}</p>
 									<p className='subtitle'>{e.category}</p>
 									<p className='subtitle'>

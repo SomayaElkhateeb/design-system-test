@@ -20,7 +20,7 @@ export const AsksAndQueries = () => {
 		{ id: nanoid(), text: t('Date replied') },
 	];
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<div className='topTable flex-btn-end'>
 				<ActionsComp
 					HandelopenDrawer={HandelopenDrawer}
@@ -31,7 +31,7 @@ export const AsksAndQueries = () => {
 				/>
 			</div>
 
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<h5 className='subtitle uppercase'>not responded (2)</h5>
 				<div className='cardDetails-sharedClass'>
 					<ReviewsCard

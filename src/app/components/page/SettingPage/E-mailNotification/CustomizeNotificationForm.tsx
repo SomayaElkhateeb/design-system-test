@@ -10,7 +10,10 @@ import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookCustomNotificationForm, {
 	addCustomNotificationInterface,
 } from './HookForCustomNotificationForm';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function CustomizeNotificationForm() {
 	//  hooks
 	const { t } = useTranslation();
@@ -44,7 +47,7 @@ export default function CustomizeNotificationForm() {
 	}
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={title}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
@@ -53,7 +56,7 @@ export default function CustomizeNotificationForm() {
 						{/*  form  */}
 						<div className='global-cards'>
 							<h3 className='title'>{t('Main info')}</h3>
-							<div className='flex-col-top-section-pages md:w-[60%]'>
+							<div className='flex-col-global md:w-[60%]'>
 								<TabbedFormField
 									formStore={formStore}
 									keys={[

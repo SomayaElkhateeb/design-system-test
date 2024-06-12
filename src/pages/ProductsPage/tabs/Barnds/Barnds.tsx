@@ -28,7 +28,7 @@ export default function Barnds() {
 
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages '>
+			<div className='flex-col-global '>
 				{/*  top section */}
 				<TopSectionBrandsTable />
 
@@ -36,7 +36,7 @@ export default function Barnds() {
 				<BrandsTable settingMenus={settingMenus} brands={brands} isLoading={isLoading} />
 
 				{/*  case of small media */}
-				<div className='flex-col-top-section-pages sm:hidden'>
+				<div className='flex-col-global sm:hidden'>
 					{brands?.map((e, i) => (
 						<CustomersComponenet
 							noAvatar

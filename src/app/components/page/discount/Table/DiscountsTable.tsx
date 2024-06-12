@@ -11,13 +11,11 @@ import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { Switch } from 'src/app/components/ui/switch';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
-import {
-	deleteDiscount
-} from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 
 export default function DiscountsTable({
 	discounts,

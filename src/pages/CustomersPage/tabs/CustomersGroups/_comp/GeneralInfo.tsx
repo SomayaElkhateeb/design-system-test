@@ -17,7 +17,7 @@ export default function GeneralInfoCustomerGroupInfo({
 	return (
 		<div className='global-cards gap-[1.2rem]'>
 			<h2 className='title'>{t('General Info')}</h2>
-			<div className='flex-col-top-section-pages gap-[1rem]'>
+			<div className='flex-col-global gap-[1rem]'>
 				<FormField
 					formStore={formStore}
 					name='groupName'

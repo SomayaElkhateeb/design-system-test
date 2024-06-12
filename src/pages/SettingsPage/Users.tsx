@@ -9,9 +9,9 @@ export default function Users() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<SubHeader title={t('Users & Permissions')} />
-			<div className='flex-col-top-section-pages custom_container'>
+			<div className='flex-col-global custom_container'>
 				{/*  owner section */}
 				<OwnerAndStaff
 					title={t('Owner')}
@@ -34,7 +34,7 @@ export default function Users() {
 					title={t('Staff')}
 					describtion={t('Add users and define what can they see or do in your store.')}
 				>
-					<div className='flex-col-top-section-pages '>
+					<div className='flex-col-global '>
 						<div className='flexResponsive'>
 							<ClientBox
 								title='Ahmed Seilamn'
@@ -74,7 +74,7 @@ function OwnerAndStaff({
 }) {
 	return (
 		<div className='global-cards gap-2'>
-			<div className='flex-col-top-section-pages gap-0'>
+			<div className='flex-col-global gap-0'>
 				<h2 className='title'>{title}</h2>
 				<p className='text-subtitle text-sm py-3'>{describtion}</p>
 			</div>

@@ -11,7 +11,7 @@ export default function SuccessfullyPurchased() {
 	return (
 		<>
 			<div className='flex-row-global justify-center  h-screen '>
-				<div className='flex-col-top-section-pages  gap-12 md:w-[50%] '>
+				<div className='flex-col-global  gap-12 md:w-[50%] '>
 					{/* card */}
 					<div className=' global-cards gap-[.3rem] w-[24rem] mx-auto relative'>
 						<ClientBox

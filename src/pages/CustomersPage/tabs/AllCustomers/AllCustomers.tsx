@@ -55,7 +55,7 @@ export default function AllCustomers() {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				{/* top section */}
 				<div className='topTable'>
 					{/* add customers button */}

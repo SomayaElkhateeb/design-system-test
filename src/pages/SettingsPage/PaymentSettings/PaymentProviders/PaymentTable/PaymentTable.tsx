@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-import BaseTable from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import BaseTable from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { paymentProvidersData } from '../../../data';
 import PaymentTableRows from './PaymentTableRows';
 

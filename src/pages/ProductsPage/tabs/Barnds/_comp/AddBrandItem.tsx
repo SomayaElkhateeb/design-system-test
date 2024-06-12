@@ -71,7 +71,7 @@ export default function AddBrandItem({
 	return (
 		<GlobalDialog style={style} openDialog={openDialog} handleClose={handleClose}>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+				<form onSubmit={onSubmit} className='flex-col-global'>
 					<Tabs
 						body={
 							<>
@@ -103,7 +103,7 @@ export default function AddBrandItem({
 											)}
 										/>
 										{/*  details */}
-										<div className='flex-col-top-section-pages md:w-[80%] w-full'>
+										<div className='flex-col-global md:w-[80%] w-full'>
 											{/*  name */}
 											<TabbedFormField
 												formStore={formStore}
@@ -135,7 +135,7 @@ export default function AddBrandItem({
 												label={t('Brand description')}
 												renderer={(field) => <Input {...field} />}
 											/>
-											<div className='flex-col-top-section-pages gap-2'>
+											<div className='flex-col-global gap-2'>
 												<p>{t('Availability')}</p>
 												<div className='flex-row-global gap-2'>
 													<FormSwitchField<AddBrandSchemaValues>

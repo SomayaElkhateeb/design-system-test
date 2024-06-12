@@ -147,13 +147,13 @@ export const Children = ({
 ////////////////////////////////////////////////////////////////////////
 export const Publish = ({ setReply, query }: { setReply: () => void; query?: boolean }) => {
 	return (
-		<div className='p-5 pt-0 flex-col-top-section-pages gap-4'>
+		<div className='p-5 pt-0 flex-col-global gap-4'>
 			<div className='p-3 cardDetails-sharedClass flex items-start justify-between'>
 				<div className='flex-row-global gap-2'>
 					<div>
 						<Avatar variant='user' imageUrl={getImageUrl('product/product.png')} />
 					</div>
-					<div className='flex-col-top-section-pages gap-1'>
+					<div className='flex-col-global gap-1'>
 						<div className='flex-row-global gap-2'>
 							<h3 className='title'>Fan Al Taalouq</h3>
 							<p className='subtitle text-sm'>5/6/2021</p>

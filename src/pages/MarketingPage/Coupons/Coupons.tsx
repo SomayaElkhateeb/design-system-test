@@ -39,7 +39,7 @@ const Coupons = () => {
 
 	return (
 		<div className='custom_container relative'>
-			<div className='flex-col-top-section-pages  '>
+			<div className='flex-col-global  '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 				{xs && (

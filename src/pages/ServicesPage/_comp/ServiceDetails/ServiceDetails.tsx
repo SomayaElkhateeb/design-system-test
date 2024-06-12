@@ -11,7 +11,7 @@ export default function ServiceDetails() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	return (
-		<div className='flex-col-top-section-pages mb-[2rem]'>
+		<div className='flex-col-global mb-[2rem]'>
 			{/*  top section */}
 			<div className='flex flex-col'>
 				<SubHeader title={t('Service details')}>
@@ -23,7 +23,7 @@ export default function ServiceDetails() {
 				<img loading='lazy' alt='img' src={getImageUrl('Services/poster.svg')} />
 			</div>
 			<div className='custom_container'>
-				<div className='flex-col-top-section-pages '>
+				<div className='flex-col-global '>
 					{/*  middle section */}
 					<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>
 						<div className='lg:col-span-2'>

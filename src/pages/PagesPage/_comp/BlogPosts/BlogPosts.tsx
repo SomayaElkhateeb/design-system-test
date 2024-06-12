@@ -34,7 +34,7 @@ export default function BlogPosts() {
 		},
 	];
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<TopSectionBlogPostsAndSection addButton={t('Add post')} path='AddBlog' />
 
 			<BlogPostsTable blog={blog} isLoading={isLoading} />

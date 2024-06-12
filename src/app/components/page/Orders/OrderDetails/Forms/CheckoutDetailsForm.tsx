@@ -40,8 +40,8 @@ export default function CheckoutDetailsForm({
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-5'>
-				<div className='flex-col-top-section-pages gap-5'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-5'>
+				<div className='flex-col-global gap-5'>
 					<FormChoiceChips<checkOutDetailsInterface>
 						checkoutForm
 						formStore={formStore}

@@ -120,7 +120,7 @@ const SettingsPage = () => {
 	];
 
 	return (
-		<div className='flex-col-top-section-pages custom_container'>
+		<div className='flex-col-global custom_container'>
 			<TrialBanner
 				free={false}
 				daysLeft={5}
