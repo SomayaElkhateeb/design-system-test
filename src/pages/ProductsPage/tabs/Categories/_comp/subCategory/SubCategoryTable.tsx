@@ -70,6 +70,17 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 		},
 	];
 
+	const SubMenu = [
+		{ id: nanoid(), text: t('Copy product link'), icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Product report'), icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Products'), icon: <OrdersIcon className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: t('Delete product'),
+			icon: <RemoveIcon className='iconClass' />,
+		},
+	];
+
 	return (
 		<React.Fragment>
 			<TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -130,7 +141,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 											<TableCell align='right'>
 												<div className='flex gap-4 items-center justify-end'>
 													<ThreeDotsButton
-														sortMenus={Menu}
+														sortMenus={SubMenu}
 														selectedOption={selectedOption}
 														handelSelect={handleSelect}
 													/>

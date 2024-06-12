@@ -7,7 +7,7 @@ export const SubCategories = () => {
 	const { t } = useTranslation();
 	return (
 		<>
-			<SubHeader title={t('Categories')} />
+			<SubHeader title={t('Subcategories')} />
 			<div className='custom_container pt-5'>
 				<div className='flex-col-global'>
 					{/*  top section */}
