@@ -1,16 +1,17 @@
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { Button, Menu } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
-import { FaRegEdit } from 'react-icons/fa';
-import { FiUploadCloud } from 'react-icons/fi';
 import { IoIosAddCircle } from 'react-icons/io';
-import { SiMicrosoftexcel } from 'react-icons/si';
-import { Button } from 'src/app/components/optimized';
-import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
-import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { FaAngleDown, FaRegEdit } from 'react-icons/fa';
+import { SiMicrosoftexcel } from 'react-icons/si';
+import { FiUploadCloud } from 'react-icons/fi';
+import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { useState } from 'react';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { RemoveIcon } from 'src/app/utils/icons';
+import PopoverComponenet from 'src/app/components/optimized/Popover/Popover';
+import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
 
 export default function TopSectionCategoriesTable() {
@@ -23,23 +24,36 @@ export default function TopSectionCategoriesTable() {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
-		{ id: nanoid(), text: 'Name A to Z' },
-		{ id: nanoid(), text: 'Name Z to A' },
-		{ id: nanoid(), text: 'Date Added' },
-		{ id: nanoid(), text: 'Date modified' },
+		{ id: nanoid(), text: t('Name A to Z') },
+		{ id: nanoid(), text: t('Name Z to A') },
+		{ id: nanoid(), text: t('Date Added') },
+		{ id: nanoid(), text: t('Date modified') },
 	];
 
 	const ActionsMenus = [
-		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
-		{ id: nanoid(), text: 'Export categories', icon: <SiMicrosoftexcel className='iconClass' /> },
-		{ id: nanoid(), text: 'Import categories', icon: <FiUploadCloud className='iconClass' /> },
+		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
 		{
 			id: nanoid(),
-			text: 'Delete all categories',
-			icon: <RemoveIcon className='fill-error' />,
+			text: t('Export categories'),
+			icon: <SiMicrosoftexcel className='iconClass' />,
+		},
+		{ id: nanoid(), text: t('Import categories'), icon: <FiUploadCloud className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: t('Delete all categories'),
+			icon: <RemoveIcon className='iconClass' />,
 		},
 	];
-
+	const collapseMenus = [
+		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: t('Delete category'),
+			icon: <RemoveIcon className='iconClass' />,
+		},
+	];
 	//  close add brand dialog
 	const handleClose = () => {
 		setOpenDialog(false);
@@ -58,13 +72,29 @@ export default function TopSectionCategoriesTable() {
 					)}
 					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 					{/*  actions  arrange,... */}
-					<div className='flex-row-global  gap-[1.2rem]'>
+					<div className='flex-row-global '>
 						<ActionsComp
 							sortMenus={sortMenus}
 							ActionsMenus={ActionsMenus}
 							selectedOption={selectedOption}
 							handelSelect={handleSelect}
 						/>
+
+						<PopoverComponenet
+							button={
+								<>
+									<Button variant='secondary' LeftIcon={FaAngleDown}>
+										{t('collapse all')}
+									</Button>
+								</>
+							}
+						>
+							<Menu
+								options={collapseMenus}
+								selectedOption={selectedOption}
+								onSelect={handleSelect}
+							/>
+						</PopoverComponenet>
 					</div>
 				</div>
 				<hr />
