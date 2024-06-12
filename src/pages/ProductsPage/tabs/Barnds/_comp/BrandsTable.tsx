@@ -5,7 +5,7 @@ import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';

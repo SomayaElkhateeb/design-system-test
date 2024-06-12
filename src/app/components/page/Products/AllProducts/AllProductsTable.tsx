@@ -19,7 +19,7 @@ import { menuType } from '../../../optimized/Buttons/ActionsComp';
 import { getImageUrl } from 'src/app/utils';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function AllProductsTable({

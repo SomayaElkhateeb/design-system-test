@@ -8,7 +8,7 @@ import RenderItems from '../../comp/RenderItems';
 import CreditTransactions from './CreditTransactions';
 import { Button } from 'src/app/components/optimized';
 import { BankBadge, TransactionsBadge } from '../../comp/PaymentBadge';
-import { GlobalTableCell } from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import { GlobalTableCell } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { PaymentProvider } from './utils';
 
 interface CreateTableRowsProps {

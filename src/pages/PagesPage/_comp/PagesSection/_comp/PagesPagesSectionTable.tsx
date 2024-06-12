@@ -9,8 +9,7 @@ import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
-
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 
 export default function PagesPagesTable({
 	pages,

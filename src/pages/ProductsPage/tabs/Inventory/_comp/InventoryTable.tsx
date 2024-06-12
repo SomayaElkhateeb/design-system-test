@@ -11,7 +11,7 @@ import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { products } from '../../AllProducts/AllProducts';
 
 export default function InventoryTable({

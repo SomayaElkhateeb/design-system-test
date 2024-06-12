@@ -12,7 +12,7 @@ import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/ic
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';

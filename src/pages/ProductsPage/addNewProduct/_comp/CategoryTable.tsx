@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import BaseTable, {
-	GlobalTableCell,
-} from 'src/app/components/page/Customers/TableLayoutGlobal/base.table';
+
+import BaseTable , {GlobalTableCell} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+
 import { Switch } from 'src/app/components/ui/switch';
 import { getImageUrl } from 'src/app/utils';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { AddFillIcon, DownIcon, MoreIcon, MoveIcon } from 'src/app/utils/icons';
 
 export const CategoryTable = () => {
