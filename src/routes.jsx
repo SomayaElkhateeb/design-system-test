@@ -45,6 +45,7 @@ import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_
 import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
 import StoreTabs from './pages/StorePage/StoreTabs';
 import StoreConfig from './pages/StorePage/StoreConfig';
+import { SubCategories } from './pages/ProductsPage/tabs/Categories/SubCategories';
 
 // Route Definitions
 export const routes = [
@@ -131,6 +132,11 @@ export const routes = [
 	// '/products/new/bundle'
 	{ path: '/products/new/bundle', element: <BundleProductPage /> },
 
+	// sub categories
+	{
+		path: '/products/categories/SubCategories',
+		element: <SubCategories />,
+	},
 	// Settings Routes
 	{
 		path: '/settings',

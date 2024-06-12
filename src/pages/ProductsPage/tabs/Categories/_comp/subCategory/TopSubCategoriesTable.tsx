@@ -10,17 +10,14 @@ import { RemoveIcon } from 'src/app/utils/icons';
 import { useState } from 'react';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
-import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
+import AddSubCategories from './AddSubCategories';
 
-export default function TopSectionCategoriesTable({ title }: { title: string }) {
+export default function TopSubCategoriesTable() {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 	const [openDialog, setOpenDialog] = useState(false);
-	//  custom hook for select arrang item
-
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
@@ -57,7 +54,7 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 
 					{!xs && (
 						<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
-							{title}
+							{t('Add Subcategory')}
 						</Button>
 					)}
 					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
@@ -74,7 +71,7 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 				<hr />
 			</div>
 
-			{openDialog && <AddBrandItem openDialog={openDialog} handleClose={handleClose} />}
+			{openDialog && <AddSubCategories openDialog={openDialog} handleClose={handleClose} />}
 		</>
 	);
 }

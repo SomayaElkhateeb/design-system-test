@@ -16,12 +16,12 @@ export interface Category {
 }
 
 export default function Categories() {
-	//  hooks 
-	const {t}=useTranslation()
+	//  hooks
+	const { t } = useTranslation();
 	// body
 	const categoryData = [
 		{
-			id: "1",
+			id: '1',
 			img: 'images/product.png',
 			name: 'General Wellness',
 			subtitle: 'lorem ipsum dolor sit amet dolor ...',
@@ -30,7 +30,7 @@ export default function Categories() {
 			active: true,
 		},
 		{
-			id: "2",
+			id: '2',
 			img: 'images/product.png',
 			name: 'General Wellness',
 			subtitle: 'lorem ipsum dolor sit amet dolor ...',
@@ -54,7 +54,7 @@ export default function Categories() {
 		<div className='custom_container'>
 			<div className='flex-col-global'>
 				{/*  top section */}
-				<TopSectionCategoriesTable />
+				<TopSectionCategoriesTable title={t('Add Category')} />
 
 				{/* table */}
 				<CategoryTable Menue={Menue} categoryData={categoryData} />
