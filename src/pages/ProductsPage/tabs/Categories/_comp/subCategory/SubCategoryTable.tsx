@@ -60,12 +60,12 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const Menu = [
-		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Copy subcategory link'), icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Subcategory report'), icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Subcategory products'), icon: <OrdersIcon className='iconClass' /> },
 		{
 			id: nanoid(),
-			text: t('Delete category'),
+			text: t('Delete subcategory'),
 			icon: <RemoveIcon className='iconClass' />,
 		},
 	];
