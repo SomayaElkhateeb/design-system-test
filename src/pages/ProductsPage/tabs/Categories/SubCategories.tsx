@@ -1,18 +1,23 @@
+import { SubHeader } from 'src/app/components/optimized';
 import SubCategoryTable from './_comp/subCategory/SubCategoryTable';
 import TopSubCategoriesTable from './_comp/subCategory/TopSubCategoriesTable';
+import { useTranslation } from 'react-i18next';
 
 export const SubCategories = () => {
+	const { t } = useTranslation();
 	return (
-		<div className='custom_container pt-5'>
-			<div className='flex-col-global'>
-				{/*  top section */}
-				<TopSubCategoriesTable />
+		<>
+			<SubHeader title={t('Categories')} />
+			<div className='custom_container pt-5'>
+				<div className='flex-col-global'>
+					{/*  top section */}
+					<TopSubCategoriesTable />
 
-				{/* table */}
-				<SubCategoryTable />
+					{/* table */}
+					<SubCategoryTable />
 
-				{/*  case of small media */}
-				{/* <div className='flex-col-global sm:hidden'>
+					{/*  case of small media */}
+					{/* <div className='flex-col-global sm:hidden'>
 					{categoryData?.map((e, i) => (
 						<CustomersComponenet
 							noAvatar
@@ -25,8 +30,9 @@ export const SubCategories = () => {
 						/>
 					))}
 				</div> */}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 // Menue={Menue} categoryData={categoryData}
