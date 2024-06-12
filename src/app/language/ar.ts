@@ -13,6 +13,7 @@ export const arabic = {
 	Campaigns: 'الحملات',
 	Services: 'الخدمات',
 	Settings: 'الادوات',
+
 	Addresses:"العناوين",
 	"Reviews Filters":"فلتره التقييمات",
 	"Ratings No.":"عدد التقييمات",
@@ -20,6 +21,7 @@ export const arabic = {
 	"Top customer group":"اعلي مجموعه عميل",
 	"Returns":"Returns",
 	"Install Now":"تنزيل الان",
+
 	'View Inventory': 'عرض المخزون',
 	'Compared to': 'مقارنه ب ',
 	'last Year': 'العام الاخير',
@@ -1145,4 +1147,7 @@ export const arabic = {
 	'products No.': 'رقم المنتجات.',
 	subcategories: 'الفئات الفرعيه',
 	availability: 'المتاح',
+	'Group poster': 'ملصق المجموعة',
+	'Add banner': 'إضافة شعار',
+	'Category name': 'اسم التصنيف',
 } satisfies typeof english;
