@@ -11,13 +11,13 @@ export default function DefaultLanguageSection({
 }) {
 	//  hooks
 	const { t } = useTranslation();
-	const sharedClass = 'flex-col-top-section-pages gap-[.25rem]';
+	const sharedClass = 'flex-col-global gap-[.25rem]';
 
 	const handleLanguageType = (option: string) => {
 		formStore.setValue('defaultLanguage', option);
 	};
 	return (
-		<section className='cardDetails-sharedClass flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem] md:w-[70%] '>
 			<div className={sharedClass}>
 				<h3 className='title'>{t('Languages')}</h3>
 				<p className='subtitle'>

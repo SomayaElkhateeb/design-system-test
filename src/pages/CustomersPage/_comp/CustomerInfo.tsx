@@ -40,22 +40,22 @@ export default function CustomerInfo() {
 		navigate(`/customers/addCustomer?id=${id}`);
 	};
 	return (
-		<div >
-			<div className='gap-[1.6rem] flex-col-top-section-pages'>
+		<div>
+			<div className='gap-[1.6rem] flex-col-global'>
 				{/*  top section */}
 				<HeaderSettings variant='customerInfowithIcons' title={t('Customer Info')}>
 					<div className=' flex  items-center gap-[.8rem] '>
 						{!xs && <FaRegEdit className='cursor-pointer' onClick={handelNavigateEdit} />}
-						{!xs &&<HiOutlineDotsHorizontal className='cursor-pointer' />}
+						{!xs && <HiOutlineDotsHorizontal className='cursor-pointer' />}
 					</div>
 				</HeaderSettings>
 
 				{/*  customer section */}
-				<div className='custom_container gap-[1.6rem] flex-col-top-section-pages'>
+				<div className='custom_container gap-[1.6rem] flex-col-global'>
 					<div className='customer-border  gap-[0.8rem]'>
 						<p className='title px-[1.2rem]'>{t('Customer')}</p>
 						<hr />
-						<div className=' flex-col-top-section-pages gap-[.6rem] px-[1.2rem]'>
+						<div className=' flex-col-global gap-[.6rem] px-[1.2rem]'>
 							{customerData?.map((el, i) => (
 								<CustomerData key={i} data={el.data} icon={el.icon} />
 							))}
@@ -88,7 +88,7 @@ export default function CustomerInfo() {
 									<br />
 									+96841564566
 								</p>
-								<div className='flex-col-top-section-pages items-end gap-[2rem]'>
+								<div className='flex-col-global items-end gap-[2rem]'>
 									<div className='flex-row-global gap-[1.2rem]'>
 										<RiDeleteBin6Line className='cursor-pointer' />
 										<FiEdit className='cursor-pointer' />

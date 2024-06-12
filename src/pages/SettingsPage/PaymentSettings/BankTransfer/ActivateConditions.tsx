@@ -16,7 +16,7 @@ export default function ActivateConditions({ formStore }: PaymentFormProps) {
 				className='col-span-2'
 				description="you\'ll need this If you want this method to activate with certain conditions, otherwise keep defaults"
 			/>
-			<div className='  flex-col-top-section-pages '>
+			<div className='  flex-col-global '>
 				<FormField
 					formStore={formStore}
 					name='price'

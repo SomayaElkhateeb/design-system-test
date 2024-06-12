@@ -28,15 +28,20 @@ export default function AddPayment({
 	// //////////////////////////////////
 	const addPaymentSchema = {
 		name: z.string().min(10),
-		cardNumber:z.coerce.number().positive()
+		cardNumber: z.coerce
+			.number()
+			.positive()
 			.min(14, { message: t('Account number must be at least 14 numbers') })
 			.refine((val) => /^\d{14}$/.test(val.toString())),
 		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
 			message: 'Date must be in the format MM/YYYY',
 		}),
-		cvv: z.coerce.number().positive().refine((val) => /^\d{3}$/.test(val.toString()), {
-			message: t('CVV must be 3 digits'),
-		}),
+		cvv: z.coerce
+			.number()
+			.positive()
+			.refine((val) => /^\d{3}$/.test(val.toString()), {
+				message: t('CVV must be 3 digits'),
+			}),
 	};
 	// /////////////////////
 	const handleSubmit = (values: IAddPayment) => {
@@ -67,7 +72,7 @@ export default function AddPayment({
 	return (
 		<GlobalDialog openDialog={showPayment} handleClose={handleClose} style={style}>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+				<form onSubmit={onSubmit} className='flex-col-global'>
 					<h3 className='title capitalize '>{t('Add payment method')}</h3>
 					<div className='md:w-[60%] flex flex-col gap-4'>
 						<FormField
@@ -84,7 +89,7 @@ export default function AddPayment({
 								<Input type='number' {...field} placeholder='0000 0000 0000 0000' />
 							)}
 						/>
-						<div className='md:flex-row-global-items-start flex-col-top-section-pages  md:justify-between '>
+						<div className='md:flex-row-global-items-start flex-col-global  md:justify-between '>
 							<div className='md:w-[49%]'>
 								<FormField
 									formStore={formStore}

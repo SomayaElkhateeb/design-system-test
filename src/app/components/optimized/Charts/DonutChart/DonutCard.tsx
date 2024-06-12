@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChartData } from './DonutGraph';
-import { GoArrowUp, GoArrowDown } from 'react-icons/go';
+
+import RateValue from 'src/pages/ReviewsPage/_comp/RateValue';
 
 interface ChartLegend {
 	label: string;
@@ -16,25 +17,16 @@ interface DonutCardProps {
 
 const DonutCard: React.FC<DonutCardProps> = ({ title, score, graph, legends }) => {
 	return (
-		<div className='flex flex-col bg-white rounded-lg shadow-sm border p-4'>
-			<div className='flex justify-between items-center pb-4'>
-				<h2 className='text-xl font-bold text-gray-800'>{title}</h2>
-				<span className={`text-lg  ${score > 0 ? 'text-green-500' : 'text-red-500'}`}>
-					{score > 0 ? (
-						<div className='flex space-x-1 items-center'>
-							<GoArrowUp /> {`${score}%`}
-						</div>
-					) : (
-						<div className='flex space-x-1 items-center'>
-							<GoArrowDown /> {`${score}%`}
-						</div>
-					)}
-				</span>
+		<div className='flex flex-col bg-white rounded-lg shadow-sm border p-4 gap-4'>
+			<div className='flex justify-between items-center '>
+				<h2 className='title'>{title}</h2>
+
+				<RateValue rating={score} />
 			</div>
-			<div className='flex flex-col pt-4 space-x-2'>
+			<div className='flex flex-col  space-x-2'>
 				<ChartLegend legends={legends} />
 				<div className='flex items-center justify-center '>
-					<div className='relative'>{graph}</div>
+					<div>{graph}</div>
 				</div>
 			</div>
 		</div>
@@ -47,9 +39,9 @@ interface ChartLegendProps {
 
 const ChartLegend: React.FC<ChartLegendProps> = ({ legends }) => {
 	return (
-		<div className='flex space-x-1 justify-start'>
+		<div className='flex space-x-1 justify-start flex-wrap'>
 			{legends.map((legend, index) => (
-				<div key={index} className='flex items-center space-x-2 border p-1 rounded-md'>
+				<div key={index} className='flex items-center space-x-2 border p-1 rounded-md mt-1'>
 					<div className={`size-4 rounded-full`} style={{ backgroundColor: legend.color }}></div>
 					<p className='text-sm text-gray-500'>{legend.label}</p>
 				</div>

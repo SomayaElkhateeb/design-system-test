@@ -13,7 +13,15 @@ export const arabic = {
 	Campaigns: 'الحملات',
 	Services: 'الخدمات',
 	Settings: 'الادوات',
+
 	Addresses:"العناوين",
+	"Reviews Filters":"فلتره التقييمات",
+	"Ratings No.":"عدد التقييمات",
+	"Average":"المتوسط",
+	"Top customer group":"اعلي مجموعه عميل",
+	"Returns":"Returns",
+	"Install Now":"تنزيل الان",
+
 	'View Inventory': 'عرض المخزون',
 	'Compared to': 'مقارنه ب ',
 	'last Year': 'العام الاخير',
@@ -1123,5 +1131,27 @@ export const arabic = {
 	'Sales Ascending': 'تصاعد المبيعات',
 	'Store Reviews': 'مراجعات المتجر',
 	'App Reviews': 'مراجعات التطبيقات',
+<<<<<<< HEAD
 	'Arabic': 'العربية',
+=======
+	'Name A to Z': 'الاسم من أ الي ي',
+	'Name Z to A': 'الاسم من ي الي أ',
+	'Date modified': 'تعديل التاريخ',
+	'Bulk edit': 'تحرير',
+	'Export categories': 'تصدير الفئات',
+	'Import categories': 'استيراد الفئات',
+	'Delete all categories': 'حذف كل الفئات',
+	'Copy category link': 'نسخ رابط الفئه',
+	'Category report': 'فئه التقرير',
+	'Category products': 'فئه المنتجات',
+	'Delete category': 'حذف الفئة',
+	'collapse all': 'ألغاء الجميع',
+	'name & description': 'الاسم & الوصف',
+	'products No.': 'رقم المنتجات.',
+	subcategories: 'الفئات الفرعيه',
+	availability: 'المتاح',
+	'Group poster': 'ملصق المجموعة',
+	'Add banner': 'إضافة شعار',
+	'Category name': 'اسم التصنيف',
+>>>>>>> c68f9965db092ddf00011d655846ed6b7cd7b8b9
 } satisfies typeof english;

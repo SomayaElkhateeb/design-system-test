@@ -28,7 +28,7 @@ export default function Header({
 		{ id: '4', text: t('Specify date') },
 	];
 	return (
-		<header className='sm:flex-row-global flex-col-top-section-pages justify-between '>
+		<header className='sm:flex-row-global flex-col-global justify-between '>
 			<h2 className='title'>{t(title as any)}</h2>
 			<div className=' flex-row-global gap-4'>
 				{dropdown && (

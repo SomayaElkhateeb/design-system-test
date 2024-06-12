@@ -33,7 +33,7 @@ export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 	});
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3 p-3'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-3 p-3'>
 				<div className='lg:w-[65%] w-full'>
 					<FormField
 						formStore={formStore}

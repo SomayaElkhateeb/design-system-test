@@ -11,7 +11,7 @@ import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { products } from '../../AllProducts/AllProducts';
 
 export default function InventoryTable({
@@ -64,7 +64,7 @@ export default function InventoryTable({
 					elements: [
 						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.4rem] '>
-								<div className='flex-col-top-section-pages gap-[.4rem] items-center'>
+								<div className='flex-col-global gap-[.4rem] items-center'>
 									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 									<button onClick={toggleFavorite}>
 										{isFavorite ? (
@@ -79,7 +79,7 @@ export default function InventoryTable({
 									<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
 								</div>
 
-								<div className='flex-col-top-section-pages gap-2'>
+								<div className='flex-col-global gap-2'>
 									<p className='title text-sm'>{e.name}</p>
 									<p className='subtitle'>{e.category}</p>
 									<p className='subtitle'>

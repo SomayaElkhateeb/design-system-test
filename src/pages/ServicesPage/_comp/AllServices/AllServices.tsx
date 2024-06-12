@@ -29,7 +29,7 @@ export default function AllServices() {
 	//  custom hooks
 	const language = UseLanguage();
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			{/*  actions buttons */}
 			<div className='flex  items-center gap-[1rem]'>
 				<CategoryButton

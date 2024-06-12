@@ -9,7 +9,7 @@ import Wallet from 'src/app/components/page/SettingPage/BillingAndPlans/Wallet';
 export default function BillingAndPlans() {
 	const { t } = useTranslation();
 	return (
-		<section className='flex-col-top-section-pages '>
+		<section className='flex-col-global '>
 			<SubHeader title={t('Billing & plans')} />
 			<div className='custom_container'>
 				<TrialBanner
@@ -19,7 +19,7 @@ export default function BillingAndPlans() {
 				/>
 			</div>
 			<section className='grid gap-5 lg:grid-cols-3 custom_container'>
-				<div className='flex-col-top-section-pages lg:col-span-2'>
+				<div className='flex-col-global lg:col-span-2'>
 					<PaymentMethods />
 					<Plan />
 					<Bills />

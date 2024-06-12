@@ -14,7 +14,7 @@ export default function NavigationSection() {
 
 	const array = [...Array(3)];
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			{!xs && (
 				<div>
 					<Button
@@ -29,7 +29,7 @@ export default function NavigationSection() {
 			{xs && <AddButtonMobile path='AddNavigation' />}
 
 			<hr />
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				{array?.map((e, i) => (
 					<NavigationCard key={i} title='Main menu' sub_title1='About' sub_title2='home' id='1' />
 				))}

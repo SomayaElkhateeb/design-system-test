@@ -9,7 +9,10 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import useCustomHookAddStuff, { addStuffInterface } from './HookForAddStuff';
 import Permissions from './Permissions';
 import Stuff from './Stuff';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export default function AddStuff() {
 	//  hooks
@@ -31,16 +34,15 @@ export default function AddStuff() {
 	});
 
 	const data = [{ id: 1, title: t('Activated') }];
-	
-	
+
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('add staff')}>
-				<SubHeaderDefaultBtns onSubmit={onSubmit} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className=' flex-col-top-section-pages lg:col-span-2'>
+					<div className=' flex-col-global lg:col-span-2'>
 						<Stuff formStore={formStore} />
 						<Permissions formStore={formStore} />
 					</div>

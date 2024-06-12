@@ -56,7 +56,7 @@ export default function TopSectionBrandsTable() {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<div className='topTable'>
 					{/*  left dropdow */}
 
@@ -65,7 +65,7 @@ export default function TopSectionBrandsTable() {
 							{t('Add Brand')}
 						</Button>
 					)}
-					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
+					{xs && <AddButtonMobile campaigns onClick={() => setOpenDialog(true)} />}
 
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>

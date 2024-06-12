@@ -1,36 +1,74 @@
+import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
+
+import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
 import { nanoid } from 'nanoid';
 import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
-import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
-import { brands } from 'src/pages/ProductsPage/tabs/Barnds/_comp/BrandsTable';
-import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
-export default function Categories() {
-	const settingMenus = [
-		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
-		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
-		{ id: nanoid(), text: 'brand products', icon: <OrdersIcon className='fill-subtitle' /> },
+import { useTranslation } from 'react-i18next';
+import { CategoryTable } from './_comp/CategoryTable';
+export interface Category {
+	id: string;
+	img: string;
+	name: string;
+	subtitle: string;
+	products: number;
+	subcategories: number;
+	active: boolean;
+}
 
+export default function Categories() {
+	//  hooks
+	const { t } = useTranslation();
+	// body
+	const categoryData = [
+		{
+			id: '1',
+			img: 'images/product.png',
+			name: 'General Wellness',
+			subtitle: 'lorem ipsum dolor sit amet dolor ...',
+			products: 51,
+			subcategories: 179,
+			active: true,
+		},
+		{
+			id: '2',
+			img: 'images/product.png',
+			name: 'General Wellness',
+			subtitle: 'lorem ipsum dolor sit amet dolor ...',
+			products: 51,
+			subcategories: 179,
+			active: false,
+		},
+	];
+
+	const Menue = [
+		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
 		{
 			id: nanoid(),
-			text: 'Delete brand',
-			icon: <RemoveIcon className='fill-error' />,
+			text: t('Delete category'),
+			icon: <RemoveIcon className='iconClass' />,
 		},
 	];
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				{/*  top section */}
-				<TopSectionCategoriesTable />
+				<TopSectionCategoriesTable title={t('Add Category')} />
+
+				{/* table */}
+				<CategoryTable Menue={Menue} categoryData={categoryData} />
 
 				{/*  case of small media */}
-				<div className='flex-col-top-section-pages sm:hidden'>
-					{brands?.map((e, i) => (
+				<div className='flex-col-global sm:hidden'>
+					{categoryData?.map((e, i) => (
 						<CustomersComponenet
 							noAvatar
 							id={e.id}
-							settingMenus={settingMenus}
+							settingMenus={Menue}
 							key={i}
-							firstName={e.title}
-							email={e.describtion}
+							firstName={e.name}
+							email={e.subtitle}
 							imageUrl={e.img}
 						/>
 					))}

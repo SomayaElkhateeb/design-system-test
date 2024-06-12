@@ -30,8 +30,8 @@ export default function CustomerForm({ handleCustomerForm }: { handleCustomerFor
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-4 '>
-				<div className='flex-col-top-section-pages gap-4'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-4 '>
+				<div className='flex-col-global gap-4'>
 					<FormField
 						formStore={formStore}
 						label={t('Name')}
@@ -60,7 +60,7 @@ export default function CustomerForm({ handleCustomerForm }: { handleCustomerFor
 					<Button onClick={handleCustomerForm} variant='secondary'>
 						{t('Discard')}
 					</Button>
-					<Button  onClick={handleSubmitBtn} variant='primary'>
+					<Button onClick={handleSubmitBtn} variant='primary'>
 						{t('Save')}
 					</Button>
 				</div>

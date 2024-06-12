@@ -200,7 +200,7 @@ export default function AddNewAddressCustomer() {
 	};
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Add new address')}>
 					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 				</SubHeader>

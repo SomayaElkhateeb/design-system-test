@@ -18,8 +18,8 @@ export default function QueriesSectionForm({
 	const { t } = useTranslation();
 	return (
 		<div className='global-cards gap-[1.3rem]'>
-			<div className='flex-col-top-section-pages  gap-[.85rem]'>
-				<div className='flex-col-top-section-pages  gap-[.35rem]'>
+			<div className='flex-col-global  gap-[.85rem]'>
+				<div className='flex-col-global  gap-[.35rem]'>
 					<h2 className='title'>{t('Targeting customer to review')}</h2>
 					<p className='subtitle'>
 						{t('You can send an email for customers who purchased from you to review')}

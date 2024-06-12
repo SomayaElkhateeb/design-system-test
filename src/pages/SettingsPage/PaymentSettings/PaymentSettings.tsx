@@ -8,7 +8,7 @@ export default function PaymentSettings() {
 	const { t } = useTranslation();
 
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<SubHeader title={t('Payment')} />
 			<div className='custom_container grid grid-cols-2 gap-5 '>
 				<div className='col-span-2 lg:col-span-1 '>

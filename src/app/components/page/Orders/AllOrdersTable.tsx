@@ -7,7 +7,7 @@ import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { menuType } from '../../optimized/Buttons/ActionsComp';
 import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 // react-icons

@@ -7,7 +7,10 @@ import { SubHeader, Button } from 'src/app/components/optimized';
 import NewOwner from './NewOwner';
 import { RxDotsHorizontal } from 'react-icons/rx';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 export interface addOwnerInterface {
 	name: string;
@@ -44,13 +47,12 @@ export default function TransferOwnership() {
 		defaultValues: handelDefaultValue(),
 	});
 
-	
 	return (
 		<>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit} className='flex-col-top-section-pages gap-3'>
+				<form onSubmit={onSubmit} className='flex-col-global gap-3'>
 					<SubHeader title={t('Transfer Ownership')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+						<SubHeaderDefaultBtns onSubmit={onSubmit} />
 					</SubHeader>
 					<div className='custom_container '>
 						<NewOwner formStore={formStore} />

@@ -30,14 +30,14 @@ export default function RowOrderItems() {
 	const language = UseLanguage();
 	return data.map((e) => {
 		return (
-			<div key={e.id} className='flex-col-top-section-pages gap-2.5'>
+			<div key={e.id} className='flex-col-global gap-2.5'>
 				<hr />
 				<div className='flex md:flex-row flex-col justify-between px-3'>
 					<div className='md:w-[85%] flex items-center gap-2'>
 						<div className='size-[4.6875rem] rounded-md overflow-hidden'>
 							<img src={getImageUrl('product/product.png')} />
 						</div>
-						<div className='flex-col-top-section-pages gap-1 justify-between h-full'>
+						<div className='flex-col-global gap-1 justify-between h-full'>
 							<h3 className='title text-sm'>
 								{e.text}
 								<span className='text-subtitle font-normal'>

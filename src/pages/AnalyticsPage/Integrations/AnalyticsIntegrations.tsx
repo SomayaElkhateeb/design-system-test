@@ -37,7 +37,6 @@ export default function AnalyticsIntegrations() {
 
 	//   style of dialog
 	const style = {
-	
 		width: { md: '40rem', xs: '25.8rem' },
 	};
 
@@ -61,7 +60,7 @@ export default function AnalyticsIntegrations() {
 
 			<GlobalDialog openDialog={openDialog} handleClose={handelclose} style={style}>
 				<Form {...formStore}>
-					<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+					<form onSubmit={onSubmit} className='flex-col-global'>
 						<p className='title'>Activate Facebook Pixel </p>
 						<FormField
 							formStore={formStore}

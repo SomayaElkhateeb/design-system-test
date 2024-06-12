@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import DropDownMenu from './DropDownMenu';
+import DropDownMenu from '../../../optimized/DropDownMenu';
 import CheckboxWithChild from './CheckboxWithChild';
 import { useState } from 'react';
 export default function CategoryStatusFilter() {
@@ -7,7 +7,7 @@ export default function CategoryStatusFilter() {
 	const { t } = useTranslation();
 	const [filterData, setFilterData] = useState<string[]>([]);
 	const [filterDataWoman, setFilterDataWoman] = useState<string[]>([]);
-	
+
 	return (
 		<DropDownMenu title={t('Category')}>
 			<CheckboxWithChild

@@ -23,8 +23,8 @@ export default function ControlCard({ platform, setOpendialog }: ControlCardProp
 			<div className='size-[60px] grid place-items-center min-w-[60px] rounded-lg border border-light-2 overflow-hidden p-3'>
 				<img src={getImageUrl(imageUrl)} alt={platformName} className='object-cover w-full' />
 			</div>
-			<div className='flex-col-top-section-pages justify-between gap-4'>
-				<div className='flex-col-top-section-pages gap-[.25rem] items-start'>
+			<div className='flex-col-global justify-between gap-4'>
+				<div className='flex-col-global gap-[.25rem] items-start'>
 					<h3 className=' title'>{platformName}</h3>
 					<Button variant='link' RightIcon={LinkIcon}>
 						Learn More

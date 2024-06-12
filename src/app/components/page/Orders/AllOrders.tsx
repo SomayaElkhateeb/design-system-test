@@ -1,4 +1,3 @@
-
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 import AllOrdersTableMobile from './AllOrdersTableMobile';
@@ -63,7 +62,7 @@ export default function AllOrders() {
 
 	return (
 		<div className='custom_container'>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				{/*  top section */}
 				<TopSectionOrdersPage addButton={t('Add Order')} path='/addOrder' />
 
@@ -76,16 +75,12 @@ export default function AllOrders() {
 					orders={orders}
 				/>
 
-			
-
 				{xs && (
 					<>
 						<AllOrdersTableMobile orders={orders} />
 						<AddButtonMobile path='/order/addOrder' />
 					</>
 				)}
-
-
 			</div>
 		</div>
 	);

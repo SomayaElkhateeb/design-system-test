@@ -19,9 +19,9 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 	const { t } = useTranslation();
 
 	return (
-		<section className='global-cards flex-col-top-section-pages p-[1.2rem] md:w-[70%] '>
+		<section className='global-cards flex-col-global p-[1.2rem] md:w-[70%] '>
 			<h3 className='title'>{t('Store details')}</h3>
-			<div className='flex-col-top-section-pages gap-[1rem]'>
+			<div className='flex-col-global gap-[1rem]'>
 				<FormField
 					formStore={formStore}
 					name='storeName'
@@ -39,7 +39,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 					name='storeIndustry'
 					label={t('Store industry')}
 					render={(field) => (
-						<div className='flex-col-top-section-pages gap-[.2rem]'>
+						<div className='flex-col-global gap-[.2rem]'>
 							<Select
 								onValueChange={field.onChange}
 								value={field.value}

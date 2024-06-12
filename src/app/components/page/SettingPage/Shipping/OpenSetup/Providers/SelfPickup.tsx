@@ -3,7 +3,10 @@ import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import Location from '../Comp/Location';
 import SetupInfo from '../SetupInfo';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 const locationData = [
 	{
@@ -36,7 +39,7 @@ export default function SelfPickup() {
 			</SubHeader>
 
 			<div className='grid gap-5 lg:grid-cols-3 custom_container py-5'>
-				<div className='flex-col-top-section-pages lg:col-span-2 gap-0'>
+				<div className='flex-col-global lg:col-span-2 gap-0'>
 					<SetupInfo gap={true} rates={false} ratesDeliver={false} />
 					<div className='cardDetails-sharedClass p-5 flex flex-col gap-3'>
 						<h3 className='title'>{t('Location')}</h3>

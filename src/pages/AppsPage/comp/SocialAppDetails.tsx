@@ -4,7 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-import { Button, LabelIcon } from 'src/app/components/optimized';
+import { Button, LabelIcon, SubHeader } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { BackIcon } from 'src/app/utils/icons';
 import data from './data.json';
@@ -61,17 +61,14 @@ const SocialAppDetails: React.FC = () => {
 	}
 
 	return (
-		<div>
-			<div className='flex justify-between px-4 py-3'>
-				<div className='flex items-center'>
-					<Link to={-1}>{language === 'ar' ? <IoIosArrowForward /> : <BackIcon />}</Link>
-					<h2 className='text-lg font-semibold capitalize text-title'>{name}</h2>
-				</div>
-				<Button onClick={() => navigate(`/marketing/${name}/${name}-setup`)}>
-					{t('Install now')}
+		<div className='flex-col-global'>
+			<SubHeader title={name}>
+				<Button variant='primary' onClick={() => navigate(`/marketing/${name}/${name}-setup`)}>
+					{t('Install Now')}
 				</Button>
-			</div>
+			</SubHeader>
 
+			{/*  poster */}
 			<div
 				style={{
 					backgroundImage: `linear-gradient(313.9deg, ${fColor} -2.74%, ${sColor} 140.56%)`,
@@ -83,7 +80,7 @@ const SocialAppDetails: React.FC = () => {
 						<img src={getImageUrl(image)} alt={name} className='w-[90px] object-cover' />
 					</div>
 					<div className='max-w-[600px] text-white'>
-						<h2 className='mb-3 text-lg font-semibold text-white capitalize'>{name}</h2>
+						<h2 className='title'>{name}</h2>
 						<p className='text-sm font-normal text-white'>{description}</p>
 						<div className='flex'>
 							<LabelIcon
@@ -100,7 +97,7 @@ const SocialAppDetails: React.FC = () => {
 				</div>
 			</div>
 
-			<div className='p-5'>
+			<div className='custom_container'>
 				<FeatureList features={features} />
 				<PosterList posters={posters} />
 			</div>
