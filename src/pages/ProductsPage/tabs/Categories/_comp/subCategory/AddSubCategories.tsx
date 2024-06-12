@@ -40,11 +40,9 @@ export default function AddSubCategories({
 	//  hooks
 	const { t } = useTranslation();
 
-	// /////////////////////
 	const handleSubmit = (values: AddSubCategoriesSchemaValues) => {
 		console.log(values);
 	};
-	// ////////////////////////////
 	const handelDefaultValue = () => {
 		return {
 			categoryNameEn: '',
@@ -60,7 +58,7 @@ export default function AddSubCategories({
 			products: [],
 		};
 	};
-	// //////////////////////////////
+
 	const { formStore, onSubmit } = useForm({
 		schema: addSubCategoriesFormSchema,
 		handleSubmit: handleSubmit,
@@ -82,7 +80,6 @@ export default function AddSubCategories({
 								<TabPanel value='1'>
 									<div className='flex md:flex-row items-start flex-col gap-[2rem]'>
 										<div>
-											{/* group */}
 											<FormField
 												formStore={formStore}
 												name='group'
@@ -93,11 +90,9 @@ export default function AddSubCategories({
 														options={getDefaultFileInputOptions({
 															accept: { 'group/*': [] },
 															setError: (error) => {
-																// console.log('error', error);
 																formStore.setError('group', { message: error.message });
 															},
 															onFileLoad: (params) => {
-																// console.log('params', params);
 																onChange(params.file);
 															},
 														})}
@@ -119,11 +114,9 @@ export default function AddSubCategories({
 														options={getDefaultFileInputOptions({
 															accept: { 'banner/*': [] },
 															setError: (error) => {
-																// console.log('error', error);
 																formStore.setError('banner', { message: error.message });
 															},
 															onFileLoad: (params) => {
-																// console.log('params', params);
 																onChange(params.file);
 															},
 														})}
@@ -135,9 +128,8 @@ export default function AddSubCategories({
 											/>
 										</div>
 										{/* ////////////////////////////////////////////// */}
-										{/*  details */}
+
 										<div className='flex-col-global md:w-[80%] w-full'>
-											{/*  name */}
 											<TabbedFormField
 												formStore={formStore}
 												keys={[
@@ -147,7 +139,7 @@ export default function AddSubCategories({
 												label={t('Category name')}
 												renderer={(field) => <Input {...field} />}
 											/>
-											{/*  Link */}
+
 											<TabbedFormField
 												formStore={formStore}
 												keys={[
@@ -156,9 +148,8 @@ export default function AddSubCategories({
 												]}
 												label={t('Category link (Slug)')}
 												renderer={(field) => <Input {...field} />}
-												// description="www.dookan.net/"
 											/>
-											{/*  brandLink */}
+
 											<TabbedFormField
 												formStore={formStore}
 												keys={[
