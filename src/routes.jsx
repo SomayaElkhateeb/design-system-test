@@ -1,7 +1,7 @@
 import {
 	AddCustomerGroup,
 	AddCustomerPage,
-	AddNewAddresseCustomer,
+	AddNewAddressCustomer,
 	AddOrder,
 	AnalyticsPage,
 	AppsPage,
@@ -18,14 +18,10 @@ import {
 	OrderDetails,
 	OrdersPage,
 	OrdersTabs,
-	
 	ProductsPage,
 	ProductsTabs,
-	
 	ReviewsPage,
-	
 	ServicesPage,
-	
 	SettingsConfig,
 	SettingsPage,
 	SetupConfig,
@@ -33,17 +29,14 @@ import {
 	ShippingConfig,
 	SimpleProductPage,
 	SocialAppDetails,
-	StoreConfig,
 	StorePage,
-	StoreTabs,
-	
 } from 'src/pages';
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
-import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/comp';
-import VirtualProductPage from './pages/ProductsPage/New/Virtual';
-import FoodProductPage from './pages/ProductsPage/New/Food';
-import BundleProductPage from './pages/ProductsPage/New/Bundle';
+import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
+import VirtualProductPage from './pages/ProductsPage/addNewProduct/Virtual';
+import FoodProductPage from './pages/ProductsPage/addNewProduct/Food';
+import BundleProductPage from './pages/ProductsPage/addNewProduct/Bundle';
 
 import { ProductReviews } from './app/components/page';
 
@@ -51,7 +44,8 @@ import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
 import PagesPage from './pages/PagesPage/PagesPage';
 import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
 import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
-
+import StoreTabs from './pages/StorePage/StoreTabs';
+import StoreConfig from './pages/StorePage/StoreConfig';
 
 // Route Definitions
 export const routes = [
@@ -76,7 +70,7 @@ export const routes = [
 	},
 	{
 		path: '/customers/:id/addNewAddresse',
-		element: <AddNewAddresseCustomer />,
+		element: <AddNewAddressCustomer />,
 	},
 	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
 	{ path: '/customers/addGroupCustomer', element: <AddCustomerGroup /> },

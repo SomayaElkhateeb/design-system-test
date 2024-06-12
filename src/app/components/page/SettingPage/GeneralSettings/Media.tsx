@@ -1,10 +1,8 @@
-import { useTranslation } from 'react-i18next';
-
 import { UseFormReturn } from 'react-hook-form';
-import FormField from 'src/app/components/ui/form/field';
-import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
-
+import { useTranslation } from 'react-i18next';
 import { TfiUpload } from 'react-icons/tfi';
+import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
+import FormField from 'src/app/components/ui/form/field';
 import { generalSettingsInterface } from './HookForGeneralForm';
 export const fileClassName =
 	'flex flex-col items-center justify-center gap-2 size-32 cursor-pointer';

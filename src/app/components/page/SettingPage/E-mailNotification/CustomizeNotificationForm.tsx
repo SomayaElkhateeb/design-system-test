@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+
 import { Form } from 'src/app/components/ui/form';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
@@ -10,11 +10,10 @@ import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookCustomNotificationForm, {
 	addCustomNotificationInterface,
 } from './HookForCustomNotificationForm';
-
+import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 export default function CustomizeNotificationForm() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 
 	const handleSubmit = (values: addCustomNotificationInterface) => {
 		console.log(values);
@@ -47,12 +46,7 @@ export default function CustomizeNotificationForm() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
 				<SubHeader title={title}>
-					<Button variant='secondary' onClick={() => navigate(-1)}>
-						{t("Discard")}
-					</Button>
-					<Button variant='primary' onClick={onSubmit}>
-						{t("Save Changes")}
-					</Button>
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className=' lg:col-span-2'>
@@ -85,6 +79,7 @@ export default function CustomizeNotificationForm() {
 						<QuickActions data={data} />
 					</div>
 				</div>
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from '../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { Coupon } from 'src/app/interface/CouponInterface';
 
 import { nanoid } from 'nanoid';

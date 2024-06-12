@@ -1,5 +1,6 @@
-import ProductsLayout from 'src/app/components/page/Products/ProductsLayout';
-import ProductsPageGuard from 'src/app/components/page/Products/ProductsPageGuard';
+import ProductsLayout from "./_comp/ProductsLayout";
+import ProductsPageGuard from "./_comp/ProductsPageGuard";
+
 
 const ProductsPage = () => {
 	return (

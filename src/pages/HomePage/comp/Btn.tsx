@@ -1,4 +1,4 @@
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { Button } from 'src/app/components/optimized';
 import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
 import { DownIcon } from 'src/app/utils/icons';

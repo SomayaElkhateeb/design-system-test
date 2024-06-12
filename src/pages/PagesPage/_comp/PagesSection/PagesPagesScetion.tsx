@@ -1,19 +1,14 @@
-import { useTranslation } from 'react-i18next';
-
-import { getImageUrl } from 'src/app/utils';
-import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
-import BlogPostsTable from '../BlogPosts/_comp/BlogPostsTable';
-import TopSectionBlogPostsAndSection from '../BlogPosts/_comp/TopSectionBlogPostsAndPagesSection';
-import PagesPagesTable from './PagesPagesSectionTable';
-import LegalPagesSection from './LegalPagesSection';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getPagesTable } from 'src/app/store/slices/pagesPage/pages/pagesTableAsyncThunks';
-
-import useResponsive from 'src/app/utils/hooks/useResponsive';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
-import PagesTableMobile from './PagesTableMobile';
+import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
+import { getPagesTable } from 'src/app/store/slices/pagesPage/pages/pagesTableAsyncThunks';
+import { getImageUrl } from 'src/app/utils';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import TopSectionBlogPostsAndSection from '../BlogPosts/_comp/TopSectionBlogPostsAndPagesSection';
+import LegalPagesSection from './_comp/LegalPagesSection';
+import PagesTableMobile from './_comp/PagesTableMobile';
 
 export default function PagesPagesSection() {
 	//  hooks
@@ -54,7 +49,6 @@ export default function PagesPagesSection() {
 			</div>
 
 			{xs && <PagesTableMobile data={data} />}
-
 		</div>
 	);
 }

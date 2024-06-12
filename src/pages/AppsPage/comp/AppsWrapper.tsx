@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { NextIcon } from 'src/app/utils/icons';
 import { AppsWrapperProps } from './useAppStore';
 
@@ -51,7 +51,7 @@ export default function AppsWrapper({
 					<button className='text-sm font-semibold text-title' onClick={onButtonClick}>
 						{t('View All')}
 					</button>
-						<NextIcon className={`fill-pri-dark ${language === 'ar' ? "rotate-180" : ""}`} />
+					<NextIcon className={`fill-pri-dark ${language === 'ar' ? 'rotate-180' : ''}`} />
 				</div>
 			</div>
 			<div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>

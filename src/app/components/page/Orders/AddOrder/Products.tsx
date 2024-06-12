@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import SelectTable from './Comp/SelectTable';
 import { useState } from 'react';
 import SelectProducts from './Comp/SelectProducts';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 export interface IQuantity {
 	quantity: number;
 }

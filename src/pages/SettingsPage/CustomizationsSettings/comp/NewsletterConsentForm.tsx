@@ -1,12 +1,10 @@
 import { useTranslation } from 'react-i18next';
-
-import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
-
-import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { MultiChoiceChips } from 'src/app/components/optimized';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
+import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
-import FormSwitchField from '../../../../app/components/ui/form/FormSwitchField';
-import FormChoiceChips from '../../../../app/components/ui/form/FormChoiceChips';
+import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
 export default function NewsletterConsentForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();
 

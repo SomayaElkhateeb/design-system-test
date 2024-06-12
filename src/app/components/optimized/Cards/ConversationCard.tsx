@@ -2,7 +2,7 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import { ClientBox, InputRow } from '..';
 import { MoreIcon, VectorIcon } from 'src/app/utils/icons';
-import { UseLanguage } from '../../CustomHook/LanguageHook';
+import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import Avatar from '../UiKits/Avatar';
 const ConversationCard = ({ onClose, showChat }: { onClose: () => void; showChat: boolean }) => {
 	const language = UseLanguage();

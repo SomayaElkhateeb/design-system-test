@@ -1,17 +1,12 @@
 import { useTranslation } from 'react-i18next';
-
 import { TableCell } from '@mui/material';
-
 import { FaRegEdit } from 'react-icons/fa';
-
 import { IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-
 import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from 'react';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+
 import CustomTableHeaderCheckbox from '../../../ui/form/CustomTableHeaderChckbox';
-import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from '../../../ui/form/CustomTableBodyChckbox';
 import { Product } from 'src/app/interface/ProductInterface';
 
@@ -22,6 +17,10 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from '../../../optimized/Buttons/ThreedotsButton';
 import { menuType } from '../../../optimized/Buttons/ActionsComp';
 import { getImageUrl } from 'src/app/utils';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
 export default function AllProductsTable({
 	products,

@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
-
-import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
+import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import FormSwitchField from '../../../../app/components/ui/form/FormSwitchField';
-import FormChoiceChips from '../../../../app/components/ui/form/FormChoiceChips';
+import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
 
 export default function CheckoutCustomizeForm({ formStore }: CustomizationsFormProps) {
 	const { t } = useTranslation();

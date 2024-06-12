@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 
-import BaseTable, { GlobalTableCell } from '../Customers/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from '../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { AnalyticsProduct } from 'src/pages/AnalyticsPage/Products/AnalyticsProducts';
 import { getImageUrl } from 'src/app/utils';
 
