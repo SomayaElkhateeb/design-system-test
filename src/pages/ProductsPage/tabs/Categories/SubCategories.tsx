@@ -1,15 +1,12 @@
-import { useTranslation } from 'react-i18next';
-import SubCategoryTable from './_comp/SubCategoryTable';
-import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
+import SubCategoryTable from './_comp/subCategory/SubCategoryTable';
+import TopSubCategoriesTable from './_comp/subCategory/TopSubCategoriesTable';
 
 export const SubCategories = () => {
-	const { t } = useTranslation();
-
 	return (
 		<div className='custom_container pt-5'>
 			<div className='flex-col-global'>
 				{/*  top section */}
-				<TopSectionCategoriesTable title={t('Add Subcategory')} />
+				<TopSubCategoriesTable />
 
 				{/* table */}
 				<SubCategoryTable />
