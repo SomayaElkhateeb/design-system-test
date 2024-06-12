@@ -1123,4 +1123,5 @@ export const arabic = {
 	'Sales Ascending': 'تصاعد المبيعات',
 	'Store Reviews': 'مراجعات المتجر',
 	'App Reviews': 'مراجعات التطبيقات',
+	'Arabic': 'العربية',
 } satisfies typeof english;

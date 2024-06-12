@@ -2,10 +2,12 @@ import { useState } from 'react';
 import Steps from 'src/app/components/optimized/UiKits/Steps';
 import StepOne from '../steps/StepOne';
 import StepTwo from '../steps/StepTwo';
-import AuthImage from 'src/pages/AuthPage/_comp/AuthImage';
+import { Button } from 'src/app/components/optimized';
+import { FacebookIcon, GoogleIcon } from 'src/app/utils/icons';
+import { Link } from 'react-router-dom';
 
 const AboutYourself = () => {
-	const [login, setLogin] = useState(false);
+	const [login, setLogin] = useState<boolean>(false);
 	return <div>{!login ? <LoginStep setLogin={setLogin} /> : <CreateStore />}</div>;
 };
 
@@ -46,45 +48,23 @@ const CreateStore = () => {
 	);
 };
 
-const LoginStep = ({ setLogin }) => {
+const LoginStep = ({ setLogin }: { setLogin: (value: boolean) => void }) => {
+	const handleEmailLogin = () => setLogin(true);
 	return (
-		<section className='flex flex-col lg:flex-row justify-between w-full items-center py-12 space-y-16 lg:space-y-0 lg:space-x-8'>
-			<div className='flex flex-col bg-gray-100 p-4 py-8 w-full lg:w-2/5 items-center'>
-				<button
-					className='w-full max-w-xs py-2 mb-4 text-white bg-primary rounded-md'
-					onClick={() => setLogin(true)}
-				>
-					Continue With Email
-				</button>
-				<div className='flex items-center w-full max-w-xs my-4'>
-					<div className='flex-grow border-t border-gray-300'></div>
-					<span className='mx-2 text-gray-500'>OR</span>
-					<div className='flex-grow border-t border-gray-300'></div>
-				</div>
-				<button className='flex items-center w-full max-w-xs px-4 py-2 mb-4 text-gray-700 bg-white border border-gray-300 rounded-md'>
-					<img
-						src='https://www.google.com/images/icons/product/search-32.gif'
-						alt='Google Icon'
-						className='w-5 h-5 me-2'
-					/>
-					Continue with Google
-				</button>
-				<button className='flex items-center w-full max-w-xs px-4 py-2 mb-4 text-gray-700 bg-white border border-gray-300 rounded-md'>
-					<img
-						src='https://www.facebook.com/images/fb_icon_325x325.png'
-						alt='Facebook Icon'
-						className='w-5 h-5 me-2'
-					/>
-					Continue with Facebook
-				</button>
-				<div className='text-gray-700'>
-					Already have an account?{' '}
-					<a href='login' className='text-blue-600'>
-						Sign In
-					</a>
-				</div>
-			</div>
-			<AuthImage path='images/register_1.svg' />
+		<section className='grid w-full gap-5 grid-cols-1'>
+			<Button variant={'primary'} onClick={handleEmailLogin} text='Continue With Email' />
+			<span className='relative flex items-center justify-center h-10'>
+				<span className='absolute left-[15%] w-[70%] h-px bg-borders-lines'></span>
+				<span className='relative px-5 bg-white paragraph text-subtitle'>OR</span>
+			</span>
+			<Button variant={'secondary'} text='Continue with Google' LeftIcon={GoogleIcon} />
+			<Button variant={'secondary'} text='continue with Facebook' LeftIcon={FacebookIcon} />
+			<p className='paragraph text-subtitle flex justify-center'>
+				Already have an account?&nbsp;
+				<Link to='/login' className='text-primary font-semibold'>
+					Sign In
+				</Link>
+			</p>
 		</section>
 	);
 };

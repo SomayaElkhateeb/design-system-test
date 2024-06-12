@@ -1,32 +1,12 @@
 import AboutYourBusiness from './_comp/tabs/AboutYourBusiness';
 import AboutYourself from './_comp/tabs/AboutYourself';
-import { useState } from 'react';
 import AuthHeader from '../_comp/AuthHeader';
-import { TabX } from 'src/app/components/optimized';
+import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+import { useTranslation } from 'react-i18next';
+import AuthImage from '../_comp/AuthImage';
 
-const RegistrationPage = () => {
-	const [currentTab, setCurrentTab] = useState(0);
-	const [reviewStatus, setReviewStatus] = useState(false);
-
-	const handleTabClick = (index: number) => {
-		setCurrentTab(index);
-	};
-
-	const handleNext = () => {
-		if (currentTab < tabs.length - 1) {
-			setCurrentTab(currentTab + 1);
-		}
-	};
-
-	const handlePrev = () => {
-		if (currentTab > 0) {
-			setCurrentTab(currentTab - 1);
-		}
-	};
-	const handleFinish = (status) => {
-		setReviewStatus(status);
-		alert(status);
-	};
+export default function RegistrationPage() {
+	const { t } = useTranslation();
 
 	const tabs = [
 		{ title: 'Tell us about yourself', content: <AboutYourself /> },
@@ -34,20 +14,24 @@ const RegistrationPage = () => {
 	];
 
 	return (
-		<section className='flex flex-col space-x-4 w-full py-12 space-y-16 bg-white m-auto items-center'>
+		<section className='flex flex-col container h-screen bg-white'>
 			<AuthHeader />
-			<div className='w-full md:w-4/5 p-3'>
-				<TabX
-					tabs={tabs}
-					currentTab={currentTab}
-					handleNext={handleNext}
-					handlePrev={handlePrev}
-					handleFinish={handleFinish}
-					handleTabClick={handleTabClick}
-				/>
-			</div>
+			<section className='flex items-center justify-between flex-1'>
+				<div className='grid gap-7'>
+					<h2 className='title text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
+					<StepNavigator steps={tabs} />
+				</div>
+				<div className=''>
+					<AuthImage path='images/register_1.svg' />
+				</div>
+			</section>
 		</section>
 	);
-};
+}
 
-export default RegistrationPage;
+// const [reviewStatus, setReviewStatus] = useState(false);
+// };
+// const handleFinish = (status) => {
+// 	setReviewStatus(status);
+// 	alert(status);
+// };

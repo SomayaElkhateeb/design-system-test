@@ -1,7 +1,9 @@
 import { getImageUrl } from 'src/app/utils';
-import { MoreIcon } from 'src/app/utils/icons';
+import MoreAction from '../../_comp/MoreAction';
+import { Link } from 'react-router-dom';
 
 interface Campaign {
+	id: string;
 	name: string;
 	status: string;
 	imageUrl?: string;
@@ -10,23 +12,30 @@ interface Campaign {
 interface CampaignsTableProps {
 	campaigns: Campaign[];
 	actions?: boolean;
+	searchParams?: string;
 }
 interface CampaignItemProps {
 	campaign: Campaign;
 	actions?: boolean;
+	searchParams?: string;
 }
 
-export default function CampaignsTableMobile({ campaigns, actions = false }: CampaignsTableProps) {
+export default function CampaignsTableMobile({
+	campaigns,
+	actions = false,
+	searchParams,
+}: CampaignsTableProps) {
 	return (
 		<div className='divide-y bg-white'>
 			{campaigns.map((campaign, index) => (
-				<CampaignItem key={index} campaign={campaign} actions={actions} />
+				<CampaignItem key={index} campaign={campaign} actions={actions} searchParams={searchParams} />
 			))}
 		</div>
 	);
 }
 
-function CampaignItem({ campaign, actions }: CampaignItemProps) {
+function CampaignItem({ campaign, actions, searchParams }: CampaignItemProps) {
+	const linkPath = searchParams ? `?${searchParams}=${campaign.id}` : campaign.id;
 	return (
 		<div className='flex items-center justify-between p-1.5'>
 			<section className='flex gap-1'>
@@ -36,15 +45,13 @@ function CampaignItem({ campaign, actions }: CampaignItemProps) {
 					</div>
 				)}
 				<div className='grid gap-0.5'>
-					<h2 className='text-lg font-semibold'>{campaign.name}</h2>
+					<Link to={linkPath}>
+						<h2 className='title'>{campaign.name}</h2>
+					</Link>
 					<StatusBadge status={campaign.status} />
 				</div>
 			</section>
-			{actions && (
-				<button>
-					<MoreIcon className='fill-subtitle' />
-				</button>
-			)}
+			{actions && <MoreAction onClick={() => console.log('Delete')} />}
 		</div>
 	);
 }

@@ -21,7 +21,7 @@ export function useHomePage() {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setShowLoading(false);
-		}, 1500);
+		}, 50);
 		return () => clearTimeout(timer);
 	}, []);
 

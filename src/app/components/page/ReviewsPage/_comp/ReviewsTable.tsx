@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/components/CustomHook/LanguageHook';
-import BaseTable, { GlobalTableCell } from '../../Customers/TableLayoutGlobal/base.table';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import BaseTable , { GlobalTableCell } from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { GoStarFill } from 'react-icons/go';
 
 export const ReviewsTable = () => {

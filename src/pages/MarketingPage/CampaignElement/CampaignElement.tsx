@@ -8,13 +8,34 @@ import CampaignElementTable from '../Campaigns/CampaignElementTable';
 import CampaignInfoCard from '../Campaigns/CampaignInfoCard';
 import CampaignStatus from '../Campaigns/CampaignStatus';
 import { campaindata } from '../Campaigns/Campaigns';
-
+import CampaignsTableMobile from '../Campaigns/comp/CampaignsTableMobile';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+const campaignsData = [
+	{
+		id: '1',
+		name: 'Summer campaign 1',
+		status: 'running',
+		imageUrl: 'social/facebook.svg',
+	},
+	{
+		id: '2',
+		name: 'Summer campaign 2',
+		status: 'ended',
+		imageUrl: 'social/facebook.svg',
+	},
+	{
+		id: '3',
+		name: 'Summer campaign 3',
+		status: 'in review',
+		imageUrl: 'social/facebook.svg',
+	},
+];
 export default function CampaignElement() {
 	//  hooks
 	const { t } = useTranslation();
 	const [searchParams] = useSearchParams();
 	const activity = searchParams.get('activityId');
-
+	const { xs } = useResponsive();
 	// Print ref to handle table print.
 	const campaignTableRef: RefObject<HTMLElement | undefined> = useRef();
 
@@ -42,7 +63,12 @@ export default function CampaignElement() {
 				/>
 			)}
 
-			{!activity && <CampaignElementTable sortBy={selectedOption} ref={campaignTableRef} />}
+			{!activity && (
+				<>
+					<CampaignElementTable sortBy={selectedOption} ref={campaignTableRef} />
+					{xs && <CampaignsTableMobile campaigns={campaignsData} searchParams={'activityId'} />}
+				</>
+			)}
 
 			{activity && (
 				<StackedColumnChart

@@ -214,8 +214,8 @@ export function ProductsIcon(props: IconProps) {
 			/>{' '}
 		</svg>
 	);
-}
 
+}
 export function AppsIcon(props: IconProps) {
 	return (
 		<svg

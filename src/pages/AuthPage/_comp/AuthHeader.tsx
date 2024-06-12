@@ -1,15 +1,18 @@
-import { getImageUrl } from "src/app/utils";
-import { useTranslation } from 'react-i18next';
+import { getImageUrl } from 'src/app/utils';
+import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
 
-const AuthHeader = () => {
-	const { t } = useTranslation();
-
+export default function AuthHeader() {
+	// const { currentLanguage, toggleLanguage } = useLangDirection();
+	const { toggleLanguage, currentLanguage } = useLanguageDirection();
+	// ar-light.svg
+	// en-light.svg
+	const brandImageUrl = getImageUrl(`brand/${currentLanguage}-light.svg`);
 	return (
-		<div className='flex justify-between items-center w-4/5'>
-			<img src={getImageUrl('brand/en-light.svg')} alt='Brand' />
-			<button className='text-xl font-semibold'>{t('العربية')}</button>
-		</div>
+		<header className='flex justify-between items-center w-full h-[4.4rem]'>
+			<img src={brandImageUrl} alt='Dookan' className='h-12' />
+			<button className='paragraph text-subtitle' onClick={toggleLanguage}>
+				{currentLanguage === 'ar' ? 'English' : 'العربية'}
+			</button>
+		</header>
 	);
-};
-
-export default AuthHeader;
+}

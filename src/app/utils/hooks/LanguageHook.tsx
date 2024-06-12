@@ -3,6 +3,5 @@ export const UseLanguage = () => {
 	if (typeof window !== 'undefined') {
 		language = localStorage.getItem('language');
 	}
-
 	return language;
 };
