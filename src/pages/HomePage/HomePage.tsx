@@ -1,18 +1,16 @@
 import Joyride from 'react-joyride';
-import Setups from './comp/Setups';
-import data from './comp/data.json';
-import HomeReports from './comp/HomeReports';
-import { useHomePage } from './comp/useHomePage';
-
 import { LineChart } from 'src/app/components/optimized';
-import TourCard from 'src/app/components/shared/tour-guide/TourCard';
 import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
-import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
-
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 import { HomeLoading } from 'src/app/components/optimized/SchimmerLoading/HomeLoading';
+import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
+import { TourCard } from 'src/app/components/shared';
 import { joyrideStyles, tourSteps } from 'src/app/components/shared/tour-guide/tourSteps';
-import ProductHighlights from './comp/ProductHighlights';
+import HomeReports from './_comp/HomeReports';
+import ProductHighlights from './_comp/ProductHighlights';
+import Setups from './_comp/Setups';
+import data from './_comp/data.json';
+import { useHomePage } from './_comp/useHomePage';
 
 const slides = [
 	{

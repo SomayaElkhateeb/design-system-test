@@ -1,19 +1,17 @@
-import { useTranslation } from 'react-i18next';
-import FilterSideBar from '../../../shared/sidebar/FilterSideBar';
-
-import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useState } from 'react';
-import { Switch } from '../../../ui/switch';
-import FilterQuantity from './FilterQuantity';
-import FilterPrice from './FilterPrice';
+import { useTranslation } from 'react-i18next';
+import { IoCloseCircleOutline } from 'react-icons/io5';
 import { Button } from 'src/app/components/optimized';
-import ProductStatusFilter from './ProductStatusFilter';
-import CategoryStatusFilter from './CategoryStatusFilter';
+import { FilterSideBar } from 'src/app/components/shared';
+import { Switch } from '../../../ui/switch';
 import AccessoriesStatusFilter from './AccessoriesStatusFilter';
 import BrandStatusFilter from './BrandStatusFilter';
-
-import SalesStatusFilter from './SalesStatusFilter';
+import CategoryStatusFilter from './CategoryStatusFilter';
+import FilterPrice from './FilterPrice';
+import FilterQuantity from './FilterQuantity';
+import ProductStatusFilter from './ProductStatusFilter';
 import ProductTypeStatusFilter from './ProductTypeStatusFilter';
+import SalesStatusFilter from './SalesStatusFilter';
 
 export default function FilterOrdersComponent({
 	HandelCloseDrawer,

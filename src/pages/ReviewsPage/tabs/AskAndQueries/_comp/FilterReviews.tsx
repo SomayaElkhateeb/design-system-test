@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { IoCloseCircleOutline } from 'react-icons/io5';
-import FilterSideBar from 'src/app/components/SideBar/FilterSideBar';
 import { Button, DatePicker } from 'src/app/components/optimized';
 import { DropDownFilter } from '../../../_comp/DropDownFilter';
+import { FilterSideBar } from 'src/app/components/shared';
 
 export const FilterReviews = ({
 	HandelCloseDrawer,

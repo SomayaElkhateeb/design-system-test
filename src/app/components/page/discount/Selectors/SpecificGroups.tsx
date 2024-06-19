@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { newDiscountInterface } from 'src/pages/MarketingPage/tabs/Discounts/NewDiscount/HookForNewDiscount';
 import { UseFormReturn } from 'react-hook-form';
 import SpecificAutoCompleteInput from '../../../ui/SpecificAutoCompleteInput';
 
