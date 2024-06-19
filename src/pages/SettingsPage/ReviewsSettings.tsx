@@ -1,16 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import useCustomHookReviewSettings, {
 	reviewInterface,
 } from 'src/app/components/page/SettingPage/ReviewsSettings/HookForReviewSettings';
 import ReviewSectionForm from 'src/app/components/page/SettingPage/ReviewsSettings/ReviewSection';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 export default function ReviewsSetting() {
 	//  hooks
 	const { t } = useTranslation();
@@ -35,19 +36,19 @@ export default function ReviewsSetting() {
 	];
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Reviews')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className=' flex-col-top-section-pages lg:col-span-2'>
+					<div className=' flex-col-global lg:col-span-2'>
 						<ReviewSectionForm formStore={formStore} />
 					</div>
 					<div className='lg:col-span-1'>
 						<QuickActions data={data} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

@@ -5,7 +5,7 @@ import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -71,7 +71,7 @@ export default function BrandsTable({
 							<div className='flex items-center gap-[.4rem] '>
 								<img src={getImageUrl(e.img)} loading='lazy' alt={e.title} />
 
-								<div className='flex-col-top-section-pages gap-2'>
+								<div className='flex-col-global gap-2'>
 									<p className='title'>{e.title}</p>
 									<p className='subtitle'>{e.describtion}</p>
 								</div>

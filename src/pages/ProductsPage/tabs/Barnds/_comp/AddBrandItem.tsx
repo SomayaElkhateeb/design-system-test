@@ -1,7 +1,6 @@
 import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-
 import { selectItemsInterface } from '../../../../CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 import { useTranslation } from 'react-i18next';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
@@ -16,7 +15,7 @@ import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
 import { TfiUpload } from 'react-icons/tfi';
-import { AddBrandSchemaValues, addBrandFormSchema } from './AddbrandsFormSchema';
+import { AddBrandSchemaValues, addBrandFormSchema } from '../_hook/AddbrandsFormSchema';
 interface AddBrandItem {
 	brandNameEn: string;
 	brandNameAr: string;
@@ -71,7 +70,7 @@ export default function AddBrandItem({
 	return (
 		<GlobalDialog style={style} openDialog={openDialog} handleClose={handleClose}>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+				<form onSubmit={onSubmit} className='flex-col-global'>
 					<Tabs
 						body={
 							<>
@@ -103,7 +102,7 @@ export default function AddBrandItem({
 											)}
 										/>
 										{/*  details */}
-										<div className='flex-col-top-section-pages md:w-[80%] w-full'>
+										<div className='flex-col-global md:w-[80%] w-full'>
 											{/*  name */}
 											<TabbedFormField
 												formStore={formStore}
@@ -135,7 +134,7 @@ export default function AddBrandItem({
 												label={t('Brand description')}
 												renderer={(field) => <Input {...field} />}
 											/>
-											<div className='flex-col-top-section-pages gap-2'>
+											<div className='flex-col-global gap-2'>
 												<p>{t('Availability')}</p>
 												<div className='flex-row-global gap-2'>
 													<FormSwitchField<AddBrandSchemaValues>

@@ -8,7 +8,9 @@ import {
 	CampaignTableInterface,
 } from 'src/app/interface/CampaignTableInterface';
 import { Box, TableCell } from '@mui/material';
-import BaseTable from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
@@ -58,7 +60,7 @@ const CampaignElementTable = ({ sortBy }: CampaignTableInterface, ref) => {
 					return {
 						item: e,
 						elements: [
-							<TableCell
+							<GlobalTableCell
 								onClick={() => {
 									navigate(`?activityId=${e.id}`);
 								}}
@@ -80,45 +82,45 @@ const CampaignElementTable = ({ sortBy }: CampaignTableInterface, ref) => {
 									/>
 								</div>
 								{e.name}
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell sx={{ color: 'white', fontSize: '13px', fontWeight: 400 }}>
+							<GlobalTableCell sx={{ color: 'white', fontSize: '13px', fontWeight: 400 }}>
 								{handelCampainStatus(e.status)}
-							</TableCell>,
-							<TableCell
+							</GlobalTableCell>,
+							<GlobalTableCell
 								sx={{
 									fontSize: '14px',
 									fontWeight: 400,
 								}}
 							>
 								{e.sessions}
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell
+							<GlobalTableCell
 								sx={{
 									fontSize: '14px',
 									fontWeight: 400,
 								}}
 							>
 								SAR {e.sales}
-							</TableCell>,
-							<TableCell
+							</GlobalTableCell>,
+							<GlobalTableCell
 								sx={{
 									fontSize: '14px',
 									fontWeight: 400,
 								}}
 							>
 								SAR {e.expenses}
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell
+							<GlobalTableCell
 								sx={{
 									fontSize: '14px',
 									fontWeight: 400,
 								}}
 							>
 								SAR {e.netProfit}
-							</TableCell>,
+							</GlobalTableCell>,
 						],
 					};
 				})}

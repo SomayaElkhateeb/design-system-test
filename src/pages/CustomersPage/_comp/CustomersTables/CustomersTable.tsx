@@ -11,7 +11,9 @@ import { Switch } from 'src/app/components/ui/switch';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-import BaseTable, { GlobalTableCell } from '../TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from '../../../../app/components/optimized/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
 import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
 

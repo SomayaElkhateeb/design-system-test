@@ -4,7 +4,7 @@ import { Button, SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import RecaptchaEnable from './_comp/CaptchaEnable';
-import useCustomHookPreferncePage, { preferncesInterface } from './_comp/HookForPreferncePageForm';
+import useCustomHookPreferncePage, { preferncesInterface } from './_hook/HookForPreferncePageForm';
 import MaintainanceSection from './_comp/MaintainanceSection';
 import PasswordSection from './_comp/PasswordSection';
 import SeoSearchSection from './_comp/SeoSearchSection';
@@ -30,7 +30,7 @@ export default function PreferencesPage() {
 
 	return (
 		<Form {...formStore}>
-			<form className='flex-col-top-section-pages gap-[2rem]' onSubmit={onSubmit}>
+			<form className='flex-col-global gap-[2rem]' onSubmit={onSubmit}>
 				<SubHeader title={t('Store Preferences')}>
 					<Button variant='secondary' onClick={() => navigate(-1)}>
 						{t('Discard')}
@@ -40,7 +40,7 @@ export default function PreferencesPage() {
 					</Button>
 				</SubHeader>
 				<div className='custom_container  grid gap-5 grid-cols-1'>
-					<div className='flex-col-top-section-pages lg:w-[75%] '>
+					<div className='flex-col-global lg:w-[75%] '>
 						<SeoSearchSection formStore={formStore} />
 						<SocialSharingSection formStore={formStore} />
 						<RecaptchaEnable formStore={formStore} />

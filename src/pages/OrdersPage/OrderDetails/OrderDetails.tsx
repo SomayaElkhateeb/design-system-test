@@ -81,19 +81,19 @@ export default function OrderDetails() {
 		);
 	};
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<SubHeader title={t('Order Details')}>
 				{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 			</SubHeader>
 
 			<div className='custom-grid-parent custom_container'>
-				<div className='flex-col-top-section-pages grid-left'>
+				<div className='flex-col-global grid-left'>
 					<OrderNo />
 					<OrderItems />
 					<CustomerNote />
 					<OrderHistory />
 				</div>
-				<div className='flex-col-top-section-pages grid-right'>
+				<div className='flex-col-global grid-right'>
 					<ContactCard
 						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
 						form={showCustomer}

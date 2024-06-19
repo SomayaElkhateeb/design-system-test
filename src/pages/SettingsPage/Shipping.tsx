@@ -7,10 +7,10 @@ import { images } from 'src/pages/SettingsPage/data';
 export default function Shipping() {
 	const { t } = useTranslation();
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<SubHeader title={t('Shipping')} />
 
-			<div className='flex-col-top-section-pages custom_container'>
+			<div className='flex-col-global custom_container'>
 				{/* providers */}
 				<CardShipping
 					title={t('Third party shipping providers')}
@@ -71,7 +71,7 @@ export default function Shipping() {
 function CardShipping({ title, description, buttonLabel, onClick, children }: CardShippingProps) {
 	return (
 		<div className='global-cards gap-2'>
-			<div className='flex-col-top-section-pages gap-0'>
+			<div className='flex-col-global gap-0'>
 				<h2 className='title'>{title}</h2>
 				<p className='text-title text-sm py-3 w-[60%]'>{description}</p>
 			</div>

@@ -42,13 +42,13 @@ export default function Customer() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit}>
-				<div className='cardDetails-sharedClass p-5 flex-col-top-section-pages'>
+				<div className='cardDetails-sharedClass p-5 flex-col-global'>
 					<FormField
 						formStore={formStore}
 						name='selectCustomer'
 						label={t('Customer')}
 						render={(field) => (
-							<div className='flex-col-top-section-pages gap-[.2rem] w-[50%]'>
+							<div className='flex-col-global gap-[.2rem] w-[50%]'>
 								<Select
 									onValueChange={field.onChange}
 									value={field.value}

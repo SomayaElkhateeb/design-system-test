@@ -30,7 +30,7 @@ const BasicInfo = ({
 	return (
 		<div className='global-cards'>
 			<h3 className='title'>{t('Basic info')}</h3>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<div className='md:w-[24rem]'>
 					<FormField
 						formStore={formStore}
@@ -41,7 +41,7 @@ const BasicInfo = ({
 				</div>
 			</div>
 
-			<section className='flex-col-top-section-pages gap-[.5rem]'>
+			<section className='flex-col-global gap-[.5rem]'>
 				<h5 className='text-sm title'>{!coupon ? t('Discount Type') : t('Coupon Type')}</h5>
 
 				<SingleChoiceChips
@@ -55,7 +55,7 @@ const BasicInfo = ({
 				/>
 			</section>
 
-			<section className='flex-col-top-section-pages gap-[.5rem]'>
+			<section className='flex-col-global gap-[.5rem]'>
 				<h5 className='text-sm title'>{t('Apply to')}</h5>
 				<SingleChoiceChips
 					options={applyToOptions}

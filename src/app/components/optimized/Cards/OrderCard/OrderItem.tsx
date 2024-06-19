@@ -59,7 +59,7 @@ export default function OrderItem({ order }: { order: Order }) {
 					</p>
 				</div>
 			</div>
-			<div className=' w-[25%] flex-col-top-section-pages items-end gap-2'>
+			<div className=' w-[25%] flex-col-global items-end gap-2'>
 				<h4 className='text-right  text-title text-sm font-semibold'>
 					{price} {currency}
 				</h4>

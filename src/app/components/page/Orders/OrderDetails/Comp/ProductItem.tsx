@@ -20,7 +20,7 @@ export default function ProductItem({ formStore }: { formStore: UseFormReturn<IO
 						<div className='size-[4.6875rem] rounded-md overflow-hidden'>
 							<img src={getImageUrl('product/product.png')} />
 						</div>
-						<div className='flex-col-top-section-pages gap-2'>
+						<div className='flex-col-global gap-2'>
 							<h3 className='title text-sm text-ellipsis overflow-hidden w-[24rem]'>
 								{/* text-ellipsis ?? */}
 								{title.slice(0, 24)}...

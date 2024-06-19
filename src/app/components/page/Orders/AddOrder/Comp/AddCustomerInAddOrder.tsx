@@ -36,7 +36,7 @@ export default function AddCustomerinAddOrder({
 		>
 			<Form {...formStore}>
 				<form onSubmit={onSubmit}>
-					<div className='flex-col-top-section-pages gap-3'>
+					<div className='flex-col-global gap-3'>
 						<h3 className='title'>{t('Update order status')}</h3>
 						<FormField
 							formStore={formStore}

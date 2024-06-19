@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { preferncesInterface } from './HookForPreferncePageForm';
+import { preferncesInterface } from '../_hook/HookForPreferncePageForm';
 
 export default function MaintainanceSection({
 	formStore,
@@ -13,8 +13,8 @@ export default function MaintainanceSection({
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='global-cards flex-col-top-section-pages'>
-			<div className='flex-col-top-section-pages gap-[.25rem]'>
+		<div className='global-cards flex-col-global'>
+			<div className='flex-col-global gap-[.25rem]'>
 				<h3 className='title'>{t('Maintenance Mode Status')}</h3>
 				<p className='subtitle text-sm'>
 					{t(

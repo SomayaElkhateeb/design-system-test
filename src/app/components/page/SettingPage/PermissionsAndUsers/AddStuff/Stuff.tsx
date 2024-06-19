@@ -17,7 +17,7 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 
 	return (
 		<div className='cardDetails-sharedClass p-5 '>
-			<div className='flex-col-top-section-pages md:w-[50%]'>
+			<div className='flex-col-global md:w-[50%]'>
 				<FormField
 					formStore={formStore}
 					name='name'
@@ -30,7 +30,7 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 					name='storeIndustry'
 					label={t('Role')}
 					render={(field) => (
-						<div className='flex-col-top-section-pages gap-[.2rem]'>
+						<div className='flex-col-global gap-[.2rem]'>
 							<Select
 								onValueChange={field.onChange}
 								value={field.value}

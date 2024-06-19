@@ -15,7 +15,7 @@ export default function OrderHistory() {
 				return (
 					<>
 						<hr />
-						<div key={e.id} className='p-3 flex-col-top-section-pages gap-1'>
+						<div key={e.id} className='p-3 flex-col-global gap-1'>
 							<h4 className='text-sm text-title'>
 								{t('Order is in')} {e.status}
 							</h4>

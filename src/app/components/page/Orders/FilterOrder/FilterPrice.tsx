@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import DropDownMenu from './DropDownMenu';
+import DropDownMenu from '../../../optimized/DropDownMenu';
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 function valuetext(value: number) {

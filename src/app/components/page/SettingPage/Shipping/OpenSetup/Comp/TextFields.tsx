@@ -37,7 +37,7 @@ export default function TextFields({
 				name='shippingSpeed'
 				label={t('Shipping speed')}
 				render={(field) => (
-					<div className='flex-col-top-section-pages gap-[.2rem]'>
+					<div className='flex-col-global gap-[.2rem]'>
 						<Select
 							onValueChange={field.onChange}
 							value={field.value}
@@ -62,7 +62,7 @@ export default function TextFields({
 					name='supportedCities'
 					label={t('Supported Cities')}
 					render={(field) => (
-						<div className='flex-col-top-section-pages gap-[.2rem]'>
+						<div className='flex-col-global gap-[.2rem]'>
 							<Select
 								onValueChange={field.onChange}
 								value={field.value}

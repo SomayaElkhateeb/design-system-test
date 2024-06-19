@@ -20,7 +20,7 @@ const LinkCards = ({ path, title, Icon, description, close }: LinkCardsProps) =>
 				<div className='size-11 flex-none rounded-full bg-title/5 flex justify-center items-center'>
 					<Icon className='fill-pri-dark' />
 				</div>
-				<div className='flex-col-top-section-pages gap-[.25rem]'>
+				<div className='flex-col-global gap-[.25rem]'>
 					<h2 className='title '>{title}</h2>
 					{description && <p className='text-subtitle paragraph'>{description}</p>}
 				</div>

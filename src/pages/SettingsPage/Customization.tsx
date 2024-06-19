@@ -32,11 +32,11 @@ export default function Customization() {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='global-cards lg:col-span-2'>
-				<div className='flex-col-top-section-pages gap-0'>
+				<div className='flex-col-global gap-0'>
 					<h2 className='title'>{t('Customization')}</h2>
 					<p className='subtitle'>{t("Customize what's shown in the email")}</p>
 				</div>
-				<div className='flex-col-top-section-pages '>
+				<div className='flex-col-global '>
 					<div className='flexResponsive'>
 						<p>{t('Attach invoice in email')}</p>
 						<div className='flex items-center gap-2'>
@@ -105,7 +105,7 @@ function RowCustomize({
 	const { t } = useTranslation();
 	const [isEdit, setIsEdit] = useState(false);
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<hr />
 			<div className='flexResponsive'>
 				<div>

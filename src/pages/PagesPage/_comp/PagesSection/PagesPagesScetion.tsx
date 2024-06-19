@@ -7,8 +7,8 @@ import { getPagesTable } from 'src/app/store/slices/pagesPage/pages/pagesTableAs
 import { getImageUrl } from 'src/app/utils';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import TopSectionBlogPostsAndSection from '../BlogPosts/_comp/TopSectionBlogPostsAndPagesSection';
-import LegalPagesSection from './LegalPagesSection';
-import PagesTableMobile from './PagesTableMobile';
+import LegalPagesSection from './_comp/LegalPagesSection';
+import PagesTableMobile from './_comp/PagesTableMobile';
 
 export default function PagesPagesSection() {
 	//  hooks
@@ -49,7 +49,6 @@ export default function PagesPagesSection() {
 			</div>
 
 			{xs && <PagesTableMobile data={data} />}
-
 		</div>
 	);
 }

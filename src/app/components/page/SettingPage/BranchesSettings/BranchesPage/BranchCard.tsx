@@ -10,7 +10,7 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 
 	return (
 		<div className='flex justify-between cardDetails-sharedClass p-5'>
-			<div className='flex-col-top-section-pages gap-2'>
+			<div className='flex-col-global gap-2'>
 				<h2 className='title'>{name}</h2>
 				{isMain && (
 					<span className='bg-borders-lines text-xs text-subtitle p-1.5'>{t('Main')}</span>

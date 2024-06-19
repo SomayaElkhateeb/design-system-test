@@ -4,6 +4,7 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 import AdminOrLanguageDefaults from 'src/app/components/page/SettingPage/GeneralSettings/AdminOrLanguageDefaults';
 import DefaultLanguageSection from 'src/app/components/page/SettingPage/LanguageSettings/DefaultLanguage';
 import useCustomHookLanguageSettings, {
@@ -32,11 +33,11 @@ const LanguageSettings = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages '>
+			<form onSubmit={onSubmit} className='flex-col-global '>
 				<SubHeader title={t('Languages & defaults')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='flex-col-top-section-pages custom_container'>
+				<div className='flex-col-global custom_container'>
 					<DefaultLanguageSection formStore={formStore} />
 					<AdminOrLanguageDefaults
 						language
@@ -44,7 +45,7 @@ const LanguageSettings = () => {
 						formStore={formStore}
 					/>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

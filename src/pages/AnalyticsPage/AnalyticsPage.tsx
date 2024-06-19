@@ -28,7 +28,7 @@ export default function AnalyticsPage() {
 
 	return (
 		<AnalyticsPageGuard>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<div className='Sticky_header'>
 					<HorizontalTabsLink tabs={tabs} path='/analytics' />
 				</div>

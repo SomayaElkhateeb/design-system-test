@@ -7,7 +7,7 @@ import { EditIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
 
 import AddNavItemDialog from './_comp/AddNavItemDialog';
-import LegalPageParentCard from '../PagesSection/LegalPageParentCard';
+import LegalPageParentCard from '../PagesSection/_comp/LegalPageParentCard';
 
 export default function NavItemPage() {
 	//  hooks
@@ -30,7 +30,7 @@ export default function NavItemPage() {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages gap-[2rem]'>
+			<div className='flex-col-global gap-[2rem]'>
 				{/*  top setion */}
 				<SubHeader title={t('Main menu')}>
 					<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
@@ -41,7 +41,7 @@ export default function NavItemPage() {
 				<div className='container mx-auto'>
 					<div className='w-[60%]'>
 						<LegalPageParentCard title={t('Items')}>
-							<div className='flex-col-top-section-pages'>
+							<div className='flex-col-global'>
 								{array?.map((e, i) => (
 									<div
 										key={i}

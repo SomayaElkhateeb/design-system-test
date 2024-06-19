@@ -65,7 +65,7 @@ function SetupsHeader({ startTour }: SetupsHeaderProps) {
 	return (
 		<div className='flex-col gap-1'>
 			<h2 className='title'>{t('Get ready for your first sale')}</h2>
-			<div className='flex items-center'>
+			<div className='flex flex-wrap items-center'>
 				<p className='subheading '>
 					{t('There are only 2 main steps to launch your store')},&nbsp;
 				</p>
@@ -85,7 +85,7 @@ interface SetupCardsWrapperProps {
 }
 function SetupCardsWrapper({ items }: SetupCardsWrapperProps) {
 	return (
-		<div className='flex-col-top-section-pages lg:flex-row'>
+		<div className='flex-col-global lg:flex-row'>
 			{items.map((item, index) => (
 				<SetupCard key={index} Icon={item.icon} {...item} />
 			))}

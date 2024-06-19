@@ -48,7 +48,7 @@ export default function CustomersComponenet({
 					imageUrl && <img src={getImageUrl(imageUrl)} loading='lazy' />
 				)}
 
-				<div className='flex-col-top-section-pages gap-1 justify-between'>
+				<div className='flex-col-global gap-1 justify-between'>
 					<h2 className='title text-sm'>
 						{firstName} {lastName}
 					</h2>

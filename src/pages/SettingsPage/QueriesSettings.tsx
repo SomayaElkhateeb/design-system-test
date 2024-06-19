@@ -5,6 +5,7 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 import useCustomHookQueriesSettings, {
 	queriesInterface,
 } from 'src/app/components/page/SettingPage/QueriesSettings/HookForQueriesSettings';
@@ -36,19 +37,19 @@ export default function QueriesSetting() {
 	];
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Queries')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className=' flex-col-top-section-pages lg:col-span-2'>
+					<div className=' flex-col-global lg:col-span-2'>
 						<QueriesSectionForm formStore={formStore} />
 					</div>
 					<div className='lg:col-span-1'>
 						<QuickActions data={data} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

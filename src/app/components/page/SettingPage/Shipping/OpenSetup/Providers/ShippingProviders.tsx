@@ -47,7 +47,7 @@ export default function ShippingProviders() {
 		},
 	];
 	return (
-		<div className='flex-col-top-section-pages'>
+		<div className='flex-col-global'>
 			<SubHeader title={t('Third party shipping providers')} />
 			<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 px-5'>
 				{cards.map((card) => (

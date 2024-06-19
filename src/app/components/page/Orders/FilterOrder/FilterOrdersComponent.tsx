@@ -29,7 +29,7 @@ export default function FilterOrdersComponent({
 	const titleClass = 'text-title font-normal text-[.8rem]';
 	return (
 		<FilterSideBar handelClose={HandelCloseDrawer} sideDrawerOpen={openDrawer}>
-			<div className='flex-col-top-section-pages '>
+			<div className='flex-col-global '>
 				{/*  top section */}
 				<div className={divClass}>
 					<h3 className='title text-[1.2rem]'>{t('Products Filters')}</h3>

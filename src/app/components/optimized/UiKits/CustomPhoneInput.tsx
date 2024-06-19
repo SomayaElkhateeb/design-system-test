@@ -26,7 +26,7 @@ const CustomPhoneInput = ({
 	};
 
 	return (
-		<div className='flex-col-top-section-pages gap-[.2rem]' dir='ltr'>
+		<div className='flex-col-global gap-[.2rem]' dir='ltr'>
 			<PhoneInput
 				autoFormat={false}
 				onFocus={() => setFocus(true)}

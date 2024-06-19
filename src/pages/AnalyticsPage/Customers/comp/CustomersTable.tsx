@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
 export default function CustomersTable({
@@ -30,7 +30,7 @@ export default function CustomersTable({
 				language={language}
 				color='#55607A'
 				headers={customersTableHeaders.map((h) => h)}
-				rows={tableData?.map((e) => {
+				rows={customersAnalytics?.map((e) => {
 					return {
 						item: e,
 						elements: [

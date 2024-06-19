@@ -4,9 +4,7 @@ import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import BaseTable, {
-	GlobalTableCell,
-} from '../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import BaseTable, { GlobalTableCell } from '../../optimized/TableLayoutGlobal/base.table';
 import { Coupon } from 'src/app/interface/CouponInterface';
 import { LiaTrashAlt } from 'react-icons/lia';
 

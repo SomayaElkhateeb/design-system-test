@@ -2,18 +2,16 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-import { FiUploadCloud } from 'react-icons/fi';
 import { IoIosAddCircle } from 'react-icons/io';
-import { SiMicrosoftexcel } from 'react-icons/si';
+import { LiaTrashAlt } from 'react-icons/lia';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
-import { LiaTrashAlt } from 'react-icons/lia';
 
-export default function TopSectionCategoriesTable() {
+export default function TopSectionCategoriesTable({ title }: { title: string }) {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
@@ -23,23 +21,20 @@ export default function TopSectionCategoriesTable() {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const sortMenus = [
-		{ id: nanoid(), text: 'Name A to Z' },
-		{ id: nanoid(), text: 'Name Z to A' },
-		{ id: nanoid(), text: 'Date Added' },
-		{ id: nanoid(), text: 'Date modified' },
+		{ id: nanoid(), text: t('Name A to Z') },
+		{ id: nanoid(), text: t('Name Z to A') },
+		{ id: nanoid(), text: t('Date Added') },
+		{ id: nanoid(), text: t('Date modified') },
 	];
 
 	const ActionsMenus = [
-		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
-		{ id: nanoid(), text: 'Export categories', icon: <SiMicrosoftexcel className='iconClass' /> },
-		{ id: nanoid(), text: 'Import categories', icon: <FiUploadCloud className='iconClass' /> },
+		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
 		{
 			id: nanoid(),
 			text: 'Delete all categories',
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
-
 	//  close add brand dialog
 	const handleClose = () => {
 		setOpenDialog(false);
@@ -47,18 +42,18 @@ export default function TopSectionCategoriesTable() {
 
 	return (
 		<>
-			<div className='flex-col-top-section-pages'>
+			<div className='flex-col-global'>
 				<div className='topTable'>
 					{/*  left dropdown */}
 
 					{!xs && (
 						<Button onClick={() => setOpenDialog(true)} variant='primary' LeftIcon={IoIosAddCircle}>
-							{t('Add Category')}
+							{title}
 						</Button>
 					)}
 					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 					{/*  actions  arrange,... */}
-					<div className='flex-row-global  gap-[1.2rem]'>
+					<div className='flex-row-global '>
 						<ActionsComp
 							sortMenus={sortMenus}
 							ActionsMenus={ActionsMenus}

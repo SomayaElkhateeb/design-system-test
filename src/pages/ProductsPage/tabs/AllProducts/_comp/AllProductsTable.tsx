@@ -1,4 +1,3 @@
-import { TableCell } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
@@ -8,14 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
 import { getImageUrl } from 'src/app/utils';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
-import BaseTable, {
-	GlobalTableCell,
-} from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
 import { Product } from '../AllProducts';
 
 export default function AllProductsTable({
@@ -76,14 +75,9 @@ export default function AllProductsTable({
 				return {
 					item: e,
 					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.4rem] '>
-								<div className='flex flex-col gap-[.4rem] items-center'>
+								<div className='flex-col-global gap-[.4rem] items-center'>
 									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 									<button onClick={toggleFavorite}>
 										{isFavorite ? (
@@ -106,7 +100,7 @@ export default function AllProductsTable({
 									</p>
 								</div>
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 						<GlobalTableCell>
 							<p className='text-title'>{e.SKU}</p>
 						</GlobalTableCell>,
@@ -119,7 +113,7 @@ export default function AllProductsTable({
 							<span className='text-primary'>SAR</span> {e.price}
 						</GlobalTableCell>,
 
-						<TableCell>
+						<GlobalTableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<IoEyeOutline className='text-subtitle' />
 								<FaRegEdit
@@ -146,7 +140,7 @@ export default function AllProductsTable({
 									/>
 								)}
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 					],
 				};
 			})}

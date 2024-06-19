@@ -17,8 +17,8 @@ const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface
 		formStore.setValue('ProductXToProductYType', option);
 	};
 	return (
-		<div className='flex-col-top-section-pages gap-[1rem]'>
-			<div className='flex-col-top-section-pages gap-[.5rem]'>
+		<div className='flex-col-global gap-[1rem]'>
+			<div className='flex-col-global gap-[.5rem]'>
 				<SpecificAutoCompleteInput<newDiscountInterface>
 					name='selectProductsX'
 					label={t('select products x')}
@@ -32,7 +32,7 @@ const BuyXGetY = ({ formStore }: { formStore: UseFormReturn<newDiscountInterface
 					/>
 				</div>
 				{formStore.watch('ProductXToProductYType') === 'Specify percentage' && (
-					<div className='md:w-[24rem] flex-col-top-section-pages  gap-[.4rem]'>
+					<div className='md:w-[24rem] flex-col-global  gap-[.4rem]'>
 						<FormField
 							formStore={formStore}
 							name='percentageGets'

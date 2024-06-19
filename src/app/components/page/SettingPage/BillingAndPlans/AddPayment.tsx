@@ -72,7 +72,7 @@ export default function AddPayment({
 	return (
 		<GlobalDialog openDialog={showPayment} handleClose={handleClose} style={style}>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit} className='flex-col-top-section-pages'>
+				<form onSubmit={onSubmit} className='flex-col-global'>
 					<h3 className='title capitalize '>{t('Add payment method')}</h3>
 					<div className='md:w-[60%] flex flex-col gap-4'>
 						<FormField
@@ -89,7 +89,7 @@ export default function AddPayment({
 								<Input type='number' {...field} placeholder='0000 0000 0000 0000' />
 							)}
 						/>
-						<div className='md:flex-row-global-items-start flex-col-top-section-pages  md:justify-between '>
+						<div className='md:flex-row-global-items-start flex-col-global  md:justify-between '>
 							<div className='md:w-[49%]'>
 								<FormField
 									formStore={formStore}
