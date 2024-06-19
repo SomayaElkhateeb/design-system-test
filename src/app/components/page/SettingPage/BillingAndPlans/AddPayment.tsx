@@ -8,7 +8,7 @@ import { Checkbox } from '@mui/material';
 import { Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { TooltipIcon } from 'src/app/utils/icons';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 export interface IAddPayment {
 	name: string;
 	cardNumber: number;

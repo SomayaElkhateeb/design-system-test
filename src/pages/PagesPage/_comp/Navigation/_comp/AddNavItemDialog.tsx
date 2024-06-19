@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import GlobalDialog, { style } from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog, { style } from 'src/app/components/shared/dialogs/GlobalDialog';
 import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';

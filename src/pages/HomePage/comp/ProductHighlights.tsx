@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { MobileProductViews } from 'src/app/components/optimized';
 import SlideCardTabs from 'src/app/components/optimized/Cards/SlideCardTabs';
 
-import { Product } from 'src/app/interface/ProductInterface';
-import { RemoveIcon } from 'src/app/utils/icons';
+import { Product } from 'src/pages/ProductsPage/tabs/AllProducts/AllProducts';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 interface ProductProps {
 	data: {
@@ -16,7 +16,11 @@ interface ProductProps {
 export default function ProductHighlights({ data }: ProductProps) {
 	const { t } = useTranslation();
 	const settingMenus = [
-		{ id: '1', text: 'Delete product', icon: <RemoveIcon className='fill-error' /> },
+		{
+			id: '1',
+			text: 'Delete product',
+			icon: <LiaTrashAlt size='28' size={28} className='fill-error' />,
+		},
 	];
 	const renderProducts = (products: Product[]) => (
 		<div className='grid gap-2'>

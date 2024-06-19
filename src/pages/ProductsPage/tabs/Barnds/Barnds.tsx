@@ -5,7 +5,9 @@ import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMe
 import BrandsTable from 'src/pages/ProductsPage/tabs/Barnds/_comp/BrandsTable';
 import TopSectionBrandsTable from 'src/pages/ProductsPage/tabs/Barnds/_comp/TopSectionBrandsTable';
 import { getBrandsTable } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
-import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 export default function Barnds() {
 	// redux
 	const dispatch = useDispatch();
@@ -22,7 +24,7 @@ export default function Barnds() {
 		{
 			id: nanoid(),
 			text: 'Delete brand',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

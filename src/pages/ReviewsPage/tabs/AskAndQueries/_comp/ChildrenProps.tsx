@@ -1,30 +1,24 @@
 // imports
 import { nanoid } from 'nanoid';
 import { GoStarFill } from 'react-icons/go';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { RiCloseFill } from 'react-icons/ri';
 import { Button } from 'src/app/components/optimized';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
-import { getImageUrl } from 'src/app/utils';
-import {
-	AddFillIcon,
-	EditIcon,
-	MoreIcon,
-	RemoveIcon,
-	ReplyIcon,
-	VectorQuIcon,
-} from 'src/app/utils/icons';
-import { RiCloseFill } from 'react-icons/ri';
-import useCustomReviewsForm from '../../../_hook/HookReviewsPage';
-import { Textarea } from 'src/app/components/ui/textarea';
-import FormField from 'src/app/components/ui/form/field';
 import { Form } from 'src/app/components/ui/form';
+import FormField from 'src/app/components/ui/form/field';
+import { Textarea } from 'src/app/components/ui/textarea';
+import { getImageUrl } from 'src/app/utils';
+import { AddFillIcon, EditIcon, MoreIcon, ReplyIcon, VectorQuIcon } from 'src/app/utils/icons';
+import useCustomReviewsForm from '../../../_hook/HookReviewsPage';
 
 // data
 const options = [
 	{
 		id: nanoid(),
 		text: 'delete permanently',
-		icon: <RemoveIcon className='fill-pri-dark' />,
+		icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
 	},
 ];
 
@@ -37,7 +31,7 @@ const optionsRemove = [
 	{
 		id: nanoid(),
 		text: 'delete permanently',
-		icon: <RemoveIcon className='fill-pri-dark' />,
+		icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
 	},
 ];
 // ///////////////////////////////////////////////////////////
@@ -94,7 +88,7 @@ export const Children = ({
 	query,
 }: {
 	setReply: (e: boolean) => void;
-	setSubmitReply: (e:boolean) => void;
+	setSubmitReply: (e: boolean) => void;
 	query?: boolean;
 }) => {
 	const handleSubmit = () => {
@@ -173,7 +167,7 @@ export const Publish = ({
 				</div>
 				<div className='flex-row-global gap-4'>
 					<MenuOptions
-						btn={<RemoveIcon className='fill-pri-dark cursor-pointer' />}
+						btn={<LiaTrashAlt size='28' className='fill-pri-dark cursor-pointer' />}
 						options={optionsRemove}
 						handle={() => console.log('')}
 					/>

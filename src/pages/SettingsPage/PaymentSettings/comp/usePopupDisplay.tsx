@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 import { getImageUrl } from 'src/app/utils';
 import { DeleteExitIcon } from 'src/app/utils/icons';
 
@@ -15,8 +15,13 @@ interface UsePopupDisplayProps<T> {
 	renderItem: (item: T, index: number) => JSX.Element;
 }
 
- export default function usePopupDisplay<T>({ items, limit, popupTitle, provider, renderItem }: UsePopupDisplayProps<T>)  {
-	
+export default function usePopupDisplay<T>({
+	items,
+	limit,
+	popupTitle,
+	provider,
+	renderItem,
+}: UsePopupDisplayProps<T>) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handlePopups = () => {
@@ -46,6 +51,4 @@ interface UsePopupDisplayProps<T> {
 			</GlobalDialog>
 		),
 	};
-};
-
-
+}

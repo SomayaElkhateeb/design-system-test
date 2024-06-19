@@ -8,7 +8,6 @@ import {
 	AppsTabs,
 	BillingAndPlans,
 	Config,
-	ConfigurableProductPage,
 	CustomerInfo,
 	CustomersPage,
 	EmailForm,
@@ -27,16 +26,12 @@ import {
 	SetupConfig,
 	SetupOpenConfig,
 	ShippingConfig,
-	SimpleProductPage,
 	SocialAppDetails,
 	StorePage,
 } from 'src/pages';
 
 import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
-import VirtualProductPage from './pages/ProductsPage/addNewProduct/Virtual';
-import FoodProductPage from './pages/ProductsPage/addNewProduct/Food';
-import BundleProductPage from './pages/ProductsPage/addNewProduct/Bundle';
 
 
 import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
@@ -46,6 +41,15 @@ import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/Pu
 import StoreTabs from './pages/StorePage/StoreTabs';
 import StoreConfig from './pages/StorePage/StoreConfig';
 import { SubCategories } from './pages/ProductsPage/tabs/Categories/SubCategories';
+
+
+import {
+	BundleProductPage,
+	ConfigurableProductPage,
+	FoodProductPage,
+	SimpleProductPage,
+	VirtualProductPage,
+} from './pages/ProductsPage/tabs/_comp';
 
 // Route Definitions
 export const routes = [
