@@ -1,10 +1,12 @@
 import { nanoid } from 'nanoid';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { FiUploadCloud } from 'react-icons/fi';
 import { IoIosAddCircle, IoMdArrowDropdown } from 'react-icons/io';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { Link } from 'react-router-dom';
+import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -13,6 +15,7 @@ import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/Fi
 import { getImageUrl } from 'src/app/utils';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import { RemoveIcon } from 'src/app/utils/icons';
+import SimpleProductForm from 'src/pages/ProductsPage/addNewProduct/Simple/_comp/SimpleProductForm';
 
 export default function TopSection({
 	verticalCard,
@@ -27,7 +30,15 @@ export default function TopSection({
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
+	const [openDialog, setOpenDialog] = useState<boolean>(false);
+	const handleClose = (status: boolean) => {
+		setOpenDialog(status);
+	};
 
+	const dialogStyle = {
+		width: { lg: '1150px', md: '600px', xs: '375px' },
+		// height: { md: '500px', xs: '300px' },
+	};
 	const dropdownMenu = [
 		{
 			id: nanoid(),
@@ -121,7 +132,6 @@ export default function TopSection({
 			<div className='flex-col-top-section-pages'>
 				<div className='topTable'>
 					{/*  left dropdow */}
-
 					<PopoverComponenet
 						button={
 							<Button variant='primary' LeftIcon={IoIosAddCircle} RightIcon={IoMdArrowDropdown}>
@@ -135,7 +145,12 @@ export default function TopSection({
 						>
 							<div className=' flex flex-col gap-[1rem]'>
 								{dropdownMenu?.map((e) => (
-									<Link className='flex flex-col gap-[.9rem]' key={e.id} to={e.to}>
+									<Link
+										className='flex flex-col gap-[.9rem]'
+										key={e.id}
+										to={e.to == '/products/new/simple' ? '' : e.to}
+										onClick={e.to == '/products/new/simple' ? () => setOpenDialog(true) : () => {}}
+									>
 										<div className='flex flex-col gap-[.2rem] cursor-pointer'>
 											<div className='flex-row-global gap-[.4rem]'>
 												<p className=' text-[.9rem] font-semibold'>{e.title}</p>
@@ -150,6 +165,14 @@ export default function TopSection({
 							</div>
 						</div>
 					</PopoverComponenet>
+
+					<GlobalDialog
+						openDialog={openDialog}
+						handleClose={() => handleClose(false)}
+						style={dialogStyle}
+					>
+						<SimpleProductForm />
+					</GlobalDialog>
 
 					{/*  actions filter arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>

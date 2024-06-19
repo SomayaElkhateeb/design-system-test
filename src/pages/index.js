@@ -28,7 +28,6 @@ export { default as ConfigurableProductPage } from './ProductsPage/addNewProduct
 export { default as SimpleProductPage } from './ProductsPage/addNewProduct/Simple';
 
 // SubComponent
-
 export { default as Config } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';
 export { default as SetupConfig } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/Setup/SetupConfig';
 export { default as SetupOpenConfig } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/SetupOpenConfig';
