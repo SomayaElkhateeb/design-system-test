@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
-import { EditIcon, RemoveIcon, ViewIcon } from 'src/app/utils/icons';
+import { EditIcon, ViewIcon } from 'src/app/utils/icons';
 import { Branch } from 'src/pages/SettingsPage/BranchesSettings';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 export default function BranchCard({ name, address, city, country, phone, isMain }: Branch) {
 	const iconClassName = 'fill-pri-dark cursor-pointer';
@@ -25,13 +26,13 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 			<div className='flex flex-col justify-between items-end'>
 				<div className='flex items-center gap-5 '>
 					<div>
-						<RemoveIcon className={iconClassName} />
+						<LiaTrashAlt size='28' className={iconClassName} />
 					</div>
 					<div>
 						<EditIcon className={iconClassName} />
 					</div>
 				</div>
-				<Button variant='tertiary'  text={t('View Inventory')} LeftIcon={ViewIcon} />
+				<Button variant='tertiary' text={t('View Inventory')} LeftIcon={ViewIcon} />
 			</div>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 

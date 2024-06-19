@@ -4,20 +4,15 @@ import { Button } from 'src/app/components/optimized';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 import { getImageUrl } from 'src/app/utils';
-import {
-	AddFillIcon,
-	EditIcon,
-	MoreIcon,
-	RemoveIcon,
-	ReplyIcon,
-	VectorIcon,
-} from 'src/app/utils/icons';
+import { AddFillIcon, EditIcon, MoreIcon, ReplyIcon, VectorIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 import { RiCloseFill } from 'react-icons/ri';
 const options = [
 	{
 		id: nanoid(),
 		text: 'delete permanently',
-		icon: <RemoveIcon className='fill-pri-dark' />,
+		icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
 	},
 ];
 
@@ -30,7 +25,7 @@ const optionsRemove = [
 	{
 		id: nanoid(),
 		text: 'delete permanently',
-		icon: <RemoveIcon className='fill-pri-dark' />,
+		icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
 	},
 ];
 
@@ -149,7 +144,7 @@ export const Publish = ({ setReply, query }: { setReply: () => void; query?: boo
 				</div>
 				<div className='flex-row-global gap-4'>
 					<MenuOptions
-						btn={<RemoveIcon className='fill-pri-dark cursor-pointer' />}
+						btn={<LiaTrashAlt size='28' className='fill-pri-dark cursor-pointer' />}
 						options={optionsRemove}
 						handle={() => console.log('')}
 					/>

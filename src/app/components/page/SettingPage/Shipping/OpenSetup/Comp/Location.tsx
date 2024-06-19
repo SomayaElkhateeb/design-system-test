@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
-import { EditIcon, RemoveIcon, ViewIcon } from 'src/app/utils/icons';
+import { EditIcon, ViewIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 interface LocationDataItem {
 	id: number;
@@ -42,7 +43,7 @@ export default function Location({ data }: { data: LocationProps }) {
 
 						<div className='flex flex-col justify-between py-1 gap-3'>
 							<div className='flex items-center justify-start lg:justify-end gap-5 '>
-								<RemoveIcon className='fill-pri-dark cursor-pointer' />
+								<LiaTrashAlt size='28' className='fill-pri-dark cursor-pointer' />
 
 								<EditIcon className='fill-pri-dark cursor-pointer' />
 							</div>

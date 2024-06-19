@@ -5,13 +5,13 @@ import HomeReports from './comp/HomeReports';
 import { useHomePage } from './comp/useHomePage';
 
 import { LineChart } from 'src/app/components/optimized';
-import TourCard from 'src/app/components/TourGuide/TourCard';
+import TourCard from 'src/app/components/shared/TourGuide/TourCard';
 import CalloutCard from 'src/app/components/optimized/Cards/CalloutCard';
 import { CustomSlider } from 'src/app/components/optimized/UiKits/CustomSlider';
 
 import OrdersCard from 'src/app/components/optimized/Cards/OrderCard/OrdersCard';
 import { HomeLoading } from 'src/app/components/optimized/SchimmerLoading/HomeLoading';
-import { joyrideStyles, tourSteps } from 'src/app/components/TourGuide/tourSteps';
+import { joyrideStyles, tourSteps } from 'src/app/components/shared/TourGuide/tourSteps';
 import ProductHighlights from './comp/ProductHighlights';
 
 const slides = [

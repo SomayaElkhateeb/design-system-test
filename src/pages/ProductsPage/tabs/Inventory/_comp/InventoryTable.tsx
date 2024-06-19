@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
-import { Product } from 'src/app/interface/ProductInterface';
 import { getImageUrl } from 'src/app/utils';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
@@ -12,7 +11,7 @@ import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTa
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
-import { products } from '../../AllProducts/AllProducts';
+import { Product, products } from '../../AllProducts/AllProducts';
 
 export default function InventoryTable({
 	array,

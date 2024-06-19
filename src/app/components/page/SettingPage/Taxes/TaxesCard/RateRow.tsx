@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
-import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
+import { MoreIcon } from 'src/app/utils/icons';
 import { Rate } from './useTaxPrograms';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 interface RateRowProps {
 	rate: Rate;
@@ -13,7 +14,7 @@ export default function RateRow({ rate }: RateRowProps) {
 		{
 			id: 1,
 			text: t('delete rate'),
-			icon: <RemoveIcon className='fill-pri-dark' />,
+			icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
 		},
 	];
 	return (

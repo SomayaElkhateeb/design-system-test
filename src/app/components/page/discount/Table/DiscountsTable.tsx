@@ -11,13 +11,12 @@ import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { Switch } from 'src/app/components/ui/switch';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
-import {
-	deleteDiscount
-} from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
-import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
+import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { MoreIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 export default function DiscountsTable({
 	discounts,
@@ -68,7 +67,7 @@ export default function DiscountsTable({
 		{
 			id: nanoid(),
 			text: 'delete',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

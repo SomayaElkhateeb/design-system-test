@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import FilterSideBar from '../../../SideBar/FilterSideBar';
+import FilterSideBar from '../../../shared/SideBar/FilterSideBar';
 
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useState } from 'react';

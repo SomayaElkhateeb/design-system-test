@@ -8,7 +8,7 @@ import { Checkbox } from '@mui/material';
 import { Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { TooltipIcon } from 'src/app/utils/icons';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 export interface IAddPayment {
 	name: string;
 	cardNumber: number;
@@ -28,15 +28,20 @@ export default function AddPayment({
 	// //////////////////////////////////
 	const addPaymentSchema = {
 		name: z.string().min(10),
-		cardNumber:z.coerce.number().positive()
+		cardNumber: z.coerce
+			.number()
+			.positive()
 			.min(14, { message: t('Account number must be at least 14 numbers') })
 			.refine((val) => /^\d{14}$/.test(val.toString())),
 		expiryDate: z.string().refine((val) => /^\d{2}\/\d{4}$/.test(val), {
 			message: 'Date must be in the format MM/YYYY',
 		}),
-		cvv: z.coerce.number().positive().refine((val) => /^\d{3}$/.test(val.toString()), {
-			message: t('CVV must be 3 digits'),
-		}),
+		cvv: z.coerce
+			.number()
+			.positive()
+			.refine((val) => /^\d{3}$/.test(val.toString()), {
+				message: t('CVV must be 3 digits'),
+			}),
 	};
 	// /////////////////////
 	const handleSubmit = (values: IAddPayment) => {

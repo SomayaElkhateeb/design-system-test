@@ -2,11 +2,11 @@ import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { getImageUrl } from 'src/app/utils';
 import BaseTable from '../../../../../../pages/CustomersPage/_comp/TableLayoutGlobal/base.table';
-import { RemoveIcon } from 'src/app/utils/icons';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { IQuantity } from '../Products';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 interface IData {
 	id: number;
@@ -76,7 +76,7 @@ export default function SelectTable({ formStore }: { formStore: UseFormReturn<IQ
 						<p className='text-title text-sm'>SAR {e.total}.00</p>
 					</TableCell>,
 					<TableCell>
-						<RemoveIcon className='fill-pri-dark cursor-pointer' />
+						<LiaTrashAlt size='28' className='fill-pri-dark cursor-pointer' />
 					</TableCell>,
 				],
 			}))}

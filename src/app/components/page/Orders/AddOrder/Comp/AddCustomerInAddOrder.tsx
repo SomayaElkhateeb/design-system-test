@@ -6,7 +6,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { useForm } from 'src/app/utils/hooks/form';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { Button } from 'src/app/components/optimized';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 
 export default function AddCustomerinAddOrder({
 	onClose,

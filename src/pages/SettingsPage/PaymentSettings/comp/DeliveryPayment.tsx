@@ -8,8 +8,10 @@ import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { Button, CheckBox } from 'src/app/components/optimized';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
-import useCustomHookDeliveryAndCashForm, { DeliveryPaymentTypes } from './HookForDeliveryAndCashForm';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
+import useCustomHookDeliveryAndCashForm, {
+	DeliveryPaymentTypes,
+} from './HookForDeliveryAndCashForm';
 
 interface DeliveryPaymentProps {
 	handleClose: () => void;

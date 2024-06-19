@@ -6,7 +6,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import { IoIosAddCircle, IoMdArrowDropdown } from 'react-icons/io';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { Link } from 'react-router-dom';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -14,8 +14,8 @@ import PopoverComponenet from 'src/app/components/optimized/UiKits/Popover';
 import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/FilterOrdersComponent';
 import { getImageUrl } from 'src/app/utils';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
-import { RemoveIcon } from 'src/app/utils/icons';
-import SimpleProductForm from 'src/pages/ProductsPage/addNewProduct/Simple/_comp/SimpleProductForm';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { SimpleProductForm } from '../../_comp';
 
 export default function TopSection({
 	verticalCard,
@@ -95,7 +95,7 @@ export default function TopSection({
 		{
 			id: nanoid(),
 			text: 'Delete all products',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

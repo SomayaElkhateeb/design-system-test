@@ -1,19 +1,18 @@
-
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 import AllOrdersTableMobile from './AllOrdersTableMobile';
 import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
 import AllOrdersTable from './AllOrdersTable';
-import { RemoveIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import TopSectionOrdersPage from './TopSectionOrdersPage';
 import { nanoid } from 'nanoid';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 //  setting menus for setting button action
 const settingMenus = [
-	{ id: nanoid(), text: 'Cancel Order', icon: <RemoveIcon className='fill-error' /> },
+	{ id: nanoid(), text: 'Cancel Order', icon: <LiaTrashAlt size='28' className='fill-error' /> },
 ];
 
 export default function AllOrders() {
@@ -76,16 +75,12 @@ export default function AllOrders() {
 					orders={orders}
 				/>
 
-			
-
 				{xs && (
 					<>
 						<AllOrdersTableMobile orders={orders} />
 						<AddButtonMobile path='/order/addOrder' />
 					</>
 				)}
-
-
 			</div>
 		</div>
 	);

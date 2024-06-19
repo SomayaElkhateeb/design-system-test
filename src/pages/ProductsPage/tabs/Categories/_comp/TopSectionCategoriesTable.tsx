@@ -10,8 +10,8 @@ import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { RemoveIcon } from 'src/app/utils/icons';
 import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 export default function TopSectionCategoriesTable() {
 	//  hooks
@@ -36,7 +36,7 @@ export default function TopSectionCategoriesTable() {
 		{
 			id: nanoid(),
 			text: 'Delete all categories',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

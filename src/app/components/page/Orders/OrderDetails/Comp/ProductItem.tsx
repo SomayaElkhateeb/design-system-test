@@ -1,6 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 import { getImageUrl } from 'src/app/utils';
-import { RemoveIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 import { IOrderItemForm } from '../Forms/HookOrderItem';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
@@ -37,7 +38,7 @@ export default function ProductItem({ formStore }: { formStore: UseFormReturn<IO
 				/>
 			</div>
 			<div className='lg:col-span-1 md:col-span-1 lg:flex-end flex items-center gap-2'>
-				<RemoveIcon className='fill-pri-dark cursor-pointer' />
+				<LiaTrashAlt size='28' className='fill-pri-dark cursor-pointer' />
 				<p className='text-title text-sm '>
 					{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}
 				</p>

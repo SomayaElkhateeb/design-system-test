@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import data from '../comp/data.json';
 import ControlCard from 'src/app/components/optimized/Cards/ControlCard';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 import { Form } from 'src/app/components/ui/form';
@@ -37,7 +37,6 @@ export default function AnalyticsIntegrations() {
 
 	//   style of dialog
 	const style = {
-	
 		width: { md: '40rem', xs: '25.8rem' },
 	};
 

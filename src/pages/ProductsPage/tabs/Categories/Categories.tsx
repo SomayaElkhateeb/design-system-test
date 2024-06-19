@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
-import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { brands } from 'src/pages/ProductsPage/tabs/Barnds/_comp/BrandsTable';
 import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
@@ -12,7 +14,7 @@ export default function Categories() {
 		{
 			id: nanoid(),
 			text: 'Delete brand',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 	return (

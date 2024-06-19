@@ -11,7 +11,7 @@ import CustomersGroupTable from 'src/pages/CustomersPage/_comp/CustomersTables/C
 import { customers } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { RemoveIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 export default function CustomersGroups() {
 	//  hooks
@@ -34,7 +34,7 @@ export default function CustomersGroups() {
 	];
 	const settingMenus = [
 		{ id: nanoid(), text: 'Add discount', icon: <p className='text-[1.3rem]'>%</p> },
-		{ id: nanoid(), text: 'Remove group', icon: <RemoveIcon className='fill-error' /> },
+		{ id: nanoid(), text: 'Remove group', icon: <LiaTrashAlt size='28' className='fill-error' /> },
 	];
 
 	return (
@@ -42,15 +42,17 @@ export default function CustomersGroups() {
 			{/*  top section */}
 			<div className='topTable'>
 				{/*  add customers button */}
-				{!xs && <Button
-					variant='primary'
-					LeftIcon={IoIosAddCircle}
-					onClick={() => {
-						navigate('/customers/addGroupCustomer');
-					}}
-				>
-					{t('Add New Group')}
-				</Button>}
+				{!xs && (
+					<Button
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+						onClick={() => {
+							navigate('/customers/addGroupCustomer');
+						}}
+					>
+						{t('Add New Group')}
+					</Button>
+				)}
 				{/*  case of small media */}
 				{xs && <AddButtonMobile path='/customers/addGroupCustomer' />}
 				{/*  arrange,... */}
