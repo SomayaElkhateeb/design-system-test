@@ -1,4 +1,4 @@
-import MarketingPageGuard from './MarketingPageGuard';
+import MarketingPageGuard from './_comp/MarketingPageGuard';
 import MarketingLayout from './_comp/MarketingLayout';
 
 const MarketingPage = () => {

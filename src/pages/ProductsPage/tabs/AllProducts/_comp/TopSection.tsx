@@ -6,7 +6,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import { IoIosAddCircle, IoMdArrowDropdown } from 'react-icons/io';
 import { SiMicrosoftexcel } from 'react-icons/si';
 import { Link } from 'react-router-dom';
-import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
+import { GlobalDialog } from 'src/app/components/shared';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';

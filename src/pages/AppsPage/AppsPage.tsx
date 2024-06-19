@@ -1,5 +1,5 @@
-import AppsLayout from './comp/AppsLayout';
-import AppsPageGuard from './comp/AppsPageGuard';
+import AppsLayout from './_comp/AppsLayout';
+import AppsPageGuard from './_comp/AppsPageGuard';
 
 // import TabPanel from '@mui/lab/TabPanel';
 // import Tabs from 'src/app/components/optimized/Tabs/Tabs';

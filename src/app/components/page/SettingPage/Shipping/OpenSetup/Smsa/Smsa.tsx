@@ -13,7 +13,7 @@ import { FaCheck } from 'react-icons/fa';
 import { MoreIcon } from 'src/app/utils/icons';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import { RiDeleteBin5Line } from 'react-icons/ri';
-import { contact, pricing } from 'src/pages/SettingsPage/data';
+import { contact, pricing } from 'src/pages/SettingsPage/_comp/data';
 import { useNavigate } from 'react-router-dom';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import { nanoid } from 'nanoid';

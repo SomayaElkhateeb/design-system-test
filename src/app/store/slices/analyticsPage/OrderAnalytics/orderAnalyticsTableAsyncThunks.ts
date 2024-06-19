@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { AnalyticsOrder } from 'src/pages/AnalyticsPage/Orders/AnalyticsOrders';
-import orderAnalyticsTableUrl from 'src/pages/AnalyticsPage/comp/data.json';
+import { AnalyticsOrder } from 'src/pages/AnalyticsPage/tabs/Orders/AnalyticsOrders';
+import orderAnalyticsTableUrl from 'src/pages/AnalyticsPage/_comp/data.json';
 
 // get order Analytics Data
 export const getOrderAnalyticsTable = createAsyncThunk(

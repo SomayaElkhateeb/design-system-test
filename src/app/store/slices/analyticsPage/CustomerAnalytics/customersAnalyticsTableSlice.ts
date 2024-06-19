@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCustomerAnalyticsTableReducer } from './customersAnalyticsTableExtraReducers';
-import { AnalyticsCustomer } from 'src/pages/AnalyticsPage/Customers/AnalyticsCustomers';
+import { AnalyticsCustomer } from 'src/pages/AnalyticsPage/tabs/Customers/AnalyticsCustomers';
 
 export interface customerAnalyticsStatus {
 	customersAnalytics: AnalyticsCustomer[];

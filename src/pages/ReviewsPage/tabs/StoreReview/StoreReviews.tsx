@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
 
 import { ReviewsTable } from './_comp/ReviewsTable';
-import AnalyticsTableActions from 'src/pages/AnalyticsPage/comp/AnalyticsTableActions';
+import AnalyticsTableActions from 'src/pages/AnalyticsPage/_comp/AnalyticsTableActions';
 import { useState } from 'react';
 import { getImageUrl } from 'src/app/utils';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import DonutGraph , { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
+import DonutGraph, { ChartData } from 'src/app/components/optimized/Charts/DonutChart/DonutGraph';
 import RecentReview from './_comp/RecentReview';
 import { DonutCard } from 'src/app/components/optimized';
 import CompareButton from 'src/app/components/optimized/UiKits/CompareButton';
-
 
 export const StoreReviews = () => {
 	const { selectedOption, handleSelect } = useSelectBox();

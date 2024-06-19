@@ -30,18 +30,16 @@ import {
 	StorePage,
 } from 'src/pages';
 
-import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
+import { AnalyticsTabs } from './pages/AnalyticsPage/_comp';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
-
 
 import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
 import PagesPage from './pages/PagesPage/PagesPage';
 import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
 import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
-import StoreTabs from './pages/StorePage/StoreTabs';
-import StoreConfig from './pages/StorePage/StoreConfig';
+import StoreTabs from './pages/StorePage/_comp/StoreTabs';
+import StoreConfig from './pages/StorePage/_comp/StoreConfig';
 import { SubCategories } from './pages/ProductsPage/tabs/Categories/SubCategories';
-
 
 import {
 	BundleProductPage,
@@ -56,7 +54,6 @@ export const routes = [
 	{ path: '/', element: <HomePage /> },
 	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
-	
 
 	// services Routes
 	{ path: '/services', element: <ServicesPage /> },

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import DookanPay from './comp/DookanPay';
-import ManualPayment from './comp/ManualPayment';
-import PaymentProvidersCard from './comp/PaymentProvidersCard';
+import DookanPay from './_comp/DookanPay';
+import ManualPayment from './_comp/ManualPayment';
+import PaymentProvidersCard from './_comp/PaymentProvidersCard';
 
 export default function PaymentSettings() {
 	const { t } = useTranslation();

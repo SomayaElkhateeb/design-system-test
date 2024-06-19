@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
 import { EditIcon, ViewIcon } from 'src/app/utils/icons';
-import { Branch } from 'src/pages/SettingsPage/BranchesSettings';
+import { Branch } from 'src/pages/SettingsPage/_comp/BranchesSettings';
 import { LiaTrashAlt } from 'react-icons/lia';
 
 export default function BranchCard({ name, address, city, country, phone, isMain }: Branch) {

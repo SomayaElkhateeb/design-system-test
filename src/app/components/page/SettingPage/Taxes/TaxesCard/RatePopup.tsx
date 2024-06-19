@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import GlobalDialog from 'src/app/components/shared/dialogs/GlobalDialog';
+import { GlobalDialog } from 'src/app/components/shared';
 import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
