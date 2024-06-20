@@ -4,7 +4,7 @@ import { AnalyticsOrder } from 'src/pages/AnalyticsPage/tabs/Orders/AnalyticsOrd
 const URL = 'http://localhost:3007';
 
 // get order Analytics Data
-export const getOrderAnalyticsTable = createAsyncThunk(
+export const getOrderAnalyticsTable = createAsyncThunk<AnalyticsOrder[]>(
 	'orderAnalyticsTable/getOrderAnalyticsTable',
 	async (_, thunkAPI) => {
 		const { rejectWithValue } = thunkAPI;
