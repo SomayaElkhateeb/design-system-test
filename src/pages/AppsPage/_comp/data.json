@@ -194,7 +194,7 @@
 				}
 			],
 			"status": "installed",
-			"backgroundColor": ["#4267B2", "#FFFFFF"],
+			"backgroundColor": ["#0D53FC", "#55C397"],
 			"posters": {
 				"poster_1": "posters/facebook_1.jpeg",
 				"poster_2": "posters/facebook_2.jpeg",

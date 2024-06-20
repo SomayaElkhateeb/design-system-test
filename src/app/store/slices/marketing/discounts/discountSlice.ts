@@ -19,6 +19,7 @@ const discountSlice = createSlice({
 	},
 });
 
-export const selectDiscount = (state) => state.discount;
+// export const selectDiscount = (state) => state.discount;
 
 export default discountSlice.reducer;
+// export const { selectDiscount } = discountSlice.actions;

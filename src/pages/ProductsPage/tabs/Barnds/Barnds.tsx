@@ -1,20 +1,23 @@
 import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import BrandsTable from 'src/pages/ProductsPage/tabs/Barnds/_comp/BrandsTable';
 import TopSectionBrandsTable from 'src/pages/ProductsPage/tabs/Barnds/_comp/TopSectionBrandsTable';
 import { getBrandsTable } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
 import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 export default function Barnds() {
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, brands, error } = useSelector((state) => state.brands);
+	const dispatch = useAppDispatch();
+	const { brands, isLoading, error } = useAppSelector((state) => state.brands);
+
 	useEffect(() => {
 		dispatch(getBrandsTable());
 	}, [dispatch]);
+
+	if (error) return <div>Error: {error}</div>;
 
 	const settingMenus = [
 		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },

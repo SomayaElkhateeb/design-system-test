@@ -1,7 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
-import { useDispatch, useSelector } from 'react-redux';
 import { MobileProductViews } from 'src/app/components/optimized';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
@@ -12,6 +11,7 @@ import { LiaTrashAlt } from 'react-icons/lia';
 import AllProductsTable from './_comp/AllProductsTable';
 import TopSection from './_comp/TopSection';
 import AllproductsVertical from './_comp/AllproductsVertical';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 export interface Product {
 	name: string;
@@ -93,16 +93,17 @@ export default function AllProducts() {
 	//  hooks render products card
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
+	const { xs } = useResponsive();
 
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, allProducts, error } = useSelector((state) => state.allProducts);
+	const dispatch = useAppDispatch();
+	const { allProducts, isLoading, error } = useAppSelector((state) => state.allProducts);
 
 	useEffect(() => {
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
 
-	const { xs } = useResponsive();
+	if (error) return <div>Error: {error}</div>;
 
 	return (
 		<div className='custom_container'>
@@ -130,7 +131,7 @@ export default function AllProducts() {
 
 				{/*  case of small media only  */}
 				<div className='sm:hidden grid gap-2 '>
-					{allProducts?.map((product:Product) => (
+					{allProducts?.map((product: Product) => (
 						<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />
 					))}
 				</div>

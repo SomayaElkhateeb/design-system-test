@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -15,6 +14,8 @@ import BaseTable from '../../../../app/components/optimized/TableLayoutGlobal/ba
 import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
 import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
 import { settingMenus } from './CustomersTable';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
@@ -24,8 +25,8 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const [array, setArray] = useState<string[]>([]);
 
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, customersGroup, error } = useSelector((state) => state.customersGroup || {});
+	const dispatch = useAppDispatch();
+	const { customersGroup, isLoading, error } = useAppSelector((state) => state.customersGroup);
 
 	useEffect(() => {
 		dispatch(getCustomersGroupTable());
@@ -120,17 +121,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 									selectedOption={selectedOption}
 									handelSelect={handleSelect}
 								/>
-								{language === 'ar' ? (
-									<IoIosArrowBack
-										className='text-subtitle'
-										onClick={() => navigate(`/customers/${e?.id}`)}
-									/>
-								) : (
-									<IoIosArrowForward
-										className='text-subtitle'
-										onClick={() => navigate(`/customers/${e?.id}`)}
-									/>
-								)}
+								<ArrowTables path={`/customers/${e?.id}`} />
 							</div>
 						</TableCell>,
 					],

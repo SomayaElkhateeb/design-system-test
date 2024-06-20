@@ -2,8 +2,6 @@ import { TableCell } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -16,6 +14,8 @@ import BaseTable, {
 } from '../../../../app/components/optimized/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
 import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 export const customers: CustomerInterface[] = [
 	{
@@ -41,23 +41,20 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	const language = UseLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
 	const [array, setArray] = useState<string[]>([]);
 
 	//  custom hook for select setting item
-
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, allCustomer, error } = useSelector((state) => state.allCustomer || {});
+	const dispatch = useAppDispatch();
+	const { allCustomer, isLoading, error } = useAppSelector((state) => state.allCustomer || {});
 
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 	}, [dispatch]);
 
 	//  headers
-
 	const customersHeaders = [
 		{
 			icon: (
@@ -116,17 +113,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 									selectedOption={selectedOption}
 									handelSelect={handleSelect}
 								/>
-								{language === 'ar' ? (
-									<IoIosArrowBack
-										className='text-subtitle'
-										onClick={() => navigate(`/customers/${e?.id}`)}
-									/>
-								) : (
-									<IoIosArrowForward
-										className='text-subtitle'
-										onClick={() => navigate(`/customers/${e?.id}`)}
-									/>
-								)}
+								<ArrowTables path={`/customers/${e?.id}`} />
 							</div>
 						</TableCell>,
 					],

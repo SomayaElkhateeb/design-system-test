@@ -184,6 +184,7 @@ export const routes = [
 	},
 
 	// store Routes
+	//
 	{
 		path: '/store',
 		element: <StorePage />,

@@ -1,8 +1,6 @@
 import { TableCell } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
@@ -12,7 +10,7 @@ import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import { Product, products } from '../../AllProducts/AllProducts';
-
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 export default function InventoryTable({
 	array,
@@ -27,7 +25,6 @@ export default function InventoryTable({
 }) {
 	//  hooks
 	const language = UseLanguage();
-	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [isFavorite, setIsFavorite] = useState(false);
 
@@ -101,17 +98,7 @@ export default function InventoryTable({
 						</GlobalTableCell>,
 
 						<TableCell>
-							{language === 'ar' ? (
-								<IoIosArrowBack
-									className='text-subtitle cursor-pointer'
-									onClick={() => navigate(`/products/${e?.id}`)}
-								/>
-							) : (
-								<IoIosArrowForward
-									className='text-subtitle cursor-pointer'
-									onClick={() => navigate(`/products/${e?.id}`)}
-								/>
-							)}
+							<ArrowTables path={`/products/${e?.id}`} />
 						</TableCell>,
 					],
 				};

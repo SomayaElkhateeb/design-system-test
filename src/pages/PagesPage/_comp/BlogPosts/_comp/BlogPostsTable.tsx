@@ -1,7 +1,6 @@
 import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { IoEyeOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { Switch } from 'src/app/components/ui/switch';
@@ -11,6 +10,7 @@ import { CameraIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 export default function BlogPostsTable({
 	blog,
@@ -77,18 +77,7 @@ export default function BlogPostsTable({
 										className='text-subtitle'
 										onClick={() => navigate(`addDiscount?id=${e?.id}`)}
 									/>
-
-									{language === 'ar' ? (
-										<IoIosArrowBack
-											className='text-subtitle'
-											onClick={() => navigate(`blogPosts/${e?.id}`)}
-										/>
-									) : (
-										<IoIosArrowForward
-											className='text-subtitle'
-											onClick={() => navigate(`blogPosts/${e?.id}`)}
-										/>
-									)}
+									<ArrowTables path={`blogPosts/${e?.id}`} />
 								</div>
 							</TableCell>,
 						],

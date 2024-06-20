@@ -16,7 +16,7 @@ export default function AppsLayout() {
 	];
 
 	return (
-		<div className='flex-col-global'>
+		<div className='flex-col-global gap-0'>
 			<div className='sticky top-[70px] z-10 '>
 				<HorizontalTabsLink tabs={tabs} path='/apps' />
 			</div>

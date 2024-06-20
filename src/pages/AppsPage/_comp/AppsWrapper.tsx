@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+// import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
@@ -11,36 +11,37 @@ export default function AppsWrapper({
 	onButtonClick,
 	warningMessage,
 	ChildrenComponent,
+	cards,
 }: AppsWrapperProps) {
 	const { t } = useTranslation();
 	const language = UseLanguage();
 
-	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+	// const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-	useEffect(() => {
-		const handleResize = () => {
-			setScreenWidth(window.innerWidth);
-		};
-		window.addEventListener('resize', handleResize);
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
+	// useEffect(() => {
+	// 	const handleResize = () => {
+	// 		setScreenWidth(window.innerWidth);
+	// 	};
+	// 	window.addEventListener('resize', handleResize);
+	// 	return () => {
+	// 		window.removeEventListener('resize', handleResize);
+	// 	};
+	// }, []);
 
-	const calculateItemsToRender = useCallback(() => {
-		return screenWidth < 1024 ? 2 : screenWidth < 1536 ? 3 : 4;
-	}, [screenWidth]);
-	const itemsToRender = useMemo(calculateItemsToRender, [calculateItemsToRender]);
+	// const calculateItemsToRender = useCallback(() => {
+	// 	return screenWidth < 1024 ? 2 : screenWidth < 1536 ? 3 : 4;
+	// }, [screenWidth]);
+	// const itemsToRender = useMemo(calculateItemsToRender, [calculateItemsToRender]);
 
 	const renderItems =
 		socialApps.length > 0 ? (
-			socialApps.slice(0, itemsToRender).map((app) => (
+			socialApps.map((app) => (
 				<div key={app.id} className='col-span-1'>
 					<ChildrenComponent {...app} />
 				</div>
 			))
 		) : (
-			<p className='text-error text-center col-span-4 font-medium text-lg'>{warningMessage}</p>
+			<p className='text-error text-center col-span-4 text-lg'>{warningMessage}</p>
 		);
 
 	return (
@@ -48,13 +49,19 @@ export default function AppsWrapper({
 			<div className='flex justify-between'>
 				<h2 className='title'>{title}</h2>
 				<div className='flex items-center gap-1'>
-					<button className='text-sm font-semibold text-title' onClick={onButtonClick}>
+					<button className='text-sm title' onClick={onButtonClick}>
 						{t('View All')}
 					</button>
 					<NextIcon className={`fill-pri-dark ${language === 'ar' ? 'rotate-180' : ''}`} />
 				</div>
 			</div>
-			<div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
+			<div
+				className={`${
+					cards
+						? 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
+						: 'grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3'
+				}`}
+			>
 				{renderItems}
 			</div>
 		</div>

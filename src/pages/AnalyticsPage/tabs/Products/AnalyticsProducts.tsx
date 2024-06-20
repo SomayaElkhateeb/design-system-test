@@ -4,13 +4,12 @@ import { ColumnChart } from 'src/app/components/optimized';
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 import AnalyticsTableActions from '../../_comp/AnalyticsTableActions';
 import data from '../../_comp/data.json';
-import ProductsTable from './comp/ProductsTable';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AnalyticsProductsTableMobile from './comp/AnalyticsProductTableMobile/AnalyticsProductsTableMobile';
 import { getProductsAnalyticsTable } from 'src/app/store/slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableAsyncThunks';
 import AnalyticsProductsTable from 'src/pages/AnalyticsPage/tabs/Products/comp/AnalyticsProductTableMobile/AnalyticsProductsTable';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 export interface AnalyticsProduct {
 	id: string;
 	product_name: string;
@@ -26,13 +25,10 @@ export interface AnalyticsProduct {
 const AnalyticsProducts = () => {
 	//  hooks
 	const { t } = useTranslation();
-	// redux
-	const dispatch = useDispatch();
-
 	const { xs } = useResponsive();
-	//  selectors
-
-	const { isLoading, productsAnalytics, error } = useSelector(
+	// redux
+	const dispatch = useAppDispatch();
+	const { productsAnalytics, isLoading, error } = useAppSelector(
 		(state) => state.productsAnalytics || {},
 	);
 
