@@ -19,7 +19,7 @@ export default function ProductHighlights({ data }: ProductProps) {
 		{
 			id: '1',
 			text: 'Delete product',
-			icon: <LiaTrashAlt size='28' size={28} className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 	const renderProducts = (products: Product[]) => (
@@ -31,9 +31,9 @@ export default function ProductHighlights({ data }: ProductProps) {
 	);
 
 	const slides = [
-		{ title: t('Top selling'), content: renderProducts(data.topSellingProducts) },
-		{ title: t('Top search'), content: renderProducts(data.topSearchProducts) },
-		{ title: t('Top reviews'), content: renderProducts(data.topReviewsProducts) },
+		{ title: t('Top selling'), content: renderProducts(data.topSellingProducts), id: '1' },
+		{ title: t('Top search'), content: renderProducts(data.topSearchProducts), id: '2' },
+		{ title: t('Top reviews'), content: renderProducts(data.topReviewsProducts), id: '3' },
 	];
 
 	return <SlideCardTabs slides={slides} title={t('Products')} />;
