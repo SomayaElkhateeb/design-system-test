@@ -1,6 +1,6 @@
 import { SubHeader } from 'src/app/components/optimized';
-import SubCategoryTable from './_comp/subCategory/SubCategoryTable';
-import TopSubCategoriesTable from './_comp/subCategory/TopSubCategoriesTable';
+import SubCategoryTable from './SubCategoryTable';
+import TopSubCategoriesTable from './TopSubCategoriesTable';
 import { useTranslation } from 'react-i18next';
 
 export const SubCategories = () => {

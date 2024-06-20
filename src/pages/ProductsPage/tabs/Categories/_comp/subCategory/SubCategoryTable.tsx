@@ -167,16 +167,20 @@ const rows = [
 
 export default function SubCategoryTable() {
 	const language = UseLanguage();
+	const {t} =useTranslation()
+	
+	const handelAlign=language === 'ar' ? 'right' : 'left';
+	
 	return (
 		<TableContainer component={Paper} sx={{ boxShadow: 'none' }}>
 			<Table aria-label='collapsible table'>
 				<TableHead>
 					<TableRow>
 						<TableCell />
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>NAME</TableCell>
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>PRODUCTS NO.</TableCell>
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>AVAILABILITY</TableCell>
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>ACTIONS</TableCell>
+						<TableCell align={handelAlign}>{t("NAME")}</TableCell>
+						<TableCell align={handelAlign}>{t("PRODUCTS NO.")}</TableCell>
+						<TableCell align={handelAlign}>{t("AVAILABILITY")}</TableCell>
+						<TableCell align={handelAlign}>{t("ACTIONS")}</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
