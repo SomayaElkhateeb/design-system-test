@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
-import AnalyticsPageGuard from './comp/AnalyticsPageGuard';
+import AnalyticsPageGuard from './_comp/AnalyticsPageGuard';
 
 export default function AnalyticsPage() {
 	const tabs = [

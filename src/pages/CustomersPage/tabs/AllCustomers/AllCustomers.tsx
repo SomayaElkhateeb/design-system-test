@@ -12,7 +12,9 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/FilterOrdersComponent';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { AnalyticsIcon, RemoveIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 import CustomersTable, {
 	customers,
 } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
@@ -49,7 +51,7 @@ export default function AllCustomers() {
 		{
 			id: nanoid(),
 			text: 'Delete customer',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

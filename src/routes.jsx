@@ -8,7 +8,6 @@ import {
 	AppsTabs,
 	BillingAndPlans,
 	Config,
-	ConfigurableProductPage,
 	CustomerInfo,
 	CustomersPage,
 	EmailForm,
@@ -27,24 +26,28 @@ import {
 	SetupConfig,
 	SetupOpenConfig,
 	ShippingConfig,
-	SimpleProductPage,
 	SocialAppDetails,
 	StorePage,
 } from 'src/pages';
 
-import { AnalyticsTabs } from './pages/AnalyticsPage/comp';
+import { AnalyticsTabs } from './pages/AnalyticsPage/_comp';
 import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
-import VirtualProductPage from './pages/ProductsPage/addNewProduct/Virtual';
-import FoodProductPage from './pages/ProductsPage/addNewProduct/Food';
-import BundleProductPage from './pages/ProductsPage/addNewProduct/Bundle';
 
 import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
 import PagesPage from './pages/PagesPage/PagesPage';
 import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
 import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
-import StoreTabs from './pages/StorePage/StoreTabs';
-import StoreConfig from './pages/StorePage/StoreConfig';
+import StoreTabs from './pages/StorePage/_comp/StoreTabs';
+import StoreConfig from './pages/StorePage/_comp/StoreConfig';
 import { SubCategories } from './pages/ProductsPage/tabs/Categories/SubCategories';
+
+import {
+	BundleProductPage,
+	ConfigurableProductPage,
+	FoodProductPage,
+	SimpleProductPage,
+	VirtualProductPage,
+} from './pages/ProductsPage/tabs/_comp';
 
 // Route Definitions
 export const routes = [

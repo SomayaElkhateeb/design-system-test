@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import { GlobalDialog } from 'src/app/components/shared';
 import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import {

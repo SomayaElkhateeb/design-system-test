@@ -1,9 +1,8 @@
-
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { useTranslation } from 'react-i18next';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { newDiscountInterface } from 'src/pages/MarketingPage/tabs/Discounts/NewDiscount/HookForNewDiscount';
 
 const DiscountTypesOptions = ({
 	discountType,
@@ -26,7 +25,7 @@ const DiscountTypesOptions = ({
 					/>
 				</div>
 			)}
-			{discountType ==='Fixed amount' && (
+			{discountType === 'Fixed amount' && (
 				<div className='md:w-[24rem]'>
 					<FormField
 						formStore={formStore}

@@ -8,7 +8,7 @@ import { routes } from './routes';
 import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
 import LoginPage from './pages/AuthPage/Login/LoginPage';
 import ForgetPassword from './pages/AuthPage/ForgetPassword/ForgetPassword';
-import ScrollToTop from './app/components/scroll-top/ScrollToTop';
+import ScrollToTop from './app/components/shared/scroll-top/ScrollToTop';
 
 // Create browser router instance
 

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getOrderAnalyticsTableReducer } from './orderAnalyticsTableExtraReducers';
-import { AnalyticsOrder } from 'src/pages/AnalyticsPage/Orders/AnalyticsOrders';
+import { AnalyticsOrder } from 'src/pages/AnalyticsPage/tabs/Orders/AnalyticsOrders';
 
 export interface orderAnalyticsStatus {
 	ordersAnalytics: AnalyticsOrder[];

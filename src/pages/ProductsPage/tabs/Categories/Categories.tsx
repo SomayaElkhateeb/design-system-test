@@ -1,10 +1,10 @@
-import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
-
-import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
 import { nanoid } from 'nanoid';
-import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { CategoryTable } from './_comp/CategoryTable';
+import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
 export interface Category {
 	id: string;
 	img: string;
@@ -19,6 +19,7 @@ export default function Categories() {
 	//  hooks
 	const { t } = useTranslation();
 	// body
+
 	const categoryData = [
 		{
 			id: '1',
@@ -46,8 +47,8 @@ export default function Categories() {
 		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
 		{
 			id: nanoid(),
-			text: t('Delete category'),
-			icon: <RemoveIcon className='iconClass' />,
+			text: 'Delete brand',
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 	return (

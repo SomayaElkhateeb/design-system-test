@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
-import { EditIcon, RemoveIcon } from 'src/app/utils/icons';
+import { EditIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
 
 import AddNavItemDialog from './_comp/AddNavItemDialog';
 import LegalPageParentCard from '../PagesSection/_comp/LegalPageParentCard';
@@ -52,7 +53,7 @@ export default function NavItemPage() {
 										</div>
 										<div className='flex-row-global gap-[1rem]'>
 											<EditIcon className='fill-subtitle cursor-pointer' />
-											<RemoveIcon className='fill-error' />,
+											<LiaTrashAlt size='28' className='fill-error' />,
 										</div>
 									</div>
 								))}

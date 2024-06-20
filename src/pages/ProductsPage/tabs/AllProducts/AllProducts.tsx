@@ -3,15 +3,26 @@ import { useEffect, useState } from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { MobileProductViews } from 'src/app/components/optimized';
-import { Product } from 'src/app/interface/ProductInterface';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 // =======================
 import AllProductsTable from './_comp/AllProductsTable';
 import TopSection from './_comp/TopSection';
 import AllproductsVertical from './_comp/AllproductsVertical';
 
+export interface Product {
+	name: string;
+	category: string;
+	option?: number;
+	imageUrl: string;
+	SKU?: string;
+	id?: string;
+	quantity: number;
+	price: number;
+}
 //  setting menus for setting button action and will be used in brands section page
 export const settingMenus = [
 	{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
@@ -22,7 +33,7 @@ export const settingMenus = [
 		text: 'Export product orders XLS',
 		icon: <FiUploadCloud className='iconClass' />,
 	},
-	{ id: nanoid(), text: 'Delete product', icon: <RemoveIcon className='fill-error' /> },
+	{ id: nanoid(), text: 'Delete product', icon: <LiaTrashAlt size='28' className='fill-error' /> },
 ];
 
 //  dumy data
@@ -118,7 +129,6 @@ export default function AllProducts() {
 				)}
 
 				{/*  case of small media only  */}
-
 				<div className='sm:hidden grid gap-2 '>
 					{allProducts?.map((product:Product) => (
 						<MobileProductViews settingMenus={settingMenus} key={product.name} {...product} />

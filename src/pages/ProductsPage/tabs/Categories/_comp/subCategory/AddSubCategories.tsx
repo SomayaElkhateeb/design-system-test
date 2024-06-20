@@ -1,4 +1,3 @@
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +17,7 @@ import { AddSubCategoriesSchemaValues, addSubCategoriesFormSchema } from './AddS
 import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
 import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 import { AddFillIcon } from 'src/app/utils/icons';
+import { GlobalDialog } from 'src/app/components/shared';
 interface AddSubCategories {
 	categoryNameEn: string;
 	categoryNameAr: string;

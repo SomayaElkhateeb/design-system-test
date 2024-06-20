@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 
 import { Form } from 'src/app/components/ui/form';
-import CheckoutCustomizeForm from './comp/CheckoutCustomizeForm';
-import NewsletterConsentForm from './comp/NewsletterConsentForm';
-import OrderInvoiceCustomizeForm from './comp/OrderInvoiceCustomizeForm';
-import ProductCustomizeForm from './comp/ProductCustomizeForm';
-import UseCustomization from './comp/useCustomization';
+import CheckoutCustomizeForm from './_comp/CheckoutCustomizeForm';
+import NewsletterConsentForm from './_comp/NewsletterConsentForm';
+import OrderInvoiceCustomizeForm from './_comp/OrderInvoiceCustomizeForm';
+import ProductCustomizeForm from './_comp/ProductCustomizeForm';
+import UseCustomization from './_comp/useCustomization';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,

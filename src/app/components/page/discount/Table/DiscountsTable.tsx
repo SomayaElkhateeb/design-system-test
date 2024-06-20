@@ -1,21 +1,22 @@
-import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { TableCell } from '@mui/material';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { LiaTrashAlt } from 'react-icons/lia';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
-import { Switch } from 'src/app/components/ui/switch';
-import { DiscountInterface } from 'src/app/interface/DiscountInterface';
-import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
-import { MoreIcon, RemoveIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import { Switch } from 'src/app/components/ui/switch';
+import { DiscountInterface } from 'src/app/interface/DiscountInterface';
+import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import { MoreIcon } from 'src/app/utils/icons';
 
 export default function DiscountsTable({
 	discounts,
@@ -66,7 +67,7 @@ export default function DiscountsTable({
 		{
 			id: nanoid(),
 			text: 'delete',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

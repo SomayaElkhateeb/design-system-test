@@ -5,8 +5,7 @@ import TextFields from './TextFields';
 import { Button } from 'src/app/components/optimized';
 import AppliesBasedOn from '../Rate/AppliesBasedOn';
 import useCustomHookAddRate, { IAddRate } from './HookForAddRate';
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
-
+import { GlobalDialog } from 'src/app/components/shared';
 export default function AddRate({
 	saudi,
 	onClose,
