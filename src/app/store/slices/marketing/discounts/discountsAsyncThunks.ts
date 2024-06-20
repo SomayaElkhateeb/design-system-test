@@ -1,17 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 const URL = 'http://localhost:3007';
 
 // get discount
-export const getDiscounts = createAsyncThunk<any[]>(
+export const getDiscounts = createAsyncThunk<DiscountInterface[]>(
 	'discount/getDiscounts',
 	async (_, thunkAPI) => {
 		const { rejectWithValue } = thunkAPI;
 		try {
-			const { data } = await axios.get<any[]>(`${URL}/discount`);
+			const { data } = await axios.get<DiscountInterface[]>(`${URL}/discount`);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error.message);
+			throw rejectWithValue(error);
 		}
 	},
 );

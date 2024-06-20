@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AnalyticsOrder } from 'src/pages/AnalyticsPage/tabs/Orders/AnalyticsOrders';
-import orderAnalyticsTableUrl from 'src/pages/AnalyticsPage/_comp/data.json';
+const URL = 'http://localhost:3007';
 
 // get order Analytics Data
 export const getOrderAnalyticsTable = createAsyncThunk(
@@ -9,9 +9,7 @@ export const getOrderAnalyticsTable = createAsyncThunk(
 	async (_, thunkAPI) => {
 		const { rejectWithValue } = thunkAPI;
 		try {
-			const { data } = await axios.get<AnalyticsOrder[]>(
-				`${orderAnalyticsTableUrl}/ordersAnalyticsTable`,
-			);
+			const { data } = await axios.get<AnalyticsOrder[]>(`${URL}/ordersAnalyticsTable`);
 			console.log('getOrderAnalyticsTable: ', getOrderAnalyticsTable);
 			return data;
 		} catch (error) {

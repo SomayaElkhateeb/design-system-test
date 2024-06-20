@@ -1,15 +1,11 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 import TopSectionBlogPostsAndSection from './_comp/TopSectionBlogPostsAndPagesSection';
 import BlogPostsTable from './_comp/BlogPostsTable';
-import { getImageUrl } from 'src/app/utils';
-import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
-
 import { getBlogTable } from 'src/app/store/slices/pagesPage/blog/blogTableAsyncThunks';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export default function BlogPosts() {
 	//  hooks
@@ -17,22 +13,15 @@ export default function BlogPosts() {
 	const { xs } = useResponsive();
 
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, blog, error } = useSelector((state) => state.blog || {});
+	const dispatch = useAppDispatch();
+	const { blog, isLoading, error } = useAppSelector((state) => state.blog);
 
 	useEffect(() => {
 		dispatch(getBlogTable());
 	}, [dispatch]);
 
-	const Blogs: BlogPostInterface[] = [
-		{
-			id: '1',
-			visibility: false,
-			img: getImageUrl('images/product.png'),
-			title: 'mohamed Mostafa',
-			describtion: '01064545565',
-		},
-	];
+	if (error) return <div>Error: {error}</div>;
+
 	return (
 		<div className='flex-col-global'>
 			<TopSectionBlogPostsAndSection addButton={t('Add post')} path='AddBlog' />

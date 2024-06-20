@@ -2,8 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { TableCell } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { IoIosArrowForward } from 'react-icons/io';
-import { IoIosArrowBack } from 'react-icons/io';
 import BaseTable, { GlobalTableCell } from '../../optimized/TableLayoutGlobal/base.table';
 import { Coupon } from 'src/app/interface/CouponInterface';
 import { LiaTrashAlt } from 'react-icons/lia';
@@ -17,6 +15,7 @@ import { MoreIcon } from 'src/app/utils/icons';
 import PopupDelete from '../../optimized/Popups/PopupDelete';
 import { useState } from 'react';
 import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+import ArrowTables from '../../optimized/UiKits/ArrowTables';
 
 export default function CouponsTable({
 	coupons,
@@ -111,18 +110,7 @@ export default function CouponsTable({
 										onDelete={() => handleDeleteItem(e?.id)}
 									/>
 								)}
-
-								{language === 'ar' ? (
-									<IoIosArrowBack
-										className='text-subtitle'
-										onClick={() => navigate(`addCoupon?id=${e?.id}`)}
-									/>
-								) : (
-									<IoIosArrowForward
-										className='text-subtitle'
-										onClick={() => navigate(`addCoupon?id=${e?.id}`)}
-									/>
-								)}
+								<ArrowTables path={`addCoupon?id=${e?.id}`} />
 							</div>
 						</TableCell>,
 					],

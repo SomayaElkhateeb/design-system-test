@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Coupon } from 'src/app/interface/CouponInterface';
 const URL = 'http://localhost:3007';
 
 // get coupons
-export const getCoupons = createAsyncThunk<any[]>('coupon/getCoupons', async (_, thunkAPI) => {
+export const getCoupons = createAsyncThunk<Coupon[]>('coupon/getCoupons', async (_, thunkAPI) => {
 	const { rejectWithValue } = thunkAPI;
 	try {
-		const { data } = await axios.get<any[]>(`${URL}/coupons`);
+		const { data } = await axios.get<Coupon[]>(`${URL}/coupons`);
 		return data;
 	} catch (error) {
 		throw rejectWithValue(error.message);
