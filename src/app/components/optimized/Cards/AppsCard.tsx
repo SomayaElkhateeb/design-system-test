@@ -24,10 +24,10 @@ import { AppData } from 'src/pages/AppsPage/comp/useAppStore';
 export default function AppsCard({ name, description, status, imageUrl, url }: AppData) {
 	return (
 		<Link to={url} className='flex gap-3 global-cards flex-row'>
-			<div className='flex justify-center items-center size-[60px] min-w-[60px] rounded-lg border border-light-2 overflow-hidden'>
-				<img src={getImageUrl(imageUrl)} className='object-cover w-5/6' />
+			<div className='p-1 size-[60px] cardDetails-sharedClass overflow-hidden'>
+				<img src={getImageUrl(imageUrl)} className='w-full h-full' />
 			</div>
-			<div className='flex-col-global gap-[.75rem]'>
+			<div className='flex-col-global gap-[.50rem]'>
 				<div className='flex-col-global gap-[.25rem]'>
 					<h3 className='title'>{name}</h3>
 					<p className='paragraph text-subtitle'>{description}</p>
