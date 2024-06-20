@@ -13,6 +13,9 @@ export const arabic = {
 	Campaigns: 'الحملات',
 	"Add Subcategory":"اضافه تحت فرعي",
 	"Subcategories":"تحت فرعيه",
+	
+	"PRODUCTS NO.":"عدد المنتجات",
+	"AVAILABILITY":"متاح",
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 	"In Progress": " في تقدم",

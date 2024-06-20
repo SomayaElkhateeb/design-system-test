@@ -20,14 +20,22 @@ interface header {
 	icon?: React.ReactNode;
 }
 type props = {
-	headers: header[];
-	rows: ReactMetaElement<any>[];
+	headers?: header[];
+	rows: any[];
 	isLoading?: boolean;
 	color?: string;
 	language?: string | null | undefined;
+	collapse?: boolean;
 };
 
-const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language }: props) => (
+const BaseTable = <T extends Model>({
+	headers,
+	rows,
+	isLoading,
+	color,
+	language,
+	collapse,
+}: props) => (
 	<>
 		<TableContainer
 			sx={{
@@ -41,34 +49,40 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 			<Fade in={isLoading}>
 				<LinearProgress color='primary' />
 			</Fade>
-			<Table sx={{ backgroundColor: '#F9FAFC' }} stickyHeader aria-label='sticky table'>
+			<Table
+				sx={{ backgroundColor: '#F9FAFC' }}
+				stickyHeader
+				aria-label={collapse ? 'collapsible table' : 'sticky table'}
+			>
 				<TableHead sx={{ backgroundColor: 'white' }}>
 					<TableRow>
-						{headers?.map((header: header, i: any) => (
-							<GlobalTableCell
-								sx={{ color: color, fontSize: { md: '.9rem', xs: '.7rem' } }}
-								key={`h-${i}`}
-							>
-								<Box
-									sx={{
-										display: 'flex',
-										justifyContent: header.icon
-											? 'flex-start'
-											: language === 'ar'
-											? 'flex-end'
-											: 'flex-start',
-										alignItems: 'center',
-									}}
+						{headers &&
+							headers?.length > 0 &&
+							headers?.map((header: header, i: any) => (
+								<GlobalTableCell
+									sx={{ color: color, fontSize: { md: '.9rem', xs: '.7rem' } }}
+									key={`h-${i}`}
 								>
-									{header.icon && header.icon}
-									{header.title?.toUpperCase()}
-								</Box>
-							</GlobalTableCell>
-						))}
+									<Box
+										sx={{
+											display: 'flex',
+											justifyContent: header.icon
+												? 'flex-start'
+												: language === 'ar'
+												? 'flex-end'
+												: 'flex-start',
+											alignItems: 'center',
+										}}
+									>
+										{header.icon && header.icon}
+										{header.title?.toUpperCase()}
+									</Box>
+								</GlobalTableCell>
+							))}
 					</TableRow>
 				</TableHead>
 
-				{rows?.length > 0 && (
+				{rows?.length > 0 && !collapse && (
 					<TableBody sx={{ backgroundColor: '#F9FAFC' }}>
 						{/*Rows*/}
 						{!isLoading &&
@@ -80,6 +94,9 @@ const BaseTable = <T extends Model>({ headers, rows, isLoading, color, language 
 								</TableRow>
 							))}
 					</TableBody>
+				)}
+				{rows?.length > 0 && collapse && (
+					<TableBody sx={{ backgroundColor: '#F9FAFC' }}>{rows}</TableBody>
 				)}
 			</Table>
 		</TableContainer>

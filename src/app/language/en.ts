@@ -62,6 +62,9 @@ export const english = {
 	'General settings': 'General settings',
 	'Store details': 'Store details',
 	'Store name': 'Store name',
+	
+	"PRODUCTS NO.":"PRODUCTS NO.",
+	"AVAILABILITY":"AVAILABILITY",
 	'Store contact email': 'Store contact email',
 	'Store contact phone': 'Store contact phone',
 	'Social contacts': 'Social contacts',
