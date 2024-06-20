@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { LiaTrashAlt } from 'react-icons/lia';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
+
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import BaseTable, {
@@ -14,6 +14,7 @@ import BaseTable, {
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 import { Switch } from 'src/app/components/ui/switch';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
+import { useAppDispatch } from 'src/app/store';
 import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { MoreIcon } from 'src/app/utils/icons';
@@ -27,7 +28,7 @@ export default function DiscountsTable({
 }) {
 	//  hooks
 	const language = UseLanguage();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const [state, setState] = useState({
 		showDeletePopup: false,
