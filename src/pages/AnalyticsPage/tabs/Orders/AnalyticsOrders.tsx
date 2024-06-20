@@ -27,9 +27,7 @@ export default function AnalyticsOrders() {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { ordersAnalytics, isLoading, error } = useAppSelector(
-		(state) => state.ordersAnalytics || {},
-	);
+	const { ordersAnalytics, isLoading, error } = useAppSelector((state) => state.ordersAnalytics);
 
 	useEffect(() => {
 		dispatch(getOrderAnalyticsTable());

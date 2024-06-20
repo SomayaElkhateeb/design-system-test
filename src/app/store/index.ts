@@ -1,10 +1,11 @@
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import discount from './slices/marketing/discounts/discountSlice';
 import coupons from './slices/marketing/coupons/couponSlice';
-import categories from './slices/marketing/categories/categoriesSlice';
-import customers from './slices/marketing/customers/customersSlice';
-import products from './slices/marketing/products/productsSlice';
-import groups from './slices/marketing/groups/groupsSlice';
+import categoriesSelect from './slices/selectors/categories/categoriesSlice';
+import customers from './slices/selectors/customers/customersSlice';
+import products from './slices/selectors/products/productsSlice';
+import groups from './slices/selectors/groups/groupsSlice';
 import productsAnalytics from './slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableSlice';
 import ordersAnalytics from './slices/analyticsPage/OrderAnalytics/orderAnalyticsTableSlice';
 import customersAnalytics from './slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableSlice';
@@ -15,30 +16,31 @@ import blog from './slices/pagesPage/blog/blogTableSlice';
 import allProducts from './slices/productsPage/allProducts/allProductsTableSlice';
 import brands from './slices/productsPage/brands/brandsTableSlice';
 import inventory from './slices/productsPage/inventory/inventoryTableSlice';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import categories from './slices/productsPage/categories/categoriesTable/categoriesTableTableSlice';
 
 const store = configureStore({
 	reducer: {
-		discount: discount, //
-		coupons: coupons, //
-		categories: categories,
+		discount: discount,
+		coupons: coupons,
+		categoriesSelect: categoriesSelect,
 		customers: customers,
 		products: products,
 		groups: groups,
 		// analytics page
-		productsAnalytics: productsAnalytics, //
+		productsAnalytics: productsAnalytics,
 		ordersAnalytics: ordersAnalytics, //
 		customersAnalytics: customersAnalytics, //
 		// customers page
-		allCustomer: allCustomer, //
-		customersGroup: customersGroup, //
+		allCustomer: allCustomer,
+		customersGroup: customersGroup,
 		// pages page
-		pages: pages, //
-		blog: blog, //
+		pages: pages,
+		blog: blog,
 		// products page
-		allProducts: allProducts, //
-		brands: brands, //
-		inventory: inventory, //
+		allProducts: allProducts,
+		brands: brands,
+		inventory: inventory,
+		categories: categories,
 	},
 });
 

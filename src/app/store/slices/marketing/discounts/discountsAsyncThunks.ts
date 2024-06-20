@@ -12,7 +12,7 @@ export const getDiscounts = createAsyncThunk<DiscountInterface[]>(
 			const { data } = await axios.get<DiscountInterface[]>(`${URL}/discount`);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			throw rejectWithValue(error.message);
 		}
 	},
 );

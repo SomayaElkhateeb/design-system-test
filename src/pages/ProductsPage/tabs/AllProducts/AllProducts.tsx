@@ -103,7 +103,7 @@ export default function AllProducts() {
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
 
-	if (error) return <div>Error: {error}</div>;
+	// if (error) return <div>Error: {error}</div>;
 
 	return (
 		<div className='custom_container'>

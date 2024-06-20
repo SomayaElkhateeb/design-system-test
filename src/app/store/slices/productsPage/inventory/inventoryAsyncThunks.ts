@@ -13,7 +13,7 @@ export const getInventoryTable = createAsyncThunk(
 			console.log('getInventoryTable: ', getInventoryTable);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			throw rejectWithValue(error.message);
 		}
 	},
 );
