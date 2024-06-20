@@ -11,6 +11,6 @@ export const getBlogTable = createAsyncThunk('blogTable/getBlogTable', async (_,
 		console.log('getBlogTable: ', getBlogTable);
 		return data;
 	} catch (error) {
-		throw rejectWithValue(error);
+		throw rejectWithValue(error.message);
 	}
 });

@@ -13,7 +13,7 @@ export const getAllProductsTable = createAsyncThunk(
 			console.log('getAllProductsTable: ', getAllProductsTable);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			throw rejectWithValue(error.message);
 		}
 	},
 );

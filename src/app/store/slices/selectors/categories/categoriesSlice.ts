@@ -23,7 +23,7 @@ const initialState: CategoriesState = {
 
 // Create the categories slice
 const categoriesSlice = createSlice({
-	name: 'categories',
+	name: 'categoriesSelect',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {

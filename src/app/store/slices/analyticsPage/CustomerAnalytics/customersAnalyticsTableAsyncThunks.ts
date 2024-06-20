@@ -13,7 +13,7 @@ export const getCustomersAnalyticsTable = createAsyncThunk(
 			console.log('getCustomersAnalyticsTable: ', getCustomersAnalyticsTable);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			return rejectWithValue(error.message);
 		}
 	},
 );
