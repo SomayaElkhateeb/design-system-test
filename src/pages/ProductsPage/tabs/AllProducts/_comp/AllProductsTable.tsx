@@ -72,6 +72,7 @@ export default function AllProductsTable({
 			? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
 			: 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
 
+	//  table rows
 	const rows = products.map((product) => {
 		const isFavorite = favorites.includes(product.id);
 		return {

@@ -56,7 +56,7 @@ export const CategoryTable = ({
 						>
 							<div className='flex items-center gap-2'>
 								<MoveIcon />
-								<div className='size-8 border border-constrained rounded-md overflow-hidden'>
+								<div className='box-photo'>
 									<img src={getImageUrl(e.img)} />
 								</div>
 

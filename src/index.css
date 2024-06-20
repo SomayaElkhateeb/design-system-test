@@ -221,6 +221,9 @@ object {
 	.grid-right {
 		@apply col-span-3 lg:col-span-1;
 	}
+	.box-photo{
+		@apply size-8 border border-constrained rounded-md overflow-hidden
+	}
 	.flex-col-global {
 		@apply flex flex-col gap-[1rem];
 	}

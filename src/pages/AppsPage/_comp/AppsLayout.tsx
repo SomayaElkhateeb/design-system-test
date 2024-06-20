@@ -20,7 +20,7 @@ export default function AppsLayout() {
 			<div className='sticky top-[70px] z-10 '>
 				<HorizontalTabsLink tabs={tabs} path='/apps' />
 			</div>
-			<div className='custom-container'>
+			<div className='custom_container'>
 				<Outlet />
 			</div>
 		</div>
