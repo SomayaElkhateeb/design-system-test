@@ -34,8 +34,6 @@ const Discounts = () => {
 		dispatch(getDiscounts());
 	}, [dispatch]);
 
-	if (error) return <div>Error: {error}</div>;
-
 	return (
 		<div className='custom_container  relative'>
 			<div className='flex-col-global'>
