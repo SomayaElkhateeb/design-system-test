@@ -70,6 +70,7 @@
 		"react-to-print": "^2.15.1",
 		"react-toastify": "^10.0.5",
 		"reactjs-social-login": "^2.6.3",
+		"redux-persist": "^6.0.0",
 		"save": "^2.9.0",
 		"slick-carousel": "^1.8.1",
 		"tailwind-merge": "^2.2.2",
