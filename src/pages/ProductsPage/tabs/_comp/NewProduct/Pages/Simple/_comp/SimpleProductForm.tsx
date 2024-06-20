@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
@@ -11,6 +11,8 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { useTranslation } from 'react-i18next';
+import AddBrandItem from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandItem';
+import { AddBrandSchemaValues } from 'src/pages/ProductsPage/tabs/Barnds/_hook/AddbrandsFormSchema';
 
 const simpleProductSchema: ZodObject<ZodRawShape> = z.object({
 	productName: z.string().min(1, 'Product name is required'),
@@ -18,6 +20,21 @@ const simpleProductSchema: ZodObject<ZodRawShape> = z.object({
 	quantity: z.number().min(1, 'Quantity is required'),
 	skuCode: z.string().min(1, 'SKU code is required'),
 	category: z.string().min(1, 'Category is required'),
+	brands: z
+		.array(
+			z.object({
+				brandNameEn: z.string(),
+				brandNameAr: z.string(),
+				brandDescribtionEn: z.string(),
+				brandDescribtionAr: z.string(),
+				brandLinkEn: z.string(),
+				brandLinkAr: z.string(),
+				image: z.instanceof(File),
+				available: z.boolean(),
+				products: z.array(z.any()),
+			}),
+		)
+		.optional(),
 });
 
 const SimpleProductForm: FC = () => {
@@ -32,16 +49,24 @@ const SimpleProductForm: FC = () => {
 			quantity: 0,
 			skuCode: '',
 			category: '',
+			brands: [],
 		},
 	});
 
+	const [openDialog, setOpenDialog] = useState(false);
 	const { t } = useTranslation();
 
+	const handleBrandSubmit = (brand: AddBrandSchemaValues) => {
+		const currentBrands = formStore.getValues('brands') || [];
+		formStore.setValue('brands', [...currentBrands, brand]);
+		setOpenDialog(false);
+	};
+
 	return (
-		<div className='flex flex-col '>
+		<div className='flex flex-col'>
 			<h3 className='title font-bold'>Add a quick Product</h3>
 			<Form {...formStore}>
-				<form className='bg-white rounded px-2 pt-6  w-full' onSubmit={onSubmit}>
+				<form className='bg-white rounded px-2 pt-6 w-full' onSubmit={onSubmit}>
 					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
 						<FormField
 							container={{ className: 'col-span-2' }}
@@ -54,11 +79,9 @@ const SimpleProductForm: FC = () => {
 									options={getDefaultFileInputOptions({
 										accept: { 'image/*': [] },
 										setError: (error) => {
-											// console.log('error', error);
 											formStore.setError('image', { message: error.message });
 										},
 										onFileLoad: (params) => {
-											// console.log('params', params);
 											onChange(params.file);
 										},
 									})}
@@ -138,16 +161,24 @@ const SimpleProductForm: FC = () => {
 										<button
 											type='button'
 											className='flex items-center justify-center px-2 py-2 border-l w-3/5 lg:w-2/5'
+											onClick={() => setOpenDialog(true)}
 										>
-											<FaCirclePlus size={24} className='mr-1' />
-											<span>Add One</span>
+											<FaCirclePlus size={24} />
+											<span className='ms-1'>Add One</span>
 										</button>
 									</div>
 								)}
 							/>
 						</div>
 					</div>
-					<div className='flex  mt-6 space-x-4 lg:justify-end justify-center'>
+					{openDialog && (
+						<AddBrandItem
+							openDialog={openDialog}
+							handleClose={() => setOpenDialog(false)}
+							handleBrandSubmit={handleBrandSubmit}
+						/>
+					)}
+					<div className='flex mt-6 space-x-4 lg:justify-end justify-center'>
 						<Button variant='primary' type='submit'>
 							Save Changes
 						</Button>
