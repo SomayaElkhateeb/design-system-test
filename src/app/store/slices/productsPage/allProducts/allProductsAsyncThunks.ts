@@ -1,40 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Product } from 'src/app/interface/ProductInterface';
+import { Product, allProducts } from 'src/pages/ProductsPage/_comp/data';
 
-const allProducts = [
-	{
-		id: '1',
-		name: 'mohamed Mostafa',
-		category: 'blanket',
-		SKU: 'mansoura',
-		option: 10,
-		quantity: 10,
-		price: 1000,
-		imageUrl: 'images/product.png',
-	},
-	{
-		id: '2',
-		name: 'mohamed Mostafa',
-		category: 'blanket',
-		SKU: 'mansoura',
-		option: 10,
-		quantity: 0,
-		price: 1000,
-		imageUrl: 'images/product.png',
-	},
-];
-// get all products
+// Async thunk to fetch all products
 export const getAllProductsTable = createAsyncThunk(
 	'allProductsTable/getAllProductsTable',
 	async (_, thunkAPI) => {
 		const { rejectWithValue } = thunkAPI;
 		try {
+			// Fetching products from a hypothetical endpoint
 			const { data } = await axios.get<Product[]>(allProducts);
-			console.log('getAllProductsTable: ', getAllProductsTable);
+			// const { data } = await axios.get<Product[]>('/api/products');
+			console.log('getAllProductsTable: ', data);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			throw rejectWithValue(error?.response?.data);
 		}
 	},
 );

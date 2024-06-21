@@ -12,7 +12,13 @@ import { Link } from 'react-router-dom';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { useTranslation } from 'react-i18next';
 import AddBrandItem from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandItem';
-import { AddBrandSchemaValues } from 'src/pages/ProductsPage/tabs/Barnds/_hook/AddbrandsFormSchema';
+import {
+	Select,
+	SelectContent,
+	SelectTrigger,
+	SelectValue,
+	SelectItem,
+} from 'src/app/components/ui/select';
 
 const simpleProductSchema: ZodObject<ZodRawShape> = z.object({
 	productName: z.string().min(1, 'Product name is required'),
@@ -20,21 +26,7 @@ const simpleProductSchema: ZodObject<ZodRawShape> = z.object({
 	quantity: z.number().min(1, 'Quantity is required'),
 	skuCode: z.string().min(1, 'SKU code is required'),
 	category: z.string().min(1, 'Category is required'),
-	brands: z
-		.array(
-			z.object({
-				brandNameEn: z.string(),
-				brandNameAr: z.string(),
-				brandDescribtionEn: z.string(),
-				brandDescribtionAr: z.string(),
-				brandLinkEn: z.string(),
-				brandLinkAr: z.string(),
-				image: z.instanceof(File),
-				available: z.boolean(),
-				products: z.array(z.any()),
-			}),
-		)
-		.optional(),
+	image: z.instanceof(File),
 });
 
 const SimpleProductForm: FC = () => {
@@ -48,23 +40,22 @@ const SimpleProductForm: FC = () => {
 			price: 0,
 			quantity: 0,
 			skuCode: '',
+			image: undefined,
 			category: '',
-			brands: [],
 		},
 	});
 
 	const [openDialog, setOpenDialog] = useState(false);
 	const { t } = useTranslation();
 
-	const handleBrandSubmit = (brand: AddBrandSchemaValues) => {
-		const currentBrands = formStore.getValues('brands') || [];
-		formStore.setValue('brands', [...currentBrands, brand]);
+	const handleBrandSubmit = (brand) => {
+		console.log(brand);
 		setOpenDialog(false);
 	};
 
 	return (
-		<div className='flex flex-col'>
-			<h3 className='title font-bold'>Add a quick Product</h3>
+		<div className='flex flex-col-global'>
+			<h3 className='title font-bold'>{t('Add a quick Product')}</h3>
 			<Form {...formStore}>
 				<form className='bg-white rounded px-2 pt-6 w-full' onSubmit={onSubmit}>
 					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
@@ -74,7 +65,7 @@ const SimpleProductForm: FC = () => {
 							name='image'
 							render={({ onChange, value, ...field }) => (
 								<FileInput
-									className='flex flex-col items-center justify-center gap-2 size-32 cursor-pointer'
+									className='flex flex-col-global items-center justify-center gap-2 size-32 cursor-pointer'
 									{...field}
 									options={getDefaultFileInputOptions({
 										accept: { 'image/*': [] },
@@ -87,7 +78,7 @@ const SimpleProductForm: FC = () => {
 									})}
 								>
 									<TfiUpload className='text-[1.5rem]' />
-									<p>{t('UploadImage')}</p>
+									<p>{t('Upload Image')}</p>
 								</FileInput>
 							)}
 						/>
@@ -101,7 +92,7 @@ const SimpleProductForm: FC = () => {
 										{...field}
 										id='productName'
 										type='text'
-										placeholder='Product name (required)'
+										placeholder={`${t('Product name')} (${t('required')})`}
 									/>
 								)}
 							/>
@@ -118,7 +109,7 @@ const SimpleProductForm: FC = () => {
 											{...field}
 											id='price'
 											type='number'
-											placeholder='Price (required)'
+											placeholder={`${t('Price')} (${t('required')})`}
 											className='flex-1'
 										/>
 									</div>
@@ -129,7 +120,7 @@ const SimpleProductForm: FC = () => {
 								formStore={formStore}
 								name='quantity'
 								render={(field) => (
-									<Input {...field} id='quantity' type='number' placeholder='Quantity' />
+									<Input {...field} id='quantity' type='number' placeholder={t('Quantity')} />
 								)}
 							/>
 							<FormField
@@ -137,9 +128,10 @@ const SimpleProductForm: FC = () => {
 								formStore={formStore}
 								name='skuCode'
 								render={(field) => (
-									<Input {...field} id='skuCode' type='text' placeholder='SKU code' />
+									<Input {...field} id='skuCode' type='text' placeholder={t('SKU Code')} />
 								)}
 							/>
+
 							<FormField
 								container={{ className: 'col-span-6' }}
 								formStore={formStore}
@@ -149,10 +141,10 @@ const SimpleProductForm: FC = () => {
 										<select
 											{...field}
 											id='category'
-											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm'
+											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus '
 										>
 											<option value='' disabled>
-												Select category
+												{t('Select category')}
 											</option>
 											<option value='category1'>Category 1</option>
 											<option value='category2'>Category 2</option>
@@ -160,15 +152,53 @@ const SimpleProductForm: FC = () => {
 										</select>
 										<button
 											type='button'
-											className='flex items-center justify-center px-2 py-2 border-l w-3/5 lg:w-2/5'
+											className='flex items-center justify-center px-2 py-2 border-l w-2/5'
 											onClick={() => setOpenDialog(true)}
 										>
 											<FaCirclePlus size={24} />
-											<span className='ms-1'>Add One</span>
+											<span className='ms-1'>{t('Add One')}</span>
 										</button>
 									</div>
 								)}
 							/>
+							{/* 20/06/2024 */}
+							{/* <FormField
+								container={{ className: 'col-span-6' }}
+								formStore={formStore}
+								name='category'
+								label={t('Category')}
+								render={(field) => (
+									<div className='flex'>
+										<Select
+											onValueChange={field.onChange}
+											value={field.value}
+											required={field.required}
+											name={field.name}
+										>
+											<SelectTrigger
+												className='border-e-0 rounded-e-none rtl:border-e rtl:rounded-e rtl:border-s-0 rtl:rounded-s-none'
+												onBlur={field.onBlur}
+												disabled={field.disabled}
+												id={field.id}
+											>
+												<SelectValue placeholder={t('Select category')} />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value='category1'>{t('Category 1')}</SelectItem>
+												<SelectItem value='category2'>{t('Category 2')}</SelectItem>
+											</SelectContent>
+										</Select>
+										<button
+											type='button'
+											className='flex items-center justify-center px-2 py-2 border-l w-3/5 lg:w-2/5'
+											onClick={() => setOpenDialog(true)}
+										>
+											<FaCirclePlus size={24} />
+											<span className='ms-1'>{t('Add One')}</span>
+										</button>
+									</div>
+								)}
+							/> */}
 						</div>
 					</div>
 					{openDialog && (
@@ -180,11 +210,11 @@ const SimpleProductForm: FC = () => {
 					)}
 					<div className='flex mt-6 space-x-4 lg:justify-end justify-center'>
 						<Button variant='primary' type='submit'>
-							Save Changes
+							{t('Save Changes')}
 						</Button>
 						<Link to='/products/new/simple'>
 							<Button variant='secondary' RightIcon={<IoIosArrowForward />}>
-								Add More Info
+								{t('Add More Info')}
 							</Button>
 						</Link>
 					</div>

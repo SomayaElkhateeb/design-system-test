@@ -11,7 +11,7 @@ import { getImageUrl } from 'src/app/utils';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
-import { Product, products } from '../../AllProducts/AllProducts';
+import { Product, allProducts } from 'src/pages/ProductsPage/_comp/data';
 
 
 export default function InventoryTable({
@@ -39,7 +39,7 @@ export default function InventoryTable({
 				<CustomTableHeaderCheckbox
 					array={array}
 					setArray={setArray}
-					mainArray={products?.map((e) => e.id)}
+					mainArray={allProducts?.map((e) => e.id)}
 				/>
 			),
 			title: t('Product & Category'),

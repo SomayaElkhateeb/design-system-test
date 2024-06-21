@@ -11,8 +11,8 @@ import {
 
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
 
-import { ValidFormStoreByValues } from 'src/utils/types';
 import { adminSchema } from './AdminSchema';
+import { ValidFormStoreByValues } from 'src/utils/types';
 
 export default function AdminOrLanguageDefaults<TFormStore>({
 	formStore,
