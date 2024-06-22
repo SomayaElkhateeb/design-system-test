@@ -16,7 +16,7 @@ export default function Barnds() {
 		dispatch(getBrandsTable());
 	}, [dispatch]);
 
-	const settingMenus = [
+	const barndsSettingMenus = [
 		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand products', icon: <OrdersIcon className='fill-subtitle' /> },
@@ -35,7 +35,7 @@ export default function Barnds() {
 				<TopSectionBrandsTable />
 
 				{/*  table  */}
-				<BrandsTable settingMenus={settingMenus} brands={brands} isLoading={isLoading} />
+				<BrandsTable settingMenus={barndsSettingMenus} brands={brands} isLoading={isLoading} />
 
 				{/*  case of small media */}
 				<div className='flex-col-global sm:hidden'>
@@ -43,7 +43,7 @@ export default function Barnds() {
 						<CustomersComponenet
 							noAvatar
 							id={e.id}
-							settingMenus={settingMenus}
+							settingMenus={barndsSettingMenus}
 							key={i}
 							firstName={e.title}
 							email={e.describtion}

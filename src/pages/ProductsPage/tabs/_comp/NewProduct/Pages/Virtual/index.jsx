@@ -22,17 +22,17 @@ const productsSections = [
 	{
 		Elem: ProductFormMediaSection,
 		id: 'ProductFormMediaSection',
-		title: 'media',
+		title: 'General info',
 	},
 	{
 		Elem: ProductFormBasicInfoSection,
 		id: 'ProductFormBasicInfoSection',
-		title: 'basic info',
+		title: '',
 	},
 	{
 		Elem: ProductFormDescriptionAndSpecificationsSection,
 		id: 'ProductFormDescriptionAndSpecificationsSection',
-		title: 'description and specifications',
+		title: '',
 	},
 	{
 		Elem: ProductFormPricingSection,
@@ -42,17 +42,17 @@ const productsSections = [
 	{
 		Elem: ProductFormStockSection,
 		id: 'ProductFormStockSection',
-		title: 'stock',
+		title: '',
 	},
 	{
 		Elem: ProductFormShippingSection,
 		id: 'ProductFormShippingSection',
-		title: 'shipping',
+		title: '',
 	},
 	{
 		Elem: ProductFormOptionsAndVariationsSection,
 		id: 'ProductFormOptionsAndVariationsSection',
-		title: 'options and variations',
+		title: 'options & variations',
 	},
 	{
 		Elem: SeoFormFaqsSection,
@@ -62,7 +62,7 @@ const productsSections = [
 	{
 		Elem: ProductFormFaqsSection,
 		id: 'ProductFormFaqsSection',
-		title: 'faqs',
+		title: '',
 	},
 ];
 

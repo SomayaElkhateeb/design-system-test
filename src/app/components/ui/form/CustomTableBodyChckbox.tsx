@@ -24,7 +24,7 @@ export default function CustomTableBodyCheckbox({
 					setArray([id, ...array]);
 				}
 			}}
-			checked={array.includes(id)}
+			checked={array?.includes(id)}
 		/>
 	);
 }

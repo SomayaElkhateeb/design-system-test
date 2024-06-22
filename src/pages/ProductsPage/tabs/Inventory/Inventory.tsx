@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import InventoryTable from 'src/pages/ProductsPage/tabs/Inventory/_comp/InventoryTable';
 import TopSectionInventoryTable from 'src/pages/ProductsPage/tabs/Inventory/_comp/TopSectionInventoryTable';
-import { MobileProductViews } from 'src/app/components/optimized';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
+import { MobileProductViews } from 'src/app/components/optimized';
 import { allProducts } from '../../_comp/data';
 
 export default function Inventory() {
@@ -33,11 +33,11 @@ export default function Inventory() {
 
 				{/*  case of small media only  */}
 
-				<div className='grid gap-2'>
+				{/* <div className='grid gap-2'>
 					{allProducts?.map((product) => (
 						<MobileProductViews key={product.name} {...product} />
 					))}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);

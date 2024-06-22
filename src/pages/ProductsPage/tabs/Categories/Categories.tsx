@@ -41,7 +41,7 @@ export default function Categories() {
 		},
 	];
 
-	const Menue = [
+	const categoryMenue = [
 		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
 		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
 		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
@@ -58,7 +58,7 @@ export default function Categories() {
 				<TopSectionCategoriesTable title={t('Add Category')} />
 
 				{/* table */}
-				<CategoryTable Menue={Menue} categoryData={categoryData} />
+				<CategoryTable Menue={categoryMenue} categoryData={categoryData} />
 
 				{/*  case of small media */}
 				<div className='flex-col-global sm:hidden'>
@@ -66,7 +66,7 @@ export default function Categories() {
 						<CustomersComponenet
 							noAvatar
 							id={e.id}
-							settingMenus={Menue}
+							settingMenus={categoryMenue}
 							key={i}
 							firstName={e.name}
 							email={e.subtitle}

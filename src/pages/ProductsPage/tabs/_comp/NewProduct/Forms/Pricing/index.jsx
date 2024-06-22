@@ -16,7 +16,7 @@ import HorizontalBox from 'src/app/components/ui/horizontal-box';
  */
 function BulkPricesManager(props) {
 	const { t } = useTranslation();
-	const { fields, append, remove, prepend } = useFieldArray({
+	const { fields, append, remove } = useFieldArray({
 		control: props.formStore.control,
 		name: 'bulkPrices',
 	});
