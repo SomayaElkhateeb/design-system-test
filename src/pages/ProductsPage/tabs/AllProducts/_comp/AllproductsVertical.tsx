@@ -1,7 +1,7 @@
 import { ProductCard } from 'src/app/components/optimized';
 import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
 import { getImageUrl } from 'src/app/utils';
-import { Product } from '../AllProducts';
+import { Product } from 'src/pages/ProductsPage/_comp/data';
 
 
 export default function AllproductsVertical({
