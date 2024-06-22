@@ -16,6 +16,7 @@ export interface AppsWrapperProps {
 	warningMessage?: string;
 	onButtonClick: () => void;
 	ChildrenComponent: ComponentType<AppData>;
+	cards?: boolean;
 }
 
 interface Option {
@@ -72,7 +73,7 @@ export default function useAppStore() {
 		newSearchParams.set('apps_group', category);
 
 		setSearchParams(newSearchParams);
-		navigate({ pathname: '/apps/app_store', search: newSearchParams.toString() });
+		navigate({ pathname: '/apps', search: newSearchParams.toString() });
 	};
 
 	const getCommonApps = useMemo(() => {

@@ -7,13 +7,11 @@ const SpecificCustomers = ({ formStore }: { formStore: UseFormReturn<newDiscount
 	const { t } = useTranslation();
 
 	return (
-		<div className='flex-col-global gap-0'>
-			<SpecificAutoCompleteInput<newDiscountInterface>
-				name='specificCustomer'
-				label={t('Select Customers')}
-				formStore={formStore}
-			/>
-		</div>
+		<SpecificAutoCompleteInput<newDiscountInterface>
+			name='specificCustomer'
+			label={t('Select customers')}
+			formStore={formStore}
+		/>
 	);
 };
 

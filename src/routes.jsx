@@ -39,7 +39,7 @@ import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_
 import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
 import StoreTabs from './pages/StorePage/_comp/StoreTabs';
 import StoreConfig from './pages/StorePage/_comp/StoreConfig';
-import { SubCategories } from './pages/ProductsPage/tabs/Categories/SubCategories';
+import { SubCategories } from './pages/ProductsPage/tabs/Categories/_comp/subCategory/SubCategories';
 
 import {
 	BundleProductPage,
@@ -184,6 +184,7 @@ export const routes = [
 	},
 
 	// store Routes
+	//
 	{
 		path: '/store',
 		element: <StorePage />,

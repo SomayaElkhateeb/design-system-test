@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { MobileProductViews } from 'src/app/components/optimized';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { getAllProducts } from 'src/app/store/slices/productsPage/allProducts/allProductsTableSlice';
@@ -7,6 +6,7 @@ import { Product, productSettingsMenu } from '../../_comp/data';
 import AllProductsTable from './_comp/AllProductsTable';
 import AllproductsVertical from './_comp/AllproductsVertical';
 import TopSection from './_comp/TopSection';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 
 
@@ -16,8 +16,8 @@ const AllProducts: React.FC = () => {
     const [array, setArray] = useState<string[]>([]);
 
     // Redux hooks
-    const dispatch = useDispatch();
-    const { isLoading, allProducts } = useSelector(getAllProducts); // Adjust selector based on your slice name
+    const dispatch = useAppDispatch();
+    const { isLoading, allProducts } = useAppSelector(getAllProducts); // Adjust selector based on your slice name
 
     // Fetch products on component mount
     useEffect(() => {
@@ -51,7 +51,7 @@ const AllProducts: React.FC = () => {
                 {/* Render mobile views for small screens */}
                 <div className='sm:hidden grid gap-2 '>
                     {allProducts?.map((product: Product) => (
-                        <MobileProductViews key={product.id} {...product} settingMenus={productSettingsMenu} />
+                        <MobileProductViews key={product.name} {...product} settingMenus={productSettingsMenu} />
                     ))}
                 </div>
             </div>

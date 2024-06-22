@@ -39,7 +39,7 @@ export default function MobileProductViews({
 	return (
 		<div className='flex justify-between bg-white'>
 			<div className='flex gap-1 items-center'>
-				<div className='size-[60px] rounded-lg border border-light-2 overflow-hidden'>
+				<div className='box-photo size-12'>
 					<img src={getImageUrl(imageUrl)} alt={name} />
 				</div>
 				<div className='flex flex-col justify-around '>

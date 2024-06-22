@@ -20,7 +20,7 @@ function InstalledAppsContainer() {
 				{t('Installed')} ({15})
 			</h2>
 			{installedApps.map((app, index) => (
-				<InstallCard {...app} key={index} />
+				<InstallCard {...app} key={index} installed={true} />
 			))}
 		</div>
 	);

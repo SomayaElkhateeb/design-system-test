@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
 import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
-import CouponsTable from 'src/app/components/page/Coupons/CouponsTable';
+import CouponsTable from 'src/pages/MarketingPage/tabs/Coupons/NewCoupons/CouponsTable';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import MarketingTableMobile from '../../_comp/MarketingTableMobile';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 const couponsData = [
 	{
@@ -27,12 +28,10 @@ const formattedCoupons = couponsData.map(({ customerName, ...rest }) => ({
 const Coupons = () => {
 	//  hooks
 	const { t } = useTranslation();
-	const dispatch = useDispatch();
 	const { xs } = useResponsive();
-	//  selectors
-	const { isLoading, coupons, error } = useSelector((state) => state.coupons);
+	const dispatch = useAppDispatch();
+	const { coupons, isLoading, error } = useAppSelector((state) => state.coupons);
 
-	//  call api to get coupons
 	useEffect(() => {
 		dispatch(getCoupons());
 	}, [dispatch]);

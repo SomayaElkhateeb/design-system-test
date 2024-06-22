@@ -1,18 +1,15 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 import AnalyticsTableActions from '../../_comp/AnalyticsTableActions';
 import { ColumnChart } from 'src/app/components/optimized';
 import useAnalyticsData from '../../_comp/useAnalyticsData';
 import data from '../../_comp/data.json';
-// import Table from '../comp/Table';
 import AnalyticsOrdersTable from './comp/AnalyticsOrdersTable';
-import { useTranslation } from 'react-i18next';
 import { getNumericValue, parseDate } from 'src/app/utils';
-
 import { getOrderAnalyticsTable } from 'src/app/store/slices/analyticsPage/OrderAnalytics/orderAnalyticsTableAsyncThunks';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-
-import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AnalyticsOrdersTableMobile from './comp/AnalyticsOrdersTableMobile';
 
 export interface AnalyticsOrder {
@@ -26,16 +23,17 @@ export interface AnalyticsOrder {
 export default function AnalyticsOrders() {
 	//  hooks
 	const { t } = useTranslation();
+	const { xs } = useResponsive();
 
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, ordersAnalytics, error } = useSelector((state) => state.ordersAnalytics || {});
+	const dispatch = useAppDispatch();
+	const { ordersAnalytics, isLoading, error } = useAppSelector((state) => state.ordersAnalytics);
 
 	useEffect(() => {
 		dispatch(getOrderAnalyticsTable());
 	}, [dispatch]);
 
-	const { xs } = useResponsive();
+	if (error) return <div>Error: {error}</div>;
 
 	const ordersSortMenus = [
 		{ text: t('Date Added') },

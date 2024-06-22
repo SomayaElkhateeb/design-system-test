@@ -7,12 +7,10 @@ import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { TableCell } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import { IoIosArrowForward } from 'react-icons/io';
-import { IoIosArrowBack } from 'react-icons/io';
 import { Switch } from 'src/app/components/ui/switch';
 import { settingMenus } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 //  dumy data
 export const brands: BrandsInterface[] = [
@@ -37,7 +35,6 @@ export default function BrandsTable({
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 	//  headers
 
 	const brandssHeaders = [
@@ -91,17 +88,8 @@ export default function BrandsTable({
 									selectedOption={selectedOption}
 									handelSelect={handleSelect}
 								/>
-								{language === 'ar' ? (
-									<IoIosArrowBack
-										className='text-subtitle'
-										onClick={() => navigate(`/brands/${e?.id}`)}
-									/>
-								) : (
-									<IoIosArrowForward
-										className='text-subtitle'
-										onClick={() => navigate(`/brands/${e?.id}`)}
-									/>
-								)}
+
+								<ArrowTables path={`/brands/${e?.id}`} />
 							</div>
 						</TableCell>,
 					],

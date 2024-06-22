@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+
 import { IoEyeOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
@@ -16,6 +16,7 @@ import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 interface AllProductsTableProps {
 	products: Product[];
@@ -72,6 +73,7 @@ export default function AllProductsTable({
 			? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
 			: 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
 
+	//  table rows
 	const rows = products.map((product) => {
 		const isFavorite = favorites.includes(product.id);
 		return {
@@ -127,17 +129,7 @@ export default function AllProductsTable({
 							selectedOption={selectedOption}
 							handelSelect={handleSelect}
 						/>
-						{language === 'ar' ? (
-							<IoIosArrowBack
-								className='text-subtitle'
-								onClick={() => navigate(`/products/${product.id}`)}
-							/>
-						) : (
-							<IoIosArrowForward
-								className='text-subtitle'
-								onClick={() => navigate(`/products/${product.id}`)}
-							/>
-						)}
+						<ArrowTables path={`/products/${product.id}`} />
 					</div>
 				</GlobalTableCell>,
 			],

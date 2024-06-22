@@ -1,14 +1,14 @@
 import { SubHeader } from 'src/app/components/optimized';
-import SubCategoryTable from './_comp/subCategory/SubCategoryTable';
-import TopSubCategoriesTable from './_comp/subCategory/TopSubCategoriesTable';
+import SubCategoryTable from './SubCategoryTable';
+import TopSubCategoriesTable from './TopSubCategoriesTable';
 import { useTranslation } from 'react-i18next';
 
 export const SubCategories = () => {
 	const { t } = useTranslation();
 	return (
-		<>
+		<div className='flex-col-global  gap-3'>
 			<SubHeader title={t('Subcategories')} />
-			<div className='custom_container pt-5'>
+			<div className='custom_container '>
 				<div className='flex-col-global'>
 					{/*  top section */}
 					<TopSubCategoriesTable />
@@ -32,7 +32,7 @@ export const SubCategories = () => {
 				</div> */}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 // Menue={Menue} categoryData={categoryData}

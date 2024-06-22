@@ -3,17 +3,18 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { LiaTrashAlt } from 'react-icons/lia';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
+
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 import { Switch } from 'src/app/components/ui/switch';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
+import { useAppDispatch } from 'src/app/store';
 import { deleteDiscount } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { MoreIcon } from 'src/app/utils/icons';
@@ -27,9 +28,8 @@ export default function DiscountsTable({
 }) {
 	//  hooks
 	const language = UseLanguage();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
-	const navigate = useNavigate();
 	const [state, setState] = useState({
 		showDeletePopup: false,
 		deletingItemId: '',
@@ -117,17 +117,7 @@ export default function DiscountsTable({
 										/>
 									)}
 
-									{language === 'ar' ? (
-										<IoIosArrowBack
-											className='text-subtitle'
-											onClick={() => navigate(`addDiscount?id=${e?.id}`)}
-										/>
-									) : (
-										<IoIosArrowForward
-											className='text-subtitle'
-											onClick={() => navigate(`addDiscount?id=${e?.id}`)}
-										/>
-									)}
+									<ArrowTables path={`addDiscount?id=${e?.id}`} />
 								</div>
 							</TableCell>,
 						],

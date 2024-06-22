@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Product } from 'src/app/interface/ProductInterface';
 import { getInventoryReducer } from './inventoryExtraReducers';
+import { Product } from 'src/pages/ProductsPage/tabs/AllProducts/AllProducts';
 
 export interface inventoryStatus {
 	inventory: Product[];

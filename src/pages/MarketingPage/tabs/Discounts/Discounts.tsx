@@ -3,6 +3,9 @@ import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobil
 import { DiscountsTable, TopSectionDiscountAndCoupons } from 'src/app/components/page';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import MarketingTableMobile from '../../_comp/MarketingTableMobile';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
+import { useEffect } from 'react';
 
 const discounts = [
 	{
@@ -24,11 +27,18 @@ const Discounts = () => {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
+	const dispatch = useAppDispatch();
+	const { discounts, isLoading, error } = useAppSelector((state) => state.discount);
+
+	useEffect(() => {
+		dispatch(getDiscounts());
+	}, [dispatch]);
+
 	return (
 		<div className='custom_container  relative'>
 			<div className='flex-col-global'>
 				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
-				{/* <DiscountsTable discounts={} isLoading={} /> */}
+				<DiscountsTable discounts={discounts} isLoading={isLoading} />
 				{xs && (
 					<>
 						<AddButtonMobile path='addDiscount' />

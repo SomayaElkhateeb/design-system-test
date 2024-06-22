@@ -18,6 +18,16 @@ export interface Category {
 export default function Categories() {
 	//  hooks
 	const { t } = useTranslation();
+
+	// redux
+	// const dispatch = useAppDispatch();
+	// const { customersGroup, isLoading, error } = useAppSelector(
+	// 	(state) => state.customersGroup || {},
+	// );
+
+	// useEffect(() => {
+	// 	dispatch(getCustomersGroupTable());
+	// }, [dispatch]);
 	// body
 
 	const categoryData = [
@@ -29,15 +39,6 @@ export default function Categories() {
 			products: 51,
 			subcategories: 179,
 			active: true,
-		},
-		{
-			id: '2',
-			img: 'images/product.png',
-			name: 'General Wellness',
-			subtitle: 'lorem ipsum dolor sit amet dolor ...',
-			products: 51,
-			subcategories: 179,
-			active: false,
 		},
 	];
 
