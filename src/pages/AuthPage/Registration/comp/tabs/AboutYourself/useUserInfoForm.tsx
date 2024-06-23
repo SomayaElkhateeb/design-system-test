@@ -1,8 +1,10 @@
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 import { useEffect } from 'react';
-
-interface UserInfoInterface {
+import { useMutation } from 'react-query';
+import { AuthApi } from 'src/app/React-Query/authApi';
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+export interface UserInfoInterface {
 	email: string;
 	name: string;
 	phone: string;
@@ -31,10 +33,19 @@ export interface UserInfoProps {
 }
 
 export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
+	//  linking with api
+	const { mutate, isLoading, error } = useMutation('sign-up', AuthApi.signUp);
 	const handleSubmit = (values: UserInfoInterface) => {
-		console.log(values);
+		
 		//Perform verification before moving to the next step
-		onNext();
+
+		mutate(values, {
+			onSuccess: async (response) => {
+				console.log(response);
+			},
+			onError: PublicHandelingErrors.onErrorResponse,
+		});
+		// onNext();
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: userInfoValidationSchema,

@@ -16,6 +16,7 @@ export const arabic = {
 	
 	"PRODUCTS NO.":"عدد المنتجات",
 	"AVAILABILITY":"متاح",
+	"Your token has been expired. Please sign in again":"يرجي تسجيل الدخول مره اخري",
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 

@@ -455,6 +455,7 @@ export const english = {
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',
 	'Customer segment': 'Customer segment',
+	"Your token has been expired. Please sign in again":"Your token has been expired. Please sign in again",
 	'select customers': 'select customers',
 	'select groups': 'select groups',
 	'Basic info': 'Basic info',
