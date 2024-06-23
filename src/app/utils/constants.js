@@ -36,6 +36,9 @@ export const sidebarLinks = [
 	{ id: nanoid(), path: 'services', name: 'Services', Icon: ServicesIcon },
 	{ id: nanoid(), path: 'settings', name: 'Settings', Icon: SettingsIcon },
 	{ id: nanoid(), path: 'store', name: 'Store', Icon: StoresIcon },
+	{ id: nanoid(), path: 'register', name: 'Register', Icon: StoresIcon },
+	{ id: nanoid(), path: 'login', name: 'Login', Icon: StoresIcon },
+	{ id: nanoid(), path: 'forget_password', name: 'Forget Password', Icon: StoresIcon },
 ];
 
 // 	sidebar mobile

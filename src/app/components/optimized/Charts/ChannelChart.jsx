@@ -1,5 +1,5 @@
 import ReactApexChart from 'react-apexcharts';
-import { capitalizeFirstLetter } from 'src/app/utils';
+import { capitalize } from 'src/app/utils';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
 // /**
@@ -99,7 +99,7 @@ export default function ChannelChart(props) {
 	return (
 		<div className='h-full global-cards'>
 			<div className='flex-row-global justify-between '>
-				<h2 className='title'>{capitalizeFirstLetter(title)}</h2>
+				<h2 className='title'>{capitalize(title)}</h2>
 
 				<div className='flex'>
 					<BackAndroidIcon

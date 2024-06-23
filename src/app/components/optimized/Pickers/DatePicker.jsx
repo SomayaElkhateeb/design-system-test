@@ -3,7 +3,7 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { capitalizeFirstLetter } from 'src/app/utils';
+import { capitalize } from 'src/app/utils';
 
 /**
  * @param {{
@@ -15,9 +15,11 @@ import { capitalizeFirstLetter } from 'src/app/utils';
 export default function DatePicker(props) {
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
-			<DemoContainer components={['DatePicker', 'MobileDatePicker', 'DesktopDatePicker', 'StaticDatePicker']}>
+			<DemoContainer
+				components={['DatePicker', 'MobileDatePicker', 'DesktopDatePicker', 'StaticDatePicker']}
+			>
 				<DemoItem>
-					<span className='text-sm text-pri-dark'>{capitalizeFirstLetter(props.label)}</span>
+					<span className='text-sm text-pri-dark'>{capitalize(props.label)}</span>
 					<MobileDatePicker
 						onChange={props.handleOnChange}
 						defaultValue={props.value ? undefined : dayjs('2022-04-17')}

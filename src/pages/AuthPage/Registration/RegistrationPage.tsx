@@ -1,53 +1,29 @@
-import AboutYourBusiness from './_comp/tabs/AboutYourBusiness';
-import AboutYourself from './_comp/tabs/AboutYourself';
 import { useState } from 'react';
-import AuthHeader from '../_comp/AuthHeader';
-import { TabX } from 'src/app/components/optimized';
 
-const RegistrationPage = () => {
-	const [currentTab, setCurrentTab] = useState(0);
-	const [reviewStatus, setReviewStatus] = useState(false);
+import { useTranslation } from 'react-i18next';
+import { LoginOptions } from './comp/LoginOptions';
+import AboutYourself from './comp/tabs/AboutYourself/AboutYourself';
+import RegisterLayout from '../RegisterLayout/RegisterLayout';
+import AboutYourBusiness from './comp/tabs/AboutYourBusiness/AboutYourBusiness';
+import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
 
-	const handleTabClick = (index: number) => {
-		setCurrentTab(index);
-	};
+export default function RegistrationPage() {
+	const { t } = useTranslation();
+	const [isLogin, setIsLogin] = useState<boolean>(false);
 
-	const handleNext = () => {
-		if (currentTab < tabs.length - 1) {
-			setCurrentTab(currentTab + 1);
-		}
-	};
-
-	const handlePrev = () => {
-		if (currentTab > 0) {
-			setCurrentTab(currentTab - 1);
-		}
-	};
-	const handleFinish = (status) => {
-		setReviewStatus(status);
-		alert(status);
-	};
+	const firstTab = isLogin ? <AboutYourself /> : <LoginOptions setLogin={setIsLogin} />;
 
 	const tabs = [
-		{ title: 'Tell us about yourself', content: <AboutYourself /> },
-		{ title: 'Tell us about your business', content: <AboutYourBusiness /> },
+		{ title: t('Tell us about yourself'), content: firstTab },
+		{ title: t('Tell us about your business'), content: <AboutYourBusiness /> },
 	];
 
 	return (
-		<section className='flex flex-col space-x-4 w-full py-12 space-y-16 bg-white m-auto items-center'>
-			<AuthHeader />
-			<div className='w-full md:w-4/5 p-3'>
-				<TabX
-					tabs={tabs}
-					currentTab={currentTab}
-					handleNext={handleNext}
-					handlePrev={handlePrev}
-					handleFinish={handleFinish}
-					handleTabClick={handleTabClick}
-				/>
+		<RegisterLayout>
+			<div className='flex flex-col gap-7 h-full w-full'>
+				<h2 className='title text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
+				<StepNavigator steps={tabs} />
 			</div>
-		</section>
+		</RegisterLayout>
 	);
-};
-
-export default RegistrationPage;
+}

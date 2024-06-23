@@ -4,32 +4,32 @@ import CampaignBtns from './CampaignBtns';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { RefObject, useRef } from 'react';
 import CampaignTable from './CampaignTable';
-import { Button } from 'src/app/components/optimized';
-import { Link } from 'react-router-dom';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import CampaignsTableMobile from './_comp/CampaignsTableMobile';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 const campaignsData = [
 	{
+		id: '1',
 		name: 'Summer campaign',
 		status: 'running',
-		imageUrl: 'social/facebook.svg',
 	},
 	{
+		id: '2',
 		name: 'Summer campaign',
 		status: 'ended',
-		imageUrl: 'social/facebook.svg',
 	},
 	{
+		id: '3',
 		name: 'Summer campaign',
 		status: 'in review',
-		imageUrl: 'social/facebook.svg',
 	},
 	{
+		id: '4',
 		name: 'Summer campaign',
 		status: 'refused',
 	},
 ];
+
 const Campaigns = () => {
 	// Print ref to handle table print.
 	const campaignTableRef: RefObject<HTMLElement | undefined> = useRef();

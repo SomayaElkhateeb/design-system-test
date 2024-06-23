@@ -244,21 +244,23 @@ object {
 	.bran-sec-btn {
 		@apply bg-secondary px-2 py-1 rounded text-white text-sm capitalize hover:bg-sec-pressed;
 	}
-
+	.btn {
+		@apply px-4 py-2.5 rounded text-sm text-center capitalize flex items-center justify-center gap-2 focus:ring-1
+	}
 	.btn-pri {
-		@apply bg-primary px-4 py-2 rounded font-semibold text-white text-sm capitalize hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-1 focus:ring-pri-light;
+		@apply btn bg-primary  text-white font-semibold  hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-pri-light;
 	}
 
 	.btn-sec {
-		@apply border-transparent px-4 py-2 rounded text-pri-dark font-normal text-sm border border-pri-dark hover:bg-light-1 active:bg-light-2 focus:ring-1 focus:ring-pri-light disabled:bg-inactive disabled:text-hint disabled:border-inactive capitalize;
+		@apply btn text-pri-dark font-normal border border-pri-dark hover:bg-light-1 active:bg-light-2 focus:ring-pri-light disabled:bg-inactive disabled:text-hint disabled:border-inactive;
 	}
 
 	.btn-ter {
-		@apply border-2 border-transparent bg-transparent px-4 py-2 rounded hover:bg-light-1 font-semibold text-title text-sm capitalize active:bg-light-2 focus:border-2 focus:border-pri-light disabled:text-hint;
+		@apply btn border-2 bg-transparent hover:bg-light-1 font-semibold text-title  active:bg-light-2 focus:border-pri-light disabled:text-hint;
 	}
 
 	.btn-lin {
-		@apply border-2 border-transparent bg-transparent px-[15px] py-2 rounded hover:bg-light-3 font-normal text-primary text-sm capitalize active:bg-pri-light focus:border-2 focus:border-pri-light;
+		@apply border-2 border-transparent bg-transparent px-4 py-2.5 rounded hover:bg-light-3 font-normal text-primary text-sm capitalize active:bg-pri-light focus:border-2 focus:border-pri-light;
 	}
 
 	.spinner-btn {

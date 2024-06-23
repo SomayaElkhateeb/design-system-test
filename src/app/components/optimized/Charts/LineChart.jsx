@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { useTranslation } from 'react-i18next';
-import { capitalizeFirstLetter } from 'src/app/utils';
+import { capitalize } from 'src/app/utils';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
 // /**
@@ -120,11 +120,9 @@ export default function LineChart(props) {
 		],
 	};
 	return (
-
 		<div className='global-cards  h-full'>
-
 			<div className='flex items-center justify-between '>
-				<h2 className='title'>{capitalizeFirstLetter(title)}</h2>
+				<h2 className='title'>{capitalize(title)}</h2>
 				<div className='flex'>
 					<BackAndroidIcon
 						className={`fill-${negative ? 'error' : 'success'}  ${

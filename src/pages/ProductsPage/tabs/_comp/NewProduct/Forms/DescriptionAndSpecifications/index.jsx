@@ -201,7 +201,7 @@ const tabsItems = [
 						{ name: 'descriptionAr', label: 'عربي' },
 					]}
 					label={`${t('Product Name')} (${t('Required')})`}
-					renderer={(field) => <Textarea {...field} />}
+					renderer={(field) => <Textarea {...field}  />}
 				/>
 			);
 		},

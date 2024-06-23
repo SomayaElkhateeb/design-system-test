@@ -13,7 +13,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setShowLoading(false);
-		}, 3000);
+		}, 50);
 
 		return () => clearTimeout(timer);
 	}, []);
