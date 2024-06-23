@@ -1,8 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getInventoryTable } from './inventoryAsyncThunks';
-import { inventoryStatus } from './inventoryTableSlice';
+import { inventorySliceModel } from 'src/app/models/inventorySliceModel';
 
-export const getInventoryReducer = (builder: ActionReducerMapBuilder<inventoryStatus>) => {
+export const getInventoryReducer = (builder: ActionReducerMapBuilder<inventorySliceModel>) => {
 	builder
 		// get c table
 		.addCase(getInventoryTable.pending, (state) => {

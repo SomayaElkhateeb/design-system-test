@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
 import { Category } from 'src/pages/ProductsPage/tabs/Categories/Categories';
 const URL = 'http://localhost:3007';
 
@@ -13,7 +12,7 @@ export const getCategoriesTable = createAsyncThunk(
 			console.log('getCategoriesTable: ', getCategoriesTable);
 			return data;
 		} catch (error) {
-			throw rejectWithValue(error);
+			throw rejectWithValue(error.message);
 		}
 	},
 );

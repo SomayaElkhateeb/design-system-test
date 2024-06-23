@@ -1,8 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getBrandsTable } from './brandsAsyncThunks';
-import { brandsStatus } from './brandsTableSlice';
+import { brandsSliceModel } from 'src/app/models/brandsSliceModel';
 
-export const getBrandsReducer = (builder: ActionReducerMapBuilder<brandsStatus>) => {
+export const getBrandsReducer = (builder: ActionReducerMapBuilder<brandsSliceModel>) => {
 	builder
 		// get brands table
 		.addCase(getBrandsTable.pending, (state) => {

@@ -1,22 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getPagesTableReducer } from './pagesTableExtraReducers';
-import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
+import { pagesSliceModel } from 'src/app/models/pagesSliceModel';
 
-export interface pagesStatus {
-	pages: BlogPostInterface[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: pagesStatus = {
-	pages: [
-		{
-			id: '1',
-			visibility: false,
-			title: 'mohamed Mostafa',
-			describtion: '01064545565',
-		},
-	],
+const initialState: pagesSliceModel = {
+	pages: [],
 	isLoading: false,
 	error: null,
 };
@@ -29,7 +16,5 @@ const pagesSlice = createSlice({
 		getPagesTableReducer(builder);
 	},
 });
-
-export const selectPages = (state: { pages: pagesStatus }) => state.pages;
 
 export default pagesSlice.reducer;

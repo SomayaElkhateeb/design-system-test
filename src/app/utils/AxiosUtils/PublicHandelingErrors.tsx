@@ -1,5 +1,4 @@
-import { clearToken } from '@/store/authSlice';
-import { useAppDispatch } from '@/store/store';
+
 import { t } from 'i18next';
 import { toast } from 'react-hot-toast';
 // import { Navigate  } from "react-router-dom";
@@ -9,6 +8,7 @@ export default class PublicHandelingErrors {
 		error: unknown | any,
 		variables?: { contact?: string | undefined; rating?: number | null } | any,
 	) => {
+		
 		this.handleTokenExpire(error?.response?.status);
 
 		if (error?.response?.data?.errors?.length > 0) {

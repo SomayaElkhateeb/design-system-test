@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllProductsReducer } from './allProductsExtraReducers';
-import { Product, allProducts } from 'src/pages/ProductsPage/_comp/data';
+import { productsSliceModel } from 'src/app/models/allProductsSliceModel';
 
-export interface AllProductsStatus {
-	allProducts: Product[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: AllProductsStatus = {
-	allProducts: allProducts,
+const initialState: productsSliceModel = {
+	allProducts: [],
 	isLoading: false,
 	error: null,
 };
@@ -22,7 +16,5 @@ const allProductsSlice = createSlice({
 		getAllProductsReducer(builder);
 	},
 });
-
-export const getAllProducts = (state: { allProducts: AllProductsStatus }) => state.allProducts;
 
 export default allProductsSlice.reducer;

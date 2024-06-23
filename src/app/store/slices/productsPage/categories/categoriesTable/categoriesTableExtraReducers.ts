@@ -1,8 +1,10 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getCategoriesTable } from './categoriesTableAsyncThunks';
-import { CategoriesStatus } from './categoriesTableTableSlice';
+import { categoriesTableSliceModel } from 'src/app/models/categoriesTableSliceModel';
 
-export const getCategoriesReducer = (builder: ActionReducerMapBuilder<CategoriesStatus>) => {
+export const getCategoriesReducer = (
+	builder: ActionReducerMapBuilder<categoriesTableSliceModel>,
+) => {
 	builder
 		.addCase(getCategoriesTable.pending, (state) => {
 			state.isLoading = true;
@@ -10,7 +12,7 @@ export const getCategoriesReducer = (builder: ActionReducerMapBuilder<Categories
 		})
 		.addCase(getCategoriesTable.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.categories = action.payload;
+			state.categoriesTable = action.payload;
 		})
 		.addCase(getCategoriesTable.rejected, (state, action) => {
 			state.isLoading = false;

@@ -1,24 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
-import { getImageUrl } from 'src/app/utils';
 import { getBlogTableReducer } from './blogTableExtraReducers';
+import { blogSliceModel } from 'src/app/models/blogSliceModel';
 
-export interface blogStatus {
-	blog: BlogPostInterface[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: blogStatus = {
-	blog: [
-		{
-			id: '1',
-			visibility: false,
-			img: getImageUrl('images/product.png'),
-			title: 'mohamed Mostafa',
-			describtion: '01064545565',
-		},
-	],
+const initialState: blogSliceModel = {
+	blog: [],
 	isLoading: false,
 	error: null,
 };
@@ -32,6 +17,6 @@ const blogSlice = createSlice({
 	},
 });
 
-export const selectBlog = (state: { blog: blogStatus }) => state.blog;
+// export const selectBlog = (state: { blog: blogStatus }) => state.blog;
 
 export default blogSlice.reducer;
