@@ -4,7 +4,7 @@ import {
 	AddAddressSchema,
 	handelAddresseDefaultValue,
 	addAddressInterface,
-} from '../../../Orders/AddOrder/Comp/HookAddress';
+} from '../../../Orders/AddOrder/Comp/useOrderAddress';
 
 export interface OpenHours {
 	open: string;

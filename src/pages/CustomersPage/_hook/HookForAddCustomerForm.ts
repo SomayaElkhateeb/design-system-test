@@ -1,7 +1,11 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
-import { AddAddressSchema, addAddressInterface, handelAddresseDefaultValue } from 'src/app/components/page/Orders/AddOrder/Comp/HookAddress';
+import {
+	AddAddressSchema,
+	addAddressInterface,
+	handelAddresseDefaultValue,
+} from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
 
 export interface AddCustomerPageInterface extends addAddressInterface {
 	humanType: string;
@@ -15,7 +19,11 @@ export interface CustomersProps {
 	formStore: UseFormReturn<AddCustomerPageInterface>;
 }
 
-export default function useCustomHookAddCustomerForm(sendGift?: boolean, selectedOption?: string, isName?: boolean) {
+export default function useCustomHookAddCustomerForm(
+	sendGift?: boolean,
+	selectedOption?: string,
+	isName?: boolean,
+) {
 	const RequiredAddresseData = z.string().min(1);
 	const AddCustomerPageSchema = {
 		humanType: RequiredAddresseData,

@@ -14,6 +14,12 @@ import {
 	SelectContent,
 	SelectItem,
 } from 'src/app/components/ui/select';
+import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
+
+const branches = [
+	{ value: 'eg', label: 'Egypt' },
+	{ value: 'ksa', label: 'Kingdom of Saudi Arabia (KSA)' },
+];
 
 export default function AddCheckout() {
 	const { t } = useTranslation();
@@ -56,7 +62,7 @@ export default function AddCheckout() {
 	]);
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-global gap-5 p-3'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
 				<div className='flex-col-global gap-5'>
 					{/* purchase*/}
 					<FormChoiceChips<addCheckOutInterface>
@@ -67,24 +73,12 @@ export default function AddCheckout() {
 						options={['onLine', 'branch']}
 					/>
 					{purchase === 'branch' && (
-						<FormField
-							formStore={formStore}
+						<SelectFormField
 							name='branch'
-							render={(field) => (
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder={t('Select branch')} />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
-									</SelectContent>
-								</Select>
-							)}
+							label={t('Branch name')}
+							formStore={formStore}
+							options={branches}
+							placeholder={t('Select branch')}
 						/>
 					)}
 				</div>
@@ -99,26 +93,13 @@ export default function AddCheckout() {
 
 				{payment === 'Credit card' && (
 					<>
-						<FormField
-							formStore={formStore}
+						<SelectFormField
 							name='creditCardOption'
-							render={(field) => (
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder={t('Select option')} />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
-									</SelectContent>
-								</Select>
-							)}
+							label={t('Order status')}
+							formStore={formStore}
+							options={branches}
+							placeholder={t('Select option')}
 						/>
-
 						<FormField
 							formStore={formStore}
 							name='creditCardNote'
@@ -176,7 +157,6 @@ export default function AddCheckout() {
 								</Select>
 							)}
 						/>
-
 						<FormField
 							formStore={formStore}
 							name='dhlNote'

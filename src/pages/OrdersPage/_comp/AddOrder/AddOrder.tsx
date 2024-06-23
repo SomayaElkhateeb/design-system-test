@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
 import { SubHeader, TabX } from 'src/app/components/optimized';
 import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
@@ -51,15 +52,9 @@ export default function AddOrder() {
 		<>
 			<SubHeader title={t('add new order')} />
 			<div className='custom_container mx-0 py-5 lg:w-3/4 sm:px-1'>
-				<TabX
-					tabs={tabs}
-					currentTab={currentTab}
-					handleNext={handleNext}
-					handlePrev={handlePrev}
-					handleFinish={handleFinish}
-					handleTabClick={handleTabClick}
-				/>
+				<StepNavigator steps={tabs} />
 			</div>
 		</>
 	);
 }
+// onNext={} onBack={}

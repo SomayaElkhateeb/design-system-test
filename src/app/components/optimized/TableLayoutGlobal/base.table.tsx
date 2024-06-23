@@ -39,7 +39,7 @@ const BaseTable = <T extends Model>({
 	<>
 		<TableContainer
 			sx={{
-				marginTop: '20px',
+				// marginTop: '20px',
 				backgroundColor: '#F9FAFC',
 				maxHeight: 700,
 				minHeight: rows.length === 0 ? 50 : 300,

@@ -17,12 +17,12 @@ const items = [
 	{ id: '4', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 2 },
 	{ id: '5', title: 'DJI Mavic Pro 2', subtitle: 'Blankets', countOption: 2 },
 ];
-export default function SelectProducts({
+export default function SelectProductsDialog({
 	onClose,
-	addNewCustomer,
+	open,
 }: {
 	onClose: () => void;
-	addNewCustomer: boolean;
+	open: boolean;
 }) {
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 	const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -53,7 +53,7 @@ export default function SelectProducts({
 
 	return (
 		<GlobalDialog
-			openDialog={addNewCustomer}
+			openDialog={open}
 			handleClose={onClose}
 			style={{ width: { md: '50%', xs: '80%' } }}
 		>

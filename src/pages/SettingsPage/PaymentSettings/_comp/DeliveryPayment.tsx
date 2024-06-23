@@ -56,8 +56,8 @@ export default function DeliveryPayment({
 	return (
 		<GlobalDialog openDialog={showPayment} handleClose={handleClose} style={style}>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit} className='gap-5 grid lg:grid-cols-3'>
-					<h3 className='title capitalize  col-span-3'>{title}</h3>
+				<form onSubmit={onSubmit} className='grid gap-5 lg:grid-cols-3'>
+					<h3 className='title capitalize col-span-3'>{title}</h3>
 					<div className='grid gap-4 col-span-2'>
 						<FormField
 							formStore={formStore}

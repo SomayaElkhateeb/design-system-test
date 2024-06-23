@@ -1,94 +1,54 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
-import { addAddressInterface } from './Comp/HookAddress';
-import { Button, CheckBox } from 'src/app/components/optimized';
-import { Form } from 'src/app/components/ui/form';
-import FormField from 'src/app/components/ui/form/field';
-import { Input } from 'src/app/components/ui/input';
-import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import { AddIcon, LocationIcon } from 'src/app/utils/icons';
-import { getImageUrl } from 'src/app/utils';
-import { FiMinus } from 'react-icons/fi';
-import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
-import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
-import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from 'src/app/components/ui/select';
-import { ValidFormStoreByValues } from 'src/utils/types';
 
-interface AddresseProps<TFormStore> {
+import { Form } from 'src/app/components/ui/form';
+import { Input } from 'src/app/components/ui/input';
+import { CheckBox } from 'src/app/components/optimized';
+import FormField from 'src/app/components/ui/form/field';
+import { ValidFormStoreByValues } from 'src/utils/types';
+import LocationPicker from 'src/app/components/ui/LocationPicker';
+import useOrderAddress, { addAddressInterface } from './Comp/useOrderAddress';
+import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+
+interface AddressProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, addAddressInterface>;
-	sendGift: boolean;
-	setSendGift: (e: boolean) => void;
 	isName?: boolean;
-	setIsName?: (e: boolean) => void;
-	selectedOption: string;
-	setSelectedOption: (e: string) => void;
-	branch?: boolean;
-	customer?: boolean;
-	details?: boolean;
+	giftOption?: boolean;
+	geoPicker?: boolean;
 }
 
-// /////////////////////
-// /////////////////////
-export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
-	//  props
-	const {
-		formStore,
-		sendGift,
-		setSendGift,
-		isName,
-		setIsName,
-		selectedOption,
-		setSelectedOption,
-		branch,
-		customer,
-		details,
-	} = props;
-	//  hooks
+export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
+	const { formStore, isName, giftOption, geoPicker } = props;
 	const { t } = useTranslation();
-	const language = UseLanguage();
+
+	const [sendGift, setSendGift] = useState(false);
+	const [selectedOption, setSelectedOption] = useState('Add manually');
+
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 
-	const handleAddressOption = (option: string) => {
-		setSelectedOption(option);
-	};
-
-	useMemo(() => {
-		if (customer || details) {
-			setIsName && setIsName(true);
-		} else {
-			setIsName && setIsName(false);
-		}
-	}, [customer, details]);
+	const orderAddressHook = useOrderAddress(sendGift, selectedOption);
 
 	return (
 		<Form {...formStore}>
-			<div className=' lg:col-span-2 flex flex-col gap-4'>
-				{isName && (
+			<div className='lg:col-span-2 flex flex-col gap-4'>
+				{!isName && (
 					<SingleChoiceChips
-						options={['Add manually', 'Use a map']}
-						setSelected={handleAddressOption}
+						options={[t('Add manually'), t('Use a map')]}
+						setSelected={(option: string) => setSelectedOption(option)}
 						selected={selectedOption}
 					/>
 				)}
-
-				{branch ||
-					(customer && (
-						<CheckBox
-							checked={sendGift}
-							handleOnChange={() => setSendGift(!sendGift)}
-							label={t('Send as a gift')}
-						/>
-					))}
-
+				{giftOption && (
+					<CheckBox
+						checked={sendGift}
+						handleOnChange={() => setSendGift(!sendGift)}
+						label={t('Send as a gift')}
+					/>
+				)}
 				{sendGift && (
 					<FormField
 						formStore={formStore}
@@ -97,7 +57,6 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 						render={(field) => <Input {...field} placeholder={''} />}
 					/>
 				)}
-
 				{selectedOption === 'Add manually' && (
 					<section className='grid gap-4'>
 						{isName && (
@@ -108,59 +67,20 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 								render={(field) => <Input {...field} placeholder={''} />}
 							/>
 						)}
-
-						<FormField
-							formStore={formStore}
+						<SelectFormField
 							name='countryName'
 							label={t('Country')}
-							render={(field) => (
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder={t('Select option')} />
-									</SelectTrigger>
-									<SelectContent>
-										{countries.map((country) => (
-											<SelectItem key={country.value} value={country.value}>
-												{country.name}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-							)}
-						/>
-
-						<FormField
 							formStore={formStore}
+							options={countries}
+							placeholder={t('Select option')}
+						/>
+						<SelectFormField
 							name='cityName'
 							label={t('City')}
-							render={(field) => (
-								<div className='flex'>
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder={t('Select option')} />
-										</SelectTrigger>
-										<SelectContent>
-											{countries.map((country) => (
-												<SelectItem key={country.value} value={country.value}>
-													{country.name}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								</div>
-							)}
+							formStore={formStore}
+							options={countries}
+							placeholder={t('Select option')}
 						/>
-
 						<FormField
 							formStore={formStore}
 							name='area'
@@ -175,56 +95,13 @@ export default function Address<TFormStore>(props: AddresseProps<TFormStore>) {
 						/>
 					</section>
 				)}
-
-				{customer || details
-					? undefined
-					: selectedOption !== 'Add manually' && (
-							<div className='relative w-full h-[300px]'>
-								<GoogleMapComponent
-									setLocationEnabled={setLocationEnabled}
-									setDisablePickButton={setDisablePickButton}
-									height='300px'
-								/>
-
-								<div className='bg-white text-xs flex items-center w-fit shadow-md rounded-sm absolute top-2 left-2'>
-									<p
-										className={`text-title font-semibold p-2 ${
-											language === 'ar' ? 'border-l' : 'border-r'
-										} border-constrained`}
-									>
-										{t('Map')}
-									</p>
-									<p className='text-subtitle p-2'>{t('Satellite')}</p>
-								</div>
-								<div className='absolute md:top-2 md:left-[40%] md:inline hidden'>
-									<FormField
-										formStore={formStore}
-										name='search'
-										render={(field) => <Input {...field} placeholder={t('Search')} />}
-									/>
-								</div>
-								<div className='flex flex-col items-end justify-between h-full'>
-									<div className='flex flex-col gap-2 items-end absolute top-2 right-2'>
-										<div className='flex flex-col gap-1.5 items-center bg-white p-1 shadow-md w-fit rounded-sm'>
-											<AddIcon className='fill-grayIcon border-b border-hint' />
-											<FiMinus color='#666666' />
-										</div>
-										<div className='bg-white flex items-center justify-center px-2 py-1 w-fit shadow-md rounded-sm'>
-											<img src={getImageUrl('map.svg')} alt='Map Icon' />
-										</div>
-									</div>
-
-									<Button
-										variant='secondary'
-										LeftIcon={LocationIcon}
-										className='bg-white absolute bottom-2 right-2'
-									>
-										<span className='hidden md:inline'>{t('Locate Me')}</span>
-									</Button>
-								</div>
-							</div>
-					  )}
-
+				{geoPicker && selectedOption !== 'Add manually' && (
+					<LocationPicker
+						formStore={formStore}
+						setLocationEnabled={setLocationEnabled}
+						setDisablePickButton={setDisablePickButton}
+					/>
+				)}
 				<FormField
 					formStore={formStore}
 					name='building'

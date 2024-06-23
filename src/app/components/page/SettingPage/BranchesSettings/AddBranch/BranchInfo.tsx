@@ -8,7 +8,7 @@ import { Address } from '../../..';
 
 export const countries = [
 	{
-		name: 'Egypt',
+		label: 'Egypt',
 		value: 'eg',
 		cities: [
 			{ name: 'Cairo', value: 'cairo' },
@@ -17,7 +17,7 @@ export const countries = [
 		],
 	},
 	{
-		name: 'Kingdom of Saudi Arabia (KSA)', // More descriptive country name
+		label: 'Kingdom of Saudi Arabia (KSA)', // More descriptive country name
 		value: 'ksa',
 		cities: [
 			{ name: 'Riyadh', value: 'riyadh' },
@@ -26,7 +26,7 @@ export const countries = [
 		],
 	},
 	{
-		name: 'United Arab Emirates (UAE)', // More descriptive country name
+		label: 'United Arab Emirates (UAE)', // More descriptive country name
 		value: 'uae',
 		cities: [
 			{ name: 'Dubai', value: 'dubai' },
@@ -83,7 +83,7 @@ export default function BranchInfo({
 						setSendGift={setSendGift}
 						selectedOption={selectedOption}
 						setSelectedOption={setSelectedOption}
-						branch={true}
+						giftOption
 					/>
 				</section>
 			</div>
