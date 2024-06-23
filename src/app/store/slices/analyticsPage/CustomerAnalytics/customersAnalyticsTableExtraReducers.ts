@@ -1,9 +1,9 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getCustomersAnalyticsTable } from './customersAnalyticsTableAsyncThunks';
-import { customerAnalyticsStatus } from './customersAnalyticsTableSlice';
+import { customersAnalyticsSliceModel } from 'src/app/models/customersAnalyticsSliceModel';
 
 export const getCustomerAnalyticsTableReducer = (
-	builder: ActionReducerMapBuilder<customerAnalyticsStatus>,
+	builder: ActionReducerMapBuilder<customersAnalyticsSliceModel>,
 ) => {
 	builder
 		// get customer analytics table

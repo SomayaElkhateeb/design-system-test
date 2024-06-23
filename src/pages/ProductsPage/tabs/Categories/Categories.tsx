@@ -5,6 +5,9 @@ import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { CategoryTable } from './_comp/CategoryTable';
 import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getCategoriesTable } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
 export interface Category {
 	id: string;
 	img: string;
@@ -20,14 +23,14 @@ export default function Categories() {
 	const { t } = useTranslation();
 
 	// redux
-	// const dispatch = useAppDispatch();
-	// const { customersGroup, isLoading, error } = useAppSelector(
-	// 	(state) => state.customersGroup || {},
-	// );
+	const dispatch = useAppDispatch();
+	const { categoriesTable, isLoading, error } = useAppSelector((state) => state.categoriesTable);
 
-	// useEffect(() => {
-	// 	dispatch(getCustomersGroupTable());
-	// }, [dispatch]);
+	useEffect(() => {
+		dispatch(getCategoriesTable());
+	}, [dispatch]);
+
+	if (error) return <div>Error: {error}</div>;
 	// body
 
 	const categoryData = [
@@ -59,7 +62,7 @@ export default function Categories() {
 				<TopSectionCategoriesTable title={t('Add Category')} />
 
 				{/* table */}
-				<CategoryTable Menue={Menue} categoryData={categoryData} />
+				<CategoryTable Menue={Menue} categoryData={categoriesTable} isLoading={isLoading} />
 
 				{/*  case of small media */}
 				<div className='flex-col-global sm:hidden'>

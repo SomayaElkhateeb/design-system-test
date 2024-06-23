@@ -1,14 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getOrderAnalyticsTableReducer } from './orderAnalyticsTableExtraReducers';
-import { AnalyticsOrder } from 'src/pages/AnalyticsPage/tabs/Orders/AnalyticsOrders';
+import { ordersAnalyticsSliceModel } from 'src/app/models/ordersAnalyticsSliceModel';
 
-export interface orderAnalyticsStatus {
-	ordersAnalytics: AnalyticsOrder[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: orderAnalyticsStatus = {
+const initialState: ordersAnalyticsSliceModel = {
 	ordersAnalytics: [
 		{
 			day: '24 Apr 2024',
@@ -31,8 +25,5 @@ const orderAnalyticsSlice = createSlice({
 		getOrderAnalyticsTableReducer(builder);
 	},
 });
-
-export const selectOrdersAnalytics = (state: { ordersAnalytics: orderAnalyticsStatus }) =>
-	state.ordersAnalytics;
 
 export default orderAnalyticsSlice.reducer;

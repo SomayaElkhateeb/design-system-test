@@ -2,13 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
@@ -22,9 +16,24 @@ import { getImageUrl } from 'src/app/utils';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getSubCategories } from 'src/app/store/slices/productsPage/categories/subCategoriesTable/subCategoriesAsyncThunks';
 
+export interface SubCategories {
+	id: string;
+	subName: string;
+	subProducts: number;
+	subActive: boolean;
+	subImg: string;
+}
 //  pass data to collapses row
 function createData(name: string, products: number, active: boolean, img: string) {
+	// const dispatch = useAppDispatch();
+	// const { subCategories, isLoading, error } = useAppSelector((state) => state.subCategories);
+
+	// React.useEffect(() => {
+	// 	dispatch(getSubCategories());
+	// }, [dispatch]);
 	return {
 		name,
 		products,
@@ -88,7 +97,6 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 		},
 	];
 
-
 	return (
 		<React.Fragment>
 			<TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -132,7 +140,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 								collapse
 								language={language}
 								color='#55607A'
-								rows={row.history.map((historyRow) => (
+								rows={row.history.map((historyRow: SubCategories) => (
 									<TableRow key={historyRow.id}>
 										<GlobalTableCell component='th' scope='row'>
 											<div className='flex items-center gap-2'>

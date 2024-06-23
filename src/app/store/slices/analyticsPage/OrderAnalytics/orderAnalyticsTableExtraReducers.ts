@@ -1,9 +1,9 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getOrderAnalyticsTable } from './orderAnalyticsTableAsyncThunks';
-import { orderAnalyticsStatus } from './orderAnalyticsTableSlice';
+import { ordersAnalyticsSliceModel } from 'src/app/models/ordersAnalyticsSliceModel';
 
 export const getOrderAnalyticsTableReducer = (
-	builder: ActionReducerMapBuilder<orderAnalyticsStatus>,
+	builder: ActionReducerMapBuilder<ordersAnalyticsSliceModel>,
 ) => {
 	builder
 		// get order analytics table

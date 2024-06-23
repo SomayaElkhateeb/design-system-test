@@ -16,9 +16,11 @@ import { useNavigate } from 'react-router-dom';
 export const CategoryTable = ({
 	categoryData,
 	Menue,
+	isLoading,
 }: {
 	categoryData: Category[];
 	Menue: { id: string; text: string; icon: React.ReactNode }[];
+	isLoading: boolean;
 }) => {
 	//  hooks
 	const language = UseLanguage();
@@ -42,10 +44,11 @@ export const CategoryTable = ({
 	const actionsButtonStyleEn = 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={headers.map((h) => h)}
-			rows={categoryData?.map((e, i) => {
+			rows={categoryData?.map((e: Category, i: number) => {
 				return {
 					item: e,
 					elements: [
