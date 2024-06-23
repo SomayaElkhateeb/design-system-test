@@ -1,14 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Button from 'src/app/components/optimized/Buttons/Button';
 import { Form } from 'src/app/components/ui/form';
 import { ScrollArea, ScrollBar } from 'src/app/components/ui/scroll-area';
 import { useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * @template TFormStore
- *
  * @param {import('./types').Props<TFormStore>} props
  */
 export default function ProductFormContainer(props) {
@@ -19,20 +18,26 @@ export default function ProductFormContainer(props) {
 		name: 'productType',
 	});
 
+	// State to hold the current page title
+	const [title, setTitle] = useState('');
+
+	// Effect to update the title based on pathname changes
+	const { pathname } = useLocation();
+	useEffect(() => {
+		const pathSegments = pathname.split('/');
+		const lastSegment = pathSegments[pathSegments.length - 1];
+		setTitle(lastSegment);
+	}, [pathname]);
+
+	// Scroll to the element with ID from hash on initial load
 	useEffect(() => {
 		const urlFragmentIdentifier = window.location.hash;
-
-		if (!urlFragmentIdentifier) {
-			return;
+		if (urlFragmentIdentifier) {
+			const elem = document.getElementById(urlFragmentIdentifier.slice(1));
+			if (elem) {
+				elem.scrollIntoView({ behavior: 'smooth' });
+			}
 		}
-
-		const elem = document.getElementById(urlFragmentIdentifier.slice(1));
-
-		if (!elem) {
-			return;
-		}
-
-		elem.scrollIntoView({ behavior: 'smooth' });
 	}, []);
 
 	return (
@@ -44,7 +49,7 @@ export default function ProductFormContainer(props) {
 							<button className='text-black whitespace-nowrap' onClick={() => navigate(-1)}>
 								{'<'}
 							</button>{' '}
-							{t('Add product')}
+							{title !== 'configurable' && title !== 'simple' ? `Add ${title}` : 'Add Product'}
 						</h1>
 
 						<div className='flex flex-wrap gap-4'>
@@ -55,26 +60,26 @@ export default function ProductFormContainer(props) {
 						</div>
 					</div>
 
-					<ScrollArea className='w-full max-h-[90dvh] pb-2'>
+					<ScrollArea className='w-full max-h-[95dvh] pb-2'>
 						<div className='flex gap-4 capitalize text-lg font-medium'>
-							{props.sections.map(({ id, title }) => (
-								<Link
-									key={id}
-									to={`/products/new/${productType}#${id}`}
-									className='text-gray whitespace-nowrap'
-									onClick={() => {
-										const elem = document.getElementById(id);
-
-										if (!elem) {
-											return;
-										}
-
-										elem.scrollIntoView({ behavior: 'smooth' });
-									}}
-								>
-									{title}
-								</Link>
-							))}
+							{props.sections.map(
+								({ id, title }) =>
+									title && (
+										<Link
+											key={id}
+											to={`/products/new/${productType}#${id}`}
+											className='text-gray whitespace-nowrap'
+											onClick={() => {
+												const elem = document.getElementById(id);
+												if (elem) {
+													elem.scrollIntoView({ behavior: 'smooth' });
+												}
+											}}
+										>
+											{title}
+										</Link>
+									),
+							)}
 						</div>
 						<ScrollBar orientation='horizontal' />
 					</ScrollArea>

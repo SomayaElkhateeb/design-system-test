@@ -18,6 +18,7 @@ export const arabic = {
 	"AVAILABILITY":"متاح",
 	Services: 'الخدمات',
 	Settings: 'الادوات',
+
 	"In Progress": " في تقدم",
 	Addresses: "العناوين",
 	"Reviews Filters": "فلتره التقييمات",
@@ -26,6 +27,7 @@ export const arabic = {
 	"Top customer group": "اعلي مجموعه عميل",
 	"Returns": "Returns",
 	"Install Now": "تنزيل الان",
+
 
 	'View Inventory': 'عرض المخزون',
 	'Compared to': 'مقارنه ب ',
@@ -157,7 +159,7 @@ export const arabic = {
 	Email: 'الايميل',
 	Password: 'الرقم السري',
 	'Remember me': 'تذكرني',
-	'Forget Password?': 'نسيت الرقم السري ؟',
+	'Forgot Password?': 'نسيت الرقم السري ؟',
 	'Forgot Password ?': 'نسيت الرقم السري ؟',
 	'Enter your email to reset your password':
 		'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك',
@@ -1155,4 +1157,28 @@ export const arabic = {
 	'Group poster': 'ملصق المجموعة',
 	'Add banner': 'إضافة شعار',
 	'Category name': 'اسم التصنيف',
+	'Continue With Email': 'تابع باستخدام البريد الإلكتروني',
+	OR: 'أو',
+	'Continue with Google': 'تابع باستخدام جوجل',
+	'continue with Facebook': 'تابع باستخدام فيسبوك',
+	'Already have an account?': 'هل لديك حساب بالفعل؟',
+	"We've sent a code to your phone": 'لقد أرسلنا رمزًا إلى هاتفك',
+	Change: 'تغيير',
+	Verify: 'تحقق',
+	Groceries: 'البقالة',
+	"Didn't receive the code?": 'لم تتلقَ الرمز؟',
+	Resend: 'إعادة إرسال',
+	'Sign up': 'سجل',
+	"Don't have an account?": 'ليس لديك حساب؟',
+	'Use your': 'استخدم',
+	'No access to your': 'لا يمكنك الوصول إلى',
+	email: 'البريد الإلكتروني',
+	phone: 'الهاتف',
+	'Send Code': 'إرسال الرمز',
+	'Forgot password': 'نسيت كلمة المرور',
+	'New password': 'كلمة المرور الجديدة',
+	'New password again': 'أعد إدخال كلمة المرور الجديدة',
+	'Update Password': 'تحديث كلمة المرور',
+	'Create a new password': 'إنشاء كلمة مرور جديدة',
+	"Check your": "تحقق من"
 } satisfies typeof english;

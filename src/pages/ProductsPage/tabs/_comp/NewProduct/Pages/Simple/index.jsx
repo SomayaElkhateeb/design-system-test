@@ -22,7 +22,7 @@ import { ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
 
-const productsSections = [
+const productSections = [
 	{
 		Elem: ProductFormMediaSection,
 		id: 'ProductFormMediaSection',
@@ -31,12 +31,12 @@ const productsSections = [
 	{
 		Elem: ProductFormBasicInfoSection,
 		id: 'ProductFormBasicInfoSection',
-		title: 'basic info',
+		title: '',
 	},
 	{
 		Elem: ProductFormDescriptionAndSpecificationsSection,
 		id: 'ProductFormDescriptionAndSpecificationsSection',
-		title: 'description and specifications',
+		title: '',
 	},
 	{
 		Elem: ProductFormPricingSection,
@@ -56,7 +56,7 @@ const productsSections = [
 	{
 		Elem: ProductFormOptionsAndVariationsSection,
 		id: 'ProductFormOptionsAndVariationsSection',
-		title: 'options and variations',
+		title: 'options & variations',
 	},
 	{
 		Elem: SeoFormFaqsSection,
@@ -66,7 +66,7 @@ const productsSections = [
 	{
 		Elem: ProductFormFaqsSection,
 		id: 'ProductFormFaqsSection',
-		title: 'faqs',
+		title: '',
 	},
 ];
 
@@ -78,7 +78,6 @@ export default function SimpleProductPage() {
 		},
 		defaultValues: {
 			productType: productTypeMap.simple,
-			bulkPrices: [],
 			shipping: {
 				type: productShippingTypeMap.pickup,
 				statesOfTheProduct: [],
@@ -95,6 +94,7 @@ export default function SimpleProductPage() {
 					height: 0,
 				},
 			},
+			bulkPrices: [],
 			isTaxable: true,
 			price: 0,
 			canContinueSellingWhenOutOfStock: false,
@@ -115,11 +115,11 @@ export default function SimpleProductPage() {
 	});
 
 	return (
-		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
+		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
 				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
-						{productsSections.map(({ Elem, id }) => (
+						{productSections.map(({ Elem, id }) => (
 							<Elem key={id} formStore={formStore} id={id} />
 						))}
 					</div>

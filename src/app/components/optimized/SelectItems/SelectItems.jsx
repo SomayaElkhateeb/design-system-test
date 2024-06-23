@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { capitalizeFirstLetter } from 'src/app/utils';
+import { capitalize } from 'src/app/utils';
 import { LiaSearchSolid } from 'react-icons/lia';
 import { Button, CheckBox, InputRow } from '..';
 import SelectItem from './SelectItem';
@@ -84,7 +84,7 @@ function SelectItems(props) {
 			<label className='w-[39rem] rounded bg-white py-[1rem]'>
 				<div>
 					<h3 className='text-title font-semibold mb-3 ms-[1rem] mr-4'>
-						{t('Select')} {capitalizeFirstLetter(props.title)}
+						{t('Select')} {capitalize(props.title)}
 					</h3>
 
 					<div className='flex items-center justify-between px-[1rem]'>

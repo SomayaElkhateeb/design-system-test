@@ -15,7 +15,7 @@ import { getImageUrl } from 'src/app/utils';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
-import { Product } from '../AllProducts';
+import { Product } from 'src/pages/ProductsPage/_comp/data';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
 interface AllProductsTableProps {
