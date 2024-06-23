@@ -1,5 +1,6 @@
-import AppsLayout from './comp/AppsLayout';
-import AppsPageGuard from './comp/AppsPageGuard';
+
+import AppsLayout from './_comp/AppsLayout';
+import AppsPageGuard from './_comp/AppsPageGuard';
 
 const AppsPage = () => {
 	return (

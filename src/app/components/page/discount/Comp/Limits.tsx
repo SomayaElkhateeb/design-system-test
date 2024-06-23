@@ -4,7 +4,7 @@ import { CheckBox } from 'src/app/components/optimized';
 import { Input } from 'src/app/components/ui/input';
 
 import FormField from 'src/app/components/ui/form/field';
-import { newDiscountInterface } from 'src/pages/MarketingPage/Discounts/NewDiscount/HookForNewDiscount';
+import { newDiscountInterface } from 'src/pages/MarketingPage/tabs/Discounts/NewDiscount/HookForNewDiscount';
 
 const Limits = ({
 	formStore,

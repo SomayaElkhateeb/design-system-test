@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import FeeDisplay from './FeeDisplay';
 import { getImageUrl } from 'src/app/utils';
 import { NextIcon } from 'src/app/utils/icons';
-import RenderItems from '../../comp/RenderItems';
+import RenderItems from '../../_comp/RenderItems';
 import CreditTransactions from './CreditTransactions';
 import { Button } from 'src/app/components/optimized';
-import { BankBadge, TransactionsBadge } from '../../comp/PaymentBadge';
+import { BankBadge, TransactionsBadge } from '../../_comp/PaymentBadge';
 import { GlobalTableCell } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { PaymentProvider } from './utils';
 

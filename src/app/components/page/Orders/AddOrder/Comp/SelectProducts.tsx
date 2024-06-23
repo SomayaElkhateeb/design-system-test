@@ -1,4 +1,4 @@
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
+import { GlobalDialog } from 'src/app/components/shared';
 import { useEffect, useState } from 'react';
 import AccordionItems from './AccordionItems';
 import { Button } from 'src/app/components/optimized';

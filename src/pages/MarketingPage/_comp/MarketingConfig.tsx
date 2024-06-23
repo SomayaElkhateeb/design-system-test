@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 import { NewCampaign, NewDiscount, PlatformSetup } from '.';
-import CampaignElement from '../CampaignElement/CampaignElement';
-
+import CampaignElement from '../tabs/Campaigns/_comp/CampaignElement';
 
 const MarketingConfig = () => {
 	const { config } = useParams();

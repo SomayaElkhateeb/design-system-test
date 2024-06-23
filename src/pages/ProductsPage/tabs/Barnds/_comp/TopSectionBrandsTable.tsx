@@ -13,7 +13,8 @@ import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 
 import { useState } from 'react';
 import AddBrandItem from './AddBrandItem';
-import { RemoveIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 export default function TopSectionBrandsTable() {
@@ -45,7 +46,7 @@ export default function TopSectionBrandsTable() {
 		{
 			id: nanoid(),
 			text: 'Delete all brands',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 

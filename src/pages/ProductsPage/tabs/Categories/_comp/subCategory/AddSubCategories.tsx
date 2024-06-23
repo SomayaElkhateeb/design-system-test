@@ -1,4 +1,3 @@
-import GlobalDialog from 'src/app/components/Dialogs/GlobalDialog';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +16,8 @@ import { TfiUpload } from 'react-icons/tfi';
 import { AddSubCategoriesSchemaValues, addSubCategoriesFormSchema } from './AddSubCategoriesForm';
 import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
 import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
+import { AddFillIcon } from 'src/app/utils/icons';
+import { GlobalDialog } from 'src/app/components/shared';
 interface AddSubCategories {
 	categoryNameEn: string;
 	categoryNameAr: string;
@@ -74,12 +75,18 @@ export default function AddSubCategories({
 		<GlobalDialog style={style} openDialog={openDialog} handleClose={handleClose}>
 			<Form {...formStore}>
 				<form onSubmit={onSubmit} className='flex-col-global'>
+					<div className='flex items-center justify-between'>
+						<h2 className='title font-semibold'>{t('Smart Living')}</h2>
+						<Button LeftIcon={AddFillIcon} variant='tertiary'>
+							{t('add sub')}
+						</Button>
+					</div>
 					<Tabs
 						body={
 							<>
 								<TabPanel value='1'>
 									<div className='flex md:flex-row items-start flex-col gap-[2rem]'>
-										<div>
+										<div className='flex flex-col gap-4'>
 											<FormField
 												formStore={formStore}
 												name='group'
@@ -136,7 +143,7 @@ export default function AddSubCategories({
 													{ name: 'categoryNameEn', label: 'En' },
 													{ name: 'categoryNameAr', label: 'عربي' },
 												]}
-												label={t('Category name')}
+												label={t('Subcategory name')}
 												renderer={(field) => <Input {...field} />}
 											/>
 
@@ -146,7 +153,7 @@ export default function AddSubCategories({
 													{ name: 'categoryLinkEn', label: 'En' },
 													{ name: 'categoryLinkAr', label: 'عربي' },
 												]}
-												label={t('Category link (Slug)')}
+												label={t('Subcategory link (Slug)')}
 												renderer={(field) => <Input {...field} />}
 											/>
 
@@ -156,11 +163,11 @@ export default function AddSubCategories({
 													{ name: 'categoryDescriptionEn', label: 'En' },
 													{ name: 'categoryDescriptionAr', label: 'عربي' },
 												]}
-												label={t('Category description')}
+												label={t('Subcategory description')}
 												renderer={(field) => <Textarea {...field} />}
 											/>
 											<SpecificAutoCompleteInput<AddSubCategoriesSchemaValues>
-												label={t('Parent category')}
+												label={t('Parent Subcategory')}
 												name='parentCategory'
 												formStore={formStore}
 											/>

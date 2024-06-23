@@ -16,17 +16,14 @@ import { Switch } from 'src/app/components/ui/switch';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
-import {
-	AnalyticsIcon,
-	CopyIcon,
-	OrdersIcon,
-	RemoveIcon,
-	AddFillIcon,
-	MoveIcon,
-} from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon, MoveIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
 import { getImageUrl } from 'src/app/utils';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 
+//  pass data to collapses row
 function createData(name: string, products: number, active: boolean, img: string) {
 	return {
 		name,
@@ -59,99 +56,113 @@ function createData(name: string, products: number, active: boolean, img: string
 	};
 }
 
+//  handel collapsed row
 function Row(props: { row: ReturnType<typeof createData> }) {
+	//  props
 	const { row } = props;
+	//  hooks
 	const [open, setOpen] = React.useState(false);
+	//  custom hooks
 	const language = UseLanguage();
-	const { t } = useTranslation();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const Menu = [
-		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Copy subcategory link', icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Subcategory report', icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Subcategory products', icon: <OrdersIcon className='iconClass' /> },
 		{
 			id: nanoid(),
-			text: t('Delete category'),
+			text: 'Delete subcategory',
 			icon: <RemoveIcon className='iconClass' />,
 		},
 	];
 
+	const SubMenu = [
+		{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Product report', icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Products', icon: <OrdersIcon className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: 'Delete product',
+			icon: <RemoveIcon className='iconClass' />,
+		},
+	];
+
+
 	return (
 		<React.Fragment>
 			<TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-				<TableCell>
+				<GlobalTableCell>
 					<IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
 						{open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
 					</IconButton>
-				</TableCell>
-				<TableCell component='th' scope='row' align={language === 'ar' ? 'right' : 'left'}>
+				</GlobalTableCell>
+				<GlobalTableCell component='th' scope='row'>
 					<div className='flex items-center gap-2'>
 						<MoveIcon />
-						<div className='size-8 border border-constrained rounded-md overflow-hidden'>
+						<div className='box-photo'>
 							<img src={getImageUrl(row.img)} />
 						</div>
 
 						<div>{row.name}</div>
 					</div>
-				</TableCell>
-				<TableCell align={language === 'ar' ? 'right' : 'left'}>{row.products}</TableCell>
-				<TableCell align={language === 'ar' ? 'right' : 'left'}>
+				</GlobalTableCell>
+				<GlobalTableCell>{row.products}</GlobalTableCell>
+				<GlobalTableCell>
 					<Switch checked={row.active} />
-				</TableCell>
-				<TableCell align={language === 'ar' ? 'right' : 'left'}>
+				</GlobalTableCell>
+				<GlobalTableCell>
 					<div className='flex gap-4 items-center'>
-						<AddFillIcon className='text-subtitle' />
 						<ThreeDotsButton
 							sortMenus={Menu}
 							selectedOption={selectedOption}
 							handelSelect={handleSelect}
 						/>
 					</div>
-				</TableCell>
+				</GlobalTableCell>
 			</TableRow>
 			<TableRow>
-				<TableCell
+				<GlobalTableCell
 					style={{ paddingBottom: 0, paddingTop: 0, paddingLeft: 100, paddingRight: 100 }}
 					colSpan={15}
 				>
 					<Collapse in={open} timeout='auto' unmountOnExit>
 						<Box sx={{ margin: 1 }}>
-							<Table size='small' aria-label='purchases'>
-								<TableBody>
-									{row.history.map((historyRow) => (
-										<TableRow key={historyRow.id}>
-											<TableCell component='th' scope='row'>
-												<div className='flex items-center gap-2'>
-													<MoveIcon />
-													<div className='size-8 border border-constrained rounded-md overflow-hidden'>
-														<img src={getImageUrl(row.img)} />
-													</div>
+							<BaseTable
+								collapse
+								language={language}
+								color='#55607A'
+								rows={row.history.map((historyRow) => (
+									<TableRow key={historyRow.id}>
+										<GlobalTableCell component='th' scope='row'>
+											<div className='flex items-center gap-2'>
+												<MoveIcon />
+												<div className='box-photo'>
+													<img src={getImageUrl(row.img)} />
+												</div>
 
-													<div>{historyRow.subName}</div>
-												</div>
-											</TableCell>
-											<TableCell>{historyRow.subProducts}</TableCell>
-											<TableCell align='right'>
-												<Switch checked={historyRow.subActive} />
-											</TableCell>
-											<TableCell align='right'>
-												<div className='flex gap-4 items-center justify-end'>
-													<AddFillIcon className='text-subtitle' />
-													<ThreeDotsButton
-														sortMenus={Menu}
-														selectedOption={selectedOption}
-														handelSelect={handleSelect}
-													/>
-												</div>
-											</TableCell>
-										</TableRow>
-									))}
-								</TableBody>
-							</Table>
+												<div>{historyRow.subName}</div>
+											</div>
+										</GlobalTableCell>
+										<GlobalTableCell>{historyRow.subProducts}</GlobalTableCell>
+										<GlobalTableCell>
+											<Switch checked={historyRow.subActive} />
+										</GlobalTableCell>
+										<GlobalTableCell>
+											<div className='flex gap-4 items-center justify-end'>
+												<ThreeDotsButton
+													sortMenus={SubMenu}
+													selectedOption={selectedOption}
+													handelSelect={handleSelect}
+												/>
+											</div>
+										</GlobalTableCell>
+									</TableRow>
+								))}
+							/>
 						</Box>
 					</Collapse>
-				</TableCell>
+				</GlobalTableCell>
 			</TableRow>
 		</React.Fragment>
 	);
@@ -164,25 +175,29 @@ const rows = [
 ];
 
 export default function SubCategoryTable() {
+	//  hooks
 	const language = UseLanguage();
+	const { t } = useTranslation();
+
+	// headers
+	const subcategoriesHeaders = [
+		{
+			title: t('Name'),
+		},
+		{ title: t('PRODUCTS NO.') },
+		{ title: t('AVAILABILITY') },
+
+		{ title: t('actions') },
+	];
 	return (
-		<TableContainer component={Paper}>
-			<Table aria-label='collapsible table'>
-				<TableHead>
-					<TableRow>
-						<TableCell />
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>NAME</TableCell>
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>PRODUCTS NO.</TableCell>
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>AVAILABILITY</TableCell>
-						<TableCell align={language === 'ar' ? 'right' : 'left'}>ACTIONS</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{rows.map((row) => (
-						<Row key={row.name} row={row} />
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
+		<BaseTable
+			collapse
+			language={language}
+			color='#55607A'
+			headers={subcategoriesHeaders}
+			rows={rows.map((row) => (
+				<Row key={row.name} row={row} />
+			))}
+		/>
 	);
 }

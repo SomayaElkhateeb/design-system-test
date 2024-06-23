@@ -1,20 +1,24 @@
 import { nanoid } from 'nanoid';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import BrandsTable from 'src/pages/ProductsPage/tabs/Barnds/_comp/BrandsTable';
 import TopSectionBrandsTable from 'src/pages/ProductsPage/tabs/Barnds/_comp/TopSectionBrandsTable';
 import { getBrandsTable } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
-import { CopyIcon, AnalyticsIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
+import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+
 export default function Barnds() {
 	// redux
-	const dispatch = useDispatch();
-	const { isLoading, brands, error } = useSelector((state) => state.brands);
+	const dispatch = useAppDispatch();
+	const { brands, isLoading, error } = useAppSelector((state) => state.brands);
+
 	useEffect(() => {
 		dispatch(getBrandsTable());
 	}, [dispatch]);
 
-	const settingMenus = [
+	if (error) return <div>Error: {error}</div>;
+	const barndsSettingMenus = [
 		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand products', icon: <OrdersIcon className='fill-subtitle' /> },
@@ -22,7 +26,7 @@ export default function Barnds() {
 		{
 			id: nanoid(),
 			text: 'Delete brand',
-			icon: <RemoveIcon className='fill-error' />,
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
 
@@ -33,7 +37,7 @@ export default function Barnds() {
 				<TopSectionBrandsTable />
 
 				{/*  table  */}
-				<BrandsTable settingMenus={settingMenus} brands={brands} isLoading={isLoading} />
+				<BrandsTable settingMenus={barndsSettingMenus} brands={brands} isLoading={isLoading} />
 
 				{/*  case of small media */}
 				<div className='flex-col-global sm:hidden'>
@@ -41,7 +45,7 @@ export default function Barnds() {
 						<CustomersComponenet
 							noAvatar
 							id={e.id}
-							settingMenus={settingMenus}
+							settingMenus={barndsSettingMenus}
 							key={i}
 							firstName={e.title}
 							email={e.describtion}

@@ -60,6 +60,8 @@ export default function AllOrdersTable({
 	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	const actionsButtonStyleEn =
 		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+
+	const textClassName = 'text-subtitle text-[.8rem]';
 	return (
 		<BaseTable
 			language={language}
@@ -73,30 +75,30 @@ export default function AllOrdersTable({
 							<div className=' flex  items-center gap-[.3rem] '>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 
-								<div className='flex flex-col gap-[.3rem]'>
-									<p className='text-title text-[.9rem] font-semibold'>{e.id}</p>
-									<p className='text-subtitle text-[.8rem]'>{e.date}</p>
+								<div className='flex-col-global gap-[.3rem]'>
+									<p className='title'>{e.id}</p>
+									<p className={textClassName}>{e.date}</p>
 								</div>
 							</div>
 						</TableCell>,
 						<TableCell>
-							<div className=' flex flex-col gap-[.4rem]'>
+							<div className=' flex-col-global gap-[.4rem]'>
 								<p className='text-title'>{e.customer_name}</p>
-								<p className='text-subtitle text-[.8rem] flex-row-global-items-start gap-[.2rem]'>
-									<CiLocationOn className='text-subtitle text-[.9rem]' /> {e.location}
+								<p className={`${textClassName} flex-row-global-items-start gap-[.2rem]`}>
+									<CiLocationOn className={textClassName} /> {e.location}
 								</p>
 							</div>
 						</TableCell>,
 						<TableCell>
-							<div className=' flex flex-col gap-[.4rem]'>
+							<div className='flex-col-global gap-[.4rem]'>
 								<p className='text-title'>{e.delivery_status}</p>
-								<p className='text-subtitle text-[.8rem]'>{e.branch_name}</p>
+								<p className={textClassName}>{e.branch_name}</p>
 							</div>
 						</TableCell>,
 						<TableCell>
-							<div className=' flex flex-col gap-[.4rem]'>
+							<div className='flex-col-global gap-[.4rem]'>
 								<p className='text-title'>{e.payment_name}</p>
-								<p className='text-subtitle text-[.8rem]'>{e.payment_status}</p>
+								<p className={textClassName}>{e.payment_status}</p>
 							</div>
 						</TableCell>,
 						<GlobalTableCell>{e.order_status}</GlobalTableCell>,
