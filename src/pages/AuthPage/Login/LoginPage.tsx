@@ -1,34 +1,39 @@
 import { useState } from 'react';
-import AuthForm from './_comp/AuthForm';
-import PasswordForm from './_comp/PasswordForm';
-import AuthHeader from '../_comp/AuthHeader';
-import AuthImage from '../_comp/AuthImage';
+import AuthForm from './_comp/IdentifierForm/IdentifierForm';
+import RegisterLayout from '../RegisterLayout/RegisterLayout';
+import PasswordForm from './_comp/PasswordForm/PasswordForm';
+import { BackIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
 
-const LoginPage: React.FC = () => {
+export default function LoginPage() {
 	const [step, setStep] = useState(1);
-	const [usePhone, setUsePhone] = useState(false);
+	const [identifier, setIdentifier] = useState('');
+	const { t } = useTranslation();
 
-	const handleToggle = () => setUsePhone(!usePhone);
+	const handleIdentifierChange = (identifier: string) => {
+		setIdentifier(identifier);
+	};
 
 	return (
-		<section className='flex flex-col space-x-4 w-full py-12 space-y-16 bg-white m-auto items-center'>
-			<AuthHeader />
-			<div className='flex flex-col items-center justify-between w-4/5 mt-12 lg:flex-row lg:mt-0'>
-				<div className='w-full  md:w-4/5 lg:w-2/5'>
-					{step === 1 ? (
-						<AuthForm
-							setStep={setStep}
-							handleToggle={handleToggle}
-							type={usePhone ? 'phone' : 'email'}
-						/>
-					) : (
-						<PasswordForm />
-					)}
-				</div>
-				<AuthImage path='images/register_3.svg' />
+		<RegisterLayout>
+			<div className='flex flex-col w-full'>
+				{step === 2 && <Identifier identifier={identifier} />}
+				<h2 className='title text-2xl	mt-2 mb-6'>{t('Sign in')}</h2>
+				{step === 1 ? (
+					<AuthForm setStep={setStep} onIdentifierChange={handleIdentifierChange} />
+				) : (
+					<PasswordForm />
+				)}
 			</div>
-		</section>
+		</RegisterLayout>
 	);
-};
+}
 
-export default LoginPage;
+function Identifier({ identifier }: { identifier: string }) {
+	return (
+		<div className='flex items-center'>
+			<BackIcon className='fill-primary' />
+			<p className='paragraph text-primary'>{identifier}</p>
+		</div>
+	);
+}

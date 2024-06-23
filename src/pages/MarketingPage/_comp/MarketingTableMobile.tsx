@@ -1,4 +1,4 @@
-import { MoreIcon } from 'src/app/utils/icons';
+import MoreAction from './MoreAction';
 
 interface Item {
 	name: string;
@@ -16,9 +16,10 @@ export default function MarketingTableMobile({ items }: { items: Item[] }) {
 						<StatusBadge isActive={item.isActive} />
 					</section>
 					<section className='grid gap-0.5 place-items-end'>
-						<button>
+						{/* <button>
 							<MoreIcon className='fill-subtitle' />
-						</button>
+						</button> */}
+						<MoreAction onClick={() => console.log('Delete')} />
 						<p className='text-sm text-subtitle'>{item.amount}</p>
 					</section>
 				</div>

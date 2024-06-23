@@ -65,8 +65,6 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 						<CustomPhoneInput
 							value={field.value}
 							onHandleChange={field.onChange}
-
-							// isLoading={isLoading}
 						/>
 					)}
 				/>

@@ -17,13 +17,13 @@ export const truncateString = (str: string, maxLength: number) => {
 	}
 };
 
-export const capitalizeFirstLetter = (inputString: string) => {
-	if (!inputString) {
-		return inputString;
-	}
 
-	return inputString.charAt(0).toUpperCase() + inputString.slice(1);
-};
+export function capitalize(str: string): string {
+	if (!str) {
+		return str;
+	}
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 export const getImageUrl = (name: string) => {
 	return new URL(`../assets/${name}`, import.meta.url).href;
