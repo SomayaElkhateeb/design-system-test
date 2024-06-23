@@ -42,11 +42,13 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 			onSuccess: async (response) => {
 				console.log(response);
 			},
-			onError: PublicHandelingErrors.onErrorResponse,
+			// onError: PublicHandelingErrors.onErrorResponse,
 		});
 		// ///////////////////
+
 		//  second method to link with api instead of using react query
 		// PublicRequest.postData(values, "merchant/register/validate/step-one")
+		
 		// onNext();
 	};
 	const { formStore, onSubmit } = useForm({
