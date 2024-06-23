@@ -28,7 +28,7 @@ export default function ProductFormBasicInfoSection(props) {
 							{ name: 'nameAr', label: 'عربي' },
 						]}
 						label={`${t('Product Name')} (${t('Required')})`}
-						renderer={(field) => <Input {...field} required />}
+						renderer={(field) => <Input {...field}  />}
 					/>
 					<FormField
 						formStore={props.formStore}

@@ -55,11 +55,11 @@ export default function AddBranch(props: {
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
-				{!props.hideHeader && (
+				{/* {!props.hideHeader && ( */}
 					<SubHeader title={t('Add Branch')}>
 						<SubHeaderDefaultBtns onSubmit={onSubmit} />
 					</SubHeader>
-				)}
+				{/* )} */}
 				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
 					<div className='flex-col-global md:col-span-2'>
 						<BranchInfo
