@@ -1,6 +1,6 @@
 import ReactApexChart from 'react-apexcharts';
 import { useTranslation } from 'react-i18next';
-import { capitalizeFirstLetter } from 'src/app/utils';
+import { capitalize } from 'src/app/utils';
 import { BackAndroidIcon } from 'src/app/utils/icons';
 
 // /**
@@ -79,7 +79,6 @@ import { BackAndroidIcon } from 'src/app/utils/icons';
 export default function ColumnChart(props) {
 	// sm:w-[375px] lg:w-[1150px]
 	const {
-
 		percentage,
 		negative,
 		categories = [
@@ -153,14 +152,16 @@ export default function ColumnChart(props) {
 			},
 		},
 	});
-	const {t} = useTranslation()
+	const { t } = useTranslation();
 	return (
 		<div className='px-5 pt-5 bg-white sm:h-[327px] lg:h-[315px]'>
 			<div className='flex items-center justify-between mb-1'>
 				<h2 className='text-lg font-semibold text-title'>{t('Sales')}</h2>
 				<div className='flex'>
 					<BackAndroidIcon
-						className={`fill-${negative ? 'error' : 'success'}  ${negative ? '-rotate-90' : 'rotate-90'}`}
+						className={`fill-${negative ? 'error' : 'success'}  ${
+							negative ? '-rotate-90' : 'rotate-90'
+						}`}
 					/>
 					<h2 className={`text-${negative ? 'error' : 'success'}`}>{percentage}%</h2>
 				</div>

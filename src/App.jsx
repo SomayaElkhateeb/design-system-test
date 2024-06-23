@@ -7,9 +7,10 @@ import { ErrorPage } from './pages';
 import { routes } from './routes';
 import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
 import LoginPage from './pages/AuthPage/Login/LoginPage';
-import ForgetPassword from './pages/AuthPage/ForgetPassword/ForgetPassword';
+import { Toaster } from "react-hot-toast";
+import ForgotPassword from './pages/AuthPage/ForgotPassword/ForgotPassword';
 import ScrollToTop from './app/components/shared/scroll-top/ScrollToTop';
-
+import { QueryClient, QueryClientProvider } from 'react-query';
 // Create browser router instance
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
 	// Registration Routes
 	{ path: '/register', element: <RegistrationPage /> },
 	{ path: '/login', element: <LoginPage /> },
-	{ path: '/forget_password', element: <ForgetPassword /> },
+	{ path: '/forgot_password', element: <ForgotPassword /> },
 ]);
 
 // App component
@@ -44,11 +45,22 @@ const App = () => {
 		);
 	}, [language, i18n]);
 
+	//
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				cacheTime: 1000 * 60 * 5, // 5 minutes
+				staleTime: 1000 * 60 * 2, // 2 minutes
+			},
+		},
+	});
+
 	return (
-		<>
+		<QueryClientProvider client={queryClient}>
+			<Toaster />
 			<ScrollToTop />
 			<RouterProvider router={router} />
-		</>
+		</QueryClientProvider>
 	);
 };
 

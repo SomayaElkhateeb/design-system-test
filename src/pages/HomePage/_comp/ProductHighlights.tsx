@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { MobileProductViews } from 'src/app/components/optimized';
 import SlideCardTabs from 'src/app/components/optimized/Cards/SlideCardTabs';
 
-import { Product } from 'src/pages/ProductsPage/tabs/AllProducts/AllProducts';
 import { LiaTrashAlt } from 'react-icons/lia';
+import { Product } from 'src/pages/ProductsPage/_comp/data';
 
 interface ProductProps {
 	data: {

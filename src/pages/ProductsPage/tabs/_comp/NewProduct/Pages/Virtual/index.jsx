@@ -22,17 +22,17 @@ const productsSections = [
 	{
 		Elem: ProductFormMediaSection,
 		id: 'ProductFormMediaSection',
-		title: 'media',
+		title: 'General info',
 	},
 	{
 		Elem: ProductFormBasicInfoSection,
 		id: 'ProductFormBasicInfoSection',
-		title: 'basic info',
+		title: '',
 	},
 	{
 		Elem: ProductFormDescriptionAndSpecificationsSection,
 		id: 'ProductFormDescriptionAndSpecificationsSection',
-		title: 'description and specifications',
+		title: '',
 	},
 	{
 		Elem: ProductFormPricingSection,
@@ -42,17 +42,17 @@ const productsSections = [
 	{
 		Elem: ProductFormStockSection,
 		id: 'ProductFormStockSection',
-		title: 'stock',
+		title: '',
 	},
 	{
 		Elem: ProductFormShippingSection,
 		id: 'ProductFormShippingSection',
-		title: 'shipping',
+		title: '',
 	},
 	{
 		Elem: ProductFormOptionsAndVariationsSection,
 		id: 'ProductFormOptionsAndVariationsSection',
-		title: 'options and variations',
+		title: 'options & variations',
 	},
 	{
 		Elem: SeoFormFaqsSection,
@@ -62,7 +62,7 @@ const productsSections = [
 	{
 		Elem: ProductFormFaqsSection,
 		id: 'ProductFormFaqsSection',
-		title: 'faqs',
+		title: '',
 	},
 ];
 
@@ -97,10 +97,9 @@ export default function VirtualProductPage() {
 			specifications: [],
 		},
 	});
-
 	return (
 		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
-			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
+			<section  className='flex-grow flex flex-col gap-4 relative p-4'>
 				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
 						{productsSections.map(({ Elem, id }) => (

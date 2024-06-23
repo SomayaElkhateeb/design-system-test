@@ -10,8 +10,6 @@ export { default as ProductFormQuickActionsSection } from './NewProduct/Forms/Qu
 export { default as ProductFormBundleSection } from './NewProduct/Forms/Bundle';
 export { default as ProductFormBasicInfoSection } from './NewProduct/Forms/BasicInfo';
 
-
-
 // Pages
 export { default as ProductFormMediaSection } from './NewProduct/Forms/Media';
 export { default as VirtualProductPage } from './NewProduct/Pages/Virtual';

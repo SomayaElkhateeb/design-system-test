@@ -1,5 +1,5 @@
 import { ValidFormStoreByValues } from 'src/utils/types';
-import { productTypeMap } from '../config';
+import { productTypeMap } from '../../../config';
 
 export interface Props<TFormStore> {
 	sections: { id: string; title: string }[];
