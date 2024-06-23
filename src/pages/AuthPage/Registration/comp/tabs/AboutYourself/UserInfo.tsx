@@ -4,11 +4,13 @@ import { Input } from 'src/app/components/ui/input';
 import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import { useUserInfoForm, UserInfoProps } from './useUserInfoForm';
+import { useTranslation } from 'react-i18next';
 
 // Define the specific types for the field names
 type FieldName = 'email' | 'name' | 'phone' | 'password';
 
 export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
+	const { t } = useTranslation();
 	const { formStore, onSubmit } = useUserInfoForm({ onNext, onPhoneChange });
 	return (
 		<Form {...formStore}>
@@ -29,7 +31,7 @@ export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 					/>
 				))}
 				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text='Next' />
+					<Button variant='primary' type='submit' text={t('Next')} />
 				</div>
 			</form>
 		</Form>

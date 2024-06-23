@@ -14,13 +14,13 @@ export default function RegistrationPage() {
 	const firstTab = isLogin ? <AboutYourself /> : <LoginOptions setLogin={setIsLogin} />;
 
 	const tabs = [
-		{ title: 'Tell us about yourself', content: firstTab },
-		{ title: 'Tell us about your business', content: <AboutYourBusiness /> },
+		{ title: t('Tell us about yourself'), content: firstTab },
+		{ title: t('Tell us about your business'), content: <AboutYourBusiness /> },
 	];
 
 	return (
 		<RegisterLayout>
-			<div className='flex flex-col gap-7 h-full'>
+			<div className='flex flex-col gap-7 h-full w-full'>
 				<h2 className='title text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
 				<StepNavigator steps={tabs} />
 			</div>

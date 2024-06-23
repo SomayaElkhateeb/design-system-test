@@ -6,13 +6,10 @@ import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import SelectFormField from '../../SelectFormField';
 import { Button, CheckBox } from 'src/app/components/optimized';
-import useAboutYourBusiness, {
-	AboutYourBusinessInterface,
-	industryOptions,
-} from './useAboutYourBusiness';
+import useAboutYourBusiness, { AboutYourBusinessInterface } from './useAboutYourBusiness';
 
 export default function AboutYourBusiness() {
-	const { formStore, onSubmit } = useAboutYourBusiness();
+	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness();
 
 	return (
 		<Form {...formStore}>

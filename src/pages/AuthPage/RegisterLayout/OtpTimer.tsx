@@ -1,5 +1,5 @@
 import { Button } from 'src/app/components/optimized';
-
+import { useTranslation } from 'react-i18next';
 interface OtpTimerProps {
 	timer: number;
 	isResendVisible: boolean;
@@ -7,6 +7,7 @@ interface OtpTimerProps {
 }
 
 export default function OtpTimer({ timer, isResendVisible, handleResend }: OtpTimerProps) {
+	const { t } = useTranslation();
 	const formatTime = (time: number) => {
 		const minutes = Math.floor(time / 60);
 		const seconds = time % 60;
@@ -18,8 +19,8 @@ export default function OtpTimer({ timer, isResendVisible, handleResend }: OtpTi
 			{isResendVisible && (
 				<div>
 					<p className='paragraph text-subtitle flex items-center'>
-						Didn't receive the code?&nbsp;
-						<Button variant='link' text='Resend' onClick={handleResend} />
+						{t("Didn't receive the code?")}&nbsp;
+						<Button variant='link' text={t('Resend')} onClick={handleResend} />
 					</p>
 				</div>
 			)}

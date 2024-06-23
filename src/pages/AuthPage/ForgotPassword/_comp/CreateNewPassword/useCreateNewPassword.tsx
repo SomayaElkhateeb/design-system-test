@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
 
 import { useForm } from 'src/app/utils/hooks/form';
 type PasswordField = 'newPassword' | 'confirmPassword';
@@ -20,6 +21,7 @@ export default function useCreateNewPassword() {
 			[field]: !prev[field],
 		}));
 	}, []);
+	const { t } = useTranslation();
 
 	const { formStore, onSubmit } = useForm({
 		schema: passwordSchema,
@@ -29,8 +31,8 @@ export default function useCreateNewPassword() {
 		defaultValues: { newPassword: '', confirmPassword: '' },
 	});
 	const fields: { name: PasswordField; placeholder: string }[] = [
-		{ name: 'newPassword', placeholder: 'New password' },
-		{ name: 'confirmPassword', placeholder: 'New password again' },
+		{ name: 'newPassword', placeholder: t('New password') },
+		{ name: 'confirmPassword', placeholder: t('New password again') },
 	];
 	return { formStore, onSubmit, isVisible, toggleVisibility, fields };
 }

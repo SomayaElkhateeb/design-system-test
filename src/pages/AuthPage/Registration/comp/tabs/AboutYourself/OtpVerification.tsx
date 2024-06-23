@@ -4,7 +4,7 @@ import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import useOtp, { OtpVerificationInterface } from './useOtp';
 import OtpTimer from 'src/pages/AuthPage/RegisterLayout/OtpTimer';
-
+import { useTranslation } from 'react-i18next';
 interface OtpVerificationProps {
 	onFinish: (values: OtpVerificationInterface) => void;
 	onResend: () => void; // Add a prop to handle the resend functionality
@@ -19,7 +19,7 @@ export default function OtpVerification({
 	setCurrentStep,
 }: OtpVerificationProps) {
 	const { timer, isResendVisible, resetTimer, formStore, onSubmit } = useOtp({ onFinish });
-
+	const { t } = useTranslation();
 	const handleResend = () => {
 		resetTimer();
 		onResend();
@@ -35,15 +35,16 @@ export default function OtpVerification({
 					render={(field) => <Input {...field} id='otp' type='text' placeholder='OTP code' />}
 				/>
 				<p className='paragraph text-subtitle'>
-					We've sent a code to your phone&nbsp;<span>{phone}</span>&nbsp;
-
-					<Button variant='link' text='Change' onClick={() => setCurrentStep(1)} />
+					{t("We've sent a code to your phone")}&nbsp;<span>{phone}</span>&nbsp;
+					<Button variant='link' text={t('Change')} onClick={() => setCurrentStep(1)} />
 				</p>
 				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text='Verify' className='w-36' />
+					<Button variant='primary' type='submit' text={t('Verify')} className='w-36' />
 				</div>
 			</form>
 		</Form>
 	);
 }
+
+
 

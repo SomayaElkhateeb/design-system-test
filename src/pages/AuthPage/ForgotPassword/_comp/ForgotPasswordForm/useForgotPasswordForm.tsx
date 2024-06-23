@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
+import { useTranslation } from 'react-i18next';
 
 const emailSchema = z
 	.string()
@@ -15,10 +16,12 @@ export default function useForgotPasswordForm({
 	usePhone: boolean;
 	setIsCodeSent: (isCodeSent: boolean) => void;
 }) {
+	const { t } = useTranslation();
+
 	const getTexts = (usePhone: boolean) => ({
-		btnText: `Use your ${usePhone ? 'email' : 'phone'}`,
-		switchText: `No access to your ${usePhone ? 'phone' : 'email'}?`,
-		placeholder: usePhone ? 'Phone Number' : 'Email Address',
+		btnText: `${t('Use your')} ${usePhone ? t('email') : t('phone')}`,
+		switchText: `${t('No access to your')} ${usePhone ? t('phone') : t('email')}?`,
+		placeholder: usePhone ? t('Phone Number') : t('Email Address'),
 	});
 	const schema = useMemo(() => ({ contact: usePhone ? phoneSchema : emailSchema }), [usePhone]);
 
@@ -33,3 +36,5 @@ export default function useForgotPasswordForm({
 
 	return { formStore, onSubmit, getTexts };
 }
+
+

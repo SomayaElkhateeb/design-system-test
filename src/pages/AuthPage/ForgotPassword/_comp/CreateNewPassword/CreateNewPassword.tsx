@@ -5,14 +5,16 @@ import { Input } from 'src/app/components/ui/input';
 
 import PasswordToggleIcon from '../../../RegisterLayout/PasswordToggleIcon';
 import useCreateNewPassword from './useCreateNewPassword';
+import { useTranslation } from 'react-i18next';
 
 export default function CreateNewPassword() {
 	const { formStore, onSubmit, isVisible, toggleVisibility, fields } = useCreateNewPassword();
+	const { t } = useTranslation();
 
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='grid w-full gap-5'>
-				<h2 className='title text-2xl'>Create a new password</h2>
+				<h2 className='title text-2xl'>{t('Create a new password')}</h2>
 				{fields.map(({ name, placeholder }) => (
 					<FormField
 						key={name}
@@ -34,9 +36,10 @@ export default function CreateNewPassword() {
 					/>
 				))}
 				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text='Update Password' className='w-36 px-2' />
+					<Button variant='primary' type='submit' text={t('Update Password')} className='w-36 px-2' />
 				</div>
 			</form>
 		</Form>
 	);
 }
+
