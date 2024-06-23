@@ -24,7 +24,7 @@ export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 							<Input
 								{...field}
 								id={fieldName}
-								type={fieldName === 'password' ? 'password' : fieldName}
+								type={fieldName === 'password' ? 'password' : "text"}
 								placeholder={capitalize(fieldName)}
 							/>
 						)}
