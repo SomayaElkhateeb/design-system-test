@@ -1,8 +1,6 @@
 import axios from 'axios';
 import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
 
-import axios from "axios";
-import PublicHandelingErrors from "../utils/AxiosUtils/PublicHandelingErrors";
 
 export const baseUrl = "https://my.dookan.net/api/v1/";
 
