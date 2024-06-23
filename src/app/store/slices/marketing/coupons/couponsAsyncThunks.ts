@@ -1,18 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Coupon } from 'src/app/interface/CouponInterface';
+import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 const URL = 'http://localhost:3007';
 
 // get coupons
-export const getCoupons = createAsyncThunk<Coupon[]>('coupon/getCoupons', async (_, thunkAPI) => {
-	const { rejectWithValue } = thunkAPI;
-	try {
-		const { data } = await axios.get<Coupon[]>(`${URL}/coupons`);
-		return data;
-	} catch (error) {
-		throw rejectWithValue(error.message);
-	}
-});
+// export const getCoupons = createAsyncThunk<Coupon[]>('coupon/getCoupons', async (_, thunkAPI) => {
+// 	const { rejectWithValue } = thunkAPI;
+// 	try {
+// 		const { data } = await axios.get<Coupon[]>(`${URL}/coupons`);
+// 		return data;
+// 	} catch (error) {
+// 		throw rejectWithValue(error.message);
+// 	}
+// });
+export const getCoupons = createAsyncThunk(
+	"coupon/getCoupons",
+	() =>PublicRequest.getData("coupons")
+);
+// export const ResendCode = createAsyncThunk(
+// 	"updateProfile/UpdateAccount",
+// 	(payload: { mobile: string | undefined; id?: string }) =>
+// 	  PublicRequest.postData(payload, "resend/otp")
+//   );
 
 // add coupons
 export const postCoupons = createAsyncThunk<any, any>(
