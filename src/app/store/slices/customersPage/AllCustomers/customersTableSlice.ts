@@ -1,27 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllCustomerTableReducer } from './customersTableExtraReducers';
-import { CustomerInterface } from 'src/app/interface/CustomerInterface';
+import { allCustomerSliceModel } from 'src/app/models/allCustomerSliceModel';
 
-export interface allCustomerStatus {
-	allCustomer: CustomerInterface[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: allCustomerStatus = {
-	allCustomer: [
-		{
-			id: '1',
-			name: 'mohamed Mostafa',
-			first_name: 'Mohamed',
-			last_name: 'Mostafa',
-			mobile: '01064545565',
-			city: 'mansoura',
-			Orders: 10,
-			email: 'mmmm@yahoo.com',
-			'E-Subscription': true,
-		},
-	],
+const initialState: allCustomerSliceModel = {
+	allCustomer: [],
 	isLoading: false,
 	error: null,
 };
@@ -35,6 +17,6 @@ const allCustomerSlice = createSlice({
 	},
 });
 
-export const selectAllCustomer = (state: { allCustomer: allCustomerStatus }) => state.allCustomer;
+// export const selectAllCustomer = (state: { allCustomer: allCustomerStatus }) => state.allCustomer;
 
 export default allCustomerSlice.reducer;

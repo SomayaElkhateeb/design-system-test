@@ -1,32 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getBrandsReducer } from './brandsExtraReducers';
-import { BrandsInterface } from 'src/app/interface/BrandInterface';
+import { brandsSliceModel } from 'src/app/models/brandsSliceModel';
 
-export interface brandsStatus {
-	brands: BrandsInterface[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: brandsStatus = {
-	brands: [
-		{
-			id: '1',
-			title: 'mohamed Mostafa',
-			describtion: '01064545565',
-			available: false,
-			productsNo: 10,
-			img: 'images/product.png',
-		},
-		{
-			id: '2',
-			title: 'mohamed Mostafa',
-			describtion: '01064545565',
-			available: false,
-			productsNo: 10,
-			img: 'images/product.png',
-		},
-	],
+const initialState: brandsSliceModel = {
+	brands: [],
 	isLoading: false,
 	error: null,
 };
@@ -39,7 +16,5 @@ const brandsSlice = createSlice({
 		getBrandsReducer(builder);
 	},
 });
-
-export const selectBrands = (state: { brands: brandsStatus }) => state.brands;
 
 export default brandsSlice.reducer;

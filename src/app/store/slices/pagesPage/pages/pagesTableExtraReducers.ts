@@ -1,8 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getPagesTable } from './pagesTableAsyncThunks';
-import { pagesStatus } from './pagesTableSlice';
+import { pagesSliceModel } from 'src/app/models/pagesSliceModel';
 
-export const getPagesTableReducer = (builder: ActionReducerMapBuilder<pagesStatus>) => {
+export const getPagesTableReducer = (builder: ActionReducerMapBuilder<pagesSliceModel>) => {
 	builder
 		// get pages table
 		.addCase(getPagesTable.pending, (state) => {

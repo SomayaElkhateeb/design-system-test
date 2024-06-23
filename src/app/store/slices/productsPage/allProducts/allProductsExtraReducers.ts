@@ -1,8 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getAllProductsTable } from './allProductsAsyncThunks';
-import { AllProductsStatus } from './allProductsTableSlice';
+import { productsSliceModel } from 'src/app/models/allProductsSliceModel';
 
-export const getAllProductsReducer = (builder: ActionReducerMapBuilder<AllProductsStatus>) => {
+export const getAllProductsReducer = (builder: ActionReducerMapBuilder<productsSliceModel>) => {
 	builder
 		// get c table
 		.addCase(getAllProductsTable.pending, (state) => {

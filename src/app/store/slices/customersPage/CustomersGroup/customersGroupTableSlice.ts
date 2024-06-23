@@ -1,14 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCustomerGroupTableReducer } from './customersGroupTableExtraReducers';
-import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
+import { customersGroupSliceModel } from 'src/app/models/customersGroupSliceModel';
 
-export interface customerGroupStatus {
-	customersGroup: CustomerGroupInterface[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: customerGroupStatus = {
+const initialState: customersGroupSliceModel = {
 	customersGroup: [
 		{
 			id: '1',
@@ -30,8 +24,5 @@ const customerGroupSlice = createSlice({
 		getCustomerGroupTableReducer(builder);
 	},
 });
-
-export const selectCustomerAnalytics = (state: { customersGroup: customerGroupStatus }) =>
-	state.customersGroup;
 
 export default customerGroupSlice.reducer;
