@@ -49,7 +49,7 @@ function BulkPricesManager(props) {
 
 				{fields.map((field, index) => (
 					<div key={field.tempId} className='flex flex-wrap gap-4 items-center'>
-						<div className='grid grid-cols-2'>
+						<div className='grid grid-cols-2 gap-2'>
 							<FormField
 								formStore={props.formStore}
 								name={`bulkPrices.${index}.from`}
@@ -63,21 +63,23 @@ function BulkPricesManager(props) {
 								render={(field) => <Input {...field} type='number' className='w-fit' />}
 							/>
 						</div>
-						<FormField
-							formStore={props.formStore}
-							name={`bulkPrices.${index}.currency`}
-							label={t('Price')}
-							render={(field) => <Input {...field} className='w-fit' />}
-						/>
-						<Button
-							variant='secondary'
-							textClassName='flex items-end justify-center gap-1.5 whitespace-nowrap'
-							className='px-0 border-0 rounded-none'
-							onClick={() => remove(index)}
-						>
-							<TrashIcon className='size-5' />
-							<span className='sr-only'>{t('Remove')}</span>
-						</Button>
+						<div className='grid grid-cols-2 gap-2 items-end grid-flow-row-dense'>
+							<FormField
+								formStore={props.formStore}
+								name={`bulkPrices.${index}.currency`}
+								label={t('Price')}
+								render={(field) => <Input {...field} className='w-fit' />}
+							/>
+							<Button
+								variant='secondary'
+								textClassName='flex items-end justify-center gap-1.5 whitespace-nowrap '
+								className='px-0 border-0 rounded-none'
+								onClick={() => remove(index)}
+							>
+								<TrashIcon className='size-5' />
+								<span className='sr-only'>{t('Remove')}</span>
+							</Button>
+						</div>
 					</div>
 				))}
 				<Button

@@ -23,7 +23,7 @@ function AddSpecificationManager(props) {
 	const { t } = useTranslation();
 	const [isAdding, setIsAdding] = useState(false);
 	const { formStore, onSubmit } = useForm({
-		schema: productSpecificationsRawSchema.specification,
+		schema: productSpecificationsRawSchema,
 		handleSubmit: props.handleSubmit,
 		defaultValues: {
 			specification: {
@@ -201,7 +201,7 @@ const tabsItems = [
 						{ name: 'descriptionAr', label: 'عربي' },
 					]}
 					label={`${t('Product Name')} (${t('Required')})`}
-					renderer={(field) => <Textarea {...field} required />}
+					renderer={(field) => <Textarea {...field} />}
 				/>
 			);
 		},

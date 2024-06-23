@@ -94,7 +94,7 @@ function AddQAManager(props) {
 								formStore.reset();
 							}}
 						>
-							{t('Save & add another')}
+							{t('Save & Add Another')}
 						</Button>
 						<Button
 							type='button'

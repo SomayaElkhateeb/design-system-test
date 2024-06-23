@@ -1,29 +1,31 @@
 import { Checkbox } from '@mui/material';
+import { useState } from 'react';
+import { useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { FaCheck, FaCirclePlus } from 'react-icons/fa6';
+import { IoClose } from 'react-icons/io5';
+import { Button } from 'src/app/components/optimized';
 import { Card, CardContent, CardHeader, CardTitle } from 'src/app/components/ui/card';
 import FormField from 'src/app/components/ui/form/field';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 import { Input } from 'src/app/components/ui/input';
-import { Button } from 'src/app/components/optimized';
-import { FaCirclePlus } from 'react-icons/fa6';
-import { useState } from 'react';
 import {
-	productShippingRateCollection,
-	productStatesOfTheProductCollection,
-	productShippingRateMap,
-	productShippingMethodCollection,
-	productDimensionUnitCollection,
-	productWeightUnitCollection,
-	productShippingTypeMap,
-} from './utils';
-import { useWatch } from 'react-hook-form';
-import {
-	SelectItem,
 	Select,
 	SelectContent,
+	SelectItem,
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-import HorizontalBox from 'src/app/components/ui/horizontal-box';
+
+import {
+	productDimensionUnitCollection,
+	productShippingMethodCollection,
+	productShippingRateCollection,
+	productShippingRateMap,
+	productShippingTypeMap,
+	productStatesOfTheProductCollection,
+	productWeightUnitCollection,
+} from './utils';
 
 /**
  * @template TFormStore
@@ -80,7 +82,7 @@ function AdvancedShippingOptionsManager(props) {
 										field.onChange(newRates);
 									}}
 								>
-									<span>{rate !== fieldMap[rate] ? <>✔</> : <>+</>}</span>
+									<span>{rate !== fieldMap[rate] ? <FaCheck /> : <>+</>}</span>
 									<span className='capitalize'>{rate}</span>
 								</button>
 							))}
@@ -151,7 +153,7 @@ function AdvancedShippingOptionsManager(props) {
 										field.onChange(rate);
 									}}
 								>
-									<span>{rate !== rate ? <>✔</> : <>+</>}</span>
+									<span>{rate !== rate ? <FaCheck /> : <>+</>}</span>
 									<span className='capitalize'>{rate}</span>
 								</button>
 							))}
@@ -238,7 +240,9 @@ function OtherProductShippingOptions(props) {
 							/>
 						)}
 					/>
-					<span className='me-8'>x</span>
+					<span className='me-8'>
+						<IoClose />
+					</span>
 					<FormField
 						formStore={props.formStore}
 						name='shipping.dimensions.width'
@@ -253,7 +257,9 @@ function OtherProductShippingOptions(props) {
 							/>
 						)}
 					/>
-					<span className='me-8'>x</span>
+					<span className='me-8'>
+						<IoClose />
+					</span>
 					<FormField
 						formStore={props.formStore}
 						name='shipping.dimensions.height'
@@ -268,7 +274,9 @@ function OtherProductShippingOptions(props) {
 							/>
 						)}
 					/>
-					<span className='me-8'>x</span>
+					<span className='me-8'>
+						<IoClose />
+					</span>
 					<FormField
 						formStore={props.formStore}
 						name='shipping.dimensionUnit'

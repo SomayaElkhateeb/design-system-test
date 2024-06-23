@@ -13,9 +13,12 @@ import ProductFormBrandField from './Fields/Brand';
  */
 export default function ProductFormBasicInfoSection(props) {
 	const { t } = useTranslation();
-
+	console.log(props?.formStore?.formState);
 	return (
-		<Card id={props.id}>
+		<Card
+			id={props.id}
+			className={props?.formStore?.formState?.isValid === false ? 'border-2 border-red-400' : ''}
+		>
 			<CardHeader>
 				<CardTitle>{t('Basic info')}</CardTitle>
 			</CardHeader>
@@ -28,7 +31,7 @@ export default function ProductFormBasicInfoSection(props) {
 							{ name: 'nameAr', label: 'عربي' },
 						]}
 						label={`${t('Product Name')} (${t('Required')})`}
-						renderer={(field) => <Input {...field} required />}
+						renderer={(field) => <Input {...field} />}
 					/>
 					<FormField
 						formStore={props.formStore}

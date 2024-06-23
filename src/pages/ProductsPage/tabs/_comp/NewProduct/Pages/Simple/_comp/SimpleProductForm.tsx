@@ -48,8 +48,8 @@ const SimpleProductForm: FC = () => {
 	const [openDialog, setOpenDialog] = useState(false);
 	const { t } = useTranslation();
 
-	const handleBrandSubmit = (brand) => {
-		console.log(brand);
+	const handleBrandSubmit = (val) => {
+		console.log(val);
 		setOpenDialog(false);
 	};
 

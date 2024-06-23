@@ -4,7 +4,7 @@ export { default as SeoFormFaqsSection } from './NewProduct/Forms/Seo';
 export { default as ProductFormStockSection } from './NewProduct/Forms/Stock';
 export { default as ProductFormShippingSection } from './NewProduct/Forms/Shipping';
 export { default as ProductFormFaqsSection } from './NewProduct/Forms/Faqs';
-export { default as ProductFormOptionsAndVariationsSection } from './NewProduct/Forms/OptionsAndVariations';
+export { default as ProductFormOptionsAndVariationsSection } from './NewProduct/Forms/OptionsAndVariations/_comp/index_.jsx';
 export { default as ProductFormDescriptionAndSpecificationsSection } from './NewProduct/Forms/DescriptionAndSpecifications';
 export { default as ProductFormQuickActionsSection } from './NewProduct/Forms/QuickActions';
 export { default as ProductFormBundleSection } from './NewProduct/Forms/Bundle';
