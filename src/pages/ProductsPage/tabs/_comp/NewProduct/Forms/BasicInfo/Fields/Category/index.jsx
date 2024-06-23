@@ -45,6 +45,7 @@ function CategoryDialog() {
  */
 export default function ProductFormCategoryField(props) {
 	const { t } = useTranslation();
+	
 
 	return (
 		<FormField
@@ -55,7 +56,7 @@ export default function ProductFormCategoryField(props) {
 				<div className='flex'>
 					<Select
 						onValueChange={field.onChange}
-						value={field.value?.id}
+						value={field.value}
 						required={field.required}
 						name={field.name}
 					>
@@ -63,7 +64,7 @@ export default function ProductFormCategoryField(props) {
 							className='border-e-0 rounded-e-none rtl:border-e rtl:rounded-e rtl:border-s-0 rtl:rounded-s-none'
 							onBlur={field.onBlur}
 							disabled={field.disabled}
-							id={field.id}
+							id={field.value}
 						>
 							<SelectValue placeholder='Theme' />
 						</SelectTrigger>

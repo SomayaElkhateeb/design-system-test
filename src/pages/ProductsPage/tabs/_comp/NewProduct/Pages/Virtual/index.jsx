@@ -97,10 +97,9 @@ export default function VirtualProductPage() {
 			specifications: [],
 		},
 	});
-
 	return (
 		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
-			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
+			<section  className='flex-grow flex flex-col gap-4 relative p-4'>
 				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
 						{productsSections.map(({ Elem, id }) => (
