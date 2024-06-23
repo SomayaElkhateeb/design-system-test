@@ -36,7 +36,6 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 	//  linking with api
 	const { mutate, isLoading, error } = useMutation('sign-up', AuthApi.signUp);
 	const handleSubmit = (values: UserInfoInterface) => {
-		
 		//Perform verification before moving to the next step
 
 		mutate(values, {
@@ -45,6 +44,9 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 			},
 			onError: PublicHandelingErrors.onErrorResponse,
 		});
+		// ///////////////////
+		//  second method to link with api instead of using react query
+		// PublicRequest.postData(values, "merchant/register/validate/step-one")
 		// onNext();
 	};
 	const { formStore, onSubmit } = useForm({
