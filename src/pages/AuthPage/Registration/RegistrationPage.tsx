@@ -1,37 +1,29 @@
-import AboutYourBusiness from './_comp/tabs/AboutYourBusiness';
-import AboutYourself from './_comp/tabs/AboutYourself';
-import AuthHeader from '../_comp/AuthHeader';
-import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+import { useState } from 'react';
+
 import { useTranslation } from 'react-i18next';
-import AuthImage from '../_comp/AuthImage';
+import { LoginOptions } from './comp/LoginOptions';
+import AboutYourself from './comp/tabs/AboutYourself/AboutYourself';
+import RegisterLayout from '../RegisterLayout/RegisterLayout';
+import AboutYourBusiness from './comp/tabs/AboutYourBusiness/AboutYourBusiness';
+import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
 
 export default function RegistrationPage() {
 	const { t } = useTranslation();
+	const [isLogin, setIsLogin] = useState<boolean>(false);
+
+	const firstTab = isLogin ? <AboutYourself /> : <LoginOptions setLogin={setIsLogin} />;
 
 	const tabs = [
-		{ title: 'Tell us about yourself', content: <AboutYourself /> },
+		{ title: 'Tell us about yourself', content: firstTab },
 		{ title: 'Tell us about your business', content: <AboutYourBusiness /> },
 	];
 
 	return (
-		<section className='flex flex-col container h-screen bg-white'>
-			<AuthHeader />
-			<section className='flex items-center justify-between flex-1'>
-				<div className='grid gap-7'>
-					<h2 className='title text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
-					<StepNavigator steps={tabs} />
-				</div>
-				<div className=''>
-					<AuthImage path='images/register_1.svg' />
-				</div>
-			</section>
-		</section>
+		<RegisterLayout>
+			<div className='flex flex-col gap-7 h-full'>
+				<h2 className='title text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
+				<StepNavigator steps={tabs} />
+			</div>
+		</RegisterLayout>
 	);
 }
-
-// const [reviewStatus, setReviewStatus] = useState(false);
-// };
-// const handleFinish = (status) => {
-// 	setReviewStatus(status);
-// 	alert(status);
-// };

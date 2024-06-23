@@ -1,7 +1,6 @@
 import React, { type FC } from 'react';
 import { useStepContext } from './StepNavigator';
 import StepHeader from './StepHeader';
-import StepActions from './StepActions';
 interface StepProps {
 	index: number;
 }
@@ -12,7 +11,7 @@ const Step: FC<StepProps> = ({ index }) => {
 	const isCompleted = index < activeStep;
 	const isLastStep = index === steps.length - 1;
 	return (
-		<div className='relative'>
+		<div className={`relative ${isActive ? 'flex-grow' : ''}`}>
 			<StepHeader
 				index={index}
 				title={step.title}
@@ -21,12 +20,7 @@ const Step: FC<StepProps> = ({ index }) => {
 				isCompleted={isCompleted}
 				setActiveStep={setActiveStep}
 			/>
-			{isActive && (
-				<div className='py-5 px-9'>
-					{step.content}
-					{/* <StepActions /> */}
-				</div>
-			)}
+			{isActive && <div className='py-5 px-9'>{step.content}</div>}
 		</div>
 	);
 };

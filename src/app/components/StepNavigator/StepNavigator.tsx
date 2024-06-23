@@ -14,7 +14,7 @@ export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
 	const stepNavigation = useStepNavigation(steps);
 	return (
 		<StepContext.Provider value={{ ...stepNavigation, onFinish }}>
-			<div className='grid gap-4'>
+			<div className='flex flex-col gap-4 h-full'>
 				{steps.map((_, index) => (
 					<Step key={index} index={index} />
 				))}

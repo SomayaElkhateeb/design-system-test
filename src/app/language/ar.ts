@@ -1131,9 +1131,6 @@ export const arabic = {
 	'Sales Ascending': 'تصاعد المبيعات',
 	'Store Reviews': 'مراجعات المتجر',
 	'App Reviews': 'مراجعات التطبيقات',
-<<<<<<< HEAD
-	'Arabic': 'العربية',
-=======
 	'Name A to Z': 'الاسم من أ الي ي',
 	'Name Z to A': 'الاسم من ي الي أ',
 	'Date modified': 'تعديل التاريخ',
@@ -1153,5 +1150,4 @@ export const arabic = {
 	'Group poster': 'ملصق المجموعة',
 	'Add banner': 'إضافة شعار',
 	'Category name': 'اسم التصنيف',
->>>>>>> c68f9965db092ddf00011d655846ed6b7cd7b8b9
 } satisfies typeof english;

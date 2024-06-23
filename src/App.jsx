@@ -7,7 +7,7 @@ import { ErrorPage } from './pages';
 import { routes } from './routes';
 import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
 import LoginPage from './pages/AuthPage/Login/LoginPage';
-import ForgetPassword from './pages/AuthPage/ForgetPassword/ForgetPassword';
+import ForgotPassword from './pages/AuthPage/ForgotPassword/ForgotPassword';
 import ScrollToTop from './app/components/scroll-top/ScrollToTop';
 
 // Create browser router instance
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
 	// Registration Routes
 	{ path: '/register', element: <RegistrationPage /> },
 	{ path: '/login', element: <LoginPage /> },
-	{ path: '/forget_password', element: <ForgetPassword /> },
+	{ path: '/forgot_password', element: <ForgotPassword /> },
 ]);
 
 // App component

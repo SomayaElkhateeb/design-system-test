@@ -44,7 +44,7 @@ const useResponsive = (): MediaQueryResults => {
 export default useResponsive;
 
 // type Breakpoints = {
-//   isSmall: boolean;
+//  isSmall: boolean;
 // 	isLarge: boolean;
 // 	isMedium: boolean;
 // 	isExtraSmall: boolean;
