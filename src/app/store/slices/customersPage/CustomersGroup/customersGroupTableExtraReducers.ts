@@ -1,9 +1,9 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getCustomersGroupTable } from './customersGroupTableAsyncThunks';
-import { customerGroupStatus } from './customersGroupTableSlice';
+import { customersGroupSliceModel } from 'src/app/models/customersGroupSliceModel';
 
 export const getCustomerGroupTableReducer = (
-	builder: ActionReducerMapBuilder<customerGroupStatus>,
+	builder: ActionReducerMapBuilder<customersGroupSliceModel>,
 ) => {
 	builder
 		// get customer group table

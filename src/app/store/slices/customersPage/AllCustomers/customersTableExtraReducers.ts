@@ -1,8 +1,10 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { allCustomerStatus } from './customersAnalyticsTableSlice';
 import { getAllCustomersTable } from './customersTableAsyncThunks';
+import { allCustomerSliceModel } from 'src/app/models/allCustomerSliceModel';
 
-export const getAllCustomerTableReducer = (builder: ActionReducerMapBuilder<allCustomerStatus>) => {
+export const getAllCustomerTableReducer = (
+	builder: ActionReducerMapBuilder<allCustomerSliceModel>,
+) => {
 	builder
 		// get all customer  table
 		.addCase(getAllCustomersTable.pending, (state) => {

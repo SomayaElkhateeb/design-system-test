@@ -1,14 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCustomerAnalyticsTableReducer } from './customersAnalyticsTableExtraReducers';
-import { AnalyticsCustomer } from 'src/pages/AnalyticsPage/tabs/Customers/AnalyticsCustomers';
+import { customersAnalyticsSliceModel } from 'src/app/models/customersAnalyticsSliceModel';
 
-export interface customerAnalyticsStatus {
-	customersAnalytics: AnalyticsCustomer[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
-
-const initialState: customerAnalyticsStatus = {
+const initialState: customersAnalyticsSliceModel = {
 	customersAnalytics: [
 		{
 			day: '24 Apr 2024',
@@ -29,8 +23,5 @@ const customerAnalyticsSlice = createSlice({
 		getCustomerAnalyticsTableReducer(builder);
 	},
 });
-
-export const selectCustomerAnalytics = (state: { customersAnalytics: customerAnalyticsStatus }) =>
-	state.customersAnalytics;
 
 export default customerAnalyticsSlice.reducer;

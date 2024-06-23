@@ -1,14 +1,19 @@
+import axios from 'axios';
+import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
 
 import axios from "axios";
 import PublicHandelingErrors from "../utils/AxiosUtils/PublicHandelingErrors";
 
 export const baseUrl = "https://my.dookan.net/api/v1/";
 
+
+
 const MainApi = axios.create({
-    baseURL: baseUrl,
+	baseURL: baseUrl,
 });
 
 MainApi.interceptors.request.use(
+
     function (config) {
         let token = undefined;
         let language = undefined;
@@ -41,6 +46,8 @@ MainApi.interceptors.request.use(
         // Do something with request error
         return PublicHandelingErrors.onErrorResponse(error);
     },
+
+	
 );
 
 export default MainApi;

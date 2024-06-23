@@ -1,8 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { getBlogTable } from './blogTableAsyncThunks';
-import { blogStatus } from './blogTableSlice';
+import { blogSliceModel } from 'src/app/models/blogSliceModel';
 
-export const getBlogTableReducer = (builder: ActionReducerMapBuilder<blogStatus>) => {
+export const getBlogTableReducer = (builder: ActionReducerMapBuilder<blogSliceModel>) => {
 	builder
 		// get Blog table
 		.addCase(getBlogTable.pending, (state) => {

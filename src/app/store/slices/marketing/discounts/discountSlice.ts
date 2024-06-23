@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getDiscountReducer } from './discountsExtraReducers';
-import { DiscountInterface } from 'src/app/interface/DiscountInterface';
+import { discountSliceModel } from 'src/app/models/discountSliceModel';
 
-export interface DiscountState {
-	discounts: DiscountInterface[];
-	isLoading: boolean;
-	error: string | null | unknown;
-}
 // initialState
-const initialState: DiscountState = { discounts: [], isLoading: false, error: null };
+const initialState: discountSliceModel = { discounts: [], isLoading: false, error: null };
 
 const discountSlice = createSlice({
 	name: 'discount',
@@ -19,7 +14,4 @@ const discountSlice = createSlice({
 	},
 });
 
-// export const selectDiscount = (state) => state.discount;
-
 export default discountSlice.reducer;
-// export const { selectDiscount } = discountSlice.actions;

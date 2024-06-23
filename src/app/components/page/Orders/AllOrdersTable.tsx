@@ -22,11 +22,13 @@ export default function AllOrdersTable({
 	array,
 	setArray,
 	settingMenus,
+	isLoading,
 }: {
 	orders: OrderInterface[];
 	array: string[];
 	setArray: (e: string[]) => void;
 	settingMenus: menuType[];
+	isLoading: boolean;
 }) {
 	//  hooks
 	const language = UseLanguage();
@@ -64,6 +66,7 @@ export default function AllOrdersTable({
 	const textClassName = 'text-subtitle text-[.8rem]';
 	return (
 		<BaseTable
+			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={OrdersHeaders.map((h) => h)}

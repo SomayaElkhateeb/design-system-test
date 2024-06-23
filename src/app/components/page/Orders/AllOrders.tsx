@@ -4,11 +4,13 @@ import AllOrdersTableMobile from './AllOrdersTableMobile';
 import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
 import AllOrdersTable from './AllOrdersTable';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import TopSectionOrdersPage from './TopSectionOrdersPage';
 import { nanoid } from 'nanoid';
 import { LiaTrashAlt } from 'react-icons/lia';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getAllOrdersPageTable } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 
 //  setting menus for setting button action
 const settingMenus = [
@@ -20,6 +22,15 @@ export default function AllOrders() {
 	const { t } = useTranslation();
 	const [array, setArray] = useState<string[]>([]);
 	const { xs } = useResponsive();
+	//redux
+	const dispatch = useAppDispatch();
+	const { allOrders, isLoading, error } = useAppSelector((state) => state.allOrders);
+
+	useEffect(() => {
+		dispatch(getAllOrdersPageTable());
+	}, [dispatch]);
+
+	if (error) return <div>Error: {error}</div>;
 	//  dumy data
 	const orders: OrderInterface[] = [
 		{
@@ -72,12 +83,13 @@ export default function AllOrders() {
 					settingMenus={settingMenus}
 					array={array}
 					setArray={setArray}
-					orders={orders}
+					orders={allOrders}
+					isLoading={isLoading}
 				/>
 
 				{xs && (
 					<>
-						<AllOrdersTableMobile orders={orders} />
+						<AllOrdersTableMobile orders={allOrders} />
 						<AddButtonMobile path='/order/addOrder' />
 					</>
 				)}
