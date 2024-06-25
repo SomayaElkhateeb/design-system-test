@@ -13,7 +13,7 @@ const SubHeader = ({ title, children }: { title: string | null; children?: React
 	return (
 		<div className='flex justify-between items-center shadow-sm py-4 px-2 bg-white '>
 			<div className='flex items-center'>
-				<button className='text-blue-600 mr-2' onClick={() => navigate(-1)}>
+				<button className='mr-2' onClick={() => navigate(-1)}>
 					{language === 'ar' ? <IoIosArrowForward /> : <IoIosArrowBack />}
 				</button>
 				{!xs && <span className='font-semibold capitalize sm:text-center'>{title}</span>}

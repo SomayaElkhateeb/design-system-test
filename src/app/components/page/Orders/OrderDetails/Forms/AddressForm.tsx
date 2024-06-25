@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Address } from '../../..';
-import useCustomHookAddAddressForm from '../../AddOrder/Comp/HookAddress';
+import useCustomHookAddAddressForm from '../../AddOrder/Comp/useOrderAddress';
 import { Form } from 'react-hook-form';
 import { Button } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ export default function AddressForm({ handleAddressForm }: { handleAddressForm: 
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-4'>
 				<Address
-					details={true}
+					isName
 					sendGift={sendGift}
 					setSendGift={setSendGift}
 					selectedOption={selectedOption}

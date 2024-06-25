@@ -65,7 +65,7 @@ function ProductInventoryBranches(props) {
 			<table>
 				<thead>
 					<tr className='text-left rtl:text-right'>
-						<th className='py-2 font-medium w-10/12'>{t('Branch Name')}</th>
+						<th className='py-2 font-medium w-10/12'>{t('Branch name')}</th>
 						<th className='py-2 font-medium w-2/12'>{t('Quantity')}</th>
 					</tr>
 				</thead>
@@ -81,7 +81,7 @@ function ProductInventoryBranches(props) {
 											{...field}
 											value={field.value + ''}
 											className='border-0'
-											placeholder={t('Branch Name')}
+											placeholder={t('Branch name')}
 										/>
 									)}
 								/>

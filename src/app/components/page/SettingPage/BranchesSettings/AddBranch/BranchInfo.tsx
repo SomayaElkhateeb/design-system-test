@@ -8,7 +8,7 @@ import { Address } from '../../..';
 
 export const countries = [
 	{
-		name: 'Egypt',
+		label: 'Egypt',
 		value: 'eg',
 		cities: [
 			{ name: 'Cairo', value: 'cairo' },
@@ -17,7 +17,7 @@ export const countries = [
 		],
 	},
 	{
-		name: 'Kingdom of Saudi Arabia (KSA)', // More descriptive country name
+		label: 'Kingdom of Saudi Arabia (KSA)', // More descriptive country name
 		value: 'ksa',
 		cities: [
 			{ name: 'Riyadh', value: 'riyadh' },
@@ -26,7 +26,7 @@ export const countries = [
 		],
 	},
 	{
-		name: 'United Arab Emirates (UAE)', // More descriptive country name
+		label: 'United Arab Emirates (UAE)', // More descriptive country name
 		value: 'uae',
 		cities: [
 			{ name: 'Dubai', value: 'dubai' },
@@ -70,7 +70,7 @@ export default function BranchInfo({
 							{ name: 'branchNameEn', label: 'En' },
 							{ name: 'branchNameAr', label: 'عربي' },
 						]}
-						label={t('Branch Name')}
+						label={t('Branch name')}
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
 				</section>
@@ -78,12 +78,12 @@ export default function BranchInfo({
 				<section className='grid gap-4'>
 					<h2 className='title mb-2'>{t('Address')}</h2>
 					<Address<BranchSettingsInterface>
+						useMapPicker
 						formStore={formStore}
 						sendGift={sendGift}
 						setSendGift={setSendGift}
 						selectedOption={selectedOption}
 						setSelectedOption={setSelectedOption}
-						branch={true}
 					/>
 				</section>
 			</div>

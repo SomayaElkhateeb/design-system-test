@@ -55,11 +55,10 @@ const AddCustomerPage: React.FC = () => {
 							<h2 className='title'>{t('Add primary address')}</h2>
 							<div className='flex-col-global md:w-[65%]'>
 								<Address
-									customer
+									giftOption
+									isName
 									sendGift={sendGift}
 									setSendGift={setSendGift}
-									isName={isName}
-									setIsName={setIsName}
 									selectedOption={selectedOption}
 									setSelectedOption={setSelectedOption}
 									formStore={formStore}

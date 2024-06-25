@@ -231,7 +231,7 @@ object {
 		@apply flex flex-col justify-between items-end;
 	}
 	.flex-btn-end {
-		@apply flex gap-7 justify-end w-full;
+		@apply flex gap-4 justify-end w-full;
 	}
 	.Sticky_header {
 		@apply sticky top-[70px] z-10;
@@ -244,8 +244,9 @@ object {
 	.bran-sec-btn {
 		@apply bg-secondary px-2 py-1 rounded text-white text-sm capitalize hover:bg-sec-pressed;
 	}
+	/*py-2.5*/
 	.btn {
-		@apply px-4 py-2.5 rounded text-sm text-center capitalize flex items-center justify-center gap-2 focus:ring-1
+		@apply px-4 p-2 w-fit rounded text-sm text-center capitalize flex items-center justify-center gap-1.5 focus:ring-1
 	}
 	.btn-pri {
 		@apply btn bg-primary  text-white font-semibold  hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-pri-light;
@@ -256,7 +257,7 @@ object {
 	}
 
 	.btn-ter {
-		@apply btn border-2 bg-transparent hover:bg-light-1 font-semibold text-title  active:bg-light-2 focus:border-pri-light disabled:text-hint;
+		@apply btn bg-transparent hover:bg-light-1 font-semibold text-title  active:bg-light-2 focus:border-2 focus:border-pri-light disabled:text-hint;
 	}
 
 	.btn-lin {
