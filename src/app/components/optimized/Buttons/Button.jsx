@@ -6,7 +6,7 @@ const handleButtonVariant = cva(undefined, {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize gap-1',
 			secondary: 'btn-sec',
-			primary: 'btn-pri',
+			primary: 'btn-pri ',
 			tertiary: 'btn-ter',
 			LearnButton:
 				'title text-white rounded-[.2rem]  px-4 py-2   border border-white bg-transparent flex items-center gap-1.5',
