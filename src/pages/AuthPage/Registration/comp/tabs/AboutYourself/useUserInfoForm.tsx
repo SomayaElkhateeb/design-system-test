@@ -64,5 +64,5 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 		return () => subscription.unsubscribe();
 	}, [formStore, onPhoneChange]);
 
-	return { formStore, onSubmit };
+	return { formStore, onSubmit,isLoading };
 }
