@@ -22,7 +22,7 @@ const LegalDetails = ({
 	const { t } = useTranslation();
 
 	return (
-		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem] md:w-[70%] '>
+		<section className='global-cards md:w-[70%] '>
 			<h3 className='title'>{t('Legal details')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>

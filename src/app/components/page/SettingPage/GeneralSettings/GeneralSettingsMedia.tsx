@@ -14,7 +14,7 @@ const GeneralSettingsMedia = ({
 	const { t } = useTranslation();
 
 	return (
-		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem] md:w-[70%] '>
+		<section className='global-cards md:w-[70%] '>
 			<h3 className='title'>{t('Media')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField
