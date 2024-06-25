@@ -24,14 +24,14 @@ export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 			<form onSubmit={onSubmit} className='grid grid-cols-1 gap-4'>
 				{(inputData as { name: FieldName; label: string }[]).map((fieldName) => (
 					<FormField
-						key={fieldName}
+						key={fieldName.name}
 						formStore={formStore}
 						name={fieldName.name}
 						render={(field) => (
 							<Input
 								{...field}
-								id={fieldName}
-								type={fieldName === 'password' ? 'password' : 'text'}
+								id={fieldName.name}
+								type={fieldName.name === 'password' ? 'password' : 'text'}
 								placeholder={capitalize(fieldName.label)}
 							/>
 						)}

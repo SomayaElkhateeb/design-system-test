@@ -6,7 +6,7 @@ import { RegisterFooter, RegisterHeader, RegisterImage } from './RegisterLayoutU
 export default function RegisterLayout({ children }: { children: ReactNode }) {
 	const { xs, sm } = useResponsive();
 	return (
-		<section className='flex flex-col container h-screen bg-white'>
+		<section className='flex flex-col custom_container h-screen bg-white'>
 			<RegisterHeader />
 			<section className='flex items-center justify-between h-full flex-grow'>
 				<div className='w-[28.5rem] max-md:w-full h-full flex justify-center items-center'>{children}</div>
