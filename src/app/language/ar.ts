@@ -11,11 +11,14 @@ export const arabic = {
 	Discounts: 'الخصومات',
 	Coupons: 'الكوبونات',
 	Campaigns: 'الحملات',
-	'Add Subcategory': 'اضافه تحت فرعي',
-	Subcategories: 'تحت فرعيه',
 
-	'PRODUCTS NO.': 'عدد المنتجات',
-	AVAILABILITY: 'متاح',
+	"Add Subcategory":"اضافه تحت فرعي",
+	"Subcategories":"تحت فرعيه",
+	
+	"PRODUCTS NO.":"عدد المنتجات",
+	"AVAILABILITY":"متاح",
+	"Your token has been expired. Please sign in again":"يرجي تسجيل الدخول مره اخري",
+
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 

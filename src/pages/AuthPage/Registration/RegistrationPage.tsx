@@ -20,8 +20,8 @@ export default function RegistrationPage() {
 
 	return (
 		<RegisterLayout>
-			<div className='flex flex-col gap-7 h-full w-full'>
-				<h2 className='title text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
+			<div className='flex-col-global gap-7 h-full w-full'>
+				<h2 className='title md:text-[1.375rem]'>{t('Create your online store in two steps')}</h2>
 				<StepNavigator steps={tabs} />
 			</div>
 		</RegisterLayout>

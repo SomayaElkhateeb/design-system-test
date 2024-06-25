@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MobileProductViews } from 'src/app/components/optimized';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
-import { getAllProducts } from 'src/app/store/slices/productsPage/allProducts/allProductsTableSlice';
+
 import { Product, productSettingsMenu } from '../../_comp/data';
 import AllProductsTable from './_comp/AllProductsTable';
 import AllproductsVertical from './_comp/AllproductsVertical';
@@ -15,8 +15,7 @@ const AllProducts: React.FC = () => {
 
 	// Redux hooks
 	const dispatch = useAppDispatch();
-	const { isLoading, allProducts } = useAppSelector(getAllProducts); // Adjust selector based on your slice name
-
+	const { allProducts, isLoading, error } = useAppSelector((state) => state.allProducts);
 	// Fetch products on component mount
 	useEffect(() => {
 		dispatch(getAllProductsTable());

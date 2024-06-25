@@ -23,6 +23,8 @@ const allProductsSlice = createSlice({
 	},
 });
 
+
 export const getAllProducts = (state: { allProducts: AllProductsStatus }) => state.allProducts;
 
 export default allProductsSlice.reducer;
+
