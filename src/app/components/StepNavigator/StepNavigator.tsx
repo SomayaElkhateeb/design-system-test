@@ -9,9 +9,11 @@ interface StepNavigatorProps {
 
 const StepContext = createContext<any>(null);
 export const useStepContext = () => useContext(StepContext);
-
+// , onNext, onBack
 export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
+	
 	const stepNavigation = useStepNavigation(steps);
+	
 	return (
 		<StepContext.Provider value={{ ...stepNavigation, onFinish }}>
 			<div className='flex flex-col gap-4 h-full'>
@@ -22,3 +24,4 @@ export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
 		</StepContext.Provider>
 	);
 }
+

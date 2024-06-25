@@ -1,42 +1,29 @@
 import { useTranslation } from 'react-i18next';
-import useCustomHookAddCustomer, { IAddCustomer } from './HookForAddCustomer';
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
-import { useForm } from 'src/app/utils/hooks/form';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { Button } from 'src/app/components/optimized';
 import { GlobalDialog } from 'src/app/components/shared';
-export default function AddCustomerinAddOrder({
+import useAddCustomer from './useAddCustomer';
+const style = {
+	width: { md: '40rem', xs: '22rem' },
+};
+export default function AddCustomerDialog({
 	onClose,
-	addNewCustomer,
+	open,
 }: {
 	onClose: () => void;
-	addNewCustomer: boolean;
+	open: boolean;
 }) {
 	const { t } = useTranslation();
-	const { handelDefaultValue, addCustomerSchema } = useCustomHookAddCustomer();
-
-	const handleSubmit = (values: IAddCustomer) => {
-		console.log(values);
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: addCustomerSchema(),
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-
+	const { formStore, onSubmit } = useAddCustomer();
 	return (
-		<GlobalDialog
-			openDialog={addNewCustomer}
-			handleClose={onClose}
-			style={{ width: { md: '50%', xs: '80%' } }}
-		>
+		<GlobalDialog openDialog={open} handleClose={onClose} style={style}>
 			<Form {...formStore}>
-				<form onSubmit={onSubmit}>
-					<div className='flex-col-global gap-3'>
-						<h3 className='title'>{t('Update order status')}</h3>
+				<form onSubmit={onSubmit} className='grid gap-5 lg:grid-cols-3'>
+					<h3 className='title capitalize col-span-3'>{t('Update order status')}</h3>
+					<div className='grid gap-4 col-span-2'>
 						<FormField
 							formStore={formStore}
 							label={t('Full Name')}
@@ -57,14 +44,10 @@ export default function AddCustomerinAddOrder({
 							name='email'
 							render={(field) => <Input {...field} placeholder='' />}
 						/>
-						<div className='flex justify-end items-center gap-4'>
-							<Button variant='tertiary' onClick={onClose}>
-								{t('cancel')}
-							</Button>
-							<Button variant='primary' onClick={onSubmit}>
-								{t('add')}
-							</Button>
-						</div>
+					</div>
+					<div className='flex justify-end gap-4 col-span-3'>
+						<Button variant='tertiary' onClick={onClose} text={t('cancel')} />
+						<Button variant='primary' onClick={onSubmit} text={t('add')} />
 					</div>
 				</form>
 			</Form>

@@ -10,6 +10,7 @@ import BaseTable from 'src/app/components/optimized/TableLayoutGlobal/base.table
 
 interface IData {
 	id: number;
+	imageUrl: string;
 	text: string;
 	color: string;
 	size: string;
@@ -20,6 +21,7 @@ interface IData {
 const data = [
 	{
 		id: 1,
+		imageUrl: 'product/product.png',
 		text: 'DJI Mavic Pro 2',
 		color: 'Red',
 		size: 'XL',
@@ -52,7 +54,7 @@ export default function SelectTable({ formStore }: { formStore: UseFormReturn<IQ
 					<TableCell>
 						<div className='flex items-start gap-2'>
 							<div className='size-[2.625rem] rounded-md overflow-hidden'>
-								<img src={getImageUrl('product/product.png')} alt={e.text} />
+								<img src={getImageUrl(e.imageUrl)} alt={e.text} />
 							</div>
 							<div>
 								<h3 className='title text-sm'>
@@ -76,20 +78,22 @@ export default function SelectTable({ formStore }: { formStore: UseFormReturn<IQ
 						<p className='text-title text-sm'>SAR {e.total}.00</p>
 					</TableCell>,
 					<TableCell>
-						<LiaTrashAlt size='28' className='fill-pri-dark cursor-pointer' />
+						<button>
+							<LiaTrashAlt size='28' className='text-pri-dark' />
+						</button>
 					</TableCell>,
 				],
 			}))}
-			footers={[
-				<TableCell colSpan={2}>
-					<p className='text-title text-sm'>Total</p>
-				</TableCell>,
-				<TableCell>
-					<p className='text-title text-sm'>
-						SAR {data.reduce((acc, item) => acc + item.total, 0)}.00
-					</p>
-				</TableCell>,
-			]}
 		/>
 	);
 }
+// footers={[
+// 				<TableCell colSpan={2}>
+// 					<p className='text-title text-sm'>Total</p>
+// 				</TableCell>,
+// 				<TableCell>
+// 					<p className='text-title text-sm'>
+// 						SAR {data.reduce((acc, item) => acc + item.total, 0)}.00
+// 					</p>
+// 				</TableCell>,
+// 			]}

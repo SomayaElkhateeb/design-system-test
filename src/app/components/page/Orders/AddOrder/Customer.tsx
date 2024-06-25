@@ -2,18 +2,11 @@ import { z } from 'zod';
 import { useState } from 'react';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from 'src/app/components/ui/select';
-import FormField from 'src/app/components/ui/form/field';
 import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
-import AddCustomerinAddOrder from './Comp/AddCustomerInAddOrder';
+import AddCustomerDialog from './Comp/AddCustomerDialog';
+import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
 
 interface IAddOrder {
 	selectCustomer?: string;
@@ -26,12 +19,13 @@ const handelDefaultValue = {
 	selectCustomer: '',
 };
 
-export default function Customer() {
+export default function Customer({ onNext }) {
 	const { t } = useTranslation();
-	const [addNewCustomer, setAddNewCustomer] = useState(false);
-
+	const [isOpen, setIsOpen] = useState(false);
+	
 	const handleSubmit: (validatedData: IAddOrder) => void = (values: IAddOrder) => {
 		console.log(values);
+		onNext()
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -39,63 +33,36 @@ export default function Customer() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue,
 	});
+
+	const customerOptions = [
+		{ value: 'fashion', label: t('Fashion') },
+		{ value: 'electronics', label: t('Electronics') },
+		{ value: 'groceries', label: t('Groceries') },
+	];
+
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit}>
-				<div className='cardDetails-sharedClass p-5 flex-col-global'>
-					<FormField
+			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5 grid grid-cols-2 gap-4'>
+				<div className='grid gap-4 col-span-2 xl:col-span-1'>
+					<SelectFormField
 						formStore={formStore}
 						name='selectCustomer'
-						label={t('Customer')}
-						render={(field) => (
-							<div className='flex-col-global gap-[.2rem] w-[50%]'>
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder={t('search customer')} />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value='design'>Design</SelectItem>
-										<SelectItem value='theme'>Theme</SelectItem>
-									</SelectContent>
-								</Select>
-							</div>
-						)}
+						placeholder={t('search customer')}
+						options={customerOptions}
 					/>
-					<div>
-						<Button
-							variant='secondary'
-							LeftIcon={AddFillIcon}
-							onClick={() => {
-								setAddNewCustomer(true);
-							}}
-						>
-							{t('add new customer')}
-						</Button>
-					</div>
-
-					<div className='flex-btn-end'>
-						<Button variant='tertiary' className='disabled:text-hint' disabled>
-							{t('back')}
-						</Button>
-						<Button variant='primary' onClick={onSubmit}>
-							{t('Next')}
-						</Button>
-					</div>
-
-					{addNewCustomer && (
-						<AddCustomerinAddOrder
-							onClose={() => {
-								setAddNewCustomer(false);
-							}}
-							addNewCustomer={addNewCustomer}
-						/>
-					)}
+					<Button
+						variant='secondary'
+						text={t('add new customer')}
+						LeftIcon={AddFillIcon}
+						className='w-fit'
+						onClick={() => setIsOpen(true)}
+					/>
 				</div>
+				<div className='flex-btn-end col-span-2'>
+					<Button variant='tertiary' text={t('back')} disabled />
+					<Button variant='primary' text={t('Next')} onClick={onSubmit} />
+				</div>
+				<AddCustomerDialog onClose={() => setIsOpen(false)} open={isOpen} />
 			</form>
 		</Form>
 	);

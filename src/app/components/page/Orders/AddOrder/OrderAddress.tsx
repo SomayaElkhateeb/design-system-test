@@ -1,33 +1,37 @@
-import { useState } from 'react';
 import Address from './Address';
-import useCustomHookAddAddressForm from './Comp/HookAddress';
+import useOrderAddress from './Comp/useOrderAddress';
 import { Form } from 'react-hook-form';
 import { Button } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
-export const OrderAddress = () => {
+export const OrderAddress = ({ onNext, onBack }: { onNext: () => void; onBack: () => void }) => {
+	const { t } = useTranslation();
 	const [sendGift, setSendGift] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
-	const { t } = useTranslation();
-	//  custome hook
-	const { formStore, onSubmit } = useCustomHookAddAddressForm(sendGift, selectedOption);
 
+	const { formStore, onSubmit } = useOrderAddress(sendGift, selectedOption);
+
+	const handleSubmit = () => {
+		onSubmit();
+		onNext();
+	};
+	
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-global gap-4'>
+			<form onSubmit={onSubmit} className='flex-col-global gap-4 cardDetails-sharedClass p-5'>
 				<Address
+					giftOption
+					useMapPicker
 					sendGift={sendGift}
+					formStore={formStore}
 					setSendGift={setSendGift}
 					selectedOption={selectedOption}
 					setSelectedOption={setSelectedOption}
-					formStore={formStore}
 				/>
-
 				<div className='flex-btn-end'>
-					<Button variant='secondary'>{t('back')}</Button>
-					<Button type='submit' variant='primary' onClick={onSubmit}>
-						{t('Next')}
-					</Button>
+					<Button variant='tertiary' text={t('back')} disabled onClick={onBack} />
+					<Button variant='primary' text={t('Next')} onClick={handleSubmit} />
 				</div>
 			</form>
 		</Form>

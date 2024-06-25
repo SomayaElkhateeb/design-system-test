@@ -20,8 +20,8 @@ const handleIconVariant = cva(undefined, {
 		//  mt-1
 		variant: {
 			link: 'fill-primary p-0.5 ',
-			secondary: 'fill-pri-dark h-3 w-3 ',
-			tertiary: 'fill-pri-dark h-3 w-3',
+			secondary: 'fill-pri-dark',
+			tertiary: 'fill-pri-dark',
 			primary: 'fill-white',
 			default: 'fill-white',
 			LearnButton: '',

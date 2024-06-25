@@ -25,7 +25,9 @@ export default function CheckOtpCode({ usePhone, setIsVerified }: CheckCodeProps
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='grid w-full'>
-				<h2 className='title text-2xl mb-6'>{t('Check your')} {usePhone ? t('phone') : t('email')}</h2>
+				<h2 className='title text-2xl mb-6'>
+					{t('Check your')} {usePhone ? t('phone') : t('email')}
+				</h2>
 				<OtpTimer timer={timer} isResendVisible={isResendVisible} handleResend={handleResend} />
 				<FormField
 					container={{ className: 'mt-11 mb-4' }}
@@ -40,4 +42,3 @@ export default function CheckOtpCode({ usePhone, setIsVerified }: CheckCodeProps
 		</Form>
 	);
 }
-
