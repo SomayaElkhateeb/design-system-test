@@ -8,7 +8,7 @@ export function LoginOptions({ setLogin }: { setLogin: (value: boolean) => void 
 	const { t } = useTranslation();
 	const handleEmailLogin = () => setLogin(true);
 	return (
-		<section className='grid w-full gap-7 grid-cols-1'>
+		<section className='grid w-full gap-7 grid-cols-1 mt-4'>
 			<Button
 				variant={'primary'}
 				className='w-full'
