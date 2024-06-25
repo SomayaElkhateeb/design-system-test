@@ -19,6 +19,8 @@ interface SelectFormFieldProps {
 	name: string;
 	options: Option[];
 	placeholder?: string;
+	className?: string;
+	label?: string;
 }
 
 export default function SelectFormField({
@@ -26,11 +28,15 @@ export default function SelectFormField({
 	name,
 	options,
 	placeholder,
+	className,
+	label
 }: SelectFormFieldProps) {
 	return (
 		<FormField
+			container={{ className: className }}
 			formStore={formStore}
 			name={name}
+			label={label}
 			render={(field) => (
 				<div className='flex-col-global gap-[.2rem]'>
 					<Select

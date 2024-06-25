@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllProductsReducer } from './allProductsExtraReducers';
-import { productsSliceModel } from 'src/app/models/allProductsSliceModel';
+import { Product, allProducts } from 'src/pages/ProductsPage/_comp/data';
 
-const initialState: productsSliceModel = {
-	allProducts: [],
+export interface AllProductsStatus {
+	allProducts: Product[];
+	isLoading: boolean;
+	error: string | null | unknown;
+}
+
+const initialState: AllProductsStatus = {
+	allProducts: allProducts,
 	isLoading: false,
 	error: null,
 };
@@ -17,4 +23,8 @@ const allProductsSlice = createSlice({
 	},
 });
 
+
+export const getAllProducts = (state: { allProducts: AllProductsStatus }) => state.allProducts;
+
 export default allProductsSlice.reducer;
+

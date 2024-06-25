@@ -11,24 +11,25 @@ export const arabic = {
 	Discounts: 'الخصومات',
 	Coupons: 'الكوبونات',
 	Campaigns: 'الحملات',
+
 	"Add Subcategory":"اضافه تحت فرعي",
 	"Subcategories":"تحت فرعيه",
 	
 	"PRODUCTS NO.":"عدد المنتجات",
 	"AVAILABILITY":"متاح",
 	"Your token has been expired. Please sign in again":"يرجي تسجيل الدخول مره اخري",
+
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 
-	"In Progress": " في تقدم",
-	Addresses: "العناوين",
-	"Reviews Filters": "فلتره التقييمات",
-	"Ratings No.": "عدد التقييمات",
-	"Average": "المتوسط",
-	"Top customer group": "اعلي مجموعه عميل",
-	"Returns": "Returns",
-	"Install Now": "تنزيل الان",
-
+	'In Progress': ' في تقدم',
+	Addresses: 'العناوين',
+	'Reviews Filters': 'فلتره التقييمات',
+	'Ratings No.': 'عدد التقييمات',
+	Average: 'المتوسط',
+	'Top customer group': 'اعلي مجموعه عميل',
+	Returns: 'Returns',
+	'Install Now': 'تنزيل الان',
 
 	'View Inventory': 'عرض المخزون',
 	'Compared to': 'مقارنه ب ',
@@ -629,7 +630,7 @@ export const arabic = {
 	'Branch Type': 'نوع الفرع',
 	Landmark: 'علامه',
 	'Phone number': 'رقم الهاتف',
-	'Branch Name': 'اسم الفرع',
+	'Branch name': 'اسم الفرع',
 	Staff: 'طاقم العمل',
 	'Commercial branch': 'الفرع التجاري',
 	Warehouse: 'مستودع',
@@ -1182,5 +1183,5 @@ export const arabic = {
 	'New password again': 'أعد إدخال كلمة المرور الجديدة',
 	'Update Password': 'تحديث كلمة المرور',
 	'Create a new password': 'إنشاء كلمة مرور جديدة',
-	"Check your": "تحقق من"
+	'Check your': 'تحقق من',
 } satisfies typeof english;
