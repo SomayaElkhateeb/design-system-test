@@ -7,7 +7,7 @@ import { useUserInfoForm, UserInfoProps } from './useUserInfoForm';
 import { useTranslation } from 'react-i18next';
 
 // Define the specific types for the field names
-type FieldName = 'email' | 'name' | 'mobile' | 'password';
+type FieldName = 'email' | 'admin_name' | 'mobile' | 'password';
 
 export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 	const { t } = useTranslation();

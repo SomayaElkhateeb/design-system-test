@@ -11,12 +11,11 @@ const StepContext = createContext<any>(null);
 export const useStepContext = () => useContext(StepContext);
 // , onNext, onBack
 export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
-	
 	const stepNavigation = useStepNavigation(steps);
-	
+
 	return (
 		<StepContext.Provider value={{ ...stepNavigation, onFinish }}>
-			<div className='flex flex-col gap-4 h-full'>
+			<div className='flex-col-global gap-4 h-full'>
 				{steps.map((_, index) => (
 					<Step key={index} index={index} />
 				))}
@@ -24,4 +23,3 @@ export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
 		</StepContext.Provider>
 	);
 }
-
