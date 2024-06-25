@@ -7,7 +7,7 @@ import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/component
 export default function AddOrder() {
 	const { t } = useTranslation();
 
-	const [activeStep, setActiveStep] = useState(1);
+	const [activeStep, setActiveStep] = useState(0);
 
 	const goNext = useCallback(() => {
 		setActiveStep((prevStep) => prevStep + 1);
@@ -37,7 +37,7 @@ export default function AddOrder() {
 		},
 		{
 			title: t('checkout'),
-			content: <AddCheckout Verify onBack={goPrevious} />,
+			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
 		},
 	];
 

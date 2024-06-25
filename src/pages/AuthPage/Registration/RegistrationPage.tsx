@@ -10,7 +10,7 @@ import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
 export default function RegistrationPage() {
 	const { t } = useTranslation();
 	const [isLogin, setIsLogin] = useState<boolean>(false);
-	const [activeStep, setActiveStep] = useState(1);
+	const [activeStep, setActiveStep] = useState(0);
 
 	const goNext = useCallback(() => {
 		setActiveStep((prevStep) => prevStep + 1);
