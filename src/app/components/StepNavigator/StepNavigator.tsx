@@ -4,8 +4,6 @@ import Step from './Step';
 
 interface StepNavigatorProps {
 	steps: StepType[];
-	// onNext?: () => void;
-	// onBack?: () => void;
 	onFinish?: () => void;
 }
 
@@ -13,8 +11,8 @@ const StepContext = createContext<any>(null);
 export const useStepContext = () => useContext(StepContext);
 // , onNext, onBack
 export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
+	
 	const stepNavigation = useStepNavigation(steps);
-	// const { goToNextStep, goToPreviousStep } = useStepNavigation(steps);
 	
 	return (
 		<StepContext.Provider value={{ ...stepNavigation, onFinish }}>
@@ -26,3 +24,4 @@ export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {
 		</StepContext.Provider>
 	);
 }
+

@@ -70,7 +70,7 @@ export default function BranchInfo({
 							{ name: 'branchNameEn', label: 'En' },
 							{ name: 'branchNameAr', label: 'عربي' },
 						]}
-						label={t('Branch Name')}
+						label={t('Branch name')}
 						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
 					/>
 				</section>
@@ -78,12 +78,12 @@ export default function BranchInfo({
 				<section className='grid gap-4'>
 					<h2 className='title mb-2'>{t('Address')}</h2>
 					<Address<BranchSettingsInterface>
+						useMapPicker
 						formStore={formStore}
 						sendGift={sendGift}
 						setSendGift={setSendGift}
 						selectedOption={selectedOption}
 						setSelectedOption={setSelectedOption}
-						giftOption
 					/>
 				</section>
 			</div>

@@ -7,7 +7,6 @@ import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
 import AddCustomerDialog from './Comp/AddCustomerDialog';
 import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
-import useAddOrder from 'src/pages/OrdersPage/_comp/AddOrder/useAddOrder';
 
 interface IAddOrder {
 	selectCustomer?: string;
@@ -20,12 +19,13 @@ const handelDefaultValue = {
 	selectCustomer: '',
 };
 
-export default function Customer() {
+export default function Customer({ onNext }) {
 	const { t } = useTranslation();
 	const [isOpen, setIsOpen] = useState(false);
-	const { customerOptions } = useAddOrder();
+	
 	const handleSubmit: (validatedData: IAddOrder) => void = (values: IAddOrder) => {
 		console.log(values);
+		onNext()
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -33,6 +33,13 @@ export default function Customer() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue,
 	});
+
+	const customerOptions = [
+		{ value: 'fashion', label: t('Fashion') },
+		{ value: 'electronics', label: t('Electronics') },
+		{ value: 'groceries', label: t('Groceries') },
+	];
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5 grid grid-cols-2 gap-4'>

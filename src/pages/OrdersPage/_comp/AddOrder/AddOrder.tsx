@@ -1,52 +1,33 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
-import { SubHeader, TabX } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 
-	const [currentTab, setCurrentTab] = useState(0);
-	const [_, setFinish] = useState(false);
-
 	const tabs = [
 		{
 			title: t('customer'),
-			content: <Customer />,
+			content: <Customer onNext={() => console.log('Next')} />,
 		},
 		{
 			title: t('products'),
-			content: <Products />,
+			content: <Products onNext={() => console.log('Next')} onBack={() => console.log('Back')} />,
 		},
 		{
 			title: t('address'),
-			content: <OrderAddress />,
+			content: (
+				<OrderAddress onNext={() => console.log('Next')} onBack={() => console.log('Back')} />
+			),
 		},
 		{
 			title: t('checkout'),
-			content: <AddCheckout />,
+			content: (
+				<AddCheckout onNext={() => console.log('Next')} onBack={() => console.log('Back')} />
+			),
 		},
 	];
-	const handleTabClick = (index: number) => {
-		setCurrentTab(index);
-	};
-
-	const handleNext = () => {
-		if (currentTab < tabs.length - 1) {
-			setCurrentTab(currentTab + 1);
-		}
-	};
-
-	const handlePrev = () => {
-		if (currentTab > 0) {
-			setCurrentTab(currentTab - 1);
-		}
-	};
-
-	const handleFinish = (value: boolean) => {
-		setFinish(value);
-	};
 
 	return (
 		<>
@@ -57,4 +38,3 @@ export default function AddOrder() {
 		</>
 	);
 }
-// onNext={} onBack={}

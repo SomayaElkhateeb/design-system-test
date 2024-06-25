@@ -2,12 +2,12 @@ import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 import {
-	AddAddressSchema,
-	addAddressInterface,
-	handelAddresseDefaultValue,
+	createAddressSchema,
+	AddAddressInterface,
+	getDefaultValues,
 } from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
 
-export interface AddCustomerPageInterface extends addAddressInterface {
+export interface AddCustomerPageInterface extends AddAddressInterface {
 	humanType: string;
 	fullName: string;
 	email: string;
@@ -41,7 +41,7 @@ export default function useCustomHookAddCustomerForm(
 			.min(1),
 
 		emailSubescribe: z.boolean(),
-		...AddAddressSchema(sendGift, selectedOption, isName),
+		...createAddressSchema(sendGift, selectedOption, isName),
 	};
 
 	const handelDefaultValue = () => {
@@ -52,7 +52,7 @@ export default function useCustomHookAddCustomerForm(
 			Phone: '',
 			groupMeta: [],
 			emailSubescribe: false,
-			...handelAddresseDefaultValue(),
+			...getDefaultValues(),
 		};
 	};
 	return {

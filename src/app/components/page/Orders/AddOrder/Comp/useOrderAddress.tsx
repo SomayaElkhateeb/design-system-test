@@ -1,7 +1,8 @@
 import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 
-export interface addAddressInterface {
+export interface AddAddressInterface {
+	giftName?: string;
 	name?: string;
 	countryName?: string;
 	cityName?: string;
@@ -9,53 +10,41 @@ export interface addAddressInterface {
 	street?: string;
 	building: string;
 	landmark?: string;
-	PhoneNumber: string;
-	giftName?: string;
+	phoneNumber: string;
 	search?: string;
 }
 
-export const handelAddresseDefaultValue = () => {
+export const getDefaultValues = (): AddAddressInterface => ({
+	giftName: '',
+	name: '',
+	countryName: '',
+	cityName: '',
+	area: '',
+	street: '',
+	building: '',
+	landmark: '',
+	phoneNumber: '',
+	search: '',
+});
+
+const requiredFieldSchema = z.string().min(1, { message: 'This field is required' });
+
+const getConditionalSchema = (isRequired?: boolean) =>
+	isRequired ? requiredFieldSchema : z.string().optional();
+
+export const createAddressSchema = (sendGift?: boolean, selectedOption?: string, isName?: boolean) => {
+	const isManualEntry = selectedOption === 'Add manually';
 	return {
-		name: '',
-		countryName: '',
-		cityName: '',
-		area: '',
-		street: '',
-		building: '',
-		landmark: '',
-		PhoneNumber: '',
-		giftName: '',
-		search: '',
-	};
-};
-
-
-const RequiredAddressData = z.string().min(1);
-
-const handel_RequiredAddressData = (selectedOption?: string) => {
-	return selectedOption !== 'Add manually'
-		? z.optional(RequiredAddressData).or(z.literal(''))
-		: RequiredAddressData;
-};
-const handel_Gift_Input = (sendGift?: boolean) => {
-	return !sendGift ? z.optional(RequiredAddressData).or(z.literal('')) : RequiredAddressData;
-};
-
-const handel_name = (isName?: boolean) => {
-	return !isName ? z.optional(RequiredAddressData).or(z.literal('')) : RequiredAddressData;
-};
-export const AddAddressSchema = (sendGift?: boolean, selectedOption?: string, isName?: boolean) => {
-	return {
-		name: handel_name(isName),
-		countryName: handel_RequiredAddressData(selectedOption),
-		cityName: handel_RequiredAddressData(selectedOption),
-		area: handel_RequiredAddressData(selectedOption),
-		street: handel_RequiredAddressData(selectedOption),
-		building: RequiredAddressData,
-		landmark: handel_RequiredAddressData(selectedOption),
-		PhoneNumber: z.string().min(7),
-		giftName: handel_Gift_Input(sendGift),
-		search: handel_Gift_Input(sendGift),
+		name: getConditionalSchema(isName),
+		countryName: getConditionalSchema(isManualEntry),
+		cityName: getConditionalSchema(isManualEntry),
+		area: getConditionalSchema(isManualEntry),
+		street: getConditionalSchema(isManualEntry),
+		building: requiredFieldSchema,
+		landmark: getConditionalSchema(isManualEntry),
+		phoneNumber: z.string().min(7, { message: 'Phone number must be at least 7 characters long' }),
+		giftName: getConditionalSchema(sendGift),
+		search: getConditionalSchema(sendGift),
 	};
 };
 export default function useOrderAddress(
@@ -63,13 +52,14 @@ export default function useOrderAddress(
 	selectedOption?: string,
 	isName?: boolean,
 ) {
-	const handleSubmit = (values: addAddressInterface) => {
+	const handleSubmit = (values: AddAddressInterface) => {
 		console.log('values: ', values);
 	};
+
 	const { formStore, onSubmit } = useForm({
-		schema: AddAddressSchema(sendGift, selectedOption, isName),
+		schema: createAddressSchema(sendGift, selectedOption, isName),
 		handleSubmit: handleSubmit,
-		defaultValues: handelAddresseDefaultValue(),
+		defaultValues: getDefaultValues(),
 	});
 
 	return {

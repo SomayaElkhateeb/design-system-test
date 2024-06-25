@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
 import { Button } from 'src/app/components/optimized';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
-import useCustomAddCheckOutForm, { addCheckOutInterface } from './Comp/HookForAddCheckout';
-import { useForm } from 'src/app/utils/hooks/form';
+import useAddCheckOutForm, { AddCheckOutFormValues } from './Comp/useAddCheckOutForm';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import { Textarea } from 'src/app/components/ui/textarea';
 import FormField from 'src/app/components/ui/form/field';
-import {
-	Select,
-	SelectTrigger,
-	SelectValue,
-	SelectContent,
-	SelectItem,
-} from 'src/app/components/ui/select';
+
 import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
 
 const branches = [
@@ -21,58 +13,29 @@ const branches = [
 	{ value: 'ksa', label: 'Kingdom of Saudi Arabia (KSA)' },
 ];
 
-export default function AddCheckout() {
+export default function AddCheckout({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
 	const { t } = useTranslation();
-	const [purchase, setPurchase] = useState('branch');
-	const [payment, setPayment] = useState('cash');
-	const [delivery, setDelivery] = useState('Pickup');
-	const [shipping, setShipping] = useState('Free shipping');
-	const [method, setShippingMethod] = useState('DHL (main)');
-	// custom hook
-	const { handelDefaultValue, addCheckOutSchema } = useCustomAddCheckOutForm(
-		purchase,
-		payment,
-		delivery,
-		shipping,
-		method,
-	);
 
-	const handleSubmit = (values: addCheckOutInterface) => {
-		console.log(values);
+
+
+	const { formStore, onSubmit, formValues } = useAddCheckOutForm();
+	const handleSubmit = () => {
+		onSubmit();
+		onNext();
 	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: addCheckOutSchema(),
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-
-	useEffect(() => {
-		setPurchase(formStore.watch('purchase'));
-		setPayment(formStore.watch('payment'));
-		setDelivery(formStore.watch('delivery'));
-		setShipping(formStore.watch('shipping'));
-		setShippingMethod(formStore.watch('method'));
-	}, [
-		formStore.watch('purchase'),
-		formStore.watch('payment'),
-		formStore.watch('delivery'),
-		formStore.watch('shipping'),
-		formStore.watch('method'),
-	]);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
 				<div className='flex-col-global gap-5'>
 					{/* purchase*/}
-					<FormChoiceChips<addCheckOutInterface>
+					<FormChoiceChips<AddCheckOutFormValues>
 						checkoutForm
 						formStore={formStore}
 						name='purchase'
 						label={t('Purchase method')}
-						options={['onLine', 'branch']}
+						options={['OnLine', 'In branch']}
 					/>
-					{purchase === 'branch' && (
+					{formValues.purchase === 'In branch' && (
 						<SelectFormField
 							name='branch'
 							label={t('Branch name')}
@@ -83,15 +46,14 @@ export default function AddCheckout() {
 					)}
 				</div>
 				{/* payment */}
-				<FormChoiceChips<addCheckOutInterface>
+				<FormChoiceChips<AddCheckOutFormValues>
 					checkoutForm
 					formStore={formStore}
 					name='payment'
 					label={t('Payment methods')}
 					options={['Credit card', 'Bank transfer', 'Cash']}
 				/>
-
-				{payment === 'Credit card' && (
+				{formValues.payment === 'Credit card' && (
 					<>
 						<SelectFormField
 							name='creditCardOption'
@@ -108,17 +70,16 @@ export default function AddCheckout() {
 						/>
 					</>
 				)}
-
 				{/* delivery */}
-				<FormChoiceChips<addCheckOutInterface>
+				<FormChoiceChips<AddCheckOutFormValues>
 					checkoutForm
 					formStore={formStore}
 					name='delivery'
 					label={t('Delivery method')}
 					options={['Shipping', 'Pickup']}
 				/>
-				{delivery === 'Shipping' && (
-					<FormChoiceChips<addCheckOutInterface>
+				{formValues.delivery === 'Shipping' && (
+					<FormChoiceChips<AddCheckOutFormValues>
 						checkoutForm
 						formStore={formStore}
 						name='shipping'
@@ -126,36 +87,21 @@ export default function AddCheckout() {
 						options={['Fixed rate', 'Free shipping']}
 					/>
 				)}
-
-				<FormChoiceChips<addCheckOutInterface>
+				<FormChoiceChips<AddCheckOutFormValues>
 					checkoutForm
 					formStore={formStore}
 					name='method'
 					label={t('Shipping method')}
 					options={['DHL (main)', 'Aramex']}
 				/>
-
-				{method === 'DHL (main)' && (
+				{formValues.method === 'DHL (main)' && (
 					<>
-						<FormField
-							formStore={formStore}
+						<SelectFormField
 							name='dhlStatus'
 							label={t('Order Status')}
-							render={(field) => (
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder={t('Select option')} />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
-									</SelectContent>
-								</Select>
-							)}
+							formStore={formStore}
+							options={branches}
+							placeholder={t('Select option')}
 						/>
 						<FormField
 							formStore={formStore}
@@ -165,30 +111,15 @@ export default function AddCheckout() {
 						/>
 					</>
 				)}
-
-				{method === 'Aramex' && (
+				{formValues.method === 'Aramex' && (
 					<>
-						<FormField
-							formStore={formStore}
+						<SelectFormField
 							name='aramexStatus'
 							label={t('Order status')}
-							render={(field) => (
-								<Select
-									onValueChange={field.onChange}
-									value={field.value}
-									required={field.required}
-									name={field.name}
-								>
-									<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-										<SelectValue placeholder={t('Select option')} />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
-									</SelectContent>
-								</Select>
-							)}
+							formStore={formStore}
+							options={branches}
+							placeholder={t('Select option')}
 						/>
-
 						<FormField
 							formStore={formStore}
 							name='aramexNote'
@@ -197,12 +128,9 @@ export default function AddCheckout() {
 						/>
 					</>
 				)}
-
 				<div className='flex-btn-end'>
-					<Button variant='secondary'>{t('Discard')}</Button>
-					<Button onClick={onSubmit} variant='primary'>
-						{t('Save')}
-					</Button>
+					<Button variant='secondary' text={t('Discard')} onClick={onBack}/>
+					<Button onClick={handleSubmit} variant='primary' text={t('Save')} />
 				</div>
 			</form>
 		</Form>

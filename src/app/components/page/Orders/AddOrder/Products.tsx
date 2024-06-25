@@ -21,13 +21,14 @@ const handelDefaultValue: IQuantity = {
 	quantity: 0,
 };
 
-export default function Products() {
+export default function Products({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const { t } = useTranslation();
 	const language = UseLanguage();
 
 	const handleSubmit = (values: IQuantity) => {
 		console.log(values);
+		onNext();
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -47,7 +48,7 @@ export default function Products() {
 				/>
 				<SelectTable formStore={formStore} />
 				<div className='flex-btn-end'>
-					<Button variant='tertiary' text={t('back')} />
+					<Button variant='tertiary' text={t('back')} onClick={onBack} />
 					<Button variant='primary' text={t('Next')} onClick={onSubmit} />
 				</div>
 				<SelectProductsDialog onClose={() => setIsOpen(false)} open={isOpen} />
