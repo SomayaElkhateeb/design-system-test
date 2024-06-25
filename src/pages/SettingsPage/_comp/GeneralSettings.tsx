@@ -34,7 +34,7 @@ const GeneralSettings = () => {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
+console.log(formStore.formState.errors)
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global '>
