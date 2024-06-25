@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 import { SubHeader } from 'src/app/components/optimized';
 import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
