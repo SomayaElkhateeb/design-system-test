@@ -1,4 +1,3 @@
-
 import { CheckIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
