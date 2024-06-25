@@ -119,6 +119,7 @@ export const productSortMenu = [
 	{ id: nanoid(), text: 'Date modified' },
 ];
 
+
 export const productActionsMenu = [
 	{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 	{ id: nanoid(), text: 'Export products', icon: <SiMicrosoftexcel className='iconClass' /> },

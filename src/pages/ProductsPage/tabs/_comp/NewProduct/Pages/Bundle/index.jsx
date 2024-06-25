@@ -12,14 +12,8 @@ import {
 	ProductFormShippingSection,
 	ProductFormStockSection,
 	SeoFormFaqsSection,
-	productDimensionUnitMap,
-	productShippingMethodMap,
-	productShippingRateMap,
-	productShippingTypeMap,
-	productTypeMap,
-	productWeightUnitMap,
 } from '../../..';
-import { ProductSchema } from './utils';
+import { ProductDefaultValues, ProductSchema } from './utils';
 
 const productsSections = [
 	{
@@ -80,51 +74,13 @@ export default function BundleProductPage() {
 		handleSubmit: (values) => {
 			console.log(values);
 		},
-		defaultValues: {
-			productType: productTypeMap.bundle,
-			bundle: {
-				items: [],
-				isSelectedProductsUnlisted: false,
-			},
-			bulkPrices: [],
-			shipping: {
-				type: productShippingTypeMap.pickup,
-				statesOfTheProduct: [],
-				isShippableOrPickupable: true,
-				weightUnit: productWeightUnitMap.kg,
-				dimensionUnit: productDimensionUnitMap.cm,
-				rateType: productShippingRateMap['fixed rate'],
-				rateValue: 0,
-				method: productShippingMethodMap['Dhl (main)'],
-				weight: 0,
-				dimensions: {
-					length: 0,
-					width: 0,
-					height: 0,
-				},
-			},
-			isTaxable: true,
-			price: 0,
-			canContinueSellingWhenOutOfStock: false,
-			branches:
-				// TODO: Remove this when branches feature is ready
-				// This is a temporary test data
-				// For development purposes, we are adding a default branch
-				// and should be removed when we have the branches feature ready
-				process.env.NODE_ENV === 'development'
-					? [{ id: '1', name: 'Main Branch', quantity: 0 }]
-					: [],
-			metaKeywords: [],
-			options: [],
-			variations: [],
-			faqs: [],
-			specifications: [],
-		},
+		defaultValues: ProductDefaultValues,
 	});
+
 
 	return (
 		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
-			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative p-4'>
+			<section className='flex-grow flex flex-col gap-4 relative p-4'>
 				<div className='flex gap-6 flex-col-reverse md:flex-row'>
 					<div className='flex flex-col gap-4'>
 						{productsSections.map(({ Elem, id }) => (

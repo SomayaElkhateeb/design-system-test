@@ -57,6 +57,7 @@ export default function ProductFormContainer(props) {
 								{t('Discard')}
 							</Button>
 							<Button type='submit'>{t('Save Changes')}</Button>
+							{/* <button type='submit'>{t('Save Changes')}</button> */}
 						</div>
 					</div>
 

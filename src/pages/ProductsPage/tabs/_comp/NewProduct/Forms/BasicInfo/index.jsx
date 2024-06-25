@@ -11,9 +11,9 @@ import ProductFormBrandField from './Fields/Brand';
  *
  * @param {import('./types').Props<TFormStore>} props
  */
+
 export default function ProductFormBasicInfoSection(props) {
 	const { t } = useTranslation();
-
 	return (
 		<Card id={props.id}>
 			<CardHeader>
@@ -28,7 +28,7 @@ export default function ProductFormBasicInfoSection(props) {
 							{ name: 'nameAr', label: 'عربي' },
 						]}
 						label={`${t('Product Name')} (${t('Required')})`}
-						renderer={(field) => <Input {...field}  />}
+						renderer={(field) => <Input {...field} />}
 					/>
 					<FormField
 						formStore={props.formStore}

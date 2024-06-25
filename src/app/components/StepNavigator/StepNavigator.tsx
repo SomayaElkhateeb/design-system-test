@@ -1,6 +1,5 @@
 import { createContext, useContext } from 'react';
 
-
 import StepHeader from './StepHeader';
 interface StepType {
 	title: string;
@@ -46,5 +45,3 @@ const Step = ({ index }: { index: number }) => {
 		</div>
 	);
 };
-
-

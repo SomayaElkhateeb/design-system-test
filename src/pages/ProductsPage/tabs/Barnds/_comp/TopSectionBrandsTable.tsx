@@ -12,7 +12,7 @@ import { FiUploadCloud } from 'react-icons/fi';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 
 import { useState } from 'react';
-import AddBrandItem from './AddBrandItem';
+import AddBrandForm from './AddBrandForm';
 import { LiaTrashAlt } from 'react-icons/lia';
 
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
@@ -82,7 +82,7 @@ export default function TopSectionBrandsTable() {
 				<hr />
 			</div>
 
-			{openDialog && <AddBrandItem openDialog={openDialog} handleClose={handleClose} />}
+			{openDialog && <AddBrandForm openDialog={openDialog} handleClose={handleClose} />}
 		</>
 	);
 }

@@ -15,7 +15,7 @@ export default function OtpTimer({ timer, isResendVisible, handleResend }: OtpTi
 	};
 	return (
 		<div>
-			<span className='title text-xl font-normal'>{formatTime(timer)}</span>
+			<span className='title md:text-xl font-normal'>{formatTime(timer)}</span>
 			{isResendVisible && (
 				<div>
 					<p className='paragraph text-subtitle flex items-center'>

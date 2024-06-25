@@ -12,27 +12,29 @@ import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
+import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import { TfiUpload } from 'react-icons/tfi';
 import { AddBrandSchemaValues, addBrandFormSchema } from '../_hook/AddbrandsFormSchema';
 
-interface AddBrandItemProps {
+interface AddBrandFormProps {
 	openDialog: boolean;
 	handleClose: () => void;
-	handleBrandSubmit: (values: AddBrandSchemaValues) => void;
+	handleBrandSubmit?: (values: AddBrandSchemaValues) => void;
 }
 
-export default function AddBrandItem({
+export default function AddBrandForm({
 	openDialog,
 	handleClose,
 	handleBrandSubmit,
-}: AddBrandItemProps) {
+}: AddBrandFormProps) {
 	const { t } = useTranslation();
 
 	const { formStore, onSubmit } = useForm({
 		schema: addBrandFormSchema,
 		handleSubmit: (values: AddBrandSchemaValues) => {
-			handleBrandSubmit(values);
+			if (handleBrandSubmit) {
+				handleBrandSubmit(values);
+			}
 		},
 		defaultValues: {
 			brandNameEn: '',

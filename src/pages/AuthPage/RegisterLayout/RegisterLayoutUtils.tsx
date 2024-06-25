@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { getImageUrl } from "src/app/utils";
 import useLanguageDirection from "src/app/utils/hooks/useLangDirection";
 
@@ -10,7 +9,7 @@ export function RegisterHeader() {
 	// en-light.svg
 	const brandImageUrl = getImageUrl(`brand/${currentLanguage}-light.svg`);
 	return (
-		<header className='flex justify-between items-center w-full h-[4.4rem] py-2 mb-15'>
+		<header className='flex justify-between items-center w-full  '>
 			<img src={brandImageUrl} alt='Dookan' className='h-8' />
 			<button className='paragraph text-subtitle' onClick={toggleLanguage}>
 				{currentLanguage === 'ar' ? 'English' : 'العربية'}
