@@ -10,11 +10,9 @@ import {
 	ProductFormShippingSection,
 	ProductFormStockSection,
 	SeoFormFaqsSection,
-	productShippingTypeMap,
-	productTypeMap,
 } from '../../..';
 
-import { ProductSchema } from './utils';
+import { ProductDefaultValues, ProductSchema } from './utils';
 
 import { useForm } from 'src/app/utils/hooks/form';
 
@@ -72,30 +70,7 @@ export default function VirtualProductPage() {
 		handleSubmit: (values) => {
 			console.log(values);
 		},
-		defaultValues: {
-			productType: productTypeMap.virtual,
-			bulkPrices: [],
-			shipping: {
-				type: productShippingTypeMap.online,
-				downloadLink: '',
-			},
-			isTaxable: true,
-			price: 0,
-			canContinueSellingWhenOutOfStock: false,
-			branches:
-				// TODO: Remove this when branches feature is ready
-				// This is a temporary test data
-				// For development purposes, we are adding a default branch
-				// and should be removed when we have the branches feature ready
-				process.env.NODE_ENV === 'development'
-					? [{ id: '1', name: 'Main Branch', quantity: 0 }]
-					: [],
-			metaKeywords: [],
-			options: [],
-			variations: [],
-			faqs: [],
-			specifications: [],
-		},
+		defaultValues: ProductDefaultValues,
 	});
 	return (
 		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>

@@ -1,5 +1,4 @@
 import { UnSeeIcon, ViewIcon } from "src/app/utils/icons";
-
 import useLanguageDirection from "src/app/utils/hooks/useLangDirection";
 
 export default function PasswordToggleIcon({

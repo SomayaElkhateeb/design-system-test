@@ -79,3 +79,28 @@ export const productShippingSchema = {
 		}),
 	]),
 };
+
+// Define default values for the schema
+export const productShippingDefaultValues = {
+	productType: productTypeCollection[0], // Assuming the first product type is the default
+	shipping: {
+		type: productShippingTypeMap.online, // Default to 'online' type shipping
+		downloadLink: '',
+	},
+	pickup: {
+		type: productShippingTypeMap.pickup,
+		isShippableOrPickupable: true,
+		weight: 0,
+		weightUnit: productWeightUnitCollection[0], // Default to the first weight unit
+		dimensions: {
+			length: 0,
+			width: 0,
+			height: 0,
+		},
+		dimensionUnit: productDimensionUnitCollection[0], // Default to the first dimension unit
+		statesOfTheProduct: [],
+		rateType: productShippingRateCollection[0], // Default to the first rate type
+		rateValue: undefined,
+		method: productShippingMethodCollection[0], // Default to the first shipping method
+	},
+};

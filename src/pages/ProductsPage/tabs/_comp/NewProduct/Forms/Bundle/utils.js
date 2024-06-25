@@ -15,3 +15,11 @@ export const productBundleSchema = {
 		isSelectedProductsUnlisted: z.boolean().default(false),
 	}),
 };
+
+export const productBundleDefaultValues = {
+	productType: productTypeMap.bundle,
+	bundle: {
+		items: [],
+		isSelectedProductsUnlisted: false,
+	},
+};

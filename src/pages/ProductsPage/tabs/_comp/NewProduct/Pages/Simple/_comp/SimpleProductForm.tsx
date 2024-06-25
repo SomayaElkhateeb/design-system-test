@@ -11,7 +11,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { useTranslation } from 'react-i18next';
-import AddBrandItem from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandItem';
+import AddBrandForm from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandForm';
 import {
 	Select,
 	SelectContent,
@@ -48,8 +48,8 @@ const SimpleProductForm: FC = () => {
 	const [openDialog, setOpenDialog] = useState(false);
 	const { t } = useTranslation();
 
-	const handleBrandSubmit = (brand) => {
-		console.log(brand);
+	const handleBrandSubmit = (val) => {
+		console.log(val);
 		setOpenDialog(false);
 	};
 
@@ -202,7 +202,7 @@ const SimpleProductForm: FC = () => {
 						</div>
 					</div>
 					{openDialog && (
-						<AddBrandItem
+						<AddBrandForm
 							openDialog={openDialog}
 							handleClose={() => setOpenDialog(false)}
 							handleBrandSubmit={handleBrandSubmit}

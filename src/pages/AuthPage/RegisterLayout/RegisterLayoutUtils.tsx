@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { getImageUrl } from "src/app/utils";
 import useLanguageDirection from "src/app/utils/hooks/useLangDirection";
 

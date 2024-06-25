@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { Button } from 'src/app/components/optimized';
 import { FacebookIcon, GoogleIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';

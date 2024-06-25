@@ -7,34 +7,27 @@ import {
 	SelectValue,
 	SelectItem,
 } from 'src/app/components/ui/select';
-import { FaCirclePlus } from 'react-icons/fa6';
-import { Dialog, DialogContent, DialogTrigger } from 'src/app/components/ui/dialog';
 import { Button } from 'src/app/components/optimized';
-import BrandForm from './BrandForm';
+import AddBrandForm from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandForm';
+import { useState } from 'react';
 
 function BrandDialog() {
 	const { t } = useTranslation();
+	const [openDialog, setOpenDialog] = useState<boolean>(false);
 
 	return (
-		<Dialog>
-			<DialogTrigger>
-				<Button
-					variant='secondary'
-					textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-					className='border-input border-s-0 rounded-s-none'
-				>
-					<FaCirclePlus className='size-5' />
-					{t('Add New')}
-				</Button>
-			</DialogTrigger>
-			<DialogContent className='p-8'>
-				<BrandForm
-					handleSubmit={(values) => {
-						// console.log(values);
-					}}
-				/>
-			</DialogContent>
-		</Dialog>
+		<>
+			<Button
+				variant='secondary'
+				textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
+				className='border-input border-s-0 rounded-s-none'
+				onClick={() => setOpenDialog(true)}
+			>
+				{t('Add New')}
+			</Button>
+
+			<AddBrandForm openDialog={openDialog} handleClose={() => setOpenDialog(false)} />
+		</>
 	);
 }
 
