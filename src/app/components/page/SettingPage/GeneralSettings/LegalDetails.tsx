@@ -4,7 +4,7 @@ import { UseFormReturn } from 'react-hook-form';
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import { TfiUpload } from 'react-icons/tfi';
-import { fileClassName } from './Media';
+import { fileClassName } from './GeneralSettingsMedia';
 import { Input } from 'src/app/components/ui/input';
 
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';

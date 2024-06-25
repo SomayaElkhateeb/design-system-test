@@ -6,7 +6,11 @@ import FormField from 'src/app/components/ui/form/field';
 import { generalSettingsInterface } from './HookForGeneralForm';
 export const fileClassName =
 	'flex flex-col items-center justify-center gap-2 size-32 cursor-pointer';
-const Media = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
+const GeneralSettingsMedia = ({
+	formStore,
+}: {
+	formStore: UseFormReturn<generalSettingsInterface>;
+}) => {
 	const { t } = useTranslation();
 
 	return (
@@ -69,4 +73,4 @@ const Media = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterfac
 	);
 };
 
-export default Media;
+export default GeneralSettingsMedia;

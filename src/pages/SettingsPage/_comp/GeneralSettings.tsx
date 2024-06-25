@@ -10,7 +10,7 @@ import useCustomHookGeneralForm, {
 	generalSettingsInterface,
 } from 'src/app/components/page/SettingPage/GeneralSettings/HookForGeneralForm';
 import LegalDetails from 'src/app/components/page/SettingPage/GeneralSettings/LegalDetails';
-import Media from 'src/app/components/page/SettingPage/GeneralSettings/Media';
+import GeneralSettingsMedia from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import SocialContacts from 'src/app/components/page/SettingPage/GeneralSettings/SocialContacts';
 import StoreDetails from 'src/app/components/page/SettingPage/GeneralSettings/StoreDetails';
 import { Form } from 'src/app/components/ui/form';
@@ -43,7 +43,7 @@ const GeneralSettings = () => {
 				</SubHeader>
 				<div className='flex-col-global container mx-auto'>
 					<StoreDetails formStore={formStore} />
-					<Media formStore={formStore} />
+					<GeneralSettingsMedia formStore={formStore} />
 					<SocialContacts formStore={formStore} />
 					<LegalDetails state={state} setState={setState} formStore={formStore} />
 					<AdminOrLanguageDefaults

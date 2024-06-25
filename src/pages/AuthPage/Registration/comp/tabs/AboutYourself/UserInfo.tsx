@@ -7,25 +7,32 @@ import { useUserInfoForm, UserInfoProps } from './useUserInfoForm';
 import { useTranslation } from 'react-i18next';
 
 // Define the specific types for the field names
-type FieldName = 'email' | 'name' | 'phone' | 'password';
+type FieldName = 'email' | 'admin_name' | 'mobile' | 'password';
 
 export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 	const { t } = useTranslation();
 	const { formStore, onSubmit } = useUserInfoForm({ onNext, onPhoneChange });
+
+	const inputData = [
+		{ name: 'email', label: t('email') },
+		{ name: 'admin_name', label: t('name') },
+		{ name: 'mobile', label: t('phone') },
+		{ name: 'password', label: 'password' },
+	];
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='grid grid-cols-1 gap-4'>
-				{(['email', 'name', 'phone', 'password'] as FieldName[]).map((fieldName) => (
+				{(inputData as { name: FieldName; label: string }[]).map((fieldName) => (
 					<FormField
-						key={fieldName}
+						key={fieldName.name}
 						formStore={formStore}
-						name={fieldName}
+						name={fieldName.name}
 						render={(field) => (
 							<Input
 								{...field}
-								id={fieldName}
-								type={fieldName === 'password' ? 'password' : "text"}
-								placeholder={capitalize(fieldName)}
+								id={fieldName.name}
+								type={fieldName.name === 'password' ? 'password' : 'text'}
+								placeholder={capitalize(fieldName.label)}
 							/>
 						)}
 					/>

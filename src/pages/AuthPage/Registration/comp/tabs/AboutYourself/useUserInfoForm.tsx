@@ -6,24 +6,24 @@ import { AuthApi } from 'src/app/React-Query/authApi';
 import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
 export interface UserInfoInterface {
 	email: string;
-	name: string;
-	phone: string;
+	admin_name: string;
+	mobile: string;
 	password: string;
 }
 
 const handleDefaultValue = (): UserInfoInterface => {
 	return {
 		email: '',
-		name: '',
-		phone: '',
+		admin_name: '',
+		mobile: '',
 		password: '',
 	};
 };
 
 const userInfoValidationSchema = {
 	email: z.string().email('Invalid email address'),
-	name: z.string().min(1, 'Name is required'),
-	phone: z.string().min(10, 'Phone number is too short'),
+	admin_name: z.string().min(1, 'Name is required'),
+	mobile: z.string().min(10, 'Phone number is too short'),
 	password: z.string().min(8, 'Password must be at least 8 characters'),
 };
 
@@ -40,7 +40,7 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 
 		mutate(values, {
 			onSuccess: async (response) => {
-				console.log(response);
+				onNext();
 			},
 			// onError: PublicHandelingErrors.onErrorResponse,
 		});
@@ -48,8 +48,6 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 
 		//  second method to link with api instead of using react query
 		// PublicRequest.postData(values, "merchant/register/validate/step-one")
-		
-		// onNext();
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: userInfoValidationSchema,
@@ -58,7 +56,7 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 	});
 	useEffect(() => {
 		const subscription = formStore.watch((value) => {
-			const phoneValue = value.phone ?? '';
+			const phoneValue = value.mobile ?? '';
 			onPhoneChange(phoneValue);
 		});
 		return () => subscription.unsubscribe();
