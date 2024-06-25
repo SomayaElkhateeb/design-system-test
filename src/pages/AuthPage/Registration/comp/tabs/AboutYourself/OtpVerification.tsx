@@ -1,24 +1,24 @@
+import useOtp from './useOtp';
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
-import useOtp, { OtpVerificationInterface } from './useOtp';
 import OtpTimer from 'src/pages/AuthPage/RegisterLayout/OtpTimer';
 import { useTranslation } from 'react-i18next';
 interface OtpVerificationProps {
-	onFinish: (values: OtpVerificationInterface) => void;
+	onVerify: () => void;
 	onResend: () => void; // Add a prop to handle the resend functionality
 	phone: string;
 	setCurrentStep: (step: number) => void;
 }
 
 export default function OtpVerification({
-	onFinish,
+	onVerify,
 	onResend,
 	phone,
 	setCurrentStep,
 }: OtpVerificationProps) {
-	const { timer, isResendVisible, resetTimer, formStore, onSubmit } = useOtp({ onFinish });
+	const { timer, isResendVisible, resetTimer, formStore, onSubmit } = useOtp({ onVerify });
 	const { t } = useTranslation();
 	const handleResend = () => {
 		resetTimer();

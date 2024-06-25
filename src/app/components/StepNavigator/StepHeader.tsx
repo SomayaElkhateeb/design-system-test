@@ -1,26 +1,23 @@
 import { CheckIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
+import { useStepContext } from './StepNavigator';
+
 interface StepHeaderProps {
 	index: number;
 	title: string;
-	isActive: boolean;
-	isLastStep: boolean;
-	isCompleted: boolean;
-	setActiveStep: (index: number) => void;
 }
 
-export default function StepHeader({
-	index,
-	title,
-	isActive,
-	isLastStep,
-	isCompleted,
-	setActiveStep,
-}: StepHeaderProps) {
-	const { currentLanguage } = useLanguageDirection();
+export default function StepHeader({ index, title }: StepHeaderProps) {
+	const { steps, activeStep, setActiveStep } = useStepContext();
+	
+	const isActive = index === activeStep;
+	const isCompleted = index < activeStep;
+	const isLastStep = index === steps.length - 1;
 
+	const { currentLanguage } = useLanguageDirection();
 	const { xs } = useResponsive();
+
 	const stepClasses = `flex justify-center items-center size-[1.94rem] z-20 rounded-full cursor-pointer ${
 		isActive
 			? 'bg-primary text-white'
@@ -45,4 +42,3 @@ export default function StepHeader({
 		</section>
 	);
 }
-
