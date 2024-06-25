@@ -12,7 +12,7 @@ import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
+import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import { TfiUpload } from 'react-icons/tfi';
 import { AddBrandSchemaValues, addBrandFormSchema } from '../_hook/AddbrandsFormSchema';
 
