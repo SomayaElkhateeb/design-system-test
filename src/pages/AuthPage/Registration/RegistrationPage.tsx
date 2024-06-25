@@ -1,11 +1,10 @@
 import { useCallback, useState } from 'react';
-
 import { useTranslation } from 'react-i18next';
 import { LoginOptions } from './comp/LoginOptions';
 import AboutYourself from './comp/tabs/AboutYourself/AboutYourself';
 import RegisterLayout from '../RegisterLayout/RegisterLayout';
 import AboutYourBusiness from './comp/tabs/AboutYourBusiness/AboutYourBusiness';
-import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 
 export default function RegistrationPage() {
 	const { t } = useTranslation();
