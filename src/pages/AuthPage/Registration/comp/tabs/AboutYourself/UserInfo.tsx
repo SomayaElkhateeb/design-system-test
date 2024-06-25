@@ -11,7 +11,7 @@ type FieldName = 'email' | 'admin_name' | 'mobile' | 'password';
 
 export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 	const { t } = useTranslation();
-	const { formStore, onSubmit } = useUserInfoForm({ onNext, onPhoneChange });
+	const { formStore, onSubmit, isLoading } = useUserInfoForm({ onNext, onPhoneChange });
 
 	const inputData = [
 		{ name: 'email', label: t('email') },
@@ -37,8 +37,8 @@ export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 						)}
 					/>
 				))}
-				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text={t('Next')} />
+				<div className='flex justify-end w-full'>
+					<Button loading={isLoading} className="w-[8.75rem]" variant='primary' type='submit' text={t('Next')} />
 				</div>
 			</form>
 		</Form>
