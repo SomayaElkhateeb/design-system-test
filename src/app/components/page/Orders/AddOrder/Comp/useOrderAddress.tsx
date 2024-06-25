@@ -32,7 +32,11 @@ const requiredFieldSchema = z.string().min(1, { message: 'This field is required
 const getConditionalSchema = (isRequired?: boolean) =>
 	isRequired ? requiredFieldSchema : z.string().optional();
 
-export const createAddressSchema = (sendGift?: boolean, selectedOption?: string, isName?: boolean) => {
+export const createAddressSchema = (
+	sendGift?: boolean,
+	selectedOption?: string,
+	isName?: boolean,
+) => {
 	const isManualEntry = selectedOption === 'Add manually';
 	return {
 		name: getConditionalSchema(isName),
@@ -51,9 +55,13 @@ export default function useOrderAddress(
 	sendGift?: boolean,
 	selectedOption?: string,
 	isName?: boolean,
+	onNext?: () => void,
 ) {
 	const handleSubmit = (values: AddAddressInterface) => {
 		console.log('values: ', values);
+		if (onNext) {
+			onNext();
+		}
 	};
 
 	const { formStore, onSubmit } = useForm({

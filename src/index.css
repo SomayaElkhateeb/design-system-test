@@ -246,7 +246,7 @@ object {
 	}
 	/*py-2.5*/
 	.btn {
-		@apply px-4 p-2 w-fit rounded text-sm text-center capitalize flex items-center justify-center gap-1.5 focus:ring-1
+		@apply px-4 p-2 w-full rounded text-sm text-center capitalize flex items-center justify-center gap-1.5 focus:ring-1
 	}
 	.btn-pri {
 		@apply btn bg-primary  text-white font-semibold  hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-pri-light;

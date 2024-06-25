@@ -6,13 +6,11 @@ import { useForm } from 'src/app/utils/hooks/form';
 export interface OtpVerificationInterface {
 	otp: string;
 }
-interface useOtpProps {
-	onFinish: (values: OtpVerificationInterface) => void;
-}
+
 const otpSchema = {
 	otp: z.string().min(3, 'OTP code is required').length(6, 'OTP code must be 6 digits'),
 };
-export default function useOtp({  onFinish }:  useOtpProps) {
+export default function useOtp({ onVerify }: { onVerify: () => void }) {
 	const [timer, setTimer] = useState(10);
 	const [isResendVisible, setIsResendVisible] = useState(false);
 
@@ -32,7 +30,7 @@ export default function useOtp({  onFinish }:  useOtpProps) {
 
 	const handleSubmit = (values: OtpVerificationInterface) => {
 		console.log(values);
-		onFinish(values);
+		onVerify();
 	};
 
 	const { formStore, onSubmit } = useForm({

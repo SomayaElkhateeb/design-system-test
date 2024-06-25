@@ -10,12 +10,8 @@ export const OrderAddress = ({ onNext, onBack }: { onNext: () => void; onBack: (
 	const [sendGift, setSendGift] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 
-	const { formStore, onSubmit } = useOrderAddress(sendGift, selectedOption);
+	const { formStore, onSubmit } = useOrderAddress(sendGift, selectedOption, onNext);
 
-	const handleSubmit = () => {
-		onSubmit();
-		onNext();
-	};
 	
 	return (
 		<Form {...formStore}>
@@ -31,7 +27,7 @@ export const OrderAddress = ({ onNext, onBack }: { onNext: () => void; onBack: (
 				/>
 				<div className='flex-btn-end'>
 					<Button variant='tertiary' text={t('back')} disabled onClick={onBack} />
-					<Button variant='primary' text={t('Next')} onClick={handleSubmit} />
+					<Button variant='primary' text={t('Next')} onClick={onSubmit} />
 				</div>
 			</form>
 		</Form>

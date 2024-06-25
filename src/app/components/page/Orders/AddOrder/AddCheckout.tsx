@@ -13,16 +13,13 @@ const branches = [
 	{ value: 'ksa', label: 'Kingdom of Saudi Arabia (KSA)' },
 ];
 
-export default function AddCheckout({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
+export default function AddCheckout({ onFinish, onBack }: { onFinish: () => void; onBack: () => void }) {
 	const { t } = useTranslation();
 
 
 
-	const { formStore, onSubmit, formValues } = useAddCheckOutForm();
-	const handleSubmit = () => {
-		onSubmit();
-		onNext();
-	};
+	const { formStore, onSubmit, formValues } = useAddCheckOutForm({onFinish});
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
@@ -130,7 +127,7 @@ export default function AddCheckout({ onNext, onBack }: { onNext: () => void; on
 				)}
 				<div className='flex-btn-end'>
 					<Button variant='secondary' text={t('Discard')} onClick={onBack}/>
-					<Button onClick={handleSubmit} variant='primary' text={t('Save')} />
+					<Button onClick={onSubmit} variant='primary' text={t('Save')} />
 				</div>
 			</form>
 		</Form>
