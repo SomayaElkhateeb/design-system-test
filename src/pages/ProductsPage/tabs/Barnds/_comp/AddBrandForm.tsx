@@ -16,23 +16,25 @@ import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettin
 import { TfiUpload } from 'react-icons/tfi';
 import { AddBrandSchemaValues, addBrandFormSchema } from '../_hook/AddbrandsFormSchema';
 
-interface AddBrandItemProps {
+interface AddBrandFormProps {
 	openDialog: boolean;
 	handleClose: () => void;
-	handleBrandSubmit: (values: AddBrandSchemaValues) => void;
+	handleBrandSubmit?: (values: AddBrandSchemaValues) => void;
 }
 
-export default function AddBrandItem({
+export default function AddBrandForm({
 	openDialog,
 	handleClose,
 	handleBrandSubmit,
-}: AddBrandItemProps) {
+}: AddBrandFormProps) {
 	const { t } = useTranslation();
 
 	const { formStore, onSubmit } = useForm({
 		schema: addBrandFormSchema,
 		handleSubmit: (values: AddBrandSchemaValues) => {
-			handleBrandSubmit(values);
+			if (handleBrandSubmit) {
+				handleBrandSubmit(values);
+			}
 		},
 		defaultValues: {
 			brandNameEn: '',

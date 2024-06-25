@@ -91,19 +91,29 @@ export default function Textarea({
 				)}
 				<div className={`${classNames} overflow-hidden rounded-md w-full border`}>
 					<div className='relative'>
-						{leftIcon && <div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>}
+						{leftIcon && (
+							<div className='absolute inset-y-0 left-0 flex items-center p-4'>{leftIcon}</div>
+						)}
 						<textarea
 							ref={_ref}
-							className={`${
-								leftIcon && 'pl-16'
-							} block w-full px-4 py-2 border rounded focus:outline-none  border-none outline-none`}
+							className={`block w-full px-4 py-2 rounded focus:border-none focus:outline-none ${
+								leftIcon ? 'pl-16' : ''
+							} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
 							disabled={loading}
 							value={value}
-							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
 							rows={5}
+							style={{
+								width: '100%',
+								border: 'none',
+								outline: 'none',
+								resize: 'none',
+								padding: '8px',
+							}}
+							onChange={handleOnChange && ((event) => handleOnChange(event.target.value))}
 							{...rest}
 							id={controlId}
 						/>
+
 						{rightIcon && !loading && (
 							<div className='absolute inset-y-0 right-0 flex items-center p-4'>{rightIcon}</div>
 						)}
@@ -114,8 +124,16 @@ export default function Textarea({
 						)}
 					</div>
 				</div>
-				{error && <small className='group-[.error:focus-within]:hidden text-xs text-red-500 '>{error}</small>}
-				{success && <small className='group-[.success:focus-within]:hidden text-xs text-green-500 '>Success</small>}
+				{error && (
+					<small className='group-[.error:focus-within]:hidden text-xs text-red-500 '>
+						{error}
+					</small>
+				)}
+				{success && (
+					<small className='group-[.success:focus-within]:hidden text-xs text-green-500 '>
+						Success
+					</small>
+				)}
 			</div>
 		</>
 	);

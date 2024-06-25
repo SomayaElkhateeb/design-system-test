@@ -6,3 +6,10 @@ export const productSeoSchema = {
 	metaKeywords: z.array(z.string().min(3)).max(10),
 	metaDescription: z.string().min(3).max(160),
 };
+
+// Define default values for the schema
+export const productSeoDefaultValues = {
+	pageTitle: '',
+	metaKeywords: [],
+	metaDescription: '',
+};

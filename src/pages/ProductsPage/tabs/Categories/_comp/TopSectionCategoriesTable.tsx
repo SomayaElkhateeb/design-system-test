@@ -9,7 +9,7 @@ import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import AddBrandItem from '../../Barnds/_comp/AddBrandItem';
+import AddBrandForm from '../../Barnds/_comp/AddBrandForm';
 
 export default function TopSectionCategoriesTable({ title }: { title: string }) {
 	//  hooks
@@ -65,7 +65,7 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 				<hr />
 			</div>
 
-			{openDialog && <AddBrandItem openDialog={openDialog} handleClose={handleClose} />}
+			{openDialog && <AddBrandForm openDialog={openDialog} handleClose={handleClose} />}
 		</>
 	);
 }

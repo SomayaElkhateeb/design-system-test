@@ -65,3 +65,9 @@ export const productOptionsAndVariationsRawSchema = {
 	options: z.array(productOptionRawSchema.option),
 	variations: z.array(productVariationRawSchema.variation),
 };
+
+// Default values for the schema
+export const productOptionsAndVariationsDefaultValues = {
+	options: [],
+	variations: [],
+};

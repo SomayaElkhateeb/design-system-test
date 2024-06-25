@@ -14,3 +14,12 @@ export const productPricingSchema = {
 		}),
 	),
 };
+
+// Define default values for the schema
+export const productPricingDefaultValues = {
+	price: 0,
+	discountPrice: undefined,
+	costPrice: 0,
+	isTaxable: true,
+	bulkPrices: [],
+};

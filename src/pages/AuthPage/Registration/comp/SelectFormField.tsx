@@ -29,7 +29,7 @@ export default function SelectFormField({
 }: SelectFormFieldProps) {
 	return (
 		<FormField
-    formStore={formStore}
+			formStore={formStore}
 			name={name}
 			render={(field) => (
 				<div className='flex-col-global gap-[.2rem]'>

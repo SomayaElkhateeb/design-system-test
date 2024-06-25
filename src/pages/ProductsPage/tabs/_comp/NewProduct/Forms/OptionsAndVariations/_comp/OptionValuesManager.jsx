@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { useId, useMemo, useState } from 'react';
 import { useWatch } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FaCirclePlus } from 'react-icons/fa6';
 import {
 	Dialog,
@@ -11,28 +11,67 @@ import {
 	DialogTrigger,
 } from 'src/app/components/ui/dialog';
 import { FormLabel } from 'src/app/components/ui/form';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 import {
 	Select,
 	SelectContent,
+	SelectItem,
 	SelectTrigger,
 	SelectValue,
-	SelectItem,
 } from 'src/app/components/ui/select';
-import HorizontalBox from 'src/app/components/ui/horizontal-box';
+import {
+	optionNameMap
+} from '../utils';
 
 const defaultOptionValuesByName = {
-    Color: [
-        { tempId: '1', nameEn: 'Red', value: '#ff0000' },
-        { tempId: '2', nameEn: 'Blue', value: '#0000ff' },
-    ],
-    Size: [
-        { tempId: '1', nameEn: 'S', value: 'S' },
-        { tempId: '2', nameEn: 'M', value: 'M' },
-        { tempId: '3', nameEn: 'L', value: 'L' },
-    ],
+	[optionNameMap.color]: [
+		{
+			tempId: Date.now().toString() + Math.random().toString(),
+			value: 'Red',
+			nameEn: 'Red',
+			nameAr: 'أحمر',
+		},
+		{
+			tempId: Date.now().toString() + Math.random().toString(),
+			value: 'Green',
+			nameEn: 'Green',
+			nameAr: 'أخضر',
+		},
+		{
+			tempId: Date.now().toString() + Math.random().toString(),
+			value: 'Blue',
+			nameEn: 'Blue',
+			nameAr: 'أزرق',
+		},
+	],
+	[optionNameMap.size]: [
+		{
+			tempId: Date.now().toString() + Math.random().toString(),
+			value: 'S',
+			nameEn: 'Small',
+			nameAr: 'صغير',
+		},
+		{
+			tempId: Date.now().toString() + Math.random().toString(),
+			value: 'M',
+			nameEn: 'Medium',
+			nameAr: 'متوسط',
+		},
+		{
+			tempId: Date.now().toString() + Math.random().toString(),
+			value: 'L',
+			nameEn: 'Large',
+			nameAr: 'كبير',
+		},
+	],
 };
 
-function OptionValuesManager(props) {
+/**
+ * @template TFormStore
+ *
+ * @param {{ formStore: import('../types').ProductOptionFormStore<TFormStore>; }} props
+ */
+export default function OptionValuesManager(props) {
 	const { t } = useTranslation();
 	const reactId = useId();
 	const [value, setValue] = useState('');
@@ -56,13 +95,10 @@ function OptionValuesManager(props) {
 			return defaultOptionValues;
 		}
 
-		const valuesMap = selectValues.reduce(
-			(acc, val) => {
-				acc[val.tempId] = true;
-				return acc;
-			},
-			/** @type {Record<string, boolean>} */ {},
-		);
+		const valuesMap = selectValues.reduce((acc, val) => {
+			acc[val.tempId] = true;
+			return acc;
+		}, /** @type {Record<string, boolean>} */ ({}));
 		return defaultOptionValues.filter((item) => {
 			return !valuesMap[item.tempId];
 		});
@@ -143,5 +179,3 @@ function OptionValuesManager(props) {
 		</div>
 	);
 }
-
-export default OptionValuesManager;

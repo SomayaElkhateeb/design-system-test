@@ -1,74 +1,50 @@
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
-import VariationsManager from './_comp/VariationsManager';
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from 'src/app/components/ui/card';
+import { updateVariations } from './_comp/updateVariations';
 import OptionsList from './_comp/OptionsList';
 import AddOptionManager from './_comp/AddOptionManager';
+import VariationsManager from './_comp/VariationsManager';
 
-function generateVariations(options) {
-	const variations = [];
-
-	function generate(currentOptions, currentVariation) {
-		if (currentOptions.length === 0) {
-			variations.push(currentVariation);
-			return;
-		}
-
-		const [option, ...restOptions] = currentOptions;
-		for (const value of option.values) {
-			generate(restOptions, {
-				...currentVariation,
-				[option.name]: value.nameEn,
-			});
-		}
-	}
-
-	generate(options, {});
-	return variations;
-}
-
-function ProductFormOptionsAndVariationsSection({ product, onOptionsChange, onVariationsChange }) {
+/**
+ * @template TFormStore
+ *
+ * @param {import('./types').Props<TFormStore>} props
+ */
+export default function ProductFormOptionsAndVariationsSection(props) {
 	const { t } = useTranslation();
-	const { control, handleSubmit, setValue, watch } = useForm({
-		defaultValues: {
-			options: product.options || [],
-		},
-	});
 
-	const options = watch('options');
-
-	const handleAddOption = (option) => {
-		const newOptions = [...options, option];
-		setValue('options', newOptions);
-		onOptionsChange(newOptions);
-		const newVariations = generateVariations(newOptions);
-		onVariationsChange(newVariations);
-	};
-
-	const handleDeleteOption = (option) => {
-		const newOptions = options.filter((o) => o.tempId !== option.tempId);
-		setValue('options', newOptions);
-		onOptionsChange(newOptions);
-		const newVariations = generateVariations(newOptions);
-		onVariationsChange(newVariations);
-	};
+	const getOptionValuesNames = useCallback(() => {
+		const options = props.formStore.getValues('options');
+		return options.map((option) => option.name);
+	}, [props.formStore]);
 
 	return (
-		<div>
-			<h2>{t('Options and Variations')}</h2>
-			<div className='space-y-6'>
+		<Card id={props.id}>
+			<CardHeader>
+				<CardTitle>{t('Options & Variations')}</CardTitle>
+				<CardDescription className='text-gray-400'>
+					{t('Allow your customers to select from options such as Size and Color on your website.')}
+				</CardDescription>
+			</CardHeader>
+			<CardContent className='flex flex-col gap-4'>
+				<OptionsList formStore={props.formStore} />
 				<AddOptionManager
-					handleSubmit={handleAddOption}
-					getOptionValuesNames={() => options.map((o) => o.name)}
+					getOptionValuesNames={getOptionValuesNames}
+					handleSubmit={(values) => {
+						const options = props.formStore.getValues('options');
+						props.formStore.setValue('options', [...options, values.option]);
+						updateVariations(props.formStore);
+					}}
 				/>
-				<OptionsList options={options} onDelete={handleDeleteOption} />
-				<VariationsManager
-					options={options}
-					variations={product.variations || []}
-					onVariationsChange={onVariationsChange}
-				/>
-			</div>
-		</div>
+				<VariationsManager formStore={props.formStore} />
+			</CardContent>
+		</Card>
 	);
 }
-
-export default ProductFormOptionsAndVariationsSection;

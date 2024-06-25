@@ -14,3 +14,11 @@ export const productDescriptionAndSpecificationsRawSchema = z.object({
 	descriptionAr: z.string().min(10).max(1000),
 	specifications: z.array(productSpecificationsRawSchema),
 });
+	
+
+// Define default values for the schema
+export const productDescriptionAndSpecificationsDefaultValues = {
+	descriptionEn: '',
+	descriptionAr: '',
+	specifications: [],
+  }
