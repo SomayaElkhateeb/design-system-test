@@ -19,13 +19,13 @@ const handelDefaultValue = {
 	selectCustomer: '',
 };
 
-export default function Customer({ onNext }) {
+export default function Customer({ onNext }: { onNext: () => void }) {
 	const { t } = useTranslation();
 	const [isOpen, setIsOpen] = useState(false);
-	
-	const handleSubmit: (validatedData: IAddOrder) => void = (values: IAddOrder) => {
+
+	const handleSubmit: (values: IAddOrder) => void = (values: IAddOrder) => {
 		console.log(values);
-		onNext()
+		onNext();
 	};
 
 	const { formStore, onSubmit } = useForm({

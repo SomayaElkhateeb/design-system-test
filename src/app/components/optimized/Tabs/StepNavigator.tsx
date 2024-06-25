@@ -20,7 +20,6 @@ interface StepType {
 
 // 3. StepContext and useStepContext hook
 const StepContext = createContext<any>(null);
-export const useStepContext = () => useContext(StepContext);
 
 // 4. useStepNavigation hook
 function useStepNavigation(steps: StepType[]) {
@@ -28,13 +27,13 @@ function useStepNavigation(steps: StepType[]) {
 
 	const goToNextStep = useCallback(() => {
 		if (activeStep < steps.length - 1) {
-			setActiveStep(prevStep => prevStep + 1);
+			setActiveStep((prevStep) => prevStep + 1);
 		}
 	}, [activeStep, steps.length]);
 
 	const goToPreviousStep = useCallback(() => {
 		if (activeStep > 0) {
-			setActiveStep(prevStep => prevStep - 1);
+			setActiveStep((prevStep) => prevStep - 1);
 		}
 	}, [activeStep]);
 
@@ -51,6 +50,8 @@ function useStepNavigation(steps: StepType[]) {
 		steps,
 	};
 }
+
+const useStepContext = () => useContext(StepContext);
 
 // 5. StepNavigator component
 export default function StepNavigator({ steps, onFinish }: StepNavigatorProps) {

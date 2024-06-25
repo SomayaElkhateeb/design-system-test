@@ -8,8 +8,8 @@ import SelectFormField from '../../SelectFormField';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import useAboutYourBusiness, { AboutYourBusinessInterface } from './useAboutYourBusiness';
 
-export default function AboutYourBusiness() {
-	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness();
+export default function AboutYourBusiness({ onFinish }: { onFinish: () => void }) {
+	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness({onFinish});
 
 	return (
 		<Form {...formStore}>
