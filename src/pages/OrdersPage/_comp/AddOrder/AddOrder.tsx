@@ -1,21 +1,13 @@
-import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+import useStepNavigator from 'src/app/components/StepNavigator/useStepNavigator';
 import { SubHeader } from 'src/app/components/optimized';
 import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 
-	const [activeStep, setActiveStep] = useState(0);
-
-	const goNext = useCallback(() => {
-		setActiveStep((prevStep) => prevStep + 1);
-	}, []);
-
-	const goPrevious = useCallback(() => {
-		setActiveStep((prevStep) => prevStep - 1);
-	}, []);
+	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
 		console.log('Finish');

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { LoginOptions } from './comp/LoginOptions';
@@ -6,19 +6,13 @@ import AboutYourself from './comp/tabs/AboutYourself/AboutYourself';
 import RegisterLayout from '../RegisterLayout/RegisterLayout';
 import AboutYourBusiness from './comp/tabs/AboutYourBusiness/AboutYourBusiness';
 import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+import useStepNavigator from 'src/app/components/StepNavigator/useStepNavigator';
 
 export default function RegistrationPage() {
 	const { t } = useTranslation();
 	const [isLogin, setIsLogin] = useState<boolean>(false);
-	const [activeStep, setActiveStep] = useState(0);
+	const { goNext, activeStep, setActiveStep } = useStepNavigator();
 
-	const goNext = useCallback(() => {
-		setActiveStep((prevStep) => prevStep + 1);
-	}, []);
-
-	// const goPrevious = useCallback(() => {
-	// 	setActiveStep((prevStep) => prevStep - 1);
-	// }, []);
 
 	const handleFinish = () => {
 		console.log('Finish');

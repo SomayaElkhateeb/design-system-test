@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Button, SetupCard } from 'src/app/components/optimized';
 import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
 import { basicSetup, servicesSetup } from './HomeConstants';
+import useStepNavigator from 'src/app/components/StepNavigator/useStepNavigator';
 
 interface SetupsProps {
 	startTour: () => void;
@@ -12,20 +13,14 @@ interface SetupsProps {
 export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	const { t } = useTranslation();
 
-	const [activeStep, setActiveStep] = useState(0);
-	console.log(activeStep);
-	console.log(55555);
-
-	const goNext = useCallback(() => {
-		setActiveStep((prevStep) => prevStep + 1);
-	}, []);
+	const { goNext, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
 		console.log('Finish');
 		handleSetup();
 		// Implement additional finish logic here
 	};
-	// 
+
 	const tabs = [
 		{
 			title: t('Basic setup'),
@@ -33,7 +28,7 @@ export default function Setups({ startTour, handleSetup }: SetupsProps) {
 		},
 		{
 			title: t('Services setup'),
-			content: <ServicesSetup onFinish={handleFinish}/>,
+			content: <ServicesSetup onFinish={handleFinish} />,
 		},
 	];
 	return (
@@ -44,28 +39,28 @@ export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	);
 }
 
-// ------------------
-// Wrapper Component.
-// ------------------
+
 
 function BasicSetup({ onNext }: { onNext: () => void }) {
-
 	const [completedSteps, setCompletedSteps] = useState({
 		generalSettings: false,
 		addProducts: false,
 		createInventory: false,
 	});
 
-	const handleStepCompletion = (id: any) => {
+	const handleStepCompletion = (id: string) => {
 		setCompletedSteps((prevState) => {
 			const newState = { ...prevState, [id]: true };
-			if (Object.values(newState).every((step) => step)) {
-				onNext();
-			}
 			return newState;
 		});
 	};
-	console.log(completedSteps);
+
+	useEffect(() => {
+		if (Object.values(completedSteps).every((step) => step)) {
+			onNext();
+		}
+	}, [completedSteps, onNext]);
+
 	return (
 		<div className='flex flex-col lg:flex-row gap-4'>
 			{basicSetup.map(({ id, ...item }) => (
@@ -74,25 +69,28 @@ function BasicSetup({ onNext }: { onNext: () => void }) {
 		</div>
 	);
 }
-//
+
 function ServicesSetup({ onFinish }: { onFinish: () => void }) {
 	const [completedSteps, setCompletedSteps] = useState({
 		addShipping: false,
 		addPayment: false,
 	});
 
-	const handleStepCompletion = (id: any) => {
+	const handleStepCompletion = (id: string) => {
 		setCompletedSteps((prevState) => {
 			const newState = { ...prevState, [id]: true };
-			if (Object.values(newState).every((step) => step)) {
-				onFinish();
-			}
 			return newState;
 		});
 	};
 
+	useEffect(() => {
+		if (Object.values(completedSteps).every((step) => step)) {
+			onFinish();
+		}
+	}, [completedSteps, onFinish]);
+
 	return (
-		<div className='flex flex-col lg:flex-row gap-4 bg-gray'>
+		<div className='flex flex-col lg:flex-row gap-4'>
 			{servicesSetup.map(({ id, ...item }) => (
 				<SetupCard key={id} {...item} onButtonClick={() => handleStepCompletion(id)} />
 			))}
