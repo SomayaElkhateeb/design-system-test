@@ -42,7 +42,7 @@ export default function QueriesSetting() {
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container custom-grid-parent'>
-					<div className=' flex-col-global grid-left'>
+					<div className=' grid-left'>
 						<QueriesSectionForm formStore={formStore} />
 					</div>
 					<div className='grid-right'>

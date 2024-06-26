@@ -28,7 +28,7 @@ const LegalDetails = ({
 		formStore.setValue('NationalIDImage', file);
 	};
 	return (
-		<section className='global-cards md:w-[70%] '>
+		<section className='global-cards '>
 			<h3 className='title'>{t('Legal details')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>

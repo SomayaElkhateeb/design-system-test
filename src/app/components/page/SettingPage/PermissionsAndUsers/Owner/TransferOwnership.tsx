@@ -50,8 +50,8 @@ export default function TransferOwnership() {
 				<SubHeader title={t('Transfer Ownership')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='custom-grid-parent'>
-					<div className='custom_container flex flex-col gap-5 grid-left'>
+				<div className='custom-grid-parent custom_container'>
+					<div className=' flex-col-global gap-5 grid-left'>
 						<NewOwner formStore={formStore} />
 						<SubHeaderMobileBtns onSubmit={onSubmit} />
 					</div>

@@ -11,7 +11,8 @@ export default function Users() {
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Users & Permissions')} />
-			<div className='flex-col-global custom_container'>
+			<div className="custom-grid-parent custom_container">
+			<div className='flex-col-global  grid-left'>
 				{/*  owner section */}
 				<OwnerAndStaff
 					title={t('Owner')}
@@ -61,6 +62,8 @@ export default function Users() {
 					</div>
 				</OwnerAndStaff>
 			</div>
+			</div>
+			
 		</div>
 	);
 }

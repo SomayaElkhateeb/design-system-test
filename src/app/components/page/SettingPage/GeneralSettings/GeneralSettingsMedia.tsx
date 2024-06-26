@@ -21,7 +21,7 @@ const GeneralSettingsMedia = ({
 	};
 
 	return (
-		<section className='global-cards md:w-[70%] '>
+		<section className='global-cards'>
 			<h3 className='title'>{t('Media')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FileInput id="image" error={formStore.formState.errors.image?.message} onImageSubmit={onImageSubmit}>
