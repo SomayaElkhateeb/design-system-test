@@ -10,7 +10,7 @@ import { AddAddressInterface } from './Comp/useOrderAddress';
 import LocationPicker from 'src/app/components/ui/LocationPicker';
 import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import { countries } from '../../SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import { countries } from '../../../../../pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 
 interface AddressProps<TFormStore> {
@@ -40,7 +40,10 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 
-  const handleGiftOptionChange = useCallback(() => setSendGift((prev: boolean) => !prev), [setSendGift]);
+	const handleGiftOptionChange = useCallback(
+		() => setSendGift((prev: boolean) => !prev),
+		[setSendGift],
+	);
 	const handleOptionChange = useCallback(
 		(option: string) => setSelectedOption(option),
 		[setSelectedOption],

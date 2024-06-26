@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import Shipping from 'src/pages/SettingsPage/_comp/Shipping';
 
-import BranchesSettings from './BranchesSettings';
+import BranchesSettings from '../BranchesSettings/BranchesSettings';
 
 import PaymentSettings from '../PaymentSettings/PaymentSettings';
 import Users from 'src/pages/SettingsPage/_comp/Users';

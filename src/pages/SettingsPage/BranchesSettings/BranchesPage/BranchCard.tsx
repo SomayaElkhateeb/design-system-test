@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
+
 import { Button } from 'src/app/components/optimized';
-import { EditIcon, ViewIcon } from 'src/app/utils/icons';
-import { Branch } from 'src/pages/SettingsPage/_comp/BranchesSettings';
-import { LiaTrashAlt } from 'react-icons/lia';
+import { EditIcon, RemoveIcon, ViewIcon } from 'src/app/utils/icons';
+import { Branch } from './useBranch';
 
 export default function BranchCard({ name, address, city, country, phone, isMain }: Branch) {
 	const iconClassName = 'fill-pri-dark cursor-pointer';
@@ -11,10 +11,14 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 	return (
 		<div className='flex justify-between cardDetails-sharedClass p-5'>
 			<div className='flex-col-global gap-2'>
-				<h2 className='title'>{name}</h2>
-				{isMain && (
-					<span className='bg-borders-lines text-xs text-subtitle p-1.5'>{t('Main')}</span>
-				)}
+				<div className='flex items-center gap-1.5'>
+					<h2 className='title'>{name}</h2>
+					{isMain && (
+						<span className='bg-borders-lines paragraph text-subtitle p-1 px-2 rounded-sm '>
+							{t('Main')}
+						</span>
+					)}
+				</div>
 				<div>
 					<p className='paragraph'>{address}</p>
 					<p className='paragraph'>{city}</p>
@@ -22,11 +26,10 @@ export default function BranchCard({ name, address, city, country, phone, isMain
 					<p className='paragraph'>{phone}</p>
 				</div>
 			</div>
-
 			<div className='flex flex-col justify-between items-end'>
 				<div className='flex items-center gap-5 '>
 					<div>
-						<LiaTrashAlt size='28' className={iconClassName} />
+						<RemoveIcon className={iconClassName} />
 					</div>
 					<div>
 						<EditIcon className={iconClassName} />
