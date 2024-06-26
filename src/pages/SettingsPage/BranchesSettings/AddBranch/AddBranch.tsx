@@ -11,7 +11,7 @@ import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import BranchAppointments from './BranchAppointments';
 import BranchInfo from './BranchInfo';
-import useAddBranchForm, { BranchSettingsInterface } from './useAddBranchForm';
+import useAddBranchForm, { BranchSettingsInterface } from './_hook/useAddBranchForm';
 
 export default function AddBranch(props: {
 	hideHeader?: boolean;
