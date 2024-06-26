@@ -14,6 +14,7 @@ import GeneralSettingsMedia from 'src/app/components/page/SettingPage/GeneralSet
 import SocialContacts from 'src/app/components/page/SettingPage/GeneralSettings/SocialContacts';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
+import StoreDetails from 'src/app/components/page/SettingPage/GeneralSettings/StoreDetails';
 
 const GeneralSettings = () => {
 	//  hooks
@@ -45,7 +46,7 @@ const GeneralSettings = () => {
 					<div className='grid-left'>
 						<div className='flex-col-global container'>
 							<StoreDetails formStore={formStore} />
-							<Media formStore={formStore} />
+							<GeneralSettingsMedia formStore={formStore} />
 							<SocialContacts formStore={formStore} />
 							<LegalDetails state={state} setState={setState} formStore={formStore} />
 							<AdminOrLanguageDefaults
