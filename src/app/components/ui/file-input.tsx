@@ -1,8 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import ImageCard from '../optimized/Cards/ImageCard';
 
-import { useTranslation } from 'react-i18next';
-
 export function getDefaultFileInputOptions({ setError, onFileLoad, ...params }) {
 	return {
 		onError: (error) => setError({ message: error.message, type: 'error' }),
@@ -16,8 +14,6 @@ export function getDefaultFileInputOptions({ setError, onFileLoad, ...params }) 
 				reader.onabort = () => setError({ message: 'file reading was aborted', type: 'abort' });
 				reader.onerror = () => setError({ message: 'file reading has failed', type: 'file-error' });
 				reader.onload = () => {
-					// Do whatever you want with the file contents
-
 					onFileLoad({ file, reader });
 				};
 				reader.readAsArrayBuffer(file);
@@ -27,42 +23,39 @@ export function getDefaultFileInputOptions({ setError, onFileLoad, ...params }) 
 		...params,
 	};
 }
+
 type Props = {
-	error: string | undefined;
+	error?: string;
 	onImageSubmit: (file: File) => void;
 	children: React.ReactNode;
 	label?: string;
-	id:string
+	id: string;
 };
-const FileInput = ({ error, onImageSubmit, children, label,id }: Props) => {
-	//  hooks
 
-	const [preview, setPreview] = useState('');
+const FileInput = ({ error, onImageSubmit, children, label, id }: Props) => {
+	const [preview, setPreview] = useState<string>('');
 
 	const onImageSelected = (e: ChangeEvent<HTMLInputElement>): void => {
-		const reader = new FileReader();
-
 		if (!e.target.files || !e.target.files[0]) {
 			return;
 		}
 
 		const imageFile = e.target.files[0];
-
-		reader.readAsDataURL(imageFile);
+		const reader = new FileReader();
 
 		reader.onload = () => {
-			if (reader.readyState !== 2) {
-				return;
+			if (reader.readyState === FileReader.DONE) {
+				setPreview(reader.result as string);
+				onImageSubmit(imageFile);
 			}
-
-			setPreview(reader.result as string);
-			onImageSubmit(imageFile);
 		};
+
+		reader.readAsDataURL(imageFile);
 	};
 
 	return (
 		<div className='flex-col-global'>
-			<p className='title'>{label}</p>
+			{label && <p className='title'>{label}</p>}
 			<div className='flex-row-global'>
 				<input
 					accept='image/*'
@@ -72,20 +65,19 @@ const FileInput = ({ error, onImageSubmit, children, label,id }: Props) => {
 					name='photo'
 					hidden
 				/>
-
 				<label
 					htmlFor={id}
-					className='cursor-pointer relative border-[.1rem] rounded-[.4rem] w-[8.25rem] h-[7.50rem] border-dashed'
+					className='cursor-pointer p-5 w-full rounded-sm border-2 border-dashed'
 				>
-					{preview && <ImageCard preview={preview} />}
-					<div className=' absolute top-[50%] translate-y-[-50%]  translate-x-[50%] right-[50%]  flex-col-global items-center justify-center '>
+					{preview ? (
+						<ImageCard preview={preview} />
+					) : (
 						<div className='flex-col-global items-center justify-center'>
-							{!preview && children}
+							{children}
 						</div>
-					</div>
+					)}
 				</label>
 			</div>
-
 			{error && !preview && <p className='global_error'>{error}</p>}
 		</div>
 	);
