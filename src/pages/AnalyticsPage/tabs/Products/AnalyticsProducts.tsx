@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import useAnalyticsData from '../../_comp/useAnalyticsData';
+import useAnalyticsData from '../../_hook/useAnalyticsData';
 import { ColumnChart } from 'src/app/components/optimized';
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 import AnalyticsTableActions from '../../_comp/AnalyticsTableActions';

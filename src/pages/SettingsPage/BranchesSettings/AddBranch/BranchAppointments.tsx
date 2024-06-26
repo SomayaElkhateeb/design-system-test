@@ -7,7 +7,7 @@ import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleCh
 import TimePickerMui from 'src/app/components/optimized/Pickers/TimePicker';
 
 import FormField from 'src/app/components/ui/form/field';
-import { BranchInfoProps, WeekSchedule, FixedDay, initialDayInfo } from './useAddBranchForm';
+import { BranchInfoProps, WeekSchedule, FixedDay, initialDayInfo } from './_hook/useAddBranchForm';
 
 export default function BranchAppointments({ formStore }: BranchInfoProps) {
 	const [activeDay, setActiveDay] = useState<FixedDay['day']>('Sun');
@@ -20,6 +20,8 @@ export default function BranchAppointments({ formStore }: BranchInfoProps) {
 		if (activeDaySchedule.isClosed) {
 			activeDaySchedule.officialHours.open = '';
 			activeDaySchedule.officialHours.close = '';
+			activeDaySchedule.additionalHours.open = '';
+			activeDaySchedule.additionalHours.close = '';
 			formStore.setValue('branchTimeSchedule', dailySchedule);
 		}
 	}, [dailySchedule, activeDay, formStore]);
