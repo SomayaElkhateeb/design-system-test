@@ -11,7 +11,8 @@ export default function Users() {
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Users & Permissions')} />
-			<div className='flex-col-global custom_container'>
+			<div className="custom-grid-parent custom_container">
+			<div className='flex-col-global  grid-left'>
 				{/*  owner section */}
 				<OwnerAndStaff
 					title={t('Owner')}
@@ -23,9 +24,11 @@ export default function Users() {
 							details='Active 3 days ago'
 							avatar={<Avatar variant='user' firstName='samy' />}
 						/>
-						<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
-							{t('Transfer Ownership')}
-						</Button>
+						<div>
+							<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
+								{t('Transfer Ownership')}
+							</Button>
+						</div>
 					</div>
 				</OwnerAndStaff>
 
@@ -59,6 +62,8 @@ export default function Users() {
 					</div>
 				</OwnerAndStaff>
 			</div>
+			</div>
+			
 		</div>
 	);
 }

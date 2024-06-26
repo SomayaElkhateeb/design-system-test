@@ -455,7 +455,8 @@ export const english = {
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',
 	'Customer segment': 'Customer segment',
-	"Your token has been expired. Please sign in again":"Your token has been expired. Please sign in again",
+	'Your token has been expired. Please sign in again':
+		'Your token has been expired. Please sign in again',
 	'select customers': 'select customers',
 	'select groups': 'select groups',
 	'Basic info': 'Basic info',
@@ -1105,7 +1106,7 @@ export const english = {
 	Specification: 'Specification',
 	Answer: 'Answer',
 	'Save & Add Another': 'Save & Add Another',
-	'Specifications': 'Specifications',
+	Specifications: 'Specifications',
 	Values: 'Values',
 	'Select Size, Color or add new': 'Select Size, Color or add new',
 	size: 'size',
@@ -1194,4 +1195,25 @@ export const english = {
 	'Update Password': 'Update Password',
 	'Create a new password': 'Create a new password',
 	'Check your': 'Check your',
+
+	'Setup Marketing Catalog': 'Setup Marketing Catalog',
+	'Set Up Business Marketing Catalog': 'Set Up Business Marketing Catalog',
+	'TikTok Business Center Account': 'TikTok Business Center Account',
+	'Allow Dookan Create a TikTok Business Center account to access Your store manager, business page, and product catalog all in our place.':
+		'Allow Dookan Create a TikTok Business Center account to access Your store manager, business page, and product catalog all in our place.',
+	'Allow Dookan to create account': 'Allow Dookan to create account',
+	Create: 'Create',
+	'Approve access to your TikTok Ads Manager account':
+		'Approve access to your TikTok Ads Manager account',
+	"In order to connect to this Business Center account, you'll need to approve admin access to the connected TikTok Ads Manager account.":
+		"In order to connect to this Business Center account, you'll need to approve admin access to the connected TikTok Ads Manager account.",
+	Proceed: 'Proceed',
+	'Marketing Catalog Location': 'Marketing Catalog Location',
+	'Default Location': 'Default Location',
+	'Additional Locations': 'Additional Locations',
+	'Search for country or region': 'Search for country or region',
+	'Are you want to Disable Catalog Sync From your store?':
+		'Are you want to Disable Catalog Sync From your store?',
+	'You can Recync anytime with TikTok Catalog.': 'You can Recync anytime with TikTok Catalog.',
+	'Yes, Disable': 'Yes, Disable',
 };

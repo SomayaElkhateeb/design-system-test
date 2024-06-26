@@ -1,5 +1,4 @@
 import { UseFormReturn } from 'react-hook-form';
-import { addStuffInterface } from './AddStuff';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
@@ -10,6 +9,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
+import { addStuffInterface } from './HookForAddStuff';
 
 export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuffInterface> }) {
 	//  hooks
@@ -17,7 +17,7 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 
 	return (
 		<div className='cardDetails-sharedClass p-5 '>
-			<div className='flex-col-global md:w-[50%]'>
+			<div className='flex-col-global md:w-[70%]'>
 				<FormField
 					formStore={formStore}
 					name='name'

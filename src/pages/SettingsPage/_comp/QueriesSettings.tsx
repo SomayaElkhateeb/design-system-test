@@ -41,15 +41,17 @@ export default function QueriesSetting() {
 				<SubHeader title={t('Queries')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className=' flex-col-global lg:col-span-2'>
+				<div className='custom_container custom-grid-parent'>
+					<div className=' grid-left'>
 						<QueriesSectionForm formStore={formStore} />
 					</div>
-					<div className='lg:col-span-1'>
+					<div className='grid-right'>
 						<QuickActions data={data} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<div className='px-5'>
+					<SubHeaderMobileBtns onSubmit={onSubmit} />
+				</div>
 			</form>
 		</Form>
 	);

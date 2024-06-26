@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, SetupCard } from 'src/app/components/optimized';
-import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
 import { basicSetup, servicesSetup } from './HomeConstants';
-import useStepNavigator from 'src/app/components/StepNavigator/useStepNavigator';
+import useStepNavigator from 'src/app/components/optimized/Tabs/useStepNavigator';
+import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 
 interface SetupsProps {
 	startTour: () => void;
@@ -12,6 +12,7 @@ interface SetupsProps {
 // Setups Parent Component
 export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	const { t } = useTranslation();
+
 
 	const { goNext, activeStep, setActiveStep } = useStepNavigator();
 
@@ -54,6 +55,7 @@ function BasicSetup({ onNext }: { onNext: () => void }) {
 			return newState;
 		});
 	};
+
 
 	useEffect(() => {
 		if (Object.values(completedSteps).every((step) => step)) {

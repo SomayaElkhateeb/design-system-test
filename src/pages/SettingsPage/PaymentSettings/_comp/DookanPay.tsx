@@ -50,19 +50,23 @@ export default function DookanPay() {
 				{t('Accept payments on your store using the')} <strong>Dookan pay</strong>{' '}
 				{t('plugin, it provide you with International and local payment methods')}
 			</p>
-			<section className='flex justify-between gap-7 w-full'>
-				<RenderItems
-					items={supportedMethods}
-					RenderItem={TransactionsBadge}
-					title='Supported methods with fees'
-					limit={supportedMethods.length}
-				/>
-				<RenderItems
-					items={supportedBanks}
-					RenderItem={BankBadge}
-					title='Supported banks'
-					limit={supportedBanks.length}
-				/>
+			<section className='grid grid-cols-2 gap-7'>
+				<div className='col-span-2 lg:col-span-1'>
+					<RenderItems
+						items={supportedMethods}
+						RenderItem={TransactionsBadge}
+						title='Supported methods with fees'
+						limit={supportedMethods.length}
+					/>
+				</div>
+				<div className='col-span-2 lg:col-span-1'>
+					<RenderItems
+						items={supportedBanks}
+						RenderItem={BankBadge}
+						title='Supported banks'
+						limit={supportedBanks.length}
+					/>
+				</div>
 			</section>
 			<Button variant='primary' text={t('Setup Dookan pay')} />
 		</div>

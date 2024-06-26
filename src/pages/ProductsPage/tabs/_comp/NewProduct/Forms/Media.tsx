@@ -38,8 +38,8 @@ function ImagesElem({ formStore }: ImagesElemProps) {
 						},
 					})}
 				>
-					<TfiUpload />
-					<div className='text-center'>
+					<div className='flex flex-col items-center'>
+						<TfiUpload className='text-4xl mb-2' />
 						<p className='text-title'>
 							<strong>{t('Upload Images')}</strong>
 						</p>

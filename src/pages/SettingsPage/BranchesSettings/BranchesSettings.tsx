@@ -42,8 +42,8 @@ export default function BranchesSettings() {
 				</SubHeader>
 				<BranchesFilter onFilterChange={handleFilterChange} filter={filter} />
 			</div>
-			<div className='grid grid-cols-3 container mx-auto'>
-				<div className='grid gap-5 col-span-3 lg:col-span-2'>
+			<div className=' custom_container custom-grid-parent'>
+				<div className='flex-col-global gap-5 grid-left'>
 					{filteredData.map((branch) => (
 						<BranchCard key={branch.id} {...branch} />
 					))}

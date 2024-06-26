@@ -32,7 +32,7 @@ export const SubHeaderMobileBtns = ({ onSubmit }: { onSubmit: () => void }) => {
 	return (
 		<>
 			{xs && (
-				<div className='flex space-x-3 justify-center bg-white   w-full '>
+				<div className='flex-btn-end gap-4'>
 					<SubHeaderActionBtns onSubmit={onSubmit} />
 				</div>
 			)}

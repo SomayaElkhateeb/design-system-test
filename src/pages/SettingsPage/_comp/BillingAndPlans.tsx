@@ -18,13 +18,13 @@ export default function BillingAndPlans() {
 					description={t('Subscribe now and open a world with no boundaries')}
 				/>
 			</div>
-			<section className='grid gap-5 lg:grid-cols-3 custom_container'>
-				<div className='flex-col-global lg:col-span-2'>
+			<section className='custom-grid-parent custom_container'>
+				<div className='grid-left flex-col-global gap-5'>
 					<PaymentMethods />
 					<Plan />
 					<Bills />
 				</div>
-				<div className='col-span-1'>
+				<div className='grid-right'>
 					<Wallet />
 				</div>
 			</section>

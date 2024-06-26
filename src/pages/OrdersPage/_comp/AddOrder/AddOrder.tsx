@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
-import useStepNavigator from 'src/app/components/StepNavigator/useStepNavigator';
 import { SubHeader } from 'src/app/components/optimized';
+
+
+import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
+import useStepNavigator from 'src/app/components/optimized/Tabs/useStepNavigator';
 import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
@@ -32,7 +34,6 @@ export default function AddOrder() {
 			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
 		},
 	];
-
 	return (
 		<>
 			<SubHeader title={t('add new order')} />

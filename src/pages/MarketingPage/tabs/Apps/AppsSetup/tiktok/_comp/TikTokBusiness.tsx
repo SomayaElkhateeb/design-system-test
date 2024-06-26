@@ -5,7 +5,7 @@ import Avatar from '@mui/material/Avatar';
 
 const TikTokBusiness: React.FC = () => {
 	return (
-		<div className='max-w-lg'>
+		<div className='max-w-lg bg-red-600'>
 			<div className='flex space-y-4  justify-between items-center'>
 				<div className='text-2xl font-bold '>Tik Tok: For Business</div>
 				<div className='flex items-center  space-x-2'>

@@ -19,7 +19,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 	const { t } = useTranslation();
 
 	return (
-		<section className='global-cards flex-col-global p-[1.2rem] md:w-[70%] '>
+		<section className='global-cards'>
 			<h3 className='title'>{t('Store details')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField
@@ -62,10 +62,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 					name='storeContactPhone'
 					label={t('Store contact phone')}
 					render={(field) => (
-						<CustomPhoneInput
-							value={field.value}
-							onHandleChange={field.onChange}
-						/>
+						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 					)}
 				/>
 			</div>
