@@ -5,6 +5,7 @@ import TikTokCatalog from './tiktok/TikTokCatalog';
 import SnapchatCatalog from './snapchat/SnapchatCatalog';
 import SnapchatSales from './snapchat/SnapchatSales';
 import { PlatformProvider } from './PlatformContext';
+import { SubHeader } from 'src/app/components/optimized';
 
 interface PlatformSetupProps {
 	platform: 'tikTok' | 'snapchat' | 'facebook' | 'sendGrid' | 'mailchimp' | 'google'; // Include 'facebook' in the platform type
@@ -19,10 +20,8 @@ const PlatformSetup: React.FC<PlatformSetupProps> = ({ platform }) => {
 	// Render setup or tabs component based on conditions
 	const renderSetupOrTabsComponent = () => (
 		<>
-			<div className='p-4 text-black bg-white'>
-				<h3 className='text-xl font-medium'>{title}</h3>
-			</div>
-			<div className='bg-[#F9FAFC] p-4 flex flex-col'>{renderSetupOrTabs()}</div>
+			<SubHeader title={title} />
+			<div className=' p-4'>{renderSetupOrTabs()}</div>
 		</>
 	);
 

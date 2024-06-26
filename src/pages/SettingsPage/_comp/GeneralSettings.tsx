@@ -12,7 +12,6 @@ import useCustomHookGeneralForm, {
 import LegalDetails from 'src/app/components/page/SettingPage/GeneralSettings/LegalDetails';
 import GeneralSettingsMedia from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import SocialContacts from 'src/app/components/page/SettingPage/GeneralSettings/SocialContacts';
-import StoreDetails from 'src/app/components/page/SettingPage/GeneralSettings/StoreDetails';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 
@@ -34,25 +33,29 @@ const GeneralSettings = () => {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-console.log(formStore.formState.errors)
+	console.log(formStore.formState.errors);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global '>
 				<SubHeader title={t('General settings')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='flex-col-global container mx-auto'>
-					<StoreDetails formStore={formStore} />
-					<GeneralSettingsMedia formStore={formStore} />
-					<SocialContacts formStore={formStore} />
-					<LegalDetails state={state} setState={setState} formStore={formStore} />
-					<AdminOrLanguageDefaults
-						title={t('Admin defaults (shown to you)')}
-						formStore={formStore}
-					/>
-				</div>
 
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<div className='custom-grid-parent'>
+					<div className='grid-left'>
+						<div className='flex-col-global container'>
+							<StoreDetails formStore={formStore} />
+							<Media formStore={formStore} />
+							<SocialContacts formStore={formStore} />
+							<LegalDetails state={state} setState={setState} formStore={formStore} />
+							<AdminOrLanguageDefaults
+								title={t('Admin defaults (shown to you)')}
+								formStore={formStore}
+							/>
+							<SubHeaderMobileBtns onSubmit={onSubmit} />
+						</div>
+					</div>
+				</div>
 			</form>
 		</Form>
 	);

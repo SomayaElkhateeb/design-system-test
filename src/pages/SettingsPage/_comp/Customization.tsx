@@ -116,9 +116,11 @@ function RowCustomize({
 				{isEdit ? (
 					''
 				) : (
-					<Button LeftIcon={EditIcon} variant='tertiary' onClick={() => setIsEdit(true)}>
-						{t('edit')}
-					</Button>
+					<div>
+						<Button LeftIcon={EditIcon} variant='tertiary' onClick={() => setIsEdit(true)}>
+							{t('edit')}
+						</Button>
+					</div>
 				)}
 			</div>
 

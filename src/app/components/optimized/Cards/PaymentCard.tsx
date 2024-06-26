@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import { getImageUrl } from 'src/app/utils';
-
 import FormField from '../../ui/form/field';
 import PaymentInputs from '../Payment/PaymentInputs';
 import PaymentAccordion from '../../ui/accordion/PaymentAccordion';

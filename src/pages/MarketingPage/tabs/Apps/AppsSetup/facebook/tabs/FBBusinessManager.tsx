@@ -18,7 +18,7 @@ interface FBBusinessManagerProps {
 const FBBusinessManager: React.FC<FBBusinessManagerProps> = ({ data }) => {
 	return (
 		<div>
-			<p className='mb-3'>{data.description}</p>
+			<p className='text-title text-sm w-3/4 pb-5'>{data.description}</p>
 			{data.companies.map((company) => (
 				<PartnerCard
 					key={company.id}

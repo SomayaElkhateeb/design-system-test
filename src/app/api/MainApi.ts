@@ -1,10 +1,7 @@
 import axios from 'axios';
 import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
 
-
-export const baseUrl = "https://my.dookan.net/api/v1/";
-
-
+export const baseUrl = 'http://localhost:3007';
 
 const MainApi = axios.create({
 	baseURL: baseUrl,

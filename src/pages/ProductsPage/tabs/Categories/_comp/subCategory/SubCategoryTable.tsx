@@ -18,12 +18,13 @@ import BaseTable, {
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { getSubCategories } from 'src/app/store/slices/productsPage/categories/subCategoriesTable/subCategoriesAsyncThunks';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export interface SubCategories {
 	id: string;
 	subName: string;
-	subProducts: number;
-	subActive: boolean;
+	subProducts?: number;
+	subActive?: boolean;
 	subImg: string;
 }
 //  pass data to collapses row
@@ -70,6 +71,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 	//  props
 	const { row } = props;
 	//  hooks
+	const { sm } = useResponsive();
 	const [open, setOpen] = React.useState(false);
 	//  custom hooks
 	const language = UseLanguage();
@@ -115,10 +117,12 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 						<div>{row.name}</div>
 					</div>
 				</GlobalTableCell>
-				<GlobalTableCell>{row.products}</GlobalTableCell>
-				<GlobalTableCell>
-					<Switch checked={row.active} />
-				</GlobalTableCell>
+				{!sm && <GlobalTableCell>{row.products}</GlobalTableCell>}
+				{!sm && (
+					<GlobalTableCell>
+						<Switch checked={row.active} />
+					</GlobalTableCell>
+				)}
 				<GlobalTableCell>
 					<div className='flex gap-4 items-center'>
 						<ThreeDotsButton
@@ -152,10 +156,14 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 												<div>{historyRow.subName}</div>
 											</div>
 										</GlobalTableCell>
-										<GlobalTableCell>{historyRow.subProducts}</GlobalTableCell>
-										<GlobalTableCell>
-											<Switch checked={historyRow.subActive} />
-										</GlobalTableCell>
+										{sm ? '' : <GlobalTableCell>{historyRow.subProducts}</GlobalTableCell>}
+										{sm ? (
+											''
+										) : (
+											<GlobalTableCell>
+												<Switch checked={historyRow.subActive} />
+											</GlobalTableCell>
+										)}
 										<GlobalTableCell>
 											<div className='flex gap-4 items-center justify-end'>
 												<ThreeDotsButton
@@ -186,14 +194,15 @@ export default function SubCategoryTable() {
 	//  hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
+	const { sm } = useResponsive();
 
 	// headers
 	const subcategoriesHeaders = [
 		{
 			title: t('Name'),
 		},
-		{ title: t('PRODUCTS NO.') },
-		{ title: t('AVAILABILITY') },
+		{ title: sm ? '' : t('PRODUCTS NO.') },
+		{ title: sm ? '' : t('AVAILABILITY') },
 
 		{ title: t('actions') },
 	];

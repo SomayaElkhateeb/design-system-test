@@ -9,10 +9,9 @@ interface Props {
 }
 
 const MailchimpSetup: React.FC<Props> = ({ platform }) => {
+	const { mega_title, settings } = getMailchimpSetup(platform);
 	const [_, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
-
-	const { mega_title, settings } = getMailchimpSetup(platform);
 
 	if (!platform) {
 		return null;

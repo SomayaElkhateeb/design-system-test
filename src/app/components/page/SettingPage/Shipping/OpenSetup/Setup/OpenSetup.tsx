@@ -44,15 +44,18 @@ export default function OpenSetup() {
 	return (
 		<div>
 			<SubHeader title={t('Install SMSA')} />
-			<div className='custom_container'>
-				<TabX
-					tabs={tabs}
-					currentTab={currentTab}
-					handleNext={handleNext}
-					handlePrev={handlePrev}
-					handleFinish={handleFinish}
-					handleTabClick={handleTabClick}
-				/>
+			<div className='custom_container py-5 custom-grid-parent'>
+				<div className='grid-left'>
+					<TabX
+						tabs={tabs}
+						currentTab={currentTab}
+						handleNext={handleNext}
+						handlePrev={handlePrev}
+						handleFinish={handleFinish}
+						handleTabClick={handleTabClick}
+					/>
+				</div>
+				<div className='grid-right' />
 			</div>
 		</div>
 	);
