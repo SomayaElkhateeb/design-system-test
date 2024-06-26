@@ -1,7 +1,12 @@
 import axios from 'axios';
 import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
 
-export const baseUrl = 'http://localhost:3007';
+
+
+export const baseUrl = "https://my.dookan.net/api/v1/test";
+// https://dev.dookan.net/api/v1/test
+// https://my.dookan.net/api/v1/
+
 
 const MainApi = axios.create({
 	baseURL: baseUrl,
@@ -18,7 +23,7 @@ MainApi.interceptors.request.use(
 		}
 
 		if (token) config.headers.authorization = `Bearer ${token}`;
-		if (language) config.headers['Accept-Language'] = language;
+		// if (language) config.headers['Accept-Language'] = language;
 
 		// config.headers["Content-Type"] = "application/x-www-form-urlencoded";
 		config.headers['Content-Type'] = 'application/json';
@@ -30,8 +35,8 @@ MainApi.interceptors.request.use(
 		if (!config.params) {
 			config.params = {};
 		}
-		config.params['locale'] = language;
-		config.params['accept_token'] = true;
+		// config.params['locale'] = language;
+		// config.params['accept_token'] = true;
 		return config;
 	},
 	function (error) {

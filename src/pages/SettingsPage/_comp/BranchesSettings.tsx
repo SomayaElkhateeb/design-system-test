@@ -40,8 +40,8 @@ export default function BranchesSettings() {
 					{t('Add Branch')}
 				</Button>
 			</SubHeader>
-			<div className='custom-grid-parent'>
-				<div className='grid-left container mx-auto flex flex-col gap-5'>
+			<div className='custom-grid-parent custom_container'>
+				<div className='grid-left  flex-col-global gap-5'>
 					{demoData.map((branch) => (
 						<BranchCard key={branch.id} {...branch} />
 					))}

@@ -41,7 +41,7 @@ export default function ReviewsSetting() {
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container custom-grid-parent'>
-					<div className='flex-col-global grid-left'>
+					<div className=' grid-left'>
 						<ReviewSectionForm formStore={formStore} />
 					</div>
 					<div className='grid-right'>
