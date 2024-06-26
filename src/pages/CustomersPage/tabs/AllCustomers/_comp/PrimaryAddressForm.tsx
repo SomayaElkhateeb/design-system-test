@@ -47,7 +47,7 @@ export default function PrimaryAddressForm({
 							<SelectContent>
 								{countries.map((country) => (
 									<SelectItem key={country.value} value={country.value}>
-										{country.name}
+										{country.label}
 									</SelectItem>
 								))}
 							</SelectContent>
@@ -71,7 +71,7 @@ export default function PrimaryAddressForm({
 							<SelectContent>
 								{countries.map((country) => (
 									<SelectItem key={country.value} value={country.value}>
-										{country.name}
+										{country.label}
 									</SelectItem>
 								))}
 							</SelectContent>

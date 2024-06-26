@@ -19,7 +19,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 	const { t } = useTranslation();
 
 	return (
-		<section className='global-cards flex-col-global p-[1.2rem]'>
+		<section className='global-cards  md:w-[70%] '>
 			<h3 className='title'>{t('Store details')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField

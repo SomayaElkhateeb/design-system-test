@@ -11,12 +11,14 @@ export const arabic = {
 	Discounts: 'الخصومات',
 	Coupons: 'الكوبونات',
 	Campaigns: 'الحملات',
+
 	'Add Subcategory': 'اضافه تحت فرعي',
 	Subcategories: 'تحت فرعيه',
 
 	'PRODUCTS NO.': 'عدد المنتجات',
 	AVAILABILITY: 'متاح',
 	'Your token has been expired. Please sign in again': 'يرجي تسجيل الدخول مره اخري',
+
 	Services: 'الخدمات',
 	Settings: 'الادوات',
 
@@ -628,7 +630,7 @@ export const arabic = {
 	'Branch Type': 'نوع الفرع',
 	Landmark: 'علامه',
 	'Phone number': 'رقم الهاتف',
-	'Branch Name': 'اسم الفرع',
+	'Branch name': 'اسم الفرع',
 	Staff: 'طاقم العمل',
 	'Commercial branch': 'الفرع التجاري',
 	Warehouse: 'مستودع',
@@ -821,7 +823,6 @@ export const arabic = {
 	'Supported Cities': 'المدن المدعومة',
 	Riyadh: 'الرياض',
 	Taxes: 'الضرائب',
-
 	'Tax applies to': 'تنطبق الضريبة على',
 	'Include tax in product prices': 'تضمين الضريبة في أسعار المنتجات',
 	'Default Tax Class': 'فئة الضريبة الافتراضية',
@@ -1084,7 +1085,8 @@ export const arabic = {
 	'Add Specification': 'إضافة مواصفات',
 	Specification: 'المواصفات',
 	Answer: 'الإجابة',
-	'Save & add another': 'حفظ وإضافة أخرى',
+	'Save & Add Another': 'حفظ وإضافة أخرى',
+	Specifications: 'مواصفات',
 	Values: 'القيم',
 	'Select Size, Color or add new': 'اختر الحجم، اللون أو أضف جديد',
 	size: 'الحجم',
@@ -1181,6 +1183,7 @@ export const arabic = {
 	'Update Password': 'تحديث كلمة المرور',
 	'Create a new password': 'إنشاء كلمة مرور جديدة',
 	'Check your': 'تحقق من',
+
 	'Setup Marketing Catalog': '',
 	'Set Up Business Marketing Catalog': '',
 	'TikTok Business Center Account': '',

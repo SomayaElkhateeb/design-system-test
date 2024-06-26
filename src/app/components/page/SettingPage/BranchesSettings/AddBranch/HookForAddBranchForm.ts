@@ -1,10 +1,10 @@
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 import {
-	AddAddressSchema,
-	handelAddresseDefaultValue,
-	addAddressInterface,
-} from '../../../Orders/AddOrder/Comp/HookAddress';
+	createAddressSchema,
+	getDefaultValues,
+	AddAddressInterface,
+} from '../../../Orders/AddOrder/Comp/useOrderAddress';
 
 export interface OpenHours {
 	open: string;
@@ -25,7 +25,7 @@ export interface WeekSchedule {
 	Sat: DayInfo;
 	Sun: DayInfo;
 }
-export interface BranchSettingsInterface extends addAddressInterface {
+export interface BranchSettingsInterface extends AddAddressInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
@@ -50,7 +50,7 @@ export interface fixedDay {
 }
 // ////////////////////////
 export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedOption?: string) {
-	const RequiredAddresseData = z.string().min(1);
+	const requiredAddressData = z.string().min(1);
 
 	const DayInfoSchema = z.object({
 		openHours: z.object({
@@ -61,9 +61,9 @@ export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedO
 	});
 
 	const branchSettingsSchema = {
-		branchType: RequiredAddresseData,
-		branchNameEn: RequiredAddresseData,
-		branchNameAr: RequiredAddresseData,
+		branchType: requiredAddressData,
+		branchNameEn: requiredAddressData,
+		branchNameAr: requiredAddressData,
 		branchTimeSchedual: z.object({
 			Mon: DayInfoSchema,
 			Tue: DayInfoSchema,
@@ -73,7 +73,7 @@ export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedO
 			Sat: DayInfoSchema,
 			Sun: DayInfoSchema,
 		}),
-		...AddAddressSchema(sendGift, selectedOption),
+		...createAddressSchema(sendGift, selectedOption),
 	};
 
 	const handelDefaultValue = () => {
@@ -82,7 +82,7 @@ export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedO
 			branchNameAr: '',
 			branchNameEn: '',
 			branchTimeSchedual: initialDayInfo,
-			...handelAddresseDefaultValue(),
+			...getDefaultValues(),
 		};
 	};
 	return {

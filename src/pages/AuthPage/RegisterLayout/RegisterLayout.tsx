@@ -6,13 +6,17 @@ import { RegisterFooter, RegisterHeader, RegisterImage } from './RegisterLayoutU
 export default function RegisterLayout({ children }: { children: ReactNode }) {
 	const { xs, sm } = useResponsive();
 	return (
-		<section className='flex flex-col container h-screen bg-white'>
+		<section className='flex flex-col gap-[3.6rem] custom_container h-screen bg-white py-3'>
 			<RegisterHeader />
-			<section className='flex items-center justify-between h-full flex-grow'>
-				<div className='w-[28.5rem] max-md:w-full h-full flex justify-center items-center'>{children}</div>
-				{!xs && !sm && <RegisterImage path='images/register_1.svg' />}
+			<section className='flex flex-col gap-[2rem]'>
+				<section className='flex items-center justify-between h-full flex-grow'>
+					<div className='w-[28.5rem] max-md:w-full h-full flex justify-center items-center'>
+						{children}
+					</div>
+					{!xs && !sm && <RegisterImage path='images/register_1.svg' />}
+				</section>
+				<RegisterFooter />
 			</section>
-			<RegisterFooter />
 		</section>
 	);
 }

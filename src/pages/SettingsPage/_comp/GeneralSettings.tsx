@@ -10,9 +10,8 @@ import useCustomHookGeneralForm, {
 	generalSettingsInterface,
 } from 'src/app/components/page/SettingPage/GeneralSettings/HookForGeneralForm';
 import LegalDetails from 'src/app/components/page/SettingPage/GeneralSettings/LegalDetails';
-import Media from 'src/app/components/page/SettingPage/GeneralSettings/Media';
+import GeneralSettingsMedia from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import SocialContacts from 'src/app/components/page/SettingPage/GeneralSettings/SocialContacts';
-import StoreDetails from 'src/app/components/page/SettingPage/GeneralSettings/StoreDetails';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 
@@ -34,13 +33,14 @@ const GeneralSettings = () => {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-
+	console.log(formStore.formState.errors);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global '>
 				<SubHeader title={t('General settings')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
+
 				<div className='custom-grid-parent'>
 					<div className='grid-left'>
 						<div className='flex-col-global container'>
@@ -55,8 +55,6 @@ const GeneralSettings = () => {
 							<SubHeaderMobileBtns onSubmit={onSubmit} />
 						</div>
 					</div>
-
-					<div className='grid-right' />
 				</div>
 			</form>
 		</Form>

@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { generalSettingsInterface } from './HookForGeneralForm';
 import { UseFormReturn } from 'react-hook-form';
 import FormField from 'src/app/components/ui/form/field';
-import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
+import FileInput from 'src/app/components/ui/file-input';
 import { TfiUpload } from 'react-icons/tfi';
-import { fileClassName } from './Media';
+
 import { Input } from 'src/app/components/ui/input';
 
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
@@ -21,8 +21,14 @@ const LegalDetails = ({
 	//  hooks
 	const { t } = useTranslation();
 
+	const onImageSubmit = (file: File): void => {
+		formStore.setValue('CommercialRegistrationImage', file);
+	};
+	const onImageSubmitNationalID = (file: File): void => {
+		formStore.setValue('NationalIDImage', file);
+	};
 	return (
-		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem]'>
+		<section className='global-cards md:w-[70%] '>
 			<h3 className='title'>{t('Legal details')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<div className='flex-row-global gap-[1.8rem]'>
@@ -48,60 +54,29 @@ const LegalDetails = ({
 							label={t('Commercial Registration No')}
 							render={(field) => <Input {...field} placeholder={'1111111'} />}
 						/>
-						<FormField
+
+						<FileInput
+							id={'CommercialRegistrationImage'}
 							label={t('Commercial Registration Image')}
-							formStore={formStore}
-							name='CommercialRegistrationImage'
-							render={({ onChange, value, ...field }) => (
-								<FileInput
-									className={fileClassName}
-									{...field}
-									options={getDefaultFileInputOptions({
-										accept: { 'image/*': [] },
-										setError: (error) => {
-											// console.log('error', error);
-											formStore.setError('CommercialRegistrationImage', { message: error.message });
-										},
-										onFileLoad: (params) => {
-											// console.log('params', params);
-											onChange(params.file);
-										},
-									})}
-								>
-									<TfiUpload className='text-[1.5rem]' />
-									<p>{t('UploadImage')}</p>
-								</FileInput>
-							)}
-						/>
+							error={formStore.formState.errors.CommercialRegistrationImage?.message}
+							onImageSubmit={onImageSubmit}
+						>
+							<TfiUpload className='text-[1.5rem]' />
+							<p>{t('UploadImage')}</p>
+						</FileInput>
 					</div>
 				)}
 
 				{state === 'individual' && (
-					<FormField
+					<FileInput
+						id={'NationalIDImage'}
 						label={t('National ID Image')}
-						formStore={formStore}
-						name='NationalIDImage'
-						render={({ onChange, value, ...field }) => (
-							<FileInput
-								className={fileClassName}
-								{...field}
-								options={getDefaultFileInputOptions({
-									accept: { 'image/*': [] },
-									setError: (error) => {
-										// console.log('error', error);
-										formStore.setError('NationalIDImage', { message: error.message });
-									},
-									onFileLoad: (params) => {
-										// console.log('params', params);
-										onChange(params.file);
-									},
-								})}
-							>
-								<TfiUpload className='text-[1.5rem]' />
-								<p>{t('UploadImage')}</p>
-							</FileInput>
-						)}
-					/>
+						error={formStore.formState.errors.NationalIDImage?.message}
+						onImageSubmit={onImageSubmitNationalID}
+					>
+						<TfiUpload className='text-[1.5rem]' />
+						<p>{t('UploadImage')}</p>
+					</FileInput>
 				)}
 			</div>
 		</section>

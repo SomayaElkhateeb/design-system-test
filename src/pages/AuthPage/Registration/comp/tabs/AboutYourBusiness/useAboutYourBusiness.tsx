@@ -20,12 +20,11 @@ const handleDefaultValue = (): AboutYourBusinessInterface => ({
 	agreementTerms: false,
 });
 
-
-
-export default function useAboutYourBusiness() {
+export default function useAboutYourBusiness({ onFinish }: { onFinish: () => void }) {
 	const { t } = useTranslation();
 	const handleSubmit = (values: AboutYourBusinessInterface) => {
 		console.log(values);
+		onFinish();
 	};
 	const industryOptions = [
 		{ value: 'fashion', label: t('Fashion') },
@@ -40,4 +39,3 @@ export default function useAboutYourBusiness() {
 
 	return { formStore, onSubmit, industryOptions };
 }
-

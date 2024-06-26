@@ -6,7 +6,7 @@ import FormField from 'src/app/components/ui/form/field';
 
 import { TfiUpload } from 'react-icons/tfi';
 import { preferncesInterface } from '../_hook/HookForPreferncePageForm';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
+import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 
 export default function SocialSharingSection({
 	formStore,

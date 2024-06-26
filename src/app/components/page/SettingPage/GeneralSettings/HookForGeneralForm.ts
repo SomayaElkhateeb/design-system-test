@@ -77,27 +77,19 @@ export default function useCustomHookGeneralForm(state: string) {
         facebook: z
             .string()
             .url()
-            .refine((value) => /^https?:\/\/(www\.)?facebook\.com\/[a-zA-Z0-9._]+$/.test(value), {
-                message: 'Invalid Facebook URL',
-            }),
+        ,
         instagram: z
             .string()
             .url()
-            .refine((value) => /^https?:\/\/(www\.)?instagram\.com\/[a-zA-Z0-9._]+$/.test(value), {
-                message: 'Invalid Instagram URL',
-            }),
+        ,
         twitter: z
             .string()
             .url()
-            .refine((value) => /^https?:\/\/(www\.)?twitter\.com\/[a-zA-Z0-9._]+$/.test(value), {
-                message: 'Invalid Twitter URL',
-            }),
+        ,
         youtube: z
             .string()
             .url()
-            .refine((value) => /^https?:\/\/(www\.)?youtube\.com\/[a-zA-Z0-9._]+$/.test(value), {
-                message: 'Invalid YouTube URL',
-            }),
+        ,
         image: z.instanceof(File),
         icon: z.instanceof(File),
         CommercialRegistrationImage: handel_Required_image(),

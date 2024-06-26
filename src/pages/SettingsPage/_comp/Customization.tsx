@@ -12,7 +12,7 @@ import useCustomCustomizeForm, {
 } from '../../../app/components/page/SettingPage/Customizations/HookCustomization';
 import { Input } from 'src/app/components/ui/input';
 import { Form } from 'src/app/components/ui/form';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/Media';
+import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 
 export default function Customization() {
 	//  hooks
