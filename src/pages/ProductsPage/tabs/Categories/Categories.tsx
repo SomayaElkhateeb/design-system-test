@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import { LiaTrashAlt } from 'react-icons/lia';
-import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon, CopyIcon, OrdersIcon, RemoveIcon } from 'src/app/utils/icons';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { CategoryTable } from './_comp/CategoryTable';
 import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
@@ -55,6 +55,17 @@ export default function Categories() {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
+
+	const Menu = [
+		{ id: nanoid(), text: 'Copy subcategory link', icon: <CopyIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Subcategory report', icon: <AnalyticsIcon className='iconClass' /> },
+		{ id: nanoid(), text: 'Subcategory products', icon: <OrdersIcon className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: 'Delete subcategory',
+			icon: <RemoveIcon className='iconClass' />,
+		},
+	];
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-global'>
@@ -63,8 +74,7 @@ export default function Categories() {
 
 				{/* table */}
 
-				<CategoryTable Menue={Menue} categoryData={categoriesTable} isLoading={isLoading} />
-
+				<CategoryTable Menue={Menu} categoryData={categoriesTable} isLoading={isLoading} />
 
 				{/*  case of small media */}
 				<div className='flex-col-global sm:hidden'>

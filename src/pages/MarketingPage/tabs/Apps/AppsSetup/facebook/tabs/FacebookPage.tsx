@@ -11,17 +11,18 @@ interface Company {
 
 interface FacebookPageProps {
 	data: {
-		description: string,
-		companies: Company[],
+		description: string;
+		companies: Company[];
 	};
 }
 
 const FacebookPage: FC<FacebookPageProps> = ({ data }) => {
 	return (
 		<div>
-			<p className='mb-3'>{data.description}</p>
+			<p className='text-xs text-title pb-5'>{data.description}</p>
 			{data.companies.map((company) => (
 				<PartnerCard
+					link={true}
 					key={company.id}
 					imageUrl={getImageUrl('companies/t-terl.svg')}
 					subtitle={company.industry}

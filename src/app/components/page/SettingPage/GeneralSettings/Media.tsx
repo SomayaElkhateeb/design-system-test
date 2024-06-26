@@ -10,7 +10,7 @@ const Media = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterfac
 	const { t } = useTranslation();
 
 	return (
-		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem] md:w-[70%] '>
+		<section className='cardDetails-sharedClass flex-col-global p-[1.2rem]'>
 			<h3 className='title'>{t('Media')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField

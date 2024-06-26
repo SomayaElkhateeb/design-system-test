@@ -16,7 +16,7 @@ import MenuOptions from '../../../../../app/components/optimized/Menu/MenuOption
 import { MoreIcon } from 'src/app/utils/icons';
 import PopupDelete from '../../../../../app/components/optimized/Popups/PopupDelete';
 import { useState } from 'react';
-import { deleteCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
+
 import ArrowTables from '../../../../../app/components/optimized/UiKits/ArrowTables';
 import { useAppDispatch } from 'src/app/store';
 

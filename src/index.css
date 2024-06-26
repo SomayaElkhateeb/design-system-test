@@ -221,8 +221,8 @@ object {
 	.grid-right {
 		@apply col-span-3 lg:col-span-1;
 	}
-	.box-photo{
-		@apply size-8 border border-constrained rounded-md overflow-hidden
+	.box-photo {
+		@apply size-8 border border-constrained rounded-md overflow-hidden;
 	}
 	.flex-col-global {
 		@apply flex flex-col gap-[1rem];
@@ -240,13 +240,22 @@ object {
 	.iconClass {
 		@apply text-[1.2rem] text-subtitle;
 	}
-
+	.global-install {
+		@apply flex flex-col lg:justify-between gap-4 min-h-[100px];
+	}
+	.global-install-p {
+		@apply text-title text-sm w-[60%];
+	}
+	.global-install-btn {
+		@apply lg:flex lg:justify-end;
+	}
 	.bran-sec-btn {
 		@apply bg-secondary px-2 py-1 rounded text-white text-sm capitalize hover:bg-sec-pressed;
 	}
 	.btn {
-		@apply px-4 py-2.5 rounded text-sm text-center capitalize flex items-center justify-center gap-2 focus:ring-1
+		@apply px-4 py-2.5 rounded text-sm text-center capitalize flex items-center justify-center gap-2 focus:ring-1;
 	}
+
 	.btn-pri {
 		@apply btn bg-primary  text-white font-semibold  hover:bg-pri-hover focus:bg-pri-pressed active:bg-pri-pressed disabled:bg-borders-lines disabled:text-inactive focus:ring-pri-light;
 	}

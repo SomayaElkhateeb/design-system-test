@@ -21,15 +21,17 @@ export default function CustomizationsSettings() {
 				<SubHeader title={t('Customizations')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='grid custom_container grid-cols-3'>
-					<div className='grid gap-5 col-span-3 lg:col-span-2'>
+				<div className='custom-grid-parent custom_container'>
+					<div className='grid-left flex flex-col gap-5'>
 						<CheckoutCustomizeForm formStore={formStore} />
 						<ProductCustomizeForm formStore={formStore} />
 						<NewsletterConsentForm formStore={formStore} />
 						<OrderInvoiceCustomizeForm formStore={formStore} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<div className='px-5'>
+					<SubHeaderMobileBtns onSubmit={onSubmit} />
+				</div>
 			</form>
 		</Form>
 	);

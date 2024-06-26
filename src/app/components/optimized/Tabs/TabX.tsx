@@ -43,8 +43,8 @@ const TabX: React.FC<TabXProps> = ({
 }) => {
 	return (
 		<VerticalTabsContext.Provider value={{ currentTab, handleTabClick, handleNext, handlePrev }}>
-			<div className='flex flex-col space-y-4'>
-				<div className='flex flex-col space-y-4'>
+			<div className='flex flex-col gap-4 lg:w-3/4'>
+				<div className='flex flex-col gap-4'>
 					{tabs.map((tab, index) => (
 						<VTab
 							key={index}

@@ -3,6 +3,7 @@ import BusinessAccountCard from '../../_comp/BusinessAccountCard';
 import { getImageUrl } from 'src/app/utils';
 import { Button } from 'src/app/components/optimized';
 import { LiaExternalLinkAltSolid } from 'react-icons/lia';
+import { useTranslation } from 'react-i18next';
 
 interface Partner {
 	name: string;
@@ -18,9 +19,10 @@ interface Props {
 	};
 }
 const SnapBusinessAccount: React.FC<Props> = ({ data }) => {
+	const { t } = useTranslation();
 	return (
 		<div>
-			<p className='border-b pb-5'>{data.description}</p>
+			<p className='text-title text-sm w-3/4 pb-5'>{data.description}</p>
 			<div>
 				{data.partners.map((partner) => (
 					<BusinessAccountCard
@@ -32,13 +34,10 @@ const SnapBusinessAccount: React.FC<Props> = ({ data }) => {
 					/>
 				))}
 			</div>
-			<div className='pl-[72px] mt-5'>
-				<Button variant='link' RightIcon={<LiaExternalLinkAltSolid />}>
-					<a href='#' className='text-blue-500 mr-1'>
-						Snapchat Ads Manager Account
-					</a>
-				</Button>
-			</div>
+
+			<Button variant='link' RightIcon={LinkIcon} className='text-sm pl-5'>
+				{t('Snapchat Ads Manager Account')}
+			</Button>
 		</div>
 	);
 };

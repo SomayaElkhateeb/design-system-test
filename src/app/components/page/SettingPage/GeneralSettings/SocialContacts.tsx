@@ -7,7 +7,7 @@ import { generalSettingsInterface } from './HookForGeneralForm';
 const SocialContacts = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
 	const { t } = useTranslation();
 	return (
-		<section className='global-cards flex-col-global p-[1.2rem] md:w-[70%] '>
+		<section className='global-cards flex-col-global p-[1.2rem]'>
 			<h3 className='title'>{t('Social contacts')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField

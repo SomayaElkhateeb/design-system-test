@@ -41,18 +41,23 @@ const GeneralSettings = () => {
 				<SubHeader title={t('General settings')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='flex-col-global container mx-auto'>
-					<StoreDetails formStore={formStore} />
-					<Media formStore={formStore} />
-					<SocialContacts formStore={formStore} />
-					<LegalDetails state={state} setState={setState} formStore={formStore} />
-					<AdminOrLanguageDefaults
-						title={t('Admin defaults (shown to you)')}
-						formStore={formStore}
-					/>
-				</div>
+				<div className='custom-grid-parent'>
+					<div className='grid-left'>
+						<div className='flex-col-global container'>
+							<StoreDetails formStore={formStore} />
+							<Media formStore={formStore} />
+							<SocialContacts formStore={formStore} />
+							<LegalDetails state={state} setState={setState} formStore={formStore} />
+							<AdminOrLanguageDefaults
+								title={t('Admin defaults (shown to you)')}
+								formStore={formStore}
+							/>
+							<SubHeaderMobileBtns onSubmit={onSubmit} />
+						</div>
+					</div>
 
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+					<div className='grid-right' />
+				</div>
 			</form>
 		</Form>
 	);

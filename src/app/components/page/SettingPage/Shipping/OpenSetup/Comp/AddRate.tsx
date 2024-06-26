@@ -37,7 +37,7 @@ export default function AddRate({
 				<GlobalDialog
 					openDialog={showRate}
 					handleClose={onClose}
-					style={{ width: { md: '50%', xs: '70%' } }}
+					style={{ width: { md: '50%', xs: '95%' } }}
 				>
 					<h2 className='text-title font-semibold '>{t('Add rate')}</h2>
 					<TextFields formStore={formStore} saudi={saudi} />

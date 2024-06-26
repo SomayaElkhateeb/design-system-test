@@ -29,11 +29,11 @@ export const english = {
 	'Show Results': 'Show Results',
 	'Saved Filters': 'Saved Filters',
 
-	"Date replied":"Date replied",
-	"Reviews Filters":"Reviews Filters",
-	"In Progress":"In Progress",
-	"Add Subcategory":"Add Subcategory",
-	"Subcategories":"Subcategories",
+	'Date replied': 'Date replied',
+	'Reviews Filters': 'Reviews Filters',
+	'In Progress': 'In Progress',
+	'Add Subcategory': 'Add Subcategory',
+	Subcategories: 'Subcategories',
 	'Email description': 'Email description',
 	'Send after purchase': 'Send after purchase',
 	Queries: 'Queries',
@@ -63,9 +63,9 @@ export const english = {
 	'General settings': 'General settings',
 	'Store details': 'Store details',
 	'Store name': 'Store name',
-	
-	"PRODUCTS NO.":"PRODUCTS NO.",
-	"AVAILABILITY":"AVAILABILITY",
+
+	'PRODUCTS NO.': 'PRODUCTS NO.',
+	AVAILABILITY: 'AVAILABILITY',
 	'Store contact email': 'Store contact email',
 	'Store contact phone': 'Store contact phone',
 	'Social contacts': 'Social contacts',
@@ -455,7 +455,8 @@ export const english = {
 	'Quick actions': 'Quick actions',
 	'Minimum requirements': 'Minimum requirements',
 	'Customer segment': 'Customer segment',
-	"Your token has been expired. Please sign in again":"Your token has been expired. Please sign in again",
+	'Your token has been expired. Please sign in again':
+		'Your token has been expired. Please sign in again',
 	'select customers': 'select customers',
 	'select groups': 'select groups',
 	'Basic info': 'Basic info',
@@ -1192,5 +1193,25 @@ export const english = {
 	'New password again': 'New password again',
 	'Update Password': 'Update Password',
 	'Create a new password': 'Create a new password',
-	'Check your':'Check your',
+	'Check your': 'Check your',
+	'Setup Marketing Catalog': 'Setup Marketing Catalog',
+	'Set Up Business Marketing Catalog': 'Set Up Business Marketing Catalog',
+	'TikTok Business Center Account': 'TikTok Business Center Account',
+	'Allow Dookan Create a TikTok Business Center account to access Your store manager, business page, and product catalog all in our place.':
+		'Allow Dookan Create a TikTok Business Center account to access Your store manager, business page, and product catalog all in our place.',
+	'Allow Dookan to create account': 'Allow Dookan to create account',
+	Create: 'Create',
+	'Approve access to your TikTok Ads Manager account':
+		'Approve access to your TikTok Ads Manager account',
+	"In order to connect to this Business Center account, you'll need to approve admin access to the connected TikTok Ads Manager account.":
+		"In order to connect to this Business Center account, you'll need to approve admin access to the connected TikTok Ads Manager account.",
+	Proceed: 'Proceed',
+	'Marketing Catalog Location': 'Marketing Catalog Location',
+	'Default Location': 'Default Location',
+	'Additional Locations': 'Additional Locations',
+	'Search for country or region': 'Search for country or region',
+	'Are you want to Disable Catalog Sync From your store?':
+		'Are you want to Disable Catalog Sync From your store?',
+	'You can Recync anytime with TikTok Catalog.': 'You can Recync anytime with TikTok Catalog.',
+	'Yes, Disable': 'Yes, Disable',
 };

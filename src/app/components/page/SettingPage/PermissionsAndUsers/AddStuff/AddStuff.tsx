@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { RxDotsHorizontal } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
@@ -17,8 +16,6 @@ import {
 export default function AddStuff() {
 	//  hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
-	const { xs } = useResponsive();
 
 	// custom hook
 	const { handelDefaultValue, stuffSchema } = useCustomHookAddStuff();
@@ -41,16 +38,18 @@ export default function AddStuff() {
 				<SubHeader title={t('add staff')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className=' flex-col-global lg:col-span-2'>
+				<div className='custom_container custom-grid-parent'>
+					<div className=' flex-col-global grid-left'>
 						<Stuff formStore={formStore} />
 						<Permissions formStore={formStore} />
 					</div>
-					<div className='lg:col-span-1'>
+					<div className='grid-right'>
 						<QuickActions data={data} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<div className='flex-btn-end px-5'>
+					<SubHeaderMobileBtns onSubmit={onSubmit} />
+				</div>
 			</form>
 		</Form>
 	);

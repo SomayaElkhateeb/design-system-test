@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button, CheckBox, InputRow } from 'src/app/components/optimized';
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const SnapDataSharing: React.FC<Props> = ({ data }) => {
+	const { t } = useTranslation();
 	const [state, setState] = useState({
 		isChecked: false,
 		inputState: {
@@ -30,21 +32,23 @@ const SnapDataSharing: React.FC<Props> = ({ data }) => {
 	const { isChecked, inputState } = state;
 
 	return (
-		<div>
-			<p>
-				{data.description} <span className='text-blue-500'>Learn more</span>
+		<div className='flex flex-col gap-4'>
+			<p className='text-title text-sm w-[60%]'>
+				{data.description}
+				<Button variant='link' className='inline px-2'>
+					{t('Learn more')}
+				</Button>
 			</p>
-			<div className='my-6'>
-				<CheckBox
-					label='Activate data sharing'
-					checked={isChecked}
-					handleOnChange={handleCheckBoxChange}
-				/>
-			</div>
 
-			<div className='flex items-center justify-between'>
-				{isChecked && (
-					<div className='flex flex-col w-1/3 space-y-3 '>
+			<CheckBox
+				label='Activate data sharing'
+				checked={isChecked}
+				handleOnChange={handleCheckBoxChange}
+			/>
+
+			{isChecked && (
+				<>
+					<div className='flex justify-between flex-col gap-4 w-full md:w-1/2'>
 						<InputRow
 							label='Pixel ID'
 							value={inputState.value}
@@ -53,14 +57,12 @@ const SnapDataSharing: React.FC<Props> = ({ data }) => {
 							}
 						/>
 					</div>
-				)}
 
-				{isChecked && (
-					<Button variant='primary' onClick={handleClick}>
-						Connect
-					</Button>
-				)}
-			</div>
+					<div className='flex justify-end'>
+						<Button variant='primary'>{t('Connect')}</Button>
+					</div>
+				</>
+			)}
 		</div>
 	);
 };
