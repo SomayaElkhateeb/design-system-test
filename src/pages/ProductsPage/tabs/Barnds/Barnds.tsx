@@ -17,7 +17,6 @@ export default function Barnds() {
 		dispatch(getBrandsTable());
 	}, [dispatch]);
 
-	if (error) return <div>Error: {error}</div>;
 	const barndsSettingMenus = [
 		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
