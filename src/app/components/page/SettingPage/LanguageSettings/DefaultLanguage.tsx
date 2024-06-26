@@ -17,7 +17,7 @@ export default function DefaultLanguageSection({
 		formStore.setValue('defaultLanguage', option);
 	};
 	return (
-		<section className='global-cards md:w-[70%] '>
+		<section className='global-cards '>
 			<div className={sharedClass}>
 				<h3 className='title'>{t('Languages')}</h3>
 				<p className='subtitle'>

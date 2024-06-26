@@ -42,9 +42,9 @@ const GeneralSettings = () => {
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 
-				<div className='custom-grid-parent'>
+				<div className='custom-grid-parent custom_container'>
 					<div className='grid-left'>
-						<div className='flex-col-global container'>
+						<div className='flex-col-global '>
 							<StoreDetails formStore={formStore} />
 							<GeneralSettingsMedia formStore={formStore} />
 							<SocialContacts formStore={formStore} />

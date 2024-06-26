@@ -27,7 +27,7 @@ export default function AdminOrLanguageDefaults<TFormStore>({
 	const { t } = useTranslation();
 
 	return (
-		<section className='global-cards md:w-[70%] '>
+		<section className='global-cards  '>
 			<h3 className='title'>{title}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				{/*  default country */}

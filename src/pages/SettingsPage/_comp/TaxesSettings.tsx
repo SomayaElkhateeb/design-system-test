@@ -48,7 +48,7 @@ export default function TaxesSettings() {
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom_container custom-grid-parent'>
-					<div className='grid-left flex flex-col gap-5'>
+					<div className='grid-left flex-col-global gap-5'>
 						<TaxRates />
 						<TaxOptionsForm formStore={formStore} />
 					</div>
