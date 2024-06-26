@@ -2,7 +2,8 @@ import React from 'react';
 import { getImageUrl } from 'src/app/utils';
 import BusinessAccountCard from '../../_comp/BusinessAccountCard';
 import { Button } from 'src/app/components/optimized';
-import { LiaExternalLinkAltSolid } from 'react-icons/lia';
+import { LinkIcon } from 'src/app/utils/icons';
+import { useTranslation } from 'react-i18next';
 
 interface Partner {
 	id: string;
@@ -18,9 +19,10 @@ interface TikBusinessAccountProps {
 }
 
 const TikBusinessAccount: React.FC<TikBusinessAccountProps> = ({ data }) => {
+	const { t } = useTranslation();
 	return (
 		<div>
-			<p className='border-b pb-5'>{data.description}</p>
+			<p className='text-title text-sm w-3/4 pb-5'>{data.description}</p>
 			<div>
 				{data.partners.map((partner) => (
 					<BusinessAccountCard
@@ -32,13 +34,11 @@ const TikBusinessAccount: React.FC<TikBusinessAccountProps> = ({ data }) => {
 					/>
 				))}
 			</div>
-			<div className='pl-[72px] mt-5'>
-				<Button variant='link' RightIcon={<LiaExternalLinkAltSolid />}>
-					<a href='#' className='text-blue-500 mr-1'>
-						TikTok Ads Manager Account
-					</a>
-				</Button>
-			</div>
+
+			<Button variant='link' RightIcon={LinkIcon} className='text-sm pl-5'>
+				{t('TikTok Ads Manager Account')}
+			</Button>
+
 			{/* <TikTokBusiness /> */}
 		</div>
 	);

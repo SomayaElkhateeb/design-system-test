@@ -12,12 +12,12 @@ export const arabic = {
 	Coupons: 'الكوبونات',
 	Campaigns: 'الحملات',
 
-	"Add Subcategory":"اضافه تحت فرعي",
-	"Subcategories":"تحت فرعيه",
-	
-	"PRODUCTS NO.":"عدد المنتجات",
-	"AVAILABILITY":"متاح",
-	"Your token has been expired. Please sign in again":"يرجي تسجيل الدخول مره اخري",
+	'Add Subcategory': 'اضافه تحت فرعي',
+	Subcategories: 'تحت فرعيه',
+
+	'PRODUCTS NO.': 'عدد المنتجات',
+	AVAILABILITY: 'متاح',
+	'Your token has been expired. Please sign in again': 'يرجي تسجيل الدخول مره اخري',
 
 	Services: 'الخدمات',
 	Settings: 'الادوات',
@@ -1084,10 +1084,9 @@ export const arabic = {
 	"Customize what's shown in the email": 'تخصيص ما يظهر في البريد الإلكتروني',
 	'Add Specification': 'إضافة مواصفات',
 	Specification: 'المواصفات',
-	Specification: 'المواصفات',
 	Answer: 'الإجابة',
 	'Save & Add Another': 'حفظ وإضافة أخرى',
-	'Specifications': 'مواصفات',
+	Specifications: 'مواصفات',
 	Values: 'القيم',
 	'Select Size, Color or add new': 'اختر الحجم، اللون أو أضف جديد',
 	size: 'الحجم',
@@ -1184,4 +1183,23 @@ export const arabic = {
 	'Update Password': 'تحديث كلمة المرور',
 	'Create a new password': 'إنشاء كلمة مرور جديدة',
 	'Check your': 'تحقق من',
+
+	'Setup Marketing Catalog': '',
+	'Set Up Business Marketing Catalog': '',
+	'TikTok Business Center Account': '',
+	'Allow Dookan Create a TikTok Business Center account to access Your store manager, business page, and product catalog all in our place.':
+		'',
+	'Allow Dookan to create account': '',
+	Create: '',
+	'Approve access to your TikTok Ads Manager account': '',
+	"In order to connect to this Business Center account, you'll need to approve admin access to the connected TikTok Ads Manager account.":
+		'',
+	Proceed: '',
+	'Marketing Catalog Location': '',
+	'Default Location': '',
+	'Additional Locations': '',
+	'Search for country or region': '',
+	'Are you want to Disable Catalog Sync From your store?': '',
+	'You can Recync anytime with TikTok Catalog.': '',
+	'Yes, Disable': '',
 } satisfies typeof english;

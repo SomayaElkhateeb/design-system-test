@@ -1,9 +1,4 @@
 import { useTranslation } from 'react-i18next';
-
-import BaseTable, {
-	GlobalTableCell,
-} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-
 import { Switch } from 'src/app/components/ui/switch';
 import { getImageUrl } from 'src/app/utils';
 import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
@@ -12,6 +7,9 @@ import { Category } from '../Categories';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { useNavigate } from 'react-router-dom';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 
 export const CategoryTable = ({
 	categoryData,
@@ -71,9 +69,11 @@ export const CategoryTable = ({
 						</GlobalTableCell>,
 						<GlobalTableCell>{e.products}</GlobalTableCell>,
 						<GlobalTableCell>{e.subcategories}</GlobalTableCell>,
+
 						<GlobalTableCell>
 							<Switch checked={e.active} />
 						</GlobalTableCell>,
+
 						<GlobalTableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<div className='flex gap-4 items-center'>

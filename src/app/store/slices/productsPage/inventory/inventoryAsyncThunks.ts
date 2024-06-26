@@ -1,19 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { Product } from 'src/pages/ProductsPage/_comp/data';
-const URL = 'http://localhost:3007';
+import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 
-// get inventory
-export const getInventoryTable = createAsyncThunk(
-	'inventoryTable/getInventoryTable',
-	async (_, thunkAPI) => {
-		const { rejectWithValue } = thunkAPI;
-		try {
-			const { data } = await axios.get<Product[]>(`${URL}/allProducts`);
-			console.log('getInventoryTable: ', getInventoryTable);
-			return data;
-		} catch (error) {
-			throw rejectWithValue(error.message);
-		}
-	},
+export const getInventoryTable = createAsyncThunk('inventoryTable/getInventoryTable', () =>
+	PublicRequest.getData('allProducts'),
 );

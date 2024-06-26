@@ -47,13 +47,15 @@ export default function TaxesSettings() {
 				<SubHeader title={t('Taxes')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='custom_container grid md:grid-cols-3'>
-					<div className='col-span-2  grid gap-5'>
+				<div className='custom_container custom-grid-parent'>
+					<div className='grid-left flex flex-col gap-5'>
 						<TaxRates />
 						<TaxOptionsForm formStore={formStore} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<div className='px-5'>
+					<SubHeaderMobileBtns onSubmit={onSubmit} />
+				</div>
 			</form>
 		</Form>
 	);

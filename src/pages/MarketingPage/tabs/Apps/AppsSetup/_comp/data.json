@@ -1,6 +1,6 @@
 {
 	"facebook": {
-		"title": "Setup Facebook Ad Campaign",
+		"title": "Setup Facebook sales",
 		"settings": {
 			"connect_account": {
 				"title": "Connect your Facebook account",
@@ -8,7 +8,7 @@
 			},
 			"business_manager": {
 				"title": "Business manager",
-				"description": "Connect with Facebook manager you use to manage Facebook page, accounts, and product catalog. You need to be an admin to be able to connect a business manager.",
+				"description": "Connect with Facebook manager you use to manage Facebook page, accounts ,and product catalog, You need to be an admin to be able to connect a business manager.",
 				"companies": [
 					{
 						"name": "ABC Inc.",
@@ -69,7 +69,7 @@
 		}
 	},
 	"google": {
-		"title": "Setup Google Ad Campaign",
+		"title": "Setup Google sales",
 		"settings": {
 			"connect_account": {
 				"title": "Connect your Google account",

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { MultiChoiceChips, SetupCard } from 'src/app/components/optimized';
-import PopupProceed from 'src/app/components/optimized/Popups/PopupProceed';
+import { useTranslation } from 'react-i18next';
+import { Button, MultiChoiceChips, SetupCard } from 'src/app/components/optimized';
+import { GlobalDialog } from 'src/app/components/shared';
 import { PagesIcon, PaymentIcon, PhoneIcon } from 'src/app/utils/icons';
 
 interface PaymentMethod {
@@ -21,6 +22,7 @@ const GooglePayment: React.FC<GooglePaymentProps> = ({ data }) => {
 	const [isConfirm, setIsConfirm] = useState(false);
 	const theOptions = ['Business address', 'Email address', 'Phone number'];
 	const [options, setOptions] = useState<string[]>([]);
+	const { t } = useTranslation();
 
 	const iconMap = {
 		Payment: PaymentIcon,
@@ -31,8 +33,8 @@ const GooglePayment: React.FC<GooglePaymentProps> = ({ data }) => {
 	return (
 		<>
 			<div className='flex flex-col justify-between'>
-				<p>{data.description}</p>
-				<div className='flex gap-5 mt-5'>
+				<p className='global-install-p'>{data.description}</p>
+				<div className='flex gap-5 pt-5'>
 					{data &&
 						data.method?.map((item, index) => (
 							<SetupCard
@@ -47,25 +49,39 @@ const GooglePayment: React.FC<GooglePaymentProps> = ({ data }) => {
 				</div>
 			</div>
 
-			<PopupProceed
-				isOpen={isConfirm}
-				title='Contacts'
-				subTitle='Confirm you have 2 contact methods on your online store'
-				proceedButton='Confirm'
-				onClose={() => setIsConfirm(false)}
-				onProceed={() => console.log(false)}
-			>
-				<div>
-					<p className='mt-5'>
-						Google requires your contact information to be visible on your online store, before the
-						checkout, so customers can reach you.{' '}
-						<span className='cursor-pointer text-primary'>View our tutorial</span> on how to do this
-					</p>
-					<p className='mt-6'>Select the 2 contact methods added:</p>
+			{isConfirm && (
+				<GlobalDialog
+					openDialog={isConfirm}
+					handleClose={() => setIsConfirm(false)}
+					style={{ width: { md: '50%', xs: '80%' } }}
+				>
+					<div className='flex flex-col gap-4'>
+						<h2 className='title'>{t('Contacts')}</h2>
+						<p className='text-sm text-subtitle'>
+							Confirm you have 2 contact methods on your online store
+						</p>
+						<p className='text-sm text-title'>
+							Google requires your contact information to be visible on your online store, before
+							the checkout, so customers can reach you.{' '}
+							<span className='cursor-pointer text-primary'>View our tutorial</span> on how to do
+							this
+						</p>
+						<p className='text-sm text-title'>Select the 2 contact methods added:</p>
 
-					<MultiChoiceChips options={theOptions} setSelected={setOptions} selected={options} />
-				</div>
-			</PopupProceed>
+						<MultiChoiceChips options={theOptions} setSelected={setOptions} selected={options} />
+						<div className='flex-btn-end'>
+							<button
+								className='text-title font-semibold cursor-pointer'
+								onClick={() => setIsConfirm(false)}
+							>
+								{t('Cancel')}
+							</button>
+
+							<Button>{t('Confirm')}</Button>
+						</div>
+					</div>
+				</GlobalDialog>
+			)}
 		</>
 	);
 };

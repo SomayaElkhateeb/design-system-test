@@ -39,35 +39,30 @@ const SnapchatMarketingCatalog = () => {
 	};
 
 	return (
-		<div>
-			<div className='border w-2/3'>
-				<div className='flex flex-col p-4 bg-[#FAFCFB] border border-green-500 rounded-md '>
-					<h1 className='text-xl font-bold mb-4'>Catalog</h1>
-					<p className='mb-2'>Select Organization To Use For Catalog Sync</p>
-					<div className='w-1/3'>
-						<SelectBoxRow
-							options={options}
-							selectedValue={selectedOrganization}
-							defaultValue={'Select an organization'}
-							handleOnChange={handleSelectChange}
-						/>
-					</div>
-					<div className='flex justify-end'>
-						<Button
-							disabled={selectedOrganization === 'Select an organization'}
-							onClick={handleSync}
-						>
-							Sync
-						</Button>
-					</div>
+		<div className='p-5  flex flex-col gap-4'>
+			<div className='global-cards p-0 overflow-hidden'>
+				<h1 className='text-xl font-bold '>Catalog</h1>
+				<p className=''>Select Organization To Use For Catalog Sync</p>
+				<div className=''>
+					<SelectBoxRow
+						options={options}
+						selectedValue={selectedOrganization}
+						defaultValue={'Select an organization'}
+						handleOnChange={handleSelectChange}
+					/>
 				</div>
-				<p className='p-5 py-7'>
-					Your Products are being synced into a Snapchat catalog in your organization. only products
-					with the folowing required fields will be synced: id, title, description, link,
-					image-link, availability, brand or mpn or gtin (
-					<span className='text-primary cursor-pointer'>see required product metadata</span>).
-				</p>
+				<div className='flex justify-end'>
+					<Button disabled={selectedOrganization === 'Select an organization'} onClick={handleSync}>
+						Sync
+					</Button>
+				</div>
 			</div>
+			<p className='bg-constrained border-t py-2 px-5'>
+				Your Products are being synced into a Snapchat catalog in your organization. only products
+				with the folowing required fields will be synced: id, title, description, link, image-link,
+				availability, brand or mpn or gtin (
+				<span className='text-primary cursor-pointer'>see required product metadata</span>).
+			</p>
 		</div>
 	);
 };

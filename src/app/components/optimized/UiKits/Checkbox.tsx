@@ -6,17 +6,17 @@ import { CheckIcon } from 'src/app/utils/icons';
 // HOW TO USE
 
 // const ExampleComponent: React.FC = () => {
-// 	const [isChecked, setIsChecked] = useState<boolean>(false);
+// const [isChecked, setIsChecked] = useState<boolean>(false);
 
-// 	const handleCheckBoxChange = (isChecked: boolean) => {
-// 		setIsChecked(isChecked);
-// 	};
+// const handleCheckBoxChange = (isChecked: boolean) => {
+// 	setIsChecked(isChecked);
+// };
 
 // 	return (
 // 		<div>
 // 			<CheckBox
-// 				checked={isChecked}
-// 				handleOnChange={handleCheckBoxChange}
+// checked={isChecked}
+// handleOnChange={handleCheckBoxChange}
 // 				label='Example Label'
 // 				classes='custom-checkbox'
 // 			/>

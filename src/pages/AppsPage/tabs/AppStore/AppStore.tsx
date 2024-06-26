@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
-
 import data from '../../_comp/data.json';
-import FilterBar from '../../_comp/FilterBar';
 import InstallCard from './comp/InstallCard';
 import AllAppsView from '../../_comp/AllAppsView';
 import AppsWrapper from '../../_comp/AppsWrapper';

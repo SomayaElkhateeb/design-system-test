@@ -90,7 +90,7 @@ const SocialAppDetails: React.FC = () => {
 			>
 				<div className='flex gap-4 items-center'>
 					<div className='size-[120px] global-cards'>
-						<img src={getImageUrl(image)} alt={name} className='w-[90px] object-cover' />
+						<img src={getImageUrl(image)} alt={name} className='w-full h-full' />
 					</div>
 					<div className='max-w-[450px] text-white flex flex-col justify-between h-full py-2'>
 						<h2 className='capitalize font-semibold text-lg'>{name}</h2>

@@ -33,19 +33,22 @@ const LanguageSettings = () => {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-global '>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Languages & defaults')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='flex-col-global custom_container'>
-					<DefaultLanguageSection formStore={formStore} />
-					<AdminOrLanguageDefaults
-						language
-						title={t('Store defaults (shown to cutomers)')}
-						formStore={formStore}
-					/>
+				<div className='custom-grid-parent'>
+					<div className='flex-col-global custom_container grid-left'>
+						<DefaultLanguageSection formStore={formStore} />
+						<AdminOrLanguageDefaults
+							language
+							title={t('Store defaults (shown to cutomers)')}
+							formStore={formStore}
+						/>
+						<SubHeaderMobileBtns onSubmit={onSubmit} />
+					</div>
+					<div className='grid-right' />
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);
