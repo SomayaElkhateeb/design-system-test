@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useCallback } from 'react';
 import { Button, SetupCard } from 'src/app/components/optimized';
-import StepNavigator from 'src/app/components/StepNavigator/StepNavigator';
+
 import { basicSetup, servicesSetup } from './HomeConstants';
+import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 
 interface SetupsProps {
 	startTour: () => void;
@@ -13,8 +14,6 @@ export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	const { t } = useTranslation();
 
 	const [activeStep, setActiveStep] = useState(0);
-	console.log(activeStep);
-	console.log(55555);
 
 	const goNext = useCallback(() => {
 		setActiveStep((prevStep) => prevStep + 1);
@@ -65,7 +64,7 @@ function BasicSetup({ onNext }: { onNext: () => void }) {
 			return newState;
 		});
 	};
-	console.log(completedSteps);
+	
 	return (
 		<div className='flex flex-col lg:flex-row gap-4'>
 			{basicSetup.map(({ id, ...item }) => (
