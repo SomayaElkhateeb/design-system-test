@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from 'src/app/components/optimized';
+import { LinkIcon } from 'src/app/utils/icons';
 
 interface Partner {
 	userId: string;
@@ -20,23 +21,25 @@ const BusinessAccountCard: React.FC<Partner> = ({
 	};
 
 	return (
-		<div className='flex items-center justify-between overflow-hidden bg-white border-b rounded-lg'>
-			<div className='flex items-center px-5 py-4 border-b border-gray-200'>
-				<img className='w-10 h-10 mr-3 rounded-full' src={partnerImage} alt='Partner picture' />
+		<div className='flex flex-col items-start py-4 md:flex-row gap-5 md:items-center md:justify-between border-t'>
+			<div className='flex items-center gap-4'>
+				<img className='object-cover size-12' src={partnerImage} alt='Partner picture' />
 				<div className='flex flex-col'>
-					<span className='text-sm font-bold text-gray-800'>{partnerName}</span>
-					<span className='text-xs text-gray-500'>{status ? 'Connected' : 'Disconnected'}</span>
-					<p className='text-sm text-gray-800'>
-						<span className='text-gray-500'>User ID #</span>
-						{userId}
-					</p>
+					<span className='text-primary text-sm'>
+						{partnerName} <LinkIcon className='fill-primary p-0.5 inline' />
+					</span>
+					<div>
+						{/* <span className='text-xs text-gray-500'>{status ? 'Connected' : 'Disconnected'}</span> */}
+
+						<span className='text-xs text-subtitle'>User ID </span>
+						<span className='text-xs text-title font-semibold'>#{userId}</span>
+					</div>
 				</div>
 			</div>
-			<div className='p-4'>
-				<Button onClick={toggleStatus} variant='secondary'>
-					{status ? 'Disconnect' : 'Connect'}
-				</Button>
-			</div>
+
+			<Button onClick={toggleStatus} variant='secondary'>
+				{status ? 'Disconnect' : 'Connect'}
+			</Button>
 		</div>
 	);
 };

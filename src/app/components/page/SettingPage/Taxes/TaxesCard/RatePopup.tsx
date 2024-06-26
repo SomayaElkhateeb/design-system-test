@@ -10,7 +10,7 @@ import { Input } from 'src/app/components/ui/input';
 import useTaxPrograms, { addRateTypes } from './useTaxPrograms';
 
 const style = {
-	width: { md: '40rem', xs: '22rem' },
+	width: { md: '50%', xs: '90%' },
 };
 interface Props {
 	onClose: () => void;

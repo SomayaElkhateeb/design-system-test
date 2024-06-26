@@ -1,18 +1,18 @@
-import SnapchatMarketingCatalog from "./_comp/SnapchatMarketingCatalog";
+import { SubHeader } from 'src/app/components/optimized';
+import SnapchatMarketingCatalog from './_comp/SnapchatMarketingCatalog';
+import { useTranslation } from 'react-i18next';
 
 const SnapchatCatalog = () => {
+	const { t } = useTranslation();
 	return (
-		<section>
-			<div className='p-4 text-black bg-white'>
-				<h3 className='text-xl font-medium'>Setup Marketing Catalog</h3>
-			</div>
-			<div className='bg-[#F9FAFC] p-4 flex flex-col items-center'>
-				<div className='w-4/5'>
-					<h2 className='font-bold text-2xl mb-5'>Set Up Business Marketing Catalog </h2>
-					<SnapchatMarketingCatalog />
-				</div>
-			</div>
-		</section>
+		<>
+			<SubHeader title={t('Setup Marketing Catalog')} />
+			<section className='p-5 w-[90%] lg:w-[60%] mx-auto flex flex-col gap-4'>
+				<h2 className='title text-lg'>{t('Set Up Business Marketing Catalog')} </h2>
+
+				<SnapchatMarketingCatalog />
+			</section>
+		</>
 	);
 };
 

@@ -6,7 +6,6 @@ import {
 	SubHeader,
 	Button,
 } from 'src/app/components/optimized';
-
 import { getImageUrl } from 'src/app/utils';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
@@ -101,8 +100,8 @@ export default function Smsa() {
 					</Button>
 				</SubHeader>
 			)}
-			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-				<div className='flex-col-global lg:col-span-2'>
+			<div className='custom-grid-parent custom_container'>
+				<div className='flex-col-global grid-left'>
 					<section className='cardDetails-sharedClass p-5'>
 						<div className='flex gap-3 pb-2'>
 							<img src={getImageUrl('companies/express.svg')} className='w-44' />
@@ -128,7 +127,7 @@ export default function Smsa() {
 						<div className='pt-5 flex flex-col gap-5 w-[60%]'>
 							{smsa.map((item) => (
 								<div key={item.id}>
-									<h3 className='text-title font-semibold'>{item.title}</h3>
+									<h3 className='title'>{item.title}</h3>
 									<p className='text-sm text-title'>{item.description}</p>
 								</div>
 							))}
@@ -147,7 +146,7 @@ export default function Smsa() {
 					</section>
 				</div>
 
-				<div className='col-span-1 flex flex-col gap-5'>
+				<div className='grid-right flex flex-col gap-5'>
 					<ContactCard title={t('Pricing')} data={pricing} contacts={false} />
 					<ContactCard title={t('Contact')} data={contact} contacts={true} />
 				</div>

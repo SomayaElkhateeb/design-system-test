@@ -56,7 +56,7 @@ const LegalDetails = ({
 						/>
 
 						<FileInput
-						id={"CommercialRegistrationImage"}
+							id={'CommercialRegistrationImage'}
 							label={t('Commercial Registration Image')}
 							error={formStore.formState.errors.CommercialRegistrationImage?.message}
 							onImageSubmit={onImageSubmit}
@@ -69,7 +69,7 @@ const LegalDetails = ({
 
 				{state === 'individual' && (
 					<FileInput
-					id={"NationalIDImage"}
+						id={'NationalIDImage'}
 						label={t('National ID Image')}
 						error={formStore.formState.errors.NationalIDImage?.message}
 						onImageSubmit={onImageSubmitNationalID}

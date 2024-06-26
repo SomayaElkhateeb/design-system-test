@@ -62,10 +62,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 					name='storeContactPhone'
 					label={t('Store contact phone')}
 					render={(field) => (
-						<CustomPhoneInput
-							value={field.value}
-							onHandleChange={field.onChange}
-						/>
+						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 					)}
 				/>
 			</div>

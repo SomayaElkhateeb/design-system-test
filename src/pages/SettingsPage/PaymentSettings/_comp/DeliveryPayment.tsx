@@ -21,7 +21,7 @@ interface DeliveryPaymentProps {
 }
 
 const style = {
-	width: { md: '40rem', xs: '22rem' },
+	width: { md: '50%', xs: '90%' },
 };
 
 export default function DeliveryPayment({

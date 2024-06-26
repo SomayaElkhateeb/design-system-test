@@ -23,14 +23,13 @@ export default function FormSwitchField<T extends FieldValues>({
 }: FormSwitchFieldProps<T>) {
 	const { t } = useTranslation();
 	return (
-		<div className='flex justify-between items-center col-span-2'>
-			{(label ||
-				description) && (
-					<div className='grid gap-1'>
-						{label && <h3 className='title '>{t(label as any)}</h3>}
-						{description && <p className='paragraph text-subtitle'>{t(description as any)}</p>}
-					</div>
-				)}
+		<div className='flex md:flex-row md:justify-between md:items-center col-span-2 flex-col items-start gap-3'>
+			{(label || description) && (
+				<div className='grid gap-1'>
+					{label && <h3 className='title '>{t(label as any)}</h3>}
+					{description && <p className='paragraph text-subtitle'>{t(description as any)}</p>}
+				</div>
+			)}
 			<FormField
 				label={fieldLabel}
 				formStore={formStore}

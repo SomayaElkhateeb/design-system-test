@@ -16,9 +16,11 @@ export default function EmailNotification() {
 	) : (
 		<div className='flex-col-global '>
 			<SubHeader title={t('Notifications')} />
-			<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-				<CustomerOrderNotifcation />
-				<Customization />
+			<div className='custom-grid-parent custom_container'>
+				<div className='grid-left flex flex-col gap-5'>
+					<CustomerOrderNotifcation />
+					<Customization />
+				</div>
 			</div>
 		</div>
 	);

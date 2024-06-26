@@ -1,19 +1,27 @@
-import TikTokMarketingCatalog from "./_comp/TikTokMarketingCatalog";
+import { Button, SubHeader } from 'src/app/components/optimized';
+import { useTranslation } from 'react-i18next';
+import Business from './_comp/Business';
+import Location from './_comp/Location';
+import { useState } from 'react';
 
-const TikTokCatalog = () => {
+export default function TikTokCatalog() {
+	const { t } = useTranslation();
+	const [isCatalogLocationChecked, setIsCatalogLocationChecked] = useState(false);
+	const [isBusinessCenterChecked, setBusinessCenterChecked] = useState(false);
 	return (
-		<section>
-			<div className='p-4 text-black bg-white'>
-				<h3 className='text-xl font-medium'>Setup Marketing Catalog</h3>
-			</div>
-			<div className='bg-[#F9FAFC] p-4 flex flex-col items-center'>
-				<div className='w-4/5'>
-					<h2 className='font-bold text-2xl mb-5'>Set Up Business Marketing Catalog </h2>
-                    <TikTokMarketingCatalog/>
-				</div>
-			</div>
-		</section>
-	);
-};
+		<>
+			<SubHeader title={t('Setup Marketing Catalog')} />
+			<section className='p-5 w-[90%] lg:w-[60%] mx-auto flex flex-col gap-4'>
+				<h2 className='title text-lg'>{t('Set Up Business Marketing Catalog')} </h2>
+				<Business setBusinessCenterChecked={setBusinessCenterChecked} />
+				<Location setIsCatalogLocationChecked={setIsCatalogLocationChecked} />
 
-export default TikTokCatalog;
+				{isBusinessCenterChecked && isCatalogLocationChecked && (
+					<div className='flex justify-end'>
+						<Button>{t('Finish setup')}</Button>
+					</div>
+				)}
+			</section>
+		</>
+	);
+}
