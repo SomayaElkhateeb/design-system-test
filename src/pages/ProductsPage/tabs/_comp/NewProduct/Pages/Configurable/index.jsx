@@ -10,15 +10,8 @@ import {
 	ProductFormShippingSection,
 	ProductFormStockSection,
 	SeoFormFaqsSection,
-	productDimensionUnitMap,
-	productShippingMethodMap,
-	productShippingRateMap,
-	productShippingTypeMap,
-	productTypeMap,
-	productWeightUnitMap,
 } from '../../..';
-
-import { ProductSchema } from './utils';
+import { ProductDefaultValues, ProductSchema } from './utils';
 import { useForm } from 'src/app/utils/hooks/form';
 
 const productsSections = [
@@ -75,42 +68,7 @@ export default function ConfigurableProductPage() {
 		handleSubmit: (values) => {
 			console.log(values);
 		},
-		defaultValues: {
-			productType: productTypeMap.configurable,
-			bulkPrices: [],
-			shipping: {
-				type: productShippingTypeMap.pickup,
-				statesOfTheProduct: [],
-				isShippableOrPickupable: true,
-				weightUnit: productWeightUnitMap.kg,
-				dimensionUnit: productDimensionUnitMap.cm,
-				rateType: productShippingRateMap['fixed rate'],
-				rateValue: 0,
-				method: productShippingMethodMap['Dhl (main)'],
-				weight: 0,
-				dimensions: {
-					length: 0,
-					width: 0,
-					height: 0,
-				},
-			},
-			isTaxable: true,
-			price: 0,
-			canContinueSellingWhenOutOfStock: false,
-			branches:
-				// TODO: Remove this when branches feature is ready
-				// This is a temporary test data
-				// For development purposes, we are adding a default branch
-				// and should be removed when we have the branches feature ready
-				process.env.NODE_ENV === 'development'
-					? [{ id: '1', name: 'Main Branch', quantity: 0 }]
-					: [],
-			metaKeywords: [],
-			options: [],
-			variations: [],
-			faqs: [],
-			specifications: [],
-		},
+		defaultValues: ProductDefaultValues,
 	});
 
 	return (

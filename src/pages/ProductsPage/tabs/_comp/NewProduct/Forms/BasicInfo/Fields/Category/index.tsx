@@ -7,34 +7,33 @@ import {
 	SelectValue,
 	SelectItem,
 } from 'src/app/components/ui/select';
-import { FaCirclePlus } from 'react-icons/fa6';
-import { Dialog, DialogContent, DialogTrigger } from 'src/app/components/ui/dialog';
-import CategoryForm from './CategoryForm';
+import AddCategoryForm from './AddCategoryForm';
 import { Button } from 'src/app/components/optimized';
+import { useState } from 'react';
 
 function CategoryDialog() {
 	const { t } = useTranslation();
+	const [openDialog, setOpenDialog] = useState<boolean>(false);
 
 	return (
-		<Dialog>
-			<DialogTrigger>
-				<Button
-					variant='secondary'
-					textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
-					className='border-input border-s-0 rounded-s-none'
-				>
-					<FaCirclePlus className='size-5' />
-					{t('Add New')}
-				</Button>
-			</DialogTrigger>
-			<DialogContent className='p-8'>
-				<CategoryForm
-					handleSubmit={(values) => {
-						// console.log(values);
-					}}
-				/>
-			</DialogContent>
-		</Dialog>
+		<>
+			<Button
+				variant='secondary'
+				textClassName='flex items-center justify-center gap-1.5 whitespace-nowrap'
+				className='border-input border-s-0 rounded-s-none'
+				onClick={() => setOpenDialog(true)}
+			>
+				{t('Add New')}
+			</Button>
+
+			<AddCategoryForm
+				openDialog={openDialog}
+				handleClose={() => setOpenDialog(false)}
+				handleSubmit={(values) => {
+					// console.log(values);
+				}}
+			/>
+		</>
 	);
 }
 
@@ -45,7 +44,6 @@ function CategoryDialog() {
  */
 export default function ProductFormCategoryField(props) {
 	const { t } = useTranslation();
-	
 
 	return (
 		<FormField

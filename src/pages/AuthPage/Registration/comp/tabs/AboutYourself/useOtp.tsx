@@ -10,6 +10,7 @@ export interface OtpVerificationInterface {
 const otpSchema = {
 	otp: z.string().min(3, 'OTP code is required').length(6, 'OTP code must be 6 digits'),
 };
+
 export default function useOtp({ onVerify }: { onVerify: () => void }) {
 	const [timer, setTimer] = useState(10);
 	const [isResendVisible, setIsResendVisible] = useState(false);
@@ -23,7 +24,7 @@ export default function useOtp({ onVerify }: { onVerify: () => void }) {
 		}
 	}, [timer]);
 
-	const resetTimer = () => {
+	const resetTimer = (): void => {
 		setTimer(10);
 		setIsResendVisible(false);
 	};

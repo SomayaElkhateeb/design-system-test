@@ -6,7 +6,7 @@ const handleButtonVariant = cva(undefined, {
 		variant: {
 			link: 'text-primary flex flex-row justify-center items-center capitalize gap-1',
 			secondary: 'btn-sec',
-			primary:  'btn-pri',
+			primary: 'btn-pri',
 			tertiary: 'btn-ter',
 			LearnButton:
 				'title text-white rounded-[.2rem]  px-4 py-2   border border-white bg-transparent flex items-center gap-1.5',
@@ -109,7 +109,7 @@ export default function Button({
 	let textClass = handleTextVariant({ variant, className: textClassName });
 
 	return (
-		<button type='button' {...props} className={cn(buttonClass, className)}>
+		<button disabled={loading} type='button' {...props} className={cn(buttonClass, className)}>
 			{/* Render loading spinner if loading is true */}
 			{loading ? (
 				<div className='flex items-center justify-center px-6 py-1'>
