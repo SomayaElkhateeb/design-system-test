@@ -1,16 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import BranchCard from './BranchesPage/BranchCard';
+import BranchesFilter from './BranchesPage/FilterBar';
+import useBranch, { Branch } from './BranchesPage/useBranch';
 import { SubHeader, Button } from 'src/app/components/optimized';
-import BranchCard from 'src/app/components/page/SettingPage/BranchesSettings/BranchesPage/BranchCard';
-export interface Branch {
-	id: number;
-	name: string;
-	address: string;
-	city: string;
-	country: string;
-	phone: string;
-}
-const demoData: Branch[] = [
+
+export const branchesData: Branch[] = [
 	{
 		id: 1,
 		name: 'Branch 1',
@@ -18,6 +13,8 @@ const demoData: Branch[] = [
 		city: 'City 1',
 		country: 'Country 1',
 		phone: '123-456-7890',
+		isMain: true,
+		branchType: 'warehouse',
 	},
 	{
 		id: 2,
@@ -26,6 +23,8 @@ const demoData: Branch[] = [
 		city: 'City 2',
 		country: 'Country 2',
 		phone: '987-654-3210',
+		isMain: false,
+		branchType: 'commercialBranch',
 	},
 ];
 
@@ -33,16 +32,19 @@ export default function BranchesSettings() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { filter, filteredData, handleFilterChange } = useBranch(branchesData);
+
 	return (
 		<div className='flex-col-global'>
-			<SubHeader title={t('Branches')}>
-				<Button variant='primary' onClick={() => navigate('add-branch')}>
-					{t('Add Branch')}
-				</Button>
-			</SubHeader>
-			<div className='grid grid-cols-3  container mx-auto'>
+			<div>
+				<SubHeader title={t('Branches')}>
+					<Button variant='primary' text={t('Add Branch')} onClick={() => navigate('add-branch')} />
+				</SubHeader>
+				<BranchesFilter onFilterChange={handleFilterChange} filter={filter} />
+			</div>
+			<div className='grid grid-cols-3 container mx-auto'>
 				<div className='grid gap-5 col-span-3 lg:col-span-2'>
-					{demoData.map((branch) => (
+					{filteredData.map((branch) => (
 						<BranchCard key={branch.id} {...branch} />
 					))}
 				</div>

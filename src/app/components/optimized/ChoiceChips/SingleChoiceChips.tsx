@@ -7,42 +7,7 @@ interface props{
 	type?:string
 	icon?:React.ReactNode
 }
-/**
 
- *
- * @description
- *
- * Usage Example:
- *
- * ```jsx
- * import { useState } from "react";
- * import SingleChoiceChips from "./SingleChoiceChips";
- * import { LocationIcon } from "src/app/utils/icons";
- *
- * const MyComponent = () => {
- *   const [selectedOption, setSelectedOption] = useState("");
- *
- *   const handleOptionSelect = (option) => {
- *     setSelectedOption(option);
- *   };
- *
- *   const simpleOptions = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
- *
- *   return (
- *     <div>
- *       <SingleChoiceChips
- * 			   options={simpleOptions}
- * 			   setSelected={handleOptionSelect}
- * 			   selected={selectedOption}
- *         icon={<LocationIcon />} // Optional icon
- *       />
- *    </div>
- *   );
- * };
- *
- * export default MyComponent;
- * ```
- */
 export default function SingleChoiceChips(props:props) {
 	return (
 		<div className='flex flex-wrap gap-2  '>
@@ -92,3 +57,39 @@ function Chip(props:ChipProps) {
 // 	icon: null,
 // 	type: 'array',
 // };
+/**
+
+ *
+ * @description
+ *
+ * Usage Example:
+ *
+ * ```jsx
+ * import { useState } from "react";
+ * import SingleChoiceChips from "./SingleChoiceChips";
+ * import { LocationIcon } from "src/app/utils/icons";
+ *
+ * const MyComponent = () => {
+ *   const [selectedOption, setSelectedOption] = useState("");
+ *
+ *   const handleOptionSelect = (option) => {
+ *     setSelectedOption(option);
+ *   };
+ *
+ *   const simpleOptions = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
+ *
+ *   return (
+ *     <div>
+ *       <SingleChoiceChips
+ * 			   options={simpleOptions}
+ * 			   setSelected={handleOptionSelect}
+ * 			   selected={selectedOption}
+ *         icon={<LocationIcon />} // Optional icon
+ *       />
+ *    </div>
+ *   );
+ * };
+ *
+ * export default MyComponent;
+ * ```
+ */

@@ -10,7 +10,7 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import { countries } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
 export default function PrimaryAddressForm({
 	formStore,

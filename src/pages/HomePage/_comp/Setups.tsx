@@ -49,6 +49,7 @@ export default function Setups({ startTour, handleSetup }: SetupsProps) {
 // ------------------
 
 function BasicSetup({ onNext }: { onNext: () => void }) {
+
 	const [completedSteps, setCompletedSteps] = useState({
 		generalSettings: false,
 		addProducts: false,
@@ -91,7 +92,7 @@ function ServicesSetup({ onFinish }: { onFinish: () => void }) {
 	};
 
 	return (
-		<div className='flex flex-col lg:flex-row gap-4'>
+		<div className='flex flex-col lg:flex-row gap-4 bg-gray'>
 			{servicesSetup.map(({ id, ...item }) => (
 				<SetupCard key={id} {...item} onButtonClick={() => handleStepCompletion(id)} />
 			))}

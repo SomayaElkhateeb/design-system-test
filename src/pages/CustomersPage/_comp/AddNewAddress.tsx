@@ -7,7 +7,7 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { countries } from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/BranchInfo';
+import { countries } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';

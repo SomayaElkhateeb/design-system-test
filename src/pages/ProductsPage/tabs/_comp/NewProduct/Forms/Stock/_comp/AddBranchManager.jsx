@@ -1,8 +1,7 @@
-
 import { useTranslation } from 'react-i18next';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { Button } from 'src/app/components/optimized';
-import AddBranch from 'src/app/components/page/SettingPage/BranchesSettings/AddBranch/AddBranch';
+import AddBranch from 'src/pages/SettingsPage/BranchesSettings/AddBranch/AddBranch';
 import { Dialog, DialogContent, DialogTrigger } from 'src/app/components/ui/dialog';
 import { ScrollArea, ScrollBar } from 'src/app/components/ui/scroll-area';
 
