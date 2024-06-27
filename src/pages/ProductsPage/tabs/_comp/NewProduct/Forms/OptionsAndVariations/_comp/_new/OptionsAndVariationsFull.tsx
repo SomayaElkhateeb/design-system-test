@@ -26,8 +26,8 @@ const OptionsAndVariationsFull = () => {
 		{ value: 'Medium', priceDifference: -50, path: '' },
 	]);
 
-	const [moreOption, setMoreOption] = useState(false);
 	const [addOption, setAddOption] = useState(false);
+	const [moreOption, setMoreOption] = useState(false);
 
 	const options = ['Size', 'Color', 'Add new'];
 
@@ -179,6 +179,7 @@ const OptionsAndVariationsFull = () => {
 					setColorOptions={setColorOptions}
 					setSizeOptions={setSizeOptions}
 					moreOption={moreOption}
+					setAddOption={setAddOption}
 				/>
 			)}
 		</div>
