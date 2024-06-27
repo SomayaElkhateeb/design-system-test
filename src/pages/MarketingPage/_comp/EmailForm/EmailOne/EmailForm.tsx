@@ -6,39 +6,27 @@ import { useSearchParams } from 'react-router-dom';
 import EmailContent from './_comp/EmailContent';
 import EmailOptions from './_comp/EmailOptions';
 
-function EmailOne() {
+function EmailForm() {
 	const { t } = useTranslation();
 	const [_, setSearchParams] = useSearchParams();
 
-	const [emailContent, setEmailContent] = useState({
-		to: '',
-		subject: 'Subject',
-		from: '',
-		body: 'We have a surprise!',
-		link: '',
-	});
-
-	const [emailOptions, setEmailOptions] = useState({
-		fontSize: 16,
-		textColor: '#000000',
-		bgColor: '#ffffff',
-		alignment: 'center',
-		isBold: false,
-		isItalic: false,
-	});
-
 	return (
-		<section>
+		<>
 			<SubHeader title={t('Email Form')}>
 				<Button variant='primary' onClick={() => setSearchParams({ subscribe: 'active' })}>
-					Submit emails
+					{t('submit emails')}
 				</Button>
 			</SubHeader>
 
-			<div className='min-h-screen bg-gray-100 p-6 flex justify-between'>
-				<div className='w-1/2 bg-white p-6 rounded-lg shadow-md'>
-					<EmailContent emailContent={emailContent} setEmailContent={setEmailContent} />
-					<div>
+			<section className='custom_container custom-grid-parent py-5'>
+				<div className='grid-left'>
+					<EmailContent />
+				</div>
+				<div className='grid-right'>
+					<EmailOptions />
+				</div>
+
+				{/* <div>
 						<div
 							style={{
 								fontSize: `${emailOptions.fontSize}px`,
@@ -54,13 +42,10 @@ function EmailOne() {
 							{emailContent.body}
 							<p className='text-[1.3rem]'>{emailContent.subject}</p>
 						</div>
-					</div>
-				</div>
-
-				<EmailOptions emailOptions={emailOptions} setEmailOptions={setEmailOptions} />
-			</div>
-		</section>
+					</div> */}
+			</section>
+		</>
 	);
 }
 
-export default EmailOne;
+export default EmailForm;
