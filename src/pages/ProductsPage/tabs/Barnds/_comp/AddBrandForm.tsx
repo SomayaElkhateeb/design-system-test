@@ -10,31 +10,23 @@ import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoComplet
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
-import FormField from 'src/app/components/ui/form/field';
-import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
+
 import { TfiUpload } from 'react-icons/tfi';
 import { AddBrandSchemaValues, addBrandFormSchema } from '../_hook/AddbrandsFormSchema';
+import ImageInput from 'src/app/components/ui/form/ImageInput';
 
 interface AddBrandFormProps {
 	openDialog: boolean;
 	handleClose: () => void;
-	handleBrandSubmit?: (values: AddBrandSchemaValues) => void;
 }
 
-export default function AddBrandForm({
-	openDialog,
-	handleClose,
-	handleBrandSubmit,
-}: AddBrandFormProps) {
+export default function AddBrandForm({ openDialog, handleClose }: AddBrandFormProps) {
 	const { t } = useTranslation();
 
 	const { formStore, onSubmit } = useForm({
 		schema: addBrandFormSchema,
 		handleSubmit: (values: AddBrandSchemaValues) => {
-			if (handleBrandSubmit) {
-				handleBrandSubmit(values);
-			}
+			console.log(values);
 		},
 		defaultValues: {
 			brandNameEn: '',
@@ -63,28 +55,10 @@ export default function AddBrandForm({
 							<>
 								<TabPanel value='1'>
 									<div className='flex md:flex-row items-start flex-col gap-[2rem]'>
-										<FormField
-											formStore={formStore}
-											name='image'
-											render={({ onChange, value, ...field }) => (
-												<FileInput
-													className={fileClassName}
-													{...field}
-													options={getDefaultFileInputOptions({
-														accept: { 'image/*': [] },
-														setError: (error) => {
-															formStore.setError('image', { message: error.message });
-														},
-														onFileLoad: (params) => {
-															onChange(params.file);
-														},
-													})}
-												>
-													<TfiUpload className='text-[1.5rem]' />
-													<p>{t('Brand logo')}</p>
-												</FileInput>
-											)}
-										/>
+										<ImageInput<AddBrandSchemaValues> name={'image'} formStore={formStore}>
+											<TfiUpload className='text-[1.5rem]' />
+											<p className='paragraph text-center'>{t('Brand logo')}</p>
+										</ImageInput>
 										<div className='flex-col-global md:w-[80%] w-full'>
 											<TabbedFormField
 												formStore={formStore}
