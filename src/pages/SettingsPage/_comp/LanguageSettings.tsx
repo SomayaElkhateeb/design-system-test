@@ -37,8 +37,8 @@ const LanguageSettings = () => {
 				<SubHeader title={t('Languages & defaults')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='custom-grid-parent'>
-					<div className='flex-col-global custom_container grid-left'>
+				<div className='custom-grid-parent custom_container'>
+					<div className='flex-col-global  grid-left'>
 						<DefaultLanguageSection formStore={formStore} />
 						<AdminOrLanguageDefaults
 							language

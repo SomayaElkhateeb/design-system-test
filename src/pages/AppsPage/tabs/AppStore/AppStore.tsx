@@ -3,12 +3,13 @@ import data from '../../_comp/data.json';
 import InstallCard from './comp/InstallCard';
 import AllAppsView from '../../_comp/AllAppsView';
 import AppsWrapper from '../../_comp/AppsWrapper';
-import useAppStore from '../../_comp/useAppStore';
+
 import { AppsCard } from 'src/app/components/optimized';
 import CategoryButton from 'src/app/components/optimized/Buttons/CategoryButton';
 import PriceButton from 'src/app/components/optimized/Buttons/PriceButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
+import useAppStore from '../../_hook/useAppStore';
 
 export default function AppStore() {
 	const { t } = useTranslation();

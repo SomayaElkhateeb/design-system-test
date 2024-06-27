@@ -1,7 +1,7 @@
 import CompareBar from 'src/app/components/optimized/UiKits/CompareBar';
 import AnalyticsTableActions from '../../_comp/AnalyticsTableActions';
 import { ColumnChart } from 'src/app/components/optimized';
-import useAnalyticsData from '../../_comp/useAnalyticsData';
+import useAnalyticsData from '../../_hook/useAnalyticsData';
 import data from '../../_comp/data.json';
 import { useTranslation } from 'react-i18next';
 import CustomersTable from './comp/CustomersTable';

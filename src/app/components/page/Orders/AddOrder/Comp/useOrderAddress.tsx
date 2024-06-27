@@ -51,12 +51,20 @@ export const createAddressSchema = (
 		search: getConditionalSchema(sendGift),
 	};
 };
-export default function useOrderAddress(
-	sendGift?: boolean,
-	selectedOption?: string,
-	isName?: boolean,
-	onNext?: () => void,
-) {
+interface useOrderAddressProps {
+	sendGift?: boolean;
+	selectedOption?: string;
+	isName?: boolean;
+	onNext?: () => void;
+}
+export default function useOrderAddress({
+	sendGift,
+	selectedOption,
+	isName,
+	onNext,
+}: useOrderAddressProps) {
+
+	
 	const handleSubmit = (values: AddAddressInterface) => {
 		console.log('values: ', values);
 		if (onNext) {

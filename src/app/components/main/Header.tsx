@@ -1,18 +1,28 @@
-import { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NavIcon, SearchIcon } from 'src/app/utils/icons';
 import { GoSearch } from 'react-icons/go';
-import HelpCenterBtn from '../optimized/Buttons/HelpCenterBtn';
-import ViewBtn from '../optimized/Buttons/ViewBtn';
-import ChatBtn from '../optimized/Buttons/ChatBtn';
-import NotificationBtn from '../optimized/Buttons/NotificationBtn';
-import ProfileBtn from '../optimized/Buttons/ProfileBtn';
-import HeaderLoading from '../optimized/SchimmerLoading/HeaderLoading';
-import SearchBtn from '../optimized/Buttons/SearchBtn';
+// import HelpCenterBtn from '../optimized/Buttons/HelpCenterBtn';
+// import ViewBtn from '../optimized/Buttons/ViewBtn';
+// import ChatBtn from '../optimized/Buttons/ChatBtn';
+// import NotificationBtn from '../optimized/Buttons/NotificationBtn';
+// import ProfileBtn from '../optimized/Buttons/ProfileBtn';
+// import HeaderLoading from '../optimized/SchimmerLoading/HeaderLoading';
+// import SearchBtn from '../optimized/Buttons/SearchBtn';
 import { getImageUrl } from 'src/app/utils';
 import { useMediaQuery } from 'react-responsive';
+// -------------------------------------------------------------------------------------
 
+// Lazy-loaded components
+const HelpCenterBtn = lazy(() => import('../optimized/Buttons/HelpCenterBtn'));
+const ViewBtn = lazy(() => import('../optimized/Buttons/ViewBtn'));
+const ChatBtn = lazy(() => import('../optimized/Buttons/ChatBtn'));
+const NotificationBtn = lazy(() => import('../optimized/Buttons/NotificationBtn'));
+const ProfileBtn = lazy(() => import('../optimized/Buttons/ProfileBtn'));
+const HeaderLoading = lazy(() => import('../optimized/SchimmerLoading/HeaderLoading'));
+const SearchBtn = lazy(() => import('../optimized/Buttons/SearchBtn'));
+// -------------------------------------------------------------------------------------
 const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 	//  hooks
 	const [showLoading, setShowLoading] = useState(true);
@@ -50,10 +60,10 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 	});
 
 	return (
-		<>
-			{showLoading ? (
+		<Suspense fallback={<HeaderLoading />}>
+			{/* {showLoading ? (
 				<HeaderLoading />
-			) : (
+			) : ( */}
 				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white z-40'>
 					<div className='flex items-center gap-3'>
 						<button className='max-lg:hidden' onClick={setIsOpen}>
@@ -76,8 +86,8 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 
 					<ProfileInfo />
 				</div>
-			)}
-		</>
+			{/* )} */}
+		</Suspense>
 	);
 };
 

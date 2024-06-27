@@ -6,11 +6,13 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import BranchAppointments from './BranchAppointments';
 import BranchInfo from './BranchInfo';
-import useCustomHookAddBranchForm, { BranchSettingsInterface } from './HookForAddBranchForm';
+import useAddBranchForm, { BranchSettingsInterface } from './_hook/useAddBranchForm';
+
 export default function AddBranch(props: {
 	hideHeader?: boolean;
 	handleSubmit?: (values: BranchSettingsInterface) => void;
@@ -27,10 +29,7 @@ export default function AddBranch(props: {
 	};
 
 	// custom hook
-	const { branchSettingsSchema, handelDefaultValue } = useCustomHookAddBranchForm(
-		sendGift,
-		selectedOption,
-	);
+	const { branchSettingsSchema, handelDefaultValue } = useAddBranchForm(sendGift, selectedOption);
 	const { formStore, onSubmit } = useForm({
 		schema: branchSettingsSchema,
 		handleSubmit: handleSubmit,
@@ -56,11 +55,11 @@ export default function AddBranch(props: {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
 				{/* {!props.hideHeader && ( */}
-					<SubHeader title={t('Add Branch')}>
-						<SubHeaderDefaultBtns onSubmit={onSubmit} />
-					</SubHeader>
+				<SubHeader title={t('Add Branch')}>
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+				</SubHeader>
 				{/* )} */}
-				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3'>
+				<div className='grid gap-5 md:grid-cols-3 custom_container pb-3 '>
 					<div className='flex-col-global md:col-span-2'>
 						<BranchInfo
 							sendGift={sendGift}

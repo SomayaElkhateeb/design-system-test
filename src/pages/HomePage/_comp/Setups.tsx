@@ -1,7 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { Button, SetupCard, TabX } from 'src/app/components/optimized';
-import { StoreLaunchStep, storeLaunchSteps } from './HomeConstants';
+import { useState, useCallback } from 'react';
+import { Button, SetupCard } from 'src/app/components/optimized';
+
+import { basicSetup, servicesSetup } from './HomeConstants';
+import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
+
 interface SetupsProps {
 	startTour: () => void;
 	handleSetup: () => void;
@@ -9,58 +12,97 @@ interface SetupsProps {
 // Setups Parent Component
 export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	const { t } = useTranslation();
-	const [currentTab, setCurrentTab] = useState(0);
-	const [_, setFinish] = useState(false);
 
-	const handleTabClick = (index: number) => {
-		setCurrentTab(index);
-	};
+	const [activeStep, setActiveStep] = useState(0);
 
-	const handleNext = () => {
-		if (currentTab < tabs.length - 1) {
-			setCurrentTab(currentTab + 1);
-		}
-	};
+	const goNext = useCallback(() => {
+		setActiveStep((prevStep) => prevStep + 1);
+	}, []);
 
-	const handlePrev = () => {
-		if (currentTab > 0) {
-			setCurrentTab(currentTab - 1);
-		}
+	const handleFinish = () => {
+		console.log('Finish');
+		handleSetup();
+		// Implement additional finish logic here
 	};
-
-	const handleFinish = (value: boolean) => {
-		setFinish(value);
-	};
+	// 
 	const tabs = [
 		{
 			title: t('Basic setup'),
-			content: <SetupCardsWrapper items={storeLaunchSteps.basicSetup} />,
+			content: <BasicSetup onNext={goNext} />,
 		},
 		{
 			title: t('Services setup'),
-			content: <SetupCardsWrapper items={storeLaunchSteps.servicesSetup} />,
+			content: <ServicesSetup onFinish={handleFinish}/>,
 		},
 	];
 	return (
 		<section className='grid gap-3'>
 			<SetupsHeader startTour={startTour} />
-			<TabX
-				tabs={tabs}
-				currentTab={currentTab}
-				handleNext={handleNext}
-				handlePrev={handlePrev}
-				handleFinish={handleFinish}
-				handleTabClick={handleTabClick}
-			/>
+			<StepNavigator steps={tabs} activeStep={activeStep} setActiveStep={setActiveStep} />
 		</section>
 	);
 }
 
-// Header Component
-interface SetupsHeaderProps {
-	startTour: () => void;
+// ------------------
+// Wrapper Component.
+// ------------------
+
+function BasicSetup({ onNext }: { onNext: () => void }) {
+
+	const [completedSteps, setCompletedSteps] = useState({
+		generalSettings: false,
+		addProducts: false,
+		createInventory: false,
+	});
+
+	const handleStepCompletion = (id: any) => {
+		setCompletedSteps((prevState) => {
+			const newState = { ...prevState, [id]: true };
+			if (Object.values(newState).every((step) => step)) {
+				onNext();
+			}
+			return newState;
+		});
+	};
+	
+	return (
+		<div className='flex flex-col lg:flex-row gap-4'>
+			{basicSetup.map(({ id, ...item }) => (
+				<SetupCard key={id} {...item} onButtonClick={() => handleStepCompletion(id)} />
+			))}
+		</div>
+	);
 }
-function SetupsHeader({ startTour }: SetupsHeaderProps) {
+//
+function ServicesSetup({ onFinish }: { onFinish: () => void }) {
+	const [completedSteps, setCompletedSteps] = useState({
+		addShipping: false,
+		addPayment: false,
+	});
+
+	const handleStepCompletion = (id: any) => {
+		setCompletedSteps((prevState) => {
+			const newState = { ...prevState, [id]: true };
+			if (Object.values(newState).every((step) => step)) {
+				onFinish();
+			}
+			return newState;
+		});
+	};
+
+	return (
+		<div className='flex flex-col lg:flex-row gap-4 bg-gray'>
+			{servicesSetup.map(({ id, ...item }) => (
+				<SetupCard key={id} {...item} onButtonClick={() => handleStepCompletion(id)} />
+			))}
+		</div>
+	);
+}
+
+// -----------------
+// Header Component.
+// -----------------
+function SetupsHeader({ startTour }: { startTour: () => void }) {
 	const { t } = useTranslation();
 	return (
 		<div className='flex-col gap-1'>
@@ -75,20 +117,6 @@ function SetupsHeader({ startTour }: SetupsHeaderProps) {
 				&nbsp;
 				<p className='subheading'>{t('to get started')}</p>
 			</div>
-		</div>
-	);
-}
-
-// Wrapper Component
-interface SetupCardsWrapperProps {
-	items: StoreLaunchStep[];
-}
-function SetupCardsWrapper({ items }: SetupCardsWrapperProps) {
-	return (
-		<div className='flex-col-global lg:flex-row'>
-			{items.map((item, index) => (
-				<SetupCard key={index} Icon={item.icon} {...item} />
-			))}
 		</div>
 	);
 }

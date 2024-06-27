@@ -1,6 +1,6 @@
 import { type ComponentType, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import data from './data.json';
+import data from "../_comp/data.json"
 
 export interface AppData {
 	id: number;

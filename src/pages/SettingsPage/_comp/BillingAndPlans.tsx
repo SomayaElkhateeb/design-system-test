@@ -19,7 +19,7 @@ export default function BillingAndPlans() {
 				/>
 			</div>
 			<section className='custom-grid-parent custom_container'>
-				<div className='grid-left flex flex-col gap-5'>
+				<div className='grid-left flex-col-global gap-5'>
 					<PaymentMethods />
 					<Plan />
 					<Bills />

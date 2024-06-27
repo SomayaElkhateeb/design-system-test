@@ -1,59 +1,73 @@
-import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
+import { UseFormReturn } from 'react-hook-form';
+
 import {
+	AddAddressInterface,
 	createAddressSchema,
 	getDefaultValues,
-	AddAddressInterface,
-} from '../../../Orders/AddOrder/Comp/useOrderAddress';
+} from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
 
-export interface OpenHours {
+export interface TimeRange {
 	open: string;
 	close: string;
 }
 
-export interface DayInfo {
-	openHours: OpenHours;
+export interface DailyHours {
+	officialHours: TimeRange;
+	additionalHours: TimeRange;
 	isClosed: boolean;
 }
 
 export interface WeekSchedule {
-	Mon: DayInfo;
-	Tue: DayInfo;
-	Wed: DayInfo;
-	Thu: DayInfo;
-	Fri: DayInfo;
-	Sat: DayInfo;
-	Sun: DayInfo;
+	Mon: DailyHours;
+	Tue: DailyHours;
+	Wed: DailyHours;
+	Thu: DailyHours;
+	Fri: DailyHours;
+	Sat: DailyHours;
+	Sun: DailyHours;
 }
+
 export interface BranchSettingsInterface extends AddAddressInterface {
 	branchType: string;
 	branchNameEn: string;
 	branchNameAr: string;
-	branchTimeSchedual: WeekSchedule;
+	branchTimeSchedule: WeekSchedule;
 }
 
+const createEmptyDayInfo = (): DailyHours => ({
+	officialHours: { open: '', close: '' },
+	additionalHours: { open: '', close: '' },
+	isClosed: false,
+});
+
 export const initialDayInfo: WeekSchedule = {
-	Sun: { openHours: { open: '', close: '' }, isClosed: false },
-	Mon: { openHours: { open: '', close: '' }, isClosed: false },
-	Tue: { openHours: { open: '', close: '' }, isClosed: false },
-	Wed: { openHours: { open: '', close: '' }, isClosed: false },
-	Thu: { openHours: { open: '', close: '' }, isClosed: false },
-	Fri: { openHours: { open: '', close: '' }, isClosed: false },
-	Sat: { openHours: { open: '', close: '' }, isClosed: false },
+	Mon: createEmptyDayInfo(),
+	Tue: createEmptyDayInfo(),
+	Wed: createEmptyDayInfo(),
+	Thu: createEmptyDayInfo(),
+	Fri: createEmptyDayInfo(),
+	Sat: createEmptyDayInfo(),
+	Sun: createEmptyDayInfo(),
 };
 
 export interface BranchInfoProps {
 	formStore: UseFormReturn<BranchSettingsInterface>;
 }
-export interface fixedDay {
+
+export interface FixedDay {
 	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 }
-// ////////////////////////
-export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedOption?: string) {
+
+export default function useAddBranchForm(sendGift?: boolean, selectedOption?: string) {
 	const requiredAddressData = z.string().min(1);
 
 	const DayInfoSchema = z.object({
-		openHours: z.object({
+		officialHours: z.object({
+			open: z.string(),
+			close: z.string(),
+		}),
+		additionalHours: z.object({
 			open: z.string(),
 			close: z.string(),
 		}),
@@ -64,7 +78,7 @@ export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedO
 		branchType: requiredAddressData,
 		branchNameEn: requiredAddressData,
 		branchNameAr: requiredAddressData,
-		branchTimeSchedual: z.object({
+		branchTimeSchedule: z.object({
 			Mon: DayInfoSchema,
 			Tue: DayInfoSchema,
 			Wed: DayInfoSchema,
@@ -75,13 +89,12 @@ export default function useCustomHookAddBranchForm(sendGift?: boolean, selectedO
 		}),
 		...createAddressSchema(sendGift, selectedOption),
 	};
-
 	const handelDefaultValue = () => {
 		return {
 			branchType: 'Warehouse',
 			branchNameAr: '',
 			branchNameEn: '',
-			branchTimeSchedual: initialDayInfo,
+			branchTimeSchedule: initialDayInfo,
 			...getDefaultValues(),
 		};
 	};
