@@ -15,7 +15,6 @@ const OptionsAndVariationsFull = () => {
 	const [optionValues, setOptionValues] = useState<{ value: string; priceDifference: string }[]>(
 		[],
 	);
-	const [moreOption, setMoreOption] = useState(false);
 
 	const [colorOptions, setColorOptions] = useState<Option[]>([
 		{ value: 'Red', priceDifference: 50 },
@@ -26,6 +25,9 @@ const OptionsAndVariationsFull = () => {
 		{ value: 'Large', priceDifference: -50, path: '' },
 		{ value: 'Medium', priceDifference: -50, path: '' },
 	]);
+
+	const [moreOption, setMoreOption] = useState(false);
+	const [addOption, setAddOption] = useState(false);
 
 	const options = ['Size', 'Color', 'Add new'];
 
@@ -68,7 +70,19 @@ const OptionsAndVariationsFull = () => {
 				Allow your customers to select from options such as Size and Color on your website.
 			</p>
 
-			{!moreOption && (
+			{!moreOption && !addOption && (
+				<Button
+					onClick={() => {
+						setAddOption(true);
+					}}
+					variant='secondary'
+					LeftIcon={<IoAddCircle size={25} />}
+				>
+					Add Option
+				</Button>
+			)}
+
+			{addOption && (
 				<div className='flex'>
 					<div className='w-4/6'>
 						<div className='mb-4 w-full'>
@@ -139,13 +153,14 @@ const OptionsAndVariationsFull = () => {
 						<div className='flex justify-start gap-2'>
 							<Button
 								onClick={() => {
-									setMoreOption(false);
+									setAddOption(false);
+									setMoreOption(true);
 								}}
 								variant='primary'
 							>
 								Add
 							</Button>
-							<Button onClick={() => setMoreOption(false)} variant='secondary'>
+							<Button onClick={() => setAddOption(false)} variant='secondary'>
 								Discard
 							</Button>
 						</div>
@@ -157,17 +172,7 @@ const OptionsAndVariationsFull = () => {
 				</div>
 			)}
 
-			{!moreOption && (
-				<Button
-					onClick={() => setMoreOption(true)}
-					variant='secondary'
-					LeftIcon={<IoAddCircle size={25} />}
-				>
-					Add Option
-				</Button>
-			)}
-
-			{moreOption && (
+			{moreOption && !addOption && (
 				<MoreOption
 					sizeOptions={sizeOptions}
 					colorOptions={colorOptions}
