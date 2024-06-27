@@ -5,6 +5,7 @@ import { FaCirclePlus } from 'react-icons/fa6';
 import { TrashIcon } from 'lucide-react';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
+import { nanoid } from 'nanoid';
 import { IoClose } from 'react-icons/io5';
 
 /**
@@ -27,7 +28,7 @@ function BulkPricesManager(props) {
 				className='px-0 border-0 rounded-none'
 				onClick={() =>
 					append({
-						tempId: (Date.now() + Math.random()).toString(36).substring(2),
+						tempId: nanoid(),
 						from: 0,
 						to: 10,
 						currency: 'SAR',
@@ -84,7 +85,7 @@ function BulkPricesManager(props) {
 					className='px-0 border-0 rounded-none'
 					onClick={() =>
 						append({
-							tempId: (Date.now() + Math.random()).toString(36).substring(2),
+							tempId: nanoid(),
 							from: 0,
 							to: 10,
 							currency: 'SAR',
@@ -103,7 +104,8 @@ function BulkPricesManager(props) {
 					props.formStore.setValue('bulkPrices', []);
 				}}
 			>
-				&#x2717; {t('Remove bulk pricing')}
+				<IoClose />
+				{t('Remove bulk pricing')}
 			</Button>
 		</>
 	);
