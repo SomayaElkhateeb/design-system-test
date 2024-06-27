@@ -19,19 +19,28 @@ import {
 	SelectValue,
 	SelectItem,
 } from 'src/app/components/ui/select';
+import ImageInput from 'src/app/components/ui/form/ImageInput';
 
-const simpleProductSchema: ZodObject<ZodRawShape> = z.object({
+interface simpleProductInterface {
+	productName: string;
+	price: number;
+	quantity: number;
+	skuCode: string;
+	category: string;
+	image: File;
+}
+const simpleProductSchema = {
 	productName: z.string().min(1, 'Product name is required'),
-	price: z.number().min(1, 'Price is required'),
-	quantity: z.number().min(1, 'Quantity is required'),
+	price: z.coerce.number().min(1).positive(),
+	quantity: z.coerce.number().min(1).positive(),
 	skuCode: z.string().min(1, 'SKU code is required'),
 	category: z.string().min(1, 'Category is required'),
 	image: z.instanceof(File),
-});
+};
 
 const SimpleProductForm: FC = () => {
 	const { formStore, onSubmit } = useForm({
-		schema: simpleProductSchema.shape,
+		schema: simpleProductSchema,
 		handleSubmit: (validatedData) => {
 			console.log(validatedData);
 		},
@@ -48,40 +57,19 @@ const SimpleProductForm: FC = () => {
 	const [openDialog, setOpenDialog] = useState(false);
 	const { t } = useTranslation();
 
-	const handleBrandSubmit = (val) => {
-		console.log(val);
-		setOpenDialog(false);
-	};
-
 	return (
-		<div className='flex flex-col-global'>
-			<h3 className='title font-bold'>{t('Add a quick Product')}</h3>
+		<div className='flex-col-global gap-6'>
+			<h3 className='title md:font-bold'>{t('Add a quick Product')}</h3>
 			<Form {...formStore}>
-				<form className='bg-white rounded px-2 pt-6 w-full' onSubmit={onSubmit}>
+				<form className='bg-white rounded  flex-col-global  w-full' onSubmit={onSubmit}>
 					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
-						<FormField
-							container={{ className: 'col-span-2' }}
-							formStore={formStore}
-							name='image'
-							render={({ onChange, value, ...field }) => (
-								<FileInput
-									className='flex flex-col-global items-center justify-center gap-2 size-32 cursor-pointer'
-									{...field}
-									options={getDefaultFileInputOptions({
-										accept: { 'image/*': [] },
-										setError: (error) => {
-											formStore.setError('image', { message: error.message });
-										},
-										onFileLoad: (params) => {
-											onChange(params.file);
-										},
-									})}
-								>
-									<TfiUpload className='text-[1.5rem]' />
-									<p>{t('Upload Image')}</p>
-								</FileInput>
-							)}
-						/>
+						<div className='col-span-2'>
+							<ImageInput<simpleProductInterface> name={'image'} formStore={formStore}>
+								<TfiUpload className='text-[1.5rem]' />
+								<p className='paragraph text-center'>{t('Upload Image')}</p>
+							</ImageInput>
+						</div>
+
 						<div className='col-span-10 grid grid-cols-1 lg:grid-cols-12 gap-4'>
 							<FormField
 								container={{ className: 'col-span-6 lg:col-span-3' }}
@@ -92,7 +80,7 @@ const SimpleProductForm: FC = () => {
 										{...field}
 										id='productName'
 										type='text'
-										placeholder={`${t('Product name')} (${t('required')})`}
+										placeholder={`${t('Product Name')} (${t('Required')})`}
 									/>
 								)}
 							/>
@@ -109,7 +97,7 @@ const SimpleProductForm: FC = () => {
 											{...field}
 											id='price'
 											type='number'
-											placeholder={`${t('Price')} (${t('required')})`}
+											placeholder={`${t('Price')} (${t('Required')})`}
 											className='flex-1'
 										/>
 									</div>
@@ -140,19 +128,19 @@ const SimpleProductForm: FC = () => {
 									<div className='relative flex items-center border border-gray-300 rounded-md'>
 										<select
 											{...field}
-											id='category'
-											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus '
+											name='category'
+											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
+											onChange={field.onChange}
 										>
 											<option value='' disabled>
-												{t('Select category')}
+												{t('Select Category')}
 											</option>
 											<option value='category1'>Category 1</option>
 											<option value='category2'>Category 2</option>
-											{/* Add more categories as needed */}
 										</select>
 										<button
 											type='button'
-											className='flex items-center justify-center px-2 py-2 border-l w-2/5'
+											className='md:flex-row-global flex-col-global items-center px-2 py-2 border-l w-2/5'
 											onClick={() => setOpenDialog(true)}
 										>
 											<FaCirclePlus size={24} />
@@ -161,59 +149,17 @@ const SimpleProductForm: FC = () => {
 									</div>
 								)}
 							/>
-							{/* 20/06/2024 */}
-							{/* <FormField
-								container={{ className: 'col-span-6' }}
-								formStore={formStore}
-								name='category'
-								label={t('Category')}
-								render={(field) => (
-									<div className='flex'>
-										<Select
-											onValueChange={field.onChange}
-											value={field.value}
-											required={field.required}
-											name={field.name}
-										>
-											<SelectTrigger
-												className='border-e-0 rounded-e-none rtl:border-e rtl:rounded-e rtl:border-s-0 rtl:rounded-s-none'
-												onBlur={field.onBlur}
-												disabled={field.disabled}
-												id={field.id}
-											>
-												<SelectValue placeholder={t('Select category')} />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectItem value='category1'>{t('Category 1')}</SelectItem>
-												<SelectItem value='category2'>{t('Category 2')}</SelectItem>
-											</SelectContent>
-										</Select>
-										<button
-											type='button'
-											className='flex items-center justify-center px-2 py-2 border-l w-3/5 lg:w-2/5'
-											onClick={() => setOpenDialog(true)}
-										>
-											<FaCirclePlus size={24} />
-											<span className='ms-1'>{t('Add One')}</span>
-										</button>
-									</div>
-								)}
-							/> */}
 						</div>
 					</div>
 					{openDialog && (
-						<AddBrandForm
-							openDialog={openDialog}
-							handleClose={() => setOpenDialog(false)}
-							handleBrandSubmit={handleBrandSubmit}
-						/>
+						<AddBrandForm openDialog={openDialog} handleClose={() => setOpenDialog(false)} />
 					)}
-					<div className='flex mt-6 space-x-4 lg:justify-end justify-center'>
+					<div className='flex  space-x-4 lg:justify-end justify-center'>
 						<Button variant='primary' type='submit'>
 							{t('Save Changes')}
 						</Button>
 						<Link to='/products/new/simple'>
-							<Button variant='secondary' RightIcon={<IoIosArrowForward />}>
+							<Button variant='secondary' RightIcon={IoIosArrowForward}>
 								{t('Add More Info')}
 							</Button>
 						</Link>

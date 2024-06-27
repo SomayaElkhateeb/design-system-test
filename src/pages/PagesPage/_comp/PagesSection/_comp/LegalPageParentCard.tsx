@@ -6,7 +6,7 @@ export default function LegalPageParentCard({
 	title: string;
 }) {
 	return (
-		<div className='globalcards'>
+		<div className='global-cards'>
 			<p className='title'>{title}</p>
 			{children}
 		</div>

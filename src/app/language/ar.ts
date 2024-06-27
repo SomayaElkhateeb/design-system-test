@@ -18,10 +18,12 @@ export const arabic = {
 	'PRODUCTS NO.': 'عدد المنتجات',
 	AVAILABILITY: 'متاح',
 	'Your token has been expired. Please sign in again': 'يرجي تسجيل الدخول مره اخري',
-
+	"Add a quick Product": "اضف منتج سريع",
 	Services: 'الخدمات',
 	Settings: 'الادوات',
-
+	"SKU Code":"الكود",
+	"Add One":"اضف  واحد",
+	"Add More Info":"اضف معلومات اخري",
 	'In Progress': ' في تقدم',
 	Addresses: 'العناوين',
 	'Reviews Filters': 'فلتره التقييمات',

@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import ImageCard from '../optimized/Cards/ImageCard';
+import { FieldError, FieldErrorsImpl } from 'react-hook-form';
 
 export function getDefaultFileInputOptions({ setError, onFileLoad, ...params }) {
 	return {
@@ -25,14 +26,14 @@ export function getDefaultFileInputOptions({ setError, onFileLoad, ...params }) 
 }
 
 type Props = {
-	error?: string;
+	// error: string;
 	onImageSubmit: (file: File) => void;
 	children: React.ReactNode;
 	label?: string;
 	id: string;
 };
 
-const FileInput = ({ error, onImageSubmit, children, label, id }: Props) => {
+const FileInput = ({ onImageSubmit, children, label, id }: Props) => {
 	const [preview, setPreview] = useState<string>('');
 
 	const onImageSelected = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -56,7 +57,7 @@ const FileInput = ({ error, onImageSubmit, children, label, id }: Props) => {
 	return (
 		<div className='flex-col-global'>
 			{label && <p className='title'>{label}</p>}
-			<div className='flex-row-global'>
+			<div className='flex-row-global w-[6.25rem] h-[6.25rem] '>
 				<input
 					accept='image/*'
 					id={id}
@@ -67,18 +68,18 @@ const FileInput = ({ error, onImageSubmit, children, label, id }: Props) => {
 				/>
 				<label
 					htmlFor={id}
-					className='cursor-pointer p-5 w-full rounded-sm border-2 border-dashed'
+					className='cursor-pointer flex-row-global h-full w-full rounded-sm border-2 border-dashed'
 				>
 					{preview ? (
 						<ImageCard preview={preview} />
 					) : (
-						<div className='flex-col-global items-center justify-center'>
+						<div className='flex-col-global items-center justify-center w-full h-full'>
 							{children}
 						</div>
 					)}
 				</label>
 			</div>
-			{error && !preview && <p className='global_error'>{error}</p>}
+			{/* {error && !preview && <p className='global_error'>{error}</p>} */}
 		</div>
 	);
 };
