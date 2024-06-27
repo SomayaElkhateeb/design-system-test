@@ -51,91 +51,93 @@ export default function CustomerInfo() {
 				</HeaderSettings>
 
 				{/*  customer section */}
-				<div className='custom_container gap-[1.6rem] flex-col-global'>
-					<div className='customer-border  gap-[0.8rem]'>
-						<p className='title px-[1.2rem]'>{t('Customer')}</p>
-						<hr />
-						<div className=' flex-col-global gap-[.6rem] px-[1.2rem]'>
-							{customerData?.map((el, i) => (
-								<CustomerData key={i} data={el.data} icon={el.icon} />
-							))}
-						</div>
-					</div>
-
-					{/*  addresse section */}
-
-					<div className='customer-border gap-[0.8rem]'>
-						<div className='flex-row-global justify-between px-[1.2rem]'>
-							<p className='title'>{t('Addresses')}</p>
-							<div
-								onClick={() => navigate('addNewAddresse')}
-								className='flex-row-global gap-[.4rem] cursor-pointer'
-							>
-								<IoIosAddCircle />
-								<p className='title'>{t('Add new address')}</p>
+				<div className='custom_container custom-grid-parent gap-[1.6rem] '>
+					<div className='grid-left flex-col-global gap-[1.6rem] '>
+						<div className='customer-border  gap-[0.8rem]'>
+							<p className='title px-[1.2rem]'>{t('Customer')}</p>
+							<hr />
+							<div className=' flex-col-global gap-[.6rem] px-[1.2rem]'>
+								{customerData?.map((el, i) => (
+									<CustomerData key={i} data={el.data} icon={el.icon} />
+								))}
 							</div>
 						</div>
 
-						<hr />
+						{/*  addresse section */}
 
-						<div className='w-[97%] mx-auto customer-border '>
-							<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
-								<p className='text-[0.7rem]'>
-									Meed Market, 15 Haroon Al Rashied st.
-									<br />
-									Al Jazera, Riyadh <br />
-									<span className='opacity-60'>Saudi Arabia</span>
-									<br />
-									+96841564566
-								</p>
-								<div className='flex-col-global items-end gap-[2rem]'>
-									<div className='flex-row-global gap-[1.2rem]'>
-										<RiDeleteBin6Line className='cursor-pointer' />
-										<FiEdit className='cursor-pointer' />
-									</div>
-									<div className='flex-row-global gap-[.4rem] cursor-pointer'>
-										<IoLocationOutline />
-										<p className='title'>{t('Show on map')}</p>
+						<div className='customer-border gap-[0.8rem]'>
+							<div className='flex-row-global justify-between px-[1.2rem]'>
+								<p className='title'>{t('Addresses')}</p>
+								<div
+									onClick={() => navigate('addNewAddresse')}
+									className='flex-row-global gap-[.4rem] cursor-pointer'
+								>
+									<IoIosAddCircle />
+									<p className='title'>{t('Add new address')}</p>
+								</div>
+							</div>
+
+							<hr />
+
+							<div className='w-[97%] mx-auto customer-border '>
+								<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
+									<p className='text-[0.7rem]'>
+										Meed Market, 15 Haroon Al Rashied st.
+										<br />
+										Al Jazera, Riyadh <br />
+										<span className='opacity-60'>Saudi Arabia</span>
+										<br />
+										+96841564566
+									</p>
+									<div className='flex-col-global items-end gap-[2rem]'>
+										<div className='flex-row-global gap-[1.2rem]'>
+											<RiDeleteBin6Line className='cursor-pointer' />
+											<FiEdit className='cursor-pointer' />
+										</div>
+										<div className='flex-row-global gap-[.4rem] cursor-pointer'>
+											<IoLocationOutline />
+											<p className='title'>{t('Show on map')}</p>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					{/*  orders section */}
+						{/*  orders section */}
 
-					<div className='customer-border gap-[0.8rem]'>
-						<div className='flex-row-global justify-between px-[1.2rem]'>
-							<p className='title '>{t('Orders')}</p>
-							<div className='flex-row-global gap-[.4rem] cursor-pointer'>
-								<IoIosAddCircle />
-								<p onClick={() => navigate('/order/addOrder')} className='title'>
-									{t('Add new order')}
-								</p>
-							</div>
-						</div>
-
-						<hr />
-						<div className='flex flex-col gap-[1rem]'>
-							{array?.map((e, i) => (
-								<div className='flex flex-col gap-[1rem]' key={i}>
-									<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
-										<div className='flex flex-col gap-[0.5rem]'>
-											<p className='text-[0.8rem]  font-semibold text-title'>
-												#8965742 <span className='font-normal'>Processing</span>
-											</p>
-											<p className='text-[.7rem] opacity-60' dir='ltr'>
-												6 Apr 2020
-											</p>
-										</div>
-										<div className='flex flex-col items-end gap-[0.5rem]'>
-											<HiOutlineDotsHorizontal />
-											<p className='text-[0.8rem] '>SAR 1000</p>
-										</div>
-									</div>
-									<hr />
+						<div className='customer-border gap-[0.8rem]'>
+							<div className='flex-row-global justify-between px-[1.2rem]'>
+								<p className='title '>{t('Orders')}</p>
+								<div className='flex-row-global gap-[.4rem] cursor-pointer'>
+									<IoIosAddCircle />
+									<p onClick={() => navigate('/order/addOrder')} className='title'>
+										{t('Add new order')}
+									</p>
 								</div>
-							))}
+							</div>
+
+							<hr />
+							<div className='flex-col-global gap-[1rem]'>
+								{array?.map((e, i) => (
+									<div className='flex-col-global gap-[1rem]' key={i}>
+										<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
+											<div className='flex-col-global gap-[0.5rem]'>
+												<p className='text-[0.8rem]  font-semibold text-title'>
+													#8965742 <span className='font-normal'>Processing</span>
+												</p>
+												<p className='text-[.7rem] opacity-60' dir='ltr'>
+													6 Apr 2020
+												</p>
+											</div>
+											<div className='flex-col-global items-end gap-[0.5rem]'>
+												<HiOutlineDotsHorizontal />
+												<p className='text-[0.8rem] '>SAR 1000</p>
+											</div>
+										</div>
+										<hr />
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>

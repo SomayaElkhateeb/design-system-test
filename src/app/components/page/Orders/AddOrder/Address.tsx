@@ -41,7 +41,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 
 	const handleGiftOptionChange = useCallback(
-		() => setSendGift((prev: boolean) => !prev),
+		() => setSendGift(!sendGift),
 		[setSendGift],
 	);
 	const handleOptionChange = useCallback(
