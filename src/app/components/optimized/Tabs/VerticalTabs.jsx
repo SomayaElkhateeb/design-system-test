@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, LayoutCard } from '..';
+import { Button } from '..';
 import { cn } from 'src/app/utils';
 
 /**
@@ -138,27 +138,26 @@ function VTab(props) {
 				</div>
 			</div>
 			{props.index === props.currentTab && (
-				<div className='ms-8'>
+				<div className='ms-8 global-cards'>
 					{/* content */}
-					<LayoutCard>
-						{props.content}
-						{/* Next & Prev */}
-						<div className='flex justify-end mt-4 space-x-2'>
-							{props.index !== 0 && (
-								<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ms-5'>
-									Prev
-								</Button>
-							)}
 
-							<Button
-								onClick={
-									props.index === props.tabs.length - 1 ? () => handleFinish(true) : props.onNext
-								}
-							>
-								{props.index === props.tabs.length - 1 ? 'Finish' : 'Next'}
+					{props.content}
+					{/* Next & Prev */}
+					<div className='flex justify-end mt-4 space-x-2'>
+						{props.index !== 0 && (
+							<Button onClick={props.onPrev} disabled={props.currentTab === 0} className='ms-5'>
+								Prev
 							</Button>
-						</div>
-					</LayoutCard>
+						)}
+
+						<Button
+							onClick={
+								props.index === props.tabs.length - 1 ? () => handleFinish(true) : props.onNext
+							}
+						>
+							{props.index === props.tabs.length - 1 ? 'Finish' : 'Next'}
+						</Button>
+					</div>
 				</div>
 			)}
 		</div>
