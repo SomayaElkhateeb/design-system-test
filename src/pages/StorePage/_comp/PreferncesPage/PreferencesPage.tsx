@@ -31,11 +31,11 @@ export default function PreferencesPage() {
 	return (
 		<Form {...formStore}>
 			<form className='flex-col-global gap-[2rem]' onSubmit={onSubmit}>
-				<SubHeader title={t('Store Preferences')}>
+				<SubHeader title={t('Store preferences')}>
 					<Button variant='secondary' onClick={() => navigate(-1)}>
 						{t('Discard')}
 					</Button>
-					<Button variant='primary' onClick={() => {}}>
+					<Button variant='primary' onClick={onSubmit}>
 						{t('Save Changes')}
 					</Button>
 				</SubHeader>

@@ -5,7 +5,7 @@ type property = {
 function ImageCard({ preview }: property) {
 	return (
 		<img
-			className='w-[8.25rem] h-[7.50rem] rounded-[.4rem]'
+			className=' w-full h-full rounded-[.4rem]'
 			src={preview ? preview : ''}
 			alt={'img'}
 			loading='lazy'
