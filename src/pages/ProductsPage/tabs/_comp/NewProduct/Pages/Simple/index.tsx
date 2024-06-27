@@ -82,7 +82,7 @@ export default function SimpleProductPage() {
 							<Elem key={id} formStore={formStore} id={id} />
 						))}
 					</div>
-					<div className='flex-shrink-0'>
+					<div className='flex-shrink-0 hidden xl:block'>
 						<ProductFormQuickActionsSection formStore={formStore} />
 					</div>
 				</div>
