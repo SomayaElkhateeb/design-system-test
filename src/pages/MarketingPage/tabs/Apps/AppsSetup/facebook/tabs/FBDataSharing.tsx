@@ -1,82 +1,59 @@
 import React, { useState } from 'react';
-import { Button, CheckBox, InputRow, SelectBoxRow } from 'src/app/components/optimized';
+import { Button, CheckBox } from 'src/app/components/optimized';
+import useCustomHookApps, { IAppsPage } from '../../_hook/HookAppsPageForm';
+import { Form } from 'src/app/components/ui/form';
+import { useTranslation } from 'react-i18next';
+import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
 
-interface FBDataSharingProps {
-	data: {
-		description: string;
-	};
-}
-
-const FBDataSharing: React.FC<FBDataSharingProps> = ({ data }) => {
-	const [state, setState] = useState({
-		isChecked: false,
-		inputState: {
-			selectedValue: 'Select an option',
-			value: '',
-		},
-	});
-
-	const { isChecked, inputState } = state;
-
-	const handleInputChange = (value: string) => {
-		setState((prevState) => ({
-			...prevState,
-			inputState: { ...prevState.inputState, value },
-		}));
-	};
-
-	const handleSelectChange = (value: string) => {
-		setState((prevState) => ({
-			...prevState,
-			inputState: { ...prevState.inputState, selectedValue: value },
-		}));
-	};
+const FBDataSharing = ({ description }: { description: string }) => {
+	const { t } = useTranslation();
+	const [isCheck, setIsCheck] = useState<boolean>(false);
+	const { formStore, onSubmit } = useCustomHookApps();
 
 	return (
-		<div className='flex flex-col gap-4'>
-			<p className='text-title text-sm'>
-				{data.description}
-				<Button variant='link' className='inline px-2'>
-					{'Learn more'}
-				</Button>
-			</p>
+		<Form {...formStore}>
+			<form onSubmit={onSubmit} className='flex flex-col gap-4'>
+				<p className='text-title text-sm'>
+					{description}
+					<Button variant='link' className='inline px-2'>
+						{t('Learn more')}
+					</Button>
+				</p>
+				<CheckBox
+					label={t('Activate data sharing')}
+					checked={isCheck}
+					handleOnChange={() => {
+						setIsCheck(true);
+					}}
+				/>
 
-			<CheckBox
-				label='Activate data sharing'
-				handleOnChange={() =>
-					setState((prevState) => ({
-						...prevState,
-						isChecked: !prevState.isChecked,
-					}))
-				}
-				checked={state.isChecked}
-			/>
+				{isCheck && (
+					<div className='flex justify-between flex-col gap-4'>
+						<div className='flex flex-col w-full md:w-1/2 gap-3 '>
+							<FormField
+								formStore={formStore}
+								name='idPixel'
+								label={t('Pixel ID')}
+								render={(field) => <Input {...field} />}
+							/>
 
-			{isChecked && (
-				<div className='flex justify-between flex-col gap-4'>
-					<div className='flex flex-col w-full md:w-1/2 gap-3 '>
-						<InputRow
-							label='Pixel ID'
-							value={inputState.value}
-							handleOnChange={handleInputChange}
-						/>
-						<SelectBoxRow
-							label='Tracked action'
-							selectedValue={inputState.selectedValue}
-							handleOnChange={handleSelectChange}
-							options={[
-								{ value: 'option1', label: 'Option 1' },
-								{ value: 'option2', label: 'Option 2' },
-								{ value: 'option3', label: 'Option 3' },
-							]}
-						/>
+							<SpecificAutoCompleteInput<IAppsPage>
+								name='action'
+								label={t('Tracked action')}
+								formStore={formStore}
+							/>
+						</div>
+						<div className='flex justify-end'>
+							<Button variant='primary' onClick={onSubmit}>
+								{'Connect'}
+							</Button>
+						</div>
 					</div>
-					<div className='flex justify-end'>
-						<Button variant='primary'>{'Connect'}</Button>
-					</div>
-				</div>
-			)}
-		</div>
+				)}
+			</form>
+		</Form>
 	);
 };
 

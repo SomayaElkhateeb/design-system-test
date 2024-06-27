@@ -1,69 +1,54 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, CheckBox, InputRow } from 'src/app/components/optimized';
+import { Button, CheckBox } from 'src/app/components/optimized';
+import { Form } from 'src/app/components/ui/form';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import useCustomHookApps from '../../_hook/HookAppsPageForm';
 
-interface TikDataSharingProps {
-	data: {
-		description: string;
-	};
-}
-
-const TikDataSharing: React.FC<TikDataSharingProps> = ({ data }) => {
+const TikDataSharing = ({ description }: { description: string }) => {
 	const { t } = useTranslation();
-	const [state, setState] = useState({
-		isChecked: false,
-		inputState: {
-			selectedValue: 'Select an option',
-			value: '',
-		},
-	});
-
-	const handleCheckBoxChange = (value: boolean) => {
-		setState({
-			...state,
-			isChecked: value,
-		});
-	};
-
-	const handleClick = () => {
-		console.log('Button clicked!');
-	};
-
-	const { isChecked, inputState } = state;
+	const [isCheck, setIsCheck] = useState<boolean>(false);
+	const { formStore, onSubmit } = useCustomHookApps();
 
 	return (
-		<div className='flex flex-col gap-4'>
-			<p className='text-title text-sm w-[60%]'>
-				{data.description}
-				<Button variant='link' className='inline px-2'>
-					{t('Learn more')}
-				</Button>
-			</p>
+		<Form {...formStore}>
+			<form onSubmit={onSubmit} className='flex flex-col gap-4'>
+				<p className='global-install-p'>
+					{description}
+					<Button variant='link' className='inline px-2'>
+						{t('Learn more')}
+					</Button>
+				</p>
 
-			<CheckBox
-				label='Activate data sharing'
-				checked={isChecked}
-				handleOnChange={handleCheckBoxChange}
-			/>
+				<CheckBox
+					label={t('Activate data sharing')}
+					checked={isCheck}
+					handleOnChange={() => {
+						setIsCheck(true);
+					}}
+				/>
 
-			{isChecked && (
-				<>
-					<div className='flex justify-between flex-col gap-4 w-full md:w-1/2'>
-						<InputRow
-							label='Pixel ID'
-							value={inputState.value}
-							handleOnChange={(value) =>
-								setState({ ...state, inputState: { ...state.inputState, value } })
-							}
-						/>
-					</div>
+				{isCheck && (
+					<>
+						<div className='flex justify-between flex-col gap-4 w-full md:w-1/2'>
+							<FormField
+								formStore={formStore}
+								name='idPixel'
+								label={t('Pixel ID')}
+								render={(field) => <Input {...field} />}
+							/>
+						</div>
 
-					<div className='flex justify-end'>
-						<Button variant='primary'>{t('Connect')}</Button>
-					</div>
-				</>
-			)}
-		</div>
+						<div className='flex justify-end'>
+							<Button variant='primary' onClick={onSubmit}>
+								{t('Connect')}
+							</Button>
+						</div>
+					</>
+				)}
+			</form>
+		</Form>
 	);
 };
 

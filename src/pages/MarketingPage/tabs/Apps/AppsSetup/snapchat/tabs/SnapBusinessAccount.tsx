@@ -4,6 +4,7 @@ import { getImageUrl } from 'src/app/utils';
 import { Button } from 'src/app/components/optimized';
 import { LiaExternalLinkAltSolid } from 'react-icons/lia';
 import { useTranslation } from 'react-i18next';
+import { LinkIcon } from 'src/app/utils/icons';
 
 interface Partner {
 	name: string;
@@ -22,7 +23,7 @@ const SnapBusinessAccount: React.FC<Props> = ({ data }) => {
 	const { t } = useTranslation();
 	return (
 		<div>
-			<p className='text-title text-sm w-3/4 pb-5'>{data.description}</p>
+			<p className='global-install-p pb-5'>{data.description}</p>
 			<div>
 				{data.partners.map((partner) => (
 					<BusinessAccountCard

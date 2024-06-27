@@ -87,13 +87,3 @@ export default function SelectTable({ formStore }: { formStore: UseFormReturn<IQ
 		/>
 	);
 }
-// footers={[
-// 				<TableCell colSpan={2}>
-// 					<p className='text-title text-sm'>Total</p>
-// 				</TableCell>,
-// 				<TableCell>
-// 					<p className='text-title text-sm'>
-// 						SAR {data.reduce((acc, item) => acc + item.total, 0)}.00
-// 					</p>
-// 				</TableCell>,
-// 			]}

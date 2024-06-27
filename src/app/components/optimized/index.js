@@ -2,7 +2,6 @@
 export { default as InputRow } from './InputsFields/InputRow';
 export { default as SelectBoxRow } from './InputsFields/SelectBoxRow';
 export { default as VerticalTabs } from './Tabs/VerticalTabs';
-export { default as LayoutCard } from './Cards/LayoutCard';
 export { default as ToggleSwitch } from './UiKits/ToggleSwitch';
 export { default as HeaderSearchBar } from './UiKits/HeaderSearchBar';
 export { default as LanguageSelect } from './UiKits/LanguageSelect';

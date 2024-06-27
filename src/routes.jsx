@@ -10,7 +10,7 @@ import {
 	Config,
 	CustomerInfo,
 	CustomersPage,
-	EmailForm,
+	ChooseEmail,
 	HomePage,
 	MarketingPage,
 	Nested_pages_SettingsConfig,
@@ -179,7 +179,7 @@ export const routes = [
 		children: [
 			{ path: ':tab', element: <MarketingTabs /> },
 			{ path: ':tabName/:config', element: <MarketingConfig /> },
-			{ path: 'email-form', element: <EmailForm /> },
+			{ path: 'email-form', element: <ChooseEmail /> },
 		],
 	},
 
