@@ -78,8 +78,8 @@ export default function AddReturnPloicy() {
 				<SubHeader title={t('Return policy')}>
 					{!xs ? <SubHeaderActions /> : <RxDotsHorizontal />}
 				</SubHeader>
-				<div className='custom_container grid lg:grid-cols-3 gap-5'>
-					<div className='flex-col-global lg:col-span-2'>
+				<div className='custom_container custom-grid-parent gap-5'>
+					<div className='flex-col-global grid-left'>
 						<div className='global-cards'>
 							<h3 className='title'>{t('Main info')}</h3>
 
@@ -94,7 +94,7 @@ export default function AddReturnPloicy() {
 							/>
 						</div>
 					</div>
-					<div className='lg:col-span-1'>
+					<div className='grid-right'>
 						<QuickActions data={data} />
 					</div>
 				</div>

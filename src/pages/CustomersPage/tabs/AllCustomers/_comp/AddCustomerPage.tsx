@@ -45,8 +45,8 @@ const AddCustomerPage: React.FC = () => {
 				<SubHeader title={t('Add New Customer')}>
 					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
-				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
-					<div className='flex-col-global lg:col-span-2'>
+				<div className='custom-grid-parent gap-5  custom_container'>
+					<div className='flex-col-global grid-left'>
 						{/* general info section */}
 						<GeneralInfoCustomerForm formStore={formStore} />
 						{/* primary Address section */}

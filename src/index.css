@@ -244,7 +244,7 @@ object {
 		@apply flex flex-col lg:justify-between gap-4 min-h-[100px];
 	}
 	.global-install-p {
-		@apply text-title text-sm w-[60%];
+		@apply text-title text-sm w-full lg:w-[60%];
 	}
 	.global-install-btn {
 		@apply lg:flex lg:justify-end;

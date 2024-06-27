@@ -22,7 +22,7 @@ const TikBusinessAccount: React.FC<TikBusinessAccountProps> = ({ data }) => {
 	const { t } = useTranslation();
 	return (
 		<div>
-			<p className='text-title text-sm w-3/4 pb-5'>{data.description}</p>
+			<p className='global-install-p pb-5'>{data.description}</p>
 			<div>
 				{data.partners.map((partner) => (
 					<BusinessAccountCard

@@ -41,7 +41,7 @@ export default function PagesPagesSection() {
 		},
 	];
 	return (
-		<div className='flex flex-col'>
+		<div className='flex flex-col gap-4'>
 			<div className='flex flex-col gap-[1rem]'>
 				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='AddPage' />
 				{xs && <AddButtonMobile path='AddPage' />}

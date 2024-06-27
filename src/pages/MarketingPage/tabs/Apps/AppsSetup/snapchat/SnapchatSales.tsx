@@ -1,17 +1,12 @@
-import {
-	Button,
-	LayoutCard,
-	PopupProceed,
-	SubHeader,
-	ToastsNotification,
-} from 'src/app/components/optimized';
+import { Button, PopupProceed, SubHeader, ToastsNotification } from 'src/app/components/optimized';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { LiaSyncAltSolid } from 'react-icons/lia';
+
 import { usePlatformContext } from '../PlatformContext';
 import { useTranslation } from 'react-i18next';
+import Async from '../_comp/Async';
 
 const SnapchatSales = () => {
 	const { syncStatus, setSyncStatus } = usePlatformContext();
@@ -94,51 +89,25 @@ const SnapchatSales = () => {
 				)}
 
 				{/* Catalog Sync is Active */}
-				{/* {syncStatus === true && (
-					<div className='mt-5 py-5'>
-						<h1 className='text-2xl font-bold text-gray-800 mb-5'>Product Status on Snapchat</h1>
-
-						<div className='p-4 border bg-white rounder'>
-							<div className='flex justify-end'>
-								<button type='button' className='text-red-400' onClick={() => setIsPopupOpen(true)}>
-									Disable Catalog Sync
-								</button>
-							</div>
-							<div className='flex flex-col mt-8'>
-								<div className='flex flex-col space-y-7 items-center mb-2'>
-									<LiaSyncAltSolid size={50} />
-									<h2 className='text-xl font-bold text-gray-800 mr-4'>Snapchat Marketing</h2>
-									<p className='text-gray-500'>
-										Reach milions of potential customers with paid advertising campaigns
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className='bg-gray-100 rounded-br-sm rounded-bl-sm p-4 py-8'>
-							<p className='text-gray-500'>
-								Snapchat review products in 3-5 days. Product statuses listed here are from your
-								default country or region.
-							</p>
-						</div>
-					</div>
-				)} */}
+				{syncStatus === true && (
+					<>
+						<h1 className='text-lg title'>Product Status on Snapchat</h1>
+						<Async title='Snapchat Marketing' asyncBtn={() => setIsPopupOpen(true)} />
+					</>
+				)}
 			</section>
-			{/* {isPopupOpen && (
+			{isPopupOpen && (
 				<PopupProceed
-					title='Approve access to your TikTok Ads Manager account'
+					title='Are you want to Disable Catalog Sync From your store?'
+					subTitle='You can Recync anytime with Snapchat Catalog.'
 					proceedBtnText='Yes, Disable'
 					cancelBtnText='Discard'
 					isOpen={isPopupOpen}
 					onCancel={() => setIsPopupOpen(false)}
 					onProceed={handleDisableSync}
-					color='bg-red-500'
-				>
-					<p>
-						In order to connect to this Business Center account, you'll need to approve admin access
-						to the connected TikTok Ads Manager account.{' '}
-					</p>
-				</PopupProceed>
-			)} */}
+					color='#EC5151'
+				/>
+			)}
 		</>
 	);
 };
