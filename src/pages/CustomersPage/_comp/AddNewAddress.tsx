@@ -22,7 +22,7 @@ import {
 import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookAddCustomerAddressForm, {
 	AddAddressInterface,
-} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerAddress';
+} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addAddresse/_hook/HookForAddCustomerAddress';
 
 export default function AddNewAddressCustomer() {
 	//  hooks

@@ -1,3 +1,5 @@
+
+
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
@@ -28,3 +30,28 @@ export const AddCustomerPageSchema = {
 	emailSubescribe: z.boolean(),
 };
 export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPageSchema>;
+
+export default function useCustomHookAddCustomerForm() {
+	const handelDefaultValue = () => {
+		return {
+			humanType: 'Male',
+			fullName: '',
+			email: '',
+			PhoneNumber: '',
+			groupMeta: [],
+			fullNameAddress: '',
+			countryName: '',
+			cityName: '',
+			area: '',
+			street: '',
+			building: '',
+			landmark: '',
+			AddressPhoneNumber: '',
+			emailSubescribe: false,
+		};
+	};
+
+	return {
+		handelDefaultValue,
+	};
+}

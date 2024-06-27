@@ -6,24 +6,16 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { Address } from 'src/app/components/page';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import {
-	AddCustomerPageSchema,
-	AddCustomerPageSchemaValues,
-} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/AddCustomerPageSchema';
+
 import GeneralInfoCustomerForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
-import useCustomHookAddCustomerForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerForm';
-import PrimaryAddressForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/PrimaryAddressForm';
+import useCustomHookAddCustomerForm, { AddCustomerPageSchema, AddCustomerPageSchemaValues } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookForAddCustomerForm';
+import PrimaryAddressForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addAddresse/PrimaryAddressForm';
 
 const AddCustomerPage: React.FC = () => {
 	// hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
-	const [sendGift, setSendGift] = useState<boolean>(false);
-	const [isName, setIsName] = useState<boolean>(false);
-	const [selectedOption, setSelectedOption] = useState<string>('Add manually');
 
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
 		console.log(values);
@@ -31,7 +23,7 @@ const AddCustomerPage: React.FC = () => {
 	};
 
 	// custom hook
-	const { handelDefaultValue } = useCustomHookAddCustomerForm(sendGift, selectedOption, isName);
+	const { handelDefaultValue } = useCustomHookAddCustomerForm();
 
 	const { formStore, onSubmit } = useForm<AddCustomerPageSchemaValues>({
 		schema: AddCustomerPageSchema,
@@ -51,20 +43,7 @@ const AddCustomerPage: React.FC = () => {
 						<GeneralInfoCustomerForm formStore={formStore} />
 						{/* primary Address section */}
 						<PrimaryAddressForm formStore={formStore} />
-						<div className='global-cards gap-[1.3rem]'>
-							<h2 className='title'>{t('Add primary address')}</h2>
-							<div className='flex-col-global md:w-[65%]'>
-								<Address
-									giftOption
-									isName
-									sendGift={sendGift}
-									setSendGift={setSendGift}
-									selectedOption={selectedOption}
-									setSelectedOption={setSelectedOption}
-									formStore={formStore}
-								/>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<SubHeaderMobileBtns onSubmit={onSubmit} />

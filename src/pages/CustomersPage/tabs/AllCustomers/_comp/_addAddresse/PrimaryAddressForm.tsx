@@ -11,7 +11,8 @@ import {
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { countries } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
-import { AddCustomerPageSchemaValues } from './AddCustomerPageSchema';
+import { AddCustomerPageSchemaValues } from '../_addCustomer/_hook/HookForAddCustomerForm';
+
 export default function PrimaryAddressForm({
 	formStore,
 }: {
