@@ -22,7 +22,7 @@ export default function AppStore() {
 	} = useAppStore();
 
 	return (
-		<div className='grid gap-5 container'>
+		<div className='grid gap-5 py-5'>
 			{categoryParam ? (
 				<AllAppsView category={categoryParam} socialApps={data.appsStore} />
 			) : (
