@@ -23,7 +23,7 @@ export { default as SettingsConfig } from './SettingsPage/_comp/SettingsConfig';
 export { default as Nested_pages_SettingsConfig } from './SettingsPage/_comp/Nested_Settings_pagesConfig';
 export { default as AppsTabs } from './AppsPage/_comp/AppsTabs';
 export { default as CustomerInfo } from './CustomersPage/_comp/CustomerInfo';
-export { default as EmailForm } from './MarketingPage/_comp/EmailForm/EmailForm';
+export { default as ChooseEmail } from './MarketingPage/_comp/EmailForm/ChooseEmail';
 
 // SubComponent
 export { default as Config } from 'src/app/components/page/SettingPage/Shipping/OpenSetup/Smsa/Config';
