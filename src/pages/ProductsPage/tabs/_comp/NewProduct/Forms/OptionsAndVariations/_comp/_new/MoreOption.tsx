@@ -66,6 +66,13 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 		}
 	};
 
+	const handleColorChange = (index: number, color: string) => {
+		// Update the color value at a specific index
+		const updatedColorOptions = [...colorOptions];
+		updatedColorOptions[index].value = color;
+		setColorOptions(updatedColorOptions);
+	};
+
 	const renderOptions = (type: 'color' | 'size', options: Option[]) => {
 		return (
 			<div>
@@ -76,11 +83,32 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 								<img src='/path/to/your/image.png' alt='icon' className='w-6 h-6' />
 							)}
 							{type === 'color' && (
-								<div
-									style={{ backgroundColor: option.value }}
-									className='w-6 h-6 rounded-full'
-								></div>
+								<>
+									<div key={index} className='flex items-center space-x-2 mb-2'>
+										{/* Hidden color input */}
+										<input
+											type='color'
+											value={option.value}
+											className='hidden'
+											id={`color-input-${index}`}
+											onChange={(e) => handleColorChange(index, e.target.value)}
+										/>
+
+										{/* Div to control color display */}
+										<div
+											className='w-6 h-6 rounded-full cursor-pointer'
+											style={{ backgroundColor: option.value || 'blue' }}
+											onClick={() => {
+												const colorInput = document.getElementById(`color-input-${index}`);
+												if (colorInput) {
+													colorInput.click();
+												}
+											}}
+										></div>
+									</div>
+								</>
 							)}
+
 							<input
 								type='text'
 								value={option.value}
