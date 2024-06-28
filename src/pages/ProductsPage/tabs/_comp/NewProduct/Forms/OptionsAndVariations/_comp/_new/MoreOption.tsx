@@ -18,8 +18,8 @@ interface MoreOptionProps {
 	setColorOptions: React.Dispatch<React.SetStateAction<Option[]>>;
 	sizeOptions: Option[];
 	setSizeOptions: React.Dispatch<React.SetStateAction<Option[]>>;
-	setAddOption: React.Dispatch<React.SetStateAction<boolean>>;
-	moreOption: boolean;
+	setActiveComp: React.Dispatch<React.SetStateAction<string>>;
+	activeComp: string;
 }
 
 const MoreOption: React.FC<MoreOptionProps> = ({
@@ -27,13 +27,12 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 	setColorOptions,
 	sizeOptions,
 	setSizeOptions,
-	setAddOption,
-	moreOption,
+	setActiveComp,
+	activeComp,
 }) => {
 	const [isCollapseColor, setIsCollapseColor] = useState<boolean>(false);
 	const [isCollapseSize, setIsCollapseSize] = useState<boolean>(false);
 	const [isSizeOption, setIsSizeOption] = useState<boolean>(false);
-	const [isColorOption] = useState<boolean>(moreOption);
 
 	const addOption = (type: 'color' | 'size') => {
 		if (type === 'color') {
@@ -72,21 +71,19 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 
 	return (
 		<>
-			{isColorOption && (
+			{activeComp === 'moreOption' && (
 				<section className='border rounded shadow-sm w-full mx-auto'>
 					<div className='p-4'>
-						{isColorOption && (
-							<RenderSection
-								title='Color'
-								type='color'
-								isCollapsed={isCollapseColor}
-								setIsCollapsed={setIsCollapseColor}
-								options={colorOptions}
-								addOption={addOption}
-								updateOption={updateOption}
-								deleteOption={deleteOption}
-							/>
-						)}
+						<RenderSection
+							title='Color'
+							type='color'
+							isCollapsed={isCollapseColor}
+							setIsCollapsed={setIsCollapseColor}
+							options={colorOptions}
+							addOption={addOption}
+							updateOption={updateOption}
+							deleteOption={deleteOption}
+						/>
 						{isSizeOption && (
 							<RenderSection
 								title='Size'
@@ -105,7 +102,6 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 								LeftIcon={<IoIosAddCircle size={25} />}
 								onClick={() => {
 									setIsSizeOption(true);
-									if (isSizeOption) setAddOption(true);
 								}}
 							>
 								Add More Option

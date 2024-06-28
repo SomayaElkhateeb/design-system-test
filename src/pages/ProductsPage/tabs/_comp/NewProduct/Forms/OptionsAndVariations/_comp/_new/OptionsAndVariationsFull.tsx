@@ -26,8 +26,8 @@ const OptionsAndVariationsFull = () => {
 		{ value: 'Medium', priceDifference: -50, path: '' },
 	]);
 
-	const [addOption, setAddOption] = useState(false);
-	const [moreOption, setMoreOption] = useState(false);
+	// moreOption - addOption - mainComp
+	const [activeComp, setActiveComp] = useState('mainComp');
 
 	const options = ['Size', 'Color', 'Add new'];
 
@@ -70,10 +70,10 @@ const OptionsAndVariationsFull = () => {
 				Allow your customers to select from options such as Size and Color on your website.
 			</p>
 
-			{!moreOption && !addOption && (
+			{activeComp === 'mainComp' && (
 				<Button
 					onClick={() => {
-						setAddOption(true);
+						setActiveComp('addOption');
 					}}
 					variant='secondary'
 					LeftIcon={<IoAddCircle size={25} />}
@@ -82,7 +82,7 @@ const OptionsAndVariationsFull = () => {
 				</Button>
 			)}
 
-			{addOption && (
+			{activeComp === 'addOption' && (
 				<div className='flex'>
 					<div className='w-4/6'>
 						<div className='mb-4 w-full'>
@@ -153,14 +153,13 @@ const OptionsAndVariationsFull = () => {
 						<div className='flex justify-start gap-2'>
 							<Button
 								onClick={() => {
-									setAddOption(false);
-									setMoreOption(true);
+									setActiveComp('moreOption');
 								}}
 								variant='primary'
 							>
 								Add
 							</Button>
-							<Button onClick={() => setAddOption(false)} variant='secondary'>
+							<Button onClick={() => setActiveComp('mainComp')} variant='secondary'>
 								Discard
 							</Button>
 						</div>
@@ -172,14 +171,14 @@ const OptionsAndVariationsFull = () => {
 				</div>
 			)}
 
-			{moreOption && !addOption && (
+			{activeComp === 'moreOption' && (
 				<MoreOption
-					sizeOptions={sizeOptions}
 					colorOptions={colorOptions}
 					setColorOptions={setColorOptions}
+					sizeOptions={sizeOptions}
 					setSizeOptions={setSizeOptions}
-					moreOption={moreOption}
-					setAddOption={setAddOption}
+					setActiveComp={setActiveComp}
+					activeComp={activeComp}
 				/>
 			)}
 		</div>
