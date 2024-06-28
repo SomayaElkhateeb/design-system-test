@@ -155,7 +155,7 @@ const RenderSection: React.FC<RenderSectionProps> = ({
 						<span>Add Another Value</span>
 					</button>
 					<label className='flex items-center gap-2'>
-						<input type='checkbox' checked readOnly className='h-4 w-4' />
+						<input type='checkbox' checked readOnly className='h-4 w-4 ' />
 						<span>Required</span>
 					</label>
 				</div>
@@ -213,7 +213,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 								<input
 									type='color'
 									value={option.value}
-									className='hidden'
+									className='hidden '
 									id={`color-input-${index}`}
 									onChange={(e) => handleColorChange(index, e.target.value)}
 								/>
@@ -233,7 +233,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 							type='text'
 							value={option.value}
 							onChange={(e) => updateOption(type, index, 'value', e.target.value)}
-							className='border p-2 flex-grow w-full'
+							className='border p-2 flex-grow w-full capitalize'
 							placeholder='Option Value'
 						/>
 					</div>

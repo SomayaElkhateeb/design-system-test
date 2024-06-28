@@ -17,8 +17,8 @@ const OptionsAndVariationsFull = () => {
 	);
 
 	const [colorOptions, setColorOptions] = useState<Option[]>([
-		{ value: 'Red', priceDifference: 50 },
-		{ value: 'Blue', priceDifference: 50 },
+		{ value: 'red', priceDifference: 50 },
+		{ value: 'blue', priceDifference: 50 },
 	]);
 
 	const [sizeOptions, setSizeOptions] = useState<Option[]>([
@@ -120,7 +120,7 @@ const OptionsAndVariationsFull = () => {
 									value={optionName}
 									onChange={(e) => setOptionName(e.target.value)}
 									placeholder='Select or add new'
-									className='flex-grow px-3 py-2 border border-gray-300 rounded'
+									className='flex-grow px-3 py-2 border border-gray-300 rounded capitalize'
 								/>
 								<button
 									type='button'
