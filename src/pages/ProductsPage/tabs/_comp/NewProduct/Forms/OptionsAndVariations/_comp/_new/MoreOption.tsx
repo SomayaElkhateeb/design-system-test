@@ -115,7 +115,7 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 	);
 };
 
-// Define the RenderSectionProps interface for the RenderSection component props
+// 1. Define the RenderSectionProps interface for the RenderSection component props
 interface RenderSectionProps {
 	title: string;
 	type: 'color' | 'size';
@@ -175,7 +175,7 @@ const RenderSection: React.FC<RenderSectionProps> = ({
 	</section>
 );
 
-// Define the RenderOptionsProps interface for the RenderOptions component props
+// 2. Define the RenderOptionsProps interface for the RenderOptions component props
 interface RenderOptionsProps {
 	type: 'color' | 'size';
 	options: Option[];
@@ -260,7 +260,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 	);
 };
 
-// Define the HeaderProps interface for the Header component props
+// 3. Define the HeaderProps interface for the Header component props
 interface HeaderProps {
 	title: string;
 	isCollapse: boolean;
