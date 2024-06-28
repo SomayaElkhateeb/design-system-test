@@ -9,8 +9,6 @@ import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import { updateVariations } from './updateVariations';
-import OptionSwitcher from './_new/OptionSwitcher';
-import OptionsAndVariationsFull from './_new/OptionsAndVariationsFull';
 
 /**
  * @template TFormStore

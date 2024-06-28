@@ -1,4 +1,3 @@
-
 import { t } from 'i18next';
 import { toast } from 'react-hot-toast';
 // import { Navigate  } from "react-router-dom";
@@ -8,29 +7,27 @@ export default class PublicHandelingErrors {
 		error: unknown | any,
 		variables?: { contact?: string | undefined; rating?: number | null } | any,
 	) => {
-		
 		this.handleTokenExpire(error?.response?.status);
+		
+		const errorData = error?.response?.data;
 
-		if (error?.response?.data?.errors?.length > 0) {
-			error?.response?.data?.errors?.forEach((item: any) => {
+		if (errorData?.errors?.length > 0) {
+			errorData?.errors?.forEach((item: any) => {
 				toast.error(item?.message);
 			});
 			this.handleTokenExpire(error?.response?.status);
-		} else if (
-			error?.response?.data?.errors &&
-			Object.values(error?.response?.data?.errors)?.length > 0
-		) {
-			Object.values(error?.response?.data?.errors)?.map((e) => {
+		} else if (errorData?.errors && Object.values(errorData?.errors)?.length > 0) {
+			Object.values(errorData?.errors)?.map((e) => {
 				toast.error(e);
 			});
-		} else if (error?.response?.data?.message) {
-			toast.error(error?.response?.data?.message);
+		} else if (errorData?.message) {
+			toast.error(errorData?.message);
 			this.handleTokenExpire(error?.response?.status);
-		} else if (error?.response?.data?.error) {
-			toast.error(error?.response?.data?.error);
+		} else if (errorData?.error) {
+			toast.error(errorData?.error);
 			this.handleTokenExpire(error?.response?.status);
-		} else if (error?.response?.data?.errors?.message) {
-			toast.error(error?.response?.data?.errors?.message);
+		} else if (errorData?.errors?.message) {
+			toast.error(errorData?.errors?.message);
 		}
 	};
 
