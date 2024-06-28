@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaRegTrashCan } from 'react-icons/fa';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import { PiHandSwipeRight } from 'react-icons/pi';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -255,7 +255,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 					</div>
 					<div className='w-1/6 flex justify-center'>
 						<button onClick={() => deleteOption(type, index)}>
-							<FaRegTrashCan size={20} />
+							<FaRegTrashAlt size={20} />
 						</button>
 					</div>
 				</div>
@@ -277,7 +277,7 @@ const Header: React.FC<HeaderProps> = ({ title, isCollapse, setIsCollapse }) => 
 			<h2 className='text-lg'>{title}</h2>
 			<div className='flex gap-5'>
 				<button>
-					<FaRegTrashCan size={20} />
+					<FaRegTrashAlt size={20} />
 				</button>
 				<button>
 					<PiHandSwipeRight size={20} />

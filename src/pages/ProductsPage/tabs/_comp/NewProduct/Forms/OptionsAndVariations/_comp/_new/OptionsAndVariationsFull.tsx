@@ -125,7 +125,7 @@ const OptionsAndVariationsFull = () => {
 								<button
 									type='button'
 									onClick={handleAddValue}
-									className='ml-1 px-1 py-2 bg-blue-600 rounded'
+									className='ms-1 px-1 py-2 bg-blue-600 rounded'
 								>
 									<IoAddCircle size={30} />
 								</button>
@@ -142,7 +142,7 @@ const OptionsAndVariationsFull = () => {
 										<button
 											type='button'
 											onClick={() => setOptionValues(optionValues.filter((_, i) => i !== index))}
-											className='ml-2'
+											className='ms-2'
 										>
 											<IoClose size={15} />
 										</button>
