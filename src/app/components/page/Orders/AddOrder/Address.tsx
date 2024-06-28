@@ -8,7 +8,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { ValidFormStoreByValues } from 'src/utils/types';
 import { AddAddressInterface } from './Comp/useOrderAddress';
 import LocationPicker from 'src/app/components/ui/LocationPicker';
-import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
+import SelectFormField from 'src/pages/AuthPage/Registration/_comp/SelectFormField';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { countries } from '../../../../../pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';

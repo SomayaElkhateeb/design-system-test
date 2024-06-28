@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AuthForm from './_comp/IdentifierForm/IdentifierForm';
-import RegisterLayout from '../RegisterLayout/RegisterLayout';
+import RegisterLayout from '../_comp/RegisterLayout';
 import PasswordForm from './_comp/PasswordForm/PasswordForm';
 import { BackIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
