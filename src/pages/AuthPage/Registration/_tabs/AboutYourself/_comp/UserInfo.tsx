@@ -1,10 +1,10 @@
-import { capitalize } from 'src/app/utils';
-import { Form } from 'src/app/components/ui/form';
-import { Input } from 'src/app/components/ui/input';
-import { Button } from 'src/app/components/optimized';
-import FormField from 'src/app/components/ui/form/field';
-import { useUserInfoForm, UserInfoProps } from './useUserInfoForm';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'src/app/components/optimized';
+import { Form } from 'src/app/components/ui/form';
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import { capitalize } from 'src/app/utils';
+import { UserInfoProps, useUserInfoForm } from './useUserInfoForm';
 
 // Define the specific types for the field names
 type FieldName = 'email' | 'admin_name' | 'mobile' | 'password';
@@ -38,7 +38,13 @@ export default function UserInfo({ onNext, onPhoneChange }: UserInfoProps) {
 					/>
 				))}
 				<div className='flex justify-end w-full'>
-					<Button loading={isLoading} className="w-[8.75rem]" variant='primary' type='submit' text={t('Next')} />
+					<Button
+						loading={isLoading}
+						className='w-[8.75rem]'
+						variant='primary'
+						type='submit'
+						text={t('Next')}
+					/>
 				</div>
 			</form>
 		</Form>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import CheckOtpCode from './_comp/CheckOtpCode/CheckOtpCode';
 import CreateNewPassword from './_comp/CreateNewPassword/CreateNewPassword';
 import ForgotPasswordForm from './_comp/ForgotPasswordForm/ForgotPasswordForm';
-import RegisterLayout from '../RegisterLayout/RegisterLayout';
+import RegisterLayout from '../_comp/RegisterLayout';
 
 export default function ForgotPassword() {
 	const [isCodeSent, setIsCodeSent] = useState<boolean>(false);

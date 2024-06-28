@@ -2,10 +2,9 @@ import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-
-import PasswordToggleIcon from '../../../RegisterLayout/PasswordToggleIcon';
 import useCreateNewPassword from './useCreateNewPassword';
 import { useTranslation } from 'react-i18next';
+import PasswordToggleIcon from 'src/pages/AuthPage/_comp/PasswordToggleIcon';
 
 export default function CreateNewPassword() {
 	const { formStore, onSubmit, isVisible, toggleVisibility, fields } = useCreateNewPassword();
@@ -36,10 +35,14 @@ export default function CreateNewPassword() {
 					/>
 				))}
 				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text={t('Update Password')} className='w-36 px-2' />
+					<Button
+						variant='primary'
+						type='submit'
+						text={t('Update Password')}
+						className='w-36 px-2'
+					/>
 				</div>
 			</form>
 		</Form>
 	);
 }
-
