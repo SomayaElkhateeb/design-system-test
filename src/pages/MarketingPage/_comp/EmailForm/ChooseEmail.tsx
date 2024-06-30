@@ -5,11 +5,12 @@ import { useTranslation } from 'react-i18next';
 import EmailOne from './EmailOne/EmailOne';
 import PackageSubscribe from './EmailOne/_comp/PackageSubscribe';
 import { getImageUrl } from 'src/app/utils';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { SubHeader } from 'src/app/components/optimized';
 
 const ChooseEmail = () => {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const [selectedOption, setSelectedOption] = useState<string>('50000');
 
 	const subscriptionOptions = [
@@ -32,6 +33,7 @@ const ChooseEmail = () => {
 			<section className='p-5 flex flex-col gap-4'>
 				<div>
 					<SubscriptionOptions
+						click={() => navigate('/subscribeEmail')}
 						currentEmails={1000}
 						options={subscriptionOptions}
 						selectedOption={selectedOption}
@@ -45,10 +47,6 @@ const ChooseEmail = () => {
 						return <Card key={item.id} {...item} />;
 					})}
 				</div>
-
-				{/* {mailOne && !isSubscribe && <EmailOne />} */}
-
-				{/* {isSubscribe && <PackageSubscribe />} */}
 			</section>
 		</>
 	);

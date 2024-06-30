@@ -59,7 +59,9 @@ export const OptionRadio = ({
 	col?: boolean;
 }) => {
 	return (
-		<div className={`flex gap-4 ${col ? 'flex-col w-[65%]' : 'flex-row'}`}>
+		<div
+			className={`flex  gap-4 ${col ? 'flex-col w-[60%]' : 'xs:flex-col xs:w-[60%] lg:flex-row'}`}
+		>
 			{options.map((option) => (
 				<label
 					key={option.value}
@@ -73,7 +75,7 @@ export const OptionRadio = ({
 						value={option.value}
 						checked={selectedOption === option.value}
 						onChange={() => onOptionChange(option.value)}
-						className={`form-radio size-5 :checked-bg-white border-red-500 ${
+						className={`form-radio size-5 :checked-bg-white ${
 							selectedOption === option.value ? ':checked-bg-white' : ':bg-title'
 						}`}
 					/>
