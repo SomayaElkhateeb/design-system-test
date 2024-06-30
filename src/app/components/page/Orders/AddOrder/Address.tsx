@@ -7,11 +7,11 @@ import { CheckBox } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import { ValidFormStoreByValues } from 'src/utils/types';
 import { AddAddressInterface } from './Comp/useOrderAddress';
-import LocationPicker from 'src/app/components/ui/LocationPicker';
 import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { countries } from '../../../../../pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 
 interface AddressProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, AddAddressInterface>;
@@ -84,10 +84,10 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 					</div>
 				) : (
 					<div className='col-span-2'>
-						<LocationPicker
-							formStore={formStore}
+						<GoogleMapComponent
 							setLocationEnabled={setLocationEnabled}
 							setDisablePickButton={setDisablePickButton}
+							height='300px'
 						/>
 					</div>
 				)}
