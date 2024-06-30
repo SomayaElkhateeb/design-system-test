@@ -59,9 +59,7 @@ export const OptionRadio = ({
 	col?: boolean;
 }) => {
 	return (
-		<div
-			className={`flex  gap-4 ${col ? 'flex-col w-[60%]' : 'xs:flex-col xs:w-[60%] lg:flex-row'}`}
-		>
+		<div className={`flex gap-4 flex-col w-[60%] lg:flex-row ${col && 'lg:flex-col lg:w-[65%]'}`}>
 			{options.map((option) => (
 				<label
 					key={option.value}

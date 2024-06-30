@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import SubscriptionOptions from './_comp/SubscriptionOptions';
-
 import { useTranslation } from 'react-i18next';
-import EmailOne from './EmailOne/EmailOne';
-import PackageSubscribe from './EmailOne/_comp/PackageSubscribe';
 import { getImageUrl } from 'src/app/utils';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { SubHeader } from 'src/app/components/optimized';
