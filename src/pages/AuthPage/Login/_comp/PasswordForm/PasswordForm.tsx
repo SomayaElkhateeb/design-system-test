@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import usePasswordForm from './usePasswordForm';
-import PasswordToggleIcon from 'src/pages/AuthPage/RegisterLayout/PasswordToggleIcon';
 import { useTranslation } from 'react-i18next';
+import PasswordToggleIcon from 'src/pages/AuthPage/_comp/PasswordToggleIcon';
 
 export default function PasswordForm() {
 	const { t } = useTranslation();

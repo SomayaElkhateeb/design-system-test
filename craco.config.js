@@ -1,7 +1,7 @@
 module.exports = {
 	devServer: {
-		headers: {
-			'Cross-Origin-Embedder-Policy': 'unsafe-none',
-		},
+		// headers: {
+		// 	'Cross-Origin-Embedder-Policy': 'unsafe-none',
+		// },
 	},
 };

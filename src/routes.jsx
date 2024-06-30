@@ -10,7 +10,7 @@ import {
 	Config,
 	CustomerInfo,
 	CustomersPage,
-	EmailForm,
+	ChooseEmail,
 	HomePage,
 	MarketingPage,
 	Nested_pages_SettingsConfig,
@@ -48,9 +48,16 @@ import {
 	SimpleProductPage,
 	VirtualProductPage,
 } from './pages/ProductsPage/tabs/_comp';
+import EmailForm from './pages/MarketingPage/_comp/EmailForm/Email/EmailForm';
+import PackageSubscribe from './pages/MarketingPage/_comp/EmailForm/Email/_comp/PackageSubscribe';
 
 // Route Definitions
 export const routes = [
+	// Choose Email template
+	{ path: '/subscribeEmail', element: <EmailForm /> },
+	{ path: '/subscribeEmail/package', element: <PackageSubscribe /> },
+
+	// ///////////////////////////////////
 	{ path: '/', element: <HomePage /> },
 	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
@@ -179,7 +186,7 @@ export const routes = [
 		children: [
 			{ path: ':tab', element: <MarketingTabs /> },
 			{ path: ':tabName/:config', element: <MarketingConfig /> },
-			{ path: 'email-form', element: <EmailForm /> },
+			{ path: 'email-form', element: <ChooseEmail /> },
 		],
 	},
 

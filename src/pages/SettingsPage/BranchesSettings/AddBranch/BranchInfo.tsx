@@ -2,7 +2,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-import { BranchSettingsInterface } from './useAddBranchForm';
+import { BranchSettingsInterface } from './_hook/useAddBranchForm';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import { Address } from '../../../../app/components/page';
 

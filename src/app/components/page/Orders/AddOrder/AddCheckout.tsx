@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import { Textarea } from 'src/app/components/ui/textarea';
 import FormField from 'src/app/components/ui/form/field';
-
-import SelectFormField from 'src/pages/AuthPage/Registration/comp/SelectFormField';
+import SelectFormField from 'src/pages/AuthPage/Registration/_comp/SelectFormField';
 
 const branches = [
 	{ value: 'eg', label: 'Egypt' },

@@ -152,7 +152,7 @@ import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleCh
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import useCustomHookAddCustomerAddressForm, {
 	AddAddressInterface,
-} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/HookForAddCustomerAddress';
+} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addAddresse/_hook/HookForAddCustomerAddress';
 import { countries } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import { Form } from 'src/app/components/ui/form';

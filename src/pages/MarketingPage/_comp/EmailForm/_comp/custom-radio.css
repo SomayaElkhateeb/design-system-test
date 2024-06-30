@@ -4,6 +4,30 @@ input[type='radio'] {
 	-moz-appearance: none;
 	width: 1.5rem;
 	height: 1.5rem;
+	border: 1px solid #e8ebf2;
+	border-radius: 50%;
+	outline: none;
+	cursor: pointer;
+	position: relative;
+}
+
+input[type='radio']:checked::before {
+	content: '';
+	width: 0.75rem;
+	height: 0.75rem;
+	border-radius: 50%;
+	background-color: #e8ebf2;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+/* input[type='radio'] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 1.5rem;
+	height: 1.5rem;
 	border: 1px solid white;
 	border-radius: 50%;
 	outline: none;
@@ -21,7 +45,7 @@ input[type='radio']:checked::before {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
+} */
 
 .radio-container {
 	display: flex;

@@ -1,7 +1,6 @@
 import React, { useContext, createContext } from 'react';
 import { MdDone } from 'react-icons/md';
 import Button from '../Buttons/Button';
-import LayoutCard from '../Cards/LayoutCard';
 import { useTranslation } from 'react-i18next';
 import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
@@ -124,20 +123,18 @@ const VTab: React.FC<VTabProps> = ({ index, title, content, tabs, handleFinish }
 				)}
 			</section>
 			{isActive && (
-				<div className='py-5 px-9'>
-					<LayoutCard>
-						{content}
-						<div className='flex justify-end mt-4 gap-2'>
-							{index > 0 && (
-								<Button onClick={handlePrev} disabled={currentTab === 0} className='ms-5'>
-									{t('Prev')}
-								</Button>
-							)}
-							<Button onClick={isLastStep ? () => handleFinish(true) : handleNext}>
-								{isLastStep ? t('Finish') : t('Next')}
+				<div className='py-5 px-9 global-cards'>
+					{content}
+					<div className='flex justify-end mt-4 gap-2'>
+						{index > 0 && (
+							<Button onClick={handlePrev} disabled={currentTab === 0} className='ms-5'>
+								{t('Prev')}
 							</Button>
-						</div>
-					</LayoutCard>
+						)}
+						<Button onClick={isLastStep ? () => handleFinish(true) : handleNext}>
+							{isLastStep ? t('Finish') : t('Next')}
+						</Button>
+					</div>
 				</div>
 			)}
 		</div>

@@ -1,11 +1,13 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LoginOptions } from './comp/LoginOptions';
-import AboutYourself from './comp/tabs/AboutYourself/AboutYourself';
-import RegisterLayout from '../RegisterLayout/RegisterLayout';
-import AboutYourBusiness from './comp/tabs/AboutYourBusiness/AboutYourBusiness';
+
 import useStepNavigator from 'src/app/components/optimized/Tabs/useStepNavigator';
+
+import { LoginOptions } from './_comp/LoginOptions';
+import AboutYourself from './_tabs/AboutYourself/AboutYourself';
+import RegisterLayout from '../_comp/RegisterLayout';
+import AboutYourBusiness from './_tabs/AboutYourBusiness/AboutYourBusiness';
 import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 
 
@@ -29,7 +31,10 @@ export default function RegistrationPage() {
 
 	const tabs = [
 		{ title: t('Tell us about yourself'), content: firstTab },
-		{ title: t('Tell us about your business'), content: <AboutYourBusiness onFinish={handleFinish}/> },
+		{
+			title: t('Tell us about your business'),
+			content: <AboutYourBusiness onFinish={handleFinish} />,
+		},
 	];
 
 	return (

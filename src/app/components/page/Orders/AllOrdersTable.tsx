@@ -13,10 +13,9 @@ import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 // react-icons
 import { FaRegEdit } from 'react-icons/fa';
 import { FaArrowsRotate } from 'react-icons/fa6';
-import { IoIosArrowForward } from 'react-icons/io';
 import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
 import { CiLocationOn } from 'react-icons/ci';
-import { IoIosArrowBack } from 'react-icons/io';
+import ArrowTables from '../../optimized/UiKits/ArrowTables';
 export default function AllOrdersTable({
 	orders,
 	array,
@@ -119,17 +118,7 @@ export default function AllOrdersTable({
 									selectedOption={selectedOption}
 									handelSelect={handleSelect}
 								/>
-								{language === 'ar' ? (
-									<IoIosArrowBack
-										className='text-subtitle'
-										onClick={() => navigate(`/orders/orderDetails/11111`)}
-									/>
-								) : (
-									<IoIosArrowForward
-										className='text-subtitle'
-										onClick={() => navigate(`/orders/orderDetails/11111`)}
-									/>
-								)}
+								<ArrowTables path='/orders/orderDetails/11111' />
 							</div>
 						</TableCell>,
 					],

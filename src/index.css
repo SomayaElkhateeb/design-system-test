@@ -192,12 +192,14 @@ object {
 		@apply border rounded-[.6rem] bg-white border-constrained;
 	}
 	.customer-border {
-		@apply md:w-[70%] bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
+		@apply  bg-white rounded-[.6rem] py-[.7rem] border border-constrained flex flex-col;
 	}
 	.splide__pagination__page {
 		background: transparent !important;
 	}
-
+	.emailGrid {
+		@apply grid grid-cols-1 gap-4 lg:grid-cols-6 lg:items-center;
+	}
 	.flex-row-global {
 		@apply flex flex-row items-center;
 	}
@@ -244,7 +246,7 @@ object {
 		@apply flex flex-col lg:justify-between gap-4 min-h-[100px];
 	}
 	.global-install-p {
-		@apply text-title text-sm w-[60%];
+		@apply text-title text-sm w-full lg:w-[60%];
 	}
 	.global-install-btn {
 		@apply lg:flex lg:justify-end;
@@ -255,7 +257,6 @@ object {
 	/*py-2.5*/
 	.btn {
 		@apply px-4 p-2  rounded text-sm text-center capitalize flex items-center justify-center gap-1.5 focus:ring-1;
-
 	}
 
 	.btn-pri {

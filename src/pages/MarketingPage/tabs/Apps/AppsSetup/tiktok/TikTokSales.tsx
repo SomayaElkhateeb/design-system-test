@@ -1,12 +1,16 @@
-import { Button, LayoutCard, SubHeader, ToastsNotification } from 'src/app/components/optimized';
+import { Button, PopupProceed, SubHeader, ToastsNotification } from 'src/app/components/optimized';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import Async from '../_comp/Async';
+import { usePlatformContext } from '../PlatformContext';
 
 const TikTokSales = () => {
+	const { syncStatus, setSyncStatus } = usePlatformContext();
 	const [showNotification, setShowNotification] = useState(true);
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [_, setSearchParams] = useSearchParams();
 	const { t } = useTranslation();
 
@@ -18,6 +22,11 @@ const TikTokSales = () => {
 		setSearchParams({ catalog_marketing: 'active' });
 	};
 
+	const handleDisableSync = () => {
+		console.log('Sync button clicked');
+		setIsPopupOpen(false);
+		setSyncStatus(false);
+	};
 	return (
 		<>
 			<SubHeader title={t('TikTok sales')} />
@@ -59,20 +68,41 @@ const TikTokSales = () => {
 						Reach milions of potential customers with paid advertising campaigns
 					</p>
 				</div>
-				<div className='global-cards'>
-					<h2 className='title'>{t('Marketing Catalog')}</h2>
-					<div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4'>
-						<p className='global-install-p'>
-							Directly sync all of your product information to use for campaigns.
-						</p>
-						<div className='global-install-btn'>
-							<Button variant='secondary' onClick={handleSetupNowClick}>
-								{t('Set up now')}
-							</Button>
+				{syncStatus === false && (
+					<div className='global-cards'>
+						<h2 className='title'>{t('Marketing Catalog')}</h2>
+						<div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4'>
+							<p className='global-install-p'>
+								Directly sync all of your product information to use for campaigns.
+							</p>
+							<div className='global-install-btn'>
+								<Button variant='secondary' onClick={handleSetupNowClick}>
+									{t('Set up now')}
+								</Button>
+							</div>
 						</div>
 					</div>
-				</div>
+				)}
+
+				{syncStatus === true && (
+					<>
+						<h1 className='text-lg title'>Product Status on TikTok</h1>
+						<Async title={t('TikTok Marketing')} asyncBtn={() => setIsPopupOpen(true)} />
+					</>
+				)}
 			</section>
+			{isPopupOpen && (
+				<PopupProceed
+					title='Are you want to Disable Catalog Sync From your store?'
+					subTitle='You can Recync anytime with TikTok Catalog.'
+					proceedBtnText='Yes, Disable'
+					cancelBtnText='Discard'
+					isOpen={isPopupOpen}
+					onCancel={() => setIsPopupOpen(false)}
+					onProceed={handleDisableSync}
+					color='#EC5151'
+				/>
+			)}
 		</>
 	);
 };

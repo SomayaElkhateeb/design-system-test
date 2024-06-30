@@ -8,6 +8,7 @@ import { TfiUpload } from 'react-icons/tfi';
 import { Input } from 'src/app/components/ui/input';
 
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import ImageInput from 'src/app/components/ui/form/ImageInput';
 
 const LegalDetails = ({
 	formStore,
@@ -55,28 +56,21 @@ const LegalDetails = ({
 							render={(field) => <Input {...field} placeholder={'1111111'} />}
 						/>
 
-						<FileInput
-							id={'CommercialRegistrationImage'}
-							label={t('Commercial Registration Image')}
-							error={formStore.formState.errors.CommercialRegistrationImage?.message}
-							onImageSubmit={onImageSubmit}
+						<ImageInput<generalSettingsInterface>
+							name={'CommercialRegistrationImage'}
+							formStore={formStore}
 						>
 							<TfiUpload className='text-[1.5rem]' />
-							<p>{t('UploadImage')}</p>
-						</FileInput>
+							<p className='paragraph text-center'>{t('UploadImage')}</p>
+						</ImageInput>
 					</div>
 				)}
 
 				{state === 'individual' && (
-					<FileInput
-						id={'NationalIDImage'}
-						label={t('National ID Image')}
-						error={formStore.formState.errors.NationalIDImage?.message}
-						onImageSubmit={onImageSubmitNationalID}
-					>
+					<ImageInput<generalSettingsInterface> name={'NationalIDImage'} formStore={formStore}>
 						<TfiUpload className='text-[1.5rem]' />
-						<p>{t('UploadImage')}</p>
-					</FileInput>
+						<p className='paragraph text-center'>{t('UploadImage')}</p>
+					</ImageInput>
 				)}
 			</div>
 		</section>

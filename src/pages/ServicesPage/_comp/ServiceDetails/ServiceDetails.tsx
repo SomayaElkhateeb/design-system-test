@@ -6,13 +6,12 @@ import ServiceProviderSection from './ServiceProviderSection';
 import { useNavigate } from 'react-router-dom';
 import RecentReview from 'src/pages/ReviewsPage/tabs/StoreReview/_comp/RecentReview';
 
-
 export default function ServiceDetails() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	return (
-		<div className='flex-col-global mb-[2rem]'>
+		<div className='flex-col-global'>
 			{/*  top section */}
 			<div className='flex flex-col'>
 				<SubHeader title={t('Service details')}>
@@ -26,13 +25,13 @@ export default function ServiceDetails() {
 			<div className='custom_container'>
 				<div className='flex-col-global '>
 					{/*  middle section */}
-					<div className='grid lg:grid-cols-3 sm:grid-cols-1 items-start gap-4'>
-						<div className='lg:col-span-2'>
+					<div className='custom-grid-parent'>
+						<div className='grid-left flex flex-col gap-4'>
 							<ServiceDetailsSales />
+							<RecentReview />
 						</div>
-						<ServiceProviderSection />
-						<div className='lg:col-span-2'>
-							<RecentReview />{' '}
+						<div className='grid-right'>
+							<ServiceProviderSection />
 						</div>
 					</div>
 				</div>
