@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaRegTrashCan } from 'react-icons/fa';
+import { FaRegTrashAlt } from 'react-icons/fa';
 import { PiHandSwipeRight } from 'react-icons/pi';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -18,8 +18,8 @@ interface MoreOptionProps {
 	setColorOptions: React.Dispatch<React.SetStateAction<Option[]>>;
 	sizeOptions: Option[];
 	setSizeOptions: React.Dispatch<React.SetStateAction<Option[]>>;
-	setAddOption: React.Dispatch<React.SetStateAction<boolean>>;
-	moreOption: boolean;
+	setActiveComp: React.Dispatch<React.SetStateAction<string>>;
+	activeComp: string;
 }
 
 const MoreOption: React.FC<MoreOptionProps> = ({
@@ -27,13 +27,12 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 	setColorOptions,
 	sizeOptions,
 	setSizeOptions,
-	setAddOption,
-	moreOption,
+	setActiveComp,
+	activeComp,
 }) => {
 	const [isCollapseColor, setIsCollapseColor] = useState<boolean>(false);
 	const [isCollapseSize, setIsCollapseSize] = useState<boolean>(false);
 	const [isSizeOption, setIsSizeOption] = useState<boolean>(false);
-	const [isColorOption] = useState<boolean>(moreOption);
 
 	const addOption = (type: 'color' | 'size') => {
 		if (type === 'color') {
@@ -72,21 +71,19 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 
 	return (
 		<>
-			{isColorOption && (
+			{activeComp === 'moreOption' && (
 				<section className='border rounded shadow-sm w-full mx-auto'>
 					<div className='p-4'>
-						{isColorOption && (
-							<RenderSection
-								title='Color'
-								type='color'
-								isCollapsed={isCollapseColor}
-								setIsCollapsed={setIsCollapseColor}
-								options={colorOptions}
-								addOption={addOption}
-								updateOption={updateOption}
-								deleteOption={deleteOption}
-							/>
-						)}
+						<RenderSection
+							title='Color'
+							type='color'
+							isCollapsed={isCollapseColor}
+							setIsCollapsed={setIsCollapseColor}
+							options={colorOptions}
+							addOption={addOption}
+							updateOption={updateOption}
+							deleteOption={deleteOption}
+						/>
 						{isSizeOption && (
 							<RenderSection
 								title='Size'
@@ -105,7 +102,6 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 								LeftIcon={<IoIosAddCircle size={25} />}
 								onClick={() => {
 									setIsSizeOption(true);
-									if (isSizeOption) setAddOption(true);
 								}}
 							>
 								Add More Option
@@ -119,7 +115,7 @@ const MoreOption: React.FC<MoreOptionProps> = ({
 	);
 };
 
-// Define the RenderSectionProps interface for the RenderSection component props
+// 1. Define the RenderSectionProps interface for the RenderSection component props
 interface RenderSectionProps {
 	title: string;
 	type: 'color' | 'size';
@@ -159,7 +155,7 @@ const RenderSection: React.FC<RenderSectionProps> = ({
 						<span>Add Another Value</span>
 					</button>
 					<label className='flex items-center gap-2'>
-						<input type='checkbox' checked readOnly className='h-4 w-4' />
+						<input type='checkbox' checked readOnly className='h-4 w-4 ' />
 						<span>Required</span>
 					</label>
 				</div>
@@ -179,7 +175,7 @@ const RenderSection: React.FC<RenderSectionProps> = ({
 	</section>
 );
 
-// Define the RenderOptionsProps interface for the RenderOptions component props
+// 2. Define the RenderOptionsProps interface for the RenderOptions component props
 interface RenderOptionsProps {
 	type: 'color' | 'size';
 	options: Option[];
@@ -217,7 +213,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 								<input
 									type='color'
 									value={option.value}
-									className='hidden'
+									className='hidden '
 									id={`color-input-${index}`}
 									onChange={(e) => handleColorChange(index, e.target.value)}
 								/>
@@ -237,7 +233,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 							type='text'
 							value={option.value}
 							onChange={(e) => updateOption(type, index, 'value', e.target.value)}
-							className='border p-2 flex-grow w-full'
+							className='border p-2 flex-grow w-full capitalize'
 							placeholder='Option Value'
 						/>
 					</div>
@@ -255,7 +251,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 					</div>
 					<div className='w-1/6 flex justify-center'>
 						<button onClick={() => deleteOption(type, index)}>
-							<FaRegTrashCan size={20} />
+							<FaRegTrashAlt size={20} />
 						</button>
 					</div>
 				</div>
@@ -264,7 +260,7 @@ const RenderOptions: React.FC<RenderOptionsProps> = ({
 	);
 };
 
-// Define the HeaderProps interface for the Header component props
+// 3. Define the HeaderProps interface for the Header component props
 interface HeaderProps {
 	title: string;
 	isCollapse: boolean;
@@ -277,7 +273,7 @@ const Header: React.FC<HeaderProps> = ({ title, isCollapse, setIsCollapse }) => 
 			<h2 className='text-lg'>{title}</h2>
 			<div className='flex gap-5'>
 				<button>
-					<FaRegTrashCan size={20} />
+					<FaRegTrashAlt size={20} />
 				</button>
 				<button>
 					<PiHandSwipeRight size={20} />

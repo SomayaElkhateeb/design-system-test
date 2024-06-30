@@ -12,7 +12,6 @@ import OptionsList from './_comp/OptionsList';
 import AddOptionManager from './_comp/AddOptionManager';
 import VariationsManager from './_comp/VariationsManager';
 import OptionsAndVariationsFull from './_comp/_new/OptionsAndVariationsFull';
-import ColorOption from './_comp/_new/MoreOption';
 
 /**
  * @template TFormStore
@@ -52,7 +51,6 @@ export default function ProductFormOptionsAndVariationsSection(props) {
 				</CardContent>
 			</Card> */}
 			<OptionsAndVariationsFull />
-			<ColorOption />
 		</>
 	);
 }

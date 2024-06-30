@@ -3,8 +3,8 @@ import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
-import OtpTimer from 'src/pages/AuthPage/RegisterLayout/OtpTimer';
 import { useTranslation } from 'react-i18next';
+import { OtpTimer } from 'src/pages/AuthPage/Registration/_tabs/AboutYourself/_comp/OtpVerification';
 
 interface CheckCodeProps {
 	usePhone: boolean;

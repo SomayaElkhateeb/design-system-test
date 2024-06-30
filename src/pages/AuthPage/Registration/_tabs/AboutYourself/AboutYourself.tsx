@@ -1,8 +1,7 @@
 import { useState } from 'react';
-
-import UserInfo from './UserInfo';
-import OtpVerification from './OtpVerification';
-import Steps from 'src/pages/AuthPage/RegisterLayout/Steps';
+import UserInfo from './_comp/UserInfo';
+import OtpVerification from './_comp/OtpVerification';
+import LoginSteps from './_comp/LoginSteps';
 
 export default function AboutYourself({ onVerify }: { onVerify: () => void }) {
 	const [currentStep, setCurrentStep] = useState(1);
@@ -24,7 +23,7 @@ export default function AboutYourself({ onVerify }: { onVerify: () => void }) {
 	};
 
 	return (
-		<Steps
+		<LoginSteps
 			stepsContent={[
 				<UserInfo onNext={handleNext} onPhoneChange={handlePhoneChange} />,
 				<OtpVerification

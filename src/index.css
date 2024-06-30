@@ -197,7 +197,9 @@ object {
 	.splide__pagination__page {
 		background: transparent !important;
 	}
-
+	.emailGrid {
+		@apply grid grid-cols-1 gap-4 lg:grid-cols-6 lg:items-center;
+	}
 	.flex-row-global {
 		@apply flex flex-row items-center;
 	}
@@ -255,7 +257,6 @@ object {
 	/*py-2.5*/
 	.btn {
 		@apply px-4 p-2  rounded text-sm text-center capitalize flex items-center justify-center gap-1.5 focus:ring-1;
-
 	}
 
 	.btn-pri {

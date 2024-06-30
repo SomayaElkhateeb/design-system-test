@@ -17,8 +17,8 @@ const OptionsAndVariationsFull = () => {
 	);
 
 	const [colorOptions, setColorOptions] = useState<Option[]>([
-		{ value: 'Red', priceDifference: 50 },
-		{ value: 'Blue', priceDifference: 50 },
+		{ value: 'red', priceDifference: 50 },
+		{ value: 'blue', priceDifference: 50 },
 	]);
 
 	const [sizeOptions, setSizeOptions] = useState<Option[]>([
@@ -26,8 +26,8 @@ const OptionsAndVariationsFull = () => {
 		{ value: 'Medium', priceDifference: -50, path: '' },
 	]);
 
-	const [addOption, setAddOption] = useState(false);
-	const [moreOption, setMoreOption] = useState(false);
+	// moreOption - addOption - mainComp
+	const [activeComp, setActiveComp] = useState('mainComp');
 
 	const options = ['Size', 'Color', 'Add new'];
 
@@ -70,10 +70,10 @@ const OptionsAndVariationsFull = () => {
 				Allow your customers to select from options such as Size and Color on your website.
 			</p>
 
-			{!moreOption && !addOption && (
+			{activeComp === 'mainComp' && (
 				<Button
 					onClick={() => {
-						setAddOption(true);
+						setActiveComp('addOption');
 					}}
 					variant='secondary'
 					LeftIcon={<IoAddCircle size={25} />}
@@ -82,7 +82,7 @@ const OptionsAndVariationsFull = () => {
 				</Button>
 			)}
 
-			{addOption && (
+			{activeComp === 'addOption' && (
 				<div className='flex'>
 					<div className='w-4/6'>
 						<div className='mb-4 w-full'>
@@ -120,12 +120,12 @@ const OptionsAndVariationsFull = () => {
 									value={optionName}
 									onChange={(e) => setOptionName(e.target.value)}
 									placeholder='Select or add new'
-									className='flex-grow px-3 py-2 border border-gray-300 rounded'
+									className='flex-grow px-3 py-2 border border-gray-300 rounded capitalize'
 								/>
 								<button
 									type='button'
 									onClick={handleAddValue}
-									className='ml-1 px-1 py-2 bg-blue-600 rounded'
+									className='ms-1 px-1 py-2 bg-blue-600 rounded'
 								>
 									<IoAddCircle size={30} />
 								</button>
@@ -142,7 +142,7 @@ const OptionsAndVariationsFull = () => {
 										<button
 											type='button'
 											onClick={() => setOptionValues(optionValues.filter((_, i) => i !== index))}
-											className='ml-2'
+											className='ms-2'
 										>
 											<IoClose size={15} />
 										</button>
@@ -153,14 +153,13 @@ const OptionsAndVariationsFull = () => {
 						<div className='flex justify-start gap-2'>
 							<Button
 								onClick={() => {
-									setAddOption(false);
-									setMoreOption(true);
+									setActiveComp('moreOption');
 								}}
 								variant='primary'
 							>
 								Add
 							</Button>
-							<Button onClick={() => setAddOption(false)} variant='secondary'>
+							<Button onClick={() => setActiveComp('mainComp')} variant='secondary'>
 								Discard
 							</Button>
 						</div>
@@ -172,14 +171,14 @@ const OptionsAndVariationsFull = () => {
 				</div>
 			)}
 
-			{moreOption && !addOption && (
+			{activeComp === 'moreOption' && (
 				<MoreOption
-					sizeOptions={sizeOptions}
 					colorOptions={colorOptions}
 					setColorOptions={setColorOptions}
+					sizeOptions={sizeOptions}
 					setSizeOptions={setSizeOptions}
-					moreOption={moreOption}
-					setAddOption={setAddOption}
+					setActiveComp={setActiveComp}
+					activeComp={activeComp}
 				/>
 			)}
 		</div>

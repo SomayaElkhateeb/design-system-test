@@ -48,9 +48,16 @@ import {
 	SimpleProductPage,
 	VirtualProductPage,
 } from './pages/ProductsPage/tabs/_comp';
+import EmailForm from './pages/MarketingPage/_comp/EmailForm/Email/EmailForm';
+import PackageSubscribe from './pages/MarketingPage/_comp/EmailForm/Email/_comp/PackageSubscribe';
 
 // Route Definitions
 export const routes = [
+	// Choose Email template
+	{ path: '/subscribeEmail', element: <EmailForm /> },
+	{ path: '/subscribeEmail/package', element: <PackageSubscribe /> },
+
+	// ///////////////////////////////////
 	{ path: '/', element: <HomePage /> },
 	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
