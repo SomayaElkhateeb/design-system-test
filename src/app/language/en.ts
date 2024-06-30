@@ -1226,4 +1226,12 @@ export const english = {
 	'Activate data sharing': 'Activate data sharing',
 	'Pixel ID': 'Pixel ID',
 	'Tracked action': 'Tracked action',
+	Text: 'Text',
+	style: 'style',
+	'Web safe font': 'Web safe font',
+	'System Font': 'System Font',
+	Regular: 'Regular',
+	Background: 'Background',
+	section: 'section',
+	Alignment: 'Alignment',
 };
