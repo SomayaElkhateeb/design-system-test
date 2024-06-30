@@ -11,8 +11,6 @@ import ProductHighlights from './_comp/ProductHighlights';
 import Setups from './_comp/Setups';
 import data from './_comp/data.json';
 import { useHomePage } from './_comp/useHomePage';
-import EmailForm from '../MarketingPage/_comp/EmailForm/Email/EmailForm';
-import PackageSubscribe from '../MarketingPage/_comp/EmailForm/Email/_comp/PackageSubscribe';
 import { ChooseEmail } from '..';
 
 // --------------------------------------------------------------------------
@@ -84,8 +82,6 @@ export default function HomePage() {
 	}
 	// <Suspense fallback={<HomeLoading />}>
 	return <ChooseEmail />;
-	return <EmailForm />;
-	return <PackageSubscribe />;
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 pt-5'>
 			<div className='custom-grid-parent'>
