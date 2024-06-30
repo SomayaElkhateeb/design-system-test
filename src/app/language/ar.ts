@@ -1214,4 +1214,12 @@ export const arabic = {
 	'Activate data sharing': '',
 	'Pixel ID': '',
 	'Tracked action': '',
+	Text: '',
+	style: '',
+	'Web safe font': '',
+	'System Font': '',
+	Regular: '',
+	Background: '',
+	section: '',
+	Alignment: '',
 } satisfies typeof english;
