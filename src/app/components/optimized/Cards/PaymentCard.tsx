@@ -12,7 +12,7 @@ import { PaymentIcon } from 'src/app/utils/icons';
 import { Button, CheckBox } from '..';
 import useCustomHookPayment, { IPaymentCardInterface } from '../Payment/HookForPayment';
 
-export default function PaymentCard() {
+export default function PaymentCard({ removeHours }: { removeHours: boolean }) {
 	// hook
 	const [agreeToTerms, setAgreeToTerms] = useState(false);
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
@@ -28,7 +28,7 @@ export default function PaymentCard() {
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: paymentSchema,
+		schema: paymentSchema(),
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -44,18 +44,26 @@ export default function PaymentCard() {
 
 	// data methods accordion
 	const paymentMethods = [
-		{ id: 1, icon: <PaymentIcon />, title: t('Credit/Debit Card'), name: 'credit' },
+		{
+			id: 1,
+			icon: <PaymentIcon />,
+			title: t('Credit/Debit Card'),
+			name: 'credit',
+			contain: [{ number: 'debitNumber', expiryDate: 'debitExpiryDate', cvv: 'debitCvv' }],
+		},
 		{
 			id: 2,
 			icon: <img src={getImageUrl('companies/apple.svg')} className='w-5 h-4' alt='Apple Pay' />,
 			title: t('Apple Pay'),
 			name: 'applePay',
+			contain: [{ number: 'appleNumber', expiryDate: 'appleExpiryDate', cvv: 'appleCvv' }],
 		},
 		{
 			id: 3,
 			icon: <img src={getImageUrl('companies/stcPay.svg')} className='w-5 h-4' alt='STC Pay' />,
 			title: t('STC Pay'),
 			name: 'stcPay',
+			contain: [{ number: 'stcNumber', expiryDate: 'stcExpiryDate', cvv: 'stcCvv' }],
 		},
 	];
 
@@ -73,7 +81,9 @@ export default function PaymentCard() {
 							title={item.title}
 							onToggle={() => handlePaymentMethodChange(item.name)}
 						>
-							<PaymentInputs formStore={formStore} />
+							{item.contain.map((paymentItem) => (
+								<PaymentInputs formStore={formStore} key={paymentItem.number} {...paymentItem} />
+							))}
 						</PaymentAccordion>
 					))}
 				</div>
@@ -93,7 +103,8 @@ export default function PaymentCard() {
 							</div>
 						}
 					/>
-					{agreeToTerms && (
+
+					{agreeToTerms && !removeHours && (
 						<div className='md:w-[50%]'>
 							<FormField
 								formStore={formStore}
