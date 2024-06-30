@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export const OrderAddress = ({ onNext, onBack }: { onNext: () => void; onBack: () => void }) => {
 	const { t } = useTranslation();
-	const [sendGift, setSendGift] = useState(false);
+	const [sendGift, setSendGift] = useState<boolean>(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 
 	const { formStore, onSubmit } = useOrderAddress({ sendGift, selectedOption, onNext });

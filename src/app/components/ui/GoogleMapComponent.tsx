@@ -28,6 +28,8 @@ const GoogleMapComponent = ({
 	const containerStyle = {
 		width: '100%',
 		height: height,
+		
+
 	};
 
 	const options = useMemo(

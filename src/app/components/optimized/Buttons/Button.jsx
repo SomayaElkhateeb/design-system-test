@@ -51,7 +51,7 @@ const handleTextVariant = cva(undefined, {
  * Button component for various button styles with optional icons and loading spinner.
  * @param {{
  *  textClassName?: string,
- *  LeftIcon?: (import("react").ComponentType<{ className?: string; }>),
+ *  LeftIcon?: any,
  *  RightIcon?: (import("react").ComponentType<{ className?: string; }>),
  *  loading?: boolean,
  *  text?: never |string

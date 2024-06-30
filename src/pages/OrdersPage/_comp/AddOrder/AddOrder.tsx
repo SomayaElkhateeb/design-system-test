@@ -1,21 +1,15 @@
-import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
+
+
 import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
+import useStepNavigator from 'src/app/components/optimized/Tabs/useStepNavigator';
 import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 
-	const [activeStep, setActiveStep] = useState(0);
-
-	const goNext = useCallback(() => {
-		setActiveStep((prevStep) => prevStep + 1);
-	}, []);
-
-	const goPrevious = useCallback(() => {
-		setActiveStep((prevStep) => prevStep - 1);
-	}, []);
+	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
 		console.log('Finish');
@@ -40,7 +34,6 @@ export default function AddOrder() {
 			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
 		},
 	];
-
 	return (
 		<>
 			<SubHeader title={t('add new order')} />
