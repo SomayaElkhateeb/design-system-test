@@ -5,10 +5,10 @@ import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import useAboutYourBusiness, { AboutYourBusinessInterface } from './useAboutYourBusiness';
-import SelectFormField from '../../_comp/SelectFormField';
+import SelectFormField from '../../../../../app/components/ui/form/SelectFormField';
 
 export default function AboutYourBusiness({ onFinish }: { onFinish: () => void }) {
-	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness({onFinish});
+	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness({ onFinish });
 
 	return (
 		<Form {...formStore}>

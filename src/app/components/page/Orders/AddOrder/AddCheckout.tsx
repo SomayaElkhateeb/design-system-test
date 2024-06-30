@@ -5,19 +5,23 @@ import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import { Textarea } from 'src/app/components/ui/textarea';
 import FormField from 'src/app/components/ui/form/field';
-import SelectFormField from 'src/pages/AuthPage/Registration/_comp/SelectFormField';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 const branches = [
 	{ value: 'eg', label: 'Egypt' },
 	{ value: 'ksa', label: 'Kingdom of Saudi Arabia (KSA)' },
 ];
 
-export default function AddCheckout({ onFinish, onBack }: { onFinish: () => void; onBack: () => void }) {
+export default function AddCheckout({
+	onFinish,
+	onBack,
+}: {
+	onFinish: () => void;
+	onBack: () => void;
+}) {
 	const { t } = useTranslation();
 
-
-
-	const { formStore, onSubmit, formValues } = useAddCheckOutForm({onFinish});
+	const { formStore, onSubmit, formValues } = useAddCheckOutForm({ onFinish });
 
 	return (
 		<Form {...formStore}>
@@ -125,7 +129,7 @@ export default function AddCheckout({ onFinish, onBack }: { onFinish: () => void
 					</>
 				)}
 				<div className='flex-btn-end'>
-					<Button variant='secondary' text={t('Discard')} onClick={onBack}/>
+					<Button variant='secondary' text={t('Discard')} onClick={onBack} />
 					<Button onClick={onSubmit} variant='primary' text={t('Save')} />
 				</div>
 			</form>

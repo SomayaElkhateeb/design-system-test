@@ -10,12 +10,11 @@ import { AddAddressInterface } from './Comp/useOrderAddress';
 
 import LocationPicker from 'src/app/components/ui/LocationPicker';
 
-
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { countries } from '../../../../../pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
-import SelectFormField from 'src/pages/AuthPage/Registration/_comp/SelectFormField';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 interface AddressProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, AddAddressInterface>;
@@ -44,10 +43,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 
-	const handleGiftOptionChange = useCallback(
-		() => setSendGift(!sendGift),
-		[setSendGift],
-	);
+	const handleGiftOptionChange = useCallback(() => setSendGift(!sendGift), [setSendGift]);
 	const handleOptionChange = useCallback(
 		(option: string) => setSelectedOption(option),
 		[setSelectedOption],

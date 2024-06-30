@@ -6,7 +6,7 @@ import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
 import AddCustomerDialog from './Comp/AddCustomerDialog';
-import SelectFormField from 'src/pages/AuthPage/Registration/_comp/SelectFormField';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 interface IAddOrder {
 	selectCustomer?: string;
