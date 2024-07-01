@@ -4,6 +4,6 @@ import MainApi from '../api/MainApi';
 
 export const AuthApi = {
 	signUp: (formData: UserInfoInterface) => {
-		return MainApi.get('');
+		return MainApi.postForm('merchant/register/validate/step-one',formData);
 	},
 };

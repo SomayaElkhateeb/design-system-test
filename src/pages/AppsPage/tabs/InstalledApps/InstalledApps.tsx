@@ -4,7 +4,7 @@ import data from '../../_comp/data.json';
 
 export default function InstalledApps() {
 	return (
-		<div className='p-5'>
+		<div className='py-5'>
 			<InstalledAppsContainer />
 		</div>
 	);
