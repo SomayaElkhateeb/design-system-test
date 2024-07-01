@@ -3,7 +3,7 @@ import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
 
 
 
-export const baseUrl = "https://my.dookan.net/api/v1/test";
+export const baseUrl = "https://my.dookan.net/api/v1/";
 // https://dev.dookan.net/api/v1/test
 // https://my.dookan.net/api/v1/
 
@@ -26,17 +26,18 @@ MainApi.interceptors.request.use(
 		// if (language) config.headers['Accept-Language'] = language;
 
 		// config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+		
 		config.headers['Content-Type'] = 'application/json';
 		// application/json;charset=utf-8
 		config.headers['Accept'] = 'application/json';
-		config.headers['Access-Control-Allow-Origin'] = '*';
-		config.headers['Access-Control-Allow-Methods'] = '*';
-		config.headers['Access-Control-Allow-Headers'] = '*';
+		// config.headers['Access-Control-Allow-Origin'] = '*';
+		// config.headers['Access-Control-Allow-Methods'] = '*';
+		// config.headers['Access-Control-Allow-Headers'] = '*';
 		if (!config.params) {
 			config.params = {};
 		}
-		// config.params['locale'] = language;
-		// config.params['accept_token'] = true;
+		config.params['locale'] = language;
+		config.params['accept_token'] = true;
 		return config;
 	},
 	function (error) {

@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { AuthApi } from 'src/app/React-Query/authApi';
+import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
@@ -40,7 +42,7 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 
 		mutate(values, {
 			onSuccess: async (response) => {
-				onNext();
+				// onNext();
 			},
 			// onError: PublicHandelingErrors.onErrorResponse,
 		});
@@ -64,5 +66,5 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 		return () => subscription.unsubscribe();
 	}, [formStore, onPhoneChange]);
 
-	return { formStore, onSubmit,isLoading };
+	return { formStore, onSubmit, isLoading };
 }
