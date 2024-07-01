@@ -12,37 +12,6 @@ import Setups from './_comp/Setups';
 import data from './_comp/data.json';
 import { useHomePage } from './_comp/useHomePage';
 
-// --------------------------------------------------------------------------
-// import { lazy, Suspense } from 'react';
-
-// const Joyride = lazy(() => import('react-joyride'));
-// const LineChart = lazy(() =>
-// 	import('src/app/components/optimized').then((module) => ({ default: module.LineChart })),
-// );
-// const CalloutCard = lazy(() => import('src/app/components/optimized/Cards/CalloutCard'));
-// const OrdersCard = lazy(() => import('src/app/components/optimized/Cards/OrderCard/OrdersCard'));
-// const HomeLoading = lazy(() =>
-// 	import('src/app/components/optimized/SchimmerLoading/HomeLoading').then((module) => ({
-// 		default: module.HomeLoading,
-// 	})),
-// );
-// const CustomSlider = lazy(() =>
-// 	import('src/app/components/optimized/UiKits/CustomSlider').then((module) => ({
-// 		default: module.CustomSlider,
-// 	})),
-// );
-// const TourCard = lazy(() =>
-// 	import('src/app/components/shared').then((module) => ({ default: module.TourCard })),
-// );
-// const HomeReports = lazy(() => import('./_comp/HomeReports'));
-// const ProductHighlights = lazy(() => import('./_comp/ProductHighlights'));
-// const Setups = lazy(() => import('./_comp/Setups'));
-
-// // Non-component imports
-// import { joyrideStyles, tourSteps } from 'src/app/components/shared/tour-guide/tourSteps';
-// import data from './_comp/data.json';
-// import { useHomePage } from './_comp/useHomePage';
-// --------------------------------------------------------------------------
 
 export const slides = [
 	{

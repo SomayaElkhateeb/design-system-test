@@ -7,6 +7,6 @@ const customerColumns: TableColumn<AnalyticsCustomer>[] = [
   { label: 'Customer groups', key: 'customer_groups' },
 ];
 
-export default function CustomersTableMobile({ tableData }: { tableData: AnalyticsCustomer[] }) {
+export default function CustomersAnalyticsTableMobile({ tableData }: { tableData: AnalyticsCustomer[] }) {
   return <TableMobile tableData={tableData} columns={customerColumns} />;
 }    
