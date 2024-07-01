@@ -1,3 +1,5 @@
+//Products.tsx
+//================================================
 import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
@@ -6,7 +8,7 @@ import { Form } from 'src/app/components/ui/form';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SelectedProductsTable from './Comp/SelectedProductsTable';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import SelectProductsDialog from './Comp/SelectProductsDialog';
 
 export interface IQuantity {
@@ -36,19 +38,25 @@ export interface Product {
 }
 export default function Products({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
-	const handleSelectProduct = (updatedProduct: Product) => {
+	const handleSelectProducts = (newProducts: Product[]) => {
 		setSelectedProducts((prev) => {
-			const existingProductIndex = prev.findIndex((p) => p.id === updatedProduct.id);
-			if (existingProductIndex !== -1) {
-				return prev.filter((product) => product.id !== updatedProduct.id);
-			}
-			return [...prev, { ...updatedProduct, quantity: 1 }];
+			const updatedProducts = [...prev];
+			newProducts.forEach((newProduct) => {
+				const existingProductIndex = updatedProducts.findIndex((p) => p.id === newProduct.id);
+				if (existingProductIndex !== -1) {
+					updatedProducts[existingProductIndex] = newProduct;
+				} else {
+					updatedProducts.push(newProduct);
+				}
+			});
+			return updatedProducts;
 		});
 	};
+
 	const handleDeleteProduct = (productId: string) => {
 		setSelectedProducts((prev) => prev.filter((product) => product.id !== productId));
 	};
@@ -92,8 +100,8 @@ export default function Products({ onNext, onBack }: { onNext: () => void; onBac
 				<SelectProductsDialog
 					onClose={() => setDialogOpen(false)}
 					open={dialogOpen}
+					onSelectProduct={handleSelectProducts}
 					selectedProducts={selectedProducts}
-					onSelectProduct={handleSelectProduct}
 				/>
 			</form>
 		</Form>

@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 import { CheckIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 interface StepType {
 	title: string;
@@ -35,16 +35,15 @@ const StepContext = createContext<any>(null);
 
 const useStepContext = () => useContext(StepContext);
 
-
 const Step = ({ index }: { index: number }) => {
 	const { steps, activeStep } = useStepContext();
-
+	const { xs } = useResponsive();
 	const step = steps[index];
 	const isActive = index === activeStep;
 	return (
 		<div className={`relative ${isActive ? 'flex-grow' : ''}`}>
 			<StepHeader index={index} title={step.title} />
-			{isActive && <div className='py-5 px-9'>{step.content}</div>}
+			{isActive && <div className={`py-5 ${!xs ? 'px-9' : ''}`}>{step.content}</div>}
 		</div>
 	);
 };
@@ -61,7 +60,10 @@ function StepHeader({ index, title }: StepHeaderProps) {
 	const isCompleted = index < activeStep;
 	const isLastStep = index === steps.length - 1;
 
-	const { currentLanguage } = useLanguageDirection();
+	const { language } = useLanguage();
+
+
+	
 	const { xs } = useResponsive();
 
 	const stepClasses = `flex justify-center items-center size-[1.94rem] z-20 rounded-full cursor-pointer ${
@@ -81,7 +83,7 @@ function StepHeader({ index, title }: StepHeaderProps) {
 			{!xs && !isLastStep && (
 				<span
 					className={`h-full w-px absolute top-6 ${
-						currentLanguage === 'ar' ? 'right-[15px]' : 'left-[15px]'
+						language === 'ar' ? 'right-[15px]' : 'left-[15px]'
 					} ${isCompleted ? 'bg-primary' : 'bg-inactive'}`}
 				></span>
 			)}

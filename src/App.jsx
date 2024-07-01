@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import i18n from './app/language/i18n';
-import { UseLanguage } from './app/utils/hooks/LanguageHook';
+import useLanguage from './app/utils/hooks/useLanguage';
 import RootLayout from './pages/RootLayout';
 import { ErrorPage } from './pages';
 import { routes } from './routes';
 import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
 import LoginPage from './pages/AuthPage/Login/LoginPage';
-import { Toaster } from "react-hot-toast";
+import { Toaster } from 'react-hot-toast';
 import ForgotPassword from './pages/AuthPage/ForgotPassword/ForgotPassword';
 import ScrollToTop from './app/components/shared/scroll-top/ScrollToTop';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 
 // App component
 const App = () => {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	useEffect(() => {
 		// Change language and direction

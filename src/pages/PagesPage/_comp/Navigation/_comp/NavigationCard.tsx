@@ -1,6 +1,6 @@
 import { IoIosAddCircle, IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 export default function NavigationCard({
 	title,
@@ -15,7 +15,7 @@ export default function NavigationCard({
 }) {
 	//  hooks
 	const navigate = useNavigate();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	//  handel navigationAction
 

@@ -1,6 +1,6 @@
 import { IoAddCircle } from 'react-icons/io5';
 import { LogoutIcon, Person } from 'src/app/utils/icons';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next';
 import CollapsibleSection from './ManagementCards/CollapsibleSection';
@@ -14,7 +14,7 @@ import Collapsible from './ManagementCards/Collapsible';
 
  */
 const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => void }) => {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 
 	return (

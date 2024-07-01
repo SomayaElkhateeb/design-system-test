@@ -1,5 +1,5 @@
 import { IoCloseCircleOutline } from 'react-icons/io5';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import { useTranslation } from 'react-i18next';
 import { useClickOutsideWithId } from 'src/app/utils';
 import Abandoned from './NotificationCards/Abandoned';
@@ -7,7 +7,7 @@ import Subscription from './NotificationCards/Subscription';
 import ChangeCustomer from './NotificationCards/ChangeCustomer';
 
 const NotificationsCard = () => {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const id = 'notifications-card';
 

@@ -13,32 +13,54 @@ import { Product } from '../Products';
 interface SelectProductsDialogProps {
 	onClose: () => void;
 	open: boolean;
-	selectedProducts: Product[];
 	onSelectProduct: (product: Product) => void;
+	selectedProducts: Product[];
 }
 export default function SelectProductsDialog({
 	onClose,
 	open,
-	selectedProducts,
 	onSelectProduct,
+	selectedProducts: initialSelectedProducts,
 }: SelectProductsDialogProps) {
 	const { t } = useTranslation();
 
 	const [products, setProducts] = useState<Product[]>([]);
 	const [searchTerm, setSearchTerm] = useState('');
+	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
 	useEffect(() => {
 		// Simulate fetching data from API
 		setProducts(productsData);
-	}, []);
+		setSelectedProducts(initialSelectedProducts);
+	}, [initialSelectedProducts]);
+
+	const handleSelectProduct = (updatedProduct: Product) => {
+		setSelectedProducts((prev) => {
+			const existingProductIndex = prev.findIndex((p) => p.id === updatedProduct.id);
+			if (existingProductIndex !== -1) {
+				const updatedProducts = [...prev];
+				if (Object.keys(updatedProduct.selectedOptions || {}).length === 0) {
+					updatedProducts.splice(existingProductIndex, 1);
+				} else {
+					updatedProducts[existingProductIndex] = updatedProduct;
+				}
+				return updatedProducts;
+			}
+			return [...prev, { ...updatedProduct, quantity: 1 }];
+		});
+	};
 
 	const filteredProducts = products.filter((product) =>
 		product.name.toLowerCase().includes(searchTerm.toLowerCase()),
 	);
 
+	// const handleAddClick = () => {
+	// 	const formattedProducts = selectedProducts.map(({ options, ...rest }) => rest);
+	// 	// onSelectProduct(formattedProducts);
+	// 	onClose();
+	// };
 	const handleAddClick = () => {
-		const formattedProducts = selectedProducts.map(({ options, ...rest }) => rest);
-		console.log(formattedProducts);
+		onSelectProduct(selectedProducts);
 		onClose();
 	};
 
@@ -46,26 +68,28 @@ export default function SelectProductsDialog({
 		<GlobalDialog
 			openDialog={open}
 			handleClose={onClose}
-			style={{ width: { md: '50%', xs: '80%' } }}
+			style={{ width: { md: '50%', xs: '80%' }, p: 0 }}
 		>
-			<div className='flex flex-col gap-4'>
-				<h2 className='text-title font-semibold'>{t('Select Products')}</h2>
-				<Input
-					value={searchTerm}
-					placeholder={t('Search')}
-					onChange={(e) => setSearchTerm(e.target.value)}
-				/>
+			<div className='grid'>
+				<div className='grid gap-4 p-5'>
+					<h2 className='text-title font-semibold'>{t('Select Products')}</h2>
+					<Input
+						value={searchTerm}
+						placeholder={t('Search')}
+						onChange={(e) => setSearchTerm(e.target.value)}
+					/>
+				</div>
 				<div className='divide-y'>
 					{filteredProducts.map((product) => (
 						<ProductAccordion
-							key={product.id}
-							product={product}
-							onSelect={onSelectProduct}
-							isSelected={!!selectedProducts.find((p) => p.id === product.id)}
+						key={product.id}
+						product={product}
+						onSelect={handleSelectProduct}
+						isSelected={!!selectedProducts.find((p) => p.id === product.id)}
 						/>
 					))}
 				</div>
-				<div className='flex items-center justify-end gap-4 '>
+				<div className='flex items-center justify-end gap-4 p-5'>
 					<Button variant='tertiary' text={t('Cancel')} onClick={() => onClose()} />
 					<Button
 						variant='primary'
@@ -99,22 +123,20 @@ function ProductAccordion({ product, onSelect, isSelected }: ProductAccordionPro
 	}, [product.options]);
 
 	const handleOptionChange = (type: string, option: string) => {
-		setSelectedOptions((prev) => ({
-			...prev,
-			[type]: option,
-		}));
-		if (isSelected) {
-			onSelect({ ...product, selectedOptions: { ...selectedOptions, [type]: option } });
-		}
-	};
+    const newSelectedOptions = { ...selectedOptions, [type]: option };
+    setSelectedOptions(newSelectedOptions);
+    if (isSelected) {
+      onSelect({ ...product, selectedOptions: newSelectedOptions });
+    }
+  };
 
-	const handleSelectProduct = (checked: boolean) => {
-		if (checked) {
-			onSelect({ ...product, selectedOptions });
-		} else {
-			onSelect(product);
-		}
-	};
+  const handleSelectProduct = (checked: boolean) => {
+    if (checked) {
+      onSelect({ ...product, selectedOptions });
+    } else {
+      onSelect({ ...product, selectedOptions: {} });
+    }
+  };
 
 	return (
 		<div className={`grid gap-3 py-3 px-5 ${isOpen ? 'bg-sec-light' : ''} `}>
@@ -138,10 +160,10 @@ function ProductAccordion({ product, onSelect, isSelected }: ProductAccordionPro
 				</button>
 			</div>
 			{isOpen && (
-				<div className='grid gap-2 px-5'>
+				<div className='grid gap-3 px-7'>
 					{product.options.map((option) => (
-						<div key={option.type} className='mb-2'>
-							<p className='title text-sm'>{option.type}</p>
+						<div key={option.type}>
+							<p className='title text-sm capitalize mb-1.5'>{option.type}</p>
 							<SingleChoiceChips
 								options={option.options}
 								setSelected={(selectedOption) => handleOptionChange(option.type, selectedOption)}

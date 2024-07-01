@@ -5,11 +5,11 @@ import { GoStarFill } from 'react-icons/go';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 export const ReviewsTable = () => {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	//  headers
 

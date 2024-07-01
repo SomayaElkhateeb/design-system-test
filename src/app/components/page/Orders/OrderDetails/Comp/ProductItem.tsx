@@ -6,12 +6,12 @@ import { IOrderItemForm } from '../Forms/HookOrderItem';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 const title = 'Solid Anti-Pilling Sweatshirt with Round Sweatshirt';
 
 export default function ProductItem({ formStore }: { formStore: UseFormReturn<IOrderItemForm> }) {
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	return (
 		<div className='grid lg:grid-cols-5 md:grid-cols-3 gap-4'>
 			<div className='lg:col-span-3 md:col-span-3 '>

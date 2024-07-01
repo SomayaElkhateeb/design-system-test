@@ -8,7 +8,7 @@ import { InternalchatIcon, MessengerIcon, WhatsappIcon } from 'src/app/utils/ico
 import { getImageUrl, useClickOutsideWithId } from 'src/app/utils';
 // import ConversationCard from './ConversationCard';
 
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import Chat from './Chat';
 
 interface TabPanelProps {
@@ -52,7 +52,7 @@ const data = [
  */
 
 const ChatCard = ({ menu }: { menu?: boolean }) => {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const id = 'chat-card';
 
 	return (
@@ -104,7 +104,7 @@ function a11yProps(index: number) {
 function VerticalTabs() {
 	const [value, setValue] = React.useState(0);
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};

@@ -24,7 +24,6 @@ export default function GlobalDialog({
 	style: style;
 }) {
 	const propStyle = {
-		...style,
 		bgcolor: 'white',
 		zIndex: 50,
 		p: 2.5,
@@ -35,6 +34,7 @@ export default function GlobalDialog({
 		overflowY: 'auto',
 		transform: 'translate(-50%, -50%)',
 		cursor: 'default',
+		...style,
 	};
 	return (
 		<Modal

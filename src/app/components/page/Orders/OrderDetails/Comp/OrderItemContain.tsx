@@ -1,12 +1,12 @@
 import { Button } from 'src/app/components/optimized';
 import RowOrderItems from './RowOrderItems';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 export default function OrderItemContain() {
 	//  hooks
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	return (
 		<div className='flex-col-global gap-2.5'>
 			<RowOrderItems />
