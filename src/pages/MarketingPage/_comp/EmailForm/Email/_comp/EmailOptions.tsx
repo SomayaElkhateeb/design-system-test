@@ -67,24 +67,12 @@ const Style = () => {
 				<TextStyleToggle IconOne={GoBold} IconTwo={PiTextItalicBold} IconThree={PiLinkSimpleBold} />
 
 				<div className='flex items-center gap-2'>
-					<input
-						type='color'
-						name='textColor'
-						// value={emailOptions.textColor}
-						// onChange={handleChange}
-						className='rounded-md'
-					/>
+					<input type='color' name='textColor' className='rounded-md' />
 					<span className='text-sm text-title'>{t('Text color')}</span>
 				</div>
 
 				<div className='flex items-center gap-2'>
-					<input
-						type='color'
-						name='textColor'
-						// value={emailOptions.textColor}
-						// onChange={handleChange}
-						className='rounded-md '
-					/>
+					<input type='color' name='textColor' className='rounded-md ' />
 					<span className='text-sm text-title '>{t('Link color')}</span>
 				</div>
 			</div>
@@ -103,13 +91,7 @@ const Section = () => {
 			</div>
 
 			<div className='flex items-center gap-2'>
-				<input
-					type='color'
-					name='textColor'
-					// value={emailOptions.textColor}
-					// onChange={handleChange}
-					className='rounded-md'
-				/>
+				<input type='color' name='textColor' className='rounded-md' />
 				<span className='text-sm text-title'>{t('Background')}</span>
 			</div>
 		</div>
