@@ -11,7 +11,6 @@ import ProductHighlights from './_comp/ProductHighlights';
 import Setups from './_comp/Setups';
 import data from './_comp/data.json';
 import { useHomePage } from './_comp/useHomePage';
-import { ChooseEmail } from '..';
 
 // --------------------------------------------------------------------------
 // import { lazy, Suspense } from 'react';
@@ -45,7 +44,7 @@ import { ChooseEmail } from '..';
 // import { useHomePage } from './_comp/useHomePage';
 // --------------------------------------------------------------------------
 
-const slides = [
+export const slides = [
 	{
 		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
 		title: 'How to finish steps',
@@ -80,8 +79,7 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-	// <Suspense fallback={<HomeLoading />}>
-	return <ChooseEmail />;
+
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 pt-5'>
 			<div className='custom-grid-parent'>
