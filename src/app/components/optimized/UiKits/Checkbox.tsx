@@ -55,7 +55,7 @@ export default function CheckBox({
 	}
 
 	return (
-		<label className={`flex gap-2 items-center cursor-pointer ${classes}`}>
+		<label className={`flex  gap-2 items-center cursor-pointer ${classes}`}>
 			<input
 				{...props}
 				type='checkbox'
