@@ -1,14 +1,14 @@
 import { ChatIcon } from 'src/app/utils/icons';
 import ChatCard from '../Cards/ChatCard';
 import Button from '@mui/material/Button';
-import PopoverComponenet from '../Popover/Popover';
+import PopoverComponent from '../UiKits/Popover';
 import { useState } from 'react';
 
 const ChatBtn = () => {
 	const [show, setShow] = useState(false);
 	return (
-		<PopoverComponenet
-			// close={() => setShow(show)}
+		<PopoverComponent
+			close
 			button={
 				<>
 					<Button>
@@ -21,7 +21,7 @@ const ChatBtn = () => {
 			}
 		>
 			<ChatCard close={() => setShow(!show)} />
-		</PopoverComponenet>
+		</PopoverComponent>
 	);
 };
 

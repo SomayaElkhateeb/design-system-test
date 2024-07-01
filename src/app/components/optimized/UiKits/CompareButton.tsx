@@ -1,5 +1,5 @@
 import { CalenderIcon, DownIcon } from 'src/app/utils/icons';
-import PopoverComponenet from '../Popover/Popover';
+import PopoverComponent from '../UiKits/Popover';
 // import Button from "./Button";
 import Menu from '../Menu/Menu';
 import { Button } from '..';
@@ -18,7 +18,7 @@ export default function CompareButton({ sortMenus, selectedOption, variant, hand
 	switch (variant) {
 		case 'link':
 			return (
-				<PopoverComponenet
+				<PopoverComponent
 					button={
 						<Button variant={variant} RightIcon={DownIcon}>
 							{selectedOption ? selectedOption : t('Today')}
@@ -26,12 +26,12 @@ export default function CompareButton({ sortMenus, selectedOption, variant, hand
 					}
 				>
 					<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
-				</PopoverComponenet>
+				</PopoverComponent>
 			);
 
 		default:
 			return (
-				<PopoverComponenet
+				<PopoverComponent
 					button={
 						<Button variant='secondary' LeftIcon={CalenderIcon} RightIcon={DownIcon}>
 							{selectedOption ? selectedOption : t('Today')}
@@ -39,7 +39,7 @@ export default function CompareButton({ sortMenus, selectedOption, variant, hand
 					}
 				>
 					<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
-				</PopoverComponenet>
+				</PopoverComponent>
 			);
 	}
 }

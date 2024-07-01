@@ -29,7 +29,7 @@ const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => 
 					<Person />
 					<h2 className='text-sm text-title'>{t('Manage account')}</h2>
 				</div>
-				{menu ? '' : <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
+				{!menu && <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
 			</div>
 			<hr />
 

@@ -1,7 +1,8 @@
 import { FaqIcon } from 'src/app/utils/icons';
 import HelpCenterCard from '../Cards/HelpCenterCard';
-import PopoverComponenet from '../Popover/Popover';
+
 import { useState } from 'react';
+import PopoverComponent from '../UiKits/Popover';
 
 /**
  * HelpCenterBtn component represents a button that, when clicked, displays a FAQ icon
@@ -11,8 +12,8 @@ const HelpCenterBtn = () => {
 	const [show, setShow] = useState(false);
 
 	return (
-		<PopoverComponenet
-			close={() => setShow(show)}
+		<PopoverComponent
+			
 			button={
 				<>
 					<span className='roundedParentIcon'>
@@ -22,7 +23,7 @@ const HelpCenterBtn = () => {
 			}
 		>
 			<HelpCenterCard onClose={() => setShow(true)} />
-		</PopoverComponenet>
+		</PopoverComponent>
 	);
 };
 
