@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,17 +8,17 @@ import AboutYourself from './_tabs/AboutYourself/AboutYourself';
 import RegisterLayout from '../_comp/RegisterLayout';
 import AboutYourBusiness from './_tabs/AboutYourBusiness/AboutYourBusiness';
 import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
-
-
+import { useNavigate } from 'react-router-dom';
 
 export default function RegistrationPage() {
 	const { t } = useTranslation();
 	const [isLogin, setIsLogin] = useState<boolean>(false);
 	const { goNext, activeStep, setActiveStep } = useStepNavigator();
-
+	const navigate = useNavigate();
 
 	const handleFinish = () => {
-		console.log('Finish');
+		// console.log('Finish');
+		navigate('/');
 		// Implement additional finish logic here
 	};
 

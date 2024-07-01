@@ -1,7 +1,8 @@
-import axios from 'axios';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import { AuthApi } from 'src/app/React-Query/authApi';
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
@@ -42,9 +43,11 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 
 		mutate(values, {
 			onSuccess: async (response) => {
-				// onNext();
+				toast.success(response?.data?.message);
+				toast.success(response?.data?.data?.otp);
+				onNext();
 			},
-			// onError: PublicHandelingErrors.onErrorResponse,
+			onError: PublicHandelingErrors.onErrorResponse,
 		});
 		// ///////////////////
 
