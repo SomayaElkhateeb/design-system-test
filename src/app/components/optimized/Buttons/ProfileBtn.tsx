@@ -1,14 +1,15 @@
 import { getImageUrl } from 'src/app/utils';
 import ManageAccountCard from '../Cards/ManageAccountCard';
-import PopoverComponenet from '../Popover/Popover';
+
+import PopoverComponent from '../UiKits/Popover';
 import { useState } from 'react';
 
 const ProfileBtn = () => {
-	const [show, setShow] = useState(true);
+	const [show, setShow] = useState(false);
 
 	return (
-		<PopoverComponenet
-			close={() => setShow(show)}
+		<PopoverComponent
+			close
 			button={
 				<div className='roundedParentIcon'>
 					<img src={getImageUrl('images/profile.png')} alt='logo' className='object-cover h-full' />
@@ -16,7 +17,7 @@ const ProfileBtn = () => {
 			}
 		>
 			<ManageAccountCard onClose={() => setShow(false)} />
-		</PopoverComponenet>
+		</PopoverComponent>
 	);
 };
 

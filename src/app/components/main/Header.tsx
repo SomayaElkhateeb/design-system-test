@@ -64,28 +64,28 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 			{/* {showLoading ? (
 				<HeaderLoading />
 			) : ( */}
-				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white z-40'>
-					<div className='flex items-center gap-3'>
-						<button className='max-lg:hidden' onClick={setIsOpen}>
-							<NavIcon className='fill-pri-dark' />
-						</button>
-						{isMobile && (
-							<div>
-								<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-8`} />
-							</div>
-						)}
-
-						<h2 className='title text-lg font-semibold'>{activeModule}</h2>
-					</div>
-
-					{pathname === '/' && (
-						<div className='hidden lg:flex'>
-							<HeaderSearchBar />
+			<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white z-40'>
+				<div className='flex items-center gap-3'>
+					<button className='max-lg:hidden' onClick={setIsOpen}>
+						<NavIcon className='fill-pri-dark' />
+					</button>
+					{isMobile && (
+						<div>
+							<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-8`} />
 						</div>
 					)}
 
-					<ProfileInfo />
+					<h2 className='title text-lg font-semibold'>{activeModule}</h2>
 				</div>
+
+				{pathname === '/' && (
+					<div className='hidden lg:flex'>
+						<HeaderSearchBar />
+					</div>
+				)}
+
+				<ProfileInfo />
+			</div>
 			{/* )} */}
 		</Suspense>
 	);
@@ -153,12 +153,12 @@ function HeaderSearchBar() {
 const ProfileInfo = () => {
 	return (
 		<>
-			<div className='flex lg:hidden items-center '>
+			<div className='flex-row-global gap-5 lg:hidden items-center '>
 				<SearchBtn />
 				<ViewBtn />
 				<NotificationBtn />
 			</div>
-			<div className='hidden lg:flex items-center'>
+			<div className='hidden lg:flex-row-global gap-5 items-center'>
 				<HelpCenterBtn />
 				<ViewBtn />
 				<ChatBtn />
