@@ -51,7 +51,7 @@ const data = [
  * @returns {JSX.Element} ChatCard component.
  */
 
-const ChatCard = ({ menu }: { menu?: boolean }) => {
+const ChatCard = ({ menu, close }: { menu?: boolean; close: () => void }) => {
 	const language = UseLanguage();
 	const id = 'chat-card';
 

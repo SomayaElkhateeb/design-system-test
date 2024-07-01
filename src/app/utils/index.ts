@@ -17,7 +17,6 @@ export const truncateString = (str: string, maxLength: number) => {
 	}
 };
 
-
 export function capitalize(str: string): string {
 	if (!str) {
 		return str;
@@ -97,12 +96,9 @@ export const exportToExcel = (data: any[], filename: string) => {
  * @param id - The ID of the element to track clicks outside of.
  * @param onClickOutside - The function to call when a click outside of the element occurs.
  */
+
 export const useClickOutsideWithId = (id: string, onClickOutside: () => void) => {
 	useEffect(() => {
-		/**
-		 * Event handler that checks if a click event occurs outside of the specified element.
-		 * @param event - The mouse event object.
-		 */
 		const handleClickOutside = (event: MouseEvent) => {
 			const card = document.getElementById(id);
 			if (card && !card.contains(event.target as Node)) {

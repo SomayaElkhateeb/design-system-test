@@ -6,19 +6,18 @@ import { useTranslation } from 'react-i18next';
 import CollapsibleSection from './ManagementCards/CollapsibleSection';
 import CopyableSection from './ManagementCards/CopyableSection';
 import Collapsible from './ManagementCards/Collapsible';
+import { useClickOutsideWithId } from 'src/app/utils';
 
-/**
- * ManageAccountCard component displays a panel for managing the user's account settings.
- * It closes when a click occurs outside of its boundaries.
- *
-
- */
 const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => void }) => {
 	const language = UseLanguage();
 	const { t } = useTranslation();
+	const id = 'ManageAccount-card';
+
+	useClickOutsideWithId(id, onClose || (() => {}));
 
 	return (
 		<div
+			id={id}
 			className={`${menu ? 'w-full bg-light-2' : 'bg-white min-w-64 pt-3 pb-5 shadow-lg'} ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'

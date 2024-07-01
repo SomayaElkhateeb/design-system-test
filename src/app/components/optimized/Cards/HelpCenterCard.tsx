@@ -13,6 +13,9 @@ import { useState } from 'react';
 import LinkCards from './LinkCards';
 import { UseLanguage } from '../../../utils/hooks/LanguageHook';
 import Slider from '../UiKits/Slider';
+import { slides } from 'src/pages/HomePage/HomePage';
+import CalloutCard from './CalloutCard';
+import { CustomSlider } from '../UiKits/CustomSlider';
 
 const HelpCenterCard = ({
 	onClose,
@@ -26,34 +29,6 @@ const HelpCenterCard = ({
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
 	const language = UseLanguage();
-
-	const slides = [
-		{
-			image: '/Rectangle.png',
-			title: t('How to finish steps'),
-			description: 'Description for Description for Card 1',
-		},
-		{
-			image: '/Rectangle.png',
-			title: t('How to register domain'),
-			description: 'Description for Card 1.',
-		},
-		{
-			image: '/Rectangle.png',
-			title: t('SEO in details'),
-			description: 'Description for Card 1.',
-		},
-		{
-			image: '/Rectangle.png',
-			title: t('How to finish steps'),
-			description: 'Description for Card 1.',
-		},
-		{
-			image: '/Rectangle.png',
-			title: t('How to finish steps'),
-			description: 'Description for Card 1.',
-		},
-	];
 
 	return (
 		<div
@@ -103,12 +78,18 @@ const HelpCenterCard = ({
 					</div>
 					{/* slider videos */}
 					<div>
-						<Slider size='mini' slides={slides} title={t('Video tutorials')} />
+						{/* <Slider size='mini' slides={slides} title={t('Video tutorials')} /> */}
+						<CustomSlider
+							slidesToShow={1}
+							slides={slides}
+							title={t('Video tutorials')}
+							SlideComponent={CalloutCard}
+						/>
 					</div>
 				</div>
 
 				{/* contact */}
-				<div className='flex justify-between items-center'>
+				<div className='flex justify-between items-center pb-5'>
 					<h4>{t('Contact Us')}</h4>
 					<button onClick={() => console.log('aa')}>
 						{language === 'ar' ? (
