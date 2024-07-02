@@ -7,14 +7,33 @@ import CollapsibleSection from './ManagementCards/CollapsibleSection';
 import CopyableSection from './ManagementCards/CopyableSection';
 import Collapsible from './ManagementCards/Collapsible';
 import { useClickOutsideWithId } from 'src/app/utils';
-
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import toast, { Renderable, Toast, ValueFunction } from 'react-hot-toast';
+import { useMutation } from 'react-query';
+import { AuthApi } from 'src/app/React-Query/authApi';
 const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => void }) => {
+	// hooks
 	const language = UseLanguage();
 	const { t } = useTranslation();
 	const id = 'ManageAccount-card';
 
 	useClickOutsideWithId(id, onClose || (() => {}));
 
+	//  handel logout action with api
+	const { mutate, isLoading, error } = useMutation('log-out', AuthApi.logout);
+	const handelLogout = () => {
+		// mutate({
+		// 	onSuccess: async (response: {
+		// 		data: { message: Renderable | ValueFunction<Renderable, Toast> };
+		// 	}) => {
+		// 		toast.success(response?.data?.message);
+
+		// 	},
+		// 	onError: PublicHandelingErrors.onErrorResponse,
+		// });
+		localStorage.clear();
+		window.location.href = '/login';
+	};
 	return (
 		<div
 			id={id}
@@ -48,7 +67,7 @@ const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => 
 
 			<hr />
 			<div className='p-4 text-title'>
-				<div className='flex gap-3 items-center'>
+				<div onClick={handelLogout} className='flex gap-3 items-center cursor-pointer'>
 					<LogoutIcon />
 					<h3 className='cursor-pointer'>{t('Sign Out')}</h3>
 				</div>
