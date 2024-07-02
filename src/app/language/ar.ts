@@ -1235,4 +1235,5 @@ export const arabic = {
 	'Subscribe To Package': 'اشترك في الباقة',
 	'Email Form': 'نموذج البريد الإلكتروني',
 	'submit emails': 'إرسال رسائل البريد الإلكتروني',
+	'Subscribe to package': 'الاشتراك في الحزمة',
 } satisfies typeof english;

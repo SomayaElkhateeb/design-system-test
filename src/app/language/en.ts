@@ -1247,4 +1247,5 @@ export const english = {
 	'Subscribe To Package': 'Subscribe To Package',
 	'Email Form': 'Email Form',
 	'submit emails': 'submit emails',
+	'Subscribe to package': 'Subscribe to package',
 };
