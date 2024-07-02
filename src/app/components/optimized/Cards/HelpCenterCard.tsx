@@ -80,7 +80,6 @@ const HelpCenterCard = ({
 					<div>
 						{/* <Slider size='mini' slides={slides} title={t('Video tutorials')} /> */}
 						<CustomSlider
-							slidesToShow={1}
 							slides={slides}
 							title={t('Video tutorials')}
 							SlideComponent={CalloutCard}
