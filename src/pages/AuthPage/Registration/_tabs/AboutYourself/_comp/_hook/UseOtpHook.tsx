@@ -39,7 +39,6 @@ export function UseOtp({ onVerify, phone }: { onVerify: () => void; phone: strin
 		SendingData.code = values.code;
 		mutate(SendingData, {
 			onSuccess: async (response) => {
-				console.log(response);
 				toast.success(response?.data?.message);
 				onVerify();
 			},
@@ -53,5 +52,5 @@ export function UseOtp({ onVerify, phone }: { onVerify: () => void; phone: strin
 		defaultValues: { code: '' },
 	});
 
-	return { timer, isResendVisible, resetTimer, formStore, onSubmit,isLoading };
+	return { timer, isResendVisible, resetTimer, formStore, onSubmit, isLoading };
 }
