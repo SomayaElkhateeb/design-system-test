@@ -25,6 +25,7 @@ export default function OtpVerification({
 	});
 	const { t } = useTranslation();
 	const handleResend = () => {
+		//  put data request api here with react query
 		resetTimer();
 		onResend();
 	};

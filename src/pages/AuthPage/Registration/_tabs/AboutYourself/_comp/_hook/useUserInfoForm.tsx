@@ -40,7 +40,6 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 	const { mutate, isLoading, error } = useMutation('sign-up', AuthApi.signUp);
 	const handleSubmit = (values: UserInfoInterface) => {
 		//Perform verification before moving to the next step
-
 		mutate(values, {
 			onSuccess: async (response) => {
 				toast.success(response?.data?.message);
