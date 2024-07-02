@@ -56,6 +56,7 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 
 		// onNext();
 	};
+
 	const { formStore, onSubmit } = useForm({
 		schema: userInfoValidationSchema,
 		handleSubmit: handleSubmit,
