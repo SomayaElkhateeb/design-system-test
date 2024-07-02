@@ -7,26 +7,24 @@ import SelectFormField from '../../../../../app/components/ui/form/SelectFormFie
 import { AgreementTerms } from './_comp/AgreementTerms';
 
 export default function AboutYourBusiness({ onFinish }: { onFinish: () => void }) {
-	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness({ onFinish });
+	const { formStore, onSubmit, industryOptions, isLoading } = useAboutYourBusiness({ onFinish });
 
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='grid grid-cols-1 gap-4'>
 				<FormField
 					formStore={formStore}
-					name='storeName'
-					render={(field) => (
-						<Input {...field} id='storeName' type='text' placeholder='Store name' />
-					)}
+					name='name'
+					render={(field) => <Input {...field} id='name' type='text' placeholder='Store name' />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='storeLink'
+					name='username'
 					render={(field) => (
 						<div className='flex'>
 							<Input
 								{...field}
-								id='storeLink'
+								id='username'
 								type='text'
 								placeholder='Store link (in English)'
 								className='flex-grow'
@@ -37,10 +35,21 @@ export default function AboutYourBusiness({ onFinish }: { onFinish: () => void }
 						</div>
 					)}
 				/>
-				<SelectFormField formStore={formStore} name='industry' placeholder="industry" options={industryOptions} />
+				<SelectFormField
+					formStore={formStore}
+					name='industry'
+					placeholder='industry'
+					options={industryOptions}
+				/>
 				<AgreementTerms formStore={formStore} />
 				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text='Create Store' className='w-36' />
+					<Button
+						loading={isLoading}
+						variant='primary'
+						type='submit'
+						text='Create Store'
+						className='w-36'
+					/>
 				</div>
 			</form>
 		</Form>

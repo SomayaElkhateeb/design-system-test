@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import { AuthApi } from 'src/app/React-Query/authApi';
 import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
-import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
+
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
@@ -42,6 +42,7 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 		//Perform verification before moving to the next step
 		mutate(values, {
 			onSuccess: async (response) => {
+				localStorage.setItem('userInfoData', JSON.stringify(values));
 				toast.success(response?.data?.message);
 				toast.success(response?.data?.data?.otp);
 				onNext();

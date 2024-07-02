@@ -15,7 +15,7 @@ export default class PublicHandelingErrors {
 			});
 			this.handleTokenExpire(error?.response?.status);
 		} else if (errorData?.errors && Object.values(errorData?.errors)?.length > 0) {
-			Object.values(errorData?.errors)?.map((e:any) => {
+			Object.values(errorData?.errors)?.map((e: any) => {
 				return toast.error(e);
 			});
 		} else if (errorData?.message) {
@@ -40,4 +40,5 @@ export default class PublicHandelingErrors {
 			}
 		}
 	};
+	
 }
