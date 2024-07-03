@@ -1,7 +1,7 @@
 export interface CustomerGroupInterface {
 	id: string;
 	name: string;
-	customerNumber: number;
+	customers_count: number;
 	describtion: string;
 	active: boolean;
 }

@@ -3,7 +3,7 @@ import { getAllCustomerTableReducer } from './customersTableExtraReducers';
 import { allCustomerSliceModel } from 'src/app/models/allCustomerSliceModel';
 
 const initialState: allCustomerSliceModel = {
-	allCustomer: [],
+	allCustomers: [],
 	isLoading: false,
 	error: null,
 };

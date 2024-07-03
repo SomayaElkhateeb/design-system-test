@@ -11,9 +11,9 @@ export const getCustomerGroupTableReducer = (
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getCustomersGroupTable.fulfilled, (state, action) => {
+		.addCase(getCustomersGroupTable.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.customersGroup = action.payload;
+			state.customersGroup = payload.data;
 		})
 		.addCase(getCustomersGroupTable.rejected, (state, action) => {
 			state.isLoading = false;
