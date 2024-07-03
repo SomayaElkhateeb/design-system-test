@@ -1,31 +1,12 @@
 import { useEffect } from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import i18n from './app/language/i18n';
 import useLanguage from './app/utils/hooks/useLanguage';
-import RootLayout from './pages/RootLayout';
-import { ErrorPage } from './pages';
-import { routes } from './routes';
-import RegistrationPage from './pages/AuthPage/Registration/RegistrationPage';
-import LoginPage from './pages/AuthPage/Login/LoginPage';
+
 import { Toaster } from 'react-hot-toast';
-import ForgotPassword from './pages/AuthPage/ForgotPassword/ForgotPassword';
 import ScrollToTop from './app/components/shared/scroll-top/ScrollToTop';
 import { QueryClient, QueryClientProvider } from 'react-query';
-// Create browser router instance
-
-const router = createBrowserRouter([
-	// RootLayout Routes
-	{
-		path: '/',
-		element: <RootLayout />,
-		errorElement: <ErrorPage />,
-		children: routes,
-	},
-	// Registration Routes
-	{ path: '/register', element: <RegistrationPage /> },
-	{ path: '/login', element: <LoginPage /> },
-	{ path: '/forgot_password', element: <ForgotPassword /> },
-]);
+import ProjectRoutes from './app/AppRoutes/ProjectRoutes';
 
 // App component
 const App = () => {
@@ -59,7 +40,7 @@ const App = () => {
 		<QueryClientProvider client={queryClient}>
 			<Toaster />
 			<ScrollToTop />
-			<RouterProvider router={router} />
+			<ProjectRoutes />
 		</QueryClientProvider>
 	);
 };

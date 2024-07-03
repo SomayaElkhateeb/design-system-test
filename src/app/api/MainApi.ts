@@ -7,7 +7,7 @@ let custom_Basic_Url: string | null | undefined = "my.dookan.net"
 if (typeof window !== "undefined") {
 	custom_Basic_Url = localStorage.getItem("domain")
 }
-console.log(custom_Basic_Url)
+
 export const baseUrl = custom_Basic_Url ? `https://${custom_Basic_Url}/api/v1/`
 	:
 	"https://my.dookan.net/api/v1/"

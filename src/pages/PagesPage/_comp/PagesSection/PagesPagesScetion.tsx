@@ -44,7 +44,7 @@ export default function PagesPagesSection() {
 		<div className='flex-col-global gap-4'>
 			<div className='flex-col-global gap-[1rem]'>
 				<TopSectionBlogPostsAndSection addButton={t('Add Page')} path='AddPage' />
-				{xs && }
+			
 				<LegalPagesSection />
 			</div>
 

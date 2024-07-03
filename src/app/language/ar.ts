@@ -10,8 +10,9 @@ export const arabic = {
 	Apps: 'التطبيقات',
 	Discounts: 'الخصومات',
 	Coupons: 'الكوبونات',
+	"Email or phone":"ايميل او رقم هاتف",
 	Campaigns: 'الحملات',
-
+	"Sign in": "تسجيل الدخول",
 	'Add Subcategory': 'اضافه تحت فرعي',
 	Subcategories: 'تحت فرعيه',
 

@@ -24,9 +24,7 @@ export default function RegisterLayout({ children }: { children: ReactNode }) {
 
 function RegisterHeader() {
 	const { language, toggleLanguage } = useLanguage();
-	console.log(language)
-	// ar-light.svg
-	// en-light.svg
+
 	const brandImageUrl = getImageUrl(`brand/${language}-light.svg`);
 	return (
 		<header className='flex justify-between items-center w-full  '>

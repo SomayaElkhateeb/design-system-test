@@ -3,6 +3,8 @@ export const english = {
 	Products: 'Products',
 	Analytics: 'Analytics',
 	Reviews: 'Reviews',
+	"Sign in":"Sign in",
+	"Email or phone":"Email or phone",
 	'Auto publish reviews': 'Auto publish reviews',
 	'Notify me new reviews': 'Notify me new reviews',
 	'Net promoter score': 'Net promoter score',

@@ -7,10 +7,10 @@ import {
 	AppsPage,
 	AppsTabs,
 	BillingAndPlans,
+	ChooseEmail,
 	Config,
 	CustomerInfo,
 	CustomersPage,
-	ChooseEmail,
 	HomePage,
 	MarketingPage,
 	Nested_pages_SettingsConfig,
@@ -29,36 +29,42 @@ import {
 	SocialAppDetails,
 	StorePage,
 } from 'src/pages';
-
-import { AnalyticsTabs } from './pages/AnalyticsPage/_comp';
-import { MarketingConfig, MarketingTabs } from './pages/MarketingPage/_comp';
-
-import PagesConfig from './pages/PagesPage/_comp/PagesConfig';
-import PagesPage from './pages/PagesPage/PagesPage';
-import SuccessfullyPurchased from './pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
-import PurchaseConfig from './pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
-import StoreTabs from './pages/StorePage/_comp/StoreTabs';
-import StoreConfig from './pages/StorePage/_comp/StoreConfig';
-import { SubCategories } from './pages/ProductsPage/tabs/Categories/_comp/subCategory/SubCategories';
-
+import { AnalyticsTabs } from 'src/pages/AnalyticsPage/_comp';
+import { MarketingConfig, MarketingTabs } from 'src/pages/MarketingPage/_comp';
+import EmailForm from 'src/pages/MarketingPage/_comp/EmailForm/Email/EmailForm';
+import PackageSubscribe from 'src/pages/MarketingPage/_comp/EmailForm/Email/_comp/PackageSubscribe';
+import PagesPage from 'src/pages/PagesPage/PagesPage';
+import PagesConfig from 'src/pages/PagesPage/_comp/PagesConfig';
+import { SubCategories } from 'src/pages/ProductsPage/tabs/Categories/_comp/subCategory/SubCategories';
 import {
 	BundleProductPage,
 	ConfigurableProductPage,
 	FoodProductPage,
 	SimpleProductPage,
 	VirtualProductPage,
-} from './pages/ProductsPage/tabs/_comp';
-import EmailForm from './pages/MarketingPage/_comp/EmailForm/Email/EmailForm';
-import PackageSubscribe from './pages/MarketingPage/_comp/EmailForm/Email/_comp/PackageSubscribe';
+} from 'src/pages/ProductsPage/tabs/_comp';
+import PurchaseConfig from 'src/pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
+import SuccessfullyPurchased from 'src/pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
+import StoreConfig from 'src/pages/StorePage/_comp/StoreConfig';
+import StoreTabs from 'src/pages/StorePage/_comp/StoreTabs';
 
-// Route Definitions
-export const routes = [
+interface Route {
+	path: string;
+	element: React.ReactNode;
+	children?: {
+		path: string;
+		element: React.ReactNode;
+	}[];
+}
+export const PagesRoutes: Route[] = [
+	//  home page
+	{ path: '/home', element: <HomePage /> },
 	// Choose Email template
 	{ path: '/subscribeEmail', element: <EmailForm /> },
 	{ path: '/subscribeEmail/package', element: <PackageSubscribe /> },
 
 	// ///////////////////////////////////
-	{ path: '/', element: <HomePage /> },
+
 	// reviews page
 	{ path: '/reviews', element: <ReviewsPage /> },
 
