@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { BackIcon, NextIcon } from 'src/app/utils/icons';
 import { AppsWrapperProps } from './useAppStore';
 import { AppsCard } from 'src/app/components/optimized';
@@ -37,7 +37,7 @@ export default function SocialAppsWrapper({
 		}
 	}
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const IconClass = 'fill-pri-dark';
 	return (
 		<div className='grid gap-3'>

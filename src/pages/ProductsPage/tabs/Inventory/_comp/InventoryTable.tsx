@@ -6,7 +6,7 @@ import BaseTable, {
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
 import { getImageUrl } from 'src/app/utils';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import { Product, allProducts } from 'src/pages/ProductsPage/_comp/data';
@@ -24,7 +24,7 @@ export default function InventoryTable({
 	isLoading: boolean;
 }) {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const [isFavorite, setIsFavorite] = useState(false);
 

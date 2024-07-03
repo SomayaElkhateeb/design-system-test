@@ -11,7 +11,7 @@ import { InputRow } from '..';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import LinkCards from './LinkCards';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import Slider from '../UiKits/Slider';
 import { slides } from 'src/pages/HomePage/HomePage';
 import CalloutCard from './CalloutCard';
@@ -28,7 +28,7 @@ const HelpCenterCard = ({
 }) => {
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	return (
 		<div

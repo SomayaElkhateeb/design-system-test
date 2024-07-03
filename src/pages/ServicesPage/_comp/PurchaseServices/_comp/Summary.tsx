@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { ClientBox } from 'src/app/components/optimized';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 
 export default function Summary() {
 	//  hooks
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	const divClassname = 'flex items-center justify-between px-[1rem]';
 	const paragraphClassname = 'title font-normal text-[1rem]';

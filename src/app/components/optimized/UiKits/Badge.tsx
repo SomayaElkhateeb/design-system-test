@@ -1,10 +1,10 @@
 // import { CheckIcon } from 'src/app/utils/icons';
-// import { UseLanguage } from '../../CustomHook/LanguageHook';
+// import  useLanguage  from '../../CustomHook/LanguageHook';
 // import { useTranslation } from 'react-i18next';
 
 // export default function Badge({ status }: { status: string }) {
 
-// 	const language = UseLanguage();
+// 	const { language } = useLanguage();
 // 	const { t } = useTranslation();
 // 	const installStyle = 'text-pri-hover bg-pri-top-light pl-1.5';
 // 	const freeStyle = 'bg-sec-light text-sec-hover';
@@ -46,11 +46,11 @@
 // // flex-row-reverse
 
 import { CheckIcon } from 'src/app/utils/icons';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import { useTranslation } from 'react-i18next';
 
 export default function Badge({ status }: { status: string }) {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const installStyle = 'text-pri-hover bg-pri-top-light pl-1.5';
 	const freeStyle = 'bg-sec-light text-sec-hover';

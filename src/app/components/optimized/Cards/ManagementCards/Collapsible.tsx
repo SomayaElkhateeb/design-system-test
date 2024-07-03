@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 const Collapsible = () => {
 	const [show, setShow] = useState(false);
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	return (
 		<div className='flex justify-between items-center p-4 relative'>

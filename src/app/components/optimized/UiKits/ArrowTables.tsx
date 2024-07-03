@@ -1,9 +1,9 @@
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
 export default function ArrowTables({ path }: { path: string }) {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	return (
 		<>

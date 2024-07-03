@@ -1,12 +1,12 @@
 import { IoIosArrowForward } from 'react-icons/io';
 import { IoIosArrowBack } from 'react-icons/io';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import { useNavigate } from 'react-router-dom';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 const SubHeader = ({ title, children }: { title: string | null; children?: React.ReactNode }) => {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { xs } = useResponsive();
 

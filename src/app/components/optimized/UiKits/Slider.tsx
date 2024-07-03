@@ -3,7 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { useTranslation } from 'react-i18next';
 import { HiExternalLink } from 'react-icons/hi';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import CalloutCard from '../Cards/CalloutCard';
 
 /**
@@ -30,7 +30,7 @@ interface SliderProps {
  * @returns {JSX.Element} - Rendered component.
  */
 export default function Slider({ size, slides, title }: SliderProps) {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 
 	return (

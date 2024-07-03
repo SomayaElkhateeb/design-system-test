@@ -14,7 +14,7 @@ import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 import { Switch } from 'src/app/components/ui/switch';
 import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { useAppDispatch } from 'src/app/store';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { MoreIcon } from 'src/app/utils/icons';
 
 export default function DiscountsTable({
@@ -25,7 +25,7 @@ export default function DiscountsTable({
 	isLoading: boolean;
 }) {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const [state, setState] = useState({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 
 /**
  * Component representing a menu option list.
@@ -15,7 +15,7 @@ const MenuOption = ({
 	onSelect: any;
 	selectedOption: any;
 }) => {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	return (
 		<ul

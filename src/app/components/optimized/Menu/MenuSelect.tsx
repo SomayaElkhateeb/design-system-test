@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 
 /**
  * Props for the MenuSelect component.
@@ -15,7 +15,7 @@ interface MenuSelectProps {
  */
 const MenuSelect: React.FC<MenuSelectProps> = ({ options }) => {
 	// console.log('options', options);
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	return (
 		<ul

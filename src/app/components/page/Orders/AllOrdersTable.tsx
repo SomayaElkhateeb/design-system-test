@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import BaseTable, {
 	GlobalTableCell,
@@ -30,7 +30,7 @@ export default function AllOrdersTable({
 	isLoading: boolean;
 }) {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
