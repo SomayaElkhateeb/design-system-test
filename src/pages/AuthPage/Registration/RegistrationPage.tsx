@@ -17,7 +17,7 @@ export default function RegistrationPage() {
 	const navigate = useNavigate();
 
 	const handleFinish = () => {
-		window.location.href = '/';
+		window.location.href = '/home';
 	};
 
 	const firstTab = isLogin ? (

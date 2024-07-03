@@ -13,21 +13,11 @@ const SidebarLoading = lazy(() => import('../optimized/SchimmerLoading/SidebarLo
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 	//  hooks
-	const [showLoading, setShowLoading] = useState(true);
-	const { t } = useTranslation();
-	// loading sidebar
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setShowLoading(false);
-		}, 50);
 
-		return () => clearTimeout(timer);
-	}, []);
+	const { t } = useTranslation();
+
 	return (
 		<Suspense fallback={<SidebarLoading />}>
-			{/* {showLoading ? (
-				<SidebarLoading />
-			) : ( */}
 			<aside
 				className={`min-h-screen h-full duration-200 transition-all max-lg:min-w-16 max-lg:w-16 px-2 py-3 bg-white ${
 					isOpen ? 'w-[180px]' : 'w-16 min-w-16'
@@ -78,7 +68,6 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 					</div>
 				</div>
 			</aside>
-			{/* )} */}
 		</Suspense>
 	);
 };
@@ -139,7 +128,7 @@ const SidebarLink = ({
 					!isOpen ? 'hidden' : ''
 				}`}
 			>
-				{t(name)}
+				{t(name as any)}
 			</p>
 			<span
 				className={`absolute rounded-full right-0 h-0 w-[3px] bg-primary group-[.active]:h-[30px] duration-300 transition-all ${

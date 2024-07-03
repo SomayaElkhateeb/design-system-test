@@ -24,40 +24,37 @@ import {
 
 //  SIDEBAR
 export const sidebarLinks = [
-	{ id: nanoid(), path: '/', name: 'Home', Icon: DashboardIcon },
-	{ id: nanoid(), path: 'products', name: 'Products', Icon: ProductsIcon },
-	{ id: nanoid(), path: 'orders', name: 'Orders', Icon: OrdersIcon },
-	{ id: nanoid(), path: 'customers', name: 'Customers', Icon: CustomersIcon },
-	{ id: nanoid(), path: 'analytics', name: 'Analytics', Icon: AnalyticsIcon },
-	{ id: nanoid(), path: 'reviews', name: 'Reviews', Icon: ReviewsIcon },
-	{ id: nanoid(), path: 'pages', name: 'Pages', Icon: PagesIcon },
-	{ id: nanoid(), path: 'marketing', name: 'Marketing', Icon: AdsIcon },
-	{ id: nanoid(), path: 'apps', name: 'Apps', Icon: AppsIcon },
-	{ id: nanoid(), path: 'services', name: 'Services', Icon: ServicesIcon },
-	{ id: nanoid(), path: 'settings', name: 'Settings', Icon: SettingsIcon },
-	{ id: nanoid(), path: 'store', name: 'Store', Icon: StoresIcon },
-	{ id: nanoid(), path: 'register', name: 'Register', Icon: StoresIcon },
-	{ id: nanoid(), path: 'login', name: 'Login', Icon: StoresIcon },
-	{ id: nanoid(), path: 'forget_password', name: 'Forget Password', Icon: StoresIcon },
+	{ id: nanoid(), path: '/home', name: 'Home', Icon: DashboardIcon },
+	{ id: nanoid(), path: '/products/AllProducts', name: 'Products', Icon: ProductsIcon },
+	{ id: nanoid(), path: '/orders/AllOrders', name: 'Orders', Icon: OrdersIcon },
+	{ id: nanoid(), path: '/customers', name: 'Customers', Icon: CustomersIcon },
+	{ id: nanoid(), path: '/analytics/overview', name: 'Analytics', Icon: AnalyticsIcon },
+	{ id: nanoid(), path: '/reviews', name: 'Reviews', Icon: ReviewsIcon },
+	{ id: nanoid(), path: '/pages', name: 'Pages', Icon: PagesIcon },
+	{ id: nanoid(), path: '/marketing/apps', name: 'Marketing', Icon: AdsIcon },
+	{ id: nanoid(), path: '/apps/app_store', name: 'Apps', Icon: AppsIcon },
+	{ id: nanoid(), path: '/services', name: 'Services', Icon: ServicesIcon },
+	{ id: nanoid(), path: '/settings', name: 'Settings', Icon: SettingsIcon },
+	{ id: nanoid(), path: '/store/themes', name: 'Store', Icon: StoresIcon },
 ];
 
 // 	sidebar mobile
 export const sidebarLinksMob = [
-	{ id: nanoid(), path: '/', name: 'Home', Icon: DashboardIcon },
-	{ id: nanoid(), path: 'products', name: 'Products', Icon: ProductsIcon },
-	{ id: nanoid(), path: 'orders', name: 'Orders', Icon: OrdersIcon },
+	{ id: nanoid(), path: '/home', name: 'Home', Icon: DashboardIcon },
+	{ id: nanoid(), path: '/products/AllProducts', name: 'Products', Icon: ProductsIcon },
+	{ id: nanoid(), path: '/orders', name: 'Orders', Icon: OrdersIcon },
 ];
 
 export const sidebarLinksMobDrawer = [
-	{ id: nanoid(), path: 'customers', name: 'Customers', Icon: CustomersIcon },
-	{ id: nanoid(), path: 'analytics', name: 'Analytics', Icon: AnalyticsIcon },
-	{ id: nanoid(), path: 'reviews', name: 'Reviews', Icon: ReviewsIcon },
-	{ id: nanoid(), path: 'pages', name: 'Pages', Icon: PagesIcon },
-	{ id: nanoid(), path: 'marketing', name: 'Marketing', Icon: AdsIcon },
-	{ id: nanoid(), path: 'apps', name: 'Apps', Icon: AppsIcon },
-	{ id: nanoid(), path: 'services', name: 'Services', Icon: ServicesIcon },
-	{ id: nanoid(), path: 'settings', name: 'Settings', Icon: SettingsIcon },
-	{ id: nanoid(), path: 'store', name: 'Store', Icon: StoresIcon },
+	{ id: nanoid(), path: '/customers', name: 'Customers', Icon: CustomersIcon },
+	{ id: nanoid(), path: '/analytics/overview', name: 'Analytics', Icon: AnalyticsIcon },
+	{ id: nanoid(), path: '/reviews', name: 'Reviews', Icon: ReviewsIcon },
+	{ id: nanoid(), path: '/pages', name: 'Pages', Icon: PagesIcon },
+	{ id: nanoid(), path: '/marketing/apps', name: 'Marketing', Icon: AdsIcon },
+	{ id: nanoid(), path: '/apps/app_store', name: 'Apps', Icon: AppsIcon },
+	{ id: nanoid(), path: '/services', name: 'Services', Icon: ServicesIcon },
+	{ id: nanoid(), path: '/settings', name: 'Settings', Icon: SettingsIcon },
+	{ id: nanoid(), path: '/store/themes', name: 'Store', Icon: StoresIcon },
 ];
 
 // Icons Social media

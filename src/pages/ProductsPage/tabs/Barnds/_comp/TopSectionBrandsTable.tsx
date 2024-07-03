@@ -76,7 +76,7 @@ export default function TopSectionBrandsTable() {
 							handelSelect={handleSelect}
 						/>
 					</div>
-					{xs && <AddButtonMobile campaigns onClick={() => setOpenDialog(true)} />}
+					{xs && <AddButtonMobile  onClick={() => setOpenDialog(true)} />}
 				</div>
 
 				<hr />

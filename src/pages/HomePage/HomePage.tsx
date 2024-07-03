@@ -43,7 +43,7 @@ export const slides = [
 export default function HomePage() {
 	const { showLoading, startTour, handleSetup, handleJoyrideCallback, run, isSetup } =
 		useHomePage();
-
+	console.log('here home');
 	if (showLoading) {
 		return <HomeLoading />;
 	}
