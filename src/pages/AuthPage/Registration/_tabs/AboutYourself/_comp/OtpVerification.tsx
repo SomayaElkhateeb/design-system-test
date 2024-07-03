@@ -34,7 +34,6 @@ export default function OtpVerification({
 	const handleResend = () => {
 		let SendingData = { mobile: '', code: '' };
 		SendingData.mobile = phone;
-		// SendingData.code = code;
 		mutate(SendingData, {
 			onSuccess: async (response) => {
 				toast.success(response?.data?.message);
