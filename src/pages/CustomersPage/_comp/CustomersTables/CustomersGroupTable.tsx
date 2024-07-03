@@ -9,7 +9,6 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { Switch } from 'src/app/components/ui/switch';
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
 import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
 import BaseTable, {
 	GlobalTableCell,
 } from '../../../../app/components/optimized/TableLayoutGlobal/base.table';
@@ -18,12 +17,13 @@ import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
 import { settingMenus } from './CustomersTable';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const [array, setArray] = useState<string[]>([]);
 
 	// redux

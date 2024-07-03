@@ -5,7 +5,7 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { Switch } from 'src/app/components/ui/switch';
 import { BlogPostInterface } from 'src/app/interface/BlogPostInterface';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { CameraIcon } from 'src/app/utils/icons';
 import BaseTable, {
 	GlobalTableCell,
@@ -20,7 +20,7 @@ export default function BlogPostsTable({
 	isLoading: boolean;
 }) {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 

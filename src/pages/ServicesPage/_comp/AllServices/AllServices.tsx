@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import CategoryButton from 'src/app/components/optimized/Buttons/CategoryButton';
 import PriceButton from 'src/app/components/optimized/Buttons/PriceButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { IoIosArrowForward } from 'react-icons/io';
 import { BackIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +27,7 @@ export default function AllServices() {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	//  custom hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	return (
 		<div className='flex-col-global'>
 			{/*  actions buttons */}

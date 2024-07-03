@@ -2,8 +2,8 @@ import React, { useContext, createContext } from 'react';
 import { MdDone } from 'react-icons/md';
 import Button from '../Buttons/Button';
 import { useTranslation } from 'react-i18next';
-import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 // 1. Define the interface for the Tab object
 interface Tab {
@@ -87,7 +87,7 @@ const VTab: React.FC<VTabProps> = ({ index, title, content, tabs, handleFinish }
 	const isCompleted = index < currentTab; // Check if the step is completed
 
 	// 11. Hooks for language direction and responsiveness
-	const { currentLanguage } = useLanguageDirection();
+	const { language } = useLanguage();
 	const { xs } = useResponsive();
 
 	// 12. Determine the classes for the step indicator
@@ -117,7 +117,7 @@ const VTab: React.FC<VTabProps> = ({ index, title, content, tabs, handleFinish }
 				{!xs && !isLastStep && (
 					<span
 						className={`h-full w-px absolute top-6 ${
-							currentLanguage === 'ar' ? 'right-[15px]' : 'left-[15px]'
+							language === 'ar' ? 'right-[15px]' : 'left-[15px]'
 						} ${isCompleted ? 'bg-primary' : 'bg-inactive'}`}
 					></span>
 				)}

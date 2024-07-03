@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DownIcon } from 'src/app/utils/icons';
 import { OrderStatus } from '../..';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 export default function OrderNo() {
 	const [showOrderStatus, setShowOrderStatus] = useState(false);
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const flexClass = 'flex gap-1.5 items-center ';
 	return (
 		<div className='capitalize global-cards grid xl:grid-cols-6'>

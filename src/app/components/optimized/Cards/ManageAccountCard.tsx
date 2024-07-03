@@ -1,6 +1,6 @@
 import { IoAddCircle } from 'react-icons/io5';
 import { LogoutIcon, Person } from 'src/app/utils/icons';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next';
 import CollapsibleSection from './ManagementCards/CollapsibleSection';
@@ -12,8 +12,8 @@ import toast, { Renderable, Toast, ValueFunction } from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import { AuthApi } from 'src/app/React-Query/authApi';
 const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => void }) => {
-	// hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
+
 	const { t } = useTranslation();
 	const id = 'ManageAccount-card';
 

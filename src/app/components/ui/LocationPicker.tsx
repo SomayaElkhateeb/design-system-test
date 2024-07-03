@@ -1,4 +1,4 @@
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { Input } from './input';
 import GoogleMapComponent from './GoogleMapComponent';
 import FormField from './form/field';
@@ -9,7 +9,7 @@ import { Button } from '../optimized';
 import { useTranslation } from 'react-i18next';
 
 export default function LocationPicker({ formStore, setLocationEnabled, setDisablePickButton }) {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	return (
 		<div className='relative w-full h-[300px]'>

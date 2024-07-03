@@ -1,5 +1,5 @@
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 export default function PrevNextBtn({
 	onClickPrev,
 	onClickNext,
@@ -7,7 +7,7 @@ export default function PrevNextBtn({
 	onClickPrev?: () => void;
 	onClickNext?: () => void;
 }) {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const borderStyle = 'flex items-center justify-center w-full border border-pri-dark';
 	return (
 		<div className='flex w-[67px] h-[34px]'>

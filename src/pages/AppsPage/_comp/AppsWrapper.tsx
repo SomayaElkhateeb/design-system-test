@@ -1,7 +1,7 @@
 // import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { NextIcon } from 'src/app/utils/icons';
 import { AppsWrapperProps } from './useAppStore';
 
@@ -14,7 +14,7 @@ export default function AppsWrapper({
 	cards,
 }: AppsWrapperProps) {
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	// const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 

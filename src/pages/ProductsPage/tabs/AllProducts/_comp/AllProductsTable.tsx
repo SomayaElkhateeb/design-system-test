@@ -12,7 +12,7 @@ import BaseTable, {
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
 import { getImageUrl } from 'src/app/utils';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
@@ -34,7 +34,7 @@ export default function AllProductsTable({
 	isLoading,
 }: AllProductsTableProps) {
 	// hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [favorites, setFavorites] = useState<string[]>([]);
