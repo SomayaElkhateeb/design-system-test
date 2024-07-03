@@ -15,9 +15,9 @@ export const getProductsReducer = (builder: ActionReducerMapBuilder<ProductsStat
 			state.error = null;
 		})
 
-		.addCase(getSelectProducts.fulfilled, (state, action) => {
+		.addCase(getSelectProducts.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.products = action.payload;
+			state.products = payload?.data;
 		})
 
 		.addCase(getSelectProducts.rejected, (state, action) => {

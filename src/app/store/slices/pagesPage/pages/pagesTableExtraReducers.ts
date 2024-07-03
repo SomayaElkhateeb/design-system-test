@@ -9,9 +9,9 @@ export const getPagesTableReducer = (builder: ActionReducerMapBuilder<pagesSlice
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getPagesTable.fulfilled, (state, action) => {
+		.addCase(getPagesTable.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.pages = action.payload;
+			state.pages = payload?.data;
 		})
 		.addCase(getPagesTable.rejected, (state, action) => {
 			state.isLoading = false;

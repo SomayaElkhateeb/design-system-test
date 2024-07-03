@@ -9,7 +9,7 @@ export const getCategoriesReducer = (builder) => {
 		})
 		.addCase(getSelectCategories.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.categoriesSelect = action.payload;
+			state.categoriesSelect = payload?.data;
 		})
 		.addCase(getSelectCategories.rejected, (state, action) => {
 			state.isLoading = false;

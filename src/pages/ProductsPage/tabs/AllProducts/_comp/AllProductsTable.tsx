@@ -57,7 +57,7 @@ export default function AllProductsTable({
 				<CustomTableHeaderCheckbox
 					array={array}
 					setArray={setArray}
-					mainArray={products.map((e) => e.id)}
+					mainArray={products?.map((e) => e.id)}
 				/>
 			),
 			title: t('Product & Category'),
@@ -68,13 +68,14 @@ export default function AllProductsTable({
 		{ title: t('actions') },
 	];
 
+	console.log(products)
 	const actionsButtonStyle = (isArabic: boolean) =>
 		isArabic
 			? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
 			: 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
 
 	//  table rows
-	const rows = products.map((product) => {
+	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
 		return {
 			item: product,
@@ -144,5 +145,6 @@ export default function AllProductsTable({
 			headers={productsHeaders}
 			rows={rows}
 		/>
+		
 	);
 }

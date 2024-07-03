@@ -9,9 +9,9 @@ export const getInventoryReducer = (builder: ActionReducerMapBuilder<inventorySl
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getInventoryTable.fulfilled, (state, action) => {
+		.addCase(getInventoryTable.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.inventory = action.payload;
+			state.inventory = payload.data;
 		})
 		.addCase(getInventoryTable.rejected, (state, action) => {
 			state.isLoading = false;

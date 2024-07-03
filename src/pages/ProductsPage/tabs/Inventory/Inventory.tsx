@@ -17,7 +17,7 @@ export default function Inventory() {
 		dispatch(getInventoryTable());
 	}, [dispatch]);
 
-	if (error) return <div>Error: {error}</div>;
+	
 
 	return (
 		<div className='custom_container'>

@@ -9,9 +9,9 @@ export const getCouponsReducer = (builder: ActionReducerMapBuilder<couponsSliceM
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getCoupons.fulfilled, (state, action) => {
+		.addCase(getCoupons.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.coupons = action.payload;
+			state.coupons = payload?.data;
 		})
 		.addCase(getCoupons.rejected, (state, action) => {
 			state.isLoading = false;

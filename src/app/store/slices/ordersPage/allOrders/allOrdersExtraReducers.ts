@@ -9,9 +9,9 @@ export const getAllOrdersTableReducer = (builder: ActionReducerMapBuilder<allOrd
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getAllOrdersPageTable.fulfilled, (state, action) => {
+		.addCase(getAllOrdersPageTable.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.allOrders = action.payload;
+			state.allOrders = payload?.data;
 		})
 		.addCase(getAllOrdersPageTable.rejected, (state, action) => {
 			state.isLoading = false;

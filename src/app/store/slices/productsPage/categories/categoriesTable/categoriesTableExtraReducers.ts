@@ -10,9 +10,9 @@ export const getCategoriesReducer = (
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getCategoriesTable.fulfilled, (state, action) => {
+		.addCase(getCategoriesTable.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.categoriesTable = action.payload;
+			state.categoriesTable = payload?.data;
 		})
 		.addCase(getCategoriesTable.rejected, (state, action) => {
 			state.isLoading = false;

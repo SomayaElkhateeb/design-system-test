@@ -9,13 +9,15 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { Switch } from 'src/app/components/ui/switch';
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
 import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
-import useLanguage from 'src/app/utils/hooks/useLanguage';
-import BaseTable from '../../../../app/components/optimized/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from '../../../../app/components/optimized/TableLayoutGlobal/base.table';
 import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
 import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
 import { settingMenus } from './CustomersTable';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
@@ -32,23 +34,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 		dispatch(getCustomersGroupTable());
 	}, [dispatch]);
 
-	//  rows
-	const customer_groups: CustomerGroupInterface[] = [
-		{
-			id: '1',
-			name: 'group1',
-			customerNumber: 45,
-			describtion: 'high group',
-			active: true,
-		},
-		{
-			id: '2',
-			name: 'group1',
-			customerNumber: 45,
-			describtion: 'high group',
-			active: true,
-		},
-	];
+	
 
 	//  custom hook for select setting item
 
@@ -61,7 +47,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 				<CustomTableHeaderCheckbox
 					array={array}
 					setArray={setArray}
-					mainArray={customer_groups?.map((e) => e.id)}
+					mainArray={customersGroup?.map((e) => e.id)}
 				/>
 			),
 			title: t('Group Name'),
@@ -84,33 +70,21 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 				return {
 					item: e,
 					elements: [
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							<div className=' flex  items-center gap-[.2rem]'>
+						<GlobalTableCell>
+							<div className=' flex-row-global gap-[.2rem]'>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
-								<div className='flex flex-col gap-2'>
+								<div className='flex-col-global gap-2'>
 									<p>{e.name}</p>
 									<p className='text-subtitle text-[.8rem]'>{e.describtion}</p>
 								</div>
 							</div>
-						</TableCell>,
-						<TableCell
-							sx={{
-								fontSize: '14px',
-								fontWeight: 400,
-							}}
-						>
-							{e.customerNumber}
-						</TableCell>,
+						</GlobalTableCell>,
+						<GlobalTableCell>{e.customers_count}</GlobalTableCell>,
 
-						<TableCell>
+						<GlobalTableCell>
 							<Switch checked={e.active} />
-						</TableCell>,
-						<TableCell>
+						</GlobalTableCell>,
+						<GlobalTableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<FaRegEdit
 									className='text-subtitle'
@@ -121,9 +95,9 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 									selectedOption={selectedOption}
 									handelSelect={handleSelect}
 								/>
-								<ArrowTables path={`/customers/${e?.id}`} />
+								<ArrowTables path={`/customers`} />
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 					],
 				};
 			})}

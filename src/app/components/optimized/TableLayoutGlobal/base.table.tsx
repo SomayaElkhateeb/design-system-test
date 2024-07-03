@@ -42,7 +42,7 @@ const BaseTable = <T extends Model>({
 				// marginTop: '20px',
 				backgroundColor: '#F9FAFC',
 				maxHeight: 700,
-				minHeight: rows.length === 0 ? 50 : 300,
+				minHeight: rows?.length === 0 ? 50 : 300,
 				display: { sm: 'block', xs: 'none' },
 			}}
 		>

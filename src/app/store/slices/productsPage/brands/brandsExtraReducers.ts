@@ -9,9 +9,9 @@ export const getBrandsReducer = (builder: ActionReducerMapBuilder<brandsSliceMod
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getBrandsTable.fulfilled, (state, action) => {
+		.addCase(getBrandsTable.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.brands = action.payload;
+			state.brands = payload.data;
 		})
 		.addCase(getBrandsTable.rejected, (state, action) => {
 			state.isLoading = false;

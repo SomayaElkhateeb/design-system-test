@@ -48,7 +48,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { allCustomer, isLoading, error } = useAppSelector((state) => state.allCustomer || {});
+	const { allCustomers, isLoading, error } = useAppSelector((state) => state.allCustomer || {});
 
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
@@ -61,7 +61,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 				<CustomTableHeaderCheckbox
 					array={array}
 					setArray={setArray}
-					mainArray={customers?.map((e) => e.id)}
+					mainArray={allCustomers?.map((e) => e.id)}
 				/>
 			),
 			title: t('Customer Name'),
@@ -82,43 +82,45 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 			language={language}
 			color='#55607A'
 			headers={customersHeaders.map((h) => h)}
-			rows={allCustomer?.map((e: CustomerInterface, i: number) => {
-				return {
-					item: e,
-					elements: [
-						<GlobalTableCell>
-							<div className=' flex  items-center gap-[.2rem]'>
-								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
-								<div className='flex flex-col gap-2'>
-									<p>{e.name}</p>
-									<p className='text-subtitle text-[.8rem]'>{e.email}</p>
+			rows={
+				allCustomers?.map((e: CustomerInterface, i: number) => {
+					return {
+						item: e,
+						elements: [
+							<GlobalTableCell>
+								<div className=' flex  items-center gap-[.2rem]'>
+									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
+									<div className='flex flex-col gap-2'>
+										<p>{e.name}</p>
+										<p className='text-subtitle text-[.8rem]'>{e.email}</p>
+									</div>
 								</div>
-							</div>
-						</GlobalTableCell>,
-						<GlobalTableCell>{e.mobile}</GlobalTableCell>,
-						<GlobalTableCell>{e.city}</GlobalTableCell>,
-						<GlobalTableCell>{e.Orders}</GlobalTableCell>,
+							</GlobalTableCell>,
+							<GlobalTableCell>{e.mobile}</GlobalTableCell>,
+							<GlobalTableCell>{e.city}</GlobalTableCell>,
+							<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
-						<TableCell>
-							<Switch checked={e['E-Subscription']} />
-						</TableCell>,
-						<TableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<FaRegEdit
-									className='text-subtitle'
-									onClick={() => navigate(`addCustomer?id=${e?.id}`)}
-								/>
-								<ThreeDotsButton
-									sortMenus={settingMenus}
-									selectedOption={selectedOption}
-									handelSelect={handleSelect}
-								/>
-								<ArrowTables path={`/customers/${e?.id}`} />
-							</div>
-						</TableCell>,
-					],
-				};
-			})}
+							<TableCell>
+								<Switch checked={e['E-Subscription']} />
+							</TableCell>,
+							<TableCell>
+								<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+									<FaRegEdit
+										className='text-subtitle'
+										onClick={() => navigate(`addCustomer?id=${e?.id}`)}
+									/>
+									<ThreeDotsButton
+										sortMenus={settingMenus}
+										selectedOption={selectedOption}
+										handelSelect={handleSelect}
+									/>
+									<ArrowTables path={`/customers/${e?.id}`} />
+								</div>
+							</TableCell>,
+						],
+					};
+				})
+			}
 		/>
 	);
 }

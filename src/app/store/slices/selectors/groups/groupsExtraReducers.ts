@@ -13,9 +13,9 @@ export const getGroupsReducer = (builder: ActionReducerMapBuilder<GroupsState>) 
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getSelectcustomer_groups.fulfilled, (state, action) => {
+		.addCase(getSelectcustomer_groups.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.groups = action.payload;
+			state.groups = payload?.data;
 		})
 		.addCase(getSelectcustomer_groups.rejected, (state, action) => {
 			state.isLoading = false;
