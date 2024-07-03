@@ -5,6 +5,10 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 
 import { UseOtp } from './_hook/UseOtpHook';
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import { useMutation } from 'react-query';
+import toast from 'react-hot-toast';
+import { AuthApi } from 'src/app/React-Query/authApi';
 
 interface OtpVerificationProps {
 	onVerify: () => void;
@@ -24,7 +28,20 @@ export default function OtpVerification({
 		phone,
 	});
 	const { t } = useTranslation();
+
+	const { mutate } = useMutation('send-code', AuthApi.send_code);
+
 	const handleResend = () => {
+		let SendingData = { mobile: '', code: '' };
+		SendingData.mobile = phone;
+		// SendingData.code = code;
+		mutate(SendingData, {
+			onSuccess: async (response) => {
+				toast.success(response?.data?.message);
+				console.log(response?.data?.data.otp);
+			},
+			onError: PublicHandelingErrors.onErrorResponse,
+		});
 		//  put data request api here with react query
 		resetTimer();
 		onResend();

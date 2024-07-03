@@ -1,8 +1,8 @@
 import { UserInfoInterface } from 'src/pages/AuthPage/Registration/_tabs/AboutYourself/_comp/_hook/useUserInfoForm';
 
-import MainApi from '../api/MainApi';
 import { OtpVerificationInterface } from 'src/pages/AuthPage/Registration/_tabs/AboutYourself/_comp/_hook/UseOtpHook';
 import { AboutYourBusinessInterface } from 'src/pages/AuthPage/Registration/_tabs/AboutYourBusiness/_hook/useAboutYourBusiness';
+import MainApi from '../api/MainApi';
 
 export const AuthApi = {
 	signUp: (formData: UserInfoInterface) => {
@@ -11,6 +11,9 @@ export const AuthApi = {
 	verify_otp: (formData: OtpVerificationInterface) => {
 		return MainApi.postForm('merchant/register/verify/mobile', formData);
 	},
+	send_code: (formData: OtpVerificationInterface) => {
+		return MainApi.postForm('merchant/register/verify/mobile/send-code', formData);
+	},
 	signUp_secondStep: (formData: AboutYourBusinessInterface) => {
 		return MainApi.postForm('merchant/register/validate/step-tow', formData);
 	},
@@ -18,5 +21,4 @@ export const AuthApi = {
 	logout: () => {
 		return MainApi.delete('admin/logout');
 	},
-
 };
