@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppsCard } from 'src/app/components/optimized';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 interface SocialApp {
 	id: string;
@@ -53,7 +53,7 @@ const SocialAppsWrapper: React.FC<SocialAppsWrapperProps> = ({ socialApps, title
 	const buttonText = showAll ? 'View Less' : 'View All';
 
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	const displayedApps = showAll ? socialApps : socialApps.slice(0, itemsToRender);
 

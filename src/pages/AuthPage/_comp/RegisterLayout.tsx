@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
-import useLanguageDirection from 'src/app/utils/hooks/useLangDirection';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 export default function RegisterLayout({ children }: { children: ReactNode }) {
@@ -23,15 +23,16 @@ export default function RegisterLayout({ children }: { children: ReactNode }) {
 }
 
 function RegisterHeader() {
-	const { toggleLanguage, currentLanguage } = useLanguageDirection();
+	const { language, toggleLanguage } = useLanguage();
+	console.log(language)
 	// ar-light.svg
 	// en-light.svg
-	const brandImageUrl = getImageUrl(`brand/${currentLanguage}-light.svg`);
+	const brandImageUrl = getImageUrl(`brand/${language}-light.svg`);
 	return (
 		<header className='flex justify-between items-center w-full  '>
 			<img src={brandImageUrl} alt='Dookan' className='h-8' />
 			<button className='paragraph text-subtitle' onClick={toggleLanguage}>
-				{currentLanguage === 'ar' ? 'English' : 'العربية'}
+				{language === 'ar' ? 'English' : 'العربية'}
 			</button>
 		</header>
 	);

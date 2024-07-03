@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { AnalyticsProduct } from 'src/pages/AnalyticsPage/tabs/Products/AnalyticsProducts';
 import { getImageUrl } from 'src/app/utils';
 import BaseTable, {
@@ -15,7 +15,7 @@ export default function AnalyticsProductsTable({
 	isLoading: boolean;
 }) {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 
 	//  headers

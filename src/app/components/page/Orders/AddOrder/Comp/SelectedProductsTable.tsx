@@ -7,20 +7,21 @@ import { UseFormReturn } from 'react-hook-form';
 import { IQuantity, Product } from '../Products';
 import BaseTable from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { RemoveIcon } from 'src/app/utils/icons';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-interface SelectTableProps {
+interface SelectedProductsTableProps {
 	formStore: UseFormReturn<IQuantity>;
 	products: Product[];
 	onQuantityChange: (productId: string, quantity: number) => void;
 	onDelete: (productId: string) => void;
 }
 
-export default function SelectTable({
+export default function SelectedProductsTable({
 	formStore,
 	products,
 	onQuantityChange,
 	onDelete,
-}: SelectTableProps) {
+}: SelectedProductsTableProps) {
 	//  hooks
 	const { t } = useTranslation();
 	console.log('from table', products);
@@ -31,51 +32,88 @@ export default function SelectTable({
 		{ title: t('Price') },
 		{ title: t('Actions') },
 	];
-
+	const { xs } = useResponsive();
 	const calculateTotal = () => {
 		return products.reduce((total, product) => total + product.price * (product.quantity || 1), 0);
 	};
+
+	if (!xs) {
+		return (
+			<>
+				<BaseTable
+					color='#55607A'
+					headers={headers.map((h) => h)}
+					rows={products.map((item) => ({
+						item,
+						elements: [
+							<TableCell>
+								<ProductCategory product={item} />
+							</TableCell>,
+							<TableCell>
+								<FormField
+									formStore={formStore}
+									name='quantity'
+									render={(field) => (
+										<Input
+											{...field}
+											type='number'
+											min='1'
+											value={item.quantity || 1}
+											onChange={(e) => onQuantityChange(item.id, parseInt(e.target.value, 10))}
+										/>
+									)}
+								/>
+							</TableCell>,
+							<TableCell>
+								<p className='text-title text-sm'>SAR {item.price}.00</p>
+							</TableCell>,
+							<TableCell>
+								<button onClick={() => onDelete(item.id)}>
+									<RemoveIcon className='fill-pri-dark' />
+								</button>
+							</TableCell>,
+						],
+					}))}
+				/>
+				<div className='flex items-center justify-between'>
+					<p className='paragraph text-subtitle uppercase'>{t('Total')}:</p>
+					<p className='text-title text-sm'>SAR {calculateTotal()}.00</p>
+				</div>
+			</>
+		);
+	}
 	return (
-		<>
-			<BaseTable
-				color='#55607A'
-				headers={headers.map((h) => h)}
-				rows={products.map((item) => ({
-					item,
-					elements: [
-						<TableCell>
-							<ProductCategory product={item} />
-						</TableCell>,
-						<TableCell>
-							<FormField
-								formStore={formStore}
-								name='quantity'
-								render={(field) => (
-									<Input
-										{...field}
-										min='1'
-										value={item.quantity || 1}
-										onChange={(e) => onQuantityChange(item.id, parseInt(e.target.value, 10))}
-									/>
-								)}
-							/>
-						</TableCell>,
-						<TableCell>
-							<p className='text-title text-sm'>SAR {item.price}.00</p>
-						</TableCell>,
-						<TableCell>
-							<button onClick={() => onDelete(item.id)}>
-								<RemoveIcon className='fill-pri-dark' />
-							</button>
-						</TableCell>,
-					],
-				}))}
-			/>
-			<div className='flex items-center justify-between'>
-				<p className='paragraph text-subtitle uppercase' >{t('Total')}:</p>
+		<div className='grid gap-3 divide-y'>
+			{products.map((item, index) => (
+				<section key={index} className='grid gap-3'>
+					<ProductCategory product={item} />
+					<div className='flex items-center justify-between' >
+						<FormField
+						container={{ className: 'w-[5.2rem]' }}
+							formStore={formStore}
+							name='quantity'
+							render={(field) => (
+								<Input
+									{...field}
+									type='number'
+									min='1'
+									value={item.quantity || 1}
+									onChange={(e) => onQuantityChange(item.id, parseInt(e.target.value, 10))}
+								/>
+							)}
+						/>
+						<button onClick={() => onDelete(item.id)}>
+							<RemoveIcon className='fill-pri-dark' />
+						</button>
+						<p className='text-title text-sm'>SAR {item.price}.00</p>
+					</div>
+				</section>
+			))}
+			<section className='flex items-center justify-between'>
+				<p className='paragraph text-subtitle uppercase'>{t('Total')}:</p>
 				<p className='text-title text-sm'>SAR {calculateTotal()}.00</p>
-			</div>
-		</>
+			</section>
+		</div>
 	);
 }
 

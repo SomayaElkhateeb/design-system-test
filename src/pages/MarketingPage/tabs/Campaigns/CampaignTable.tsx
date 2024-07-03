@@ -12,7 +12,7 @@ import BaseTable, {
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 
 const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 	// const getNumericValue = (str) => parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
@@ -43,7 +43,7 @@ const CampaignTable = ({ sortBy }: CampaignTableInterface, ref) => {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	//  headers
 
 	const CampaignHeaders = [

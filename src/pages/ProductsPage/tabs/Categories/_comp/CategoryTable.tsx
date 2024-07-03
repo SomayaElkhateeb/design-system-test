@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Switch } from 'src/app/components/ui/switch';
 import { getImageUrl } from 'src/app/utils';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { DownIcon, MoveIcon } from 'src/app/utils/icons';
 import { Category } from '../Categories';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -21,7 +21,7 @@ export const CategoryTable = ({
 	isLoading: boolean;
 }) => {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	//  headers

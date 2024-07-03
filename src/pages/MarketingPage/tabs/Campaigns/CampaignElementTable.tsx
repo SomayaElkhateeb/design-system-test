@@ -13,7 +13,7 @@ import BaseTable, {
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { campaindata } from './Campaigns';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { MdFacebook } from 'react-icons/md';
 import { getImageUrl } from 'src/app/utils';
 
@@ -21,7 +21,7 @@ const CampaignElementTable = ({ sortBy }: CampaignTableInterface, ref) => {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	//  headers
 
 	const CampaignHeaders = [

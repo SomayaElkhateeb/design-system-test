@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { Avatars, ClientBox, InputRow } from '..';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 
 /**
  * Chat component displays a list of chats with search functionality.
@@ -28,7 +28,7 @@ const Chat = ({
 	const [searchValue, setSearchValue] = useState('');
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 
 	const handleClick = (id: number) => {
 		// console.log('click', id);

@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import TableRow from '@mui/material/TableRow';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { Switch } from 'src/app/components/ui/switch';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
@@ -74,7 +74,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 	const { sm } = useResponsive();
 	const [open, setOpen] = React.useState(false);
 	//  custom hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const Menu = [
@@ -192,7 +192,7 @@ const rows = [
 
 export default function SubCategoryTable() {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const { sm } = useResponsive();
 

@@ -1,27 +1,17 @@
 import { useState } from 'react';
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 import { TfiWorld } from 'react-icons/tfi';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import MenuSelect from '../../Menu/MenuSelect';
 
 const CollapsibleSection = () => {
 	const [show, setShow] = useState(false);
-	const language = UseLanguage();
-
-	const handelLanguage = () => {
-		if (language === 'ar') {
-			window.location.reload();
-			localStorage.setItem('language', 'en');
-		} else {
-			window.location.reload();
-			localStorage.setItem('language', 'ar');
-		}
-	};
+	const { language, toggleLanguage } = useLanguage();
 	const sortMenus = [
 		{
 			id: 1,
 			text: language === 'ar' ? 'English' : 'العربيه',
-			onClick: handelLanguage,
+			onClick: toggleLanguage,
 		},
 	];
 	return (

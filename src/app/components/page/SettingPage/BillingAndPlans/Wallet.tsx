@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { ClockIcon } from 'src/app/utils/icons';
 export default function Wallet() {
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	return (
 		<div className='global-cards gap-3'>
 			<h3 className='title'>{t('Wallet')}</h3>

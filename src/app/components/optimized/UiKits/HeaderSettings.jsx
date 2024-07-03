@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { BackIcon, LinkIcon, LoadUpdateIcon, MoreIcon, PrintIcon } from 'src/app/utils/icons';
 import { useTranslation } from 'react-i18next';
-import { UseLanguage } from '../../../utils/hooks/LanguageHook';
+import useLanguage from '../../../utils/hooks/useLanguage';
 import { IoIosArrowForward } from 'react-icons/io';
 import { PrevNextBtn } from '..';
 
@@ -28,7 +28,7 @@ import { PrevNextBtn } from '..';
 export default function HeaderSettings(props) {
 	//  hooks
 	const { t } = useTranslation();
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	return (
 		<div className='flex md:flex-row flex-col md:gap-0 gap-[1rem] md:items-center items-start justify-between  bg-white py-[1rem] custom_container'>

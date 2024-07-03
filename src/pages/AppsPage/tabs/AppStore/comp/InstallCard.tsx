@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { Button } from 'src/app/components/optimized';
 import { getImageUrl } from 'src/app/utils';
 import { EditIcon, MoreIcon } from 'src/app/utils/icons';
@@ -16,7 +16,7 @@ interface AppData {
 }
 
 export default function InstallCard({ name, imageUrl, url, installed }: AppData) {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 
 	return (

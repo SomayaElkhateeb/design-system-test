@@ -1,4 +1,4 @@
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { Button } from 'src/app/components/optimized';
 import MenuOption from 'src/app/components/optimized/Menu/MenuOption';
 import { DownIcon } from 'src/app/utils/icons';
@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 const Btn = () => {
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const [state, setState] = useState({
 		menu: false,

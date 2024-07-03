@@ -8,7 +8,7 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { Switch } from 'src/app/components/ui/switch';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
-import { UseLanguage } from 'src/app/utils/hooks/LanguageHook';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
 import BaseTable, {
 	GlobalTableCell,
 } from '../../../../app/components/optimized/TableLayoutGlobal/base.table';
@@ -38,7 +38,7 @@ export interface settingMenus {
 }
 export default function CustomersTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
-	const language = UseLanguage();
+	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [array, setArray] = useState<string[]>([]);
