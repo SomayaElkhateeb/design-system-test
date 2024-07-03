@@ -14,9 +14,9 @@ export const getCustomersReducer = (builder: ActionReducerMapBuilder<CustomersSt
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getSelectCustomers.fulfilled, (state, action) => {
+		.addCase(getSelectCustomers.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.customers = action.payload;
+			state.customers = payload?.data;
 		})
 		.addCase(getSelectCustomers.rejected, (state, action) => {
 			state.isLoading = false;

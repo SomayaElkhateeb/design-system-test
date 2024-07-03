@@ -11,9 +11,9 @@ export const getOrderAnalyticsTableReducer = (
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getOrderAnalyticsTable.fulfilled, (state, action) => {
+		.addCase(getOrderAnalyticsTable.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.ordersAnalytics = action.payload;
+			state.ordersAnalytics = payload?.data;
 		})
 		.addCase(getOrderAnalyticsTable.rejected, (state) => {
 			state.isLoading = false;

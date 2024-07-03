@@ -9,9 +9,9 @@ export const getBlogTableReducer = (builder: ActionReducerMapBuilder<blogSliceMo
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getBlogTable.fulfilled, (state, action) => {
+		.addCase(getBlogTable.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.blog = action.payload;
+			state.blog = payload?.data;
 		})
 		.addCase(getBlogTable.rejected, (state, action) => {
 			state.isLoading = false;

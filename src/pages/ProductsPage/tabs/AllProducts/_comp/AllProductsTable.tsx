@@ -68,6 +68,7 @@ export default function AllProductsTable({
 		{ title: t('actions') },
 	];
 
+	console.log(products)
 	const actionsButtonStyle = (isArabic: boolean) =>
 		isArabic
 			? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
@@ -144,5 +145,6 @@ export default function AllProductsTable({
 			headers={productsHeaders}
 			rows={rows}
 		/>
+		
 	);
 }

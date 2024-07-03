@@ -9,9 +9,9 @@ export const getDiscountReducer = (builder: ActionReducerMapBuilder<discountSlic
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getDiscounts.fulfilled, (state, action) => {
+		.addCase(getDiscounts.fulfilled, (state, {payload}:any) => {
 			state.isLoading = false;
-			state.discounts = action.payload;
+			state.discounts = payload?.data;
 		})
 		.addCase(getDiscounts.rejected, (state, action) => {
 			state.isLoading = false;
