@@ -3,25 +3,26 @@ import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NavIcon, SearchIcon } from 'src/app/utils/icons';
 import { GoSearch } from 'react-icons/go';
-// import HelpCenterBtn from '../optimized/Buttons/HelpCenterBtn';
-// import ViewBtn from '../optimized/Buttons/ViewBtn';
-// import ChatBtn from '../optimized/Buttons/ChatBtn';
-// import NotificationBtn from '../optimized/Buttons/NotificationBtn';
-// import ProfileBtn from '../optimized/Buttons/ProfileBtn';
-// import HeaderLoading from '../optimized/SchimmerLoading/HeaderLoading';
-// import SearchBtn from '../optimized/Buttons/SearchBtn';
+import HelpCenterBtn from '../optimized/Buttons/HelpCenterBtn';
+import ViewBtn from '../optimized/Buttons/ViewBtn';
+import ChatBtn from '../optimized/Buttons/ChatBtn';
+import NotificationBtn from '../optimized/Buttons/NotificationBtn';
+import ProfileBtn from '../optimized/Buttons/ProfileBtn';
+import HeaderLoading from '../optimized/SchimmerLoading/HeaderLoading';
+import SearchBtn from '../optimized/Buttons/SearchBtn';
 import { getImageUrl } from 'src/app/utils';
 import { useMediaQuery } from 'react-responsive';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 // -------------------------------------------------------------------------------------
 
-// Lazy-loaded components
-const HelpCenterBtn = lazy(() => import('../optimized/Buttons/HelpCenterBtn'));
-const ViewBtn = lazy(() => import('../optimized/Buttons/ViewBtn'));
-const ChatBtn = lazy(() => import('../optimized/Buttons/ChatBtn'));
-const NotificationBtn = lazy(() => import('../optimized/Buttons/NotificationBtn'));
-const ProfileBtn = lazy(() => import('../optimized/Buttons/ProfileBtn'));
-const HeaderLoading = lazy(() => import('../optimized/SchimmerLoading/HeaderLoading'));
-const SearchBtn = lazy(() => import('../optimized/Buttons/SearchBtn'));
+// // Lazy-loaded components
+// const HelpCenterBtn = lazy(() => import('../optimized/Buttons/HelpCenterBtn'));
+// const ViewBtn = lazy(() => import('../optimized/Buttons/ViewBtn'));
+// const ChatBtn = lazy(() => import('../optimized/Buttons/ChatBtn'));
+// const NotificationBtn = lazy(() => import('../optimized/Buttons/NotificationBtn'));
+// const ProfileBtn = lazy(() => import('../optimized/Buttons/ProfileBtn'));
+// const HeaderLoading = lazy(() => import('../optimized/SchimmerLoading/HeaderLoading'));
+// const SearchBtn = lazy(() => import('../optimized/Buttons/SearchBtn'));
 // -------------------------------------------------------------------------------------
 const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 	//  hooks
@@ -64,28 +65,28 @@ const Header = ({ setIsOpen }: { setIsOpen: () => void }) => {
 			{/* {showLoading ? (
 				<HeaderLoading />
 			) : ( */}
-				<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white z-40'>
-					<div className='flex items-center gap-3'>
-						<button className='max-lg:hidden' onClick={setIsOpen}>
-							<NavIcon className='fill-pri-dark' />
-						</button>
-						{isMobile && (
-							<div>
-								<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-8`} />
-							</div>
-						)}
-
-						<h2 className='title text-lg font-semibold'>{activeModule}</h2>
-					</div>
-
-					{pathname === '/' && (
-						<div className='hidden lg:flex'>
-							<HeaderSearchBar />
+			<div className='h-[70px] px-4 flex justify-between items-center mx-auto bg-white z-40'>
+				<div className='flex items-center gap-3'>
+					<button className='max-lg:hidden' onClick={setIsOpen}>
+						<NavIcon className='fill-pri-dark' />
+					</button>
+					{isMobile && (
+						<div>
+							<img src={getImageUrl('brand/cloud.svg')} alt='logo' className={`w-8`} />
 						</div>
 					)}
 
-					<ProfileInfo />
+					<h2 className='title text-lg font-semibold'>{activeModule}</h2>
 				</div>
+
+				{pathname === '/' && (
+					<div className='hidden lg:flex'>
+						<HeaderSearchBar />
+					</div>
+				)}
+
+				<ProfileInfo />
+			</div>
 			{/* )} */}
 		</Suspense>
 	);
@@ -151,20 +152,20 @@ function HeaderSearchBar() {
 
 // ProfileInfo
 const ProfileInfo = () => {
-	return (
-		<>
-			<div className='flex lg:hidden items-center '>
-				<SearchBtn />
-				<ViewBtn />
-				<NotificationBtn />
-			</div>
-			<div className='hidden lg:flex items-center'>
-				<HelpCenterBtn />
-				<ViewBtn />
-				<ChatBtn />
-				<NotificationBtn />
-				<ProfileBtn />
-			</div>
-		</>
+	const { xs } = useResponsive();
+	return xs ? (
+		<div className='flex-row-global gap-5  items-center '>
+			<SearchBtn />
+			<ViewBtn />
+			<NotificationBtn />
+		</div>
+	) : (
+		<div className='flex-row-global gap-5 items-center'>
+			<HelpCenterBtn />
+			<ViewBtn />
+			<ChatBtn />
+			<NotificationBtn />
+			<ProfileBtn />
+		</div>
 	);
 };

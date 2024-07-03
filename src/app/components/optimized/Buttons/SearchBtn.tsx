@@ -1,11 +1,11 @@
 import { SearchIcon } from 'src/app/utils/icons';
 
-import PopoverComponenet from '../Popover/Popover';
 import Button from '@mui/material/Button';
+import PopoverComponent from '../UiKits/Popover';
 
 const SearchBtn = () => {
 	return (
-		<PopoverComponenet
+		<PopoverComponent
 			button={
 				<>
 					<Button className='roundedParentIcon'>
@@ -15,7 +15,7 @@ const SearchBtn = () => {
 			}
 		>
 			<SearchInput />
-		</PopoverComponenet>
+		</PopoverComponent>
 	);
 };
 

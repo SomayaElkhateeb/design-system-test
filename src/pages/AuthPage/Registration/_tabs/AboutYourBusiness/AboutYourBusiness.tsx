@@ -1,33 +1,30 @@
-import { Link } from 'react-router-dom';
-import { UseFormReturn } from 'react-hook-form';
 import { Form } from 'src/app/components/ui/form';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
-import { Button, CheckBox } from 'src/app/components/optimized';
-import useAboutYourBusiness, { AboutYourBusinessInterface } from './useAboutYourBusiness';
+import { Button } from 'src/app/components/optimized';
+import useAboutYourBusiness from './_hook/useAboutYourBusiness';
 import SelectFormField from '../../../../../app/components/ui/form/SelectFormField';
+import { AgreementTerms } from './_comp/AgreementTerms';
 
 export default function AboutYourBusiness({ onFinish }: { onFinish: () => void }) {
-	const { formStore, onSubmit, industryOptions } = useAboutYourBusiness({ onFinish });
+	const { formStore, onSubmit, industryOptions, isLoading } = useAboutYourBusiness({ onFinish });
 
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='grid grid-cols-1 gap-4'>
 				<FormField
 					formStore={formStore}
-					name='storeName'
-					render={(field) => (
-						<Input {...field} id='storeName' type='text' placeholder='Store name' />
-					)}
+					name='name'
+					render={(field) => <Input {...field} id='name' type='text' placeholder='Store name' />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='storeLink'
+					name='username'
 					render={(field) => (
-						<div className='flex mt-1'>
+						<div className='flex'>
 							<Input
 								{...field}
-								id='storeLink'
+								id='username'
 								type='text'
 								placeholder='Store link (in English)'
 								className='flex-grow'
@@ -38,45 +35,23 @@ export default function AboutYourBusiness({ onFinish }: { onFinish: () => void }
 						</div>
 					)}
 				/>
-				<SelectFormField formStore={formStore} name='industry' options={industryOptions} />
+				<SelectFormField
+					formStore={formStore}
+					name='industry'
+					placeholder='industry'
+					options={industryOptions}
+				/>
 				<AgreementTerms formStore={formStore} />
 				<div className='flex justify-end'>
-					<Button variant='primary' type='submit' text='Create Store' className='w-36' />
+					<Button
+						loading={isLoading}
+						variant='primary'
+						type='submit'
+						text='Create Store'
+						className='w-36'
+					/>
 				</div>
 			</form>
 		</Form>
-	);
-}
-
-interface AgreementCheckboxProps {
-	formStore: UseFormReturn<AboutYourBusinessInterface>;
-}
-
-function AgreementTerms({ formStore }: AgreementCheckboxProps) {
-	return (
-		<label className='flex gap-2 items-start'>
-			<CheckBox
-				label={
-					<span className='paragraph text-subtitle'>
-						I agree to&nbsp;
-						<Link to='' className='text-primary'>
-							Terms and Conditions
-						</Link>
-						,&nbsp;
-						<Link to='' className='text-primary'>
-							Privacy Policy
-						</Link>
-						&nbsp; and &nbsp;
-						<Link to='' className='text-primary'>
-							Selling policy
-						</Link>
-					</span>
-				}
-				checked={formStore.watch('agreementTerms')}
-				handleOnChange={(option) => {
-					formStore.setValue('agreementTerms', option);
-				}}
-			/>
-		</label>
 	);
 }

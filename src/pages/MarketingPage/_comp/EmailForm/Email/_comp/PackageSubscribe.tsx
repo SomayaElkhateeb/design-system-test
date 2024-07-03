@@ -11,7 +11,7 @@ export default function PackageSubscribe() {
 	return (
 		<>
 			<SubHeader title={t('Subscribe to package')} />
-			<div className='custom_container custom-grid-parent  py-5'>
+			<div className='custom_container custom-grid-parent py-5'>
 				<div className='grid-left'>
 					<PaymentCard removeHours={true} />
 				</div>

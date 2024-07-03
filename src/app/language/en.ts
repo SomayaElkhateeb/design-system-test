@@ -1243,4 +1243,9 @@ export const english = {
 	'Email Content': 'Email Content',
 	'View all subscribers': 'View all subscribers',
 	Subject: 'Subject',
+	'Choose email template': 'Choose email template',
+	'Subscribe To Package': 'Subscribe To Package',
+	'Email Form': 'Email Form',
+	'submit emails': 'submit emails',
+	'Subscribe to package': 'Subscribe to package',
 };

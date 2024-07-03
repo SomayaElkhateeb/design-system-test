@@ -7,9 +7,9 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 export default function RegisterLayout({ children }: { children: ReactNode }) {
 	const { xs, sm } = useResponsive();
 	return (
-		<section className='flex flex-col gap-[3.6rem] custom_container h-screen bg-white py-3'>
+		<section className='flex-col-global gap-[3.6rem] custom_container h-screen bg-white py-3'>
 			<RegisterHeader />
-			<section className='flex flex-col gap-[2rem]'>
+			<section className='flex-col-global gap-[2rem]'>
 				<section className='flex items-center justify-between h-full flex-grow'>
 					<div className='w-[28.5rem] max-md:w-full h-full flex justify-center items-center'>
 						{children}

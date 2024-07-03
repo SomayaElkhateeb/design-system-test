@@ -1,7 +1,7 @@
 import { NotifiIcon } from 'src/app/utils/icons';
 import NotificationsCard from '../Cards/NotificationsCard';
 
-import PopoverComponenet from '../Popover/Popover';
+import PopoverComponent from '../UiKits/Popover';
 
 /**
  * NotificationBtn component represents a button that, when clicked, displays a notification icon
@@ -9,7 +9,7 @@ import PopoverComponenet from '../Popover/Popover';
  */
 const NotificationBtn = () => {
 	return (
-		<PopoverComponenet
+		<PopoverComponent
 			button={
 				<>
 					<p className='roundedParentIcon relative'>
@@ -20,7 +20,7 @@ const NotificationBtn = () => {
 			}
 		>
 			<NotificationsCard />
-		</PopoverComponenet>
+		</PopoverComponent>
 	);
 };
 

@@ -3,12 +3,10 @@ import { toast } from 'react-hot-toast';
 // import { Navigate  } from "react-router-dom";
 
 export default class PublicHandelingErrors {
-	public static onErrorResponse = (
-		error: unknown | any,
-		variables?: { contact?: string | undefined; rating?: number | null } | any,
-	) => {
+	public static onErrorResponse = (error: any) => {
+		console.log(error);
 		this.handleTokenExpire(error?.response?.status);
-		
+
 		const errorData = error?.response?.data;
 
 		if (errorData?.errors?.length > 0) {
@@ -17,8 +15,8 @@ export default class PublicHandelingErrors {
 			});
 			this.handleTokenExpire(error?.response?.status);
 		} else if (errorData?.errors && Object.values(errorData?.errors)?.length > 0) {
-			Object.values(errorData?.errors)?.map((e) => {
-				toast.error(e);
+			Object.values(errorData?.errors)?.map((e: any) => {
+				return toast.error(e);
 			});
 		} else if (errorData?.message) {
 			toast.error(errorData?.message);
@@ -42,4 +40,5 @@ export default class PublicHandelingErrors {
 			}
 		}
 	};
+	
 }

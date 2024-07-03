@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import { AuthApi } from 'src/app/React-Query/authApi';
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
@@ -37,12 +40,14 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 	const { mutate, isLoading, error } = useMutation('sign-up', AuthApi.signUp);
 	const handleSubmit = (values: UserInfoInterface) => {
 		//Perform verification before moving to the next step
-
 		mutate(values, {
 			onSuccess: async (response) => {
+				localStorage.setItem('userInfoData', JSON.stringify(values));
+				toast.success(response?.data?.message);
+				toast.success(response?.data?.data?.otp);
 				onNext();
 			},
-			// onError: PublicHandelingErrors.onErrorResponse,
+			onError: PublicHandelingErrors.onErrorResponse,
 		});
 		// ///////////////////
 
@@ -51,6 +56,7 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 
 		// onNext();
 	};
+
 	const { formStore, onSubmit } = useForm({
 		schema: userInfoValidationSchema,
 		handleSubmit: handleSubmit,
@@ -64,5 +70,5 @@ export function useUserInfoForm({ onNext, onPhoneChange }: UserInfoProps) {
 		return () => subscription.unsubscribe();
 	}, [formStore, onPhoneChange]);
 
-	return { formStore, onSubmit,isLoading };
+	return { formStore, onSubmit, isLoading };
 }

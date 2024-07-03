@@ -9,8 +9,9 @@ import { GoBold } from 'react-icons/go';
 import { FaAlignLeft, FaAlignCenter, FaAlignRight } from 'react-icons/fa';
 import { nanoid } from 'nanoid';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import PopoverComponenet from 'src/app/components/optimized/Popover/Popover';
+
 import { Menu } from 'src/app/components/optimized';
+import PopoverComponent from 'src/app/components/optimized/UiKits/Popover';
 
 const EmailOptions = () => {
 	const { t } = useTranslation();
@@ -46,12 +47,12 @@ const Style = () => {
 					<PiExclamationMarkBold color={'white'} />
 				</p>
 			</div>
-			<div className='flex flex-col gap-4'>
+			<div className='flex-flex-col gap-4'>
 				<div className='global-cards bg-light-1 rounded gap-0'>
-					<p className='text-title text-lg'>{t('System Font')}</p>
+					<p className='title'>{t('System Font')}</p>
 					<span className='text-title text-sm pb-4'>{t('Regular')}</span>
 
-					<PopoverComponenet
+					<PopoverComponent
 						button={
 							<>
 								<button className='bg-white border w-full border-constrained py-2 text-center text-title'>
@@ -61,30 +62,18 @@ const Style = () => {
 						}
 					>
 						<Menu options={sortMenus} selectedOption={selectedOption} onSelect={handleSelect} />
-					</PopoverComponenet>
+					</PopoverComponent>
 				</div>
 				<FontSizeProgress value={16} min={10} max={36} />
 				<TextStyleToggle IconOne={GoBold} IconTwo={PiTextItalicBold} IconThree={PiLinkSimpleBold} />
 
 				<div className='flex items-center gap-2'>
-					<input
-						type='color'
-						name='textColor'
-						// value={emailOptions.textColor}
-						// onChange={handleChange}
-						className='rounded-md'
-					/>
+					<input type='color' name='textColor' className='rounded-md' />
 					<span className='text-sm text-title'>{t('Text color')}</span>
 				</div>
 
 				<div className='flex items-center gap-2'>
-					<input
-						type='color'
-						name='textColor'
-						// value={emailOptions.textColor}
-						// onChange={handleChange}
-						className='rounded-md '
-					/>
+					<input type='color' name='textColor' className='rounded-md ' />
 					<span className='text-sm text-title '>{t('Link color')}</span>
 				</div>
 			</div>
@@ -103,13 +92,7 @@ const Section = () => {
 			</div>
 
 			<div className='flex items-center gap-2'>
-				<input
-					type='color'
-					name='textColor'
-					// value={emailOptions.textColor}
-					// onChange={handleChange}
-					className='rounded-md'
-				/>
+				<input type='color' name='textColor' className='rounded-md' />
 				<span className='text-sm text-title'>{t('Background')}</span>
 			</div>
 		</div>

@@ -4,7 +4,7 @@ import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { capitalize } from 'src/app/utils';
-import { UserInfoProps, useUserInfoForm } from './useUserInfoForm';
+import { UserInfoProps, useUserInfoForm } from './_hook/useUserInfoForm';
 
 // Define the specific types for the field names
 type FieldName = 'email' | 'admin_name' | 'mobile' | 'password';

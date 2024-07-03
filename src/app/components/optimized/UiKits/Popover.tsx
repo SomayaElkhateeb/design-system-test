@@ -6,9 +6,11 @@ import React, { useState } from 'react';
 export default function PopoverComponent({
 	button,
 	children,
+	close,
 }: {
 	button: React.ReactNode;
 	children: React.ReactNode;
+	close?: boolean;
 }) {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -24,7 +26,11 @@ export default function PopoverComponent({
 	const id = open ? 'simple-popover' : undefined;
 	return (
 		<>
-			<Button sx={{ color: 'black', minWidth: '0px',px:"0" }} aria-describedby={id} onClick={handleClick}>
+			<Button
+				sx={{ color: 'black', minWidth: '0px', px: '0' }}
+				aria-describedby={id}
+				onClick={handleClick}
+			>
 				{button}
 			</Button>
 			<Popover
@@ -37,7 +43,7 @@ export default function PopoverComponent({
 					horizontal: 'left',
 				}}
 			>
-				<div onClick={handleClose}>{children}</div>
+				<div onClick={() => !close && handleClose()}>{children}</div>
 			</Popover>
 		</>
 	);

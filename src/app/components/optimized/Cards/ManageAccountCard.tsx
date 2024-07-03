@@ -6,19 +6,37 @@ import { useTranslation } from 'react-i18next';
 import CollapsibleSection from './ManagementCards/CollapsibleSection';
 import CopyableSection from './ManagementCards/CopyableSection';
 import Collapsible from './ManagementCards/Collapsible';
-
-/**
- * ManageAccountCard component displays a panel for managing the user's account settings.
- * It closes when a click occurs outside of its boundaries.
- *
-
- */
+import { useClickOutsideWithId } from 'src/app/utils';
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import toast, { Renderable, Toast, ValueFunction } from 'react-hot-toast';
+import { useMutation } from 'react-query';
+import { AuthApi } from 'src/app/React-Query/authApi';
 const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => void }) => {
 	const { language } = useLanguage();
-	const { t } = useTranslation();
 
+	const { t } = useTranslation();
+	const id = 'ManageAccount-card';
+
+	useClickOutsideWithId(id, onClose || (() => {}));
+
+	//  handel logout action with api
+	const { mutate, isLoading, error } = useMutation('log-out', AuthApi.logout);
+	const handelLogout = () => {
+		// mutate({
+		// 	onSuccess: async (response: {
+		// 		data: { message: Renderable | ValueFunction<Renderable, Toast> };
+		// 	}) => {
+		// 		toast.success(response?.data?.message);
+
+		// 	},
+		// 	onError: PublicHandelingErrors.onErrorResponse,
+		// });
+		localStorage.clear();
+		window.location.href = '/login';
+	};
 	return (
 		<div
+			id={id}
 			className={`${menu ? 'w-full bg-light-2' : 'bg-white min-w-64 pt-3 pb-5 shadow-lg'} ${
 				language === 'ar'
 					? 'rounded-tr-md rounded-br-md left-2'
@@ -30,7 +48,7 @@ const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => 
 					<Person />
 					<h2 className='text-sm text-title'>{t('Manage account')}</h2>
 				</div>
-				{menu ? '' : <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
+				{!menu && <IoCloseCircleOutline onClick={onClose} className='text-lg cursor-pointer' />}
 			</div>
 			<hr />
 
@@ -49,7 +67,7 @@ const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => 
 
 			<hr />
 			<div className='p-4 text-title'>
-				<div className='flex gap-3 items-center'>
+				<div onClick={handelLogout} className='flex gap-3 items-center cursor-pointer'>
 					<LogoutIcon />
 					<h3 className='cursor-pointer'>{t('Sign Out')}</h3>
 				</div>

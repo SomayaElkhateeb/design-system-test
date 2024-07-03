@@ -5,7 +5,7 @@ import BaseTable, {
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { AnalyticsCustomer } from '../AnalyticsCustomers';
 
-export default function CustomersTable({
+export default function CustomersAnalyticsTable({
 	customersAnalytics,
 	isLoading,
 }: {

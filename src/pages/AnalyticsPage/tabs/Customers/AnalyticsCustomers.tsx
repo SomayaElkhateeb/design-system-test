@@ -4,14 +4,15 @@ import { ColumnChart } from 'src/app/components/optimized';
 import useAnalyticsData from '../../_hook/useAnalyticsData';
 import data from '../../_comp/data.json';
 import { useTranslation } from 'react-i18next';
-import CustomersTable from './comp/CustomersTable';
+import CustomersTable from './comp/CustomersAnalyticsTable';
 import { getNumericValue, parseDate } from 'src/app/utils';
 import { useEffect } from 'react';
 import { getCustomersAnalyticsTable } from 'src/app/store/slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableAsyncThunks';
 
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import CustomersTableMobile from './comp/CustomersTableMobile';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store';
+import CustomersAnalyticsTableMobile from './comp/CustomersTableMobile';
 
 export interface AnalyticsCustomer {
 	day: string;
@@ -32,8 +33,6 @@ const Customers = () => {
 	useEffect(() => {
 		dispatch(getCustomersAnalyticsTable());
 	}, [dispatch]);
-
-	if (error) return <div>Error: {error}</div>;
 
 	const customersSortMenus = [
 		{ text: t('Date Added') },
@@ -79,7 +78,7 @@ const Customers = () => {
 			/>
 
 			<CustomersTable customersAnalytics={customersAnalytics} isLoading={isLoading} />
-			{xs && <CustomersTableMobile tableData={tableData} />}
+			{xs && <CustomersAnalyticsTableMobile tableData={tableData} />}
 		</div>
 	);
 };
@@ -98,7 +97,7 @@ export default Customers;
 // import { getCustomersAnalyticsTable } from 'src/app/store/slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableAsyncThunks';
 
 // import useResponsive from 'src/app/utils/hooks/useResponsive';
-// import CustomersTableMobile from './comp/CustomersTableMobile';
+// import CustomersAnalyticsTableMobile from './comp/CustomersAnalyticsTableMobile';
 // import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 // export interface AnalyticsCustomer {
@@ -169,7 +168,7 @@ export default Customers;
 // 			/>
 
 // 			<CustomersTable customersAnalytics={customersAnalytics} isLoading={isLoading} />
-// 			{xs && <CustomersTableMobile tableData={tableData} />}
+// 			{xs && <CustomersAnalyticsTableMobile tableData={tableData} />}
 // 		</div>
 // 	);
 // };

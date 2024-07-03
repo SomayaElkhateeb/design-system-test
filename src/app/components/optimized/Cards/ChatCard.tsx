@@ -53,6 +53,7 @@ const data = [
 
 const ChatCard = ({ menu }: { menu?: boolean }) => {
 	const { language } = useLanguage();
+
 	const id = 'chat-card';
 
 	return (
