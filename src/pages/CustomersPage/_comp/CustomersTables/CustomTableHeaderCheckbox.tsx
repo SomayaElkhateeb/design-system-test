@@ -6,9 +6,9 @@ export default function CustomTableHeaderCheckbox({
 	mainArray,
 	setArray,
 }: {
-	array: string[];
-	mainArray: string[];
-	setArray: (e: string[]) => void;
+	array: number[];
+	mainArray: number[];
+	setArray: (e: number[]) => void;
 }) {
 	const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 	return array?.length > 0 && array?.length !== mainArray?.length ? (

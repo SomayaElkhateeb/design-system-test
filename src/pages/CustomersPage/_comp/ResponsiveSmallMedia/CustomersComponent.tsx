@@ -6,14 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 
 interface props {
-	firstName: string;
+	firstName?: string;
 	lastName?: string;
 	imageUrl?: string;
-	email: string;
+	email?: string;
 	settingMenus: settingMenus[];
-	id?: string;
+	id?: number;
 	path?: string;
 	noAvatar?: boolean;
+	customersCount?:number
 }
 export default function CustomersComponenet({
 	settingMenus,
@@ -24,6 +25,7 @@ export default function CustomersComponenet({
 	id,
 	path,
 	noAvatar,
+	customersCount
 }: props) {
 	//  hooks
 	const navigate = useNavigate();
@@ -38,10 +40,8 @@ export default function CustomersComponenet({
 			>
 				{!noAvatar ? (
 					<Avatar
-						variant='user'
-						firstName={firstName}
-						lastName={lastName}
-						imageUrl={imageUrl}
+						variant='group'
+						groupCount={customersCount}
 						size='lg'
 					/>
 				) : (

@@ -26,7 +26,6 @@ export default function NavigationSection() {
 					</Button>
 				</div>
 			)}
-			{xs && <AddButtonMobile path='AddNavigation' />}
 
 			<hr />
 			<div className='flex-col-global'>
@@ -34,6 +33,7 @@ export default function NavigationSection() {
 					<NavigationCard key={i} title='Main menu' sub_title1='About' sub_title2='home' id='1' />
 				))}
 			</div>
+			{xs && <AddButtonMobile path='AddNavigation' />}
 		</div>
 	);
 }

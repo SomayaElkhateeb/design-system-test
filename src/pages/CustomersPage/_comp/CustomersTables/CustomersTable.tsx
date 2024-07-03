@@ -17,19 +17,6 @@ import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 
-export const customers: CustomerInterface[] = [
-	{
-		id: '1',
-		name: 'mohamed Mostafa',
-		first_name: 'Mohamed',
-		last_name: 'Mostafa',
-		mobile: '01064545565',
-		city: 'mansoura',
-		Orders: 10,
-		email: 'mmmm@yahoo.com',
-		'E-Subscription': true,
-	},
-];
 
 export interface settingMenus {
 	id: string;
@@ -41,14 +28,14 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const [array, setArray] = useState<string[]>([]);
+	const [array, setArray] = useState<number[]>([]);
 
 	//  custom hook for select setting item
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { allCustomers, isLoading, error } = useAppSelector((state) => state.allCustomer || {});
+	const { allCustomers, isLoading, error } = useAppSelector((state) => state.allCustomer);
 
 	useEffect(() => {
 		dispatch(getAllCustomersTable());

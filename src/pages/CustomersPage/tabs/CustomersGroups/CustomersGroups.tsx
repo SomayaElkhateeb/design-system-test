@@ -8,16 +8,19 @@ import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import CustomersGroupTable from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersGroupTable';
-import { customers } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { LiaTrashAlt } from 'react-icons/lia';
+import { useAppSelector } from 'src/app/store';
 
 export default function CustomersGroups() {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
+
+	//  selectors
+	const { customersGroup } = useAppSelector((state) => state.customersGroup);
 	//  custom hook for select arrang item
 
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -53,8 +56,7 @@ export default function CustomersGroups() {
 						{t('Add New Group')}
 					</Button>
 				)}
-				{/*  case of small media */}
-				{xs && <AddButtonMobile path='/customers/addGroupCustomer' />}
+
 				{/*  arrange,... */}
 				<ActionsComp
 					sortMenus={sortMenus}
@@ -68,18 +70,22 @@ export default function CustomersGroups() {
 			<CustomersGroupTable settingMenus={settingMenus} />
 
 			{/*  case of small media */}
-			<div className='responsive_pages'>
-				{customers?.map((e, i) => (
-					<CustomersComponenet
-						id={e.id}
-						settingMenus={settingMenus}
-						key={i}
-						firstName={e.first_name}
-						lastName={e.last_name}
-						email={e.email}
-					/>
-				))}
-			</div>
+			{xs && (
+				<div className='responsive_pages'>
+					{customersGroup?.map((e, i) => (
+						<CustomersComponenet
+							id={e.id}
+							settingMenus={settingMenus}
+							key={i}
+							firstName={e.name}
+							customersCount={e.customers_count}
+							// lastName={e.name}
+							email={e.describtion}
+						/>
+					))}
+					<AddButtonMobile path='/customers/addGroupCustomer' />
+				</div>
+			)}
 		</div>
 	);
 }

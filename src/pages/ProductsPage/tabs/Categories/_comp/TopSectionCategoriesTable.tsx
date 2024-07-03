@@ -51,7 +51,6 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 							{title}
 						</Button>
 					)}
-					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global '>
 						<ActionsComp
@@ -61,6 +60,7 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 							handelSelect={handleSelect}
 						/>
 					</div>
+					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 				</div>
 				<hr />
 			</div>

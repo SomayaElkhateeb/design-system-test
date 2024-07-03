@@ -37,15 +37,15 @@ const Coupons = () => {
 	}, [dispatch]);
 
 	return (
-		<div className='custom_container relative'>
+		<div className='custom_container '>
 			<div className='flex-col-global  '>
 				{/*  top section */}
 				<TopSectionDiscountAndCoupons addButton={t('add new coupon')} path='addCoupon' />
 				{xs && (
-					<>
-						<AddButtonMobile path='addCoupon' />
+					<div className='flex-col-global '>
 						<MarketingTableMobile items={formattedCoupons} />
-					</>
+						<AddButtonMobile path='addCoupon' />
+					</div>
 				)}
 				{/*  table section */}
 				<CouponsTable coupons={coupons} isLoading={isLoading} />
