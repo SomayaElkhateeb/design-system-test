@@ -34,23 +34,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 		dispatch(getCustomersGroupTable());
 	}, [dispatch]);
 
-	//  rows
-	const customer_groups: CustomerGroupInterface[] = [
-		{
-			id: '1',
-			name: 'group1',
-			customerNumber: 45,
-			describtion: 'high group',
-			active: true,
-		},
-		{
-			id: '2',
-			name: 'group1',
-			customerNumber: 45,
-			describtion: 'high group',
-			active: true,
-		},
-	];
+	
 
 	//  custom hook for select setting item
 
