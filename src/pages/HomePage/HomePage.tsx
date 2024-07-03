@@ -12,7 +12,6 @@ import Setups from './_comp/Setups';
 import data from './_comp/data.json';
 import { useHomePage } from './_comp/useHomePage';
 
-
 export const slides = [
 	{
 		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
@@ -78,7 +77,7 @@ export default function HomePage() {
 				run={run}
 				continuous
 				styles={joyrideStyles}
-				tooltipComponent={TourCard}
+				tooltipComponent={TourCard as any}
 				callback={handleJoyrideCallback}
 			/>
 		</div>

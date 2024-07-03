@@ -47,13 +47,13 @@ const AllProducts: React.FC = () => {
 
 				{/* Render mobile views for small screens */}
 				<div className='sm:hidden grid gap-2 '>
-					{allProducts?.map((product: Product) => (
+					{/* {allProducts?.length>0 &&allProducts?.map((product: Product) => (
 						<MobileProductViews
 							key={product.name}
 							{...product}
 							settingMenus={productSettingsMenu}
 						/>
-					))}
+					))} */}
 				</div>
 			</div>
 		</div>
