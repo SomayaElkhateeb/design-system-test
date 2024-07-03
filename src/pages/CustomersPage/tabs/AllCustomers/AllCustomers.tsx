@@ -15,10 +15,9 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { AnalyticsIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
 
-import CustomersTable, {
-	customers,
-} from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
+import CustomersTable from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
+import { useAppSelector } from 'src/app/store';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -29,7 +28,8 @@ export default function AllCustomers() {
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
-
+	// selectors
+	const { allCustomers } = useAppSelector((state) => state.allCustomer);
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
 		{ id: nanoid(), text: 'Name Z to A' },
@@ -72,8 +72,7 @@ export default function AllCustomers() {
 							{t('Add New Customer')}
 						</Button>
 					)}
-					{/*  case of small media */}
-					{xs && <AddButtonMobile path='/customers/addCustomer' />}
+
 					{/*  actions filter arrange,... */}
 					<ActionsComp
 						HandelopenDrawer={HandelopenDrawer}
@@ -90,19 +89,22 @@ export default function AllCustomers() {
 				<CustomersTable settingMenus={settingMenus} />
 
 				{/*  case of small media */}
-				<div className='responsive_pages'>
-					{customers?.map((e, i) => (
-						<CustomersComponenet
-							id={e.id}
-							path='customers'
-							settingMenus={settingMenus}
-							key={i}
-							firstName={e.first_name}
-							lastName={e.last_name}
-							email={e.email}
-						/>
-					))}
-				</div>
+				{xs && (
+					<div className='responsive_pages'>
+						{allCustomers?.map((e, i: number) => (
+							<CustomersComponenet
+								id={e.id}
+								path='customers'
+								settingMenus={settingMenus}
+								key={i}
+								firstName={e.first_name}
+								lastName={e.last_name}
+								email={e.email}
+							/>
+						))}
+						<AddButtonMobile path='/customers/addCustomer' />
+					</div>
+				)}
 			</div>
 
 			{/* open filter drawer */}

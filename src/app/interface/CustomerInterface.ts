@@ -1,13 +1,13 @@
 
 
 export interface CustomerInterface {
-    id: string
+    id: number
     name: string
-    first_name: string
-    last_name: string
-    mobile: string
-    city: string
-    Orders: number
-    email:string
-    "E-Subscription": boolean
+    first_name?: string
+    last_name?: string
+    mobile?: string
+    city?: string
+    Orders?: number
+    email?:string
+    "E-Subscription"?: boolean
 }

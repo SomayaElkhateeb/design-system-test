@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
 	path?: string;
 	onClick?: () => void;
-	campaigns?:boolean
 }
-export default function AddButtonMobile({ path, onClick,campaigns }: Props) {
+export default function AddButtonMobile({ path, onClick }: Props) {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
@@ -19,7 +18,7 @@ export default function AddButtonMobile({ path, onClick,campaigns }: Props) {
 	return (
 		<button
 			onClick={handleClick}
-			className={`flex justify-center items-center size-12 rounded-full bg-primary ${campaigns?'bottom-[-1rem]':'bottom-[-4rem]'}  right-4 absolute`}
+			className={`flex justify-center  ite items-center size-12 rounded-full bg-primary `}
 		>
 			<AddFillIconWhite className='fill-white w-8 h-8' />
 		</button>

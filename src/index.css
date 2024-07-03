@@ -186,7 +186,7 @@ object {
 		@apply xl:max-w-[145rem] xl:px-5  container mx-auto;
 	}
 	.responsive_pages {
-		@apply custom_container flex-col-global sm:hidden;
+		@apply custom_container flex-col-global;
 	}
 	.cardDetails-sharedClass {
 		@apply border rounded-[.6rem] bg-white border-constrained;

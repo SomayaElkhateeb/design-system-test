@@ -24,7 +24,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const { language } = useLanguage();
-	const [array, setArray] = useState<string[]>([]);
+	const [array, setArray] = useState<number[]>([]);
 
 	// redux
 	const dispatch = useAppDispatch();

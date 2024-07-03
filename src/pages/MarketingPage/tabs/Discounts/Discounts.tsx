@@ -40,10 +40,11 @@ const Discounts = () => {
 				<TopSectionDiscountAndCoupons addButton={t('add new discount')} path='addDiscount' />
 				<DiscountsTable discounts={discounts} isLoading={isLoading} />
 				{xs && (
-					<>
-						<AddButtonMobile path='addDiscount' />
+					<div className='flex-col-global'>
+						
 						<MarketingTableMobile items={formattedDiscounts} />
-					</>
+						<AddButtonMobile path='addDiscount' />
+					</div>
 				)}
 			</div>
 		</div>

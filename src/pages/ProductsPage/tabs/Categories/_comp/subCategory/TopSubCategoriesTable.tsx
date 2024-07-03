@@ -57,7 +57,7 @@ export default function TopSubCategoriesTable() {
 							{t('Add Subcategory')}
 						</Button>
 					)}
-					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
+
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global '>
 						<ActionsComp
@@ -67,6 +67,7 @@ export default function TopSubCategoriesTable() {
 							handelSelect={handleSelect}
 						/>
 					</div>
+					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 				</div>
 				<hr />
 			</div>

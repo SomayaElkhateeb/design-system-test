@@ -66,7 +66,6 @@ export default function TopSectionBrandsTable() {
 							{t('Add Brand')}
 						</Button>
 					)}
-					{xs && <AddButtonMobile campaigns onClick={() => setOpenDialog(true)} />}
 
 					{/*  actions  arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>
@@ -77,6 +76,7 @@ export default function TopSectionBrandsTable() {
 							handelSelect={handleSelect}
 						/>
 					</div>
+					{xs && <AddButtonMobile campaigns onClick={() => setOpenDialog(true)} />}
 				</div>
 
 				<hr />

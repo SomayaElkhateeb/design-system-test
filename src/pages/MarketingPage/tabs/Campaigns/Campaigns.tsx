@@ -38,7 +38,7 @@ const Campaigns = () => {
 	const { xs } = useResponsive();
 	return (
 		<>
-			<div className='flex-col-global custom_container gap-4 relative'>
+			<div className='flex-col-global custom_container gap-4 '>
 				<CampaignStatus />
 
 				<CampaignBtns
@@ -49,10 +49,10 @@ const Campaigns = () => {
 				/>
 				<CampaignTable sortBy={selectedOption} ref={campaignTableRef} />
 				{xs && (
-					<>
-						<AddButtonMobile campaigns path='addCampaign' />
+					<div className='flex-col-global'>
 						<CampaignsTableMobile campaigns={campaignsData} actions={true} />
-					</>
+						<AddButtonMobile  path='addCampaign' />
+					</div>
 				)}
 			</div>
 		</>

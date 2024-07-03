@@ -103,7 +103,7 @@ const BaseTable = <T extends Model>({
 		{rows?.length === 0 && !isLoading && (
 			<Box
 				sx={{
-					display: 'flex',
+					display: {sm:'flex',xs:"none"},
 					justifyContent: 'center',
 					alignItems: 'center',
 					mt: '50px',
