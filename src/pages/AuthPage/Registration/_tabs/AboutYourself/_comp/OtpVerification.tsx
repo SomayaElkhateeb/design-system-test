@@ -38,6 +38,7 @@ export default function OtpVerification({
 		mutate(SendingData, {
 			onSuccess: async (response) => {
 				toast.success(response?.data?.message);
+				console.log(response?.data?.data.otp);
 			},
 			onError: PublicHandelingErrors.onErrorResponse,
 		});
