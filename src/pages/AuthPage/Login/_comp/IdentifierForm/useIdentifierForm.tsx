@@ -9,6 +9,7 @@ enum InputType {
 export interface IdentifierFormProps {
 	setStep: (step: number) => void;
 	onIdentifierChange: (Identifier: string) => void;
+	setEmail: (e: string) => void;
 }
 const schemas = {
 	email: z.string().min(1, { message: 'Email is required' }).email('Invalid email address'),
@@ -19,26 +20,29 @@ const getSchema = (inputType: InputType) => ({
 	emailOrPhone: schemas[inputType],
 });
 
-export default function useIdentifierForm({ setStep, onIdentifierChange }: IdentifierFormProps) {
+export default function useIdentifierForm({
+	setStep,
+	onIdentifierChange,
+	setEmail,
+}: IdentifierFormProps) {
 	const [inputType, setInputType] = useState<InputType>(InputType.Email);
+	console.log(schemas[inputType]);
 	const { formStore, onSubmit } = useForm({
 		schema: getSchema(inputType),
 		handleSubmit: (values: { emailOrPhone: string }) => {
-			console.log('Form Submitted:', values);
 			setStep(2);
+			setEmail(values.emailOrPhone);
 		},
 		defaultValues: { emailOrPhone: '' },
 	});
 
-	const handleTypeChange = useCallback(
-		(event: React.ChangeEvent<HTMLInputElement>) => {
-			const value = event.target.value.trim();
-			let newType: InputType = /^\d+$/.test(value) ? InputType.Phone : InputType.Email;
-			setInputType(newType);
-			// formStore.setValue('emailOrPhone', value);
-		},
-		[formStore],
-	);
+	const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const value = event.target.value.trim();
+		let newType: InputType = /^\d+$/.test(value) ? InputType.Phone : InputType.Email;
+		console.log(value);
+		console.log(newType);
+		setInputType(newType);
+	};
 
 	useEffect(() => {
 		const subscription = formStore.watch((value) => {
@@ -46,7 +50,7 @@ export default function useIdentifierForm({ setStep, onIdentifierChange }: Ident
 			onIdentifierChange(emailOrPhoneValue);
 		});
 		return () => subscription.unsubscribe();
-	}, [formStore, onIdentifierChange]);
+	}, [formStore.watch('emailOrPhone'), onIdentifierChange]);
 
 	return { formStore, onSubmit, handleTypeChange };
 }

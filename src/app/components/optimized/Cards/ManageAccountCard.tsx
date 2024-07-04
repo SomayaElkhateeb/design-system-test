@@ -31,7 +31,7 @@ const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => 
 		// 	},
 		// 	onError: PublicHandelingErrors.onErrorResponse,
 		// });
-		localStorage.clear();
+		localStorage.removeItem('token');
 		window.location.href = '/login';
 	};
 	return (

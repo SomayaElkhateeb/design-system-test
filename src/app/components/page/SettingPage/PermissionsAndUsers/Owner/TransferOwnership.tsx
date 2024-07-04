@@ -20,7 +20,7 @@ export interface addOwnerInterface {
 const ownerSchema = {
 	name: z.string().min(5, { message: 'Full name is required' }),
 	email: z.string().min(1, { message: 'Stuff email is required' }).email(),
-	password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
+	password: z.string().min(6, { message: 'Password must be at least 6 characters long' }),
 };
 
 export default function TransferOwnership() {

@@ -6,10 +6,15 @@ import FormField from 'src/app/components/ui/form/field';
 import useIdentifierForm, { IdentifierFormProps } from './useIdentifierForm';
 import { useTranslation } from 'react-i18next';
 
-export default function IdentifierForm({ setStep, onIdentifierChange }: IdentifierFormProps) {
+export default function IdentifierForm({
+	setStep,
+	onIdentifierChange,
+	setEmail,
+}: IdentifierFormProps) {
 	const { formStore, onSubmit, handleTypeChange } = useIdentifierForm({
 		setStep,
 		onIdentifierChange,
+		setEmail,
 	});
 	const { t } = useTranslation();
 
