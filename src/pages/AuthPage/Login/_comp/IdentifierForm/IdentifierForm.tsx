@@ -11,7 +11,7 @@ export default function IdentifierForm({
 	onIdentifierChange,
 	setEmail,
 }: IdentifierFormProps) {
-	const { formStore, onSubmit, handleTypeChange } = useIdentifierForm({
+	const { formStore, onSubmit } = useIdentifierForm({
 		setStep,
 		onIdentifierChange,
 		setEmail,
@@ -24,16 +24,7 @@ export default function IdentifierForm({
 				<FormField
 					formStore={formStore}
 					name='emailOrPhone'
-					render={(field) => (
-						<Input
-							{...field}
-							placeholder={t('Email or phone')}
-							onChange={(e) => {
-								handleTypeChange(e);
-								field.onChange(e);
-							}}
-						/>
-					)}
+					render={(field) => <Input {...field} placeholder={t('Email or phone')} />}
 				/>
 				<div className='flex  justify-end mt-2 mb-5'>
 					<Link to='/forgot_password' className='paragraph text-primary'>
