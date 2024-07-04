@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getAllCustomersTable } from './customersTableAsyncThunks';
+import { getAllCustomersTable, getCustomerInfo } from './customersTableAsyncThunks';
 import { allCustomerSliceModel } from 'src/app/models/allCustomerSliceModel';
 
 export const getAllCustomerTableReducer = (
@@ -17,6 +17,21 @@ export const getAllCustomerTableReducer = (
 			state.allCustomers = payload.data;
 		})
 		.addCase(getAllCustomersTable.rejected, (state, action) => {
+			state.isLoading = false;
+			state.error = action.payload;
+		})
+
+		//  get customer info data
+		.addCase(getCustomerInfo.pending, (state) => {
+			state.isLoading = true;
+
+		})
+		.addCase(getCustomerInfo.fulfilled, (state, { payload }: any) => {
+
+			state.isLoading = false;
+			state.CustomerInfo = payload.data;
+		})
+		.addCase(getCustomerInfo.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		});

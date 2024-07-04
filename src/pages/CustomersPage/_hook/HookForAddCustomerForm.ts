@@ -15,9 +15,7 @@ export interface AddCustomerPageInterface extends AddAddressInterface {
 	groupMeta?: selectItemsInterface[];
 	emailSubescribe: boolean;
 }
-export interface CustomersProps {
-	formStore: UseFormReturn<AddCustomerPageInterface>;
-}
+
 
 export default function useCustomHookAddCustomerForm(
 	sendGift?: boolean,

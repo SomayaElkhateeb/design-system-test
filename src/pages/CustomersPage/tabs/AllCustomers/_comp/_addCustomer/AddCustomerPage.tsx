@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { SubHeader } from 'src/app/components/optimized';
@@ -16,21 +16,37 @@ import useCustomHookAddCustomerForm, {
 import GeneralInfoCustomerForm from '../GeneralInfoCustomerForm';
 import PrimaryAddressForm from '../_addAddresse/PrimaryAddressForm';
 
-import { PostAddCustomerRequest } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
-import { useAppDispatch } from 'src/app/store';
-import { useNavigate } from 'react-router-dom';
+import {
+	PostAddCustomerRequest,
+	PutUpdateCustomerRequest,
+	getCustomerInfo,
+} from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const AddCustomerPage = () => {
 	// hooks
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
+
+	const id = searchParams.get('id');
+	//  selectors
+	const { CustomerInfo } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
-		dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
-			if ((promiseResponse.payload.code = 200)) {
-				navigate('/customers');
-			}
-		});
+		id
+			? dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate('/customers');
+					}
+			  })
+			: //   PostAddCustomerRequest
+			  dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate('/customers');
+					}
+			  });
 	};
 
 	// custom hook
@@ -41,6 +57,18 @@ const AddCustomerPage = () => {
 		handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+
+	//  get customer info with id params to fill inputs with it
+	useEffect(() => {
+		if (id) {
+			dispatch(getCustomerInfo(id));
+			CustomerInfo.gender && formStore.setValue('gender', CustomerInfo.gender);
+			CustomerInfo.first_name && formStore.setValue('first_name', CustomerInfo.first_name);
+			CustomerInfo.last_name && formStore.setValue('last_name', CustomerInfo.last_name);
+			CustomerInfo.email && formStore.setValue('email', CustomerInfo.email);
+			CustomerInfo.phone && formStore.setValue('phone', CustomerInfo.phone);
+		}
+	}, [id]);
 
 	return (
 		<Form {...formStore}>
