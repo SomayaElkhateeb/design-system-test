@@ -5,7 +5,7 @@ export interface CustomerInterface {
     name: string
     first_name?: string
     last_name?: string
-    mobile?: string
+    phone?: string
     city?: string
     Orders?: number
     email?:string

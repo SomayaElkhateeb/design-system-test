@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+
 import { SubHeader } from 'src/app/components/optimized';
 import {
 	SubHeaderDefaultBtns,
@@ -9,23 +9,34 @@ import {
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 
-import GeneralInfoCustomerForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
-import useCustomHookAddCustomerForm, { AddCustomerPageSchema, AddCustomerPageSchemaValues } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookForAddCustomerForm';
-import PrimaryAddressForm from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addAddresse/PrimaryAddressForm';
+import useCustomHookAddCustomerForm, {
+	AddCustomerPageSchema,
+	AddCustomerPageSchemaValues,
+} from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookForAddCustomerForm';
+import GeneralInfoCustomerForm from '../GeneralInfoCustomerForm';
+import PrimaryAddressForm from '../_addAddresse/PrimaryAddressForm';
 
-const AddCustomerPage: React.FC = () => {
+import { PostAddCustomerRequest } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useAppDispatch } from 'src/app/store';
+import { useNavigate } from 'react-router-dom';
+
+const AddCustomerPage = () => {
 	// hooks
 	const { t } = useTranslation();
-
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
-		console.log(values);
-		// handleClose();
+		dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate('/customers');
+			}
+		});
 	};
 
 	// custom hook
 	const { handelDefaultValue } = useCustomHookAddCustomerForm();
 
-	const { formStore, onSubmit } = useForm<AddCustomerPageSchemaValues>({
+	const { formStore, onSubmit } = useForm({
 		schema: AddCustomerPageSchema,
 		handleSubmit,
 		defaultValues: handelDefaultValue(),
@@ -43,7 +54,6 @@ const AddCustomerPage: React.FC = () => {
 						<GeneralInfoCustomerForm formStore={formStore} />
 						{/* primary Address section */}
 						<PrimaryAddressForm formStore={formStore} />
-						
 					</div>
 				</div>
 				<SubHeaderMobileBtns onSubmit={onSubmit} />

@@ -11,6 +11,8 @@ export const arabic = {
 	Discounts: 'الخصومات',
 	Coupons: 'الكوبونات',
 	"Email or phone":"ايميل او رقم هاتف",
+	"First name":"الاسم الاول",
+	"Last name":"الاسم الاخير",
 	Campaigns: 'الحملات',
 	"Sign in": "تسجيل الدخول",
 	'Add Subcategory': 'اضافه تحت فرعي',

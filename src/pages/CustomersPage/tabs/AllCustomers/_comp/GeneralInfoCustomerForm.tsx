@@ -6,17 +6,12 @@ import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoComplet
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { AddCustomerPageInterface } from 'src/pages/CustomersPage/_hook/HookForAddCustomerForm';
-
-export interface selectItemsInterface {
-	id: string;
-	name: string;
-}
+import { AddCustomerPageSchemaValues } from './_addCustomer/_hook/HookForAddCustomerForm';
 
 export default function GeneralInfoCustomerForm({
 	formStore,
 }: {
-	formStore: UseFormReturn<AddCustomerPageInterface>;
+	formStore: UseFormReturn<AddCustomerPageSchemaValues>;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -26,16 +21,22 @@ export default function GeneralInfoCustomerForm({
 			<h2 className='title'>{t('General Info')}</h2>
 
 			<div className='flex-col-global md:w-[65%]'>
-				<FormChoiceChips<AddCustomerPageInterface>
+				<FormChoiceChips<AddCustomerPageSchemaValues>
 					formStore={formStore}
-					name='humanType'
+					name='gender'
 					label='Customer can check out with'
 					options={['Male', 'Female']}
 				/>
 				<FormField
 					formStore={formStore}
-					name='fullName'
-					label={t('Full name')}
+					name='first_name'
+					label={t('First name')}
+					render={(field) => <Input {...field} placeholder={''} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='last_name'
+					label={t('Last name')}
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 				<FormField
@@ -45,14 +46,14 @@ export default function GeneralInfoCustomerForm({
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 
-				<SpecificAutoCompleteInput<AddCustomerPageInterface>
+				<SpecificAutoCompleteInput<AddCustomerPageSchemaValues>
 					name='groupMeta'
 					label={t('Meta keywords')}
 					formStore={formStore}
 				/>
 				<FormField
 					formStore={formStore}
-					name='Phone'
+					name='phone'
 					label={t('Phone Number')}
 					render={(field) => (
 						<CustomPhoneInput

@@ -3,7 +3,7 @@ import AnalyticsOrders from '../tabs/Orders/AnalyticsOrders';
 import AnalyticsProducts from '../tabs/Products/AnalyticsProducts';
 import AnalyticsOverview from '../tabs/Overview/AnalyticsOverview';
 import AnalyticsCustomers from '../tabs/Customers/AnalyticsCustomers';
-import AnalyticsIntegrations from '../tabs/Integrations/AnalyticsIntegrations';
+import AnalyticsIntegrations from '../tabs/AnalyticsIntegrations/AnalyticsIntegrations';
 
 export default function AnalyticsTabs() {
 	const { tab } = useParams();
