@@ -17,7 +17,7 @@ interface SocialAppsWrapperProps {
 	title: string;
 }
 
-const SocialAppsWrapper: React.FC<SocialAppsWrapperProps> = ({ socialApps, title }) => {
+const SocialAppsWrapper = ({ socialApps, title }: SocialAppsWrapperProps) => {
 	const [showAll, setShowAll] = useState(false);
 	const [itemsToRender, setItemsToRender] = useState(getInitialItemsToRender());
 
