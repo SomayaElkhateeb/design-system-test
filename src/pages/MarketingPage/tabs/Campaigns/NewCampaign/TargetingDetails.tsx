@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { CampaignInputsTypes, CampaignFormProps } from '../useCampaign';
+import { CampaignInputsTypes, CampaignFormProps } from './_hook/useCampaign';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 

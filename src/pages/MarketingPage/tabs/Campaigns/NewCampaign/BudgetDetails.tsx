@@ -6,7 +6,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { AddBgIcon, DeleteExitIcon } from 'src/app/utils/icons';
 import { Button, DatePicker, TimePicker } from 'src/app/components/optimized';
 
-import useCampaign, { CampaignFormProps } from '../useCampaign';
+import useCampaign, { CampaignFormProps } from './_hook/useCampaign';
 import SharedActiveDate from 'src/app/components/page/discount/SharedActiveDate';
 
 export default function BudgetDetails({ formStore }: CampaignFormProps) {

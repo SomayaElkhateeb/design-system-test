@@ -11,7 +11,7 @@ import { Box, TableCell } from '@mui/material';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-import { campaindata } from './Campaigns';
+import { campaindata } from '../Campaigns';
 import { useTranslation } from 'react-i18next';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { MdFacebook } from 'react-icons/md';

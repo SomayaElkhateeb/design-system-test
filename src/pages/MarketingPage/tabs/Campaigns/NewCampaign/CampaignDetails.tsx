@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { CampaignFormProps } from '../useCampaign';
+import { CampaignFormProps } from './_hook/useCampaign';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { Textarea } from 'src/app/components/ui/textarea';

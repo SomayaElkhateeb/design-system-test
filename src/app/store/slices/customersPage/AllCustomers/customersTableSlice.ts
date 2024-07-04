@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllCustomerTableReducer } from './customersTableExtraReducers';
 import { allCustomerSliceModel } from 'src/app/models/allCustomerSliceModel';
+import { initialCustomerData } from 'src/app/interface/CustomerInterface';
 
 const initialState: allCustomerSliceModel = {
 	allCustomers: [],
 	isLoading: false,
 	error: null,
+	CustomerInfo: initialCustomerData()
 };
 
 const allCustomerSlice = createSlice({

@@ -19,3 +19,19 @@ export const PostAddCustomerRequest = createAsyncThunk(
 			})
 			.catch(err => PublicHandelingErrors.onErrorResponse(err)),
 );
+export const PutUpdateCustomerRequest = createAsyncThunk(
+	"allCustomersTable/PostUpdateCustomerRequest",
+	(payload: AddCustomerPageSchemaValues) =>
+		PublicRequest.putData(payload, `merchant/customers/update/${payload?.id}`)
+			.then((res: any) => {
+				if (res) {
+					toast.success(res?.message);
+					return res;
+				}
+			})
+			.catch(err => PublicHandelingErrors.onErrorResponse(err)),
+);
+
+export const getCustomerInfo = createAsyncThunk('getCustomerInfo/getAllCustomersTable', (payload: string) =>
+	PublicRequest.getData(`merchant/customers/show/${payload}`),
+);

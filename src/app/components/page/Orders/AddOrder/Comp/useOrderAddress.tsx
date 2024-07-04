@@ -63,10 +63,7 @@ export default function useOrderAddress({
 	isName,
 	onNext,
 }: useOrderAddressProps) {
-
-	
 	const handleSubmit = (values: AddAddressInterface) => {
-		console.log('values: ', values);
 		if (onNext) {
 			onNext();
 		}

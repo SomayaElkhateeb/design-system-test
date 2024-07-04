@@ -1,12 +1,13 @@
-import CampaignStatus from './CampaignStatus';
+import CampaignStatus from './_comp/CampaignStatus';
 
-import CampaignBtns from './CampaignBtns';
+import CampaignBtns from './_comp/CampaignBtns';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { RefObject, useRef } from 'react';
-import CampaignTable from './CampaignTable';
+
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import CampaignsTableMobile from './_comp/CampaignsTableMobile';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import CampaignTable from './_comp/CampaignTable';
 const campaignsData = [
 	{
 		id: '1',
@@ -51,7 +52,7 @@ const Campaigns = () => {
 				{xs && (
 					<div className='flex-col-global'>
 						<CampaignsTableMobile campaigns={campaignsData} actions={true} />
-						<AddButtonMobile  path='addCampaign' />
+						<AddButtonMobile path='addCampaign' />
 					</div>
 				)}
 			</div>

@@ -6,6 +6,7 @@ import { z } from 'zod';
 const RequiredAddressData = z.string().min(1);
 
 export const AddCustomerPageSchema = {
+	id: RequiredAddressData.optional().or(z.literal("")),
 	gender: RequiredAddressData,
 
 	first_name: RequiredAddressData,
@@ -36,6 +37,7 @@ export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPa
 export default function useCustomHookAddCustomerForm() {
 	const handelDefaultValue = () => {
 		return {
+			id: "",
 			gender: 'Male',
 			first_name: '',
 			last_name: '',

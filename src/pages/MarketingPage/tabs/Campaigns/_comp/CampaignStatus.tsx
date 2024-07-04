@@ -1,4 +1,4 @@
-import data from './data.json';
+import data from '../data.json';
 
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
