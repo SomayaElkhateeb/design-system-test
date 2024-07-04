@@ -14,7 +14,7 @@ interface props {
 	id?: number;
 	path?: string;
 	noAvatar?: boolean;
-	customersCount?:number
+	customersCount?: number;
 }
 export default function CustomersComponenet({
 	settingMenus,
@@ -25,7 +25,7 @@ export default function CustomersComponenet({
 	id,
 	path,
 	noAvatar,
-	customersCount
+	customersCount,
 }: props) {
 	//  hooks
 	const navigate = useNavigate();
@@ -39,11 +39,7 @@ export default function CustomersComponenet({
 				className={`${path && 'cursor-pointer'} flex gap-3 items-start`}
 			>
 				{!noAvatar ? (
-					<Avatar
-						variant='group'
-						groupCount={customersCount}
-						size='lg'
-					/>
+					<Avatar variant='group' groupCount={customersCount} size='lg' />
 				) : (
 					imageUrl && <img src={getImageUrl(imageUrl)} loading='lazy' />
 				)}

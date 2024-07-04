@@ -583,6 +583,8 @@ export const english = {
 	'Quantity Descending': 'Quantity Descending',
 	'Quantity Ascending': 'Quantity Ascending',
 	'Price Low in first': 'Price Low in first',
+	"First name":"First name",
+	"Last name":"Last name",
 	'Price High in first': 'Price High in first',
 	'Searches Descending': 'Searches Descending',
 	'Searches Ascending': 'Searches Ascending',

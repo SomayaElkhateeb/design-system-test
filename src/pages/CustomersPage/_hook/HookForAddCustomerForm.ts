@@ -8,7 +8,7 @@ import {
 } from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
 
 export interface AddCustomerPageInterface extends AddAddressInterface {
-	humanType: string;
+	gender: string;
 	fullName: string;
 	email: string;
 	Phone: string;
@@ -26,11 +26,12 @@ export default function useCustomHookAddCustomerForm(
 ) {
 	const RequiredAddresseData = z.string().min(1);
 	const AddCustomerPageSchema = {
-		humanType: RequiredAddresseData,
+		gender: RequiredAddresseData,
 
-		fullName: RequiredAddresseData,
+		first_Name: RequiredAddresseData,
+		last_Name: RequiredAddresseData,
 		email: z.string().min(1).email(),
-		Phone: RequiredAddresseData,
+		phone: RequiredAddresseData,
 		groupMeta: z
 			.array(
 				z.object({
@@ -46,10 +47,11 @@ export default function useCustomHookAddCustomerForm(
 
 	const handelDefaultValue = () => {
 		return {
-			humanType: 'Male',
-			fullName: '',
+			gender: 'Male',
+			first_Name: '',
+			last_Name: '',
 			email: '',
-			Phone: '',
+			phone: '',
 			groupMeta: [],
 			emailSubescribe: false,
 			...getDefaultValues(),

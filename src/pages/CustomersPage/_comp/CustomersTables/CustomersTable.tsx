@@ -83,7 +83,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 									</div>
 								</div>
 							</GlobalTableCell>,
-							<GlobalTableCell>{e.mobile}</GlobalTableCell>,
+							<GlobalTableCell>{e.phone}</GlobalTableCell>,
 							<GlobalTableCell>{e.city}</GlobalTableCell>,
 							<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
