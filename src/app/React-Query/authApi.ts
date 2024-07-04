@@ -17,6 +17,9 @@ export const AuthApi = {
 	signUp_secondStep: (formData: AboutYourBusinessInterface) => {
 		return MainApi.postForm('merchant/register/validate/step-tow', formData);
 	},
+	login: (formData) => {
+		return MainApi.postForm('merchant/login', formData);
+	},
 
 	logout: () => {
 		return MainApi.delete('admin/logout');

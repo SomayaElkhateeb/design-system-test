@@ -6,6 +6,10 @@ import { Button } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import useIdentifierForm, { IdentifierFormProps } from './useIdentifierForm';
 import { useTranslation } from 'react-i18next';
+import { AuthApi } from 'src/app/React-Query/authApi';
+import { useMutation } from 'react-query';
+import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import toast from 'react-hot-toast';
 
 export default function IdentifierForm({ setStep, onIdentifierChange }: IdentifierFormProps) {
 	const { formStore, onSubmit, handleTypeChange } = useIdentifierForm({
@@ -13,6 +17,18 @@ export default function IdentifierForm({ setStep, onIdentifierChange }: Identifi
 		onIdentifierChange,
 	});
 	const { t } = useTranslation();
+
+	const { mutate } = useMutation('login', AuthApi.login, {
+		onSuccess: async (response) => {
+			toast.success(response?.data?.message);
+			console.log(response?.data?.data.token);
+		},
+		onError: PublicHandelingErrors.onErrorResponse,
+	});
+
+	const handleSignIn = (values: { emailOrPhone: string }) => {
+		mutate({ loginData: values.emailOrPhone });
+	};
 
 	return (
 		<Form {...formStore}>
@@ -37,7 +53,13 @@ export default function IdentifierForm({ setStep, onIdentifierChange }: Identifi
 					</Link>
 				</div>
 				<div className='flex justify-end mb-11'>
-					<Button type='submit' variant='primary' text={t('Next')} className='w-36' />
+					<Button
+						type='submit'
+						variant='primary'
+						text={t('Next')}
+						className='w-36'
+						omClick={handleSignIn}
+					/>
 				</div>
 				<p className='paragraph text-subtitle text-center'>
 					{t("Don't have an account?")}&nbsp;

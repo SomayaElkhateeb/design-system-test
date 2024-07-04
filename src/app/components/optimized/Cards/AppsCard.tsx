@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-
 import Badge from '../UiKits/Badge';
-import { getImageUrl } from 'src/app/utils';
-import { AppData } from 'src/pages/AppsPage/_comp/useAppStore';
+import { AppData } from 'src/pages/AppsPage/_hook/useAppStore';
 
 /**
  * Usage Example:
@@ -25,7 +23,7 @@ export default function AppsCard({ name, description, status, imageUrl, url }: A
 	return (
 		<Link to={url} className='flex gap-3 global-cards flex-row'>
 			<div className='p-1 size-[60px] cardDetails-sharedClass overflow-hidden'>
-				<img src={getImageUrl(imageUrl)} className='w-full h-full' />
+				<img src={imageUrl} className='w-full h-full' />
 			</div>
 			<div className='flex-col-global gap-[.50rem]'>
 				<div className='flex-col-global gap-[.25rem]'>

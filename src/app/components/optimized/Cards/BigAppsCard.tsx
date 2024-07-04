@@ -56,9 +56,11 @@ const BigAppsCard: React.FC<BigAppsCardProps> = ({
 					<div className='flex-col-global items-start gap-2'>
 						<h2 className='title'>{name}</h2>
 
-						<p className='text-title text-xs capitalize'>
-							{country} <span className='text-primary'>({count + ' ' + title})</span>
-						</p>
+						{country && (
+							<p className='text-title text-xs capitalize'>
+								{country} <span className='text-primary'>({count + ' ' + title})</span>
+							</p>
+						)}
 						<p className=' text-subtitle text-xs'>{description}</p>
 						<LabelIcon
 							text={status}
