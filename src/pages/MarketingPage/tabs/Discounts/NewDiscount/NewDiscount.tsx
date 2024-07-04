@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import {
@@ -11,7 +11,8 @@ import { State, initialState } from 'src/app/components/page/discount/Comp/Minim
 import { Form } from 'src/app/components/ui/form';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import BasicInfo from './BasicInfo/BasicInfo';
-import useCustomHookNewDiscount, { newDiscountInterface } from './HookForNewDiscount';
+import useCustomHookNewDiscount,{newDiscountInterface} from './_hook/HookForNewDiscount';
+
 
 const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	// hook
@@ -35,7 +36,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		isCheck,
 	);
 
-	useEffect(() => {
+	useMemo(() => {
 		setDiscountType(formStore.watch('discountType'));
 		setApplyToType(formStore.watch('applyToType'));
 		setProductXtoYType(formStore?.watch('ProductXToProductYType'));
@@ -48,7 +49,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 	]);
 
 	//  handel active date
-	useEffect(() => {
+	useMemo(() => {
 		formStore.setValue('activeDates', updatedDates);
 	}, [
 		updatedDates.startActivation.startDate,
@@ -61,7 +62,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={coupon ? t('Add Coupon') : t('Add Discount')}>
-					<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 lg:grid-cols-3 custom_container'>
 					<div className='flex-col-global lg:col-span-2'>
@@ -87,7 +88,7 @@ const NewDiscount = ({ coupon }: { coupon?: boolean }) => {
 						</div>
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
+				<SubHeaderMobileBtns onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

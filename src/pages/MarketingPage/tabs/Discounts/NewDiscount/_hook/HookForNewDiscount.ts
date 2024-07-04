@@ -1,15 +1,14 @@
-import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
+
 import { z } from 'zod';
-import {
-	ActiveDates,
-	ActiveDatesValues,
-	DateTimeType,
-	activeDatesSchema,
-} from '../../Campaigns/useCampaign';
+
 import { useState } from 'react';
 import { Dayjs } from 'dayjs';
 import { useForm } from 'src/app/utils/hooks/form';
+import { ActiveDates, ActiveDatesValues, DateTimeType, activeDatesSchema } from '../../../Campaigns/NewCampaign/_hook/useCampaign';
 
+interface selectItemsInterface {
+	key: string
+}
 export interface newDiscountInterface {
 	discountName: string;
 	discountType: string;
@@ -74,124 +73,124 @@ export default function useCustomHookNewDiscount(
 			specificCategories:
 				applyToType === 'Specific category'
 					? z
-							.array(
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.min(1)
+					: z
+						.optional(
+							z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							)
-							.min(1)
-					: z
-							.optional(
-								z.array(
-									z.object({
-										id: z.string().min(1),
-										name: z.string().min(1),
-									}),
-								),
-							)
-							.default([]),
+							),
+						)
+						.default([]),
 			specificProducts:
 				applyToType === 'Specific products'
 					? z
-							.array(
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.min(1)
+					: z
+						.optional(
+							z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							)
-							.min(1)
-					: z
-							.optional(
-								z.array(
-									z.object({
-										id: z.string().min(1),
-										name: z.string().min(1),
-									}),
-								),
-							)
-							.default([]),
+							),
+						)
+						.default([]),
 			selectProductsX:
 				applyToType === 'Buy x get y'
 					? z
-							.array(
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.min(1)
+					: z
+						.optional(
+							z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							)
-							.min(1)
-					: z
-							.optional(
-								z.array(
-									z.object({
-										id: z.string().min(1),
-										name: z.string().min(1),
-									}),
-								),
-							)
-							.default([]),
+							),
+						)
+						.default([]),
 			selectProductsY:
 				applyToType === 'Buy x get y'
 					? z
-							.array(
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.min(1)
+					: z
+						.optional(
+							z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							)
-							.min(1)
-					: z
-							.optional(
-								z.array(
-									z.object({
-										id: z.string().min(1),
-										name: z.string().min(1),
-									}),
-								),
-							)
-							.default([]),
+							),
+						)
+						.default([]),
 			specificCustomerGroup:
 				customerSegment === 'Specific customer groups'
 					? z
-							.array(
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.min(1)
+					: z
+						.optional(
+							z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							)
-							.min(1)
-					: z
-							.optional(
-								z.array(
-									z.object({
-										id: z.string().min(1),
-										name: z.string().min(1),
-									}),
-								),
-							)
-							.default([]),
+							),
+						)
+						.default([]),
 
 			specificCustomer:
 				customerSegment === 'Specific customers'
 					? z
-							.array(
+						.array(
+							z.object({
+								id: z.string().min(1),
+								name: z.string().min(1),
+							}),
+						)
+						.min(1)
+					: z
+						.optional(
+							z.array(
 								z.object({
 									id: z.string().min(1),
 									name: z.string().min(1),
 								}),
-							)
-							.min(1)
-					: z
-							.optional(
-								z.array(
-									z.object({
-										id: z.string().min(1),
-										name: z.string().min(1),
-									}),
-								),
-							)
-							.default([]),
+							),
+						)
+						.default([]),
 		};
 
 		// /////////////////////

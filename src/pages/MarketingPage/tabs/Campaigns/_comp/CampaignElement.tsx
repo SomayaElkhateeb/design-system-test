@@ -4,10 +4,10 @@ import { useSearchParams } from 'react-router-dom';
 import { StackedColumnChart, SubHeader } from 'src/app/components/optimized';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import CampaignInfoCard from '../CampaignInfoCard';
-import CampaignStatus from '../CampaignStatus';
-import CampaignBtns from '../CampaignBtns';
-import CampaignElementTable from '../CampaignElementTable';
+import CampaignInfoCard from './CampaignInfoCard';
+import CampaignStatus from './CampaignStatus';
+import CampaignBtns from './CampaignBtns';
+import CampaignElementTable from './CampaignElementTable';
 import CampaignsTableMobile from './CampaignsTableMobile';
 import { campaindata } from '../Campaigns';
 const campaignsData = [

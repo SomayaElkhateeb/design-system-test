@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import useCampaign from '../useCampaign';
+import useCampaign from './_hook/useCampaign';
 import BudgetDetails from './BudgetDetails';
 import CampaignDetails from './CampaignDetails';
 import TargetingDetails from './TargetingDetails';

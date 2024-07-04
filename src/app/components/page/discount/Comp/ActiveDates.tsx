@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import useCustomHookNewDiscount from 'src/pages/MarketingPage/tabs/Discounts/NewDiscount/HookForNewDiscount';
+
 import SharedActiveDate from '../SharedActiveDate';
+import useCustomHookNewDiscount from 'src/pages/MarketingPage/tabs/Discounts/NewDiscount/_hook/HookForNewDiscount';
 
 const ActiveDates = () => {
 	const { t } = useTranslation();
