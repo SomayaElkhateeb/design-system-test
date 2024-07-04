@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 export default function LoginPage() {
 	const [step, setStep] = useState(1);
 	const [identifier, setIdentifier] = useState('');
+	const [email, setEmail] = useState('');
 	const { t } = useTranslation();
 
 	const handleIdentifierChange = (identifier: string) => {
@@ -17,22 +18,26 @@ export default function LoginPage() {
 	return (
 		<RegisterLayout>
 			<div className='flex flex-col w-full'>
-				{step === 2 && <Identifier identifier={identifier} />}
+				{step === 2 && <Identifier setStep={setStep} identifier={identifier} />}
 				<h2 className='title text-2xl	mt-2 mb-6'>{t('Sign in')}</h2>
 				{step === 1 ? (
-					<AuthForm setStep={setStep} onIdentifierChange={handleIdentifierChange} />
+					<AuthForm
+						setEmail={setEmail}
+						setStep={setStep}
+						onIdentifierChange={handleIdentifierChange}
+					/>
 				) : (
-					<PasswordForm />
+					<PasswordForm email={email} />
 				)}
 			</div>
 		</RegisterLayout>
 	);
 }
 
-function Identifier({ identifier }: { identifier: string }) {
+function Identifier({ identifier, setStep }: { identifier: string; setStep: (e: number) => void }) {
 	return (
-		<div className='flex items-center'>
-			<BackIcon className='fill-primary' />
+		<div className='flex items-center' onClick={() => setStep(1)}>
+			<BackIcon className='fill-primary cursor-pointer'  />
 			<p className='paragraph text-primary'>{identifier}</p>
 		</div>
 	);

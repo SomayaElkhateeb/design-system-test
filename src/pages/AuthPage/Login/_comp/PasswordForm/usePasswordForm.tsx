@@ -6,27 +6,31 @@ import toast from 'react-hot-toast';
 import { AuthApi } from 'src/app/React-Query/authApi';
 import { useMutation } from 'react-query';
 import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
-
+export interface passwordSchemaForm {
+	password: string;
+	email?: string;
+	device_name?: string;
+}
 const passwordSchema = {
-	password: z.string().min(8, 'Password must be at least 8 characters long'),
+	password: z.string().min(6, 'Password must be at least 6 characters long'),
 };
 
-export default function usePasswordForm() {
+export default function usePasswordForm({ email }: { email: string }) {
 	const [isVisible, setIsVisible] = useState(false);
 
-	const { mutate } = useMutation('login', AuthApi.login, {
-		onSuccess: async (response) => {
-			console.log(response?.data);
-			toast.success(response?.data?.message);
-			// set to local storage
-			// localStorage.setItem('token_login', response?.data?.data?.token);
-			// localStorage.setItem('domain_login', response?.data?.data?.data?.company?.domain);
-		},
-		onError: PublicHandelingErrors.onErrorResponse,
-	});
+	const { mutate, isLoading } = useMutation('login', AuthApi.login);
 
-	const handleSubmit = (values: { password: string }) => {
-		mutate(values);
+	const handleSubmit = (values: passwordSchemaForm) => {
+		let sendingData = { ...values, email, device_name: 'pc' };
+		mutate(sendingData, {
+			onSuccess: async (response: any) => {
+				toast.success(response?.data?.message);
+				// set to local storage
+				localStorage.setItem('token', response?.data?.data?.token);
+				window.location.href = '/home';
+			},
+			onError: PublicHandelingErrors.onErrorResponse,
+		});
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -34,14 +38,9 @@ export default function usePasswordForm() {
 		handleSubmit: handleSubmit,
 		defaultValues: { password: '' },
 	});
-	///////////////////////////////////
-	// const { formStore, onSubmit } = useForm({
-	// 	schema: passwordSchema,
-	// 	handleSubmit: (values: { password: string }) => console.log(values),
-	// 	defaultValues: { password: '' },
-	// });
+
 	const toggleVisibility = useCallback(() => {
 		setIsVisible((prev) => !prev);
 	}, []);
-	return { formStore, onSubmit, toggleVisibility, isVisible };
+	return { formStore, onSubmit, toggleVisibility, isVisible, isLoading };
 }

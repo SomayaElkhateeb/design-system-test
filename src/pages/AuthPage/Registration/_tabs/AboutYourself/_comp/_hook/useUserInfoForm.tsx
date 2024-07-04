@@ -27,7 +27,7 @@ const userInfoValidationSchema = {
 	email: z.string().email('Invalid email address'),
 	admin_name: z.string().min(1, 'Name is required'),
 	mobile: z.string().min(10, 'Phone number is too short'),
-	password: z.string().min(8, 'Password must be at least 8 characters'),
+	password: z.string().min(6, 'Password must be at least 6 characters'),
 };
 
 export interface UserInfoProps {

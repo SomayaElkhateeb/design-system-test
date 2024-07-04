@@ -47,7 +47,7 @@ export default function useCustomHookPreferncePage() {
 		passwordEnable: z.boolean(),
 		captchaEnable: z.boolean(),
 		passwordMessageEn: z.string().min(3).max(1000),
-		password: z.string().min(3).max(1000),
+		password: z.string().min(6).max(1000),
 
 		passwordMessageAr: z.string().min(3).max(1000),
 	};

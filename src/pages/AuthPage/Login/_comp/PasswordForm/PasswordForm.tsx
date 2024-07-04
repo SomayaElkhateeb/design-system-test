@@ -7,10 +7,12 @@ import usePasswordForm from './usePasswordForm';
 import { useTranslation } from 'react-i18next';
 import PasswordToggleIcon from 'src/pages/AuthPage/_comp/PasswordToggleIcon';
 
-export default function PasswordForm() {
+export default function PasswordForm({ email }: { email: string }) {
 	const { t } = useTranslation();
 
-	const { formStore, onSubmit, toggleVisibility, isVisible } = usePasswordForm();
+	const { formStore, onSubmit, toggleVisibility, isVisible, isLoading } = usePasswordForm({
+		email,
+	});
 	return (
 		<Form {...formStore}>
 			<form className='w-full' onSubmit={onSubmit}>
@@ -34,7 +36,13 @@ export default function PasswordForm() {
 					</Link>
 				</div>
 				<div className='flex justify-end'>
-					<Button type='submit' variant='primary' text={t('Sign In')} className='w-36' />
+					<Button
+						loading={isLoading}
+						type='submit'
+						variant='primary'
+						text={t('Sign In')}
+						className='w-36'
+					/>
 				</div>
 			</form>
 		</Form>
