@@ -33,10 +33,11 @@ const AddCustomerPage = () => {
 
 	const id = searchParams.get('id');
 	//  selectors
-	const { CustomerInfo } = useAppSelector((state) => state.allCustomer);
+	const { CustomerInfo, isLoadingAddOrUpdate } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
 		id
-			? dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
+			? //  case update customer data
+			  dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate('/customers');
 					}
@@ -74,7 +75,7 @@ const AddCustomerPage = () => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global relative'>
 				<SubHeader title={t('Add New Customer')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+					<SubHeaderDefaultBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom-grid-parent gap-5  custom_container'>
 					<div className='flex-col-global grid-left'>
@@ -84,7 +85,7 @@ const AddCustomerPage = () => {
 						<PrimaryAddressForm formStore={formStore} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

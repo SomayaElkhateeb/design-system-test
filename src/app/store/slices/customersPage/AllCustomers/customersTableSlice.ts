@@ -6,6 +6,7 @@ import { initialCustomerData } from 'src/app/interface/CustomerInterface';
 const initialState: allCustomerSliceModel = {
 	allCustomers: [],
 	isLoading: false,
+	isLoadingAddOrUpdate: false,
 	error: null,
 	CustomerInfo: initialCustomerData()
 };
