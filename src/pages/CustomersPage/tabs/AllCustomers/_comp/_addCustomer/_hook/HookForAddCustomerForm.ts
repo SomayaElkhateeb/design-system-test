@@ -11,17 +11,10 @@ export const AddCustomerPageSchema = {
 
 	first_name: RequiredAddressData,
 	last_name: RequiredAddressData,
-	email: z.string().min(1).email(),
+	email: RequiredAddressData.email(),
 	phone: z.string().min(7),
 
-	groupMeta: z
-		.array(
-			z.object({
-				id: z.string().min(1),
-				name: z.string().min(1),
-			}),
-		)
-		.min(1),
+	customer_group_id: RequiredAddressData,
 	fullNameAddress: RequiredAddressData,
 	countryName: RequiredAddressData,
 	cityName: RequiredAddressData,
@@ -43,7 +36,7 @@ export default function useCustomHookAddCustomerForm() {
 			last_name: '',
 			email: '',
 			phone: '',
-			groupMeta: [],
+			customer_group_id: "",
 			fullNameAddress: '',
 			countryName: '',
 			cityName: '',

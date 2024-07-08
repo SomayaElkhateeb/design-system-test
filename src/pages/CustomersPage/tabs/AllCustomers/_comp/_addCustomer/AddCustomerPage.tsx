@@ -14,7 +14,6 @@ import useCustomHookAddCustomerForm, {
 	AddCustomerPageSchemaValues,
 } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookForAddCustomerForm';
 
-
 import {
 	PostAddCustomerRequest,
 	PutUpdateCustomerRequest,
@@ -25,13 +24,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import GeneralInfoCustomerForm from './_comp/GeneralInfoCustomerForm';
 import PrimaryAddressForm from './_comp/PrimaryAddressForm';
 import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
+import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
 
 const AddCustomerPage = () => {
 	// hooks
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const id=UseGetIdParams()
+	const id = UseGetIdParams();
 	//  selectors
 	const { CustomerInfo, isLoadingAddOrUpdate } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
@@ -39,13 +39,13 @@ const AddCustomerPage = () => {
 			? //  case update customer data
 			  dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
-						navigate('/customers');
+						navigate(-1);
 					}
 			  })
 			: //   PostAddCustomerRequest
 			  dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
-						navigate('/customers');
+						navigate(-1);
 					}
 			  });
 	};
@@ -68,8 +68,14 @@ const AddCustomerPage = () => {
 			CustomerInfo.last_name && formStore.setValue('last_name', CustomerInfo.last_name);
 			CustomerInfo.email && formStore.setValue('email', CustomerInfo.email);
 			CustomerInfo.phone && formStore.setValue('phone', CustomerInfo.phone);
+			CustomerInfo.customer_group_id &&
+				formStore.setValue('customer_group_id', CustomerInfo.customer_group_id.toString());
 		}
 	}, [id]);
+	
+	useEffect(() => {
+		dispatch(getCustomersGroupTable());
+	}, [dispatch]);
 
 	return (
 		<Form {...formStore}>

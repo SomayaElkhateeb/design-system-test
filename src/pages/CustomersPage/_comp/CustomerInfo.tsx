@@ -27,7 +27,7 @@ export default function CustomerInfo() {
 
 	//  selectors
 	const { CustomerInfo } = useAppSelector((state) => state.allCustomer);
-	const { Addresses } = useAppSelector((state) => state.AddressesCustomer);
+
 	const customerData = [
 		{
 			data: CustomerInfo?.name ? CustomerInfo?.name : '',
@@ -51,9 +51,8 @@ export default function CustomerInfo() {
 	useEffect(() => {
 		if (id) {
 			dispatch(getCustomerInfo(id));
-			dispatch(getAllAddressesCustomer(id));
 		}
-	}, [id]);
+	}, [id,dispatch]);
 
 	return (
 		<div>
@@ -101,8 +100,8 @@ export default function CustomerInfo() {
 
 							<hr />
 
-							{Addresses?.length > 0 ? (
-								Addresses?.map((e) => (
+							{CustomerInfo?.addresses?.length > 0 ? (
+								CustomerInfo?.addresses?.map((e) => (
 									<div key={e.id} className='w-[97%] mx-auto global-cards px-0 '>
 										<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
 											<p className='text-[0.7rem]'>
@@ -146,25 +145,29 @@ export default function CustomerInfo() {
 
 							<hr />
 							<div className='flex-col-global gap-[1rem]'>
-								{array?.map((e, i) => (
-									<div className='flex-col-global gap-[1rem]' key={i}>
-										<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
-											<div className='flex-col-global gap-[0.5rem]'>
-												<p className='text-[0.8rem]  font-semibold text-title'>
-													#8965742 <span className='font-normal'>Processing</span>
-												</p>
-												<p className='text-[.7rem] opacity-60' dir='ltr'>
-													6 Apr 2020
-												</p>
+								{CustomerInfo?.orders?.length > 0 ? (
+									CustomerInfo?.orders?.map((e, i) => (
+										<div className='flex-col-global gap-[1rem]' key={i}>
+											<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
+												<div className='flex-col-global gap-[0.5rem]'>
+													<p className='text-[0.8rem]  font-semibold text-title'>
+														#8965742 <span className='font-normal'>Processing</span>
+													</p>
+													<p className='text-[.7rem] opacity-60' dir='ltr'>
+														6 Apr 2020
+													</p>
+												</div>
+												<div className='flex-col-global items-end gap-[0.5rem]'>
+													<HiOutlineDotsHorizontal />
+													<p className='text-[0.8rem] '>SAR 1000</p>
+												</div>
 											</div>
-											<div className='flex-col-global items-end gap-[0.5rem]'>
-												<HiOutlineDotsHorizontal />
-												<p className='text-[0.8rem] '>SAR 1000</p>
-											</div>
+											<hr />
 										</div>
-										<hr />
-									</div>
-								))}
+									))
+								) : (
+									<div className='flex-row-global justify-center'>{t('There are No Orders')}</div>
+								)}
 							</div>
 						</div>
 					</div>

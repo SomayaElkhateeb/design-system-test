@@ -30,9 +30,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const dispatch = useAppDispatch();
 	const { customersGroup, isLoading, error } = useAppSelector((state) => state.customersGroup);
 
-	useEffect(() => {
-		dispatch(getCustomersGroupTable());
-	}, [dispatch]);
+	
 
 	//  custom hook for select setting item
 

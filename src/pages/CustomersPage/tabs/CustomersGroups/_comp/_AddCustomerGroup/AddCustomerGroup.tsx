@@ -25,7 +25,6 @@ import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 import { useEffect } from 'react';
 import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 
-
 export default function AddCustomerGroup() {
 	//  hooks
 	const { t } = useTranslation();
@@ -72,13 +71,14 @@ export default function AddCustomerGroup() {
 			customerGroupItem?.description &&
 				formStore.setValue('description', customerGroupItem?.description);
 			customerGroupItem?.status && formStore.setValue('status', customerGroupItem?.status);
-			customerGroupItem?.customers?.length > 0 &&
+			customerGroupItem?.customers &&
+				customerGroupItem?.customers?.length > 0 &&
 				formStore.setValue(
 					'customers',
 					customerGroupItem?.customers?.map((e) => {
 						return {
-							id: e.id.toString(),
-							name: e.first_name,
+							id: e.id ? e.id.toString() : '',
+							name: e.first_name ? e.first_name : '',
 						};
 					}),
 				);
