@@ -36,7 +36,10 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	const dispatch = useAppDispatch();
 	const { allCustomers, isLoading, error } = useAppSelector((state) => state.allCustomer);
 
-	
+	useEffect(() => {
+		dispatch(getAllCustomersTable());
+	}, [dispatch]);
+
 
 	//  headers
 	const customersHeaders = [

@@ -19,23 +19,22 @@ export default function TaxesAndRates({ title, integrated = false }: TaxesAndRat
 	return (
 		<div className={classes}>
 			<h3 className='title'>{t(title as any)}</h3>
-			
-				<Tabs
-					body={
-						<>
-							{tabsData.map((tab) => (
-								<TabPanel key={tab.value} value={tab.value}>
-									<RateProgram rates={tab.rates} program={tab.label} />
-								</TabPanel>
-							))}
-						</>
-					}
-				>
-					{tabsData.map((tab) => (
-						<Tab key={tab.value} label={t(tab.label as any)} value={tab.value} />
-					))}
-				</Tabs>
-			
+
+			<Tabs
+				body={
+					<>
+						{tabsData.map((tab) => (
+							<TabPanel key={tab.value} value={tab.value}>
+								<RateProgram rates={tab.rates} program={tab.label} />
+							</TabPanel>
+						))}
+					</>
+				}
+			>
+				{tabsData.map((tab) => (
+					<Tab key={tab.value} label={t(tab.label as any)} value={tab.value} />
+				))}
+			</Tabs>
 		</div>
 	);
 }
