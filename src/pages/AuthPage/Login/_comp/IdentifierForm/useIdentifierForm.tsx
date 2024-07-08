@@ -1,11 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'src/app/utils/hooks/form';
 import { z } from 'zod';
 
-enum InputType {
-	Email = 'email',
-	Phone = 'phone',
-}
 export interface IdentifierFormProps {
 	setStep: (step: number) => void;
 	onIdentifierChange: (Identifier: string) => void;
@@ -20,8 +16,6 @@ export default function useIdentifierForm({
 	onIdentifierChange,
 	setEmail,
 }: IdentifierFormProps) {
-	
-	
 	const { formStore, onSubmit } = useForm({
 		schema: schemas,
 		handleSubmit: (values: { emailOrPhone: string }) => {
@@ -30,8 +24,6 @@ export default function useIdentifierForm({
 		},
 		defaultValues: { emailOrPhone: '' },
 	});
-
-	
 
 	useEffect(() => {
 		const subscription = formStore.watch((value) => {

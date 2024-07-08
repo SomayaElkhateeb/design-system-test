@@ -18,6 +18,12 @@ import inventory from './slices/productsPage/inventory/inventoryTableSlice';
 import categoriesTable from './slices/productsPage/categories/categoriesTable/categoriesTableSlice';
 import subCategories from './slices/productsPage/categories/subCategoriesTable/subCategoriesSlice';
 import allOrders from './slices/ordersPage/allOrders/allOrdersSlice';
+import shippingMethod from './slices/settingsPage/shipping/shippingMethods/shippingMethodsSlice';
+import shippingList from './slices/settingsPage/shipping/shippingList/shippingListSlice';
+import taxRatesList from './slices/settingsPage/tax/taxRates/taxRatesList/taxRatesListSlice';
+import taxRatesShow from './slices/settingsPage/tax/taxRates/taxShow/taxRatesShowSlice';
+import taxCategoriesList from './slices/settingsPage/tax/taxCategories/taxCategoriesList/taxCategoriesListSlice';
+import taxCategoriesShow from './slices/settingsPage/tax/taxCategories/taxCategoriesShow/taxCategoriesShowSlice';
 
 export const rootReducer = combineReducers({
 	discount: discount,
@@ -44,4 +50,14 @@ export const rootReducer = combineReducers({
 	subCategories: subCategories,
 	// orders page
 	allOrders: allOrders,
+
+	// settings page
+	shippingMethod: shippingMethod,
+	shippingList: shippingList, // undefined
+
+	taxRatesList: taxRatesList, // []
+	taxRatesShow: taxRatesShow, // 304 Not Modified
+
+	taxCategoriesList: taxCategoriesList, // []
+	taxCategoriesShow: taxCategoriesShow,
 });

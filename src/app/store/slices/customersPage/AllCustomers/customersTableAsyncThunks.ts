@@ -7,8 +7,9 @@ import { AddCustomerPageSchemaValues } from 'src/pages/CustomersPage/tabs/AllCus
 export const getAllCustomersTable = createAsyncThunk('allCustomersTable/getAllCustomersTable', () =>
 	PublicRequest.getData('merchant/customers/list'),
 );
+
 export const PostAddCustomerRequest = createAsyncThunk(
-	"allCustomersTable/PostAddCustomerRequest",
+	'allCustomersTable/PostAddCustomerRequest',
 	(payload: AddCustomerPageSchemaValues) =>
 		PublicRequest.postData(payload, `merchant/customers/store`)
 			.then((res: any) => {
@@ -17,10 +18,10 @@ export const PostAddCustomerRequest = createAsyncThunk(
 					return res;
 				}
 			})
-			.catch(err => PublicHandelingErrors.onErrorResponse(err)),
+			.catch((err) => PublicHandelingErrors.onErrorResponse(err)),
 );
 export const PutUpdateCustomerRequest = createAsyncThunk(
-	"allCustomersTable/PostUpdateCustomerRequest",
+	'allCustomersTable/PostUpdateCustomerRequest',
 	(payload: AddCustomerPageSchemaValues) =>
 		PublicRequest.putData(payload, `merchant/customers/update/${payload?.id}`)
 			.then((res: any) => {
@@ -29,9 +30,10 @@ export const PutUpdateCustomerRequest = createAsyncThunk(
 					return res;
 				}
 			})
-			.catch(err => PublicHandelingErrors.onErrorResponse(err)),
+			.catch((err) => PublicHandelingErrors.onErrorResponse(err)),
 );
 
-export const getCustomerInfo = createAsyncThunk('getCustomerInfo/getAllCustomersTable', (payload: string) =>
-	PublicRequest.getData(`merchant/customers/show/${payload}`),
+export const getCustomerInfo = createAsyncThunk(
+	'getCustomerInfo/getAllCustomersTable',
+	(payload: string) => PublicRequest.getData(`merchant/customers/show/${payload}`),
 );

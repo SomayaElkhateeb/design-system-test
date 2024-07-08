@@ -1,18 +1,15 @@
 import axios from 'axios';
 import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
 
-
-//  get url from saved domain 
-let custom_Basic_Url: string | null | undefined = "my.dookan.net"
-if (typeof window !== "undefined") {
-	custom_Basic_Url = localStorage.getItem("domain")
+//  get url from saved domain
+let custom_Basic_Url: string | null | undefined = 'my.dookan.net';
+if (typeof window !== 'undefined') {
+	custom_Basic_Url = localStorage.getItem('domain');
 }
 
-export const baseUrl = custom_Basic_Url ? `https://${custom_Basic_Url}/api/v1/`
-	:
-	"https://my.dookan.net/api/v1/"
-
-
+export const baseUrl = custom_Basic_Url
+	? `https://${custom_Basic_Url}/api/v1/`
+	: 'https://my.dookan.net/api/v1/';
 
 const MainApi = axios.create({
 	baseURL: baseUrl,
@@ -47,7 +44,6 @@ MainApi.interceptors.request.use(
 		return config;
 	},
 	function (error) {
-
 		// Do something with request error
 		return PublicHandelingErrors.onErrorResponse(error);
 	},

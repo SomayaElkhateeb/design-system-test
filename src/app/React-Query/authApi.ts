@@ -7,16 +7,25 @@ import axios from 'axios';
 
 export const AuthApi = {
 	signUp: (formData: UserInfoInterface) => {
-		return axios.postForm('https://my.dookan.net/api/v1/merchant/register/validate/step-one', formData);
+		return axios.postForm(
+			'https://my.dookan.net/api/v1/merchant/register/validate/step-one',
+			formData,
+		);
 	},
 	verify_otp: (formData: OtpVerificationInterface) => {
 		return axios.postForm('https://my.dookan.net/api/v1/merchant/register/verify/mobile', formData);
 	},
 	send_code: (formData: OtpVerificationInterface) => {
-		return axios.postForm('https://my.dookan.net/api/v1/merchant/register/verify/mobile/send-code', formData);
+		return axios.postForm(
+			'https://my.dookan.net/api/v1/merchant/register/verify/mobile/send-code',
+			formData,
+		);
 	},
 	signUp_secondStep: (formData: AboutYourBusinessInterface) => {
-		return axios.postForm('https://my.dookan.net/api/v1/merchant/register/validate/step-tow', formData);
+		return axios.postForm(
+			'https://my.dookan.net/api/v1/merchant/register/validate/step-tow',
+			formData,
+		);
 	},
 	login: (formData: passwordSchemaForm) => {
 		return MainApi.postForm('merchant/login', formData);
