@@ -80,7 +80,7 @@ export default function CustomersGroups() {
 							firstName={e.name}
 							customersCount={e.customers_count}
 							// lastName={e.name}
-							email={e.describtion}
+							email={e.description}
 						/>
 					))}
 					<AddButtonMobile path='/customers/addGroupCustomer' />

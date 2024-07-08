@@ -43,7 +43,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 
-	const handleGiftOptionChange = useCallback(() => setSendGift(!sendGift), [setSendGift]);
+	const handleGiftOptionChange = useCallback(() => setSendGift(!sendGift), [sendGift]);
 	const handleOptionChange = useCallback(
 		(option: string) => setSelectedOption(option),
 		[setSelectedOption],
@@ -107,7 +107,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 					<FormField
 						formStore={formStore}
 						label={t('Phone number')}
-						name='phoneNumber'
+						name='phone'
 						render={(field) => (
 							<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
 						)}
@@ -138,14 +138,14 @@ function ManualAddressForm<TFormStore>({
 					/>
 				)}
 				<SelectFormField
-					name='countryName'
+					name='country'
 					label={t('Country')}
 					formStore={formStore}
 					options={countries}
 					placeholder={t('Select option')}
 				/>
 				<SelectFormField
-					name='cityName'
+					name='city'
 					label={t('City')}
 					formStore={formStore}
 					options={countries}

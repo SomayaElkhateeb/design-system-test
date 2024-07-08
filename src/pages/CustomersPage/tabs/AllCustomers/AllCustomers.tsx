@@ -17,7 +17,9 @@ import { LiaTrashAlt } from 'react-icons/lia';
 
 import CustomersTable from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
-import { useAppSelector } from 'src/app/store';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useEffect } from 'react';
+import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -25,6 +27,7 @@ export default function AllCustomers() {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
+	const dispatch=useAppDispatch()
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -55,6 +58,9 @@ export default function AllCustomers() {
 		},
 	];
 
+	useEffect(() => {
+		dispatch(getAllCustomersTable());
+	}, [dispatch]);
 	return (
 		<>
 			<div className='flex-col-global'>

@@ -4,7 +4,7 @@ import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { AddCustomerGroupPageSchemaValues } from './AddCustomerGroupSchema';
+import { AddCustomerGroupPageSchemaValues } from '../_schema/AddCustomerGroupSchema';
 
 export default function GeneralInfoCustomerGroupInfo({
 	formStore,
@@ -20,7 +20,7 @@ export default function GeneralInfoCustomerGroupInfo({
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField
 					formStore={formStore}
-					name='groupName'
+					name='name'
 					label={t('Group Name')}
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
@@ -34,12 +34,12 @@ export default function GeneralInfoCustomerGroupInfo({
 				<div className='flex gap-[.2rem] items-end'>
 					<FormSwitchField<AddCustomerGroupPageSchemaValues>
 						formStore={formStore}
-						name='active'
+						name='status'
 						fieldLabel={t('Active?')}
 						enable
 					/>
 					<p className='text-title text-sm font-normal  '>
-						{formStore.watch('active') ? 'on' : 'off'}
+						{formStore.watch('status') ? 'on' : 'off'}
 					</p>
 				</div>
 			</div>

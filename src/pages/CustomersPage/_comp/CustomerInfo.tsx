@@ -15,6 +15,7 @@ import { getCustomerInfo } from 'src/app/store/slices/customersPage/AllCustomers
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect } from 'react';
 import { RxDotsHorizontal } from 'react-icons/rx';
+import { getAllAddressesCustomer } from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
 export default function CustomerInfo() {
 	// hooks
 	const { id } = useParams();
@@ -26,6 +27,7 @@ export default function CustomerInfo() {
 
 	//  selectors
 	const { CustomerInfo } = useAppSelector((state) => state.allCustomer);
+	const { Addresses } = useAppSelector((state) => state.AddressesCustomer);
 	const customerData = [
 		{
 			data: CustomerInfo?.name ? CustomerInfo?.name : '',
@@ -49,8 +51,10 @@ export default function CustomerInfo() {
 	useEffect(() => {
 		if (id) {
 			dispatch(getCustomerInfo(id));
+			dispatch(getAllAddressesCustomer(id));
 		}
 	}, [id]);
+
 	return (
 		<div>
 			<div className='gap-[1.6rem] flex-col-global'>
@@ -97,28 +101,34 @@ export default function CustomerInfo() {
 
 							<hr />
 
-							<div className='w-[97%] mx-auto global-cards px-0 '>
-								<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
-									<p className='text-[0.7rem]'>
-										Meed Market, 15 Haroon Al Rashied st.
-										<br />
-										Al Jazera, Riyadh <br />
-										<span className='opacity-60'>Saudi Arabia</span>
-										<br />
-										+96841564566
-									</p>
-									<div className='flex-col-global items-end gap-[2rem]'>
-										<div className='flex-row-global gap-[1.2rem]'>
-											<RiDeleteBin6Line className='cursor-pointer' />
-											<FiEdit className='cursor-pointer' />
-										</div>
-										<div className='flex-row-global gap-[.4rem] cursor-pointer'>
-											<IoLocationOutline />
-											<p className='title'>{t('Show on map')}</p>
+							{Addresses?.length > 0 ? (
+								Addresses?.map((e) => (
+									<div key={e.id} className='w-[97%] mx-auto global-cards px-0 '>
+										<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
+											<p className='text-[0.7rem]'>
+												Meed Market, 15 {e.street}.
+												<br />
+												Al Jazera, Riyadh <br />
+												<span className='opacity-60'>Saudi Arabia</span>
+												<br />
+												{e?.phone}
+											</p>
+											<div className='flex-col-global items-end gap-[2rem]'>
+												<div className='flex-row-global gap-[1.2rem]'>
+													<RiDeleteBin6Line className='cursor-pointer' />
+													<FiEdit className='cursor-pointer' />
+												</div>
+												<div className='flex-row-global gap-[.4rem] cursor-pointer'>
+													<IoLocationOutline />
+													<p className='title'>{t('Show on map')}</p>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								))
+							) : (
+								<div className='flex-row-global justify-center'>{t('There are No Addresses')}</div>
+							)}
 						</div>
 
 						{/*  orders section */}

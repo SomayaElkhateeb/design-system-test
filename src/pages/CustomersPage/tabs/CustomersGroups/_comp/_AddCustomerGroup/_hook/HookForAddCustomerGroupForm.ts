@@ -3,15 +3,16 @@ export default function useCustomHookAddCustomerGroupForm() {
 	// ////////////////////////
 	const handelDefaultValue = () => {
 		return {
-			groupName: '',
+			code:'',
+			name: '',
 			description: '',
-			active: false,
-			Customers: [],
+			status: false,
+			customers: [],
 		};
 	};
-	
+
 	return {
-		
+
 		handelDefaultValue
 	}
 }

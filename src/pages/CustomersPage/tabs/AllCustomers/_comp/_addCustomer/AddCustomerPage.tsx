@@ -13,8 +13,7 @@ import useCustomHookAddCustomerForm, {
 	AddCustomerPageSchema,
 	AddCustomerPageSchemaValues,
 } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookForAddCustomerForm';
-import GeneralInfoCustomerForm from '../GeneralInfoCustomerForm';
-import PrimaryAddressForm from '../_addAddresse/PrimaryAddressForm';
+
 
 import {
 	PostAddCustomerRequest,
@@ -23,15 +22,16 @@ import {
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import GeneralInfoCustomerForm from './_comp/GeneralInfoCustomerForm';
+import PrimaryAddressForm from './_comp/PrimaryAddressForm';
+import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 
 const AddCustomerPage = () => {
 	// hooks
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const [searchParams] = useSearchParams();
-
-	const id = searchParams.get('id');
+	const id=UseGetIdParams()
 	//  selectors
 	const { CustomerInfo, isLoadingAddOrUpdate } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {

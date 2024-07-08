@@ -18,6 +18,7 @@ import inventory from './slices/productsPage/inventory/inventoryTableSlice';
 import categoriesTable from './slices/productsPage/categories/categoriesTable/categoriesTableSlice';
 import subCategories from './slices/productsPage/categories/subCategoriesTable/subCategoriesSlice';
 import allOrders from './slices/ordersPage/allOrders/allOrdersSlice';
+import AddresseCustomersSlice from './slices/customersPage/AddresseCustomer/AddresseCustomersSlice';
 
 export const rootReducer = combineReducers({
 	discount: discount,
@@ -32,6 +33,7 @@ export const rootReducer = combineReducers({
 	customersAnalytics: customersAnalytics,
 	// customers page
 	allCustomer: allCustomer,
+	AddressesCustomer:AddresseCustomersSlice,
 	customersGroup: customersGroup,
 	// pages page
 	pages: pages,

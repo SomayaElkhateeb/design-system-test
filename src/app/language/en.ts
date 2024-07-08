@@ -584,6 +584,7 @@ export const english = {
 	'Quantity Ascending': 'Quantity Ascending',
 	'Price Low in first': 'Price Low in first',
 	"First name":"First name",
+	"There are No Addresses":"There are No Addresses",
 	"Last name":"Last name",
 	'Price High in first': 'Price High in first',
 	'Searches Descending': 'Searches Descending',

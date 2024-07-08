@@ -1,19 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCustomerGroupTableReducer } from './customersGroupTableExtraReducers';
 import { customersGroupSliceModel } from 'src/app/models/customersGroupSliceModel';
+import { CustomerGroupDefaultValue } from 'src/app/interface/CustomerGroupInterface';
 
 const initialState: customersGroupSliceModel = {
-	customersGroup: [
-		{
-			id: '1',
-			name: 'group1',
-			customerNumber: 45,
-			describtion: 'high group',
-			active: true,
-		},
-	],
+	customersGroup: [],
 	isLoading: false,
 	error: null,
+	customerGroupItem: CustomerGroupDefaultValue(),
 };
 
 const customerGroupSlice = createSlice({

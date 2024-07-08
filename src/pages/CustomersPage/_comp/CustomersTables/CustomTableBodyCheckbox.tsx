@@ -5,9 +5,9 @@ export default function CustomTableBodyCheckbox({
 	setArray,
 	id,
 }: {
-	array: number[];
-	setArray: (e: number[]) => void;
-	id: number;
+	array: string[];
+	setArray: (e: string[]) => void;
+	id: string;
 }) {
 	return (
 		<Checkbox

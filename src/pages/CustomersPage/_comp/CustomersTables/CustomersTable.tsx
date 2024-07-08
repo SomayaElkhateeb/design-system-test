@@ -27,7 +27,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	const [array, setArray] = useState<number[]>([]);
+	const [array, setArray] = useState<string[]>([]);
 
 	//  custom hook for select setting item
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -36,9 +36,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	const dispatch = useAppDispatch();
 	const { allCustomers, isLoading, error } = useAppSelector((state) => state.allCustomer);
 
-	useEffect(() => {
-		dispatch(getAllCustomersTable());
-	}, [dispatch]);
+	
 
 	//  headers
 	const customersHeaders = [
