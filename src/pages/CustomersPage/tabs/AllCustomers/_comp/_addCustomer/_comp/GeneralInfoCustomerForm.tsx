@@ -2,11 +2,13 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { CheckBox } from 'src/app/components/optimized';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
+
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { AddCustomerPageSchemaValues } from '../_hook/HookForAddCustomerForm';
+import { useAppSelector } from 'src/app/store';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 export default function GeneralInfoCustomerForm({
 	formStore,
@@ -15,6 +17,8 @@ export default function GeneralInfoCustomerForm({
 }) {
 	//  hooks
 	const { t } = useTranslation();
+	//  selectors
+	const { customersGroup } = useAppSelector((state) => state.customersGroup);
 
 	return (
 		<div className='global-cards gap-[1.3rem]'>
@@ -46,10 +50,21 @@ export default function GeneralInfoCustomerForm({
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 
-				<SpecificAutoCompleteInput<AddCustomerPageSchemaValues>
-					name='groupMeta'
-					label={t('Meta keywords')}
+				<SelectFormField
 					formStore={formStore}
+					name='customer_group_id'
+					placeholder={t('Customer Groups')}
+					label={t('Customer Groups')}
+					options={
+						customersGroup &&
+						customersGroup?.length > 0 &&
+						customersGroup?.map((e) => {
+							return {
+								value: e.id.toString(),
+								label: e.name,
+							};
+						})
+					}
 				/>
 				<FormField
 					formStore={formStore}

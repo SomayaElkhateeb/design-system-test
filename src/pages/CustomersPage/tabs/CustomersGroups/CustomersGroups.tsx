@@ -11,14 +11,16 @@ import CustomersGroupTable from 'src/pages/CustomersPage/_comp/CustomersTables/C
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { LiaTrashAlt } from 'react-icons/lia';
-import { useAppSelector } from 'src/app/store';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
+import { useEffect } from 'react';
 
 export default function CustomersGroups() {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
-
+	const dispatch = useAppDispatch();
 	//  selectors
 	const { customersGroup } = useAppSelector((state) => state.customersGroup);
 	//  custom hook for select arrang item
@@ -39,6 +41,10 @@ export default function CustomersGroups() {
 		{ id: nanoid(), text: 'Add discount', icon: <p className='text-[1.3rem]'>%</p> },
 		{ id: nanoid(), text: 'Remove group', icon: <LiaTrashAlt size='28' className='fill-error' /> },
 	];
+
+	useEffect(() => {
+		dispatch(getCustomersGroupTable());
+	}, [dispatch]);
 
 	return (
 		<div className='flex-col-global'>
@@ -79,7 +85,8 @@ export default function CustomersGroups() {
 							key={i}
 							firstName={e.name}
 							customersCount={e.customers_count}
-							// lastName={e.name}
+							group
+							path='customers/addGroupCustomer'
 							email={e.description}
 						/>
 					))}

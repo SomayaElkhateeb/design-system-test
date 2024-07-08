@@ -138,14 +138,14 @@ function ManualAddressForm<TFormStore>({
 					/>
 				)}
 				<SelectFormField
-					name='country'
+					name='countryName'
 					label={t('Country')}
 					formStore={formStore}
 					options={countries}
 					placeholder={t('Select option')}
 				/>
 				<SelectFormField
-					name='city'
+					name='cityName'
 					label={t('City')}
 					formStore={formStore}
 					options={countries}

@@ -1,3 +1,4 @@
+import { AddressCustomerInterface } from "./AddresseCustomerinterface"
 
 
 export interface CustomerInterface {
@@ -11,6 +12,9 @@ export interface CustomerInterface {
     email?: string
     "E-Subscription"?: boolean
     gender?: string
+    customer_group_id: string
+    addresses: AddressCustomerInterface[]
+    orders:AddressCustomerInterface[]
 }
 
 export const initialCustomerData = () => {
@@ -25,5 +29,8 @@ export const initialCustomerData = () => {
         email: "",
         "E-Subscription": false,
         gender: "",
+        customer_group_id: "",
+        addresses: [],
+        orders:[]
     }
 }

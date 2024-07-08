@@ -14,6 +14,8 @@ export const arabic = {
 	"First name":"الاسم الاول",
 	"Last name":"الاسم الاخير",
 	"There are No Addresses":"لا يوجد عناوين مسجله",
+	"Customer Groups":"جروبات العملاء",
+	"There are No Orders":"لا يوجد اوردرات متاحه",
 	Campaigns: 'الحملات',
 	"Sign in": "تسجيل الدخول",
 	'Add Subcategory': 'اضافه تحت فرعي',

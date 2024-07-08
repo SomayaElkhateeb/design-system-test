@@ -15,6 +15,7 @@ interface props {
 	path?: string;
 	noAvatar?: boolean;
 	customersCount?: number;
+	group?: boolean;
 }
 export default function CustomersComponenet({
 	settingMenus,
@@ -26,6 +27,7 @@ export default function CustomersComponenet({
 	path,
 	noAvatar,
 	customersCount,
+	group,
 }: props) {
 	//  hooks
 	const navigate = useNavigate();
@@ -34,7 +36,7 @@ export default function CustomersComponenet({
 		<div className='flex-row-global-items-start justify-between '>
 			<div
 				onClick={() => {
-					id && path && navigate(`/${path}/${id}`);
+					id && path && !group ? navigate(`/${path}/${id}`) : navigate(`/${path}?id=${id}`);
 				}}
 				className={`${path && 'cursor-pointer'} flex gap-3 items-start`}
 			>

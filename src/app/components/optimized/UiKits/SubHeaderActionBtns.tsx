@@ -15,7 +15,7 @@ const SubHeaderActionBtns = ({
 	const { t } = useTranslation();
 	return (
 		<>
-			<Button variant='secondary' onClick={() => navigate(-1)}>
+			<Button type="button" variant='secondary' onClick={() => navigate(-1)}>
 				{t('Discard')}
 			</Button>
 			<Button loading={isLoading} variant='primary' onClick={onSubmit}>

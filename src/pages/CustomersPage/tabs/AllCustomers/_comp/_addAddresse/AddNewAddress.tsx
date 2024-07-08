@@ -35,6 +35,8 @@ export default function AddNewAddressCustomer() {
 	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.AddressesCustomer);
 	// ////////////////
 	const handleSubmit = (values: AddAddressInterface) => {
+		values.country = '1';
+		values.city = '1';
 		const sendingData: AddAddressInterface = { ...values, customer_id: id };
 
 		dispatch(PostAddCustomerAddressRequest(sendingData)).then((promiseResponse) => {
