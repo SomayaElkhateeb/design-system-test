@@ -89,9 +89,11 @@ const AddCustomerPage = () => {
 						<GeneralInfoCustomerForm formStore={formStore} />
 						{/* primary Address section */}
 						<PrimaryAddressForm formStore={formStore} />
+						<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 					</div>
+					
 				</div>
-				<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
+				
 			</form>
 		</Form>
 	);

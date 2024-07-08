@@ -85,7 +85,8 @@ export default function CustomersGroups() {
 							key={i}
 							firstName={e.name}
 							customersCount={e.customers_count}
-							// lastName={e.name}
+							group
+							path='customers/addGroupCustomer'
 							email={e.description}
 						/>
 					))}

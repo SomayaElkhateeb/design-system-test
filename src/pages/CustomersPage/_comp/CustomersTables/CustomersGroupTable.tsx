@@ -30,8 +30,6 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const dispatch = useAppDispatch();
 	const { customersGroup, isLoading, error } = useAppSelector((state) => state.customersGroup);
 
-	
-
 	//  custom hook for select setting item
 
 	const { selectedOption, handleSelect } = useSelectBox();
@@ -92,7 +90,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 									selectedOption={selectedOption}
 									handelSelect={handleSelect}
 								/>
-								<ArrowTables path={`/customers`} />
+								<ArrowTables path={`/customers/addGroupCustomer?id=${e?.id}`} />
 							</div>
 						</GlobalTableCell>,
 					],
