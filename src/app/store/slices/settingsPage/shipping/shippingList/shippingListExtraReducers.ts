@@ -11,7 +11,7 @@ export const shippingListReducer = (builder: ActionReducerMapBuilder<shippingLis
 		})
 		.addCase(getShippingList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.shippingList = payload; // data return undefined
+			state.shippingList = payload.data;
 		})
 		.addCase(getShippingList.rejected, (state, action) => {
 			state.isLoading = false;

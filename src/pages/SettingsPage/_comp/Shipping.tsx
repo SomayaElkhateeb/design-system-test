@@ -49,14 +49,14 @@ export default function Shipping() {
 	// }, [dispatch]);
 
 	// // redux
-	// const dispatch = useAppDispatch();
-	// const { taxRatesShow, isLoading, error } = useAppSelector((state) => state.taxRatesShow);
+	const dispatch = useAppDispatch();
+	const { taxRatesShow, isLoading, error } = useAppSelector((state) => state.taxRatesShow);
 
-	// console.log('taxRatesShow', taxRatesShow);
+	console.log('taxRatesShow', taxRatesShow);
 
-	// useEffect(() => {
-	// 	dispatch(getTaxRatesShow());
-	// }, [dispatch]);
+	useEffect(() => {
+		dispatch(getTaxRatesShow());
+	}, [dispatch]);
 
 	// redux
 	// const dispatch = useAppDispatch();
@@ -71,16 +71,16 @@ export default function Shipping() {
 	// }, [dispatch]);
 
 	// redux
-	const dispatch = useAppDispatch();
-	const { taxCategoriesShow, isLoading, error } = useAppSelector(
-		(state) => state.taxCategoriesShow,
-	);
+	// const dispatch = useAppDispatch();
+	// const { taxCategoriesShow, isLoading, error } = useAppSelector(
+	// 	(state) => state.taxCategoriesShow,
+	// );
 
-	console.log('taxCategoriesShow', taxCategoriesShow);
+	// console.log('taxCategoriesShow', taxCategoriesShow);
 
-	useEffect(() => {
-		dispatch(getTaxCategoriesShow());
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch(getTaxCategoriesShow());
+	// }, [dispatch]);
 
 	return (
 		<div className='flex-col-global'>
