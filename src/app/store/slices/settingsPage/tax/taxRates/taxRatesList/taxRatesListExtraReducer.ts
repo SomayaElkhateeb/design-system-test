@@ -10,7 +10,7 @@ export const taxRatesListReducer = (builder: ActionReducerMapBuilder<taxRatesLis
 		})
 		.addCase(getTaxRatesList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxRatesList = payload; // []
+			state.taxRatesList = payload.data; // []
 			// state.taxRatesList = payload.meta.links;
 		})
 		.addCase(getTaxRatesList.rejected, (state, action) => {
