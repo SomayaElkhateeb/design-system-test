@@ -16,8 +16,8 @@ export { default as AddCustomerPage } from './CustomersPage/tabs/AllCustomers/_c
 // SubPages
 export { default as AddOrder } from './OrdersPage/_comp/AddOrder/AddOrder';
 export { default as OrderDetails } from './OrdersPage/_comp/OrderDetails/OrderDetails';
-export { default as AddNewAddressCustomer } from './CustomersPage/_comp/AddNewAddress';
-export { default as AddCustomerGroup } from './CustomersPage/tabs/CustomersGroups/_comp/AddCustomerGroup';
+export { default as AddNewAddressCustomer } from './CustomersPage/tabs/AllCustomers/_comp/_addAddresse/AddNewAddress';
+export { default as AddCustomerGroup } from './CustomersPage/tabs/CustomersGroups/_comp/_AddCustomerGroup/AddCustomerGroup';
 export { default as BillingAndPlans } from './SettingsPage/_comp/BillingAndPlans';
 export { default as SettingsConfig } from './SettingsPage/_comp/SettingsConfig';
 export { default as Nested_pages_SettingsConfig } from './SettingsPage/_comp/Nested_Settings_pagesConfig';

@@ -4,7 +4,13 @@ import Button from '../Buttons/Button';
 import { RxDotsHorizontal } from 'react-icons/rx';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-const SubHeaderActionBtns = ({ onSubmit }: { onSubmit: () => void }) => {
+const SubHeaderActionBtns = ({
+	onSubmit,
+	isLoading,
+}: {
+	onSubmit: () => void;
+	isLoading?: boolean;
+}) => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	return (
@@ -12,7 +18,7 @@ const SubHeaderActionBtns = ({ onSubmit }: { onSubmit: () => void }) => {
 			<Button variant='secondary' onClick={() => navigate(-1)}>
 				{t('Discard')}
 			</Button>
-			<Button variant='primary' onClick={onSubmit}>
+			<Button loading={isLoading} variant='primary' onClick={onSubmit}>
 				{t('Save Changes')}
 			</Button>
 		</>
@@ -21,19 +27,39 @@ const SubHeaderActionBtns = ({ onSubmit }: { onSubmit: () => void }) => {
 
 export default SubHeaderActionBtns;
 
-export const SubHeaderDefaultBtns = ({ onSubmit }: { onSubmit: () => void }) => {
+export const SubHeaderDefaultBtns = ({
+	onSubmit,
+	isLoading,
+}: {
+	onSubmit: () => void;
+	isLoading?: boolean;
+}) => {
 	const { xs } = useResponsive();
 
-	return <>{!xs ? <SubHeaderActionBtns onSubmit={onSubmit} /> : <RxDotsHorizontal />}</>;
+	return (
+		<>
+			{!xs ? (
+				<SubHeaderActionBtns isLoading={isLoading} onSubmit={onSubmit} />
+			) : (
+				<RxDotsHorizontal />
+			)}
+		</>
+	);
 };
-export const SubHeaderMobileBtns = ({ onSubmit }: { onSubmit: () => void }) => {
+export const SubHeaderMobileBtns = ({
+	onSubmit,
+	isLoading,
+}: {
+	onSubmit: () => void;
+	isLoading?: boolean;
+}) => {
 	const { xs } = useResponsive();
 
 	return (
 		<>
 			{xs && (
 				<div className='flex-btn-end gap-4'>
-					<SubHeaderActionBtns onSubmit={onSubmit} />
+					<SubHeaderActionBtns isLoading={isLoading} onSubmit={onSubmit} />
 				</div>
 			)}
 		</>

@@ -13,8 +13,7 @@ import useCustomHookAddCustomerForm, {
 	AddCustomerPageSchema,
 	AddCustomerPageSchemaValues,
 } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookForAddCustomerForm';
-import GeneralInfoCustomerForm from '../GeneralInfoCustomerForm';
-import PrimaryAddressForm from '../_addAddresse/PrimaryAddressForm';
+
 
 import {
 	PostAddCustomerRequest,
@@ -23,20 +22,22 @@ import {
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import GeneralInfoCustomerForm from './_comp/GeneralInfoCustomerForm';
+import PrimaryAddressForm from './_comp/PrimaryAddressForm';
+import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 
 const AddCustomerPage = () => {
 	// hooks
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const [searchParams] = useSearchParams();
-
-	const id = searchParams.get('id');
+	const id=UseGetIdParams()
 	//  selectors
-	const { CustomerInfo } = useAppSelector((state) => state.allCustomer);
+	const { CustomerInfo, isLoadingAddOrUpdate } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
 		id
-			? dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
+			? //  case update customer data
+			  dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate('/customers');
 					}
@@ -74,7 +75,7 @@ const AddCustomerPage = () => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global relative'>
 				<SubHeader title={t('Add New Customer')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+					<SubHeaderDefaultBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='custom-grid-parent gap-5  custom_container'>
 					<div className='flex-col-global grid-left'>
@@ -84,7 +85,7 @@ const AddCustomerPage = () => {
 						<PrimaryAddressForm formStore={formStore} />
 					</div>
 				</div>
-				<SubHeaderMobileBtns onSubmit={onSubmit} />
+				<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 			</form>
 		</Form>
 	);

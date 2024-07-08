@@ -1,7 +1,7 @@
 
 
 export interface CustomerInterface {
-    id: number
+    id: string
     name?: string
     first_name?: string
     last_name?: string
@@ -15,7 +15,7 @@ export interface CustomerInterface {
 
 export const initialCustomerData = () => {
     return {
-        id: 0,
+        id: "",
         name: "",
         first_name: "",
         last_name: "",

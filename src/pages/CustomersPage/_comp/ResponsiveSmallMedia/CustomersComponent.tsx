@@ -11,7 +11,7 @@ interface props {
 	imageUrl?: string;
 	email?: string;
 	settingMenus: settingMenus[];
-	id?: number;
+	id?: string;
 	path?: string;
 	noAvatar?: boolean;
 	customersCount?: number;

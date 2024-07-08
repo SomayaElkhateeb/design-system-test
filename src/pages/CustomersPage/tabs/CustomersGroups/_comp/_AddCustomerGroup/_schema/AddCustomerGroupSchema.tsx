@@ -4,7 +4,8 @@ import { z } from 'zod';
 const Requiredstring = z.string().min(1);
 
 export const AddCustomerGroupPageSchema = {
-	Customers: z
+	id:z.optional(Requiredstring).or(z.literal("")),
+	customers: z
 		.array(
 			z.object({
 				id: Requiredstring,
@@ -12,8 +13,9 @@ export const AddCustomerGroupPageSchema = {
 			}),
 		)
 		.min(1),
-	groupName: Requiredstring,
+	code: z.optional(Requiredstring).or(z.literal('')),
+	name: Requiredstring,
 	description: Requiredstring,
-	active: z.boolean().default(false),
+	status: z.boolean().default(false),
 };
 export type AddCustomerGroupPageSchemaValues = InferredZodSchema<typeof AddCustomerGroupPageSchema>;

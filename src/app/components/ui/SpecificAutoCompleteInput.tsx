@@ -12,18 +12,14 @@ interface FormAutoCompleteFieldProps<T extends FieldValues> {
 	formStore: UseFormReturn<T>;
 	label?: string;
 	name: Path<T>;
+	array: { id: string; name: string }[];
 }
 export default function SpecificAutoCompleteInput<T extends FieldValues>({
 	formStore,
 	name,
 	label,
+	array,
 }: FormAutoCompleteFieldProps<T>) {
-	//  hooks
-	const selectItems = [
-		{ id: '1', name: 'Dress' },
-		{ id: '2', name: 'Fashion' },
-	];
-
 	return (
 		<FormField
 			formStore={formStore}
@@ -34,7 +30,7 @@ export default function SpecificAutoCompleteInput<T extends FieldValues>({
 					placeholder={label}
 					getvalue={(value: any) => formStore.setValue(name, value)}
 					name={name}
-					array={selectItems}
+					array={array}
 					MainValue={field.value}
 				/>
 			)}

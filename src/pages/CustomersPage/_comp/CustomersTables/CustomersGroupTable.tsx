@@ -24,7 +24,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const { language } = useLanguage();
-	const [array, setArray] = useState<number[]>([]);
+	const [array, setArray] = useState<string[]>([]);
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -33,8 +33,6 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	useEffect(() => {
 		dispatch(getCustomersGroupTable());
 	}, [dispatch]);
-
-	
 
 	//  custom hook for select setting item
 
@@ -75,21 +73,22 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 								<div className='flex-col-global gap-2'>
 									<p>{e.name}</p>
-									<p className='text-subtitle text-[.8rem]'>{e.describtion}</p>
+									<p className='text-subtitle text-[.8rem]'>{e.description?.slice(0, 50)}...</p>
 								</div>
 							</div>
 						</GlobalTableCell>,
 						<GlobalTableCell>{e.customers_count}</GlobalTableCell>,
 
 						<GlobalTableCell>
-							<Switch checked={e.active} />
+							<Switch checked={e.status} />
 						</GlobalTableCell>,
 						<GlobalTableCell>
 							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
 								<FaRegEdit
 									className='text-subtitle'
-									onClick={() => navigate(`/addCustomer?id=${e?.id}`)}
+									onClick={() => navigate(`/customers/addGroupCustomer?id=${e?.id}`)}
 								/>
+
 								<ThreeDotsButton
 									sortMenus={settingMenus}
 									selectedOption={selectedOption}

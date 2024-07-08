@@ -18,12 +18,16 @@ import inventory from './slices/productsPage/inventory/inventoryTableSlice';
 import categoriesTable from './slices/productsPage/categories/categoriesTable/categoriesTableSlice';
 import subCategories from './slices/productsPage/categories/subCategoriesTable/subCategoriesSlice';
 import allOrders from './slices/ordersPage/allOrders/allOrdersSlice';
+
+import AddresseCustomersSlice from './slices/customersPage/AddresseCustomer/AddresseCustomersSlice';
+
 import shippingMethod from './slices/settingsPage/shipping/shippingMethods/shippingMethodsSlice';
 import shippingList from './slices/settingsPage/shipping/shippingList/shippingListSlice';
 import taxRatesList from './slices/settingsPage/tax/taxRates/taxRatesList/taxRatesListSlice';
 import taxRatesShow from './slices/settingsPage/tax/taxRates/taxShow/taxRatesShowSlice';
 import taxCategoriesList from './slices/settingsPage/tax/taxCategories/taxCategoriesList/taxCategoriesListSlice';
 import taxCategoriesShow from './slices/settingsPage/tax/taxCategories/taxCategoriesShow/taxCategoriesShowSlice';
+
 
 export const rootReducer = combineReducers({
 	discount: discount,
@@ -38,6 +42,7 @@ export const rootReducer = combineReducers({
 	customersAnalytics: customersAnalytics,
 	// customers page
 	allCustomer: allCustomer,
+	AddressesCustomer:AddresseCustomersSlice,
 	customersGroup: customersGroup,
 	// pages page
 	pages: pages,

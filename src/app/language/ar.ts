@@ -13,6 +13,7 @@ export const arabic = {
 	"Email or phone":"ايميل او رقم هاتف",
 	"First name":"الاسم الاول",
 	"Last name":"الاسم الاخير",
+	"There are No Addresses":"لا يوجد عناوين مسجله",
 	Campaigns: 'الحملات',
 	"Sign in": "تسجيل الدخول",
 	'Add Subcategory': 'اضافه تحت فرعي',

@@ -6,7 +6,7 @@ import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoComplet
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { AddCustomerPageSchemaValues } from './_addCustomer/_hook/HookForAddCustomerForm';
+import { AddCustomerPageSchemaValues } from '../_hook/HookForAddCustomerForm';
 
 export default function GeneralInfoCustomerForm({
 	formStore,

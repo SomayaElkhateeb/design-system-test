@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getAllCustomersTable, getCustomerInfo } from './customersTableAsyncThunks';
+import { PostAddCustomerRequest, PutUpdateCustomerRequest, getAllCustomersTable, getCustomerInfo } from './customersTableAsyncThunks';
 import { allCustomerSliceModel } from 'src/app/models/allCustomerSliceModel';
 
 export const getAllCustomerTableReducer = (
@@ -19,6 +19,7 @@ export const getAllCustomerTableReducer = (
 		.addCase(getAllCustomersTable.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
+			state.allCustomers = [];
 		})
 
 		//  get customer info data
@@ -34,5 +35,33 @@ export const getAllCustomerTableReducer = (
 		.addCase(getCustomerInfo.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
-		});
+		})
+		//  add customer  data
+		.addCase(PostAddCustomerRequest.pending, (state) => {
+			state.isLoadingAddOrUpdate = true;
+
+		})
+		.addCase(PostAddCustomerRequest.fulfilled, (state, { payload }) => {
+
+			state.isLoadingAddOrUpdate = false;
+			
+		})
+		.addCase(PostAddCustomerRequest.rejected, (state, action) => {
+			state.isLoadingAddOrUpdate = false;
+			
+		})
+		//  update customer  data
+		.addCase(PutUpdateCustomerRequest.pending, (state) => {
+			state.isLoadingAddOrUpdate = true;
+
+		})
+		.addCase(PutUpdateCustomerRequest.fulfilled, (state, { payload }) => {
+
+			state.isLoadingAddOrUpdate = false;
+			
+		})
+		.addCase(PutUpdateCustomerRequest.rejected, (state, action) => {
+			state.isLoadingAddOrUpdate = false;
+			
+		})
 };

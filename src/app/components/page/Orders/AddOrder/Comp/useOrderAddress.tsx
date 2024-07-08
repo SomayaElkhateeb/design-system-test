@@ -2,28 +2,30 @@ import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 
 export interface AddAddressInterface {
+	customer_id?:string
 	giftName?: string;
 	name?: string;
-	countryName?: string;
-	cityName?: string;
+	country?: string;
+	city?: string;
 	area?: string;
 	street?: string;
 	building: string;
 	landmark?: string;
-	phoneNumber: string;
+	phone: string;
 	search?: string;
 }
 
 export const getDefaultValues = (): AddAddressInterface => ({
+	customer_id:"",
 	giftName: '',
 	name: '',
-	countryName: '',
-	cityName: '',
+	country: '',
+	city: '',
 	area: '',
 	street: '',
 	building: '',
 	landmark: '',
-	phoneNumber: '',
+	phone: '',
 	search: '',
 });
 
@@ -31,24 +33,27 @@ const requiredFieldSchema = z.string().min(1, { message: 'This field is required
 
 const getConditionalSchema = (isRequired?: boolean) =>
 	isRequired ? requiredFieldSchema : z.string().optional();
+const getConditionalTwoVariablesSchema = (isRequired?: boolean, AddOrder?: boolean) =>
+	isRequired && !AddOrder ? requiredFieldSchema : z.string().optional();
 
 export const createAddressSchema = (
 	sendGift?: boolean,
 	selectedOption?: string,
 	isName?: boolean,
+	AddOrder?: boolean,
 ) => {
 	const isManualEntry = selectedOption === 'Add manually';
 	return {
 		name: getConditionalSchema(isName),
-		countryName: getConditionalSchema(isManualEntry),
-		cityName: getConditionalSchema(isManualEntry),
+		country: getConditionalSchema(isManualEntry),
+		city: getConditionalSchema(isManualEntry),
 		area: getConditionalSchema(isManualEntry),
 		street: getConditionalSchema(isManualEntry),
 		building: requiredFieldSchema,
 		landmark: getConditionalSchema(isManualEntry),
-		phoneNumber: z.string().min(7, { message: 'Phone number must be at least 7 characters long' }),
+		phone: z.string().min(7, { message: 'Phone number must be at least 7 characters long' }),
 		giftName: getConditionalSchema(sendGift),
-		search: getConditionalSchema(sendGift),
+		search: getConditionalTwoVariablesSchema(sendGift, AddOrder),
 	};
 };
 interface useOrderAddressProps {

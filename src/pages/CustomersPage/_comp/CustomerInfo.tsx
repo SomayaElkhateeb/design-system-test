@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { CiUser } from 'react-icons/ci';
-import { FaRegEdit } from 'react-icons/fa';
 import { FiEdit, FiPhoneCall } from 'react-icons/fi';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -8,30 +7,38 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineEmail } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { useNavigate, useParams } from 'react-router-dom';
-import { HeaderSettings } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import EditButtonMobile from 'src/app/components/optimized/Buttons/EditButtonMobile';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import CustomerData from './CustomerData';
-
+import { getCustomerInfo } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useEffect } from 'react';
+import { RxDotsHorizontal } from 'react-icons/rx';
+import { getAllAddressesCustomer } from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
 export default function CustomerInfo() {
 	// hooks
 	const { id } = useParams();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { xs } = useResponsive();
+	const dispatch = useAppDispatch();
 	const array = [...Array(2)];
 
+	//  selectors
+	const { CustomerInfo } = useAppSelector((state) => state.allCustomer);
+	const { Addresses } = useAppSelector((state) => state.AddressesCustomer);
 	const customerData = [
 		{
-			data: 'Mohamed Hasan',
+			data: CustomerInfo?.name ? CustomerInfo?.name : '',
 			icon: <CiUser className='text-hint' />,
 		},
 		{
-			data: 'web@artisan.com.sa (has active email subscribtion)',
+			data: CustomerInfo?.email ? `${CustomerInfo?.email} (has active email subscribtion)` : '',
 			icon: <MdOutlineEmail className='text-hint' />,
 		},
 		{
-			data: '966502466733',
+			data: CustomerInfo?.phone ? CustomerInfo?.phone : '',
 			icon: <FiPhoneCall className='text-hint' />,
 		},
 	];
@@ -39,34 +46,49 @@ export default function CustomerInfo() {
 	const handelNavigateEdit = () => {
 		navigate(`/customers/addCustomer?id=${id}`);
 	};
+
+	//  get customer info with id params
+	useEffect(() => {
+		if (id) {
+			dispatch(getCustomerInfo(id));
+			dispatch(getAllAddressesCustomer(id));
+		}
+	}, [id]);
+
 	return (
 		<div>
 			<div className='gap-[1.6rem] flex-col-global'>
 				{/*  top section */}
-				<HeaderSettings variant='customerInfowithIcons' title={t('Customer Info')}>
-					<div className=' flex  items-center gap-[.8rem] '>
-						{!xs && <FaRegEdit className='cursor-pointer' onClick={handelNavigateEdit} />}
-						{!xs && <HiOutlineDotsHorizontal className='cursor-pointer' />}
-					</div>
-				</HeaderSettings>
+				<SubHeader title={t('Customer Info')}>
+					{!xs && (
+						<button onClick={handelNavigateEdit}>
+							<FiEdit size='20' />
+						</button>
+					)}
+					{!xs && (
+						<button onClick={() => {}}>
+							<RxDotsHorizontal size='20' />
+						</button>
+					)}
+				</SubHeader>
 
 				{/*  customer section */}
 				<div className='custom_container custom-grid-parent gap-[1.6rem] '>
 					<div className='grid-left flex-col-global gap-[1.6rem] '>
-						<div className='customer-border  gap-[0.8rem]'>
+						<div className='global-cards px-0  gap-[0.8rem]'>
 							<p className='title px-[1.2rem]'>{t('Customer')}</p>
 							<hr />
 							<div className=' flex-col-global gap-[.6rem] px-[1.2rem]'>
 								{customerData?.map((el, i) => (
-									<CustomerData key={i} data={el.data} icon={el.icon} />
+									<CustomerData key={i} data={el.data ? el.data : ''} icon={el.icon} />
 								))}
 							</div>
 						</div>
 
 						{/*  addresse section */}
 
-						<div className='customer-border gap-[0.8rem]'>
-							<div className='flex-row-global justify-between px-[1.2rem]'>
+						<div className='global-cards px-0 gap-[0.8rem]'>
+							<div className='flex-row-global justify-between  px-[1.2rem]'>
 								<p className='title'>{t('Addresses')}</p>
 								<div
 									onClick={() => navigate('addNewAddresse')}
@@ -79,33 +101,39 @@ export default function CustomerInfo() {
 
 							<hr />
 
-							<div className='w-[97%] mx-auto customer-border '>
-								<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
-									<p className='text-[0.7rem]'>
-										Meed Market, 15 Haroon Al Rashied st.
-										<br />
-										Al Jazera, Riyadh <br />
-										<span className='opacity-60'>Saudi Arabia</span>
-										<br />
-										+96841564566
-									</p>
-									<div className='flex-col-global items-end gap-[2rem]'>
-										<div className='flex-row-global gap-[1.2rem]'>
-											<RiDeleteBin6Line className='cursor-pointer' />
-											<FiEdit className='cursor-pointer' />
-										</div>
-										<div className='flex-row-global gap-[.4rem] cursor-pointer'>
-											<IoLocationOutline />
-											<p className='title'>{t('Show on map')}</p>
+							{Addresses?.length > 0 ? (
+								Addresses?.map((e) => (
+									<div key={e.id} className='w-[97%] mx-auto global-cards px-0 '>
+										<div className='flex-row-global-items-start justify-between   px-[1.2rem]'>
+											<p className='text-[0.7rem]'>
+												Meed Market, 15 {e.street}.
+												<br />
+												Al Jazera, Riyadh <br />
+												<span className='opacity-60'>Saudi Arabia</span>
+												<br />
+												{e?.phone}
+											</p>
+											<div className='flex-col-global items-end gap-[2rem]'>
+												<div className='flex-row-global gap-[1.2rem]'>
+													<RiDeleteBin6Line className='cursor-pointer' />
+													<FiEdit className='cursor-pointer' />
+												</div>
+												<div className='flex-row-global gap-[.4rem] cursor-pointer'>
+													<IoLocationOutline />
+													<p className='title'>{t('Show on map')}</p>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								))
+							) : (
+								<div className='flex-row-global justify-center'>{t('There are No Addresses')}</div>
+							)}
 						</div>
 
 						{/*  orders section */}
 
-						<div className='customer-border gap-[0.8rem]'>
+						<div className='global-cards px-0 gap-[0.8rem]'>
 							<div className='flex-row-global justify-between px-[1.2rem]'>
 								<p className='title '>{t('Orders')}</p>
 								<div className='flex-row-global gap-[.4rem] cursor-pointer'>
