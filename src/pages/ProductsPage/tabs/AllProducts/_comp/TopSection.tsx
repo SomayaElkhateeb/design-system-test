@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle, IoMdArrowDropdown } from 'react-icons/io';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,8 @@ import {
 	productSortMenu,
 } from 'src/pages/ProductsPage/_comp/data';
 import { SimpleProductForm } from '../../_comp';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getCategoriesTable } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
 
 export default function TopSection({
 	verticalCard,
@@ -31,6 +33,9 @@ export default function TopSection({
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect } = useSelectBox();
 	const [openDialog, setOpenDialog] = useState<boolean>(false);
+	const dispatch = useAppDispatch();
+	//  selectors
+	const { categoriesTable } = useAppSelector((state) => state.categoriesTable);
 	const handleClose = (status: boolean) => {
 		setOpenDialog(status);
 	};
@@ -68,6 +73,10 @@ export default function TopSection({
 			</div>
 		);
 	};
+
+	useEffect(() => {
+		dispatch(getCategoriesTable());
+	}, [dispatch]);
 	return (
 		<>
 			<div className='flex-col-global'>
@@ -112,7 +121,10 @@ export default function TopSection({
 						handleClose={() => handleClose(false)}
 						style={dialogStyle}
 					>
-						<SimpleProductForm />
+						<SimpleProductForm
+							handleClose={() => handleClose(false)}
+							categoriesTable={categoriesTable}
+						/>
 					</GlobalDialog>
 
 					{/*  actions filter arrange,... */}

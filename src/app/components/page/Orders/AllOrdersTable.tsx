@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { OrderInterface } from 'src/app/interface/OrderInterface';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
-import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
+
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
@@ -13,9 +13,11 @@ import ThreeDotsButton from '../../optimized/Buttons/ThreedotsButton';
 // react-icons
 import { FaRegEdit } from 'react-icons/fa';
 import { FaArrowsRotate } from 'react-icons/fa6';
-import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
+
 import { CiLocationOn } from 'react-icons/ci';
 import ArrowTables from '../../optimized/UiKits/ArrowTables';
+import CustomTableHeaderCheckbox from '../../optimized/UiKits/CustomTableHeaderCheckbox';
+import CustomTableBodyCheckbox from '../../optimized/UiKits/CustomTableBodyCheckbox';
 export default function AllOrdersTable({
 	orders,
 	array,

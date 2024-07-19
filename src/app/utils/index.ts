@@ -110,3 +110,28 @@ export const useClickOutsideWithId = (id: string, onClickOutside: () => void) =>
 		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, [id, onClickOutside]);
 };
+
+
+
+export function calculateTimeAgo(createdAt: string): string {
+	const currentDate = new Date();
+	const createdDate = new Date(createdAt);
+	const differenceInTime = currentDate.getTime() - createdDate.getTime();
+	const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24));
+
+	if (differenceInDays > 0) {
+		return differenceInDays > 1 ? `${differenceInDays} days ago` : `${differenceInDays} day ago`;
+	}
+
+	const differenceInHours = Math.floor(differenceInTime / (1000 * 3600));
+	if (differenceInHours > 0) {
+		return differenceInHours > 1 ? `${differenceInHours} hours ago` : `${differenceInHours} hour ago`;
+	}
+
+	const differenceInMinutes = Math.floor(differenceInTime / (1000 * 60));
+	if (differenceInMinutes > 0) {
+		return differenceInMinutes > 1 ? `${differenceInMinutes} minutes ago` : `${differenceInMinutes} minute ago`;
+	}
+
+	return 'created now';
+}

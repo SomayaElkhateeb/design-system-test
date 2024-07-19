@@ -12,7 +12,7 @@ export default function ClientBox({ avatar, title, details }: Props) {
 			<div className='flex items-center gap-2'>
 				{avatar}
 				<div>
-					{title && <h5 className='text-sm font-semibold text-title'>{capitalize(title)}</h5>}
+					{title && <h5 className='text-sm font-semibold text-title capitalize'>{capitalize(title)}</h5>}
 					{details && <p className='text-sm text-subtitle'>{details}</p>}
 				</div>
 			</div>

@@ -58,7 +58,7 @@ export const SubHeaderMobileBtns = ({
 	return (
 		<>
 			{xs && (
-				<div className='flex-btn-end gap-4'>
+				<div className='flex-btn-end'>
 					<SubHeaderActionBtns isLoading={isLoading} onSubmit={onSubmit} />
 				</div>
 			)}

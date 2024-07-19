@@ -1,7 +1,5 @@
-import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
-import { settingMenus } from '../CustomersTables/CustomersTable';
+
 import { useNavigate } from 'react-router-dom';
 import { getImageUrl } from 'src/app/utils';
 
@@ -10,15 +8,16 @@ interface props {
 	lastName?: string;
 	imageUrl?: string;
 	email?: string;
-	settingMenus: settingMenus[];
-	id?: string;
+
+	id: string;
 	path?: string;
 	noAvatar?: boolean;
 	customersCount?: number;
 	group?: boolean;
+	children: React.ReactNode;
+	handelId: (e: string) => void;
 }
 export default function CustomersComponenet({
-	settingMenus,
 	firstName,
 	lastName,
 	imageUrl,
@@ -28,10 +27,12 @@ export default function CustomersComponenet({
 	noAvatar,
 	customersCount,
 	group,
+	handelId,
+	children,
 }: props) {
 	//  hooks
 	const navigate = useNavigate();
-	const { handleSelect, selectedOption } = useSelectBox();
+
 	return (
 		<div className='flex-row-global-items-start justify-between '>
 			<div
@@ -43,7 +44,9 @@ export default function CustomersComponenet({
 				{!noAvatar ? (
 					<Avatar variant='group' groupCount={customersCount} size='lg' />
 				) : (
-					imageUrl && <img src={getImageUrl(imageUrl)} loading='lazy' />
+					imageUrl && (
+						<img src={imageUrl} className='w-[3.2rem] h-[3.2rem] rounded' loading='lazy' />
+					)
 				)}
 
 				<div className='flex-col-global gap-1 justify-between'>
@@ -53,11 +56,7 @@ export default function CustomersComponenet({
 					<p className='font-normal text-sm'>{email}</p>
 				</div>
 			</div>
-			<ThreeDotsButton
-				sortMenus={settingMenus}
-				selectedOption={selectedOption}
-				handelSelect={handleSelect}
-			/>
+			<div onClick={() => handelId(id)}>{children}</div>
 		</div>
 	);
 }

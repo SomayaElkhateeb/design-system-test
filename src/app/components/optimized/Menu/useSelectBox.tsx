@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const useSelectBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +26,7 @@ const useSelectBox = () => {
 		};
 	}, []);
 
-	return { isOpen, selectedOption, handleSelect, handleButtonClick };
+	return { isOpen, selectedOption, handleSelect, handleButtonClick,setSelectedOption };
 };
 
 export default useSelectBox;

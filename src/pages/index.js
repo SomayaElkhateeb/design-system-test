@@ -22,7 +22,7 @@ export { default as BillingAndPlans } from './SettingsPage/_comp/BillingAndPlans
 export { default as SettingsConfig } from './SettingsPage/_comp/SettingsConfig';
 export { default as Nested_pages_SettingsConfig } from './SettingsPage/_comp/Nested_Settings_pagesConfig';
 export { default as AppsTabs } from './AppsPage/_comp/AppsTabs';
-export { default as CustomerInfo } from './CustomersPage/_comp/CustomerInfo';
+export { default as CustomerInfo } from './CustomersPage/_comp/_customer_info/CustomerInfo';
 export { default as ChooseEmail } from './MarketingPage/_comp/EmailForm/ChooseEmail';
 
 // SubComponent

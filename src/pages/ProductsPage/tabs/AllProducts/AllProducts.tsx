@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { MobileProductViews } from 'src/app/components/optimized';
+import { useEffect, useMemo, useState } from 'react';
+
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 import { Product, productSettingsMenu } from '../../_comp/data';
@@ -17,7 +17,7 @@ const AllProducts: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const { allProducts, isLoading, error } = useAppSelector((state) => state.allProducts);
 	// Fetch products on component mount
-	useEffect(() => {
+	useMemo(() => {
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
 

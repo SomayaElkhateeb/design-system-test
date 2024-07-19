@@ -41,13 +41,7 @@ export default function Smsa() {
 			textColor = 'white';
 			break;
 	}
-	const options = [
-		{
-			id: 1,
-			text: t('Delete'),
-			icon: <RiDeleteBin5Line color='pri-dark' />,
-		},
-	];
+
 
 	const smsa = [
 		{
@@ -88,8 +82,14 @@ export default function Smsa() {
 					icon={
 						<MenuOptions
 							btn={<MoreIcon className='fill-subtitle' />}
-							options={options}
-							handle={() => console.log('uninstall')}
+							options={[
+								{
+									id: 1,
+									text: t('Delete'),
+									icon: <RiDeleteBin5Line color='pri-dark' />,
+									click: console.log('uninstall')
+								},
+							]}
 						/>
 					}
 				/>

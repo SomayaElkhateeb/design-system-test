@@ -13,13 +13,6 @@ export default function RowItem({
 }) {
 	const { t } = useTranslation();
 
-	const options = [
-		{
-			id: 1,
-			text: t('delete rate'),
-			icon: <RiDeleteBin5Line color='pri-dark' />,
-		},
-	];
 	return (
 		<div className='flex flex-col py-2 gap-4 md:flex-row md:justify-between md:items-center'>
 			<div className='flex-col-global  gap-[.3rem]'>
@@ -35,9 +28,16 @@ export default function RowItem({
 				<div className='flex justify-start pb-2 md:justify-end'>
 					<MenuOptions
 						btn={<MoreIcon className='fill-subtitle' />}
-						options={options}
-						handle={() => console.log('uninstall')}
+						options={[
+							{
+								id: 1,
+								text: t('delete rate'),
+								icon: <RiDeleteBin5Line color='pri-dark' />,
+								click: console.log('delete rate')
+							},
+						]}
 					/>
+
 				</div>
 				<p className='text-subtitle text-sm'>{period}</p>
 			</div>

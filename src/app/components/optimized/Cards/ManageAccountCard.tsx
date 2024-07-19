@@ -7,7 +7,7 @@ import CollapsibleSection from './ManagementCards/CollapsibleSection';
 import CopyableSection from './ManagementCards/CopyableSection';
 import Collapsible from './ManagementCards/Collapsible';
 import { useClickOutsideWithId } from 'src/app/utils';
-import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import toast, { Renderable, Toast, ValueFunction } from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import { AuthApi } from 'src/app/React-Query/authApi';
@@ -29,7 +29,7 @@ const ManageAccountCard = ({ menu, onClose }: { menu?: boolean; onClose?: () => 
 		// 		toast.success(response?.data?.message);
 
 		// 	},
-		// 	onError: PublicHandelingErrors.onErrorResponse,
+		// 	onError: PublicHandlingErrors.onErrorResponse,
 		// });
 		localStorage.removeItem('token');
 		window.location.href = '/login';

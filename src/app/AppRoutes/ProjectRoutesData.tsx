@@ -36,6 +36,7 @@ import PackageSubscribe from 'src/pages/MarketingPage/_comp/EmailForm/Email/_com
 import PagesPage from 'src/pages/PagesPage/PagesPage';
 import PagesConfig from 'src/pages/PagesPage/_comp/PagesConfig';
 import { SubCategories } from 'src/pages/ProductsPage/tabs/Categories/_comp/subCategory/SubCategories';
+import AddInventoryPage from 'src/pages/ProductsPage/tabs/Inventory/_comp/_addInventory/AddInventoryPage';
 import {
 	BundleProductPage,
 	ConfigurableProductPage,
@@ -83,7 +84,7 @@ export const PagesRoutes: Route[] = [
 		element: <CustomerInfo />,
 	},
 	{
-		path: '/customers/:id/addNewAddresse',
+		path: '/customers/:id/addNewAddress',
 		element: <AddNewAddressCustomer />,
 	},
 	{ path: '/customers/addCustomer', element: <AddCustomerPage /> },
@@ -135,6 +136,7 @@ export const PagesRoutes: Route[] = [
 		element: <ProductsPage />,
 		children: [{ path: ':tab', element: <ProductsTabs /> }],
 	},
+	{ path: '/products/inventory/addInventory', element: <AddInventoryPage /> },
 	// '/products/new/configurable'
 	{ path: '/products/new/configurable', element: <ConfigurableProductPage /> },
 	// '/products/new/simple'

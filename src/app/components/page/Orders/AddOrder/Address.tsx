@@ -7,15 +7,14 @@ import { CheckBox } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import { ValidFormStoreByValues } from 'src/utils/types';
 import { AddAddressInterface } from './Comp/useOrderAddress';
-
-import LocationPicker from 'src/app/components/ui/LocationPicker';
-
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import { countries } from '../../../../../pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
+
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
-
+import { CountriesApi } from 'src/app/React-Query/CountriesApi';
+import { useQuery } from 'react-query';
+import { CountriesInterface } from 'src/app/interface/CountriesInterface';
 interface AddressProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, AddAddressInterface>;
 	isName?: boolean;
@@ -72,7 +71,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 					<div className='col-span-2 xl:col-span-1'>
 						<FormField
 							formStore={formStore}
-							name='giftName'
+							name='gift_receiver_name'
 							label={t('Gift receiver name')}
 							render={(field) => <Input {...field} />}
 						/>
@@ -126,9 +125,18 @@ function ManualAddressForm<TFormStore>({
 	isName?: boolean;
 }) {
 	const { t } = useTranslation();
+
+	//  get CountriesData  with api request
+	const { data } = useQuery([`countriesData`], () => CountriesApi.countries());
+	let CountryId = formStore.getValues('country') ? formStore.getValues('country') : '';
+	const { data: CitiesData } = useQuery([`citiesData`, CountryId], () =>
+		CountriesApi.cities(CountryId ? CountryId : ''),
+	);
+	let CountriesData = data?.data?.data;
+	let cities = CitiesData?.data?.data;
 	return (
 		<section className='grid grid-cols-2 lg:col-span-2'>
-			<div className='grid col-span-2 xl:col-span-1 gap-4 '>
+			<div className='grid col-span-2 xl:col-span-1 gap-4'>
 				{isName && (
 					<FormField
 						formStore={formStore}
@@ -137,23 +145,47 @@ function ManualAddressForm<TFormStore>({
 						render={(field) => <Input {...field} placeholder={t('Full Name')} />}
 					/>
 				)}
-				<SelectFormField
-					name='countryName'
-					label={t('Country')}
-					formStore={formStore}
-					options={countries}
-					placeholder={t('Select option')}
-				/>
-				<SelectFormField
-					name='cityName'
-					label={t('City')}
-					formStore={formStore}
-					options={countries}
-					placeholder={t('Select option')}
-				/>
+				{CountriesData?.length > 0 && (
+					<SelectFormField
+						name='country'
+						label={t('Country')}
+						formStore={formStore}
+						options={CountriesData?.map((e: CountriesInterface) => {
+							return {
+								label: e?.name,
+								value: e?.id?.toString(),
+							};
+						})}
+						placeholder={t('Select country')}
+					/>
+				)}
+
+				{(cities?.length > 0 || CountriesData?.length > 0) && (
+					<SelectFormField
+						name='city'
+						label={t('City')}
+						formStore={formStore}
+						options={
+							cities?.length > 0
+								? cities?.map((e: CountriesInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+								  })
+								: CountriesData?.map((e: CountriesInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+								  })
+						}
+						placeholder={t('Select city')}
+					/>
+				)}
 				<FormField
 					formStore={formStore}
-					name='area'
+					name='state'
 					label={t('Area / District')}
 					render={(field) => <Input {...field} placeholder={t('Area')} />}
 				/>

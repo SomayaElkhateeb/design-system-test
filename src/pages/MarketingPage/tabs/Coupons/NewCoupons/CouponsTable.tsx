@@ -39,7 +39,7 @@ export default function CouponsTable({
 	//  headers
 
 	const CouponsHeaders = [
-		{ title: t('Customer Name') },
+		{ title: t('coupon name') },
 		{ title: t('Discount') },
 		{ title: t('Ends At') },
 		{ title: t('Active?') },
@@ -58,13 +58,7 @@ export default function CouponsTable({
 		setState({ ...state, showDeletePopup: false });
 	};
 
-	const options = [
-		{
-			id: nanoid(),
-			text: 'delete',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
+
 	return (
 		<BaseTable
 			isLoading={isLoading}
@@ -101,11 +95,18 @@ export default function CouponsTable({
 
 								<MenuOptions
 									btn={<MoreIcon className='fill-subtitle' />}
-									options={options}
-									handle={() =>
-										setState({ ...state, showDeletePopup: true, deletingItemId: e?.id })
-									}
+									options={[
+										{
+											id: nanoid(),
+											text: 'delete',
+											icon: <LiaTrashAlt size='28' className='fill-error' />,
+											click: setState({ ...state, showDeletePopup: true, deletingItemId: e?.id })
+
+										},
+									]}
+
 								/>
+
 
 								{state.showDeletePopup && state.deletingItemId === e?.id && (
 									<PopupDelete

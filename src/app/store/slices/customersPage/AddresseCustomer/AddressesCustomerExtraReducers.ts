@@ -1,7 +1,7 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { AddressesCustomerSliceModel } from 'src/app/models/AddressesCustomerSliceModel';
 
-import { PostAddCustomerAddressRequest, getAllAddressesCustomer } from './AddressesCustomersAsyncThunks';
+import { PostAddCustomerAddressRequest, getAllAddressesCustomer, getCustomerAddresseInfo } from './AddressesCustomersAsyncThunks';
 
 export const getAllCustomerAddressesReducer = (
 	builder: ActionReducerMapBuilder<AddressesCustomerSliceModel>,
@@ -38,6 +38,19 @@ export const getAllCustomerAddressesReducer = (
 			state.isLoadingAddOrUpdate = false;
 
 		})
+		.addCase(getCustomerAddresseInfo.pending, (state) => {
+			state.isLoading = true;
 
+		})
+		.addCase(getCustomerAddresseInfo.fulfilled, (state, { payload }: any) => {
+
+			state.isLoading = false;
+			state.addreseCustomerInfo = payload.data;
+		})
+		.addCase(getCustomerAddresseInfo.rejected, (state, action) => {
+			state.isLoading = false;
+
+
+		})
 
 };

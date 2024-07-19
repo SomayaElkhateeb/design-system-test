@@ -6,7 +6,7 @@ export default function useCustomHookAddCustomerGroupForm() {
 			code:'',
 			name: '',
 			description: '',
-			status: false,
+			status: 0,
 			customers: [],
 		};
 	};

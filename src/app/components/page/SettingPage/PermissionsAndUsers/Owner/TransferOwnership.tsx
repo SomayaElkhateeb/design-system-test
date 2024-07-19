@@ -1,48 +1,90 @@
-import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { Form } from 'src/app/components/ui/form';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import NewOwner from './NewOwner';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { PostNewOwner } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
+import { useNavigate } from 'react-router-dom';
+import { AddOwnerSchema } from 'src/app/schema/settings/AddOwnerSchema';
+import { useEffect } from 'react';
 
 export interface addOwnerInterface {
 	name: string;
 	email: string;
-	password: string;
+	password?: string;
+	password_confirmation?: string;
+	role_id: string;
+	status?: number;
 }
 
-const ownerSchema = {
-	name: z.string().min(5, { message: 'Full name is required' }),
-	email: z.string().min(1, { message: 'Stuff email is required' }).email(),
-	password: z.string().min(6, { message: 'Password must be at least 6 characters long' }),
+export const newOwnerValue = () => {
+	return {
+		name: '',
+		email: '',
+		password: '',
+		password_confirmation: '',
+		role_id: '',
+		status: 0,
+	};
 };
 
 export default function TransferOwnership() {
 	//  hooks
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
-	const handleSubmit = (values: addOwnerInterface) => {
-		console.log(values);
-	};
-	const handelDefaultValue = () => {
-		return {
-			name: '',
-			email: '',
-			password: '',
-		};
-	};
+	// redux
+	const dispatch = useAppDispatch();
+
+	const { isLoadingAddOrUpdate, newOwner } = useAppSelector(
+		(state) => state.usersSettings,
+	);
+
+
 
 	const { formStore, onSubmit } = useForm({
-		schema: ownerSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
+		schema: AddOwnerSchema,
+		handleSubmit: (values: addOwnerInterface) => {
+			const formData = new FormData();
+
+			formData.append('name', values.name);
+			formData.append('email', values.email);
+			formData.append('password', values.password);
+			formData.append('password_confirmation', values.password_confirmation);
+			formData.append('role_id', values.role_id);
+			formData.append('status', values.status);
+
+			console.log("values", values)
+			dispatch(PostNewOwner(formData)).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			});
+
+		},
+		defaultValues: newOwnerValue(),
 	});
+
+	useEffect(() => {
+		formStore.setValue('status', formStore.watch('status') ? 1 : 0);
+	}, [formStore.watch('status')]);
+
+	
+	useEffect(() => {
+		if (newOwner) {
+			formStore.setValue('name', newOwner.name);
+			formStore.setValue('email', newOwner.email);
+			formStore.setValue('password', newOwner.password);
+			formStore.setValue('password_confirmation', newOwner.password_confirmation);
+			formStore.setValue('role_id', newOwner.role_id);
+			newOwner?.status > 0 ? formStore.setValue('status', 1) : formStore.setValue('status', 0);
+		}
+	}, [newOwner, formStore]);
 
 	return (
 		<Form {...formStore}>

@@ -9,23 +9,24 @@ import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import AddBrandForm from '../../Barnds/_comp/AddBrandForm';
+import AddBrandForm from '../../Brands/_comp/AddBrandForm';
 
-export default function TopSectionCategoriesTable({ title }: { title: string }) {
+export default function TopSectionCategoriesTable({
+	title,
+	setOpenDialog,
+	sortMenus,
+	selectedOption,
+	handleSelect,
+}: {
+	title: string;
+	setOpenDialog: (e: boolean) => void;
+	sortMenus: { id: string; text: string }[];
+	selectedOption: string;
+	handleSelect: (e: string) => void;
+}) {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
-	const [openDialog, setOpenDialog] = useState(false);
-	//  custom hook for select arrang item
-
-	const { selectedOption, handleSelect } = useSelectBox();
-
-	const sortMenus = [
-		{ id: nanoid(), text: t('Name A to Z') },
-		{ id: nanoid(), text: t('Name Z to A') },
-		{ id: nanoid(), text: t('Date Added') },
-		{ id: nanoid(), text: t('Date modified') },
-	];
 
 	const ActionsMenus = [
 		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
@@ -35,10 +36,6 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
-	//  close add brand dialog
-	const handleClose = () => {
-		setOpenDialog(false);
-	};
 
 	return (
 		<>
@@ -60,12 +57,9 @@ export default function TopSectionCategoriesTable({ title }: { title: string }) 
 							handelSelect={handleSelect}
 						/>
 					</div>
-					{xs && <AddButtonMobile onClick={() => setOpenDialog(true)} />}
 				</div>
 				<hr />
 			</div>
-
-			{openDialog && <AddBrandForm openDialog={openDialog} handleClose={handleClose} />}
 		</>
 	);
 }

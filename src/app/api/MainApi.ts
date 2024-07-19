@@ -1,5 +1,5 @@
 import axios from 'axios';
-import PublicHandelingErrors from '../utils/AxiosUtils/PublicHandelingErrors';
+import PublicHandlingErrors from '../utils/AxiosUtils/PublicHandlingErrors';
 
 //  get url from saved domain
 let custom_Basic_Url: string | null | undefined = 'my.dookan.net';
@@ -30,22 +30,22 @@ MainApi.interceptors.request.use(
 
 		// config.headers["Content-Type"] = "application/x-www-form-urlencoded";
 
-		config.headers['Content-Type'] = 'application/json';
+		// config.headers['Content-Type'] = 'application/json';
 		// application/json;charset=utf-8
-		config.headers['Accept'] = 'application/json';
+		// config.headers['Accept'] = 'application/json';
 		// config.headers['Access-Control-Allow-Origin'] = '*';
 		// config.headers['Access-Control-Allow-Methods'] = '*';
 		// config.headers['Access-Control-Allow-Headers'] = '*';
 		if (!config.params) {
 			config.params = {};
 		}
-		config.params['locale'] = language;
+		config.params['locale'] = "all";
 		config.params['accept_token'] = true;
 		return config;
 	},
 	function (error) {
 		// Do something with request error
-		return PublicHandelingErrors.onErrorResponse(error);
+		return PublicHandlingErrors.onErrorResponse(error);
 	},
 );
 

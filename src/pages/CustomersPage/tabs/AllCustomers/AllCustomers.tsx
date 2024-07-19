@@ -15,11 +15,19 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { AnalyticsIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
 
-import CustomersTable from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
+import CustomersTable from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { useEffect } from 'react';
-import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useEffect, useMemo,useState } from 'react';
+import {
+	deleteCustomerAction,
+	getAllCustomersTable,
+} from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { CustomerInterface } from 'src/app/interface/CustomerInterface';
+import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
+import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -27,23 +35,17 @@ export default function AllCustomers() {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
-	const dispatch=useAppDispatch()
+	const dispatch = useAppDispatch();
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
-	const { selectedOption, handleSelect } = useSelectBox();
+	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 	// selectors
 	const { allCustomers } = useAppSelector((state) => state.allCustomer);
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
 		{ id: nanoid(), text: 'Name Z to A' },
-		{ id: nanoid(), text: 'Sales Ascending' },
-		{ id: nanoid(), text: 'Sales Descending' },
-		{ id: nanoid(), text: 'Expenses Ascending' },
-		{ id: nanoid(), text: 'Expenses Descending' },
-		{ id: nanoid(), text: 'Net profit Ascending' },
-		{ id: nanoid(), text: 'Net profit Descending' },
 	];
-
+	
 	const ActionsMenus = [
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
@@ -61,6 +63,51 @@ export default function AllCustomers() {
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 	}, [dispatch]);
+
+	//  handel Sorting Table
+	const sortFunctions = {
+		'Name A to Z': (a: CustomerInterface, b: CustomerInterface) => a.name.localeCompare(b.name),
+		'Name Z to A': (a: CustomerInterface, b: CustomerInterface) => b.name.localeCompare(a.name),
+	};
+	const { arrangedData: CustomersArrangedData } = UseCustomTableSorting<CustomerInterface>(
+		sortFunctions,
+		allCustomers,
+		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
+	);
+
+	//  handel deleteItem
+	const {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	} = UseDeleteItem();
+	// Delete customer
+
+	const handelDeleteCustomer = () => {
+		dispatch(deleteCustomerAction(custom_Id)).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				handelCloseDeleteDialog();
+				dispatch(getAllCustomersTable());
+			}
+		});
+	};
+	useMemo(() => {
+		switch (selectedOption) {
+			case 'Delete customer':
+				handelOpenDialog();
+				setSelectedOption('');
+				break;
+			case 'Customer report':
+				setSelectedOption('');
+				custom_Id && navigate(`/customers/${custom_Id}`);
+				break;
+		}
+	}, [selectedOption, custom_Id]);
+	
+  
 	return (
 		<>
 			<div className='flex-col-global'>
@@ -92,22 +139,35 @@ export default function AllCustomers() {
 				<hr />
 
 				{/*  customers table case of not small media */}
-				<CustomersTable settingMenus={settingMenus} />
+				<CustomersTable handelId={handelId} CustomersArrangedData={CustomersArrangedData}>
+					<ThreeDotsButton
+						sortMenus={settingMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</CustomersTable>
 
 				{/*  case of small media */}
 				{xs && (
 					<div className='responsive_pages'>
-						{allCustomers?.map((e, i: number) => (
-							<CustomersComponenet
-								id={e.id}
-								path='customers'
-								settingMenus={settingMenus}
-								key={i}
-								firstName={e.first_name}
-								lastName={e.last_name}
-								email={e.email}
-							/>
-						))}
+						{CustomersArrangedData?.length > 0 &&
+							CustomersArrangedData?.map((e, i: number) => (
+								<CustomersComponenet
+									handelId={handelId}
+									id={e.id}
+									path='customers'
+									key={i}
+									firstName={e.first_name}
+									lastName={e.last_name}
+									email={e.email}
+								>
+									<ThreeDotsButton
+										sortMenus={settingMenus}
+										selectedOption={selectedOption}
+										handelSelect={handleSelect}
+									/>
+								</CustomersComponenet>
+							))}
 						<AddButtonMobile path='/customers/addCustomer' />
 					</div>
 				)}
@@ -116,6 +176,16 @@ export default function AllCustomers() {
 			{/* open filter drawer */}
 			{openDrawer && (
 				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+			)}
+			{/* openDeleteDialog */}
+			{openDeleteDialog && (
+				<PopupDelete
+					open={openDeleteDialog}
+					onClose={handelCloseDeleteDialog}
+					title={t('Delete Item')}
+					subTitle={t('Do You Want To Delete This Item')}
+					onDelete={handelDeleteCustomer}
+				/>
 			)}
 		</>
 	);

@@ -88,11 +88,13 @@ export default class AxiosHandler {
         const formData = new FormData();
         Object.keys(payload).forEach(k => {
             if (Array.isArray(payload[k])) {
+                
                 formData.append(
                     prefix ? `${prefix}[${k}][]` : `${k}[]`,
                     JSON.stringify(payload[k]),
                 );
             } else {
+                
                 formData.append(prefix ? `${prefix}[${k}]` : k, payload[k]);
             }
         });

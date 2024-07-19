@@ -1,62 +1,99 @@
-import { FC, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { useForm } from 'src/app/utils/hooks/form';
-import { z, ZodObject, ZodRawShape } from 'zod';
+import { InferredZodSchema, useForm } from 'src/app/utils/hooks/form';
+import { z } from 'zod';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { TfiUpload } from 'react-icons/tfi';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
+
 import { useTranslation } from 'react-i18next';
-import AddBrandForm from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandForm';
-import {
-	Select,
-	SelectContent,
-	SelectTrigger,
-	SelectValue,
-	SelectItem,
-} from 'src/app/components/ui/select';
+
 import ImageInput from 'src/app/components/ui/form/ImageInput';
 
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import {
+	getAllProductsTable,
+	PostSimpleQuickProduct,
+} from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
+import AddCategoryForm from 'src/pages/ProductsPage/tabs/Categories/_comp/AddCategoryForm';
+import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
+
 interface simpleProductInterface {
-	productName: string;
+	name: string;
 	price: number;
-	quantity: number;
-	skuCode: string;
+	quy: number;
+	sku: string;
 	category: string;
-	image: File;
+	images: File;
 }
 const simpleProductSchema = {
-	productName: z.string().min(1, 'Product name is required'),
+	name: z.string().min(1, 'Product name is required'),
 	price: z.coerce.number().min(1).positive(),
-	quantity: z.coerce.number().min(1).positive(),
-	skuCode: z.string().min(1, 'SKU code is required'),
+	quy: z.coerce.number().optional(),
+	sku: z.string().min(1, 'SKU code is required'),
 	category: z.string().min(1, 'Category is required'),
-	image: z.instanceof(File),
+	inventories: z.string().min(1, 'inventories is required'),
+	images: z.instanceof(File),
+	type: z.optional(z.string()).or(z.literal('')),
 };
+export type AddsimpleProductSchemaSchemaValues = InferredZodSchema<typeof simpleProductSchema>;
 
-const SimpleProductForm: FC = () => {
+const SimpleProductForm = ({
+	categoriesTable,
+	handleClose,
+}: {
+	categoriesTable: CategoryInterface[];
+	handleClose: () => void;
+}) => {
+	//  hooks
+	const dispatch = useAppDispatch();
+	const { allProducts } = useAppSelector((state) => state.allProducts);
+	const { inventory } = useAppSelector((state) => state.inventory);
+	//  custom hook
 	const { formStore, onSubmit } = useForm({
 		schema: simpleProductSchema,
-		handleSubmit: (validatedData) => {
-			console.log(validatedData);
+		handleSubmit: (values) => {
+			const formData = new FormData();
+
+			formData.append('name', values.name);
+			values.price && formData.append('price', values.price.toString());
+			values.quy && formData.append('quy', values.quy.toString());
+			formData.append('sku', values.sku);
+			formData.append('category[]', values.category);
+			formData.append('images[files][]', values.images);
+			formData.append('type', 'simple');
+			formData.append(`inventories[${values.inventories}]`, values.quy);
+
+			dispatch(PostSimpleQuickProduct(formData)).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					dispatch(getAllProductsTable());
+					handleClose();
+				}
+			});
 		},
 		defaultValues: {
-			productName: '',
+			name: '',
 			price: 0,
-			quantity: 0,
-			skuCode: '',
-			image: undefined,
+			quy: 0,
+			sku: '',
+			images: undefined,
 			category: '',
+			inventories: '',
 		},
 	});
 
 	const [openDialog, setOpenDialog] = useState(false);
 	const { t } = useTranslation();
 
+	useMemo(() => {
+		dispatch(getAllProductsTable());
+		dispatch(getInventoryTable());
+	}, [dispatch]);
 	return (
 		<div className='flex-col-global gap-6'>
 			<h3 className='title md:font-bold'>{t('Add a quick Product')}</h3>
@@ -64,7 +101,7 @@ const SimpleProductForm: FC = () => {
 				<form className='bg-white rounded  flex-col-global  w-full' onSubmit={onSubmit}>
 					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
 						<div className='col-span-2'>
-							<ImageInput<simpleProductInterface> name={'image'} formStore={formStore}>
+							<ImageInput<simpleProductInterface> name={'images'} formStore={formStore}>
 								<TfiUpload className='text-[1.5rem]' />
 								<p className='paragraph text-center'>{t('Upload Image')}</p>
 							</ImageInput>
@@ -74,11 +111,11 @@ const SimpleProductForm: FC = () => {
 							<FormField
 								container={{ className: 'col-span-6 lg:col-span-3' }}
 								formStore={formStore}
-								name='productName'
+								name='name'
 								render={(field) => (
 									<Input
 										{...field}
-										id='productName'
+										id='name'
 										type='text'
 										placeholder={`${t('Product Name')} (${t('Required')})`}
 									/>
@@ -106,17 +143,17 @@ const SimpleProductForm: FC = () => {
 							<FormField
 								container={{ className: 'col-span-6 lg:col-span-3' }}
 								formStore={formStore}
-								name='quantity'
+								name='quy'
 								render={(field) => (
-									<Input {...field} id='quantity' type='number' placeholder={t('Quantity')} />
+									<Input {...field} id='quy' type='number' placeholder={t('Quantity')} />
 								)}
 							/>
 							<FormField
 								container={{ className: 'col-span-6 lg:col-span-3' }}
 								formStore={formStore}
-								name='skuCode'
+								name='sku'
 								render={(field) => (
-									<Input {...field} id='skuCode' type='text' placeholder={t('SKU Code')} />
+									<Input {...field} id='sku' type='text' placeholder={t('SKU Code')} />
 								)}
 							/>
 
@@ -135,8 +172,8 @@ const SimpleProductForm: FC = () => {
 											<option value='' disabled>
 												{t('Select Category')}
 											</option>
-											<option value='category1'>Category 1</option>
-											<option value='category2'>Category 2</option>
+											{categoriesTable?.length > 0 &&
+												categoriesTable?.map((e, i) => <option value={e.id}>{e.name}</option>)}
 										</select>
 										<button
 											type='button'
@@ -149,10 +186,39 @@ const SimpleProductForm: FC = () => {
 									</div>
 								)}
 							/>
+							<FormField
+								container={{ className: 'col-span-6' }}
+								formStore={formStore}
+								name='inventories'
+								render={(field) => (
+									<div className='relative flex items-center border border-gray-300 rounded-md'>
+										<select
+											{...field}
+											name='inventories'
+											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
+											onChange={field.onChange}
+										>
+											<option value='' disabled>
+												{t('Select Inventory')}
+											</option>
+											{inventory?.length > 0 &&
+												inventory?.map((e, i) => <option value={e.id}>{e.name}</option>)}
+										</select>
+									</div>
+								)}
+							/>
 						</div>
 					</div>
 					{openDialog && (
-						<AddBrandForm openDialog={openDialog} handleClose={() => setOpenDialog(false)} />
+						<AddCategoryForm
+							openDialog={openDialog}
+							handleClose={() => setOpenDialog(false)}
+							allProducts={allProducts}
+							Edit_id={''}
+							setEdit_id={function (e: string): void {
+								throw new Error('Function not implemented.');
+							}}
+						/>
 					)}
 					<div className='flex  space-x-4 lg:justify-end justify-center'>
 						<Button variant='primary' type='submit'>

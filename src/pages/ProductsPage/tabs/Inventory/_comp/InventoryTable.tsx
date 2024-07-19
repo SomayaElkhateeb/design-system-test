@@ -1,105 +1,110 @@
-import { TableCell } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
-import { getImageUrl } from 'src/app/utils';
+
 import useLanguage from 'src/app/utils/hooks/useLanguage';
-import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
-import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
-import { Product, allProducts } from 'src/pages/ProductsPage/_comp/data';
-import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+
+import { InventoryInterface } from 'src/app/interface/InventoryInterface';
+import { Switch } from 'src/app/components/ui/switch';
+import {
+	getInventoryTable,
+	PutUpdateInventoryRequest,
+} from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
+import { useAppDispatch } from 'src/app/store';
 
 export default function InventoryTable({
-	array,
-	setArray,
 	inventory,
 	isLoading,
+	children,
+	handelId,
 }: {
-	array: string[];
-	setArray: (e: string[]) => void;
-	inventory: Product[];
+	inventory: InventoryInterface[];
 	isLoading: boolean;
+	children: React.ReactNode;
+	handelId: (e: string) => void;
 }) {
 	//  hooks
+	const dispatch = useAppDispatch();
 	const { language } = useLanguage();
 	const { t } = useTranslation();
-	const [isFavorite, setIsFavorite] = useState(false);
 
 	//  headers
 
 	const inventoryHeaders = [
 		{
-			icon: (
-				<CustomTableHeaderCheckbox
-					array={array}
-					setArray={setArray}
-					mainArray={allProducts?.map((e) => e.id)}
-				/>
-			),
-			title: t('Product & Category'),
+			title: t('INVENTORY NAME'),
 		},
 		{ title: t('SKU') },
-		{ title: t('QTY') },
-		{ title: t('Price') },
+		{ title: t('Location') },
+		{ title: t('Branch name') },
+		{ title: t('Status') },
+		{ title: t('PRIORITY') },
+		{ title: t('actions') },
 	];
 
-	function toggleFavorite() {
-		setIsFavorite(!isFavorite);
-	}
+	const handelUpdateStatus = (e: InventoryInterface) => {
+		dispatch(
+			PutUpdateInventoryRequest({
+				data: {
+					status: e.status > 0 ? 0 : 1,
+					city: e.city,
+					code: e.code,
+					contact_email: e.contact_email,
+					contact_name:e.contact_name,
+					contact_number:e.contact_number.toString(),
+					country:e.country,
+					name:e.name,
+					postcode:e.postcode,
+					state:e.state,
+					street:e.street
+				},
+				id: e?.id,
+			}),
+		).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				dispatch(getInventoryTable());
+			}
+		});
+	};
+
 	return (
 		<BaseTable
 			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={inventoryHeaders.map((h) => h)}
-			rows={inventory?.map((e: Product, i: number) => {
+			rows={inventory?.map((e: InventoryInterface, i: number) => {
 				return {
 					item: e,
 					elements: [
 						<GlobalTableCell>
-							<div className=' flex  items-center gap-[.4rem] '>
-								<div className='flex-col-global gap-[.4rem] items-center'>
-									<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
-									<button onClick={toggleFavorite}>
-										{isFavorite ? (
-											<StarActiveIcon className='fill-neutral-1' />
-										) : (
-											<StarIcon className='fill-hint' />
-										)}
-									</button>
-								</div>
-								<div className='relative'>
-									<img src={getImageUrl(e.imageUrl)} loading='lazy' alt={e.name} />
-									<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
-								</div>
+							<p className='title text-sm'>{e.name}</p>
+						</GlobalTableCell>,
+						<GlobalTableCell>
+							<p className='text-title'>{e.code}</p>
+						</GlobalTableCell>,
 
-								<div className='flex-col-global gap-2'>
-									<p className='title text-sm'>{e.name}</p>
-									<p className='subtitle'>{e.category}</p>
-									<p className='subtitle'>
-										{e.option} {t('Options')}
-									</p>
-								</div>
+						<GlobalTableCell>
+							<p>{e?.country}</p>
+						</GlobalTableCell>,
+						<GlobalTableCell>
+							<p>{e.branch_id.name}</p>
+						</GlobalTableCell>,
+
+						<GlobalTableCell>
+							<div onClick={() => handelUpdateStatus(e)}>
+								<Switch checked={e.status > 0 ? true : false} />
 							</div>
 						</GlobalTableCell>,
 						<GlobalTableCell>
-							<p className='text-title'>{e.SKU}</p>
-						</GlobalTableCell>,
-						<GlobalTableCell>
-							<p className={e.quantity === 0 ? 'text-error' : 'text-black'}>
-								{e.quantity > 0 ? e.quantity : t('Out of stock')}
-							</p>
-						</GlobalTableCell>,
-						<GlobalTableCell>
-							<span className='text-primary'>SAR</span> {e.price}
+							<p>{e.priority}</p>
 						</GlobalTableCell>,
 
-						<TableCell>
-							<ArrowTables path={`/products/${e?.id}`} />
-						</TableCell>,
+						<GlobalTableCell>
+							<div onClick={() => handelId(e?.id)}>{children}</div>
+						</GlobalTableCell>,
 					],
 				};
 			})}

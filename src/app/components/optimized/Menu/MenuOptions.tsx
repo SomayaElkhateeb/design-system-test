@@ -9,19 +9,12 @@ import { PopupContext } from '@mui/base/Unstable_Popup';
 
 export default function MenuOptions({
 	options,
-	handle,
 	btn,
 }: {
 	options: any;
-	handle: () => void;
 	btn: React.ReactNode;
 }) {
-	const createHandleMenuClick = (menuItem: string) => {
-		return () => {
-			// console.log(`Clicked on ${menuItem}`);
-			handle();
-		};
-	};
+
 
 	return (
 		<Dropdown>
@@ -31,8 +24,8 @@ export default function MenuOptions({
 				{options.map((item: any) => {
 					return (
 						<MenuItem
-							key={item}
-							onClick={createHandleMenuClick(item.text)}
+							key={item.id}
+							onClick={() => item.click()}
 							className='flex items-center gap-2'
 						>
 							{item.icon} {item.text}
@@ -145,3 +138,13 @@ const MenuButton = styled(BaseMenuButton)(
   cursor: pointer;
   `,
 );
+
+
+
+
+	// const createHandleMenuClick = (menuItem: string) => {
+	// 	return () => {
+	// 		console.log(`Clicked on ${menuItem}`);
+	// 		handle();
+	// 	};
+	// };

@@ -1,52 +1,58 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import { FaRegEdit } from 'react-icons/fa';
+import { IoIosAddCircle } from 'react-icons/io';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { Button } from 'src/app/components/optimized';
 
-export default function TopSectionInventoryTable() {
+export default function TopSectionInventoryTable({
+	sortMenus,
+	selectedOption,
+	handleSelect,
+}: {
+	sortMenus: { id: string; text: string }[];
+	selectedOption: string;
+	handleSelect: (e: string) => void;
+}) {
 	//  hooks
-	const [age, setAge] = useState('');
-	//  custom hook for select arrang item
+	const navigate = useNavigate();
+	const { t } = useTranslation();
+	
+	const { xs } = useResponsive();
 
-	const { selectedOption, handleSelect } = useSelectBox();
-
-	const sortMenus = [
-		{ id: nanoid(), text: 'Name A to Z' },
-		{ id: nanoid(), text: 'Name Z to A' },
-		{ id: nanoid(), text: 'SKU Ascending' },
-		{ id: nanoid(), text: 'SKU Descending' },
-		{ id: nanoid(), text: 'Price Low in first' },
-		{ id: nanoid(), text: 'Price High in first' },
-		{ id: nanoid(), text: 'Date Added' },
-		{ id: nanoid(), text: 'Date modified' },
+	const ActionsMenus = [
+		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: 'Delete all inventories',
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
+		},
 	];
-
-	const handleChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string);
-	};
 
 	return (
 		<div className='flex-col-global'>
 			<div className='topTable'>
-				{/*  left select box */}
-
-				<FormControl sx={{ width: '12rem', backgroundColor: 'white' }}>
-					<InputLabel id='demo-simple-select-label'>Riyadh warehouse</InputLabel>
-					<Select
-						labelId='demo-simple-select-label'
-						id='demo-simple-select'
-						value={age}
-						label='Riyadh warehouse'
-						onChange={handleChange}
+				{/* add inventory button */}
+				{!xs && (
+					<Button
+						variant='primary'
+						LeftIcon={IoIosAddCircle}
+						onClick={() => {
+							navigate('addInventory');
+						}}
 					>
-						<MenuItem value={10}>Riyadh warehouse</MenuItem>
-					</Select>
-				</FormControl>
-
+						{t('Add Inventory')}
+					</Button>
+				)}
 				{/*   arrange,... */}
 				<div className='flex-row-global  gap-[1.2rem]'>
 					<ActionsComp
+						ActionsMenus={ActionsMenus}
 						sortMenus={sortMenus}
 						selectedOption={selectedOption}
 						handelSelect={handleSelect}

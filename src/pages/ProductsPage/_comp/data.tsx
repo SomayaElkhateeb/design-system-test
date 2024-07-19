@@ -1,20 +1,32 @@
-import { nanoid } from "nanoid";
-import { FaRegEdit } from "react-icons/fa";
-import { FiUploadCloud } from "react-icons/fi";
-import { LiaTrashAlt } from "react-icons/lia";
-import { SiMicrosoftexcel } from "react-icons/si";
-import { AnalyticsIcon, CopyIcon, OrdersIcon } from "src/app/utils/icons";
+import { nanoid } from 'nanoid';
+import { FaRegEdit } from 'react-icons/fa';
+import { FiUploadCloud } from 'react-icons/fi';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { SiMicrosoftexcel } from 'react-icons/si';
+import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 
 // Define products array with correct type
 export interface Product {
 	name: string;
 	category: string;
-	option?: number;
+	option: number;
 	imageUrl: string;
-	SKU?: string;
-	id?: string;
+	sku: string;
+	id: string;
 	quantity: number;
+	qty: number;
 	price: number;
+	en: { name: string; description: string };
+	ar: { name: string; description: string };
+	images: {
+		id:string;
+		large_image_url: string;
+		medium_image_url: string;
+		original_image_url: string;
+		path: string;
+		small_image_url: string;
+		url: string;
+	}[];
 }
 
 export const allProducts: Product[] = [
@@ -119,7 +131,6 @@ export const productSortMenu = [
 	{ id: nanoid(), text: 'Date modified' },
 ];
 
-
 export const productActionsMenu = [
 	{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 	{ id: nanoid(), text: 'Export products', icon: <SiMicrosoftexcel className='iconClass' /> },
@@ -131,12 +142,15 @@ export const productActionsMenu = [
 	},
 ];
 
-
 // Define setting menus for setting button action and will be used in brands section page
 export const productSettingsMenu = [
-    { id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
-    { id: nanoid(), text: 'Product report', icon: <AnalyticsIcon className='fill-subtitle' /> },
-    { id: nanoid(), text: 'Product orders', icon: <OrdersIcon className='fill-subtitle' /> },
-    { id: nanoid(), text: 'Export product orders XLS', icon: <FiUploadCloud className='iconClass' /> },
-    { id: nanoid(), text: 'Delete product', icon: <LiaTrashAlt size='25' className='fill-error' /> },
+	{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
+	{ id: nanoid(), text: 'Product report', icon: <AnalyticsIcon className='fill-subtitle' /> },
+	{ id: nanoid(), text: 'Product orders', icon: <OrdersIcon className='fill-subtitle' /> },
+	{
+		id: nanoid(),
+		text: 'Export product orders XLS',
+		icon: <FiUploadCloud className='iconClass' />,
+	},
+	{ id: nanoid(), text: 'Delete product', icon: <LiaTrashAlt size='25' className='fill-error' /> },
 ];

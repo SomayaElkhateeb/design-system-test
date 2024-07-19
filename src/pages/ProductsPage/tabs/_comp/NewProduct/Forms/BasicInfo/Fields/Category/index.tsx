@@ -7,7 +7,7 @@ import {
 	SelectValue,
 	SelectItem,
 } from 'src/app/components/ui/select';
-import AddCategoryForm from './AddCategoryForm';
+import AddCategoryForm from '../../../../../../Categories/_comp/AddCategoryForm';
 import { Button } from 'src/app/components/optimized';
 import { useState } from 'react';
 

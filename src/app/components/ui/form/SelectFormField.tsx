@@ -38,25 +38,23 @@ export default function SelectFormField({
 			name={name}
 			label={label}
 			render={(field) => (
-				<div className='flex-col-global gap-[.2rem]'>
-					<Select
-						onValueChange={field.onChange}
-						value={field.value}
-						required={field.required}
-						name={field.name}
-					>
-						<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-							<SelectValue placeholder={placeholder} />
-						</SelectTrigger>
-						<SelectContent>
-							{options.map((option) => (
-								<SelectItem key={option.value} value={option.value}>
-									{option.label}
-								</SelectItem>
-							))}
-						</SelectContent>
-					</Select>
-				</div>
+				<Select
+					onValueChange={field.onChange}
+					value={field.value}
+					required={field.required}
+					name={field.name}
+				>
+					<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
+						<SelectValue placeholder={placeholder} />
+					</SelectTrigger>
+					<SelectContent>
+						{options.map((option) => (
+							<SelectItem key={option.value} value={option.value}>
+								{option.label}
+							</SelectItem>
+						))}
+					</SelectContent>
+				</Select>
 			)}
 		/>
 	);

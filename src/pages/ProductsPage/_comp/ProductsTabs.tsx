@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import AllProducts from '../tabs/AllProducts/AllProducts';
 import Categories from '../tabs/Categories/Categories';
-import Barnds from '../tabs/Barnds/Barnds';
+import Brands from '../tabs/Brands/Brands';
 import Inventory from '../tabs/Inventory/Inventory';
 
 const ProductsTabs = () => {
@@ -14,7 +14,7 @@ const ProductsTabs = () => {
 		case 'categories':
 			return <Categories />;
 		case 'brands':
-			return <Barnds />;
+			return <Brands />;
 		case 'inventory':
 			return <Inventory />;
 

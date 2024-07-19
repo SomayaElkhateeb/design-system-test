@@ -5,6 +5,7 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { AddCustomerGroupPageSchemaValues } from '../_schema/AddCustomerGroupSchema';
+import { useEffect } from 'react';
 
 export default function GeneralInfoCustomerGroupInfo({
 	formStore,
@@ -14,6 +15,9 @@ export default function GeneralInfoCustomerGroupInfo({
 	//  hooks
 	const { t } = useTranslation();
 
+	useEffect(() => {
+		formStore.watch('status') ? formStore.setValue('status', 1) : formStore.setValue('status', 0);
+	}, [formStore.watch('status')]);
 	return (
 		<div className='global-cards gap-[1.2rem]'>
 			<h2 className='title'>{t('General Info')}</h2>

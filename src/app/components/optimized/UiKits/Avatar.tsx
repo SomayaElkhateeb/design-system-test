@@ -19,7 +19,7 @@ import { getImageUrl } from 'src/app/utils';
 
 interface AvatarProps {
 	groupCount?: number;
-	variant: 'user' | 'group';
+	variant?: 'user' | 'group';
 	fullName?: string;
 	firstName?: string;
 	lastName?: string;

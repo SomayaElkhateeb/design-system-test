@@ -15,18 +15,19 @@ import {
 	StarIcon,
 	ViewIcon,
 } from 'src/app/utils/icons';
-import CustomTableBodyCheckbox from '../../ui/form/CustomTableBodyChckbox';
+
 import ThreeDotsButton from '../Buttons/ThreedotsButton';
 import useSelectBox from '../Menu/useSelectBox';
+import CustomTableBodyCheckbox from '../UiKits/CustomTableBodyCheckbox';
 
 /**
  * @param {{
- *   id?: string;
+ *   id: string;
  *   name?: string;
  *   imageUrl: string;
  *   category?: string;
  *   options?: number;
- *   sku?: string;
+ *   sku: string;
  *   quantity?: number;
  *   price?: number;
  *   array:string[];
@@ -71,7 +72,9 @@ export default function ProductCard(props) {
 	return (
 		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl  divide-y p-0  group '>
 			<div className='relative w-full h-[260px]'>
-				<img src={props.imageUrl} alt={props.name} className='object-cover w-full h-full' />
+				{props.imageUrl && (
+					<img src={props.imageUrl} alt={props.name} className='object-cover w-full h-full' />
+				)}
 				<div className='absolute flex flex-col items-center justify-between top-3 bottom-2 left-3'>
 					<div className='flex flex-col items-center gap-4 '>
 						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
@@ -104,7 +107,7 @@ export default function ProductCard(props) {
 				<div className='space-y-1'>
 					<h2 className='title'>{props.name}</h2>
 					<p className='subtitle'>{props.category}</p>
-					<p className='paragraph'>{props.options} Options</p>
+					{props.options && <p className='paragraph'>{props.options} Options</p>}
 				</div>
 				<button>
 					<NextIcon className='fill-subtitle' />

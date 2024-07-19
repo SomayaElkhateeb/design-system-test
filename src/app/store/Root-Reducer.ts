@@ -21,12 +21,13 @@ import allOrders from './slices/ordersPage/allOrders/allOrdersSlice';
 
 import AddresseCustomersSlice from './slices/customersPage/AddresseCustomer/AddresseCustomersSlice';
 
-import shippingMethod from './slices/settingsPage/shipping/shippingMethods/shippingMethodsSlice';
-import shippingList from './slices/settingsPage/shipping/shippingList/shippingListSlice';
-import taxRatesList from './slices/settingsPage/tax/taxRates/taxRatesList/taxRatesListSlice';
-import taxRatesShow from './slices/settingsPage/tax/taxRates/taxShow/taxRatesShowSlice';
-import taxCategoriesList from './slices/settingsPage/tax/taxCategories/taxCategoriesList/taxCategoriesListSlice';
-import taxCategoriesShow from './slices/settingsPage/tax/taxCategories/taxCategoriesShow/taxCategoriesShowSlice';
+// imports settings page
+import shippingSettings from './slices/settingsPage/shipping/shippingSlice';
+import taxSettings from './slices/settingsPage/tax/taxCategories/taxCategriesSlice';
+import countriesSettings from './slices/settingsPage/countries/countriesSlice';
+import usersSettings from './slices/settingsPage/users/usersSlice';
+import rolesSettings from './slices/settingsPage/roles/rolesSlice';
+import helpSettings from './slices/settingsPage/help/helpSlice';
 
 
 export const rootReducer = combineReducers({
@@ -57,12 +58,10 @@ export const rootReducer = combineReducers({
 	allOrders: allOrders,
 
 	// settings page
-	shippingMethod: shippingMethod,
-	shippingList: shippingList, // undefined
-
-	taxRatesList: taxRatesList, // []
-	taxRatesShow: taxRatesShow, // 304 Not Modified
-
-	taxCategoriesList: taxCategoriesList, // []
-	taxCategoriesShow: taxCategoriesShow,
+	shippingSettings: shippingSettings,
+	taxSettings: taxSettings,
+	countriesSettings:countriesSettings,
+	usersSettings:usersSettings,
+	rolesSettings:rolesSettings,
+	helpSettings:helpSettings,
 });

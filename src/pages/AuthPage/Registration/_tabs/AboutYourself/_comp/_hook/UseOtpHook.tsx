@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { useMutation } from 'react-query';
 import toast from 'react-hot-toast';
 import { AuthApi } from 'src/app/React-Query/authApi';
-import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 export interface OtpVerificationInterface {
 	code: string;
 	mobile?: string;
@@ -42,7 +42,7 @@ export function UseOtp({ onVerify, phone }: { onVerify: () => void; phone: strin
 				toast.success(response?.data?.message);
 				onVerify();
 			},
-			onError: PublicHandelingErrors.onErrorResponse,
+			onError: PublicHandlingErrors.onErrorResponse,
 		});
 	};
 

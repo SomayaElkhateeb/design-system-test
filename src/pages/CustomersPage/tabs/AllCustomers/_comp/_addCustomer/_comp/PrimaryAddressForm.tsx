@@ -11,7 +11,11 @@ import {
 } from 'src/app/components/ui/select';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { countries } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
-import { AddCustomerPageSchemaValues } from '../_addCustomer/_hook/HookForAddCustomerForm';
+import { AddCustomerPageSchemaValues } from '../_hook/HookForAddCustomerForm';
+import { useQuery } from 'react-query';
+import { CountriesApi } from 'src/app/React-Query/CountriesApi';
+import { CountriesInterface } from 'src/app/interface/CountriesInterface';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 export default function PrimaryAddressForm({
 	formStore,
@@ -20,94 +24,103 @@ export default function PrimaryAddressForm({
 }) {
 	//  hooks
 	const { t } = useTranslation();
+
+	//  get CountriesData  with api request
+	const { isLoading, data, isError, error, refetch } = useQuery([`countriesData`], () =>
+		CountriesApi.countries(),
+	);
+	let CountryId = formStore.getValues('default_address.country')
+		? formStore.getValues('default_address.country')
+		: '';
+	const { data: CitiesData, refetch: refetchCities } = useQuery([`citiesData`, CountryId], () =>
+		CountriesApi.cities(CountryId ? CountryId : ''),
+	);
+	let CountriesData = data?.data?.data;
+	let cities = CitiesData?.data?.data;
+
 	return (
 		<div className='global-cards gap-[1.3rem]'>
 			<h2 className='title'>{t('Add primary address')}</h2>
 			<div className='flex-col-global md:w-[65%]'>
 				<FormField
 					formStore={formStore}
-					name='fullNameAddress'
-					label={t('Full name')}
+					name='default_address.first_name'
+					label={t('First name')}
+					render={(field) => <Input {...field} placeholder={''} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='default_address.last_name'
+					label={t('Last name')}
 					render={(field) => <Input {...field} placeholder={''} />}
 				/>
 
-				<FormField
-					formStore={formStore}
-					name='countryName'
-					label={t('Country')}
-					render={(field) => (
-						<Select
-							onValueChange={field.onChange}
-							value={field.value}
-							required={field.required}
-							name={field.name}
-						>
-							<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-								<SelectValue placeholder='Select option' />
-							</SelectTrigger>
-							<SelectContent>
-								{countries.map((country) => (
-									<SelectItem key={country.value} value={country.value}>
-										{country.label}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
-					)}
-				/>
-				<FormField
-					formStore={formStore}
-					name='cityName'
-					label={t('City')}
-					render={(field) => (
-						<Select
-							onValueChange={field.onChange}
-							value={field.value}
-							required={field.required}
-							name={field.name}
-						>
-							<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-								<SelectValue placeholder='Select option' />
-							</SelectTrigger>
-							<SelectContent>
-								{countries.map((country) => (
-									<SelectItem key={country.value} value={country.value}>
-										{country.label}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
-					)}
-				/>
+				{CountriesData?.length > 0 && (
+					<SelectFormField
+						name='default_address.country'
+						label={t('Country')}
+						formStore={formStore}
+						options={CountriesData?.map((e: CountriesInterface) => {
+							return {
+								label: e?.name,
+								value: e?.id?.toString(),
+							};
+						})}
+						placeholder={t('Select country')}
+					/>
+				)}
+				{(cities?.length > 0 || CountriesData?.length > 0) && (
+					<SelectFormField
+						name='default_address.city'
+						label={t('City')}
+						formStore={formStore}
+						options={
+							cities?.length > 0
+								? cities?.map((e: CountriesInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+								  })
+								: CountriesData?.map((e: CountriesInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+								  })
+						}
+						placeholder={t('Select city')}
+					/>
+				)}
 
 				<FormField
 					formStore={formStore}
-					name='area'
+					name='default_address.state'
 					label={t('Area / District')}
 					render={(field) => <Input {...field} placeholder={'area'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='street'
+					name='default_address.street'
 					label={t('Street')}
 					render={(field) => <Input {...field} placeholder={'street'} />}
 				/>
 
 				<FormField
 					formStore={formStore}
-					name='building'
+					name='default_address.building'
 					label={t('Building')}
 					render={(field) => <Input {...field} placeholder={'building'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='landmark'
+					name='default_address.landmark'
 					label={t('Landmark')}
 					render={(field) => <Input {...field} placeholder={'landmark'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='AddressPhoneNumber'
+					name='default_address.phone'
 					label={t('Phone Number')}
 					render={(field) => (
 						<CustomPhoneInput

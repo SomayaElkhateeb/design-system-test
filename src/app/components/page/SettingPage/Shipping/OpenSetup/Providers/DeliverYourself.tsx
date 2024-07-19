@@ -12,7 +12,7 @@ export default function DeliverYourself() {
 	const data = [{ id: 1, title: t('Enabled') }];
 
 	return (
-		<div>
+		<>
 			<SubHeader title={t('Deliver Yourself')}>
 				<SubHeaderDefaultBtns onSubmit={() => alert('Submit')} />
 			</SubHeader>
@@ -23,8 +23,8 @@ export default function DeliverYourself() {
 				<div className='col-span-1'>
 					<QuickActions data={data} />
 				</div>
+				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</div>
-			<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
-		</div>
+		</>
 	);
 }

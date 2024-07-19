@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect,useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 
@@ -19,7 +19,12 @@ import {
 } from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { PostAddCustomerAddressRequest } from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
+import {
+	getCustomerAddresseInfo,
+	PostAddCustomerAddressRequest,
+	PutUpdateCustomerAddressRequest,
+} from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
+import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 
 export default function AddNewAddressCustomer() {
 	//  hooks
@@ -29,21 +34,28 @@ export default function AddNewAddressCustomer() {
 	const { id } = useParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const { address_id } = UseGetIdParams();
 
 	// ////////////////
 	//  selectors
-	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.AddressesCustomer);
+	const { isLoadingAddOrUpdate, addreseCustomerInfo } = useAppSelector(
+		(state) => state.AddressesCustomer,
+	);
 	// ////////////////
 	const handleSubmit = (values: AddAddressInterface) => {
-		values.country = '1';
-		values.city = '1';
-		const sendingData: AddAddressInterface = { ...values, customer_id: id };
-
-		dispatch(PostAddCustomerAddressRequest(sendingData)).then((promiseResponse) => {
-			if ((promiseResponse.payload.code = 200)) {
-				navigate(-1);
-			}
-		});
+		
+		const sendingData: AddAddressInterface = { ...values, customer_id: id, address_id:address_id?address_id:"" };
+		address_id
+			? dispatch(PutUpdateCustomerAddressRequest(sendingData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  })
+			: dispatch(PostAddCustomerAddressRequest(sendingData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  });
 	};
 
 	const schema = { ...createAddressSchema(sendGift, selectedOption, false, true) };
@@ -54,6 +66,26 @@ export default function AddNewAddressCustomer() {
 		handleSubmit: handleSubmit,
 		defaultValues: getDefaultValues(),
 	});
+
+	useMemo(() => {
+		if (id && address_id) {
+			dispatch(getCustomerAddresseInfo({ customer_id: id, address_id }));
+			addreseCustomerInfo?.phone && formStore.setValue('phone', addreseCustomerInfo?.phone);
+			addreseCustomerInfo?.building &&
+				formStore.setValue('building', addreseCustomerInfo?.building);
+			addreseCustomerInfo?.phone &&
+				formStore.setValue('gift_receiver_name', addreseCustomerInfo?.gift_receiver_name);
+			addreseCustomerInfo?.state && formStore.setValue('state', addreseCustomerInfo?.state);
+			addreseCustomerInfo?.street && formStore.setValue('street', addreseCustomerInfo?.street);
+
+			addreseCustomerInfo?.landmark &&
+				formStore.setValue('landmark', addreseCustomerInfo?.landmark);
+
+			addreseCustomerInfo?.country &&
+				formStore.setValue('country', addreseCustomerInfo?.country.toString());
+			addreseCustomerInfo?.city && formStore.setValue('city', addreseCustomerInfo?.city.toString());
+		}
+	}, [id, address_id]);
 
 	return (
 		<Form {...formStore}>

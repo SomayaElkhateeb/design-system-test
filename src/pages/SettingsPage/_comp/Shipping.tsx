@@ -4,12 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import { Switch } from 'src/app/components/ui/switch';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getShippingList } from 'src/app/store/slices/settingsPage/shipping/shippingList/shippingListAsyncThunks';
-import { getShippingMethods } from 'src/app/store/slices/settingsPage/shipping/shippingMethods/shippingMethodsAsyncThunks';
-import { getTaxCategoriesList } from 'src/app/store/slices/settingsPage/tax/taxCategories/taxCategoriesList/taxCategoriesListAsyncThunks';
-import { getTaxCategoriesShow } from 'src/app/store/slices/settingsPage/tax/taxCategories/taxCategoriesShow/taxCategoriesShowAsyncThunks';
-import { getTaxRatesList } from 'src/app/store/slices/settingsPage/tax/taxRates/taxRatesList/taxRatesListAsyncThunks';
-import { getTaxRatesShow } from 'src/app/store/slices/settingsPage/tax/taxRates/taxShow/taxRatesShowAsyncThunks';
+import { getHelpShow } from 'src/app/store/slices/settingsPage/help/helpAsyncThunks';
+import { getShippingList, getShippingMethods } from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
+import { getTaxRatesList } from 'src/app/store/slices/settingsPage/tax/taxCategories/taxCategoriesAsyncThunks';
 import { EditIcon } from 'src/app/utils/icons';
 import { images } from 'src/pages/SettingsPage/_comp/data';
 
@@ -19,68 +16,16 @@ export default function Shipping() {
 	const navigate = useNavigate();
 
 	// redux
-	// const dispatch = useAppDispatch();
-	// const { shippingMethod, isLoading, error } = useAppSelector((state) => state.shippingMethod);
-
-	// console.log('shippingMethods', shippingMethod); // i don't know where is show data
-
-	// useEffect(() => {
-	// 	dispatch(getShippingMethods());
-	// }, [dispatch]);
-
-	// redux
-	// const dispatch = useAppDispatch();
-	// const { shippingList, isLoading, error } = useAppSelector((state) => state.shippingList);
-
-	// console.log('shippingList', shippingList); // i don't know where is show data
-
-	// useEffect(() => {
-	// 	dispatch(getShippingList());
-	// }, [dispatch]);
-
-	// // redux
-	// const dispatch = useAppDispatch();
-	// const { taxRatesList, isLoading, error } = useAppSelector((state) => state.taxRatesList);
-
-	// console.log('taxRatesList', taxRatesList);
-
-	// useEffect(() => {
-	// 	dispatch(getTaxRatesList());
-	// }, [dispatch]);
-
-	// // redux
 	const dispatch = useAppDispatch();
-	const { taxRatesShow, isLoading, error } = useAppSelector((state) => state.taxRatesShow);
+	const { helpShow, isLoading, error } = useAppSelector((state) => state.helpSettings);
 
-	console.log('taxRatesShow', taxRatesShow);
+	console.log('helpShows', helpShow); 
 
 	useEffect(() => {
-		dispatch(getTaxRatesShow());
+		dispatch(getHelpShow(1));
 	}, [dispatch]);
 
-	// redux
-	// const dispatch = useAppDispatch();
-	// const { taxCategoriesList, isLoading, error } = useAppSelector(
-	// 	(state) => state.taxCategoriesList,
-	// );
 
-	// console.log('taxCategoriesList', taxCategoriesList);
-
-	// useEffect(() => {
-	// 	dispatch(getTaxCategoriesList());
-	// }, [dispatch]);
-
-	// redux
-	// const dispatch = useAppDispatch();
-	// const { taxCategoriesShow, isLoading, error } = useAppSelector(
-	// 	(state) => state.taxCategoriesShow,
-	// );
-
-	// console.log('taxCategoriesShow', taxCategoriesShow);
-
-	// useEffect(() => {
-	// 	dispatch(getTaxCategoriesShow());
-	// }, [dispatch]);
 
 	return (
 		<div className='flex-col-global'>

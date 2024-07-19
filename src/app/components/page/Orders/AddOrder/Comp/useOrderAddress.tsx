@@ -2,12 +2,13 @@ import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 
 export interface AddAddressInterface {
+	address_id?:string
 	customer_id?:string
-	giftName?: string;
+	gift_receiver_name?: string;
 	name?: string;
 	country?: string;
 	city?: string;
-	area?: string;
+	state?: string;
 	street?: string;
 	building: string;
 	landmark?: string;
@@ -16,12 +17,13 @@ export interface AddAddressInterface {
 }
 
 export const getDefaultValues = (): AddAddressInterface => ({
+	address_id:"",
 	customer_id:"",
-	giftName: '',
+	gift_receiver_name: '',
 	name: '',
 	country: '',
 	city: '',
-	area: '',
+	state: '',
 	street: '',
 	building: '',
 	landmark: '',
@@ -47,12 +49,12 @@ export const createAddressSchema = (
 		name: getConditionalSchema(isName),
 		country: getConditionalSchema(isManualEntry),
 		city: getConditionalSchema(isManualEntry),
-		area: getConditionalSchema(isManualEntry),
+		state: getConditionalSchema(isManualEntry),
 		street: getConditionalSchema(isManualEntry),
 		building: requiredFieldSchema,
 		landmark: getConditionalSchema(isManualEntry),
 		phone: z.string().min(7, { message: 'Phone number must be at least 7 characters long' }),
-		giftName: getConditionalSchema(sendGift),
+		gift_receiver_name: getConditionalSchema(sendGift),
 		search: getConditionalTwoVariablesSchema(sendGift, AddOrder),
 	};
 };

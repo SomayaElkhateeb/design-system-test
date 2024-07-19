@@ -34,20 +34,20 @@ export default function ArrangeButton({
 
 // function App() {
 // 	// Sample data for sort menus
-// 	const sortMenus = [
-// 		{ id: '1', text: 'Sort by Name' },
-// 		{ id: '2', text: 'Sort by Date' },
-// 		{ id: '3', text: 'Sort by Size' },
-// 	];
+	// const sortMenus = [
+	// 	{ id: '1', text: 'Sort by Name' },
+	// 	{ id: '2', text: 'Sort by Date' },
+	// 	{ id: '3', text: 'Sort by Size' },
+	// ];
 
-// 	// State for selected option
-// 	const [selectedOption, setSelectedOption] = React.useState('name');
+	// // State for selected option
+	// const [selectedOption, setSelectedOption] = React.useState('name');
 
-// 	// Handler for selecting option
-// 	const handleSelect = (optionId: string) => {
-// 		setSelectedOption(optionId);
-// 		// Implement further logic here if needed
-// 	};
+	// // Handler for selecting option
+	// const handleSelect = (optionId: string) => {
+	// 	setSelectedOption(optionId);
+	// 	// Implement further logic here if needed
+	// };
 
 // 	// Render JSX
 // 	return (

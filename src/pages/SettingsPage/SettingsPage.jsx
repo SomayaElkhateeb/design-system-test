@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TrialBanner } from 'src/app/components/optimized';
 import LinkCards from 'src/app/components/optimized/Cards/LinkCards';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getPermissions } from 'src/app/store/slices/settingsPage/roles/rolesAsyncThunks';
 import {
 	LanguageIcon,
 	SettingsIcon,
@@ -118,6 +121,16 @@ const SettingsPage = () => {
 			description: t('Manage notifications sent to users'),
 		},
 	];
+
+	// redux
+	const dispatch = useAppDispatch();
+	const { permissions, isLoading, error } = useAppSelector((state) => state.rolesSettings);
+
+	console.log('permissions', permissions);
+
+	useEffect(() => {
+		dispatch(getPermissions());
+	}, [dispatch]);
 
 	return (
 		<div className='flex-col-global custom_container'>

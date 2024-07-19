@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getInventoryReducer } from './inventoryExtraReducers';
 import { inventorySliceModel } from 'src/app/models/inventorySliceModel';
+import { initialInventoryData } from 'src/app/interface/InventoryInterface';
 
 const initialState: inventorySliceModel = {
 	inventory: [],
 	isLoading: false,
 	error: null,
+	inventoryInfo: initialInventoryData()
 };
 
 const inventorySlice = createSlice({

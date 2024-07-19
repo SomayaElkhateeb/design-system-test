@@ -37,7 +37,7 @@ export default function DiscountsTable({
 	//  headers
 
 	const DiscountsHeaders = [
-		{ title: t('Customer Name') },
+		{ title: t('discount name') },
 		{ title: t('Discount') },
 		{ title: t('Ends At') },
 		{ title: t('Active?') },
@@ -61,13 +61,7 @@ export default function DiscountsTable({
 		// 	dispatch(updateDiscounts(id));
 	};
 
-	const options = [
-		{
-			id: nanoid(),
-			text: 'delete',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
+
 
 	return (
 		<>
@@ -102,18 +96,24 @@ export default function DiscountsTable({
 
 									<MenuOptions
 										btn={<MoreIcon className='fill-subtitle' />}
-										options={options}
-										handle={() =>
-											setState({ ...state, showDeletePopup: true, deletingItemId: e?.id })
-										}
+										options={[
+											{
+												id: nanoid(),
+												text: 'delete',
+												icon: <LiaTrashAlt size='28' className='fill-error' />,
+												click: setState({ ...state, showDeletePopup: true, deletingItemId: e?.id })
+
+											},
+										]}
+
 									/>
 
-									{showDeletePopup && deletingItemId === e?.id && (
+									{/* {showDeletePopup && deletingItemId === e?.id && (
 										<PopupDelete
 											onClose={() => setState({ ...state, showDeletePopup: false })}
 											onDelete={() => handleDeleteItem(e?.id)}
 										/>
-									)}
+									)} */}
 
 									<ArrowTables path={`addDiscount?id=${e?.id}`} />
 								</div>

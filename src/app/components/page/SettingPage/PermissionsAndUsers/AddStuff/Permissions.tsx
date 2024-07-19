@@ -1,37 +1,34 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
-import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
 import { addStuffInterface } from './HookForAddStuff';
+import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
+import { getPermissions } from 'src/app/store/slices/settingsPage/roles/rolesAsyncThunks';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useEffect } from 'react';
 
-export default function Permissions({
-	formStore,
-}: {
-	formStore: UseFormReturn<addStuffInterface>;
-}) {
+export default function Permissions({ formStore }: { formStore: UseFormReturn<addStuffInterface> }) {
 	//  hooks
 	const { t } = useTranslation();
-	const permissionsData = [
-		{ id: '1', label: t('Home') },
-		{ id: '2', label: t('Orders') },
-		{ id: '3', label: t('Products') },
-		{ id: '4', label: t('Customers') },
-		{ id: '5', label: t('Marketing') },
-		{ id: '6', label: t('Apps and channels') },
-		{ id: '7', label: t('Orders') },
-		{ id: '8', label: t('Products') },
-		{ id: '9', label: t('Customers') },
-		{ id: '10', label: t('Marketing') },
-	];
-	// //////////////////////////////////////////
+
+	// redux
+	const dispatch = useAppDispatch();
+	const { permissions, isLoading, error } = useAppSelector((state) => state.rolesSettings);
+
+	console.log('permissions', permissions);
+
+	useEffect(() => {
+		dispatch(getPermissions());
+	}, [dispatch]);
+
 	const handleStorePermissions = (option: string[]) => {
 		formStore.setValue('storePermissions', option);
 	};
-	// ///////////////////////////////////////////
+
 	const handleAllStorePermissions = () => {
 		formStore.setValue(
 			'storePermissions',
-			permissionsData?.map((e) => e.id),
+			Object.keys(permissions).map((key) => permissions[key].key),
 		);
 	};
 
@@ -45,23 +42,24 @@ export default function Permissions({
 			</div>
 
 			<div className='grid md:grid-cols-2 md:w-3/4 gap-5 '>
-				{permissionsData.map((item) => {
+				{Object.keys(permissions).map((key) => {
+					const item = permissions[key];
 					return (
 						<div className='flex-row-global' key={item.id}>
 							<CustomTableBodyCheckbox
 								formStore={formStore}
 								array={formStore.watch('storePermissions')}
 								setArray={handleStorePermissions}
-								id={item.id}
+								id={item.key}
 							/>
-							<p className='text-title text-[.88rem]'>{item.label}</p>
+							<p className='text-title text-[.88rem]'>{item.name}</p>
 						</div>
 					);
 				})}
 			</div>
 
 			{formStore.watch('storePermissions').length === 0 && formStore.formState.isSubmitted && (
-				<p className='global_error'>{'choose permission required'}</p>
+				<p className='global_error'>{t('choose permission required')}</p>
 			)}
 		</div>
 	);

@@ -3,6 +3,9 @@ import { addOwnerInterface } from './TransferOwnership';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
+import { AddUserSchemaValues } from 'src/app/schema/settings/AddOwnerSchema';
+//The selected role id is invalid.
 
 export default function NewOwner({ formStore }: { formStore: UseFormReturn<addOwnerInterface> }) {
 	const { t } = useTranslation();
@@ -34,6 +37,31 @@ export default function NewOwner({ formStore }: { formStore: UseFormReturn<addOw
 					label={t('Your password (for security)')}
 					render={(field) => <Input {...field} />}
 				/>
+
+				<FormField
+					formStore={formStore}
+					name='password_confirmation'
+					label={t('Password confirmation')}
+					render={(field) => <Input {...field} />}
+				/>
+
+				<FormField
+					formStore={formStore}
+					name='role_id'
+					label={t('Role id')}
+					render={(field) => <Input {...field} />}
+				/>
+				<div className='flex-col-global gap-2'>
+					<p>{t('Status')}</p>
+					<div className='flex-row-global gap-2'>
+						<FormSwitchField<AddUserSchemaValues>
+							formStore={formStore}
+							name='status'
+							enable
+						/>
+						<p>{formStore.watch('status') ? 'On' : 'Off'}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

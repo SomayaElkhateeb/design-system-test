@@ -40,9 +40,9 @@ export default function SetupInfo({
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex flex-col gap-3'>
-				<SubHeader title={t('SMSA')}>
+				{/* <SubHeader title={t('SMSA')}> */}
 					{/* <SubHeaderDefaultBtns onSubmit={() => alert('Submit')} /> */}
-				</SubHeader>
+				{/* </SubHeader> */}
 				<div className='global-cards w-full  gap-4'>
 					<h3 className='title'>{t('Setup info')}</h3>
 					<div className='w-[50%]'>

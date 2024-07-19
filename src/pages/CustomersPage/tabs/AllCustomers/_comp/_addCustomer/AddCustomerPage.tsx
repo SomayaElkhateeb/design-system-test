@@ -31,19 +31,40 @@ const AddCustomerPage = () => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const id = UseGetIdParams();
+	const { id } = UseGetIdParams();
 	//  selectors
 	const { CustomerInfo, isLoadingAddOrUpdate } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit = (values: AddCustomerPageSchemaValues) => {
+		let customValues = {
+			first_name: values.first_name,
+			last_name: values.last_name,
+			gender: values.gender,
+
+			email: values.email,
+			phone: values.phone,
+			customer_group_id: values.customer_group_id,
+			subscribed_to_news_letter: values.subscribed_to_news_letter,
+			status: values.status,
+			'default_address[first_name]': values.default_address.first_name,
+			'default_address[last_name]': values.default_address.last_name,
+			'default_address[country]': values.default_address.country,
+			'default_address[city]': values.default_address.city,
+			'default_address[state]': values.default_address.state,
+			'default_address[street]': values.default_address.street,
+
+			'default_address[building]': values.default_address.building,
+			'default_address[landmark]': values.default_address.landmark,
+			'default_address[phone]': values.default_address.phone,
+		};
 		id
 			? //  case update customer data
-			  dispatch(PutUpdateCustomerRequest({ ...values, id })).then((promiseResponse) => {
+			  dispatch(PutUpdateCustomerRequest({ data: customValues, id })).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate(-1);
 					}
 			  })
 			: //   PostAddCustomerRequest
-			  dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
+			  dispatch(PostAddCustomerRequest(customValues)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate(-1);
 					}
@@ -68,11 +89,14 @@ const AddCustomerPage = () => {
 			CustomerInfo.last_name && formStore.setValue('last_name', CustomerInfo.last_name);
 			CustomerInfo.email && formStore.setValue('email', CustomerInfo.email);
 			CustomerInfo.phone && formStore.setValue('phone', CustomerInfo.phone);
+			CustomerInfo?.subscribed_to_news_letter > 0
+				? formStore.setValue('subscribed_to_news_letter', 1)
+				: formStore.setValue('subscribed_to_news_letter', 0);
 			CustomerInfo.customer_group_id &&
 				formStore.setValue('customer_group_id', CustomerInfo.customer_group_id.toString());
 		}
-	}, [id]);
-	
+	}, [id, CustomerInfo]);
+
 	useEffect(() => {
 		dispatch(getCustomersGroupTable());
 	}, [dispatch]);
@@ -91,9 +115,7 @@ const AddCustomerPage = () => {
 						<PrimaryAddressForm formStore={formStore} />
 						<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 					</div>
-					
 				</div>
-				
 			</form>
 		</Form>
 	);

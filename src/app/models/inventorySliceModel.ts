@@ -1,6 +1,8 @@
 import { statusGlobal } from '.';
-import { Product } from 'src/pages/ProductsPage/tabs/AllProducts/AllProducts';
+import { InventoryInterface } from '../interface/InventoryInterface';
+
 
 export interface inventorySliceModel extends statusGlobal {
-	inventory: Product[];
+	inventory: InventoryInterface[];
+	inventoryInfo:InventoryInterface
 }

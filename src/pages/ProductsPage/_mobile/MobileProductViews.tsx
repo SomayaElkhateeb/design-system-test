@@ -5,7 +5,7 @@ import { getImageUrl } from 'src/app/utils';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { useTranslation } from 'react-i18next';
-import { settingMenus } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
+import { settingMenus } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/CustomersTable';
 
 /**
 

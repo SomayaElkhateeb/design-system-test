@@ -10,13 +10,7 @@ interface RateRowProps {
 }
 export default function RateRow({ rate }: RateRowProps) {
 	const { t } = useTranslation();
-	const options = [
-		{
-			id: 1,
-			text: t('delete rate'),
-			icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
-		},
-	];
+
 	return (
 		<div className='flex justify-between items-center  h-15'>
 			<div className='grid gap-1'>
@@ -26,8 +20,15 @@ export default function RateRow({ rate }: RateRowProps) {
 			<div className='grid gap-1 justify-items-end'>
 				<MenuOptions
 					btn={<MoreIcon className='fill-subtitle' />}
-					options={options}
-					handle={() => console.log('uninstall')}
+					options={[
+						{
+							id: 1,
+							text: t('delete rate'),
+							icon: <LiaTrashAlt size='28' className='fill-pri-dark' />,
+							click: console.log('uninstall')
+						},
+					]}
+
 				/>
 				{rate.deliveryTime && <p className='text-subtitle paragraph'>{rate.deliveryTime}</p>}
 			</div>

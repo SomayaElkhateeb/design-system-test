@@ -3,7 +3,7 @@ import { useForm } from 'src/app/utils/hooks/form';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import toast from 'react-hot-toast';
-import PublicHandelingErrors from 'src/app/utils/AxiosUtils/PublicHandelingErrors';
+import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import { AuthApi } from 'src/app/React-Query/authApi';
 
 export interface AboutYourBusinessInterface {
@@ -61,7 +61,7 @@ export default function useAboutYourBusiness({ onFinish }: { onFinish: () => voi
 				localStorage.setItem('domain', response?.data?.data?.data?.company?.domain);
 				toast.success(response?.data?.message);
 			},
-			onError: PublicHandelingErrors.onErrorResponse,
+			onError: PublicHandlingErrors.onErrorResponse,
 		});
 	};
 	// /////////////////

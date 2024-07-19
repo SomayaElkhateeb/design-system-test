@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import SpecificAutoCompleteInput from 'src/app/components/ui/SpecificAutoCompleteInput';
 import { AddCustomerGroupPageSchemaValues } from '../_schema/AddCustomerGroupSchema';
 import { useAppSelector } from 'src/app/store';
-import { useState } from 'react';
-import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
+
+
 
 export default function ChooseCustomers({
 	formStore,

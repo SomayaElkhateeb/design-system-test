@@ -10,13 +10,15 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-import CustomTableBodyCheckbox from 'src/app/components/ui/form/CustomTableBodyChckbox';
+
 import { getImageUrl } from 'src/app/utils';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
-import CustomTableHeaderCheckbox from 'src/pages/CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
+
 import { Product } from 'src/pages/ProductsPage/_comp/data';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';
+import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
 
 interface AllProductsTableProps {
 	products: Product[];
@@ -26,6 +28,13 @@ interface AllProductsTableProps {
 	isLoading: boolean;
 }
 
+export const actionsButtonStyle = () => {
+	const { language } = useLanguage();
+
+	return language === 'ar'
+		? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
+		: 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
+};
 export default function AllProductsTable({
 	products,
 	array,
@@ -68,12 +77,6 @@ export default function AllProductsTable({
 		{ title: t('actions') },
 	];
 
-	console.log(products)
-	const actionsButtonStyle = (isArabic: boolean) =>
-		isArabic
-			? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
-			: 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
-
 	//  table rows
 	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
@@ -92,33 +95,45 @@ export default function AllProductsTable({
 								)}
 							</button>
 						</div>
-						<div className='relative'>
-							<img src={getImageUrl(product.imageUrl)} loading='lazy' alt={product.name} />
-							<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
-						</div>
+						{product?.images?.length > 0 &&product?.images[0]?.original_image_url && (
+							<div className='relative box-photo w-[4.18rem] h-[4.18rem]'>
+								
+								<img
+									src={product?.images[0]?.original_image_url}
+									className="w-full h-full"
+									loading='lazy'
+									alt={product.en.name}
+								/>
+								<CameraIcon className='bg-white rounded-[50%] p-[.1rem] w-[19px] h-[19px] absolute bottom-[.5rem] left-[.3rem]' />
+							</div>
+						)}
 
 						<div className='flex-col-top-section-pages gap-2'>
-							<p className='title text-sm'>{product.name}</p>
-							<p className='subtitle'>{product.category}</p>
-							<p className='subtitle'>
-								{product.option} {t('Options')}
+							<p className='title text-sm'>
+								{language === 'ar' ? product.ar.name : product.en.name}
 							</p>
+							{product.category && <p className='subtitle'>{product.category}</p>}
+							{product.option && (
+								<p className='subtitle'>
+									{product.option} {t('Options')}
+								</p>
+							)}
 						</div>
 					</div>
 				</GlobalTableCell>,
 				<GlobalTableCell key={`sku-${product.id}`}>
-					<p className='text-title'>{product.SKU}</p>
+					<p className='text-title'>{product.sku}</p>
 				</GlobalTableCell>,
 				<GlobalTableCell key={`qty-${product.id}`}>
-					<p className={product.quantity === 0 ? 'text-error' : 'text-black'}>
-						{product.quantity > 0 ? product.quantity : t('Out of stock')}
+					<p className={product.qty === 0 ? 'text-error' : 'text-black'}>
+						{product.qty > 0 ? product.qty : t('Out of stock')}
 					</p>
 				</GlobalTableCell>,
 				<GlobalTableCell key={`price-${product.id}`}>
 					<span className='text-primary'>SAR</span> {product.price}
 				</GlobalTableCell>,
 				<GlobalTableCell key={`actions-${product.id}`}>
-					<div className={actionsButtonStyle(language === 'ar')}>
+					<div className={actionsButtonStyle()}>
 						<IoEyeOutline className='text-subtitle' />
 						<FaRegEdit
 							className='text-subtitle'
@@ -145,6 +160,5 @@ export default function AllProductsTable({
 			headers={productsHeaders}
 			rows={rows}
 		/>
-		
 	);
 }

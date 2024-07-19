@@ -28,7 +28,7 @@ export { default as Button } from './Buttons/Button';
 export { default as Avatars } from './UiKits/Avatars';
 export { default as HeaderSettings } from './UiKits/HeaderSettings';
 export { default as PrevNextBtn } from './UiKits/PrevNextBtn';
-export { default as GroupIcons } from './UiKits/GroupIcons';
+
 export { default as CheckBox } from './UiKits/Checkbox';
 export { default as ClientBox } from './Categories/ClientBox';
 export { default as ChannelChart } from './Charts/ChannelChart';

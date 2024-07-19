@@ -1,6 +1,9 @@
+import { Product } from 'src/pages/ProductsPage/_comp/data';
 import { statusGlobal } from '.';
-import { Category } from 'src/pages/ProductsPage/tabs/Categories/Categories';
+import { CategoryInterface } from '../interface/CategoriesInterface';
+
 
 export interface categoriesTableSliceModel extends statusGlobal {
-	categoriesTable: Category[];
+	categoriesTable: CategoryInterface[];
+	categoryInfo: [[CategoryInterface], { "products": Product[] }]
 }

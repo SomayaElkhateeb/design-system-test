@@ -9,6 +9,7 @@ import { Input } from 'src/app/components/ui/input';
 import { AddCustomerPageSchemaValues } from '../_hook/HookForAddCustomerForm';
 import { useAppSelector } from 'src/app/store';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { useEffect } from 'react';
 
 export default function GeneralInfoCustomerForm({
 	formStore,
@@ -19,7 +20,11 @@ export default function GeneralInfoCustomerForm({
 	const { t } = useTranslation();
 	//  selectors
 	const { customersGroup } = useAppSelector((state) => state.customersGroup);
-
+	useEffect(() => {
+		formStore.watch('subscribed_to_news_letter')
+			? formStore.setValue('subscribed_to_news_letter', 1)
+			: formStore.setValue('subscribed_to_news_letter', 0);
+	}, [formStore.watch('subscribed_to_news_letter')]);
 	return (
 		<div className='global-cards gap-[1.3rem]'>
 			<h2 className='title'>{t('General Info')}</h2>
@@ -56,14 +61,14 @@ export default function GeneralInfoCustomerForm({
 					placeholder={t('Customer Groups')}
 					label={t('Customer Groups')}
 					options={
-						customersGroup &&
-						customersGroup?.length > 0 &&
-						customersGroup?.map((e) => {
-							return {
-								value: e.id.toString(),
-								label: e.name,
-							};
-						})
+						customersGroup?.length > 0
+							? customersGroup?.map((e) => {
+									return {
+										value: e.id.toString(),
+										label: e.name,
+									};
+							  })
+							: []
 					}
 				/>
 				<FormField
@@ -83,10 +88,10 @@ export default function GeneralInfoCustomerForm({
 				<div className='flex-row-global-items-start gap-3'>
 					<FormField
 						formStore={formStore}
-						name='emailSubescribe'
+						name='subscribed_to_news_letter'
 						render={(field) => (
 							<CheckBox
-								checked={formStore.watch('emailSubescribe')}
+								checked={formStore.watch('subscribed_to_news_letter')>0 ?true:false}
 								handleOnChange={field.onChange}
 							/>
 						)}

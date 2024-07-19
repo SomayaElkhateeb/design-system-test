@@ -6,7 +6,7 @@ import { z } from 'zod';
 const RequiredAddressData = z.string().min(1);
 
 export const AddCustomerPageSchema = {
-	id: RequiredAddressData.optional().or(z.literal("")),
+
 	gender: RequiredAddressData,
 
 	first_name: RequiredAddressData,
@@ -15,37 +15,47 @@ export const AddCustomerPageSchema = {
 	phone: z.string().min(7),
 
 	customer_group_id: RequiredAddressData,
-	fullNameAddress: RequiredAddressData,
-	countryName: RequiredAddressData,
-	cityName: RequiredAddressData,
-	area: RequiredAddressData,
-	street: RequiredAddressData,
-	building: RequiredAddressData,
-	landmark: RequiredAddressData,
-	AddressPhoneNumber: z.string().min(7),
-	emailSubescribe: z.boolean(),
+	default_address: z.object({
+		first_name: RequiredAddressData,
+		last_name: RequiredAddressData,
+		country: RequiredAddressData,
+		city: RequiredAddressData,
+		state: RequiredAddressData,
+		street: RequiredAddressData,
+		building: RequiredAddressData,
+		landmark: RequiredAddressData,
+		phone: z.string().min(7),
+	}),
+
+	subscribed_to_news_letter: z.number(),
+	status: z.number().optional()
+
 };
 export type AddCustomerPageSchemaValues = InferredZodSchema<typeof AddCustomerPageSchema>;
 
 export default function useCustomHookAddCustomerForm() {
 	const handelDefaultValue = () => {
 		return {
-			id: "",
+
 			gender: 'Male',
 			first_name: '',
 			last_name: '',
 			email: '',
 			phone: '',
 			customer_group_id: "",
-			fullNameAddress: '',
-			countryName: '',
-			cityName: '',
-			area: '',
-			street: '',
-			building: '',
-			landmark: '',
-			AddressPhoneNumber: '',
-			emailSubescribe: false,
+			default_address: {
+				first_name: "",
+				last_name: "",
+				country: "",
+				city: "",
+				state: "",
+				street: "",
+				building: "",
+				landmark: "",
+				phone: "",
+			},
+			subscribed_to_news_letter: 0,
+			status: 0
 		};
 	};
 

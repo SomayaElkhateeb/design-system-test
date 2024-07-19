@@ -1,28 +1,35 @@
 import { useTranslation } from 'react-i18next';
 import { Switch } from 'src/app/components/ui/switch';
-import { getImageUrl } from 'src/app/utils';
+
 import useLanguage from 'src/app/utils/hooks/useLanguage';
-import { DownIcon, MoveIcon } from 'src/app/utils/icons';
-import { Category } from '../Categories';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
-import { useNavigate } from 'react-router-dom';
+import { MoveIcon } from 'src/app/utils/icons';
+
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
+import { useAppDispatch } from 'src/app/store';
+import {
+	getCategoriesTable,
+	PutUpdateCategoryRequest,
+} from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
+import { actionsButtonStyle } from '../../AllProducts/_comp/AllProductsTable';
 
 export const CategoryTable = ({
+	children,
 	categoryData,
-	Menue,
+	handelId,
 	isLoading,
 }: {
-	categoryData: Category[];
-	Menue: { id: string; text: string; icon: React.ReactNode }[];
+	categoryData: CategoryInterface[];
+	children: React.ReactNode;
+	handelId: (e: string) => void;
 	isLoading: boolean;
 }) => {
 	//  hooks
 	const { language } = useLanguage();
-	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	//  headers
 
@@ -34,19 +41,35 @@ export const CategoryTable = ({
 		{ title: t('actions') },
 	];
 
-	//  custom hook for select setting item
+	const handelUpdateStatus = (e: CategoryInterface) => {
+		let formData = new FormData();
+		formData.append('en[name]', e.en.name);
+		formData.append('ar[name]', e.ar.name);
+		formData.append('ar[description]', e.ar.description);
+		formData.append('en[description]', e.en.description);
+		formData.append('slug', e.slug);
+		formData.append('status', e.status ? "0" : "1");
+		// formData.append('locale', 'all');
+		formData.append('_method', 'put');
 
-	const { selectedOption, handleSelect } = useSelectBox();
-
-	const actionsButtonStyleAr = 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn = 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
+		dispatch(
+			PutUpdateCategoryRequest({
+				data: formData,
+				id: e.id,
+			}),
+		).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				dispatch(getCategoriesTable());
+			}
+		});
+	};
 	return (
 		<BaseTable
 			isLoading={isLoading}
 			language={language}
 			color='#55607A'
 			headers={headers.map((h) => h)}
-			rows={categoryData?.map((e: Category, i: number) => {
+			rows={categoryData?.map((e: CategoryInterface, i: number) => {
 				return {
 					item: e,
 					elements: [
@@ -58,40 +81,31 @@ export const CategoryTable = ({
 							<div className='flex items-center gap-2'>
 								<MoveIcon />
 								<div className='box-photo'>
-									<img src={getImageUrl(e.img)} />
+									<img src={e?.image_url} className='w-full h-full' loading='lazy' />
 								</div>
 
 								<div>
-									{e.name}
-									<p className='subtitle text-sm'>{e.subtitle}</p>
+									{language === 'ar' ? e?.ar?.name : e?.en?.name}
+									<p className='subtitle text-sm'>
+										{language === 'ar' ? e?.ar?.description : e?.en?.description}
+									</p>
 								</div>
 							</div>
 						</GlobalTableCell>,
-						<GlobalTableCell>{e.products}</GlobalTableCell>,
+						<GlobalTableCell>{e.products?.length}</GlobalTableCell>,
 						<GlobalTableCell>{e.subcategories}</GlobalTableCell>,
 
 						<GlobalTableCell>
-							<Switch checked={e.active} />
+							<div onClick={() => handelUpdateStatus(e)}>
+								<Switch checked={e.status > 0 ? true : false} />
+							</div>
 						</GlobalTableCell>,
 
 						<GlobalTableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
-								<div className='flex gap-4 items-center'>
-									<ThreeDotsButton
-										sortMenus={Menue}
-										selectedOption={selectedOption}
-										handelSelect={handleSelect}
-									/>
-								</div>
-								<button onClick={() => navigate(`/products/categories/SubCategories`)}>
-									<DownIcon
-										className={
-											language === 'ar'
-												? 'rotate-90 cursor-pointer text-subtitle'
-												: ' text-subtitle -rotate-90 cursor-pointer'
-										}
-									/>
-								</button>
+							<div className={actionsButtonStyle()}>
+								<div onClick={() => handelId(e?.id)}>{children}</div>
+
+								<ArrowTables path='/products/categories/SubCategories' />
 							</div>
 						</GlobalTableCell>,
 					],

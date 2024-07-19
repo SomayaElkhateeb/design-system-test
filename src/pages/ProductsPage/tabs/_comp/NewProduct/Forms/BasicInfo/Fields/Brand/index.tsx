@@ -8,7 +8,7 @@ import {
 	SelectItem,
 } from 'src/app/components/ui/select';
 import { Button } from 'src/app/components/optimized';
-import AddBrandForm from 'src/pages/ProductsPage/tabs/Barnds/_comp/AddBrandForm';
+import AddBrandForm from 'src/pages/ProductsPage/tabs/Brands/_comp/AddBrandForm';
 import { useState } from 'react';
 
 function BrandDialog() {

@@ -3,88 +3,75 @@ import { Button, ClientBox, SubHeader } from 'src/app/components/optimized';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 import { IoMdAddCircle } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import { getAdmin } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useEffect, useState } from 'react';
+import { Role } from 'src/app/interface/settingsInterface/UsersSettingsInterface';
+import { calculateTimeAgo } from 'src/app/utils';
+import StuffTable from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStuff/StuffTable';
+import ActionsBtn from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStuff/ActionsBtn';
 
-export default function Users() {
-	//  hooks
+const Users = () => {
+	const [array, setArray] = useState<string[]>([]);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	// redux
+	const dispatch = useAppDispatch();
+	const { admin, isLoading, error } = useAppSelector((state) => state.usersSettings);
+	console.log(admin)
+
+	useEffect(() => {
+		dispatch(getAdmin());
+	}, [dispatch]);
+
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Users & Permissions')} />
-			<div className="custom-grid-parent custom_container">
-			<div className='flex-col-global  grid-left'>
-				{/*  owner section */}
-				<OwnerAndStaff
-					title={t('Owner')}
-					describtion={t('Add users and define what can they see or do in your store.')}
-				>
-					<div className='flexResponsive'>
-						<ClientBox
-							title='Mohamed Samy'
-							details='Active 3 days ago'
-							avatar={<Avatar variant='user' firstName='samy' />}
-						/>
-						<div>
-							<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
-								{t('Transfer Ownership')}
-							</Button>
-						</div>
+			{/* control header row */}
+			<div className='px-3'>
+				<div className='flex-row-global justify-between pb-3'>
+					<div>
+						<Button
+							variant='primary'
+							LeftIcon={IoMdAddCircle}
+							onClick={() => navigate('addStuff')}
+						>
+							{t('add staff')}
+						</Button>
 					</div>
-				</OwnerAndStaff>
-
-				{/*  staff  section*/}
-				<OwnerAndStaff
-					title={t('Staff')}
-					describtion={t('Add users and define what can they see or do in your store.')}
-				>
-					<div className='flex-col-global '>
-						<div className='flexResponsive'>
-							<ClientBox
-								title='Ahmed Seilamn'
-								details='Marketeer'
-								avatar={<Avatar variant='user' firstName='Ahmed' />}
-							/>
-							<div className='flex items-center gap-2'>
-								<p>{t('Active 3 days ago')}</p>
-								<Button variant='secondary'>{t('manage')}</Button> {/* link */}
+					<ActionsBtn />
+				</div>
+				<hr className='pb-4'/>
+				<div className='global-cards bg-pri-top-light'>
+					{/* owner section */}
+					{admin.length > 0 && admin.map((adminMember: Role) => (
+						<div key={adminMember.id} className='flex-col-global'>
+							<div>
+								<h3 className='title'>{t('Owner')}</h3>
+								<p className='text-subtitle text-sm py-2'>{t('Add users and define what they can see or do in your store.')}</p>
+							</div>
+							<div className='flexResponsive'>
+								<ClientBox
+									title={adminMember.name}
+									details={`Active ${calculateTimeAgo(adminMember.created_at)}`}
+									avatar={<Avatar variant='user' fullName={adminMember.name} />}
+								/>
+								<div>
+									<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
+										{t('Transfer Ownership')}
+									</Button>
+								</div>
 							</div>
 						</div>
-						<hr />
-						<div>
-							<Button
-								variant='primary'
-								LeftIcon={IoMdAddCircle}
-								onClick={() => navigate('addStuff')}
-							>
-								{t('add staff')}
-							</Button>
-						</div>
-					</div>
-				</OwnerAndStaff>
-			</div>
-			</div>
-			
-		</div>
-	);
-}
-
-function OwnerAndStaff({
-	title,
-	describtion,
-	children,
-}: {
-	title: string;
-	describtion: string;
-	children: React.ReactNode;
-}) {
-	return (
-		<div className='global-cards gap-2'>
-			<div className='flex-col-global gap-0'>
-				<h2 className='title'>{title}</h2>
-				<p className='text-subtitle text-sm py-3'>{describtion}</p>
+					))}
+				</div>
 			</div>
 
-			{children}
+			{/* import table all stuff */}
+			<StuffTable array={array} setArray={setArray} data={admin} isLoading={isLoading}/>
 		</div>
-	);
+	)
+
+
 }
+export default Users;
