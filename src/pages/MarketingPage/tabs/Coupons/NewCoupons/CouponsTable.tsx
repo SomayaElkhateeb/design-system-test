@@ -19,6 +19,7 @@ import { useState } from 'react';
 
 import ArrowTables from '../../../../../app/components/optimized/UiKits/ArrowTables';
 import { useAppDispatch } from 'src/app/store';
+import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 
 export default function CouponsTable({
 	coupons,
@@ -32,6 +33,7 @@ export default function CouponsTable({
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const classData = actionsButtonStyle();
 	const [state, setState] = useState({
 		showDeletePopup: false,
 		deletingItemId: '',
@@ -48,9 +50,7 @@ export default function CouponsTable({
 		{ title: t('actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	
 
 	const handleDeleteItem = (id: string) => {
 		// console.log('Deleting item:', id);
@@ -86,8 +86,8 @@ export default function CouponsTable({
 						<GlobalTableCell>{e.sales}</GlobalTableCell>,
 						<GlobalTableCell>{e.used}</GlobalTableCell>,
 
-						<TableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+						<GlobalTableCell>
+							<div className={classData}>
 								<FaRegEdit
 									className='text-subtitle'
 									onClick={() => navigate(`addCoupon?id=${e?.id}`)}
@@ -116,7 +116,7 @@ export default function CouponsTable({
 								)}
 								<ArrowTables path={`addCoupon?id=${e?.id}`} />
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 					],
 				};
 			})}

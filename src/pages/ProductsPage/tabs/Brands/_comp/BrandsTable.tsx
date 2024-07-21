@@ -37,6 +37,7 @@ export default function BrandsTable({
 	const dispatch = useAppDispatch();
 	const { language } = useLanguage();
 	const { t } = useTranslation();
+	const classData = actionsButtonStyle();
 	//  headers
 
 	const brandsHeaders = [
@@ -117,7 +118,7 @@ export default function BrandsTable({
 						</TableCell>,
 
 						<TableCell>
-							<div className={actionsButtonStyle()}>
+							<div className={classData}>
 								<div onClick={() => handelId(e?.id)}>{children}</div>
 
 								<div

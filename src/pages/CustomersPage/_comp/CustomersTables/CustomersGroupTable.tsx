@@ -18,6 +18,7 @@ import { settingMenus } from './CustomersTable';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
+import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 
 export default function CustomersGroupTable({ settingMenus }: { settingMenus: settingMenus[] }) {
 	//  hooks
@@ -25,7 +26,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 	const { t } = useTranslation();
 	const { language } = useLanguage();
 	const [array, setArray] = useState<string[]>([]);
-
+	const classData = actionsButtonStyle();
 	// redux
 	const dispatch = useAppDispatch();
 	const { customersGroup, isLoading, error } = useAppSelector((state) => state.customersGroup);
@@ -51,9 +52,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 		{ title: t('Actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+
 
 	return (
 		<BaseTable
@@ -79,7 +78,7 @@ export default function CustomersGroupTable({ settingMenus }: { settingMenus: se
 							<Switch checked={e.status} />
 						</GlobalTableCell>,
 						<GlobalTableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+							<div className={classData}>
 								<FaRegEdit
 									className='text-subtitle'
 									onClick={() => navigate(`/customers/addGroupCustomer?id=${e?.id}`)}

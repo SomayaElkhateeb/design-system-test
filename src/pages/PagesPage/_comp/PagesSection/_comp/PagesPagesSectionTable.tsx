@@ -10,6 +10,7 @@ import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 
 export default function PagesPagesTable({
 	pages,
@@ -22,6 +23,7 @@ export default function PagesPagesTable({
 	const { language } = useLanguage();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const classData = actionsButtonStyle();
 
 	//  headers
 
@@ -32,9 +34,7 @@ export default function PagesPagesTable({
 		{ title: t('actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	
 
 	return (
 		<>
@@ -58,12 +58,12 @@ export default function PagesPagesTable({
 								</div>
 							</GlobalTableCell>,
 
-							<TableCell>
+							<GlobalTableCell>
 								<Switch checked={e.visibility} />
-							</TableCell>,
+							</GlobalTableCell>,
 
-							<TableCell>
-								<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+							<GlobalTableCell>
+								<div className={classData}>
 									<IoEyeOutline className='text-subtitle' />
 									<FaRegEdit
 										className='text-subtitle'
@@ -71,7 +71,7 @@ export default function PagesPagesTable({
 									/>
 									<ArrowTables path={`blogPosts/${e?.id}`} />
 								</div>
-							</TableCell>,
+							</GlobalTableCell>,
 						],
 					};
 				})}

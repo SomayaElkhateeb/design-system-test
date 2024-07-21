@@ -132,12 +132,12 @@ export const productDropdownMenu = [
 export const productSortMenu = [
 	{ id: nanoid(), text: 'Name A to Z' },
 	{ id: nanoid(), text: 'Name Z to A' },
-	{ id: nanoid(), text: 'SKU Ascending' },
-	{ id: nanoid(), text: 'SKU Descending' },
-	{ id: nanoid(), text: 'Price Low in first' },
-	{ id: nanoid(), text: 'Price High in first' },
-	{ id: nanoid(), text: 'Date Added' },
-	{ id: nanoid(), text: 'Date modified' },
+	// { id: nanoid(), text: 'SKU Ascending' },
+	// { id: nanoid(), text: 'SKU Descending' },
+	// { id: nanoid(), text: 'Price Low in first' },
+	// { id: nanoid(), text: 'Price High in first' },
+	// { id: nanoid(), text: 'Date Added' },
+	// { id: nanoid(), text: 'Date modified' },
 ];
 
 export const productActionsMenu = [

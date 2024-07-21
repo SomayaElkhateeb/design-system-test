@@ -11,18 +11,8 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { Switch } from 'src/app/components/ui/switch';
 import { settingMenus } from 'src/pages/CustomersPage/_comp/CustomersTables/CustomersTable';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import { actionsButtonStyle } from '../../AllProducts/_comp/AllProductsTable';
 
-//  dumy data
-export const brands: BrandsInterface[] = [
-	{
-		id: '1',
-		title: 'mohamed Mostafa',
-		describtion: '01064545565',
-		available: false,
-		productsNo: 10,
-		img: 'images/product.png',
-	},
-];
 export default function BrandsTable({
 	settingMenus,
 	brands,
@@ -35,6 +25,7 @@ export default function BrandsTable({
 	//  hooks
 	const { language } = useLanguage();
 	const { t } = useTranslation();
+	const classData = actionsButtonStyle();
 	//  headers
 
 	const brandssHeaders = [
@@ -47,12 +38,6 @@ export default function BrandsTable({
 	//  custom hook for select setting item
 
 	const { selectedOption, handleSelect } = useSelectBox();
-
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	// //////////////////////
-	// /////////////////////
 
 	return (
 		<BaseTable
@@ -82,7 +67,7 @@ export default function BrandsTable({
 						</TableCell>,
 
 						<TableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+							<div className={classData}>
 								<ThreeDotsButton
 									sortMenus={settingMenus}
 									selectedOption={selectedOption}

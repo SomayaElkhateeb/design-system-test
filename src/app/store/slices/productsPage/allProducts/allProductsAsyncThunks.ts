@@ -28,3 +28,14 @@ export const PostUpdateQuickProduct = createAsyncThunk('PostUpdateQuickProduct/g
 	})
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
+
+export const deleteProductAction = createAsyncThunk(
+	'deleteProductAction/getAllCustomersTable',
+	(payload: string) => PublicRequest.deleteData(`merchant/catalog/products/delete/${payload}`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
