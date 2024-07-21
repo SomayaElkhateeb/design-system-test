@@ -20,9 +20,9 @@ const Users = () => {
 	const { admin, isLoading, error } = useAppSelector((state) => state.usersSettings);
 	console.log(admin)
 
-	useEffect(() => {
-		dispatch(getAdmin());
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch(getAdmin());
+	// }, [dispatch]);
 
 	return (
 		<div className='flex-col-global'>

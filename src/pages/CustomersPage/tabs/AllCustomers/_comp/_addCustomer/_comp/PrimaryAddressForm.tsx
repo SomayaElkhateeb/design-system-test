@@ -2,15 +2,9 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from 'src/app/components/ui/select';
+
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
-import { countries } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/BranchInfo';
+
 import { AddCustomerPageSchemaValues } from '../_hook/HookForAddCustomerForm';
 import { useQuery } from 'react-query';
 import { CountriesApi } from 'src/app/React-Query/CountriesApi';

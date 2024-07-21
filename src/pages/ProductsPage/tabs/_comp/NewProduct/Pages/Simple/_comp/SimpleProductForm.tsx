@@ -22,6 +22,8 @@ import {
 import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 import AddCategoryForm from 'src/pages/ProductsPage/tabs/Categories/_comp/AddCategoryForm';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
+import { InventoryInterface } from 'src/app/interface/InventoryInterface';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 interface simpleProductInterface {
 	name: string;
@@ -157,56 +159,37 @@ const SimpleProductForm = ({
 								)}
 							/>
 
-							<FormField
-								container={{ className: 'col-span-6' }}
-								formStore={formStore}
-								name='category'
-								render={(field) => (
-									<div className='relative flex items-center border border-gray-300 rounded-md'>
-										<select
-											{...field}
-											name='category'
-											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
-											onChange={field.onChange}
-										>
-											<option value='' disabled>
-												{t('Select Category')}
-											</option>
-											{categoriesTable?.length > 0 &&
-												categoriesTable?.map((e, i) => <option value={e.id}>{e.name}</option>)}
-										</select>
-										<button
-											type='button'
-											className='md:flex-row-global flex-col-global items-center px-2 py-2 border-l w-2/5'
-											onClick={() => setOpenDialog(true)}
-										>
-											<FaCirclePlus size={24} />
-											<span className='ms-1'>{t('Add One')}</span>
-										</button>
-									</div>
-								)}
-							/>
-							<FormField
-								container={{ className: 'col-span-6' }}
-								formStore={formStore}
-								name='inventories'
-								render={(field) => (
-									<div className='relative flex items-center border border-gray-300 rounded-md'>
-										<select
-											{...field}
-											name='inventories'
-											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
-											onChange={field.onChange}
-										>
-											<option value='' disabled>
-												{t('Select Inventory')}
-											</option>
-											{inventory?.length > 0 &&
-												inventory?.map((e, i) => <option value={e.id}>{e.name}</option>)}
-										</select>
-									</div>
-								)}
-							/>
+							{categoriesTable?.length > 0 && (
+								<SelectFormField
+									className="col-span-6"
+									name='category'
+									setOpenDialog={setOpenDialog}
+									add_button
+									formStore={formStore}
+									options={categoriesTable?.map((e: CategoryInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+									})}
+									placeholder={t('Select Category')}
+								/>
+							)}
+							{inventory?.length > 0 && (
+								<SelectFormField
+									className="col-span-6"
+									name='inventories'
+									
+									formStore={formStore}
+									options={inventory?.map((e: InventoryInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+									})}
+									placeholder={t('Select Inventory')}
+								/>
+							)}
 						</div>
 					</div>
 					{openDialog && (
