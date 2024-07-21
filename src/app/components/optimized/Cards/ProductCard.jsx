@@ -33,6 +33,8 @@ import CustomTableBodyCheckbox from '../UiKits/CustomTableBodyCheckbox';
  *   array:string[];
  *   setArray:(e:string[])=>void;
  *   settingMenus:import('../Buttons/ActionsComp').menuType[]
+ *   setOpenDialog:(e:boolean)=>void
+ *   setEdit_product:(e:import('src/pages/ProductsPage/_comp/data').Product)=>void
  * }} props
  *
  * @example

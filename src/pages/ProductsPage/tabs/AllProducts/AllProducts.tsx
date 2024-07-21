@@ -2,34 +2,55 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
-import { Product, productSettingsMenu } from '../../_comp/data';
+import { initialProduct, Product, productSettingsMenu } from '../../_comp/data';
 import AllProductsTable from './_comp/AllProductsTable';
 import AllproductsVertical from './_comp/AllproductsVertical';
 import TopSection from './_comp/TopSection';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { getCategoriesTable } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
+import { GlobalDialog } from 'src/app/components/shared';
+import { SimpleProductForm } from '../_comp';
 
 const AllProducts: React.FC = () => {
 	// State hooks
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
-
+	const [openDialog, setOpenDialog] = useState<boolean>(false);
+	const [edit_product, setEdit_product] = useState<Product>(initialProduct());
 	// Redux hooks
 	const dispatch = useAppDispatch();
-	const { allProducts, isLoading, error } = useAppSelector((state) => state.allProducts);
+	const { allProducts, isLoading } = useAppSelector((state) => state.allProducts);
+	const { categoriesTable } = useAppSelector((state) => state.categoriesTable);
+
 	// Fetch products on component mount
 	useMemo(() => {
 		dispatch(getAllProductsTable());
+		dispatch(getCategoriesTable());
 	}, [dispatch]);
+	const dialogStyle = {
+		width: { lg: '1150px', md: '700px', xs: '375px' },
+		height: { md: '45vh', xs: '90vh' },
+	};
+	const handleClose = (status: boolean) => {
+		setOpenDialog(status);
+		setEdit_product(initialProduct());
+	};
 
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-global'>
 				{/* Top section */}
-				<TopSection verticalCard={verticalCard} setVerticalCard={setVerticalCard} />
+				<TopSection
+					setOpenDialog={setOpenDialog}
+					verticalCard={verticalCard}
+					setVerticalCard={setVerticalCard}
+				/>
 
 				{/* Render table or vertical cards section */}
 				{!verticalCard ? (
 					<AllProductsTable
+						setEdit_product={setEdit_product}
+						setOpenDialog={setOpenDialog}
 						settingMenus={productSettingsMenu}
 						array={array}
 						setArray={setArray}
@@ -38,6 +59,8 @@ const AllProducts: React.FC = () => {
 					/>
 				) : (
 					<AllproductsVertical
+						setEdit_product={setEdit_product}
+						setOpenDialog={setOpenDialog}
 						settingMenus={productSettingsMenu}
 						array={array}
 						setArray={setArray}
@@ -56,6 +79,17 @@ const AllProducts: React.FC = () => {
 					))} */}
 				</div>
 			</div>
+			<GlobalDialog
+				openDialog={openDialog}
+				handleClose={() => handleClose(false)}
+				style={dialogStyle}
+			>
+				<SimpleProductForm
+					edit_product={edit_product}
+					handleClose={() => handleClose(false)}
+					categoriesTable={categoriesTable}
+				/>
+			</GlobalDialog>
 		</div>
 	);
 };
