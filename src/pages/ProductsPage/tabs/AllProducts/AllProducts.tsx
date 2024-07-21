@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import {
+	deleteProductAction,
+	getAllProductsTable,
+} from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 import { initialProduct, Product, productSettingsMenu, productSortMenu } from '../../_comp/data';
 import AllProductsTable from './_comp/AllProductsTable';
@@ -15,9 +18,14 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
+import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { useTranslation } from 'react-i18next';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 
 const AllProducts: React.FC = () => {
 	// State hooks
+	const { t } = useTranslation();
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
 	const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -26,7 +34,7 @@ const AllProducts: React.FC = () => {
 	const { language } = useLanguage();
 	const dispatch = useAppDispatch();
 
-	const { selectedOption, handleSelect } = useSelectBox();
+	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
 	//  selectors
 	const { allProducts, isLoading } = useAppSelector((state) => state.allProducts);
@@ -50,12 +58,12 @@ const AllProducts: React.FC = () => {
 	const sortFunctions = {
 		'Name A to Z': (a: Product, b: Product) =>
 			language === 'ar'
-				?  a?.ar?.name.localeCompare( b?.ar?.name)
-				:  a?.en?.name.localeCompare( b?.en?.name),
+				? a?.ar?.name.localeCompare(b?.ar?.name)
+				: a?.en?.name.localeCompare(b?.en?.name),
 		'Name Z to A': (a: Product, b: Product) =>
 			language === 'ar'
 				? b?.ar?.name.localeCompare(a?.ar?.name)
-				:  b?.en?.name.localeCompare(a?.en?.name),
+				: b?.en?.name.localeCompare(a?.en?.name),
 	};
 	const { arrangedData: ProductsArrangedData } = UseCustomTableSorting<Product>(
 		sortFunctions,
@@ -63,6 +71,33 @@ const AllProducts: React.FC = () => {
 		productSortMenu?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
 	);
 
+	//  handel deleteItem
+	const {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	} = UseDeleteItem();
+	// Delete customer
+
+	const handelDeleteProduct = () => {
+		dispatch(deleteProductAction(custom_Id)).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				handelCloseDeleteDialog();
+				dispatch(getAllProductsTable());
+			}
+		});
+	};
+	useMemo(() => {
+		switch (selectedOption) {
+			case 'Delete product':
+				handelOpenDialog();
+				setSelectedOption('');
+				break;
+		}
+	}, [selectedOption]);
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-global'>
@@ -78,23 +113,35 @@ const AllProducts: React.FC = () => {
 				{/* Render table or vertical cards section */}
 				{!verticalCard ? (
 					<AllProductsTable
+						handelId={handelId}
 						setEdit_product={setEdit_product}
 						setOpenDialog={setOpenDialog}
-						settingMenus={productSettingsMenu}
 						array={array}
 						setArray={setArray}
 						products={ProductsArrangedData}
 						isLoading={isLoading}
-					/>
+					>
+						<ThreeDotsButton
+							sortMenus={productSettingsMenu}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</AllProductsTable>
 				) : (
 					<AllproductsVertical
 						setEdit_product={setEdit_product}
 						setOpenDialog={setOpenDialog}
-						settingMenus={productSettingsMenu}
+						handelId={handelId}
 						array={array}
 						setArray={setArray}
 						products={ProductsArrangedData}
-					/>
+					>
+						<ThreeDotsButton
+							sortMenus={productSettingsMenu}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</AllproductsVertical>
 				)}
 
 				{/* Render mobile views for small screens */}
@@ -103,12 +150,18 @@ const AllProducts: React.FC = () => {
 						{ProductsArrangedData?.length > 0 &&
 							ProductsArrangedData?.map((product: Product) => (
 								<MobileProductViews
+									handelId={handelId}
 									setEdit_product={setEdit_product}
 									setOpenDialog={setOpenDialog}
 									key={product.name}
 									product={product}
-									settingMenus={productSettingsMenu}
-								/>
+								>
+									<ThreeDotsButton
+										sortMenus={productSettingsMenu}
+										selectedOption={selectedOption}
+										handelSelect={handleSelect}
+									/>
+								</MobileProductViews>
 							))}
 					</div>
 				)}
@@ -124,6 +177,16 @@ const AllProducts: React.FC = () => {
 					categoriesTable={categoriesTable}
 				/>
 			</GlobalDialog>
+
+			{openDeleteDialog && (
+				<PopupDelete
+					open={openDeleteDialog}
+					onClose={handelCloseDeleteDialog}
+					title={t('Delete Item')}
+					subTitle={t('Do You Want To Delete This Item')}
+					onDelete={handelDeleteProduct}
+				/>
+			)}
 		</div>
 	);
 };

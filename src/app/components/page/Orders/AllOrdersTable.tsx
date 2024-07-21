@@ -18,6 +18,7 @@ import { CiLocationOn } from 'react-icons/ci';
 import ArrowTables from '../../optimized/UiKits/ArrowTables';
 import CustomTableHeaderCheckbox from '../../optimized/UiKits/CustomTableHeaderCheckbox';
 import CustomTableBodyCheckbox from '../../optimized/UiKits/CustomTableBodyCheckbox';
+import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 export default function AllOrdersTable({
 	orders,
 	array,
@@ -35,7 +36,7 @@ export default function AllOrdersTable({
 	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
+	const classData = actionsButtonStyle();
 	//  custom hook for select setting item
 	const { selectedOption, handleSelect } = useSelectBox();
 
@@ -60,9 +61,7 @@ export default function AllOrdersTable({
 		{ title: t('actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	
 
 	const textClassName = 'text-subtitle text-[.8rem]';
 	return (
@@ -108,7 +107,7 @@ export default function AllOrdersTable({
 						<GlobalTableCell>{e.order_status}</GlobalTableCell>,
 						<GlobalTableCell>SAR {e.total}</GlobalTableCell>,
 						<TableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+							<div className={classData}>
 								<FaArrowsRotate className='text-subtitle' />
 								<FaRegEdit
 									className='text-subtitle'

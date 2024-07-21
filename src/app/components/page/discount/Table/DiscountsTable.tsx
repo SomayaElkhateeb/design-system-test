@@ -16,6 +16,7 @@ import { DiscountInterface } from 'src/app/interface/DiscountInterface';
 import { useAppDispatch } from 'src/app/store';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { MoreIcon } from 'src/app/utils/icons';
+import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 
 export default function DiscountsTable({
 	discounts,
@@ -28,6 +29,7 @@ export default function DiscountsTable({
 	const { language } = useLanguage();
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
+	const classData = actionsButtonStyle();
 	const [state, setState] = useState({
 		showDeletePopup: false,
 		deletingItemId: '',
@@ -45,9 +47,7 @@ export default function DiscountsTable({
 		{ title: t('actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
+	
 
 	const handleDeleteItem = (id: string) => {
 		console.log('Deleting item:', id);
@@ -90,8 +90,8 @@ export default function DiscountsTable({
 							</TableCell>,
 							<GlobalTableCell>{e.sales}</GlobalTableCell>,
 
-							<TableCell>
-								<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+							<GlobalTableCell>
+								<div className={classData}>
 									<FaRegEdit className='text-subtitle' onClick={() => handleUpdateItem(e?.id)} />
 
 									<MenuOptions
@@ -117,7 +117,7 @@ export default function DiscountsTable({
 
 									<ArrowTables path={`addDiscount?id=${e?.id}`} />
 								</div>
-							</TableCell>,
+							</GlobalTableCell>,
 						],
 					};
 				})}

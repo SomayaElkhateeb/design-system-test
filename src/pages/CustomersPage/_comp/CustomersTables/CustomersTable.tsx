@@ -16,6 +16,7 @@ import CustomTableBodyCheckbox from './CustomTableBodyCheckbox';
 import CustomTableHeaderCheckbox from './CustomTableHeaderCheckbox';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 
 export interface settingMenus {
 	id: string;
@@ -28,7 +29,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [array, setArray] = useState<string[]>([]);
-
+	const classData = actionsButtonStyle();
 	//  custom hook for select setting item
 	const { selectedOption, handleSelect } = useSelectBox();
 
@@ -39,7 +40,6 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 	}, [dispatch]);
-
 
 	//  headers
 	const customersHeaders = [
@@ -60,9 +60,6 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 		{ title: t('actions') },
 	];
 
-	const actionsButtonStyleAr = 'justify-end flex  items-center gap-4 cursor-pointer text-[1.2rem]';
-	const actionsButtonStyleEn =
-		'justify-start flex  items-center gap-4 cursor-pointer text-[1.2rem]';
 	return (
 		<BaseTable
 			isLoading={isLoading}
@@ -90,7 +87,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 							<Switch checked={e['E-Subscription']} />
 						</TableCell>,
 						<TableCell>
-							<div className={language === 'ar' ? actionsButtonStyleAr : actionsButtonStyleEn}>
+							<div className={classData}>
 								<FaRegEdit
 									className='text-subtitle'
 									onClick={() => navigate(`addCustomer?id=${e?.id}`)}

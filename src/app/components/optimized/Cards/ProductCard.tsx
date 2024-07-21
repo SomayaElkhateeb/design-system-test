@@ -27,20 +27,22 @@ interface AllProductsTableProps {
 	product: Product;
 	array: string[];
 	setArray: (e: string[]) => void;
-	settingMenus: menuType[];
-	isLoading: boolean;
+
 	setOpenDialog: (e: boolean) => void;
 	setEdit_product: (e: Product) => void;
+	children: React.ReactNode;
+	handelId: (e: string) => void;
 }
 
 export default function ProductCard({
 	product,
 	array,
 	setArray,
-	settingMenus,
-	isLoading,
+
 	setOpenDialog,
 	setEdit_product,
+	children,
+	handelId,
 }: AllProductsTableProps) {
 	//  hooks
 	const { t } = useTranslation();
@@ -50,10 +52,6 @@ export default function ProductCard({
 	function toggleFavorite() {
 		setIsFavorite(!isFavorite);
 	}
-
-	//  custom hook for select setting item
-
-	const { selectedOption, handleSelect } = useSelectBox();
 
 	const info = {
 		sku: product.sku,
@@ -93,13 +91,13 @@ export default function ProductCard({
 				{/* Actions Btns */}
 				<div className='absolute transition-all bg-white opacity-0 top-2 right-2 group-hover:opacity-100'>
 					<Actions
+						handelId={handelId}
 						setEdit_product={setEdit_product}
 						setOpenDialog={setOpenDialog}
 						product={product}
-						settingMenus={settingMenus}
-						selectedOption={selectedOption}
-						handleSelect={handleSelect}
-					/>
+					>
+						{children}
+					</Actions>
 				</div>
 			</div>
 			<div className='flex items-end justify-between p-3'>
@@ -123,22 +121,19 @@ export default function ProductCard({
 }
 
 function Actions({
-	settingMenus,
-	selectedOption,
-	handleSelect,
 	setEdit_product,
 	setOpenDialog,
 	product,
+	handelId,
+	children,
 }: {
-	handleSelect: (e: string) => void;
-	selectedOption: string;
-	settingMenus: menuType[];
 	setEdit_product: (e: Product) => void;
 	setOpenDialog: (e: boolean) => void;
 	product: Product;
+	children: React.ReactNode;
+	handelId: (e: string) => void;
 }) {
 	const handelEdit = (e: Product) => {
-		
 		if (e.type === 'simple') {
 			setOpenDialog(true);
 			setEdit_product(e);
@@ -155,11 +150,7 @@ function Actions({
 
 			<CopyIcon className='fill-subtitle' />
 
-			<ThreeDotsButton
-				sortMenus={settingMenus}
-				selectedOption={selectedOption}
-				handelSelect={handleSelect}
-			/>
+			<div onClick={() => handelId(product?.id)}>{children}</div>
 		</div>
 	);
 }
