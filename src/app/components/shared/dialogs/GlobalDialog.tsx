@@ -7,7 +7,7 @@ export interface style {
 	height?: { md: string; xs: string };
 	overflowY?: string;
 	transform?: string;
-	width: { lg?: string; md: string; xs: string };
+	width: { lg?: string; md?: string; xs: string };
 	bgcolor?: string;
 	p?: number;
 	borderRadius?: string;

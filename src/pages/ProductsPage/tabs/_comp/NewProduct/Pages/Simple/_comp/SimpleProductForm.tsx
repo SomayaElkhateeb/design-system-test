@@ -18,12 +18,14 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
 	getAllProductsTable,
 	PostSimpleQuickProduct,
+	PostUpdateQuickProduct,
 } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 import AddCategoryForm from 'src/pages/ProductsPage/tabs/Categories/_comp/AddCategoryForm';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
 import { InventoryInterface } from 'src/app/interface/InventoryInterface';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { Product } from 'src/pages/ProductsPage/_comp/data';
 
 interface simpleProductInterface {
 	name: string;
@@ -48,13 +50,15 @@ export type AddsimpleProductSchemaSchemaValues = InferredZodSchema<typeof simple
 const SimpleProductForm = ({
 	categoriesTable,
 	handleClose,
+	edit_product,
 }: {
 	categoriesTable: CategoryInterface[];
 	handleClose: () => void;
+	edit_product: Product;
 }) => {
 	//  hooks
 	const dispatch = useAppDispatch();
-	const { allProducts } = useAppSelector((state) => state.allProducts);
+	const { allProducts, isLoadingAddOrUpdate } = useAppSelector((state) => state.allProducts);
 	const { inventory } = useAppSelector((state) => state.inventory);
 	//  custom hook
 	const { formStore, onSubmit } = useForm({
@@ -66,17 +70,28 @@ const SimpleProductForm = ({
 			values.price && formData.append('price', values.price.toString());
 			values.quy && formData.append('quy', values.quy.toString());
 			formData.append('sku', values.sku);
-			formData.append('category[]', values.category);
+			formData.append('categories[]', values.category);
 			formData.append('images[files][]', values.images);
 			formData.append('type', 'simple');
-			formData.append(`inventories[${values.inventories}]`, values.quy);
+			values.quy && formData.append(`inventories[${values.inventories}]`, values.quy);
 
-			dispatch(PostSimpleQuickProduct(formData)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					dispatch(getAllProductsTable());
-					handleClose();
-				}
-			});
+			if (edit_product) {
+				dispatch(PostUpdateQuickProduct({ data: formData, id: edit_product?.id })).then(
+					(promiseResponse) => {
+						if ((promiseResponse.payload.code = 200)) {
+							dispatch(getAllProductsTable());
+							handleClose();
+						}
+					},
+				);
+			} else {
+				dispatch(PostSimpleQuickProduct(formData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						dispatch(getAllProductsTable());
+						handleClose();
+					}
+				});
+			}
 		},
 		defaultValues: {
 			name: '',
@@ -96,6 +111,25 @@ const SimpleProductForm = ({
 		dispatch(getAllProductsTable());
 		dispatch(getInventoryTable());
 	}, [dispatch]);
+
+	useEffect(() => {
+		if (Object.values(edit_product).length > 0) {
+			formStore.setValue('name', edit_product?.en?.name);
+			formStore.setValue('price', Number(edit_product?.price));
+			formStore.setValue('sku', edit_product?.sku);
+			formStore.setValue('quy', Number(edit_product?.qty));
+			edit_product?.inventory_sources?.length > 0 &&
+				edit_product?.inventory_sources[0] &&
+				formStore.setValue(
+					'inventories',
+					edit_product?.inventory_sources[0]?.inventory_source_id.toString(),
+				);
+			edit_product?.categories?.length > 0 &&
+				edit_product?.categories[0] &&
+				formStore.setValue('category', edit_product?.categories[0]?.toString());
+		}
+	}, [edit_product]);
+
 	return (
 		<div className='flex-col-global gap-6'>
 			<h3 className='title md:font-bold'>{t('Add a quick Product')}</h3>
@@ -161,7 +195,7 @@ const SimpleProductForm = ({
 
 							{categoriesTable?.length > 0 && (
 								<SelectFormField
-									className="col-span-6"
+									className='col-span-6'
 									name='category'
 									setOpenDialog={setOpenDialog}
 									add_button
@@ -177,9 +211,8 @@ const SimpleProductForm = ({
 							)}
 							{inventory?.length > 0 && (
 								<SelectFormField
-									className="col-span-6"
+									className='col-span-6'
 									name='inventories'
-									
 									formStore={formStore}
 									options={inventory?.map((e: InventoryInterface) => {
 										return {
@@ -204,7 +237,7 @@ const SimpleProductForm = ({
 						/>
 					)}
 					<div className='flex  space-x-4 lg:justify-end justify-center'>
-						<Button variant='primary' type='submit'>
+						<Button loading={isLoadingAddOrUpdate} variant='primary' type='submit'>
 							{t('Save Changes')}
 						</Button>
 						<Link to='/products/new/simple'>

@@ -3,6 +3,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { FiUploadCloud } from 'react-icons/fi';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { SiMicrosoftexcel } from 'react-icons/si';
+import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 
 // Define products array with correct type
@@ -18,8 +19,9 @@ export interface Product {
 	price: number;
 	en: { name: string; description: string };
 	ar: { name: string; description: string };
+	type: string;
 	images: {
-		id:string;
+		id: string;
 		large_image_url: string;
 		medium_image_url: string;
 		original_image_url: string;
@@ -27,14 +29,41 @@ export interface Product {
 		small_image_url: string;
 		url: string;
 	}[];
+	inventory_sources: {
+		id: string;
+		inventory_source_id: string;
+		product_id: string;
+		qty: number;
+	}[];
+	categories:string[]
 }
+
+export const initialProduct = () => {
+	return {
+		name: '',
+		category: '',
+		option: 0,
+		imageUrl: '',
+		sku: '',
+		id: '',
+		quantity: 0,
+		qty: 0,
+		price: 0,
+		en: { name: '', description: '' },
+		ar: { name: '', description: '' },
+		type: '',
+		images: [],
+		inventory_sources:[],
+		categories:[]
+	};
+};
 
 export const allProducts: Product[] = [
 	{
 		id: '1',
 		name: 'Cozy Fleece Blanket',
 		category: 'Blankets',
-		SKU: 'BLK-001',
+		sku: 'BLK-001',
 		option: 5,
 		quantity: 50,
 		price: 29.99,
@@ -44,7 +73,7 @@ export const allProducts: Product[] = [
 		id: '2',
 		name: 'Luxury Down Comforter',
 		category: 'Bedding',
-		SKU: 'BED-002',
+		sku: 'BED-002',
 		option: 7,
 		quantity: 20,
 		price: 199.99,
@@ -54,30 +83,10 @@ export const allProducts: Product[] = [
 		id: '3',
 		name: 'Memory Foam Pillow',
 		category: 'Pillows',
-		SKU: 'PIL-003',
+		sku: 'PIL-003',
 		option: 3,
 		quantity: 100,
 		price: 49.99,
-		imageUrl: 'images/product.png',
-	},
-	{
-		id: '4',
-		name: 'Cotton Bed Sheets',
-		category: 'Sheets',
-		SKU: 'SHE-004',
-		option: 4,
-		quantity: 75,
-		price: 59.99,
-		imageUrl: 'images/product.png',
-	},
-	{
-		id: '5',
-		name: 'Heated Throw Blanket',
-		category: 'Blankets',
-		SKU: 'BLK-005',
-		option: 6,
-		quantity: 30,
-		price: 79.99,
 		imageUrl: 'images/product.png',
 	},
 ];
@@ -97,27 +106,27 @@ export const productDropdownMenu = [
 		shipping: false,
 		to: '/products/new/configurable',
 	},
-	{
-		id: nanoid(),
-		title: 'Virtual Product',
-		describtion: 'Services, ebooks, Downloadable',
-		shipping: false,
-		to: '/products/new/virtual',
-	},
-	{
-		id: nanoid(),
-		title: 'Food',
-		describtion: 'Food & Drinks have special way shipping',
-		shipping: true,
-		to: '/products/new/food',
-	},
-	{
-		id: nanoid(),
-		title: 'Bundle',
-		describtion: 'Collection of related products',
-		shipping: false,
-		to: '/products/new/bundle',
-	},
+	// {
+	// 	id: nanoid(),
+	// 	title: 'Virtual Product',
+	// 	describtion: 'Services, ebooks, Downloadable',
+	// 	shipping: false,
+	// 	to: '/products/new/virtual',
+	// },
+	// {
+	// 	id: nanoid(),
+	// 	title: 'Food',
+	// 	describtion: 'Food & Drinks have special way shipping',
+	// 	shipping: true,
+	// 	to: '/products/new/food',
+	// },
+	// {
+	// 	id: nanoid(),
+	// 	title: 'Bundle',
+	// 	describtion: 'Collection of related products',
+	// 	shipping: false,
+	// 	to: '/products/new/bundle',
+	// },
 ];
 
 export const productSortMenu = [

@@ -26,6 +26,8 @@ interface AllProductsTableProps {
 	setArray: (e: string[]) => void;
 	settingMenus: menuType[];
 	isLoading: boolean;
+	setOpenDialog: (e: boolean) => void;
+	setEdit_product: (e: Product) => void;
 }
 
 export const actionsButtonStyle = () => {
@@ -41,6 +43,8 @@ export default function AllProductsTable({
 	setArray,
 	settingMenus,
 	isLoading,
+	setOpenDialog,
+	setEdit_product,
 }: AllProductsTableProps) {
 	// hooks
 	const { language } = useLanguage();
@@ -77,6 +81,13 @@ export default function AllProductsTable({
 		{ title: t('actions') },
 	];
 
+	const handelEdit = (e: Product) => {
+		if (e.type === 'simple') {
+			setOpenDialog(true);
+			setEdit_product(e);
+		}
+	};
+
 	//  table rows
 	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
@@ -95,12 +106,11 @@ export default function AllProductsTable({
 								)}
 							</button>
 						</div>
-						{product?.images?.length > 0 &&product?.images[0]?.original_image_url && (
+						{product?.images?.length > 0 && product?.images[0]?.original_image_url && (
 							<div className='relative box-photo w-[4.18rem] h-[4.18rem]'>
-								
 								<img
 									src={product?.images[0]?.original_image_url}
-									className="w-full h-full"
+									className='w-full h-full'
 									loading='lazy'
 									alt={product.en.name}
 								/>
@@ -135,10 +145,7 @@ export default function AllProductsTable({
 				<GlobalTableCell key={`actions-${product.id}`}>
 					<div className={actionsButtonStyle()}>
 						<IoEyeOutline className='text-subtitle' />
-						<FaRegEdit
-							className='text-subtitle'
-							onClick={() => navigate(`/addProduct?id=${product.id}`)}
-						/>
+						<FaRegEdit className='text-subtitle' onClick={() => handelEdit(product)} />
 						<CopyIcon className='fill-subtitle' />
 						<ThreeDotsButton
 							sortMenus={settingMenus}
