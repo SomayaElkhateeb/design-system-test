@@ -10,6 +10,8 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { getCategoriesTable } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
 import { GlobalDialog } from 'src/app/components/shared';
 import { SimpleProductForm } from '../_comp';
+import MobileProductViews from '../../_mobile/MobileProductViews';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 const AllProducts: React.FC = () => {
 	// State hooks
@@ -17,6 +19,7 @@ const AllProducts: React.FC = () => {
 	const [array, setArray] = useState<string[]>([]);
 	const [openDialog, setOpenDialog] = useState<boolean>(false);
 	const [edit_product, setEdit_product] = useState<Product>(initialProduct());
+	const { xs } = useResponsive();
 	// Redux hooks
 	const dispatch = useAppDispatch();
 	const { allProducts, isLoading } = useAppSelector((state) => state.allProducts);
@@ -69,15 +72,20 @@ const AllProducts: React.FC = () => {
 				)}
 
 				{/* Render mobile views for small screens */}
-				<div className='sm:hidden grid gap-2 '>
-					{/* {allProducts?.length>0 &&allProducts?.map((product: Product) => (
-						<MobileProductViews
-							key={product.name}
-							{...product}
-							settingMenus={productSettingsMenu}
-						/>
-					))} */}
-				</div>
+				{xs && (
+					<div className='responsive_pages '>
+						{allProducts?.length > 0 &&
+							allProducts?.map((product: Product) => (
+								<MobileProductViews
+								setEdit_product={setEdit_product}
+						setOpenDialog={setOpenDialog}
+									key={product.name}
+									product={product}
+									settingMenus={productSettingsMenu}
+								/>
+							))}
+					</div>
+				)}
 			</div>
 			<GlobalDialog
 				openDialog={openDialog}
