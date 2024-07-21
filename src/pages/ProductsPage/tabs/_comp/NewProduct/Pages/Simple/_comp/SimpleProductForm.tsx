@@ -26,6 +26,7 @@ import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/i
 import { InventoryInterface } from 'src/app/interface/InventoryInterface';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
+import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 
 interface simpleProductInterface {
 	name: string;
@@ -36,7 +37,8 @@ interface simpleProductInterface {
 	images: File;
 }
 const simpleProductSchema = {
-	name: z.string().min(1, 'Product name is required'),
+	nameEn: z.string().min(1, 'Product name is required'),
+	nameAr: z.string().min(1, 'Product name is required'),
 	price: z.coerce.number().min(1).positive(),
 	quy: z.coerce.number().optional(),
 	sku: z.string().min(1, 'SKU code is required'),
@@ -66,7 +68,8 @@ const SimpleProductForm = ({
 		handleSubmit: (values) => {
 			const formData = new FormData();
 
-			formData.append('name', values.name);
+			formData.append('en[name]', values.nameEn);
+			formData.append('ar[name]', values.nameAr);
 			values.price && formData.append('price', values.price.toString());
 			values.quy && formData.append('quy', values.quy.toString());
 			formData.append('sku', values.sku);
@@ -75,7 +78,7 @@ const SimpleProductForm = ({
 			formData.append('type', 'simple');
 			values.quy && formData.append(`inventories[${values.inventories}]`, values.quy);
 
-			if (edit_product) {
+			if (edit_product?.price) {
 				dispatch(PostUpdateQuickProduct({ data: formData, id: edit_product?.id })).then(
 					(promiseResponse) => {
 						if ((promiseResponse.payload.code = 200)) {
@@ -94,7 +97,8 @@ const SimpleProductForm = ({
 			}
 		},
 		defaultValues: {
-			name: '',
+			nameEn: '',
+			nameAr: '',
 			price: 0,
 			quy: 0,
 			sku: '',
@@ -114,7 +118,8 @@ const SimpleProductForm = ({
 
 	useEffect(() => {
 		if (Object.values(edit_product).length > 0) {
-			formStore.setValue('name', edit_product?.en?.name);
+			formStore.setValue('nameEn', edit_product?.en?.name);
+			formStore.setValue('nameAr', edit_product?.ar?.name);
 			formStore.setValue('price', Number(edit_product?.price));
 			formStore.setValue('sku', edit_product?.sku);
 			formStore.setValue('quy', Number(edit_product?.qty));
@@ -144,16 +149,20 @@ const SimpleProductForm = ({
 						</div>
 
 						<div className='col-span-10 grid grid-cols-1 lg:grid-cols-12 gap-4'>
-							<FormField
+							
+							<TabbedFormField
 								container={{ className: 'col-span-6 lg:col-span-3' }}
 								formStore={formStore}
-								name='name'
-								render={(field) => (
+								keys={[
+									{ name: 'nameEn', label: 'En' },
+									{ name: 'nameAr', label: 'عربي' },
+								]}
+								
+								renderer={(field) => (
 									<Input
-										{...field}
-										id='name'
-										type='text'
 										placeholder={`${t('Product Name')} (${t('Required')})`}
+										type='text'
+										{...field}
 									/>
 								)}
 							/>
@@ -240,7 +249,7 @@ const SimpleProductForm = ({
 						<Button loading={isLoadingAddOrUpdate} variant='primary' type='submit'>
 							{t('Save Changes')}
 						</Button>
-						<Link to='/products/new/simple'>
+						<Link to='/products/new/configurable'>
 							<Button variant='secondary' RightIcon={IoIosArrowForward}>
 								{t('Add More Info')}
 							</Button>

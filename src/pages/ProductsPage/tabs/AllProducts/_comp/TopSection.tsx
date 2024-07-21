@@ -24,17 +24,20 @@ export default function TopSection({
 	verticalCard,
 	setVerticalCard,
 	setOpenDialog,
+	selectedOption,
+	handleSelect,
 }: {
 	verticalCard: boolean;
 	setVerticalCard: (e: boolean) => void;
 	setOpenDialog: (e: boolean) => void;
+	selectedOption: string;
+	handleSelect: (e: string) => void;
 }) {
 	//  hooks
 	const { t } = useTranslation();
-const {xs}=useResponsive()
+	const { xs } = useResponsive();
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
-	const { selectedOption, handleSelect } = useSelectBox();
 
 	const handelListAndGridImg = () => {
 		return (
