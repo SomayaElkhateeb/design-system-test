@@ -19,42 +19,32 @@ import {
 import ThreeDotsButton from '../Buttons/ThreedotsButton';
 import useSelectBox from '../Menu/useSelectBox';
 import CustomTableBodyCheckbox from '../UiKits/CustomTableBodyCheckbox';
+import { Product } from 'src/pages/ProductsPage/_comp/data';
+import useLanguage from 'src/app/utils/hooks/useLanguage';
+import { menuType } from '../Buttons/ActionsComp';
 
-/**
- * @param {{
- *   id: string;
- *   name?: string;
- *   imageUrl: string;
- *   category?: string;
- *   options?: number;
- *   sku: string;
- *   quantity?: number;
- *   price?: number;
- *   array:string[];
- *   setArray:(e:string[])=>void;
- *   settingMenus:import('../Buttons/ActionsComp').menuType[]
- *   setOpenDialog:(e:boolean)=>void
- *   setEdit_product:(e:import('src/pages/ProductsPage/_comp/data').Product)=>void
- * }} props
- *
- * @example
- *
- * ```jsx
- * <ProductCard
- *   id='1'
- *   name='DJI Mavic Pro 2'
- *   imageUrl='images/Vector.svg'
- *   category='Blankets'
- *   options={50}
- *   sku='123456'
- *   quantity={50}
- *   price='10000.00'
- * />
- * ```
- */
-export default function ProductCard(props) {
+interface AllProductsTableProps {
+	product: Product;
+	array: string[];
+	setArray: (e: string[]) => void;
+	settingMenus: menuType[];
+	isLoading: boolean;
+	setOpenDialog: (e: boolean) => void;
+	setEdit_product: (e: Product) => void;
+}
+
+export default function ProductCard({
+	product,
+	array,
+	setArray,
+	settingMenus,
+	isLoading,
+	setOpenDialog,
+	setEdit_product,
+}: AllProductsTableProps) {
 	//  hooks
 	const { t } = useTranslation();
+	const { language } = useLanguage();
 	const [isFavorite, setIsFavorite] = useState(false);
 
 	function toggleFavorite() {
@@ -66,20 +56,24 @@ export default function ProductCard(props) {
 	const { selectedOption, handleSelect } = useSelectBox();
 
 	const info = {
-		sku: props.sku,
-		quantity: props?.quantity && props?.quantity > 0 ? props.quantity : t('Out of stock'),
-		price: props.price,
+		sku: product.sku,
+		quantity: product?.qty && product?.qty > 0 ? product.qty : t('Out of stock'),
+		price: product.price,
 	};
 
 	return (
 		<div className='border-2 bg-white overflow-hidden border-light-2 rounded-xl  divide-y p-0  group '>
 			<div className='relative w-full h-[260px]'>
-				{props.imageUrl && (
-					<img src={props.imageUrl} alt={props.name} className='object-cover w-full h-full' />
+				{product?.images?.length > 0 && product?.images[0]?.original_image_url && (
+					<img
+						src={product?.images[0]?.original_image_url}
+						alt={product?.en?.name}
+						className='object-cover w-full h-full'
+					/>
 				)}
 				<div className='absolute flex flex-col items-center justify-between top-3 bottom-2 left-3'>
 					<div className='flex flex-col items-center gap-4 '>
-						<CustomTableBodyCheckbox array={props.array} setArray={props.setArray} id={props.id} />
+						<CustomTableBodyCheckbox array={array} setArray={setArray} id={product.id} />
 						<button onClick={toggleFavorite}>
 							{isFavorite ? (
 								<StarActiveIcon className='fill-neutral-1' />
@@ -99,7 +93,10 @@ export default function ProductCard(props) {
 				{/* Actions Btns */}
 				<div className='absolute transition-all bg-white opacity-0 top-2 right-2 group-hover:opacity-100'>
 					<Actions
-						settingMenus={props.settingMenus}
+						setEdit_product={setEdit_product}
+						setOpenDialog={setOpenDialog}
+						product={product}
+						settingMenus={settingMenus}
 						selectedOption={selectedOption}
 						handleSelect={handleSelect}
 					/>
@@ -107,9 +104,9 @@ export default function ProductCard(props) {
 			</div>
 			<div className='flex items-end justify-between p-3'>
 				<div className='space-y-1'>
-					<h2 className='title'>{props.name}</h2>
-					<p className='subtitle'>{props.category}</p>
-					{props.options && <p className='paragraph'>{props.options} Options</p>}
+					<h2 className='title'>{language === 'ar' ? product?.ar?.name : product?.en?.name}</h2>
+					<p className='subtitle'>{product?.category}</p>
+					{product?.option && <p className='paragraph'>{product?.option} Options</p>}
 				</div>
 				<button>
 					<NextIcon className='fill-subtitle' />
@@ -125,32 +122,43 @@ export default function ProductCard(props) {
 	);
 }
 
-/**
- * @param {{
-*   settingMenus:import('../Buttons/ActionsComp').menuType[]
-* selectedOption:string
-* handleSelect:(e:string)=>void
-* }} props
-*
-* @example
-*
-* ```jsx
+function Actions({
+	settingMenus,
+	selectedOption,
+	handleSelect,
+	setEdit_product,
+	setOpenDialog,
+	product,
+}: {
+	handleSelect: (e: string) => void;
+	selectedOption: string;
+	settingMenus: menuType[];
+	setEdit_product: (e: Product) => void;
+	setOpenDialog: (e: boolean) => void;
+	product: Product;
+}) {
+	const handelEdit = (e: Product) => {
+		
+		if (e.type === 'simple') {
+			setOpenDialog(true);
+			setEdit_product(e);
+		}
+	};
 
-* ```
-*/
-function Actions(props) {
 	return (
-		<div className='flex flex-col gap-3 px-2 py-1 card items-center '>
+		<div className='flex-col-global gap-3 px-2 py-1 card items-center '>
 			<ViewIcon className='fill-subtitle' />
 
-			<EditIcon className='fill-subtitle' />
+			<div onClick={() => handelEdit(product)}>
+				<EditIcon className='fill-subtitle cursor-pointer' />
+			</div>
 
 			<CopyIcon className='fill-subtitle' />
 
 			<ThreeDotsButton
-				sortMenus={props.settingMenus}
-				selectedOption={props.selectedOption}
-				handelSelect={props.handleSelect}
+				sortMenus={settingMenus}
+				selectedOption={selectedOption}
+				handelSelect={handleSelect}
 			/>
 		</div>
 	);
