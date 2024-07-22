@@ -16,6 +16,7 @@ import {
 	PutUpdateBrandRequest,
 } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
 import { actionsButtonStyle } from '../../AllProducts/_comp/AllProductsTable';
+import { MoveIcon } from 'src/app/utils/icons';
 export default function BrandsTable({
 	children,
 	brands,
@@ -47,7 +48,6 @@ export default function BrandsTable({
 		{ title: t('actions') },
 	];
 
-	
 	// //////////////////////
 	// /////////////////////
 
@@ -64,8 +64,8 @@ export default function BrandsTable({
 		formData.append('description_ar', e.description_ar);
 		formData.append('description_en', e.description_en);
 		formData.append('slug', e.slug);
-		formData.append('status', e.status ? 0 : 1);
-		formData.append('locale', "all");
+		formData.append('status', e.status ? '0' : '1');
+		formData.append('locale', 'all');
 
 		dispatch(
 			PutUpdateBrandRequest({
@@ -90,20 +90,21 @@ export default function BrandsTable({
 					item: e,
 					elements: [
 						<GlobalTableCell>
-							<div className='flex items-center gap-[.4rem] '>
+							<div className='flex items-center gap-2'>
+								<MoveIcon />
 								<div className='box-photo'>
 									<img
 										src={e?.image_url}
 										className='w-full h-full'
+										alt={e?.name_en}
 										loading='lazy'
-										alt={e.name_en}
 									/>
 								</div>
 
-								<div className='flex-col-global gap-2'>
-									<p className='title'>{language === 'ar' ? e.name_ar : e.name_en}</p>
-									<p className='subtitle'>
-										{language === 'ar' ? e.description_ar : e.description_en}
+								<div>
+									{language === 'ar' ? e?.name_ar : e?.name_en}
+									<p className='subtitle text-sm'>
+										{language === 'ar' ? e?.description_ar : e?.description_en}
 									</p>
 								</div>
 							</div>
@@ -111,13 +112,13 @@ export default function BrandsTable({
 
 						<GlobalTableCell>{e?.products?.length}</GlobalTableCell>,
 
-						<TableCell>
+						<GlobalTableCell>
 							<div onClick={() => handelUpdateStatus(e)}>
 								<Switch checked={e.status > 0 ? true : false} />
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 
-						<TableCell>
+						<GlobalTableCell>
 							<div className={classData}>
 								<div onClick={() => handelId(e?.id)}>{children}</div>
 
@@ -129,7 +130,7 @@ export default function BrandsTable({
 									<ArrowTables />
 								</div>
 							</div>
-						</TableCell>,
+						</GlobalTableCell>,
 					],
 				};
 			})}
