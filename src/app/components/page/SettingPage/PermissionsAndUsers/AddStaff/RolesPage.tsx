@@ -1,59 +1,70 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { IoMdAddCircle } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
-import { ArrangeButton, Button, SubHeader } from 'src/app/components/optimized';
+import { useEffect } from 'react';
+
+import { ArrangeButton } from 'src/app/components/optimized';
 import FilterButton from 'src/app/components/optimized/Buttons/FilterButton';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { getRolesList } from 'src/app/store/slices/settingsPage/roles/rolesAsyncThunks';
 import RolesTable from './RolesTable';
-import AddRole from './AddRole';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { nanoid } from 'nanoid';
+import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
+import { Role } from 'src/app/interface/settingsInterface/rolesSettingsInterface';
 
 const RolesPage = () => {
-	const { t } = useTranslation();
-	const navigate = useNavigate();
-	const [openDialog, setOpenDialog] = useState<boolean>(true);
-
 	// redux
 	const dispatch = useAppDispatch();
-	const { rolesList, isLoading, error } = useAppSelector((state) => state.rolesSettings);
-	console.log('rolesList', rolesList);
+	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
+	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
 	useEffect(() => {
 		dispatch(getRolesList());
 	}, [dispatch]);
 
+	const sortMenus = [
+		{ id: nanoid(), text: 'Name A to Z' },
+		{ id: nanoid(), text: 'Name Z to A' },
+	];
+
+	//  handel Sorting Table
+	const sortFunctions = {
+		'Name A to Z': (a: Role, b: Role) => a.name.localeCompare(b.name),
+		'Name Z to A': (a: Role, b: Role) => b.name.localeCompare(a.name),
+	};
+	const { arrangedData: RolesArrangedData } = UseCustomTableSorting<Role>(
+		sortFunctions,
+		rolesList,
+		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
+	);
 
 	return (
 		<>
 			<div className='flex-col-global gap-2'>
-				<Btn />
+				<RolesBtn
+					selectedOption={selectedOption}
+					handleSelect={handleSelect}
+					sortMenus={sortMenus}
+				/>
 				<hr />
 				{/* import table all roles */}
-				<RolesTable rolesList={rolesList} isLoading={isLoading} />
+				<RolesTable rolesList={RolesArrangedData} isLoading={isLoading} />
 			</div>
-			
 		</>
 	);
 };
 
 export default RolesPage;
 
-const Btn = () => {
-	const [selectedOption, setSelectedOption] = useState('name');
-
-	const handleSelect = (optionId: string) => {
-		setSelectedOption(optionId);
-	};
-
-	const sortMenus = [
-		{ id: '1', text: 'Sort by Name' },
-		{ id: '2', text: 'Sort by Date' },
-		{ id: '3', text: 'Sort by Size' },
-	];
-
+const RolesBtn = ({
+	selectedOption,
+	handleSelect,
+	sortMenus,
+}: {
+	selectedOption: string;
+	handleSelect: (e: string) => void;
+	sortMenus: { id: string; text: string }[];
+}) => {
 	return (
-		<div className='flex-row-global justify-between w-full pb-3'>
+		<div className='md:flex-row-global flex-col-global justify-between w-full '>
 			<div>
 				<input placeholder='Search' />
 			</div>

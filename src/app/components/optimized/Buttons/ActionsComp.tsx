@@ -25,14 +25,14 @@ export default function ActionsComp({
 
 	sortMenus?: menuType[];
 	ActionsMenus?: menuType[];
-	
+
 	HandelopenDrawer?: () => void;
 	filter?: boolean;
 }) {
 	//  hooks
 	const { t } = useTranslation();
 	return (
-		<div className='flex sm:flex-row flex-col sm:h-10    md:gap-4 gap-2  '>
+		<div className='flex-row-global sm:h-10    md:gap-4 gap-2  '>
 			{/*   arrange button */}
 
 			{sortMenus && sortMenus?.length > 0 && (

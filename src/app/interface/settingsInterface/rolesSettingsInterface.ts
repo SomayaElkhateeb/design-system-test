@@ -441,10 +441,6 @@ export interface Role {
     updated_at: string;
 }
 
-export interface RolesList {
-    data: Role[];
-    // links: Links;
-    // meta: Meta;
-}
+
 
 
