@@ -31,7 +31,7 @@ const RolesPage = () => {
 				{/* import table all roles */}
 				<RolesTable rolesList={rolesList} isLoading={isLoading} />
 			</div>
-			{/* {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />} */}
+			
 		</>
 	);
 };
