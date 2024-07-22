@@ -3,12 +3,10 @@ import { AiOutlineQuestion } from 'react-icons/ai';
 import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import RowItem from './RowItem';
-import { useState } from 'react';
 import AddRate from './AddRate';
 
-export default function RatesDeliver() {
+export default function RatesDeliver({showRate, setShowRate}:{showRate:boolean; setShowRate: () => void}) {
 	const { t } = useTranslation();
-	const [showRate, setShowRate] = useState(false);
 	return (
 		<div className='cardDetails-sharedClass p-5 flex flex-col gap-4'>
 			<div className='flex items-center justify-between'>
@@ -32,6 +30,7 @@ export default function RatesDeliver() {
 			{showRate && (
 				<AddRate
 					saudi={false}
+					showRate={true}
 					onClose={() => {
 						setShowRate(false);
 					}}

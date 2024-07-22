@@ -1,4 +1,4 @@
-import { Countries } from 'src/app/interface/settingsInterface/countriesSettingsInterface';
+import { Countries } from 'src/app/interface/settingsInterface/CountriesSettingsInterface';
 import { statusGlobal } from '..';
 
 export interface countriesSliceModel extends statusGlobal {

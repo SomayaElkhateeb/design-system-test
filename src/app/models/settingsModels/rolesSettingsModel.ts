@@ -3,6 +3,6 @@ import { statusGlobal } from '..';
 
 export interface rolesSliceModel extends statusGlobal {
 	permissions: RolesData[];
-	permissionsList: RolesList[];
+	rolesList: RolesList[];
 	isLoadingDelete: boolean;
 }

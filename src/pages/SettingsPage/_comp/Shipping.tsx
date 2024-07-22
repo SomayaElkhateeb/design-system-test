@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import { Switch } from 'src/app/components/ui/switch';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getHelpShow } from 'src/app/store/slices/settingsPage/help/helpAsyncThunks';
 import { getShippingList, getShippingMethods } from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
-import { getTaxRatesList } from 'src/app/store/slices/settingsPage/tax/taxCategories/taxCategoriesAsyncThunks';
 import { EditIcon } from 'src/app/utils/icons';
 import { images } from 'src/pages/SettingsPage/_comp/data';
 
@@ -17,12 +15,12 @@ export default function Shipping() {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { helpShow, isLoading, error } = useAppSelector((state) => state.helpSettings);
+	const { shippingList, isLoading, error } = useAppSelector((state) => state.shippingSettings);
 
-	console.log('helpShows', helpShow); 
+	console.log('shippingLists', shippingList); 
 
 	useEffect(() => {
-		dispatch(getHelpShow(1));
+		dispatch(getShippingList());
 	}, [dispatch]);
 
 

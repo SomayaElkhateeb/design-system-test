@@ -11,6 +11,8 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { postMerchantPayment } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
 
 export default function ActivateBankTransfer() {
 	//  hooks
@@ -35,6 +37,16 @@ export default function ActivateBankTransfer() {
 	useEffect(() => {
 		setApplyWith(formStore.watch('applyWith'));
 	}, []);
+
+	// redux
+	// const dispatch = useAppDispatch();
+	// const { shippingList, isLoading, error } = useAppSelector((state) => state.shippingSettings);
+
+	// console.log('shippingLists', shippingList);
+
+	
+
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global '>

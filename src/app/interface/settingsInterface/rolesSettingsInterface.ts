@@ -431,7 +431,7 @@ export interface RolesData {
 }
 
 // permissions list data
-interface Role {
+export interface Role {
     id: number;
     name: string;
     description: string;
@@ -443,8 +443,8 @@ interface Role {
 
 export interface RolesList {
     data: Role[];
-    links: Links;
-    meta: Meta;
+    // links: Links;
+    // meta: Meta;
 }
 
 

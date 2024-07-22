@@ -24,10 +24,10 @@ import AddresseCustomersSlice from './slices/customersPage/AddresseCustomer/Addr
 // imports settings page
 import shippingSettings from './slices/settingsPage/shipping/shippingSlice';
 import taxSettings from './slices/settingsPage/tax/taxCategories/taxCategriesSlice';
-import countriesSettings from './slices/settingsPage/countries/countriesSlice';
 import usersSettings from './slices/settingsPage/users/usersSlice';
 import rolesSettings from './slices/settingsPage/roles/rolesSlice';
 import helpSettings from './slices/settingsPage/help/helpSlice';
+import emailNotificationSettings from './slices/settingsPage/emailNotification/emailNotificationSlice';
 
 
 export const rootReducer = combineReducers({
@@ -60,8 +60,8 @@ export const rootReducer = combineReducers({
 	// settings page
 	shippingSettings: shippingSettings,
 	taxSettings: taxSettings,
-	countriesSettings:countriesSettings,
 	usersSettings:usersSettings,
 	rolesSettings:rolesSettings,
 	helpSettings:helpSettings,
+	emailNotificationSettings:emailNotificationSettings,
 });
