@@ -1,5 +1,6 @@
 import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdAddCircle } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -13,19 +14,21 @@ const Users = () => {
 	const { t } = useTranslation();
 	const location = useLocation();
 	const navigate = useNavigate();
-	const path = location.pathname;
+	const [value, setValue] = useState(1);
 	return (
 		//  tabs section
 		<>
-			{/* <SubHeader title={path === '/settings/users' ? t('Users & Permissions') : t('Roles')} >
+			<SubHeader title={t('Users & Permissions')}>
 				<Button
 					variant='primary'
 					LeftIcon={IoMdAddCircle}
-					onClick={() => navigate('addStuff')}
+					onClick={() => {
+						navigate('addStuff');
+					}}
 				>
-					{path === '/settings/users' ? t('add staff') : t('add Roles')}
+					{value === 1 ? t('add staff') : t('add Roles')}
 				</Button>
-			</SubHeader> */}
+			</SubHeader>
 
 			<Tabs
 				body={
@@ -40,13 +43,10 @@ const Users = () => {
 				}
 			>
 				{/*  children */}
-				<Tab label={t('staff')} value='1' />
-				<Tab label={t('roles')} value='2' />
+				<Tab onClick={() => setValue(1)} label={t('Staff')} value='1' />
+				<Tab onClick={() => setValue(2)} label={t('roles')} value='2' />
 			</Tabs>
 		</>
-	)
-
-
-
-}
+	);
+};
 export default Users;
