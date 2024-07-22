@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { merchantPaymentMethodsReducer } from './merchantPaymentExtraReducer';
+import { merchantPaymentMethodsSliceModel } from 'src/app/models/settingsModels/merchantPaymentMethodsSettingsModel';
 
-import { taxCategoriesShowReducer } from './merchantPaymentExtraReducer';
-import { taxRateSettingsSliceModel } from 'src/app/models/settingsModels/taxRateSettingsModel';
-
-const initialState: taxRateSettingsSliceModel = {
-	taxRatesList: [],
-	taxRatesShow: [],
+const initialState: merchantPaymentMethodsSliceModel = {
+	merchantPaymentList: [],
+	merchantPaymentShow: null,
+	isLoadingDelete:false,
 	isLoadingAddOrUpdate: false,
 	isLoading: false,
 	error: null,
 };
 
-const taxCategoriesShowSlice = createSlice({
-	name: 'taxRateSettings',
+const merchantPaymentSlice = createSlice({
+	name: 'merchantPaymentSettings',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		taxCategoriesShowReducer(builder);
+		merchantPaymentMethodsReducer(builder);
 	},
 });
 
-export default taxCategoriesShowSlice.reducer;
+export default merchantPaymentSlice.reducer;

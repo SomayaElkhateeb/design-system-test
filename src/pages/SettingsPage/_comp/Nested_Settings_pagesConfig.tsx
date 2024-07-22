@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import AddStuff from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStuff/AddStuff';
+import AddStuff from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/AddStaff';
 import TransferOwnership from 'src/app/components/page/SettingPage/PermissionsAndUsers/Owner/TransferOwnership';
 import AddBranch from 'src/pages/SettingsPage/BranchesSettings/AddBranch/AddBranch';
 import PaymentProvidersPage from 'src/pages/SettingsPage/PaymentSettings/PaymentProviders/PaymentProvidersPage';

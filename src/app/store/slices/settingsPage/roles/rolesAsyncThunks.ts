@@ -9,13 +9,13 @@ export const getPermissions = createAsyncThunk('permissions/getPermissions', () 
 	PublicRequest.getData('merchant/settings/permissions'),
 );
 
-// get permissions list
-export const getPermissionsList = createAsyncThunk('permissionsList/getPermissionsList', () =>
+// get roles list
+export const getRolesList = createAsyncThunk('permissionsList/getRolesList', () =>
 	PublicRequest.getData('merchant/settings/roles'),
 );
 
-// get permissions show
-export const getPermissionsShow = createAsyncThunk('permissionsShow/getPermissionsShow', (payload: string) =>
+// get roles show
+export const getRolesShow = createAsyncThunk('permissionsShow/getRolesShow', (payload: string) =>
 	PublicRequest.getData(`merchant/settings/roles/show/${payload}`),
 );
 

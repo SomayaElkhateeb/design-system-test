@@ -4,7 +4,7 @@ import { rolesSliceModel } from 'src/app/models/settingsModels/rolesSettingsMode
 
 const initialState: rolesSliceModel = {
 	permissions: [],
-	permissionsList: [],
+	rolesList: [],
 	isLoadingDelete: false,
 	isLoading: false,
 	error: null,
