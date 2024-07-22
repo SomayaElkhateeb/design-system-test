@@ -52,7 +52,7 @@ const Users = () => {
 				<Tab onClick={() => setValue(1)} label={t('Staff')} value='1' />
 				<Tab onClick={() => setValue(2)} label={t('roles')} value='2' />
 			</Tabs>
-			{openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />}
+			{/* {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />} */}
 		</>
 	);
 };

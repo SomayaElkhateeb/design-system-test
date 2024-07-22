@@ -7,50 +7,50 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 
-const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-        borderBottom: 0,
-    },
-    '&::before': {
-        display: 'none',
-    },
-}));
+// const Accordion = styled((props: AccordionProps) => (
+//     <MuiAccordion disableGutters elevation={0} square {...props} />
+// ))(({ theme }) => ({
+//     border: `1px solid ${theme.palette.divider}`,
+//     '&:not(:last-child)': {
+//         borderBottom: 0,
+//     },
+//     '&::before': {
+//         display: 'none',
+//     },
+// }));
 
-const AccordionSummary = styled((props: AccordionSummaryProps) => (
-    <MuiAccordionSummary
-        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-        {...props}
-    />
-))(({ theme }) => ({
-    backgroundColor:
-        theme.palette.mode === 'dark'
-            ? 'rgba(255, 255, 255, .05)'
-            : 'rgba(0, 0, 0, .03)',
-    flexDirection: 'row-reverse',
-    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-        transform: 'rotate(90deg)',
-    },
-    '& .MuiAccordionSummary-content': {
-        marginLeft: theme.spacing(1),
-    },
-}));
+// const AccordionSummary = styled((props: AccordionSummaryProps) => (
+//     <MuiAccordionSummary
+//         expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+//         {...props}
+//     />
+// ))(({ theme }) => ({
+//     backgroundColor:
+//         theme.palette.mode === 'dark'
+//             ? 'rgba(255, 255, 255, .05)'
+//             : 'rgba(0, 0, 0, .03)',
+//     flexDirection: 'row-reverse',
+//     '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+//         transform: 'rotate(90deg)',
+//     },
+//     '& .MuiAccordionSummary-content': {
+//         marginLeft: theme.spacing(1),
+//     },
+// }));
 
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-    padding: theme.spacing(2),
-    borderTop: '1px solid rgba(0, 0, 0, .125)',
-}));
+// const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+//     padding: theme.spacing(2),
+//     borderTop: '1px solid rgba(0, 0, 0, .125)',
+// }));
 
-const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
-    '& .MuiCheckbox-root': {
-        marginRight: theme.spacing(2),
-    },
-    '& .MuiTypography-root': {
-        flexGrow: 1,
-    },
-}));
+// const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+//     '& .MuiCheckbox-root': {
+//         marginRight: theme.spacing(2),
+//     },
+//     '& .MuiTypography-root': {
+//         flexGrow: 1,
+//     },
+// }));
 
 
 // type AccordionData = {
@@ -67,34 +67,34 @@ export default function CustomizedAccordions({ accordionData }) {
     const [expanded, setExpanded] = React.useState<string | false>(false);
     const [checkedItems, setCheckedItems] = React.useState<{ [key: string]: boolean }>({});
 
-    const handleChange =
-        (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-            setExpanded(newExpanded ? panel : false);
-        };
+    // const handleChange =
+    //     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+    //         setExpanded(newExpanded ? panel : false);
+    //     };
 
-    const handleCheckboxChange = (id: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCheckedItems({
-            ...checkedItems,
-            [id]: event.target.checked,
-        });
-    };
-    const data = Object.values(accordionData);
-    const AccordionContent = styled(Typography)(({ theme }) => ({
-        padding: theme.spacing(2),
-        borderTop: '1px solid rgba(0, 0, 0, .125)',
-    }));
-    const StyledAccordion = styled(Accordion)(({ theme }) => ({
-        border: `1px solid ${theme.palette.divider}`,
-        '&:not(:last-child)': {
-            borderBottom: 0,
-        },
-        '&::before': {
-            display: 'none',
-        },
-    }));
+    // const handleCheckboxChange = (id: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     setCheckedItems({
+    //         ...checkedItems,
+    //         [id]: event.target.checked,
+    //     });
+    // };
+    // const data = Object.values(accordionData);
+    // const AccordionContent = styled(Typography)(({ theme }) => ({
+    //     padding: theme.spacing(2),
+    //     borderTop: '1px solid rgba(0, 0, 0, .125)',
+    // }));
+    // const StyledAccordion = styled(Accordion)(({ theme }) => ({
+    //     border: `1px solid ${theme.palette.divider}`,
+    //     '&:not(:last-child)': {
+    //         borderBottom: 0,
+    //     },
+    //     '&::before': {
+    //         display: 'none',
+    //     },
+    // }));
     return (
         <div>
-            {data.map((item, index) => (
+            {/* {data.map((item, index) => (
                 <StyledAccordion key={index} expanded={expanded === index} onChange={handleChange(index)}>
                     <StyledAccordionSummary aria-controls={`${index}-content`} id={`${index}-header`}>
                         <Checkbox
@@ -117,7 +117,7 @@ export default function CustomizedAccordions({ accordionData }) {
                         ))}
                     </AccordionContent>
                 </StyledAccordion>
-            ))}
+            ))} */}
         </div>
     );
 }
