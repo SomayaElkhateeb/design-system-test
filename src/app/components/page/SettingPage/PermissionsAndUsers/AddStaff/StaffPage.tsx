@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUsers } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect, useState } from 'react';
-import { Role } from 'src/app/interface/settingsInterface/UsersSettingsInterface';
+import { Role, User } from 'src/app/interface/settingsInterface/UsersSettingsInterface';
 import StuffTable from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/StaffTable';
 import ActionsBtn from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/ActionsBtn';
 
@@ -17,8 +17,8 @@ const StaffPage = () => {
 	const navigate = useNavigate();
 	// redux
 	const dispatch = useAppDispatch();
-	const { users, isLoading, error } = useAppSelector((state) => state.usersSettings);
-	console.log(users)
+	const { users,isLoading } = useAppSelector((state) => state.usersSettings);
+	
 
 	useEffect(() => {
 		dispatch(getUsers());
@@ -42,7 +42,7 @@ const StaffPage = () => {
 				<hr className='pb-4' />
 				<div className='global-cards bg-light-2'>
 
-					{users.length > 0 && users.map((usersMember: Role) => (
+					{users?.length > 0 && users?.map((usersMember: User) => (
 						<div key={usersMember.id} className='flex-col-global'>
 							<div>
 								<h3 className='title'>{t('Owner')}</h3>
@@ -71,7 +71,7 @@ const StaffPage = () => {
 			</div>
 
 			{/* import table all stuff */}
-			<StuffTable array={array} setArray={setArray} data={users} isLoading={isLoading} />
+			<StuffTable  data={users} isLoading={isLoading} />
 		</div>
 	)
 

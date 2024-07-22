@@ -40,7 +40,7 @@ const Users = () => {
 				}
 			>
 				{/*  children */}
-				<Tab label={t('staff')} value='1' />
+				<Tab label={t('Staff')} value='1' />
 				<Tab label={t('roles')} value='2' />
 			</Tabs>
 		</>
