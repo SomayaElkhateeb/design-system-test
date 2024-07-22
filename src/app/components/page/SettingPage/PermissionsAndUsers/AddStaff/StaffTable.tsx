@@ -30,12 +30,12 @@ export default function StuffTable({
 	// settingMenus
 	const options = [
 		{
-			id: 1,
+			id: "1",
 			text: 'edit',
 			icon: <EditIcon className='fill-title' />,
 		},
 		{
-			id: 2,
+			id: "2",
 			text: 'delete',
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},

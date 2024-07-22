@@ -704,6 +704,7 @@ export const english = {
 	'Transfer Ownership': 'Transfer Ownership',
 	Staff: 'Staff',
 	"roles":"roles",
+	"add Roles":"add Roles",
 	'Active 3 days ago': 'Active 3 days ago',
 	manage: 'manage',
 	'add staff': 'add staff',

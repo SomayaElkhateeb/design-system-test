@@ -17,6 +17,7 @@ export const arabic = {
 	"Select city":"حدد مدينه",
 	"Delete Item":"ازالع عنصر",
 	"roles":"الادوار",
+	"add Roles":"اضف ادوار",
 	"Do You Want To Delete This Item":"هل تريد ازاله هذا العنصر",
 	"Group Including Customers,denied":"الجروب يشمل عملاء , ممنوع",
 	"Category link (Slug)":"رابط الفئه",
