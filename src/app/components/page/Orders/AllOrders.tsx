@@ -5,7 +5,6 @@ import AddButtonMobile from '../../optimized/Buttons/AddButtonMobile';
 import AllOrdersTable from './AllOrdersTable';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { OrderInterface } from 'src/app/interface/OrderInterface';
 import TopSectionOrdersPage from './TopSectionOrdersPage';
 import { nanoid } from 'nanoid';
 import { LiaTrashAlt } from 'react-icons/lia';
@@ -24,7 +23,7 @@ export default function AllOrders() {
 	const { xs } = useResponsive();
 	//redux
 	const dispatch = useAppDispatch();
-	const { allOrders, isLoading, error } = useAppSelector((state) => state.allOrders);
+	const { allOrders, isLoading } = useAppSelector((state) => state.allOrders);
 
 	useEffect(() => {
 		dispatch(getAllOrdersPageTable());
