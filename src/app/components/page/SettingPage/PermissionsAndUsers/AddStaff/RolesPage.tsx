@@ -16,7 +16,7 @@ const RolesPage = () => {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
+	const { rolesList, isLoading, error } = useAppSelector((state) => state.rolesSettings);
 	console.log('rolesList', rolesList);
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const RolesPage = () => {
 				{/* import table all roles */}
 				<RolesTable rolesList={rolesList} isLoading={isLoading} />
 			</div>
-			{/* {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />} */}
+			
 		</>
 	);
 };
