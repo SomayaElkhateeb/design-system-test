@@ -16,7 +16,7 @@ const RolesPage = () => {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
+	const { rolesList, isLoading, error } = useAppSelector((state) => state.rolesSettings);
 	console.log('rolesList', rolesList);
 
 	useEffect(() => {

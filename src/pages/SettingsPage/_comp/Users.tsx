@@ -23,7 +23,11 @@ const Users = () => {
 					variant='primary'
 					LeftIcon={IoMdAddCircle}
 					onClick={() => {
-						navigate('addStuff');
+						if (value === 1) {
+							navigate('addStuff');
+						} else {
+							navigate('addStuff');
+						}
 					}}
 				>
 					{value === 1 ? t('add staff') : t('add Roles')}
