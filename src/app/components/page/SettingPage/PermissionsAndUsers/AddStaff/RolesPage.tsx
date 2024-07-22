@@ -1,16 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { ArrangeButton } from 'src/app/components/optimized';
 import FilterButton from 'src/app/components/optimized/Buttons/FilterButton';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getRolesList } from 'src/app/store/slices/settingsPage/roles/rolesAsyncThunks';
+import { deleteRole, getRolesList } from 'src/app/store/slices/settingsPage/roles/rolesAsyncThunks';
 import RolesTable from './RolesTable';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { nanoid } from 'nanoid';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 import { Role } from 'src/app/interface/settingsInterface/rolesSettingsInterface';
+import { EditIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { useTranslation } from 'react-i18next';
 
 const RolesPage = () => {
+	const {t}=useTranslation()
 	// redux
 	const dispatch = useAppDispatch();
 	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
@@ -36,6 +43,49 @@ const RolesPage = () => {
 		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
 	);
 
+	const options = [
+		{
+			id: '1',
+			text: 'edit',
+			icon: <EditIcon className='fill-title' />,
+		},
+		{
+			id: '2',
+			text: 'delete',
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
+		},
+	];
+	const {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	} = UseDeleteItem();
+	// Delete customer
+
+	const handelDeleteRole = () => {
+		dispatch(deleteRole(custom_Id)).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				handelCloseDeleteDialog();
+				dispatch(getRolesList());
+			}
+		});
+	};
+	useMemo(() => {
+		switch (selectedOption) {
+			case 'delete':
+				handelOpenDialog();
+				setSelectedOption('');
+				break;
+			case 'edit':
+				setSelectedOption('');
+
+				break;
+		}
+	}, [selectedOption, custom_Id]);
+
 	return (
 		<>
 			<div className='flex-col-global gap-2'>
@@ -46,8 +96,24 @@ const RolesPage = () => {
 				/>
 				<hr />
 				{/* import table all roles */}
-				<RolesTable rolesList={RolesArrangedData} isLoading={isLoading} />
+				<RolesTable handelId={handelId} rolesList={RolesArrangedData} isLoading={isLoading}>
+					<ThreeDotsButton
+						sortMenus={options}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</RolesTable>
 			</div>
+			{/* openDeleteDialog */}
+			{openDeleteDialog && (
+				<PopupDelete
+					open={openDeleteDialog}
+					onClose={handelCloseDeleteDialog}
+					title={t('Delete Item')}
+					subTitle={t('Do You Want To Delete This Item')}
+					onDelete={handelDeleteRole}
+				/>
+			)}
 		</>
 	);
 };

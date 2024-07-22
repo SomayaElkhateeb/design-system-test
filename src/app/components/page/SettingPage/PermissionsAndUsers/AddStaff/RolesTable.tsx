@@ -12,25 +12,21 @@ import { Role } from 'src/app/interface/settingsInterface/rolesSettingsInterface
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 
-const RolesTable = ({ rolesList, isLoading }: { rolesList: Role[]; isLoading: boolean }) => {
+const RolesTable = ({
+	rolesList,
+	isLoading,
+	handelId,
+	children,
+}: {
+	rolesList: Role[];
+	isLoading: boolean;
+    handelId:(e:string)=>void
+    children:React.ReactNode
+}) => {
 	//  hooks
 	const { language } = useLanguage();
 	const { t } = useTranslation();
-    const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
-	// settingMenus
-	const options = [
-		{
-			id: '1',
-			text: 'edit',
-			icon: <EditIcon className='fill-title' />,
-		},
-		{
-			id: '2',
-			text: 'delete',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
 	//  headers
 	const dataHeaders = [
 		{ title: t('id') },
@@ -60,11 +56,7 @@ const RolesTable = ({ rolesList, isLoading }: { rolesList: Role[]; isLoading: bo
 						</GlobalTableCell>,
 
 						<GlobalTableCell>
-							<ThreeDotsButton
-								sortMenus={options}
-								selectedOption={selectedOption}
-								handelSelect={handleSelect}
-							/>
+							<div onClick={() => handelId(e?.id)}>{children}</div>
 						</GlobalTableCell>,
 					],
 				};
