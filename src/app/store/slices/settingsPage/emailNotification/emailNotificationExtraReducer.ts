@@ -1,55 +1,72 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { createTaxCategory, getTaxCategoriesList, getTaxCategoriesShow, updateTaxCategory } from './emailNotificationAsyncThunks';
-import { taxCategoriesSettingsSliceModel } from 'src/app/models/settingsModels/taxCategorySettingsModel';
+import { emailNotificationSliceModel } from 'src/app/models/settingsModels/emailSettingsModel';
+import { deleteEmailNotification, getEmailNotificationList, getEmailNotificationShow, postEmailNotification, putEmailNotification } from './emailNotificationAsyncThunks';
 
-export const taxCategoriesShowReducer = (
-	builder: ActionReducerMapBuilder<taxCategoriesSettingsSliceModel>,
+export const emailNotificationReducer = (
+	builder: ActionReducerMapBuilder<emailNotificationSliceModel>,
 ) => {
 	builder
-		// // get Tax Categories Show data
-		.addCase(getTaxCategoriesShow.pending, (state) => {
+		// get Email Notification List
+		.addCase(getEmailNotificationList.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getTaxCategoriesShow.fulfilled, (state, { payload }: any) => {
+		.addCase(getEmailNotificationList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxCategoriesShow = payload.data;
+			state.emailNotification = payload.data;
 		})
-		.addCase(getTaxCategoriesShow.rejected, (state, action) => {
+		.addCase(getEmailNotificationList.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
-		// // get Tax Categories List data
-		.addCase(getTaxCategoriesList.pending, (state) => {
+		// get Email Notification Show
+		.addCase(getEmailNotificationShow.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getTaxCategoriesList.fulfilled, (state, { payload }: any) => {
+		.addCase(getEmailNotificationShow.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxCategoriesList = payload;
+			state.emailNotificationShow = payload;
 		})
-		.addCase(getTaxCategoriesList.rejected, (state, action) => {
+		.addCase(getEmailNotificationShow.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
-		//  add tax rate
-		.addCase(createTaxCategory.pending, (state) => {
+		//  post Email Notification
+		.addCase(postEmailNotification.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
-		.addCase(createTaxCategory.fulfilled, (state, { payload }) => {
+		.addCase(postEmailNotification.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
 		})
-		.addCase(createTaxCategory.rejected, (state, action) => {
+		.addCase(postEmailNotification.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
 		})
-		//  update tax rate
-		.addCase(updateTaxCategory.pending, (state) => {
+		//  put Email Notification
+		.addCase(putEmailNotification.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
-		.addCase(updateTaxCategory.fulfilled, (state, { payload }) => {
+		.addCase(putEmailNotification.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
+			const index = state.emailNotification.findIndex(item => item.id === payload.data.id);
+			if (index !== -1) {
+				state.emailNotification[index] = payload.data; 
+			}
 		})
-		.addCase(updateTaxCategory.rejected, (state, action) => {
+		.addCase(putEmailNotification.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
+			state.error = action.payload; 
 		})
+		// Delete Email Notification
+		.addCase(deleteEmailNotification.pending, (state) => {
+			state.isLoadingDelete = true;
+		})
+		.addCase(deleteEmailNotification.fulfilled, (state, { payload }) => {
+			state.isLoadingDelete = false;
+			state.emailNotification = state.emailNotification.filter(item => item.id !== payload.data.id); 
+		})
+		.addCase(deleteEmailNotification.rejected, (state, action) => {
+			state.isLoadingDelete = false;
+			state.error = action.payload; 
+		});
 };

@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { emailNotificationReducer } from './emailNotificationExtraReducer';
+import { emailNotificationSliceModel } from 'src/app/models/settingsModels/emailSettingsModel';
 
-import { taxCategoriesShowReducer } from './emailNotificationExtraReducer';
-import { taxCategoriesSettingsSliceModel } from 'src/app/models/settingsModels/taxCategorySettingsModel';
-
-const initialState: taxCategoriesSettingsSliceModel = {
-	taxCategoriesShow: [],
-	taxCategoriesList: [],
+const initialState: emailNotificationSliceModel = {
+	emailNotification: [],
+	emailNotificationShow: [],
 	isLoadingAddOrUpdate: false,
+	isLoadingDelete: false,
 	isLoading: false,
 	error: null,
 };
 
-const taxCategoriesShowSlice = createSlice({
-	name: 'taxCategorySettings',
+const emailNotificationShowSlice = createSlice({
+	name: 'emailNotificationSettings',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		taxCategoriesShowReducer(builder);
+		emailNotificationReducer(builder);
 	},
 });
 
-export default taxCategoriesShowSlice.reducer;
+export default emailNotificationShowSlice.reducer;

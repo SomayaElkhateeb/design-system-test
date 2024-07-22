@@ -8,7 +8,7 @@ import {
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { PostNewOwner } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
+// import { PostNewOwner } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
 import { useNavigate } from 'react-router-dom';
 import { AddOwnerSchema } from 'src/app/schema/settings/AddOwnerSchema';
 import { useEffect } from 'react';

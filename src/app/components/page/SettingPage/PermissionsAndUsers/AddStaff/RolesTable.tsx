@@ -1,7 +1,5 @@
 import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { LiaTrashAlt } from 'react-icons/lia';
 import BaseTable from 'src/app/components/optimized/TableLayoutGlobal/base.table';
@@ -10,20 +8,9 @@ import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/Custo
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 import { EditIcon, MoreIcon } from 'src/app/utils/icons';
 import MenuOptions from 'src/app/components/optimized/Menu/MenuOptions';
+import { RolesList } from 'src/app/interface/settingsInterface/rolesSettingsInterface';
 
-export default function StuffTable({
-    data,
-    array,
-    setArray,
-    // settingMenus,
-    isLoading,
-}: {
-    // data: OrderInterface[];
-    array: string[];
-    setArray: (e: string[]) => void;
-    // settingMenus: menuType[];
-    isLoading: boolean;
-}) {
+const RolesTable = ({ rolesList, isLoading }: { rolesList: RolesList[]; isLoading: boolean }) => {
     //  hooks
     const { language } = useLanguage();
     const { t } = useTranslation();
@@ -34,29 +21,20 @@ export default function StuffTable({
             id: 1,
             text: 'edit',
             icon: <EditIcon className='fill-title' />,
-            click: () => console.log("edit")
+            click: () => console.log('edit'),
         },
         {
             id: 2,
             text: 'delete',
             icon: <LiaTrashAlt size='28' className='fill-error' />,
-            click: () => console.log("delete")
+            click: () => console.log('delete'),
         },
     ];
     //  headers
     const dataHeaders = [
-        {
-            icon: (
-                <CustomTableHeaderCheckbox
-                    array={array}
-                    setArray={setArray}
-                    mainArray={data?.map((e) => e.id)}
-                />
-            ),
-            title: t('staff name'),
-        },
-        { title: t('email') },
-        { title: t('role') },
+        { title: t('id') },
+        { title: t('role name') },
+        { title: t('permission type') },
         { title: t('actions') },
     ];
 
@@ -66,30 +44,26 @@ export default function StuffTable({
             language={language}
             color='#55607A'
             headers={dataHeaders.map((h) => h)}
-            rows={data?.map((e, i: number) => {
+            rows={rolesList?.map((e, i: number) => {
                 return {
                     item: e,
                     elements: [
                         <TableCell>
-                            <div className=' flex  items-center gap-[.3rem] '>
-                                <CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
-                                <Avatar fullName={e.name} />
-                                <div className='flex-col-global gap-[.3rem]'>
-                                    <p className='title'>{e.name}</p>
-                                </div>
-                            </div>
+                            <p className='text-title text-sm'>{i + 1}</p>
                         </TableCell>,
                         <TableCell>
-                            <p className="text-primary underline text-sm">{e.email}</p>
+
+
+                            <p className='title'>{e.name}</p>
+
                         </TableCell>,
                         <TableCell>
-                            <p className="text-title font-bold text-sm">{e.role.name}</p>
+                            <p className='text-title text-sm'>{e.permission_type}</p>
                         </TableCell>,
+
+
                         <TableCell>
-                            <MenuOptions
-                                btn={<MoreIcon className='fill-subtitle' />}
-                                options={options}
-                            />
+                            <MenuOptions btn={<MoreIcon className='fill-subtitle' />} options={options} />
                         </TableCell>,
                     ],
                 };
@@ -97,3 +71,5 @@ export default function StuffTable({
         />
     );
 }
+
+export default RolesTable;

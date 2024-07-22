@@ -15,9 +15,9 @@ export const getEmailNotificationShow = createAsyncThunk(
 	(payload: string) => PublicRequest.getData(`merchant/settings/email-notification/${payload}`),
 );
 
-// create tax category 
-export const createTaxCategory = createAsyncThunk(
-	"taxCategories/createTaxCategory",
+// create email notification
+export const postEmailNotification = createAsyncThunk(
+	"emailNotification/postEmailNotification",
 	(payload: AddTaxCategorySchemaValues) =>
 		PublicRequest.postData(payload, `merchant/settings/email-notification`)
 			.then((res: any) => {
@@ -29,11 +29,11 @@ export const createTaxCategory = createAsyncThunk(
 			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-// update tax category
-export const updateTaxCategory = createAsyncThunk(
-	'taxCategories/updateTaxCategory',
+// update Email Notification
+export const putEmailNotification = createAsyncThunk(
+	'emailNotification/putEmailNotification',
 	(payload: { data: AddTaxCategorySchemaValues, id: string }) =>
-		PublicRequest.putData(payload.data, `merchant/settings/tax-categories/${payload?.id}`)
+		PublicRequest.putData(payload.data, `merchant/settings/email-notification/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);
@@ -43,10 +43,10 @@ export const updateTaxCategory = createAsyncThunk(
 			.catch((err) => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-// delete tax category
-export const deleteTaxCategory = createAsyncThunk(
-	'delete/deleteTaxCategory',
-	(payload: string) => PublicRequest.deleteData(`merchant/settings/tax-categories/${payload}`).then((res: any) => {
+// delete Email Notification
+export const deleteEmailNotification = createAsyncThunk(
+	'delete/deleteEmailNotification',
+	(payload: string) => PublicRequest.deleteData(`merchant/settings/email-notification/${payload}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
 			return res;

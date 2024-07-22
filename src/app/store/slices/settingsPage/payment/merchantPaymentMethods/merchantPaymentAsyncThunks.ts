@@ -3,23 +3,25 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AddTaxRateSchemaValues } from 'src/app/schema/settings/AddTaxRateSchema';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
+import { AddMerchantPaymentMethodSchemaValues } from 'src/app/schema/settings/AddMerchantPaymentMethodSchema';
 
-// get Tax Rates List data
-export const getTaxRatesList = createAsyncThunk('taxRates/getTaxRatesList', () =>
-	PublicRequest.getData('merchant/settings/tax-rates'),
+// get merchant payment methods list
+export const getMerchantPaymentList = createAsyncThunk('merchantPaymentMethods/getMerchantPaymentList', () =>
+	PublicRequest.getData('merchant/payment-methods'),
 );
 
-// get Tax Rates Show
-export const getTaxRatesShow = createAsyncThunk(
-	'taxRatesShow/getTaxRatesShow',
-	() => PublicRequest.getData('merchant/settings/tax-rates/2'), // param id
+// get merchant payment methods Show
+export const getMerchantPaymentShow = createAsyncThunk(
+	'merchantPaymentMethodsShow/getMerchantPaymentShow',
+	(payload: number) => PublicRequest.getData(`merchant/payment-methods/${payload}`), 
 );
 
-// create tax rates 
-export const createTaxRate = createAsyncThunk(
-	"taxRates/createTaxRate",
-	(payload: AddTaxRateSchemaValues) =>
-		PublicRequest.postData(payload, `merchant/settings/tax-rates`)
+
+// create merchant payment methods
+export const postMerchantPayment = createAsyncThunk(
+	"merchantPaymentMethods/postMerchantPayment",
+	(payload: AddMerchantPaymentMethodSchemaValues) =>
+		PublicRequest.postData(payload, `merchant/payment-methods`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);
@@ -29,10 +31,10 @@ export const createTaxRate = createAsyncThunk(
 			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-// update user
-export const updateTaxRate = createAsyncThunk(
-	'taxRates/updateTaxRate',
-	(payload: { data: AddTaxRateSchemaValues, id: string }) =>
+// update merchant payment methods
+export const putMerchantPayment = createAsyncThunk(
+	'merchantPaymentMethods/putMerchantPayment',
+	(payload: { data: AddMerchantPaymentMethodSchemaValues, id: string }) =>
 		PublicRequest.putData(payload.data, `merchant/settings/tax-rates/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {
@@ -43,10 +45,10 @@ export const updateTaxRate = createAsyncThunk(
 			.catch((err) => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-// delete tax rate
-export const deleteTaxRate = createAsyncThunk(
-	'delete/deleteTaxRate',
-	(payload: string) => PublicRequest.deleteData(`merchant/settings/tax-rates/${payload}`).then((res: any) => {
+// delete merchant payment methods
+export const deleteMerchantPayment = createAsyncThunk(
+	'delete/deleteMerchantPayment',
+	(payload: string) => PublicRequest.deleteData(`merchant/payment-methods/${payload}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
 			return res;
@@ -54,6 +56,9 @@ export const deleteTaxRate = createAsyncThunk(
 	})
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
+
+// post mass destroy
+// post toggle active
 
 
 

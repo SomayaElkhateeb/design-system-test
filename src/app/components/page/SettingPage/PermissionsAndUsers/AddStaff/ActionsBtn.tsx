@@ -21,14 +21,18 @@ const ActionsBtn = () => {
 	const handleExportFile = () => {
 		// ActionHandler.exportToExcel(data, 'campaigns_data.xlsx');
 	};
-	return <div  className='flex-row-global gap-3'>
-		{/* search */}
-		<input placeholder='Search' />
-		<Button onClick={handleExportFile} variant='secondary' LeftIcon={ExportIcon}>
-			{t('Export')}
-		</Button>
-		<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
-		<FilterButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+	return <div className="flex-row-global justify-between w-full pb-3">
+		<div>
+			<input placeholder='Search' />
+		</div>
+		<div className='flex-row-global gap-3'>
+			{/* search */}
+			<Button onClick={handleExportFile} variant='secondary' LeftIcon={ExportIcon}>
+				{t('Export')}
+			</Button>
+			<ArrangeButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+			<FilterButton sortMenus={sortMenus} selectedOption={selectedOption} handelSelect={handleSelect} />
+		</div>
 	</div>
 }
 export default ActionsBtn;

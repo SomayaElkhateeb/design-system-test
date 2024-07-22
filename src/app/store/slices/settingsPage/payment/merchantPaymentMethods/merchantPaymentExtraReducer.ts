@@ -1,57 +1,73 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { createTaxRate, getTaxRatesList, getTaxRatesShow, updateTaxRate } from './merchantPaymentAsyncThunks';
-import { taxRateSettingsSliceModel } from 'src/app/models/settingsModels/taxRateSettingsModel';
+import { deleteMerchantPayment, getMerchantPaymentList, getMerchantPaymentShow, postMerchantPayment, putMerchantPayment } from './merchantPaymentAsyncThunks';
+import { merchantPaymentMethodsSliceModel } from 'src/app/models/settingsModels/merchantPaymentMethodsSettingsModel';
 
-export const taxCategoriesShowReducer = (
-	builder: ActionReducerMapBuilder<taxRateSettingsSliceModel>,
+export const merchantPaymentMethodsReducer = (
+	builder: ActionReducerMapBuilder<merchantPaymentMethodsSliceModel>,
 ) => {
 	builder
-		// // get Tax RAtes list
-		.addCase(getTaxRatesList.pending, (state) => {
+		// get Merchant Payment List
+		.addCase(getMerchantPaymentList.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getTaxRatesList.fulfilled, (state, { payload }: any) => {
+		.addCase(getMerchantPaymentList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxRatesList = payload; // []
-			// state.taxRatesList = payload.meta.links;
+			state.merchantPaymentList = payload; 
 		})
-		.addCase(getTaxRatesList.rejected, (state, action) => {
+		.addCase(getMerchantPaymentList.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
-		// // get Tax Rates Show
-		.addCase(getTaxRatesShow.pending, (state) => {
+		// // get  Merchant Payment Show
+		.addCase(getMerchantPaymentShow.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getTaxRatesShow.fulfilled, (state, { payload }: any) => {
+		.addCase(getMerchantPaymentShow.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxRatesShow = payload.data;
+			state.merchantPaymentShow = payload.data;
 		})
-		.addCase(getTaxRatesShow.rejected, (state, action) => {
+		.addCase(getMerchantPaymentShow.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
-		//  add tax rate
-		.addCase(createTaxRate.pending, (state) => {
+		//  add Merchant Payment
+		.addCase(postMerchantPayment.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
-		.addCase(createTaxRate.fulfilled, (state, { payload }) => {
+		.addCase(postMerchantPayment.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
 		})
-		.addCase(createTaxRate.rejected, (state, action) => {
+		.addCase(postMerchantPayment.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
 		})
-		//  update tax rate
-		.addCase(updateTaxRate.pending, (state) => {
+		//  update Merchant Payment
+		.addCase(putMerchantPayment.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
-		.addCase(updateTaxRate.fulfilled, (state, { payload }) => {
+		.addCase(putMerchantPayment.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
+			const index = state.merchantPaymentList.findIndex(item => item.id === payload.data.id);
+			if (index !== -1) {
+				state.merchantPaymentList[index] = payload.data; 
+			}
 		})
-		.addCase(updateTaxRate.rejected, (state, action) => {
+		.addCase(putMerchantPayment.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
+			state.error = action.payload; 
 		})
+		//  delete Merchant Payment
+		.addCase(deleteMerchantPayment.pending, (state) => {
+			state.isLoadingDelete = true;
+		})
+		.addCase(deleteMerchantPayment.fulfilled, (state, { payload }) => {
+			state.isLoadingDelete = false;
+			state.merchantPaymentList = state.merchantPaymentList.filter(item => item.id !== payload.data.id); 
+		})
+		.addCase(deleteMerchantPayment.rejected, (state, action) => {
+			state.isLoadingDelete = false;
+			state.error = action.payload; 
+		});
 
 };

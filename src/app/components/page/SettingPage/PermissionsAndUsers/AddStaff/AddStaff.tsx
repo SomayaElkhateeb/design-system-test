@@ -7,7 +7,7 @@ import { useForm } from 'src/app/utils/hooks/form';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import useCustomHookAddStuff, { addStuffInterface } from './HookForAddStuff';
 import Permissions from './Permissions';
-import Stuff from './Stuff';
+import Stuff from './Staff';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, SubHeader } from 'src/app/components/optimized';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
@@ -20,6 +19,8 @@ export default function SetupInfo({
 	rates: boolean;
 	ratesDeliver?: boolean;
 }) {
+	const [showRate, setShowRate] = useState<boolean>(false);
+
 	// hook
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState<string>('');
@@ -74,7 +75,7 @@ export default function SetupInfo({
 					{rates && gap === false ? <Rates addStyle={false} /> : ''}
 				</div>
 				<div>{rates && gap ? <Rates addStyle={true} /> : ''}</div>
-				<div>{ratesDeliver ? <RatesDeliver /> : ''}</div>
+				<div>{ratesDeliver ? <RatesDeliver showRate={showRate} setShowRate={setShowRate} /> : ''}</div>
 				{/* <SubHeaderMobileBtns onSubmit={() => alert('Submit')} /> */}
 			</form>
 		</Form>

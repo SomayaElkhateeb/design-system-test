@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { deleteRole, getPermissions, getPermissionsList, getPermissionsShow, postRole, putRole } from './rolesAsyncThunks';
+import { deleteRole, getPermissions, getRolesList, getRolesShow, postRole, putRole } from './rolesAsyncThunks';
 import { rolesSliceModel } from 'src/app/models/settingsModels/rolesSettingsModel';
 
 export const rolesReducer = (builder: ActionReducerMapBuilder<rolesSliceModel>) => {
@@ -18,30 +18,30 @@ export const rolesReducer = (builder: ActionReducerMapBuilder<rolesSliceModel>) 
 			state.error = action.payload;
 		})
 
-		// get permissions list
-		.addCase(getPermissionsList.pending, (state) => {
+		// get roles list
+		.addCase(getRolesList.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getPermissionsList.fulfilled, (state, { payload }: any) => {
+		.addCase(getRolesList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.permissionsList = payload.data;
+			state.rolesList = payload.data;
 		})
-		.addCase(getPermissionsList.rejected, (state, action) => {
+		.addCase(getRolesList.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
 
 		// get permissions show
-		.addCase(getPermissionsShow.pending, (state) => {
+		.addCase(getRolesShow.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getPermissionsShow.fulfilled, (state, { payload }: any) => {
+		.addCase(getRolesShow.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
 			state.permissionsList = payload.data; // todo
 		})
-		.addCase(getPermissionsShow.rejected, (state, action) => {
+		.addCase(getRolesShow.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
