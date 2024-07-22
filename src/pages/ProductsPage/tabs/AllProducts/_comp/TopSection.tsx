@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle, IoMdArrowDropdown } from 'react-icons/io';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import PopoverComponenet from 'src/app/components/optimized/UiKits/Popover';
 import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/FilterOrdersComponent';
-import { GlobalDialog } from 'src/app/components/shared';
+
 import { getImageUrl } from 'src/app/utils';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import {
@@ -15,35 +15,29 @@ import {
 	productDropdownMenu,
 	productSortMenu,
 } from 'src/pages/ProductsPage/_comp/data';
-import { SimpleProductForm } from '../../_comp';
-import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getCategoriesTable } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
+
+import { useAppDispatch } from 'src/app/store';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 
 export default function TopSection({
 	verticalCard,
 	setVerticalCard,
+	setOpenDialog,
+	selectedOption,
+	handleSelect,
 }: {
 	verticalCard: boolean;
 	setVerticalCard: (e: boolean) => void;
+	setOpenDialog: (e: boolean) => void;
+	selectedOption: string;
+	handleSelect: (e: string) => void;
 }) {
 	//  hooks
 	const { t } = useTranslation();
-
+	const { xs } = useResponsive();
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
-	const { selectedOption, handleSelect } = useSelectBox();
-	const [openDialog, setOpenDialog] = useState<boolean>(false);
-	const dispatch = useAppDispatch();
-	//  selectors
-	const { categoriesTable } = useAppSelector((state) => state.categoriesTable);
-	const handleClose = (status: boolean) => {
-		setOpenDialog(status);
-	};
-
-	const dialogStyle = {
-		width: { lg: '1150px', md: '600px', xs: '375px' },
-		// height: { md: '500px', xs: '300px' },
-	};
 
 	const handelListAndGridImg = () => {
 		return (
@@ -74,9 +68,6 @@ export default function TopSection({
 		);
 	};
 
-	useEffect(() => {
-		dispatch(getCategoriesTable());
-	}, [dispatch]);
 	return (
 		<>
 			<div className='flex-col-global'>
@@ -84,16 +75,20 @@ export default function TopSection({
 					{/*  left dropdow */}
 					<PopoverComponenet
 						button={
-							<Button variant='primary' LeftIcon={IoIosAddCircle} RightIcon={IoMdArrowDropdown}>
-								{t('Add Product')}
-							</Button>
+							xs ? (
+								<AddButtonMobile />
+							) : (
+								<Button variant='primary' LeftIcon={IoIosAddCircle} RightIcon={IoMdArrowDropdown}>
+									{t('Add Product')}
+								</Button>
+							)
 						}
 					>
 						<div
 							style={{ boxShadow: '0px 10px 16px 0px #0000000D' }}
-							className='py-[.8rem] px-[.6rem] w-[20rem] h-[24rem] rounded-[.4rem] bg-white'
+							className='py-[.8rem] px-[.6rem] w-[20rem]  rounded-[.4rem] bg-white'
 						>
-							<div className=' flex flex-col gap-[1rem]'>
+							<div className='flex-col-global gap-[1rem]'>
 								{productDropdownMenu?.map((e) => (
 									<Link
 										className='flex flex-col gap-[.9rem]'
@@ -115,17 +110,6 @@ export default function TopSection({
 							</div>
 						</div>
 					</PopoverComponenet>
-
-					<GlobalDialog
-						openDialog={openDialog}
-						handleClose={() => handleClose(false)}
-						style={dialogStyle}
-					>
-						<SimpleProductForm
-							handleClose={() => handleClose(false)}
-							categoriesTable={categoriesTable}
-						/>
-					</GlobalDialog>
 
 					{/*  actions filter arrange,... */}
 					<div className='flex-row-global  gap-[1.2rem]'>

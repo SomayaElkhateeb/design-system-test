@@ -60,11 +60,11 @@ export default function TransferOwnership() {
 			formData.append('status', values.status);
 
 			console.log("values", values)
-			dispatch(PostNewOwner(formData)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			});
+			// dispatch(PostNewOwner(formData)).then((promiseResponse) => {
+			// 	if ((promiseResponse.payload.code = 200)) {
+			// 		navigate(-1);
+			// 	}
+			// });
 
 		},
 		defaultValues: newOwnerValue(),

@@ -130,18 +130,5 @@ The `ProductViews` component is designed to display product information. It allo
    [1]- Import the `ProductViews` component into your desired React component file.
    [2]- Pass the necessary props **(name, imageUrl, category, sku ,quantity, price)** to customize the product category information.
 
-2. Example:
 
-```jsx
-import ProductViews from './ProductViews';
-
-<ProductViews
-	name='Product Name'
-	imageUrl='product_image_url.jpg'
-	category='Product Category'
-	options={2} // Number of available options
-	sku='SKU Number'
-	quantity={50} // Available quantity
-	price='SAR 100.00'
-/>;
 ```

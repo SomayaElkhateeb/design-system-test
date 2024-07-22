@@ -56,9 +56,9 @@ export { default as ProductCategory } from './Category/ProductCategory';
 export { default as ImageUploader } from './MediaUpload/ImageUploader';
 
 export { default as CategoryViews } from './Category/CategoryViews';
-export { default as ProductViews } from '../../../pages/ProductsPage/_mobile/ProductViews.jsx';
+
 export { default as MainUpload } from './MediaUpload/MainUpload';
-export { default as ProductCard } from './Cards/ProductCard.jsx';
+export { default as ProductCard } from './Cards/ProductCard.tsx';
 export { default as TrialBanner } from './UiKits/TrialBanner';
 export { default as SearchBox } from './SearchBox/SearchBox.jsx';
 export { default as SetupCard } from './Cards/SetupCard';

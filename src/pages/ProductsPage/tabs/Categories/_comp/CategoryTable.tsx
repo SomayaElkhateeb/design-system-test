@@ -31,6 +31,7 @@ export const CategoryTable = ({
 	const { language } = useLanguage();
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
+	const classData = actionsButtonStyle();
 	//  headers
 
 	const headers = [
@@ -102,7 +103,7 @@ export const CategoryTable = ({
 						</GlobalTableCell>,
 
 						<GlobalTableCell>
-							<div className={actionsButtonStyle()}>
+							<div className={classData}>
 								<div onClick={() => handelId(e?.id)}>{children}</div>
 
 								<ArrowTables path='/products/categories/SubCategories' />

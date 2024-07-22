@@ -24,33 +24,40 @@ interface AllProductsTableProps {
 	products: Product[];
 	array: string[];
 	setArray: (e: string[]) => void;
-	settingMenus: menuType[];
+
 	isLoading: boolean;
+	setOpenDialog: (e: boolean) => void;
+	setEdit_product: (e: Product) => void;
+	children: React.ReactNode;
+	handelId: (e: string) => void;
 }
 
 export const actionsButtonStyle = () => {
 	const { language } = useLanguage();
+	let classData = '';
+	language === 'ar'
+		? (classData = 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]')
+		: (classData = 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]');
 
-	return language === 'ar'
-		? 'justify-end flex items-center gap-4 cursor-pointer text-[1.2rem]'
-		: 'justify-start flex items-center gap-4 cursor-pointer text-[1.2rem]';
+	return classData;
 };
 export default function AllProductsTable({
 	products,
 	array,
 	setArray,
-	settingMenus,
+
 	isLoading,
+	setOpenDialog,
+	setEdit_product,
+	children,
+	handelId,
 }: AllProductsTableProps) {
 	// hooks
 	const { language } = useLanguage();
-	const navigate = useNavigate();
+	
 	const { t } = useTranslation();
 	const [favorites, setFavorites] = useState<string[]>([]);
-
-	// custom hook for select setting item
-	const { selectedOption, handleSelect } = useSelectBox();
-
+	const classData = actionsButtonStyle();
 	const toggleFavorite = (id: string) => {
 		setFavorites((prevFavorites) =>
 			prevFavorites.includes(id)
@@ -77,6 +84,13 @@ export default function AllProductsTable({
 		{ title: t('actions') },
 	];
 
+	const handelEdit = (e: Product) => {
+		if (e.type === 'simple') {
+			setOpenDialog(true);
+			setEdit_product(e);
+		}
+	};
+
 	//  table rows
 	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
@@ -95,12 +109,11 @@ export default function AllProductsTable({
 								)}
 							</button>
 						</div>
-						{product?.images?.length > 0 &&product?.images[0]?.original_image_url && (
+						{product?.images?.length > 0 && product?.images[0]?.original_image_url && (
 							<div className='relative box-photo w-[4.18rem] h-[4.18rem]'>
-								
 								<img
 									src={product?.images[0]?.original_image_url}
-									className="w-full h-full"
+									className='w-full h-full'
 									loading='lazy'
 									alt={product.en.name}
 								/>
@@ -133,18 +146,12 @@ export default function AllProductsTable({
 					<span className='text-primary'>SAR</span> {product.price}
 				</GlobalTableCell>,
 				<GlobalTableCell key={`actions-${product.id}`}>
-					<div className={actionsButtonStyle()}>
+					<div className={classData}>
 						<IoEyeOutline className='text-subtitle' />
-						<FaRegEdit
-							className='text-subtitle'
-							onClick={() => navigate(`/addProduct?id=${product.id}`)}
-						/>
+						<FaRegEdit className='text-subtitle' onClick={() => handelEdit(product)} />
 						<CopyIcon className='fill-subtitle' />
-						<ThreeDotsButton
-							sortMenus={settingMenus}
-							selectedOption={selectedOption}
-							handelSelect={handleSelect}
-						/>
+						<div onClick={() => handelId(product?.id)}>{children}</div>
+
 						<ArrowTables path={`/products/${product.id}`} />
 					</div>
 				</GlobalTableCell>,

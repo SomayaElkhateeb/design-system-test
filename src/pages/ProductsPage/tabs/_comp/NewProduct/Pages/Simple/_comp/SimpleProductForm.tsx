@@ -18,10 +18,15 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
 	getAllProductsTable,
 	PostSimpleQuickProduct,
+	PostUpdateQuickProduct,
 } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 import AddCategoryForm from 'src/pages/ProductsPage/tabs/Categories/_comp/AddCategoryForm';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
+import { InventoryInterface } from 'src/app/interface/InventoryInterface';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { Product } from 'src/pages/ProductsPage/_comp/data';
+import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 
 interface simpleProductInterface {
 	name: string;
@@ -32,7 +37,8 @@ interface simpleProductInterface {
 	images: File;
 }
 const simpleProductSchema = {
-	name: z.string().min(1, 'Product name is required'),
+	nameEn: z.string().min(1, 'Product name is required'),
+	nameAr: z.string().min(1, 'Product name is required'),
 	price: z.coerce.number().min(1).positive(),
 	quy: z.coerce.number().optional(),
 	sku: z.string().min(1, 'SKU code is required'),
@@ -46,13 +52,15 @@ export type AddsimpleProductSchemaSchemaValues = InferredZodSchema<typeof simple
 const SimpleProductForm = ({
 	categoriesTable,
 	handleClose,
+	edit_product,
 }: {
 	categoriesTable: CategoryInterface[];
 	handleClose: () => void;
+	edit_product: Product;
 }) => {
 	//  hooks
 	const dispatch = useAppDispatch();
-	const { allProducts } = useAppSelector((state) => state.allProducts);
+	const { allProducts, isLoadingAddOrUpdate } = useAppSelector((state) => state.allProducts);
 	const { inventory } = useAppSelector((state) => state.inventory);
 	//  custom hook
 	const { formStore, onSubmit } = useForm({
@@ -60,24 +68,37 @@ const SimpleProductForm = ({
 		handleSubmit: (values) => {
 			const formData = new FormData();
 
-			formData.append('name', values.name);
+			formData.append('en[name]', values.nameEn);
+			formData.append('ar[name]', values.nameAr);
 			values.price && formData.append('price', values.price.toString());
 			values.quy && formData.append('quy', values.quy.toString());
 			formData.append('sku', values.sku);
-			formData.append('category[]', values.category);
+			formData.append('categories[]', values.category);
 			formData.append('images[files][]', values.images);
 			formData.append('type', 'simple');
-			formData.append(`inventories[${values.inventories}]`, values.quy);
+			values.quy && formData.append(`inventories[${values.inventories}]`, values.quy);
 
-			dispatch(PostSimpleQuickProduct(formData)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					dispatch(getAllProductsTable());
-					handleClose();
-				}
-			});
+			if (edit_product?.price) {
+				dispatch(PostUpdateQuickProduct({ data: formData, id: edit_product?.id })).then(
+					(promiseResponse) => {
+						if ((promiseResponse.payload.code = 200)) {
+							dispatch(getAllProductsTable());
+							handleClose();
+						}
+					},
+				);
+			} else {
+				dispatch(PostSimpleQuickProduct(formData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						dispatch(getAllProductsTable());
+						handleClose();
+					}
+				});
+			}
 		},
 		defaultValues: {
-			name: '',
+			nameEn: '',
+			nameAr: '',
 			price: 0,
 			quy: 0,
 			sku: '',
@@ -94,6 +115,26 @@ const SimpleProductForm = ({
 		dispatch(getAllProductsTable());
 		dispatch(getInventoryTable());
 	}, [dispatch]);
+
+	useEffect(() => {
+		if (Object.values(edit_product).length > 0) {
+			formStore.setValue('nameEn', edit_product?.en?.name);
+			formStore.setValue('nameAr', edit_product?.ar?.name);
+			formStore.setValue('price', Number(edit_product?.price));
+			formStore.setValue('sku', edit_product?.sku);
+			formStore.setValue('quy', Number(edit_product?.qty));
+			edit_product?.inventory_sources?.length > 0 &&
+				edit_product?.inventory_sources[0] &&
+				formStore.setValue(
+					'inventories',
+					edit_product?.inventory_sources[0]?.inventory_source_id.toString(),
+				);
+			edit_product?.categories?.length > 0 &&
+				edit_product?.categories[0] &&
+				formStore.setValue('category', edit_product?.categories[0]?.toString());
+		}
+	}, [edit_product]);
+
 	return (
 		<div className='flex-col-global gap-6'>
 			<h3 className='title md:font-bold'>{t('Add a quick Product')}</h3>
@@ -108,16 +149,20 @@ const SimpleProductForm = ({
 						</div>
 
 						<div className='col-span-10 grid grid-cols-1 lg:grid-cols-12 gap-4'>
-							<FormField
+							
+							<TabbedFormField
 								container={{ className: 'col-span-6 lg:col-span-3' }}
 								formStore={formStore}
-								name='name'
-								render={(field) => (
+								keys={[
+									{ name: 'nameEn', label: 'En' },
+									{ name: 'nameAr', label: 'عربي' },
+								]}
+								
+								renderer={(field) => (
 									<Input
-										{...field}
-										id='name'
-										type='text'
 										placeholder={`${t('Product Name')} (${t('Required')})`}
+										type='text'
+										{...field}
 									/>
 								)}
 							/>
@@ -157,56 +202,36 @@ const SimpleProductForm = ({
 								)}
 							/>
 
-							<FormField
-								container={{ className: 'col-span-6' }}
-								formStore={formStore}
-								name='category'
-								render={(field) => (
-									<div className='relative flex items-center border border-gray-300 rounded-md'>
-										<select
-											{...field}
-											name='category'
-											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
-											onChange={field.onChange}
-										>
-											<option value='' disabled>
-												{t('Select Category')}
-											</option>
-											{categoriesTable?.length > 0 &&
-												categoriesTable?.map((e, i) => <option value={e.id}>{e.name}</option>)}
-										</select>
-										<button
-											type='button'
-											className='md:flex-row-global flex-col-global items-center px-2 py-2 border-l w-2/5'
-											onClick={() => setOpenDialog(true)}
-										>
-											<FaCirclePlus size={24} />
-											<span className='ms-1'>{t('Add One')}</span>
-										</button>
-									</div>
-								)}
-							/>
-							<FormField
-								container={{ className: 'col-span-6' }}
-								formStore={formStore}
-								name='inventories'
-								render={(field) => (
-									<div className='relative flex items-center border border-gray-300 rounded-md'>
-										<select
-											{...field}
-											name='inventories'
-											className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
-											onChange={field.onChange}
-										>
-											<option value='' disabled>
-												{t('Select Inventory')}
-											</option>
-											{inventory?.length > 0 &&
-												inventory?.map((e, i) => <option value={e.id}>{e.name}</option>)}
-										</select>
-									</div>
-								)}
-							/>
+							{categoriesTable?.length > 0 && (
+								<SelectFormField
+									className='col-span-6'
+									name='category'
+									setOpenDialog={setOpenDialog}
+									add_button
+									formStore={formStore}
+									options={categoriesTable?.map((e: CategoryInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+									})}
+									placeholder={t('Select Category')}
+								/>
+							)}
+							{inventory?.length > 0 && (
+								<SelectFormField
+									className='col-span-6'
+									name='inventories'
+									formStore={formStore}
+									options={inventory?.map((e: InventoryInterface) => {
+										return {
+											label: e?.name,
+											value: e?.id?.toString(),
+										};
+									})}
+									placeholder={t('Select Inventory')}
+								/>
+							)}
 						</div>
 					</div>
 					{openDialog && (
@@ -221,10 +246,10 @@ const SimpleProductForm = ({
 						/>
 					)}
 					<div className='flex  space-x-4 lg:justify-end justify-center'>
-						<Button variant='primary' type='submit'>
+						<Button loading={isLoadingAddOrUpdate} variant='primary' type='submit'>
 							{t('Save Changes')}
 						</Button>
-						<Link to='/products/new/simple'>
+						<Link to='/products/new/configurable'>
 							<Button variant='secondary' RightIcon={IoIosArrowForward}>
 								{t('Add More Info')}
 							</Button>
