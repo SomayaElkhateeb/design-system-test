@@ -1,7 +1,7 @@
 import { Links, Meta } from "./SettingShareInterface";
 
 export interface Role {
-    id: number;
+    id: string;
     name: string;
     description?: string;
     permission_type?: string;
@@ -11,7 +11,7 @@ export interface Role {
 }
 
 export interface User {
-    id: number;
+    id: string;
     name: string;
     email: string;
     status: number;

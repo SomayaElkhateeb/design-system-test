@@ -1,32 +1,107 @@
 import { useTranslation } from 'react-i18next';
-import { Button, ClientBox, SubHeader } from 'src/app/components/optimized';
+import { Button, ClientBox } from 'src/app/components/optimized';
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
-import { IoMdAddCircle } from 'react-icons/io';
+
 import { useNavigate } from 'react-router-dom';
-import { getUsers } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
+import { deleteUser, getUsers } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { useEffect, useState } from 'react';
-import { Role, User } from 'src/app/interface/settingsInterface/UsersSettingsInterface';
+import { useEffect, useState, useMemo } from 'react';
+import { User } from 'src/app/interface/settingsInterface/UsersSettingsInterface';
 import StuffTable from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/StaffTable';
-import ActionsBtn from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/ActionsBtn';
+import ActionsStuffBtns from './ActionsStuffBtns';
+import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import { nanoid } from 'nanoid';
+import { EditIcon } from 'src/app/utils/icons';
+import { LiaTrashAlt } from 'react-icons/lia';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 
 const StaffPage = () => {
-	const [array, setArray] = useState<string[]>([]);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	// redux
 	const dispatch = useAppDispatch();
+	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 	const { users, isLoading } = useAppSelector((state) => state.usersSettings);
 
 	useEffect(() => {
 		dispatch(getUsers());
 	}, [dispatch]);
 
+	const sortMenus = [
+		{ id: nanoid(), text: 'Name A to Z' },
+		{ id: nanoid(), text: 'Name Z to A' },
+	];
+
+	//  handel Sorting Table
+	const sortFunctions = {
+		'Name A to Z': (a: User, b: User) => a.name.localeCompare(b.name),
+		'Name Z to A': (a: User, b: User) => b.name.localeCompare(a.name),
+	};
+	const { arrangedData: UserArrangedData } = UseCustomTableSorting<User>(
+		sortFunctions,
+		users,
+		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
+	);
+
+	//  handel deleteItem
+
+	
+	const options = [
+		{
+			id: '1',
+			text: 'edit',
+			icon: <EditIcon className='fill-title' />,
+		},
+		{
+			id: '2',
+			text: 'delete',
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
+		},
+	];
+	const {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	} = UseDeleteItem();
+	// Delete customer
+
+	const handelDeleteStuff = () => {
+		dispatch(deleteUser(custom_Id)).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				handelCloseDeleteDialog();
+				dispatch(getUsers());
+			}
+		});
+	};
+	useMemo(() => {
+		switch (selectedOption) {
+			case 'delete':
+				handelOpenDialog();
+				setSelectedOption('');
+				break;
+			case 'edit':
+				setSelectedOption('');
+				custom_Id && navigate(`addStuff?id=${custom_Id}`);
+				break;
+		}
+	}, [selectedOption, custom_Id]);
+
 	return (
 		<div className='flex-col-global gap-8'>
 			{/* control header row */}
 			<div className=' flex-col-global gap-0'>
-				<ActionsBtn />
+				<ActionsStuffBtns
+					selectedOption={selectedOption}
+					handleSelect={handleSelect}
+					sortMenus={sortMenus}
+					data={users}
+				/>
 				<hr />
 			</div>
 			<div className='flex-col-global'>
@@ -65,8 +140,24 @@ const StaffPage = () => {
 				</div>
 
 				{/* import table all stuff */}
-				<StuffTable data={users} isLoading={isLoading} />
+				<StuffTable handelId={handelId} data={UserArrangedData} isLoading={isLoading}>
+					<ThreeDotsButton
+						sortMenus={options}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</StuffTable>
 			</div>
+			{/* openDeleteDialog */}
+			{openDeleteDialog && (
+				<PopupDelete
+					open={openDeleteDialog}
+					onClose={handelCloseDeleteDialog}
+					title={t('Delete Item')}
+					subTitle={t('Do You Want To Delete This Item')}
+					onDelete={handelDeleteStuff}
+				/>
+			)}
 		</div>
 	);
 };
