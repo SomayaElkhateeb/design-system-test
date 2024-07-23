@@ -20,14 +20,17 @@ import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMe
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect, useMemo, useState } from 'react';
 import {
+	deleteAllCustomersAction,
 	deleteCustomerAction,
 	getAllCustomersTable,
+	getExportCustomers,
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import ActionHandler from 'src/app/utils/ActionMethods';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -50,6 +53,11 @@ export default function AllCustomers() {
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
 		{ id: nanoid(), text: 'Import customers', icon: <FiUploadCloud className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: 'delete customers',
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
+		},
 	];
 	const settingMenus = [
 		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
@@ -94,6 +102,7 @@ export default function AllCustomers() {
 			}
 		});
 	};
+	let allCustomersIds = allCustomers?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
 			case 'Delete customer':
@@ -103,6 +112,20 @@ export default function AllCustomers() {
 			case 'Customer report':
 				setSelectedOption('');
 				custom_Id && navigate(`/customers/${custom_Id}`);
+				break;
+			case 'Export customers':
+				dispatch(getExportCustomers()).then((response: any) => {
+					ActionHandler.exportToExcelFromApi(response.payload,"customers");
+				});
+				setSelectedOption('');
+				break;
+			case 'delete customers':
+				dispatch(deleteAllCustomersAction({ indexes: allCustomersIds })).then((response: any) => {
+					if (response.payload.code === 200) {
+						dispatch(getAllCustomersTable());
+					}
+				});
+				setSelectedOption('');
 				break;
 		}
 	}, [selectedOption, custom_Id]);

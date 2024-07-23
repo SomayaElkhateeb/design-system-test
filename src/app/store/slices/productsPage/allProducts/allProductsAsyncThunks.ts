@@ -50,3 +50,8 @@ export const deleteAllProductsAction = createAsyncThunk(
 	})
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
+
+export const getExportAllProducts = createAsyncThunk('brandsTable/getExportAllProducts', () =>
+	PublicRequest.getData('merchant/catalog/products/export'),
+);
+

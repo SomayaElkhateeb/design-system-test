@@ -4,6 +4,7 @@ import {
 	deleteAllProductsAction,
 	deleteProductAction,
 	getAllProductsTable,
+	getExportAllProducts,
 } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 import { initialProduct, Product, productSettingsMenu, productSortMenu } from '../../_comp/data';
@@ -24,7 +25,7 @@ import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { useTranslation } from 'react-i18next';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import toast from 'react-hot-toast';
-
+import ActionHandler from 'src/app/utils/ActionMethods';
 const AllProducts: React.FC = () => {
 	// State hooks
 	const { t } = useTranslation();
@@ -99,8 +100,8 @@ const AllProducts: React.FC = () => {
 				handelOpenDialog();
 				setSelectedOption('');
 				break;
-				case 'Delete all products':
-					allProducts?.length > 0
+			case 'Delete all products':
+				allProducts?.length > 0
 					? dispatch(deleteAllProductsAction({ indexes: allProductsIds })).then(
 							(promiseResponse: any) => {
 								if ((promiseResponse.payload.code = 200)) {
@@ -111,8 +112,15 @@ const AllProducts: React.FC = () => {
 					: toast.error('There are no data to delete it');
 				setSelectedOption('');
 				break;
+			case 'Export products':
+				dispatch(getExportAllProducts()).then((response) => {
+					ActionHandler.exportToExcelFromApi(response.payload,"all_products")
+				});
+				setSelectedOption('');
+				break;
 		}
 	}, [selectedOption]);
+
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-global'>
@@ -126,42 +134,40 @@ const AllProducts: React.FC = () => {
 				/>
 
 				{/* Render table or vertical cards section */}
-				{!verticalCard ? (
-				!xs && (	<AllProductsTable
-						handelId={handelId}
-						setEdit_product={setEdit_product}
-						setOpenDialog={setOpenDialog}
-						array={array}
-						setArray={setArray}
-						products={ProductsArrangedData}
-						isLoading={isLoading}
-					>
-						<ThreeDotsButton
-							sortMenus={productSettingsMenu}
-							selectedOption={selectedOption}
-							handelSelect={handleSelect}
-						/>
-					</AllProductsTable>
-				)
-				) : (
-					!xs && (
-					<AllproductsVertical
-						setEdit_product={setEdit_product}
-						setOpenDialog={setOpenDialog}
-						handelId={handelId}
-						array={array}
-						setArray={setArray}
-						products={ProductsArrangedData}
-					>
-						<ThreeDotsButton
-							sortMenus={productSettingsMenu}
-							selectedOption={selectedOption}
-							handelSelect={handleSelect}
-						/>
-					</AllproductsVertical>
-					)
-				
-				)}
+				{!verticalCard
+					? !xs && (
+							<AllProductsTable
+								handelId={handelId}
+								setEdit_product={setEdit_product}
+								setOpenDialog={setOpenDialog}
+								array={array}
+								setArray={setArray}
+								products={ProductsArrangedData}
+								isLoading={isLoading}
+							>
+								<ThreeDotsButton
+									sortMenus={productSettingsMenu}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
+							</AllProductsTable>
+					  )
+					: !xs && (
+							<AllproductsVertical
+								setEdit_product={setEdit_product}
+								setOpenDialog={setOpenDialog}
+								handelId={handelId}
+								array={array}
+								setArray={setArray}
+								products={ProductsArrangedData}
+							>
+								<ThreeDotsButton
+									sortMenus={productSettingsMenu}
+									selectedOption={selectedOption}
+									handelSelect={handleSelect}
+								/>
+							</AllproductsVertical>
+					  )}
 
 				{/* Render mobile views for small screens */}
 				{xs && (

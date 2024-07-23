@@ -25,6 +25,7 @@ import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting
 import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import toast from 'react-hot-toast';
+import ActionHandler from 'src/app/utils/ActionMethods';
 
 export default function Brands() {
 	// hooks
@@ -83,10 +84,8 @@ export default function Brands() {
 				setSelectedOption('');
 				break;
 			case 'Export brands':
-				dispatch(getExportBrands()).then((promiseResponse: any) => {
-					if ((promiseResponse.payload.code = 200)) {
-						console.log(promiseResponse);
-					}
+				dispatch(getExportBrands()).then((response: any) => {
+					ActionHandler.exportToExcelFromApi(response.payload,"brands");
 				});
 				setSelectedOption('');
 				break;

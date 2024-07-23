@@ -8,6 +8,10 @@ export const getAllCustomersTable = createAsyncThunk('allCustomersTable/getAllCu
 	PublicRequest.getData('merchant/customers/list'),
 );
 
+export const getExportCustomers = createAsyncThunk('allCustomersTable/getExportCustomers', () =>
+	PublicRequest.getData('merchant/customers/export'),
+);
+
 export const PostAddCustomerRequest = createAsyncThunk(
 	'allCustomersTable/PostAddCustomerRequest',
 	(payload: AddCustomerPageSchemaValues) =>
@@ -34,12 +38,12 @@ export const PutUpdateCustomerRequest = createAsyncThunk(
 );
 
 export const getCustomerInfo = createAsyncThunk(
-	'getCustomerInfo/getAllCustomersTable',
+	'allCustomersTable/getCustomerInfo',
 	(payload: string) => PublicRequest.getData(`merchant/customers/show/${payload}`),
 );
 
 export const deleteCustomerAction = createAsyncThunk(
-	'deleteCustomerAction/getAllCustomersTable',
+	'allCustomersTable/deleteCustomerAction',
 	(payload: string) => PublicRequest.deleteData(`merchant/customers/delete/${payload}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
@@ -48,3 +52,18 @@ export const deleteCustomerAction = createAsyncThunk(
 	})
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
+
+// deleteAllCustomersAction
+export const deleteAllCustomersAction = createAsyncThunk(
+	'allCustomersTable/deleteAllCustomersAction',
+	(payload: { indexes: string }) => PublicRequest.postData(payload, `merchant/catalog/customers/mass-destroy`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+
+
+
