@@ -21,7 +21,7 @@ import {
 } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
-
+import FormField from 'src/app/components/ui/form/field';
 interface AddBrandFormProps {
 	openDialog: boolean;
 	handleClose: () => void;
@@ -52,7 +52,7 @@ export default function AddBrandForm({
 			formData.append('description_en', values.description_en);
 			formData.append('description_ar', values.description_ar);
 			formData.append('slug', values.slug);
-			formData.append('slug_ar', values.slug_ar);
+
 			formData.append('status', values.status);
 			formData.append('image[]', values.image);
 			values.products
@@ -61,7 +61,7 @@ export default function AddBrandForm({
 					formData.append('products[]', e);
 				});
 			formData.append('locale', 'all');
-			
+
 			if (Edit_id) {
 				dispatch(
 					PutUpdateBrandRequest({
@@ -91,7 +91,7 @@ export default function AddBrandForm({
 			description_en: '',
 			description_ar: '',
 			slug: '',
-			slug_ar: '',
+
 			image: undefined,
 			status: 0,
 			products: [],
@@ -156,14 +156,11 @@ export default function AddBrandForm({
 													label={t('Brand name')}
 													renderer={(field) => <Input {...field} />}
 												/>
-												<TabbedFormField
+												<FormField
 													formStore={formStore}
-													keys={[
-														{ name: 'slug', label: 'En' },
-														{ name: 'slug_ar', label: 'عربي' },
-													]}
-													label={t('Brand link (Slug)')}
-													renderer={(field) => <Input {...field} />}
+													name='slug'
+													label={t('brand link (Slug)')}
+													render={(field) => <Input {...field} placeholder={''} />}
 												/>
 												<TabbedFormField
 													formStore={formStore}

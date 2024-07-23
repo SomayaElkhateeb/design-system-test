@@ -122,7 +122,7 @@ export default function TopSection({
 							handelSelect={handleSelect}
 						/>
 
-						{handelListAndGridImg()}
+						{!xs && handelListAndGridImg()}
 					</div>
 				</div>
 				<hr />

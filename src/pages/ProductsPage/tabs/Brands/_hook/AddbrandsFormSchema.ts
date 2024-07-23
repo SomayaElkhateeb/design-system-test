@@ -9,7 +9,7 @@ export const addBrandFormSchema = {
     description_en: stringValidation,
     description_ar: stringValidation,
     slug: stringValidation,
-    slug_ar: stringValidation,
+    
     image: z.instanceof(File),
     status: z.number(),
 

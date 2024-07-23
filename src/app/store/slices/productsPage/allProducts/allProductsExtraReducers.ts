@@ -16,6 +16,7 @@ export const getAllProductsReducer = (builder: ActionReducerMapBuilder<productsS
 		.addCase(getAllProductsTable.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
+			state.allProducts = [];
 		})
 
 		// add product 

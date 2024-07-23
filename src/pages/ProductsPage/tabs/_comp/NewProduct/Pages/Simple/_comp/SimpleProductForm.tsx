@@ -151,7 +151,7 @@ const SimpleProductForm = ({
 						<div className='col-span-10 grid grid-cols-1 lg:grid-cols-12 gap-4'>
 							
 							<TabbedFormField
-								container={{ className: 'col-span-6 lg:col-span-3' }}
+								container={{ className: 'col-span-6 lg:col-span-3 lg:-translate-y-6' }}
 								formStore={formStore}
 								keys={[
 									{ name: 'nameEn', label: 'En' },

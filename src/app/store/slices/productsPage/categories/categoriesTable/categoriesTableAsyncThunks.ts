@@ -55,3 +55,16 @@ export const getCategoryInfo = createAsyncThunk('CategoriesTable/getCategoryInfo
 	PublicRequest.getData(`merchant/catalog/categories/show/${payload}`),
 );
 
+
+// deleteBrandAction
+export const deleteAllCategoriesAction = createAsyncThunk(
+	'brandsTable/deleteAllCategoriesAction',
+	(payload: { indexes: string }) => PublicRequest.postData(payload, `merchant/catalog/categories/mass-destroy`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+

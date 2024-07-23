@@ -52,3 +52,7 @@ export const getInventoryInfo = createAsyncThunk('inventoryTable/getInventoryInf
 );
 
 
+
+
+
+

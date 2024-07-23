@@ -1,5 +1,5 @@
-import { createAsyncThunk, GetThunkAPI } from '@reduxjs/toolkit';
-import { AsyncThunkConfig } from 'node_modules/@reduxjs/toolkit/dist/createAsyncThunk';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
@@ -38,7 +38,7 @@ export const PutUpdateBrandRequest = createAsyncThunk(
 );
 
 
-// deleteCustomerGroupAction
+// deleteBrandAction
 export const deleteBrandAction = createAsyncThunk(
 	'brandsTable/deleteBrandAction',
 	(payload: string) => PublicRequest.deleteData(`merchant/catalog/brands/delete/${payload}`).then((res: any) => {
@@ -55,3 +55,23 @@ export const deleteBrandAction = createAsyncThunk(
 export const getBrandInfo = createAsyncThunk('brandsTable/getBrandInfo', (payload: string) =>
 	PublicRequest.getData(`merchant/catalog/brands/show/${payload}`),
 );
+
+
+export const getExportBrands = createAsyncThunk('brandsTable/getExportBrands', () =>
+	PublicRequest.getData('merchant/catalog/brands/export'),
+);
+
+
+
+// deleteBrandAction
+export const deleteAllBrandsAction = createAsyncThunk(
+	'brandsTable/deleteAllBrandsAction',
+	(payload: { indexes: string }) => PublicRequest.postData(payload, `merchant/catalog/brands/mass-destroy`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+
