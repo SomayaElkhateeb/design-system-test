@@ -18,7 +18,7 @@ import { LiaTrashAlt } from 'react-icons/lia';
 import CustomersTable from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { useEffect, useMemo,useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
 	deleteCustomerAction,
 	getAllCustomersTable,
@@ -45,7 +45,7 @@ export default function AllCustomers() {
 		{ id: nanoid(), text: 'Name A to Z' },
 		{ id: nanoid(), text: 'Name Z to A' },
 	];
-	
+
 	const ActionsMenus = [
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
@@ -106,8 +106,7 @@ export default function AllCustomers() {
 				break;
 		}
 	}, [selectedOption, custom_Id]);
-	
-  
+
 	return (
 		<>
 			<div className='flex-col-global'>
@@ -139,14 +138,15 @@ export default function AllCustomers() {
 				<hr />
 
 				{/*  customers table case of not small media */}
-				<CustomersTable handelId={handelId} CustomersArrangedData={CustomersArrangedData}>
-					<ThreeDotsButton
-						sortMenus={settingMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
-				</CustomersTable>
-
+				{!xs && (
+					<CustomersTable handelId={handelId} CustomersArrangedData={CustomersArrangedData}>
+						<ThreeDotsButton
+							sortMenus={settingMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</CustomersTable>
+				)}
 				{/*  case of small media */}
 				{xs && (
 					<div className='responsive_pages'>

@@ -112,7 +112,7 @@ const AllProducts: React.FC = () => {
 
 				{/* Render table or vertical cards section */}
 				{!verticalCard ? (
-					<AllProductsTable
+				!xs && (	<AllProductsTable
 						handelId={handelId}
 						setEdit_product={setEdit_product}
 						setOpenDialog={setOpenDialog}
@@ -127,7 +127,9 @@ const AllProducts: React.FC = () => {
 							handelSelect={handleSelect}
 						/>
 					</AllProductsTable>
+				)
 				) : (
+					!xs && (
 					<AllproductsVertical
 						setEdit_product={setEdit_product}
 						setOpenDialog={setOpenDialog}
@@ -142,6 +144,8 @@ const AllProducts: React.FC = () => {
 							handelSelect={handleSelect}
 						/>
 					</AllproductsVertical>
+					)
+				
 				)}
 
 				{/* Render mobile views for small screens */}
