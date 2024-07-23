@@ -44,37 +44,13 @@ const RolesPage = () => {
 	const dispatch = useAppDispatch();
 	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-// >>>>>>> master
+
 
     useEffect(() => {
         dispatch(getRolesList());
     }, [dispatch]);
 
-// <<<<<<< somayaAdel
-//     return (
-//        <>
-//         <div className='flex-col-global gap-2'>
-//             <SubHeader title={t('Users & Permissions')} >
-//                 <Button
-//                     variant='primary'
-//                     LeftIcon={IoMdAddCircle}
-//                     onClick={() => navigate('addStuff')}
-//                 >
-//                     {t('add Roles')}
-//                 </Button>
-//             </SubHeader>
-//             <Btn />
-//             <hr />
-//             {/* import table all roles */}
-//             <RolesTable rolesList={rolesList} isLoading={isLoading} />
-//         </div>
-//             {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />}
-//        </>
-//     )
 
-// }
-
-// export default RolesPage;
 
 
 
@@ -200,4 +176,4 @@ const RolesBtn = ({
 		</div>
 	);
 };
-<!-- >>>>>>> master -->
+
