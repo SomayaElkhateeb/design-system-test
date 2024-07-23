@@ -1,4 +1,3 @@
-import { Links, Meta } from "./SettingShareInterface";
 
 export interface Role {
     id: number;
@@ -23,6 +22,4 @@ export interface User {
 // admin user
 export interface IUsers {
     data: User[];
-    links: Links;
-    meta: Meta;
 }
