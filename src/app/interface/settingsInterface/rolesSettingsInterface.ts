@@ -1,4 +1,3 @@
-import { Links, Meta } from "./SettingShareInterface";
 
 // * dashboard * //
 export interface Dashboard {
@@ -419,7 +418,7 @@ interface Settings {
 }
 
 // permissions data
-export interface RolesData {
+export interface PermissionsData {
 	dashboard: Dashboard;
 	sales: Sales;
 	catalog: Catalog;
@@ -441,6 +440,9 @@ export interface Role {
     updated_at: string;
 }
 
+export interface RolesList {
+    data: Role[];
+}
 
 
 

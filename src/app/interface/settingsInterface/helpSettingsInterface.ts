@@ -1,4 +1,3 @@
-import { Links, Meta } from "./SettingShareInterface";
 
 export interface HelpItem {
     id: number;
@@ -18,6 +17,4 @@ export interface HelpItem {
 
 export interface HelpData {
     data: HelpItem[];
-    links: Links;
-    meta: Meta;
 }

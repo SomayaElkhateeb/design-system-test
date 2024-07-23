@@ -1,4 +1,3 @@
-import { Links, Meta } from "./SettingShareInterface";
 
 interface Translation {
     id: number;
@@ -21,6 +20,4 @@ interface Data {
 
 export interface EmailNotification {
     data: Data;
-	links: Links;
-	meta: Meta;
 }

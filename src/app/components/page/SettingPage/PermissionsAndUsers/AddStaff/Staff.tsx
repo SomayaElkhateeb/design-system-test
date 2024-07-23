@@ -13,12 +13,12 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 	const { t } = useTranslation();
 
 	//  get Roles data  with api request
-	const { isLoading, data, isError, error } = useQuery(['rolesData'], () =>
+	const { isLoading, data, isError, error } = useQuery(['PermissionsData'], () =>
 		RolesApi.roles(),
 	);
 
-	let rolesData = data?.data?.data; 
-	console.log('rolesData', rolesData);
+	let PermissionsData = data?.data?.data; 
+	console.log('PermissionsData', PermissionsData);
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -39,12 +39,12 @@ export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuff
 					render={(field) => <Input {...field} />}
 				/>
 
-				{rolesData.length > 0 && (
+				{PermissionsData.length > 0 && (
 					<SelectFormField
 						name='storeIndustry'
 						label={t('Role')}
 						formStore={formStore}
-						options={rolesData?.map((role: RolesList) => ({
+						options={PermissionsData?.map((role: RolesList) => ({
 							label: role?.name,
 							value: role?.id?.toString(),
 						}))}
