@@ -125,17 +125,19 @@ export default function Categories() {
 
 				{/* table */}
 
-				<CategoryTable
-					handelId={handelId}
-					categoryData={CategoriesArrangedData}
-					isLoading={isLoading}
-				>
-					<ThreeDotsButton
-						sortMenus={CategoryMenu}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
-				</CategoryTable>
+				{!xs && (
+					<CategoryTable
+						handelId={handelId}
+						categoryData={CategoriesArrangedData}
+						isLoading={isLoading}
+					>
+						<ThreeDotsButton
+							sortMenus={CategoryMenu}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</CategoryTable>
+				)}
 
 				{/*  case of small media */}
 				{xs && (

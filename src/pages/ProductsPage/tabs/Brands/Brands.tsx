@@ -123,21 +123,22 @@ export default function Brands() {
 				/>
 
 				{/*  table  */}
-				<BrandsTable
-					Edit_id={Edit_id}
-					setEdit_id={setEdit_id}
-					setOpenAddOrUpdateDialog={setOpenAddOrUpdateDialog}
-					handelId={handelId}
-					brands={BrandsArrangedData}
-					isLoading={isLoading}
-				>
-					<ThreeDotsButton
-						sortMenus={brandsSettingMenus}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
-				</BrandsTable>
-
+				{!xs && (
+					<BrandsTable
+						Edit_id={Edit_id}
+						setEdit_id={setEdit_id}
+						setOpenAddOrUpdateDialog={setOpenAddOrUpdateDialog}
+						handelId={handelId}
+						brands={BrandsArrangedData}
+						isLoading={isLoading}
+					>
+						<ThreeDotsButton
+							sortMenus={brandsSettingMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</BrandsTable>
+				)}
 				{/*  case of small media */}
 				{xs && (
 					<div className='responsive_pages'>
