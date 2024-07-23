@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import {
+	deleteAllProductsAction,
 	deleteProductAction,
 	getAllProductsTable,
 } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
@@ -22,6 +23,7 @@ import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { useTranslation } from 'react-i18next';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import toast from 'react-hot-toast';
 
 const AllProducts: React.FC = () => {
 	// State hooks
@@ -90,10 +92,23 @@ const AllProducts: React.FC = () => {
 			}
 		});
 	};
+	let allProductsIds = allProducts?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
 			case 'Delete product':
 				handelOpenDialog();
+				setSelectedOption('');
+				break;
+				case 'Delete all products':
+					allProducts?.length > 0
+					? dispatch(deleteAllProductsAction({ indexes: allProductsIds })).then(
+							(promiseResponse: any) => {
+								if ((promiseResponse.payload.code = 200)) {
+									dispatch(getAllProductsTable());
+								}
+							},
+					  )
+					: toast.error('There are no data to delete it');
 				setSelectedOption('');
 				break;
 		}

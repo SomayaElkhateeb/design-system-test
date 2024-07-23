@@ -39,3 +39,14 @@ export const deleteProductAction = createAsyncThunk(
 	})
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
+// deleteAllProductsAction
+export const deleteAllProductsAction = createAsyncThunk(
+	'brandsTable/deleteAllProductsAction',
+	(payload: { indexes: string }) => PublicRequest.postData(payload, `merchant/catalog/products/mass-destroy`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);

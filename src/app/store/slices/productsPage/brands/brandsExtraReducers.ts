@@ -16,6 +16,7 @@ export const getBrandsReducer = (builder: ActionReducerMapBuilder<brandsSliceMod
 		})
 		.addCase(getBrandsTable.rejected, (state, action) => {
 			state.isLoading = false;
+			state.brands = [];
 
 		})
 

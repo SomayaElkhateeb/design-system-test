@@ -4,8 +4,10 @@ import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMe
 import BrandsTable from 'src/pages/ProductsPage/tabs/Brands/_comp/BrandsTable';
 import TopSectionBrandsTable from 'src/pages/ProductsPage/tabs/Brands/_comp/TopSectionBrandsTable';
 import {
+	deleteAllBrandsAction,
 	deleteBrandAction,
 	getBrandsTable,
+	getExportBrands,
 } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
 import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
@@ -22,6 +24,7 @@ import AddBrandForm from './_comp/AddBrandForm';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import toast from 'react-hot-toast';
 
 export default function Brands() {
 	// hooks
@@ -72,11 +75,30 @@ export default function Brands() {
 			}
 		});
 	};
-
+	let brandsIds = brands?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
 			case 'Delete brand':
 				handelOpenDialog();
+				setSelectedOption('');
+				break;
+			case 'Export brands':
+				dispatch(getExportBrands()).then((promiseResponse: any) => {
+					if ((promiseResponse.payload.code = 200)) {
+						console.log(promiseResponse);
+					}
+				});
+				setSelectedOption('');
+				break;
+
+			case 'Delete all brands':
+				brands?.length > 0
+					? dispatch(deleteAllBrandsAction({ indexes: brandsIds })).then((promiseResponse: any) => {
+							if ((promiseResponse.payload.code = 200)) {
+								dispatch(getBrandsTable());
+							}
+					  })
+					: toast.error('There are no data to delete it');
 				setSelectedOption('');
 				break;
 		}
