@@ -30,20 +30,22 @@ export default function AllOrders() {
 	}, [dispatch]);
 
 	return (
-		<div className='custom_container'>
+		<div className='custom_container pt-5'>
 			<div className='flex-col-global'>
 				{/*  top section */}
 				<TopSectionOrdersPage addButton={t('Add Order')} path='/addOrder' />
 
 				{/*  table section */}
 
-				<AllOrdersTable
-					settingMenus={settingMenus}
-					array={array}
-					setArray={setArray}
-					orders={allOrders}
-					isLoading={isLoading}
-				/>
+				{!xs && (
+					<AllOrdersTable
+						settingMenus={settingMenus}
+						array={array}
+						setArray={setArray}
+						orders={allOrders}
+						isLoading={isLoading}
+					/>
+				)}
 
 				{xs && (
 					<div className='flex-col-global'>

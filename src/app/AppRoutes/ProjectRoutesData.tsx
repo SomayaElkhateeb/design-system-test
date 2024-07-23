@@ -15,8 +15,6 @@ import {
 	MarketingPage,
 	Nested_pages_SettingsConfig,
 	OrderDetails,
-	OrdersPage,
-	OrdersTabs,
 	ProductsPage,
 	ProductsTabs,
 	ReviewsPage,
@@ -48,6 +46,7 @@ import PurchaseConfig from 'src/pages/ServicesPage/_comp/PurchaseServices/_comp/
 import SuccessfullyPurchased from 'src/pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
 import StoreConfig from 'src/pages/StorePage/_comp/StoreConfig';
 import StoreTabs from 'src/pages/StorePage/_comp/StoreTabs';
+import AllOrders from '../components/page/Orders/AllOrders';
 
 interface Route {
 	path: string;
@@ -112,13 +111,8 @@ export const PagesRoutes: Route[] = [
 	// Orders Routes
 	{
 		path: '/orders',
-		element: <OrdersPage />,
-		children: [
-			{
-				path: ':tab',
-				element: <OrdersTabs />,
-			},
-		],
+		element: <AllOrders />,
+		
 	},
 	// /orders/orderDetails/8965742
 	{
