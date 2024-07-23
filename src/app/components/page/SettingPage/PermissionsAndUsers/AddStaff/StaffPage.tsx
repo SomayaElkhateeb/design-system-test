@@ -17,10 +17,12 @@ import { LiaTrashAlt } from 'react-icons/lia';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 const StaffPage = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 	// redux
 	const dispatch = useAppDispatch();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
@@ -48,7 +50,6 @@ const StaffPage = () => {
 
 	//  handel deleteItem
 
-	
 	const options = [
 		{
 			id: '1',
@@ -140,13 +141,15 @@ const StaffPage = () => {
 				</div>
 
 				{/* import table all stuff */}
-				<StuffTable handelId={handelId} data={UserArrangedData} isLoading={isLoading}>
-					<ThreeDotsButton
-						sortMenus={options}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
-				</StuffTable>
+				{!xs && (
+					<StuffTable handelId={handelId} data={UserArrangedData} isLoading={isLoading}>
+						<ThreeDotsButton
+							sortMenus={options}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</StuffTable>
+				)}
 			</div>
 			{/* openDeleteDialog */}
 			{openDeleteDialog && (
