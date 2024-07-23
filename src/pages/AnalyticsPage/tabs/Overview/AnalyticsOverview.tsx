@@ -79,7 +79,7 @@ const AnalyticsOverview = () => {
 						<OrdersCard latestOrders={data.latestOrders} title={t('Latest Orders')} />
 					</div>
 					<div className='col-span-12 lg:col-span-5 xl:col-span-4'>
-						{/* <ProductsAnalyticsCard data={data} /> */}
+						
 						<ProductHighlights data={data} />
 					</div>
 				</div>

@@ -47,7 +47,7 @@ export default function MobileProductViews({
 
 					{product?.category && <p className='subtitle'>{product?.category}</p>}
 
-					<p className={product.qty === 0 ? 'paragraph text-error' : ' paragraph text-black'}>
+					<p className={product?.qty === 0 ? 'paragraph text-error' : ' paragraph text-black'}>
 						{t('Qty')} : {product?.qty > 0 ? product?.qty : t('Out of stock')}
 					</p>
 				</div>
