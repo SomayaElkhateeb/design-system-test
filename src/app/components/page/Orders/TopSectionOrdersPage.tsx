@@ -45,6 +45,12 @@ export default function TopSectionOrdersPage({
 		{ id: nanoid(), text: 'Import Orders', icon: <FiUploadCloud className='iconClass' /> },
 	];
 
+	const StatusMenus = [
+		{ id: nanoid(), text: 'All Orders' },
+		{ id: nanoid(), text: 'Cancelled Orders' },
+		{ id: nanoid(), text: 'Delivered Orders' },
+	];
+
 	return (
 		<>
 			<div className='flex-col-global'>
@@ -67,6 +73,7 @@ export default function TopSectionOrdersPage({
 							filter
 							sortMenus={sortMenus}
 							ActionsMenus={ActionsMenus}
+							StatusMenus={StatusMenus}
 							selectedOption={selectedOption}
 							handelSelect={handleSelect}
 						/>

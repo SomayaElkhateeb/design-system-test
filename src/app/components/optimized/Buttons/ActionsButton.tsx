@@ -9,10 +9,12 @@ export default function ActionsButton({
 	sortMenus,
 	selectedOption,
 	handelSelect,
+	status,
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
 	handelSelect: (e: string) => void;
+	status?: boolean;
 }) {
 	//  hooks
 	const { t } = useTranslation();
@@ -21,8 +23,8 @@ export default function ActionsButton({
 		<PopoverComponenet
 			button={
 				<>
-					<Button  variant='secondary' RightIcon={FaAngleDown}>
-						{t('Actions')}
+					<Button variant='secondary' RightIcon={FaAngleDown}>
+						{status ? t('Status') : t('Actions')}
 					</Button>
 				</>
 			}
