@@ -6,6 +6,7 @@ import { IoMdAddCircle } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SubHeader, Button } from 'src/app/components/optimized';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
+import AddRole from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/AddRole';
 import RolesPage from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/RolesPage';
 import StaffPage from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/StaffPage';
 
@@ -15,6 +16,7 @@ const Users = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const [value, setValue] = useState(1);
+	const [openDialog, setOpenDialog] = useState(false);
 	return (
 		//  tabs section
 		<>
@@ -23,7 +25,11 @@ const Users = () => {
 					variant='primary'
 					LeftIcon={IoMdAddCircle}
 					onClick={() => {
-						navigate('addStuff');
+						if (value === 1) {
+							navigate('addStuff');
+						} else {
+							setOpenDialog(true);
+						}
 					}}
 				>
 					{value === 1 ? t('add staff') : t('add Roles')}
@@ -46,6 +52,7 @@ const Users = () => {
 				<Tab onClick={() => setValue(1)} label={t('Staff')} value='1' />
 				<Tab onClick={() => setValue(2)} label={t('roles')} value='2' />
 			</Tabs>
+			{/* {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />} */}
 		</>
 	);
 };

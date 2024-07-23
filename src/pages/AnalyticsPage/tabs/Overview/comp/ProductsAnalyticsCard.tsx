@@ -22,9 +22,9 @@ export default function ProductsAnalyticsCard({ data }: ProductAnalyticsProps) {
 	const { t } = useTranslation();
 	const renderProducts = (products: ProductAnalytics[]) => (
 		<div className='grid gap-2'>
-			{products.slice(0, 3).map((product) => (
+			{/* {products.slice(0, 3).map((product) => (
 				<MobileProductViews key={product.name} {...product} />
-			))}
+			))} */}
 		</div>
 	);
 
