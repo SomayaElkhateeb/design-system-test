@@ -26,7 +26,7 @@ import {
 export const sidebarLinks = [
 	{ id: nanoid(), path: '/home', name: 'Home', Icon: DashboardIcon },
 	{ id: nanoid(), path: '/products/AllProducts', name: 'Products', Icon: ProductsIcon },
-	{ id: nanoid(), path: '/orders/AllOrders', name: 'Orders', Icon: OrdersIcon },
+	{ id: nanoid(), path: '/orders', name: 'Orders', Icon: OrdersIcon },
 	{ id: nanoid(), path: '/customers', name: 'Customers', Icon: CustomersIcon },
 	{ id: nanoid(), path: '/analytics/overview', name: 'Analytics', Icon: AnalyticsIcon },
 	{ id: nanoid(), path: '/reviews', name: 'Reviews', Icon: ReviewsIcon },

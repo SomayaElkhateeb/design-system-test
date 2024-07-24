@@ -129,17 +129,18 @@ export default function CustomersGroups() {
 			<hr />
 
 			{/*  customers table */}
-			<CustomersGroupTable
-				handelId={handelId}
-				CustomersGroupArrangedData={CustomersGroupArrangedData}
-			>
-				<ThreeDotsButton
-					sortMenus={settingMenus}
-					selectedOption={selectedOption}
-					handelSelect={handleSelect}
-				/>
-			</CustomersGroupTable>
-
+			{!xs && (
+				<CustomersGroupTable
+					handelId={handelId}
+					CustomersGroupArrangedData={CustomersGroupArrangedData}
+				>
+					<ThreeDotsButton
+						sortMenus={settingMenus}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</CustomersGroupTable>
+			)}
 			{/*  case of small media */}
 			{xs && (
 				<div className='responsive_pages'>

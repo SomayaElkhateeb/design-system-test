@@ -431,7 +431,7 @@ export interface PermissionsData {
 
 // permissions list data
 export interface Role {
-    id: number;
+    id: string;
     name: string;
     description: string;
     permission_type: string;

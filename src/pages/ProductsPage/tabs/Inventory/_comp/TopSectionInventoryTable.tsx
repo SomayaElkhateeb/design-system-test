@@ -22,16 +22,11 @@ export default function TopSectionInventoryTable({
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	
+
 	const { xs } = useResponsive();
 
 	const ActionsMenus = [
 		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
-		{
-			id: nanoid(),
-			text: 'Delete all inventories',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
 	];
 
 	return (

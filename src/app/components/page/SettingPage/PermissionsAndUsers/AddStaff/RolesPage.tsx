@@ -23,6 +23,7 @@ const RolesPage = () => {
 	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
+
 	useEffect(() => {
 		dispatch(getRolesList());
 	}, [dispatch]);
@@ -132,7 +133,7 @@ const RolesBtn = ({
 	return (
 		<div className='md:flex-row-global flex-col-global justify-between w-full '>
 			<div>
-				<input placeholder='Search' />
+				<input placeholder='Search' className="w-full" />
 			</div>
 			<div className='flex-row-global gap-3'>
 				<ArrangeButton
@@ -148,4 +149,7 @@ const RolesBtn = ({
 			</div>
 		</div>
 	);
+
 };
+
+

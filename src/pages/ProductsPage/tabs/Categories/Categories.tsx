@@ -8,6 +8,7 @@ import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
 import { useEffect, useState, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
+	deleteAllCategoriesAction,
 	deleteCategoryAction,
 	getCategoriesTable,
 	getCategoryInfo,
@@ -24,6 +25,7 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
+import toast from 'react-hot-toast';
 
 export default function Categories() {
 	//  hooks
@@ -78,7 +80,7 @@ export default function Categories() {
 			}
 		});
 	};
-
+	let categoriesIds = categoriesTable?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
 			case t('Delete category'):
@@ -89,6 +91,18 @@ export default function Categories() {
 				setOpenDialog(true);
 				setEdit_id(custom_Id);
 				dispatch(getCategoryInfo(custom_Id));
+				setSelectedOption('');
+				break;
+			case 'Delete all categories':
+				categoriesTable?.length > 0
+					? dispatch(deleteAllCategoriesAction({ indexes: categoriesIds })).then(
+							(promiseResponse: any) => {
+								if ((promiseResponse.payload.code = 200)) {
+									dispatch(getCategoriesTable());
+								}
+							},
+					  )
+					: toast.error('There are no data to delete it');
 				setSelectedOption('');
 				break;
 		}
@@ -125,17 +139,19 @@ export default function Categories() {
 
 				{/* table */}
 
-				<CategoryTable
-					handelId={handelId}
-					categoryData={CategoriesArrangedData}
-					isLoading={isLoading}
-				>
-					<ThreeDotsButton
-						sortMenus={CategoryMenu}
-						selectedOption={selectedOption}
-						handelSelect={handleSelect}
-					/>
-				</CategoryTable>
+				{!xs && (
+					<CategoryTable
+						handelId={handelId}
+						categoryData={CategoriesArrangedData}
+						isLoading={isLoading}
+					>
+						<ThreeDotsButton
+							sortMenus={CategoryMenu}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</CategoryTable>
+				)}
 
 				{/*  case of small media */}
 				{xs && (

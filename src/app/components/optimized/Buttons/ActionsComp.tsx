@@ -16,7 +16,7 @@ export default function ActionsComp({
 	handelSelect,
 	sortMenus,
 	ActionsMenus,
-
+	StatusMenus,
 	HandelopenDrawer,
 	filter,
 }: {
@@ -25,7 +25,7 @@ export default function ActionsComp({
 
 	sortMenus?: menuType[];
 	ActionsMenus?: menuType[];
-
+	StatusMenus?: menuType[];
 	HandelopenDrawer?: () => void;
 	filter?: boolean;
 }) {
@@ -33,6 +33,14 @@ export default function ActionsComp({
 	const { t } = useTranslation();
 	return (
 		<div className='flex-row-global sm:h-10    md:gap-4 gap-2  '>
+			{StatusMenus && StatusMenus?.length > 0 && (
+				<ActionsButton
+					status
+					sortMenus={StatusMenus}
+					selectedOption={selectedOption}
+					handelSelect={handelSelect}
+				/>
+			)}
 			{/*   arrange button */}
 
 			{sortMenus && sortMenus?.length > 0 && (

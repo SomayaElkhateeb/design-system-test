@@ -2,7 +2,7 @@ export { default as HomePage } from './HomePage/HomePage';
 export { default as AppsPage } from './AppsPage/AppsPage';
 export { default as StorePage } from './StorePage/StorePage';
 export { default as ErrorPage } from './ErrorPage/ErrorPage';
-export { default as OrdersPage } from './OrdersPage/OrdersPage';
+
 export { default as ReviewsPage } from './ReviewsPage/ReviewsPage';
 export { default as SettingsPage } from './SettingsPage/SettingsPage';
 export { default as ProductsPage } from './ProductsPage/ProductsPage';
