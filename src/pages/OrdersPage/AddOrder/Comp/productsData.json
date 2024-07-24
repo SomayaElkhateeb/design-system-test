@@ -1,0 +1,53 @@
+[
+	{
+		"id": "1",
+		"name": "DJI Mavic Pro 2",
+		"imageUrl": "product/product.png",
+		"category": "Blankets",
+		"price":100,
+		"options": [
+			{
+				"type": "color",
+				"options": ["Red", "Blue", "Yellow"]
+			},
+			{
+				"type": "size",
+				"options": ["XL", "L", "M"]
+			}
+		]
+	},
+	{
+		"id": "2",
+		"name": "ahmed",
+		"imageUrl": "product/product.png",
+		"category": "Blankets",
+		"price": 200,
+		"options": [
+			{
+				"type": "color",
+				"options": ["Red", "Blue", "Yellow"]
+			},
+			{
+				"type": "size",
+				"options": ["XL", "L", "M"]
+			}
+		]
+	},
+	{
+		"id": "3",
+		"name": "Hassan",
+		"imageUrl": "product/product.png",
+		"category": "Blankets",
+		"price": 300,
+		"options": [
+			{
+				"type": "color",
+				"options": ["Red", "Blue", "Yellow"]
+			},
+			{
+				"type": "size",
+				"options": ["XL", "L", "M"]
+			}
+		]
+	}
+]

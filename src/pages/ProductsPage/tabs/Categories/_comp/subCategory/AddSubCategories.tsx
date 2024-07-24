@@ -11,13 +11,13 @@ import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import { TfiUpload } from 'react-icons/tfi';
 import { AddSubCategoriesSchemaValues, addSubCategoriesFormSchema } from './AddSubCategoriesForm';
 import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
-import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { GlobalDialog } from 'src/app/components/shared';
+import { selectItemsInterface } from 'src/pages/PagesPage/_comp/PagesSection/_comp/AddPage/_comp/ContentSeoPage';
+import { fileClassName } from 'src/pages/SettingsPage/GeneralSettings/GeneralSettingsMedia';
 interface AddSubCategories {
 	categoryNameEn: string;
 	categoryNameAr: string;

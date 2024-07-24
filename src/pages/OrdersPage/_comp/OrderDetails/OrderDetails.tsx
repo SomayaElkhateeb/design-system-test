@@ -7,19 +7,17 @@ import { IoPrintOutline } from 'react-icons/io5';
 import { RxDotsHorizontal } from 'react-icons/rx';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
-import {
-	AddressForm,
-	Checkout,
-	CheckoutDetailsForm,
-	CustomerForm,
-	CustomerNote,
-	OrderHistory,
-	OrderItems,
-	OrderNo,
-} from 'src/app/components/page';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { EditIcon, LocationIcon } from 'src/app/utils/icons';
 import { contact } from 'src/pages/SettingsPage/_comp/data';
+import OrderNo from '../../OrderDetails/OrderNo';
+import OrderItems from '../../OrderDetails/OrderItems';
+import CustomerNote from '../../OrderDetails/CustomerNote';
+import OrderHistory from '../../OrderDetails/OrderHistory';
+import CustomerForm from '../../OrderDetails/Forms/CustomerForm';
+import AddressForm from '../../OrderDetails/Forms/AddressForm';
+import Checkout from '../../OrderDetails/Checkout';
+import CheckoutDetailsForm from '../../OrderDetails/Forms/CheckoutDetailsForm';
 export default function OrderDetails() {
 	const { t } = useTranslation();
 	const { xs } = useResponsive();

@@ -5,13 +5,14 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { ActiveDates, CustomerSegment, MinimumRequirements } from 'src/app/components/page';
-import Limits from 'src/app/components/page/discount/Comp/Limits';
-import { State, initialState } from 'src/app/components/page/discount/Comp/MinimumRequirements';
 import { Form } from 'src/app/components/ui/form';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount,{newDiscountInterface} from './_hook/HookForNewDiscount';
+import Limits from '../Comp/Limits';
+import MinimumRequirements from '../Comp/MinimumRequirements';
+import ActiveDates from '../Comp/ActiveDates';
+import CustomerSegment from '../Comp/CustomerSegment/CustomerSegment';
 
 
 const NewDiscount = ({ coupon }: { coupon?: boolean }) => {

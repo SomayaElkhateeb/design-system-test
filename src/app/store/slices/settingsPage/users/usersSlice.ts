@@ -1,7 +1,7 @@
-import { newOwnerValue } from './../../../../components/page/SettingPage/PermissionsAndUsers/Owner/TransferOwnership';
 import { createSlice } from '@reduxjs/toolkit';
 import {  userReducer } from './usersExtraReducers';
 import { usersSliceModel } from 'src/app/models/settingsModels/usersSettingsModel';
+import { newOwnerValue } from 'src/pages/SettingsPage/PermissionsAndUsers/Owner/TransferOwnership';
 
 const initialState: usersSliceModel = {
 	users: [],

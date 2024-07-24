@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-
-
 import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 import useStepNavigator from 'src/app/components/optimized/Tabs/useStepNavigator';
-import { AddCheckout, Customer, OrderAddress, Products } from 'src/app/components/page';
+import Customer from '../../AddOrder/Customer';
+import Products from '../../AddOrder/Products';
+import { OrderAddress } from '../../AddOrder/OrderAddress';
+import AddCheckout from '../../AddOrder/AddCheckout';
 
 export default function AddOrder() {
 	const { t } = useTranslation();

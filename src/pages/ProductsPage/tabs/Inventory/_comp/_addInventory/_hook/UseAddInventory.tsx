@@ -1,8 +1,5 @@
-import {
-	AddAddressInterface,
-	createAddressSchema,
-	getDefaultValues,
-} from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
+
+import { AddAddressInterface,createAddressSchema,getDefaultValues } from 'src/pages/OrdersPage/AddOrder/Comp/useOrderAddress';
 import { z } from 'zod';
 const RequiredAddressData = z.string().min(1);
 

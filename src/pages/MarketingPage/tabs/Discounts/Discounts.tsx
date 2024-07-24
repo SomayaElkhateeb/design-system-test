@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
-import { DiscountsTable, TopSectionDiscountAndCoupons } from 'src/app/components/page';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import MarketingTableMobile from '../../_comp/MarketingTableMobile';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { getDiscounts } from 'src/app/store/slices/marketing/discounts/discountsAsyncThunks';
 import { useEffect } from 'react';
+import DiscountsTable from './Table/DiscountsTable';
+import TopSectionDiscountAndCoupons from './TopSectionDiscountAndCoupons';
 
 const discounts = [
 	{

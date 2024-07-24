@@ -3,7 +3,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { IPaymentCardInterface } from './HookForPayment';
-import { CreditTransactions, CvvLabel } from '../../page/SettingPage/BillingAndPlans/AddPayment';
+import { CreditTransactions, CvvLabel } from 'src/pages/SettingsPage/BillingAndPlans/AddPayment';
 
 type Arr1 = 'debitNumber' | 'debitExpiryDate' | 'debitCvv';
 
