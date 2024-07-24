@@ -1,25 +1,3 @@
-// <<<<<<< somayaAdel
-// import { useEffect, useState } from "react";
-// import { useTranslation } from "react-i18next";
-// import { IoMdAddCircle } from "react-icons/io";
-// import { useNavigate } from "react-router-dom";
-// import { ArrangeButton, Button, SubHeader } from "src/app/components/optimized";
-// import FilterButton from "src/app/components/optimized/Buttons/FilterButton";
-// import { useAppDispatch, useAppSelector } from "src/app/store";
-// import { getRolesList } from "src/app/store/slices/settingsPage/roles/rolesAsyncThunks";
-// import RolesTable from "./RolesTable";
-// import AddRole from "./AddRole";
-
-// const RolesPage = () => {
-//     const { t } = useTranslation();
-//     const navigate = useNavigate();
-//     const [openDialog, setOpenDialog] = useState<boolean>(true);
-
-//     // redux
-//     const dispatch = useAppDispatch();
-//     const { rolesList, isLoading, error } = useAppSelector((state) => state.rolesSettings);
-//     console.log("rolesList", rolesList)
-// =======
 import { useEffect, useMemo } from 'react';
 
 import { ArrangeButton } from 'src/app/components/optimized';
@@ -44,39 +22,10 @@ const RolesPage = () => {
 	const dispatch = useAppDispatch();
 	const { rolesList, isLoading } = useAppSelector((state) => state.rolesSettings);
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-// >>>>>>> master
 
-    useEffect(() => {
-        dispatch(getRolesList());
-    }, [dispatch]);
-
-// <<<<<<< somayaAdel
-//     return (
-//        <>
-//         <div className='flex-col-global gap-2'>
-//             <SubHeader title={t('Users & Permissions')} >
-//                 <Button
-//                     variant='primary'
-//                     LeftIcon={IoMdAddCircle}
-//                     onClick={() => navigate('addStuff')}
-//                 >
-//                     {t('add Roles')}
-//                 </Button>
-//             </SubHeader>
-//             <Btn />
-//             <hr />
-//             {/* import table all roles */}
-//             <RolesTable rolesList={rolesList} isLoading={isLoading} />
-//         </div>
-//             {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />}
-//        </>
-//     )
-
-// }
-
-// export default RolesPage;
-
-
+	useEffect(() => {
+		dispatch(getRolesList());
+	}, [dispatch]);
 
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
@@ -200,4 +149,3 @@ const RolesBtn = ({
 		</div>
 	);
 };
-<!-- >>>>>>> master -->

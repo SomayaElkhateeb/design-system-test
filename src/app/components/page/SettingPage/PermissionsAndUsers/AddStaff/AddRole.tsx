@@ -14,8 +14,8 @@ import FormField from "src/app/components/ui/form/field";
 const AddRole = ({ openDialog, setOpenDialog }: { openDialog: boolean; setOpenDialog: () => void }) => {
     const { t } = useTranslation();
 
-    const handleClose = (status: boolean) => {
-        setOpenDialog(status);
+    const handleClose = () => {
+        setOpenDialog(false);
     };
 
 

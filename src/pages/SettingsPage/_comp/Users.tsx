@@ -3,7 +3,7 @@ import { Tab } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdAddCircle } from 'react-icons/io';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { SubHeader, Button } from 'src/app/components/optimized';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
 import AddRole from 'src/app/components/page/SettingPage/PermissionsAndUsers/AddStaff/AddRole';
@@ -13,7 +13,6 @@ import StaffPage from 'src/app/components/page/SettingPage/PermissionsAndUsers/A
 const Users = () => {
 	//  hooks
 	const { t } = useTranslation();
-	const location = useLocation();
 	const navigate = useNavigate();
 	const [value, setValue] = useState(1);
 	const [openDialog, setOpenDialog] = useState(false);
@@ -52,7 +51,7 @@ const Users = () => {
 				<Tab onClick={() => setValue(1)} label={t('Staff')} value='1' />
 				<Tab onClick={() => setValue(2)} label={t('roles')} value='2' />
 			</Tabs>
-			{/* {openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />} */}
+			{openDialog && <AddRole openDialog={openDialog} setOpenDialog={setOpenDialog} />}
 		</>
 	);
 };
