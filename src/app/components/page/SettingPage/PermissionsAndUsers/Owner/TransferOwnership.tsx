@@ -10,8 +10,8 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 // import { PostNewOwner } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
 import { useNavigate } from 'react-router-dom';
-import { AddOwnerSchema } from 'src/app/schema/settings/AddOwnerSchema';
 import { useEffect } from 'react';
+import { AddUserSchema } from 'src/app/schema/settings/AddUserSchema';
 
 export interface addOwnerInterface {
 	name: string;
@@ -48,7 +48,7 @@ export default function TransferOwnership() {
 
 
 	const { formStore, onSubmit } = useForm({
-		schema: AddOwnerSchema,
+		schema: AddUserSchema,
 		handleSubmit: (values: addOwnerInterface) => {
 			const formData = new FormData();
 

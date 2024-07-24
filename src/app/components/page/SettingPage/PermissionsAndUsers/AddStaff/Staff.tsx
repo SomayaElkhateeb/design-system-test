@@ -2,62 +2,70 @@ import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { addStuffInterface } from './HookForAddStuff';
+import { addStaffInterface } from './HookForAddStaff';
 import { useQuery } from 'react-query';
 import { RolesApi } from 'src/app/React-Query/RolesApi';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 import { RolesList } from 'src/app/interface/settingsInterface/rolesSettingsInterface';
+import { Button } from 'src/app/components/optimized';
+import { AddFillIcon } from 'src/app/utils/icons';
 
-export default function Stuff({ formStore }: { formStore: UseFormReturn<addStuffInterface> }) {
+export default function Staff({ formStore }: { formStore: UseFormReturn<addStaffInterface> }) {
 	//  hooks
 	const { t } = useTranslation();
 
 	//  get Roles data  with api request
-	const { isLoading, data, isError, error } = useQuery(['PermissionsData'], () =>
+	const { data } = useQuery(['PermissionsData'], () =>
 		RolesApi.roles(),
 	);
 
-	let PermissionsData = data?.data?.data; 
+	let PermissionsData = data?.data?.data;
 	console.log('PermissionsData', PermissionsData);
-
-	if (isLoading) {
-		return <div>Loading...</div>;
-	}
-
-	if (isError) {
-		console.error('Error fetching roles data:', error);
-		return <div>Error loading roles data</div>;
-	}
 
 	return (
 		<div className='cardDetails-sharedClass p-5 '>
-			<div className='flex-col-global md:w-[70%]'>
-				<FormField
-					formStore={formStore}
-					name='name'
-					label={t('Full name')}
-					render={(field) => <Input {...field} />}
-				/>
+			<div className='flex-col-global w-full'>
+			<h3 className='title'>{t('Basic Info')}</h3>
 
-				{PermissionsData.length > 0 && (
-					<SelectFormField
-						name='storeIndustry'
-						label={t('Role')}
-						formStore={formStore}
-						options={PermissionsData?.map((role: RolesList) => ({
-							label: role?.name,
-							value: role?.id?.toString(),
-						}))}
-						placeholder={t('Select role')}
-					/>
-				)}
+				<div className='flex w-full gap-4'>
+					<div className='flex-grow'>
 
-				<FormField
-					formStore={formStore}
-					name='email'
-					label={t('Email address')}
-					render={(field) => <Input {...field} />}
-				/>
+						<FormField
+							formStore={formStore}
+							name='name'
+							label={t('Name')}
+							render={(field) => <Input {...field} />}
+						/>
+					</div>
+					<div className='flex-grow'>
+
+
+						<FormField
+							formStore={formStore}
+							name='email'
+							label={t('Email')}
+							render={(field) => <Input {...field} />}
+						/>
+					</div>
+				</div>
+
+				<div className='flex items-end'>
+					<div className='flex-grow'>
+						<SelectFormField
+							name='role_id'
+							label={t('Role')}
+							formStore={formStore}
+							options={PermissionsData?.map((role: RolesList) => ({
+								label: role?.name,
+								value: role?.id?.toString(),
+							}))}
+							placeholder={t('Select role')}
+						/>
+					</div>
+					<Button variant="tertiary" LeftIcon={AddFillIcon}>
+						{t('add role')}
+					</Button>
+				</div>
 			</div>
 		</div>
 	);

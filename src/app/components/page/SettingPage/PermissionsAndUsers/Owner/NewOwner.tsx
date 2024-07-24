@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
-import { AddUserSchemaValues } from 'src/app/schema/settings/AddOwnerSchema';
+import { AddUserSchemaValues } from 'src/app/schema/settings/AddUserSchema';
 //The selected role id is invalid.
 
 export default function NewOwner({ formStore }: { formStore: UseFormReturn<addOwnerInterface> }) {

@@ -1,25 +1,3 @@
-// <<<<<<< somayaAdel
-// import { useEffect, useState } from "react";
-// import { useTranslation } from "react-i18next";
-// import { IoMdAddCircle } from "react-icons/io";
-// import { useNavigate } from "react-router-dom";
-// import { ArrangeButton, Button, SubHeader } from "src/app/components/optimized";
-// import FilterButton from "src/app/components/optimized/Buttons/FilterButton";
-// import { useAppDispatch, useAppSelector } from "src/app/store";
-// import { getRolesList } from "src/app/store/slices/settingsPage/roles/rolesAsyncThunks";
-// import RolesTable from "./RolesTable";
-// import AddRole from "./AddRole";
-
-// const RolesPage = () => {
-//     const { t } = useTranslation();
-//     const navigate = useNavigate();
-//     const [openDialog, setOpenDialog] = useState<boolean>(true);
-
-//     // redux
-//     const dispatch = useAppDispatch();
-//     const { rolesList, isLoading, error } = useAppSelector((state) => state.rolesSettings);
-//     console.log("rolesList", rolesList)
-// =======
 import { useEffect, useMemo } from 'react';
 
 import { ArrangeButton } from 'src/app/components/optimized';
@@ -46,13 +24,9 @@ const RolesPage = () => {
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
 
-    useEffect(() => {
-        dispatch(getRolesList());
-    }, [dispatch]);
-
-
-
-
+	useEffect(() => {
+		dispatch(getRolesList());
+	}, [dispatch]);
 
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
@@ -175,5 +149,7 @@ const RolesBtn = ({
 			</div>
 		</div>
 	);
+
 };
+
 

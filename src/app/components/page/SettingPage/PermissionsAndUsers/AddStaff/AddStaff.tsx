@@ -1,31 +1,53 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import useResponsive from 'src/app/utils/hooks/useResponsive';
-import useCustomHookAddStuff, { addStuffInterface } from './HookForAddStuff';
-import Permissions from './Permissions';
-import Stuff from './Staff';
+import useCustomHookAddStuff, { addStaffInterface } from './HookForAddStaff';
+import Password from './Password';
+import Staff from './Staff';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import { AddUserSchema } from 'src/app/schema/settings/AddUserSchema';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useEffect } from 'react';
+import { postNewUser, updateUser } from 'src/app/store/slices/settingsPage/users/usersAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddStuff() {
 	//  hooks
 	const { t } = useTranslation();
-
+	const navigate = useNavigate();
 	// custom hook
-	const { handelDefaultValue, stuffSchema } = useCustomHookAddStuff();
+	const { handelDefaultValue } = useCustomHookAddStuff();
 
-	const handleSubmit = (values: addStuffInterface) => {
+	// redux
+	const dispatch = useAppDispatch();
+	const { isLoadingAddOrUpdate, isLoading, error } = useAppSelector((state) => state.usersSettings);
+
+	const handleSubmit = (values: addStaffInterface) => {
 		console.log(values);
+
+		
+		const sendingData: addStaffInterface = { ...values };
+		password
+			? dispatch(postNewUser(sendingData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						Navigate(-1);
+					}
+			  })
+			: dispatch(updateUser(sendingData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  });
 	};
 
 	const { formStore, onSubmit } = useForm({
-		schema: stuffSchema,
+		// resolver: zodResolver(AddUserSchema),
+		schema: AddUserSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
@@ -36,12 +58,12 @@ export default function AddStuff() {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('add staff')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} isLoading={isLoadingAddOrUpdate}/>
 				</SubHeader>
 				<div className='custom_container custom-grid-parent'>
 					<div className=' flex-col-global grid-left'>
-						<Stuff formStore={formStore} />
-						<Permissions formStore={formStore} />
+						<Staff formStore={formStore} />
+						<Password formStore={formStore} />
 					</div>
 					<div className='grid-right'>
 						<QuickActions data={data} />
