@@ -1,18 +1,16 @@
 import { useParams } from 'react-router-dom';
-import Shipping from 'src/pages/SettingsPage/_comp/Shipping';
-
 import BranchesSettings from '../BranchesSettings/BranchesSettings';
-
 import PaymentSettings from '../PaymentSettings/PaymentSettings';
-import Users from 'src/pages/SettingsPage/_comp/Users';
-import GeneralSettings from './GeneralSettings';
-import LanguageSettings from './LanguageSettings';
-import ReviewsSetting from './ReviewsSettings';
-import QueriesSetting from './QueriesSettings';
+import GeneralSettings from '../GeneralSettings/GeneralSettings';
+import LanguageSettings from '../LanguageSettings/LanguageSettings';
+import ReviewsSetting from '../ReviewsSettings/ReviewsSettings';
+import QueriesSetting from '../QueriesSettings/QueriesSettings';
 import CustomizationsSettings from '../CustomizationsSettings/CustomizationsSettings';
 
-import EmailNotification from './EmailNotification';
-import TaxesSettings from './TaxesSettings';
+import EmailNotification from '../E-mailNotification/EmailNotification';
+import TaxesSettings from '../Taxes/TaxesSettings';
+import Users from '../PermissionsAndUsers/Users';
+import Shipping from '../Shipping/Shipping';
 
 const SettingsConfig = () => {
 	const { config } = useParams();

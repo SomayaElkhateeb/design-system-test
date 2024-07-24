@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { BranchSettingsInterface } from './_hook/useAddBranchForm';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
-import { Address } from '../../../../app/components/page';
+import Address from 'src/pages/OrdersPage/AddOrder/Address';
 
 export const countries = [
 	{

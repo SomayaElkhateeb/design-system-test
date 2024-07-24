@@ -8,9 +8,8 @@ import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import { AddInventoryInterface, UseAddInventory } from './_hook/UseAddInventory';
 import { BasicInfo } from './_comp/BasicInfo';
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { ContactInfo } from './_comp/ContactInfo';
-import { Address } from 'src/app/components/page';
 import { Input } from 'src/app/components/ui/input';
 import FormField from 'src/app/components/ui/form/field';
 import { AvailableSection } from './_comp/AvailableSection';
@@ -22,6 +21,7 @@ import {
 	PutUpdateInventoryRequest,
 } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
 import { useNavigate } from 'react-router-dom';
+import Address from 'src/pages/OrdersPage/AddOrder/Address';
 
 export default function AddInventoryPage() {
 	//  hooks

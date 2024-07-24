@@ -8,15 +8,7 @@ import {
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 
 import { Form } from 'src/app/components/ui/form';
-
 import { useForm } from 'src/app/utils/hooks/form';
-
-import { Address } from 'src/app/components/page';
-import {
-	AddAddressInterface,
-	createAddressSchema,
-	getDefaultValues,
-} from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
@@ -25,6 +17,8 @@ import {
 	PutUpdateCustomerAddressRequest,
 } from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
 import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
+import Address from 'src/pages/OrdersPage/AddOrder/Address';
+import { AddAddressInterface,createAddressSchema,getDefaultValues } from 'src/pages/OrdersPage/AddOrder/Comp/useOrderAddress';
 
 export default function AddNewAddressCustomer() {
 	//  hooks
