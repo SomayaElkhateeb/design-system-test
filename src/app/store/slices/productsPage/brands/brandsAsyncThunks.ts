@@ -75,3 +75,13 @@ export const deleteAllBrandsAction = createAsyncThunk(
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
+export const PostImportBrands = createAsyncThunk('PostImportBrands/getAllProductsTable', (payload:any) =>
+	PublicRequest.postFormData(payload, `merchant/catalog/brands/import`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+

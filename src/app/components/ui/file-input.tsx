@@ -79,7 +79,7 @@ const FileInput = ({ onImageSubmit, children, label, id }: Props) => {
 					)}
 				</label>
 			</div>
-			{/* {error && !preview && <p className='global_error'>{error}</p>} */}
+			
 		</div>
 	);
 };
