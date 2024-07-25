@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
-import { AddUserSchemaValues } from 'src/app/schema/settings/AddOwnerSchema';
+import { AddUserSchemaValues } from 'src/app/schema/settings/AddUserSchema';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 
 // get users data | list

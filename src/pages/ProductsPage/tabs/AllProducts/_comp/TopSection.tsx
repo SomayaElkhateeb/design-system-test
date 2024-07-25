@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle, IoMdArrowDropdown } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import PopoverComponenet from 'src/app/components/optimized/UiKits/Popover';
-import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/FilterOrdersComponent';
 
 import { getImageUrl } from 'src/app/utils';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
@@ -19,6 +16,7 @@ import {
 import { useAppDispatch } from 'src/app/store';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
 
 export default function TopSection({
 	verticalCard,

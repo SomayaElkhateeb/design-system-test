@@ -1,6 +1,6 @@
 import { Checkbox } from '@mui/material';
 import { UseFormReturn } from 'react-hook-form';
-import { addStuffInterface } from '../../page/SettingPage/PermissionsAndUsers/AddStaff/HookForAddStuff';
+import { addStuffInterface } from '../../page/SettingPage/PermissionsAndUsers/AddStaff/HookForAddStaff';
 
 export default function CustomTableBodyCheckbox({
 	array,

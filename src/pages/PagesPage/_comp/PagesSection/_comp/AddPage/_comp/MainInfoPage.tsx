@@ -1,13 +1,13 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { TfiUpload } from 'react-icons/tfi';
-import { fileClassName } from 'src/app/components/page/SettingPage/GeneralSettings/GeneralSettingsMedia';
 import FileInput, { getDefaultFileInputOptions } from 'src/app/components/ui/file-input';
 import FormField from 'src/app/components/ui/form/field';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { addPageInterface } from '../../../../BlogPosts/_hook/HookForAddBlogOrPageForm';
+import { fileClassName } from 'src/pages/SettingsPage/GeneralSettings/GeneralSettingsMedia';
 
 export default function MainInfoPage({
 	formStore,

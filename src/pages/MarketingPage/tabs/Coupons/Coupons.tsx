@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { getCoupons } from 'src/app/store/slices/marketing/coupons/couponsAsyncThunks';
-import TopSectionDiscountAndCoupons from 'src/app/components/page/discount/TopSectionDiscountAndCoupons';
 import CouponsTable from 'src/pages/MarketingPage/tabs/Coupons/NewCoupons/CouponsTable';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import MarketingTableMobile from '../../_comp/MarketingTableMobile';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
+import TopSectionDiscountAndCoupons from '../Discounts/TopSectionDiscountAndCoupons';
 
 const couponsData = [
 	{

@@ -8,7 +8,6 @@ import {
 	AppsTabs,
 	BillingAndPlans,
 	ChooseEmail,
-	Config,
 	CustomerInfo,
 	CustomersPage,
 	HomePage,
@@ -21,9 +20,6 @@ import {
 	ServicesPage,
 	SettingsConfig,
 	SettingsPage,
-	SetupConfig,
-	SetupOpenConfig,
-	ShippingConfig,
 	SocialAppDetails,
 	StorePage,
 } from 'src/pages';
@@ -31,6 +27,7 @@ import { AnalyticsTabs } from 'src/pages/AnalyticsPage/_comp';
 import { MarketingConfig, MarketingTabs } from 'src/pages/MarketingPage/_comp';
 import EmailForm from 'src/pages/MarketingPage/_comp/EmailForm/Email/EmailForm';
 import PackageSubscribe from 'src/pages/MarketingPage/_comp/EmailForm/Email/_comp/PackageSubscribe';
+import AllOrders from 'src/pages/OrdersPage/AllOrders';
 import PagesPage from 'src/pages/PagesPage/PagesPage';
 import PagesConfig from 'src/pages/PagesPage/_comp/PagesConfig';
 import { SubCategories } from 'src/pages/ProductsPage/tabs/Categories/_comp/subCategory/SubCategories';
@@ -44,9 +41,12 @@ import {
 } from 'src/pages/ProductsPage/tabs/_comp';
 import PurchaseConfig from 'src/pages/ServicesPage/_comp/PurchaseServices/_comp/PurchaseConfig';
 import SuccessfullyPurchased from 'src/pages/ServicesPage/_comp/PurchaseServices/_comp/SuccessfullyPurchased/SuccessfullyPurchased';
+import SetupConfig from 'src/pages/SettingsPage/Shipping/OpenSetup/Setup/SetupConfig';
+import SetupOpenConfig from 'src/pages/SettingsPage/Shipping/OpenSetup/SetupOpenConfig';
+import Config from 'src/pages/SettingsPage/Shipping/OpenSetup/Smsa/Config';
+import ShippingConfig from 'src/pages/SettingsPage/Shipping/ShippingConfig';
 import StoreConfig from 'src/pages/StorePage/_comp/StoreConfig';
 import StoreTabs from 'src/pages/StorePage/_comp/StoreTabs';
-import AllOrders from '../components/page/Orders/AllOrders';
 
 interface Route {
 	path: string;

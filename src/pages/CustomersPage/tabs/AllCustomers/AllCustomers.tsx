@@ -9,7 +9,6 @@ import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
-import FilterOrdersComponent from 'src/app/components/page/Orders/FilterOrder/FilterOrdersComponent';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { AnalyticsIcon } from 'src/app/utils/icons';
@@ -32,7 +31,11 @@ import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import ActionHandler from 'src/app/utils/ActionMethods';
+
 import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
+
+import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
+
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 
 //  componenet will be used in customers page

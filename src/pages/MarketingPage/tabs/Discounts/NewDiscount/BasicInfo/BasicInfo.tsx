@@ -4,8 +4,9 @@ import ApplyToOptions from './comp/ApplyToOptions';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
-import { newDiscountInterface } from '../HookForNewDiscount';
-import { DiscountTypesOptions } from 'src/app/components/page';
+import DiscountTypesOptions from '../../Comp/DiscountTypesOptions';
+import { newDiscountInterface } from '../_hook/HookForNewDiscount';
+
 
 const BasicInfo = ({
 	formStore,
