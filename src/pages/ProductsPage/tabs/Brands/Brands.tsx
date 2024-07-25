@@ -8,6 +8,7 @@ import {
 	deleteBrandAction,
 	getBrandsTable,
 	getExportBrands,
+	PostImportBrands,
 } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
 import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
@@ -26,10 +27,12 @@ import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import toast from 'react-hot-toast';
 import ActionHandler from 'src/app/utils/ActionMethods';
+import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
 
 export default function Brands() {
 	// hooks
 	const [openAddOrUpdateDialog, setOpenAddOrUpdateDialog] = useState(false);
+	const [openExportDialog, setOpenExportDialog] = useState<boolean>(false);
 	const [Edit_id, setEdit_id] = useState('');
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
@@ -44,7 +47,8 @@ export default function Brands() {
 		dispatch(getBrandsTable());
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
-
+	// /////////////////////////////
+	// //////////////////////////
 	const brandsSettingMenus = [
 		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
 		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
@@ -56,7 +60,8 @@ export default function Brands() {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
-
+	// /////////////////////////
+	// //////////////////////////
 	//  handel delete Item
 	const {
 		openDeleteDialog,
@@ -66,7 +71,7 @@ export default function Brands() {
 		handelId,
 		handelOpenDialog,
 	} = UseDeleteItem();
-	// Delete customer
+	// Delete brand
 
 	const handelDeleteBrand = () => {
 		dispatch(deleteBrandAction(custom_Id)).then((promiseResponse: any) => {
@@ -76,6 +81,8 @@ export default function Brands() {
 			}
 		});
 	};
+	// /////////////////////////////////
+	// /////////////////////////////////
 	let brandsIds = brands?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
@@ -85,7 +92,7 @@ export default function Brands() {
 				break;
 			case 'Export brands':
 				dispatch(getExportBrands()).then((response: any) => {
-					ActionHandler.exportToExcelFromApi(response.payload,"brands");
+					ActionHandler.exportToExcelFromApi(response.payload, 'brands');
 				});
 				setSelectedOption('');
 				break;
@@ -100,14 +107,23 @@ export default function Brands() {
 					: toast.error('There are no data to delete it');
 				setSelectedOption('');
 				break;
+			case 'Import brands':
+				setOpenExportDialog(true);
+				setSelectedOption('');
+				break;
 		}
 	}, [selectedOption]);
+	// //////////////////////////////
+	// /////////////////////////////
 
 	//  close add dialog
 	const handleCloseAddDialog = () => {
 		setEdit_id('');
 		setOpenAddOrUpdateDialog(false);
 	};
+
+	// ////////////////////////////////
+	///////////////////////////////////
 
 	//  handel Sorting Table
 	const sortFunctions = {
@@ -131,6 +147,19 @@ export default function Brands() {
 		brands,
 		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
 	);
+	// ///////////////////////////////
+	/////////////////////////////////
+	const handelCloseExportdialog = () => {
+		setOpenExportDialog(false);
+	};
+	// //////////////////
+	// ///////////////
+	const ImportData = (values: FormSchema) => {
+		dispatch(PostImportBrands(values)).then((res) => {
+			dispatch(getBrandsTable());
+			handelCloseExportdialog();
+		});
+	};
 
 	return (
 		<div className='custom_container'>
@@ -183,6 +212,7 @@ export default function Brands() {
 						<AddButtonMobile onClick={() => setOpenAddOrUpdateDialog(true)} />
 					</div>
 				)}
+				{/* open delete dialog */}
 				{openDeleteDialog && (
 					<PopupDelete
 						open={openDeleteDialog}
@@ -192,6 +222,8 @@ export default function Brands() {
 						onDelete={handelDeleteBrand}
 					/>
 				)}
+
+				{/* open add brand form */}
 				{openAddOrUpdateDialog && (
 					<AddBrandForm
 						setEdit_id={setEdit_id}
@@ -199,6 +231,15 @@ export default function Brands() {
 						allProducts={allProducts}
 						openDialog={openAddOrUpdateDialog}
 						handleClose={handleCloseAddDialog}
+					/>
+				)}
+
+				{/*  open export data dialog */}
+				{openExportDialog && (
+					<PopupImportData
+						open={openExportDialog}
+						onClose={handelCloseExportdialog}
+						handelSubmit={(values) => ImportData(values)}
 					/>
 				)}
 			</div>

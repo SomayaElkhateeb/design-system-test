@@ -5,6 +5,7 @@ import {
 	deleteProductAction,
 	getAllProductsTable,
 	getExportAllProducts,
+	PostImportProducts,
 } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 import { initialProduct, Product, productSettingsMenu, productSortMenu } from '../../_comp/data';
@@ -26,12 +27,14 @@ import { useTranslation } from 'react-i18next';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import toast from 'react-hot-toast';
 import ActionHandler from 'src/app/utils/ActionMethods';
+import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
 const AllProducts: React.FC = () => {
-	// State hooks
+	//  hooks
 	const { t } = useTranslation();
 	const [verticalCard, setVerticalCard] = useState(false);
 	const [array, setArray] = useState<string[]>([]);
 	const [openDialog, setOpenDialog] = useState<boolean>(false);
+	const [openExportDialog, setOpenExportDialog] = useState<boolean>(false);
 	const [edit_product, setEdit_product] = useState<Product>(initialProduct());
 	const { xs } = useResponsive();
 	const { language } = useLanguage();
@@ -56,7 +59,8 @@ const AllProducts: React.FC = () => {
 		setOpenDialog(status);
 		setEdit_product(initialProduct());
 	};
-
+	// ///////////////////////////////
+	// //////////////////////////////
 	//  handel Sorting Table
 	const sortFunctions = {
 		'Name A to Z': (a: Product, b: Product) =>
@@ -73,7 +77,8 @@ const AllProducts: React.FC = () => {
 		allProducts,
 		productSortMenu?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
 	);
-
+	// //////////////////////////////
+	// ///////////////////////////////
 	//  handel deleteItem
 	const {
 		openDeleteDialog,
@@ -83,7 +88,7 @@ const AllProducts: React.FC = () => {
 		handelId,
 		handelOpenDialog,
 	} = UseDeleteItem();
-	// Delete customer
+	// Delete product
 
 	const handelDeleteProduct = () => {
 		dispatch(deleteProductAction(custom_Id)).then((promiseResponse: any) => {
@@ -93,6 +98,8 @@ const AllProducts: React.FC = () => {
 			}
 		});
 	};
+	// /////////////////
+	// ////////////////
 	let allProductsIds = allProducts?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
@@ -114,12 +121,30 @@ const AllProducts: React.FC = () => {
 				break;
 			case 'Export products':
 				dispatch(getExportAllProducts()).then((response) => {
-					ActionHandler.exportToExcelFromApi(response.payload,"all_products")
+					ActionHandler.exportToExcelFromApi(response.payload, 'all_products');
 				});
+				setSelectedOption('');
+				break;
+			case 'Import products':
+				setOpenExportDialog(true);
 				setSelectedOption('');
 				break;
 		}
 	}, [selectedOption]);
+
+	// ///////////////////////
+	/////////////////////////
+	const handelCloseExportdialog = () => {
+		setOpenExportDialog(false);
+	};
+	// /////////////////////////////
+	/////////////////////////////////
+	const ImportData = (values: FormSchema) => {
+		dispatch(PostImportProducts(values)).then((res)=>{
+			dispatch(getAllProductsTable());
+			handelCloseExportdialog()
+		});
+	};
 
 	return (
 		<div className='custom_container'>
@@ -191,18 +216,23 @@ const AllProducts: React.FC = () => {
 					</div>
 				)}
 			</div>
-			<GlobalDialog
-				openDialog={openDialog}
-				handleClose={() => handleClose(false)}
-				style={dialogStyle}
-			>
-				<SimpleProductForm
-					edit_product={edit_product}
-					handleClose={() => handleClose(false)}
-					categoriesTable={categoriesTable}
-				/>
-			</GlobalDialog>
 
+			{/*  add simple product */}
+			{openDialog && (
+				<GlobalDialog
+					openDialog={openDialog}
+					handleClose={() => handleClose(false)}
+					style={dialogStyle}
+				>
+					<SimpleProductForm
+						edit_product={edit_product}
+						handleClose={() => handleClose(false)}
+						categoriesTable={categoriesTable}
+					/>
+				</GlobalDialog>
+			)}
+
+			{/*  open delete dialog */}
 			{openDeleteDialog && (
 				<PopupDelete
 					open={openDeleteDialog}
@@ -210,6 +240,15 @@ const AllProducts: React.FC = () => {
 					title={t('Delete Item')}
 					subTitle={t('Do You Want To Delete This Item')}
 					onDelete={handelDeleteProduct}
+				/>
+			)}
+
+			{/*  open export data dialog */}
+			{openExportDialog && (
+				<PopupImportData
+					open={openExportDialog}
+					onClose={handelCloseExportdialog}
+					handelSubmit={(values) => ImportData(values)}
 				/>
 			)}
 		</div>
