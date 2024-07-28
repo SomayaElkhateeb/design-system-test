@@ -28,6 +28,7 @@ import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobil
 import toast from 'react-hot-toast';
 import ActionHandler from 'src/app/utils/ActionMethods';
 import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
+import { Use_Hook_ForBrandsPage } from './_hook/_hookforBrandsPage';
 
 export default function Brands() {
 	// hooks
@@ -37,29 +38,18 @@ export default function Brands() {
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
-
-	const { language } = useLanguage();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-	//  selectors
-	const { brands, isLoading } = useAppSelector((state) => state.brands);
-	const { allProducts } = useAppSelector((state) => state.allProducts);
+	const {sortMenus, brandsSettingMenus, allProducts, BrandsArrangedData, brandsIds, isLoading, language } =
+		Use_Hook_ForBrandsPage(selectedOption);
+
+	// ///////////////
+	///////////////
 	useEffect(() => {
 		dispatch(getBrandsTable());
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
 	// /////////////////////////////
-	// //////////////////////////
-	const brandsSettingMenus = [
-		{ id: nanoid(), text: 'Copy brand link', icon: <CopyIcon className='fill-subtitle' /> },
-		{ id: nanoid(), text: 'brand report', icon: <AnalyticsIcon className='fill-subtitle' /> },
-		{ id: nanoid(), text: 'brand products', icon: <OrdersIcon className='fill-subtitle' /> },
 
-		{
-			id: nanoid(),
-			text: 'Delete brand',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
 	// /////////////////////////
 	// //////////////////////////
 	//  handel delete Item
@@ -83,7 +73,7 @@ export default function Brands() {
 	};
 	// /////////////////////////////////
 	// /////////////////////////////////
-	let brandsIds = brands?.map((e) => e?.id.toString()).join(',');
+
 	useMemo(() => {
 		switch (selectedOption) {
 			case 'Delete brand':
@@ -125,29 +115,7 @@ export default function Brands() {
 	// ////////////////////////////////
 	///////////////////////////////////
 
-	//  handel Sorting Table
-	const sortFunctions = {
-		'Name A to Z': (a: BrandsInterface, b: BrandsInterface) =>
-			language === 'ar' ? a.name_ar.localeCompare(b.name_ar) : a.name_en.localeCompare(b.name_en),
-		'Name Z to A': (a: BrandsInterface, b: BrandsInterface) =>
-			language === 'ar' ? b.name_ar.localeCompare(a.name_ar) : b.name_en.localeCompare(a.name_en),
-	};
-	const sortMenus = [
-		{ id: nanoid(), text: 'Name A to Z' },
-		{ id: nanoid(), text: 'Name Z to A' },
-		// { id: nanoid(), text: 'SKU Ascending' },
-		// { id: nanoid(), text: 'SKU Descending' },
-		// { id: nanoid(), text: 'Price Low in first' },
-		// { id: nanoid(), text: 'Price High in first' },
-		// { id: nanoid(), text: 'Date Added' },
-		// { id: nanoid(), text: 'Date modified' },
-	];
-	const { arrangedData: BrandsArrangedData } = UseCustomTableSorting<BrandsInterface>(
-		sortFunctions,
-		brands,
-		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
-	);
-	// ///////////////////////////////
+	/////////
 	/////////////////////////////////
 	const handelCloseExportdialog = () => {
 		setOpenExportDialog(false);

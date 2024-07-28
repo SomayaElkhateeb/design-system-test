@@ -19,7 +19,7 @@ import { useEffect, useMemo } from 'react';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
-import { Use_Hook_ForAllCustomersGrpupsPage } from './_hookforAllCustomersGroupPage';
+import { Use_Hook_ForAllCustomersGrpupsPage } from './_hook/_hookforAllCustomersGroupPage';
 
 export default function CustomersGroups() {
 	//  hooks

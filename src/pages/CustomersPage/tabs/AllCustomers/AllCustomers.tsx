@@ -30,7 +30,7 @@ import ActionHandler from 'src/app/utils/ActionMethods';
 import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
 
 import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
-import { Use_Hook_ForAllCustomersPage } from './_hookforAllCustomersPage';
+import { Use_Hook_ForAllCustomersPage } from './_hook/_hookforAllCustomersPage';
 import toast from 'react-hot-toast';
 
 //  componenet will be used in customers page

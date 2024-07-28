@@ -19,7 +19,7 @@ import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import toast from 'react-hot-toast';
-import { Use_Hook_ForCategoriesPage } from './_hookforCategoriesPage';
+import { Use_Hook_ForCategoriesPage } from './_hook/_hookforCategoriesPage';
 import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 export default function Categories() {
 	//  hooks
