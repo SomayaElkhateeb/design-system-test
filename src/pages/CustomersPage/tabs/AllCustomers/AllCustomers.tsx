@@ -105,6 +105,9 @@ export default function AllCustomers() {
 	let allCustomersIds = allCustomers?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
+			case 'Bulk edit':
+				navigate(''); 
+				break;
 			case 'Delete customer':
 				handelOpenDialog();
 				setSelectedOption('');

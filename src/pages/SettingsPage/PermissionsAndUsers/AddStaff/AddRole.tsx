@@ -18,8 +18,6 @@ const AddRole = ({ openDialog, setOpenDialog }: { openDialog: boolean; setOpenDi
         setOpenDialog(false);
     };
 
-
-
     const dialogStyle = {
         width: { lg: '50%', md: '70%', xs: '90%' },
         height: { md: '600px', xs: '600px' },

@@ -26,6 +26,7 @@ import { useTranslation } from 'react-i18next';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import toast from 'react-hot-toast';
 import ActionHandler from 'src/app/utils/ActionMethods';
+import { useNavigate } from 'react-router-dom';
 const AllProducts: React.FC = () => {
 	// State hooks
 	const { t } = useTranslation();
@@ -36,6 +37,7 @@ const AllProducts: React.FC = () => {
 	const { xs } = useResponsive();
 	const { language } = useLanguage();
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
@@ -96,6 +98,10 @@ const AllProducts: React.FC = () => {
 	let allProductsIds = allProducts?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
+			case 'Bulk edit':
+				navigate('/bulk-edit'); // Navigate to the bulk edit page
+				setSelectedOption('');
+				break;
 			case 'Delete product':
 				handelOpenDialog();
 				setSelectedOption('');

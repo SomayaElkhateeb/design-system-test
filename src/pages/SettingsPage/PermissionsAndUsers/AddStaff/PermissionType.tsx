@@ -1,3 +1,5 @@
+
+//////////////////////////////////////////////
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
@@ -10,6 +12,7 @@ import { getPermissions } from 'src/app/store/slices/settingsPage/roles/rolesAsy
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { AddRolesInterface } from './HookForAddRoles';
 import { UseFormReturn } from 'react-hook-form';
+import SearchInput from 'src/app/components/ui/form/SearchInput';
 
 // styles
 const Accordion = styled((props: AccordionProps) => (
@@ -49,8 +52,7 @@ const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
         flexGrow: 1,
     },
 }));
-//////////////////////////////////////////////////////
-// the child accordion data
+
 type PermissionsData = {
     [key: string]: {
         name: string;
@@ -72,7 +74,7 @@ const updateCheckedItems = (
     parentKey = ''
 ): { updatedItems: CheckedItems, checkedArray: string[] } => {
     const updatedItems: CheckedItems = { ...checkedItems, [key]: checked };
-    const fullKey = parentKey ? `${parentKey}.${key}` : key; // get full name kyes
+    const fullKey = parentKey ? `${parentKey}.${key}` : key;
     const checkedArray: string[] = [fullKey];
 
     if (data[key] && data[key].children) {
@@ -134,9 +136,20 @@ export default function PermissionType({ formStore }: { formStore: UseFormReturn
     const [checkedItems, setCheckedItems] = React.useState<CheckedItems>({});
     const [checkedArray, setCheckedArray] = React.useState<string[]>([]);
 
+    // search
+    const [searchQuery, setSearchQuery] = React.useState('');
+
     // redux
     const dispatch = useAppDispatch();
-    const { permissions } = useAppSelector((state) => state.rolesSettings);
+    const permissions = useAppSelector((state) => state.rolesSettings.permissions) || {};
+    const filteredPermissions = React.useMemo(() => {
+        return Object.entries(permissions).filter(([key, value]) =>
+            key.toLowerCase().includes(searchQuery.toLowerCase())
+        ).reduce((obj, [key, value]) => {
+            obj[key] = value;
+            return obj;
+        }, {} as PermissionsData);
+    }, [searchQuery, permissions]);
 
     React.useEffect(() => {
         dispatch(getPermissions());
@@ -152,7 +165,6 @@ export default function PermissionType({ formStore }: { formStore: UseFormReturn
         const { updatedItems, checkedArray: newCheckedArray } = updateCheckedItems(key, newCheckedStatus, checkedItems, permissions);
         setCheckedItems(updatedItems);
 
-        // Update the array of checked items
         if (newCheckedStatus) {
             setCheckedArray((prevArray) => [...prevArray, ...newCheckedArray]);
         } else {
@@ -166,7 +178,8 @@ export default function PermissionType({ formStore }: { formStore: UseFormReturn
 
     return (
         <>
-            {Object.entries(permissions).map(([key, item], index) => {
+            <SearchInput setSearchQuery={setSearchQuery} />
+            {Object.entries(filteredPermissions).map(([key, item], index) => {
                 const fullKey = key;
                 return (
                     <Accordion key={index} expanded={expanded === key} onChange={handleChange(key)}>
@@ -179,7 +192,7 @@ export default function PermissionType({ formStore }: { formStore: UseFormReturn
                             <Typography sx={{ marginTop: 1 }}>{item.name}</Typography>
                         </StyledAccordionSummary>
                         <Box sx={{ padding: "0 40px" }}>
-                            <NestedAccordion data={item.children} checkedItems={checkedItems} handleCheckboxChange={handleCheckboxChange} parentKey={fullKey} />
+                            <NestedAccordion data={item.children || {}} checkedItems={checkedItems} handleCheckboxChange={handleCheckboxChange} parentKey={fullKey} />
                         </Box>
                     </Accordion>
                 );
@@ -187,4 +200,5 @@ export default function PermissionType({ formStore }: { formStore: UseFormReturn
         </>
     );
 }
+
 

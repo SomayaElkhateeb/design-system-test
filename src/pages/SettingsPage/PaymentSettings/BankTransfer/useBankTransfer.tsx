@@ -1,99 +1,104 @@
 import { z } from 'zod';
 import { UseFormReturn } from 'react-hook-form';
-import { useForm } from 'src/app/utils/hooks/form';
-import { useTranslation } from 'react-i18next';
-import { selectItemsInterface } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/GeneralInfoCustomerForm';
+import { selectItemsInterface } from 'src/pages/PagesPage/_comp/PagesSection/_comp/AddPage/_comp/ContentSeoPage';
+import { InferredZodSchema } from 'src/app/utils/hooks/form';
 
 export interface PaymentFormProps {
 	formStore: UseFormReturn<BankTransferTypes>;
 }
 export interface BankTransferTypes {
-	accountNumber: number;
-	instructions: string;
-	accountName: string;
-	orderItems: number;
-	applyWith: string;
-	bankName: string;
-	price: number;
-	iban: string;
+	payment_method_id: number;
+	account_number: number;
+	account_name: string;
+	bank_name: string;
+	iban: number;
+	price_more_than: number;
+	items_more_than: number;
+	apply_with: string;
+	active: number;
+	main_method: number;
+	show_in_footer: number;
+	additional_data: string;
 	specificProducts?: selectItemsInterface[];
 	specificCustomers?: selectItemsInterface[];
 }
 
-export default function useBankTransfer(applyWith: string) {
-	//  hooks
-	const { t } = useTranslation();
-	const bankTransferSchema = {
-		accountNumber: z.coerce
-			.number()
-			.positive({ message: t('Account number must be a positive number') }),
-		orderItems: z.coerce
-			.number()
-			.positive({ message: t('Order items number must be a positive number') }),
-		price: z.coerce.number().positive({ message: t('Price number must be a positive number') }),
-		instructions: z.string().min(1, { message: t('Instructions cannot be empty') }),
-		accountName: z.string().min(1, { message: t('Account name cannot be empty') }),
-		applyWith: z.string().min(1, { message: t('Apply with cannot be empty') }),
-		bankName: z.string().min(1, { message: t('Bank name cannot be empty') }),
-		iban: z.string().min(1, { message: t('IBAN cannot be empty') }),
+export default function useBankTransfer(apply_with: string) {
+	const stringZod = z.string().min(1);
+	const numberZod = z.coerce.number().positive();
+
+	const AddMerchantPaymentMethodSchema = {
+		payment_method_id: numberZod,
+		account_number: numberZod,
+		account_name: stringZod,
+		bank_name: stringZod,
+		iban: numberZod,
+		price_more_than: numberZod,
+		items_more_than: numberZod,
+		apply_with: stringZod,
+		active: numberZod,
+		main_method: numberZod,
+		show_in_footer: numberZod,
+		additional_data: stringZod,
+		////////////////////////////////////////////////////////////
 		specificProducts:
-			applyWith === 'Specific products'
+			apply_with === 'Specific products'
 				? z
-						.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						)
-						.min(1)
+					.array(
+						z.object({
+							id: stringZod,
+							name: stringZod,
+						}),
+					)
+					.min(1)
 				: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-				  ),
+					z.array(
+						z.object({
+							id: stringZod,
+							name: stringZod,
+						}),
+					),
+				),
 		specificCustomers:
-			applyWith === 'Specific customers'
+			apply_with === 'Specific customers'
 				? z
-						.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						)
-						.min(1)
+					.array(
+						z.object({
+							id: stringZod,
+							name: stringZod,
+						}),
+					)
+					.min(1)
 				: z.optional(
-						z.array(
-							z.object({
-								id: z.string().min(1),
-								name: z.string().min(1),
-							}),
-						),
-				  ),
+					z.array(
+						z.object({
+							id: stringZod,
+							name: stringZod,
+						}),
+					),
+				),
 	};
 	const handelDefaultValue = (): BankTransferTypes => {
 		return {
-			applyWith: 'All',
-			accountNumber: 0,
-			instructions: '',
-			accountName: '',
-			orderItems: 0,
-			bankName: '',
-			price: 0,
-			iban: '',
+			payment_method_id: 0,
+			account_number: 0,
+			account_name: '',
+			bank_name: '',
+			iban: 0,
+			price_more_than: 0,
+			items_more_than: 0,
+			apply_with: 'All',
+			active: 0,
+			main_method: 0,
+			show_in_footer: 0,
+			additional_data: '',
 			specificProducts: [],
 			specificCustomers: [],
 		};
 	};
-	const handleSubmit = (values: BankTransferTypes) => {
-		console.log(values);
-	};
-	const { formStore, onSubmit } = useForm({
-		schema: bankTransferSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
-	return { formStore, onSubmit };
+
+	return { AddMerchantPaymentMethodSchema , bankTransferSchema, handelDefaultValue };
 }
+
+export type AddMerchantPaymentMethodSchemaValues = InferredZodSchema<typeof AddMerchantPaymentMethodSchema>;
+
