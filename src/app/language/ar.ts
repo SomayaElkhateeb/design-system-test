@@ -21,6 +21,7 @@ export const arabic = {
 	"role name":"اسم الدور",
 	"permission type":"نوع المانع",
 	"id":"الكود التعريفي",
+	"Export File":"تصدير ملف",
 	"Do You Want To Delete This Item":"هل تريد ازاله هذا العنصر",
 	"Group Including Customers,denied":"الجروب يشمل عملاء , ممنوع",
 	"Category link (Slug)":"رابط الفئه",

@@ -23,13 +23,19 @@ import {
 	deleteCustomerAction,
 	getAllCustomersTable,
 	getExportCustomers,
+	PostImportCustomers,
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
+
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import ActionHandler from 'src/app/utils/ActionMethods';
+
+import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
+
 import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
+
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
 
 //  componenet will be used in customers page
@@ -39,16 +45,20 @@ export default function AllCustomers() {
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 	const dispatch = useAppDispatch();
+	const [openExportDialog, setOpenExportDialog] = useState<boolean>(false);
 	//  custom hook
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 	// selectors
 	const { allCustomers } = useAppSelector((state) => state.allCustomer);
+	// //////////////////////
+	// /////////////////////
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
 		{ id: nanoid(), text: 'Name Z to A' },
 	];
-
+	// ///////////////////////////
+	// /////////////////////////
 	const ActionsMenus = [
 		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
 		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
@@ -59,6 +69,8 @@ export default function AllCustomers() {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
+	// //////////////////////////
+	// /////////////////////////
 	const settingMenus = [
 		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
 		{
@@ -67,16 +79,20 @@ export default function AllCustomers() {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
-
+	// //////////////////////////
+	// ////////////////////////////
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 	}, [dispatch]);
-
+	// ///////////////////////////////
+	// ////////////////////////////
 	//  handel Sorting Table
 	const sortFunctions = {
 		'Name A to Z': (a: CustomerInterface, b: CustomerInterface) => a.name.localeCompare(b.name),
 		'Name Z to A': (a: CustomerInterface, b: CustomerInterface) => b.name.localeCompare(a.name),
 	};
+	/////////////////////////
+	//////////////////////////
 	const { arrangedData: CustomersArrangedData } = UseCustomTableSorting<CustomerInterface>(
 		sortFunctions,
 		allCustomers,
@@ -102,6 +118,8 @@ export default function AllCustomers() {
 			}
 		});
 	};
+	// ////////////////////////////
+	///////////////////////////////
 	let allCustomersIds = allCustomers?.map((e) => e?.id.toString()).join(',');
 	useMemo(() => {
 		switch (selectedOption) {
@@ -118,7 +136,7 @@ export default function AllCustomers() {
 				break;
 			case 'Export customers':
 				dispatch(getExportCustomers()).then((response: any) => {
-					ActionHandler.exportToExcelFromApi(response.payload,"customers");
+					ActionHandler.exportToExcelFromApi(response.payload, 'customers');
 				});
 				setSelectedOption('');
 				break;
@@ -130,8 +148,26 @@ export default function AllCustomers() {
 				});
 				setSelectedOption('');
 				break;
+			case 'Import customers':
+				setOpenExportDialog(true);
+				setSelectedOption('');
+				break;
 		}
 	}, [selectedOption, custom_Id]);
+
+	// ///////////////////////////////
+	/////////////////////////////////
+	const handelCloseExportdialog = () => {
+		setOpenExportDialog(false);
+	};
+	// //////////////////
+	// ///////////////
+	const ImportData = (values: FormSchema) => {
+		dispatch(PostImportCustomers(values)).then((res) => {
+			dispatch(getAllCustomersTable());
+			handelCloseExportdialog();
+		});
+	};
 
 	return (
 		<>
@@ -211,6 +247,14 @@ export default function AllCustomers() {
 					title={t('Delete Item')}
 					subTitle={t('Do You Want To Delete This Item')}
 					onDelete={handelDeleteCustomer}
+				/>
+			)}
+			{/*  open export data dialog */}
+			{openExportDialog && (
+				<PopupImportData
+					open={openExportDialog}
+					onClose={handelCloseExportdialog}
+					handelSubmit={(values) => ImportData(values)}
 				/>
 			)}
 		</>

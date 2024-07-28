@@ -35,6 +35,7 @@ export default function CustomersTable({
 	handelId: (e: string) => void;
 }) {
 	//  hooks
+	const classData = actionsButtonStyle();
 	const { language } = useLanguage();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -62,15 +63,13 @@ export default function CustomersTable({
 		{ title: t('actions') },
 	];
 
-	
-
 	//  update customer status
 	const handelUpdateStatus = (e: CustomerInterface) => {
 		dispatch(
 			PutUpdateCustomerRequest({
 				data: {
 					subscribed_to_news_letter: e.subscribed_to_news_letter > 0 ? 0 : 1,
-					id: e?.id,
+
 					phone: e.phone,
 					gender: e.gender,
 					first_name: e.first_name,
@@ -128,7 +127,7 @@ export default function CustomersTable({
 								/>
 							</TableCell>,
 							<TableCell>
-								<div className={actionsButtonStyle()}>
+								<div className={classData}>
 									<FaRegEdit
 										className='text-subtitle'
 										onClick={() => navigate(`addCustomer?id=${e?.id}`)}

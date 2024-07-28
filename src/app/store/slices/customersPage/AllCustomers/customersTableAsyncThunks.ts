@@ -65,5 +65,15 @@ export const deleteAllCustomersAction = createAsyncThunk(
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
+export const PostImportCustomers = createAsyncThunk('PostImportCustomers/getAllProductsTable', (payload: any) =>
+	PublicRequest.postFormData(payload, `merchant/customers/import`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+
 
 

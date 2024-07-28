@@ -55,3 +55,14 @@ export const getExportAllProducts = createAsyncThunk('brandsTable/getExportAllPr
 	PublicRequest.getData('merchant/catalog/products/export'),
 );
 
+
+export const PostImportProducts = createAsyncThunk('PostImportProducts/getAllProductsTable', (payload:any) =>
+	PublicRequest.postFormData(payload, `merchant/catalog/products/import`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+
