@@ -1,5 +1,3 @@
-//  componenet will be used in customers page
-import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import { IoIosAddCircle } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
@@ -10,15 +8,14 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import CustomersGroupTable from 'src/pages/CustomersPage/tabs/CustomersGroups/_comp/CustomersGroupTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { LiaTrashAlt } from 'react-icons/lia';
-import { useAppDispatch, useAppSelector } from 'src/app/store';
+
+import { useAppDispatch } from 'src/app/store';
 import {
 	deleteCustomerGroupAction,
 	getCustomersGroupTable,
 } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
 import { useEffect, useMemo } from 'react';
-import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
-import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
+
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
@@ -115,7 +112,7 @@ export default function CustomersGroups() {
 			{/*  case of small media */}
 			{xs && (
 				<div className='responsive_pages'>
-					{customersGroup?.map((e, i) => (
+					{CustomersGroupArrangedData?.map((e, i) => (
 						<CustomersComponenet
 							handelId={handelId}
 							id={e.id}
