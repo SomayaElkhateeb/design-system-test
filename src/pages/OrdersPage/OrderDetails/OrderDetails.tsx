@@ -10,14 +10,16 @@ import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { EditIcon, LocationIcon } from 'src/app/utils/icons';
 import { contact } from 'src/pages/SettingsPage/_comp/data';
-import OrderNo from '../../OrderDetails/OrderNo';
-import OrderItems from '../../OrderDetails/OrderItems';
-import CustomerNote from '../../OrderDetails/CustomerNote';
-import OrderHistory from '../../OrderDetails/OrderHistory';
-import CustomerForm from '../../OrderDetails/Forms/CustomerForm';
-import AddressForm from '../../OrderDetails/Forms/AddressForm';
-import Checkout from '../../OrderDetails/Checkout';
-import CheckoutDetailsForm from '../../OrderDetails/Forms/CheckoutDetailsForm';
+
+import OrderNo from './OrderNo';
+import OrderItems from './OrderItems';
+import CustomerNote from './CustomerNote';
+import OrderHistory from './OrderHistory';
+
+import AddressForm from './Forms/AddressForm';
+import Checkout from './Checkout';
+import CheckoutDetailsForm from './Forms/CheckoutDetailsForm';
+import CustomerForm from './Forms/CustomerForm';
 export default function OrderDetails() {
 	const { t } = useTranslation();
 	const { xs } = useResponsive();

@@ -108,13 +108,13 @@ const RolesPage = () => {
 				/>
 				<hr />
 				{/* import table all roles */}
-				{!xs && (<RolesTable handelId={handelId} rolesList={filteredRoles} isLoading={isLoading}>
+				<RolesTable handelId={handelId} rolesList={filteredRoles} isLoading={isLoading}>
 					<ThreeDotsButton
 						sortMenus={options}
 						selectedOption={selectedOption}
 						handelSelect={handleSelect}
 					/>
-				</RolesTable>)}
+				</RolesTable>
 			</div>
 			{/* openDeleteDialog */}
 			{openDeleteDialog && (

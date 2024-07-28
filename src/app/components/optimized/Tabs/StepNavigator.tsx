@@ -76,7 +76,7 @@ function StepHeader({ index, title }: StepHeaderProps) {
 
 	return (
 		<section className='flex gap-2 items-center'>
-			<div className={stepClasses} onClick={() => setActiveStep(index)}>
+			<div className={stepClasses} >
 				{isCompleted ? <CheckIcon className='fill-primary' /> : index + 1}
 			</div>
 			<div className={`capitalize ${isActive ? 'title' : 'paragraph text-subtitle'}`}>{title}</div>

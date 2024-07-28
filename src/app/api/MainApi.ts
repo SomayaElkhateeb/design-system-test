@@ -39,7 +39,7 @@ MainApi.interceptors.request.use(
 		if (!config.params) {
 			config.params = {};
 		}
-		config.params['locale'] = "all";
+		config.params['locale'] = language;
 		config.params['accept_token'] = true;
 		return config;
 	},

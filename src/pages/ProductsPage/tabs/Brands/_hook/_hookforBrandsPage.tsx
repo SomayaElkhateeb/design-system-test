@@ -1,7 +1,10 @@
 import { nanoid } from 'nanoid';
+import { FaRegEdit } from 'react-icons/fa';
+import { FiUploadCloud } from 'react-icons/fi';
 
 
 import { LiaTrashAlt } from 'react-icons/lia';
+import { SiMicrosoftexcel } from 'react-icons/si';
 import { BrandsInterface } from 'src/app/interface/BrandInterface';
 import { useAppSelector } from 'src/app/store';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
@@ -52,6 +55,18 @@ export const Use_Hook_ForBrandsPage = (selectedOption: string) => {
 		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
 	);
 	// //////////////////////
+
+	
+	const ActionsMenus = [
+		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
+		{ id: nanoid(), text: 'Export brands', icon: <SiMicrosoftexcel className='iconClass' /> },
+		{ id: nanoid(), text: 'Import brands', icon: <FiUploadCloud className='iconClass' /> },
+		{
+			id: nanoid(),
+			text: 'Delete all brands',
+			icon: <LiaTrashAlt size='28' className='fill-error' />,
+		},
+	];
 	return {
 		brandsSettingMenus,
 		allProducts,
@@ -59,6 +74,7 @@ export const Use_Hook_ForBrandsPage = (selectedOption: string) => {
 		brandsIds,
 		isLoading,
 		language,
+		ActionsMenus,
 		sortMenus
 		
 	};
