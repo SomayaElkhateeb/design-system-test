@@ -13,15 +13,6 @@ import data from './_comp/data.json';
 import { useHomePage } from './_comp/useHomePage';
 import BulkEdit from 'src/app/components/optimized/BulkEdit/BulkEdit';
 
-const exampleData = {
-    headers: ["Column 1", "Column 2", "Column 3", "Column 4","5"],
-    rows: [
-        ["Row 1 Col 1", "Row 1 Col 2", "Row 1 Col 3", "Row 1 Col 4", "Row 1 Col 5"],
-        ["Row 2 Col 1", "Row 2 Col 2", "Row 2 Col 3", "Row 2 Col 4", "Row 2 Col 5"],
-        ["Row 3 Col 1", "Row 3 Col 2", "Row 3 Col 3", "Row 3 Col 4", "Row 3 Col 5"],
-        ["Row 4 Col 1", "Row 4 Col 2", "Row 4 Col 3", "Row 4 Col 4", "Row 4 Col 5"],
-    ]
-};
 export const slides = [
 	{
 		videoUrl: 'https://www.youtube.com/embed/pUb9EW770d0?si=JMDd8iQlC39CoyXa',
@@ -57,7 +48,7 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-	return <BulkEdit data={exampleData}/>
+	return <BulkEdit />
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 pt-5'>
 			<div className='custom-grid-parent'>

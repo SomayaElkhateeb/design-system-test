@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import { UseFormReturn } from 'react-hook-form';
 import { selectItemsInterface } from 'src/pages/PagesPage/_comp/PagesSection/_comp/AddPage/_comp/ContentSeoPage';
-import { InferredZodSchema } from 'src/app/utils/hooks/form';
 
 export interface PaymentFormProps {
 	formStore: UseFormReturn<BankTransferTypes>;
@@ -97,8 +96,7 @@ export default function useBankTransfer(apply_with: string) {
 		};
 	};
 
-	return { AddMerchantPaymentMethodSchema , bankTransferSchema, handelDefaultValue };
+	return { AddMerchantPaymentMethodSchema , handelDefaultValue };
 }
 
-export type AddMerchantPaymentMethodSchemaValues = InferredZodSchema<typeof AddMerchantPaymentMethodSchema>;
 
