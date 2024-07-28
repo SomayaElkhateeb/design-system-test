@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { SubHeader } from 'src/app/components/optimized';
@@ -20,7 +20,7 @@ import {
 	getCustomerInfo,
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import GeneralInfoCustomerForm from './_comp/GeneralInfoCustomerForm';
 import PrimaryAddressForm from './_comp/PrimaryAddressForm';
 import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
@@ -64,7 +64,7 @@ const AddCustomerPage = () => {
 					}
 			  })
 			: //   PostAddCustomerRequest
-			  dispatch(PostAddCustomerRequest(customValues)).then((promiseResponse) => {
+			  dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate(-1);
 					}
@@ -81,9 +81,8 @@ const AddCustomerPage = () => {
 	});
 
 	//  get customer info with id params to fill inputs with it
-	useEffect(() => {
+	useMemo(() => {
 		if (id) {
-			dispatch(getCustomerInfo(id));
 			CustomerInfo.gender && formStore.setValue('gender', CustomerInfo.gender);
 			CustomerInfo.first_name && formStore.setValue('first_name', CustomerInfo.first_name);
 			CustomerInfo.last_name && formStore.setValue('last_name', CustomerInfo.last_name);
@@ -96,6 +95,12 @@ const AddCustomerPage = () => {
 				formStore.setValue('customer_group_id', CustomerInfo.customer_group_id.toString());
 		}
 	}, [id, CustomerInfo]);
+
+	useMemo(() => {
+		if (id) {
+			dispatch(getCustomerInfo(id));
+		}
+	}, [id]);
 
 	useEffect(() => {
 		dispatch(getCustomersGroupTable());
