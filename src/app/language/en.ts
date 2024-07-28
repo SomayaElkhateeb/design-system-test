@@ -1285,5 +1285,6 @@ export const english = {
 	'submit emails': 'submit emails',
 	'Subscribe to package': 'Subscribe to package',
 	'created now':'created now',
-	'Add users and define what they can see or do in your store.':'Add users and define what they can see or do in your store.'
+	'Add users and define what they can see or do in your store.':'Add users and define what they can see or do in your store.',
+	'Assign as main method':'Assign as main method',
 };

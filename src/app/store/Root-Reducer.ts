@@ -30,6 +30,7 @@ import rolesSettings from './slices/settingsPage/roles/rolesSlice';
 import helpSettings from './slices/settingsPage/help/helpSlice';
 import emailNotificationSettings from './slices/settingsPage/emailNotification/emailNotificationSlice';
 import merchantPaymentSettings from './slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentSlice';
+import paymentMethods from './slices/settingsPage/payment/paymentMethods/paymentMethodsSlice';
 import configurations from './slices/settingsPage/configurations/configurationsSlice';
 
 
@@ -66,8 +67,9 @@ export const rootReducer = combineReducers({
 	taxSettings: taxSettings,
 	usersSettings:usersSettings,
 	rolesSettings:rolesSettings,
+	merchantPaymentSettings:merchantPaymentSettings,
+	paymentMethods:paymentMethods,
 	helpSettings:helpSettings,
 	emailNotificationSettings:emailNotificationSettings,
-	merchantPaymentSettings:merchantPaymentSettings,
 	configurations:configurations,
 });

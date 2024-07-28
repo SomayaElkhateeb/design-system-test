@@ -2,7 +2,7 @@ import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
-import { AddMerchantPaymentMethodSchemaValues } from 'src/pages/SettingsPage/PaymentSettings/BankTransfer/useBankTransfer';
+import { AddMerchantPaymentMethodSchemaValues } from 'src/app/schema/settings/AddMerchantPaymentMethodSchema';
 
 // get merchant payment methods list
 export const getMerchantPaymentList = createAsyncThunk('merchantPaymentMethods/getMerchantPaymentList', () =>
@@ -57,7 +57,31 @@ export const deleteMerchantPayment = createAsyncThunk(
 );
 
 // post mass destroy
+export const postMerchantPaymentMass = createAsyncThunk(
+	"postMerchantPaymentMass/postMerchantPaymentMass",
+	(payload: any) => // todo
+		PublicRequest.postData(payload, `merchant/payment-methods/mass-destroy`)
+			.then((res: any) => {
+				if (res) {
+					toast.success(res?.message);
+					return res;
+				}
+			})
+			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
 // post toggle active
+export const postMerchantPaymentToggle = createAsyncThunk(
+	"postMerchantPaymentToggle/postMerchantPaymentToggle",
+	(payload: any) => // todo
+		PublicRequest.postData(payload, `merchant/payment-methods/toggle-active/${payload}`)
+			.then((res: any) => {
+				if (res) {
+					toast.success(res?.message);
+					return res;
+				}
+			})
+			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
 
 
 

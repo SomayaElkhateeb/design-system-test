@@ -1,9 +1,9 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { taxRateSettingsSliceModel } from 'src/app/models/settingsModels/taxRateSettingsModel';
 import { createPaymentMethod, getPaymentMethods, getPaymentMethodShow } from './paymentMethodsAsyncThunks';
+import { paymentMethodsSliceModel } from 'src/app/models/settingsModels/paymentMethodsSettingsModel';
 
-export const taxCategoriesShowReducer = (
-	builder: ActionReducerMapBuilder<taxRateSettingsSliceModel>,
+export const paymentMethodsReducer = (
+	builder: ActionReducerMapBuilder<paymentMethodsSliceModel>,
 ) => {
 	builder
 		// getPaymentMethods
@@ -13,7 +13,7 @@ export const taxCategoriesShowReducer = (
 		})
 		.addCase(getPaymentMethods.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxRatesList = payload; // []
+			state.paymentList = payload; // []
 		})
 		.addCase(getPaymentMethods.rejected, (state, action) => {
 			state.isLoading = false;
@@ -26,7 +26,7 @@ export const taxCategoriesShowReducer = (
 		})
 		.addCase(getPaymentMethodShow.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxRatesShow = payload.data;
+			state.paymentShow = payload.data;
 		})
 		.addCase(getPaymentMethodShow.rejected, (state, action) => {
 			state.isLoading = false;

@@ -1270,4 +1270,5 @@ export const arabic = {
 	'Subscribe to package': 'الاشتراك في الحزمة',
 	'created now': "تم إنشاؤه الآن",
 	'Add users and define what they can see or do in your store.':"أضف المستخدمين وحدد ما يمكنهم رؤيته أو فعله في متجرك.",
+	'Assign as main method':"تعيين كطريقة رئيسية",
 } satisfies typeof english;
