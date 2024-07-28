@@ -1,12 +1,9 @@
-import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { LiaTrashAlt } from 'react-icons/lia';
-import { AnalyticsIcon, CopyIcon, OrdersIcon, EditIcon } from 'src/app/utils/icons';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import { CategoryTable } from './_comp/CategoryTable';
 import TopSectionCategoriesTable from './_comp/TopSectionCategoriesTable';
 import { useEffect, useState, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useAppDispatch } from 'src/app/store';
 import {
 	deleteAllCategoriesAction,
 	deleteCategoryAction,
@@ -17,45 +14,39 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import AddCategoryForm from './_comp/AddCategoryForm';
-
-import useLanguage from 'src/app/utils/hooks/useLanguage';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
-import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
-import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 import toast from 'react-hot-toast';
-
+import { Use_Hook_ForCategoriesPage } from './_hookforCategoriesPage';
+import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 export default function Categories() {
 	//  hooks
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 	const [openDialog, setOpenDialog] = useState(false);
 	const [Edit_id, setEdit_id] = useState('');
-	const { language } = useLanguage();
+
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
+	const {
+		sortMenus,
+		allProducts,
+		CategoriesArrangedData,
+		categoriesIds,
+		CategoryMenu,
+		isLoading,
+		language,
+		ActionsMenus,
+	} = Use_Hook_ForCategoriesPage(selectedOption);
+
 	// redux
 	const dispatch = useAppDispatch();
-	const { categoriesTable, isLoading } = useAppSelector((state) => state.categoriesTable);
-	const { allProducts } = useAppSelector((state) => state.allProducts);
+
 	useEffect(() => {
 		dispatch(getCategoriesTable());
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
-
-	// body
-	const CategoryMenu = [
-		{ id: nanoid(), text: t('edit category'), icon: <EditIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Copy category link'), icon: <CopyIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category report'), icon: <AnalyticsIcon className='iconClass' /> },
-		{ id: nanoid(), text: t('Category products'), icon: <OrdersIcon className='iconClass' /> },
-		{
-			id: nanoid(),
-			text: t('Delete category'),
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
 
 	//  close add brand dialog
 	const handleClose = () => {
@@ -80,7 +71,7 @@ export default function Categories() {
 			}
 		});
 	};
-	let categoriesIds = categoriesTable?.map((e) => e?.id.toString()).join(',');
+
 	useMemo(() => {
 		switch (selectedOption) {
 			case t('Delete category'):
@@ -94,7 +85,7 @@ export default function Categories() {
 				setSelectedOption('');
 				break;
 			case 'Delete all categories':
-				categoriesTable?.length > 0
+				CategoriesArrangedData?.length > 0
 					? dispatch(deleteAllCategoriesAction({ indexes: categoriesIds })).then(
 							(promiseResponse: any) => {
 								if ((promiseResponse.payload.code = 200)) {
@@ -107,29 +98,13 @@ export default function Categories() {
 				break;
 		}
 	}, [selectedOption, custom_Id]);
-	//  handel Sorting Table
-	const sortFunctions = {
-		'Name A to Z': (a: CategoryInterface, b: CategoryInterface) =>
-			language === 'ar' ? a.ar.name.localeCompare(b.ar.name) : a.en.name.localeCompare(b.en.name),
-		'Name Z to A': (a: CategoryInterface, b: CategoryInterface) =>
-			language === 'ar' ? b.ar.name.localeCompare(a.ar.name) : b.en.name.localeCompare(a.en.name),
-	};
-	const sortMenus = [
-		{ id: nanoid(), text: t('Name A to Z') },
-		{ id: nanoid(), text: t('Name Z to A') },
-		// { id: nanoid(), text: t('Date Added') },
-		// { id: nanoid(), text: t('Date modified') },
-	];
-	const { arrangedData: CategoriesArrangedData } = UseCustomTableSorting<CategoryInterface>(
-		sortFunctions,
-		categoriesTable,
-		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
-	);
+
 	return (
 		<div className='custom_container'>
 			<div className='flex-col-global'>
 				{/*  top section */}
 				<TopSectionCategoriesTable
+					ActionsMenus={ActionsMenus}
 					selectedOption={selectedOption}
 					handleSelect={handleSelect}
 					sortMenus={sortMenus}
@@ -156,7 +131,7 @@ export default function Categories() {
 				{/*  case of small media */}
 				{xs && (
 					<div className='responsive_pages'>
-						{CategoriesArrangedData?.map((e, i) => (
+						{CategoriesArrangedData?.map((e: CategoryInterface, i) => (
 							<CustomersComponenet
 								handelId={handelId}
 								noAvatar

@@ -17,25 +17,18 @@ export default function TopSectionCategoriesTable({
 	sortMenus,
 	selectedOption,
 	handleSelect,
+	ActionsMenus,
 }: {
 	title: string;
 	setOpenDialog: (e: boolean) => void;
 	sortMenus: { id: string; text: string }[];
+	ActionsMenus: { id: string; text: string; icon: React.ReactNode }[];
 	selectedOption: string;
 	handleSelect: (e: string) => void;
 }) {
 	//  hooks
-	const { t } = useTranslation();
+	
 	const { xs } = useResponsive();
-
-	const ActionsMenus = [
-		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
-		{
-			id: nanoid(),
-			text: 'Delete all categories',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
 
 	return (
 		<>
