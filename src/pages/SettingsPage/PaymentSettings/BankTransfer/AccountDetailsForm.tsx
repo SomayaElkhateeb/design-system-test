@@ -26,19 +26,19 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 			<div className='grid gap-4 col-span-2 xl:col-span-1'>
 				<FormField
 					formStore={formStore}
-					name='accountNumber'
+					name='account_number'
 					label={t('Account number')}
 					render={(field) => <Input type='number' {...field} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='accountName'
+					name='account_name'
 					label={t('Account name')}
 					render={(field) => <Input {...field} placeholder={'Sary'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='bankName'
+					name='bank_name'
 					label={t('Bank name')}
 					render={(field) => (
 						<Select
@@ -68,7 +68,7 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 				/>
 				<FormField
 					formStore={formStore}
-					name='instructions'
+					name='additional_data'
 					label={t('Additional details & instructions')}
 					render={(field) => <Input {...field} />}
 				/>

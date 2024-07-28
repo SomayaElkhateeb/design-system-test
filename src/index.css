@@ -360,6 +360,8 @@ object {
 	.flexResponsive {
 		@apply flex flex-col gap-5 lg:flex-row lg:justify-between lg:items-center;
 	}
+	
+	
 }
 
 /* remove all default Webkit search field styling */

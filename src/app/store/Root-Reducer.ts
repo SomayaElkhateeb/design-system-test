@@ -14,6 +14,7 @@ import pages from './slices/pagesPage/pages/pagesTableSlice';
 import blog from './slices/pagesPage/blog/blogTableSlice';
 import allProducts from './slices/productsPage/allProducts/allProductsTableSlice';
 import brands from './slices/productsPage/brands/brandsTableSlice';
+import bulkEdit from './slices/productsPage/bulkPrices/bulkPricesSlice';
 import inventory from './slices/productsPage/inventory/inventoryTableSlice';
 import categoriesTable from './slices/productsPage/categories/categoriesTable/categoriesTableSlice';
 import subCategories from './slices/productsPage/categories/subCategoriesTable/subCategoriesSlice';
@@ -28,6 +29,8 @@ import usersSettings from './slices/settingsPage/users/usersSlice';
 import rolesSettings from './slices/settingsPage/roles/rolesSlice';
 import helpSettings from './slices/settingsPage/help/helpSlice';
 import emailNotificationSettings from './slices/settingsPage/emailNotification/emailNotificationSlice';
+import merchantPaymentSettings from './slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentSlice';
+import configurations from './slices/settingsPage/configurations/configurationsSlice';
 
 
 export const rootReducer = combineReducers({
@@ -54,6 +57,7 @@ export const rootReducer = combineReducers({
 	inventory: inventory,
 	categoriesTable: categoriesTable,
 	subCategories: subCategories,
+	bulkEdit:bulkEdit,
 	// orders page
 	allOrders: allOrders,
 
@@ -64,4 +68,6 @@ export const rootReducer = combineReducers({
 	rolesSettings:rolesSettings,
 	helpSettings:helpSettings,
 	emailNotificationSettings:emailNotificationSettings,
+	merchantPaymentSettings:merchantPaymentSettings,
+	configurations:configurations,
 });

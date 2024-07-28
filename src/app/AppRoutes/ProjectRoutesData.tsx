@@ -47,6 +47,7 @@ import Config from 'src/pages/SettingsPage/Shipping/OpenSetup/Smsa/Config';
 import ShippingConfig from 'src/pages/SettingsPage/Shipping/ShippingConfig';
 import StoreConfig from 'src/pages/StorePage/_comp/StoreConfig';
 import StoreTabs from 'src/pages/StorePage/_comp/StoreTabs';
+import BulkEdit from '../components/optimized/BulkEdit/BulkEdit';
 
 interface Route {
 	path: string;
@@ -209,4 +210,8 @@ export const PagesRoutes: Route[] = [
 		element: <AnalyticsPage />,
 		children: [{ path: ':tab', element: <AnalyticsTabs /> }],
 	},
+	{
+		path: '/bulk-edit',
+		element: <BulkEdit />,
+	}
 ];

@@ -1,9 +1,8 @@
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AddTaxRateSchemaValues } from 'src/app/schema/settings/AddTaxRateSchema';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
-import { AddMerchantPaymentMethodSchemaValues } from 'src/app/schema/settings/AddMerchantPaymentMethodSchema';
+import { AddMerchantPaymentMethodSchemaValues } from 'src/pages/SettingsPage/PaymentSettings/BankTransfer/useBankTransfer';
 
 // get merchant payment methods list
 export const getMerchantPaymentList = createAsyncThunk('merchantPaymentMethods/getMerchantPaymentList', () =>
@@ -35,7 +34,7 @@ export const postMerchantPayment = createAsyncThunk(
 export const putMerchantPayment = createAsyncThunk(
 	'merchantPaymentMethods/putMerchantPayment',
 	(payload: { data: AddMerchantPaymentMethodSchemaValues, id: string }) =>
-		PublicRequest.putData(payload.data, `merchant/settings/tax-rates/${payload?.id}`)
+		PublicRequest.putData(payload.data, `merchant/payment-methods/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);

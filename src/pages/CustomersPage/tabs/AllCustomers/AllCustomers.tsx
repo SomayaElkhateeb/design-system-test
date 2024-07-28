@@ -80,6 +80,9 @@ export default function AllCustomers() {
 
 	useMemo(() => {
 		switch (selectedOption) {
+			case 'Bulk edit':
+				navigate(''); 
+				break;
 			case 'Delete customer':
 				handelOpenDialog();
 				setSelectedOption('');
