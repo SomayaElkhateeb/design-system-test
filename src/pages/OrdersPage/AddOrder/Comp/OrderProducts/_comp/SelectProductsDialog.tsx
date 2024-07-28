@@ -4,7 +4,7 @@ import { Input } from 'src/app/components/ui/input';
 import { Button, CheckBox } from 'src/app/components/optimized';
 import { GlobalDialog } from 'src/app/components/shared';
 
-import productsData from './productsData.json';
+import productsData from '../../productsData.json';
 import { getImageUrl } from 'src/app/utils';
 import { DownIcon } from 'src/app/utils/icons';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
@@ -82,10 +82,10 @@ export default function SelectProductsDialog({
 				<div className='divide-y'>
 					{filteredProducts.map((product) => (
 						<ProductAccordion
-						key={product.id}
-						product={product}
-						onSelect={handleSelectProduct}
-						isSelected={!!selectedProducts.find((p) => p.id === product.id)}
+							key={product.id}
+							product={product}
+							onSelect={handleSelectProduct}
+							isSelected={!!selectedProducts.find((p) => p.id === product.id)}
 						/>
 					))}
 				</div>
@@ -123,20 +123,20 @@ function ProductAccordion({ product, onSelect, isSelected }: ProductAccordionPro
 	}, [product.options]);
 
 	const handleOptionChange = (type: string, option: string) => {
-    const newSelectedOptions = { ...selectedOptions, [type]: option };
-    setSelectedOptions(newSelectedOptions);
-    if (isSelected) {
-      onSelect({ ...product, selectedOptions: newSelectedOptions });
-    }
-  };
+		const newSelectedOptions = { ...selectedOptions, [type]: option };
+		setSelectedOptions(newSelectedOptions);
+		if (isSelected) {
+			onSelect({ ...product, selectedOptions: newSelectedOptions });
+		}
+	};
 
-  const handleSelectProduct = (checked: boolean) => {
-    if (checked) {
-      onSelect({ ...product, selectedOptions });
-    } else {
-      onSelect({ ...product, selectedOptions: {} });
-    }
-  };
+	const handleSelectProduct = (checked: boolean) => {
+		if (checked) {
+			onSelect({ ...product, selectedOptions });
+		} else {
+			onSelect({ ...product, selectedOptions: {} });
+		}
+	};
 
 	return (
 		<div className={`grid gap-3 py-3 px-5 ${isOpen ? 'bg-sec-light' : ''} `}>

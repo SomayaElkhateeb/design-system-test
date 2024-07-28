@@ -1,10 +1,10 @@
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-import AllOrdersTableMobile from './AllOrdersTableMobile';
-import AllOrdersTable from './AllOrdersTable';
+import AllOrdersTableMobile from './_comp/AllOrdersTableMobile';
+import AllOrdersTable from './_comp/AllOrdersTable';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import TopSectionOrdersPage from './TopSectionOrdersPage';
+import TopSectionOrdersPage from './_comp/TopSectionOrdersPage';
 import { nanoid } from 'nanoid';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { useAppDispatch, useAppSelector } from 'src/app/store';

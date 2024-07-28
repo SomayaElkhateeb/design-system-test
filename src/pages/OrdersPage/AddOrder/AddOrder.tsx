@@ -2,13 +2,20 @@ import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import StepNavigator from 'src/app/components/optimized/Tabs/StepNavigator';
 import useStepNavigator from 'src/app/components/optimized/Tabs/useStepNavigator';
-import Customer from '../../AddOrder/Customer';
-import Products from '../../AddOrder/Products';
-import { OrderAddress } from '../../AddOrder/OrderAddress';
-import AddCheckout from '../../AddOrder/AddCheckout';
+import Customer from './Comp/OrderCustomer/Customer';
+import Products from './Comp/OrderProducts/Products';
+import { OrderAddress } from './Comp/AddOrderAddresse/OrderAddress';
+import AddCheckout from './Comp/AddCheckOut/AddCheckout';
+import { useAppDispatch } from 'src/app/store';
+import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useEffect } from 'react';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(getAllCustomersTable());
+	}, [dispatch]);
 
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 

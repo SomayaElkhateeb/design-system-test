@@ -5,7 +5,9 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { IQuantity, Product } from '../Products';
-import BaseTable from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { RemoveIcon } from 'src/app/utils/icons';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 
@@ -24,7 +26,7 @@ export default function SelectedProductsTable({
 }: SelectedProductsTableProps) {
 	//  hooks
 	const { t } = useTranslation();
-	console.log('from table', products);
+
 	//  headers
 	const headers = [
 		{ title: t('Product & Category') },
@@ -46,10 +48,10 @@ export default function SelectedProductsTable({
 					rows={products.map((item) => ({
 						item,
 						elements: [
-							<TableCell>
+							<GlobalTableCell>
 								<ProductCategory product={item} />
-							</TableCell>,
-							<TableCell>
+							</GlobalTableCell>,
+							<GlobalTableCell>
 								<FormField
 									formStore={formStore}
 									name='quantity'
@@ -57,21 +59,20 @@ export default function SelectedProductsTable({
 										<Input
 											{...field}
 											type='number'
-											min='1'
-											value={item.quantity || 1}
+											value={item?.quantity}
 											onChange={(e) => onQuantityChange(item.id, parseInt(e.target.value, 10))}
 										/>
 									)}
 								/>
-							</TableCell>,
-							<TableCell>
+							</GlobalTableCell>,
+							<GlobalTableCell>
 								<p className='text-title text-sm'>SAR {item.price}.00</p>
-							</TableCell>,
-							<TableCell>
+							</GlobalTableCell>,
+							<GlobalTableCell>
 								<button onClick={() => onDelete(item.id)}>
 									<RemoveIcon className='fill-pri-dark' />
 								</button>
-							</TableCell>,
+							</GlobalTableCell>,
 						],
 					}))}
 				/>
@@ -87,9 +88,9 @@ export default function SelectedProductsTable({
 			{products.map((item, index) => (
 				<section key={index} className='grid gap-3'>
 					<ProductCategory product={item} />
-					<div className='flex items-center justify-between' >
+					<div className='flex items-center justify-between'>
 						<FormField
-						container={{ className: 'w-[5.2rem]' }}
+							container={{ className: 'w-[5.2rem]' }}
 							formStore={formStore}
 							name='quantity'
 							render={(field) => (

@@ -1,9 +1,10 @@
-import Address from './Address';
-import useOrderAddress from './Comp/useOrderAddress';
+import Address from './_comp/Address';
+
 import { Form } from 'react-hook-form';
 import { Button } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import useOrderAddress from './_hook/useOrderAddress';
 
 export const OrderAddress = ({ onNext, onBack }: { onNext: () => void; onBack: () => void }) => {
 	const { t } = useTranslation();

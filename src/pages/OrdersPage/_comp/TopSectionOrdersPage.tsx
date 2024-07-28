@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import FilterOrdersComponent from './FilterOrder/FilterOrdersComponent';
+import FilterOrdersComponent from '../FilterOrder/FilterOrdersComponent';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
 export default function TopSectionOrdersPage({
