@@ -14,20 +14,18 @@ export default function TopSectionInventoryTable({
 	sortMenus,
 	selectedOption,
 	handleSelect,
+	ActionsMenus,
 }: {
 	sortMenus: { id: string; text: string }[];
 	selectedOption: string;
 	handleSelect: (e: string) => void;
+	ActionsMenus: { id: string; text: string; icon: React.ReactNode }[];
 }) {
 	//  hooks
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
 	const { xs } = useResponsive();
-
-	const ActionsMenus = [
-		{ id: nanoid(), text: t('Bulk edit'), icon: <FaRegEdit className='iconClass' /> },
-	];
 
 	return (
 		<div className='flex-col-global'>

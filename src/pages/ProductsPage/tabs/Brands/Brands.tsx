@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import { useEffect, useMemo, useState } from 'react';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
 import BrandsTable from 'src/pages/ProductsPage/tabs/Brands/_comp/BrandsTable';
@@ -10,10 +9,9 @@ import {
 	getExportBrands,
 	PostImportBrands,
 } from 'src/app/store/slices/productsPage/brands/brandsAsyncThunks';
-import { CopyIcon, AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
-import { LiaTrashAlt } from 'react-icons/lia';
-import { useAppDispatch, useAppSelector } from 'src/app/store';
-import useLanguage from 'src/app/utils/hooks/useLanguage';
+
+import { useAppDispatch } from 'src/app/store';
+
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
@@ -22,8 +20,7 @@ import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { useTranslation } from 'react-i18next';
 import AddBrandForm from './_comp/AddBrandForm';
-import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
-import { BrandsInterface } from 'src/app/interface/BrandInterface';
+
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import toast from 'react-hot-toast';
 import ActionHandler from 'src/app/utils/ActionMethods';
@@ -39,8 +36,16 @@ export default function Brands() {
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-	const {sortMenus, brandsSettingMenus, allProducts, BrandsArrangedData, brandsIds, isLoading, language } =
-		Use_Hook_ForBrandsPage(selectedOption);
+	const {
+		sortMenus,
+		brandsSettingMenus,
+		allProducts,
+		BrandsArrangedData,
+		brandsIds,
+		isLoading,
+		language,
+		ActionsMenus,
+	} = Use_Hook_ForBrandsPage(selectedOption);
 
 	// ///////////////
 	///////////////
@@ -134,6 +139,7 @@ export default function Brands() {
 			<div className='flex-col-global '>
 				{/*  top section */}
 				<TopSectionBrandsTable
+					ActionsMenus={ActionsMenus}
 					selectedOption={selectedOption}
 					handleSelect={handleSelect}
 					sortMenus={sortMenus}
