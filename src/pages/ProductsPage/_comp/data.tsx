@@ -163,3 +163,5 @@ export const productSettingsMenu = [
 	},
 	{ id: nanoid(), text: 'Delete product', icon: <LiaTrashAlt size='25' className='fill-error' /> },
 ];
+
+

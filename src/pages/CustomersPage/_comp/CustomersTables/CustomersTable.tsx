@@ -84,7 +84,7 @@ export default function CustomersTable({ settingMenus }: { settingMenus: setting
 						<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
 						<TableCell>
-							<Switch checked={e['E-Subscription']} />
+							<Switch checked={e.subscribed_to_news_letter > 0 ? true : false} />
 						</TableCell>,
 						<TableCell>
 							<div className={classData}>
