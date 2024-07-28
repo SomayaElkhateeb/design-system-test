@@ -1,9 +1,8 @@
 
 import { nanoid } from 'nanoid';
-import { FaRegEdit } from 'react-icons/fa';
-import { FiUploadCloud } from 'react-icons/fi';
+
 import { LiaTrashAlt } from 'react-icons/lia';
-import { SiMicrosoftexcel } from 'react-icons/si';
+
 import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface';
 import { useAppSelector } from 'src/app/store';
 import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
