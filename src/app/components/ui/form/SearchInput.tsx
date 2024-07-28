@@ -7,7 +7,7 @@ const SearchInput = ({ setSearchQuery }: { setSearchQuery: (query: string) => vo
     };
 
     return (
-        <div className="relative w-full">
+        <div className="relative xs:w-full ">
             <input
                 onChange={handleSearch}
                 type="text"

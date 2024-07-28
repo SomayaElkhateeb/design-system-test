@@ -16,9 +16,11 @@ import { CiLocationOn } from 'react-icons/ci';
 import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
-import CustomTableHeaderCheckbox from '../CustomersPage/_comp/CustomersTables/CustomTableHeaderCheckbox';
-import CustomTableBodyCheckbox from '../CustomersPage/_comp/CustomersTables/CustomTableBodyCheckbox';
+
+
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
+import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';
 export default function AllOrdersTable({
 	orders,
 	array,

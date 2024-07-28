@@ -60,12 +60,15 @@ export default function CustomersGroupTable({
 	const handelUpdateStatus = (e: CustomerGroupInterface) => {
 		dispatch(
 			PutUpdateCustomerGroupRequest({
-				status: e.status > 0 ? 0 : 1,
+				data: {
+					status: e.status > 0 ? 0 : 1,
+					id: e?.id,
+					name: e.name,
+					code: `${e.name}1`,
+					customers: e.customers,
+					description: e.description,
+				},
 				id: e?.id,
-				name: e.name,
-				code: e.name,
-				customers: e.customers,
-				description: e.description
 			}),
 		).then((promiseResponse) => {
 			if ((promiseResponse.payload.code = 200)) {

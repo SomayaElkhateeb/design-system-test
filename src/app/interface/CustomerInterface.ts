@@ -12,6 +12,7 @@ export interface CustomerInterface {
     Orders: number
     email: string
     status: number
+    street:string
     gender: string
     subscribed_to_news_letter:number
     customer_group_id: string
@@ -32,6 +33,7 @@ export const initialCustomerData = () => {
         email: "",
         status: 0,
         gender: "",
+        street:"",
         customer_group_id: "",
         subscribed_to_news_letter:0,
         addresses: [],

@@ -1,9 +1,7 @@
-import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { FaRegEdit } from 'react-icons/fa';
-import { FiUploadCloud } from 'react-icons/fi';
+
 import { IoIosAddCircle } from 'react-icons/io';
-import { SiMicrosoftexcel } from 'react-icons/si';
+
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'src/app/components/optimized';
 import ActionsComp from 'src/app/components/optimized/Buttons/ActionsComp';
@@ -11,12 +9,10 @@ import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobil
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { useOpenFilterDrawer } from 'src/app/utils/hooks/CustomHookOpenDrawer';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import { AnalyticsIcon } from 'src/app/utils/icons';
-import { LiaTrashAlt } from 'react-icons/lia';
 
 import CustomersTable from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/CustomersTable';
 import CustomersComponenet from 'src/pages/CustomersPage/_comp/ResponsiveSmallMedia/CustomersComponent';
-import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useAppDispatch } from 'src/app/store';
 import { useEffect, useMemo, useState } from 'react';
 import {
 	deleteAllCustomersAction,
@@ -25,7 +21,6 @@ import {
 	getExportCustomers,
 	PostImportCustomers,
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
-import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
@@ -35,8 +30,8 @@ import ActionHandler from 'src/app/utils/ActionMethods';
 import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
 
 import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
-
-import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting';
+import { Use_Hook_ForAllCustomersPage } from './_hook/_hookforAllCustomersPage';
+import toast from 'react-hot-toast';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -47,38 +42,12 @@ export default function AllCustomers() {
 	const dispatch = useAppDispatch();
 	const [openExportDialog, setOpenExportDialog] = useState<boolean>(false);
 	//  custom hook
+
 	const { HandelopenDrawer, openDrawer, HandelCloseDrawer } = useOpenFilterDrawer();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-	// selectors
-	const { allCustomers } = useAppSelector((state) => state.allCustomer);
-	// //////////////////////
-	// /////////////////////
-	const sortMenus = [
-		{ id: nanoid(), text: 'Name A to Z' },
-		{ id: nanoid(), text: 'Name Z to A' },
-	];
-	// ///////////////////////////
-	// /////////////////////////
-	const ActionsMenus = [
-		{ id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
-		{ id: nanoid(), text: 'Export customers', icon: <SiMicrosoftexcel className='iconClass' /> },
-		{ id: nanoid(), text: 'Import customers', icon: <FiUploadCloud className='iconClass' /> },
-		{
-			id: nanoid(),
-			text: 'delete customers',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
-	// //////////////////////////
-	// /////////////////////////
-	const settingMenus = [
-		{ id: nanoid(), text: 'Customer report', icon: <AnalyticsIcon className='fill-subtitle' /> },
-		{
-			id: nanoid(),
-			text: 'Delete customer',
-			icon: <LiaTrashAlt size='28' className='fill-error' />,
-		},
-	];
+	const { sortMenus, ActionsMenus, settingMenus, CustomersArrangedData, allCustomersIds } =
+		Use_Hook_ForAllCustomersPage(selectedOption);
+
 	// //////////////////////////
 	// ////////////////////////////
 	useEffect(() => {
@@ -86,18 +55,6 @@ export default function AllCustomers() {
 	}, [dispatch]);
 	// ///////////////////////////////
 	// ////////////////////////////
-	//  handel Sorting Table
-	const sortFunctions = {
-		'Name A to Z': (a: CustomerInterface, b: CustomerInterface) => a.name.localeCompare(b.name),
-		'Name Z to A': (a: CustomerInterface, b: CustomerInterface) => b.name.localeCompare(a.name),
-	};
-	/////////////////////////
-	//////////////////////////
-	const { arrangedData: CustomersArrangedData } = UseCustomTableSorting<CustomerInterface>(
-		sortFunctions,
-		allCustomers,
-		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
-	);
 
 	//  handel deleteItem
 	const {
@@ -120,7 +77,7 @@ export default function AllCustomers() {
 	};
 	// ////////////////////////////
 	///////////////////////////////
-	let allCustomersIds = allCustomers?.map((e) => e?.id.toString()).join(',');
+
 	useMemo(() => {
 		switch (selectedOption) {
 			case 'Bulk edit':
@@ -141,12 +98,16 @@ export default function AllCustomers() {
 				setSelectedOption('');
 				break;
 			case 'delete customers':
-				dispatch(deleteAllCustomersAction({ indexes: allCustomersIds })).then((response: any) => {
-					if (response.payload.code === 200) {
-						dispatch(getAllCustomersTable());
-					}
-				});
 				setSelectedOption('');
+				CustomersArrangedData?.length > 0
+					? dispatch(deleteAllCustomersAction({ indexes: allCustomersIds })).then(
+							(response: any) => {
+								if (response.payload.code === 200) {
+									dispatch(getAllCustomersTable());
+								}
+							},
+					  )
+					: toast.error('there are no customers');
 				break;
 			case 'Import customers':
 				setOpenExportDialog(true);
