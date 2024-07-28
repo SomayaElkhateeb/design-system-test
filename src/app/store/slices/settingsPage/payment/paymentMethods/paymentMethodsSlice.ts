@@ -1,23 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { taxCategoriesShowReducer } from './paymentMethodsExtraReducer';
-import { taxRateSettingsSliceModel } from 'src/app/models/settingsModels/taxRateSettingsModel';
+import { paymentMethodsReducer } from './paymentMethodsExtraReducer';
+import { paymentMethodsSliceModel } from 'src/app/models/settingsModels/paymentMethodsSettingsModel';
 
-const initialState: taxRateSettingsSliceModel = {
-	taxRatesList: [],
-	taxRatesShow: [],
+const initialState: paymentMethodsSliceModel = {
+	paymentList: [],
+	paymentShow: null,
 	isLoadingAddOrUpdate: false,
 	isLoading: false,
 	error: null,
 };
 
-const taxCategoriesShowSlice = createSlice({
-	name: 'taxRateSettings',
+const paymentMethodsSlice = createSlice({
+	name: 'paymentMethods',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		taxCategoriesShowReducer(builder);
+		paymentMethodsReducer(builder);
 	},
 });
 
-export default taxCategoriesShowSlice.reducer;
+export default paymentMethodsSlice.reducer;

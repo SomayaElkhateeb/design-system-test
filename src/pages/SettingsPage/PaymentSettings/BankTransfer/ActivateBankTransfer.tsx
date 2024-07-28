@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-
 import { Form } from 'src/app/components/ui/form';
 import AccountDetailsForm from './AccountDetailsForm';
 import ActivateConditions from './ActivateConditions';
@@ -16,12 +15,19 @@ import { postMerchantPayment, putMerchantPayment } from 'src/app/store/slices/se
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'src/app/utils/hooks/form';
 
+interface DataActions {
+	id: number;
+	title: string;
+}
+
+
+
 export default function ActivateBankTransfer() {
 	//  hooks
 	const { t } = useTranslation();
 	const [apply_with, setApply_with] = useState('All');
-	const { AddMerchantPaymentMethodSchema , handelDefaultValue } = useBankTransfer(apply_with);
-	const data = [
+	const { AddMerchantPaymentMethodSchema, handelDefaultValue } = useBankTransfer(apply_with);
+	const data: DataActions[] = [
 		{
 			id: 1,
 			title: t('Activated'),
@@ -39,9 +45,7 @@ export default function ActivateBankTransfer() {
 
 	useEffect(() => {
 		setApply_with(formStore.watch('apply_with'));
-	}, []);
-
-
+	}, [formStore.watch('apply_with')]);
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -69,13 +73,13 @@ export default function ActivateBankTransfer() {
 			additional_data: values.additional_data,
 		};
 		id
-			? 
+			?
 			dispatch(postMerchantPayment({ data: customValues, id })).then((promiseResponse) => {
 				if ((promiseResponse.payload.code = 200)) {
 					navigate(-1);
 				}
 			})
-			: 
+			:
 			dispatch(putMerchantPayment(customValues)).then((promiseResponse) => {
 				if ((promiseResponse.payload.code = 200)) {
 					navigate(-1);
