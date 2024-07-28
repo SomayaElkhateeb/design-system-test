@@ -22,6 +22,7 @@ import { CustomerGroupInterface } from 'src/app/interface/CustomerGroupInterface
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { Use_Hook_ForAllCustomersGrpupsPage } from './_hookforAllCustomersGroupPage';
 
 export default function CustomersGroups() {
 	//  hooks
@@ -29,42 +30,12 @@ export default function CustomersGroups() {
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 	const dispatch = useAppDispatch();
-	//  selectors
-	const { customersGroup } = useAppSelector((state) => state.customersGroup);
 
-	//    arrange action
 	//  custom hook for select arrang item
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
-	const sortMenus = [
-		{ id: nanoid(), text: 'Name A to Z' },
-		{ id: nanoid(), text: 'Name Z to A' },
-		// { id: nanoid(), text: 'Sales Ascending' },
-		// { id: nanoid(), text: 'Sales Descending' },
-		// { id: nanoid(), text: 'Expenses Ascending' },
-		// { id: nanoid(), text: 'Expenses Descending' },
-		// { id: nanoid(), text: 'Net profit Ascending' },
-		// { id: nanoid(), text: 'Net profit Descending' },
-	];
-	//  handel Sorting Table
-	const sortFunctions = {
-		'Name A to Z': (a: CustomerGroupInterface, b: CustomerGroupInterface) =>
-			a.name.localeCompare(b.name),
-		'Name Z to A': (a: CustomerGroupInterface, b: CustomerGroupInterface) =>
-			b.name.localeCompare(a.name),
-	};
-	const { arrangedData: CustomersGroupArrangedData } =
-		UseCustomTableSorting<CustomerGroupInterface>(
-			sortFunctions,
-			customersGroup,
-			sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
-		);
-
-	// /////////////////////////    three dots actions
-	const settingMenus = [
-		{ id: nanoid(), text: 'Add discount', icon: <p className='text-[1.3rem]'>%</p> },
-		{ id: nanoid(), text: 'Remove group', icon: <LiaTrashAlt size='28' className='fill-error' /> },
-	];
+	const { sortMenus, settingMenus, CustomersGroupArrangedData } =
+		Use_Hook_ForAllCustomersGrpupsPage(selectedOption);
 
 	useEffect(() => {
 		dispatch(getCustomersGroupTable());
