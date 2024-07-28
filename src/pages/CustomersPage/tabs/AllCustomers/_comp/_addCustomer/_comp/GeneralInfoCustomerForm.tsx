@@ -21,7 +21,7 @@ export default function GeneralInfoCustomerForm({
 	//  selectors
 	const { customersGroup } = useAppSelector((state) => state.customersGroup);
 	useEffect(() => {
-		formStore.watch('subscribed_to_news_letter')
+		formStore.watch('subscribed_to_news_letter') // ???
 			? formStore.setValue('subscribed_to_news_letter', 1)
 			: formStore.setValue('subscribed_to_news_letter', 0);
 	}, [formStore.watch('subscribed_to_news_letter')]);
