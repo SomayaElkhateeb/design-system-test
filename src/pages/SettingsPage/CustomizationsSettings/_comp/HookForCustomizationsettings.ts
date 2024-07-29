@@ -1,40 +1,87 @@
 import { z } from 'zod';
 
 export interface CustomizationsTypes {
-	activateProductComparison: boolean;
-	showProductsDescription: boolean;
-	collectShippingAddress: boolean;
-	limitDownloadAttempts: boolean;
-	controlOrderPurchase: boolean;
-	subscriptionConfirm: string[];
-	showSubscribeOptionAt: string;
-	showNewsletterFooter: boolean;
-	minimumOrderSubtotal: number;
-	maxDownloadAttempts: number;
-	purchasesNumExceeds: number;
-	askForCompanyName: boolean;
-	hideProductImages: boolean;
-	autoArchiveOrder: boolean;
-	askForPostalCode: boolean;
-	showProductStock: boolean;
-	productStockLimit: number;
-	showPurchasesNum: boolean;
-	newsletterTextEn: string;
-	newsletterTextAr: string;
-	preselectOption: boolean;
-	hideOutOfStock: boolean;
-	guestCheckout: boolean;
-	maxComparisons: number;
-	showTaxNumber: boolean;
-	showContacts: boolean;
-	checkOutWith: string;
-	taxNumber: number;
-	showSKU: boolean;
+	customizations: {
+		// Customizations checkout
+		checkout: {
+			guest_checkout: number;
+			set_minimum_allowed_order_subtotal: number;
+			minimum_order_subtotal: number;
+			ask_for_company_name: number;
+			customer_can_checkout_with: string;  // 
+			ask_for_zip_postal_code: number
+		},
+		// Customizations products
+		product: {
+			activate_product_comparison: number;
+			auto_archive_order: number;
+			stock_limit: number;
+			show_purchases_number_in_product_page: number;
+			when_purchases_number_exceeds_times: number;
+			download_digital_product_limit: number;
+		},
+		// Customizations double
+		double_opt: {
+			require_customers_confirm_subscription: string;
+			show_option_at: string;
+			text_label: string;
+			preselect_option_for_customers: number;
+			show_email_newsletter_in_footer: number;
+		},
+		// Customizations order
+		order_invoice: {
+			show_tax_number: number;
+			tax_number: number;
+			hide_product_images: number;
+			show_products_description: number;
+			show_sku: number;
+			show_contacts: number;
+		}
+	}
 }
 
 export default function useCustomHookCustomizationSettings() {
 	const booleanValidation = z.boolean().default(false);
 	const customizationsSchema = {
+		customizations: {
+			// Customizations checkout
+			checkout: {
+				guest_checkout: booleanValidation,
+				set_minimum_allowed_order_subtotal: z.coerce.number().positive().min(1),
+				minimum_order_subtotal: booleanValidation,
+				ask_for_company_name: booleanValidation,
+				customer_can_checkout_with: z.string().min(1),  // 
+				ask_for_zip_postal_code: booleanValidation,
+			},
+			// Customizations products
+			product: {
+				activate_product_comparison: booleanValidation,
+				auto_archive_order: booleanValidation,
+				stock_limit: booleanValidation,
+				show_purchases_number_in_product_page: booleanValidation,
+				when_purchases_number_exceeds_times: booleanValidation,
+				download_digital_product_limit: booleanValidation,
+			},
+			// Customizations double
+			double_opt: {
+				require_customers_confirm_subscription: z.array(z.string()).min(1),
+				show_option_at: z.string().min(1),
+				text_label: z.string().min(1),
+				preselect_option_for_customers: booleanValidation,
+				show_email_newsletter_in_footer: booleanValidation,
+			},
+			// Customizations order
+			order_invoice: {
+				show_tax_number: booleanValidation,
+				tax_number: booleanValidation,
+				hide_product_images: booleanValidation,
+				show_products_description: booleanValidation,
+				show_sku: booleanValidation,
+				show_contacts: booleanValidation,
+			}
+		},
+
+		// /////////////////////////
 		activateProductComparison: booleanValidation,
 		showProductsDescription: booleanValidation,
 		collectShippingAddress: booleanValidation,
@@ -46,7 +93,7 @@ export default function useCustomHookCustomizationSettings() {
 		hideProductImages: booleanValidation,
 		askForCompanyName: booleanValidation,
 		purchasesNumExceeds: z.coerce.number().positive().min(1),
-		maxDownloadAttempts:z.coerce.number().positive().min(1),
+		maxDownloadAttempts: z.coerce.number().positive().min(1),
 		askForPostalCode: booleanValidation,
 		showProductStock: booleanValidation,
 		autoArchiveOrder: booleanValidation,
@@ -68,35 +115,32 @@ export default function useCustomHookCustomizationSettings() {
 
 	const handelDefaultValue = () => {
 		return {
-			activateProductComparison: false,
-			showProductsDescription: false,
-			collectShippingAddress: false,
-			limitDownloadAttempts: false,
-			showNewsletterFooter: false,
-			controlOrderPurchase: false,
-			showSubscribeOptionAt: 'Registration',
-			hideProductImages: false,
-			askForCompanyName: false,
-			askForPostalCode: false,
-			autoArchiveOrder: false,
-			showProductStock: false,
-			showPurchasesNum: false,
-			subscriptionConfirm: [],
-			minimumOrderSubtotal: 0,
-			maxDownloadAttempts: 0,
-			purchasesNumExceeds: 0,
-			preselectOption: false,
-			hideOutOfStock: false,
-			showTaxNumber: false,
-			productStockLimit: 0,
-			guestCheckout: false,
-			newsletterTextEn: '',
-			newsletterTextAr: '',
-			showContacts: false,
-			maxComparisons: 0,
-			checkOutWith: 'Email & phone',
-			showSKU: false,
-			taxNumber: 0,
+			guest_checkout: 0,
+			set_minimum_allowed_order_subtotal: 0,
+			minimum_order_subtotal: 0,
+			ask_for_company_name: 0,
+			customer_can_checkout_with: 'Email & phone',
+			ask_for_zip_postal_code: 0,
+			/////////////////////////////////////////
+			activate_product_comparison: 0,
+			auto_archive_order: 0,
+			stock_limit: 0,
+			show_purchases_number_in_product_page: 0,
+			when_purchases_number_exceeds_times: 0,
+			download_digital_product_limit: 0,
+			/////////////////////////////////////////
+			require_customers_confirm_subscription: [],
+			show_option_at: 'Registration',
+			text_label: '',
+			preselect_option_for_customers: 0,
+			show_email_newsletter_in_footer: 0,
+			/////////////////////////////////////////
+			show_tax_number: 0,
+			tax_number: 0,
+			hide_product_images: 0,
+			show_products_description: 0,
+			show_sku: 0,
+			show_contacts: 0,
 		};
 	};
 

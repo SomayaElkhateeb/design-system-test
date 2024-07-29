@@ -21,6 +21,7 @@ export default function AddStuff() {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get('id');
+	
 	const data = [{ id: 1, title: t('Activated') }];
 
 
@@ -77,6 +78,8 @@ export default function AddStuff() {
 				: formStore.setValue('status', 0);
 		}
 	}, [id, userById]);
+	console.log('error', formStore.formState.errors)
+
 
 	useMemo(() => {
 		if (id) {
