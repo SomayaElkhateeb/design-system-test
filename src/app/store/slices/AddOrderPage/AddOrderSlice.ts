@@ -30,20 +30,20 @@ const AddOrderSlice = createSlice({
     name: 'addOrderdata',
     initialState,
     reducers: {
-        setAdd_Order_Data_Customer_id(state, action: PayloadAction<string>) {
+        setAdd_Order_Data_Customer_id(state: AddOrderSliceState, action: PayloadAction<string>) {
             state.Add_Order_Data.customer_id = action.payload;
         },
-        setAdd_Order_Data_Products(state, action: PayloadAction<Product[]>) {
+        setAdd_Order_Data_Products(state: AddOrderSliceState, action: PayloadAction<Product[]>) {
             state.Add_Order_Data.products = action.payload;
         },
-        setAdd_Order_Data_Address_id(state, action: PayloadAction<string>) {
+        setAdd_Order_Data_Address_id(state: AddOrderSliceState, action: PayloadAction<string>) {
             state.Add_Order_Data.address_id = action.payload;
         },
-        setAdd_Order_Data_DeliveryData(state, action: PayloadAction<AddCheckOutFormValues>) {
+        setAdd_Order_Data_DeliveryData(state: AddOrderSliceState, action: PayloadAction<AddCheckOutFormValues>) {
 
             state.Add_Order_Data.deliveryData = action.payload;
         },
-        clearData(state) {
+        clearData(state: AddOrderSliceState) {
             state.Add_Order_Data.customer_id = ""
             state.Add_Order_Data.products = []
             state.Add_Order_Data.address_id = ""
