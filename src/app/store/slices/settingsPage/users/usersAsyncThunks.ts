@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
-import { AddUserSchemaValues } from 'src/app/schema/settings/AddUserSchema';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
+import {addStaffInterface} from 'src/pages/SettingsPage/PermissionsAndUsers/Staff/HookForAddStaff';
+
 
 // get users data | list
 export const getUsers = createAsyncThunk('allUsers/getUsers', () =>
@@ -18,7 +19,7 @@ export const getAdminShow = createAsyncThunk(
 // create new user
 export const postNewUser = createAsyncThunk(
 	"allUsers/postNewUser",
-	(payload: AddUserSchemaValues) =>
+	(payload: addStaffInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/users/store`)
 			.then((res: any) => {
 				if (res) {
@@ -32,7 +33,7 @@ export const postNewUser = createAsyncThunk(
 // update user
 export const updateUser = createAsyncThunk(
 	'allUsers/updateUser',
-	(payload: { data: AddUserSchemaValues, id: string }) =>
+	(payload: { data: addStaffInterface, id: string }) =>
 		PublicRequest.putData(payload.data, `merchant/settings/users/update/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {

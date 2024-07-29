@@ -21,12 +21,7 @@ export default function Password({ formStore }: { formStore: UseFormReturn<addSt
 	}, []);
 	//  hooks
 	const { t } = useTranslation();
-	const [showPassword, setShowPassword] = useState(false);
 	const { xs } = useResponsive();
-
-	const handlePassword = () => {
-		setShowPassword(!showPassword);
-	};
 
 	const fields: { name: PasswordField; placeholder: string }[] = [
 		{ name: 'password', placeholder: t('password') },
@@ -36,22 +31,7 @@ export default function Password({ formStore }: { formStore: UseFormReturn<addSt
 		<div className='global-cards gap-[1.2rem]'>
 			<h3 className='title'>{t('Password')}</h3>
 			<div className={`w-full ${xs ? 'flex-col-global' : 'flex gap-4'}`}>
-
 				<div className='flex-grow'>
-					{/* <FormField
-					formStore={formStore}
-					name='password'
-					render={(field) => (
-						<div className='relative'>
-							<Input
-								{...field}
-								type={showPassword ? 'text' : 'password'}
-								placeholder={t('Password')}
-							/>
-							<PasswordToggleIcon toggle={handlePassword} isVisible={showPassword} />
-						</div>
-					)}
-				/> */}
 					{fields.map(({ name, placeholder }) => (
 						<FormField
 							key={name}
@@ -73,23 +53,6 @@ export default function Password({ formStore }: { formStore: UseFormReturn<addSt
 						/>
 					))}
 				</div>
-
-				{/* <div className='flex-grow'>
-					<FormField
-						formStore={formStore}
-						name='password_confirmation'
-						render={(field) => (
-							<div className='relative'>
-								<Input
-									{...field}
-									type={showPassword ? 'text' : 'password'}
-									placeholder={t('Confirm Password')}
-								/>
-								<PasswordToggleIcon toggle={handlePassword} isVisible={showPassword} />
-							</div>
-						)}
-					/>
-				</div> */}
 			</div>
 		</div>
 	);

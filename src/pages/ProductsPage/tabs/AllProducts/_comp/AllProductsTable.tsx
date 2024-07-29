@@ -1,20 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
-
 import { IoEyeOutline } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
-import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
-import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-
-import { getImageUrl } from 'src/app/utils';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
-
 import { Product } from 'src/pages/ProductsPage/_comp/data';
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';

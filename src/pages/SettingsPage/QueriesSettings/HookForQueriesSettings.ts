@@ -1,32 +1,51 @@
 import { z } from "zod";
 
-
-export interface queriesInterface {
-	describtion_en: string;
-	describtion_ar: string;
-
-	enable: boolean;
-}
-
-
-export default function useCustomHookQueriesSettings() {
-
-	const handelDefaultValue = () => {
-		return {
-			describtion_en: '',
-			describtion_ar: '',
-
-			enable: false,
+export interface QueriesInterface {
+	queries: {
+		automate_replies: {
+			enabled: number;
+			reply_description: string;
+		};
+		quick_actions: {
+			enabled: number;
+			notify_me_new_query: number;
 		};
 	};
-	// //////////////////////////////////////////
-	const QueriesSchema = {
-		describtion_en: z.string().min(5).max(100),
-		describtion_ar: z.string().min(5).max(100),
-		enable: z.boolean().default(false),
+}
+
+export default function useCustomHookQueriesSettings() {
+	const handelDefaultValue = () => {
+		return {
+			queries: {
+				automate_replies: {
+					enabled: 0,
+					reply_description: '',
+				},
+				quick_actions: {
+					enabled: 0,
+					notify_me_new_query: 0,
+				},
+			},
+		};
 	};
+
+	const QueriesSchema = z.object({
+		queries: z.object({
+			automate_replies: z.object({
+				enabled: z.number(),
+				reply_description: z.string().min(5).max(100),
+			}),
+			quick_actions: z.object({
+				enabled: z.number(),
+				notify_me_new_query: z.number(),
+			}),
+		}),
+	});
+
 	return {
 		QueriesSchema,
-		handelDefaultValue
-	}
+		handelDefaultValue,
+	};
 }
+
+

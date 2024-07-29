@@ -8,9 +8,9 @@ import { SubHeader, Button } from 'src/app/components/optimized';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import Tabs from 'src/app/components/optimized/Tabs/Tabs';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
-import StaffPage from './AddStaff/StaffPage';
-import RolesPage from './AddStaff/RolesPage';
-import AddRole from './AddStaff/AddRole';
+import StaffPage from './Staff/StaffPage';
+import RolesPage from './Roles/RolesPage';
+import AddRole from './Roles/AddRole';
 
 const Users = () => {
 	//  hooks

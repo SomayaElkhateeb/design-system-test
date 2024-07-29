@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { configurationsReducer } from './configurationsExtraReducer';
+import { statusGlobal } from 'src/app/models';
 
 
-const initialState: any = {
+const initialState: statusGlobal = {
 	isLoadingAddOrUpdate: false,
 	isLoading: false,
 	error: null,

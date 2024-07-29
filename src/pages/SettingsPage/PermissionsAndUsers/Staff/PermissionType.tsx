@@ -10,7 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { Box } from '@mui/material';
 import { getPermissions } from 'src/app/store/slices/settingsPage/roles/rolesAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { AddRolesInterface } from './HookForAddRoles';
+import { AddRolesInterface } from '../Roles/HookForAddRoles';
 import { UseFormReturn } from 'react-hook-form';
 import SearchInput from 'src/app/components/ui/form/SearchInput';
 

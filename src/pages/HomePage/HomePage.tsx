@@ -11,7 +11,6 @@ import ProductHighlights from './_comp/ProductHighlights';
 import Setups from './_comp/Setups';
 import data from './_comp/data.json';
 import { useHomePage } from './_comp/useHomePage';
-import BulkEdit from 'src/app/components/optimized/BulkEdit/BulkEdit';
 
 export const slides = [
 	{
@@ -48,7 +47,6 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
-	return <BulkEdit />
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 pt-5'>
 			<div className='custom-grid-parent'>
