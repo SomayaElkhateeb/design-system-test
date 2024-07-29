@@ -7,9 +7,13 @@ import Products from './Comp/OrderProducts/Products';
 import { OrderAddress } from './Comp/AddOrderAddresse/OrderAddress';
 import AddCheckout from './Comp/AddCheckOut/AddCheckout';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
-import { useEffect } from 'react';
+import {
+	getAllCustomersTable,
+	getCustomerInfo,
+} from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useEffect, useMemo } from 'react';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import { clearData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
@@ -19,7 +23,11 @@ export default function AddOrder() {
 		dispatch(getAllCustomersTable());
 		dispatch(getAllProductsTable());
 	}, [dispatch]);
-	console.log(Add_Order_Data);
+
+	//  get customer info with id params
+	useEffect(() => {
+		Add_Order_Data.customer_id && dispatch(getCustomerInfo(Add_Order_Data.customer_id));
+	}, [Add_Order_Data.customer_id, dispatch]);
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
@@ -45,6 +53,7 @@ export default function AddOrder() {
 			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
 		},
 	];
+	
 	return (
 		<>
 			<SubHeader title={t('add new order')} />

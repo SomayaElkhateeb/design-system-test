@@ -28,7 +28,7 @@ export default function Customer({ onNext }: { onNext: () => void }) {
 	const { allCustomers } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit: (values: IAddOrder) => void = (values: IAddOrder) => {
 		onNext();
-		dispatch(setAdd_Order_Data_Customer_id(values.customer_id));
+		values?.customer_id && dispatch(setAdd_Order_Data_Customer_id(values?.customer_id));
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -39,19 +39,21 @@ export default function Customer({ onNext }: { onNext: () => void }) {
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5 grid grid-cols-2 gap-4'>
+			<form onSubmit={onSubmit} className='global-cards grid grid-cols-2 gap-4'>
 				<div className='grid gap-4 col-span-2 xl:col-span-1'>
-					<SelectFormField
-						formStore={formStore}
-						name='customer_id'
-						placeholder={t('search customer')}
-						options={allCustomers?.map((e) => {
-							return {
-								value: e?.id,
-								label: e?.name,
-							};
-						})}
-					/>
+					{allCustomers?.length > 0 && (
+						<SelectFormField
+							formStore={formStore}
+							name='customer_id'
+							placeholder={t('search customer')}
+							options={allCustomers?.map((e) => {
+								return {
+									value: e?.id,
+									label: e?.name,
+								};
+							})}
+						/>
+					)}
 					<Button
 						variant='secondary'
 						text={t('add new customer')}

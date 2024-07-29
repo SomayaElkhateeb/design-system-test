@@ -31,6 +31,7 @@ export const arabic = {
 	"Add Inventory":"اضافه مخزن",
 	"NAME":"الاسم",
 	"Fax":"الفاكس",
+	"search Address":"ابحث عن العنوان",
 	"Location Info":"معلومات المكان",
 	"Post Code":"كود البلد",
 	"Feature on the front of page":"ميزه فب مقدمه الصفحه",
