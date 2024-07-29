@@ -14,10 +14,13 @@ import {
 import { useEffect, useMemo } from 'react';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { clearData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
+import { PostAddOrder } from 'src/app/store/slices/AddOrderPage/AddOrderAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const { Add_Order_Data } = useAppSelector((state) => state.addOrder);
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
@@ -31,7 +34,26 @@ export default function AddOrder() {
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
-		console.log('Finish');
+		const formData = new FormData();
+
+		formData.append('customer_id', Add_Order_Data.customer_id);
+		formData.append('address_id', Add_Order_Data.address_id);
+		Add_Order_Data?.products?.map((e, i) => {
+			formData.append(`items[${i}][product_id]`, e?.id);
+			formData.append(`items[${i}][quantity]`, e?.quantity.toString());
+		});
+
+		for (const [key, value] of Object.entries(Add_Order_Data.deliveryData)) {
+			formData.append(key, value);
+		}
+
+		dispatch(PostAddOrder(formData)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+				dispatch(clearData());
+			}
+		});
+
 		// Implement additional finish logic here
 	};
 
@@ -53,7 +75,7 @@ export default function AddOrder() {
 			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
 		},
 	];
-	
+
 	return (
 		<>
 			<SubHeader title={t('add new order')} />

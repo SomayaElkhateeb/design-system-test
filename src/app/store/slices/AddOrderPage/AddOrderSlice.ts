@@ -1,26 +1,33 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AddOrderSliceState } from 'src/app/models/AddOrderSliceModal';
+
+import { AddCheckOutFormValues } from 'src/pages/OrdersPage/AddOrder/Comp/AddCheckOut/_hook/useAddCheckOutForm';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
+import { AddOrderReducer } from './AddOrderExtraReducers';
 
-// Define the initial state type and value
-interface AddOrderState {
-    Add_Order_Data: {
-        customer_id: string
-        products: Product[]
-        address_id: string
-    }
-}
 
-const initialState: AddOrderState = {
+
+const initialState: AddOrderSliceState = {
     Add_Order_Data: {
         customer_id: '',
         products: [],
-        address_id: ''
+        address_id: '',
+        deliveryData: {
+            purchase_method: '',
+            branch: '',
+            payment_method: '',
+            status: '',
+            delivery_method: '',
+            shipping_rate: '',
+            shipping_method: '',
+        }
     },
+    isLoadingAddOrUpdate: false,
 };
 
 // Create the slice
 const AddOrderSlice = createSlice({
-    name: 'data',
+    name: 'addOrderdata',
     initialState,
     reducers: {
         setAdd_Order_Data_Customer_id(state, action: PayloadAction<string>) {
@@ -32,15 +39,31 @@ const AddOrderSlice = createSlice({
         setAdd_Order_Data_Address_id(state, action: PayloadAction<string>) {
             state.Add_Order_Data.address_id = action.payload;
         },
+        setAdd_Order_Data_DeliveryData(state, action: PayloadAction<AddCheckOutFormValues>) {
+
+            state.Add_Order_Data.deliveryData = action.payload;
+        },
         clearData(state) {
             state.Add_Order_Data.customer_id = ""
             state.Add_Order_Data.products = []
             state.Add_Order_Data.address_id = ""
+            state.Add_Order_Data.deliveryData = {
+                purchase_method: '',
+                branch: '',
+                payment_method: '',
+                status: '',
+                delivery_method: '',
+                shipping_rate: '',
+                shipping_method: '',
+            }
 
         }
+    },
+    extraReducers: (builder) => {
+        AddOrderReducer(builder);
     },
 });
 
 // Export actions and reducer
-export const { setAdd_Order_Data_Customer_id, setAdd_Order_Data_Products, setAdd_Order_Data_Address_id,clearData } = AddOrderSlice.actions;
+export const { setAdd_Order_Data_Customer_id, setAdd_Order_Data_Products, setAdd_Order_Data_Address_id, setAdd_Order_Data_DeliveryData, clearData } = AddOrderSlice.actions;
 export default AddOrderSlice.reducer;
