@@ -39,7 +39,7 @@ const defaultValues: AddCheckOutFormValues = {
 	aramexNote: '',
 };
 
-export default function useAddCheckOutForm({ onFinish }) {
+export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void }) {
 	const [formValues, setFormValues] = useState<AddCheckOutFormValues>({
 		purchase: 'In branch',
 		payment: 'Cash',

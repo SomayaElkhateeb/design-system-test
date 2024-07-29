@@ -7,18 +7,18 @@ import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import SelectedProductsTable from './Comp/SelectedProductsTable';
+import SelectedProductsTable from './_comp/SelectedProductsTable';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
-import SelectProductsDialog from './Comp/SelectProductsDialog';
+import SelectProductsDialog from './_comp/SelectProductsDialog';
 
 export interface IQuantity {
-	quantity: number;
+	quantity?: number;
 }
 
 const quantitySchema = {
-	quantity: z.coerce.number().positive().min(1),
+	quantity: z.coerce.number().optional(),
 };
-const handelDefaultValue: IQuantity = {
+const handelDefaultValue = {
 	quantity: 0,
 };
 export interface ProductOption {
@@ -67,7 +67,7 @@ export default function Products({ onNext, onBack }: { onNext: () => void; onBac
 	};
 
 	const handleSubmit = (values: IQuantity) => {
-		console.log(values);
+		// console.log(values);
 		onNext();
 	};
 

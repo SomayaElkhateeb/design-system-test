@@ -21,7 +21,7 @@ import {
 	PutUpdateInventoryRequest,
 } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
 import { useNavigate } from 'react-router-dom';
-import Address from 'src/pages/OrdersPage/AddOrder/Address';
+import Address from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_comp/Address';
 
 export default function AddInventoryPage() {
 	//  hooks

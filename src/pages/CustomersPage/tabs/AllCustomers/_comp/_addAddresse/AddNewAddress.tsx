@@ -1,4 +1,4 @@
-import { useState, useEffect,useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 
@@ -17,8 +17,9 @@ import {
 	PutUpdateCustomerAddressRequest,
 } from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
 import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
-import Address from 'src/pages/OrdersPage/AddOrder/Address';
-import { AddAddressInterface,createAddressSchema,getDefaultValues } from 'src/pages/OrdersPage/AddOrder/Comp/useOrderAddress';
+import Address from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_comp/Address';
+import { AddAddressInterface,createAddressSchema,getDefaultValues } from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
+
 
 export default function AddNewAddressCustomer() {
 	//  hooks
@@ -37,8 +38,11 @@ export default function AddNewAddressCustomer() {
 	);
 	// ////////////////
 	const handleSubmit = (values: AddAddressInterface) => {
-		
-		const sendingData: AddAddressInterface = { ...values, customer_id: id, address_id:address_id?address_id:"" };
+		const sendingData: AddAddressInterface = {
+			...values,
+			customer_id: id,
+			address_id: address_id ? address_id : '',
+		};
 		address_id
 			? dispatch(PutUpdateCustomerAddressRequest(sendingData)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {

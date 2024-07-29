@@ -1,6 +1,6 @@
 import { Button } from 'src/app/components/optimized';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
-import useAddCheckOutForm, { AddCheckOutFormValues } from './Comp/useAddCheckOutForm';
+import useAddCheckOutForm, { AddCheckOutFormValues } from './_hook/useAddCheckOutForm';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
 import { Textarea } from 'src/app/components/ui/textarea';

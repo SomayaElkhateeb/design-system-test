@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import useCustomHookAddAddressForm from '../../AddOrder/Comp/useOrderAddress';
+
 import { Form } from 'react-hook-form';
 import { Button } from 'src/app/components/optimized';
 import { useTranslation } from 'react-i18next';
-import Address from '../../AddOrder/Address';
+import Address from '../../AddOrder/Comp/AddOrderAddresse/_comp/Address';
+import useOrderAddress from '../../AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
 
-export default function AddressForm({ handleAddressForm }: { handleAddressForm: boolean }) {
+
+export default function AddressForm({ handleAddressForm }: { handleAddressForm: () => void }) {
 	const [sendGift, setSendGift] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const { t } = useTranslation();
-	//  custome hook
-	const { formStore, onSubmit } = useCustomHookAddAddressForm(sendGift, selectedOption, isName);
+	//  custom hook
+	const { formStore, onSubmit } = useOrderAddress(sendGift, selectedOption, true);
 
 	return (
 		<Form {...formStore}>

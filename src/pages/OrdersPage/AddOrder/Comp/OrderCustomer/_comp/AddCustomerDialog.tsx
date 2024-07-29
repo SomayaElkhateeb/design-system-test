@@ -5,7 +5,7 @@ import FormField from 'src/app/components/ui/form/field';
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 import { Button } from 'src/app/components/optimized';
 import { GlobalDialog } from 'src/app/components/shared';
-import useAddCustomer from './useAddCustomer';
+import useAddCustomer from '../_hook/useAddCustomer';
 const style = {
 	width: { md: '40rem', xs: '22rem' },
 };

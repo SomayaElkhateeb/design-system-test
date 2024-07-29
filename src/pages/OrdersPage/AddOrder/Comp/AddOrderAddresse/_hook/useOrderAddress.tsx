@@ -68,7 +68,7 @@ export default function useOrderAddress({
 	sendGift,
 	selectedOption,
 	isName,
-	onNext,
+	onNext
 }: useOrderAddressProps) {
 	const handleSubmit = (values: AddAddressInterface) => {
 		if (onNext) {

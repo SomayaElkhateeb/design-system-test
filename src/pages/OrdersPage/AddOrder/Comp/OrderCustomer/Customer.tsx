@@ -5,26 +5,26 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'src/app/components/optimized';
 import { AddFillIcon } from 'src/app/utils/icons';
 import { Form } from 'src/app/components/ui/form';
-import AddCustomerDialog from './Comp/AddCustomerDialog';
+import AddCustomerDialog from './_comp/AddCustomerDialog';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { useAppSelector } from 'src/app/store';
 
 interface IAddOrder {
-	selectCustomer?: string;
+	customer_id?: string;
 }
 
 const addOrderSchema = {
-	selectCustomer: z.string().min(1),
+	customer_id: z.string().min(1),
 };
 const handelDefaultValue = {
-	selectCustomer: '',
+	customer_id: '',
 };
 
 export default function Customer({ onNext }: { onNext: () => void }) {
 	const { t } = useTranslation();
 	const [isOpen, setIsOpen] = useState(false);
-
+	const { allCustomers } = useAppSelector((state) => state.allCustomer);
 	const handleSubmit: (values: IAddOrder) => void = (values: IAddOrder) => {
-		console.log(values);
 		onNext();
 	};
 
@@ -34,21 +34,20 @@ export default function Customer({ onNext }: { onNext: () => void }) {
 		defaultValues: handelDefaultValue,
 	});
 
-	const customerOptions = [
-		{ value: 'fashion', label: t('Fashion') },
-		{ value: 'electronics', label: t('Electronics') },
-		{ value: 'groceries', label: t('Groceries') },
-	];
-
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='cardDetails-sharedClass p-5 grid grid-cols-2 gap-4'>
 				<div className='grid gap-4 col-span-2 xl:col-span-1'>
 					<SelectFormField
 						formStore={formStore}
-						name='selectCustomer'
+						name='customer_id'
 						placeholder={t('search customer')}
-						options={customerOptions}
+						options={allCustomers?.map((e) => {
+							return {
+								value: e?.id,
+								label: e?.name,
+							};
+						})}
 					/>
 					<Button
 						variant='secondary'
