@@ -18,10 +18,20 @@ import {
 } from 'src/app/store/slices/customersPage/AddresseCustomer/AddressesCustomersAsyncThunks';
 import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 import Address from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_comp/Address';
-import { AddAddressInterface,createAddressSchema,getDefaultValues } from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
+import {
+	AddAddressInterface,
+	createAddressSchema,
+	getDefaultValues,
+} from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
+import { getCustomerInfo } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 
-
-export default function AddNewAddressCustomer() {
+export default function AddNewAddressCustomer({
+	customer_id,
+	handelClose,
+}: {
+	customer_id?: string;
+	handelClose?: () => void;
+}) {
 	//  hooks
 	const { t } = useTranslation();
 	const [selectedOption, setSelectedOption] = useState('Add manually');
@@ -40,7 +50,7 @@ export default function AddNewAddressCustomer() {
 	const handleSubmit = (values: AddAddressInterface) => {
 		const sendingData: AddAddressInterface = {
 			...values,
-			customer_id: id,
+			customer_id: id ?? customer_id,
 			address_id: address_id ? address_id : '',
 		};
 		address_id
@@ -51,7 +61,12 @@ export default function AddNewAddressCustomer() {
 			  })
 			: dispatch(PostAddCustomerAddressRequest(sendingData)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
+						if (customer_id && handelClose) {
+							dispatch(getCustomerInfo(customer_id));
+							handelClose();
+						} else {
+							navigate(-1);
+						}
 					}
 			  });
 	};

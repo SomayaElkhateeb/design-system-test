@@ -26,7 +26,7 @@ import PrimaryAddressForm from './_comp/PrimaryAddressForm';
 import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 import { getCustomersGroupTable } from 'src/app/store/slices/customersPage/CustomersGroup/customersGroupTableAsyncThunks';
 
-const AddCustomerPage = () => {
+const AddCustomerPage = ({ onClose }: { onClose?: () => void }) => {
 	// hooks
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
@@ -66,7 +66,7 @@ const AddCustomerPage = () => {
 			: //   PostAddCustomerRequest
 			  dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
+						onClose ? onClose() : navigate(-1);
 					}
 			  });
 	};

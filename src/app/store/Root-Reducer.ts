@@ -32,6 +32,7 @@ import emailNotificationSettings from './slices/settingsPage/emailNotification/e
 import merchantPaymentSettings from './slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentSlice';
 import paymentMethods from './slices/settingsPage/payment/paymentMethods/paymentMethodsSlice';
 import configurations from './slices/settingsPage/configurations/configurationsSlice';
+import AddOrderSlice from './slices/AddOrderPage/AddOrderSlice';
 
 
 export const rootReducer = combineReducers({
@@ -47,7 +48,7 @@ export const rootReducer = combineReducers({
 	customersAnalytics: customersAnalytics,
 	// customers page
 	allCustomer: allCustomer,
-	AddressesCustomer:AddresseCustomersSlice,
+	AddressesCustomer: AddresseCustomersSlice,
 	customersGroup: customersGroup,
 	// pages page
 	pages: pages,
@@ -58,18 +59,18 @@ export const rootReducer = combineReducers({
 	inventory: inventory,
 	categoriesTable: categoriesTable,
 	subCategories: subCategories,
-	bulkEdit:bulkEdit,
+	bulkEdit: bulkEdit,
 	// orders page
 	allOrders: allOrders,
-
+	addOrder: AddOrderSlice,
 	// settings page
 	shippingSettings: shippingSettings,
 	taxSettings: taxSettings,
-	usersSettings:usersSettings,
-	rolesSettings:rolesSettings,
-	merchantPaymentSettings:merchantPaymentSettings,
-	paymentMethods:paymentMethods,
-	helpSettings:helpSettings,
-	emailNotificationSettings:emailNotificationSettings,
-	configurations:configurations,
+	usersSettings: usersSettings,
+	rolesSettings: rolesSettings,
+	merchantPaymentSettings: merchantPaymentSettings,
+	paymentMethods: paymentMethods,
+	helpSettings: helpSettings,
+	emailNotificationSettings: emailNotificationSettings,
+	configurations: configurations,
 });

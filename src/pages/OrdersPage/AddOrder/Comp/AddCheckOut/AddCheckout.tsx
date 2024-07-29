@@ -3,13 +3,13 @@ import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import useAddCheckOutForm, { AddCheckOutFormValues } from './_hook/useAddCheckOutForm';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'src/app/components/ui/form';
-import { Textarea } from 'src/app/components/ui/textarea';
-import FormField from 'src/app/components/ui/form/field';
+// import { Textarea } from 'src/app/components/ui/textarea';
+// import FormField from 'src/app/components/ui/form/field';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 const branches = [
-	{ value: 'eg', label: 'Egypt' },
-	{ value: 'ksa', label: 'Kingdom of Saudi Arabia (KSA)' },
+	{ value: 'completed', label: 'completed' },
+	{ value: 'completed', label: 'completed' },
 ];
 
 export default function AddCheckout({
@@ -31,11 +31,11 @@ export default function AddCheckout({
 					<FormChoiceChips<AddCheckOutFormValues>
 						checkoutForm
 						formStore={formStore}
-						name='purchase'
+						name='purchase_method'
 						label={t('Purchase method')}
-						options={['OnLine', 'In branch']}
+						options={['online', 'branch']}
 					/>
-					{formValues.purchase === 'In branch' && (
+					{formValues.purchase_method === 'branch' && (
 						<SelectFormField
 							name='branch'
 							label={t('Branch name')}
@@ -49,11 +49,18 @@ export default function AddCheckout({
 				<FormChoiceChips<AddCheckOutFormValues>
 					checkoutForm
 					formStore={formStore}
-					name='payment'
+					name='payment_method'
 					label={t('Payment methods')}
-					options={['Credit card', 'Bank transfer', 'Cash']}
+					options={['PapPal', 'MoneyTransfeer', 'cashOnDelivery']}
 				/>
-				{formValues.payment === 'Credit card' && (
+				<SelectFormField
+					name='status'
+					label={t('Order status')}
+					formStore={formStore}
+					options={branches}
+					placeholder={t('Select option')}
+				/>
+				{/* {formValues.payment_method === 'PapPal' && (
 					<>
 						<SelectFormField
 							name='creditCardOption'
@@ -69,32 +76,32 @@ export default function AddCheckout({
 							render={(field) => <Textarea {...field} placeholder={t('Type note')} />}
 						/>
 					</>
-				)}
+				)} */}
 				{/* delivery */}
 				<FormChoiceChips<AddCheckOutFormValues>
 					checkoutForm
 					formStore={formStore}
-					name='delivery'
+					name='delivery_method'
 					label={t('Delivery method')}
-					options={['Shipping', 'Pickup']}
+					options={['delivery', 'pickup']}
 				/>
-				{formValues.delivery === 'Shipping' && (
+				{formValues.delivery_method === 'delivery' && (
 					<FormChoiceChips<AddCheckOutFormValues>
 						checkoutForm
 						formStore={formStore}
-						name='shipping'
+						name='shipping_rate'
 						label={t('Shipping rate')}
-						options={['Fixed rate', 'Free shipping']}
+						options={['Fixed rate', 'free shipping']}
 					/>
 				)}
 				<FormChoiceChips<AddCheckOutFormValues>
 					checkoutForm
 					formStore={formStore}
-					name='method'
+					name='shipping_method'
 					label={t('Shipping method')}
-					options={['DHL (main)', 'Aramex']}
+					options={['DHLRate', 'Aramex']}
 				/>
-				{formValues.method === 'DHL (main)' && (
+				{/* {formValues.shipping_method === 'DHLRate' && (
 					<>
 						<SelectFormField
 							name='dhlStatus'
@@ -110,8 +117,8 @@ export default function AddCheckout({
 							render={(field) => <Textarea {...field} placeholder={t('Type note')} />}
 						/>
 					</>
-				)}
-				{formValues.method === 'Aramex' && (
+				)} */}
+				{/* {formValues.shipping_method === 'Aramex' && (
 					<>
 						<SelectFormField
 							name='aramexStatus'
@@ -127,10 +134,10 @@ export default function AddCheckout({
 							render={(field) => <Textarea {...field} placeholder={t('Type note')} />}
 						/>
 					</>
-				)}
+				)} */}
 				<div className='flex-btn-end'>
 					<Button variant='secondary' text={t('Discard')} onClick={onBack} />
-					<Button onClick={onSubmit} variant='primary' text={t('Save')} />
+					<Button onClick={onSubmit} variant='primary' text={t('Finish')} />
 				</div>
 			</form>
 		</Form>

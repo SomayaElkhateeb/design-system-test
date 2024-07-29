@@ -6,21 +6,54 @@ import Customer from './Comp/OrderCustomer/Customer';
 import Products from './Comp/OrderProducts/Products';
 import { OrderAddress } from './Comp/AddOrderAddresse/OrderAddress';
 import AddCheckout from './Comp/AddCheckOut/AddCheckout';
-import { useAppDispatch } from 'src/app/store';
-import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
-import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import {
+	getAllCustomersTable,
+	getCustomerInfo,
+} from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import { useEffect, useMemo } from 'react';
+import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import { clearData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
+import { PostAddOrder } from 'src/app/store/slices/AddOrderPage/AddOrderAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const { Add_Order_Data } = useAppSelector((state) => state.addOrder);
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
+		dispatch(getAllProductsTable());
 	}, [dispatch]);
 
+	//  get customer info with id params
+	useEffect(() => {
+		Add_Order_Data.customer_id && dispatch(getCustomerInfo(Add_Order_Data.customer_id));
+	}, [Add_Order_Data.customer_id, dispatch]);
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
-		console.log('Finish');
+		const formData = new FormData();
+
+		formData.append('customer_id', Add_Order_Data.customer_id);
+		formData.append('address_id', Add_Order_Data.address_id);
+		Add_Order_Data?.products?.map((e, i) => {
+			formData.append(`items[${i}][product_id]`, e?.id);
+			formData.append(`items[${i}][quantity]`, e?.quantity.toString());
+		});
+
+		for (const [key, value] of Object.entries(Add_Order_Data.deliveryData)) {
+			formData.append(key, value);
+		}
+
+		dispatch(PostAddOrder(formData)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+				dispatch(clearData());
+			}
+		});
+
 		// Implement additional finish logic here
 	};
 
@@ -42,6 +75,7 @@ export default function AddOrder() {
 			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
 		},
 	];
+
 	return (
 		<>
 			<SubHeader title={t('add new order')} />

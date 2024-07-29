@@ -257,6 +257,7 @@ export const english = {
 	Name: 'Name',
 	Status: 'Status',
 	"Export File":"Export File",
+	"search Address":"search Address",
 	"PRIORITY":"PRIORITY",
 	"Add Inventory":"Add Inventory",
 	"Edit Inventory":"Edit Inventory",

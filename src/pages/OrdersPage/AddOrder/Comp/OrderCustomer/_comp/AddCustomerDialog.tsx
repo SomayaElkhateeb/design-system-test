@@ -6,8 +6,13 @@ import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInp
 import { Button } from 'src/app/components/optimized';
 import { GlobalDialog } from 'src/app/components/shared';
 import useAddCustomer from '../_hook/useAddCustomer';
+import AddCustomerPage from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/AddCustomerPage';
+// const style = {
+// 	width: { md: '40rem', xs: '22rem' },
+// };
 const style = {
-	width: { md: '40rem', xs: '22rem' },
+	width: { md: '85vw', xs: '95vw' },
+	height: { md: '95vh', xs: '95vh' },
 };
 export default function AddCustomerDialog({
 	onClose,
@@ -16,11 +21,11 @@ export default function AddCustomerDialog({
 	onClose: () => void;
 	open: boolean;
 }) {
-	const { t } = useTranslation();
-	const { formStore, onSubmit } = useAddCustomer();
+	// const { t } = useTranslation();
+	// const { formStore, onSubmit } = useAddCustomer();
 	return (
 		<GlobalDialog openDialog={open} handleClose={onClose} style={style}>
-			<Form {...formStore}>
+			{/* <Form {...formStore}>
 				<form onSubmit={onSubmit} className='grid gap-5 lg:grid-cols-3'>
 					<h3 className='title capitalize col-span-3'>{t('Update order status')}</h3>
 					<div className='grid gap-4 col-span-2'>
@@ -50,7 +55,8 @@ export default function AddCustomerDialog({
 						<Button variant='primary' onClick={onSubmit} text={t('add')} />
 					</div>
 				</form>
-			</Form>
+			</Form> */}
+			<AddCustomerPage onClose={onClose}/>
 		</GlobalDialog>
 	);
 }

@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
-import { AddAddressInterface } from 'src/app/components/page/Orders/AddOrder/Comp/useOrderAddress';
+
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
+import { AddAddressInterface } from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
 
 
 export const getAllAddressesCustomer = createAsyncThunk('AddressesCustomer/getAllAddressesCustomer', (payload: string) =>

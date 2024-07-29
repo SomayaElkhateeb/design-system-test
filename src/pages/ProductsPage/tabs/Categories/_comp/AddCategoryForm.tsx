@@ -77,7 +77,7 @@ export default function AddCategoryForm({
 			formData.append('ar[description]', values.description_ar);
 			formData.append('slug', values.slug);
 
-			formData.append('status', values.status);
+			formData.append('status', values.status.toString());
 			formData.append('image[]', values.image);
 			formData.append('locale', 'all');
 			// formData.append('groupPosterImage[]', values.image);

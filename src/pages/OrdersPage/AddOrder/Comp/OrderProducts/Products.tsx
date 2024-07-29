@@ -11,6 +11,10 @@ import SelectedProductsTable from './_comp/SelectedProductsTable';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import SelectProductsDialog from './_comp/SelectProductsDialog';
 
+import { Product } from 'src/pages/ProductsPage/_comp/data';
+import { useAppDispatch } from 'src/app/store';
+import { setAdd_Order_Data_Products } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
+
 export interface IQuantity {
 	quantity?: number;
 }
@@ -26,27 +30,17 @@ export interface ProductOption {
 	options: string[];
 }
 
-export interface Product {
-	id: string;
-	name: string;
-	imageUrl: string;
-	category: string;
-	options: ProductOption[];
-	selectedOptions?: { [key: string]: string };
-	quantity?: number;
-	price: number;
-}
 export default function Products({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
 	const { t } = useTranslation();
 	const { language } = useLanguage();
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
-
+	const dispatch = useAppDispatch();
 	const handleSelectProducts = (newProducts: Product[]) => {
 		setSelectedProducts((prev) => {
 			const updatedProducts = [...prev];
 			newProducts.forEach((newProduct) => {
-				const existingProductIndex = updatedProducts.findIndex((p) => p.id === newProduct.id);
+				const existingProductIndex = updatedProducts.findIndex((p) => p?.id === newProduct?.id);
 				if (existingProductIndex !== -1) {
 					updatedProducts[existingProductIndex] = newProduct;
 				} else {
@@ -68,6 +62,7 @@ export default function Products({ onNext, onBack }: { onNext: () => void; onBac
 
 	const handleSubmit = (values: IQuantity) => {
 		// console.log(values);
+		dispatch(setAdd_Order_Data_Products(selectedProducts));
 		onNext();
 	};
 
