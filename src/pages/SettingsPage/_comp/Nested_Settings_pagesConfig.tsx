@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import AddBranch from 'src/pages/SettingsPage/BranchesSettings/AddBranch/AddBranch';
 import PaymentProvidersPage from 'src/pages/SettingsPage/PaymentSettings/PaymentProviders/PaymentProvidersPage';
 import ActivateBankTransfer from 'src/pages/SettingsPage/PaymentSettings/BankTransfer/ActivateBankTransfer';
-import AddStuff from '../PermissionsAndUsers/AddStaff/AddStaff';
+import AddStuff from '../PermissionsAndUsers/Staff/AddStaff';
 import TransferOwnership from '../PermissionsAndUsers/Owner/TransferOwnership';
 
 export default function Nested_pages_SettingsConfig() {

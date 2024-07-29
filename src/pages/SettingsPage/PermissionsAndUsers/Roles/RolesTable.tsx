@@ -1,16 +1,10 @@
-import { TableCell } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
-import { LiaTrashAlt } from 'react-icons/lia';
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-
-import { EditIcon, MoreIcon } from 'src/app/utils/icons';
-
 import { Role } from 'src/app/interface/settingsInterface/rolesSettingsInterface';
-import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+
 
 const RolesTable = ({
 	rolesList,
@@ -20,9 +14,10 @@ const RolesTable = ({
 }: {
 	rolesList: Role[];
 	isLoading: boolean;
-    handelId:(e:string)=>void
-    children:React.ReactNode
+	handelId: (e: string) => void;
+	children: React.ReactNode;
 }) => {
+
 	//  hooks
 	const { language } = useLanguage();
 	const { t } = useTranslation();
@@ -46,7 +41,9 @@ const RolesTable = ({
 					item: e,
 					elements: [
 						<GlobalTableCell>
-							<p className='text-title text-sm'>{i + 1}</p>
+							<div className="flex items-center">
+								<p className='text-title text-sm'>{i + 1}</p>
+							</div>
 						</GlobalTableCell>,
 						<GlobalTableCell>
 							<p className='title'>{e.name}</p>
@@ -54,7 +51,6 @@ const RolesTable = ({
 						<GlobalTableCell>
 							<p className='text-title text-sm'>{e.permission_type}</p>
 						</GlobalTableCell>,
-
 						<GlobalTableCell>
 							<div onClick={() => handelId(e?.id)}>{children}</div>
 						</GlobalTableCell>,

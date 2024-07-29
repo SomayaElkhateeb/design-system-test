@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "src/app/components/optimized";
 import { GlobalDialog } from "src/app/components/shared";
-import PermissionType from "./PermissionType";
+import PermissionType from "../Staff/PermissionType";
 import { Form } from "src/app/components/ui/form";
 import { Input } from "src/app/components/ui/input";
 import Textarea from "src/app/components/optimized/InputsFields/Textarea";
@@ -10,9 +10,20 @@ import { useForm } from "src/app/utils/hooks/form";
 import useCustomHookAddRoles, { AddRolesInterface } from "./HookForAddRoles";
 import { UseFormReturn, useWatch } from "react-hook-form";
 import FormField from "src/app/components/ui/form/field";
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
+import { getRolesShow, postRole, putRole } from "src/app/store/slices/settingsPage/roles/rolesAsyncThunks";
+import { useAppDispatch, useAppSelector } from "src/app/store";
 
 const AddRole = ({ openDialog, setOpenDialog }: { openDialog: boolean; setOpenDialog: () => void }) => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get('id');
+
+    // redux
+    const dispatch = useAppDispatch();
+    const { isLoadingAddOrUpdate, rolesShow } = useAppSelector((state) => state.rolesSettings);
 
     const handleClose = () => {
         setOpenDialog(false);
@@ -25,10 +36,48 @@ const AddRole = ({ openDialog, setOpenDialog }: { openDialog: boolean; setOpenDi
 
     // custom hook
     const { handelDefaultValue, rolesSchema } = useCustomHookAddRoles();
+
     const handleSubmit = (values: AddRolesInterface) => {
         console.log(values);
-        // handelclose();
+
+        let customValues = {
+            name: values.name,
+            description: values.description,
+            permission_type: values.permission_type,
+            permissions: values.permissions,
+        };
+        id
+            ?
+            dispatch(putRole({ data: customValues, id })).then((promiseResponse) => {
+                if ((promiseResponse.payload.code = 200)) {
+                    navigate(-1);
+                }
+            })
+            :
+            dispatch(postRole(values)).then((promiseResponse) => {
+                if ((promiseResponse.payload.code = 200)) {
+                    navigate(-1);
+                }
+            });
     };
+
+    
+	useMemo(() => {
+		if (id) {
+			rolesShow.name && formStore.setValue('name', rolesShow.name);
+			rolesShow.description && formStore.setValue('description', rolesShow.description);
+			rolesShow.permission_type && formStore.setValue('permission_type', rolesShow.permission_type);
+			rolesShow.permissions && formStore.setValue('permissions', rolesShow.permissions);
+			
+		}
+	}, [id, rolesShow]);
+
+	useMemo(() => {
+		if (id) {
+			dispatch(getRolesShow(id));
+		}
+	}, [id]);
+
 
 
     const { formStore, onSubmit } = useForm({
@@ -52,7 +101,7 @@ const AddRole = ({ openDialog, setOpenDialog }: { openDialog: boolean; setOpenDi
                                 <Button variant='tertiary' onClick={handleClose}>
                                     {t('cancel')}
                                 </Button>
-                                <Button variant='primary' onClick={onSubmit}>
+                                <Button variant='primary' onClick={onSubmit} >
                                     {t('add')}
                                 </Button>
                             </div>
@@ -104,7 +153,7 @@ const TextFields = ({ formStore }: { formStore: UseFormReturn<AddRolesInterface>
                 placeholder={t('Permission type')}
             />
 
-            {permissionType === 'custom' && <PermissionType formStore={formStore}/>}
+            {permissionType === 'custom' && <PermissionType formStore={formStore} />}
         </div>
     );
 };

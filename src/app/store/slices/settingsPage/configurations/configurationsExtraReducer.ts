@@ -1,8 +1,9 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { postCustomizationDoubleOpt, postCustomizationOrderInvoice, postCustomizationProduct, postCustomizationsCheckout, postFrontDefaults, postGeneralSettingsStore, postQueries, postReview, postStoreCustom, postTaxesConfiguration } from './configurationsAsyncThunks';
+import { statusGlobal } from 'src/app/models';
 
 export const configurationsReducer = (
-	builder: ActionReducerMapBuilder<any>,
+	builder: ActionReducerMapBuilder<statusGlobal>,
 ) => {
 	builder
 		// get config list

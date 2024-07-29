@@ -10,9 +10,16 @@ const BulkEdit = () => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
-    const { allBulks } = useAppSelector((state) => state.bulkEdit);
+    // const { allBulks } = useAppSelector((state) => state.bulkEdit);
 
-    console.log("allBulks", allBulks)
+    // Fake data for testing
+    const allBulks = [
+        { product_id: 123, from: 1, to: 100, price: 200 },
+        { product_id: 456, from: 10, to: 50, price: 150 },
+        { product_id: 789, from: 20, to: 60, price: 175 },
+    ];
+
+    console.log("allBulks", allBulks);
     useEffect(() => {
         dispatch(getBulkPrices());
     }, [dispatch]);
@@ -22,8 +29,9 @@ const BulkEdit = () => {
         { title: t('from') },
         { title: t('to') },
         { title: t('price') },
-        { title: t('bulk price') },
+        // { title: t('bulk price') },
     ];
+
     const styleInput = {
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
@@ -36,7 +44,13 @@ const BulkEdit = () => {
                 border: 'none',
             },
         },
-    }
+    };
+
+    const cellStyle = {
+        padding: '6px 3px',
+        border: '1px solid rgba(224, 224, 224, 1)',
+    };
+
     return (
         <>
             <SubHeader title={t("Bulk edit")}>
@@ -51,9 +65,9 @@ const BulkEdit = () => {
                                 {bulkHeaders.map((header, index) => (
                                     <TableCell
                                         key={index}
-                                        align="left"
-                                        className='bg-light-2 text-title text-sm border border-constrained'
-                                        style={{ padding: '8px' }}
+                                        align="center"
+                                        className='bg-light-2 text-title text-sm'
+                                        style={{ padding: '8px', border: '1px solid rgba(224, 224, 224, 1)' }}
                                     >
                                         {header.title}
                                     </TableCell>
@@ -64,9 +78,9 @@ const BulkEdit = () => {
                             {allBulks.map((bulk, rowIndex) => (
                                 <TableRow key={rowIndex}>
                                     <TableCell
-                                        align="left"
-                                        className='text-title text-sm border border-constrained'
-                                        style={{ padding: '6px 3px' }}
+                                        align="center"
+                                        className='text-title text-sm'
+                                        style={cellStyle}
                                     >
                                         <TextField
                                             defaultValue={bulk.product_id}
@@ -76,9 +90,9 @@ const BulkEdit = () => {
                                         />
                                     </TableCell>
                                     <TableCell
-                                        align="left"
-                                        className='text-title text-sm border border-constrained'
-                                        style={{ padding: '6px 3px' }}
+                                        align="center"
+                                        className='text-title text-sm'
+                                        style={cellStyle}
                                     >
                                         <TextField
                                             defaultValue={bulk.from}
@@ -88,9 +102,9 @@ const BulkEdit = () => {
                                         />
                                     </TableCell>
                                     <TableCell
-                                        align="left"
-                                        className='text-title text-sm border border-constrained'
-                                        style={{ padding: '6px 3px' }}
+                                        align="center"
+                                        className='text-title text-sm'
+                                        style={cellStyle}
                                     >
                                         <TextField
                                             defaultValue={bulk.to}
@@ -100,9 +114,9 @@ const BulkEdit = () => {
                                         />
                                     </TableCell>
                                     <TableCell
-                                        align="left"
-                                        className='text-title text-sm border border-constrained'
-                                        style={{ padding: '6px 3px' }}
+                                        align="center"
+                                        className='text-title text-sm'
+                                        style={cellStyle}
                                     >
                                         <TextField
                                             defaultValue={bulk.price}
@@ -122,5 +136,3 @@ const BulkEdit = () => {
 };
 
 export default BulkEdit;
-
-

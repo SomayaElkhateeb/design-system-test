@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
-import { AddRoleSchemaValues } from 'src/app/schema/settings/AddRoleSchema';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
+import { AddRolesInterface } from 'src/pages/SettingsPage/PermissionsAndUsers/Roles/HookForAddRoles';
 
 // get permissions
 export const getPermissions = createAsyncThunk('permissions/getPermissions', () =>
@@ -22,7 +22,7 @@ export const getRolesShow = createAsyncThunk('permissionsShow/getRolesShow', (pa
 // create roles
 export const postRole = createAsyncThunk(
 	"addRole/PostRole",
-	(payload: AddRoleSchemaValues) =>
+	(payload: AddRolesInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/roles/store`)
 			.then((res: any) => {
 				if (res) {
@@ -36,7 +36,7 @@ export const postRole = createAsyncThunk(
 // update role
 export const putRole = createAsyncThunk(
 	"addRole/putRole",
-	(payload: AddRoleSchemaValues) =>
+	(payload: AddRolesInterface) =>
 		PublicRequest.putData(payload, `merchant/settings/roles/update${payload}`)
 			.then((res: any) => {
 				if (res) {

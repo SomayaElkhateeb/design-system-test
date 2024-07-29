@@ -8,7 +8,9 @@ import BaseTable, {
 import Avatar from 'src/app/components/optimized/UiKits/Avatar';
 
 import { User } from 'src/app/interface/settingsInterface/UsersSettingsInterface';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';
+import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
+import { useState } from 'react';
 
 export default function StuffTable({
 	data,
@@ -21,13 +23,23 @@ export default function StuffTable({
 	children: React.ReactNode;
 	isLoading: boolean;
 }) {
+	const [array, setArray] = useState<string[]>([]);
+
 	//  hooks
 	const { language } = useLanguage();
 	const { t } = useTranslation();
 
 	//  headers
 	const dataHeaders = [
-		{ title: t('staff name') },
+		{
+			icon: (
+				<CustomTableHeaderCheckbox
+					array={array}
+					setArray={setArray}
+					mainArray={data?.map((e) => e.id)}
+				/>
+			), title: t('staff name')
+		},
 		{ title: t('email') },
 		{ title: t('Role') },
 		{ title: t('Status') },
@@ -46,6 +58,8 @@ export default function StuffTable({
 					elements: [
 						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.3rem] '>
+								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
+
 								<Avatar fullName={e.name} />
 								<div className='flex-col-global gap-[.3rem]'>
 									<p className='title'>{e.name}</p>

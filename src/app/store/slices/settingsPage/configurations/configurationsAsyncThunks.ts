@@ -2,6 +2,7 @@ import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
+import { generalSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings/HookForGeneralForm';
 
 // get config list
 // post store custom
@@ -22,7 +23,7 @@ export const postStoreCustom = createAsyncThunk(
 // post general settings store
 export const postGeneralSettingsStore = createAsyncThunk(
 	"postGeneralSettingsStore/postGeneralSettingsStore",
-	(payload: any) =>
+	(payload: generalSettingsInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
