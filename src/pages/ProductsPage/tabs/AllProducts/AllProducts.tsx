@@ -87,7 +87,7 @@ const AllProducts: React.FC = () => {
 	const {
 		openDeleteDialog,
 		custom_Id,
-		handelDeleteItem,
+
 		handelCloseDeleteDialog,
 		handelId,
 		handelOpenDialog,
@@ -148,9 +148,9 @@ const AllProducts: React.FC = () => {
 	// /////////////////////////////
 	/////////////////////////////////
 	const ImportData = (values: FormSchema) => {
-		dispatch(PostImportProducts(values)).then((res)=>{
+		dispatch(PostImportProducts(values)).then((res) => {
 			dispatch(getAllProductsTable());
-			handelCloseExportdialog()
+			handelCloseExportdialog();
 		});
 	};
 

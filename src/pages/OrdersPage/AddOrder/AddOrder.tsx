@@ -6,17 +6,20 @@ import Customer from './Comp/OrderCustomer/Customer';
 import Products from './Comp/OrderProducts/Products';
 import { OrderAddress } from './Comp/AddOrderAddresse/OrderAddress';
 import AddCheckout from './Comp/AddCheckOut/AddCheckout';
-import { useAppDispatch } from 'src/app/store';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { getAllCustomersTable } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { useEffect } from 'react';
+import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
+	const { Add_Order_Data } = useAppSelector((state) => state.addOrder);
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
+		dispatch(getAllProductsTable());
 	}, [dispatch]);
-
+	console.log(Add_Order_Data);
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
