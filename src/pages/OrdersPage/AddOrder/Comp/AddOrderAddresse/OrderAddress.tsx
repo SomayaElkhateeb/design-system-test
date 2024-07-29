@@ -43,8 +43,8 @@ export const OrderAddress = ({ onNext, onBack }: { onNext: () => void; onBack: (
 		setIsOpen(false);
 	};
 	const style = {
-		width: { md: '75vw', xs: '85vw' },
-		height: { md: '75vh', xs: '85vh' },
+		width: { md: '85vw', xs: '95vw' },
+		height: { md: '95vh', xs: '95vh' },
 	};
 	return (
 		<Form {...formStore}>
