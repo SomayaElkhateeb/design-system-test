@@ -43,9 +43,7 @@ export default function ActivateBankTransfer() {
 
 	];
 
-	useEffect(() => {
-		setApply_with(formStore.watch('apply_with'));
-	}, [formStore.watch('apply_with')]);
+	
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -91,6 +89,10 @@ export default function ActivateBankTransfer() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+
+	useEffect(() => {
+		setApply_with(formStore.watch('apply_with'));
+	}, [formStore.watch('apply_with')]);
 
 
 	return (
