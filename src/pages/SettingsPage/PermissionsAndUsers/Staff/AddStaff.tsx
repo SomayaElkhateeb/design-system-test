@@ -63,19 +63,18 @@ export default function AddStuff() {
 
 	useMemo(() => {
 		if (id) {
-			userById.name && formStore.setValue('name', userById.name);
-			userById.email && formStore.setValue('email', userById.email);
-			userById.password && formStore.setValue('password', userById.password);
-			userById.password_confirmation && formStore.setValue('password_confirmation', userById.password_confirmation);
-			userById.role_id &&
-				formStore.setValue('role_id', userById.role_id.toString());
+			userById?.name && formStore.setValue('name', userById?.name);
+			userById?.email && formStore.setValue('email', userById?.email);
+			userById?.password && formStore.setValue('password', userById?.password);
+			userById?.password_confirmation && formStore.setValue('password_confirmation', userById?.password_confirmation);
+			userById?.role_id &&
+				formStore.setValue('role_id', userById?.role_id.toString());
 
 			userById?.status > 0
 				? formStore.setValue('status', 1)
 				: formStore.setValue('status', 0);
 		}
 	}, [id, userById]);
-	console.log('error', formStore.formState.errors)
 
 
 	useMemo(() => {
@@ -110,7 +109,7 @@ export default function AddStuff() {
 									name='status'
 									enable
 								/>
-								<p>{formStore.watch('status') ? 'On' : 'Off'}</p>
+								{/* <p>{formStore.watch('status') ? 'On' : 'Off'}</p> */}
 							</div>
 						</div>
 

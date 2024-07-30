@@ -10,18 +10,31 @@ import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookLanguageSettings, { languageSettingsInterface } from './HookForLanguageSettings';
 import AdminOrLanguageDefaults from '../GeneralSettings/AdminOrLanguageDefaults';
 import DefaultLanguageSection from './DefaultLanguage';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { postFrontDefaults } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
 const LanguageSettings = () => {
 	//  hooks
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
-	const handleSubmit = (values: languageSettingsInterface) => {
-		console.log(values);
-		// handelclose();
-	};
+	// redux
+	const dispatch = useAppDispatch();
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
 
 	// custom hook
 	const { languageSettingsSchema, handelDefaultValue } = useCustomHookLanguageSettings();
+
+	const handleSubmit = (values: languageSettingsInterface) => {
+		console.log(values);
+		dispatch(postFrontDefaults(values)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+			}
+		});
+	};
+
 
 	const { formStore, onSubmit } = useForm({
 		schema: languageSettingsSchema,
@@ -33,13 +46,13 @@ const LanguageSettings = () => {
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Languages & defaults')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} isLoading={isLoadingAddOrUpdate}/>
 				</SubHeader>
 				<div className='custom-grid-parent custom_container'>
 					<div className='flex-col-global  grid-left'>
 						<DefaultLanguageSection formStore={formStore} />
 						<AdminOrLanguageDefaults
-							language
+							// language
 							title={t('Store defaults (shown to cutomers)')}
 							formStore={formStore}
 						/>

@@ -8,10 +8,10 @@ import { z } from 'zod';
 
 export default function QueriesSectionForm({
 	formStore,
-	QueriesSchema,
+	queriesSchema,
 }: {
 	formStore: UseFormReturn<QueriesInterface>;
-	QueriesSchema: z.infer<typeof QueriesSchema>;
+	queriesSchema: z.infer<typeof queriesSchema>;
 }) {
 	// hooks
 	const { t } = useTranslation();
@@ -28,7 +28,7 @@ export default function QueriesSectionForm({
 
 				<div className='flex-row-global gap-2'>
 					<p>{t('Enabled')}</p>
-					<FormSwitchField<QueriesSchema>
+					<FormSwitchField<queriesSchema>
 						formStore={formStore}
 						name='queries.automate_replies.enabled'
 						enable
