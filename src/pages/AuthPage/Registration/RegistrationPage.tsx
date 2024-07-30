@@ -14,7 +14,6 @@ export default function RegistrationPage() {
 	const { t } = useTranslation();
 	const [isLogin, setIsLogin] = useState<boolean>(false);
 	const { goNext, activeStep, setActiveStep } = useStepNavigator();
-	const navigate = useNavigate();
 
 	const handleFinish = () => {
 		window.location.href = '/home';
