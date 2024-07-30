@@ -23,35 +23,47 @@ export default function Password({ formStore }: { formStore: UseFormReturn<addSt
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 
-	const fields: { name: PasswordField; placeholder: string }[] = [
-		{ name: 'password', placeholder: t('password') },
-		{ name: 'password_confirmation', placeholder: t('Confirm password') },
-	];
 	return (
 		<div className='global-cards gap-[1.2rem]'>
 			<h3 className='title'>{t('Password')}</h3>
 			<div className={`w-full ${xs ? 'flex-col-global' : 'flex gap-4'}`}>
 				<div className='flex-grow'>
-					{fields.map(({ name, placeholder }) => (
-						<FormField
-							key={name}
-							formStore={formStore}
-							name={name}
-							render={(field) => (
-								<div className='relative'>
-									<Input
-										{...field}
-										type={isVisible[name] ? 'text' : 'password'}
-										placeholder={placeholder}
-									/>
-									<PasswordToggleIcon
-										toggle={() => toggleVisibility(name)}
-										isVisible={isVisible[name]}
-									/>
-								</div>
-							)}
-						/>
-					))}
+					<FormField
+						formStore={formStore}
+						name="password"
+						render={(field) => (
+							<div className='relative'>
+								<Input
+									{...field}
+									type={isVisible.password ? 'text' : 'password'}
+									placeholder={t('password')}
+								/>
+								<PasswordToggleIcon
+									toggle={() => toggleVisibility('password')}
+									isVisible={isVisible.password}
+								/>
+							</div>
+						)}
+					/>
+				</div>
+				<div className='flex-grow'>
+					<FormField
+						formStore={formStore}
+						name="password_confirmation"
+						render={(field) => (
+							<div className='relative'>
+								<Input
+									{...field}
+									type={isVisible.password_confirmation ? 'text' : 'password'}
+									placeholder={t('Confirm password')}
+								/>
+								<PasswordToggleIcon
+									toggle={() => toggleVisibility('password_confirmation')}
+									isVisible={isVisible.password_confirmation}
+								/>
+							</div>
+						)}
+					/>
 				</div>
 			</div>
 		</div>
