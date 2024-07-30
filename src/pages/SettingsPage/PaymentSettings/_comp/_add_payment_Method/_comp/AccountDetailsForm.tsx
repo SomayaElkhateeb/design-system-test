@@ -87,7 +87,7 @@ export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 				<FormField
 					formStore={formStore}
 					name='iban'
-					label={`${t('IBAN')}  ${t('Optional')}`}
+					label={`${t('IBAN')}  (${t('Optional')})`}
 					render={(field) => <Input {...field} />}
 				/>
 				<FormField
