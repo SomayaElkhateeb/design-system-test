@@ -1,20 +1,29 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import BaseTable, { GlobalTableCell } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import { Switch } from 'src/app/components/ui/switch';
 import { MerchantPaymentList } from 'src/app/interface/settingsInterface/MerchantPaymentMethodsSettingsInterface';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getMerchantPaymentList } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
+import {
+	getMerchantPaymentList,
+	postMerchantPaymentToggle,
+} from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_comp/AllProductsTable';
 
-export default function PaymentMerchantTable() {
-	
+export default function PaymentMerchantTable({
+	children,
+	handelId,
+}: {
+	children: React.ReactNode;
+	handelId: (e: string) => void;
+}) {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-    const navigate=useNavigate()
+	const navigate = useNavigate();
 	const classData = actionsButtonStyle();
 	//  selectors
 	const { merchantPaymentList, isLoading } = useAppSelector(
@@ -24,19 +33,31 @@ export default function PaymentMerchantTable() {
 		{ title: t('Payment method') },
 		{ title: t('Minimum items') },
 		{ title: t('Minimum price') },
-		{ title: t('active') },
+		{ title: t('active?') },
 		{ title: t('actions') },
 	];
 
-	useEffect(() => {
-		dispatch(getMerchantPaymentList());
-	}, [dispatch]);
+	//  update customer status
+	const handelUpdateStatus = (e: MerchantPaymentList) => {
+        console.log(e)
+		dispatch(
+			postMerchantPaymentToggle({
+				data: {
+					active: Number(e.active) > 0 ? 0 : 1,
+				},
+				id: e?.id,
+			}),
+		).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				dispatch(getMerchantPaymentList());
+			}
+		});
+	};
 
 	return (
 		<>
 			<BaseTable
 				isLoading={isLoading}
-				
 				color='#55607A'
 				headers={paymentMerchantTableHeaders.map((h) => h)}
 				rows={merchantPaymentList?.map((e: MerchantPaymentList, i: number) => {
@@ -49,9 +70,9 @@ export default function PaymentMerchantTable() {
 
 							<GlobalTableCell>
 								<Switch
-									// onClick={() => {
-									// 	handelUpdateStatus(e);
-									// }}
+									onClick={() => {
+										handelUpdateStatus(e);
+									}}
 									checked={e.active > 0 ? true : false}
 								/>
 							</GlobalTableCell>,
@@ -61,7 +82,7 @@ export default function PaymentMerchantTable() {
 										className='text-subtitle'
 										onClick={() => navigate(`add-Payment-Method?id=${e?.id}`)}
 									/>
-									{/* <div onClick={() => handelId(e?.id)}>{children}</div> */}
+									<div onClick={() => handelId(e?.id)}>{children}</div>
 								</div>
 							</GlobalTableCell>,
 						],

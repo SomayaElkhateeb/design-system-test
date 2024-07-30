@@ -13,12 +13,12 @@ export const merchantPaymentMethodsReducer = (
 		})
 		.addCase(getMerchantPaymentList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.merchantPaymentList = payload.data; 
+			state.merchantPaymentList = payload.data;
 		})
 		.addCase(getMerchantPaymentList.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
-			state.merchantPaymentList=[]
+			state.merchantPaymentList = []
 		})
 		// // get  Merchant Payment Show
 		.addCase(getMerchantPaymentShow.pending, (state) => {
@@ -56,7 +56,7 @@ export const merchantPaymentMethodsReducer = (
 		})
 		.addCase(putUpdateMerchantPayment.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
-			state.error = action.payload; 
+			state.error = action.payload;
 		})
 		//  delete Merchant Payment
 		.addCase(deleteMerchantPayment.pending, (state) => {
@@ -64,11 +64,11 @@ export const merchantPaymentMethodsReducer = (
 		})
 		.addCase(deleteMerchantPayment.fulfilled, (state, { payload }) => {
 			state.isLoadingDelete = false;
-			state.merchantPaymentList = state.merchantPaymentList.filter(item => item.id !== payload.data.id); 
+
 		})
 		.addCase(deleteMerchantPayment.rejected, (state, action) => {
 			state.isLoadingDelete = false;
-			state.error = action.payload; 
+			state.error = action.payload;
 		});
 
 };

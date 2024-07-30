@@ -58,9 +58,9 @@ export const deleteMerchantPayment = createAsyncThunk(
 );
 
 // post mass destroy
-export const postMerchantPaymentMass = createAsyncThunk(
-	"postMerchantPaymentMass/postMerchantPaymentMass",
-	(payload: any) => // todo
+export const DeleteMerchantPaymentMass = createAsyncThunk(
+	"DeleteMerchantPaymentMass/postMerchantPaymentMass",
+	(payload: { indexes: string }) => // todo
 		PublicRequest.postData(payload, `merchant/payment-methods/mass-destroy`)
 			.then((res: any) => {
 				if (res) {
@@ -73,8 +73,8 @@ export const postMerchantPaymentMass = createAsyncThunk(
 // post toggle active
 export const postMerchantPaymentToggle = createAsyncThunk(
 	"postMerchantPaymentToggle/postMerchantPaymentToggle",
-	(payload: any) => // todo
-		PublicRequest.postData(payload, `merchant/payment-methods/toggle-active/${payload}`)
+	(payload: { data: { active: number }, id: string }) => // todo
+		PublicRequest.postData(payload.data, `merchant/payment-methods/toggle-active/${payload.id}`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);
