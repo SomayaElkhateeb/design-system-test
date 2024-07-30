@@ -518,6 +518,7 @@ export const english = {
 	'Specific customers': 'Specific customers',
 	'Minimum price': 'Minimum price',
 	'Minimum quantity': 'Minimum quantity',
+	'Minimum items': 'Minimum items',
 	discount: 'discount',
 	'ends at': 'ends at',
 	'active?': 'active?',
