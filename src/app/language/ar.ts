@@ -15,6 +15,7 @@ export const arabic = {
 	"Last name":"الاسم الاخير",
 	"Select country":"حدد محافظه",
 	"Add New Payment Method":"اضافه وسيله دفع جديده",
+	'Minimum items': 'الحد الادني للمنتجات',
 	"Select city":"حدد مدينه",
 	"Delete Item":"ازالع عنصر",
 	"roles":"الادوار",

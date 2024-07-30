@@ -13,11 +13,12 @@ export const merchantPaymentMethodsReducer = (
 		})
 		.addCase(getMerchantPaymentList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.merchantPaymentList = payload; 
+			state.merchantPaymentList = payload.data; 
 		})
 		.addCase(getMerchantPaymentList.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
+			state.merchantPaymentList=[]
 		})
 		// // get  Merchant Payment Show
 		.addCase(getMerchantPaymentShow.pending, (state) => {

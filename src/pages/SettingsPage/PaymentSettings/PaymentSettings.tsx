@@ -8,6 +8,7 @@ import { IoIosAddCircle } from 'react-icons/io';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import { useNavigate } from 'react-router-dom';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
+import PaymentMerchantTable from './_comp/_Payment_Table/PaymentMerchantTable';
 
 export default function PaymentSettings() {
 	//  hooks
@@ -35,7 +36,6 @@ export default function PaymentSettings() {
 				</div>
 				<hr />
 
-				
 				{/* <div className='col-span-2 lg:col-span-1'>
 				
 				</div>
@@ -47,7 +47,7 @@ export default function PaymentSettings() {
 				{/* </div>  */}
 				{/* <SubHeader title={t('Third party payment providers')} /> */}
 
-				<PaymentTable />
+				{!xs && <PaymentMerchantTable />}
 				{xs && <AddButtonMobile path='add-Payment-Method' />}
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
@@ -12,6 +12,7 @@ import {
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
+	getMerchantPaymentShow,
 	postMerchantPayment,
 	putUpdateMerchantPayment,
 } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
@@ -28,7 +29,9 @@ export default function AddPaymentMethod() {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.merchantPaymentSettings);
+	const { isLoadingAddOrUpdate, merchantPaymentShow } = useAppSelector(
+		(state) => state.merchantPaymentSettings,
+	);
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get('id');
@@ -83,6 +86,32 @@ export default function AddPaymentMethod() {
 		formStore.setValue('show_in_footer', formStore.watch('show_in_footer') ? 1 : 0);
 	}, [formStore.watch('show_in_footer')]);
 
+	useMemo(() => {
+		id && dispatch(getMerchantPaymentShow(id));
+	}, [id]);
+
+	//  get customer info with id params to fill inputs with it
+	useMemo(() => {
+		if (id) {
+			formStore.setValue('payment_method_id', merchantPaymentShow.payment_method_id.toString());
+			formStore.setValue('price_more_than', merchantPaymentShow.price_more_than);
+			formStore.setValue('items_more_than', merchantPaymentShow.items_more_than);
+			formStore.setValue('additional_data', merchantPaymentShow.additional_data);
+			formStore.setValue('account_number', Number(merchantPaymentShow.account_number));
+			formStore.setValue('account_name', merchantPaymentShow.account_name);
+			formStore.setValue('bank_name', merchantPaymentShow.bank_name);
+			formStore.setValue('iban', Number(merchantPaymentShow.iban));
+			merchantPaymentShow?.active > 0
+				? formStore.setValue('active', 1)
+				: formStore.setValue('active', 0);
+			merchantPaymentShow?.main_method > 0
+				? formStore.setValue('main_method', 1)
+				: formStore.setValue('main_method', 0);
+			merchantPaymentShow?.show_in_footer > 0
+				? formStore.setValue('show_in_footer', 1)
+				: formStore.setValue('show_in_footer', 0);
+		}
+	}, [id, merchantPaymentShow]);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global '>

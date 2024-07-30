@@ -1,9 +1,9 @@
-import { TableCell } from '@mui/material';
-import React, { useEffect, useMemo, useState } from 'react';
+
+import React, {  useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+
 import { Switch } from 'src/app/components/ui/switch';
 import { CustomerInterface } from 'src/app/interface/CustomerInterface';
 import {
@@ -95,7 +95,7 @@ export default function CustomersTable({
 	};
 
 	return (
-		<>
+		
 			<BaseTable
 				isLoading={isLoading}
 				language={language}
@@ -118,15 +118,15 @@ export default function CustomersTable({
 							<GlobalTableCell>{e.city}</GlobalTableCell>,
 							<GlobalTableCell>{e.Orders}</GlobalTableCell>,
 
-							<TableCell>
+							<GlobalTableCell>
 								<Switch
 									onClick={() => {
 										handelUpdateStatus(e);
 									}}
 									checked={e.subscribed_to_news_letter > 0 ? true : false}
 								/>
-							</TableCell>,
-							<TableCell>
+							</GlobalTableCell>,
+							<GlobalTableCell>
 								<div className={classData}>
 									<FaRegEdit
 										className='text-subtitle'
@@ -136,11 +136,11 @@ export default function CustomersTable({
 
 									<ArrowTables path={`/customers/${e?.id}`} />
 								</div>
-							</TableCell>,
+							</GlobalTableCell>,
 						],
 					};
 				})}
 			/>
-		</>
+		
 	);
 }

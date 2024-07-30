@@ -14,7 +14,8 @@ import { CountriesApi } from 'src/app/React-Query/CountriesApi';
 import { Payment_MethodsApi } from 'src/app/React-Query/Payment_System_method';
 import { useQuery } from 'react-query';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
-import { Payment_Method_System } from 'src/app/interface/settingsInterface/PaymentMethodsystem';
+import { Payment_Method_System } from 'src/app/interface/settingsInterface/MerchantPaymentMethodsSettingsInterface';
+
 
 export default function AccountDetailsForm({ formStore }: PaymentFormProps) {
 	//  hooks

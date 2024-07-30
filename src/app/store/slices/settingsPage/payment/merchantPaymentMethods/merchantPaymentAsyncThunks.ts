@@ -13,7 +13,7 @@ export const getMerchantPaymentList = createAsyncThunk('merchantPaymentMethods/g
 // get merchant payment methods Show
 export const getMerchantPaymentShow = createAsyncThunk(
 	'merchantPaymentMethodsShow/getMerchantPaymentShow',
-	(payload: number) => PublicRequest.getData(`merchant/payment-methods/${payload}`),
+	(payload: string) => PublicRequest.getData(`merchant/payment-methods/${payload}`),
 );
 
 
