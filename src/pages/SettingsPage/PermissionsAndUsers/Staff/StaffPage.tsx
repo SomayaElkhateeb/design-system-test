@@ -18,6 +18,7 @@ import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import StuffTable from './StaffTable';
+import StaffSmallTable from './StaffSmallTable';
 
 const StaffPage = () => {
 	const { t } = useTranslation();
@@ -112,38 +113,36 @@ const StaffPage = () => {
 			</div>
 			<div className='flex-col-global'>
 				<div className='global-cards bg-light-2'>
-					{users?.length > 0 &&
-						users
-							?.filter((e) => e?.role?.name === 'Administrator')
-							?.map((usersMember: User) => (
-								<div key={usersMember.id} className='flex-col-global'>
-									<div>
-										<h3 className='title'>{t('Owner')}</h3>
-										<p className='text-subtitle text-sm py-2'>
-											{t('Add users and define what they can see or do in your store.')}
-										</p>
-									</div>
-									<div className='flexResponsive'>
-										<ClientBox
-											title={usersMember.name}
-											details={usersMember.role.name}
-											avatar={<Avatar variant='user' fullName={usersMember.name} />}
-										/>
-										<div>
-											<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
-												{t('Transfer Ownership')}
-											</Button>
-										</div>
-									</div>
+					{users?.length > 0 && (
+						<div key={users[users.length - 1].id} className='flex-col-global'>
+							<div>
+								<h3 className='title'>{t('Owner')}</h3>
+								<p className='text-subtitle text-sm py-2'>
+									{t('Add users and define what they can see or do in your store.')}
+								</p>
+							</div>
+							<div className='flexResponsive'>
+								<ClientBox
+									title={users[users.length - 1].name}
+									details={users[users.length - 1].role.name}
+									avatar={<Avatar variant='user' fullName={users[users.length - 1].name} />}
+								/>
+								<div>
+									<Button variant='tertiary' onClick={() => navigate('transferOwnership')}>
+										{t('Transfer Ownership')}
+									</Button>
 								</div>
-							))}
+							</div>
+						</div>
+					)}
 				</div>
-				<div>
+
+				{!xs && <div>
 					<h3 className='title'>{t('Staff')}</h3>
 					<p className='text-subtitle text-sm py-2'>
 						{t('Add users and define what they can see or do in your store.')}
 					</p>
-				</div>
+				</div>}
 
 				{/* import table all stuff */}
 				{!xs && (
@@ -155,6 +154,14 @@ const StaffPage = () => {
 						/>
 					</StuffTable>
 				)}
+
+				{xs && (<StaffSmallTable handelId={handelId} data={filteredUsers} isLoading={isLoading}>
+					<ThreeDotsButton
+						sortMenus={options}
+						selectedOption={selectedOption}
+						handelSelect={handleSelect}
+					/>
+				</StaffSmallTable>)}
 			</div>
 			{/* openDeleteDialog */}
 			{openDeleteDialog && (

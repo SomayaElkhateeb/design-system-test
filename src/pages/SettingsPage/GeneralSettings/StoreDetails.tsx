@@ -24,22 +24,22 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField
 					formStore={formStore}
-					name='storeName'
+					name='general.settings.store.name'
 					label={t('Store name')}
 					render={(field) => <Input {...field} placeholder={'Sary'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='storeEmail'
+					name='general.settings.store.email'
 					label={t('Store contact email')}
 					render={(field) => <Input {...field} placeholder={'Sary@gmail.com'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='storeIndustry'
+					name='general.settings.store.industry'
 					label={t('Store industry')}
 					render={(field) => (
-						<div className='flex-col-global gap-[.2rem]'>
+						<div className='flex-col-global gap-[.2rem]'> 
 							<Select
 								onValueChange={field.onChange}
 								value={field.value}
@@ -59,7 +59,7 @@ const StoreDetails = ({ formStore }: { formStore: UseFormReturn<generalSettingsI
 				/>
 				<FormField
 					formStore={formStore}
-					name='storeContactPhone'
+					name='general.settings.store.phone'
 					label={t('Store contact phone')}
 					render={(field) => (
 						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />

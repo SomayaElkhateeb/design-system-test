@@ -12,25 +12,25 @@ const SocialContacts = ({ formStore }: { formStore: UseFormReturn<generalSetting
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField
 					formStore={formStore}
-					name='facebook'
+					name='general.settings.social.links.facebook'
 					label={t('Facebook link')}
 					render={(field) => <Input {...field} placeholder={'http://facebook.com/username'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='instagram'
+					name='general.settings.social.links.instagram'
 					label={t('Instagram')}
 					render={(field) => <Input {...field} placeholder={'http://instagram.com/username'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='twitter'
+					name='general.settings.social.links.twitter'
 					label={t('Twitter')}
 					render={(field) => <Input {...field} placeholder={'http://twitter.com/username'} />}
 				/>
 				<FormField
 					formStore={formStore}
-					name='youtube'
+					name='general.settings.social.links.youtube'
 					label={t('Youtube')}
 					render={(field) => <Input {...field} placeholder={'http://youtube.com/username'} />}
 				/>

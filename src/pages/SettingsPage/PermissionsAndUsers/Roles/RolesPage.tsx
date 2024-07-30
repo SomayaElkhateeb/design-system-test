@@ -19,7 +19,8 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import SearchInput from 'src/app/components/ui/form/SearchInput';
 
 const RolesPage = () => {
-	const {t}=useTranslation()
+
+	const { t } = useTranslation()
 	const { xs } = useResponsive();
 
 	// redux
@@ -145,8 +146,7 @@ const RolesBtn = ({
 }) => {
 	return (
 		<div className='md:flex-row-global flex-col-global justify-between w-full '>
-						<SearchInput setSearchQuery={setSearchQuery} />
-
+			<SearchInput setSearchQuery={setSearchQuery} />
 			<div className='flex-row-global gap-3'>
 				<ArrangeButton
 					sortMenus={sortMenus}

@@ -25,11 +25,11 @@ const GeneralSettingsMedia = ({
 		<section className='global-cards'>
 			<h3 className='title'>{t('Media')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
-				<ImageInput<generalSettingsInterface> name={'image'} formStore={formStore}>
+				<ImageInput<generalSettingsInterface> name={'general.settings.media.logo'} formStore={formStore}>
 					<TfiUpload className='text-[1.5rem]' />
 					<p className="paragraph text-center">{t('UploadImage')}</p>
 				</ImageInput>
-				<ImageInput<generalSettingsInterface> name={'icon'} formStore={formStore}>
+				<ImageInput<generalSettingsInterface> name={'general.settings.media.icon'} formStore={formStore}>
 					<TfiUpload className='text-[1.5rem]' />
 					<p className="paragraph text-center">{t('UploadImage')}</p>
 				</ImageInput>
