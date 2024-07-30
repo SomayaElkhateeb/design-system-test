@@ -3,8 +3,8 @@ import CardHeader from 'src/app/components/optimized/UiKits/CardHeader';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import ApplyToOptionsBankTransfer from './ApplyToOptions';
-import { BankTransferTypes, PaymentFormProps } from './useBankTransfer';
+import ApplyToOptionsBankTransfer from '../../../BankTransfer/ApplyToOptions';
+import { AddPayment_MethodTypes, PaymentFormProps } from '../_hook/useAddMerchantPaymentMethod';
 
 export default function ActivateConditions({ formStore }: PaymentFormProps) {
 	//  hooks
@@ -30,14 +30,14 @@ export default function ActivateConditions({ formStore }: PaymentFormProps) {
 					render={(field) => <Input type='number' {...field} />}
 				/>
 
-				<FormChoiceChips<BankTransferTypes>
+				{/* <FormChoiceChips<AddPayment_MethodTypes>
 					formStore={formStore}
 					name='main_method'
 					label='Apply with'
 					options={['All', 'Specific products', 'Specific customers']}
-				/>
+				/> */}
 
-				<ApplyToOptionsBankTransfer formStore={formStore} applyTo={formStore.watch('main_method')} />
+				{/* <ApplyToOptionsBankTransfer formStore={formStore} applyTo={formStore.watch('main_method')} /> */}
 			</div>
 		</div>
 	);

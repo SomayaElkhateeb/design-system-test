@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { postReview } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 import { useEffect } from 'react';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import { Path } from 'react-hook-form';
 
 export default function ReviewsSetting() {
 	//  hooks
@@ -65,7 +66,7 @@ export default function ReviewsSetting() {
 		);
 	}, [formStore.watch('reviews.quick_actions.net_promoter_score')]);
 
-	const data: { name: path<ReviewInterface>; label: string; enable: boolean } = [
+	const data: { name: Path<ReviewInterface>; label: string; enable: boolean }[] = [
 		{
 			name: 'reviews.quick_actions.enabled',
 			label: t('Enabled'),

@@ -19,18 +19,18 @@ export const PostBulkPrices = createAsyncThunk('PostBulkPrices/PostBulkPrices', 
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-export const putMerchantPayment = createAsyncThunk(
-	'merchantPaymentMethods/putMerchantPayment',
-	(payload: { data: AddBulkPricesSchemaValues, id: string }) =>
-		PublicRequest.putData(payload.data, `merchant/payment-methods/${payload?.id}`)
-			.then((res: any) => {
-				if (res) {
-					toast.success(res?.message);
-					return res;
-				}
-			})
-			.catch((err) => PublicHandlingErrors.onErrorResponse(err)),
-);
+// export const putMerchantPayment = createAsyncThunk(
+// 	'merchantPaymentMethods/putMerchantPayment',
+// 	(payload: { data: AddBulkPricesSchemaValues, id: string }) =>
+// 		PublicRequest.putData(payload.data, `merchant/payment-methods/${payload?.id}`)
+// 			.then((res: any) => {
+// 				if (res) {
+// 					toast.success(res?.message);
+// 					return res;
+// 				}
+// 			})
+// 			.catch((err) => PublicHandlingErrors.onErrorResponse(err)),
+// );
 
 export const deleteProductAction = createAsyncThunk(
 	'deleteProductAction/getAllCustomersTable',
