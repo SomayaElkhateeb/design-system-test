@@ -14,7 +14,7 @@ export interface QueriesInterface {
 }
 
 export default function useCustomHookQueriesSettings() {
-	const handelDefaultValue = () => {
+	const handelDefaultValue = (): QueriesInterface => {
 		return {
 			queries: {
 				automate_replies: {
@@ -29,7 +29,7 @@ export default function useCustomHookQueriesSettings() {
 		};
 	};
 
-	const QueriesSchema = z.object({
+	const queriesSchema = z.object({
 		queries: z.object({
 			automate_replies: z.object({
 				enabled: z.number(),
@@ -43,7 +43,7 @@ export default function useCustomHookQueriesSettings() {
 	});
 
 	return {
-		QueriesSchema,
+		queriesSchema,
 		handelDefaultValue,
 	};
 }

@@ -1,21 +1,21 @@
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
 import FormField from 'src/app/components/ui/form/field';
-import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-
-import { Switch } from 'src/app/components/ui/switch';
 import { Textarea } from 'src/app/components/ui/textarea';
-import { queriesInterface } from './HookForQueriesSettings';
+import { QueriesInterface } from './HookForQueriesSettings';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
+import { z } from 'zod';
 
 export default function QueriesSectionForm({
 	formStore,
+	QueriesSchema,
 }: {
-	formStore: UseFormReturn<queriesInterface>;
+	formStore: UseFormReturn<QueriesInterface>;
+	QueriesSchema: z.infer<typeof QueriesSchema>;
 }) {
-	//  hooks
+	// hooks
 	const { t } = useTranslation();
+
 	return (
 		<div className='global-cards gap-[1.3rem]'>
 			<div className='flex-col-global  gap-[.85rem]'>
@@ -26,17 +26,22 @@ export default function QueriesSectionForm({
 					</p>
 				</div>
 
-				<FormSwitchField<queriesInterface> formStore={formStore} name='enable' />
+				<div className='flex-row-global gap-2'>
+					<p>{t('Enabled')}</p>
+					<FormSwitchField<QueriesSchema>
+						formStore={formStore}
+						name='queries.automate_replies.enabled'
+						enable
+					/>
+					{/* <p>{formStore.watch('queries.automate_replies.enabled') ? t('On') : t('Off')}</p> */}
+				</div>
 			</div>
 
-			<TabbedFormField
+			<FormField
 				formStore={formStore}
-				keys={[
-					{ name: 'describtion_en', label: 'En' },
-					{ name: 'describtion_ar', label: 'عربي' },
-				]}
+				name='queries.automate_replies.reply_description'
 				label={t('Reply description')}
-				renderer={(field) => <Textarea {...field} placeholder={'reply'} />}
+				render={(field) => <Textarea {...field} placeholder={t('reply')} />}
 			/>
 		</div>
 	);

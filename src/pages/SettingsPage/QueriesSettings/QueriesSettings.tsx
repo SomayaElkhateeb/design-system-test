@@ -1,12 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
-import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-
-
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import QueriesSectionForm from './QueriesSection';
@@ -14,6 +11,8 @@ import useCustomHookQueriesSettings, { QueriesInterface } from './HookForQueries
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useNavigate } from 'react-router-dom';
 import { postQueries } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
+import { useEffect } from 'react';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 export default function QueriesSetting() {
 	//  hooks
@@ -56,29 +55,63 @@ export default function QueriesSetting() {
 		defaultValues: handelDefaultValue(),
 	});
 
-	const data = [
-		{ id: 1, title: t('Enabled') },
+	useEffect(() => {
+		formStore.setValue('queries.automate_replies.enabled', formStore.watch('queries.automate_replies.enabled') ? 1 : 0);
+	}, [formStore.watch('queries.automate_replies.enabled')]);
 
-		{ id: 1, title: t('Notify me new queries') },
-	];
+	useEffect(() => {
+		formStore.setValue('queries.quick_actions.enabled', formStore.watch('queries.quick_actions.enabled') ? 1 : 0);
+	}, [formStore.watch('queries.quick_actions.enabled')]);
+
+	useEffect(() => {
+		formStore.setValue('queries.quick_actions.notify_me_new_query', formStore.watch('queries.quick_actions.notify_me_new_query') ? 1 : 0);
+	}, [formStore.watch('queries.quick_actions.notify_me_new_query')]);
+
+
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Queries')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} isLoading={isLoadingAddOrUpdate} />
 				</SubHeader>
 				<div className='custom_container custom-grid-parent'>
 					<div className=' grid-left'>
-						<QueriesSectionForm formStore={formStore} />
+						<QueriesSectionForm formStore={formStore} QueriesSchema={QueriesSchema} />
 					</div>
 					<div className='grid-right'>
-						<QuickActions data={data} />
+						<div className='global-cards'>
+							<h3 className='title'>{t('Quick actions')}</h3>
+							<div className='flex-row-global gap-2'>
+								<p>{t('Activated')}</p>
+								<FormSwitchField<QueriesSchema>
+									formStore={formStore}
+									name='queries.quick_actions.enabled'
+									enable
+								/>
+								{/* <p>{formStore.watch('queries.quick_actions.enabled') ? 'On' : 'Off'}</p> */}
+							</div>
+
+							<div className='flex-row-global gap-2'>
+								<p>{t('Activated')}</p>
+								<FormSwitchField<QueriesSchema>
+									formStore={formStore}
+									name='queries.quick_actions.notify_me_new_query'
+									enable
+								/>
+								{/* <p>{formStore.watch('queries.quick_actions.notify_me_new_query') ? 'On' : 'Off'}</p> */}
+							</div>
+						</div>
+
 					</div>
-				</div>
-				<div className='px-5'>
-					<SubHeaderMobileBtns onSubmit={onSubmit} />
+					<div className='px-5'>
+						<SubHeaderMobileBtns onSubmit={onSubmit} />
+					</div>
 				</div>
 			</form>
 		</Form>
 	);
 }
+
+
+
