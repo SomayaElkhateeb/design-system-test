@@ -4,16 +4,15 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookReviewSettings, { ReviewInterface } from './_hook/HookForReviewSettings';
 import ReviewSectionForm from './ReviewSection';
-import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { postReview } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 import { useEffect } from 'react';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 
 export default function ReviewsSetting() {
 	//  hooks
@@ -41,7 +40,6 @@ export default function ReviewsSetting() {
 		defaultValues: handelDefaultValue(),
 	});
 
-	
 	useEffect(() => {
 		formStore.setValue(
 			'reviews.quick_actions.enabled',
@@ -67,6 +65,28 @@ export default function ReviewsSetting() {
 		);
 	}, [formStore.watch('reviews.quick_actions.net_promoter_score')]);
 
+	const data: { name: path<ReviewInterface>; label: string; enable: boolean } = [
+		{
+			name: 'reviews.quick_actions.enabled',
+			label: t('Enabled'),
+			enable: true,
+		},
+		{
+			name: 'reviews.quick_actions.auto_publish_review',
+			label: t('Auto publish reviews'),
+			enable: true,
+		},
+		{
+			name: 'reviews.quick_actions.notify_me_new_review',
+			label: t('Notify me new reviews'),
+			enable: true,
+		},
+		{
+			name: 'reviews.quick_actions.net_promoter_score',
+			label: t('Net promoter score'),
+			enable: true,
+		},
+	];
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
@@ -78,46 +98,12 @@ export default function ReviewsSetting() {
 						<ReviewSectionForm formStore={formStore} />
 					</div>
 					{/* quick actions */}
-					<div className='grid-right'>
-						<div className='global-cards'>
-							<h3 className='title'>{t('Quick actions')}</h3>
-							<div className='flex-row-global gap-2'>
-								<p>{t('Enabled')}</p>
-								<FormSwitchField<reviewSchema>
-									formStore={formStore}
-									name='reviews.quick_actions.enabled'
-									enable
-								/>
-							</div>
 
-							<div className='flex-row-global gap-2'>
-								<p>{t('Auto publish reviews')}</p>
-								<FormSwitchField<reviewSchema>
-									formStore={formStore}
-									name='reviews.quick_actions.auto_publish_review'
-									enable
-								/>
-							</div>
-
-							<div className='flex-row-global gap-2'>
-								<p>{t('Notify me new reviews')}</p>
-								<FormSwitchField<reviewSchema>
-									formStore={formStore}
-									name='reviews.quick_actions.notify_me_new_review'
-									enable
-								/>
-							</div>
-
-							<div className='flex-row-global gap-2'>
-								<p>{t('Net promoter score')}</p>
-								<FormSwitchField<reviewSchema>
-									formStore={formStore}
-									name='reviews.quick_actions.net_promoter_score'
-									enable
-								/>
-							</div>
-						</div>
-					</div>
+					<QuickActions<ReviewInterface>
+						formStore={formStore}
+						data={data}
+						title={t('Quick actions')}
+					/>
 				</div>
 				<div className='px-5'>
 					<SubHeaderMobileBtns onSubmit={onSubmit} />
