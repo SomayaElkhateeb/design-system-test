@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 
-import { ReviewInterface } from './HookForReviewSettings';
+import { ReviewInterface } from './_hook/HookForReviewSettings';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import { useEffect } from 'react';
 
@@ -16,7 +16,10 @@ export default function ReviewSectionForm({
 	const { t } = useTranslation();
 
 	useEffect(() => {
-		formStore.setValue('reviews.target_customer_to_review.enabled', formStore.watch('reviews.target_customer_to_review.enabled') ? 1 : 0);
+		formStore.setValue(
+			'reviews.target_customer_to_review.enabled',
+			formStore.watch('reviews.target_customer_to_review.enabled') ? 1 : 0,
+		);
 	}, [formStore.watch('reviews.target_customer_to_review.enabled')]);
 
 	return (

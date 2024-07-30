@@ -11,7 +11,10 @@ import {
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { postMerchantPayment, putMerchantPayment } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
+import {
+	postMerchantPayment,
+	putMerchantPayment,
+} from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'src/app/utils/hooks/form';
 
@@ -19,8 +22,6 @@ interface DataActions {
 	id: number;
 	title: string;
 }
-
-
 
 export default function ActivateBankTransfer() {
 	//  hooks
@@ -40,12 +41,7 @@ export default function ActivateBankTransfer() {
 			id: 3,
 			title: t('Show on footer'),
 		},
-
 	];
-
-	useEffect(() => {
-		setApply_with(formStore.watch('apply_with'));
-	}, [formStore.watch('apply_with')]);
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -53,7 +49,6 @@ export default function ActivateBankTransfer() {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get('id');
-
 
 	const handleSubmit = (values: BankTransferTypes) => {
 		console.log(values);
@@ -73,18 +68,16 @@ export default function ActivateBankTransfer() {
 			additional_data: values.additional_data,
 		};
 		id
-			?
-			dispatch(postMerchantPayment({ data: customValues, id })).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			})
-			:
-			dispatch(putMerchantPayment(customValues)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			});
+			? dispatch(postMerchantPayment({ data: values, id })).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  })
+			: dispatch(putMerchantPayment(values)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  });
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: AddMerchantPaymentMethodSchema,
@@ -92,6 +85,9 @@ export default function ActivateBankTransfer() {
 		defaultValues: handelDefaultValue(),
 	});
 
+	useEffect(() => {
+		setApply_with(formStore.watch('apply_with'));
+	}, [formStore.watch('apply_with')]);
 
 	return (
 		<Form {...formStore}>
