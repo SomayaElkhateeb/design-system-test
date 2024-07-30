@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
-
 import {
 	Select,
 	SelectContent,
@@ -8,55 +7,56 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from 'src/app/components/ui/select';
-
 import { InferredZodSchema } from 'src/app/utils/hooks/form';
-
 import { adminSchema } from './AdminSchema';
 import { ValidFormStoreByValues } from 'src/utils/types';
+import { useQuery } from 'react-query';
+import { CountriesInterface } from 'src/app/interface/CountriesInterface';
+import { CountriesApi } from 'src/app/React-Query/CountriesApi';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 export default function AdminOrLanguageDefaults<TFormStore>({
 	formStore,
 	title,
-	language,
+	// language,
 }: {
 	formStore: ValidFormStoreByValues<TFormStore, InferredZodSchema<typeof adminSchema>>;
 	title: string;
-	language?: boolean;
+	// language?: boolean;
 }) {
 	//  hooks
 	const { t } = useTranslation();
 
+	//  get CountriesData  with api request
+	const { data } = useQuery([`countriesData`], () => CountriesApi.countries());
+	
+	let CountriesData = data?.data?.data;
 	return (
 		<section className='global-cards  '>
 			<h3 className='title'>{title}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				{/*  default country */}
-				{language && (
-					<FormField
-						formStore={formStore}
-						name='defaultCountry'
+
+				{CountriesData?.length > 0 && (
+					<SelectFormField
+						name='front.default.country'
 						label={t('Default country')}
-						render={(field) => (
-							<Select
-								onValueChange={field.onChange}
-								value={field.value}
-								required={field.required}
-								name={field.name}
-							>
-								<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-									<SelectValue placeholder='Saudi Arabia' />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectItem value='Saudi Arabia'>Saudi Arabia</SelectItem>
-								</SelectContent>
-							</Select>
-						)}
+						formStore={formStore}
+						options={CountriesData?.map((e: CountriesInterface) => {
+							return {
+								label: e?.name,
+								value: e?.id?.toString(),
+							};
+						})}
+						placeholder={t('Country')}
 					/>
 				)}
-				{/*  default time */}
+
+				{/*  default time */} 
+				{/* select timezone */}
 				<FormField
 					formStore={formStore}
-					name='defaultTime'
+					name='front.default.timezone'
 					label={t('Default time')}
 					render={(field) => (
 						<Select
@@ -75,9 +75,10 @@ export default function AdminOrLanguageDefaults<TFormStore>({
 					)}
 				/>
 				{/*  default currency */}
+				{/* currency */}
 				<FormField
 					formStore={formStore}
-					name='defaultCurrency'
+					name='front.default.currency'
 					label={t('Default currency')}
 					render={(field) => (
 						<Select
@@ -99,7 +100,7 @@ export default function AdminOrLanguageDefaults<TFormStore>({
 				{/*  default length */}
 				<FormField
 					formStore={formStore}
-					name='defaultLength'
+					name='front.default.length'
 					label={t('Default length')}
 					render={(field) => (
 						<Select
@@ -119,9 +120,10 @@ export default function AdminOrLanguageDefaults<TFormStore>({
 				/>
 
 				{/*  default weight */}
+				{/* select weight */}
 				<FormField
 					formStore={formStore}
-					name='defaultWeight'
+					name='front.default.weight'
 					label={t('Default weight')}
 					render={(field) => (
 						<Select

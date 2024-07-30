@@ -3,6 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import { generalSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings/HookForGeneralForm';
+import { QueriesInterface } from 'src/pages/SettingsPage/QueriesSettings/HookForQueriesSettings';
+import { ReviewInterface } from 'src/pages/SettingsPage/ReviewsSettings/HookForReviewSettings';
+import { languageSettingsInterface } from 'src/pages/SettingsPage/LanguageSettings/HookForLanguageSettings';
 
 // get config list
 // post store custom
@@ -37,7 +40,7 @@ export const postGeneralSettingsStore = createAsyncThunk(
 // post front defaults
 export const postFrontDefaults = createAsyncThunk(
 	"postFrontDefaults/postFrontDefaults",
-	(payload: any) =>
+	(payload: languageSettingsInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
@@ -49,9 +52,9 @@ export const postFrontDefaults = createAsyncThunk(
 );
 ////////////////////////////////////////////////////////////////////////
 // post review
-export const postReview = createAsyncThunk(
+export const postReview = createAsyncThunk( // finished but it has a problem
 	"postReview/postReview",
-	(payload: any) =>
+	(payload: ReviewInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
@@ -63,9 +66,9 @@ export const postReview = createAsyncThunk(
 );
 ////////////////////////////////////////////////////////////////////////
 // post queries
-export const postQueries = createAsyncThunk(
+export const postQueries = createAsyncThunk( // finished but it has a problem
 	"postQueries/postQueries",
-	(payload: any) =>
+	(payload: QueriesInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
