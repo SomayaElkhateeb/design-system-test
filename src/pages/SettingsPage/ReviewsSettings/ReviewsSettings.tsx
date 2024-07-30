@@ -7,7 +7,7 @@ import {
 
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import useCustomHookReviewSettings, { ReviewInterface } from './HookForReviewSettings';
+import useCustomHookReviewSettings, { ReviewInterface } from './_hook/HookForReviewSettings';
 import ReviewSectionForm from './ReviewSection';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,6 @@ export default function ReviewsSetting() {
 	const { reviewSchema, handelDefaultValue } = useCustomHookReviewSettings();
 
 	const handleSubmit = (values: ReviewInterface) => {
-		console.log(values);
 		dispatch(postReview(values)).then((promiseResponse) => {
 			if ((promiseResponse.payload.code = 200)) {
 				navigate(-1);
@@ -42,18 +41,30 @@ export default function ReviewsSetting() {
 		defaultValues: handelDefaultValue(),
 	});
 
-	console.log('error', formStore.formState.errors)
+	
 	useEffect(() => {
-		formStore.setValue('reviews.quick_actions.enabled', formStore.watch('reviews.quick_actions.enabled') ? 1 : 0);
+		formStore.setValue(
+			'reviews.quick_actions.enabled',
+			formStore.watch('reviews.quick_actions.enabled') ? 1 : 0,
+		);
 	}, [formStore.watch('reviews.quick_actions.enabled')]);
 	useEffect(() => {
-		formStore.setValue('reviews.quick_actions.auto_publish_review', formStore.watch('reviews.quick_actions.auto_publish_review') ? 1 : 0);
+		formStore.setValue(
+			'reviews.quick_actions.auto_publish_review',
+			formStore.watch('reviews.quick_actions.auto_publish_review') ? 1 : 0,
+		);
 	}, [formStore.watch('reviews.quick_actions.auto_publish_review')]);
 	useEffect(() => {
-		formStore.setValue('reviews.quick_actions.notify_me_new_review', formStore.watch('reviews.quick_actions.notify_me_new_review') ? 1 : 0);
+		formStore.setValue(
+			'reviews.quick_actions.notify_me_new_review',
+			formStore.watch('reviews.quick_actions.notify_me_new_review') ? 1 : 0,
+		);
 	}, [formStore.watch('reviews.quick_actions.notify_me_new_review')]);
 	useEffect(() => {
-		formStore.setValue('reviews.quick_actions.net_promoter_score', formStore.watch('reviews.quick_actions.net_promoter_score') ? 1 : 0);
+		formStore.setValue(
+			'reviews.quick_actions.net_promoter_score',
+			formStore.watch('reviews.quick_actions.net_promoter_score') ? 1 : 0,
+		);
 	}, [formStore.watch('reviews.quick_actions.net_promoter_score')]);
 
 	return (

@@ -19,7 +19,7 @@ export interface ReviewInterface {
 const zodNumber = z.coerce.number().positive().min(1);
 export default function useCustomHookReviewSettings() {
 
-    const handelDefaultValue = (): ReviewInterface => {
+	const handelDefaultValue = (): ReviewInterface => {
 		return {
 			reviews: {
 				target_customer_to_review: {
@@ -38,24 +38,25 @@ export default function useCustomHookReviewSettings() {
 		};
 	};
 	// //////////////////////////////////////////
-    const reviewSchema = {
-		reviews: {
-			target_customer_to_review: {
-				enabled: zodNumber,
+	const reviewSchema = {
+        reviews: z.object({
+			target_customer_to_review: z.object({
+				enabled: z.number(),
 				name: z.string().min(1),
 				email_description: z.string().min(1).email(),
 				sending_after_purchase_days: zodNumber,
-			},
-			quick_actions: {
-				enabled: zodNumber,
-				auto_publish_review: zodNumber,
-				notify_me_new_review: zodNumber,
-				net_promoter_score: zodNumber,
-			}
-		}
+			}),
+			quick_actions: z.object({
+				enabled: z.number(),
+				auto_publish_review: z.number(),
+				notify_me_new_review: z.number(),
+				net_promoter_score: z.number(),
+			}),
+		})
+
 	};
-    return {
-        reviewSchema,
-        handelDefaultValue
-    }
+	return {
+		reviewSchema,
+		handelDefaultValue
+	}
 }

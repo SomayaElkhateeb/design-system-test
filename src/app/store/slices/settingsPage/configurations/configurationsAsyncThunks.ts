@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import { generalSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings/HookForGeneralForm';
 import { QueriesInterface } from 'src/pages/SettingsPage/QueriesSettings/HookForQueriesSettings';
-import { ReviewInterface } from 'src/pages/SettingsPage/ReviewsSettings/HookForReviewSettings';
+import { ReviewInterface } from 'src/pages/SettingsPage/ReviewsSettings/_hook/HookForReviewSettings';
 import { languageSettingsInterface } from 'src/pages/SettingsPage/LanguageSettings/HookForLanguageSettings';
 
 // get config list
