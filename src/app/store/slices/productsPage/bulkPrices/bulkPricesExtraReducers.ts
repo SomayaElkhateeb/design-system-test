@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getBulkPrices, PostBulkPrices, putMerchantPayment } from './bulkPricesAsyncThunks';
+import { getBulkPrices, PostBulkPrices } from './bulkPricesAsyncThunks';
 import { bulkEditsSliceModel } from 'src/app/models/addBulkEditSliceModel';
 
 export const bulkEditReducer = (builder: ActionReducerMapBuilder<bulkEditsSliceModel>) => {
@@ -33,17 +33,17 @@ export const bulkEditReducer = (builder: ActionReducerMapBuilder<bulkEditsSliceM
 
 		})
 
-		// update bulk 
-		.addCase(putMerchantPayment.pending, (state) => {
-			state.isLoadingAddOrUpdate = true;
+		// // update bulk 
+		// .addCase(putMerchantPayment.pending, (state) => {
+		// 	state.isLoadingAddOrUpdate = true;
 
-		})
-		.addCase(putMerchantPayment.fulfilled, (state, { payload }: any) => {
-			state.isLoadingAddOrUpdate = false;
+		// })
+		// .addCase(putMerchantPayment.fulfilled, (state, { payload }: any) => {
+		// 	state.isLoadingAddOrUpdate = false;
 
-		})
-		.addCase(putMerchantPayment.rejected, (state, action) => {
-			state.isLoadingAddOrUpdate = false;
+		// })
+		// .addCase(putMerchantPayment.rejected, (state, action) => {
+		// 	state.isLoadingAddOrUpdate = false;
 
-		});
+		// });
 };

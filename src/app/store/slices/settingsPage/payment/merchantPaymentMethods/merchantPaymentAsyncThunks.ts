@@ -2,7 +2,8 @@ import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
-import { AddMerchantPaymentMethodSchemaValues } from 'src/app/schema/settings/AddMerchantPaymentMethodSchema';
+import { AddPayment_MethodTypes } from 'src/pages/SettingsPage/PaymentSettings/_comp/_add_payment_Method/_hook/useAddMerchantPaymentMethod';
+
 
 // get merchant payment methods list
 export const getMerchantPaymentList = createAsyncThunk('merchantPaymentMethods/getMerchantPaymentList', () =>
@@ -12,14 +13,14 @@ export const getMerchantPaymentList = createAsyncThunk('merchantPaymentMethods/g
 // get merchant payment methods Show
 export const getMerchantPaymentShow = createAsyncThunk(
 	'merchantPaymentMethodsShow/getMerchantPaymentShow',
-	(payload: number) => PublicRequest.getData(`merchant/payment-methods/${payload}`), 
+	(payload: number) => PublicRequest.getData(`merchant/payment-methods/${payload}`),
 );
 
 
 // create merchant payment methods
 export const postMerchantPayment = createAsyncThunk(
 	"merchantPaymentMethods/postMerchantPayment",
-	(payload: AddMerchantPaymentMethodSchemaValues) =>
+	(payload: AddPayment_MethodTypes) =>
 		PublicRequest.postData(payload, `merchant/payment-methods`)
 			.then((res: any) => {
 				if (res) {
@@ -31,9 +32,9 @@ export const postMerchantPayment = createAsyncThunk(
 );
 
 // update merchant payment methods
-export const putMerchantPayment = createAsyncThunk(
-	'merchantPaymentMethods/putMerchantPayment',
-	(payload: { data: AddMerchantPaymentMethodSchemaValues, id: string }) =>
+export const putUpdateMerchantPayment = createAsyncThunk(
+	'merchantPaymentMethods/putUpdateMerchantPayment',
+	(payload: { data: AddPayment_MethodTypes, id: string }) =>
 		PublicRequest.putData(payload.data, `merchant/payment-methods/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {

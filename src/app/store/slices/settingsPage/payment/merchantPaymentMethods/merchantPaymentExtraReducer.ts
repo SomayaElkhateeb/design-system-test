@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { deleteMerchantPayment, getMerchantPaymentList, getMerchantPaymentShow, postMerchantPayment, putMerchantPayment } from './merchantPaymentAsyncThunks';
+import { deleteMerchantPayment, getMerchantPaymentList, getMerchantPaymentShow, postMerchantPayment, putUpdateMerchantPayment } from './merchantPaymentAsyncThunks';
 import { merchantPaymentMethodsSliceModel } from 'src/app/models/settingsModels/merchantPaymentMethodsSettingsModel';
 
 export const merchantPaymentMethodsReducer = (
@@ -43,17 +43,17 @@ export const merchantPaymentMethodsReducer = (
 			state.isLoadingAddOrUpdate = false;
 		})
 		//  update Merchant Payment
-		.addCase(putMerchantPayment.pending, (state) => {
+		.addCase(putUpdateMerchantPayment.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
-		.addCase(putMerchantPayment.fulfilled, (state, { payload }) => {
+		.addCase(putUpdateMerchantPayment.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
-			const index = state.merchantPaymentList.findIndex(item => item.id === payload.data.id);
-			if (index !== -1) {
-				state.merchantPaymentList[index] = payload.data; 
-			}
+			// const index = state.merchantPaymentList.findIndex(item => item.id === payload.data.id);
+			// if (index !== -1) {
+			// 	state.merchantPaymentList[index] = payload.data; 
+			// }
 		})
-		.addCase(putMerchantPayment.rejected, (state, action) => {
+		.addCase(putUpdateMerchantPayment.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
 			state.error = action.payload; 
 		})

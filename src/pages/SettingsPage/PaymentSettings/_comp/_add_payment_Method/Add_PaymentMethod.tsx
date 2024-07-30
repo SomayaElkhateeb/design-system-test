@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { Form } from 'src/app/components/ui/form';
-import AccountDetailsForm from './AccountDetailsForm';
-import ActivateConditions from './ActivateConditions';
-import useBankTransfer, { BankTransferTypes } from './useBankTransfer';
+import AccountDetailsForm from './_comp/AccountDetailsForm';
+import ActivateConditions from './_comp/ActivateConditions';
+import { AddPayment_MethodTypes } from './_hook/useAddMerchantPaymentMethod';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
@@ -13,35 +13,18 @@ import {
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
 	postMerchantPayment,
-	putMerchantPayment,
+	putUpdateMerchantPayment,
 } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'src/app/utils/hooks/form';
+import useAddMerchantPaymentMethod from './_hook/useAddMerchantPaymentMethod';
+import { Path } from 'react-hook-form';
 
-interface DataActions {
-	id: number;
-	title: string;
-}
-
-export default function ActivateBankTransfer() {
+export default function AddPaymentMethod() {
 	//  hooks
 	const { t } = useTranslation();
-	const [apply_with, setApply_with] = useState('All');
-	const { AddMerchantPaymentMethodSchema, handelDefaultValue } = useBankTransfer(apply_with);
-	const data: DataActions[] = [
-		{
-			id: 1,
-			title: t('Activated'),
-		},
-		{
-			id: 2,
-			title: t('Assign as main method'),
-		},
-		{
-			id: 3,
-			title: t('Show on footer'),
-		},
-	];
+	// const [apply_with, setApply_with] = useState('All');
+	const { AddMerchantPaymentMethodSchema, handelDefaultValue } = useAddMerchantPaymentMethod();
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -50,30 +33,14 @@ export default function ActivateBankTransfer() {
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get('id');
 
-	const handleSubmit = (values: BankTransferTypes) => {
-		console.log(values);
-
-		let customValues = {
-			payment_method_id: values.payment_method_id,
-			account_number: values.account_number,
-			account_name: values.account_name,
-			bank_name: values.bank_name,
-			iban: values.iban,
-			price_more_than: values.price_more_than,
-			items_more_than: values.items_more_than,
-			apply_with: values.apply_with,
-			active: values.active,
-			main_method: values.main_method,
-			show_in_footer: values.show_in_footer,
-			additional_data: values.additional_data,
-		};
-		id
-			? dispatch(postMerchantPayment({ data: values, id })).then((promiseResponse) => {
+	const handleSubmit = (values: AddPayment_MethodTypes) => {
+		!id
+			? dispatch(postMerchantPayment(values)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate(-1);
 					}
 			  })
-			: dispatch(putMerchantPayment(values)).then((promiseResponse) => {
+			: dispatch(putUpdateMerchantPayment({ data: values, id })).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate(-1);
 					}
@@ -84,15 +51,42 @@ export default function ActivateBankTransfer() {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+	const data: { name: Path<AddPayment_MethodTypes>; label: string; enable: boolean }[] = [
+		{
+			name: 'active',
+			label: t('Activated'),
+			enable: true,
+		},
+		{
+			name: 'main_method',
+			label: t('Assign as main method'),
+			enable: true,
+		},
+		{
+			name: 'show_in_footer',
+			label: t('Show on footer'),
+			enable: true,
+		},
+	];
+
+	// useEffect(() => {
+	// 	setApply_with(formStore.watch('apply_with'));
+	// }, [formStore.watch('apply_with')]);
 
 	useEffect(() => {
-		setApply_with(formStore.watch('apply_with'));
-	}, [formStore.watch('apply_with')]);
+		formStore.setValue('active', formStore.watch('active') ? 1 : 0);
+	}, [formStore.watch('active')]);
+	useEffect(() => {
+		formStore.setValue('main_method', formStore.watch('main_method') ? 1 : 0);
+	}, [formStore.watch('main_method')]);
+	useEffect(() => {
+		formStore.setValue('show_in_footer', formStore.watch('show_in_footer') ? 1 : 0);
+	}, [formStore.watch('show_in_footer')]);
 
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global '>
-				<SubHeader title={t('Activate bank transfer')}>
+				<SubHeader title={t('Add New Payment Method')}>
 					<SubHeaderDefaultBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />
 				</SubHeader>
 				<div className='grid gap-5 custom_container lg:grid-cols-3'>
@@ -101,7 +95,11 @@ export default function ActivateBankTransfer() {
 						<ActivateConditions formStore={formStore} />
 					</div>
 					<div className='lg:col-span-1'>
-						<QuickActions data={data} />
+						<QuickActions<AddPayment_MethodTypes>
+							formStore={formStore}
+							data={data}
+							title={t('Quick actions')}
+						/>
 					</div>
 				</div>
 				<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={onSubmit} />

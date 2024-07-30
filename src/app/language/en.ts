@@ -14,6 +14,7 @@ export const english = {
 	Pages: 'Pages',
 	"Select country":"Select country",
 	"Select city":"Select city",
+	"Add New Payment Method":"Add New Payment Method",
 	"Delete Item":"Delete Item !",
 	"Do You Want To Delete This Item":"Do You Want To Delete This Item ?",
 	"Group Including Customers,denied":"Group Including Customers,denied",
