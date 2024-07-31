@@ -8,7 +8,7 @@ const SocialContacts = ({ formStore }: { formStore: UseFormReturn<GeneralSetting
 	const { t } = useTranslation();
 	return (
 		<section className='global-cards'>
-			<div className='md:w-1/2'>
+			<div className='md:w-[70%] flex-col-global'>
 			<h3 className='title'>{t('Social contacts')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField

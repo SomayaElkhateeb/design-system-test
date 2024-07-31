@@ -10,8 +10,8 @@ export interface GeneralSettingsInterface {
                 phone: string;
             },
             media: {
-                logo: File | undefined;
-                icon: File | undefined;
+                logo: File;
+                icon: File;
             },
             social: {
                 links: {
@@ -24,9 +24,9 @@ export interface GeneralSettingsInterface {
             legal: {
                 type: string;
                 national_id: string;
-                national_image: File | undefined;
+                national_image: File;
                 commercial_no?: number;
-                commercial_image?: File | undefined;
+                commercial_image?: File;
             }
         },
     },
@@ -37,7 +37,7 @@ export interface GeneralSettingsInterface {
 
 export default function useCustomHookGeneralForm() {
 
-    const handelDefaultValue = (): GeneralSettingsInterface => {
+    const handelDefaultValue = () => {
         return {
             general: {
                 settings: {
@@ -75,7 +75,7 @@ export default function useCustomHookGeneralForm() {
     };
 
     const zodString = z.string().min(1);
-    const generalSettingsSchema = z.object({
+    const generalSettingsSchema = {
         general: z.object({
             settings: z.object({
                 store: z.object({
@@ -108,7 +108,7 @@ export default function useCustomHookGeneralForm() {
         someke: z.object({
             key: z.string(),
         })
-    });
+    };
 
     return {
         generalSettingsSchema,

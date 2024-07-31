@@ -47,7 +47,7 @@ export default function SelfPickup() {
 					</div>
 				</div>
 				<div className='col-span-1'>
-					<QuickActions data={data} />
+					{/* <QuickActions data={data} /> */}
 				</div>
 			<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</div>
