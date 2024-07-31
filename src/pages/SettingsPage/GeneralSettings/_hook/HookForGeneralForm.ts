@@ -26,7 +26,7 @@ export interface GeneralSettingsInterface {
                 national_id: string;
                 national_image: File;
                 commercial_no?: number;
-                commercial_image?: File;
+                commercial_image?: File |null;
             }
         },
     },
@@ -85,8 +85,8 @@ export default function useCustomHookGeneralForm() {
                     phone: zodString,
                 }),
                 media: z.object({
-                    logo: z.instanceof(File).nullable(),
-                    icon: z.instanceof(File).nullable(),
+                    logo: z.instanceof(File),
+                    icon: z.instanceof(File),
                 }),
                 social: z.object({
                     links: z.object({
@@ -101,7 +101,7 @@ export default function useCustomHookGeneralForm() {
                     national_id: zodString,
                     national_image: z.instanceof(File).nullable(),
                     commercial_no: z.coerce.number().optional(),
-                    commercial_image: z.instanceof(File).nullable().optional(),
+                    commercial_image: z.instanceof(File).optional(),
                 })
             }),
         }),

@@ -1308,6 +1308,7 @@ export const english = {
 	"STAFF NAME": "STAFF NAME",
 	'password': 'password',
 	'Confirm password': 'Confirm password',
+	"Upload Logo":"Upload Logo",
 	'Add Role': 'Add Role',
 	'Role Name': 'Role Name',
 	'e.g., Web developer': 'e.g., Web developer',

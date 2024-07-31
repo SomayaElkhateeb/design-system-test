@@ -21,6 +21,7 @@ export const arabic = {
 	"Add New Payment System Method":"اضافه وسيله دفع للنظام",
 	"monthly fees title":"عنوان مصاريف الشحن",
 	"sort":"الترتيب",
+	"Upload Logo":"تحميل الصوره",
 	"title":"عنوان",
 	"Method":"الوسيله",
 	"Method title":"عنوان الوسيله",
