@@ -40,5 +40,5 @@ export interface shippingMethodsInterface {
 	method: string;
 	method_title: string;
 	description: string;
-	icon: string | null;
+	icon: string;
 }

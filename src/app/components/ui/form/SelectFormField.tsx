@@ -50,7 +50,7 @@ export default function SelectFormField({
 							{placeholder}
 						</option>
 						{options?.length > 0 &&
-							options?.map((e, i) => (
+							options?.map((e) => (
 								<option key={e.value} value={e.value}>
 									{e.label}
 								</option>
@@ -60,7 +60,7 @@ export default function SelectFormField({
 						<button
 							type='button'
 							className='md:flex-row-global flex-col-global items-center px-2 py-2 border-l w-2/5'
-							onClick={() => setOpenDialog(true)}
+							onClick={() => setOpenDialog && setOpenDialog(true)}
 						>
 							<FaCirclePlus size={24} />
 							<span className='ms-1'>{t('Add One')}</span>

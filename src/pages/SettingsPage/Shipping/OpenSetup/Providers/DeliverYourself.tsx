@@ -21,7 +21,7 @@ export default function DeliverYourself() {
 					<SetupInfo gap={true} rates={false} ratesDeliver={true} />
 				</div>
 				<div className='col-span-1'>
-					<QuickActions data={data} />
+					{/* <QuickActions data={data} /> */}
 				</div>
 				<SubHeaderMobileBtns onSubmit={() => alert('Submit')} />
 			</div>

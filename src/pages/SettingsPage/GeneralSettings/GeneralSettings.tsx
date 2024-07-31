@@ -31,11 +31,11 @@
 // 	const handleSubmit = (values: GeneralSettingsInterface) => {
 // 		console.log(values);
 
-		// dispatch(postGeneralSettingsStore(values)).then((promiseResponse) => {
-		// 	if ((promiseResponse.payload.code = 200)) {
-		// 		navigate(-1);
-		// 	}
-		// });
+// dispatch(postGeneralSettingsStore(values)).then((promiseResponse) => {
+// 	if ((promiseResponse.payload.code = 200)) {
+// 		navigate(-1);
+// 	}
+// });
 // 	};
 
 // 	const { formStore, onSubmit } = useForm({
@@ -76,8 +76,7 @@ import {
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+
 import StoreDetails from './_comp/StoreDetails';
 import GeneralSettingsMedia from './_comp/GeneralSettingsMedia';
 import SocialContacts from './_comp/SocialContacts';
@@ -86,6 +85,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useNavigate } from 'react-router-dom';
 import { postGeneralSettingsStore } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 import useCustomHookGeneralForm, { GeneralSettingsInterface } from './_hook/HookForGeneralForm';
+import { useForm } from 'src/app/utils/hooks/form';
 
 const GeneralSettings = () => {
 	// hooks
@@ -99,26 +99,24 @@ const GeneralSettings = () => {
 	const dispatch = useAppDispatch();
 	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
 
-	// form
-	const formStore = useForm<GeneralSettingsInterface>({
-		resolver: zodResolver(generalSettingsSchema),
-		defaultValues: handelDefaultValue(),
-	});
-
-	const onSubmit = (values: GeneralSettingsInterface) => {
-		console.log("GeneralSettingsInterface",values);
+	const handleSubmit = (values: GeneralSettingsInterface) => {
 		dispatch(postGeneralSettingsStore(values)).then((promiseResponse) => {
 			if ((promiseResponse.payload.code = 200)) {
 				navigate(-1);
 			}
 		});
 	};
+	const { formStore, onSubmit } = useForm({
+		schema: generalSettingsSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
 
 	return (
 		<Form {...formStore}>
-			<form onSubmit={formStore.handleSubmit(onSubmit)} className='flex-col-global '>
+			<form onSubmit={onSubmit} className='flex-col-global '>
 				<SubHeader title={t('General settings')}>
-					<SubHeaderDefaultBtns onSubmit={formStore.handleSubmit(onSubmit)} isLoading={isLoadingAddOrUpdate} />
+					<SubHeaderDefaultBtns onSubmit={onSubmit} isLoading={isLoadingAddOrUpdate} />
 				</SubHeader>
 
 				<div className='custom-grid-parent custom_container'>
@@ -129,7 +127,7 @@ const GeneralSettings = () => {
 							<SocialContacts formStore={formStore} />
 							<LegalDetails formStore={formStore} />
 
-							<SubHeaderMobileBtns onSubmit={formStore.handleSubmit(onSubmit)} />
+							<SubHeaderMobileBtns onSubmit={onSubmit} />
 						</div>
 					</div>
 				</div>
@@ -139,4 +137,3 @@ const GeneralSettings = () => {
 };
 
 export default GeneralSettings;
-

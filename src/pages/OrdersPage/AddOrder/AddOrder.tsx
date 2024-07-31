@@ -16,6 +16,7 @@ import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProduc
 import { clearData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
 import { PostAddOrder } from 'src/app/store/slices/AddOrderPage/AddOrderAsyncThunks';
 import { useNavigate } from 'react-router-dom';
+import { getMerchantPaymentList } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
@@ -25,7 +26,9 @@ export default function AddOrder() {
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 		dispatch(getAllProductsTable());
+		dispatch(getMerchantPaymentList());
 	}, [dispatch]);
+	
 
 	//  get customer info with id params
 	useEffect(() => {

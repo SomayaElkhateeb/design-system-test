@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { UseFormReturn, Path, PathValue, FieldValues } from 'react-hook-form';
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
+import FormField from './field';
 
 interface FormChoiceChipsProps<T extends FieldValues> {
 	formStore: UseFormReturn<T>;
@@ -26,18 +27,24 @@ export default function FormChoiceChips<T extends FieldValues>({
 	};
 
 	return (
-		<div className={`grid ${checkoutForm ? 'gap-[.25rem]' : 'gap-2'} col-span-2`}>
-			{label && (
-				<h3 className={`title  ${checkoutForm ? 'font-normal' : 'font-semibold'}`}>
-					{t(label as any)}
-				</h3>
+		<FormField
+			formStore={formStore}
+			name={name}
+			render={(field) => (
+				<div className={`grid ${checkoutForm ? 'gap-[.25rem]' : 'gap-2'} col-span-2`}>
+					{label && (
+						<h3 className={`title  ${checkoutForm ? 'font-normal' : 'font-semibold'}`}>
+							{t(label as any)}
+						</h3>
+					)}
+					<SingleChoiceChips
+						options={options.map((option) => option)}
+						setSelected={field.onChange}
+						selected={field.value}
+					/>
+					{description && <p className='paragraph text-subtitle'>{t(description as any)}</p>}
+				</div>
 			)}
-			<SingleChoiceChips
-				options={options.map((option) => option)}
-				setSelected={handleChoiceChange}
-				selected={formStore.watch(name) as unknown as string}
-			/>
-			{description && <p className='paragraph text-subtitle'>{t(description as any)}</p>}
-		</div>
+		/>
 	);
 }
