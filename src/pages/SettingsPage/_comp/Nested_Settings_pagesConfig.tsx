@@ -5,6 +5,7 @@ import PaymentProvidersPage from 'src/pages/SettingsPage/PaymentSettings/Payment
 import AddStuff from '../PermissionsAndUsers/Staff/AddStaff';
 import TransferOwnership from '../PermissionsAndUsers/Owner/TransferOwnership';
 import AddPaymentMethod from '../PaymentSettings/_comp/_add_payment_Method/Add_PaymentMethod';
+import Add_payment_system_methods from '../PaymentSystemSettings/_addPayment_System_Methods/Add_payment_System_Methods';
 
 export default function Nested_pages_SettingsConfig() {
 	const { nested_page } = useParams();
@@ -20,5 +21,9 @@ export default function Nested_pages_SettingsConfig() {
 			return <PaymentProvidersPage />;
 		case 'add-Payment-Method':
 			return <AddPaymentMethod />;
+		case 'add-Payment-Method':
+			return <AddPaymentMethod />;
+		case 'add-Payment-system-Method':
+			return <Add_payment_system_methods />;
 	}
 }

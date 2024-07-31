@@ -47,7 +47,14 @@ const SettingsPage = () => {
 			id: 3,
 			path: 'payment',
 			Icon: PaymentIcon,
-			title: t('Payment'),
+			title: t('Merchant Payment Methods'),
+			description: t('Enable and integration payment gateways'),
+		},
+		{
+			id: 3,
+			path: 'system_payment',
+			Icon: PaymentIcon,
+			title: t('System Payment Methods'),
 			description: t('Enable and integration payment gateways'),
 		},
 		{

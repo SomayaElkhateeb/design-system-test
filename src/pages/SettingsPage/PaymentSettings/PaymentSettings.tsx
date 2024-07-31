@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Button, SubHeader } from 'src/app/components/optimized';
-// import DookanPay from './_comp/DookanPay';
+import DookanPay from './_comp/DookanPay';
 import ManualPayment from './_comp/ManualPayment';
 import PaymentProvidersCard from './_comp/PaymentProvidersCard';
 import PaymentTable from './PaymentProviders/PaymentTable/PaymentTable';
@@ -93,9 +93,9 @@ export default function PaymentSettings() {
 		}
 	}, [selectedOption, custom_Id]);
 	return (
-		<div className='flex-col-global'>
-			<SubHeader title={t('Payment')} />
-			<div className='custom_container flex-col-global gap-5 mt-2'>
+		<div className='flex-col-global gap-5'>
+			<SubHeader title={t('Merchant Payment Methods')} />
+			<div className='custom_container flex-col-global gap-5'>
 				<div className='topTable '>
 					{/* add customers button */}
 					{!xs && (
@@ -117,12 +117,12 @@ export default function PaymentSettings() {
 					/>
 				</div>
 				<hr />
-
+				{/* <DookanPay /> */}
 				{/* <div className='col-span-2 lg:col-span-1'>
 				
 				</div>
 				<div className='col-span-2 lg:col-span-1'>
-					<DookanPay />
+					
 				</div>
 				<div className='col-span-2'>
 					{/* <ManualPayment /> */}
