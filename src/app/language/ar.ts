@@ -22,6 +22,8 @@ export const arabic = {
 	"monthly fees title":"عنوان مصاريف الشحن",
 	"sort":"الترتيب",
 	"Upload Logo":"تحميل الصوره",
+	"code":"الكود",
+	"Shipping method title":"عنوان وسيله الشحن",
 	"title":"عنوان",
 	"Method":"الوسيله",
 	"Method title":"عنوان الوسيله",
