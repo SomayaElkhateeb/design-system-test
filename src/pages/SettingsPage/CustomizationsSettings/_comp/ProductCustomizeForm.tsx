@@ -1,11 +1,53 @@
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
-import FormField from 'src/app/components/ui/form/field';
-import { Input } from 'src/app/components/ui/input';
-import { CustomizationsFormProps, CustomizationsTypes } from './useCustomization';
+import { CustomizationsTypes } from '../_hook/HookForCustomizationSettings';
+import { useEffect } from 'react';
 
-export default function ProductCustomizeForm({ formStore }: CustomizationsFormProps) {
+export default function ProductCustomizeForm({ formStore }: { formStore: UseFormReturn<CustomizationsTypes> }) {
 	const { t } = useTranslation();
+
+	useEffect(() => {
+		formStore.setValue(
+			'customizations.product.activate_product_comparison',
+			formStore.watch('customizations.product.activate_product_comparison') ? 1 : 0,
+		);
+	}, [formStore.watch('customizations.product.activate_product_comparison')]);
+
+	useEffect(() => {
+		formStore.setValue(
+			'customizations.product.auto_archive_order',
+			formStore.watch('customizations.product.auto_archive_order') ? 1 : 0,
+		);
+	}, [formStore.watch('customizations.product.auto_archive_order')]);
+
+	useEffect(() => {
+		formStore.setValue(
+			'customizations.product.stock_limit',
+			formStore.watch('customizations.product.stock_limit') ? 1 : 0,
+		);
+	}, [formStore.watch('customizations.product.stock_limit')]);
+
+	useEffect(() => {
+		formStore.setValue(
+			'customizations.product.show_purchases_number_in_product_page',
+			formStore.watch('customizations.product.show_purchases_number_in_product_page') ? 1 : 0,
+		);
+	}, [formStore.watch('customizations.product.show_purchases_number_in_product_page')]);
+
+	useEffect(() => {
+		formStore.setValue(
+			'customizations.product.when_purchases_number_exceeds_times',
+			formStore.watch('customizations.product.when_purchases_number_exceeds_times') ? 1 : 0,
+		);
+	}, [formStore.watch('customizations.product.when_purchases_number_exceeds_times')]);
+
+	useEffect(() => {
+		formStore.setValue(
+			'customizations.product.download_digital_product_limit',
+			formStore.watch('customizations.product.download_digital_product_limit') ? 1 : 0,
+		);
+	}, [formStore.watch('customizations.product.download_digital_product_limit')]);
 
 	return (
 		<div className='global-cards grid space-1 sm:grid-cols-2 grid-cols-1'>
@@ -13,77 +55,39 @@ export default function ProductCustomizeForm({ formStore }: CustomizationsFormPr
 				<h2 className='title  flex-col-global  gap-[.3rem]'>{t('Product')}</h2>
 				<p className='paragraph'>{t('Customize product listing')}</p>
 			</div>
-
 			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
-				name='hideOutOfStock'
-				label='Hide out of stock products'
-			/>
-
-			<FormSwitchField<CustomizationsTypes>
-				formStore={formStore}
-				name='activateProductComparison'
+				name='customizations.product.activate_product_comparison'
 				label='Activate product comparison'
 			/>
-			<div className='col-span-1'>
-				<FormField
-					formStore={formStore}
-					name='maxComparisons'
-					label={t('Maximum comparisons')}
-					render={(field) => <Input type='number' {...field} />}
-				/>
-			</div>
-
 			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
-				name='autoArchiveOrder'
+				name='customizations.product.auto_archive_order'
 				label='Automatically archive the order'
 				description='Delivered orders will be automatically assigned as closed.'
 			/>
-
 			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
-				name='showProductStock'
+				name='customizations.product.stock_limit'
 				label='Show product stock in product page'
 				description='Show when product stock reach defined limit'
 			/>
-			<div className='col-span-1'>
-				<FormField
-					formStore={formStore}
-					name='productStockLimit'
-					label={t('Product stock limit')}
-					render={(field) => <Input type='number' {...field} />}
-				/>
-			</div>
-
 			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
-				name='showPurchasesNum'
+				name='customizations.product.show_purchases_number_in_product_page'
 				label='Show purchases number in product page'
 				description='Show when product purchases reach defined limit'
 			/>
-			<div className='col-span-1'>
-				<FormField
-					formStore={formStore}
-					name='purchasesNumExceeds'
-					label={t('When purchases number exceeds')}
-					render={(field) => <Input {...field} />}
-				/>
-			</div>
-
 			<FormSwitchField<CustomizationsTypes>
 				formStore={formStore}
-				name='limitDownloadAttempts'
+				name='customizations.product.when_purchases_number_exceeds_times'
+				label='Show purchases number in exceeds'
+			/>
+			<FormSwitchField<CustomizationsTypes>
+				formStore={formStore}
+				name='customizations.product.download_digital_product_limit'
 				label='Limit number of download attempts for digital products'
 			/>
-			<div className='col-span-1'>
-				<FormField
-					formStore={formStore}
-					name='maxDownloadAttempts'
-					label={t('Maximum number of attempts')}
-					render={(field) => <Input type='number' {...field} />}
-				/>
-			</div>
 		</div>
 	);
 }

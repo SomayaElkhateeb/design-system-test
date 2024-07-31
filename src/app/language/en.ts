@@ -1297,12 +1297,13 @@ export const english = {
 	'Email Form': 'Email Form',
 	'submit emails': 'submit emails',
 	'Subscribe to package': 'Subscribe to package',
-	'created now': 'created now',
+
+
 	'Add users and define what they can see or do in your store.': 'Add users and define what they can see or do in your store.',
 	'Assign as main method': 'Assign as main method',
 	"ROLE": "ROLE",
 	"STATUS": "STATUS",
-	"sort":"sort",
+	"sort": "sort",
 	"EMAIL": "EMAIL",
 	"STAFF NAME": "STAFF NAME",
 	'password': 'password',
@@ -1311,4 +1312,10 @@ export const english = {
 	'Role Name': 'Role Name',
 	'e.g., Web developer': 'e.g., Web developer',
 	'Permission type': 'Permission type',
+
+	'created now': 'created now',
+
+	'reply': 'reply',
+	'Key': 'Key',
+
 };

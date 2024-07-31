@@ -7,14 +7,12 @@ import {
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import QueriesSectionForm from './QueriesSection';
-import useCustomHookQueriesSettings, { QueriesInterface } from './HookForQueriesSettings';
+import useCustomHookQueriesSettings, { QueriesInterface } from './_hook/HookForQueriesSettings';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useNavigate } from 'react-router-dom';
 import { postQueries } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 import { useEffect } from 'react';
-import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
-import FormField from 'src/app/components/ui/form/field';
-import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 
 export default function QueriesSetting() {
 	//  hooks
@@ -29,21 +27,7 @@ export default function QueriesSetting() {
 	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
 
 	const handleSubmit = (values: QueriesInterface) => {
-		// let customValues = {
-		// 	queries: {
-		// 		automate_replies: {
-		// 			enabled: values.queries.automate_replies.enabled,
-		// 			reply_description: values.queries.automate_replies.reply_description,
-		// 		},
-		// 		quick_actions: {
-		// 			enabled: values.queries.quick_actions.enabled,
-		// 			notify_me_new_query: values.queries.quick_actions.notify_me_new_query,
-		// 		},
-		// 	},
-		// };
-
-		// console.log(customValues);
-
+		console.log(values)
 		dispatch(postQueries(values)).then((promiseResponse) => {
 			if ((promiseResponse.payload.code = 200)) {
 				navigate(-1);
@@ -69,7 +53,18 @@ export default function QueriesSetting() {
 		formStore.setValue('queries.quick_actions.notify_me_new_query', formStore.watch('queries.quick_actions.notify_me_new_query') ? 1 : 0);
 	}, [formStore.watch('queries.quick_actions.notify_me_new_query')]);
 
-
+	const data: { name: path<QueriesInterface>; label: string; enable: boolean } = [
+		{
+			name: 'queries.quick_actions.enabled',
+			label: t('Enabled'),
+			enable: true,
+		},
+		{
+			name: 'queries.quick_actions.notify_me_new_query',
+			label: t('Notify me new queries'),
+			enable: true,
+		},
+	];
 
 	return (
 		<Form {...formStore}>
@@ -79,60 +74,15 @@ export default function QueriesSetting() {
 				</SubHeader>
 				<div className='custom_container custom-grid-parent'>
 					<div className=' grid-left'>
-						{/* <QueriesSectionForm formStore={formStore} queriesSchema={queriesSchema} /> */}
-
-						<div className='global-cards gap-[1.3rem]'>
-							<div className='flex-col-global  gap-[.85rem]'>
-								<div className='flex-col-global  gap-[.35rem]'>
-									<h2 className='title'>{t('Targeting customer to review')}</h2>
-									<p className='subtitle'>
-										{t('You can send an email for customers who purchased from you to review')}
-									</p>
-								</div>
-
-								<div className='flex-row-global gap-2'>
-									<p>{t('Enabled')}</p>
-									<FormSwitchField<queriesSchema>
-										formStore={formStore}
-										name='queries.automate_replies.enabled'
-										enable
-									/>
-								</div>
-							</div>
-
-							<FormField
-								formStore={formStore}
-								name='queries.automate_replies.reply_description'
-								label={t('Reply description')}
-								render={(field) => <Textarea {...field} placeholder={t('reply')} />}
-							/>
-						</div>
-
-
+						<QueriesSectionForm formStore={formStore} />
 					</div>
-					<div className='grid-right'>
-						<div className='global-cards'>
-							<h3 className='title'>{t('Quick actions')}</h3>
-							<div className='flex-row-global gap-2'>
-								<p>{t('Activated')}</p>
-								<FormSwitchField<queriesSchema>
-									formStore={formStore}
-									name='queries.quick_actions.enabled'
-									enable
-								/>
-								{/* <p>{formStore.watch('queries.quick_actions.enabled') ? 'On' : 'Off'}</p> */}
-							</div>
 
-							<div className='flex-row-global gap-2'>
-								<p>{t('Activated')}</p>
-								<FormSwitchField<queriesSchema>
-									formStore={formStore}
-									name='queries.quick_actions.notify_me_new_query'
-									enable
-								/>
-								{/* <p>{formStore.watch('queries.quick_actions.notify_me_new_query') ? 'On' : 'Off'}</p> */}
-							</div>
-						</div>
+					<div className='grid-right'>
+						<QuickActions<QueriesInterface>
+							formStore={formStore}
+							data={data}
+							title={t('Quick actions')}
+						/>
 
 					</div>
 					<div className='px-5'>
