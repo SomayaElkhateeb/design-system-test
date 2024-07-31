@@ -98,7 +98,6 @@ export default function ReviewsSetting() {
 						<ReviewSectionForm formStore={formStore} />
 					</div>
 					{/* quick actions */}
-
 					<QuickActions<ReviewInterface>
 						formStore={formStore}
 						data={data}

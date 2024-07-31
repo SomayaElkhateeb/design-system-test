@@ -8,7 +8,7 @@ import {
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import useCustomHookLanguageSettings, { languageSettingsInterface } from './HookForLanguageSettings';
-import AdminOrLanguageDefaults from '../GeneralSettings/AdminOrLanguageDefaults';
+// import AdminOrLanguageDefaults from '../GeneralSettings/AdminOrLanguageDefaults';
 import DefaultLanguageSection from './DefaultLanguage';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { postFrontDefaults } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
@@ -51,11 +51,11 @@ const LanguageSettings = () => {
 				<div className='custom-grid-parent custom_container'>
 					<div className='flex-col-global  grid-left'>
 						<DefaultLanguageSection formStore={formStore} />
-						<AdminOrLanguageDefaults
+						{/* <AdminOrLanguageDefaults
 							// language
 							title={t('Store defaults (shown to cutomers)')}
 							formStore={formStore}
-						/>
+						/> */}
 						<SubHeaderMobileBtns onSubmit={onSubmit} />
 					</div>
 					<div className='grid-right' />

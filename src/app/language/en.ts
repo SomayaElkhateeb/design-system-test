@@ -1298,4 +1298,6 @@ export const english = {
 	'Role Name':'Role Name',
 	'e.g., Web developer':'e.g., Web developer',
 	'Permission type':'Permission type',
+	'reply':'reply',
+	'Key':'Key',
 };
