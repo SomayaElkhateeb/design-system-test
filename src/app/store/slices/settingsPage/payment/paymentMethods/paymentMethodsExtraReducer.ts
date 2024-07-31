@@ -13,11 +13,12 @@ export const paymentMethodsReducer = (
 		})
 		.addCase(getPaymentMethods.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.paymentList = payload; // []
+			state.paymentList = payload.data; // []
 		})
 		.addCase(getPaymentMethods.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
+			state.paymentList=[]
 		})
 		// getPaymentMethodShow
 		.addCase(getPaymentMethodShow.pending, (state) => {

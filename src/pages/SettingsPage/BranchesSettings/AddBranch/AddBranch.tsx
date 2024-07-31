@@ -71,7 +71,7 @@ export default function AddBranch(props: {
 						<BranchAppointments formStore={formStore} />
 					</div>
 					<div className='col-span-1'>
-						<QuickActions data={data} />
+						{/* <QuickActions data={data} /> */}
 					</div>
 				</div>
 				<SubHeaderMobileBtns onSubmit={onSubmit} />
