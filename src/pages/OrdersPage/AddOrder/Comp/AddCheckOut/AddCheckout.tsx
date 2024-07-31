@@ -6,6 +6,7 @@ import { Form } from 'src/app/components/ui/form';
 // import { Textarea } from 'src/app/components/ui/textarea';
 // import FormField from 'src/app/components/ui/form/field';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { useAppSelector } from 'src/app/store';
 
 const branches = [
 	{ value: 'completed', label: 'completed' },
@@ -22,7 +23,7 @@ export default function AddCheckout({
 	const { t } = useTranslation();
 
 	const { formStore, onSubmit, formValues } = useAddCheckOutForm({ onFinish });
-
+	const { merchantPaymentList } = useAppSelector((state) => state.merchantPaymentSettings);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
@@ -51,7 +52,7 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='payment_method'
 					label={t('Payment methods')}
-					options={['PapPal', 'MoneyTransfeer', 'cashOnDelivery']}
+					options={merchantPaymentList?.map((e) => e.payment_method.method)}
 				/>
 				<SelectFormField
 					name='status'

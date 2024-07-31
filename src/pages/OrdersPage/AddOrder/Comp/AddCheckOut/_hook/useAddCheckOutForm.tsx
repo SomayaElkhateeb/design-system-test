@@ -26,7 +26,7 @@ export interface AddCheckOutFormValues {
 const defaultValues: AddCheckOutFormValues = {
 	purchase_method: 'branch',
 	branch: '',
-	payment_method: 'cashOnDelivery',
+	payment_method: '',
 	status: '',
 	// creditCard: '',
 	// bankTransfer: '',
@@ -47,7 +47,7 @@ export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void 
 	const dispatch = useAppDispatch();
 	const [formValues, setFormValues] = useState<AddCheckOutFormValues>({
 		purchase_method: 'branch',
-		payment_method: 'cashOnDelivery',
+		payment_method: '',
 		delivery_method: 'pickup',
 		shipping_method: 'DHLRate',
 		status: '',
@@ -76,8 +76,8 @@ export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void 
 		};
 	};
 
-	const handleSubmit = (values: AddCheckOutFormValues) => {
-		dispatch(setAdd_Order_Data_DeliveryData(values));
+	const handleSubmit = async (values: AddCheckOutFormValues) => {
+		await dispatch(setAdd_Order_Data_DeliveryData(values));
 		onFinish();
 	};
 
