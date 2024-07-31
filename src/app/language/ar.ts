@@ -1284,4 +1284,6 @@ export const arabic = {
 	'Role Name':'',
 	'e.g., Web developer':'',
 	'Permission type':'',
+	'reply': '',
+	'Key': '',
 } satisfies typeof english;

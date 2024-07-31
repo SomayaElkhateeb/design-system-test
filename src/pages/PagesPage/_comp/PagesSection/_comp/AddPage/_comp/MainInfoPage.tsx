@@ -7,7 +7,7 @@ import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import { addPageInterface } from '../../../../BlogPosts/_hook/HookForAddBlogOrPageForm';
-import { fileClassName } from 'src/pages/SettingsPage/GeneralSettings/GeneralSettingsMedia';
+import { fileClassName } from 'src/pages/SettingsPage/GeneralSettings/_comp/GeneralSettingsMedia';
 
 export default function MainInfoPage({
 	formStore,

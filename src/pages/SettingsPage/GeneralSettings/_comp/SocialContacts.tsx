@@ -2,12 +2,13 @@ import { Input } from 'src/app/components/ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormField from 'src/app/components/ui/form/field';
-import { generalSettingsInterface } from './HookForGeneralForm';
+import { GeneralSettingsInterface } from '../_hook/HookForGeneralForm';
 
-const SocialContacts = ({ formStore }: { formStore: UseFormReturn<generalSettingsInterface> }) => {
+const SocialContacts = ({ formStore }: { formStore: UseFormReturn<GeneralSettingsInterface> }) => {
 	const { t } = useTranslation();
 	return (
 		<section className='global-cards'>
+			<div className='md:w-1/2'>
 			<h3 className='title'>{t('Social contacts')}</h3>
 			<div className='flex-col-global gap-[1rem]'>
 				<FormField
@@ -34,6 +35,7 @@ const SocialContacts = ({ formStore }: { formStore: UseFormReturn<generalSetting
 					label={t('Youtube')}
 					render={(field) => <Input {...field} placeholder={'http://youtube.com/username'} />}
 				/>
+			</div>
 			</div>
 		</section>
 	);

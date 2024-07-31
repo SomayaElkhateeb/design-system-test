@@ -2,10 +2,12 @@ import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
-import { generalSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings/HookForGeneralForm';
-import { QueriesInterface } from 'src/pages/SettingsPage/QueriesSettings/HookForQueriesSettings';
+
+import { QueriesInterface } from 'src/pages/SettingsPage/QueriesSettings/_hook/HookForQueriesSettings';
 import { ReviewInterface } from 'src/pages/SettingsPage/ReviewsSettings/_hook/HookForReviewSettings';
 import { languageSettingsInterface } from 'src/pages/SettingsPage/LanguageSettings/HookForLanguageSettings';
+import { GeneralSettingsInterface } from 'src/pages/SettingsPage/GeneralSettings/_hook/HookForGeneralForm';
+import { CustomizationsTypes } from 'src/pages/SettingsPage/CustomizationsSettings/_hook/HookForCustomizationSettings';
 
 // get config list
 // post store custom
@@ -26,7 +28,7 @@ export const postStoreCustom = createAsyncThunk(
 // post general settings store
 export const postGeneralSettingsStore = createAsyncThunk(
 	"postGeneralSettingsStore/postGeneralSettingsStore",
-	(payload: generalSettingsInterface) =>
+	(payload: GeneralSettingsInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
@@ -82,7 +84,7 @@ export const postQueries = createAsyncThunk( // finished but it has a problem
 // post customizations-checkout
 export const postCustomizationsCheckout = createAsyncThunk(
 	"postCustomizationsCheckout/postCustomizationsCheckout",
-	(payload: any) =>
+	(payload: CustomizationsTypes) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
@@ -96,7 +98,7 @@ export const postCustomizationsCheckout = createAsyncThunk(
 // post customization-product
 export const postCustomizationProduct = createAsyncThunk(
 	"postCustomizationProduct/postCustomizationProduct",
-	(payload: any) =>
+	(payload: CustomizationsTypes) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
@@ -110,7 +112,7 @@ export const postCustomizationProduct = createAsyncThunk(
 // post customization-double-opt
 export const postCustomizationDoubleOpt = createAsyncThunk(
 	"postCustomizationDoubleOpt/postCustomizationDoubleOpt",
-	(payload: any) =>
+	(payload: CustomizationsTypes) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
@@ -124,7 +126,7 @@ export const postCustomizationDoubleOpt = createAsyncThunk(
 // post customization-order-invoice
 export const postCustomizationOrderInvoice = createAsyncThunk(
 	"postCustomizationOrderInvoice/postCustomizationOrderInvoice",
-	(payload: any) =>
+	(payload: CustomizationsTypes) =>
 		PublicRequest.postData(payload, `merchant/settings/config/store`)
 			.then((res: any) => {
 				if (res) {
