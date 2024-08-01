@@ -19,7 +19,7 @@ const LegalDetails = ({
 
 	return (
 		<section className='global-cards '>
-			<div className='md:w-1/2'>
+			<div className='md:w-[70%] flex-col-global'>
 				<h3 className='title'>{t('Legal details')}</h3>
 				<div className='flex-col-global gap-[1rem]'>
 					<div className='flex-row-global gap-[1.8rem]'>

@@ -1,4 +1,3 @@
-
 import { z } from 'zod';
 
 export interface CustomizationsTypes {
@@ -39,8 +38,8 @@ export interface CustomizationsTypes {
 
 export default function useCustomHookCustomizationSettings() {
 	const zodNumber = z.coerce.number().min(0).max(1);
-	
-	const customizationsSchema = z.object({
+
+	const customizationsSchema = {
 		customizations: z.object({
 			checkout: z.object({
 				guest_checkout: zodNumber,
@@ -74,7 +73,7 @@ export default function useCustomHookCustomizationSettings() {
 				show_contacts: zodNumber,
 			})
 		}),
-	});
+	};
 
 	const handelDefaultValue = (): CustomizationsTypes => {
 		return {

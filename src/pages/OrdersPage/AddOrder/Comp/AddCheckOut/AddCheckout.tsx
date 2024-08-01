@@ -6,6 +6,7 @@ import { Form } from 'src/app/components/ui/form';
 // import { Textarea } from 'src/app/components/ui/textarea';
 // import FormField from 'src/app/components/ui/form/field';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { useAppSelector } from 'src/app/store';
 
 const branches = [
 	{ value: 'completed', label: 'completed' },
@@ -22,6 +23,8 @@ export default function AddCheckout({
 	const { t } = useTranslation();
 
 	const { formStore, onSubmit, formValues } = useAddCheckOutForm({ onFinish });
+	const { merchantPaymentList } = useAppSelector((state) => state.merchantPaymentSettings);
+	const { shippingList } = useAppSelector((state) => state.shippingSettings);
 
 	return (
 		<Form {...formStore}>
@@ -51,14 +54,21 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='payment_method'
 					label={t('Payment methods')}
-					options={['PapPal', 'MoneyTransfeer', 'cashOnDelivery']}
+					options={merchantPaymentList?.map((e) => e.payment_method.method)}
 				/>
-				<SelectFormField
+				{/* <SelectFormField
 					name='status'
 					label={t('Order status')}
 					formStore={formStore}
 					options={branches}
 					placeholder={t('Select option')}
+				/> */}
+				<FormChoiceChips<AddCheckOutFormValues>
+					checkoutForm
+					formStore={formStore}
+					name='status'
+					label={t('Order status')}
+					options={['completed']}
 				/>
 				{/* {formValues.payment_method === 'PapPal' && (
 					<>
@@ -99,7 +109,7 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='shipping_method'
 					label={t('Shipping method')}
-					options={['DHLRate', 'Aramex']}
+					options={[shippingList.free.method, shippingList.flatrate.method]}
 				/>
 				{/* {formValues.shipping_method === 'DHLRate' && (
 					<>

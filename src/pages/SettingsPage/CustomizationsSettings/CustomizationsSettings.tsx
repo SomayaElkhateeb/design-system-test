@@ -1,5 +1,3 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 import { SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
@@ -12,9 +10,17 @@ import {
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { useNavigate } from 'react-router-dom';
-import useCustomHookCustomizationSettings, { CustomizationsTypes } from './_hook/HookForCustomizationSettings';
+import useCustomHookCustomizationSettings, {
+	CustomizationsTypes,
+} from './_hook/HookForCustomizationSettings';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { postCustomizationDoubleOpt, postCustomizationOrderInvoice, postCustomizationProduct, postCustomizationsCheckout } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
+import {
+	postCustomizationDoubleOpt,
+	postCustomizationOrderInvoice,
+	postCustomizationProduct,
+	postCustomizationsCheckout,
+} from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
+import { useForm } from 'src/app/utils/hooks/form';
 
 export default function CustomizationsSettings() {
 	const { t } = useTranslation();
@@ -26,11 +32,6 @@ export default function CustomizationsSettings() {
 
 	// custom hook
 	const { customizationsSchema, handelDefaultValue } = useCustomHookCustomizationSettings();
-
-	const formStore = useForm<CustomizationsTypes>({
-		resolver: zodResolver(customizationsSchema),
-		defaultValues: handelDefaultValue(),
-	});
 
 	const handleSubmit = (values: CustomizationsTypes) => {
 		dispatch(postCustomizationsCheckout(values)).then((promiseResponse) => {
@@ -58,11 +59,20 @@ export default function CustomizationsSettings() {
 		});
 	};
 
+	const { formStore, onSubmit } = useForm({
+		schema: customizationsSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
+
 	return (
 		<Form {...formStore}>
-			<form onSubmit={formStore.handleSubmit(handleSubmit)} className='flex-col-global'>
+			<form onSubmit={onSubmit} className='flex-col-global'>
 				<SubHeader title={t('Customizations')}>
-					<SubHeaderDefaultBtns onSubmit={formStore.handleSubmit(handleSubmit)} isLoading={isLoadingAddOrUpdate} />
+					<SubHeaderDefaultBtns
+						onSubmit={onSubmit}
+						isLoading={isLoadingAddOrUpdate}
+					/>
 				</SubHeader>
 				<div className='custom-grid-parent custom_container'>
 					<div className='grid-left flex-col-global gap-5'>
@@ -73,10 +83,9 @@ export default function CustomizationsSettings() {
 					</div>
 				</div>
 				<div className='px-5'>
-					<SubHeaderMobileBtns onSubmit={formStore.handleSubmit(handleSubmit)} />
+					<SubHeaderMobileBtns onSubmit={onSubmit} />
 				</div>
 			</form>
 		</Form>
 	);
 }
-

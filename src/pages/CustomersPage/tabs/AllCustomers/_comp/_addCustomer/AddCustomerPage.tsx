@@ -17,6 +17,7 @@ import useCustomHookAddCustomerForm, {
 import {
 	PostAddCustomerRequest,
 	PutUpdateCustomerRequest,
+	getAllCustomersTable,
 	getCustomerInfo,
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
@@ -66,7 +67,12 @@ const AddCustomerPage = ({ onClose }: { onClose?: () => void }) => {
 			: //   PostAddCustomerRequest
 			  dispatch(PostAddCustomerRequest(values)).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
-						onClose ? onClose() : navigate(-1);
+						if (onClose) {
+							dispatch(getAllCustomersTable());
+							onClose();
+						} else {
+							navigate(-1);
+						}
 					}
 			  });
 	};

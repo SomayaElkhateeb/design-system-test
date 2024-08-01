@@ -11,6 +11,7 @@ import EmailNotification from '../E-mailNotification/EmailNotification';
 import TaxesSettings from '../Taxes/TaxesSettings';
 import Users from '../PermissionsAndUsers/Users';
 import Shipping from '../Shipping/Shipping';
+import PaymentSystem_Methods from '../PaymentSystemSettings/PaymentSystem_Methods';
 
 const SettingsConfig = () => {
 	const { config } = useParams();
@@ -37,6 +38,8 @@ const SettingsConfig = () => {
 			return <TaxesSettings />;
 		case 'notification':
 			return <EmailNotification />;
+			case 'system_payment':
+			return <PaymentSystem_Methods />;
 	}
 };
 

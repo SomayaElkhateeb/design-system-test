@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
-import { Switch } from 'src/app/components/ui/switch';
+import BaseTable, {
+	GlobalTableCell,
+} from 'src/app/components/optimized/TableLayoutGlobal/base.table';
+
+import { shippingMethodsInterface } from 'src/app/interface/settingsInterface/ShippingSettingsInterface';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getShippingList, getShippingMethods } from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
-import { EditIcon } from 'src/app/utils/icons';
-import { images } from 'src/pages/SettingsPage/_comp/data';
+import {
+	getShippingList,
+	getShippingMethods,
+} from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
 
 export default function Shipping() {
 	// hooks
@@ -15,22 +21,67 @@ export default function Shipping() {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { shippingList, isLoading, error } = useAppSelector((state) => state.shippingSettings);
-
-	console.log('shippingLists', shippingList); 
+	const { shippingMethod, isLoading } = useAppSelector((state) => state.shippingSettings);
+	const { shippingList } = useAppSelector((state) => state.shippingSettings);
 
 	useEffect(() => {
+		dispatch(getShippingMethods());
 		dispatch(getShippingList());
 	}, [dispatch]);
 
+	const shippingTableHeaders = [
+		{ title: t('Icon') },
 
+		{ title: t('Shipping method') },
+		{ title: t('Shipping method title') },
 
+		{ title: t('Actions') },
+	];
+
+	//  handel navigation of button dependency on Shipping List status
+	const hndelNavigate = (e: shippingMethodsInterface) => {
+		if (e.method === 'free_free' || e.method === 'flatrate_flatrate') {
+			navigate(`Free_ShippingForm?id=${e.method}`);
+		} else if (e.method === 'mpdhl_mpdhl') {
+			navigate(`Dhl_ShippingForm?id=${e.method}`);
+		}
+	};
+
+	const handelAppearButton = (e: shippingMethodsInterface) => {
+		if (e.method === 'free_free') {
+			if (shippingList.free.method !== e.method) {
+				return (
+					<Button onClick={() => hndelNavigate(e)} variant='primary'>
+						{t('Setup')}
+					</Button>
+				);
+			} else {
+				return <Button variant='primary'>{t('Installed')}</Button>;
+			}
+		} else if (e.method === 'flatrate_flatrate') {
+			if (shippingList.flatrate.method !== e.method) {
+				return (
+					<Button onClick={() => hndelNavigate(e)} variant='primary'>
+						{t('Setup')}
+					</Button>
+				);
+			} else {
+				return <Button variant='primary'>{t('Installed')}</Button>;
+			}
+		} else if (e.method === 'mpdhl_mpdhl') {
+			return (
+				<Button onClick={() => hndelNavigate(e)} variant='primary'>
+					{t('Setup')}
+				</Button>
+			);
+		}
+	};
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Shipping')} />
 
-			<div className='flex-col-global custom_container'>
-				{/* providers */}
+			{/* <div className='flex-col-global custom_container'>
+				
 				<CardShipping
 					title={t('Third party shipping providers')}
 					description={t('Providers that enable you to ship products to your customers')}
@@ -51,7 +102,7 @@ export default function Shipping() {
 						</Button>
 					</div>
 				</CardShipping>
-				{/* methods */}
+				
 				<CardShipping
 					title={t('other methods')}
 					description={t(
@@ -82,34 +133,63 @@ export default function Shipping() {
 						</div>
 					</div>
 				</CardShipping>
+			</div> */}
+			<div className='custom_container'>
+				<BaseTable
+					isLoading={isLoading}
+					color='#55607A'
+					headers={shippingTableHeaders.map((h) => h)}
+					rows={shippingMethod?.map((e: shippingMethodsInterface, i: number) => {
+						return {
+							item: e,
+							elements: [
+								<GlobalTableCell>
+									<div className='flex items-center gap-2'>
+										<div className='box-photo'>
+											<img src={e?.icon} className='w-full h-full' loading='lazy' />
+										</div>
+										<div>
+											{e.code}
+
+											<p className='subtitle text-sm'>{e.description}</p>
+										</div>
+									</div>
+								</GlobalTableCell>,
+								<GlobalTableCell>{e.method}</GlobalTableCell>,
+								<GlobalTableCell>{e.method_title}</GlobalTableCell>,
+								<GlobalTableCell>{handelAppearButton(e)}</GlobalTableCell>,
+							],
+						};
+					})}
+				/>
 			</div>
 		</div>
 	);
 }
 
-function CardShipping({ title, description, buttonLabel, onClick, children }: CardShippingProps) {
-	return (
-		<div className='global-cards gap-2'>
-			<div className='flex-col-global gap-0'>
-				<h2 className='title'>{title}</h2>
-				<p className='text-title text-sm py-3 w-[60%]'>{description}</p>
-			</div>
-			{children}
-			{buttonLabel && (
-				<div>
-					<Button variant='primary' onClick={onClick}>
-						{buttonLabel}
-					</Button>
-				</div>
-			)}
-		</div>
-	);
-}
+// function CardShipping({ title, description, buttonLabel, onClick, children }: CardShippingProps) {
+// 	return (
+// 		<div className='global-cards gap-2'>
+// 			<div className='flex-col-global gap-0'>
+// 				<h2 className='title'>{title}</h2>
+// 				<p className='text-title text-sm py-3 w-[60%]'>{description}</p>
+// 			</div>
+// 			{children}
+// 			{buttonLabel && (
+// 				<div>
+// 					<Button variant='primary' onClick={onClick}>
+// 						{buttonLabel}
+// 					</Button>
+// 				</div>
+// 			)}
+// 		</div>
+// 	);
+// }
 
-interface CardShippingProps {
-	title: string;
-	description: string;
-	buttonLabel?: string;
-	onClick?: () => void;
-	children: React.ReactNode;
-}
+// interface CardShippingProps {
+// 	title: string;
+// 	description: string;
+// 	buttonLabel?: string;
+// 	onClick?: () => void;
+// 	children: React.ReactNode;
+// }

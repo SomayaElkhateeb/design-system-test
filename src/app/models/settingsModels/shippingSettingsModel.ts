@@ -2,7 +2,7 @@ import { ShippingListInterface, shippingMethodsInterface } from 'src/app/interfa
 import { statusGlobal } from '..';
 
 export interface shippingSliceModel extends statusGlobal {
-	shippingList: ShippingListInterface[];
+	shippingList: ShippingListInterface;
 	shippingMethod: shippingMethodsInterface[];
 
 }
