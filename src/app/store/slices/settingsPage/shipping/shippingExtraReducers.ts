@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getShippingList, getShippingMethods } from './shippingAsyncThunks';
+import { getShippingList, getShippingMethods, postFreeShippingMethod} from './shippingAsyncThunks';
 import { shippingSliceModel } from 'src/app/models/settingsModels/shippingSettingsModel';
 
 export const shippingListReducer = (builder: ActionReducerMapBuilder<shippingSliceModel>) => {
@@ -30,5 +30,15 @@ export const shippingListReducer = (builder: ActionReducerMapBuilder<shippingSli
 		.addCase(getShippingMethods.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
-		});
+		})
+		// post Shipping Method
+		.addCase(postFreeShippingMethod.pending, (state) => {
+			state.isLoadingAddOrUpdate = true;
+		})
+		.addCase(postFreeShippingMethod.fulfilled, (state, { payload }) => {
+			state.isLoadingAddOrUpdate = false;
+		})
+		.addCase(postFreeShippingMethod.rejected, (state, action) => {
+			state.isLoadingAddOrUpdate = false;
+		})
 };

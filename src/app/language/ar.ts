@@ -24,6 +24,8 @@ export const arabic = {
 	"Upload Logo":"تحميل الصوره",
 	"code":"الكود",
 	"Shipping method title":"عنوان وسيله الشحن",
+	"Setup Shipping Method":"اشتراك وسيله شحن",
+	"Default Rate":"التقيم الاساسي",
 	"title":"عنوان",
 	"Method":"الوسيله",
 	"Method title":"عنوان الوسيله",

@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import ShippingProviders from './OpenSetup/Providers/ShippingProviders';
 import DeliverYourself from './OpenSetup/Providers/DeliverYourself';
 import SelfPickup from './OpenSetup/Providers/SelfPickup';
+import Free_ShippingForm from './_comp/Free_ShippingForm/Free_ShippingForm';
 
 export default function ShippingConfig() {
 	const { config } = useParams();
@@ -13,5 +14,7 @@ export default function ShippingConfig() {
 			return <DeliverYourself />;
 		case 'selfPickup':
 			return <SelfPickup />;
+		case 'Free_ShippingForm':
+			return <Free_ShippingForm />;
 	}
 }

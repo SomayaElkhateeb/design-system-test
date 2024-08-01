@@ -17,18 +17,20 @@ import { clearData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
 import { PostAddOrder } from 'src/app/store/slices/AddOrderPage/AddOrderAsyncThunks';
 import { useNavigate } from 'react-router-dom';
 import { getMerchantPaymentList } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
+import { getShippingList } from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { Add_Order_Data } = useAppSelector((state) => state.addOrder);
+	
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 		dispatch(getAllProductsTable());
 		dispatch(getMerchantPaymentList());
+		dispatch(getShippingList());
 	}, [dispatch]);
-	
 
 	//  get customer info with id params
 	useEffect(() => {

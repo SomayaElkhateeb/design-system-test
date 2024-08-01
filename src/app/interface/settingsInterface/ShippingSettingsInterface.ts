@@ -6,12 +6,12 @@ interface ShippingMethodFree {
 	description: string;
 }
 
-interface FlatRateShippingMethod extends ShippingMethodFree {
+interface FlatRateShippingMethod extends shippingMethodsInterface {
 	default_rate: string;
 	type: string;
 }
 
-interface MPDHLShippingMethod extends ShippingMethodFree {
+interface MPDHLShippingMethod extends shippingMethodsInterface {
 	type: string;
 	sandbox_mode: string;
 	access_id: string;
@@ -30,8 +30,8 @@ interface MPDHLShippingMethod extends ShippingMethodFree {
 
 // shipping list
 export interface ShippingListInterface {
-	free: ShippingMethodFree;
-	flatrate: FlatRateShippingMethod;
+	free: shippingMethodsInterface;
+	flatrate: shippingMethodsInterface;
 	mpdhl: MPDHLShippingMethod;
 }
 // shipping methods
@@ -41,4 +41,40 @@ export interface shippingMethodsInterface {
 	method_title: string;
 	description: string;
 	icon: string;
+	default_rate: string;
+	type: string;
+}
+
+export const initialShippingMethd = () => {
+	return {
+		free: {
+			code: "",
+			method: "",
+			method_title: "",
+			description: "",
+			icon: "",
+			default_rate: '',
+			type: ''
+		},
+		flatrate: {
+			code: "",
+			method: "",
+			method_title: "",
+			description: "",
+			icon: "",
+			default_rate: '',
+			type: ''
+		},
+		mpdhl: {
+			code: "",
+			method: "",
+			method_title: "",
+			description: "",
+			icon: "",
+			default_rate: '',
+			type: ''
+		}
+
+
+	}
 }
