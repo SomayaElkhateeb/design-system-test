@@ -12,6 +12,7 @@ interface FlatRateShippingMethod extends shippingMethodsInterface {
 }
 
 interface MPDHLShippingMethod extends shippingMethodsInterface {
+	active: number;
 	type: string;
 	sandbox_mode: string;
 	access_id: string;
@@ -26,6 +27,10 @@ interface MPDHLShippingMethod extends shippingMethodsInterface {
 	allowed_country: string;
 	price_exchange_api: string;
 	error_message: string;
+
+
+
+
 }
 
 // shipping list
@@ -66,14 +71,22 @@ export const initialShippingMethd = () => {
 			type: ''
 		},
 		mpdhl: {
-			code: "",
-			method: "",
-			method_title: "",
-			description: "",
-			icon: "",
-			default_rate: '',
-			type: ''
+			type: "string",
+			sandbox_mode: "",
+			access_id: "",
+			password: "",
+			account_number: "",
+			weight_unit: "",
+			dimension_unit: "",
+			content_type: "",
+			allowed_methods: "",
+			ready_time: "",
+			allow_seller: "",
+			allowed_country: "",
+			price_exchange_api: "",
+			error_message: "",
 		}
+
 
 
 	}

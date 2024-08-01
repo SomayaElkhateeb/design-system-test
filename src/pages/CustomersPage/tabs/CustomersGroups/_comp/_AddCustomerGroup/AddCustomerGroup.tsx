@@ -41,23 +41,20 @@ export default function AddCustomerGroup() {
 	const handleSubmit = (values: AddCustomerGroupPageSchemaValues) => {
 		values.code = values.name;
 
-		
-		
 		values.customers = values.customers?.map((e) => e?.id);
 		id
 			? //  case update customer data
-			  dispatch(PutUpdateCustomerGroupRequest({data:values,id})).then((promiseResponse) => {
+			  dispatch(PutUpdateCustomerGroupRequest({ data: values, id })).then((promiseResponse) => {
 					if ((promiseResponse.payload.code = 200)) {
 						navigate(-1);
 					}
 			  })
-
 			: //   Post AddCustomer Group Request
-			dispatch(PostAddCustomerGroupRequest(values)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			});
+			  dispatch(PostAddCustomerGroupRequest(values)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  });
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: AddCustomerGroupPageSchema,
@@ -72,7 +69,9 @@ export default function AddCustomerGroup() {
 			customerGroupItem?.name && formStore.setValue('name', customerGroupItem?.name);
 			customerGroupItem?.description &&
 				formStore.setValue('description', customerGroupItem?.description);
-			customerGroupItem?.status > 0 ? formStore.setValue('status', 1) : formStore.setValue('status', 0);
+			customerGroupItem?.status > 0
+				? formStore.setValue('status', 1)
+				: formStore.setValue('status', 0);
 			customerGroupItem?.customers &&
 				customerGroupItem?.customers?.length > 0 &&
 				formStore.setValue(
@@ -85,9 +84,7 @@ export default function AddCustomerGroup() {
 					}),
 				);
 		}
-
 	}, [id]);
-	
 
 	useEffect(() => {
 		dispatch(getAllCustomersTable());

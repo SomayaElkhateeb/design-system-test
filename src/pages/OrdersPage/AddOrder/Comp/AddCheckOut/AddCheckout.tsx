@@ -25,7 +25,7 @@ export default function AddCheckout({
 	const { formStore, onSubmit, formValues } = useAddCheckOutForm({ onFinish });
 	const { merchantPaymentList } = useAppSelector((state) => state.merchantPaymentSettings);
 	const { shippingList } = useAppSelector((state) => state.shippingSettings);
-
+	console.log(shippingList);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
@@ -109,7 +109,11 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='shipping_method'
 					label={t('Shipping method')}
-					options={[shippingList.free.method, shippingList.flatrate.method]}
+					options={[
+						shippingList.free.method,
+						shippingList.flatrate.method,
+					    shippingList.mpdhl.method,
+					]}
 				/>
 				{/* {formValues.shipping_method === 'DHLRate' && (
 					<>

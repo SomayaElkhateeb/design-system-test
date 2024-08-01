@@ -28,15 +28,16 @@ export default function FormChoiceChips<T extends FieldValues>({
 
 	return (
 		<FormField
+			label={label}
 			formStore={formStore}
 			name={name}
 			render={(field) => (
 				<div className={`grid ${checkoutForm ? 'gap-[.25rem]' : 'gap-2'} col-span-2`}>
-					{label && (
+					{/* {label && (
 						<h3 className={`title  ${checkoutForm ? 'font-normal' : 'font-semibold'}`}>
 							{t(label as any)}
 						</h3>
-					)}
+					)} */}
 					<SingleChoiceChips
 						options={options.map((option) => option)}
 						setSelected={field.onChange}

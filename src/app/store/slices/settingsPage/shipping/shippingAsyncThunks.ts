@@ -27,3 +27,21 @@ export const postFreeShippingMethod = createAsyncThunk(
 			})
 			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
+
+
+
+
+
+// post Dhl Shipping Method 
+export const postDhlShippingMethod = createAsyncThunk(
+	"shippingMethods/postDhlShippingMethod",
+	(payload: FormData) =>
+		PublicRequest.postData(payload, `merchant/settings/shipping/methods/store`)
+			.then((res: any) => {
+				if (res) {
+					toast.success(res?.message);
+					return res;
+				}
+			})
+			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
