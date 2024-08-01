@@ -43,6 +43,7 @@ const StaffPage = () => {
 		'Name A to Z': (a: User, b: User) => a.name.localeCompare(b.name),
 		'Name Z to A': (a: User, b: User) => b.name.localeCompare(a.name),
 	};
+	
 	const { arrangedData: UserArrangedData } = UseCustomTableSorting<User>(
 		sortFunctions,
 		users,

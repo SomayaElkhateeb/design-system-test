@@ -26,7 +26,7 @@ export const taxCategoriesShowReducer = (
 		})
 		.addCase(getTaxCategoriesList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxCategoriesList = payload;
+			state.taxCategoriesList = payload.data;
 		})
 		.addCase(getTaxCategoriesList.rejected, (state, action) => {
 			state.isLoading = false;

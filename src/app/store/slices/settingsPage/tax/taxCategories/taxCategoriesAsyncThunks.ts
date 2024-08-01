@@ -2,7 +2,7 @@ import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
-import { AddTaxCategorySchemaValues } from 'src/app/schema/settings/AddTaxCategorySchema';
+import { TaxCategory } from 'src/pages/SettingsPage/Taxes/taxCategories/_hook/HookTaxCategories';
 
 // get Tax Categories List data
 export const getTaxCategoriesList = createAsyncThunk('taxCategories/getTaxCategoriesList', () =>
@@ -18,7 +18,7 @@ export const getTaxCategoriesShow = createAsyncThunk(
 // create tax category 
 export const createTaxCategory = createAsyncThunk(
 	"taxCategories/createTaxCategory",
-	(payload: AddTaxCategorySchemaValues) =>
+	(payload: TaxCategory) =>
 		PublicRequest.postData(payload, `merchant/settings/tax-categories`)
 			.then((res: any) => {
 				if (res) {
@@ -32,7 +32,7 @@ export const createTaxCategory = createAsyncThunk(
 // update tax category
 export const updateTaxCategory = createAsyncThunk(
 	'taxCategories/updateTaxCategory',
-	(payload: { data: AddTaxCategorySchemaValues, id: string }) =>
+	(payload: { data: TaxCategory, id: string }) =>
 		PublicRequest.putData(payload.data, `merchant/settings/tax-categories/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {
