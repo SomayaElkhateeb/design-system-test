@@ -27,6 +27,7 @@ import { InventoryInterface } from 'src/app/interface/InventoryInterface';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
+import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 
 interface simpleProductInterface {
 	name: string;
@@ -46,6 +47,7 @@ const simpleProductSchema = {
 	inventories: z.string().min(1, 'inventories is required'),
 	images: z.instanceof(File),
 	type: z.optional(z.string()).or(z.literal('')),
+	status: z.number(),
 };
 export type AddsimpleProductSchemaSchemaValues = InferredZodSchema<typeof simpleProductSchema>;
 
@@ -76,7 +78,8 @@ const SimpleProductForm = ({
 			formData.append('categories[]', values.category);
 			formData.append('images[files][]', values.images);
 			formData.append('type', 'simple');
-			values.quy && formData.append(`inventories[${values.inventories}]`, values.quy);
+			formData.append('status', values.status);
+			values.quy && formData.append(`inventories[${values.inventories}]`, values.quy.toString());
 
 			if (edit_product?.price) {
 				dispatch(PostUpdateQuickProduct({ data: formData, id: edit_product?.id })).then(
@@ -105,6 +108,7 @@ const SimpleProductForm = ({
 			images: undefined,
 			category: '',
 			inventories: '',
+			status: 0,
 		},
 	});
 
@@ -123,6 +127,7 @@ const SimpleProductForm = ({
 			formStore.setValue('price', Number(edit_product?.price));
 			formStore.setValue('sku', edit_product?.sku);
 			formStore.setValue('quy', Number(edit_product?.qty));
+			edit_product.status > 0 ? formStore.setValue('status', 1) : formStore.setValue('status', 0);
 			edit_product?.inventory_sources?.length > 0 &&
 				edit_product?.inventory_sources[0] &&
 				formStore.setValue(
@@ -134,6 +139,10 @@ const SimpleProductForm = ({
 				formStore.setValue('category', edit_product?.categories[0]?.toString());
 		}
 	}, [edit_product]);
+
+	useEffect(() => {
+		formStore.setValue('status', formStore.watch('status') ? 1 : 0);
+	}, [formStore.watch('status')]);
 
 	return (
 		<div className='flex-col-global gap-6'>
@@ -149,7 +158,6 @@ const SimpleProductForm = ({
 						</div>
 
 						<div className='col-span-10 grid grid-cols-1 lg:grid-cols-12 gap-4'>
-							
 							<TabbedFormField
 								container={{ className: 'col-span-6 lg:col-span-3 lg:-translate-y-6' }}
 								formStore={formStore}
@@ -157,7 +165,6 @@ const SimpleProductForm = ({
 									{ name: 'nameEn', label: 'En' },
 									{ name: 'nameAr', label: 'عربي' },
 								]}
-								
 								renderer={(field) => (
 									<Input
 										placeholder={`${t('Product Name')} (${t('Required')})`}
@@ -218,6 +225,7 @@ const SimpleProductForm = ({
 									placeholder={t('Select Category')}
 								/>
 							)}
+
 							{inventory?.length > 0 && (
 								<SelectFormField
 									className='col-span-6'
@@ -232,8 +240,21 @@ const SimpleProductForm = ({
 									placeholder={t('Select Inventory')}
 								/>
 							)}
+
+							<div className='flex-col-global gap-2'>
+								<p>{t('STATUS')}</p>
+								<div className='flex-row-global gap-2'>
+									<FormSwitchField<AddsimpleProductSchemaSchemaValues>
+										formStore={formStore}
+										name='status'
+										enable
+									/>
+									<p>{formStore.watch('status') ? 'On' : 'Off'}</p>
+								</div>
+							</div>
 						</div>
 					</div>
+
 					{openDialog && (
 						<AddCategoryForm
 							openDialog={openDialog}

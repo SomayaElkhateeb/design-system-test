@@ -6,6 +6,7 @@ export interface AllProductsStatus {
 	allProducts: Product[];
 	isLoading: boolean;
 	error: string | null | unknown;
+	isLoadingAddOrUpdate:boolean
 }
 
 const initialState: AllProductsStatus = {
