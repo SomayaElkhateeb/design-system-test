@@ -4,8 +4,8 @@ import { taxCategoriesShowReducer } from './taxCategoriesExtraReducer';
 import { taxCategoriesSettingsSliceModel } from 'src/app/models/settingsModels/taxCategorySettingsModel';
 
 const initialState: taxCategoriesSettingsSliceModel = {
-	taxCategoriesShow: [],
 	taxCategoriesList: [],
+	taxCategoriesShow: null,
 	isLoadingAddOrUpdate: false,
 	isLoading: false,
 	error: null,

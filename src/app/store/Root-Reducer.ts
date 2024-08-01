@@ -20,11 +20,11 @@ import categoriesTable from './slices/productsPage/categories/categoriesTable/ca
 import subCategories from './slices/productsPage/categories/subCategoriesTable/subCategoriesSlice';
 import allOrders from './slices/ordersPage/allOrders/allOrdersSlice';
 
+import AddOrderSlice from './slices/AddOrderPage/AddOrderSlice';
 import AddresseCustomersSlice from './slices/customersPage/AddresseCustomer/AddresseCustomersSlice';
 
 // imports settings page
 import shippingSettings from './slices/settingsPage/shipping/shippingSlice';
-import taxSettings from './slices/settingsPage/tax/taxCategories/taxCategriesSlice';
 import usersSettings from './slices/settingsPage/users/usersSlice';
 import rolesSettings from './slices/settingsPage/roles/rolesSlice';
 import helpSettings from './slices/settingsPage/help/helpSlice';
@@ -32,7 +32,8 @@ import emailNotificationSettings from './slices/settingsPage/emailNotification/e
 import merchantPaymentSettings from './slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentSlice';
 import paymentMethods from './slices/settingsPage/payment/paymentMethods/paymentMethodsSlice';
 import configurations from './slices/settingsPage/configurations/configurationsSlice';
-import AddOrderSlice from './slices/AddOrderPage/AddOrderSlice';
+import taxCategorySettings from './slices/settingsPage/tax/taxCategories/taxCategoriesSlice';
+import taxRateSettings from './slices/settingsPage/tax/taxRates/taxRateSlice';
 
 
 export const rootReducer = combineReducers({
@@ -65,7 +66,8 @@ export const rootReducer = combineReducers({
 	addOrder: AddOrderSlice,
 	// settings page
 	shippingSettings: shippingSettings,
-	taxSettings: taxSettings,
+	taxCategorySettings:taxCategorySettings,
+	taxRateSettings:taxRateSettings,
 	usersSettings: usersSettings,
 	rolesSettings: rolesSettings,
 	merchantPaymentSettings: merchantPaymentSettings,
