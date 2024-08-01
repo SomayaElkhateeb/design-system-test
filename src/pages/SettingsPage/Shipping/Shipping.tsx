@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, SubHeader } from 'src/app/components/optimized';
@@ -8,7 +9,10 @@ import BaseTable, {
 
 import { shippingMethodsInterface } from 'src/app/interface/settingsInterface/ShippingSettingsInterface';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getShippingMethods } from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
+import {
+	getShippingList,
+	getShippingMethods,
+} from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
 
 export default function Shipping() {
 	// hooks
@@ -18,9 +22,11 @@ export default function Shipping() {
 	// redux
 	const dispatch = useAppDispatch();
 	const { shippingMethod, isLoading } = useAppSelector((state) => state.shippingSettings);
+	const { shippingList } = useAppSelector((state) => state.shippingSettings);
 
 	useEffect(() => {
 		dispatch(getShippingMethods());
+		dispatch(getShippingList());
 	}, [dispatch]);
 
 	const shippingTableHeaders = [
@@ -32,6 +38,33 @@ export default function Shipping() {
 
 		{ title: t('Actions') },
 	];
+
+	//  handel navigation of button dependency on Shipping List status
+	const hndelNavigate = (e: shippingMethodsInterface) => {
+		if (e.method === 'free_free') {
+			if (shippingList.free.method !== e.method) {
+				navigate(`Free_ShippingForm?id=${e.method}`);
+			} else {
+				toast.error('You Aare Alreadey Registered in This method Before');
+			}
+		} else if (e.method === 'flatrate_flatrate') {
+			if (shippingList.flatrate.method !== e.method) {
+				navigate(`Free_ShippingForm?id=${e.method}`);
+			} else {
+				toast.error('You Aare Alreadey Registered in This method Before');
+			}
+		} else if (e.method === 'mpdhl_mpdhl') {
+			navigate(`Dhl_ShippingForm?id=${e.method}`);
+		}
+	};
+
+	const handelAppearButton = (e: shippingMethodsInterface) => {
+		return (
+			<Button onClick={() => hndelNavigate(e)} variant='primary'>
+				{t('Setup')}
+			</Button>
+		);
+	};
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Shipping')} />
@@ -104,16 +137,11 @@ export default function Shipping() {
 								</div>
 							</GlobalTableCell>,
 
-							<GlobalTableCell>{e.method_title}</GlobalTableCell>,
 							<GlobalTableCell>{e.code}</GlobalTableCell>,
 							<GlobalTableCell>{e.description}</GlobalTableCell>,
 							<GlobalTableCell>{e.method}</GlobalTableCell>,
-							<GlobalTableCell>
-								<Button onClick={() => {}} variant='primary'>
-									{t('Setup')}
-								</Button>
-							</GlobalTableCell>,
-							// <GlobalTableCell></GlobalTableCell>,
+							<GlobalTableCell>{e.method_title}</GlobalTableCell>,
+							<GlobalTableCell>{handelAppearButton(e)}</GlobalTableCell>,
 						],
 					};
 				})}

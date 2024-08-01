@@ -864,6 +864,8 @@ export const english = {
 	'SAR 20': 'SAR 20',
 	'SAR 30 and up': 'SAR 30 and up',
 	Setup: 'Setup',
+	"Setup Shipping Method":"Setup Shipping Method",
+	"Default Rate":"Default Rate",
 	'delete rate': 'delete rate',
 	Standard: 'Standard',
 	Order: 'Order',

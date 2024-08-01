@@ -24,6 +24,8 @@ export default function AddCheckout({
 
 	const { formStore, onSubmit, formValues } = useAddCheckOutForm({ onFinish });
 	const { merchantPaymentList } = useAppSelector((state) => state.merchantPaymentSettings);
+	const { shippingList } = useAppSelector((state) => state.shippingSettings);
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
@@ -54,12 +56,19 @@ export default function AddCheckout({
 					label={t('Payment methods')}
 					options={merchantPaymentList?.map((e) => e.payment_method.method)}
 				/>
-				<SelectFormField
+				{/* <SelectFormField
 					name='status'
 					label={t('Order status')}
 					formStore={formStore}
 					options={branches}
 					placeholder={t('Select option')}
+				/> */}
+				<FormChoiceChips<AddCheckOutFormValues>
+					checkoutForm
+					formStore={formStore}
+					name='status'
+					label={t('Order status')}
+					options={['completed']}
 				/>
 				{/* {formValues.payment_method === 'PapPal' && (
 					<>
@@ -100,7 +109,7 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='shipping_method'
 					label={t('Shipping method')}
-					options={['DHLRate', 'Aramex']}
+					options={[shippingList.free.method, shippingList.flatrate.method]}
 				/>
 				{/* {formValues.shipping_method === 'DHLRate' && (
 					<>

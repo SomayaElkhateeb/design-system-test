@@ -24,7 +24,7 @@ export interface AddCheckOutFormValues {
 	// aramexNote?: string;
 }
 const defaultValues: AddCheckOutFormValues = {
-	purchase_method: 'branch',
+	purchase_method: 'online',
 	branch: '',
 	payment_method: '',
 	status: '',
@@ -33,9 +33,9 @@ const defaultValues: AddCheckOutFormValues = {
 	// creditCardOption: '',
 	// creditCardNote: '',
 	delivery_method: 'pickup',
-	shipping_rate: 'free shipping',
+	shipping_rate: '',
 	// fixedRate: '',
-	shipping_method: 'DHLRate',
+	shipping_method: '',
 	// aramex: '',
 	// dhlStatus: '',
 	// dhlNote: '',
@@ -46,10 +46,10 @@ const defaultValues: AddCheckOutFormValues = {
 export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void }) {
 	const dispatch = useAppDispatch();
 	const [formValues, setFormValues] = useState<AddCheckOutFormValues>({
-		purchase_method: 'branch',
+		purchase_method: 'online',
 		payment_method: '',
 		delivery_method: 'pickup',
-		shipping_method: 'DHLRate',
+		shipping_method: '',
 		status: '',
 	});
 

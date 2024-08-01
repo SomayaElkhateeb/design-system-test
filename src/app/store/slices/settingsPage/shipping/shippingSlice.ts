@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { shippingListReducer } from './shippingExtraReducers';
 import { shippingSliceModel } from 'src/app/models/settingsModels/shippingSettingsModel';
+import { initialShippingMethd } from 'src/app/interface/settingsInterface/ShippingSettingsInterface';
 
 const initialState: shippingSliceModel = {
-	shippingList: [],
+	shippingList: initialShippingMethd(),
 	shippingMethod: [],
 	isLoading: false,
+	isLoadingAddOrUpdate: false,
 	error: null,
 };
 
