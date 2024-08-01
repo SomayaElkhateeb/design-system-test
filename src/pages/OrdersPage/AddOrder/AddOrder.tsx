@@ -31,6 +31,8 @@ export default function AddOrder() {
 		dispatch(getMerchantPaymentList());
 		dispatch(getShippingList());
 	}, [dispatch]);
+	const { shippingList } = useAppSelector((state) => state.shippingSettings);
+console.log(shippingList)
 
 	//  get customer info with id params
 	useEffect(() => {

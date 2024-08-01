@@ -57,7 +57,7 @@ const AllProducts: React.FC = () => {
 	}, [dispatch]);
 	const dialogStyle = {
 		width: { lg: '1150px', md: '700px', xs: '375px' },
-		height: { md: '45vh', xs: '90vh' },
+		height: { md: '60vh', xs: '90vh' },
 	};
 	const handleClose = (status: boolean) => {
 		setOpenDialog(status);

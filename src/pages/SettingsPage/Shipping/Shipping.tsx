@@ -43,7 +43,7 @@ export default function Shipping() {
 		if (e.method === 'free_free' || e.method === 'flatrate_flatrate') {
 			navigate(`Free_ShippingForm?id=${e.method}`);
 		} else if (e.method === 'mpdhl_mpdhl') {
-			navigate(`Dhl_ShippingForm?id=${e.method}`);
+			navigate(`Dhl_ShippingForm`);
 		}
 	};
 
@@ -69,11 +69,15 @@ export default function Shipping() {
 				return <Button variant='primary'>{t('Installed')}</Button>;
 			}
 		} else if (e.method === 'mpdhl_mpdhl') {
-			return (
-				<Button onClick={() => hndelNavigate(e)} variant='primary'>
-					{t('Setup')}
-				</Button>
-			);
+			if (Number(shippingList.mpdhl.active) > 0) {
+				return <Button variant='primary'>{t('Installed')}</Button>;
+			} else {
+				return (
+					<Button onClick={() => hndelNavigate(e)} variant='primary'>
+						{t('Setup')}
+					</Button>
+				);
+			}
 		}
 	};
 	return (
