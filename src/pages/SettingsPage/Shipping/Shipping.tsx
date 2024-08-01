@@ -31,8 +31,7 @@ export default function Shipping() {
 
 	const shippingTableHeaders = [
 		{ title: t('Icon') },
-		{ title: t('code') },
-		{ title: t('Description') },
+
 		{ title: t('Shipping method') },
 		{ title: t('Shipping method title') },
 
@@ -41,29 +40,41 @@ export default function Shipping() {
 
 	//  handel navigation of button dependency on Shipping List status
 	const hndelNavigate = (e: shippingMethodsInterface) => {
-		if (e.method === 'free_free') {
-			if (shippingList.free.method !== e.method) {
-				navigate(`Free_ShippingForm?id=${e.method}`);
-			} else {
-				toast.error('You Aare Alreadey Registered in This method Before');
-			}
-		} else if (e.method === 'flatrate_flatrate') {
-			if (shippingList.flatrate.method !== e.method) {
-				navigate(`Free_ShippingForm?id=${e.method}`);
-			} else {
-				toast.error('You Aare Alreadey Registered in This method Before');
-			}
+		if (e.method === 'free_free' || e.method === 'flatrate_flatrate') {
+			navigate(`Free_ShippingForm?id=${e.method}`);
 		} else if (e.method === 'mpdhl_mpdhl') {
 			navigate(`Dhl_ShippingForm?id=${e.method}`);
 		}
 	};
 
 	const handelAppearButton = (e: shippingMethodsInterface) => {
-		return (
-			<Button onClick={() => hndelNavigate(e)} variant='primary'>
-				{t('Setup')}
-			</Button>
-		);
+		if (e.method === 'free_free') {
+			if (shippingList.free.method !== e.method) {
+				return (
+					<Button onClick={() => hndelNavigate(e)} variant='primary'>
+						{t('Setup')}
+					</Button>
+				);
+			} else {
+				return <Button variant='primary'>{t('Installed')}</Button>;
+			}
+		} else if (e.method === 'flatrate_flatrate') {
+			if (shippingList.flatrate.method !== e.method) {
+				return (
+					<Button onClick={() => hndelNavigate(e)} variant='primary'>
+						{t('Setup')}
+					</Button>
+				);
+			} else {
+				return <Button variant='primary'>{t('Installed')}</Button>;
+			}
+		} else if (e.method === 'mpdhl_mpdhl') {
+			return (
+				<Button onClick={() => hndelNavigate(e)} variant='primary'>
+					{t('Setup')}
+				</Button>
+			);
+		}
 	};
 	return (
 		<div className='flex-col-global'>
@@ -123,29 +134,35 @@ export default function Shipping() {
 					</div>
 				</CardShipping>
 			</div> */}
-			<BaseTable
-				isLoading={isLoading}
-				color='#55607A'
-				headers={shippingTableHeaders.map((h) => h)}
-				rows={shippingMethod?.map((e: shippingMethodsInterface, i: number) => {
-					return {
-						item: e,
-						elements: [
-							<GlobalTableCell>
-								<div className='box-photo'>
-									<img src={e?.icon} className='w-full h-full' loading='lazy' />
-								</div>
-							</GlobalTableCell>,
+			<div className='custom_container'>
+				<BaseTable
+					isLoading={isLoading}
+					color='#55607A'
+					headers={shippingTableHeaders.map((h) => h)}
+					rows={shippingMethod?.map((e: shippingMethodsInterface, i: number) => {
+						return {
+							item: e,
+							elements: [
+								<GlobalTableCell>
+									<div className='flex items-center gap-2'>
+										<div className='box-photo'>
+											<img src={e?.icon} className='w-full h-full' loading='lazy' />
+										</div>
+										<div>
+											{e.code}
 
-							<GlobalTableCell>{e.code}</GlobalTableCell>,
-							<GlobalTableCell>{e.description}</GlobalTableCell>,
-							<GlobalTableCell>{e.method}</GlobalTableCell>,
-							<GlobalTableCell>{e.method_title}</GlobalTableCell>,
-							<GlobalTableCell>{handelAppearButton(e)}</GlobalTableCell>,
-						],
-					};
-				})}
-			/>
+											<p className='subtitle text-sm'>{e.description}</p>
+										</div>
+									</div>
+								</GlobalTableCell>,
+								<GlobalTableCell>{e.method}</GlobalTableCell>,
+								<GlobalTableCell>{e.method_title}</GlobalTableCell>,
+								<GlobalTableCell>{handelAppearButton(e)}</GlobalTableCell>,
+							],
+						};
+					})}
+				/>
+			</div>
 		</div>
 	);
 }
