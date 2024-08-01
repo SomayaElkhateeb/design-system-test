@@ -78,7 +78,7 @@ const SimpleProductForm = ({
 			formData.append('categories[]', values.category);
 			formData.append('images[files][]', values.images);
 			formData.append('type', 'simple');
-			formData.append('status', values.status);
+			formData.append('status', values.status.toString());
 			values.quy && formData.append(`inventories[${values.inventories}]`, values.quy.toString());
 
 			if (edit_product?.price) {
