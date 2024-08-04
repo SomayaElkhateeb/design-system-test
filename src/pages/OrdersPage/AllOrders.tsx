@@ -3,13 +3,20 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AllOrdersTableMobile from './_comp/AllOrdersTableMobile';
 import AllOrdersTable from './_comp/AllOrdersTable';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import TopSectionOrdersPage from './_comp/TopSectionOrdersPage';
 import { nanoid } from 'nanoid';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getAllOrdersPageTable } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
+import {
+	CancelOrder,
+	getAllOrdersPageTable,
+} from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
+import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
+import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
 
 //  setting menus for setting button action
 const settingMenus = [
@@ -21,6 +28,7 @@ export default function AllOrders() {
 	const { t } = useTranslation();
 	const [array, setArray] = useState<string[]>([]);
 	const { xs } = useResponsive();
+	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 	//redux
 	const dispatch = useAppDispatch();
 	const { allOrders, isLoading } = useAppSelector((state) => state.allOrders);
@@ -29,22 +37,87 @@ export default function AllOrders() {
 		dispatch(getAllOrdersPageTable());
 	}, [dispatch]);
 
+	//  handel deleteItem
+	const {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	} = UseDeleteItem();
+	// Delete customer
+
+	const handelCancelOrder = () => {
+		dispatch(CancelOrder({ id: custom_Id })).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				handelCloseDeleteDialog();
+				dispatch(getAllOrdersPageTable());
+			}
+		});
+	};
+	useMemo(() => {
+		switch (selectedOption) {
+			// case 'Bulk edit':
+			// 	navigate('');
+			// 	break;
+			case 'Cancel Order':
+				handelOpenDialog();
+				setSelectedOption('');
+				break;
+			
+			// case 'Export customers':
+			// 	dispatch(getExportCustomers()).then((response: any) => {
+			// 		ActionHandler.exportToExcelFromApi(response.payload, 'customers');
+			// 	});
+			// 	setSelectedOption('');
+			// 	break;
+			// case 'delete customers':
+			// 	setSelectedOption('');
+			// 	CustomersArrangedData?.length > 0
+			// 		? dispatch(deleteAllCustomersAction({ indexes: allCustomersIds })).then(
+			// 				(response: any) => {
+			// 					if (response.payload.code === 200) {
+			// 						dispatch(getAllCustomersTable());
+			// 					}
+			// 				},
+			// 		  )
+			// 		: toast.error('there are no customers');
+			// 	break;
+			// case 'Import customers':
+			// 	setOpenExportDialog(true);
+			// 	setSelectedOption('');
+			// 	break;
+		}
+	}, [selectedOption, custom_Id]);
+
 	return (
 		<div className='custom_container pt-5'>
 			<div className='flex-col-global'>
 				{/*  top section */}
-				<TopSectionOrdersPage addButton={t('Add Order')} path='/addOrder' />
+				<TopSectionOrdersPage
+					selectedOption={selectedOption}
+					handelSelect={handleSelect}
+					addButton={t('Add Order')}
+					path='/addOrder'
+				/>
 
 				{/*  table section */}
 
 				{!xs && (
 					<AllOrdersTable
-						settingMenus={settingMenus}
+						handelId={handelId}
 						array={array}
 						setArray={setArray}
 						orders={allOrders}
 						isLoading={isLoading}
-					/>
+					>
+						<ThreeDotsButton
+							sortMenus={settingMenus}
+							selectedOption={selectedOption}
+							handelSelect={handleSelect}
+						/>
+					</AllOrdersTable>
 				)}
 
 				{xs && (
@@ -54,6 +127,16 @@ export default function AllOrders() {
 					</div>
 				)}
 			</div>
+			{/* openDeleteDialog */}
+			{openDeleteDialog && (
+				<PopupDelete
+					open={openDeleteDialog}
+					onClose={handelCloseDeleteDialog}
+					title={t('Cancel Order')}
+					subTitle={t('Do You Want To Cancel This Order')}
+					onDelete={handelCancelOrder}
+				/>
+			)}
 		</div>
 	);
 }

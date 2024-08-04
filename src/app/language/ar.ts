@@ -1061,6 +1061,8 @@ export const arabic = {
 	"content type":"نوع المحتوي",
 	"allowed country":"المدن المسموح بها",
 	"allowed methods":"الوسائل المسموح بها",
+	"Cancel Order":"الغاء الطلب",
+	"Do You Want To Cancel This Order":"هل تريد الغاء الطلب",
 	"password": "password",
 	'Add more advanced shipping options': 'إضافة المزيد من خيارات الشحن المتقدمة',
 	'e.g., T-Shirt, Clothes, Fashion': 'على سبيل المثال، القمصان والملابس والأزياء',

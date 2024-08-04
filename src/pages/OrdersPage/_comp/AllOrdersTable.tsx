@@ -24,22 +24,24 @@ export default function AllOrdersTable({
 	orders,
 	array,
 	setArray,
-	settingMenus,
+	children,
+	handelId,
 	isLoading,
 }: {
 	orders: OrderInterface[];
 	array: string[];
 	setArray: (e: string[]) => void;
-	settingMenus: menuType[];
+	children: React.ReactNode;
+	handelId: (e: string) => void;
+
 	isLoading: boolean;
 }) {
 	//  hooks
 	const { language } = useLanguage();
-	const navigate = useNavigate();
+	
 	const { t } = useTranslation();
 	const classData = actionsButtonStyle();
 	//  custom hook for select setting item
-	const { selectedOption, handleSelect } = useSelectBox();
 
 	//  headers
 	const OrdersHeaders = [
@@ -115,11 +117,7 @@ export default function AllOrdersTable({
 									onClick={() => navigate(`/addProduct?id=${e?.id}`)}
 								/> */}
 
-								<ThreeDotsButton
-									sortMenus={settingMenus}
-									selectedOption={selectedOption}
-									handelSelect={handleSelect}
-								/>
+								<div onClick={() => handelId(e?.id)}>{children}</div>
 								<ArrowTables path='/orders/orderDetails/11111' />
 							</div>
 						</TableCell>,

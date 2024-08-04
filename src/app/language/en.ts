@@ -1080,6 +1080,8 @@ export const english = {
 	'Dimension unit': 'Dimension unit',
 	"allowed country":"allowed country",
 	"allowed methods":"allowed methods",
+	"Cancel Order":"Cancel Order",
+	"Do You Want To Cancel This Order":"Do You Want To Cancel This Order",
 	'Add more advanced shipping options': 'Add more advanced shipping options',
 	'e.g., T-Shirt, Clothes, Fashion': 'e.g., T-Shirt, Clothes, Fashion',
 	'Answer questions people frequently ask about your product':

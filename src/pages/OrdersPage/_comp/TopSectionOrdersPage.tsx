@@ -31,12 +31,12 @@ export default function TopSectionOrdersPage({
 	const sortMenus = [
 		{ id: nanoid(), text: 'Name A to Z' },
 		{ id: nanoid(), text: 'Name Z to A' },
-		{ id: nanoid(), text: 'SKU Ascending' },
-		{ id: nanoid(), text: 'SKU Descending' },
-		{ id: nanoid(), text: 'Price Low in first' },
-		{ id: nanoid(), text: 'Price High in first' },
-		{ id: nanoid(), text: 'Date Added' },
-		{ id: nanoid(), text: 'Date modified' },
+		// { id: nanoid(), text: 'SKU Ascending' },
+		// { id: nanoid(), text: 'SKU Descending' },
+		// { id: nanoid(), text: 'Price Low in first' },
+		// { id: nanoid(), text: 'Price High in first' },
+		// { id: nanoid(), text: 'Date Added' },
+		// { id: nanoid(), text: 'Date modified' },
 	];
 
 	const ActionsMenus = [
@@ -46,9 +46,13 @@ export default function TopSectionOrdersPage({
 	];
 
 	const StatusMenus = [
-		{ id: nanoid(), text: 'All Orders' },
-		{ id: nanoid(), text: 'Cancelled Orders' },
-		{ id: nanoid(), text: 'Delivered Orders' },
+		{ id: nanoid(), text: 'pending' },
+		{ id: nanoid(), text: 'canceled' },
+		{ id: nanoid(), text: 'processing' },
+		{ id: nanoid(), text: 'approved' },
+		{ id: nanoid(), text: 'closed' },
+		{ id: nanoid(), text: 'completed' },
+		
 	];
 
 	return (
