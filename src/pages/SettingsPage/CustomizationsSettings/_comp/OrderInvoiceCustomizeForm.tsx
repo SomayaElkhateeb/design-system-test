@@ -1,13 +1,37 @@
-import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { CustomizationsTypes } from '../_hook/HookForCustomizationSettings';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'src/app/utils/hooks/form';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect } from 'react';
-export default function OrderInvoiceCustomizeForm({ formStore }: { formStore: UseFormReturn<CustomizationsTypes> }) {
-	const { t } = useTranslation();
+import useCustomHookOrderCustomize, { OrderCustomize } from '../_hook/HookOrderInvoiceCustomize';
+import { postCustomizationOrderInvoice } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 
+export default function OrderInvoiceCustomizeForm({ onSubmit }:{onSubmit: (data: OrderCustomize) => void}) {
+	// hooks
+	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
+
+	// custom hook
+	const {handelDefaultValue, OrderCustomizeSchema} = useCustomHookOrderCustomize();
+
+	const handleSubmit = (values: OrderCustomize) => {
+		dispatch(postCustomizationOrderInvoice(values)).then((promiseResponse) => {
+			if (promiseResponse.payload.code === 200) {
+				navigate(-1);
+			}
+		});
+		onSubmit(values);
+	};
+	const { formStore } = useForm({
+		schema: OrderCustomizeSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	})
 	useEffect(() => {
 		formStore.setValue(
 			'customizations.order_invoice.show_tax_number',
@@ -50,7 +74,7 @@ export default function OrderInvoiceCustomizeForm({ formStore }: { formStore: Us
 				<h2 className='title  mb-2'>{t('Order invoice')}</h2>
 				<p className='paragraph'>{t('Customize invoice sent to customers')}</p>
 			</div>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<OrderCustomize>
 				formStore={formStore}
 				name='customizations.order_invoice.show_tax_number'
 				label='Show tax number'
@@ -64,26 +88,27 @@ export default function OrderInvoiceCustomizeForm({ formStore }: { formStore: Us
 					render={(field) => <Input type='number' {...field} />}
 				/>
 			</div>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<OrderCustomize>
 				formStore={formStore}
 				name='customizations.order_invoice.hide_product_images'
 				label='Hide product images'
 			/>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<OrderCustomize>
 				formStore={formStore}
 				name='customizations.order_invoice.show_products_description'
 				label='Show products description'
 			/>
-			<FormSwitchField<CustomizationsTypes> 
+			<FormSwitchField<OrderCustomize> 
 				formStore={formStore} 
 				name='customizations.order_invoice.show_sku' 
 				label='Show SKU' 
 			/>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<OrderCustomize>
 				formStore={formStore}
 				name='customizations.order_invoice.show_contacts'
 				label='Show contacts'
 			/>
 		</div>
 	);
+
 }
