@@ -26,14 +26,14 @@ export default function OrderNo() {
 			<div className='col-span-3 flex-col-global sm:gap-2 gap-0 subtitle '>
 				<div className={flexClass}>
 					<p>{t('payment status')}:</p>
-					<button onClick={() => setShowOrderStatus(true)} className='flex md:text-[1.1rem] text-[.8rem]  text-warning capitalize'>
+					<button onClick={() => setShowOrderStatus(true)} className='flex md:text-[1rem] text-[.8rem]  text-warning capitalize'>
 						{t('awaiting payment')} <DownIcon className='fill-warning' />
 					</button>
 				</div>
 
 				<div className={flexClass}>
 					<p>{t('order status')}:</p>
-					<button onClick={() => setShowOrderStatus(true)} className='flex md:text-[1.1rem] text-[.8rem] capitalize text-title'>
+					<button onClick={() => setShowOrderStatus(true)} className='flex md:text-[1rem] text-[.8rem] capitalize text-title'>
 						{ordderItem?.status} <DownIcon className='fill-hint' />
 					</button>
 				</div>

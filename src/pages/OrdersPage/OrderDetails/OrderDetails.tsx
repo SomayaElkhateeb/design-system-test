@@ -9,7 +9,6 @@ import { Button, SubHeader } from 'src/app/components/optimized';
 import ContactCard from 'src/app/components/optimized/Cards/ContactCard';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import { EditIcon, LocationIcon } from 'src/app/utils/icons';
-import { contact } from 'src/pages/SettingsPage/_comp/data';
 
 import OrderNo from './OrderNo';
 import OrderItems from './OrderItems';
@@ -23,6 +22,8 @@ import CustomerForm from './Forms/CustomerForm';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useParams } from 'react-router-dom';
 import { getOrderInfo } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
+import { FiPhoneCall } from 'react-icons/fi';
+import { TfiEmail, TfiWorld } from 'react-icons/tfi';
 export default function OrderDetails() {
 	const { t } = useTranslation();
 	const { id } = useParams();
@@ -35,13 +36,14 @@ export default function OrderDetails() {
 	});
 	//  selectors
 	const { ordderItem } = useAppSelector((state) => state.allOrders);
-	
+
 	const { showCustomer, showAddress, showCheckout } = state;
 
 	const handleCustomerForm = () => {
 		setState({ ...state, showCustomer: !showCustomer });
 	};
 	const handleAddressForm = () => {
+		console.log(showAddress)
 		setState({ ...state, showAddress: !showAddress });
 	};
 	const handleChckOutFormForm = () => {
@@ -49,13 +51,14 @@ export default function OrderDetails() {
 	};
 
 	// data
+	console.log(ordderItem.shipping_address);
 	const address = [
-		{ id: nanoid(), name: t('Country'), value: 'Saudi Arabia' },
-		{ id: nanoid(), name: t('City'), value: 'Riyadh' },
-		{ id: nanoid(), name: t('Area'), value: 'Al Jazera' },
-		{ id: nanoid(), name: t('Street'), value: 'Haroon Al Rashied' },
-		{ id: nanoid(), name: t('Building No'), value: 15 },
-		{ id: nanoid(), name: t('Landmark'), value: 'Meed Market' },
+		{ id: nanoid(), name: t('Country'), value: ordderItem.shipping_address.country_name },
+		{ id: nanoid(), name: t('City'), value: ordderItem.shipping_address.city },
+		{ id: nanoid(), name: t('Area'), value: ordderItem.shipping_address.state },
+		{ id: nanoid(), name: t('Street'), value: ordderItem.shipping_address.street },
+		{ id: nanoid(), name: t('Building No'), value: ordderItem.shipping_address.building },
+		{ id: nanoid(), name: t('Landmark'), value: ordderItem.shipping_address.landmark },
 	];
 
 	const info = [
@@ -94,6 +97,24 @@ export default function OrderDetails() {
 			dispatch(getOrderInfo(id));
 		}
 	}, [id, dispatch]);
+
+	const CustomerContact = [
+		{
+			id: nanoid(),
+			contact: `${ordderItem?.customer_first_name} ${ordderItem?.customer_last_name} `,
+			icon: <TfiWorld color='#8791A8' size={15} />,
+		},
+		{
+			id: nanoid(),
+			contact: ordderItem?.customer_email,
+			icon: <TfiEmail color='#8791A8' size={15} />,
+		},
+		{
+			id: nanoid(),
+			contact: ordderItem?.customer_phone,
+			icon: <FiPhoneCall color='#8791A8' size={15} />,
+		},
+	];
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Order Details')}>
@@ -104,7 +125,7 @@ export default function OrderDetails() {
 				<div className='flex-col-global grid-left'>
 					<OrderNo />
 					<OrderItems />
-					<CustomerNote id={ordderItem?.id}/>
+					<CustomerNote id={ordderItem?.id} />
 					<OrderHistory />
 				</div>
 				<div className='flex-col-global grid-right'>
@@ -112,7 +133,7 @@ export default function OrderDetails() {
 						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
 						form={showCustomer}
 						title={t('Customer')}
-						data={contact}
+						data={CustomerContact}
 						contacts={true}
 						children={
 							<Button
@@ -126,7 +147,7 @@ export default function OrderDetails() {
 					/>
 
 					<ContactCard
-						contain={showAddress && <AddressForm handleAddressForm={handleAddressForm} />}
+						contain={showAddress && <AddressForm details handleAddressForm={handleAddressForm} />}
 						form={showAddress}
 						title={t('Address')}
 						data={address}

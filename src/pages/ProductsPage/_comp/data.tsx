@@ -8,6 +8,7 @@ import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 
 // Define products array with correct type
 export interface Product {
+	status: number;
 	name: string;
 	category: string;
 	option: number;

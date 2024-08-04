@@ -56,8 +56,8 @@ const AllProducts: React.FC = () => {
 		dispatch(getCategoriesTable());
 	}, [dispatch]);
 	const dialogStyle = {
-		width: { lg: '1150px', md: '700px', xs: '375px' },
-		height: { md: '60vh', xs: '90vh' },
+		width: {  md: '600px', xs: '370px' },
+		height: { md: '90vh', xs: '90vh' },
 	};
 	const handleClose = (status: boolean) => {
 		setOpenDialog(status);

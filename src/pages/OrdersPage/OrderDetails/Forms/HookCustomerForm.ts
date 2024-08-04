@@ -1,24 +1,27 @@
 import { z } from 'zod';
 
 export interface OrdercustomerFormInterface {
-	name: string;
-	email: string;
-	phone: string;
+	customer_first_name: string;
+	customer_last_name: string;
+	customer_email: string;
+	customer_phone: string;
 }
 
 export default function useOrderCustomerForm() {
 	const handelDefaultValue = () => {
 		return {
-			name: '',
-			email: '',
-			phone: '',
+			customer_first_name: '',
+			customer_last_name:'',
+			customer_email: '',
+			customer_phone: '',
 		};
 	};
 
 	const orderCustomerSchema = {
-		name: z.string().min(5, { message: 'Full name is required' }),
-		email: z.string().min(1, { message: 'Email is required' }).email(),
-		phone: z.string().min(7, { message: 'Phone is required' }),
+		customer_first_name: z.string().min(1, { message: 'First name is required' }),
+		customer_last_name: z.string().min(1, { message: 'last name is required' }),
+		customer_email: z.string().min(1, { message: 'Email is required' }).email(),
+		customer_phone: z.string().min(7, { message: 'Phone is required' }),
 	};
 
 	return {

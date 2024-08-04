@@ -148,109 +148,105 @@ const SimpleProductForm = ({
 		<div className='flex-col-global gap-6'>
 			<h3 className='title md:font-bold'>{t('Add a quick Product')}</h3>
 			<Form {...formStore}>
-				<form className='bg-white rounded  flex-col-global  w-full' onSubmit={onSubmit}>
-					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
-						<div className='col-span-2'>
+				<form className='bg-white rounded  flex-col-global gap-5  w-full' onSubmit={onSubmit}>
+					<div className=' flex-col-global   gap-[1.2rem]'>
+						<div>
 							<ImageInput<simpleProductInterface> name={'images'} formStore={formStore}>
 								<TfiUpload className='text-[1.5rem]' />
 								<p className='paragraph text-center'>{t('Upload Image')}</p>
 							</ImageInput>
 						</div>
-
-						<div className='col-span-10 grid grid-cols-1 lg:grid-cols-12 gap-4'>
-							<TabbedFormField
-								container={{ className: 'col-span-6 lg:col-span-3 lg:-translate-y-6' }}
-								formStore={formStore}
-								keys={[
-									{ name: 'nameEn', label: 'En' },
-									{ name: 'nameAr', label: 'عربي' },
-								]}
-								renderer={(field) => (
+						<TabbedFormField
+							formStore={formStore}
+							keys={[
+								{ name: 'nameEn', label: 'En' },
+								{ name: 'nameAr', label: 'عربي' },
+							]}
+							renderer={(field) => (
+								<Input
+									placeholder={`${t('Product Name')} (${t('Required')})`}
+									type='text'
+									{...field}
+								/>
+							)}
+						/>
+						<FormField
+							formStore={formStore}
+							name='price'
+							render={(field) => (
+								<div className='relative flex items-center border border-gray-300 rounded-md'>
+									<span className='px-3 py-2 border-r rounded-l-md bg-gray-50 text-gray-500'>
+										SAR
+									</span>
 									<Input
-										placeholder={`${t('Product Name')} (${t('Required')})`}
-										type='text'
 										{...field}
+										id='price'
+										type='number'
+										placeholder={`${t('Price')} (${t('Required')})`}
+										className='flex-1'
 									/>
-								)}
-							/>
-							<FormField
-								container={{ className: 'col-span-6 lg:col-span-3' }}
-								formStore={formStore}
-								name='price'
-								render={(field) => (
-									<div className='relative flex items-center border border-gray-300 rounded-md'>
-										<span className='px-3 py-2 border-r rounded-l-md bg-gray-50 text-gray-500'>
-											SAR
-										</span>
-										<Input
-											{...field}
-											id='price'
-											type='number'
-											placeholder={`${t('Price')} (${t('Required')})`}
-											className='flex-1'
-										/>
-									</div>
-								)}
-							/>
-							<FormField
-								container={{ className: 'col-span-6 lg:col-span-3' }}
-								formStore={formStore}
-								name='quy'
-								render={(field) => (
-									<Input {...field} id='quy' type='number' placeholder={t('Quantity')} />
-								)}
-							/>
-							<FormField
-								container={{ className: 'col-span-6 lg:col-span-3' }}
-								formStore={formStore}
-								name='sku'
-								render={(field) => (
-									<Input {...field} id='sku' type='text' placeholder={t('SKU Code')} />
-								)}
-							/>
-
-							{categoriesTable?.length > 0 && (
-								<SelectFormField
-									className='col-span-6'
-									name='category'
-									setOpenDialog={setOpenDialog}
-									add_button
-									formStore={formStore}
-									options={categoriesTable?.map((e: CategoryInterface) => {
-										return {
-											label: e?.name,
-											value: e?.id?.toString(),
-										};
-									})}
-									placeholder={t('Select Category')}
-								/>
-							)}
-
-							{inventory?.length > 0 && (
-								<SelectFormField
-									className='col-span-6'
-									name='inventories'
-									formStore={formStore}
-									options={inventory?.map((e: InventoryInterface) => {
-										return {
-											label: e?.name,
-											value: e?.id?.toString(),
-										};
-									})}
-									placeholder={t('Select Inventory')}
-								/>
-							)}
-
-							<div className='flex-col-global gap-2'>
-								<p>{t('STATUS')}</p>
-								<div className='flex-row-global gap-2'>
-									<FormSwitchField<AddsimpleProductSchemaSchemaValues>
-										formStore={formStore}
-										name='status'
-										enable
-									/>
-									<p>{formStore.watch('status') ? 'On' : 'Off'}</p>
 								</div>
+							)}
+						/>
+						<FormField
+							formStore={formStore}
+							name='quy'
+							render={(field) => (
+								<div className='relative flex items-center border border-gray-300 rounded-md'>
+									<span className='px-3 py-2 border-r rounded-l-md bg-gray-50 text-gray-500'>
+										{t('Quantity')}
+									</span>
+									<Input {...field} id='quy' type='number' placeholder={t('Quantity')} />
+								</div>
+							)}
+						/>
+						<FormField
+							formStore={formStore}
+							name='sku'
+							render={(field) => (
+								<Input {...field} id='sku' type='text' placeholder={t('SKU Code')} />
+							)}
+						/>
+
+						{categoriesTable?.length > 0 && (
+							<SelectFormField
+								name='category'
+								setOpenDialog={setOpenDialog}
+								add_button
+								formStore={formStore}
+								options={categoriesTable?.map((e: CategoryInterface) => {
+									return {
+										label: e?.name,
+										value: e?.id?.toString(),
+									};
+								})}
+								placeholder={t('Select Category')}
+							/>
+						)}
+
+						{inventory?.length > 0 && (
+							<SelectFormField
+								name='inventories'
+								formStore={formStore}
+								options={inventory?.map((e: InventoryInterface) => {
+									return {
+										label: e?.name,
+										value: e?.id?.toString(),
+									};
+								})}
+								placeholder={t('Select Inventory')}
+							/>
+						)}
+
+						<div className='flex-col-global gap-2'>
+							<p>{t('STATUS')}</p>
+							<div className='flex-row-global gap-2'>
+								<FormSwitchField<AddsimpleProductSchemaSchemaValues>
+									formStore={formStore}
+									name='status'
+									enable
+								/>
+								<p>{formStore.watch('status') ? 'On' : 'Off'}</p>
 							</div>
 						</div>
 					</div>

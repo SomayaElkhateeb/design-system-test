@@ -19,7 +19,7 @@ export const AddCustomerPageSchema = {
 		first_name: RequiredAddressData,
 		last_name: RequiredAddressData,
 		country: RequiredAddressData,
-		city: RequiredAddressData,
+		city: RequiredAddressData.optional().or(z.literal("")),
 		state: RequiredAddressData,
 		street: RequiredAddressData,
 		building: RequiredAddressData,

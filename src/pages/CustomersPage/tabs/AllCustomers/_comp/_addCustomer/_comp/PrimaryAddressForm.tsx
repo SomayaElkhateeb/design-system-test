@@ -63,25 +63,19 @@ export default function PrimaryAddressForm({
 						placeholder={t('Select country')}
 					/>
 				)}
-				{(cities?.length > 0 || CountriesData?.length > 0) && (
+				{cities?.length > 0 && (
 					<SelectFormField
 						name='default_address.city'
 						label={t('City')}
 						formStore={formStore}
 						options={
-							cities?.length > 0
-								? cities?.map((e: CountriesInterface) => {
-										return {
-											label: e?.name,
-											value: e?.id?.toString(),
-										};
-								  })
-								: CountriesData?.map((e: CountriesInterface) => {
-										return {
-											label: e?.name,
-											value: e?.id?.toString(),
-										};
-								  })
+							cities?.length > 0 &&
+							cities?.map((e: CountriesInterface) => {
+								return {
+									label: e?.name,
+									value: e?.id?.toString(),
+								};
+							})
 						}
 						placeholder={t('Select city')}
 					/>

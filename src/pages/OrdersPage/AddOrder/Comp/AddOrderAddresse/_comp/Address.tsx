@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Form } from 'src/app/components/ui/form';
@@ -6,7 +6,7 @@ import { Input } from 'src/app/components/ui/input';
 import { CheckBox } from 'src/app/components/optimized';
 import FormField from 'src/app/components/ui/form/field';
 import { ValidFormStoreByValues } from 'src/utils/types';
-import { AddAddressInterface } from './Comp/useOrderAddress';
+
 import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
 
 import SingleChoiceChips from 'src/app/components/optimized/ChoiceChips/SingleChoiceChips';
@@ -15,6 +15,7 @@ import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 import { CountriesApi } from 'src/app/React-Query/CountriesApi';
 import { useQuery } from 'react-query';
 import { CountriesInterface } from 'src/app/interface/CountriesInterface';
+import { AddAddressInterface } from '../_hook/useOrderAddress';
 interface AddressProps<TFormStore> {
 	formStore: ValidFormStoreByValues<TFormStore, AddAddressInterface>;
 	isName?: boolean;
@@ -24,6 +25,7 @@ interface AddressProps<TFormStore> {
 	setSendGift: (value: boolean) => void;
 	selectedOption: string;
 	setSelectedOption: (option: string) => void;
+	details?:boolean
 }
 
 export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
@@ -36,6 +38,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 		setSendGift,
 		selectedOption,
 		setSelectedOption,
+		details
 	} = props;
 	const { t } = useTranslation();
 
@@ -47,6 +50,9 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 		(option: string) => setSelectedOption(option),
 		[setSelectedOption],
 	);
+	useEffect(() => {
+		sendGift ? formStore.setValue('gift', 1) : formStore.setValue('gift', 0);
+	}, [sendGift]);
 
 	return (
 		<Form {...formStore}>
@@ -79,7 +85,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 				)}
 				{selectedOption === 'Add manually' ? (
 					<div className='col-span-2'>
-						<ManualAddressForm formStore={formStore} isName={isName} />
+						<ManualAddressForm details={details} formStore={formStore} isName={isName} />
 					</div>
 				) : (
 					<div className='col-span-2'>
@@ -90,7 +96,7 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 						/>
 					</div>
 				)}
-				<div className='grid gap-4 col-span-2 xl:col-span-1'>
+				<div className={`grid gap-4 col-span-2 xl:${details?'col-span-2':'col-span-1'}`}>
 					<FormField
 						formStore={formStore}
 						name='building'
@@ -120,9 +126,11 @@ export default function Address<TFormStore>(props: AddressProps<TFormStore>) {
 function ManualAddressForm<TFormStore>({
 	formStore,
 	isName,
+	details
 }: {
 	formStore: ValidFormStoreByValues<TFormStore, AddAddressInterface>;
 	isName?: boolean;
+	details?:boolean
 }) {
 	const { t } = useTranslation();
 
@@ -136,13 +144,29 @@ function ManualAddressForm<TFormStore>({
 	let cities = CitiesData?.data?.data;
 	return (
 		<section className='grid grid-cols-2 lg:col-span-2'>
-			<div className='grid col-span-2 xl:col-span-1 gap-4'>
-				{isName && (
+			<div className={`grid col-span-2 xl:${details?'col-span-2':'col-span-1'} gap-4`}>
+				{/* {isName && (
 					<FormField
 						formStore={formStore}
 						name='name'
 						label={t('Full Name')}
 						render={(field) => <Input {...field} placeholder={t('Full Name')} />}
+					/>
+				)} */}
+				{isName && (
+					<FormField
+						formStore={formStore}
+						name='first_name'
+						label={t('First name')}
+						render={(field) => <Input {...field} placeholder={t('First name')} />}
+					/>
+				)}
+				{isName && (
+					<FormField
+						formStore={formStore}
+						name='last_name'
+						label={t('Last name')}
+						render={(field) => <Input {...field} placeholder={t('Last name')} />}
 					/>
 				)}
 				{CountriesData?.length > 0 && (
@@ -160,25 +184,19 @@ function ManualAddressForm<TFormStore>({
 					/>
 				)}
 
-				{(cities?.length > 0 || CountriesData?.length > 0) && (
+				{cities?.length > 0 && (
 					<SelectFormField
 						name='city'
 						label={t('City')}
 						formStore={formStore}
 						options={
-							cities?.length > 0
-								? cities?.map((e: CountriesInterface) => {
-										return {
-											label: e?.name,
-											value: e?.id?.toString(),
-										};
-								  })
-								: CountriesData?.map((e: CountriesInterface) => {
-										return {
-											label: e?.name,
-											value: e?.id?.toString(),
-										};
-								  })
+							cities?.length > 0 &&
+							cities?.map((e: CountriesInterface) => {
+								return {
+									label: e?.name,
+									value: e?.id?.toString(),
+								};
+							})
 						}
 						placeholder={t('Select city')}
 					/>
