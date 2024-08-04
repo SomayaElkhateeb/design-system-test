@@ -19,7 +19,7 @@ export default function AboutYourself({ onVerify }: { onVerify: () => void }) {
 
 	const handleResend = () => {
 		// this function will make resend the OTP code to the user
-		console.log(123);
+		// console.log(123);
 	};
 
 	return (

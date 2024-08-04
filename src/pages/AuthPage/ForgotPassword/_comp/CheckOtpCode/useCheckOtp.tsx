@@ -26,7 +26,7 @@ export default function useCheckOtp({setIsVerified}:{setIsVerified: (isVerified:
 	const { formStore, onSubmit } = useForm({
 		schema: CheckCodeSchema,
 		handleSubmit: (values) => {
-			console.log(values);
+		
 			setIsVerified(true);
 		},
 		defaultValues: { otp: '' },

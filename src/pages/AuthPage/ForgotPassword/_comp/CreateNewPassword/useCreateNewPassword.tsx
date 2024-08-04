@@ -26,7 +26,7 @@ export default function useCreateNewPassword() {
 	const { formStore, onSubmit } = useForm({
 		schema: passwordSchema,
 		handleSubmit: (validatedData) => {
-			console.log(validatedData);
+			// console.log(validatedData);
 		},
 		defaultValues: { newPassword: '', confirmPassword: '' },
 	});

@@ -12,7 +12,7 @@ export const getSelectCustomers = createAsyncThunk<CustomerData[], void, { rejec
 		const { rejectWithValue } = thunkAPI;
 		try {
 			const { data } = await axios.get<CustomerData[]>(`${URL}/select_customers`);
-			console.log('customer redux', data);
+			// console.log('customer redux', data);
 			return data;
 		} catch (error) {
 			throw rejectWithValue(error.message);

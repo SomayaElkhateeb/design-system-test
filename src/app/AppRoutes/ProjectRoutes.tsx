@@ -13,14 +13,14 @@ const ProjectRoutes = () => {
 		token = localStorage.getItem('token');
 	}
 	const PrivateRoutesProject = () => {
-		console.log('1');
+		
 		return token ? <Outlet /> : <Navigate to='/login' />;
 	};
 	const PrivateRoutesLoginPage = () => {
-		console.log('2');
+		
 		return !token ? <Outlet /> : <Navigate to='/home' />;
 	};
-	console.log(token);
+	
 	return (
 		<AnimatedRoutes>
 			<Route element={<PrivateRoutesLoginPage />}>

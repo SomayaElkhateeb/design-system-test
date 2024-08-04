@@ -13,7 +13,7 @@ export const getSelectcustomer_groups = createAsyncThunk<
 	const { rejectWithValue } = thunkAPI;
 	try {
 		const { data } = await axios.get<CustomerGroupData>(`${URL}/select_customer_groups`);
-		console.log('select_customer_groups', data);
+		// console.log('select_customer_groups', data);
 		return data;
 	} catch (error) {
 		throw rejectWithValue(error.message);

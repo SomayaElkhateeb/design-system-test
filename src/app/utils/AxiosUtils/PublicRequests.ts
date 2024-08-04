@@ -15,7 +15,7 @@ export default class PublicRequest {
     };
 
     public static putData = async (payload: any, path: string) => {
-        console.log(path)
+       
         return AxiosHandler.getResponse(
             200,
             AxiosHandler.vPutRequest,

@@ -19,7 +19,7 @@ const StepsX = ({ stepsContent }) => {
 	};
 
 	const handleFinish	 = () => {
-		console.log('Finished!');
+		// console.log('Finished!');
 	};
 
 	const ActiveStep = () => <div className='w-10 h-5 rounded-sm bg-primary'></div>;

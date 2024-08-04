@@ -30,7 +30,7 @@ interface GoogleSetupData {
 
 export const getGoogleSetup = (platform: string): GoogleSetupData | null => {
 	const platformData = platforms[platform];
-	console.log(platformData);
+	// console.log(platformData);
 
 	if (!platformData) return null;
 

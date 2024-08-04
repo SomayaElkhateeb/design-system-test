@@ -9,11 +9,11 @@ interface Props {
 
 const MailchimpCreateAccount: React.FC<Props> = ({ data }) => {
 	const handleCreateAccount = () => {
-		console.log('Create new account clicked');
+		// console.log('Create new account clicked');
 	};
 
 	const handleConnectAccount = () => {
-		console.log('Connect Account clicked');
+		// console.log('Connect Account clicked');
 	};
 
 	return (

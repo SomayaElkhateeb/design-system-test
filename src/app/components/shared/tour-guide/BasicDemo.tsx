@@ -7,9 +7,9 @@ interface State {
 }
 
 function logGroup(type: string, data: any) {
-	console.groupCollapsed(type);
-	console.log(data);
-	console.groupEnd();
+	// console.groupCollapsed(type);
+	// console.log(data);
+	// console.groupEnd();
 }
 const Section: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
 	return (
