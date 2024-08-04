@@ -5,25 +5,37 @@ import { Button } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import FormField from 'src/app/components/ui/form/field';
 import Textarea from 'src/app/components/optimized/InputsFields/Textarea';
+import {
+	AddOrderNote,
+	getOrderInfo,
+} from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
+import { useAppDispatch } from 'src/app/store';
 
 export interface INoteForm {
-	note: string;
+	comment: string;
 }
 
-export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
+export default function CustomerNoteForm({ onClose, id }: { onClose: () => void; id: string }) {
 	const { t } = useTranslation();
+	
+	const dispatch = useAppDispatch();
 	const noteSchema = {
-		note: z.string().min(5, { message: t('Customer note is required') }),
+		comment: z.string().min(5, { message: t('Customer note is required') }),
 	};
 
 	const handelDefaultValue = () => {
 		return {
-			note: '',
+			comment: '',
 		};
 	};
 
 	const handleSubmit = (values: INoteForm) => {
-		console.log(values);
+		dispatch(AddOrderNote({ data: values, id })).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				onClose();
+				dispatch(getOrderInfo(id));
+			}
+		});
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -37,7 +49,7 @@ export default function CustomerNoteForm({ onClose }: { onClose: () => void }) {
 				<div className='lg:w-[65%] w-full'>
 					<FormField
 						formStore={formStore}
-						name='note'
+						name='comment'
 						label={t('Customer note')}
 						render={(field) => <Textarea {...field} placeholder={t('Type a note')} />}
 					/>

@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GrUpdate } from 'react-icons/gr';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
@@ -20,15 +20,22 @@ import AddressForm from './Forms/AddressForm';
 import Checkout from './Checkout';
 import CheckoutDetailsForm from './Forms/CheckoutDetailsForm';
 import CustomerForm from './Forms/CustomerForm';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { useParams } from 'react-router-dom';
+import { getOrderInfo } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 export default function OrderDetails() {
 	const { t } = useTranslation();
+	const { id } = useParams();
 	const { xs } = useResponsive();
+	const dispatch = useAppDispatch();
 	const [state, setState] = useState({
 		showCustomer: false,
 		showAddress: false,
 		showCheckout: false,
 	});
-
+	//  selectors
+	const { ordderItem } = useAppSelector((state) => state.allOrders);
+	
 	const { showCustomer, showAddress, showCheckout } = state;
 
 	const handleCustomerForm = () => {
@@ -80,6 +87,13 @@ export default function OrderDetails() {
 			</>
 		);
 	};
+
+	//  get order info with id params
+	useEffect(() => {
+		if (id) {
+			dispatch(getOrderInfo(id));
+		}
+	}, [id, dispatch]);
 	return (
 		<div className='flex-col-global'>
 			<SubHeader title={t('Order Details')}>
@@ -90,7 +104,7 @@ export default function OrderDetails() {
 				<div className='flex-col-global grid-left'>
 					<OrderNo />
 					<OrderItems />
-					<CustomerNote />
+					<CustomerNote id={ordderItem?.id}/>
 					<OrderHistory />
 				</div>
 				<div className='flex-col-global grid-right'>

@@ -14,20 +14,34 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 import useOrderStatusForm, { orderStatusFormInterface } from './HookOrderStatus';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { useAppDispatch } from 'src/app/store';
+import {
+	ChangeOrderStatus,
+	getOrderInfo,
+} from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 
 export default function OrderStatus({
 	onClose,
 	showOrderStatus,
+	id,
 }: {
 	onClose: () => void;
 	showOrderStatus: boolean;
+	id: string;
 }) {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 
 	const { handelDefaultValue, orderStatusSchema } = useOrderStatusForm();
 
 	const handleSubmit = (values: orderStatusFormInterface) => {
-		console.log(values);
+		dispatch(ChangeOrderStatus({ data: values, id })).then((promiseResponse:any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				onClose();
+				dispatch(getOrderInfo(id));
+			}
+		});
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -35,38 +49,30 @@ export default function OrderStatus({
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
+	const options = ['pending', 'canceled', 'processing', 'approved', 'closed', 'completed'];
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit}>
 				<GlobalDialog
 					openDialog={showOrderStatus}
 					handleClose={onClose}
-					style={{ width: { md: '50%', xs: '70%' } }}
+					style={{ width: { md: '50%', xs: '90%' } }}
 				>
 					<div className='flex-col-global  gap-3'>
 						<h3 className='title'>{t('Update order status')}</h3>
 
 						<div className='flex-col-global  md:w-[70%]'>
-							<FormField
-								formStore={formStore}
+							<SelectFormField
 								name='status'
 								label={t('Order status')}
-								render={(field) => (
-									<Select
-										onValueChange={field.onChange}
-										value={field.value}
-										required={field.required}
-										name={field.name}
-									>
-										<SelectTrigger onBlur={field.onBlur} disabled={field.disabled} id={field.id}>
-											<SelectValue placeholder='Egypt' />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value='egypt'>Egypt</SelectItem>
-											<SelectItem value='saudiArabia'>Saudi Arabia</SelectItem>
-										</SelectContent>
-									</Select>
-								)}
+								formStore={formStore}
+								options={options?.map((e) => {
+									return {
+										value: e,
+										label: e,
+									};
+								})}
+								placeholder={t('Select option')}
 							/>
 
 							<FormField
@@ -80,9 +86,9 @@ export default function OrderStatus({
 						<div>
 							<CheckBox
 								label={t('Notify customer')}
-								checked={formStore.watch('notifyCustomer')}
+								checked={formStore.watch('customer_notified')}
 								handleOnChange={(option) => {
-									formStore.setValue('notifyCustomer', option);
+									formStore.setValue('customer_notified', option);
 								}}
 							/>
 						</div>

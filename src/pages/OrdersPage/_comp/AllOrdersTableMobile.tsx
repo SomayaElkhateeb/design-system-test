@@ -7,7 +7,7 @@ export default function AllOrdersTableMobile({ orders }: { orders: OrderInterfac
 		fullName: order.customer_first_name,
 		orderStatus: order.status,
 		orderNumber: order.id,
-		price: order.sub_total,
+		price: order.grand_total,
 		currency: order.order_currency_code,
 		date: order.created_at,
 	}));

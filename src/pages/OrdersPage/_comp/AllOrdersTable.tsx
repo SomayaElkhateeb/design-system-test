@@ -107,7 +107,7 @@ export default function AllOrdersTable({
 						</GlobalTableCell>,
 						<GlobalTableCell>{e.status}</GlobalTableCell>,
 						<GlobalTableCell>
-							{e.order_currency_code} {e.sub_total}
+							{e.order_currency_code} {e.grand_total}
 						</GlobalTableCell>,
 						<TableCell>
 							<div className={classData}>
@@ -118,7 +118,7 @@ export default function AllOrdersTable({
 								/> */}
 
 								<div onClick={() => handelId(e?.id)}>{children}</div>
-								<ArrowTables path='/orders/orderDetails/11111' />
+								<ArrowTables path={`/orders/orderDetails/${e?.id}`} />
 							</div>
 						</TableCell>,
 					],

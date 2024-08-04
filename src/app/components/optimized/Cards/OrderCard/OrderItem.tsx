@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Avatar from '../../UiKits/Avatar';
 
 // Define the type for the order object
@@ -9,12 +10,13 @@ export interface Order {
 	lastName?: string;
 	orderStatus: string;
 	orderNumber: string;
-	price: number;
+	price: string;
 	currency: string;
 	date: string;
 }
 
 export default function OrderItem({ order }: { order: Order }) {
+	const navigate=useNavigate()
 	const {
 		id,
 		imageUrl,
@@ -31,7 +33,11 @@ export default function OrderItem({ order }: { order: Order }) {
 	const displayName = fullName ? fullName : `${firstName} ${lastName}`;
 
 	return (
-		<div key={id} className='flex justify-between items-start py-0.5'>
+		<div
+			onClick={() => navigate(`/orders/orderDetails/${id}`)}
+			key={id}
+			className='flex justify-between items-start py-0.5 cursor-pointer'
+		>
 			<div className=' w-[65%] flex  gap-3'>
 				<Avatar
 					variant='user'

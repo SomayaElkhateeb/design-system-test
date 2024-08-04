@@ -2,11 +2,16 @@ import { Button } from 'src/app/components/optimized';
 import RowOrderItems from './RowOrderItems';
 import { useTranslation } from 'react-i18next';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
+import { useAppSelector } from 'src/app/store';
+import { CustomHookForHandelCurrencyDirection } from '../CustomHookForHandelCurrencydirection';
 
 export default function OrderItemContain() {
 	//  hooks
 	const { t } = useTranslation();
-	const { language } = useLanguage();
+	
+
+	const { ordderItem } = useAppSelector((state) => state.allOrders);
+
 	return (
 		<div className='flex-col-global gap-2.5'>
 			<RowOrderItems />
@@ -15,15 +20,30 @@ export default function OrderItemContain() {
 				<div className='flex-row-global justify-between '>
 					<div className='subtitle flex-col-global gap-1'>
 						<p>{t('Sub Total')}</p>
-						<Button variant='link'>+ {t('Add Discount')}</Button>
-						<Button variant='link'>{t('Edit Shipping')}</Button>
+						{/* <Button variant='link'>+ {t('Add Discount')}</Button>
+						<Button variant='link'>{t('Edit Shipping')}</Button> */}
 						<p>{t('Tax')}</p>
 					</div>
 					<div className='text-title text-sm flex-col-global gap-1'>
-						<p>{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}</p>
-						<p>% ------</p>
-						<p>{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}</p>
-						<p>{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}</p>
+						<p>
+							{CustomHookForHandelCurrencyDirection(
+								ordderItem?.sub_total,
+								ordderItem?.base_currency_code,
+							)}
+						</p>
+						{/* <p>% ------</p> */}
+						{/* <p>
+							{CustomHookForHandelCurrencyDirection(
+								ordderItem?.sub_total,
+								ordderItem?.base_currency_code,
+							)}
+						</p> */}
+						<p>
+							{CustomHookForHandelCurrencyDirection(
+								ordderItem?.tax_amount,
+								ordderItem?.base_currency_code,
+							)}
+						</p>
 					</div>
 				</div>
 			</div>
@@ -33,7 +53,10 @@ export default function OrderItemContain() {
 				<div className='flex-row-global justify-between '>
 					<p className='subtitle uppercase'>{t('total')}</p>
 					<p className='text-title text-sm'>
-						{language === 'ar' ? `450.00 ${t('SAR')}` : `${t('SAR')} 450.00`}
+						{CustomHookForHandelCurrencyDirection(
+							ordderItem?.grand_total,
+							ordderItem?.base_currency_code,
+						)}
 					</p>
 				</div>
 			</div>

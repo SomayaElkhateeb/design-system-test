@@ -42,7 +42,7 @@ export interface Product {
 	qty_ordered?: number;
 	tax_amount?: string;
 	tax_percent?: string;
-	total?: string;
+	total: string;
 	total_weight?: string;
 
 	weight?: string;

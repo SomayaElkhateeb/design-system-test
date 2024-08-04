@@ -1,5 +1,5 @@
 import { Product } from 'src/pages/ProductsPage/_comp/data';
-import { AddressCustomerInterface } from './AddresseCustomerinterface';
+import { AddressCustomerInterface, initialCustomerAddresseInfo } from './AddresseCustomerinterface';
 
 export interface OrderInterface {
 	date: string;
@@ -36,4 +36,43 @@ export interface OrderInterface {
 	shipping_address: AddressCustomerInterface;
 	billing_address: AddressCustomerInterface;
 	items: Product[];
+}
+
+export const  initialOrderData=()=>{
+	return{
+		date: "",
+		customer_name: "",
+		order_status: "",
+		branch_name: "",
+		payment_status:"",
+		payment_name: "",
+		id: "",
+		total: 0,
+		location: "",
+		delivery_status:"",
+		base_currency_code: "",
+		created_at: "",
+		customer_email: "",
+		customer_first_name: "",
+		customer_last_name: "",
+		customer_phone: "",
+		discount_amount: "",
+		discount_percent: "",
+		grand_total: "",
+		invoice_id: "",
+		order_currency_code: "",
+		payment_title: "",
+		shipment_id: "",
+		shipping_method: "",
+		shipping_title: "",
+		status: "",
+		sub_total: "",
+		tax_amount: "",
+		total_item_count: 0,
+		total_qty_ordered: 0,
+		updated_at: "",
+		shipping_address: initialCustomerAddresseInfo(),
+		billing_address: initialCustomerAddresseInfo(),
+		items: [],
+	}
 }
