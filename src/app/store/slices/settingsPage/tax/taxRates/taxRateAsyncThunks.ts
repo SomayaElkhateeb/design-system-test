@@ -1,8 +1,8 @@
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AddTaxRateSchemaValues } from 'src/app/schema/settings/AddTaxRateSchema';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
+import { TaxRateInterface } from 'src/pages/SettingsPage/Taxes/taxRates/_hook/HookTaxRate';
 
 // get Tax Rates List data
 export const getTaxRatesList = createAsyncThunk('taxRates/getTaxRatesList', () =>
@@ -12,13 +12,13 @@ export const getTaxRatesList = createAsyncThunk('taxRates/getTaxRatesList', () =
 // get Tax Rates Show
 export const getTaxRatesShow = createAsyncThunk(
 	'taxRatesShow/getTaxRatesShow',
-	() => PublicRequest.getData('merchant/settings/tax-rates/2'), // param id
+	(payload: string) => PublicRequest.getData(`merchant/settings/tax-rates/${payload}`), 
 );
 
 // create tax rates 
 export const createTaxRate = createAsyncThunk(
 	"taxRates/createTaxRate",
-	(payload: AddTaxRateSchemaValues) =>
+	(payload: TaxRateInterface) =>
 		PublicRequest.postData(payload, `merchant/settings/tax-rates`)
 			.then((res: any) => {
 				if (res) {
@@ -32,7 +32,7 @@ export const createTaxRate = createAsyncThunk(
 // update user
 export const updateTaxRate = createAsyncThunk(
 	'taxRates/updateTaxRate',
-	(payload: { data: AddTaxRateSchemaValues, id: string }) =>
+	(payload: { data: TaxRateInterface, id: string }) =>
 		PublicRequest.putData(payload.data, `merchant/settings/tax-rates/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {

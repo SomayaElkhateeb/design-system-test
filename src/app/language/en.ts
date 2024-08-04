@@ -1334,10 +1334,25 @@ export const english = {
 	'Role Name': 'Role Name',
 	'e.g., Web developer': 'e.g., Web developer',
 	'Permission type': 'Permission type',
-
 	'created now': 'created now',
-
 	'reply': 'reply',
 	'Key': 'Key',
-
+	'Tax Rates': 'Tax Rates',
+	'Select Tax Rates': 'Select Tax Rates',
+	'Enable Zip Range': 'Enable Zip Range',
+	'Zip From': 'Zip From',
+	'Zip To': 'Zip To',
+	'Rate': 'Rate',
+	'Enter rate': 'Enter rate',
+	'ZIP Code': 'ZIP Code',
+	'Identifier':'Identifier',
+	'tax rates':'tax rates',
+	'e.g.tax-one':'e.g.tax-one',
+	'add tax categories':'add tax categories',
+	'add tax rate':'add tax rate',
+	'tax categories':'tax categories',
+	'add tax applies':'add tax applies',
+	'product':'product',
+	'double opt-in':'double opt-in',
+	'order invoice':'order invoice',
 };

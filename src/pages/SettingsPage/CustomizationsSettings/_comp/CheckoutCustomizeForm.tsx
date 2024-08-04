@@ -3,12 +3,36 @@ import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
-import { CustomizationsTypes } from '../_hook/HookForCustomizationSettings';
-import { UseFormReturn } from 'react-hook-form';
 import { useEffect } from 'react';
+import useCustomHookCheckoutCustomize, { CheckoutCustomize } from '../_hook/HookCheckoutCustomize';
+import { useForm } from 'src/app/utils/hooks/form';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
+import { postCustomizationsCheckout } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
-export default function CheckoutCustomizeForm({ formStore }: { formStore: UseFormReturn<CustomizationsTypes> }) {
+export default function CheckoutCustomizeForm({ onSubmit }:{onSubmit: (data: CheckoutCustomize) => void}) {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
+
+	const { handelDefaultValue, CheckoutCustomizeSchema } = useCustomHookCheckoutCustomize();
+
+	const dispatch = useAppDispatch();
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
+
+	const handleSubmit = (values: CheckoutCustomize) => {
+		dispatch(postCustomizationsCheckout(values)).then((promiseResponse) => {
+			if (promiseResponse.payload.code === 200) {
+				navigate(-1);
+			}
+		});
+		onSubmit(values); // Call the parent onSubmit with the form values
+	};
+
+	const { formStore } = useForm({
+		schema: CheckoutCustomizeSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
 
 	useEffect(() => {
 		formStore.setValue(
@@ -44,7 +68,7 @@ export default function CheckoutCustomizeForm({ formStore }: { formStore: UseFor
 				<h2 className='title'>{t('Checkout')}</h2>
 				<p className='paragraph'>{t('Customize the way you want your customers to check out')}</p>
 			</div>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<CheckoutCustomize>
 				formStore={formStore}
 				name='customizations.checkout.guest_checkout'
 				label='Guest checkout'
@@ -61,24 +85,24 @@ export default function CheckoutCustomizeForm({ formStore }: { formStore: UseFor
 				/>
 			</div>
 
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<CheckoutCustomize>
 				formStore={formStore}
 				name='customizations.checkout.set_minimum_allowed_order_subtotal'
 				label='Set minimum allowed order subtotal'
 				description='Control what your customers can purchase'
 			/>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<CheckoutCustomize>
 				formStore={formStore}
 				name='customizations.checkout.ask_for_company_name'
 				label='Ask for the company name'
 			/>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<CheckoutCustomize>
 				formStore={formStore}
 				name='customizations.checkout.ask_for_zip_postal_code'
 				label='Ask for a ZIP/postal code'
 			/>
 
-			<FormChoiceChips<CustomizationsTypes>
+			<FormChoiceChips<CheckoutCustomize>
 				formStore={formStore}
 				name='customizations.checkout.customer_can_checkout_with'
 				label='Customer can check out with'

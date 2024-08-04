@@ -2,13 +2,36 @@ import { useTranslation } from 'react-i18next';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import { Input } from 'src/app/components/ui/input';
-import { CustomizationsTypes } from '../_hook/HookForCustomizationSettings';
-import { UseFormReturn } from 'react-hook-form';
 import FormField from 'src/app/components/ui/form/field';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'src/app/utils/hooks/form';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect } from 'react';
+import useCustomHookDoubleOpt, { DoubleOpt } from '../_hook/HookNewsletterConsent';
+import { postCustomizationDoubleOpt } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 
-export default function NewsletterConsentForm({ formStore }: { formStore: UseFormReturn<CustomizationsTypes> }) {
+export default function NewsletterConsentForm({ onSubmit }:{onSubmit: (data: DoubleOpt) => void}) {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
+
+	// custom hook
+	const {handelDefaultValue, DoubleOptSchema} = useCustomHookDoubleOpt();
+
+	const handleSubmit = (values: DoubleOpt) => {
+		dispatch(postCustomizationDoubleOpt(values)).then((promiseResponse) => {
+			if (promiseResponse.payload.code === 200) {
+				navigate(-1);
+			}
+		});
+		onSubmit(values);
+	};
+	const { formStore } = useForm({
+		schema: DoubleOptSchema,
+		handleSubmit: handleSubmit,
+		defaultValues: handelDefaultValue(),
+	});
 
 	useEffect(() => {
 		formStore.setValue(
@@ -33,14 +56,14 @@ export default function NewsletterConsentForm({ formStore }: { formStore: UseFor
 				</p>
 			</div>
 
-			<FormChoiceChips<CustomizationsTypes>
+			<FormChoiceChips<DoubleOpt>
 				formStore={formStore}
 				name='customizations.double_opt.require_customers_confirm_subscription'
 				label='Require customers to confirm their'
 				options={['email_sms', 'email_only', 'sms_only']}
 			/>
 
-			<FormChoiceChips<CustomizationsTypes>
+			<FormChoiceChips<DoubleOpt>
 				formStore={formStore}
 				name='customizations.double_opt.show_option_at'
 				label='Show an option to subscribe at'
@@ -60,12 +83,12 @@ export default function NewsletterConsentForm({ formStore }: { formStore: UseFor
 					)}
 				/>
 			</div>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<DoubleOpt>
 				formStore={formStore}
 				name='customizations.double_opt.preselect_option_for_customers'
 				label='Preselect the option for customers'
 			/>
-			<FormSwitchField<CustomizationsTypes>
+			<FormSwitchField<DoubleOpt>
 				formStore={formStore}
 				name='customizations.double_opt.show_email_newsletter_in_footer'
 				label='Show email newsletter input in footer'
