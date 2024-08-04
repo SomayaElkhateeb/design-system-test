@@ -11,12 +11,16 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import {
 	CancelOrder,
 	getAllOrdersPageTable,
+	getExportOrders,
 } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import PopupDelete from 'src/app/components/optimized/Popups/PopupDelete';
+import { Use_Hook_ForAllOrdersPage } from './_hook/_hookforAllOrdersPage';
+import ActionHandler from 'src/app/utils/ActionMethods';
+import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups/PopupImportData';
 
 //  setting menus for setting button action
 const settingMenus = [
@@ -27,11 +31,14 @@ export default function AllOrders() {
 	//  hooks
 	const { t } = useTranslation();
 	const [array, setArray] = useState<string[]>([]);
+	
 	const { xs } = useResponsive();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 	//redux
 	const dispatch = useAppDispatch();
 	const { allOrders, isLoading } = useAppSelector((state) => state.allOrders);
+	const { sortMenus, ActionsMenus, StatusMenus, OrdersArrangedData } =
+		Use_Hook_ForAllOrdersPage(selectedOption);
 
 	useEffect(() => {
 		dispatch(getAllOrdersPageTable());
@@ -49,7 +56,15 @@ export default function AllOrders() {
 	// Delete customer
 
 	const handelCancelOrder = () => {
-		dispatch(CancelOrder({ id: custom_Id })).then((promiseResponse: any) => {
+		dispatch(
+			CancelOrder({
+				id: custom_Id,
+				data: {
+					comment: undefined,
+					customer_notified: undefined,
+				},
+			}),
+		).then((promiseResponse: any) => {
 			if ((promiseResponse.payload.code = 200)) {
 				handelCloseDeleteDialog();
 				dispatch(getAllOrdersPageTable());
@@ -65,31 +80,18 @@ export default function AllOrders() {
 				handelOpenDialog();
 				setSelectedOption('');
 				break;
+
+			case 'Export Orders':
+				dispatch(getExportOrders()).then((response: any) => {
+					ActionHandler.exportToExcelFromApi(response.payload, 'orders');
+				});
+				setSelectedOption('');
+				break;
+
 			
-			// case 'Export customers':
-			// 	dispatch(getExportCustomers()).then((response: any) => {
-			// 		ActionHandler.exportToExcelFromApi(response.payload, 'customers');
-			// 	});
-			// 	setSelectedOption('');
-			// 	break;
-			// case 'delete customers':
-			// 	setSelectedOption('');
-			// 	CustomersArrangedData?.length > 0
-			// 		? dispatch(deleteAllCustomersAction({ indexes: allCustomersIds })).then(
-			// 				(response: any) => {
-			// 					if (response.payload.code === 200) {
-			// 						dispatch(getAllCustomersTable());
-			// 					}
-			// 				},
-			// 		  )
-			// 		: toast.error('there are no customers');
-			// 	break;
-			// case 'Import customers':
-			// 	setOpenExportDialog(true);
-			// 	setSelectedOption('');
-			// 	break;
 		}
 	}, [selectedOption, custom_Id]);
+
 
 	return (
 		<div className='custom_container pt-5'>
@@ -99,7 +101,9 @@ export default function AllOrders() {
 					selectedOption={selectedOption}
 					handelSelect={handleSelect}
 					addButton={t('Add Order')}
-					path='/addOrder'
+					sortMenus={sortMenus}
+					ActionsMenus={ActionsMenus}
+					StatusMenus={StatusMenus}
 				/>
 
 				{/*  table section */}
@@ -109,7 +113,7 @@ export default function AllOrders() {
 						handelId={handelId}
 						array={array}
 						setArray={setArray}
-						orders={allOrders}
+						orders={OrdersArrangedData}
 						isLoading={isLoading}
 					>
 						<ThreeDotsButton
@@ -122,7 +126,7 @@ export default function AllOrders() {
 
 				{xs && (
 					<div className='flex-col-global'>
-						<AllOrdersTableMobile orders={allOrders} />
+						<AllOrdersTableMobile orders={OrdersArrangedData} />
 						<AddButtonMobile path='/order/addOrder' />
 					</div>
 				)}
@@ -137,6 +141,7 @@ export default function AllOrders() {
 					onDelete={handelCancelOrder}
 				/>
 			)}
+			
 		</div>
 	);
 }

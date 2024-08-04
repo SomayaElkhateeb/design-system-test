@@ -2,7 +2,7 @@ import Avatar from '../../UiKits/Avatar';
 
 // Define the type for the order object
 export interface Order {
-	id: number;
+	id: string;
 	imageUrl?: string;
 	fullName?: string;
 	firstName?: string;
@@ -32,7 +32,7 @@ export default function OrderItem({ order }: { order: Order }) {
 
 	return (
 		<div key={id} className='flex justify-between items-start py-0.5'>
-			<div className=' w-[75%] flex  gap-3'>
+			<div className=' w-[65%] flex  gap-3'>
 				<Avatar
 					variant='user'
 					firstName={firstName}
@@ -59,7 +59,7 @@ export default function OrderItem({ order }: { order: Order }) {
 					</p>
 				</div>
 			</div>
-			<div className=' w-[25%] flex-col-global items-end gap-2'>
+			<div className=' w-[35%] flex-col-global items-end gap-2'>
 				<h4 className='text-right  text-title text-sm font-semibold'>
 					{price} {currency}
 				</h4>
