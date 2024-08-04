@@ -1,7 +1,9 @@
 export interface AddressCustomerInterface {
-    address_id:string
+    address_id: string
     id: string
-    name: string;
+    name?: string;
+    last_name: string
+    first_name: string
     country: string;
     city: string;
     state: string;
@@ -11,12 +13,15 @@ export interface AddressCustomerInterface {
     phone: string;
     search: string;
     gift_receiver_name?: string
+    country_name: string
 }
 
 
 export const initialCustomerAddresseInfo = () => {
     return {
-        address_id:"",
+        address_id: "",
+        last_name: "",
+        first_name: "",
         id: "",
         name: "",
         country: "",
@@ -27,6 +32,7 @@ export const initialCustomerAddresseInfo = () => {
         landmark: "",
         phone: "",
         search: "",
-        gift_receiver_name: ""
+        gift_receiver_name: "",
+        country_name: ''
     }
 }
