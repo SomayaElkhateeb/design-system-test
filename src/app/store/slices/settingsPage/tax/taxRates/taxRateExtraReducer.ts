@@ -13,8 +13,7 @@ export const taxCategoriesShowReducer = (
 		})
 		.addCase(getTaxRatesList.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.taxRatesList = payload; // []
-			// state.taxRatesList = payload.meta.links;
+			state.taxRatesList = payload.data;
 		})
 		.addCase(getTaxRatesList.rejected, (state, action) => {
 			state.isLoading = false;

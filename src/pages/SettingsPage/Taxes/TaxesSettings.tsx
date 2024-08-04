@@ -1,62 +1,79 @@
-import { UseFormReturn } from 'react-hook-form';
+import TaxCategories from './taxCategories/TaxCategories';
+import TabPanel from '@mui/lab/TabPanel';
+import { Tab } from '@mui/material';
+import { useState } from 'react';
+import { IoMdAddCircle } from 'react-icons/io';
+
 import { useTranslation } from 'react-i18next';
-import { SubHeader } from 'src/app/components/optimized';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { Form } from 'src/app/components/ui/form';
-import { useForm } from 'src/app/utils/hooks/form';
-import useCustomHookTaxesForm from './HookForTaxesForm';
-import TaxRates from './TaxRates';
-import TaxOptionsForm from './TaxOptionsForm';
+import { Button, SubHeader } from 'src/app/components/optimized';
+import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
+import AddTaxCategories from './taxCategories/_comp/AddTaxCategories';
+import Tabs from 'src/app/components/optimized/Tabs/Tabs';
+import { useNavigate } from 'react-router-dom';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
+import TaxRates from './taxRates/TaxRates';
 
-// Interfaces
-export interface TaxesSettingsInterface {
-	taxAppliesTo: string;
-	includeTaxInProductPrices: boolean;
-	defaultTaxClass: string;
-	taxDisplayInCheckout: string;
-	zoneDefinedBy: string;
-	checkOutWith: string;
-}
-
-export interface TaxesProps {
-	formStore: UseFormReturn<TaxesSettingsInterface>;
-}
-
-export default function TaxesSettings() {
+const TaxesSettings = () => {
+	//  hooks
 	const { t } = useTranslation();
-
-	const handleSubmit = (values: TaxesSettingsInterface) => {
-		console.log(values);
-	};
-
-	//  custom hook
-
-	const { taxesSettingsSchema, handelDefaultValue } = useCustomHookTaxesForm();
-	const { formStore, onSubmit } = useForm({
-		schema: taxesSettingsSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
+	const navigate = useNavigate();
+	const [value, setValue] = useState(1);
+	const [openDialog, setOpenDialog] = useState(false);
+	const { xs } = useResponsive();
 
 	return (
-		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-global '>
-				<SubHeader title={t('Taxes')}>
-					<SubHeaderDefaultBtns onSubmit={onSubmit} />
-				</SubHeader>
-				<div className='custom_container custom-grid-parent'>
-					<div className='grid-left flex-col-global gap-5'>
-						<TaxRates />
-						<TaxOptionsForm formStore={formStore} />
-					</div>
+		//  tabs section
+		<>
+			<SubHeader title={t('Taxes')}>
+				{xs ? '' : <Button
+					variant='primary'
+					LeftIcon={IoMdAddCircle}
+					onClick={() => {
+						if (value === 1) {
+							setOpenDialog(true);
+						} else {
+							navigate('addTaxRate');
+						}
+					}}
+				>
+					{value === 1 ? t('add tax categories') : t('add tax rate')}
+				</Button>}
+
+				{xs && <div />}
+			</SubHeader>
+
+			<Tabs
+				body={
+					<>
+						<TabPanel value='1'>
+							<TaxCategories />
+						</TabPanel>
+						<TabPanel value='2'>
+							<TaxRates />
+						</TabPanel>
+					</>
+				}
+			>
+				{/*  children */}
+				<Tab onClick={() => setValue(1)} label={t('tax categories')} value='1' />
+				<Tab onClick={() => setValue(2)} label={t('tax rates')} value='2' />
+			</Tabs>
+			{openDialog && <AddTaxCategories openDialog={openDialog} setOpenDialog={setOpenDialog} />}
+
+			{xs && (
+				<div className='flex-end pr-3'>
+					<AddButtonMobile onClick={() => {
+						if (value === 1) {
+							setOpenDialog(true);
+						} else {
+							navigate('addTaxRate');
+						}
+					}} />
 				</div>
-				<div className='px-5'>
-					<SubHeaderMobileBtns onSubmit={onSubmit} />
-				</div>
-			</form>
-		</Form>
-	);
+			)}
+		</>
+
+	)
 }
+
+export default TaxesSettings

@@ -47,6 +47,7 @@ export default function HomePage() {
 	if (showLoading) {
 		return <HomeLoading />;
 	}
+
 	return (
 		<div className='custom_container grid grid-cols-1 gap-5 pt-5'>
 			<div className='custom-grid-parent'>
