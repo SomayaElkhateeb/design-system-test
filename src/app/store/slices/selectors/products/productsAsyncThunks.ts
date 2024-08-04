@@ -12,7 +12,7 @@ export const getSelectProducts = createAsyncThunk<ProductData[], void, { rejectV
 		const { rejectWithValue } = thunkAPI;
 		try {
 			const { data } = await axios.get<ProductData[]>(`${URL}/select_products`);
-			console.log('select_products', data);
+			// console.log('select_products', data);
 			return data;
 		} catch (error) {
 			throw rejectWithValue(error.message);

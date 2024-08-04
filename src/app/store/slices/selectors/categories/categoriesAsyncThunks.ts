@@ -7,7 +7,7 @@ export const getSelectCategories = createAsyncThunk('categories/getSelectCategor
 	const { rejectWithValue } = thunkAPI;
 	try {
 		const { data } = await axios.get(`${URL}/select_categories`);
-		console.log('select_categories: ', data);
+		// console.log('select_categories: ', data);
 		return data;
 	} catch (error) {
 		throw rejectWithValue(error.message);

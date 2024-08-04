@@ -41,7 +41,7 @@ export default function AnalyticsIntegrations() {
 	};
 
 	const handleSubmit = (values: FormCard) => {
-		console.log(values);
+		// console.log(values);
 		// handleClose();
 	};
 

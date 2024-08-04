@@ -14,7 +14,7 @@ function EmailForm() {
 	const [_, setSearchParams] = useSearchParams();
 	const { handelDefaultValue, emailFormSchema } = useCustomHookEmailForm();
 	const handleSubmit = (values: IEmailForm) => {
-		console.log(values);
+		// console.log(values);
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: emailFormSchema(),

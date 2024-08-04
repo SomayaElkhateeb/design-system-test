@@ -19,7 +19,7 @@ const BulkEdit = () => {
         { product_id: 789, from: 20, to: 60, price: 175 },
     ];
 
-    console.log("allBulks", allBulks);
+  
     useEffect(() => {
         dispatch(getBulkPrices());
     }, [dispatch]);

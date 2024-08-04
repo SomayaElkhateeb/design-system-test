@@ -33,7 +33,7 @@ export default function useCustomHookApps() {
 	};
 
 	const handleSubmit = (values: IAppsPage) => {
-		console.log(values);
+		// console.log(values);
 	};
 	const { formStore, onSubmit } = useForm({
 		schema: appSchema,

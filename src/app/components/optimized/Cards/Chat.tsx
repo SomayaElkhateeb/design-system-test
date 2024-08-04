@@ -31,7 +31,7 @@ const Chat = ({
 	const { language } = useLanguage();
 
 	const handleClick = (id: number) => {
-		// console.log('click', id);
+		
 		navigate('/conversation');
 	};
 

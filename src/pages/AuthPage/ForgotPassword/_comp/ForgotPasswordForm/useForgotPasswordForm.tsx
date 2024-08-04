@@ -28,7 +28,7 @@ export default function useForgotPasswordForm({
 	const { formStore, onSubmit } = useForm({
 		schema,
 		handleSubmit: (validatedData) => {
-			console.log(validatedData);
+			// console.log(validatedData);
 			setIsCodeSent(true);
 		},
 		defaultValues: { contact: '' },

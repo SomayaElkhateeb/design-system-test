@@ -4,12 +4,12 @@ import { OrderInterface } from 'src/app/interface/OrderInterface';
 export default function AllOrdersTableMobile({ orders }: { orders: OrderInterface[] }) {
 	const transformedOrders = orders.map((order: OrderInterface) => ({
 		id: order.id,
-		fullName: order.customer_name,
-		orderStatus: order.order_status,
+		fullName: order.customer_first_name,
+		orderStatus: order.status,
 		orderNumber: order.id,
-		price: order.total,
-		currency: 'SAR',
-		date: order.date,
+		price: order.grand_total,
+		currency: order.order_currency_code,
+		date: order.created_at,
 	}));
 	return (
 		<section className='grid space-y-3 '>

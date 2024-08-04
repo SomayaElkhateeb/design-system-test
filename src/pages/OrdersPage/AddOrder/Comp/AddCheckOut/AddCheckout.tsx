@@ -68,7 +68,7 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='status'
 					label={t('Order status')}
-					options={['completed']}
+					options={['pending','canceled','processing','approved','closed','completed']}
 				/>
 				{/* {formValues.payment_method === 'PapPal' && (
 					<>

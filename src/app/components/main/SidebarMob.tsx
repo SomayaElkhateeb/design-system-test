@@ -11,7 +11,7 @@ export default function SidebarMob() {
 	const [openChat, setOpenChat] = useState(false);
 	const [openHelpCenter, setOpenHelpCenter] = useState(false);
 
-	console.log(openChat);
+	
 	return (
 		<>
 			{openMore ? (

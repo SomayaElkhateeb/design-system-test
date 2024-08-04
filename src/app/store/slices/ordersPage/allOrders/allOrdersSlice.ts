@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllOrdersTableReducer } from './allOrdersExtraReducers';
 import { allOrdersSliceModel } from 'src/app/models/allOrdersPageSliceModel';
+import { initialOrderData } from 'src/app/interface/OrderInterface';
 
 const initialState: allOrdersSliceModel = {
 	allOrders: [],
+	ordderItem:initialOrderData(),
 	isLoading: false,
 	error: null,
 };

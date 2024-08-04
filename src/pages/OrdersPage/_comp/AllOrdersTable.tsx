@@ -17,7 +17,6 @@ import { actionsButtonStyle } from 'src/pages/ProductsPage/tabs/AllProducts/_com
 import ThreeDotsButton from 'src/app/components/optimized/Buttons/ThreedotsButton';
 import { menuType } from 'src/app/components/optimized/Buttons/ActionsComp';
 
-
 import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
 import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
 import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';
@@ -25,22 +24,24 @@ export default function AllOrdersTable({
 	orders,
 	array,
 	setArray,
-	settingMenus,
+	children,
+	handelId,
 	isLoading,
 }: {
 	orders: OrderInterface[];
 	array: string[];
 	setArray: (e: string[]) => void;
-	settingMenus: menuType[];
+	children: React.ReactNode;
+	handelId: (e: string) => void;
+
 	isLoading: boolean;
 }) {
 	//  hooks
 	const { language } = useLanguage();
-	const navigate = useNavigate();
+	
 	const { t } = useTranslation();
 	const classData = actionsButtonStyle();
 	//  custom hook for select setting item
-	const { selectedOption, handleSelect } = useSelectBox();
 
 	//  headers
 	const OrdersHeaders = [
@@ -63,8 +64,6 @@ export default function AllOrdersTable({
 		{ title: t('actions') },
 	];
 
-	
-
 	const textClassName = 'text-subtitle text-[.8rem]';
 	return (
 		<BaseTable
@@ -76,52 +75,50 @@ export default function AllOrdersTable({
 				return {
 					item: e,
 					elements: [
-						<TableCell>
+						<GlobalTableCell>
 							<div className=' flex  items-center gap-[.3rem] '>
 								<CustomTableBodyCheckbox array={array} setArray={setArray} id={e.id} />
 
 								<div className='flex-col-global gap-[.3rem]'>
 									<p className='title'>{e.id}</p>
-									<p className={textClassName}>{e.date}</p>
+									<p className={textClassName}>{e.created_at}</p>
 								</div>
 							</div>
-						</TableCell>,
-						<TableCell>
+						</GlobalTableCell>,
+						<GlobalTableCell>
 							<div className=' flex-col-global gap-[.4rem]'>
-								<p className='text-title'>{e.customer_name}</p>
+								<p className='text-title'>{e.customer_first_name}</p>
 								<p className={`${textClassName} flex-row-global-items-start gap-[.2rem]`}>
-									<CiLocationOn className={textClassName} /> {e.location}
+									<CiLocationOn className={textClassName} /> {e.shipping_address?.state}
 								</p>
 							</div>
-						</TableCell>,
-						<TableCell>
-							<div className='flex-col-global gap-[.4rem]'>
-								<p className='text-title'>{e.delivery_status}</p>
-								<p className={textClassName}>{e.branch_name}</p>
-							</div>
-						</TableCell>,
-						<TableCell>
-							<div className='flex-col-global gap-[.4rem]'>
-								<p className='text-title'>{e.payment_name}</p>
-								<p className={textClassName}>{e.payment_status}</p>
-							</div>
-						</TableCell>,
-						<GlobalTableCell>{e.order_status}</GlobalTableCell>,
-						<GlobalTableCell>SAR {e.total}</GlobalTableCell>,
+						</GlobalTableCell>,
+						<GlobalTableCell>
+							{/* <div className='flex-col-global gap-[.4rem]'>
+								<p className='text-title'>{e.delivery_status}</p> */}
+							<p className={textClassName}>{e.shipping_title}</p>
+							{/* </div> */}
+						</GlobalTableCell>,
+						<GlobalTableCell>
+							{/* <div className='flex-col-global gap-[.4rem]'> */}
+							<p className='text-title'>{e.payment_title}</p>
+							{/* <p className={textClassName}>{e.payment_status}</p>
+							</div> */}
+						</GlobalTableCell>,
+						<GlobalTableCell>{e.status}</GlobalTableCell>,
+						<GlobalTableCell>
+							{e.order_currency_code} {e.grand_total}
+						</GlobalTableCell>,
 						<TableCell>
 							<div className={classData}>
 								<FaArrowsRotate className='text-subtitle' />
-								<FaRegEdit
+								{/* <FaRegEdit
 									className='text-subtitle'
 									onClick={() => navigate(`/addProduct?id=${e?.id}`)}
-								/>
+								/> */}
 
-								<ThreeDotsButton
-									sortMenus={settingMenus}
-									selectedOption={selectedOption}
-									handelSelect={handleSelect}
-								/>
-								<ArrowTables path='/orders/orderDetails/11111' />
+								<div onClick={() => handelId(e?.id)}>{children}</div>
+								<ArrowTables path={`/orders/orderDetails/${e?.id}`} />
 							</div>
 						</TableCell>,
 					],

@@ -4,7 +4,8 @@ import { Button } from 'src/app/components/optimized';
 import { EditIcon } from 'src/app/utils/icons';
 import CustomerNoteForm from './Forms/CustomerNoteForm';
 
-export default function CustomerNote() {
+export default function CustomerNote({id}:{id:string}) {
+	
 	const { t } = useTranslation();
 	const [edit, setEdit] = useState(false);
 	return (
@@ -23,7 +24,7 @@ export default function CustomerNote() {
 				</div>
 			</div>
 			{edit ? (
-				<CustomerNoteForm onClose={() => setEdit(false)} />
+				<CustomerNoteForm id={id} onClose={() => setEdit(false)} />
 			) : (
 				<div>
 					<hr />

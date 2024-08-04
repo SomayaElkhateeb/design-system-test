@@ -21,11 +21,11 @@ const MailchimpAudienceSelect: React.FC<Props> = ({ data }) => {
 	};
 
 	const handleConfirm = () => {
-		console.log(`Selected store: ${selectedOption}`);
+		// console.log(`Selected store: ${selectedOption}`);
 	};
 
 	const handleLearnMore = () => {
-		console.log('Learn more about syncing clicked');
+		// console.log('Learn more about syncing clicked');
 	};
 
 	const options: Option[] =

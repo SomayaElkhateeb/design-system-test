@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 
 export default class PublicHandlingErrors {
 	public static onErrorResponse = (error: any) => {
-		console.log(error);
+		
 		this.handleTokenExpire(error?.response?.status);
 
 		const errorData = error?.response?.data;

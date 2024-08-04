@@ -3,7 +3,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { FiUploadCloud } from 'react-icons/fi';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { SiMicrosoftexcel } from 'react-icons/si';
-import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
+
 import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 
 // Define products array with correct type
@@ -35,7 +35,17 @@ export interface Product {
 		product_id: string;
 		qty: number;
 	}[];
-	categories:string[]
+	categories: string[];
+	discount_amount?: string;
+	discount_percent?: string;
+	grant_total?: number;
+	qty_ordered?: number;
+	tax_amount?: string;
+	tax_percent?: string;
+	total: string;
+	total_weight?: string;
+
+	weight?: string;
 }
 
 export const initialProduct = () => {
@@ -53,8 +63,17 @@ export const initialProduct = () => {
 		ar: { name: '', description: '' },
 		type: '',
 		images: [],
-		inventory_sources:[],
-		categories:[]
+		inventory_sources: [],
+		categories: [],
+		discount_amount: '',
+		discount_percent: '',
+		grant_total: 0,
+		qty_ordered: 0,
+		tax_amount: 0,
+		tax_percent: '',
+		total: '',
+		total_weight: '',
+		weight: '',
 	};
 };
 
@@ -163,5 +182,3 @@ export const productSettingsMenu = [
 	},
 	{ id: nanoid(), text: 'Delete product', icon: <LiaTrashAlt size='25' className='fill-error' /> },
 ];
-
-

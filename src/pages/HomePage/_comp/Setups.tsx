@@ -17,7 +17,7 @@ export default function Setups({ startTour, handleSetup }: SetupsProps) {
 	const { goNext, activeStep, setActiveStep } = useStepNavigator();
 
 	const handleFinish = () => {
-		console.log('Finish');
+		// console.log('Finish');
 		handleSetup();
 		// Implement additional finish logic here
 	};
