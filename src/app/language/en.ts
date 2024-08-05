@@ -1208,6 +1208,7 @@ export const english = {
 	'Less Advanced Options': 'Less Advanced Options',
 	'Download link': 'Download link',
 	'Available on store': 'Available on store',
+	"Select brand":"Select brand",
 	"Feature on the front of page": "Feature on the front of page",
 	"Select Inventory": "Select Inventory",
 	'Featured on the front page': 'Featured on the front page',

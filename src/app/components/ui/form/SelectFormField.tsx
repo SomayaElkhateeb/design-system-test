@@ -59,11 +59,11 @@ export default function SelectFormField({
 					{add_button && (
 						<button
 							type='button'
-							className='md:flex-row-global flex-col-global items-center px-2 py-2 border-l w-2/5'
+							className='md:flex-row-global gap-1 flex-col-global items-center justify-center px-2 py-2 border-l w-[9rem]'
 							onClick={() => setOpenDialog && setOpenDialog(true)}
 						>
-							<FaCirclePlus size={24} />
-							<span className='ms-1'>{t('Add One')}</span>
+							<FaCirclePlus size={18} />
+							<span className=' text-[.85rem]'>{t('Add One')}</span>
 						</button>
 					)}
 				</div>

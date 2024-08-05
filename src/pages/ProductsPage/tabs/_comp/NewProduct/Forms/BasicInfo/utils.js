@@ -14,6 +14,6 @@ export const productBasicInfoDefaultValues = {
 	nameEn: '',
 	nameAr: '',
 	sku: '',
-	brand: '',
+	brand_id: '',
 	category: '',
 };
