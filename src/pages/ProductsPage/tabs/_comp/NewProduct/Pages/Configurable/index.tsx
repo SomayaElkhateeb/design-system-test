@@ -39,11 +39,11 @@ const productsSections = [
 		id: 'ProductFormPricingSection',
 		title: 'pricing',
 	},
-	// {
-	// 	Elem: ProductFormStockSection,
-	// 	id: 'ProductFormStockSection',
-	// 	title: 'stock',
-	// },
+	{
+		Elem: ProductFormStockSection,
+		id: 'ProductFormStockSection',
+		title: 'stock',
+	},
 	{
 		Elem: ProductFormShippingSection,
 		id: 'ProductFormShippingSection',

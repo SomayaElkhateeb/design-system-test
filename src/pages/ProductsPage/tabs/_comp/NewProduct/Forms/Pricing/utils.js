@@ -5,7 +5,7 @@ export const productPricingSchema = {
 	discount: z.coerce.number().min(0).optional(),
 	costPrice: z.coerce.number().min(0).optional(),
 	taxable: z.number(),
-	continue_selling:z.number(),
+	// continue_selling:z.number(),
 	profit: z.coerce.number().min(0).optional(),
 	// bulkPrices: z.array(
 	// 	z.object({
@@ -23,7 +23,7 @@ export const productPricingDefaultValues = {
 	discount: undefined,
 	costPrice: undefined,
 	taxable: 0,
-	continue_selling:0,
+	// continue_selling:0,
 	profit: undefined,
 	// bulkPrices: [],
 };

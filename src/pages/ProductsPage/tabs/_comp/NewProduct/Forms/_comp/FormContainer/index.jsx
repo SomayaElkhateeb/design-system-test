@@ -54,7 +54,7 @@ export default function ProductFormContainer(props) {
 					<SubHeader
 						title={title !== 'configurable' && title !== 'simple' ? `Add ${title}` : 'Add Product'}
 					>
-						<SubHeaderDefaultBtns onSubmit={() => props.onSubmit} />
+						<SubHeaderDefaultBtns onSubmit={() => props.onSubmit()} />
 					</SubHeader>
 					{/* <h1>
 							<button className='text-black whitespace-nowrap' onClick={() => navigate(-1)}>
@@ -91,7 +91,7 @@ export default function ProductFormContainer(props) {
 				</header>
 				{props.children}
 				<div className='m-[1rem]'>
-					<SubHeaderMobileBtns onSubmit={() => props.onSubmit} />
+					<SubHeaderMobileBtns onSubmit={() => props.onSubmit()} />
 				</div>
 			</form>
 		</Form>

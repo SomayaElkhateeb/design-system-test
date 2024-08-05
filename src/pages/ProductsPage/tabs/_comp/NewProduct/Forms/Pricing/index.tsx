@@ -17,11 +17,7 @@ export default function ProductFormPricingSection<TFormStore>(props: Props<TForm
 			? props.formStore.setValue('taxable', 1)
 			: props.formStore.setValue('taxable', 0);
 	}, [props.formStore.watch('taxable')]);
-	useEffect(() => {
-		props.formStore.watch('continue_selling') // ???
-			? props.formStore.setValue('continue_selling', 1)
-			: props.formStore.setValue('continue_selling', 0);
-	}, [props.formStore.watch('continue_selling')]);
+	
 	return (
 		<section className='global-cards' id={props.id}>
 			<p className='title'>{t('Pricing')}</p>
@@ -71,17 +67,7 @@ export default function ProductFormPricingSection<TFormStore>(props: Props<TForm
 							/>
 						)}
 					/>
-					<FormField
-						formStore={props.formStore}
-						name='continue_selling'
-						render={(field) => (
-							<CheckBox
-								label={t('Can continue selling when out of stock')}
-								checked={props.formStore.watch('continue_selling') > 0 ? true : false}
-								handleOnChange={field.onChange}
-							/>
-						)}
-					/>
+					
 				</div>
 			</div>
 			{/* <BulkPricesManager formStore={props.formStore} /> */}

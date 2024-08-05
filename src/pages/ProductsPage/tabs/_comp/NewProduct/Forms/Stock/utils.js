@@ -1,16 +1,25 @@
 import { z } from 'zod';
 
 export const productInventoryBranchesSchema = {
-	quantity: z.coerce.number().min(0),
-	canContinueSellingWhenOutOfStock: z.boolean().default(false),
-	branches: z.array(
-		z.object({ id: z.string(), name: z.string(), quantity: z.coerce.number().min(0) }),
-	),
+	quy: z.coerce.number().min(0).positive(),
+	continue_selling: z.number(),
+	// branches: z.array(
+	// 	z.object({ id: z.string(), name: z.string(), quantity: z.coerce.number().min(0) }),
+	// ),
+	inventories: z
+		.array(
+			z.object({
+				id: z.string().min(1),
+				name: z.string().min(1),
+			}),
+		)
+		.min(1),
 };
 
 // Define the default values for the schema
 export const productInventoryBranchesDefaultValues = {
-	quantity: 0,
-	canContinueSellingWhenOutOfStock: false,
-	branches: [],
+	quy: 0,
+	continue_selling: false,
+	inventories: [],
+	// branches: [],
 };

@@ -136,14 +136,10 @@ export default function AddCategoryForm({
 	}, [formStore.watch('status')]);
 
 	useEffect(() => {
-		if (Edit_id && category?.length > 0) {
+		if (Edit_id && category && category?.length > 0) {
 			category && category[0]?.en?.name && formStore.setValue('name_en', category[0]?.en?.name);
 			category && category[0]?.ar?.name && formStore.setValue('name_ar', category[0]?.ar?.name);
-			category &&
-				category[0]?.en?.description &
-					formStore.setValue('description_en', category[0]?.en?.description);
-			category &&
-				category[0]?.ar?.description &&
+			formStore.setValue('description_en', category[0]?.en?.description);
 				formStore.setValue('description_ar', category[0]?.ar?.description);
 			category && category[0]?.slug && formStore.setValue('slug', category[0]?.slug);
 

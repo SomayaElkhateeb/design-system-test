@@ -31,7 +31,7 @@ export const ProductSchema: ZodRawShape = {
 	...productBasicInfoSchema,
 	...productDescriptionAndSpecificationsRawSchema,
 	...productPricingSchema,
-	// ...productInventoryBranchesSchema,
+	...productInventoryBranchesSchema,
 	...productShippingSchema,
 	...productOptionsAndVariationsRawSchema,
 	// ...productSeoSchema,
@@ -49,5 +49,5 @@ export const ProductDefaultValues = {
 	...productQuickActionsDefaultValues,
 	// ...productSeoDefaultValues,
 	...productShippingDefaultValues,
-	// ...productInventoryBranchesDefaultValues,
+	...productInventoryBranchesDefaultValues,
 };
