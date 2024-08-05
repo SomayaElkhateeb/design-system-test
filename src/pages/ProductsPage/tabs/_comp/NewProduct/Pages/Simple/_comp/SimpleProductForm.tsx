@@ -28,6 +28,7 @@ import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
+import HorizontalBox from 'src/app/components/ui/horizontal-box';
 
 interface simpleProductInterface {
 	name: string;
@@ -174,30 +175,23 @@ const SimpleProductForm = ({
 							formStore={formStore}
 							name='price'
 							render={(field) => (
-								<div className='relative flex items-center border border-gray-300 rounded-md'>
-									<span className='px-3 py-2 border-r rounded-l-md bg-gray-50 text-gray-500'>
-										SAR
-									</span>
+								<HorizontalBox start='SAR' startSeparator>
 									<Input
 										{...field}
 										id='price'
 										type='number'
 										placeholder={`${t('Price')} (${t('Required')})`}
-										className='flex-1'
 									/>
-								</div>
+								</HorizontalBox>
 							)}
 						/>
 						<FormField
 							formStore={formStore}
 							name='quy'
 							render={(field) => (
-								<div className='relative flex items-center border border-gray-300 rounded-md'>
-									<span className='px-3 py-2 border-r rounded-l-md bg-gray-50 text-gray-500'>
-										{t('Quantity')}
-									</span>
+								<HorizontalBox start={t('Quantity')} startSeparator>
 									<Input {...field} id='quy' type='number' placeholder={t('Quantity')} />
-								</div>
+								</HorizontalBox>
 							)}
 						/>
 						<FormField

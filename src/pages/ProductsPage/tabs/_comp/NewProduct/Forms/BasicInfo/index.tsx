@@ -15,7 +15,7 @@ import AddBrandForm from 'src/pages/ProductsPage/tabs/Brands/_comp/AddBrandForm'
 import { getCategoriesTable } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
 import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 
-export default function ProductFormBasicInfoSection(props: Props) {
+export default function ProductFormBasicInfoSection<TFormStore>(props: Props<TFormStore>) {
 	//  hooks
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ export default function ProductFormBasicInfoSection(props: Props) {
 		dispatch(getAllProductsTable());
 		dispatch(getBrandsTable());
 	}, [dispatch]);
-	console.log(props.formStore.watch("category"))
+
 	return (
 		<section id={props.id} className='global-cards'>
 			<h3 className='title'>{t('Basic info')}</h3>
@@ -44,7 +44,7 @@ export default function ProductFormBasicInfoSection(props: Props) {
 						{ name: 'nameEn', label: 'En' },
 						{ name: 'nameAr', label: 'عربي' },
 					]}
-					label={`${t('Product Name')} (${t('Required')})`}
+					label={t('Product Name')}
 					renderer={(field) => <Input {...field} />}
 				/>
 				<FormField

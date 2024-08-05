@@ -9,16 +9,15 @@ export const productSpecificationsRawSchema = z.object({
 });
 
 // Define the schema for product description and specifications
-export const productDescriptionAndSpecificationsRawSchema = z.object({
+export const productDescriptionAndSpecificationsRawSchema = {
 	descriptionEn: z.string().min(10).max(1000),
 	descriptionAr: z.string().min(10).max(1000),
-	specifications: z.array(productSpecificationsRawSchema),
-});
-	
+	// specifications: z.array(productSpecificationsRawSchema),
+};
 
 // Define default values for the schema
 export const productDescriptionAndSpecificationsDefaultValues = {
 	descriptionEn: '',
 	descriptionAr: '',
-	specifications: [],
-  }
+	// specifications: [],
+};

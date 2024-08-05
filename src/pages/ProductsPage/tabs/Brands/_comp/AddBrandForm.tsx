@@ -53,7 +53,7 @@ export default function AddBrandForm({
 			formData.append('description_ar', values.description_ar);
 			formData.append('slug', values.slug);
 
-			formData.append('status', values.status);
+			formData.append('status', values.status.toString());
 			formData.append('image[]', values.image);
 			values.products
 				?.map((e: { id: string; name: string }) => e?.id)
@@ -115,7 +115,7 @@ export default function AddBrandForm({
 			formStore.setValue('description_ar', brandInfo?.description_ar);
 			formStore.setValue('slug', brandInfo?.slug);
 
-			formStore.setValue('slug_ar', brandInfo?.slug);
+			// formStore.setValue('slug_ar', brandInfo?.slug);
 			brandInfo?.status > 0 ? formStore.setValue('status', 1) : formStore.setValue('status', 0);
 			brandInfo?.products?.length > 0 &&
 				formStore.setValue(
@@ -159,7 +159,7 @@ export default function AddBrandForm({
 												<FormField
 													formStore={formStore}
 													name='slug'
-													label={t('brand link (Slug)')}
+													label={t('Brand link (Slug)')}
 													render={(field) => <Input {...field} placeholder={''} />}
 												/>
 												<TabbedFormField
