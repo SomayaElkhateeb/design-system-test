@@ -12,7 +12,7 @@ export const getCategoriesTable = createAsyncThunk('CategoriesTable/getCategorie
 export const PostAddCategoryRequest = createAsyncThunk(
 	"CategoriesTable/PostAddCategoryRequest",
 	(payload: FormData) =>
-		PublicRequest.postData(payload, `merchant/catalog/categories/store`)
+		PublicRequest.postCategoriesData(payload, `merchant/catalog/categories/store`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);
@@ -26,7 +26,7 @@ export const PostAddCategoryRequest = createAsyncThunk(
 export const PutUpdateCategoryRequest = createAsyncThunk(
 	"CategoriesTable/PutUpdateCategoryRequest",
 	(payload: { data: FormData, id: string }) =>
-		PublicRequest.postData(payload?.data, `merchant/catalog/categories/update/${payload?.id}`)
+		PublicRequest.postCategoriesData(payload?.data, `merchant/catalog/categories/update/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);
@@ -52,7 +52,7 @@ export const deleteCategoryAction = createAsyncThunk(
 
 // get category Info
 export const getCategoryInfo = createAsyncThunk('CategoriesTable/getCategoryInfo', (payload: string) =>
-	PublicRequest.getData(`merchant/catalog/categories/show/${payload}`),
+	PublicRequest.getCategoryData(`merchant/catalog/categories/show/${payload}`),
 );
 
 
