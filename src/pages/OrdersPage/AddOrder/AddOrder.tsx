@@ -18,21 +18,21 @@ import { PostAddOrder } from 'src/app/store/slices/AddOrderPage/AddOrderAsyncThu
 import { useNavigate } from 'react-router-dom';
 import { getMerchantPaymentList } from 'src/app/store/slices/settingsPage/payment/merchantPaymentMethods/merchantPaymentAsyncThunks';
 import { getShippingList } from 'src/app/store/slices/settingsPage/shipping/shippingAsyncThunks';
+import { AddCheckOutFormValues } from './Comp/AddCheckOut/_hook/useAddCheckOutForm';
 
 export default function AddOrder() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { Add_Order_Data } = useAppSelector((state) => state.addOrder);
-	
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.addOrder);
+
 	useEffect(() => {
 		dispatch(getAllCustomersTable());
 		dispatch(getAllProductsTable());
 		dispatch(getMerchantPaymentList());
 		dispatch(getShippingList());
 	}, [dispatch]);
-	const { shippingList } = useAppSelector((state) => state.shippingSettings);
-console.log(shippingList)
 
 	//  get customer info with id params
 	useEffect(() => {
@@ -40,7 +40,7 @@ console.log(shippingList)
 	}, [Add_Order_Data.customer_id, dispatch]);
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
-	const handleFinish = () => {
+	const handleFinish = (values: AddCheckOutFormValues) => {
 		const formData = new FormData();
 
 		formData.append('customer_id', Add_Order_Data.customer_id);
@@ -50,7 +50,7 @@ console.log(shippingList)
 			formData.append(`items[${i}][quantity]`, e?.quantity.toString());
 		});
 
-		for (const [key, value] of Object.entries(Add_Order_Data.deliveryData)) {
+		for (const [key, value] of Object.entries(values)) {
 			formData.append(key, value);
 		}
 
@@ -79,7 +79,13 @@ console.log(shippingList)
 		},
 		{
 			title: t('checkout'),
-			content: <AddCheckout onFinish={handleFinish} onBack={goPrevious} />,
+			content: (
+				<AddCheckout
+					isLoadingAddOrUpdate={isLoadingAddOrUpdate}
+					onFinish={handleFinish}
+					onBack={goPrevious}
+				/>
+			),
 		},
 	];
 

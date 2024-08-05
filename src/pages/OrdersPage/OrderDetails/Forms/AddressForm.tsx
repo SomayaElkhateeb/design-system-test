@@ -7,7 +7,15 @@ import Address from '../../AddOrder/Comp/AddOrderAddresse/_comp/Address';
 import useOrderAddress from '../../AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
 import { useAppSelector } from 'src/app/store';
 
-export default function AddressForm({ handleAddressForm,details }: { handleAddressForm: () => void,details:boolean }) {
+export default function AddressForm({
+	handleAddressForm,
+	details,
+	isLoadingAddOrUpdate,
+}: {
+	handleAddressForm: () => void;
+	details: boolean;
+	isLoadingAddOrUpdate: boolean;
+}) {
 	const [sendGift, setSendGift] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Add manually');
 	const { t } = useTranslation();
@@ -33,7 +41,7 @@ export default function AddressForm({ handleAddressForm,details }: { handleAddre
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-4'>
 				<Address
-				details={details}
+					details={details}
 					isName
 					sendGift={sendGift}
 					setSendGift={setSendGift}
@@ -46,7 +54,7 @@ export default function AddressForm({ handleAddressForm,details }: { handleAddre
 					<Button variant='secondary' onClick={handleAddressForm}>
 						{t('back')}
 					</Button>
-					<Button type='submit' variant='primary' onClick={onSubmit}>
+					<Button type='submit' loading={isLoadingAddOrUpdate} variant='primary' onClick={onSubmit}>
 						{t('Next')}
 					</Button>
 				</div>

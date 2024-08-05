@@ -24,6 +24,7 @@ import { useParams } from 'react-router-dom';
 import { getOrderInfo } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 import { FiPhoneCall } from 'react-icons/fi';
 import { TfiEmail, TfiWorld } from 'react-icons/tfi';
+import AddCheckout from '../AddOrder/Comp/AddCheckOut/AddCheckout';
 export default function OrderDetails() {
 	const { t } = useTranslation();
 	const { id } = useParams();
@@ -35,6 +36,7 @@ export default function OrderDetails() {
 		showCheckout: false,
 	});
 	//  selectors
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.allOrders);
 	const { ordderItem } = useAppSelector((state) => state.allOrders);
 
 	const { showCustomer, showAddress, showCheckout } = state;
@@ -51,7 +53,7 @@ export default function OrderDetails() {
 	};
 
 	// data
-	console.log(ordderItem.shipping_address);
+	
 	const address = [
 		{ id: nanoid(), name: t('Country'), value: ordderItem.shipping_address.country_name },
 		{ id: nanoid(), name: t('City'), value: ordderItem.shipping_address.city },
@@ -62,8 +64,8 @@ export default function OrderDetails() {
 	];
 
 	const info = [
-		{ id: nanoid(), name: `${t('IP Address')} `, value: '213.156.160.96' },
-		{ id: nanoid(), name: `${t('Accepts email marketing')} `, value: 'No' },
+		{ id: nanoid(), name: `${t('IP Address')} `, value: '' },
+		// { id: nanoid(), name: `${t('Accepts email marketing')} `, value: '' },
 	];
 
 	const SubHeaderActions = () => {
@@ -130,7 +132,7 @@ export default function OrderDetails() {
 				</div>
 				<div className='flex-col-global grid-right'>
 					<ContactCard
-						contain={showCustomer && <CustomerForm handleCustomerForm={handleCustomerForm} />}
+						contain={showCustomer && <CustomerForm isLoadingAddOrUpdate={isLoadingAddOrUpdate} handleCustomerForm={handleCustomerForm} />}
 						form={showCustomer}
 						title={t('Customer')}
 						data={CustomerContact}
@@ -147,7 +149,7 @@ export default function OrderDetails() {
 					/>
 
 					<ContactCard
-						contain={showAddress && <AddressForm details handleAddressForm={handleAddressForm} />}
+						contain={showAddress && <AddressForm isLoadingAddOrUpdate={isLoadingAddOrUpdate} details handleAddressForm={handleAddressForm} />}
 						form={showAddress}
 						title={t('Address')}
 						data={address}
@@ -169,7 +171,8 @@ export default function OrderDetails() {
 					/>
 					<Checkout
 						contain={
-							showCheckout && <CheckoutDetailsForm handleChckOutFormForm={handleChckOutFormForm} />
+							// showCheckout && <CheckoutDetailsForm handleChckOutFormForm={handleChckOutFormForm} />
+							showCheckout && <AddCheckout isLoadingAddOrUpdate={isLoadingAddOrUpdate} id={ordderItem?.id} orderItem={ordderItem} handleChckOutFormForm={handleChckOutFormForm} />
 						}
 						form={showCheckout}
 						title={t('Checkout')}

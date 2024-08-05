@@ -7,6 +7,7 @@ const initialState: allOrdersSliceModel = {
 	allOrders: [],
 	ordderItem:initialOrderData(),
 	isLoading: false,
+	isLoadingAddOrUpdate:false,
 	error: null,
 };
 

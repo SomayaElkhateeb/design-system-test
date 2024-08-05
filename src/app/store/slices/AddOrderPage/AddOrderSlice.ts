@@ -14,7 +14,7 @@ const initialState: AddOrderSliceState = {
         address_id: '',
         deliveryData: {
             purchase_method: '',
-            branch: '',
+            branch_id: '',
             payment_method: '',
             status: '',
             delivery_method: '',
@@ -49,7 +49,7 @@ const AddOrderSlice = createSlice({
             state.Add_Order_Data.address_id = ""
             state.Add_Order_Data.deliveryData = {
                 purchase_method: '',
-                branch: '',
+                branch_id: '',
                 payment_method: '',
                 status: '',
                 delivery_method: '',
