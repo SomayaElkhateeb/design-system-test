@@ -938,7 +938,7 @@ export const arabic = {
 	'Service is successfully purchased': 'تم شراء الخدمة بنجاح',
 	'send message': 'إرسال رسالة',
 	'show on map': 'عرض على الخريطة',
-	'Payment details (Online)': 'تفاصيل الدفع (عبر الإنترنت)',
+	'Payment details': 'تفاصيل الدفع',
 	'Bank transfer': 'التحويل المصرفي',
 	'Delivery method': 'طريقة التوصيل',
 	Shipping: 'شحن',

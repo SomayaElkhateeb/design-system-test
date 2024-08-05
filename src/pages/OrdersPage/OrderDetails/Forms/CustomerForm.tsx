@@ -13,7 +13,7 @@ import {
 	updateOrderCustomer,
 } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 
-export default function CustomerForm({ handleCustomerForm }: { handleCustomerForm: () => void }) {
+export default function CustomerForm({ handleCustomerForm,isLoadingAddOrUpdate }: { handleCustomerForm: () => void,isLoadingAddOrUpdate:boolean }) {
 	const { ordderItem } = useAppSelector((state) => state.allOrders);
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
@@ -86,7 +86,7 @@ export default function CustomerForm({ handleCustomerForm }: { handleCustomerFor
 					<Button onClick={handleCustomerForm} variant='secondary'>
 						{t('Discard')}
 					</Button>
-					<Button onClick={handleSubmitBtn} variant='primary'>
+					<Button loading={isLoadingAddOrUpdate} onClick={handleSubmitBtn} variant='primary'>
 						{t('Save')}
 					</Button>
 				</div>

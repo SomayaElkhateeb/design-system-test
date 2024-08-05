@@ -984,7 +984,7 @@ export const english = {
 	'Tax display in checkout': 'Tax display in checkout',
 	'Zone defines by': 'Zone defines by',
 
-	'Payment details (Online)': 'Payment details (Online)',
+	'Payment details': 'Payment details',
 	'Bank transfer': 'Bank transfer',
 	'Delivery method': 'Delivery method',
 	Shipping: 'Shipping',

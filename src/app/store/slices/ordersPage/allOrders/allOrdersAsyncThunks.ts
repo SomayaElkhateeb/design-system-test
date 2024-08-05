@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
+import { AddCheckOutFormValues } from 'src/pages/OrdersPage/AddOrder/Comp/AddCheckOut/_hook/useAddCheckOutForm';
 import { AddAddressInterface } from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
 import { INoteForm } from 'src/pages/OrdersPage/OrderDetails/Forms/CustomerNoteForm';
 import { OrdercustomerFormInterface } from 'src/pages/OrdersPage/OrderDetails/Forms/HookCustomerForm';
@@ -56,6 +57,16 @@ export const updateOrderCustomer = createAsyncThunk('allOrdersPage/updateOrderCu
 
 export const updateOrderaddress = createAsyncThunk('allOrdersPage/updateOrderaddress', (payload: { data: AddAddressInterface, id: string }) =>
 	PublicRequest.putData(payload.data, `merchant/sales/orders/customer-address/update/${payload.id}`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+
+export const updateOrderCheckOut = createAsyncThunk('allOrdersPage/updateOrderCheckOut', (payload: { data: AddCheckOutFormValues, id: string }) =>
+	PublicRequest.putData(payload.data, `merchant/sales/orders/checkout/update/${payload.id}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
 			return res;

@@ -4,9 +4,10 @@ import { z } from 'zod';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useAppDispatch } from 'src/app/store';
 import { setAdd_Order_Data_DeliveryData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
+import { updateOrderCheckOut } from 'src/app/store/slices/ordersPage/allOrders/allOrdersAsyncThunks';
 export interface AddCheckOutFormValues {
 	purchase_method: string;
-	branch?: string;
+	branch_id?: string;
 	payment_method: string;
 	// creditCard?: string;
 	// bankTransfer?: string;
@@ -25,7 +26,7 @@ export interface AddCheckOutFormValues {
 }
 const defaultValues: AddCheckOutFormValues = {
 	purchase_method: 'online',
-	branch: '',
+	branch_id: '',
 	payment_method: '',
 	status: '',
 	// creditCard: '',
@@ -43,7 +44,7 @@ const defaultValues: AddCheckOutFormValues = {
 	// aramexNote: '',
 };
 
-export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void }) {
+export default function useAddCheckOutForm(onFinish?: (e?:AddCheckOutFormValues) => void, id?: string) {
 	const dispatch = useAppDispatch();
 	const [formValues, setFormValues] = useState<AddCheckOutFormValues>({
 		purchase_method: 'online',
@@ -60,7 +61,7 @@ export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void 
 
 		return {
 			purchase_method: stringValidation,
-			branch: optionalStringValidation(formValues.purchase_method === 'branch'),
+			branch_id: optionalStringValidation(formValues.purchase_method === 'branch'),
 			payment_method: stringValidation,
 			// creditCardOption: optionalStringValidation(formValues.payment_method === 'Credit card'),
 			// creditCardNote: z.optional(stringValidation).or(z.literal('')),
@@ -77,8 +78,10 @@ export default function useAddCheckOutForm({ onFinish }: { onFinish: () => void 
 	};
 
 	const handleSubmit = async (values: AddCheckOutFormValues) => {
-		await dispatch(setAdd_Order_Data_DeliveryData(values));
-		onFinish();
+		id
+			? dispatch(updateOrderCheckOut({ data: values, id }))
+			: dispatch(setAdd_Order_Data_DeliveryData(values));
+		onFinish && onFinish(values);
 	};
 
 	const { formStore, onSubmit } = useForm({

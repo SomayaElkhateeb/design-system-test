@@ -7,6 +7,8 @@ import { Form } from 'src/app/components/ui/form';
 // import FormField from 'src/app/components/ui/form/field';
 import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 import { useAppSelector } from 'src/app/store';
+import { OrderInterface } from 'src/app/interface/OrderInterface';
+import { useEffect } from 'react';
 
 const branches = [
 	{ value: 'completed', label: 'completed' },
@@ -16,16 +18,30 @@ const branches = [
 export default function AddCheckout({
 	onFinish,
 	onBack,
+	handleChckOutFormForm,
+	id,
+	orderItem,
+	isLoadingAddOrUpdate,
 }: {
-	onFinish: () => void;
-	onBack: () => void;
+	onFinish?: (e?:AddCheckOutFormValues) => void;
+	onBack?: () => void;
+	handleChckOutFormForm?: () => void;
+	id?: string;
+	orderItem?: OrderInterface;
+	isLoadingAddOrUpdate: boolean;
 }) {
 	const { t } = useTranslation();
 
-	const { formStore, onSubmit, formValues } = useAddCheckOutForm({ onFinish });
+	const { formStore, onSubmit, formValues } = useAddCheckOutForm(onFinish, id);
 	const { merchantPaymentList } = useAppSelector((state) => state.merchantPaymentSettings);
 	const { shippingList } = useAppSelector((state) => state.shippingSettings);
-	console.log(shippingList);
+
+	useEffect(() => {
+		orderItem?.status && formStore.setValue('status', orderItem?.status);
+		orderItem?.payment_title === 'Cash On Delivery' &&
+			formStore.setValue('payment_method', 'cashondelivery');
+		orderItem?.shipping_method && formStore.setValue('shipping_method', orderItem?.shipping_method);
+	}, [orderItem]);
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global gap-5 cardDetails-sharedClass p-5'>
@@ -40,7 +56,7 @@ export default function AddCheckout({
 					/>
 					{formValues.purchase_method === 'branch' && (
 						<SelectFormField
-							name='branch'
+							name='branch_id'
 							label={t('Branch name')}
 							formStore={formStore}
 							options={branches}
@@ -68,7 +84,7 @@ export default function AddCheckout({
 					formStore={formStore}
 					name='status'
 					label={t('Order status')}
-					options={['pending','canceled','processing','approved','closed','completed']}
+					options={['pending', 'canceled', 'processing', 'approved', 'closed', 'completed']}
 				/>
 				{/* {formValues.payment_method === 'PapPal' && (
 					<>
@@ -112,7 +128,7 @@ export default function AddCheckout({
 					options={[
 						shippingList.free.method,
 						shippingList.flatrate.method,
-					    shippingList.mpdhl.method,
+						shippingList.mpdhl.method,
 					]}
 				/>
 				{/* {formValues.shipping_method === 'DHLRate' && (
@@ -150,8 +166,17 @@ export default function AddCheckout({
 					</>
 				)} */}
 				<div className='flex-btn-end'>
-					<Button variant='secondary' text={t('Discard')} onClick={onBack} />
-					<Button onClick={onSubmit} variant='primary' text={t('Finish')} />
+					<Button
+						variant='secondary'
+						text={t('Discard')}
+						onClick={() => (onBack ? onBack() : handleChckOutFormForm && handleChckOutFormForm())}
+					/>
+					<Button
+						loading={isLoadingAddOrUpdate}
+						onClick={onSubmit}
+						variant='primary'
+						text={t('Finish')}
+					/>
 				</div>
 			</form>
 		</Form>
