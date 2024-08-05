@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { taxCategoriesShowReducer } from './taxCategoriesExtraReducer';
-import { taxCategoriesSettingsSliceModel } from 'src/app/models/settingsModels/taxCategorySettingsModel';
+import { taxCategoriesSettingsSliceModel, handelDefaultValue } from 'src/app/models/settingsModels/taxCategorySettingsModel';
 
 const initialState: taxCategoriesSettingsSliceModel = {
 	taxCategoriesList: [],
-	taxCategoriesShow: null,
+	taxCategoriesShow: handelDefaultValue(),
 	isLoadingAddOrUpdate: false,
 	isLoading: false,
 	error: null,
