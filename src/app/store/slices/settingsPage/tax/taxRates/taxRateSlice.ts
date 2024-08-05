@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { taxCategoriesShowReducer } from './taxRateExtraReducer';
 import { handelDefaultValue, taxRateSettingsSliceModel } from 'src/app/models/settingsModels/taxRateSettingsModel';
 

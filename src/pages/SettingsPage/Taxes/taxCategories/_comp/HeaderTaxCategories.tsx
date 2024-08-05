@@ -18,7 +18,6 @@ const HeaderTaxCategories = ({
     return (
         <div className='md:flex-row-global flex-col-global justify-between w-full '>
             <SearchInput setSearchQuery={setSearchQuery} />
-
             <div className='flex-row-global gap-3'>
                 <FilterButton
                     sortMenus={sortMenus}

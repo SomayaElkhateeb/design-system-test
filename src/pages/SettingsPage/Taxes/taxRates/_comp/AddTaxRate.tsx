@@ -1,14 +1,11 @@
-import { useEffect, useMemo } from 'react'
-import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { SubHeader } from 'src/app/components/optimized';
-import { SubHeaderDefaultBtns, SubHeaderMobileBtns } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import useCustomHookTaxRate, { TaxRateInterface } from '../_hook/HookTaxRate';
 import { createTaxRate, getTaxRatesShow, updateTaxRate } from 'src/app/store/slices/settingsPage/tax/taxRates/taxRateAsyncThunks';
 import { Form } from 'src/app/components/ui/form';
 import AddTaxRateForm from './AddTaxRateForm';
 import { useForm } from 'src/app/utils/hooks/form';
+import { useMemo } from 'react';
 
 
 const AddTaxRate = () => {
@@ -22,7 +19,7 @@ const AddTaxRate = () => {
 
   // redux
   const dispatch = useAppDispatch();
-  const { isLoadingAddOrUpdate, taxRatesShow } = useAppSelector((state) => state.taxRateSettings);
+  const { taxRatesShow } = useAppSelector((state) => state.taxRateSettings);
 
   const handleSubmit = (values: TaxRateInterface) => {
     console.log("tax rate",values);
@@ -77,10 +74,6 @@ const AddTaxRate = () => {
           <div className=' flex-col-global grid-left'>
             <AddTaxRateForm formStore={formStore} />
           </div>
-        </div>
-
-        <div className='flex-btn-end px-5'>
-          {/* <SubHeaderMobileBtns onSubmit={onSubmit} /> */}
         </div>
       </form>
     </Form >

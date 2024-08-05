@@ -10,13 +10,12 @@ export interface TaxCategory {
 const stringZod = z.string().min(1);
 
 export default function useCustomHookAddTaxCategory() {
-
     const handelDefaultValue = () => {
 		return {
 			cod: '',
 			name: '',
 			description: '',
-			taxrates: []
+			taxrates: '',
 		};
 	};
 
@@ -24,7 +23,7 @@ export default function useCustomHookAddTaxCategory() {
         code: stringZod,
         name: stringZod,
         description: stringZod.optional(),
-        taxrates: z.array(stringZod),
+        taxrates: stringZod,
     };
 
     return {

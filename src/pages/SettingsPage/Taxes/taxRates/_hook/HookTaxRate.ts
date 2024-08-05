@@ -22,7 +22,7 @@ export default function useCustomHookTaxRate() {
 			zip_from: 0,
 			zip_to: 0,
 			country: '',
-			tax_rate: 0.0001,
+			tax_rate: 0,
 		};
 	};
 	const zodString = z.string().min(1);

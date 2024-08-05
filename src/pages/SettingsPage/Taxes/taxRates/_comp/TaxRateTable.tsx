@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import BaseTable, { GlobalTableCell } from "src/app/components/optimized/TableLayoutGlobal/base.table";
 
 import useLanguage from "src/app/utils/hooks/useLanguage";
+import { TaxRateInterface } from "../_hook/HookTaxRate";
 
 const TaxRateTable = ({
     data,
@@ -9,7 +10,7 @@ const TaxRateTable = ({
     isLoading,
     children
 }: {
-    data: any[];
+    data: TaxRateInterface[];
     handelId: (e: string) => void;
     isLoading: boolean;
     children: React.ReactNode;
@@ -38,7 +39,7 @@ const TaxRateTable = ({
             language={language}
             color='#55607A'
             headers={dataHeaders.map((h) => h)}
-            rows={data?.map((e: any, i: number) => {
+            rows={data?.map((e: TaxRateInterface, i: number) => {
                 return {
                     item: e,
                     elements: [

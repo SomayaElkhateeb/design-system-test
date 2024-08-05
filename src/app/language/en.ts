@@ -962,7 +962,6 @@ export const english = {
 	"price exchange": "price exchange",
 	"error message": "error message",
 	"allow seller": "allow seller",
-	"password": "password",
 	"content type":"content type",
 
 
@@ -1355,4 +1354,18 @@ export const english = {
 	'product':'product',
 	'double opt-in':'double opt-in',
 	'order invoice':'order invoice',
+	'Add Tax Category':'Add Tax Category',
+	'Category Name':'Category Name',
+	'category name':'category name',
+	'Category Code':'Category Code',
+	'category code':'category code',
+	'identifier':'identifier',
+	'state':'state',
+	'country':'country',
+	'zip code':'zip code',
+	'zip from':'zip from',
+	'zip to':'zip to',
+	'rate':'rate',
+	"save changes":"save changes",
+	'tax configuration setting':'tax configuration setting',
 };

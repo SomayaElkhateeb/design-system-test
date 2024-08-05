@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 import useResponsive from "src/app/utils/hooks/useResponsive";
 import { useAppDispatch, useAppSelector } from "src/app/store";
 import useSelectBox from "src/app/components/optimized/Menu/useSelectBox";
-import { getTaxRatesList } from "src/app/store/slices/settingsPage/tax/taxRates/taxRateAsyncThunks";
+import { deleteTaxRate, getTaxRatesList } from "src/app/store/slices/settingsPage/tax/taxRates/taxRateAsyncThunks";
 import TaxRateTable from "./_comp/TaxRateTable";
+import { EditIcon, RemoveIcon } from "src/app/utils/icons";
+import PopupDelete from "src/app/components/optimized/Popups/PopupDelete";
 
 const TaxRates = () => {
   const { t } = useTranslation();
@@ -23,15 +25,15 @@ const TaxRates = () => {
     dispatch(getTaxRatesList());
   }, [dispatch]);
 
-  // const filteredTaxRates = useMemo(() => {
-  // 	return taxRatesList?.filter(rate =>
-  // 		rate.name.toLowerCase().includes(searchQuery.toLowerCase())
-  // 	);
-  // }, [searchQuery, taxRatesList]);
+  const filteredTaxRates = useMemo(() => {
+    return taxRatesList?.filter(rate =>
+      rate.identifier.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, taxRatesList]);
 
   const sortMenus = [
-    { id: nanoid(), text: 'Name A to Z' },
-    { id: nanoid(), text: 'Name Z to A' },
+    { id: nanoid(), text: 'Identifier A to Z' },
+    { id: nanoid(), text: 'Identifier Z to A' },
   ];
 
 
@@ -45,18 +47,24 @@ const TaxRates = () => {
     handelOpenDialog,
   } = UseDeleteItem();
 
-  useMemo(() => {
-    switch (selectedOption) {
-      case 'delete':
-        handelOpenDialog();
-        setSelectedOption('');
-        break;
-      case 'edit':
-        setSelectedOption('');
-        custom_Id && navigate(`addTaxRate?id=${custom_Id}`);
-        break;
-    }
-  }, [selectedOption, custom_Id]);
+  const handelDeleteTaxRate = () => {
+    dispatch(deleteTaxRate(custom_Id)).then((promiseResponse: any) => {
+      if ((promiseResponse.payload.code = 200)) {
+        handelCloseDeleteDialog();
+        dispatch(getTaxRatesList());
+      }
+    });
+  };
+
+  const handleEdit = () => {
+    setSelectedOption('');
+    custom_Id && navigate(`addTaxRatePage?id=${custom_Id}`);
+  }
+
+  const handleDelete = () => {
+    handelOpenDialog();
+    setSelectedOption('');
+  }
 
 
   return (
@@ -73,7 +81,31 @@ const TaxRates = () => {
       </div>
       <hr />
       {/* table */}
-      {/* <TaxRateTable /> */}
+      <TaxRateTable data={filteredTaxRates}
+        handelId={handelId}
+        isLoading={isLoading}
+      >
+        <div className="flex items-center gap-4">
+          <button onClick={handleEdit}>
+            <EditIcon className="fill-pri-dark p-0.5 cursor-pointer" />
+          </button>
+          <button onClick={handleDelete}>
+            <RemoveIcon className="fill-pri-dark p-0.5 cursor-pointer" />
+          </button>
+        </div>
+      </TaxRateTable>
+
+      {/* openDeleteDialog */}
+      {openDeleteDialog && (
+        <PopupDelete
+          open={openDeleteDialog}
+          onClose={handelCloseDeleteDialog}
+          title={t('Delete Item')}
+          subTitle={t('Do You Want To Delete This Item')}
+          onDelete={handelDeleteTaxRate}
+        />
+      )}
+
     </div>
   )
 }

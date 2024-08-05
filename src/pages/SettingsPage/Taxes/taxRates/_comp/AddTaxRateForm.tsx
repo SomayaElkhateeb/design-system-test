@@ -19,7 +19,7 @@ import { useEffect } from 'react';
 
 const AddTaxRateForm = ({ formStore }: { formStore: UseFormReturn<TaxRateInterface> }) => {
     const { t } = useTranslation();
-    const banks = ['Riyadh', 'SAB', 'ANB', 'QNB'];
+    const arr = ['1', '2', '3', '4'];
 
     // Get CountriesData with api request
     const { data } = useQuery([`countriesData`], () => CountriesApi.countries());
@@ -46,9 +46,16 @@ const AddTaxRateForm = ({ formStore }: { formStore: UseFormReturn<TaxRateInterfa
                         name='zip_code'
                         label={t('ZIP Code')}
                         render={(field) => <Input type='number' {...field} />}
-                    /></div>
+                    />
+                </div>
 
             </div>
+            {/* <FormField
+                formStore={formStore}
+                name='tax_rate'
+                label={t('Tax Rates')}
+                render={(field) => <Input type='number' {...field} />}
+            /> */}
             {/* <FormField
                 formStore={formStore}
                 name='tax_rate'
@@ -64,17 +71,23 @@ const AddTaxRateForm = ({ formStore }: { formStore: UseFormReturn<TaxRateInterfa
                             <SelectValue placeholder={t('Select Tax Rates')} />
                         </SelectTrigger>
                         <SelectContent>
-                            {banks.map((bank, index) => (
-                                <SelectItem key={index} value={bank}>
-                                    {bank}
+                            {arr.map((e, index) => (
+                                <SelectItem key={index} value={e}>
+                                    {e}
                                 </SelectItem>
                             ))}
                         </SelectContent>
                     </Select>
                 )}
             /> */}
+              <FormField
+                formStore={formStore}
+                name='country'
+                label={t('Country')}
+                render={(field) => <Input {...field} placeholder={t('SA')}/>}
+            />
 
-            {CountriesData?.length > 0 && (
+            {/* {CountriesData?.length > 0 && (
                 <SelectFormField
                     name='country'
                     label={t('Country')}
@@ -85,7 +98,7 @@ const AddTaxRateForm = ({ formStore }: { formStore: UseFormReturn<TaxRateInterfa
                     }))}
                     placeholder={t('Select country')}
                 />
-            )}
+            )} */}
 
             <div className='w-fit '>
                 <FormSwitchField<TaxRateInterface>
@@ -103,7 +116,7 @@ const AddTaxRateForm = ({ formStore }: { formStore: UseFormReturn<TaxRateInterfa
                             formStore={formStore}
                             name='zip_from'
                             label={t('Zip From')}
-                            render={(field) => <Input type='number' {...field}  />}
+                            render={(field) => <Input type='number' {...field} />}
                         />
                     </div>
                     <div className='w-full'>
@@ -111,7 +124,7 @@ const AddTaxRateForm = ({ formStore }: { formStore: UseFormReturn<TaxRateInterfa
                             formStore={formStore}
                             name='zip_to'
                             label={t('Zip To')}
-                            render={(field) => <Input type='number' {...field}  />}
+                            render={(field) => <Input type='number' {...field} />}
                         />
                     </div>
                 </div>
