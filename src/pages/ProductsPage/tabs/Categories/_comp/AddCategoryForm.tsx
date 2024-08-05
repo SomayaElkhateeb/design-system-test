@@ -32,7 +32,7 @@ interface AddCategoryFormProps {
 	allProducts: Product[];
 	Edit_id: string;
 	setEdit_id: (e: string) => void;
-	category: CategoryInterface[];
+	category?: CategoryInterface[];
 }
 const stringValidation = z.string().min(1);
 const CategorySchema = {
@@ -136,16 +136,21 @@ export default function AddCategoryForm({
 	}, [formStore.watch('status')]);
 
 	useEffect(() => {
-		if (Edit_id) {
-			formStore.setValue('name_en', category[0]?.en?.name);
-			formStore.setValue('name_ar', category[0]?.ar?.name);
-			formStore.setValue('description_en', category[0]?.en?.description);
-			formStore.setValue('description_ar', category[0]?.ar?.description);
-			formStore.setValue('slug', category[0]?.slug);
+		if (Edit_id && category?.length > 0) {
+			category && category[0]?.en?.name && formStore.setValue('name_en', category[0]?.en?.name);
+			category && category[0]?.ar?.name && formStore.setValue('name_ar', category[0]?.ar?.name);
+			category &&
+				category[0]?.en?.description &
+					formStore.setValue('description_en', category[0]?.en?.description);
+			category &&
+				category[0]?.ar?.description &&
+				formStore.setValue('description_ar', category[0]?.ar?.description);
+			category && category[0]?.slug && formStore.setValue('slug', category[0]?.slug);
 
-			category[0]?.status > 0
+			category && category[0]?.status > 0
 				? formStore.setValue('status', 1)
 				: formStore.setValue('status', 0);
+			category &&
 				category[0]?.products?.length > 0 &&
 				formStore.setValue(
 					'products',
@@ -157,7 +162,7 @@ export default function AddCategoryForm({
 					}),
 				);
 		}
-	}, [Edit_id, category[0],category]);
+	}, [Edit_id, category]);
 
 	return (
 		<GlobalDialog style={style} openDialog={openDialog} handleClose={handleClose}>

@@ -939,6 +939,7 @@ export const arabic = {
 	'send message': 'إرسال رسالة',
 	'show on map': 'عرض على الخريطة',
 	'Payment details': 'تفاصيل الدفع',
+	"Select brand":"تحديد براند",
 	'Bank transfer': 'التحويل المصرفي',
 	'Delivery method': 'طريقة التوصيل',
 	Shipping: 'شحن',

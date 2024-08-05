@@ -27,7 +27,7 @@ export default function ProductFormQuickActionsSection<TFormStore>(props: Props<
 					container={{ className: 'gap-2' }}
 				/>
 
-				<FormField
+				{/* <FormField
 					formStore={props.formStore}
 					name='isFeaturedOnTheFrontPage'
 					label={t('Featured on the front page')}
@@ -49,7 +49,7 @@ export default function ProductFormQuickActionsSection<TFormStore>(props: Props<
 						</button>
 					)}
 					layout='inline-reversed'
-				/>
+				/> */}
 			</CardContent>
 		</Card>
 	);

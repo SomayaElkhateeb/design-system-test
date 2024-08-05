@@ -8,7 +8,7 @@ import {
 	ProductFormMediaSection,
 	ProductFormOptionsAndVariationsSection,
 	ProductFormPricingSection,
-	ProductFormQuickActionsSection,
+	// ProductFormQuickActionsSection,
 	ProductFormShippingSection,
 	ProductFormStockSection,
 	SeoFormFaqsSection,
@@ -89,7 +89,7 @@ export default function BundleProductPage() {
 						))}
 					</div>
 					<div className='flex-shrink-0 hidden xl:block'>
-						<ProductFormQuickActionsSection formStore={formStore} />
+						{/* <ProductFormQuickActionsSection formStore={formStore} /> */}
 					</div>
 				</div>
 			</section>
