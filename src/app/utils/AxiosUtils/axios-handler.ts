@@ -3,6 +3,7 @@ import {
 
     AxiosRequestConfig,
 } from "axios";
+import CategoryApi from "src/app/api/CategoryApi";
 import MainApi from "src/app/api/MainApi";
 
 export default class AxiosHandler {
@@ -18,6 +19,17 @@ export default class AxiosHandler {
 
         return MainApi.get(url, config);
     };
+    public static vGetCategoryRequest = (
+        url: string,
+
+        params: Record<string, any> = {},
+    ) => {
+        const config: AxiosRequestConfig = {
+            params,
+        };
+
+        return CategoryApi.get(url, config);
+    };
 
     // POST
     public static vPostRequest = (
@@ -26,6 +38,14 @@ export default class AxiosHandler {
         data: any,
     ) => {
         return MainApi.post(url, data);
+    };
+
+    public static vPostCategoriesRequest = (
+        url: string,
+
+        data: any,
+    ) => {
+        return CategoryApi.post(url, data);
     };
 
     // POST FORM-DATA
