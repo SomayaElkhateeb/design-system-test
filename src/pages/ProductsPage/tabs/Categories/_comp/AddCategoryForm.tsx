@@ -24,6 +24,7 @@ import {
 	PostAddCategoryRequest,
 	PutUpdateCategoryRequest,
 } from 'src/app/store/slices/productsPage/categories/categoriesTable/categoriesTableAsyncThunks';
+import { CategoryInterface } from 'src/app/interface/CategoriesInterface';
 
 interface AddCategoryFormProps {
 	openDialog: boolean;
@@ -31,6 +32,7 @@ interface AddCategoryFormProps {
 	allProducts: Product[];
 	Edit_id: string;
 	setEdit_id: (e: string) => void;
+	category: CategoryInterface[];
 }
 const stringValidation = z.string().min(1);
 const CategorySchema = {
@@ -59,12 +61,13 @@ export default function AddCategoryForm({
 	allProducts,
 	Edit_id,
 	setEdit_id,
+	category,
 }: AddCategoryFormProps) {
 	//  hooks
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	//  selectors
-	const { isLoadingAddOrUpdate, categoryInfo } = useAppSelector((state) => state.categoriesTable);
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.categoriesTable);
 
 	const { formStore, onSubmit } = useForm({
 		schema: CategorySchema,
@@ -134,19 +137,19 @@ export default function AddCategoryForm({
 
 	useEffect(() => {
 		if (Edit_id) {
-			formStore.setValue('name_en', categoryInfo[0][0]?.en?.name);
-			formStore.setValue('name_ar', categoryInfo[0][0]?.ar?.name);
-			formStore.setValue('description_en', categoryInfo[0][0]?.en?.description);
-			formStore.setValue('description_ar', categoryInfo[0][0]?.ar?.description);
-			formStore.setValue('slug', categoryInfo[0][0]?.slug);
+			formStore.setValue('name_en', category[0]?.en?.name);
+			formStore.setValue('name_ar', category[0]?.ar?.name);
+			formStore.setValue('description_en', category[0]?.en?.description);
+			formStore.setValue('description_ar', category[0]?.ar?.description);
+			formStore.setValue('slug', category[0]?.slug);
 
-			categoryInfo[0][0]?.status > 0
+			category[0]?.status > 0
 				? formStore.setValue('status', 1)
 				: formStore.setValue('status', 0);
-			categoryInfo[1]?.products?.length > 0 &&
+				category[0]?.products?.length > 0 &&
 				formStore.setValue(
 					'products',
-					categoryInfo[1]?.products?.map((e) => {
+					category[0]?.products?.map((e) => {
 						return {
 							id: e.id ? e.id.toString() : '',
 							name: e?.name ? e?.name : '',
@@ -154,7 +157,7 @@ export default function AddCategoryForm({
 					}),
 				);
 		}
-	}, [Edit_id, categoryInfo[0][0], categoryInfo[1]]);
+	}, [Edit_id, category[0],category]);
 
 	return (
 		<GlobalDialog style={style} openDialog={openDialog} handleClose={handleClose}>

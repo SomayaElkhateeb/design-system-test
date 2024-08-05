@@ -27,6 +27,7 @@ export default function Categories() {
 	const { xs } = useResponsive();
 	const [openDialog, setOpenDialog] = useState(false);
 	const [Edit_id, setEdit_id] = useState('');
+	const [category, setCategory] = useState<CategoryInterface[]>([]);
 
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 	const {
@@ -81,7 +82,10 @@ export default function Categories() {
 			case t('edit category'):
 				setOpenDialog(true);
 				setEdit_id(custom_Id);
-				dispatch(getCategoryInfo(custom_Id));
+				setCategory(
+					CategoriesArrangedData?.filter((e) => e.id.toString() === custom_Id.toString()),
+				);
+				// dispatch(getCategoryInfo(custom_Id));
 				setSelectedOption('');
 				break;
 			case 'Delete all categories':
@@ -155,6 +159,7 @@ export default function Categories() {
 			</div>
 			{openDialog && (
 				<AddCategoryForm
+					category={category}
 					Edit_id={Edit_id}
 					setEdit_id={setEdit_id}
 					allProducts={allProducts}
