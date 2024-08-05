@@ -27,23 +27,23 @@ const productsSections = [
 	{
 		Elem: ProductFormBasicInfoSection,
 		id: 'ProductFormBasicInfoSection',
-		title: '',
+		title: 'General info',
 	},
 	{
 		Elem: ProductFormDescriptionAndSpecificationsSection,
 		id: 'ProductFormDescriptionAndSpecificationsSection',
-		title: '',
+		title: 'Description',
 	},
 	{
 		Elem: ProductFormPricingSection,
 		id: 'ProductFormPricingSection',
 		title: 'pricing',
 	},
-	{
-		Elem: ProductFormStockSection,
-		id: 'ProductFormStockSection',
-		title: 'stock',
-	},
+	// {
+	// 	Elem: ProductFormStockSection,
+	// 	id: 'ProductFormStockSection',
+	// 	title: 'stock',
+	// },
 	{
 		Elem: ProductFormShippingSection,
 		id: 'ProductFormShippingSection',
@@ -54,16 +54,16 @@ const productsSections = [
 		id: 'ProductFormOptionsAndVariationsSection',
 		title: 'options & variations',
 	},
-	{
-		Elem: SeoFormFaqsSection,
-		id: 'SeoFormFaqsSection',
-		title: 'seo',
-	},
-	{
-		Elem: ProductFormFaqsSection,
-		id: 'ProductFormFaqsSection',
-		title: '',
-	},
+	// {
+	// 	Elem: SeoFormFaqsSection,
+	// 	id: 'SeoFormFaqsSection',
+	// 	title: 'seo',
+	// },
+	// {
+	// 	Elem: ProductFormFaqsSection,
+	// 	id: 'ProductFormFaqsSection',
+	// 	title: '',
+	// },
 ];
 
 export default function ConfigurableProductPage() {

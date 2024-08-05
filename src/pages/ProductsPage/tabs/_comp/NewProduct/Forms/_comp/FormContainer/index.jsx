@@ -5,6 +5,12 @@ import { ScrollArea, ScrollBar } from 'src/app/components/ui/scroll-area';
 import { useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { SubHeader } from 'src/app/components/optimized';
+import {
+	SubHeaderDefaultBtns,
+	SubHeaderMobileBtns,
+} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
 /**
  * @template TFormStore
@@ -13,6 +19,7 @@ import { useEffect, useState } from 'react';
 export default function ProductFormContainer(props) {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { xs } = useResponsive();
 	const productType = useWatch({
 		control: props.formStore.control,
 		name: 'productType',
@@ -44,48 +51,48 @@ export default function ProductFormContainer(props) {
 		<Form {...props.formStore}>
 			<form className='flex flex-col relative' onSubmit={props.onSubmit}>
 				<header className='flex flex-col gap-3 bg-white sticky top-20 left-0 capitalize pt-4 pb-2 text-lg font-medium px-4 z-10 -translate-y-4'>
-					<div className='flex justify-between gap-4 items-center'>
-						<h1>
+					<SubHeader
+						title={title !== 'configurable' && title !== 'simple' ? `Add ${title}` : 'Add Product'}
+					>
+						<SubHeaderDefaultBtns onSubmit={() => props.onSubmit} />
+					</SubHeader>
+					{/* <h1>
 							<button className='text-black whitespace-nowrap' onClick={() => navigate(-1)}>
 								{'<'}
 							</button>{' '}
 							{title !== 'configurable' && title !== 'simple' ? `Add ${title}` : 'Add Product'}
-						</h1>
+						</h1> */}
 
-						<div className='flex flex-wrap gap-4'>
-							<Button className='bg-gray/5 text-black' variant='default'>
-								{t('Discard')}
-							</Button>
-							<Button type='submit'>{t('Save Changes')}</Button>
-							{/* <button type='submit'>{t('Save Changes')}</button> */}
-						</div>
-					</div>
-
-					<ScrollArea className='w-full max-h-[95dvh] pb-2'>
-						<div className='flex gap-4 capitalize text-lg font-medium'>
-							{props.sections.map(
-								({ id, title }) =>
-									title && (
-										<Link
-											key={id}
-											to={`/products/new/${productType}#${id}`}
-											className='text-gray whitespace-nowrap'
-											onClick={() => {
-												const elem = document.getElementById(id);
-												if (elem) {
-													elem.scrollIntoView({ behavior: 'smooth' });
-												}
-											}}
-										>
-											{title}
-										</Link>
-									),
-							)}
-						</div>
-						<ScrollBar orientation='horizontal' />
-					</ScrollArea>
+					{!xs && (
+						<ScrollArea className='w-full max-h-[95dvh] pb-2'>
+							<div className='flex gap-4 capitalize text-lg font-medium'>
+								{props.sections.map(
+									({ id, title }) =>
+										title && (
+											<Link
+												key={id}
+												to={`/products/new/configurable#${id}`}
+												className='text-gray whitespace-nowrap'
+												onClick={() => {
+													const elem = document.getElementById(id);
+													if (elem) {
+														elem.scrollIntoView({ behavior: 'smooth' });
+													}
+												}}
+											>
+												{title}
+											</Link>
+										),
+								)}
+							</div>
+							<ScrollBar orientation='horizontal' />
+						</ScrollArea>
+					)}
 				</header>
 				{props.children}
+				<div className='m-[1rem]'>
+					<SubHeaderMobileBtns onSubmit={() => props.onSubmit} />
+				</div>
 			</form>
 		</Form>
 	);
