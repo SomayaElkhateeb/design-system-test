@@ -3,7 +3,6 @@ import TabPanel from '@mui/lab/TabPanel';
 import { Tab } from '@mui/material';
 import { useState } from 'react';
 import { IoMdAddCircle } from 'react-icons/io';
-
 import { useTranslation } from 'react-i18next';
 import { Button, SubHeader } from 'src/app/components/optimized';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
@@ -21,6 +20,7 @@ const TaxesSettings = () => {
 	const [openDialog, setOpenDialog] = useState(false);
 	const { xs } = useResponsive();
 
+
 	return (
 		//  tabs section
 		<>
@@ -32,7 +32,7 @@ const TaxesSettings = () => {
 						if (value === 1) {
 							setOpenDialog(true);
 						} else {
-							navigate('addTaxRate');
+							navigate('addTaxRatePage');
 						}
 					}}
 				>
@@ -76,4 +76,4 @@ const TaxesSettings = () => {
 	)
 }
 
-export default TaxesSettings
+export default TaxesSettings;

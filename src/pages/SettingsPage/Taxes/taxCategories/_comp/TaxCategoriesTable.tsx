@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
 import BaseTable, { GlobalTableCell } from "src/app/components/optimized/TableLayoutGlobal/base.table";
-import { TaxCategoriesListResponse, TaxCategory } from "src/app/interface/settingsInterface/TaxSettingsInterface";
+
 import useLanguage from "src/app/utils/hooks/useLanguage";
+import { TaxCategory } from "../_hook/HookTaxCategories";
 
 const TaxCategoriesTable = ({
   data,
@@ -9,7 +10,7 @@ const TaxCategoriesTable = ({
   isLoading,
   children
 }: {
-  data: TaxCategoriesListResponse[];
+  data: TaxCategory[];
   handelId: (e: string) => void;
   isLoading: boolean;
   children: React.ReactNode;
@@ -39,7 +40,7 @@ const TaxCategoriesTable = ({
           item: e,
           elements: [
             <GlobalTableCell>
-              <div className=' flex  items-center gap-[.3rem] '>
+              <div>
                 <p className='title'>{e.name}</p>
                 <p className='text-title text-sm'>{e.description}</p>
               </div>

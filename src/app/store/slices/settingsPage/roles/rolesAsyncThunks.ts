@@ -37,7 +37,7 @@ export const postRole = createAsyncThunk(
 export const putRole = createAsyncThunk(
 	"addRole/putRole",
 	(payload: AddRolesInterface) =>
-		PublicRequest.putData(payload, `merchant/settings/roles/update${payload}`)
+		PublicRequest.putData(payload, `merchant/settings/roles/update/${payload}`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);

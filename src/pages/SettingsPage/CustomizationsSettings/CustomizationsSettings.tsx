@@ -1,91 +1,95 @@
 import { useTranslation } from 'react-i18next';
-import { SubHeader } from 'src/app/components/optimized';
+import TabPanel from '@mui/lab/TabPanel';
+import { Tab } from '@mui/material';
+import Tabs from 'src/app/components/optimized/Tabs/Tabs';
+import { Button, SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import CheckoutCustomizeForm from './_comp/CheckoutCustomizeForm';
 import NewsletterConsentForm from './_comp/NewsletterConsentForm';
 import OrderInvoiceCustomizeForm from './_comp/OrderInvoiceCustomizeForm';
 import ProductCustomizeForm from './_comp/ProductCustomizeForm';
-import {
-	SubHeaderDefaultBtns,
-	SubHeaderMobileBtns,
-} from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { useNavigate } from 'react-router-dom';
-import useCustomHookCustomizationSettings, {
-	CustomizationsTypes,
-} from './_hook/HookForCustomizationSettings';
-import { useAppDispatch, useAppSelector } from 'src/app/store';
-import {
-	postCustomizationDoubleOpt,
-	postCustomizationOrderInvoice,
-	postCustomizationProduct,
-	postCustomizationsCheckout,
-} from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
-import { useForm } from 'src/app/utils/hooks/form';
+import { useCallback, useState } from 'react';
+import useResponsive from 'src/app/utils/hooks/useResponsive';
 
-export default function CustomizationsSettings() {
+const CustomizationsSettings = () => {
+	// hooks
 	const { t } = useTranslation();
-	const navigate = useNavigate();
+	const [value, setValue] = useState(1);
+	const { xs } = useResponsive();
 
-	// redux
-	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.configurations);
+    const [checkoutData, setCheckoutData] = useState({});
+    const [productData, setProductData] = useState({});
+    const [newsletterData, setNewsletterData] = useState({});
+    const [orderInvoiceData, setOrderInvoiceData] = useState({});
 
-	// custom hook
-	const { customizationsSchema, handelDefaultValue } = useCustomHookCustomizationSettings();
+    const handleCheckoutSubmit = useCallback((data) => {
+        setCheckoutData(data);
+    }, []);
 
-	const handleSubmit = (values: CustomizationsTypes) => {
-		dispatch(postCustomizationsCheckout(values)).then((promiseResponse) => {
-			if (promiseResponse.payload.code === 200) {
-				navigate(-1);
-			}
-		});
+    const handleProductSubmit = useCallback((data) => {
+        setProductData(data);
+    }, []);
 
-		dispatch(postCustomizationProduct(values)).then((promiseResponse) => {
-			if (promiseResponse.payload.code === 200) {
-				navigate(-1);
-			}
-		});
+    const handleNewsletterSubmit = useCallback((data) => {
+        setNewsletterData(data);
+    }, []);
 
-		dispatch(postCustomizationDoubleOpt(values)).then((promiseResponse) => {
-			if (promiseResponse.payload.code === 200) {
-				navigate(-1);
-			}
-		});
+    const handleOrderInvoiceSubmit = useCallback((data) => {
+        setOrderInvoiceData(data);
+    }, []);
 
-		dispatch(postCustomizationOrderInvoice(values)).then((promiseResponse) => {
-			if (promiseResponse.payload.code === 200) {
-				navigate(-1);
-			}
-		});
-	};
-
-	const { formStore, onSubmit } = useForm({
-		schema: customizationsSchema,
-		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
-	});
+    const handleAllFormsSubmit = () => {
+        const allData = {
+            checkout: checkoutData,
+            product: productData,
+            newsletter: newsletterData,
+            orderInvoice: orderInvoiceData,
+        };
+        console.log('allData', allData);
+    };
 
 	return (
-		<Form {...formStore}>
-			<form onSubmit={onSubmit} className='flex-col-global'>
+		<Form >
+		{/* <Form {...formStore}> */}
+			{/* <form onSubmit={onSubmit}> */}
+			<form >
 				<SubHeader title={t('Customizations')}>
-					<SubHeaderDefaultBtns
-						onSubmit={onSubmit}
-						isLoading={isLoadingAddOrUpdate}
-					/>
+					{!xs &&
+						<>
+							<Button variant='secondary'>{t("Discard")}</Button>
+							<Button variant='primary' onClick={handleAllFormsSubmit}>{t("Save Changes")}</Button>
+						</>
+					}
+
+					{xs && <div />}
 				</SubHeader>
-				<div className='custom-grid-parent custom_container'>
-					<div className='grid-left flex-col-global gap-5'>
-						<CheckoutCustomizeForm formStore={formStore} />
-						<ProductCustomizeForm formStore={formStore} />
-						<NewsletterConsentForm formStore={formStore} />
-						<OrderInvoiceCustomizeForm formStore={formStore} />
-					</div>
-				</div>
-				<div className='px-5'>
-					<SubHeaderMobileBtns onSubmit={onSubmit} />
-				</div>
+
+				<Tabs
+					body={
+						<>
+							<TabPanel value='1'>
+								<CheckoutCustomizeForm onSubmit={handleCheckoutSubmit} />
+							</TabPanel>
+							<TabPanel value='2'>
+								<ProductCustomizeForm onSubmit={handleProductSubmit} />
+							</TabPanel>
+							<TabPanel value='3'>
+								<NewsletterConsentForm onSubmit={handleNewsletterSubmit} />
+							</TabPanel>
+							<TabPanel value='4'>
+								<OrderInvoiceCustomizeForm onSubmit={handleOrderInvoiceSubmit} />
+							</TabPanel>
+						</>
+					}
+				>
+					<Tab onClick={() => setValue(1)} label={t('checkout')} value='1' />
+					<Tab onClick={() => setValue(2)} label={t('product')} value='2' />
+					<Tab onClick={() => setValue(3)} label={t('double opt-in')} value='3' />
+					<Tab onClick={() => setValue(4)} label={t('order invoice')} value='4' />
+				</Tabs>
 			</form>
 		</Form>
 	);
-}
+};
+
+export default CustomizationsSettings;
