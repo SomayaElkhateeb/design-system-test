@@ -56,11 +56,11 @@ const productsSections = [
 		id: 'ProductFormOptionsAndVariationsSection',
 		title: 'options & variations',
 	},
-	// {
-	// 	Elem: SeoFormFaqsSection,
-	// 	id: 'SeoFormFaqsSection',
-	// 	title: 'seo',
-	// },
+	{
+		Elem: SeoFormFaqsSection,
+		id: 'SeoFormFaqsSection',
+		title: 'seo',
+	},
 	// {
 	// 	Elem: ProductFormFaqsSection,
 	// 	id: 'ProductFormFaqsSection',

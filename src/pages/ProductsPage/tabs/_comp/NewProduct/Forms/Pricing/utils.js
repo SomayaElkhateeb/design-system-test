@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const productPricingSchema = {
-	price: z.coerce.number().min(0).default(0),
+	price: z.coerce.number().min(1).default(0),
 	discount: z.coerce.number().min(0).optional(),
 	costPrice: z.coerce.number().min(0).optional(),
 	taxable: z.number(),
