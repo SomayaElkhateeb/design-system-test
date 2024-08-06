@@ -1,40 +1,45 @@
 import { z } from 'zod';
 import { UseFormReturn } from 'react-hook-form';
-import { AddAddressInterface,createAddressSchema,getDefaultValues } from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_hook/useOrderAddress';
 
-
-export interface TimeRange {
-	open: string;
-	close: string;
-}
-
-export interface DailyHours {
-	officialHours: TimeRange;
-	additionalHours: TimeRange;
-	isClosed: boolean;
-}
-
-export interface WeekSchedule {
-	Mon: DailyHours;
-	Tue: DailyHours;
-	Wed: DailyHours;
-	Thu: DailyHours;
-	Fri: DailyHours;
-	Sat: DailyHours;
-	Sun: DailyHours;
-}
-
-export interface BranchSettingsInterface extends AddAddressInterface {
-	branchType: string;
-	branchNameEn: string;
-	branchNameAr: string;
-	branchTimeSchedule: WeekSchedule;
+export interface BranchesType {
+	en: {
+		name: string;
+		address: string;
+		street: string;
+		area?: string;
+		city?: string;
+		state?: string;
+		country?: string;
+		building?: string;
+		landmark?: string;
+	};
+	ar: {
+		name: string;
+		address: string;
+		street: string;
+		area?: string;
+		city?: string;
+		state?: string;
+		country?: string;
+		building?: string;
+		landmark?: string;
+	};
+	main_branch?: number | undefined; // action
+	type?: string;
+	code?: string;
+	pick_up?: number | undefined; // action
+	phone?: string;
+	latitude?: string;
+	longitude?: string;
+	work_time: number;
+	show_in_footer?: number | undefined; // action
+	opening_days?: WeekSchedule; // Required if type is warehouse
 }
 
 const createEmptyDayInfo = (): DailyHours => ({
 	officialHours: { open: '', close: '' },
 	additionalHours: { open: '', close: '' },
-	isClosed: false,
+	// isClosed: false,
 });
 
 export const initialDayInfo: WeekSchedule = {
@@ -47,16 +52,32 @@ export const initialDayInfo: WeekSchedule = {
 	Sun: createEmptyDayInfo(),
 };
 
+export interface TimeRange {
+	open: string;
+	close: string;
+}
+
+export interface DailyHours {
+	officialHours: TimeRange;
+	additionalHours?: TimeRange;
+}
+
+export interface WeekSchedule {
+	Mon: DailyHours;
+	Tue: DailyHours;
+	Wed: DailyHours;
+	Thu: DailyHours;
+	Fri: DailyHours;
+	Sat: DailyHours;
+	Sun: DailyHours;
+}
+
 export interface BranchInfoProps {
-	formStore: UseFormReturn<BranchSettingsInterface>;
+	formStore: UseFormReturn<BranchesType>;
 }
 
-export interface FixedDay {
-	day: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
-}
-
-export default function useAddBranchForm(sendGift?: boolean, selectedOption?: string) {
-	const requiredAddressData = z.string().min(1);
+export default function useAddBranchForm() {
+	const zodString = z.string().min(1).optional();
 
 	const DayInfoSchema = z.object({
 		officialHours: z.object({
@@ -66,15 +87,42 @@ export default function useAddBranchForm(sendGift?: boolean, selectedOption?: st
 		additionalHours: z.object({
 			open: z.string(),
 			close: z.string(),
-		}),
-		isClosed: z.boolean(),
+		}).optional(),
 	});
 
-	const branchSettingsSchema = {
-		branchType: requiredAddressData,
-		branchNameEn: requiredAddressData,
-		branchNameAr: requiredAddressData,
-		branchTimeSchedule: z.object({
+	const branchSettingsSchema = z.object({
+		en: z.object({
+			name: z.string().min(1),
+			address: z.string().min(1),
+			street: z.string().min(1),
+			area: zodString,
+			city: zodString,
+			state: zodString,
+			country: zodString,
+			building: zodString,
+			landmark: zodString,
+		}),
+		ar: z.object({
+			name: z.string().min(1),
+			address: z.string().min(1),
+			street: z.string().min(1),
+			area: zodString,
+			city: zodString,
+			state: zodString,
+			country: zodString,
+			building: zodString,
+			landmark: zodString,
+		}),
+		main_branch: z.coerce.number().min(0).max(1),
+		type: z.string(),
+		code: zodString,
+		pick_up: z.coerce.number().min(0).max(1),
+		phone: zodString,
+		latitude: zodString,
+		longitude: zodString,
+		work_time: z.coerce.number().positive().min(1),
+		show_in_footer: z.coerce.number().min(0).max(1),
+		opening_days: z.object({
 			Mon: DayInfoSchema,
 			Tue: DayInfoSchema,
 			Wed: DayInfoSchema,
@@ -82,20 +130,56 @@ export default function useAddBranchForm(sendGift?: boolean, selectedOption?: st
 			Fri: DayInfoSchema,
 			Sat: DayInfoSchema,
 			Sun: DayInfoSchema,
-		}),
-		...createAddressSchema(sendGift, selectedOption),
-	};
-	const handelDefaultValue = () => {
+		}).optional(),
+	}).refine((data) => {
+		if (data.type === 'warehouse') {
+			return data.opening_days !== undefined;
+		}
+		return true;
+	}, {
+		path: ["opening_days"]
+	});
+
+	const handelDefaultValue = (): BranchesType => {
 		return {
-			branchType: 'Warehouse',
-			branchNameAr: '',
-			branchNameEn: '',
-			branchTimeSchedule: initialDayInfo,
-			...getDefaultValues(),
+			en: {
+				name: '',
+				address: '',
+				street: '',
+				area: '',
+				city: '',
+				state: '',
+				country: '',
+				building: '',
+				landmark: '',
+			},
+			ar: {
+				name: '',
+				address: '',
+				street: '',
+				area: '',
+				city: '',
+				state: '',
+				country: '',
+				building: '',
+				landmark: '',
+			},
+			main_branch: 0,
+			type: 'warehouse',
+			code: '',
+			pick_up: 0,
+			phone: '',
+			latitude: '',
+			longitude: '',
+			work_time: 0,
+			show_in_footer: 0,
+			opening_days: initialDayInfo,
 		};
 	};
+
 	return {
 		branchSettingsSchema,
 		handelDefaultValue,
 	};
 }
+

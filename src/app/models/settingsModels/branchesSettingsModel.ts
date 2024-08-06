@@ -1,7 +1,8 @@
+import { BranchesType } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/_hook/useAddBranchForm';
 import { statusGlobal } from '..';
-import { LocationBranches } from 'src/app/interface/settingsInterface/branchSettingsInterface';
 
-export interface configurationsSliceModel extends statusGlobal {
-	branches: LocationBranches[];
-    branch: LocationBranches | null;
+export interface branchesSliceModel extends statusGlobal {
+	branches: BranchesType[];
+    branch: BranchesType | null;
+    isLoadingDelete: boolean;
 }
