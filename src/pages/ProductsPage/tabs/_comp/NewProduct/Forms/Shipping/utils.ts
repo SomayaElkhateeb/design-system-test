@@ -64,7 +64,7 @@ export const productShippingSchema = {
 	state: z.string().min(1).optional().or(z.literal("")),
 	shipping_rate_type: z.string().min(1).or(z.literal("")),
 	shipping_rate: z.number().min(0).optional(),
-	shippng_method:z.string().min(1).or(z.literal("")),
+	shipping_method:z.string().min(1).or(z.literal("")),
 	// pickup: z.discriminatedUnion('type', [
 	// 	z.object({
 	// 		method: z.enum(productShippingMethodCollection),
@@ -86,7 +86,7 @@ export const productShippingDefaultValues = {
 	state: "",
 	shipping_rate_type: "",
 	shipping_rate:0,
-	shippng_method:'',
+	shipping_method:'',
 	// pickup: {
 	// 	method: productShippingMethodCollection[0], // Default to the first shipping method
 	// },

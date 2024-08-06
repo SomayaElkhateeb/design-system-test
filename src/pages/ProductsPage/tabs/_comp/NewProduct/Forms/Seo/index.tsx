@@ -11,31 +11,33 @@ import { Input } from 'src/app/components/ui/input';
 import { Textarea } from 'src/app/components/ui/textarea';
 import MetaKeywordsFormField from './_comp/MetaKeywordsFormField';
 import SearchResultsPreview from './_comp/SearchResultsPreview';
+import { Props } from './types';
+import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
 
 
 
-/**
- * @template TFormStore
- *
- * @param {import('./types').Props<TFormStore>} props
- */
-export default function SeoFormFaqsSection(props) {
+export default function SeoFormFaqsSection<TFormStore>(props: Props<TFormStore>) {
 	const { t } = useTranslation();
 
 	return (
-		<Card id={props.id}>
-			<CardHeader>
-				<CardTitle>{t('SEO (Search engine listing preview)')}</CardTitle>
-				<CardDescription className='text-gray-400'>
-					{t('Answer questions people frequently ask about your product')}
-				</CardDescription>
-			</CardHeader>
-			<CardContent className='flex flex-col gap-4'>
+		<section className="global-cards" id={props.id}>
+
+			<p className="title">{t('SEO (Search engine listing preview)')}</p>
+
+
+			<section className='flex-col-global'>
 				<SearchResultsPreview formStore={props.formStore} />
+				<section className='flex-col-global md:w-[50%]'>
 				<FormField
 					formStore={props.formStore}
-					name='pageTitle'
+					name='page_title'
 					label={t('Page Title')}
+					render={(field) => <Input {...field} placeholder={t('e.g., T-Shirt')} />}
+				/>
+				<FormField
+					formStore={props.formStore}
+					name='meta_title'
+					label={t('Meta Title')}
 					render={(field) => <Input {...field} placeholder={t('e.g., T-Shirt')} />}
 				/>
 				{/* <FormField
@@ -44,14 +46,24 @@ export default function SeoFormFaqsSection(props) {
 						label={t('Link')}
 						render={(field) => <Input {...field} placeholder={t('e.g., https://artisan.dookan.net/t-shirt')} type='url' />}
 					/> */}
-				<MetaKeywordsFormField formStore={props.formStore} />
+				{/* <MetaKeywordsFormField formStore={props.formStore} /> */}
+				<TabbedFormField
+					formStore={props.formStore}
+					keys={[
+						{ name: 'meta_keywords_en', label: 'En' },
+						{ name: 'meta_keywords_ar', label: 'عربي' },
+					]}
+					label={t('Meta KeyWords')}
+					renderer={(field) => <Input {...field} />}
+				/>
 				<FormField
 					formStore={props.formStore}
-					name='metaDescription'
+					name='meta_description'
 					label={t('Meta Description')}
 					render={(field) => <Textarea {...field} placeholder={t('Short description')} />}
 				/>
-			</CardContent>
-		</Card>
+				</section>
+			</section>
+		</section>
 	);
 }
