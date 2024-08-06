@@ -11,12 +11,9 @@ import {
 	SelectValue,
 } from 'src/app/components/ui/select';
 
-import {
-	productDimensionUnitCollection,
-	productWeightUnitCollection
-} from '../utils';
+import { productDimensionUnitCollection, productWeightUnitCollection } from '../utils';
 import AdvancedShippingOptionsManager from './AdvancedShippingOptionsManager';
-
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
 
 /**
  * @template TFormStore
@@ -31,42 +28,25 @@ export default function OtherProductShippingOptions(props) {
 			<div className='flex flex-col gap-4 items-start'>
 				<FormField
 					formStore={props.formStore}
-					name='shipping.weight'
+					name='weight'
 					label={t('Weight')}
 					render={(field) => (
 						<HorizontalBox
 							end={
-								<FormField
+								<SelectFormField
+									className='border-0 w-[4rem]'
 									formStore={props.formStore}
-									name='shipping.weightUnit'
-									render={(field) => (
-										<Select
-											onValueChange={(value) => {
-												// @ts-ignore
-												props.formStore.setValue('shipping.weightUnit', value);
-											}}
-											value={field.value}
-										>
-											<SelectTrigger
-												id={field.id}
-												className='border-0 rounded-none'
-												style={{
-													minWidth: 2 * 3.5 + 'ch',
-												}}
-											>
-												<SelectValue />
-											</SelectTrigger>
-											<SelectContent>
-												{productWeightUnitCollection.map((item) => {
-													return (
-														<SelectItem key={item} value={item}>
-															{item}
-														</SelectItem>
-													);
-												})}
-											</SelectContent>
-										</Select>
-									)}
+									name='weight_unit'
+									options={
+										productWeightUnitCollection?.length > 0
+											? productWeightUnitCollection?.map((e) => {
+													return {
+														value: e,
+														label: e,
+													};
+											  })
+											: []
+									}
 								/>
 							}
 							endSeparator
@@ -75,84 +55,78 @@ export default function OtherProductShippingOptions(props) {
 						</HorizontalBox>
 					)}
 				/>
-				<div className='flex items-center text-gray border rounded-md px-2'>
-					<FormField
-						formStore={props.formStore}
-						name='shipping.dimensions.length'
-						render={(field) => (
-							<Input
-								{...field}
-								type='number'
-								className='border-0 px-0'
-								placeholder={t('Length')}
-								style={{ width: t('Length').length * 1.2 + 'ch' }}
-								min='0'
-							/>
-						)}
-					/>
-					<span className='me-8'>
-						<IoClose />
-					</span>
-					<FormField
-						formStore={props.formStore}
-						name='shipping.dimensions.width'
-						render={(field) => (
-							<Input
-								{...field}
-								type='number'
-								className='border-0 px-0'
-								placeholder={t('Width')}
-								style={{ width: t('Width').length * 1.2 + 'ch' }}
-								min='0'
-							/>
-						)}
-					/>
-					<span className='me-8'>
-						<IoClose />
-					</span>
-					<FormField
-						formStore={props.formStore}
-						name='shipping.dimensions.height'
-						render={(field) => (
-							<Input
-								{...field}
-								type='number'
-								className='border-0 px-0'
-								placeholder={t('Height')}
-								style={{ width: t('Height').length * 1.2 + 'ch' }}
-								min='0'
-							/>
-						)}
-					/>
-					<span className='me-8'>
-						<IoClose />
-					</span>
-					<FormField
-						formStore={props.formStore}
-						name='shipping.dimensionUnit'
-						render={(field) => (
-							<Select
-								onValueChange={(value) => {
-									// @ts-ignore
-									props.formStore.setValue('shipping.dimensionUnit', value);
-								}}
-								value={field.value}
-							>
-								<SelectTrigger id={field.id} className='border-0'>
-									<SelectValue />
-								</SelectTrigger>
-								<SelectContent>
-									{productDimensionUnitCollection.map((item) => {
-										return (
-											<SelectItem key={item} value={item}>
-												{item}
-											</SelectItem>
-										);
-									})}
-								</SelectContent>
-							</Select>
-						)}
-					/>
+				<div>
+					<p className='text-sm'>Dimension</p>
+
+					<div className='flex items-center text-gray border rounded-md px-2'>
+						<FormField
+							formStore={props.formStore}
+							name='length'
+							render={(field) => (
+								<Input
+									{...field}
+									type='number'
+									className='border-0 px-0'
+									placeholder={t('Length')}
+									style={{ width: t('Length').length * 1.2 + 'ch' }}
+									min='0'
+								/>
+							)}
+						/>
+						<span className='me-8'>
+							<IoClose />
+						</span>
+						<FormField
+							formStore={props.formStore}
+							name='width'
+							render={(field) => (
+								<Input
+									{...field}
+									type='number'
+									className='border-0 px-0'
+									placeholder={t('Width')}
+									style={{ width: t('Width').length * 1.2 + 'ch' }}
+									min='0'
+								/>
+							)}
+						/>
+						<span className='me-8'>
+							<IoClose />
+						</span>
+						<FormField
+							formStore={props.formStore}
+							name='height'
+							render={(field) => (
+								<Input
+									{...field}
+									type='number'
+									className='border-0 px-0'
+									placeholder={t('Height')}
+									style={{ width: t('Height').length * 1.2 + 'ch' }}
+									min='0'
+								/>
+							)}
+						/>
+						<span className='me-8'>
+							<IoClose />
+						</span>
+
+						<SelectFormField
+							className='border-0 w-[5rem]'
+							formStore={props.formStore}
+							name='dimension_unit'
+							options={
+								productDimensionUnitCollection?.length > 0
+									? productDimensionUnitCollection?.map((e) => {
+											return {
+												value: e,
+												label: e,
+											};
+									  })
+									: []
+							}
+						/>
+					</div>
 				</div>
 			</div>
 			<AdvancedShippingOptionsManager formStore={props.formStore} />

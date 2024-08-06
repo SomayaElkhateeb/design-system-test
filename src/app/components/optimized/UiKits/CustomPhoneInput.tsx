@@ -53,6 +53,7 @@ const CustomPhoneInput = ({
 					width: '100%',
 					height: '2.5rem',
 					border: '1px solid #e2e8f0',
+					
 				}}
 				// containerClass={classes.borderClass}
 				dropdownStyle={{ height: '300px', width: '267px' }}

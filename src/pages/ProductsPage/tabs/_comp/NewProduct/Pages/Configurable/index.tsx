@@ -8,7 +8,9 @@ import {
 	ProductFormOptionsAndVariationsSection,
 	ProductFormPricingSection,
 	ProductFormQuickActionsSection,
+
 	ProductFormShippingSection,
+
 	ProductFormStockSection,
 	SeoFormFaqsSection,
 } from '../../..';

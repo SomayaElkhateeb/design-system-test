@@ -39,7 +39,7 @@ export default function SelectFormField({
 			name={name}
 			label={label}
 			render={(field) => (
-				<div className='relative flex items-center border border-gray-300 rounded-md'>
+				<div className={className?className:'relative flex items-center border border-gray-300 rounded-md'}>
 					<select
 						{...field}
 						name='field.name'
