@@ -1369,4 +1369,13 @@ export const english = {
 	'rate':'rate',
 	"save changes":"save changes",
 	'tax configuration setting':'tax configuration setting',
+	'e.g., Riyadh warehouse':'e.g., Riyadh warehouse',
+	'State':'State',
+	"Opening hours":"Opening hours",
+	'Opens at':'Opens at',
+	'Closes at':'Closes at',
+	'Closed':'Closed',
+	'Delete Hours':'Delete Hours',
+	'Add More Hours':'Add More Hours',
+	'Code':'Code',
 };

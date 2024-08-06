@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useForm } from "src/app/utils/hooks/form";
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from "src/app/store";
 import { UseFormReturn } from "react-hook-form";
 import { Button } from "src/app/components/optimized";
@@ -79,7 +79,7 @@ const AddTaxCategories = ({ openDialog, setOpenDialog }: { openDialog: boolean; 
     }
   }, [id, dispatch]);
 
-  useEffect(() => {
+  useMemo(() => {
     if (id && taxCategoriesShow) {
       formStore.setValue('code', taxCategoriesShow.code);
       formStore.setValue('name', taxCategoriesShow.name);
@@ -140,7 +140,8 @@ const TextFields = ({ formStore }: { formStore: UseFormReturn<TaxCategory> }) =>
           />
         </div>
       </div>
-      <FormField
+      {/* test */}
+      <FormField 
         formStore={formStore}
         name='taxrates'
         label={t('Tax Rates')}

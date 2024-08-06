@@ -2,91 +2,173 @@ import { UseFormReturn } from 'react-hook-form';
 import { Input } from 'src/app/components/ui/input';
 import { useTranslation } from 'react-i18next';
 import TabbedFormField from 'src/app/components/ui/form/tabbed-field';
-import { BranchSettingsInterface } from './_hook/useAddBranchForm';
+import { BranchesType } from './_hook/useAddBranchForm';
 import FormChoiceChips from 'src/app/components/ui/form/FormChoiceChips';
-import Address from 'src/pages/OrdersPage/AddOrder/Comp/AddOrderAddresse/_comp/Address';
+import AddressBranch from './AddressBranch';
+import { CountriesApi } from 'src/app/React-Query/CountriesApi';
+import { useQuery } from 'react-query';
+import FormField from 'src/app/components/ui/form/field';
+import CustomPhoneInput from 'src/app/components/optimized/UiKits/CustomPhoneInput';
+import SelectFormField from 'src/app/components/ui/form/SelectFormField';
+import { CountriesInterface } from 'src/app/interface/CountriesInterface';
+import GoogleMapComponent from 'src/app/components/ui/GoogleMapComponent';
+import { useState } from 'react';
 
-export const countries = [
-	{
-		label: 'Egypt',
-		value: 'eg',
-		cities: [
-			{ name: 'Cairo', value: 'cairo' },
-			{ name: 'Alexandria', value: 'alexandria' },
-			{ name: 'Giza', value: 'giza' },
-		],
-	},
-	{
-		label: 'Kingdom of Saudi Arabia (KSA)', // More descriptive country name
-		value: 'ksa',
-		cities: [
-			{ name: 'Riyadh', value: 'riyadh' },
-			{ name: 'Jeddah', value: 'jeddah' },
-			{ name: 'Dammam', value: 'dammam' },
-		],
-	},
-	{
-		label: 'United Arab Emirates (UAE)', // More descriptive country name
-		value: 'uae',
-		cities: [
-			{ name: 'Dubai', value: 'dubai' },
-			{ name: 'Abu Dhabi', value: 'abu_dhabi' },
-			{ name: 'Sharjah', value: 'sharjah' },
-		],
-	},
-];
-
-interface BranchInfoProps {
-	formStore: UseFormReturn<BranchSettingsInterface>;
-	sendGift: boolean;
-	setSendGift: (e: boolean) => void;
-	selectedOption: string;
-	setSelectedOption: (e: string) => void;
-}
-
-export default function BranchInfo({
-	formStore,
-	sendGift,
-	setSendGift,
-	selectedOption,
-	setSelectedOption,
-}: BranchInfoProps) {
+export default function BranchInfo({ formStore }: { formStore: UseFormReturn<BranchesType> }) {
 	//  hooks
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
+	const currentLocale = i18n.language;
+	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
+	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
+
+	const { data: countriesData } = useQuery(['countriesData'], () => CountriesApi.countries());
+	let CountryId = formStore.watch(currentLocale === 'ar' ? 'ar.country' : 'en.country') || '';
+	const { data: citiesData } = useQuery(['citiesData', CountryId], () =>
+		CountriesApi.cities(CountryId),
+	);
+
+	const countries = countriesData?.data?.data || [];
+	const cities = citiesData?.data?.data || [];
+
+	console.log('cities', cities) // []
+
 	return (
-		<div className='grid  col-span-2 grid-cols-3 gap-5'>
-			<div className='grid gap-5 sm:col-span-3 col-span-6 cardDetails-sharedClass p-5'>
-				<section className='grid gap-4'>
-					<FormChoiceChips<BranchSettingsInterface>
-						formStore={formStore}
-						name='branchType'
-						label={t('Branch Type')}
-						options={['Commercial branch', 'Warehouse']}
-					/>
+		<div className='cardDetails-sharedClass p-5'>
+			<section className='flex flex-col gap-4 lg:w-2/3 '>
+				<FormChoiceChips<BranchesType>
+					formStore={formStore}
+					name='type'
+					label={t('Branch Type')}
+					options={['commercialBranch', 'warehouse']}
+				/>
 
-					<TabbedFormField
-						formStore={formStore}
-						keys={[
-							{ name: 'branchNameEn', label: 'En' },
-							{ name: 'branchNameAr', label: 'عربي' },
-						]}
-						label={t('Branch name')}
-						renderer={(field) => <Input {...field} placeholder={'e.g., Riyadh warehouse'} />}
-					/>
-				</section>
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.name', label: 'En' },
+						{ name: 'ar.name', label: 'عربي' },
+					]}
+					label={t('Branch name')}
+					renderer={(field) => <Input {...field} placeholder={t('name')} />}
+				/>
 
-				<section className='grid gap-4'>
-					<h2 className='title mb-2'>{t('Address')}</h2>
-					<Address<BranchSettingsInterface>
-						useMapPicker
-						formStore={formStore}
-						sendGift={sendGift}
-						setSendGift={setSendGift}
-						selectedOption={selectedOption}
-						setSelectedOption={setSelectedOption}
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.address', label: 'En' },
+						{ name: 'ar.address', label: 'عربي' },
+					]}
+					label={t('Address')}
+					renderer={(field) => <Input {...field} placeholder={t('address')} />}
+				/>
+
+				<div className='col-span-2'>
+					{/* latitude &  longitude */}
+					<GoogleMapComponent
+						setLocationEnabled={setLocationEnabled}
+						setDisablePickButton={setDisablePickButton}
+						height='300px'
 					/>
-				</section>
-			</div>
+				</div>
+
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.building', label: 'En' },
+						{ name: 'ar.building', label: 'عربي' },
+					]}
+					label={t('Building')}
+					renderer={(field) => <Input {...field} placeholder={t('Building')} />}
+				/>
+
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.landmark', label: 'En' },
+						{ name: 'ar.landmark', label: 'عربي' },
+					]}
+					label={t('Landmark')}
+					renderer={(field) => <Input {...field} placeholder={t('Landmark')} />}
+				/>
+
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.state', label: 'En' },
+						{ name: 'ar.state', label: 'عربي' },
+					]}
+					label={t('State')}
+					renderer={(field) => <Input {...field} placeholder={t('State')} />}
+				/>
+
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.area', label: 'En' },
+						{ name: 'ar.area', label: 'عربي' },
+					]}
+					label={t('Area / District')}
+					renderer={(field) => <Input {...field} placeholder={t('Area')} />}
+				/>
+
+				<TabbedFormField
+					formStore={formStore}
+					keys={[
+						{ name: 'en.street', label: 'En' },
+						{ name: 'ar.street', label: 'عربي' },
+					]}
+					label={t('Street')}
+					renderer={(field) => <Input {...field} placeholder={t('Street')} />}
+				/>
+
+				{/* //////////////////////////////////////////// */}
+				<FormField
+					formStore={formStore}
+					label={t('Code')}
+					name='code'
+					render={(field) =>  <Input {...field} placeholder={t('code')} />}
+				/>
+
+				{countries?.length > 0 && (
+					<SelectFormField
+						name={currentLocale === 'ar' ? 'ar.country' : 'en.country'}
+						label={t('Country')}
+						formStore={formStore}
+						options={countries.map((e: CountriesInterface) => ({
+							label: e.name,
+							value: e.id.toString(),
+						}))}
+						placeholder={t('Select country')}
+					/>
+				)}
+
+				{cities?.length > 0 && ( //???
+					<SelectFormField
+						name={currentLocale === 'ar' ? 'ar.city' : 'en.city'}
+						label={t('City')}
+						formStore={formStore}
+						options={cities.map((e: CountriesInterface) => ({
+							label: e.name,
+							value: e.id.toString(),
+						}))}
+						placeholder={t('Select city')}
+					/>
+				)}
+				<FormField
+					formStore={formStore}
+					label={t('Phone number')}
+					name='phone'
+					render={(field) => (
+						<CustomPhoneInput value={field.value} onHandleChange={field.onChange} />
+					)}
+				/>
+
+			</section>
 		</div>
 	);
 }
+
+
+{/* <AddressBranch<BranchesType>
+					formStore={formStore}
+				/> */}

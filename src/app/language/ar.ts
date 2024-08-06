@@ -1347,4 +1347,13 @@ export const arabic = {
 	'rate':'',
 	"save changes":'',
 	'tax configuration setting':'',
+	'e.g., Riyadh warehouse':'',
+	'State':'الولاية',
+	"Opening hours":'',
+	'Opens at':'',
+	'Closes at':'',
+	'Closed':'',
+	'Delete Hours':'',
+	'Add More Hours':'',
+	'Code':'',
 } satisfies typeof english;
