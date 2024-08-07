@@ -33,7 +33,7 @@ export default function useBranch(initialData: BranchesType[]) {
 
 	const filteredData = useMemo(() => {
 		if (filter === 'all') return initialData;
-		return initialData.filter((branch) => branch.branchType === filter);
+		return initialData.filter((branch) => branch.type === filter);
 	}, [filter, initialData]);
 
 	return {

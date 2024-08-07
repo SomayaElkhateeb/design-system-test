@@ -19,8 +19,13 @@ export default function AddBranch() {
 	//  hooks
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const [searchParams] = useSearchParams();
-	const id = searchParams.get('id');
+	// const [searchParams] = useSearchParams();
+	// const id = searchParams.get('id');
+
+
+	// custom hook
+	const { branchSettingsSchema,
+		handleDefaultValue } = useAddBranchForm();
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -28,35 +33,32 @@ export default function AddBranch() {
 
 	const handleSubmit = (values: BranchesType) => {
 		console.log(values);
-		id
-			?
-			dispatch(putBranch({ data: values, id })).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			})
-			:
-			dispatch(postBranch(values)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			});
+		// id
+		// 	?
+		// 	dispatch(putBranch({ data: values, id })).then((promiseResponse) => {
+		// 		if ((promiseResponse.payload.code === 200)) {
+		// 			navigate(-1);
+		// 		}
+		// 	})
+		// 	:
+		dispatch(postBranch(values)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code === 200)) {
+				navigate(-1);
+			}
+		});
 	};
-
-	// custom hook
-	const { branchSettingsSchema, handelDefaultValue } = useAddBranchForm();
 
 	const { formStore, onSubmit } = useForm({
 		schema: branchSettingsSchema,
 		handleSubmit: handleSubmit,
-		defaultValues: handelDefaultValue(),
+		defaultValues: handleDefaultValue(),
 	});
 
-	useMemo(() => {
-		if (id) {
-			dispatch(getBranchesShow(id));
-		}
-	}, [id]);
+	// useMemo(() => {
+	// 	if (id) {
+	// 		dispatch(getBranchesShow(id));
+	// 	}
+	// }, [id]);
 
 	const data: { name: Path<BranchesType>; label: string; enable: boolean }[] = [
 		{
@@ -76,41 +78,41 @@ export default function AddBranch() {
 		},
 	];
 
-	useMemo(() => {
-		if (id && branch) {
-			formStore.setValue('en.name', branch.en?.name || '');
-			formStore.setValue('en.address', branch.en?.address || '');
-			formStore.setValue('en.street', branch.en?.street || '');
-			formStore.setValue('en.area', branch.en?.area || '');
-			formStore.setValue('en.city', branch.en?.city || '');
-			formStore.setValue('en.state', branch.en?.state || '');
-			formStore.setValue('en.country', branch.en?.country || '');
-			formStore.setValue('en.building', branch.en?.building || '');
-			formStore.setValue('en.landmark', branch.en?.landmark || '');
+	// useEffect(() => {
+	// 	if (id && branch) {
+	// 		branch.en?.name && formStore.setValue('en.name', branch.en.name);
+	// 		branch.en?.address && formStore.setValue('en.address', branch.en.address);
+	// 		branch.en?.street && formStore.setValue('en.street', branch.en.street);
+	// 		branch.en?.area && formStore.setValue('en.area', branch.en.area);
+	// 		branch.en?.city && formStore.setValue('en.city', branch.en.city);
+	// 		branch.en?.state && formStore.setValue('en.state', branch.en.state);
+	// 		branch.en?.country && formStore.setValue('en.country', branch.en.country);
+	// 		branch.en?.building && formStore.setValue('en.building', branch.en.building);
+	// 		branch.en?.landmark && formStore.setValue('en.landmark', branch.en.landmark);
 
-			formStore.setValue('ar.name', branch.ar?.name || '');
-			formStore.setValue('ar.address', branch.ar?.address || '');
-			formStore.setValue('ar.street', branch.ar?.street || '');
-			formStore.setValue('ar.area', branch.ar?.area || '');
-			formStore.setValue('ar.city', branch.ar?.city || '');
-			formStore.setValue('ar.state', branch.ar?.state || '');
-			formStore.setValue('ar.country', branch.ar?.country || '');
-			formStore.setValue('ar.building', branch.ar?.building || '');
-			formStore.setValue('ar.landmark', branch.ar?.landmark || '');
+	// 		branch.ar?.name && formStore.setValue('ar.name', branch.ar.name);
+	// 		branch.ar?.address && formStore.setValue('ar.address', branch.ar.address);
+	// 		branch.ar?.street && formStore.setValue('ar.street', branch.ar.street);
+	// 		branch.ar?.area && formStore.setValue('ar.area', branch.ar.area);
+	// 		branch.ar?.city && formStore.setValue('ar.city', branch.ar.city);
+	// 		branch.ar?.state && formStore.setValue('ar.state', branch.ar.state);
+	// 		branch.ar?.country && formStore.setValue('ar.country', branch.ar.country);
+	// 		branch.ar?.building && formStore.setValue('ar.building', branch.ar.building);
+	// 		branch.ar?.landmark && formStore.setValue('ar.landmark', branch.ar.landmark);
 
-			formStore.setValue('type', branch.type || '');
-			formStore.setValue('code', branch.code || '');
-			formStore.setValue('phone', branch.phone || '');
-			formStore.setValue('latitude', branch.latitude || '');
-			formStore.setValue('longitude', branch.longitude || '');
-			formStore.setValue('work_time', branch.work_time || 0);
-			formStore.setValue('opening_days', branch.opening_days || []);
+	// 		branch?.type && formStore.setValue('type', branch.type);
+	// 		branch?.code && formStore.setValue('code', branch.code);
+	// 		branch?.phone && formStore.setValue('phone', branch.phone);
+	// 		branch?.latitude && formStore.setValue('latitude', branch.latitude);
+	// 		branch?.longitude && formStore.setValue('longitude', branch.longitude);
+	// 		branch?.work_time && formStore.setValue('work_time', branch.work_time);
+	// 		branch?.opening_days && formStore.setValue('opening_days', branch.opening_days);
 
-			formStore.setValue('main_branch', branch.main_branch ? 1 : 0);
-			formStore.setValue('show_in_footer', branch.show_in_footer ? 1 : 0);
-			formStore.setValue('pick_up', branch.pick_up ? 1 : 0);
-		}
-	}, [id, branch]);
+	// 		formStore.setValue('main_branch', branch?.main_branch ? 1 : 0);
+	// 		formStore.setValue('show_in_footer', branch?.show_in_footer ? 1 : 0);
+	// 		formStore.setValue('pick_up', branch?.pick_up ? 1 : 0);
+	// 	}
+	// }, [id, branch, formStore]);
 
 
 

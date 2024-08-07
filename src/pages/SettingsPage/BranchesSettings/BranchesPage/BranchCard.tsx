@@ -9,15 +9,15 @@ import { useAppDispatch } from 'src/app/store';
 import { deleteBranch, getBranches } from 'src/app/store/slices/settingsPage/branches/branchesAsyncThunks';
 import { UseDeleteItem } from 'src/app/utils/hooks/CustomDelete';
 import { EditIcon, RemoveIcon, ViewIcon } from 'src/app/utils/icons';
+import { BranchesType } from '../AddBranch/_hook/useAddBranchForm';
 
-export default function BranchCard({ data, currentLocale }: { data: any; currentLocale: any; }) {
+export default function BranchCard({ data, currentLocale }: { data: BranchesType; }) {
 	const iconClassName = 'fill-pri-dark cursor-pointer';
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
-	const branchData = currentLocale === 'ar' ? data.ar : data.en; // i don't know how to use it
 
 	const {
 		openDeleteDialog,
@@ -29,6 +29,7 @@ export default function BranchCard({ data, currentLocale }: { data: any; current
 	} = UseDeleteItem();
 
 	const handelDeleteBranch = () => {
+		console.log("Deleting branch with ID:", custom_Id);
 		dispatch(deleteBranch(custom_Id)).then((promiseResponse: any) => {
 			if ((promiseResponse.payload.code = 200)) {
 				handelCloseDeleteDialog();
@@ -39,7 +40,7 @@ export default function BranchCard({ data, currentLocale }: { data: any; current
 
 	const handleEdit = () => {
 		setSelectedOption('');
-		custom_Id && navigate(`add-branch?id=${custom_Id}`);
+		navigate(`add-branch?id=${custom_Id}`);
 	  }
 
 	useEffect(() => {
@@ -71,7 +72,7 @@ export default function BranchCard({ data, currentLocale }: { data: any; current
 			</div>
 			<div className='flex flex-col justify-between items-end'>
 				<div className='flex items-center gap-5 '>
-					<button onClick={handelDeleteBranch}>
+					<button onClick={handelDelete}>
 						<RemoveIcon className={iconClassName} />
 					</button>
 					<button onClick={handleEdit}>
@@ -87,7 +88,7 @@ export default function BranchCard({ data, currentLocale }: { data: any; current
 						onClose={handelCloseDeleteDialog}
 						title={t('Delete Item')}
 						subTitle={t('Do You Want To Delete This Item')}
-						onDelete={handelDelete}
+						onDelete={handelDeleteBranch}
 					/>
 				)}
 		</div>
