@@ -59,16 +59,4 @@ export const branchesReducer = (builder: ActionReducerMapBuilder<branchesSliceMo
 			state.error = action.payload;
 		})
 
-		// Delete branch
-		.addCase(deleteBranch.pending, (state) => {
-			state.isLoadingDelete = true;
-		})
-		.addCase(deleteBranch.fulfilled, (state, { payload }) => {
-			state.isLoadingDelete = false;
-			state.branches = state.branches.filter(branch => branch.id !== payload.data.id);
-		})
-		.addCase(deleteBranch.rejected, (state, action) => {
-			state.isLoadingDelete = false;
-			state.error = action.payload | 'error';
-		});
 };

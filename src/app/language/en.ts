@@ -1378,4 +1378,9 @@ export const english = {
 	'Delete Hours':'Delete Hours',
 	'Add More Hours':'Add More Hours',
 	'Code':'Code',
+	'This tax class will be applied automatically to any new added product.':'This tax class will be applied automatically to any new added product.',
+	'Import':'Import',
+	'branch name':'branch name',
+	'type':'type',
+	'address & phone':'address & phone',
 };

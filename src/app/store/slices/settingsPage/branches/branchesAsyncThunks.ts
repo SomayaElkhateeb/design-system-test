@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
+import { BranchesType } from 'src/pages/SettingsPage/BranchesSettings/AddBranch/_hook/useAddBranchForm';
 
 // get export
 // post import
@@ -26,7 +27,7 @@ export const getBranchesShow = createAsyncThunk('branchesShow/getBranchesShow', 
 // post store
 export const postBranch = createAsyncThunk(
 	"addBranch/postBranch",
-	(payload: any) =>
+	(payload: BranchesType) =>
 		PublicRequest.postData(payload, `merchant/catalog/branches/store`)
 			.then((res: any) => {
 				if (res) {
@@ -40,7 +41,7 @@ export const postBranch = createAsyncThunk(
 // update branch
 export const putBranch = createAsyncThunk(
 	"putBranch/putBranch",
-	(payload: any) =>
+	(payload: BranchesType) =>
 		PublicRequest.putData(payload, `merchant/catalog/branches/update/${payload}`)
 			.then((res: any) => {
 				if (res) {
