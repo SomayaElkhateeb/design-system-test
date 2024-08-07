@@ -141,10 +141,10 @@ export default function AllProductsTable({
 					<div className={classData}>
 						<IoEyeOutline className='text-subtitle' />
 						<FaRegEdit className='text-subtitle' onClick={() => handelEdit(product)} />
-						<CopyIcon className='fill-subtitle' />
+						{/* <CopyIcon className='fill-subtitle' /> */}
 						<div onClick={() => handelId(product?.id)}>{children}</div>
 
-						<ArrowTables path={`/products/${product.id}`} />
+						{/* <ArrowTables path={`/products/${product.id}`} /> */}
 					</div>
 				</GlobalTableCell>,
 			],

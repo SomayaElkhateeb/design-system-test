@@ -148,7 +148,7 @@ function Actions({
 				<EditIcon className='fill-subtitle cursor-pointer' />
 			</div>
 
-			<CopyIcon className='fill-subtitle' />
+			{/* <CopyIcon className='fill-subtitle' /> */}
 
 			<div onClick={() => handelId(product?.id)}>{children}</div>
 		</div>

@@ -30,6 +30,15 @@ export default function Categories() {
 	const [category, setCategory] = useState<CategoryInterface[]>([]);
 
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
+	// /  handel delete Item
+	const {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	} = UseDeleteItem();
 	const {
 		sortMenus,
 		allProducts,
@@ -39,7 +48,8 @@ export default function Categories() {
 		isLoading,
 		language,
 		ActionsMenus,
-	} = Use_Hook_ForCategoriesPage(selectedOption);
+		copyLink
+	} = Use_Hook_ForCategoriesPage(selectedOption, custom_Id);
 
 	// redux
 	const dispatch = useAppDispatch();
@@ -55,15 +65,7 @@ export default function Categories() {
 		setEdit_id('');
 	};
 
-	//  handel delete Item
-	const {
-		openDeleteDialog,
-		custom_Id,
-		handelDeleteItem,
-		handelCloseDeleteDialog,
-		handelId,
-		handelOpenDialog,
-	} = UseDeleteItem();
+
 	const handelDeleteCategory = () => {
 		dispatch(deleteCategoryAction(custom_Id)).then((promiseResponse: any) => {
 			if ((promiseResponse.payload.code = 200)) {
@@ -91,14 +93,19 @@ export default function Categories() {
 			case 'Delete all categories':
 				CategoriesArrangedData?.length > 0
 					? dispatch(deleteAllCategoriesAction({ indexes: categoriesIds })).then(
-							(promiseResponse: any) => {
-								if ((promiseResponse.payload.code = 200)) {
-									dispatch(getCategoriesTable());
-								}
-							},
-					  )
+						(promiseResponse: any) => {
+							if ((promiseResponse.payload.code = 200)) {
+								dispatch(getCategoriesTable());
+							}
+						},
+					)
 					: toast.error('There are no data to delete it');
 				setSelectedOption('');
+				break;
+			case 'Copy category link':
+				navigator.clipboard.writeText(copyLink);
+				setSelectedOption('');
+				toast.success(`${copyLink}`)
 				break;
 		}
 	}, [selectedOption, custom_Id]);

@@ -12,8 +12,6 @@ import {
 	productDropdownMenu,
 	productSortMenu,
 } from 'src/pages/ProductsPage/_comp/data';
-
-import { useAppDispatch } from 'src/app/store';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
 import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';

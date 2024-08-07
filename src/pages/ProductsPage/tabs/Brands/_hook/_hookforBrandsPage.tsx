@@ -11,7 +11,7 @@ import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
 
-export const Use_Hook_ForBrandsPage = (selectedOption: string) => {
+export const Use_Hook_ForBrandsPage = (selectedOption: string,custom_Id:string) => {
 	const { brands, isLoading } = useAppSelector((state) => state.brands);
 	const { allProducts } = useAppSelector((state) => state.allProducts);
 
@@ -67,6 +67,7 @@ export const Use_Hook_ForBrandsPage = (selectedOption: string) => {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
+	let copyLink=brands?.filter((e) => e.id.toString() === custom_Id.toString())[0]?.slug
 	return {
 		brandsSettingMenus,
 		allProducts,
@@ -75,7 +76,8 @@ export const Use_Hook_ForBrandsPage = (selectedOption: string) => {
 		isLoading,
 		language,
 		ActionsMenus,
-		sortMenus
+		sortMenus,
+		copyLink
 		
 	};
 };

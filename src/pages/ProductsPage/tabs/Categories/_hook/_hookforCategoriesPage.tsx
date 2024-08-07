@@ -9,7 +9,7 @@ import { UseCustomTableSorting } from 'src/app/utils/hooks/UseCustomTablesorting
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { AnalyticsIcon, CopyIcon, EditIcon, OrdersIcon } from 'src/app/utils/icons';
 
-export const Use_Hook_ForCategoriesPage = (selectedOption: string) => {
+export const Use_Hook_ForCategoriesPage = (selectedOption: string,custom_Id:string) => {
 	const { categoriesTable, isLoading } = useAppSelector((state) => state.categoriesTable);
 	const { allProducts } = useAppSelector((state) => state.allProducts);
 
@@ -63,6 +63,7 @@ export const Use_Hook_ForCategoriesPage = (selectedOption: string) => {
 		sortMenus?.map((e) => e.text).includes(selectedOption) ? selectedOption : '',
 	);
 	let categoriesIds = categoriesTable?.map((e) => e?.id.toString()).join(',');
+	let copyLink=categoriesTable?.filter((e) => e.id.toString() === custom_Id.toString())[0]?.slug
 	return {
 		sortMenus,
 		allProducts,
@@ -71,6 +72,7 @@ export const Use_Hook_ForCategoriesPage = (selectedOption: string) => {
 		CategoryMenu,
 		isLoading,
 		language,
-		ActionsMenus
+		ActionsMenus,
+		copyLink
 	};
 };
