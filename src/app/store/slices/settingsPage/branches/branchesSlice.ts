@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { branchesReducer } from './branchesExtraReducers';
+import { branchesSliceModel } from 'src/app/models/settingsModels/branchesSettingsModel';
 
 
-const initialState: any = {
-	rolesList: [],
-	rolesShow: null,
-
+const initialState: branchesSliceModel = {
+	branches: [],
+	branch: null,
 	isLoadingDelete: false,
 	isLoading: false,
 	error: null,

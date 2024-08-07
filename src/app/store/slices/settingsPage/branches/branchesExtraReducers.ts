@@ -1,7 +1,8 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { deleteBranch, getBranches, getBranchesShow, postBranch, putBranch } from './branchesAsyncThunks';
+import { branchesSliceModel } from 'src/app/models/settingsModels/branchesSettingsModel';
 
-export const branchesReducer = (builder: ActionReducerMapBuilder<any>) => {
+export const branchesReducer = (builder: ActionReducerMapBuilder<branchesSliceModel>) => {
 	builder
 		// get branches
 		.addCase(getBranches.pending, (state) => {
@@ -42,7 +43,7 @@ export const branchesReducer = (builder: ActionReducerMapBuilder<any>) => {
 			state.isLoadingAddOrUpdate = false;
 		})
 
-		// Update role
+		// Update branch
 		.addCase(putBranch.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
@@ -58,7 +59,7 @@ export const branchesReducer = (builder: ActionReducerMapBuilder<any>) => {
 			state.error = action.payload;
 		})
 
-		// Delete role
+		// Delete branch
 		.addCase(deleteBranch.pending, (state) => {
 			state.isLoadingDelete = true;
 		})
@@ -68,6 +69,6 @@ export const branchesReducer = (builder: ActionReducerMapBuilder<any>) => {
 		})
 		.addCase(deleteBranch.rejected, (state, action) => {
 			state.isLoadingDelete = false;
-			state.error = action.payload;
+			state.error = action.payload | 'error';
 		});
 };

@@ -34,6 +34,7 @@ import paymentMethods from './slices/settingsPage/payment/paymentMethods/payment
 import configurations from './slices/settingsPage/configurations/configurationsSlice';
 import taxCategorySettings from './slices/settingsPage/tax/taxCategories/taxCategoriesSlice';
 import taxRateSettings from './slices/settingsPage/tax/taxRates/taxRateSlice';
+import branchSettings from './slices/settingsPage/branches/branchesSlice';
 
 
 export const rootReducer = combineReducers({
@@ -75,4 +76,5 @@ export const rootReducer = combineReducers({
 	helpSettings: helpSettings,
 	emailNotificationSettings: emailNotificationSettings,
 	configurations: configurations,
+	branchSettings:branchSettings,
 });

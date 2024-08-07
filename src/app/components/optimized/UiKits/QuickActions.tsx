@@ -17,8 +17,8 @@ export default function QuickActions<T extends FieldValues>({
 			<h3 className='title'>{title}</h3>
 			{data?.map((e) => (
 				<div className='flex-row-global gap-2'>
-					<p>{e.label}</p>
 					<FormSwitchField<T> formStore={formStore} name={e.name} enable={e.enable} />
+					<p>{e.label}</p>
 				</div>
 			))}
 		</div>
