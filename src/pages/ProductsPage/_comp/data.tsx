@@ -173,7 +173,7 @@ export const productActionsMenu = [
 
 // Define setting menus for setting button action and will be used in brands section page
 export const productSettingsMenu = [
-	{ id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
+	// { id: nanoid(), text: 'Copy product link', icon: <CopyIcon className='fill-subtitle' /> },
 	{ id: nanoid(), text: 'Product report', icon: <AnalyticsIcon className='fill-subtitle' /> },
 	{ id: nanoid(), text: 'Product orders', icon: <OrdersIcon className='fill-subtitle' /> },
 	{

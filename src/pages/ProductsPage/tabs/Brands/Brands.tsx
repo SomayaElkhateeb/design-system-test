@@ -36,27 +36,7 @@ export default function Brands() {
 	const { t } = useTranslation();
 	const { xs } = useResponsive();
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-	const {
-		sortMenus,
-		brandsSettingMenus,
-		allProducts,
-		BrandsArrangedData,
-		brandsIds,
-		isLoading,
-		language,
-		ActionsMenus,
-	} = Use_Hook_ForBrandsPage(selectedOption);
 
-	// ///////////////
-	///////////////
-	useEffect(() => {
-		dispatch(getBrandsTable());
-		dispatch(getAllProductsTable());
-	}, [dispatch]);
-	// /////////////////////////////
-
-	// /////////////////////////
-	// //////////////////////////
 	//  handel delete Item
 	const {
 		openDeleteDialog,
@@ -66,6 +46,26 @@ export default function Brands() {
 		handelId,
 		handelOpenDialog,
 	} = UseDeleteItem();
+	const {
+		sortMenus,
+		brandsSettingMenus,
+		allProducts,
+		BrandsArrangedData,
+		brandsIds,
+		isLoading,
+		language,
+		ActionsMenus,
+		copyLink
+	} = Use_Hook_ForBrandsPage(selectedOption,custom_Id);
+
+	// ///////////////
+	///////////////
+	useEffect(() => {
+		dispatch(getBrandsTable());
+		dispatch(getAllProductsTable());
+	}, [dispatch]);
+	// /////////////////////////////
+	
 	// Delete brand
 
 	const handelDeleteBrand = () => {
@@ -93,18 +93,23 @@ export default function Brands() {
 				break;
 
 			case 'Delete all brands':
-				brands?.length > 0
+				BrandsArrangedData?.length > 0
 					? dispatch(deleteAllBrandsAction({ indexes: brandsIds })).then((promiseResponse: any) => {
-							if ((promiseResponse.payload.code = 200)) {
-								dispatch(getBrandsTable());
-							}
-					  })
+						if ((promiseResponse.payload.code = 200)) {
+							dispatch(getBrandsTable());
+						}
+					})
 					: toast.error('There are no data to delete it');
 				setSelectedOption('');
 				break;
 			case 'Import brands':
 				setOpenExportDialog(true);
 				setSelectedOption('');
+				break;
+			case 'Copy brand link':
+				navigator.clipboard.writeText(copyLink);
+				setSelectedOption('');
+				toast.success(`${copyLink}`)
 				break;
 		}
 	}, [selectedOption]);

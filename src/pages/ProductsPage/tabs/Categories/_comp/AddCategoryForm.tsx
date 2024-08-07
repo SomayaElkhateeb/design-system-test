@@ -51,7 +51,7 @@ const CategorySchema = {
 				name: stringValidation,
 			}),
 		)
-		.min(1),
+		.optional()
 };
 export type AddCategorySchemaValues = InferredZodSchema<typeof CategorySchema>;
 

@@ -20,7 +20,7 @@ export const addBrandFormSchema = {
                 name: stringValidation,
             }),
         )
-        .min(1),
+        .optional(),
 };
 
 export type AddBrandSchemaValues = InferredZodSchema<typeof addBrandFormSchema>;
