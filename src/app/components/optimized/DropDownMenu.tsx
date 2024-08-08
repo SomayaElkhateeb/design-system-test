@@ -8,18 +8,22 @@ import { useState } from 'react';
 export default function DropDownMenu({
 	children,
 	title,
-	component
+	component,
+	variant,
+	addCompo
 }: {
 	title?: string;
 	children: React.ReactNode;
-	component?:React.ReactNode
+	component?: React.ReactNode
+	variant?: boolean
+	addCompo?: React.ReactNode
 }) {
 	const [expanded, setExpanded] = useState(false);
 
 	const handleExpansion = () => {
 		setExpanded((prevExpanded) => !prevExpanded);
 	};
-	const titleClass = 'text-title font-normal text-[.8rem]';
+	const titleClass = variant ? "title" : 'text-title font-normal text-[.8rem]';
 	return (
 		<Accordion
 			expanded={expanded}
@@ -29,7 +33,7 @@ export default function DropDownMenu({
 			sx={{
 				'& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
 				'& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
-				boxShadow:"none"
+				boxShadow: "none"
 			}}
 		>
 			<AccordionSummary
@@ -37,8 +41,13 @@ export default function DropDownMenu({
 				aria-controls='panel1-content'
 				id='panel1-header'
 			>
-				{title &&<p className={titleClass}>{title}</p>}
-				{component &&component}
+				<div className=" flex flex-row gap-2 items-center">
+					{title && <p className={titleClass}>{title}</p>}
+					{addCompo && addCompo}
+
+				</div>
+
+				{component && component}
 			</AccordionSummary>
 			<AccordionDetails>{children}</AccordionDetails>
 		</Accordion>

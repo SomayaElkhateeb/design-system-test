@@ -18,8 +18,9 @@ import { ProductDefaultValues, ProductSchema } from './utils';
 import { useForm } from 'src/app/utils/hooks/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { ProductFormValues } from './types';
-import { useEffect } from 'react';
-
+import { useAppDispatch } from 'src/app/store';
+import { useEffect,useMemo } from 'react';
+import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
 const productsSections = [
 	// {
 	// 	Elem: ProductFormMediaSection,
@@ -70,6 +71,7 @@ const productsSections = [
 
 export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
+	const dispatch=useAppDispatch()
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
@@ -92,6 +94,10 @@ export default function ConfigurableProductPage() {
 		);
 	}, [formStore.watch('status')]);
 
+	useMemo(() => {
+		dispatch(getInventoryTable());
+	}, [dispatch]);
+
 	return (
 		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative'>
@@ -103,12 +109,12 @@ export default function ConfigurableProductPage() {
 						))}
 					</div>
 					<div className='grid-right'>
-					<QuickActions<ProductFormValues>
-						formStore={formStore}
-						data={actionData}
-						title={t('Quick actions')}
-					/>
-						
+						<QuickActions<ProductFormValues>
+							formStore={formStore}
+							data={actionData}
+							title={t('Quick actions')}
+						/>
+
 					</div>
 				</div>
 			</section>

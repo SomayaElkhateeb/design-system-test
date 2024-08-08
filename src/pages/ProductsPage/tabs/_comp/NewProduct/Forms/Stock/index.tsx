@@ -16,9 +16,7 @@ export default function ProductFormStockSection<TFormStore>(props: Props<TFormSt
 
 	const { inventory } = useAppSelector((state) => state.inventory);
 
-	useMemo(() => {
-		dispatch(getInventoryTable());
-	}, [dispatch]);
+	
 	useEffect(() => {
 		props.formStore.watch('continue_selling') // ???
 			? props.formStore.setValue('continue_selling', 1)
