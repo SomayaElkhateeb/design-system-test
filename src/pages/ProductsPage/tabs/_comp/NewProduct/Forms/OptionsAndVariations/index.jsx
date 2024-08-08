@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
 	Card,
@@ -12,6 +12,8 @@ import OptionsList from './_comp/OptionsList';
 import AddOptionManager from './_comp/AddOptionManager';
 import VariationsManager from './_comp/VariationsManager';
 import OptionsAndVariationsFull from './_comp/_new/OptionsAndVariationsFull';
+import { useAppDispatch } from 'src/app/store';
+import { getAllAttributes } from 'src/app/store/slices/Attributes/AttributeAsyncThunks';
 
 /**
  * @template TFormStore
@@ -20,37 +22,50 @@ import OptionsAndVariationsFull from './_comp/_new/OptionsAndVariationsFull';
  */
 export default function ProductFormOptionsAndVariationsSection(props) {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 
-	const getOptionValuesNames = useCallback(() => {
-		const options = props.formStore.getValues('options');
-		return options.map((option) => option.name);
-	}, [props.formStore]);
+	// const getOptionValuesNames = useCallback(() => {
+	// 	const options = props.formStore.getValues('options');
+	// 	return options.map((option) => option.name);
+	// }, [props.formStore]);
+
+	useEffect(() => {
+		dispatch(getAllAttributes());
+	}, [dispatch]);
 
 	return (
 		<>
-			{/* <Card id={props.id}>
-				<CardHeader>
-					<CardTitle>{t('Options & Variations')}</CardTitle>
-					<CardDescription className='text-gray-400'>
+			<section className='global-cards gap-2' id={props.id}>
+				<section className='flex-col-global gap-1'>
+					<p className='title'>{t('Options & Variations')}</p>
+					<p className='text-gray-400 text-sm opacity-80'>
 						{t(
 							'Allow your customers to select from options such as Size and Color on your website.',
 						)}
-					</CardDescription>
-				</CardHeader>
-				<CardContent className='flex flex-col gap-4'>
-					<OptionsList formStore={props.formStore} />
+					</p>
+				</section>
+				<section className='flex-col-global gap-4'>
+					{/* <OptionsList formStore={props.formStore} /> */}
 					<AddOptionManager
-						getOptionValuesNames={getOptionValuesNames}
-						handleSubmit={(values) => {
-							const options = props.formStore.getValues('options');
-							props.formStore.setValue('options', [...options, values.option]);
-							updateVariations(props.formStore);
-						}}
+						formStore={props.formStore}
+						label={
+							props.formStore.watch('variants')?.length > 0
+								? t('Add More Variants')
+								: t('Add Variants')
+						}
+						// getOptionValuesNames={getOptionValuesNames}
+						// handleSubmit={(values) => {
+						// 	const options = props.formStore.getValues('options');
+						// 	props.formStore.setValue('options', [...options, values.option]);
+						// 	updateVariations(props.formStore);
+						// }}
 					/>
-					<VariationsManager formStore={props.formStore} />
-				</CardContent>
-			</Card> */}
-			<OptionsAndVariationsFull />
+					{/* {props.formStore.watch('options')?.length > 0 && (
+						<VariationsManager formStore={props.formStore} />
+					)} */}
+				</section>
+			</section>
+			{/* <OptionsAndVariationsFull /> */}
 		</>
 	);
 }

@@ -46,10 +46,10 @@ export default function OptionsList(props) {
 					>
 						<div className='flex flex-col gap-4'>
 							<div className='flex items-center justify-between gap-4'>
-								<button type='button' className='flex gap-2 items-center'>
+								{/* <button type='button' className='flex gap-2 items-center'>
 									<FaCirclePlus className='size-5' />
 									{t('Add Another Value')}
-								</button>
+								</button> */}
 
 								<FormField
 									formStore={props.formStore}
@@ -75,25 +75,25 @@ export default function OptionsList(props) {
 							<div className='flex flex-col gap-1'>
 								<strong>{t('In stock')}</strong>
 							</div>
-							<div className='flex flex-col overflow-x-auto'>
-								<div className='grid grid-cols-6 grid-col-[3fr_1fr_1fr] items-end gap-8 pb-4'>
-									<p className='col-span-3'>{t('Option Values')}</p>
-									<p className='col-span-2'>{t('Difference in price')}</p>
-									<p>{t('Actions')}</p>
+							<div className='flex flex-col '>
+								<div className='grid grid-cols-6 grid-col-[3fr_1fr_1fr] items-end md:gap-8 gap-4 pb-4'>
+									<p className='col-span-3 md:text-sm text-[.6rem]'>{t('Option Values')}</p>
+									<p className='col-span-2 md:text-sm text-[.6rem]'>{t('Difference in price')}</p>
+									<p className='md:text-sm text-[.6rem]'>{t('Actions')}</p>
 								</div>
 								{option.values.map((value, valueIndex) => (
 									<div
 										key={value.tempId}
-										className='grid grid-cols-6 grid-col-[3fr_1fr_1fr] items-end gap-8'
+										className='grid grid-cols-6 grid-col-[3fr_1fr_1fr] items-end md:gap-8 gap-10'
 									>
 										<div className='flex items-center gap-4 col-span-3 pb-4'>
 											<div
-												className='size-4 rounded-full flex translate-y-3/4'
+												className='size-4  rounded-full flex translate-y-3/4   '
 												style={{ backgroundColor: value.value }}
 											/>
 											<TabbedFormField
 												formStore={props.formStore}
-												container={{ className: 'flex-grow' }}
+												container={{ className: 'flex-grow  -translate-x-[13px]' }}
 												keys={[
 													{ name: `options.${index}.values.${valueIndex}.nameEn`, label: 'En' },
 													{
@@ -114,7 +114,7 @@ export default function OptionsList(props) {
 												)}
 											/>
 										</div>
-										<div className='pb-4 flex'>
+										<div className='pb-7 flex'>
 											<button
 												type='button'
 												onClick={() => {
