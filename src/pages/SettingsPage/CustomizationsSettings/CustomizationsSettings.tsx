@@ -49,8 +49,8 @@ const CustomizationsSettings = () => {
     };
 
 	return (
-		<Form >
-		{/* <Form {...formStore}> */}
+		// <Form >
+		<Form {...formStore}>
 			{/* <form onSubmit={onSubmit}> */}
 			<form >
 				<SubHeader title={t('Customizations')}>

@@ -21,16 +21,23 @@ export default function BranchInfo({ formStore }: { formStore: UseFormReturn<Bra
 	const [locationEnabled, setLocationEnabled] = useState<boolean>(false);
 	const [isDisablePickButton, setDisablePickButton] = useState<boolean>(false);
 
-	const { data: countriesData } = useQuery(['countriesData'], () => CountriesApi.countries());
-	let CountryId = formStore.watch(currentLocale === 'ar' ? 'ar.country' : 'en.country') || '';
-	const { data: citiesData } = useQuery(['citiesData', CountryId], () =>
-		CountriesApi.cities(CountryId),
-	);
+    //  get CountriesData  with api request
+    const { data: countriesData } = useQuery(['countriesData'], () => CountriesApi.countries());
+	
+    const CountryId = formStore.getValues('en.country') || '';
+    const { data: citiesData } = useQuery(['city', CountryId], () => {
+        if (CountryId) {
+            return CountriesApi.cities(CountryId);
+        }
+        return Promise.resolve(null);
+    }, {
+        enabled: !!CountryId 
+    });
 
-	const countries = countriesData?.data?.data || [];
-	const cities = citiesData?.data?.data || [];
+    const countries = countriesData?.data?.data || [];
+    const cities = citiesData?.data?.data || [];
 
-	console.log('cities', cities) // []
+    console.log('Cities', cities); // []
 
 	return (
 		<div className='cardDetails-sharedClass p-5'>
@@ -131,7 +138,7 @@ export default function BranchInfo({ formStore }: { formStore: UseFormReturn<Bra
 
 				{countries?.length > 0 && (
 					<SelectFormField
-						name={currentLocale === 'ar' ? 'ar.country' : 'en.country'}
+						name='en.country'
 						label={t('Country')}
 						formStore={formStore}
 						options={countries.map((e: CountriesInterface) => ({
@@ -144,7 +151,7 @@ export default function BranchInfo({ formStore }: { formStore: UseFormReturn<Bra
 
 				{cities?.length > 0 && ( //???
 					<SelectFormField
-						name={currentLocale === 'ar' ? 'ar.city' : 'en.city'}
+						name='en.city'
 						label={t('City')}
 						formStore={formStore}
 						options={cities.map((e: CountriesInterface) => ({

@@ -1362,4 +1362,9 @@ export const arabic = {
 	'Delete Hours':'',
 	'Add More Hours':'',
 	'Code':'',
+	'This tax class will be applied automatically to any new added product.':'',
+	'Import':'',
+	'branch name':'',
+	'type':'',
+	'address & phone':'',
 } satisfies typeof english;

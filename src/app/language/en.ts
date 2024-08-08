@@ -1351,6 +1351,7 @@ export const english = {
 	'Rate': 'Rate',
 	'Enter rate': 'Enter rate',
 	'ZIP Code': 'ZIP Code',
+
 	'Identifier': 'Identifier',
 	'tax rates': 'tax rates',
 	'e.g.tax-one': 'e.g.tax-one',
@@ -1364,9 +1365,7 @@ export const english = {
 	'Add Tax Category': 'Add Tax Category',
 	'Category Name': 'Category Name',
 	'category name': 'category name',
-	'Category Code': 'Category Code',
-	'category code': 'category code',
-	'identifier': 'identifier',
+	
 	'state': 'state',
 	'country': 'country',
 	'zip code': 'zip code',
@@ -1384,4 +1383,16 @@ export const english = {
 	'Delete Hours': 'Delete Hours',
 	'Add More Hours': 'Add More Hours',
 	'Code': 'Code',
+
+
+	
+	'Category Code':'Category Code',
+	'category code':'category code',
+	'identifier':'identifier',
+	'This tax class will be applied automatically to any new added product.':'This tax class will be applied automatically to any new added product.',
+	'Import':'Import',
+	'branch name':'branch name',
+	'type':'type',
+	'address & phone':'address & phone',
+
 };

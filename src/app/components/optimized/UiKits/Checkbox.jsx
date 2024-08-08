@@ -62,7 +62,7 @@ export default function CheckBox({ variant, label, handleOnChange, classes, ...p
 			>
 				{renderCheckboxIcon()}
 			</div>
-			{label && <span className=' text-sm text-title'>{label}</span>}
+			{label && <span className='text-sm text-title'>{label}</span>}
 		</label>
 	);
 }
