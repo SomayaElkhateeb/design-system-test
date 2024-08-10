@@ -17,7 +17,7 @@ function ProfitField(props) {
 	const costPrice = useWatch({ name: 'costPrice', control: props.formStore.control });
 
 	const profit = Number(price || 0) - Number(costPrice || 0) - Number(discountPrice || 0);
-	console.log(props.formStore.watch('profit'));
+	
 	useEffect(() => {
 		props.formStore.setValue('profit', profit);
 	}, [profit]);

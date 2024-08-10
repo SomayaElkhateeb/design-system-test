@@ -19,7 +19,7 @@ import { useForm } from 'src/app/utils/hooks/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { ProductFormValues } from './types';
 import { useAppDispatch } from 'src/app/store';
-import { useEffect,useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
 const productsSections = [
 	// {
@@ -71,11 +71,29 @@ const productsSections = [
 
 export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
-	const dispatch=useAppDispatch()
+	const dispatch = useAppDispatch()
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
-			// console.log(values);
+
+			let handelInventory = values.inventories?.map((el: any, i) => {
+				return {
+					[`inventories[${el.id}]`]: values?.quy?.toString(),
+				};
+			});
+			const obj = handelInventory.reduce((acc: any, item: any) => {
+				const key = Object.keys(item)[0];
+				acc[key] = item[key];
+				return acc;
+			}, {});
+
+
+			let refactorData = {
+				...values, 'categories[]': values.category, ["en[name]"]: values.nameEn,
+				["ar[name]"]: values.nameAr, ["en[description]"]: values.descriptionEn,
+				["ar[description]"]: values.descriptionAr, ...obj
+			}
+			console.log(refactorData)
 		},
 		defaultValues: ProductDefaultValues,
 	});

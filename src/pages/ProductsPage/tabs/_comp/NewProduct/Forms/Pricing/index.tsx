@@ -46,7 +46,7 @@ export default function ProductFormPricingSection<TFormStore>(props: Props<TForm
 				/>
 				<FormField
 					formStore={props.formStore}
-					name='costPrice'
+					name='cost'
 					label={`${t('Cost price')} (${t('Optional')})`}
 					render={(field) => (
 						<HorizontalBox start='SAR'>

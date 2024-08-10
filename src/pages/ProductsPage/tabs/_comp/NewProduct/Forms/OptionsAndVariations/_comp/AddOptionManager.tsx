@@ -92,7 +92,7 @@ export default function AddOptionManager<TFormStore>(props: Props<TFormStore>) {
 
 		}
 	}
-	console.log(props.formStore.watch("variants"))
+	
 	return (
 		<div className="flex-col-global">
 
