@@ -8,9 +8,7 @@ import {
 	ProductFormOptionsAndVariationsSection,
 	ProductFormPricingSection,
 	ProductFormQuickActionsSection,
-
 	ProductFormShippingSection,
-
 	ProductFormStockSection,
 	SeoFormFaqsSection,
 } from '../../..';
@@ -73,9 +71,9 @@ const productsSections = [
 
 export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
-	const dispatch = useAppDispatch()
-	const navigate = useNavigate()
-	const {isLoadingAddOrUpdate}=useAppSelector((state)=>state.allProducts)
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.allProducts);
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
@@ -117,25 +115,34 @@ export default function ConfigurableProductPage() {
 				return acc;
 			}, {});
 
-			const { descriptionAr, descriptionEn, nameEn, nameAr, inventories, ...updatedData } = values;
-			updatedData.en.name = values.nameEn
-			updatedData.en.description = values.descriptionEn
-			updatedData.ar.description = values.descriptionAr
-			updatedData.ar.name = values.nameAr
+			const {
+				category,
+				descriptionAr,
+				descriptionEn,
+				nameEn,
+				nameAr,
+				inventories,
+				...updatedData
+			} = values;
+			updatedData.en.name = nameEn;
+			updatedData.en.description = descriptionEn;
+			updatedData.ar.description = descriptionAr;
+			updatedData.ar.name = nameAr;
+			updatedData.categories = [category];
 
-			
 			let refactorData = {
-				...updatedData, inventories: obj, "type": "configurable", 'categories[]': values.category,
+				...updatedData,
+				inventories: obj,
+				type: 'configurable',
 
-
-				variants: JSON.stringify(variantsData)
-			}
+				variants: JSON.stringify(variantsData),
+			};
 
 			dispatch(PostSimpleQuickProduct(refactorData)).then((promiseResponse) => {
 				if ((promiseResponse.payload.code = 200)) {
 					navigate(-1);
 				}
-			})
+			});
 		},
 		defaultValues: ProductDefaultValues,
 	});
@@ -148,10 +155,7 @@ export default function ConfigurableProductPage() {
 		},
 	];
 	useEffect(() => {
-		formStore.setValue(
-			'status',
-			formStore.watch('status') ? 1 : 0,
-		);
+		formStore.setValue('status', formStore.watch('status') ? 1 : 0);
 	}, [formStore.watch('status')]);
 
 	useMemo(() => {
@@ -159,7 +163,12 @@ export default function ConfigurableProductPage() {
 	}, [dispatch]);
 
 	return (
-		<ProductFormContainer isLoadingAddOrUpdate={isLoadingAddOrUpdate} formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
+		<ProductFormContainer
+			isLoadingAddOrUpdate={isLoadingAddOrUpdate}
+			formStore={formStore}
+			onSubmit={onSubmit}
+			sections={productsSections}
+		>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative'>
 				<div className='custom-grid-parent gap-5  custom_container'>
 					<div className='flex-col-global grid-left gap-4'>
@@ -174,7 +183,6 @@ export default function ConfigurableProductPage() {
 							data={actionData}
 							title={t('Quick actions')}
 						/>
-
 					</div>
 				</div>
 			</section>

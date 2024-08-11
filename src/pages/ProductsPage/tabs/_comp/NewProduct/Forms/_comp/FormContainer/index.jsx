@@ -55,7 +55,7 @@ export default function ProductFormContainer(props) {
 						title={title !== 'configurable' && title !== 'simple' ? `Add ${title}` : 'Add Product'}
 					>
 						<SubHeaderDefaultBtns
-							isLoading={isLoadingAddOrUpdate}
+							isLoading={props.isLoadingAddOrUpdate}
 							onSubmit={() => props.onSubmit()}
 						/>
 					</SubHeader>
@@ -94,7 +94,7 @@ export default function ProductFormContainer(props) {
 				</header>
 				{props.children}
 				<div className='m-[1rem]'>
-					<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={() => props.onSubmit()} />
+					<SubHeaderMobileBtns isLoading={props.isLoadingAddOrUpdate} onSubmit={() => props.onSubmit()} />
 				</div>
 			</form>
 		</Form>
