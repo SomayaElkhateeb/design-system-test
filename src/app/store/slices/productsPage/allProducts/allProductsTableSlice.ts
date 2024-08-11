@@ -13,6 +13,7 @@ const initialState: AllProductsStatus = {
 	allProducts: allProducts,
 	isLoading: false,
 	error: null,
+	isLoadingAddOrUpdate: false
 };
 
 const allProductsSlice = createSlice({
