@@ -9,7 +9,7 @@ export const getAllProductsTable = createAsyncThunk('allProductsTable/getAllProd
 );
 
 
-export const PostSimpleQuickProduct = createAsyncThunk('PostSimpleQuickProduct/getAllProductsTable', (payload: FormData) =>
+export const PostSimpleQuickProduct = createAsyncThunk('allProductsTable/PostSimpleQuickProduct', (payload: any) =>
 	PublicRequest.postData(payload, 'merchant/catalog/products/store').then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
@@ -19,7 +19,11 @@ export const PostSimpleQuickProduct = createAsyncThunk('PostSimpleQuickProduct/g
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-export const PostUpdateQuickProduct = createAsyncThunk('PostUpdateQuickProduct/getAllProductsTable', (payload: { data: FormData, id: string }) =>
+
+
+
+
+export const PostUpdateQuickProduct = createAsyncThunk('allProductsTable/PostUpdateQuickProduct', (payload: { data: FormData, id: string }) =>
 	PublicRequest.postData(payload.data, `merchant/catalog/products/update/${payload.id}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
@@ -30,7 +34,7 @@ export const PostUpdateQuickProduct = createAsyncThunk('PostUpdateQuickProduct/g
 );
 
 export const deleteProductAction = createAsyncThunk(
-	'deleteProductAction/getAllCustomersTable',
+	'allProductsTable/deleteProductAction',
 	(payload: string) => PublicRequest.deleteData(`merchant/catalog/products/delete/${payload}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
@@ -41,7 +45,7 @@ export const deleteProductAction = createAsyncThunk(
 );
 // deleteAllProductsAction
 export const deleteAllProductsAction = createAsyncThunk(
-	'brandsTable/deleteAllProductsAction',
+	'allProductsTable/deleteAllProductsAction',
 	(payload: { indexes: string }) => PublicRequest.postData(payload, `merchant/catalog/products/mass-destroy`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
@@ -51,12 +55,12 @@ export const deleteAllProductsAction = createAsyncThunk(
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-export const getExportAllProducts = createAsyncThunk('brandsTable/getExportAllProducts', () =>
+export const getExportAllProducts = createAsyncThunk('allProductsTable/getExportAllProducts', () =>
 	PublicRequest.getData('merchant/catalog/products/export'),
 );
 
 
-export const PostImportProducts = createAsyncThunk('PostImportProducts/getAllProductsTable', (payload:any) =>
+export const PostImportProducts = createAsyncThunk('allProductsTable/PostImportProducts', (payload: any) =>
 	PublicRequest.postFormData(payload, `merchant/catalog/products/import`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);

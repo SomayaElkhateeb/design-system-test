@@ -939,7 +939,17 @@ export const arabic = {
 	'send message': 'إرسال رسالة',
 	'show on map': 'عرض على الخريطة',
 	'Payment details': 'تفاصيل الدفع',
+
 	"Select brand": "تحديد براند",
+
+	"Select brand":"تحديد براند",
+	"Add More Option":"اضافه منتج اخر",
+	"Add Variants":"اضافه منوعات",
+	"Add More Variants":"اضافه منوعات",
+	"variant":"تنوع",
+	'Attribute Name': 'اسم الوصف',
+	"Attribute value":"قيمه الوصف",
+
 	'Bank transfer': 'التحويل المصرفي',
 	'Delivery method': 'طريقة التوصيل',
 	Shipping: 'شحن',

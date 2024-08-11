@@ -32,22 +32,21 @@ export const optionBaseValuesSchema = z.object({
 });
 
 export const productOptionRawSchema = {
-	option: z.discriminatedUnion('name', [
-		z.object({
-			tempId: z.string(),
-			isRequired: z.boolean().optional(),
-			name: z.literal(optionNameMap.size),
-			type: optionTypeSchema,
-			values: z.array(optionBaseValuesSchema),
-		}),
-		z.object({
-			tempId: z.string(),
-			isRequired: z.boolean().optional(),
-			name: z.literal(optionNameMap.color),
-			type: optionTypeSchema,
-			values: z.array(optionBaseValuesSchema),
-		}),
-	]),
+	option: z.object({
+		tempId: z.string(),
+		isRequired: z.boolean().optional(),
+		name: z.string().min(1),
+		value: z.string().min(1),
+		// type: z.string(),
+		// values: z.array(optionBaseValuesSchema)
+	}),
+	// z.object({
+	// 	tempId: z.string(),
+	// 	isRequired: z.boolean().optional(),
+	// 	name: z.literal(optionNameMap.color),
+	// 	type: optionTypeSchema,
+	// 	values: z.array(optionBaseValuesSchema),
+	// }),
 };
 
 export const productVariationRawSchema = {
@@ -71,3 +70,44 @@ export const productOptionsAndVariationsDefaultValues = {
 	options: [],
 	variations: [],
 };
+const attributeValuesSchema = z.union([
+	z.string().min(1),
+	z.coerce.number().positive().min(1),
+	z.boolean().default(false),
+	z.array(z.string().min(1)).min(1),
+]);
+export const productVariantSchema = {
+	variants: z
+		.array(
+			z.object({
+				sku: z.string().min(1),
+				en: z.object({
+					name: z.string().min(1),
+					short_description: z.string().min(1),
+					description: z.string().min(1),
+				}),
+				ar: z.object({
+					name: z.string().min(1),
+					short_description: z.string().min(1),
+					description: z.string().min(1),
+				}),
+				price: z.coerce.number().positive().min(1),
+				weight: z.coerce.number().positive().min(1),
+				quantity: z.coerce.number().positive().min(1),
+				status: z.number().optional(),
+				inventories: z
+					.array(
+						z.object({
+							id: z.string().min(1),
+							name: z.string().min(1),
+						}),
+					)
+					.min(1),
+				code: z.string().min(1),
+				attributeValues: attributeValuesSchema,
+			}),
+		)
+		.optional(),
+};
+
+export const productVariantDefaultValues = { variants: [] };

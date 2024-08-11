@@ -1068,6 +1068,10 @@ export const english = {
 	'Can continue selling when out of stock': 'Can continue selling when out of stock',
 	Quantity: 'Quantity',
 	'Inventory branches': 'Inventory branches',
+	"Add More Option": "Add More Option",
+	"Add Variants": "Add Variants",
+	"Add More Variants": "Add More Variants",
+	"variant": "variant",
 	'Add New branch': 'Add New branch',
 	'Is this product require shipping or pickup?': 'Is this product require shipping or pickup?',
 	"Enable this option if the product needs to be physically delivered to customers either via shipping or by self-pickup. If this product is a service or a downloadable item that doesn't require delivery, keep this option disabled.":
@@ -1111,6 +1115,8 @@ export const english = {
 	'Type a note': 'Type a note',
 	Area: 'Area',
 	'SKU Code': 'SKU Code',
+	'Attribute Name': 'Attribute Name',
+	"Attribute value":"Attribute value",
 	'Building No': 'Building No',
 	'Select branch': 'Select branch',
 	'Additional Info': 'Additional Info',
@@ -1358,7 +1364,7 @@ export const english = {
 	'Add Tax Category': 'Add Tax Category',
 	'Category Name': 'Category Name',
 	'category name': 'category name',
-	'Category Code': 'Category Code',
+
 	'category code': 'category code',
 	'identifier': 'identifier',
 	'state': 'state',
@@ -1378,6 +1384,7 @@ export const english = {
 	'Delete Hours': 'Delete Hours',
 	'Add More Hours': 'Add More Hours',
 	'Code': 'Code',
+
 	'This tax class will be applied automatically to any new added product.': 'This tax class will be applied automatically to any new added product.',
 	'Import': 'Import',
 	'branch name': 'branch name',
@@ -1397,4 +1404,5 @@ export const english = {
 	'Option Fields':'Option Fields',
 	'Sort Order':'Sort Order',
 	'Feature on the front page':'Feature on the front page',
+
 };

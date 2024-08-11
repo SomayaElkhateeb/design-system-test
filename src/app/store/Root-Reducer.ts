@@ -37,7 +37,7 @@ import configurations from './slices/settingsPage/configurations/configurationsS
 import taxCategorySettings from './slices/settingsPage/tax/taxCategories/taxCategoriesSlice';
 import taxRateSettings from './slices/settingsPage/tax/taxRates/taxRateSlice';
 import branchSettings from './slices/settingsPage/branches/branchesSlice';
-
+import attributesSlice from "./slices/Attributes/AttributeTableSlice"
 
 export const rootReducer = combineReducers({
 	// ATTRIBUTES
@@ -83,4 +83,5 @@ export const rootReducer = combineReducers({
 	emailNotificationSettings: emailNotificationSettings,
 	configurations: configurations,
 	branchSettings:branchSettings,
+	attributes:attributesSlice,
 });
