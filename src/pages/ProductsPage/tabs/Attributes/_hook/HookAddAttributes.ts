@@ -2,15 +2,38 @@ import { z } from 'zod';
 
 export interface addAttributeInterface {
     code: string;
-    attributeType: string;
-    adminNameAr: string;
-    adminNameEn: string;
-    swatchType: string;
-    default: number;
+    type: string; // select
+    admin_name: string;
+    en: {
+        name: string;
+    };
+    ar: {
+        name: string;
+    };
+    swatch_type: string; // dropdown
+    'default-null-option': boolean; // on or off
 
-    swatchTypeOpt?: string;
-    order?: number;
-    store: number;
+    // options
+    options: {
+        option_1: {
+            admin_name: string;
+            en: {
+                label: string;
+            }
+            ar: {
+                label: string;
+            }
+            sort_order: number; // 1 or 0
+            swatch_value: string;
+        }
+    }
+
+    is_required: number;
+    is_unique: number;
+    validation: number;
+    value_per_locale: number;
+    value_per_channel: number;
+    
 }
 const stringZod = z.string().min(1);
 

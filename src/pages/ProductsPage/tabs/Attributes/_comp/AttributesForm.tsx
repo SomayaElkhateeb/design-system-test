@@ -34,7 +34,7 @@ const AttributesForm = () => {
   return (
     <Form {...formStore}>
       <form onSubmit={onSubmit} className='flex-col-global'>
-        <SubHeader title={t('add staff')}>
+        <SubHeader title={t('add attribute')}>
           <SubHeaderDefaultBtns onSubmit={onSubmit} />
         </SubHeader>
         <div className='custom_container custom-grid-parent'>

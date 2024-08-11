@@ -8,13 +8,17 @@ import SelectFormField from "src/app/components/ui/form/SelectFormField";
 import TabbedFormField from "src/app/components/ui/form/tabbed-field";
 import FormSwitchField from "src/app/components/ui/form/FormSwitchField";
 
-const data = [
-    { name: 'item1', id: 1 },
-    { name: 'item2', id: 2 },
-]
+
 const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInterface> }) => {
     const { xs } = useResponsive();
     const { t } = useTranslation();
+
+    const attributeType = [
+        { name: t('select'), id: 1 },
+        { name: t('text'), id: 2 },
+        { name: t('radio'), id: 3 },
+        { name: t('checkbox'), id: 4 },
+    ]
 
     return (
         <div className='global-cards gap-[1.2rem]'>
@@ -33,7 +37,7 @@ const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInt
                         name='attributeType'
                         label={t('Attribute Type')}
                         formStore={formStore}
-                        options={data?.map((item: any) => ({
+                        options={attributeType?.map((item: any) => ({
                             label: item?.name,
                             value: item?.id?.toString(),
                         }))}

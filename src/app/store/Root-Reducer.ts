@@ -1,4 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import attributes from './slices/Attributes/Attribute/attributeSlice';
+import attributesFamilies from './slices/Attributes/AttributeFamilies/attributeFamiliesSlice';
 import discount from './slices/marketing/discounts/discountSlice';
 import coupons from './slices/marketing/coupons/couponSlice';
 import categories from './slices/selectors/categories/categoriesSlice';
@@ -38,6 +40,10 @@ import branchSettings from './slices/settingsPage/branches/branchesSlice';
 
 
 export const rootReducer = combineReducers({
+	// ATTRIBUTES
+	attributes:attributes,
+	attributesFamilies:attributesFamilies,
+	
 	discount: discount,
 	coupons: coupons,
 	categories: categories,
