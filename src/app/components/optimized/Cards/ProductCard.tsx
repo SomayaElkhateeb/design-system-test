@@ -24,7 +24,11 @@ import { Product } from 'src/pages/ProductsPage/_comp/data';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { menuType } from '../Buttons/ActionsComp';
 import { useAppDispatch } from 'src/app/store';
-import { getAllProductsTable, PostUpdateQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import {
+	getAllProductsTable,
+	PostUpdateQuickProduct,
+} from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
 interface AllProductsTableProps {
 	product: Product;
@@ -137,11 +141,14 @@ function Actions({
 	handelId: (e: string) => void;
 }) {
 	//  hooks
-	const dispatch=useAppDispatch()
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const handelEdit = (e: Product) => {
 		if (e.type === 'simple') {
 			setOpenDialog(true);
 			setEdit_product(e);
+		} else {
+			navigate(`/products/new/configurable?id=${e?.id}`);
 		}
 	};
 
@@ -160,9 +167,15 @@ function Actions({
 	return (
 		<div className='flex-col-global gap-3 px-2 py-1 card items-center '>
 			{product?.status > 0 ? (
-				<IoEyeOutline onClick={() => handelStatus(product)} className='text-subtitle cursor-pointer' />
+				<IoEyeOutline
+					onClick={() => handelStatus(product)}
+					className='text-subtitle cursor-pointer'
+				/>
 			) : (
-				<IoEyeOffSharp onClick={() => handelStatus(product)} className='text-subtitle cursor-pointer' />
+				<IoEyeOffSharp
+					onClick={() => handelStatus(product)}
+					className='text-subtitle cursor-pointer'
+				/>
 			)}
 
 			<div onClick={() => handelEdit(product)}>
