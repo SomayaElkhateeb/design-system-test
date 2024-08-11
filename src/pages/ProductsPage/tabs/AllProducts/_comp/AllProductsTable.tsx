@@ -15,6 +15,7 @@ import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/Custo
 import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
 import { useAppDispatch } from 'src/app/store';
 import { getAllProductsTable, PostUpdateQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 
 interface AllProductsTableProps {
 	products: Product[];
@@ -49,11 +50,14 @@ export default function AllProductsTable({
 	handelId,
 }: AllProductsTableProps) {
 	// hooks
+	const navigate = useNavigate();
 	const { language } = useLanguage();
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const [favorites, setFavorites] = useState<string[]>([]);
 	const classData = actionsButtonStyle();
+
+	//  handel favorite_icon
 	const toggleFavorite = (id: string) => {
 		setFavorites((prevFavorites) =>
 			prevFavorites.includes(id)
@@ -84,10 +88,12 @@ export default function AllProductsTable({
 		if (e.type === 'simple') {
 			setOpenDialog(true);
 			setEdit_product(e);
+		}else {
+			navigate(`/products/new/configurable?id=${e?.id}`);
 		}
 	};
 
-	//  table rows
+	//  handel status
 	const handelStatus = (product: Product) => {
 		let formData = new FormData();
 		formData.append('status', product?.status > 0 ? '0' : '1');
@@ -100,6 +106,7 @@ export default function AllProductsTable({
 			},
 		);
 	};
+	//  table rows
 	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
 		return {
