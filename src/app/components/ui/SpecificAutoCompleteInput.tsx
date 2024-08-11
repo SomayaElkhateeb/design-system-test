@@ -28,7 +28,10 @@ export default function SpecificAutoCompleteInput<T extends FieldValues>({
 			render={(field) => (
 				<CustomAutoComplete<selectItemsInterface>
 					placeholder={label}
-					getvalue={(value: any) => formStore.setValue(name, value)}
+					getvalue={(value: any) => {
+						formStore.setError(name, { message: '', type: '' });
+						formStore.setValue(name, value)
+					}}
 					name={name}
 					array={array}
 					MainValue={field.value}

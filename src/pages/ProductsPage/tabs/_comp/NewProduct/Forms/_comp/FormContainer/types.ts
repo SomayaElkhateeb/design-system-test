@@ -5,5 +5,6 @@ export interface Props<TFormStore> {
 	sections: { id: string; title: string }[];
 	children: React.ReactNode;
 	formStore: ValidFormStoreByValues<TFormStore, { productType: keyof typeof productTypeMap }>;
-	onSubmit: (data: any) => void;
+	onSubmit: () => void;
+	isLoadingAddOrUpdate?:boolean
 }

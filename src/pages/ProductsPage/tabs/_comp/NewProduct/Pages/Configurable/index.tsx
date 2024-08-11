@@ -18,7 +18,7 @@ import { ProductDefaultValues, ProductSchema } from './utils';
 import { useForm } from 'src/app/utils/hooks/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { ProductFormValues } from './types';
-import { useAppDispatch } from 'src/app/store';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect, useMemo } from 'react';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
 import { PostSimpleQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
@@ -75,6 +75,7 @@ export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
+	const {isLoadingAddOrUpdate}=useAppSelector((state)=>state.allProducts)
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
@@ -122,7 +123,7 @@ export default function ConfigurableProductPage() {
 			updatedData.ar.description = values.descriptionAr
 			updatedData.ar.name = values.nameAr
 
-			console.log(updatedData.en)
+			
 			let refactorData = {
 				...updatedData, inventories: obj, "type": "configurable", 'categories[]': values.category,
 
@@ -158,7 +159,7 @@ export default function ConfigurableProductPage() {
 	}, [dispatch]);
 
 	return (
-		<ProductFormContainer formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
+		<ProductFormContainer isLoadingAddOrUpdate={isLoadingAddOrUpdate} formStore={formStore} onSubmit={onSubmit} sections={productsSections}>
 			<section onSubmit={onSubmit} className='flex-grow flex flex-col gap-4 relative'>
 				<div className='custom-grid-parent gap-5  custom_container'>
 					<div className='flex-col-global grid-left gap-4'>

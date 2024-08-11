@@ -17,13 +17,13 @@ import useResponsive from 'src/app/utils/hooks/useResponsive';
  * @param {import('./types').Props<TFormStore>} props
  */
 export default function ProductFormContainer(props) {
-	const { t } = useTranslation();
-	const navigate = useNavigate();
+	// const { t } = useTranslation();
+	// const navigate = useNavigate();
 	const { xs } = useResponsive();
-	const productType = useWatch({
-		control: props.formStore.control,
-		name: 'productType',
-	});
+	// const productType = useWatch({
+	// 	control: props.formStore.control,
+	// 	name: 'productType',
+	// });
 
 	// State to hold the current page title
 	const [title, setTitle] = useState('');
@@ -54,7 +54,10 @@ export default function ProductFormContainer(props) {
 					<SubHeader
 						title={title !== 'configurable' && title !== 'simple' ? `Add ${title}` : 'Add Product'}
 					>
-						<SubHeaderDefaultBtns onSubmit={() => props.onSubmit()} />
+						<SubHeaderDefaultBtns
+							isLoading={isLoadingAddOrUpdate}
+							onSubmit={() => props.onSubmit()}
+						/>
 					</SubHeader>
 					{/* <h1>
 							<button className='text-black whitespace-nowrap' onClick={() => navigate(-1)}>
@@ -91,7 +94,7 @@ export default function ProductFormContainer(props) {
 				</header>
 				{props.children}
 				<div className='m-[1rem]'>
-					<SubHeaderMobileBtns onSubmit={() => props.onSubmit()} />
+					<SubHeaderMobileBtns isLoading={isLoadingAddOrUpdate} onSubmit={() => props.onSubmit()} />
 				</div>
 			</form>
 		</Form>

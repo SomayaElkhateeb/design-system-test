@@ -2,15 +2,19 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoEyeOutline } from 'react-icons/io5';
+import { IoEyeOffSharp } from 'react-icons/io5';
+
 import BaseTable, {
 	GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
-import { CameraIcon, CopyIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
+import { CameraIcon, StarActiveIcon, StarIcon } from 'src/app/utils/icons';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
-import ArrowTables from 'src/app/components/optimized/UiKits/ArrowTables';
+
 import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';
 import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
+import { useAppDispatch } from 'src/app/store';
+import { getAllProductsTable, PostUpdateQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 interface AllProductsTableProps {
 	products: Product[];
@@ -46,7 +50,7 @@ export default function AllProductsTable({
 }: AllProductsTableProps) {
 	// hooks
 	const { language } = useLanguage();
-	
+	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const [favorites, setFavorites] = useState<string[]>([]);
 	const classData = actionsButtonStyle();
@@ -84,6 +88,18 @@ export default function AllProductsTable({
 	};
 
 	//  table rows
+	const handelStatus = (product: Product) => {
+		let formData = new FormData();
+		formData.append('status', product?.status > 0 ? '0' : '1');
+		dispatch(PostUpdateQuickProduct({ id: product?.id, data: formData })).then(
+			(promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					dispatch(getAllProductsTable());
+					
+				}
+			},
+		);
+	};
 	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
 		return {
@@ -131,7 +147,7 @@ export default function AllProductsTable({
 				</GlobalTableCell>,
 				<GlobalTableCell key={`qty-${product.id}`}>
 					<p className={product.qty === 0 ? 'text-error' : 'text-black'}>
-						{product.qty > 0 ? product.qty : t('Out of stock')}
+						{product?.qty > 0 ? product?.qty : t('Out of stock')}
 					</p>
 				</GlobalTableCell>,
 				<GlobalTableCell key={`price-${product.id}`}>
@@ -139,12 +155,14 @@ export default function AllProductsTable({
 				</GlobalTableCell>,
 				<GlobalTableCell key={`actions-${product.id}`}>
 					<div className={classData}>
-						<IoEyeOutline className='text-subtitle' />
+						{product?.status > 0 ? (
+							<IoEyeOutline onClick={() => handelStatus(product)} className='text-subtitle' />
+						) : (
+							<IoEyeOffSharp onClick={() => handelStatus(product)} className='text-subtitle' />
+						)}
 						<FaRegEdit className='text-subtitle' onClick={() => handelEdit(product)} />
-						{/* <CopyIcon className='fill-subtitle' /> */}
-						<div onClick={() => handelId(product?.id)}>{children}</div>
 
-						{/* <ArrowTables path={`/products/${product.id}`} /> */}
+						<div onClick={() => handelId(product?.id)}>{children}</div>
 					</div>
 				</GlobalTableCell>,
 			],
