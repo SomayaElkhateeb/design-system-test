@@ -15,13 +15,16 @@ import {
 	StarIcon,
 	ViewIcon,
 } from 'src/app/utils/icons';
-
+import { IoEyeOutline } from 'react-icons/io5';
+import { IoEyeOffSharp } from 'react-icons/io5';
 import ThreeDotsButton from '../Buttons/ThreedotsButton';
 import useSelectBox from '../Menu/useSelectBox';
 import CustomTableBodyCheckbox from '../UiKits/CustomTableBodyCheckbox';
 import { Product } from 'src/pages/ProductsPage/_comp/data';
 import useLanguage from 'src/app/utils/hooks/useLanguage';
 import { menuType } from '../Buttons/ActionsComp';
+import { useAppDispatch } from 'src/app/store';
+import { getAllProductsTable, PostUpdateQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 
 interface AllProductsTableProps {
 	product: Product;
@@ -133,6 +136,8 @@ function Actions({
 	children: React.ReactNode;
 	handelId: (e: string) => void;
 }) {
+	//  hooks
+	const dispatch=useAppDispatch()
 	const handelEdit = (e: Product) => {
 		if (e.type === 'simple') {
 			setOpenDialog(true);
@@ -140,15 +145,29 @@ function Actions({
 		}
 	};
 
+	const handelStatus = (product: Product) => {
+		let formData = new FormData();
+		formData.append('status', product?.status > 0 ? '0' : '1');
+		dispatch(PostUpdateQuickProduct({ id: product?.id, data: formData })).then(
+			(promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					dispatch(getAllProductsTable());
+				}
+			},
+		);
+	};
+
 	return (
 		<div className='flex-col-global gap-3 px-2 py-1 card items-center '>
-			<ViewIcon className='fill-subtitle' />
+			{product?.status > 0 ? (
+				<IoEyeOutline onClick={() => handelStatus(product)} className='text-subtitle cursor-pointer' />
+			) : (
+				<IoEyeOffSharp onClick={() => handelStatus(product)} className='text-subtitle cursor-pointer' />
+			)}
 
 			<div onClick={() => handelEdit(product)}>
 				<EditIcon className='fill-subtitle cursor-pointer' />
 			</div>
-
-			{/* <CopyIcon className='fill-subtitle' /> */}
 
 			<div onClick={() => handelId(product?.id)}>{children}</div>
 		</div>

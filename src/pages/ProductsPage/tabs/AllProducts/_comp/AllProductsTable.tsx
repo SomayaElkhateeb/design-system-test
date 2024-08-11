@@ -87,7 +87,7 @@ export default function AllProductsTable({
 		}
 	};
 
-	//  table rows
+	//  handel status
 	const handelStatus = (product: Product) => {
 		let formData = new FormData();
 		formData.append('status', product?.status > 0 ? '0' : '1');
@@ -100,6 +100,7 @@ export default function AllProductsTable({
 			},
 		);
 	};
+	//  table rows
 	const rows = products?.map((product) => {
 		const isFavorite = favorites.includes(product.id);
 		return {
