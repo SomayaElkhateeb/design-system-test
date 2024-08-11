@@ -81,7 +81,7 @@ export default function ConfigurableProductPage() {
 			//  handel inventory of product
 			let handelInventory = values.inventories?.map((el: any, i) => {
 				return {
-					[`inventories[${el.id}]`]: values?.quy?.toString(),
+					[`${el.id}`]: values?.quy?.toString(),
 				};
 			});
 			//  convert array inventory to object
@@ -95,7 +95,7 @@ export default function ConfigurableProductPage() {
 				//  handel inventory of variants
 				let handelInventoryVariants = e?.inventories?.map((el: any, i) => {
 					return {
-						[`inventories[${el.id}]`]: e?.quantity?.toString(),
+						[`${el.id}`]: e?.quantity,
 					};
 				});
 				//  convert array inventory of variants to object
@@ -107,7 +107,7 @@ export default function ConfigurableProductPage() {
 				return {
 					...e,
 					[e.code]: e.attributeValues,
-					...InventoryVariantsObj,
+					inventories: InventoryVariantsObj,
 				};
 			});
 
@@ -116,13 +116,18 @@ export default function ConfigurableProductPage() {
 				return acc;
 			}, {});
 
-			const { inventories, ...updatedData } = values;
+			const { descriptionAr, descriptionEn, nameEn, nameAr, inventories, ...updatedData } = values;
+			updatedData.en.name = values.nameEn
+			updatedData.en.description = values.descriptionEn
+			updatedData.ar.description = values.descriptionAr
+			updatedData.ar.name = values.nameAr
 
+			console.log(updatedData.en)
 			let refactorData = {
-				...updatedData, "type": "configurable", 'categories[]': values.category, ["en[name]"]: values.nameEn,
-				["ar[name]"]: values.nameAr, ["en[description]"]: values.descriptionEn,
-				["ar[description]"]: values.descriptionAr, ...obj,
-				variants: variantsData
+				...updatedData, inventories: obj, "type": "configurable", 'categories[]': values.category,
+
+
+				variants: JSON.stringify(variantsData)
 			}
 
 			dispatch(PostSimpleQuickProduct(refactorData)).then((promiseResponse) => {

@@ -24,11 +24,6 @@ export default function ProductFormOptionsAndVariationsSection(props) {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 
-	// const getOptionValuesNames = useCallback(() => {
-	// 	const options = props.formStore.getValues('options');
-	// 	return options.map((option) => option.name);
-	// }, [props.formStore]);
-
 	useEffect(() => {
 		dispatch(getAllAttributes());
 	}, [dispatch]);

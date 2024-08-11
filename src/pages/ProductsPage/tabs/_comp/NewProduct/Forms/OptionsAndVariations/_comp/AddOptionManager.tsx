@@ -92,7 +92,7 @@ export default function AddOptionManager<TFormStore>(props: Props<TFormStore>) {
 
 		}
 	}
-	
+
 	return (
 		<div className="flex-col-global">
 
@@ -184,6 +184,7 @@ export default function AddOptionManager<TFormStore>(props: Props<TFormStore>) {
 									name={`variants[${i}].code`}
 									placeholder={t('Attribute Name')}
 									label={t('Attribute Name')}
+									AnotherName={`variants[${i}].attributeValues`}
 									options={
 										attributes?.length > 0
 											? attributes?.map((e) => {
