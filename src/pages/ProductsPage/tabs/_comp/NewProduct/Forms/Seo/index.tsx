@@ -50,8 +50,8 @@ export default function SeoFormFaqsSection<TFormStore>(props: Props<TFormStore>)
 				<TabbedFormField
 					formStore={props.formStore}
 					keys={[
-						{ name: 'meta_keywords_en', label: 'En' },
-						{ name: 'meta_keywords_ar', label: 'عربي' },
+						{ name: 'en.meta_keywords', label: 'En' },
+						{ name: 'ar.meta_keywords', label: 'عربي' },
 					]}
 					label={t('Meta KeyWords')}
 					renderer={(field) => <Input {...field} />}

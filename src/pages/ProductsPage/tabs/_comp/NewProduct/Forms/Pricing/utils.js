@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const productPricingSchema = {
 	price: z.coerce.number().min(1).default(0),
 	discount: z.coerce.number().min(0).optional(),
-	costPrice: z.coerce.number().min(0).optional(),
+	cost: z.coerce.number().min(0).optional(),
 	taxable: z.number(),
 	// continue_selling:z.number(),
 	profit: z.coerce.number().min(0).optional(),
@@ -21,7 +21,7 @@ export const productPricingSchema = {
 export const productPricingDefaultValues = {
 	price: 0,
 	discount: undefined,
-	costPrice: undefined,
+	cost: undefined,
 	taxable: 0,
 	// continue_selling:0,
 	profit: undefined,

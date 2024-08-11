@@ -63,7 +63,7 @@ export const productShippingSchema = {
 	dimensionUnit: z.string().min(1),
 	state: z.string().min(1).optional().or(z.literal("")),
 	shipping_rate_type: z.string().min(1).or(z.literal("")),
-	shipping_rate: z.number().min(0).optional(),
+	shipping_rate: z.coerce.number().min(0).optional(),
 	shipping_method:z.string().min(1).or(z.literal("")),
 	// pickup: z.discriminatedUnion('type', [
 	// 	z.object({

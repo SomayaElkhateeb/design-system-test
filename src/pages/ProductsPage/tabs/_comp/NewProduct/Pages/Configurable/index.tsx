@@ -19,8 +19,10 @@ import { useForm } from 'src/app/utils/hooks/form';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { ProductFormValues } from './types';
 import { useAppDispatch } from 'src/app/store';
-import { useEffect,useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
+import { PostSimpleQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import { useNavigate } from 'react-router-dom';
 const productsSections = [
 	// {
 	// 	Elem: ProductFormMediaSection,
@@ -71,11 +73,63 @@ const productsSections = [
 
 export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
-	const dispatch=useAppDispatch()
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
-			// console.log(values);
+			//  handel inventory of product
+			let handelInventory = values.inventories?.map((el: any, i) => {
+				return {
+					[`inventories[${el.id}]`]: values?.quy?.toString(),
+				};
+			});
+			//  convert array inventory to object
+			const obj = handelInventory.reduce((acc: any, item: any) => {
+				const key = Object.keys(item)[0];
+				acc[key] = item[key];
+				return acc;
+			}, {});
+
+			let variants = values.variants?.map((e: any) => {
+				//  handel inventory of variants
+				let handelInventoryVariants = e?.inventories?.map((el: any, i) => {
+					return {
+						[`inventories[${el.id}]`]: e?.quantity?.toString(),
+					};
+				});
+				//  convert array inventory of variants to object
+				const InventoryVariantsObj = handelInventoryVariants.reduce((acc: any, item: any) => {
+					const key = Object.keys(item)[0];
+					acc[key] = item[key];
+					return acc;
+				}, {});
+				return {
+					...e,
+					[e.code]: e.attributeValues,
+					...InventoryVariantsObj,
+				};
+			});
+
+			const variantsData = variants.reduce((acc: any, variant: any, index: number) => {
+				acc[`variant_${index}`] = variant;
+				return acc;
+			}, {});
+
+			const { inventories, ...updatedData } = values;
+
+			let refactorData = {
+				...updatedData, "type": "configurable", 'categories[]': values.category, ["en[name]"]: values.nameEn,
+				["ar[name]"]: values.nameAr, ["en[description]"]: values.descriptionEn,
+				["ar[description]"]: values.descriptionAr, ...obj,
+				variants: variantsData
+			}
+
+			dispatch(PostSimpleQuickProduct(refactorData)).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			})
 		},
 		defaultValues: ProductDefaultValues,
 	});
