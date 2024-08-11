@@ -13,6 +13,7 @@ interface Option {
 interface SelectFormFieldProps {
 	formStore: UseFormReturn<any>;
 	name: string;
+	AnotherName?: string
 	options: Option[];
 	placeholder?: string;
 	className?: string;
@@ -30,14 +31,11 @@ export default function SelectFormField({
 	label,
 	add_button,
 	setOpenDialog,
+	AnotherName
 }: SelectFormFieldProps) {
 	//  hook
 	const { t } = useTranslation();
-	// useEffect(() => {
-	// 	if (options?.length > 0) {
-	// 		formStore?.setValue(name, options[0]?.value)
-	// 	}
-	// }, [])
+
 	return (
 		<FormField
 			container={{ className: className }}
@@ -50,9 +48,13 @@ export default function SelectFormField({
 						{...field}
 						name={field.name}
 						className='block w-full px-3 py-2 bg-white rounded-l-md shadow-sm focus:border-none focus:outline-none '
-						onChange={field.onChange}
+						onChange={(e) => {
+							console.log(e.target.value)
+							formStore.setValue(name, e.target.value)
+							AnotherName && formStore.setValue(AnotherName, "")
+						}}
 					>
-						<option value='' disabled>
+						<option style={{ display: "none" }} value=''>
 							{placeholder}
 						</option>
 						{options?.length > 0 &&
