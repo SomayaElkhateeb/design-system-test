@@ -74,7 +74,7 @@ const productsSections = [
 export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch()
-	const navigate =useNavigate()
+	const navigate = useNavigate()
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
@@ -116,18 +116,20 @@ export default function ConfigurableProductPage() {
 				return acc;
 			}, {});
 
+			const { inventories, ...updatedData } = values;
+
 			let refactorData = {
-				...values, "type": "configurable", 'categories[]': values.category, ["en[name]"]: values.nameEn,
+				...updatedData, "type": "configurable", 'categories[]': values.category, ["en[name]"]: values.nameEn,
 				["ar[name]"]: values.nameAr, ["en[description]"]: values.descriptionEn,
 				["ar[description]"]: values.descriptionAr, ...obj,
-				variants: variantsData,inventories:values.inventories?.map((e)=>e.id)
+				variants: variantsData
 			}
-			
+
 			dispatch(PostSimpleQuickProduct(refactorData)).then((promiseResponse) => {
 				if ((promiseResponse.payload.code = 200)) {
 					navigate(-1);
 				}
-		  })
+			})
 		},
 		defaultValues: ProductDefaultValues,
 	});
