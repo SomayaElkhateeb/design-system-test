@@ -48,6 +48,7 @@ import ShippingConfig from 'src/pages/SettingsPage/Shipping/ShippingConfig';
 import StoreConfig from 'src/pages/StorePage/_comp/StoreConfig';
 import StoreTabs from 'src/pages/StorePage/_comp/StoreTabs';
 import BulkEdit from '../components/optimized/BulkEdit/BulkEdit';
+import AttributesForm from 'src/pages/ProductsPage/tabs/Attributes/_comp/AttributesForm';
 
 interface Route {
 	path: string;
@@ -147,6 +148,12 @@ export const PagesRoutes: Route[] = [
 	{
 		path: '/products/categories/SubCategories',
 		element: <SubCategories />,
+	},
+
+	// add attributes
+	{
+		path: '/products/attributes/add-attribute',
+		element: <AttributesForm />,
 	},
 	// Settings Routes
 	{
