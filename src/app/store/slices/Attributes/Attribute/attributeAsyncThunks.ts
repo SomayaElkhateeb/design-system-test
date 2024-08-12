@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
+import { Attribute } from 'src/app/interface/AttributeInterface';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
 
@@ -16,7 +17,7 @@ export const getAttributeShow = createAsyncThunk('attributeShow/getAttributeShow
 // create attribute
 export const postAttribute = createAsyncThunk(
 	"addAttribute/PostAttribute",
-	(payload: any) =>
+	(payload: Attribute) =>
 		PublicRequest.postData(payload, `merchant/catalog/attributes/store`)
 			.then((res: any) => {
 				if (res) {
@@ -30,7 +31,7 @@ export const postAttribute = createAsyncThunk(
 // update attribute
 export const putAttribute = createAsyncThunk(
 	"updateAttribute/putAttribute",
-	(payload: any) =>
+	(payload: Attribute) =>
 		PublicRequest.putData(payload, `merchant/catalog/attributes/update/${payload}`)
 			.then((res: any) => {
 				if (res) {
@@ -68,3 +69,13 @@ export const deleteAttribute = createAsyncThunk(
 );
 
 // mass destroy
+export const deleteAllAttributesAction = createAsyncThunk(
+	'deleteAllAttributes/deleteAllAttributesAction',
+	(payload: { indexes: string }) => PublicRequest.postData(payload, `merchant/catalog/attributes/mass-destroy`).then((res: any) => {
+		if (res) {
+			toast.success(res?.message);
+			return res;
+		}
+	})
+		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
