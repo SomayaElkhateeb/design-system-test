@@ -7,6 +7,7 @@ import { Input } from "src/app/components/ui/input";
 import SelectFormField from "src/app/components/ui/form/SelectFormField";
 import TabbedFormField from "src/app/components/ui/form/tabbed-field";
 import FormSwitchField from "src/app/components/ui/form/FormSwitchField";
+import { useEffect } from "react";
 
 
 const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInterface> }) => {
@@ -18,13 +19,25 @@ const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInt
         { name: t('text'), id: 2 },
         { name: t('radio'), id: 3 },
         { name: t('checkbox'), id: 4 },
+        { name: t('boolean'), id: 5 },
     ]
+
+
+    useEffect(() => {
+        const subscription = formStore.watch((value, { name }) => {
+            if (name === 'default-null-option') {
+                formStore.setValue('default-null-option', value ? 'on' : 'off');
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, [formStore]);
 
     return (
         <div className='global-cards gap-[1.2rem]'>
             <h3 className='title'>{t('Attribute Info')}</h3>
             <div className={`w-full ${xs ? 'flex-col-global' : 'flex gap-4'}`}>
-                <div className='w-1/2'>
+                <div className='w-full lg:w-1/2'>
                     <FormField
                         formStore={formStore}
                         name='code'
@@ -32,45 +45,52 @@ const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInt
                         render={(field) => <Input {...field} />}
                     />
                 </div>
-                <div className='w-1/2'>
-                    <SelectFormField
-                        name='attributeType'
-                        label={t('Attribute Type')}
+                <div className='w-full lg:w-1/2'>
+                    <FormField
                         formStore={formStore}
-                        options={attributeType?.map((item: any) => ({
-                            label: item?.name,
-                            value: item?.id?.toString(),
-                        }))}
-                        placeholder={t('Select Type')}
+                        name='admin_name'
+                        label={t('Admin Name')}
+                        render={(field) => <Input {...field} />}
                     />
                 </div>
             </div>
             <div className={`w-full ${xs ? 'flex-col-global' : 'flex gap-4'}`}>
-                <div className='w-1/2'>
+                <div className='w-full lg:w-1/2'>
                     <TabbedFormField
                         formStore={formStore}
                         keys={[
-                            { name: 'adminNameEn', label: 'En' },
-                            { name: 'adminNameAr', label: 'عربي' },
+                            { name: 'en.name', label: 'En' },
+                            { name: 'ar.name', label: 'عربي' },
                         ]}
-                        label={t('Admin Name')}
+                        label={t('Name')}
                         renderer={(field) => <Input {...field} />}
                     />
                 </div>
-                <div className='w-1/2'>
+                <div className='w-full lg:w-1/2'>
                     <FormField
                         formStore={formStore}
-                        name='swatchType'
+                        name='swatch_type'
                         label={t('Swatch Type')}
                         render={(field) => <Input {...field} />}
                     />
                 </div>
             </div>
 
+            <SelectFormField
+                name='type'
+                label={t('Attribute Type')}
+                formStore={formStore}
+                options={attributeType?.map((item: any) => ({
+                    label: item?.name,
+                    value: item?.name,
+                }))}
+                placeholder={t('Select Type')}
+            />
+
             <div className="flex gap-4">
                 <FormSwitchField<addAttributeInterface>
                     formStore={formStore}
-                    name='default'
+                    name='default-null-option'
                     enable
                 />
                 <p>{t('Default Null-Option')}</p>
@@ -79,4 +99,4 @@ const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInt
     )
 }
 
-export default AttributeInfo
+export default AttributeInfo;
