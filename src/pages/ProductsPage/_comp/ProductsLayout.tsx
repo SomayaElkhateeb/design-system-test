@@ -19,6 +19,10 @@ const ProductsLayout = () => {
 			name: 'Inventory',
 			path: 'inventory',
 		},
+		{
+			name: 'Attributes',
+			path: 'attributes',
+		},
 	];
 	return (
 		<div className='flex-col-global'>

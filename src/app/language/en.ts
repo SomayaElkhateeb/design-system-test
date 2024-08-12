@@ -1351,7 +1351,6 @@ export const english = {
 	'Rate': 'Rate',
 	'Enter rate': 'Enter rate',
 	'ZIP Code': 'ZIP Code',
-
 	'Identifier': 'Identifier',
 	'tax rates': 'tax rates',
 	'e.g.tax-one': 'e.g.tax-one',
@@ -1365,7 +1364,9 @@ export const english = {
 	'Add Tax Category': 'Add Tax Category',
 	'Category Name': 'Category Name',
 	'category name': 'category name',
-	
+
+	'category code': 'category code',
+	'identifier': 'identifier',
 	'state': 'state',
 	'country': 'country',
 	'zip code': 'zip code',
@@ -1384,15 +1385,24 @@ export const english = {
 	'Add More Hours': 'Add More Hours',
 	'Code': 'Code',
 
+	'This tax class will be applied automatically to any new added product.': 'This tax class will be applied automatically to any new added product.',
+	'Import': 'Import',
+	'branch name': 'branch name',
+	'type': 'type',
+	'address & phone': 'address & phone',
+	'Add Attribute': 'Add Attribute',
+	'admin name': 'admin name',
+	'swatch-type': 'swatch-type',
+	'default null-option': 'default null-option',
 
-	
-	'Category Code':'Category Code',
-	'category code':'category code',
-	'identifier':'identifier',
-	'This tax class will be applied automatically to any new added product.':'This tax class will be applied automatically to any new added product.',
-	'Import':'Import',
-	'branch name':'branch name',
-	'type':'type',
-	'address & phone':'address & phone',
+	'Attribute Type': 'Attribute Type',
+	'Select Type': 'Select Type',
+	'Admin Name': 'Admin Name',
+	'Swatch Type': 'Swatch Type',
+	'Default Null-Option': 'Default Null-Option',
+	'Attribute Info':'Attribute Info',
+	'Option Fields':'Option Fields',
+	'Sort Order':'Sort Order',
+	'Feature on the front page':'Feature on the front page',
 
 };
