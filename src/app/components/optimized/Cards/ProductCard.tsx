@@ -61,9 +61,12 @@ export default function ProductCard({
 	}
 
 	const info = {
-		sku: product.sku,
-		quantity: product?.qty && product?.qty > 0 ? product.qty : t('Out of stock'),
-		price: product.price,
+		sku: product?.sku,
+		quantity:
+			(product?.qty || product?.base_qty) && (product?.qty || product?.base_qty) > 0
+				? product.qty || product?.base_qty
+				: t('Out of stock'),
+		price: product?.price,
 	};
 
 	return (

@@ -4,10 +4,32 @@ import { FiUploadCloud } from 'react-icons/fi';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { SiMicrosoftexcel } from 'react-icons/si';
 
-import { AnalyticsIcon, CopyIcon, OrdersIcon } from 'src/app/utils/icons';
+import { AnalyticsIcon, OrdersIcon } from 'src/app/utils/icons';
 
 // Define products array with correct type
-export interface Product {
+
+
+export interface VariantProduct {
+	variants: Product;
+	shipping_rate_type: string;
+	shipping_method: string;
+	shipping_rate: string;
+	state: string;
+	weight_unit: string;
+	height: string;
+	width: string;
+	length: string;
+	dimension_unit: string;
+	downloaded_link: string;
+	is_shipped: number;
+	base_qty: number;
+	meta_keywords: string;
+	meta_description: string;
+	meta_title: string;
+	cost: number;
+	page_title: string;
+	brand_id: string;
+	taxable: number;
 	status: number;
 	name: string;
 	category: string;
@@ -36,6 +58,7 @@ export interface Product {
 		product_id: string;
 		qty: number;
 	}[];
+	continue_selling: number;
 	categories: string[];
 	discount_amount?: string;
 	discount_percent?: string;
@@ -45,12 +68,146 @@ export interface Product {
 	tax_percent?: string;
 	total: string;
 	total_weight?: string;
-
+	discount: string;
 	weight?: string;
 }
 
+export interface Product {
+	variants: VariantProduct;
+	shipping_rate_type: string;
+	shipping_method: string;
+	shipping_rate: string;
+	state: string;
+	weight_unit: string;
+	height: string;
+	width: string;
+	length: string;
+	dimension_unit: string;
+	downloaded_link: string;
+	is_shipped: number;
+	base_qty: number;
+	meta_keywords: string;
+	meta_description: string;
+	meta_title: string;
+	cost: number;
+	page_title: string;
+	brand_id: string;
+	taxable: number;
+	status: number;
+	name: string;
+	category: string;
+	option: number;
+	imageUrl: string;
+	sku: string;
+	id: string;
+	quantity: number;
+	qty: number;
+	price: number;
+	en: { name: string; description: string };
+	ar: { name: string; description: string };
+	type: string;
+	images: {
+		id: string;
+		large_image_url: string;
+		medium_image_url: string;
+		original_image_url: string;
+		path: string;
+		small_image_url: string;
+		url: string;
+	}[];
+	inventory_sources: {
+		id: string;
+		inventory_source_id: string;
+		product_id: string;
+		qty: number;
+	}[];
+	continue_selling: number;
+	categories: string[];
+	discount_amount?: string;
+	discount_percent?: string;
+	grant_total?: number;
+	qty_ordered?: number;
+	tax_amount?: string;
+	tax_percent?: string;
+	total: string;
+	total_weight?: string;
+	discount: string;
+	weight?: string;
+}
+
+
+
 export const initialProduct = () => {
 	return {
+		variants: {
+			weight_unit: '',
+			shipping_rate_type: '',
+			shipping_method: '',
+			shipping_rate: '',
+			state: '',
+			height: '',
+			width: '',
+			length: '',
+			dimension_unit: '',
+			downloaded_link: '',
+			is_shipped: 0,
+			meta_keywords: '',
+			base_qty: 0,
+			continue_selling: 0,
+			cost: 0,
+			meta_title: '',
+			meta_description: '',
+			page_title: '',
+			brand_id: '',
+			taxable: 0,
+			status: 0,
+			name: '',
+			category: '',
+			option: 0,
+			imageUrl: '',
+			sku: '',
+			id: '',
+			quantity: 0,
+			qty: 0,
+			price: 0,
+			en: { name: '', description: '' },
+			ar: { name: '', description: '' },
+			type: '',
+			images: [],
+			inventory_sources: [],
+			categories: [],
+			discount_amount: '',
+			discount_percent: '',
+			grant_total: 0,
+			qty_ordered: 0,
+			tax_amount: 0,
+			tax_percent: '',
+			total: '',
+			total_weight: '',
+			weight: '',
+			discount: '',
+		},
+		weight_unit: '',
+		shipping_rate_type: '',
+		shipping_method: '',
+		shipping_rate: '',
+		state: '',
+		height: '',
+		width: '',
+		length: '',
+		dimension_unit: '',
+		downloaded_link: '',
+		is_shipped: 0,
+		meta_keywords: '',
+		base_qty: 0,
+		continue_selling: 0,
+		cost: 0,
+		meta_title: '',
+		meta_description: '',
+		page_title: '',
+		brand_id: '',
+		taxable: 0,
+		status: 0,
 		name: '',
 		category: '',
 		option: 0,
@@ -75,6 +232,7 @@ export const initialProduct = () => {
 		total: '',
 		total_weight: '',
 		weight: '',
+		discount: '',
 	};
 };
 

@@ -4,4 +4,5 @@ import { statusGlobal } from '.';
 
 export interface productsSliceModel extends statusGlobal {
 	allProducts: Product[];
+	product:Product
 }

@@ -14,7 +14,10 @@ import { Product } from 'src/pages/ProductsPage/_comp/data';
 import CustomTableHeaderCheckbox from 'src/app/components/optimized/UiKits/CustomTableHeaderCheckbox';
 import CustomTableBodyCheckbox from 'src/app/components/optimized/UiKits/CustomTableBodyCheckbox';
 import { useAppDispatch } from 'src/app/store';
-import { getAllProductsTable, PostUpdateQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import {
+	getAllProductsTable,
+	PostUpdateQuickProduct,
+} from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { useNavigate } from 'react-router-dom';
 
 interface AllProductsTableProps {
@@ -88,7 +91,7 @@ export default function AllProductsTable({
 		if (e.type === 'simple') {
 			setOpenDialog(true);
 			setEdit_product(e);
-		}else {
+		} else {
 			navigate(`/products/new/configurable?id=${e?.id}`);
 		}
 	};
@@ -101,7 +104,6 @@ export default function AllProductsTable({
 			(promiseResponse) => {
 				if ((promiseResponse.payload.code = 200)) {
 					dispatch(getAllProductsTable());
-					
 				}
 			},
 		);
@@ -153,9 +155,15 @@ export default function AllProductsTable({
 					<p className='text-title'>{product.sku}</p>
 				</GlobalTableCell>,
 				<GlobalTableCell key={`qty-${product.id}`}>
-					<p className={product.qty === 0 ? 'text-error' : 'text-black'}>
-						{product?.qty > 0 ? product?.qty : t('Out of stock')}
-					</p>
+					{product?.type === 'simple' ? (
+						<p className={product?.qty === 0 ? 'text-error' : 'text-black'}>
+							{product?.qty > 0 ? product?.qty : t('Out of stock')}
+						</p>
+					) : (
+						<p className={product?.base_qty === 0 ? 'text-error' : 'text-black'}>
+							{product?.base_qty > 0 ? product?.base_qty : t('Out of stock')}
+						</p>
+					)}
 				</GlobalTableCell>,
 				<GlobalTableCell key={`price-${product.id}`}>
 					<span className='text-primary'>SAR</span> {product.price}

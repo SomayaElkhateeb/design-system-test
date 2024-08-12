@@ -19,8 +19,13 @@ import { ProductFormValues } from './types';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useEffect, useMemo } from 'react';
 import { getInventoryTable } from 'src/app/store/slices/productsPage/inventory/inventoryAsyncThunks';
-import { PostSimpleQuickProduct } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
+import {
+	getProduct,
+	PostSimpleQuickProduct,
+	PostUpdateQuickProduct,
+} from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { useNavigate } from 'react-router-dom';
+import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
 const productsSections = [
 	// {
 	// 	Elem: ProductFormMediaSection,
@@ -71,9 +76,10 @@ const productsSections = [
 
 export default function ConfigurableProductPage() {
 	const { t } = useTranslation();
+	const { id } = UseGetIdParams();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { isLoadingAddOrUpdate } = useAppSelector((state) => state.allProducts);
+	const { isLoadingAddOrUpdate, product } = useAppSelector((state) => state.allProducts);
 	const { formStore, onSubmit } = useForm({
 		schema: ProductSchema,
 		handleSubmit: (values) => {
@@ -138,11 +144,17 @@ export default function ConfigurableProductPage() {
 				variants: JSON.stringify(variantsData),
 			};
 
-			dispatch(PostSimpleQuickProduct(refactorData)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			});
+			!id
+				? dispatch(PostSimpleQuickProduct(refactorData)).then((promiseResponse) => {
+						if ((promiseResponse.payload.code = 200)) {
+							navigate(-1);
+						}
+				  })
+				: dispatch(PostUpdateQuickProduct({ data: refactorData, id })).then((promiseResponse) => {
+						if ((promiseResponse.payload.code = 200)) {
+							navigate(-1);
+						}
+				  });
 		},
 		defaultValues: ProductDefaultValues,
 	});
@@ -161,6 +173,76 @@ export default function ConfigurableProductPage() {
 	useMemo(() => {
 		dispatch(getInventoryTable());
 	}, [dispatch]);
+
+	useEffect(() => {
+		id && dispatch(getProduct(id));
+	}, [id]);
+	useEffect(() => {
+		if (id) {
+			formStore.setValue('nameEn', product?.en?.name);
+			formStore.setValue('nameAr', product?.ar?.name);
+			formStore.setValue('descriptionEn', product?.en?.description);
+			formStore.setValue('descriptionAr', product?.ar?.description);
+			formStore.setValue('sku', product?.sku);
+			formStore.setValue('brand_id', product?.brand_id?.toString());
+			product?.categories?.length > 0 &&
+				formStore.setValue('category', product?.categories[0]?.toString());
+			formStore.setValue('price', product?.price);
+			product?.cost && formStore.setValue('price', product?.cost);
+			formStore.setValue('taxable', product?.taxable > 0 ? 1 : 0);
+			formStore.setValue('status', product?.status > 0 ? 1 : 0);
+			formStore.setValue('page_title', product?.page_title);
+			formStore.setValue('meta_title', product?.meta_title);
+			formStore.setValue('meta_title', product?.meta_title);
+			formStore.setValue('meta_description', product?.meta_description);
+			formStore.setValue('en.meta_keywords', product?.meta_keywords);
+			formStore.setValue('ar.meta_keywords', product?.meta_keywords);
+			formStore.setValue('quy', product?.base_qty);
+			formStore.setValue('continue_selling', product?.continue_selling > 0 ? 1 : 0);
+			product &&
+				product?.inventory_sources?.length > 0 &&
+				formStore.setValue(
+					'inventories',
+					product?.inventory_sources?.map((e) => {
+						return {
+							id: e.id ? e.id.toString() : '',
+							name: e?.name ? e?.name : '',
+						};
+					}),
+				);
+			formStore.setValue('downloaded_link', product?.downloaded_link);
+			formStore.setValue('is_shipped', product?.is_shipped > 0 ? 1 : 0);
+			formStore.setValue('is_shipped', product?.is_shipped > 0 ? 1 : 0);
+			formStore.setValue('weight', product?.weight);
+			product?.weight_unit && formStore.setValue('weight_unit', product?.weight_unit);
+			formStore.setValue('height', product?.height);
+			formStore.setValue('width', product?.width);
+			formStore.setValue('length', product?.length);
+			product?.dimension_unit && formStore.setValue('dimension_unit', product?.dimension_unit);
+			formStore.setValue('state', product?.state);
+			formStore.setValue('shipping_method', product?.shipping_method);
+			formStore.setValue('shipping_rate', product?.shipping_rate);
+			formStore.setValue('shipping_rate_type', product?.shipping_rate_type);
+			formStore.setValue('discount', product?.discount);
+			product?.variants?.length>0 && formStore.setValue("variants",
+
+				product?.variants?.map((e)=>{
+					return{
+						...e,
+						quantity:e.qty,
+						inventories:e?.inventory_sources?.map((el) => {
+							return {
+								id: el.id ? el.id.toString() : '',
+								name: e?.name ? e?.name : '',
+							};
+						}),
+					}
+				})
+			)
+		}
+	}, [product, id]);
+
+	console.log(product);
 
 	return (
 		<ProductFormContainer
