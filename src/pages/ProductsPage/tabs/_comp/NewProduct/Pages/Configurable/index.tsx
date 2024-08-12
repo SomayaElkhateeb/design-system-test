@@ -224,21 +224,22 @@ export default function ConfigurableProductPage() {
 			formStore.setValue('shipping_rate', product?.shipping_rate);
 			formStore.setValue('shipping_rate_type', product?.shipping_rate_type);
 			formStore.setValue('discount', product?.discount);
-			product?.variants?.length>0 && formStore.setValue("variants",
-
-				product?.variants?.map((e)=>{
-					return{
-						...e,
-						quantity:e.qty,
-						inventories:e?.inventory_sources?.map((el) => {
-							return {
-								id: el.id ? el.id.toString() : '',
-								name: e?.name ? e?.name : '',
-							};
-						}),
-					}
-				})
-			)
+			product?.variants?.length > 0 &&
+				formStore.setValue(
+					'variants',
+					product?.variants?.map((e) => {
+						return {
+							...e,
+							quantity: e.qty,
+							inventories: e?.inventory_sources?.map((el) => {
+								return {
+									id: el.id ? el.id.toString() : '',
+									name: e?.name ? e?.name : '',
+								};
+							}),
+						};
+					}),
+				);
 		}
 	}, [product, id]);
 

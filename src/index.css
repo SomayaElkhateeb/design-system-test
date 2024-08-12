@@ -242,7 +242,7 @@ object {
 		@apply md:flex-row-global flex-col-global  gap-2 items-start justify-between;
 	}
 
-	. {
+	.custom-grid-parent{
 		@apply grid grid-cols-3 col-span-1 gap-3;
 	}
 	.grid-left {

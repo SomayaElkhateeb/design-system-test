@@ -73,7 +73,7 @@ export interface VariantProduct {
 }
 
 export interface Product {
-	variants: VariantProduct;
+	variants: VariantProduct[];
 	shipping_rate_type: string;
 	shipping_method: string;
 	shipping_rate: string;
@@ -139,54 +139,7 @@ export interface Product {
 
 export const initialProduct = () => {
 	return {
-		variants: {
-			weight_unit: '',
-			shipping_rate_type: '',
-			shipping_method: '',
-			shipping_rate: '',
-			state: '',
-			height: '',
-			width: '',
-			length: '',
-			dimension_unit: '',
-			downloaded_link: '',
-			is_shipped: 0,
-			meta_keywords: '',
-			base_qty: 0,
-			continue_selling: 0,
-			cost: 0,
-			meta_title: '',
-			meta_description: '',
-			page_title: '',
-			brand_id: '',
-			taxable: 0,
-			status: 0,
-			name: '',
-			category: '',
-			option: 0,
-			imageUrl: '',
-			sku: '',
-			id: '',
-			quantity: 0,
-			qty: 0,
-			price: 0,
-			en: { name: '', description: '' },
-			ar: { name: '', description: '' },
-			type: '',
-			images: [],
-			inventory_sources: [],
-			categories: [],
-			discount_amount: '',
-			discount_percent: '',
-			grant_total: 0,
-			qty_ordered: 0,
-			tax_amount: 0,
-			tax_percent: '',
-			total: '',
-			total_weight: '',
-			weight: '',
-			discount: '',
-		},
+		variants:[],
 		weight_unit: '',
 		shipping_rate_type: '',
 		shipping_method: '',
