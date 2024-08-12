@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import attributes from './slices/Attributes/Attribute/attributeSlice';
+import attributesProducts from './slices/Attributes/Attribute/attributeSlice';
 import attributesFamilies from './slices/Attributes/AttributeFamilies/attributeFamiliesSlice';
 import discount from './slices/marketing/discounts/discountSlice';
 import coupons from './slices/marketing/coupons/couponSlice';
@@ -41,7 +41,7 @@ import attributesSlice from "./slices/Attributes/AttributeTableSlice"
 
 export const rootReducer = combineReducers({
 	// ATTRIBUTES
-	attributes:attributes,
+	attributesProducts:attributesProducts,
 	attributesFamilies:attributesFamilies,
 	
 	discount: discount,

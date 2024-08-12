@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+// Define the interface for the attribute
 export interface addAttributeInterface {
     code: string;
     type: string; // select
@@ -11,58 +12,111 @@ export interface addAttributeInterface {
         name: string;
     };
     swatch_type: string; // dropdown
-    'default-null-option': boolean; // on or off
-
-    // options
+    'default-null-option': string; // on or off
     options: {
-        option_1: {
-            admin_name: string;
+        option_0: {
+            admin_name?: string;
             en: {
-                label: string;
-            }
+                label?: string;
+            };
             ar: {
-                label: string;
-            }
-            sort_order: number; // 1 or 0
-            swatch_value: string;
-        }
-    }
-
+                label?: string;
+            };
+            sort_order?: number; // 1 or 0
+            swatch_value?: string;
+        };
+    };
     is_required: number;
     is_unique: number;
     validation: number;
     value_per_locale: number;
     value_per_channel: number;
-    
+    is_filterable: number;
+    is_configurable: number;
+    is_visible_on_front: number;
+    use_in_flat: number;
+    is_comparable: number;
 }
+
+// Zod schema for validation
 const stringZod = z.string().min(1);
+const numberZod = z.coerce.number().min(0).max(1);
 
 export const AddAttributeSchema = {
     code: stringZod,
-    attributeType: stringZod,
-    swatchType: stringZod,
-    default: z.coerce.number().min(0).max(1),
-
-    adminNameAr: stringZod,
-    adminNameEn: stringZod,
-    swatchTypeOpt: stringZod.optional(),
-    order: z.coerce.number().min(0).max(1),
-    store: z.coerce.number().min(0).max(1),
-}
+    type: stringZod, // select
+    admin_name: stringZod,
+    en: z.object({
+        name: stringZod,
+    }),
+    ar: z.object({
+        name: stringZod,
+    }),
+    swatch_type: stringZod, // dropdown
+    'default-null-option': z.string(), // on or off
+    options: z.object({
+        option_0: z.object({
+            admin_name: stringZod.optional(),
+            en: z.object({
+                label: stringZod.optional(),
+            }),
+            ar: z.object({
+                label: stringZod.optional(),
+            }),
+            sort_order: numberZod.optional(), // 1 or 0
+            swatch_value: stringZod.optional(),
+        }),
+    }),
+    is_required: numberZod,
+    is_unique: numberZod,
+    validation: numberZod,
+    value_per_locale: numberZod,
+    value_per_channel: numberZod,
+    is_filterable: numberZod,
+    is_configurable: numberZod,
+    is_visible_on_front: numberZod,
+    use_in_flat: numberZod,
+    is_comparable: numberZod,
+};
 
 export default function useCustomHookAddAttribute() {
-    const handelDefaultValue = () => {
+    // Default values function
+    const handelDefaultValue = (): addAttributeInterface => {
         return {
             code: '',
-            attributeType: '',
-            swatchType: '',
-            default: 0,
-
-            adminNameAr: '',
-            adminNameEn: '',
-            swatchTypeOpt: '',
-            order: 0,
-            store: 0,
+            type: '', // Default to 'select'
+            admin_name: '',
+            en: {
+                name: '',
+            },
+            ar: {
+                name: '',
+            },
+            swatch_type: '', // dropdown
+            'default-null-option': '', // on or off
+            options: {
+                option_0: {
+                    admin_name: '',
+                    en: {
+                        label: '',
+                    },
+                    ar: {
+                        label: '',
+                    },
+                    sort_order: 0, // 1 or 0
+                    swatch_value: '',
+                },
+            },
+            is_required: 0,
+            is_unique: 0,
+            validation: 0,
+            value_per_locale: 0,
+            value_per_channel: 0,
+            is_filterable: 0,
+            is_configurable: 0,
+            is_visible_on_front: 0,
+            use_in_flat: 0,
+            is_comparable: 0,
         };
     };
 

@@ -1,7 +1,7 @@
 import { statusGlobal } from '.';
-
+import { AttributeApiResponse } from '../interface/AttributeInterface';
 
 export interface attributesSliceModel extends statusGlobal {
-	attributes: any[];
+	attributesList: AttributeApiResponse[];
     attributeShow: any;
 }

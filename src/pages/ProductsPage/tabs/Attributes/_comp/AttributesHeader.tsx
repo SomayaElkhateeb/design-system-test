@@ -13,9 +13,11 @@ const AttributesHeader = () => {
 
   return (
     <div className='md:flex-row-global flex-col-global justify-between w-full'>
-      <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('add-attribute')}>
-        {t('Add Attribute')}
-      </Button>
+      <div>
+        <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('add-attribute')}>
+          {t('Add Attribute')}
+        </Button>
+      </div>
       <div className='flex-row-global gap-4'>
         <ArrangeButton
           sortMenus={productSortMenu}

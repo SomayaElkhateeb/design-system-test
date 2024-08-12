@@ -11,7 +11,7 @@ export const attributesReducer = (builder: ActionReducerMapBuilder<attributesSli
 		})
 		.addCase(getAttributes.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
-			state.attributes = payload.data;
+			state.attributesList = payload.data;
 		})
 		.addCase(getAttributes.rejected, (state, action) => {
 			state.isLoading = false;
@@ -49,9 +49,9 @@ export const attributesReducer = (builder: ActionReducerMapBuilder<attributesSli
 		})
 		.addCase(putAttribute.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
-			const index = state.attributes.findIndex(role => role.key === payload.data.key);
+			const index = state.attributesList.findIndex(role => role.key === payload.data.key);
 			if (index !== -1) {
-				state.attributes[index] = payload.data;
+				state.attributesList[index] = payload.data;
 			}
 		})
 		.addCase(putAttribute.rejected, (state, action) => {

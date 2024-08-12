@@ -3,7 +3,7 @@ import { attributesReducer } from './attributeExtraReducers';
 import { attributesSliceModel } from 'src/app/models/attributeSliceModel';
 
 const initialState: attributesSliceModel = {
-	attributes: [],
+	attributesList: [],
 	attributeShow: null,
 	isLoadingAddOrUpdate: false,
 	isLoading: false,
@@ -11,7 +11,7 @@ const initialState: attributesSliceModel = {
 };
 
 const attributesSlice = createSlice({
-	name: 'attributes',
+	name: 'attributesProducts',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
