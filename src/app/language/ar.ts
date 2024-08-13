@@ -939,10 +939,7 @@ export const arabic = {
 	'send message': 'إرسال رسالة',
 	'show on map': 'عرض على الخريطة',
 	'Payment details': 'تفاصيل الدفع',
-
 	"Select brand": "تحديد براند",
-
-	"Select brand":"تحديد براند",
 	"Add More Option":"اضافه منتج اخر",
 	"Add Variants":"اضافه منوعات",
 	"Add More Variants":"اضافه منوعات",
@@ -1386,8 +1383,9 @@ export const arabic = {
 	'Feature on the front page':'',
 	'add attribute': '',
 	'select':'',
-	'add more option':'',
+	'Add More Options':'',
 	'boolean': '',
+	'Add Options': '',
 
 	'Is Required':'',
 	'Is Unique':'',

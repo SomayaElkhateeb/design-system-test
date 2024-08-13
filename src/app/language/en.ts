@@ -1406,8 +1406,9 @@ export const english = {
 	'Feature on the front page':'Feature on the front page',
 	'add attribute':'add attribute',
 	'select':'select',
-	'add more option':'add more option',
+	'Add More Options':'Add More Options',
 	'boolean':'boolean',
+	'Add Options':'Add Options',
 
 	'Is Required':'Is Required',
 	'Is Unique':'Is Unique',
