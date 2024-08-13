@@ -41,20 +41,20 @@ const AttributesForm = () => {
 				}
 			})
 			:
-		dispatch(postAttribute(values)).then((promiseResponse) => {
-			if (promiseResponse.payload.code === 200) {
-				if (values.options && values.options.length > 0) {
-					values.options.forEach((option) => {
-						const optionPayload = {
-							attribute_id: promiseResponse.payload.data.id, 
-							...option,
-						};
-						dispatch(postOption(optionPayload));
-					});
+			dispatch(postAttribute(values)).then((promiseResponse) => {
+				if (promiseResponse.payload.code === 200) {
+					if (values.options && values.options.length > 0) {
+						values.options.forEach((option) => {
+							const optionPayload = {
+								attribute_id: promiseResponse.payload.data.id,
+								...option,
+							};
+							dispatch(postOption(optionPayload));
+						});
+					}
+					navigate(-1);
 				}
-				navigate(-1);
-			}
-		});
+			});
 	};
 
 
@@ -63,46 +63,46 @@ const AttributesForm = () => {
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
-///////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////
 
-useMemo(() => {
-	if (id && attributeShow) {
-		const setField = (fieldName, value) => {
-			if (value !== undefined && value !== null) {
-				formStore.setValue(fieldName, value);
+	useMemo(() => {
+		if (id && attributeShow) {
+			const setField = (fieldName, value) => {
+				if (value !== undefined && value !== null) {
+					formStore.setValue(fieldName, value);
+				}
+			};
+
+			setField('code', attributeShow.code);
+			setField('type', attributeShow.type);
+			setField('admin_name', attributeShow.admin_name);
+			setField('en.name', attributeShow?.en?.name);
+			setField('ar.name', attributeShow?.ar?.name);
+			setField('swatch_type', attributeShow.swatch_type);
+			setField('default-null-option', attributeShow['default-null-option']);
+
+			// Handle options
+			if (attributeShow?.options) {
+				setField('options.admin_name', attributeShow.options.admin_name);
+				setField('options.en.label', attributeShow.options.en.label);
+				setField('options.ar.label', attributeShow.options.ar.label);
+				setField('options.swatch_value', attributeShow.options.swatch_value);
+				setField('options.sort_order', attributeShow.options.sort_order > 0 ? 1 : 0);
 			}
-		};
 
-		setField('code', attributeShow.code);
-		setField('type', attributeShow.type);
-		setField('admin_name', attributeShow.admin_name);
-		setField('en.name', attributeShow?.en?.name);
-		setField('ar.name', attributeShow?.ar?.name);
-		setField('swatch_type', attributeShow.swatch_type);
-		setField('default-null-option', attributeShow['default-null-option']);
-		
-		// Handle options
-		if (attributeShow?.options?.option_0) {
-			setField('options.option_0.admin_name', attributeShow.options.option_0.admin_name);
-			setField('options.option_0.en.label', attributeShow.options.option_0.en.label);
-			setField('options.option_0.ar.label', attributeShow.options.option_0.ar.label);
-			setField('options.option_0.swatch_value', attributeShow.options.option_0.swatch_value);
-			setField('options.option_0.sort_order', attributeShow.options.option_0.sort_order > 0 ? 1 : 0);
+			// Handle boolean fields
+			setField('is_required', attributeShow.is_required > 0 ? 1 : 0);
+			setField('is_unique', attributeShow.is_unique > 0 ? 1 : 0);
+			setField('validation', attributeShow.validation > 0 ? 1 : 0);
+			setField('value_per_locale', attributeShow.value_per_locale > 0 ? 1 : 0);
+			setField('value_per_channel', attributeShow.value_per_channel > 0 ? 1 : 0);
+			setField('is_filterable', attributeShow.is_filterable > 0 ? 1 : 0);
+			setField('is_configurable', attributeShow.is_configurable > 0 ? 1 : 0);
+			setField('is_visible_on_front', attributeShow.is_visible_on_front > 0 ? 1 : 0);
+			setField('use_in_flat', attributeShow.use_in_flat > 0 ? 1 : 0);
+			setField('is_comparable', attributeShow.is_comparable > 0 ? 1 : 0);
 		}
-
-		// Handle boolean fields
-		setField('is_required', attributeShow.is_required > 0 ? 1 : 0);
-		setField('is_unique', attributeShow.is_unique > 0 ? 1 : 0);
-		setField('validation', attributeShow.validation > 0 ? 1 : 0);
-		setField('value_per_locale', attributeShow.value_per_locale > 0 ? 1 : 0);
-		setField('value_per_channel', attributeShow.value_per_channel > 0 ? 1 : 0);
-		setField('is_filterable', attributeShow.is_filterable > 0 ? 1 : 0);
-		setField('is_configurable', attributeShow.is_configurable > 0 ? 1 : 0);
-		setField('is_visible_on_front', attributeShow.is_visible_on_front > 0 ? 1 : 0);
-		setField('use_in_flat', attributeShow.use_in_flat > 0 ? 1 : 0);
-		setField('is_comparable', attributeShow.is_comparable > 0 ? 1 : 0);
-	}
-}, [id, attributeShow]);
+	}, [id, attributeShow]);
 
 
 	////////////////////////////////////////  ACTIONS //////////////////////////////////
@@ -213,11 +213,11 @@ useMemo(() => {
 					<div className=' flex-col-global grid-left'>
 						<AttributeInfo formStore={formStore} />
 
-						{addOption ? <OptionFields formStore={formStore} /> : <div>
-							<Button LeftIcon={AddFillIcon} variant='secondary' onClick={() => setAddOption(true)}>
-								{t('Add Option')}
-							</Button>
-						</div>}
+						<OptionFields formStore={formStore} label={
+							formStore.watch('options')?.length > 0
+								? t('Add More Options')
+								: t('Add Options')
+						} />
 					</div>
 					{/* actions */}
 					<div className='grid-right'>

@@ -12,19 +12,17 @@ export interface addAttributeInterface {
         name: string;
     };
     swatch_type: string; // dropdown
-    'default-null-option': string; // on or off
+    'default-null-option': boolean; // on or off
     options: {
-        option_0: {
-            admin_name?: string;
-            en: {
-                label?: string;
-            };
-            ar: {
-                label?: string;
-            };
-            sort_order?: number; // 1 or 0
-            swatch_value?: string;
+        admin_name?: string;
+        en: {
+            label?: string;
         };
+        ar: {
+            label?: string;
+        };
+        sort_order?: number; // 1 or 0
+        swatch_value?: string;
     };
     is_required: number;
     is_unique: number;
@@ -53,20 +51,21 @@ export const AddAttributeSchema = {
         name: stringZod,
     }),
     swatch_type: stringZod, // dropdown
-    'default-null-option': z.string(), // on or off
-    options: z.object({
-        option_0: z.object({
-            admin_name: stringZod.optional(),
-            en: z.object({
-                label: stringZod.optional(),
+    'default-null-option': z.boolean(), // on or off
+    options: z.array(
+        z.object({
+            option_0: z.object({
+                admin_name: stringZod,
+                en: z.object({
+                    label: stringZod,
+                }),
+                ar: z.object({
+                    label: stringZod,
+                }),
+                sort_order: numberZod, // 1 or 0
+                swatch_value: stringZod,
             }),
-            ar: z.object({
-                label: stringZod.optional(),
-            }),
-            sort_order: numberZod.optional(), // 1 or 0
-            swatch_value: stringZod.optional(),
-        }),
-    }),
+        })).optional(),
     is_required: numberZod,
     is_unique: numberZod,
     validation: numberZod,
@@ -93,19 +92,17 @@ export default function useCustomHookAddAttribute() {
                 name: '',
             },
             swatch_type: '', // dropdown
-            'default-null-option': '', // on or off
+            'default-null-option': false, // on or off
             options: {
-                option_0: {
-                    admin_name: '',
-                    en: {
-                        label: '',
-                    },
-                    ar: {
-                        label: '',
-                    },
-                    sort_order: 0, // 1 or 0
-                    swatch_value: '',
+                admin_name: '',
+                en: {
+                    label: '',
                 },
+                ar: {
+                    label: '',
+                },
+                sort_order: 0, // 1 or 0
+                swatch_value: '',
             },
             is_required: 0,
             is_unique: 0,
