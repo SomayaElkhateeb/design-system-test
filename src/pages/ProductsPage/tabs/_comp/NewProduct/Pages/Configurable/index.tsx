@@ -243,8 +243,6 @@ export default function ConfigurableProductPage() {
 		}
 	}, [product, id]);
 
-	console.log(product);
-
 	return (
 		<ProductFormContainer
 			isLoadingAddOrUpdate={isLoadingAddOrUpdate}

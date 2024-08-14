@@ -15,7 +15,7 @@ import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { getAttributeShow, postAttribute, postOption, putAttribute } from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
-
+import { Path } from 'react-hook-form';
 const AttributesForm = () => {
 	//  hooks
 	const [addOption, setAddOption] = useState(false);
@@ -144,7 +144,7 @@ useMemo(() => {
 
 
 
-	const data: { name: path<addAttributeInterface>; label: string; enable: boolean } = [
+	const data: { name: Path<addAttributeInterface>; label: string; enable: boolean } = [
 		{
 			name: 'is_required',
 			label: t('Is Required'),
