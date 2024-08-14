@@ -23,7 +23,7 @@ export interface addAttributeInterface {
         };
         sort_order?: number; // 1 or 0
         swatch_value?: string;
-    };
+    }[];
     is_required: number;
     is_unique: number;
     validation: number;
@@ -93,7 +93,7 @@ export default function useCustomHookAddAttribute() {
             },
             swatch_type: '', // dropdown
             'default-null-option': false, // on or off
-            options: {
+            options: [{
                 admin_name: '',
                 en: {
                     label: '',
@@ -103,7 +103,7 @@ export default function useCustomHookAddAttribute() {
                 },
                 sort_order: 0, // 1 or 0
                 swatch_value: '',
-            },
+            }],
             is_required: 0,
             is_unique: 0,
             validation: 0,
