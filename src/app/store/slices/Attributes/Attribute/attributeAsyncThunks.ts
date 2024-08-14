@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
-import { Attribute } from 'src/app/interface/AttributeInterface';
+
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import PublicRequest from 'src/app/utils/AxiosUtils/PublicRequests';
+import { addAttributeInterface } from 'src/pages/ProductsPage/tabs/Attributes/_hook/HookAddAttributes';
 
 // get attributes list
 export const getAttributes = createAsyncThunk('attribute/getAttributes', () =>
@@ -17,7 +18,7 @@ export const getAttributeShow = createAsyncThunk('attributeShow/getAttributeShow
 // create attribute
 export const postAttribute = createAsyncThunk(
 	"addAttribute/PostAttribute",
-	(payload: Attribute) =>
+	(payload: addAttributeInterface) =>
 		PublicRequest.postData(payload, `merchant/catalog/attributes/store`)
 			.then((res: any) => {
 				if (res) {
@@ -31,8 +32,8 @@ export const postAttribute = createAsyncThunk(
 // update attribute
 export const putAttribute = createAsyncThunk(
 	"updateAttribute/putAttribute",
-	(payload: Attribute) =>
-		PublicRequest.putData(payload, `merchant/catalog/attributes/update/${payload}`)
+	(payload: {data:addAttributeInterface,id:string}) =>
+		PublicRequest.putData(payload?.data, `merchant/catalog/attributes/update/${payload?.id}`)
 			.then((res: any) => {
 				if (res) {
 					toast.success(res?.message);

@@ -1,5 +1,5 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getAllProductsTable, PostSimpleQuickProduct, PostUpdateQuickProduct } from './allProductsAsyncThunks';
+import { getAllProductsTable, getProduct, PostSimpleQuickProduct, PostUpdateQuickProduct } from './allProductsAsyncThunks';
 import { productsSliceModel } from 'src/app/models/allProductsSliceModel';
 
 export const getAllProductsReducer = (builder: ActionReducerMapBuilder<productsSliceModel>) => {
@@ -45,5 +45,19 @@ export const getAllProductsReducer = (builder: ActionReducerMapBuilder<productsS
 		.addCase(PostUpdateQuickProduct.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
 
-		});
+		})
+		// get products table
+		.addCase(getProduct.pending, (state) => {
+			state.isLoading = true;
+			
+		})
+		.addCase(getProduct.fulfilled, (state, { payload }: any) => {
+			state.isLoading = false;
+			state.allProducts = payload?.data;
+			state.product=payload.data
+		})
+		.addCase(getProduct.rejected, (state, action) => {
+			state.isLoading = false;
+			
+		})
 };

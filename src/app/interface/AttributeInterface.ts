@@ -1,4 +1,4 @@
-interface Option {
+export interface Option {
     id: number;
     admin_name: string;
     label: string;
