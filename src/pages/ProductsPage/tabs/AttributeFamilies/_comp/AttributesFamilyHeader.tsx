@@ -22,7 +22,7 @@ export const attributeActionsMenu = [
   },
 ];
 
-const AttributesHeader = () => {
+const AttributesFamilyHeader = () => {
   const { selectedOption, handleSelect } = useSelectBox();
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -30,8 +30,8 @@ const AttributesHeader = () => {
   return (
     <div className='md:flex-row-global flex-col-global justify-between w-full'>
       <div>
-        <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('add-attribute')}>
-          {t('Add Attribute')}
+        <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('add-family')}>
+          {t('Add Family')}
         </Button>
       </div>
       <div className='flex-row-global gap-4'>
@@ -51,4 +51,4 @@ const AttributesHeader = () => {
   )
 }
 
-export default AttributesHeader
+export default AttributesFamilyHeader;

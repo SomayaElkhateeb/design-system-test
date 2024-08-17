@@ -53,4 +53,3 @@ export const deleteAttributeFamilies = createAsyncThunk(
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-// mass destroy

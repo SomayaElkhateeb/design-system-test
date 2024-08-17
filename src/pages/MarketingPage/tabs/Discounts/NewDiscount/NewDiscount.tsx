@@ -10,7 +10,7 @@ import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import BasicInfo from './BasicInfo/BasicInfo';
 import useCustomHookNewDiscount,{newDiscountInterface} from './_hook/HookForNewDiscount';
 import Limits from '../Comp/Limits';
-import MinimumRequirements from '../Comp/MinimumRequirements';
+import MinimumRequirements, { initialState } from '../Comp/MinimumRequirements';
 import ActiveDates from '../Comp/ActiveDates';
 import CustomerSegment from '../Comp/CustomerSegment/CustomerSegment';
 

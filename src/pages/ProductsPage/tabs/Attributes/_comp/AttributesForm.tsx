@@ -1,65 +1,67 @@
 import { useTranslation } from 'react-i18next';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import useCustomHookAddAttribute, { addAttributeInterface } from '../_hook/HookAddAttributes';
 import AttributeInfo from './AttributeInfo';
-import { AddFillIcon } from 'src/app/utils/icons';
 import OptionFields from './OptionFields';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import {
-	getAttributeShow,
-	postAttribute,
-	postOption,
-	putAttribute,
-} from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
-import { Path } from 'react-hook-form';
-import { UseGetIdParams } from 'src/app/utils/hooks/GetParamsId';
+import { getAttributeShow, postAttribute, postOption, putAttribute } from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
+
 const AttributesForm = () => {
 	//  hooks
-
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { id } = UseGetIdParams();
+	const [searchParams] = useSearchParams();
+	const id = searchParams.get('id');
 
 	// custom hook
 	const { handelDefaultValue, AddAttributeSchema } = useCustomHookAddAttribute();
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector(
-		(state) => state.attributesProducts,
-	);
+	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector((state) => state.attributesProducts);
 
 	const handleSubmit = (values: addAttributeInterface) => {
+		console.log(values);
+
+		const optionData = option.reduce((acc: any, option: any, index: number) => {
+			acc[`option_${index}`] = option;
+			return acc;
+		}, {});
+
+		let refactorData = {
+			// ...updatedData,
+			// inventories: obj,
+			type: 'configurable',
+
+			options: JSON.stringify(optionData),
+		};
+
+
 		id
-			? dispatch(putAttribute({ data: values, id })).then((promiseResponse) => {
-					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
-					}
-			  })
-			: dispatch(postAttribute(values)).then((promiseResponse) => {
-					if (promiseResponse.payload.code === 200) {
-						// if (values.options && values.options.length > 0) {
-						// 	values.options.forEach((option) => {
-						// 		const optionPayload = {
-						// 			attribute_id: promiseResponse.payload.data.id,
-						// 			...option,
-						// 		};
-						// 		dispatch(postOption(optionPayload));
-						// 	});
-						// }
-						navigate(-1);
-					}
-			  });
+		?
+		dispatch(putAttribute({ data: values, id })).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+			}
+		})
+		:
+		dispatch(postAttribute(refactorData)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+			}
+		});
+
 	};
+
 
 	const { formStore, onSubmit } = useForm({
 		schema: AddAttributeSchema,
@@ -70,7 +72,7 @@ const AttributesForm = () => {
 
 	useMemo(() => {
 		if (id && attributeShow) {
-			const setField = (fieldName: any, value: any) => {
+			const setField = (fieldName, value) => {
 				if (value !== undefined && value !== null) {
 					formStore.setValue(fieldName, value);
 				}
@@ -82,16 +84,16 @@ const AttributesForm = () => {
 			setField('en.name', attributeShow?.en?.name);
 			setField('ar.name', attributeShow?.ar?.name);
 			setField('swatch_type', attributeShow.swatch_type);
-			setField('default-null-option', attributeShow['default-null-option']);
+			setField('default-null-option', attributeShow['default-null-option']); // ??
 
 			// Handle options
-			// if (attributeShow?.options) {
-			// 	setField('options.admin_name', attributeShow.options.admin_name);
-			// 	setField('options.en.label', attributeShow.options.en.label);
-			// 	setField('options.ar.label', attributeShow.options.ar.label);
-			// 	setField('options.swatch_value', attributeShow.options.swatch_value);
-			// 	setField('options.sort_order', attributeShow.options.sort_order > 0 ? 1 : 0);
-			// }
+			if (attributeShow?.options) {
+				setField('options.admin_name', attributeShow.options.admin_name);
+				setField('options.en.label', attributeShow.options.en.label);
+				setField('options.ar.label', attributeShow.options.ar.label);
+				setField('options.swatch_value', attributeShow.options.swatch_value);
+				setField('options.sort_order', attributeShow.options.sort_order > 0 ? 1 : 0);
+			}
 
 			// Handle boolean fields
 			setField('is_required', attributeShow.is_required > 0 ? 1 : 0);
@@ -106,6 +108,7 @@ const AttributesForm = () => {
 			setField('is_comparable', attributeShow.is_comparable > 0 ? 1 : 0);
 		}
 	}, [id, attributeShow]);
+
 
 	////////////////////////////////////////  ACTIONS //////////////////////////////////
 	useEffect(() => {
@@ -144,7 +147,9 @@ const AttributesForm = () => {
 		formStore.setValue('is_comparable', formStore.watch('is_comparable') ? 1 : 0);
 	}, [formStore.watch('is_comparable')]);
 
-	const data: { name: Path<addAttributeInterface>; label: string; enable: boolean } = [
+
+
+	const data: { name: path<addAttributeInterface>; label: string; enable: boolean } = [
 		{
 			name: 'is_required',
 			label: t('Is Required'),
@@ -177,7 +182,7 @@ const AttributesForm = () => {
 		},
 		{
 			name: 'is_configurable',
-			label: t('Is Configuration'),
+			label: t('Configuration'),
 			enable: true,
 		},
 		{
@@ -213,12 +218,11 @@ const AttributesForm = () => {
 					<div className=' flex-col-global grid-left'>
 						<AttributeInfo formStore={formStore} />
 
-						<OptionFields
-							formStore={formStore}
-							label={
-								formStore.watch('options')?.length > 0 ? t('Add More Options') : t('Add Options')
-							}
-						/>
+						<OptionFields formStore={formStore} label={
+							formStore.watch('options')?.length > 0
+								? t('Add More Options')
+								: t('Add Options')
+						} />
 					</div>
 					{/* actions */}
 					<div className='grid-right'>
@@ -235,6 +239,6 @@ const AttributesForm = () => {
 			</form>
 		</Form>
 	);
-};
+}
 
-export default AttributesForm;
+export default AttributesForm

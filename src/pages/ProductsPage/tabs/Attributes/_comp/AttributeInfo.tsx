@@ -26,16 +26,6 @@ const AttributeInfo = ({ formStore }: { formStore: UseFormReturn<addAttributeInt
 		formStore.setValue('default-null-option', formStore.watch('default-null-option') ? true : false);
 	}, [formStore.watch('default-null-option')]);
 
-    // useEffect(() => {
-    //     const subscription = formStore.watch((value, { name }) => {
-    //         if (name === 'default-null-option') {
-    //             formStore.setValue('default-null-option', value ? 'on' : 'off');
-    //         }
-    //     });
-
-    //     return () => subscription.unsubscribe();
-    // }, [formStore]);
-
     return (
         <div className='global-cards gap-[1.2rem]'>
             <h3 className='title'>{t('Attribute Info')}</h3>

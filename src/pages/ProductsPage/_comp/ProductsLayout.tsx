@@ -1,27 +1,33 @@
+import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const ProductsLayout = () => {
+	const {t} = useTranslation();
 	const tabs = [
 		{
-			name: 'All Products',
+			name: t('All Products'),
 			path: 'AllProducts',
 		},
 		{
-			name: 'Categories',
+			name: t('Categories'),
 			path: 'categories',
 		},
 		{
-			name: 'Brands',
+			name: t('Brands'),
 			path: 'brands',
 		},
 		{
-			name: 'Inventory',
+			name: t('Inventory'),
 			path: 'inventory',
 		},
 		{
-			name: 'Attributes',
+			name: t('Attributes'),
 			path: 'attributes',
+		},
+		{
+			name: t('Attribute Families'),
+			path: 'attributeFamilies',
 		},
 	];
 	return (
