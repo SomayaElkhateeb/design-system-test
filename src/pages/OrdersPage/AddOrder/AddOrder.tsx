@@ -11,7 +11,7 @@ import {
 	getAllCustomersTable,
 	getCustomerInfo,
 } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { getAllProductsTable } from 'src/app/store/slices/productsPage/allProducts/allProductsAsyncThunks';
 import { clearData } from 'src/app/store/slices/AddOrderPage/AddOrderSlice';
 import { PostAddOrder } from 'src/app/store/slices/AddOrderPage/AddOrderAsyncThunks';
@@ -40,7 +40,7 @@ export default function AddOrder() {
 	}, [Add_Order_Data.customer_id, dispatch]);
 	const { goNext, goPrevious, activeStep, setActiveStep } = useStepNavigator();
 
-	const handleFinish = (values: AddCheckOutFormValues) => {
+	const handleFinish = (values?: AddCheckOutFormValues) => {
 		const formData = new FormData();
 
 		formData.append('customer_id', Add_Order_Data.customer_id);

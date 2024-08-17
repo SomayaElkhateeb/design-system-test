@@ -97,7 +97,7 @@ export default function BranchesSettings() {
                         <ThreeDotsButton
                             sortMenus={options}
                             selectedOption={selectedOption}
-                            handleSelect={handleSelect}
+                            handelSelect={handleSelect}
                         />
                     </div>
                 </BranchTable>

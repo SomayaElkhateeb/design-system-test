@@ -23,7 +23,7 @@ export const PostSimpleQuickProduct = createAsyncThunk('allProductsTable/PostSim
 
 
 
-export const PostUpdateQuickProduct = createAsyncThunk('allProductsTable/PostUpdateQuickProduct', (payload: { data: FormData, id: string }) =>
+export const PostUpdateQuickProduct = createAsyncThunk('allProductsTable/PostUpdateQuickProduct', (payload: { data: any, id: string }) =>
 	PublicRequest.postData(payload.data, `merchant/catalog/products/update/${payload.id}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
@@ -68,5 +68,9 @@ export const PostImportProducts = createAsyncThunk('allProductsTable/PostImportP
 		}
 	})
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
+);
+
+export const getProduct = createAsyncThunk('allProductsTable/getProduct', (payload:string) =>
+	PublicRequest.getData(`merchant/catalog/products/show/${payload}`),
 );
 

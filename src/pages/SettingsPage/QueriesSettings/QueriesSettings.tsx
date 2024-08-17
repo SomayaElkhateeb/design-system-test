@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { postQueries } from 'src/app/store/slices/settingsPage/configurations/configurationsAsyncThunks';
 import { useEffect } from 'react';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
-
+import { Path } from 'react-hook-form';
 export default function QueriesSetting() {
 	//  hooks
 	const { t } = useTranslation();
@@ -53,7 +53,7 @@ export default function QueriesSetting() {
 		formStore.setValue('queries.quick_actions.notify_me_new_query', formStore.watch('queries.quick_actions.notify_me_new_query') ? 1 : 0);
 	}, [formStore.watch('queries.quick_actions.notify_me_new_query')]);
 
-	const data: { name: path<QueriesInterface>; label: string; enable: boolean } = [
+	const data: { name: Path<QueriesInterface>; label: string; enable: boolean } = [
 		{
 			name: 'queries.quick_actions.enabled',
 			label: t('Enabled'),

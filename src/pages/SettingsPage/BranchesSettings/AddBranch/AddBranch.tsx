@@ -8,12 +8,19 @@ import {
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
-import BranchAppointments from './BranchAppointments';
-import BranchInfo from './BranchInfo';
+// import BranchAppointments from './BranchAppointments';
+// import BranchInfo from './BranchInfo';
 import useAddBranchForm, { BranchesType } from './_hook/useAddBranchForm';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { getBranchesShow, postBranch, putBranch } from 'src/app/store/slices/settingsPage/branches/branchesAsyncThunks';
+import {
+	getBranchesShow,
+	postBranch,
+	putBranch,
+} from 'src/app/store/slices/settingsPage/branches/branchesAsyncThunks';
+import BranchAppointments from './_comp/BranchAppointments';
+import BranchInfo from './_comp/BranchInfo';
+import { Path } from 'react-hook-form';
 
 export default function AddBranch() {
 	//  hooks
@@ -22,14 +29,12 @@ export default function AddBranch() {
 	// const [searchParams] = useSearchParams();
 	// const id = searchParams.get('id');
 
-
 	// custom hook
-	const { branchSettingsSchema,
-		handleDefaultValue } = useAddBranchForm();
+	const { branchSettingsSchema, handleDefaultValue } = useAddBranchForm();
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate, branch } = useAppSelector((state) => state.branchSettings);
+	const { isLoadingAddOrUpdate} = useAppSelector((state) => state.branchSettings);
 
 	const handleSubmit = (values: BranchesType) => {
 		console.log(values);
@@ -42,7 +47,7 @@ export default function AddBranch() {
 		// 	})
 		// 	:
 		dispatch(postBranch(values)).then((promiseResponse) => {
-			if ((promiseResponse.payload.code === 200)) {
+			if (promiseResponse.payload.code === 200) {
 				navigate(-1);
 			}
 		});
@@ -114,26 +119,15 @@ export default function AddBranch() {
 	// 	}
 	// }, [id, branch, formStore]);
 
-
-
 	// actions
 	useEffect(() => {
-		formStore.setValue(
-			'main_branch',
-			formStore.watch('main_branch') ? 1 : 0,
-		);
+		formStore.setValue('main_branch', formStore.watch('main_branch') ? 1 : 0);
 	}, [formStore.watch('main_branch')]);
 	useEffect(() => {
-		formStore.setValue(
-			'show_in_footer',
-			formStore.watch('show_in_footer') ? 1 : 0,
-		);
+		formStore.setValue('show_in_footer', formStore.watch('show_in_footer') ? 1 : 0);
 	}, [formStore.watch('show_in_footer')]);
 	useEffect(() => {
-		formStore.setValue(
-			'pick_up',
-			formStore.watch('pick_up') ? 1 : 0,
-		);
+		formStore.setValue('pick_up', formStore.watch('pick_up') ? 1 : 0);
 	}, [formStore.watch('pick_up')]);
 
 	return (

@@ -26,6 +26,9 @@ import {
 } from '../../Forms';
 
 export const ProductSchema: ZodRawShape = {
+	images: z.object({
+		files: z.array(z.instanceof(File)).optional()
+	}),
 	// imagesMedia: z.array(z.instanceof(File)),
 	// videoMedia: z.instanceof(File),
 	// threeSixtyViewMedia: z.instanceof(File),
@@ -43,6 +46,7 @@ export const ProductSchema: ZodRawShape = {
 };
 
 export const ProductDefaultValues = {
+	images: { files: [] },
 	...productBasicInfoDefaultValues,
 	...productBundleDefaultValues,
 	...productDescriptionAndSpecificationsDefaultValues,
