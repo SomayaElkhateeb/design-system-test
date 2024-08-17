@@ -1,8 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import attributesProducts from './slices/Attributes/Attribute/attributeSlice';
 import attributesFamilies from './slices/Attributes/AttributeFamilies/attributeFamiliesSlice';
-import discount from './slices/marketing/discounts/discountSlice';
-import coupons from './slices/marketing/coupons/couponSlice';
+import couponPage from './slices/marketingPage/coupon/couponSlice';
+import cartRule from './slices/marketingPage/cartRule/cartRuleSlice';
+import catalogRules from './slices/marketingPage/catalogRule/catalogRuleSlice';
+
 import categories from './slices/selectors/categories/categoriesSlice';
 import customers from './slices/selectors/customers/customersSlice';
 import products from './slices/selectors/products/productsSlice';
@@ -43,13 +45,16 @@ export const rootReducer = combineReducers({
 	// ATTRIBUTES
 	attributesProducts:attributesProducts,
 	attributesFamilies:attributesFamilies,
-	
-	discount: discount,
-	coupons: coupons,
-	categories: categories,
-	customers: customers,
-	products: products,
-	groups: groups,
+
+	// MARKETING
+	couponPage:couponPage,
+	cartRule:cartRule,
+	catalogRules:catalogRules,
+
+	// categories: categories,
+	// customers: customers,
+	// products: products,
+	// groups: groups,
 	// analytics page
 	productsAnalytics: productsAnalytics,
 	ordersAnalytics: ordersAnalytics,

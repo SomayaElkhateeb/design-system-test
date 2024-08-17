@@ -49,6 +49,7 @@ import StoreConfig from 'src/pages/StorePage/_comp/StoreConfig';
 import StoreTabs from 'src/pages/StorePage/_comp/StoreTabs';
 import BulkEdit from '../components/optimized/BulkEdit/BulkEdit';
 import AttributesForm from 'src/pages/ProductsPage/tabs/Attributes/_comp/AttributesForm';
+import AttributeFamilyForm from 'src/pages/ProductsPage/tabs/AttributeFamilies/_comp/AttributeFamilyForm';
 
 interface Route {
 	path: string;
@@ -154,6 +155,11 @@ export const PagesRoutes: Route[] = [
 	{
 		path: '/products/attributes/add-attribute',
 		element: <AttributesForm />,
+	},
+// add family
+	{
+		path: '/products/attributeFamilies/add-family',
+		element: <AttributeFamilyForm />,
 	},
 	// Settings Routes
 	{

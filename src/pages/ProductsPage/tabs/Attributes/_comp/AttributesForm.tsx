@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { Button, SubHeader } from 'src/app/components/optimized';
+import { SubHeader } from 'src/app/components/optimized';
 import { Form } from 'src/app/components/ui/form';
 import { useForm } from 'src/app/utils/hooks/form';
 import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import useCustomHookAddAttribute, { addAttributeInterface } from '../_hook/HookAddAttributes';
 import AttributeInfo from './AttributeInfo';
-import { AddFillIcon } from 'src/app/utils/icons';
 import OptionFields from './OptionFields';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -18,7 +17,6 @@ import { getAttributeShow, postAttribute, postOption, putAttribute } from 'src/a
 
 const AttributesForm = () => {
 	//  hooks
-	const [addOption, setAddOption] = useState(false);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
@@ -32,29 +30,36 @@ const AttributesForm = () => {
 	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector((state) => state.attributesProducts);
 
 	const handleSubmit = (values: addAttributeInterface) => {
-		console.log(values)
+		console.log(values);
+
+		const optionData = option.reduce((acc: any, option: any, index: number) => {
+			acc[`option_${index}`] = option;
+			return acc;
+		}, {});
+
+		let refactorData = {
+			// ...updatedData,
+			// inventories: obj,
+			type: 'configurable',
+
+			options: JSON.stringify(optionData),
+		};
+
+
 		id
-			?
-			dispatch(putAttribute({ data: values, id })).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			})
-			:
-			dispatch(postAttribute(values)).then((promiseResponse) => {
-				if (promiseResponse.payload.code === 200) {
-					if (values.options && values.options.length > 0) {
-						values.options.forEach((option) => {
-							const optionPayload = {
-								attribute_id: promiseResponse.payload.data.id,
-								...option,
-							};
-							dispatch(postOption(optionPayload));
-						});
-					}
-					navigate(-1);
-				}
-			});
+		?
+		dispatch(putAttribute({ data: values, id })).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+			}
+		})
+		:
+		dispatch(postAttribute(refactorData)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				navigate(-1);
+			}
+		});
+
 	};
 
 
@@ -79,7 +84,7 @@ const AttributesForm = () => {
 			setField('en.name', attributeShow?.en?.name);
 			setField('ar.name', attributeShow?.ar?.name);
 			setField('swatch_type', attributeShow.swatch_type);
-			setField('default-null-option', attributeShow['default-null-option']);
+			setField('default-null-option', attributeShow['default-null-option']); // ??
 
 			// Handle options
 			if (attributeShow?.options) {
@@ -177,7 +182,7 @@ const AttributesForm = () => {
 		},
 		{
 			name: 'is_configurable',
-			label: t('Is Configuration'),
+			label: t('Configuration'),
 			enable: true,
 		},
 		{
