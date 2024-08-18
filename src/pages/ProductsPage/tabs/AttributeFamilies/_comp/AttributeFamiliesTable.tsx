@@ -3,15 +3,15 @@ import useLanguage from 'src/app/utils/hooks/useLanguage';
 import BaseTable, {
   GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-import { Attribute } from 'src/app/interface/AttributeInterface';
+import { AttributeFamily } from 'src/app/interface/AttributeFamilyInterface';
 
-export default function AttributesTable({
+export default function AttributeFamiliesTable({
   data,
   handelId,
   isLoading,
   children,
 }: {
-  data: Attribute[];
+  data: AttributeFamily[];
   handelId: (e: string) => void;
   children: React.ReactNode;
   isLoading: boolean;
@@ -24,10 +24,8 @@ export default function AttributesTable({
   //  headers
   const dataHeaders = [
     { title: t('code') },
-    { title: t('type') },
-    { title: t('admin name') },
-    { title: t('swatch-type') },
-    { title: t('default null-option') },
+    { title: t('name') },
+    { title: t('groups no.') },
     { title: t('actions') },
   ];
 
@@ -37,25 +35,19 @@ export default function AttributesTable({
       language={language}
       color='#55607A'
       headers={dataHeaders.map((h) => h)}
-      rows={data?.map((e: Attribute, i: number) => {
+      rows={data?.map((e: AttributeFamily, i: number) => {
         return {
           item: e,
           elements: [
             <GlobalTableCell>
-                <p className='title'>{e.code}</p>
+              <p className='title'>{e.code}</p>
             </GlobalTableCell>,
             <GlobalTableCell>
-              <p className='text-primary underline text-sm'>{e.type}</p>
+              <p className='text-title text-sm'>{e.name}</p>
             </GlobalTableCell>,
-            <GlobalTableCell>
-              <p className='text-title text-sm'>{e.admin_name}</p>
-            </GlobalTableCell>,
-            <GlobalTableCell>
-              <p className='text-title text-sm'>{e?.swatch_type ?? 'null'}</p>
-            </GlobalTableCell>,
-            <GlobalTableCell>
-              <p className='text-title text-sm'>{e.options === true ? 'on' : 'off'}</p>
-            </GlobalTableCell>,
+             <GlobalTableCell>
+             <p className='text-title text-sm'>{e.groups.length}</p>
+           </GlobalTableCell>,
             <GlobalTableCell>
               <div onClick={() => handelId(e?.id)}>{children}</div>
             </GlobalTableCell>,

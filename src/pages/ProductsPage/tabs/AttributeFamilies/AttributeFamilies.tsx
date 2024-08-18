@@ -1,27 +1,26 @@
 import ThreeDotsButton from "src/app/components/optimized/Buttons/ThreedotsButton";
-import AttributesHeader from "./_comp/AttributesHeader"
-import AttributesTable from "./_comp/AttributesTable"
+import AttributesFamilyHeader from "./_comp/AttributesFamilyHeader"
+import AttributeFamiliesTable from "./_comp/AttributeFamiliesTable"
 import { UseDeleteItem } from "src/app/utils/hooks/CustomDelete";
 import { EditIcon } from 'src/app/utils/icons';
 import { LiaTrashAlt } from 'react-icons/lia';
 import useSelectBox from "src/app/components/optimized/Menu/useSelectBox";
 import { useAppDispatch, useAppSelector } from "src/app/store";
 import { useEffect, useMemo } from "react";
-import { deleteAllAttributesAction, deleteAttribute, getAttributes } from "src/app/store/slices/Attributes/Attribute/attributeAsyncThunks";
 import { useNavigate } from "react-router-dom";
 import PopupDelete from "src/app/components/optimized/Popups/PopupDelete";
 import { useTranslation } from "react-i18next";
-import toast from 'react-hot-toast';
+import { deleteAttributeFamilies, getAttributesFamilies } from "src/app/store/slices/Attributes/AttributeFamilies/attributeFamiliesAsyncThunks";
 
-const Attributes = () => {
+const AttributeFamilies = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
-	const { attributesList, isLoading } = useAppSelector((state) => state.attributesProducts);
+	const { attributesFamilies, isLoading } = useAppSelector((state) => state.attributesFamilies);
 
 	useEffect(() => {
-		dispatch(getAttributes());
+		dispatch(getAttributesFamilies());
 	}, [dispatch]);
 
 	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
@@ -39,20 +38,20 @@ const Attributes = () => {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
-	console.log(attributesList)
 	const {
 		openDeleteDialog,
 		custom_Id,
+		handelDeleteItem,
 		handelCloseDeleteDialog,
 		handelId,
 		handelOpenDialog,
 	} = UseDeleteItem();
 
-	const handelDeleteAttribute = () => {
-		dispatch(deleteAttribute(custom_Id)).then((promiseResponse: any) => {
+	const handelDeleteAttributeFamily = () => {
+		dispatch(deleteAttributeFamilies(custom_Id)).then((promiseResponse: any) => {
 			if ((promiseResponse.payload.code = 200)) {
 				handelCloseDeleteDialog();
-				dispatch(getAttributes());
+				dispatch(getAttributesFamilies());
 			}
 		});
 	};
@@ -65,34 +64,22 @@ const Attributes = () => {
 				break;
 			case 'edit':
 				setSelectedOption('');
-				custom_Id && navigate(`add-attribute?id=${custom_Id}`);
-				break;
-				case 'Delete all attributes':
-					attributesList?.length > 0
-					? dispatch(deleteAllAttributesAction({ indexes: code })).then(
-						(promiseResponse: any) => {
-							if ((promiseResponse.payload.code = 200)) {
-								dispatch(getAttributes());
-							}
-						},
-					)
-					: toast.error('There are no data to delete it');
-				setSelectedOption('');
+				custom_Id && navigate(`add-family?id=${custom_Id}`);
 				break;
 		}
 	}, [selectedOption, custom_Id]);
 
 	return (
 		<div className='flex-col-global gap-2 px-5'>
-			<AttributesHeader />
+			<AttributesFamilyHeader />
 			<hr />
-			<AttributesTable handelId={handelId} data={attributesList} isLoading={isLoading}>
+			<AttributeFamiliesTable handelId={handelId} data={attributesFamilies} isLoading={isLoading}>
 				<ThreeDotsButton
 					sortMenus={options}
 					selectedOption={selectedOption}
 					handelSelect={handleSelect}
 				/>
-			</AttributesTable>
+			</AttributeFamiliesTable>
 
 			{/* openDeleteDialog */}
 			{openDeleteDialog && (
@@ -101,11 +88,11 @@ const Attributes = () => {
 					onClose={handelCloseDeleteDialog}
 					title={t('Delete Item')}
 					subTitle={t('Do You Want To Delete This Item')}
-					onDelete={handelDeleteAttribute}
+					onDelete={handelDeleteAttributeFamily}
 				/>
 			)}
 		</div>
 	)
 }
 
-export default Attributes;
+export default AttributeFamilies;

@@ -4,7 +4,7 @@ import Categories from '../tabs/Categories/Categories';
 import Brands from '../tabs/Brands/Brands';
 import Inventory from '../tabs/Inventory/Inventory';
 import Attributes from '../tabs/Attributes/Attributes';
-import AttributesForm from '../tabs/Attributes/_comp/AttributesForm';
+import AttributeFamilies from '../tabs/AttributeFamilies/AttributeFamilies';
 
 const ProductsTabs = () => {
 	//  hooks
@@ -21,6 +21,8 @@ const ProductsTabs = () => {
 			return <Inventory />;
 		case 'attributes':
 			return <Attributes />;
+		case 'attributeFamilies':
+			return <AttributeFamilies />;
 		default:
 			return <AllProducts />;
 	}
