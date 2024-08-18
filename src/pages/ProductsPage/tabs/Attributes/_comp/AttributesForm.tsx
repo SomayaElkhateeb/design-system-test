@@ -56,19 +56,19 @@
 // 			return acc;
 // 		}, {});
 
-		// id
-		// 	?
-		// 	dispatch(putAttribute({ data: optionsData, id })).then((promiseResponse) => {
-		// 		if ((promiseResponse.payload.code = 200)) {
-		// 			navigate(-1);
-		// 		}
-		// 	})
-		// 	:
-		// 	dispatch(postAttribute(optionsData)).then((promiseResponse) => {
-		// 		if ((promiseResponse.payload.code = 200)) {
-		// 			navigate(-1);
-		// 		}
-		// 	});
+// id
+// 	?
+// 	dispatch(putAttribute({ data: optionsData, id })).then((promiseResponse) => {
+// 		if ((promiseResponse.payload.code = 200)) {
+// 			navigate(-1);
+// 		}
+// 	})
+// 	:
+// 	dispatch(postAttribute(optionsData)).then((promiseResponse) => {
+// 		if ((promiseResponse.payload.code = 200)) {
+// 			navigate(-1);
+// 		}
+// 	});
 
 // 	};
 
@@ -107,42 +107,42 @@
 // 	}, [id]);
 
 
-	// ////////////////////////////////////////  ACTIONS //////////////////////////////////
-	// useEffect(() => {
-	// 	formStore.setValue('is_required', formStore.watch('is_required') ? 1 : 0);
-	// }, [formStore.watch('is_required')]);
+// ////////////////////////////////////////  ACTIONS //////////////////////////////////
+// useEffect(() => {
+// 	formStore.setValue('is_required', formStore.watch('is_required') ? 1 : 0);
+// }, [formStore.watch('is_required')]);
 
-	// useEffect(() => {
-	// 	formStore.setValue('is_unique', formStore.watch('is_unique') ? 1 : 0);
-	// }, [formStore.watch('is_unique')]);
+// useEffect(() => {
+// 	formStore.setValue('is_unique', formStore.watch('is_unique') ? 1 : 0);
+// }, [formStore.watch('is_unique')]);
 
-	// useEffect(() => {
-	// 	formStore.setValue('validation', formStore.watch('validation') ? 1 : 0);
-	// }, [formStore.watch('validation')]);
+// useEffect(() => {
+// 	formStore.setValue('validation', formStore.watch('validation') ? 1 : 0);
+// }, [formStore.watch('validation')]);
 
-	// useEffect(() => {
-	// 	formStore.setValue('value_per_locale', formStore.watch('value_per_locale') ? 1 : 0);
-	// }, [formStore.watch('value_per_locale')]);
+// useEffect(() => {
+// 	formStore.setValue('value_per_locale', formStore.watch('value_per_locale') ? 1 : 0);
+// }, [formStore.watch('value_per_locale')]);
 
-	// useEffect(() => {
-	// 	formStore.setValue('value_per_channel', formStore.watch('value_per_channel') ? 1 : 0);
-	// }, [formStore.watch('value_per_channel')]);
-	// useEffect(() => {
-	// 	formStore.setValue('is_filterable', formStore.watch('is_filterable') ? 1 : 0);
-	// }, [formStore.watch('is_filterable')]);
-	// useEffect(() => {
-	// 	formStore.setValue('is_configurable', formStore.watch('is_configurable') ? 1 : 0);
-	// }, [formStore.watch('is_configurable')]);
-	// useEffect(() => {
-	// 	formStore.setValue('is_visible_on_front', formStore.watch('is_visible_on_front') ? 1 : 0);
-	// }, [formStore.watch('is_visible_on_front')]);
-	// useEffect(() => {
-	// 	formStore.setValue('use_in_flat', formStore.watch('use_in_flat') ? 1 : 0);
-	// }, [formStore.watch('use_in_flat')]);
+// useEffect(() => {
+// 	formStore.setValue('value_per_channel', formStore.watch('value_per_channel') ? 1 : 0);
+// }, [formStore.watch('value_per_channel')]);
+// useEffect(() => {
+// 	formStore.setValue('is_filterable', formStore.watch('is_filterable') ? 1 : 0);
+// }, [formStore.watch('is_filterable')]);
+// useEffect(() => {
+// 	formStore.setValue('is_configurable', formStore.watch('is_configurable') ? 1 : 0);
+// }, [formStore.watch('is_configurable')]);
+// useEffect(() => {
+// 	formStore.setValue('is_visible_on_front', formStore.watch('is_visible_on_front') ? 1 : 0);
+// }, [formStore.watch('is_visible_on_front')]);
+// useEffect(() => {
+// 	formStore.setValue('use_in_flat', formStore.watch('use_in_flat') ? 1 : 0);
+// }, [formStore.watch('use_in_flat')]);
 
-	// useEffect(() => {
-	// 	formStore.setValue('is_comparable', formStore.watch('is_comparable') ? 1 : 0);
-	// }, [formStore.watch('is_comparable')]);
+// useEffect(() => {
+// 	formStore.setValue('is_comparable', formStore.watch('is_comparable') ? 1 : 0);
+// }, [formStore.watch('is_comparable')]);
 
 
 
@@ -220,6 +220,7 @@ import { getAttributeShow, postAttribute, putAttribute } from 'src/app/store/sli
 
 const AttributesForm = () => {
 	// hooks
+	const [initialOptions, setInitialOptions] = useState({});
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
@@ -232,7 +233,6 @@ const AttributesForm = () => {
 	const dispatch = useAppDispatch();
 	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector((state) => state.attributesProducts);
 
-	const [initialOptions, setInitialOptions] = useState({});
 
 	useEffect(() => {
 		if (id) {
@@ -251,16 +251,17 @@ const AttributesForm = () => {
 			formStore.setValue('default-null-option', attributeShow?.['default-null-option']);
 
 			if (attributeShow?.options) {
-				attributeShow.options.forEach((opt, index) => {
-					initialOptions[`option_${index}`] = {
+				const updatedOptions = attributeShow.options.reduce((acc, opt, index) => {
+					acc[`option_${index}`] = {
 						admin_name: opt.admin_name,
 						en: { label: opt.en.label },
 						ar: { label: opt.ar.label },
 						sort_order: opt.sort_order > 0 ? 1 : 0,
 						swatch_value: opt.swatch_value,
 					};
-				});
-				setInitialOptions(initialOptions);
+					return acc;
+				}, {});
+				setInitialOptions(updatedOptions);
 			}
 
 			formStore.setValue('is_required', attributeShow?.is_required > 0 ? 1 : 0);
@@ -276,13 +277,14 @@ const AttributesForm = () => {
 		}
 	}, [attributeShow, id]);
 
+
 	const handleSubmit = (values: addAttributeInterface) => {
 		let optionsData = values.options?.map((e: any) => {
-			let handelInventoryVariants = e?.inventories?.map((el: any) => ({
-				[`${el.id}`]: e?.quantity,
+			let handelOptionsValue = e?.options?.map((el: any) => ({
+				[`${el.id}`]: e?.id,
 			}));
 
-			const optionsObj = handelInventoryVariants.reduce((acc: any, item: any) => {
+			const optionsObj = handelOptionsValue.reduce((acc: any, item: any) => {
 				const key = Object.keys(item)[0];
 				acc[key] = item[key];
 				return acc;
@@ -300,21 +302,21 @@ const AttributesForm = () => {
 			return acc;
 		}, {});
 
-
 		id
-		?
-		dispatch(putAttribute({ data: optionsFormatted, id })).then((promiseResponse) => {
-			if ((promiseResponse.payload.code = 200)) {
-				navigate(-1);
-			}
-		})
-		:
-		dispatch(postAttribute(optionsFormatted)).then((promiseResponse) => {
-			if ((promiseResponse.payload.code = 200)) {
-				navigate(-1);
-			}
-		});
+			?
+			dispatch(putAttribute({ data: optionsFormatted, id })).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			})
+			:
+			dispatch(postAttribute(optionsFormatted)).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			});
 	};
+
 
 	const { formStore, onSubmit } = useForm({
 		schema: AddAttributeSchema,
@@ -335,7 +337,7 @@ const AttributesForm = () => {
 		{ name: 'is_comparable', label: t('Is Comparable'), enable: true },
 	];
 
-		////////////////////////////////////////  ACTIONS //////////////////////////////////
+	////////////////////////////////////////  ACTIONS //////////////////////////////////
 	useEffect(() => {
 		formStore.setValue('is_required', formStore.watch('is_required') ? 1 : 0);
 	}, [formStore.watch('is_required')]);
