@@ -14,15 +14,16 @@ export interface addAttributeInterface {
     swatch_type: string; // dropdown
     'default-null-option': boolean; // on or off
     options: {
-        admin_name?: string;
+        admin_name: string,
         en: {
-            label?: string;
-        };
+            label: string
+        },
         ar: {
-            label?: string;
-        };
-        sort_order?: number; // 1 or 0
-        swatch_value?: string;
+            label: string,
+        },
+
+        sort_order: number,
+        swatch_value: string
     }[];
     is_required: number;
     is_unique: number;
@@ -54,18 +55,18 @@ export const AddAttributeSchema = {
     'default-null-option': z.boolean(), // on or off
     options: z.array(
         z.object({
-            option_0: z.object({
-                admin_name: stringZod,
-                en: z.object({
-                    label: stringZod,
-                }),
-                ar: z.object({
-                    label: stringZod,
-                }),
-                sort_order: numberZod, // 1 or 0
-                swatch_value: stringZod,
+
+            admin_name: stringZod,
+            en: z.object({
+                label: stringZod,
             }),
-        })).optional(),
+            ar: z.object({
+                label: stringZod,
+            }),
+            sort_order: numberZod, // 1 or 0
+            swatch_value: stringZod,
+        })).optional()
+    ,
     is_required: numberZod,
     is_unique: numberZod,
     validation: numberZod,
