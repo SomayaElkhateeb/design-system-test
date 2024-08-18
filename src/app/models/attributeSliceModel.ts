@@ -3,5 +3,5 @@ import { AttributeApiResponse } from '../interface/AttributeInterface';
 
 export interface attributesSliceModel extends statusGlobal {
 	attributesList: AttributeApiResponse[];
-    attributeShow: any;
+    attributeShow: AttributeApiResponse | null;
 }
