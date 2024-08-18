@@ -24,7 +24,7 @@ const OptionFields = ({ formStore, label }: { formStore: UseFormReturn<addAttrib
     return (
         <div className="flex-col-global">
             {fields?.length > 0 && fields?.map((item, i) => (
-                <div className="global-cards my-2">
+                <div className="global-cards my-2" key={i}>
                     <DropDownMenu addCompo={
                         <LiaTrashAlt onClick={() => {
                             remove(i);
