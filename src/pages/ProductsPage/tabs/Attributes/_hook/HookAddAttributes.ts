@@ -44,18 +44,18 @@ export const AddAttributeSchema = {
     'default-null-option': z.boolean(), // on or off
     options: z.array(
         z.object({
-            option_0: z.object({
-                admin_name: stringZod,
-                en: z.object({
-                    label: stringZod,
-                }),
-                ar: z.object({
-                    label: stringZod,
-                }),
-                sort_order: numberZod, // 1 or 0
-                swatch_value: stringZod,
+
+            admin_name: stringZod,
+            en: z.object({
+                label: stringZod,
             }),
-        })).optional(),
+            ar: z.object({
+                label: stringZod,
+            }),
+            sort_order: numberZod, // 1 or 0
+            swatch_value: stringZod,
+        })).optional()
+    ,
     is_required: numberZod,
     is_unique: numberZod,
     validation: numberZod,
