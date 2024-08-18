@@ -13,7 +13,11 @@ import OptionFields from './OptionFields';
 import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getAttributeShow, postAttribute, putAttribute } from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
+import {
+	getAttributeShow,
+	postAttribute,
+	putAttribute,
+} from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
 
 const AttributesForm = () => {
 	// hooks
@@ -28,43 +32,28 @@ const AttributesForm = () => {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector((state) => state.attributesProducts);
-	
+	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector(
+		(state) => state.attributesProducts,
+	);
+
 	const handleSubmit = (values: addAttributeInterface) => {
-		let optionsData = values.options?.map((e: any) => {
-			let handelOptionsValue = e?.options?.map((el: any) => ({
-				[`${el.id}`]: e?.id,
-			}));
-
-			const optionsObj = handelOptionsValue.reduce((acc: any, item: any) => {
-				const key = Object.keys(item)[0];
-				acc[key] = item[key];
-				return acc;
-			}, {});
-
-			return {
-				...e,
-				[e.code]: e.attributeOptions,
-				options: optionsObj,
-			};
-		});
-
-		const optionsFormatted = optionsData.reduce((acc: any, option: any, index: number) => {
-			acc[`option_${index}`] = option;
+		const optionsFormatted = values.options.reduce((acc: any, option: any, index: number) => {
+			acc[`option_${(index += 1)}`] = option;
 			return acc;
 		}, {});
+		let SendingData = { ...values, options: optionsFormatted };
 
 		id
-			? dispatch(putAttribute({ data: optionsFormatted, id })).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			})
-			: dispatch(postAttribute(optionsFormatted)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
-					navigate(-1);
-				}
-			});
+			? dispatch(putAttribute({ data: SendingData, id })).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  })
+			: dispatch(postAttribute(SendingData)).then((promiseResponse) => {
+					if ((promiseResponse.payload.code = 200)) {
+						navigate(-1);
+					}
+			  });
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -108,14 +97,13 @@ const AttributesForm = () => {
 			formStore.setValue('use_in_flat', attributeShow?.use_in_flat > 0 ? 1 : 0);
 			formStore.setValue('is_comparable', attributeShow?.is_comparable > 0 ? 1 : 0);
 		}
-	}, [id , attributeShow]);
+	}, [id, attributeShow]);
 
 	useEffect(() => {
 		if (id) {
 			dispatch(getAttributeShow(id));
 		}
 	}, [id, dispatch]);
-
 
 	const data = [
 		{ name: 'is_required', label: t('Is Required'), enable: true },
@@ -180,11 +168,12 @@ const AttributesForm = () => {
 				<div className='custom_container custom-grid-parent'>
 					<div className='flex-col-global grid-left'>
 						<AttributeInfo formStore={formStore} />
-						<OptionFields formStore={formStore} label={
-							formStore.watch('options')?.length > 0
-								? t('Add More Options')
-								: t('Add Options')
-						} />
+						<OptionFields
+							formStore={formStore}
+							label={
+								formStore.watch('options')?.length > 0 ? t('Add More Options') : t('Add Options')
+							}
+						/>
 					</div>
 					<div className='grid-right'>
 						<QuickActions<addAttributeInterface>
@@ -200,8 +189,6 @@ const AttributesForm = () => {
 			</form>
 		</Form>
 	);
-}
+};
 
 export default AttributesForm;
-
-

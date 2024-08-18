@@ -39,7 +39,7 @@ const Attributes = () => {
 			icon: <LiaTrashAlt size='28' className='fill-error' />,
 		},
 	];
-	console.log(attributesList)
+	
 	const {
 		openDeleteDialog,
 		custom_Id,

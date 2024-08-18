@@ -15,7 +15,7 @@ export const attributesReducer = (builder: ActionReducerMapBuilder<attributesSli
 		})
 		.addCase(getAttributes.rejected, (state, action) => {
 			state.isLoading = false;
-			state.error = action.payload;
+
 		})
 
 		// // get attribute show
@@ -29,7 +29,7 @@ export const attributesReducer = (builder: ActionReducerMapBuilder<attributesSli
 		})
 		.addCase(getAttributeShow.rejected, (state, action) => {
 			state.isLoading = false;
-			state.error = action.payload;
+
 		})
 
 		// create attribute
@@ -49,14 +49,11 @@ export const attributesReducer = (builder: ActionReducerMapBuilder<attributesSli
 		})
 		.addCase(putAttribute.fulfilled, (state, { payload }) => {
 			state.isLoadingAddOrUpdate = false;
-			const index = state.attributesList.findIndex(role => role.key === payload.data.key);
-			if (index !== -1) {
-				state.attributesList[index] = payload.data;
-			}
+
 		})
 		.addCase(putAttribute.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
-			state.error = action.payload;
+
 		})
 
 		// store option
