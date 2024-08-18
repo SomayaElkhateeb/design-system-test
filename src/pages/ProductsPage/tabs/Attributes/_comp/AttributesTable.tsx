@@ -54,10 +54,6 @@ export default function AttributesTable({
               <p className='text-title text-sm'>{e?.swatch_type ?? 'null'}</p>
             </GlobalTableCell>,
             <GlobalTableCell>
-              {/* <FormSwitchField
-                formStore={formStore}
-                label={e.option === 1 ? 'on' : 'off'}
-              /> */}
               <p className='text-title text-sm'>{e.options === true ? 'on' : 'off'}</p>
             </GlobalTableCell>,
             <GlobalTableCell>

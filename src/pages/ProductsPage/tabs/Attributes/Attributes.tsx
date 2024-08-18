@@ -43,7 +43,6 @@ const Attributes = () => {
 	const {
 		openDeleteDialog,
 		custom_Id,
-		handelDeleteItem,
 		handelCloseDeleteDialog,
 		handelId,
 		handelOpenDialog,
