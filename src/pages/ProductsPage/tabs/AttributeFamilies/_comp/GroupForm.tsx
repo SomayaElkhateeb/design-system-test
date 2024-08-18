@@ -28,39 +28,40 @@ const GroupForm = ({ formStore, openDialog, setOpenDialog }: { formStore: UseFor
     const customAttributeValue = formStore.watch('attribute_groups.custom_attributes');
     return (
         <GlobalDialog openDialog={openDialog} handleClose={handleClose} style={dialogStyle}>
-            <div className='grid grid-cols-1 gap-4  '>
-                <FormField
-                    formStore={formStore}
-                    name={`attribute_groups.name`}
-                    label={t('Group Name')}
-                    render={(field) => <Input {...field} placeholder={t('e.g., Group1')} />}
-                />
+            <div className='flex-col-global'>
+            <h3 className='title'>{t('Add Group')}</h3>
 
-                <FormField
-                    formStore={formStore}
-                    name={`attribute_groups.position`}
-                    label={t('Position')}
-                    render={(field) => <Input {...field} placeholder={t('e.g., 1')} />}
-                />
+            <FormField
+                formStore={formStore}
+                name={`attribute_groups.name`}
+                label={t('Group Name')}
+                render={(field) => <Input {...field} placeholder={t('e.g., Group1')} />}
+            />
 
-                <SelectFormField
-                    name='attribute_groups.custom_attributes'
-                    label={t('Attributes')}
-                    formStore={formStore}
-                    options={options}
-                    placeholder={t('Select Attributes')}
-                />
+            <FormField
+                formStore={formStore}
+                name={`attribute_groups.position`}
+                label={t('Position')}
+                render={(field) => <Input {...field} placeholder={t('e.g., 1')} />}
+            />
 
-                {customAttributeValue === 'custom' && <CustomAttributes />}
+            <SelectFormField
+                name='attribute_groups.custom_attributes'
+                label={t('Attributes')}
+                formStore={formStore}
+                options={options}
+                placeholder={t('Select Attributes')}
+            />
 
-                <div className='flex items-center justify-end gap-5 py-5'>
-                    <Button variant='tertiary' onClick={handleClose}>
-                        {t('cancel')}
-                    </Button>
-                    <Button variant='primary'>
-                        {t('add')}
-                    </Button>
-                </div>
+            {customAttributeValue === 'custom' && <CustomAttributes />}
+            </div>
+            <div className='flex items-center justify-end gap-5 py-5'>
+                <Button variant='tertiary' onClick={handleClose}>
+                    {t('cancel')}
+                </Button>
+                <Button variant='primary'>
+                    {t('add')}
+                </Button>
             </div>
         </GlobalDialog>
     )

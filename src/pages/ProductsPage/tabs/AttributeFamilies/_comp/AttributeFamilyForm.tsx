@@ -12,9 +12,9 @@ import AddGroups from './AddGroups';
 
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
-import { getAttributeShow, postAttribute, postOption, putAttribute } from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
 import useCustomHookAttributeFamily, { IAddAttributeFamilies } from '../_hook/HookAddAttributeFamilies';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
+import { getAttributeFamiliesShow, postAttributeFamilies, putAttributeFamilies } from 'src/app/store/slices/Attributes/AttributeFamilies/attributeFamiliesAsyncThunks';
 
 const AttributeFamilyForm = () => {
 	//  hooks
@@ -28,32 +28,24 @@ const AttributeFamilyForm = () => {
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector((state) => state.attributesProducts);
+	const { isLoadingAddOrUpdate, attributeFamiliesShow } = useAppSelector((state) => state.attributesFamilies);
 
 	const handleSubmit = (values: IAddAttributeFamilies) => {
 		console.log(values)
-		// id
-		// 	?
-		// 	dispatch(putAttribute({ data: values, id })).then((promiseResponse) => {
-		// 		if ((promiseResponse.payload.code = 200)) {
-		// 			navigate(-1);
-		// 		}
-		// 	})
-		// 	:
-		// 	dispatch(postAttribute(values)).then((promiseResponse) => {
-		// 		if (promiseResponse.payload.code === 200) {
-		// 			if (values.attribute_groups && values.attribute_groups.length > 0) {
-		// 				values.attribute_groups.forEach((group) => {
-		// 					const groupPayload = {
-		// 						position: promiseResponse.payload.data.position,
-		// 						...group,
-		// 					};
-		// 					dispatch(postOption(groupPayload));
-		// 				});
-		// 			}
-		// 			navigate(-1);
-		// 		}
-		// 	});
+
+	
+
+		id
+		? dispatch(postAttributeFamilies(groupsData)).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+		  })
+		: dispatch(putAttributeFamilies({ data: groupsData, id })).then((promiseResponse) => {
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+		  });
 	};
 
 
@@ -99,7 +91,7 @@ const AttributeFamilyForm = () => {
 
 	useMemo(() => {
 		if (id) {
-			dispatch(getAttributeShow(id));
+			dispatch(getAttributeFamiliesShow(id));
 		}
 	}, [id]);
 
@@ -136,4 +128,38 @@ const AttributeFamilyForm = () => {
 	);
 }
 
-export default AttributeFamilyForm
+export default AttributeFamilyForm;
+
+
+	// let groups = values.attribute_groups?.map((e: any) => {
+		// 	//  handel inventory of variants
+		// 	let handelInventoryVariants = e?.inventories?.map((el: any, i) => {
+		// 		return {
+		// 			[`${el.id}`]: e?.quantity,
+		// 		};
+		// 	});
+		// 	//  convert array inventory of variants to object
+		// 	const InventoryVariantsObj = handelInventoryVariants.reduce((acc: any, item: any) => {
+		// 		const key = Object.keys(item)[0];
+		// 		acc[key] = item[key];
+		// 		return acc;
+		// 	}, {});
+		// 	return {
+		// 		...e,
+		// 		[e.code]: e.attributeValues,
+		// 		inventories: InventoryVariantsObj,
+		// 	};
+		// });
+
+		// const groupsData = groups.reduce((acc: any, group: any, index: number) => {
+		// 	acc[`group_${index}`] = group;
+		// 	return acc;
+		// }, {});
+
+		// let refactorData = {
+		// 	...updatedData,
+		// 	inventories: obj,
+		// 	type: 'configurable',
+
+		// 	variants: JSON.stringify(variantsData),
+		// };

@@ -1436,4 +1436,5 @@ export const english = {
 	'e.g., 1':'e.g., 1',
 	'Select Attributes':'Select Attributes',
 	"add group":"add group",
+	'Add Group':'Add Group',
 };

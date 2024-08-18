@@ -3,19 +3,26 @@ import { getAttributes } from "src/app/store/slices/Attributes/Attribute/attribu
 import { useEffect, useState } from "react";
 import { CheckBox } from "src/app/components/optimized";
 
-// interface Attribute {
-//   code: string;
-// }
-
 const CustomAttributes = () => {
   const dispatch = useAppDispatch();
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
+  const [selectedAttributes, setSelectedAttributes] = useState<string[]>([]);
 
   const handleCheckBoxChange = (attributeCode: string, isChecked: boolean) => {
     setCheckedItems(prevState => ({
       ...prevState,
       [attributeCode]: isChecked,
     }));
+
+    setSelectedAttributes(prevState => {
+      if (isChecked) {
+        // Add the attribute to the array if checked
+        return [...prevState, attributeCode];
+      } else {
+        // Remove the attribute from the array if unchecked
+        return prevState.filter(code => code !== attributeCode);
+      }
+    });
   };
 
   const { attributesList } = useAppSelector((state) => state.attributesProducts) ;
@@ -24,6 +31,10 @@ const CustomAttributes = () => {
     dispatch(getAttributes());
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log("Selected Attributes:", selectedAttributes);
+  }, [selectedAttributes]);
+  
   return (
     <div>
       {/* Search input can be added here */}

@@ -1413,4 +1413,5 @@ export const arabic = {
 	'e.g., 1':'',
 	'Select Attributes':'',
 	"add group":'',
+	'Add Group': '',
 } satisfies typeof english;

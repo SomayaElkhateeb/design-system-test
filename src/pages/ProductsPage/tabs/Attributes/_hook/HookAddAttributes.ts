@@ -83,7 +83,7 @@ export default function useCustomHookAddAttribute() {
     const handelDefaultValue = (): addAttributeInterface => {
         return {
             code: '',
-            type: '', // Default to 'select'
+            type: 'select', // Default to 'select'
             admin_name: '',
             en: {
                 name: '',
