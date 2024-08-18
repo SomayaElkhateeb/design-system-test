@@ -13,17 +13,7 @@ export interface addAttributeInterface {
     };
     swatch_type: string; // dropdown
     'default-null-option': boolean; // on or off
-    options: {
-        admin_name?: string;
-        en: {
-            label?: string;
-        };
-        ar: {
-            label?: string;
-        };
-        sort_order?: number; // 1 or 0
-        swatch_value?: string;
-    }[];
+    options: [];
     is_required: number;
     is_unique: number;
     validation: number;
