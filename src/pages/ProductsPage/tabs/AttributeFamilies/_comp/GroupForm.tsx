@@ -8,7 +8,17 @@ import SelectFormField from "src/app/components/ui/form/SelectFormField";
 import CustomAttributes from "./CustomAttributes";
 import { Button } from "src/app/components/optimized";
 
-const GroupForm = ({ formStore, openDialog, setOpenDialog }: { formStore: UseFormReturn<IAddAttributeFamilies>; openDialog: boolean; setOpenDialog: () => void }) => {
+const GroupForm = ({
+    formStore,
+    openDialog,
+    setOpenDialog,
+    index,  
+}: {
+    formStore: UseFormReturn<IAddAttributeFamilies>;
+    openDialog: boolean;
+    setOpenDialog: () => void;
+    index: number;  
+}) => {
     const { t } = useTranslation();
 
     const handleClose = () => {
@@ -25,35 +35,36 @@ const GroupForm = ({ formStore, openDialog, setOpenDialog }: { formStore: UseFor
         { value: 'custom', label: 'Custom' },
     ];
 
-    const customAttributeValue = formStore.watch('attribute_groups.custom_attributes');
+    const customAttributeValue = formStore.watch(`attribute_groups.${index}.custom_attributes`);
+
     return (
         <GlobalDialog openDialog={openDialog} handleClose={handleClose} style={dialogStyle}>
             <div className='flex-col-global'>
-            <h3 className='title'>{t('Add Group')}</h3>
+                <h3 className='title'>{t('Add Group')}</h3>
 
-            <FormField
-                formStore={formStore}
-                name={`attribute_groups.name`}
-                label={t('Group Name')}
-                render={(field) => <Input {...field} placeholder={t('e.g., Group1')} />}
-            />
+                <FormField
+                    formStore={formStore}
+                    name={`attribute_groups.${index}.name`}  
+                    label={t('Group Name')}
+                    render={(field) => <Input {...field} placeholder={t('e.g., Group1')} />}
+                />
 
-            <FormField
-                formStore={formStore}
-                name={`attribute_groups.position`}
-                label={t('Position')}
-                render={(field) => <Input {...field} placeholder={t('e.g., 1')} />}
-            />
+                <FormField
+                    formStore={formStore}
+                    name={`attribute_groups.${index}.position`}  
+                    label={t('Position')}
+                    render={(field) => <Input {...field} placeholder={t('e.g., 1')} />}
+                />
 
-            <SelectFormField
-                name='attribute_groups.custom_attributes'
-                label={t('Attributes')}
-                formStore={formStore}
-                options={options}
-                placeholder={t('Select Attributes')}
-            />
+                <SelectFormField
+                    name={`attribute_groups.${index}.custom_attributes`}  
+                    label={t('Attributes')}
+                    formStore={formStore}
+                    options={options}
+                    placeholder={t('Select Attributes')}
+                />
 
-            {customAttributeValue === 'custom' && <CustomAttributes />}
+                {customAttributeValue === 'custom' && <CustomAttributes />}
             </div>
             <div className='flex items-center justify-end gap-5 py-5'>
                 <Button variant='tertiary' onClick={handleClose}>
@@ -64,7 +75,7 @@ const GroupForm = ({ formStore, openDialog, setOpenDialog }: { formStore: UseFor
                 </Button>
             </div>
         </GlobalDialog>
-    )
-}
+    );
+};
 
 export default GroupForm;

@@ -9,7 +9,7 @@ export interface IAddAttributeFamilies {
         position: number;
         is_user_defined: number; // 0 | 1
         custom_attributes: string; // []
-    }
+    }[];
 }
 
 // Zod schema for validation
@@ -18,12 +18,12 @@ const stringZod = z.string().min(1);
 export const AttributeFamilySchema = {
     code: stringZod,
     name: stringZod,
-    attribute_groups: {
+    attribute_groups: z.object({
         name: stringZod,
         position: z.coerce.number().min(0),
         is_user_defined: z.coerce.number().min(0).max(1), // 0 | 1
         custom_attributes: stringZod, // []
-    }
+    }).optional(),
 };
 
 export default function useCustomHookAttributeFamily() {
@@ -31,12 +31,12 @@ export default function useCustomHookAttributeFamily() {
         return {
             code: '',
             name: '',
-            attribute_groups: {
+            attribute_groups: [{
                 name: '',
                 position: 0,
                 is_user_defined: 0, // 0 | 1
                 custom_attributes: '', // []
-            }
+            }]
         };
     };
 

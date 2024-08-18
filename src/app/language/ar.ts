@@ -1414,4 +1414,11 @@ export const arabic = {
 	'Select Attributes':'',
 	"add group":'',
 	'Add Group': '',
+
+	'start':'',
+	'end':'',
+	'status':'',
+	'priority':'',
+	'Active':'',
+	'Not Active':'',
 } satisfies typeof english;

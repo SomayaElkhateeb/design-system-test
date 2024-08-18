@@ -1437,4 +1437,11 @@ export const english = {
 	'Select Attributes':'Select Attributes',
 	"add group":"add group",
 	'Add Group':'Add Group',
+
+	'start':'start',
+	'end':'end',
+	'status':'status',
+	'priority':'priority',
+	'Active':'Active',
+	'Not Active':'Not Active',
 };

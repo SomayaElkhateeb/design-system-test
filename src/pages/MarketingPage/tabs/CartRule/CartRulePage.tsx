@@ -1,10 +1,14 @@
-import React from 'react'
+import CartRuleHeader from "./_comp/CartRuleHeader"
+import CartRuleTable from "./_comp/CartRuleTable"
 
 const CartRulePage = () => {
   return (
     <div>
-      CartRulePage
-      CartRulePage
+      {/* header */}
+      <CartRuleHeader />
+
+      {/* table */}
+      <CartRuleTable />
     </div>
   )
 }
