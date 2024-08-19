@@ -13,7 +13,7 @@ import { LiaTrashAlt } from 'react-icons/lia';
 import { FaCirclePlus } from 'react-icons/fa6';
 
 const OptionFields = ({
-	formStore,
+	formStore,  
 	label,
 }: {
 	formStore: UseFormReturn<addAttributeInterface>;
