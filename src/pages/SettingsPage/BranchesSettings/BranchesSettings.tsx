@@ -26,7 +26,7 @@ export default function BranchesSettings() {
     const [searchQuery, setSearchQuery] = useState('');
 
     // data query
-    const { data, isLoading } = useQuery(['branchesData'], () => BranchesApi.branches());
+    const { data, isLoading,refetch } = useQuery(['branchesData'], () => BranchesApi.branches());
     let BranchesData = data?.data?.data;
     const { filter, filteredData, handleFilterChange } = useBranch(BranchesData);
 
@@ -63,7 +63,7 @@ export default function BranchesSettings() {
         dispatch(deleteBranch(custom_Id)).then((promiseResponse: any) => {
             if (promiseResponse.payload.code === 200) {
                 handleCloseDeleteDialog();
-                dispatch(filteredBranch);
+                refetch()
             }
         });
     };
@@ -91,7 +91,7 @@ export default function BranchesSettings() {
                 <ControlBranch filteredBranch={filteredBranch} setSearchQuery={setSearchQuery} />
             </div>
             <div className='custom_container py-2'>
-                <BranchTable handleId={handleId} data={filteredBranch} isLoading={isLoading}>
+                <BranchTable handelId={handleId} data={filteredBranch} isLoading={isLoading}>
                     <div className='flex'>
                         <Button variant='tertiary' text={t('View Inventory')} LeftIcon={ViewIcon} />
                         <ThreeDotsButton

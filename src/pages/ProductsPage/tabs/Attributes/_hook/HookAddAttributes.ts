@@ -13,7 +13,7 @@ export interface addAttributeInterface {
     };
     swatch_type: string; // dropdown
     'default-null-option': boolean; // on or off
-    options: {
+    options?: {
         admin_name: string,
         en: {
             label: string
@@ -55,18 +55,17 @@ export const AddAttributeSchema = {
     'default-null-option': z.boolean(), // on or off
     options: z.array(
         z.object({
-
             admin_name: stringZod,
             en: z.object({
-                label: stringZod,
+                label: stringZod.optional(),
             }),
             ar: z.object({
-                label: stringZod,
+                label: stringZod.optional(),
             }),
-            sort_order: numberZod, // 1 or 0
-            swatch_value: stringZod,
-        })).optional()
-    ,
+            sort_order: numberZod.optional(), // 1 or 0
+            swatch_value: stringZod.optional(),
+        })
+    ).optional(),
     is_required: numberZod,
     is_unique: numberZod,
     validation: numberZod,
@@ -94,17 +93,7 @@ export default function useCustomHookAddAttribute() {
             },
             swatch_type: '', // dropdown
             'default-null-option': false, // on or off
-            options: [{
-                admin_name: '',
-                en: {
-                    label: '',
-                },
-                ar: {
-                    label: '',
-                },
-                sort_order: 0, // 1 or 0
-                swatch_value: '',
-            }],
+            options: [],
             is_required: 0,
             is_unique: 0,
             validation: 0,
