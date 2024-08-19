@@ -37,7 +37,9 @@ const AttributesForm = () => {
 	);
 
 	const handleSubmit = (values: addAttributeInterface) => {
+
 		const optionsFormatted = values?.options.reduce((acc: any, option: any, index: number) => {
+
 			acc[`option_${(index += 1)}`] = option;
 			return acc;
 		}, {});
@@ -68,8 +70,8 @@ const AttributesForm = () => {
 			formStore.setValue('code', attributeShow?.code); // Handling the code property
 			formStore.setValue('type', attributeShow?.type);
 			formStore.setValue('admin_name', attributeShow?.admin_name);
-			formStore.setValue('en.name', attributeShow?.en?.name);
-			formStore.setValue('ar.name', attributeShow?.ar?.name);
+			formStore.setValue('en.name', attributeShow?.en.name);
+			formStore.setValue('ar.name', attributeShow?.ar.name);
 			formStore.setValue('swatch_type', attributeShow?.swatch_type);
 			formStore.setValue('default-null-option', attributeShow?.['default-null-option']);
 

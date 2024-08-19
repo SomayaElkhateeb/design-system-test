@@ -107,5 +107,4 @@ const Attributes = () => {
 		</div>
 	)
 }
-
 export default Attributes;
