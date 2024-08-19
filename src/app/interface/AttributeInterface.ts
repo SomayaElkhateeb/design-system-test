@@ -10,13 +10,23 @@ export interface Attribute {
     name: string;
     admin_name: string;
     code: string;
-    type: 'boolean' | 'select' | 'text' | 'textarea' | 'radio'; 
+    type: string; 
     swatch_type: string | null;
     options: Option[];
     created_at: string;
     updated_at: string;
 }
 
-export interface AttributeApiResponse {
-    data: Attribute[];
+export const initialAttribute=()=>{
+    return{
+        id: 0,
+        name: "",
+        admin_name: "",
+        code: "",
+        type: "",
+        swatch_type: "",
+        options: [],
+        created_at: "",
+        updated_at: ""
+    }
 }
