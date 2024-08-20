@@ -1446,4 +1446,14 @@ export const english = {
 	'Not Active':'Not Active',
 
 	'add cart rule':'add cart rule',
+	'Country & City':'Country & City',
+	'Date':'Date',
+	'Gender':'Gender',
+	'Select gender':'Select gender',
+	'Customers Filters':'Customers Filters',
+
+	'all':'all',
+	'female':'female',
+	'male':'male',
+	'Select group':'Select group',
 };

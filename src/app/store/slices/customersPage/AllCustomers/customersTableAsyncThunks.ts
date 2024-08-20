@@ -75,5 +75,9 @@ export const PostImportCustomers = createAsyncThunk('PostImportCustomers/getAllP
 		.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
+////////////////////////////////////////////////////////////////////////////////
 
-
+// filter 
+export const getFilterCustomer = createAsyncThunk('filterCustomer/getFilterCustomer', (payload: string) =>
+	PublicRequest.getData(`merchant/customers/filter/${payload}`),
+);

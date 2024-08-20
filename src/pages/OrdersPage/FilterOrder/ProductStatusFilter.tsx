@@ -1,29 +1,29 @@
+import { UseFormReturn } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import CheckboxWithChild from './CheckboxWithChild';
-import { useState } from 'react';
+
 import DropDownMenu from 'src/app/components/optimized/DropDownMenu';
-export default function ProductStatusFilter() {
+import FormField from 'src/app/components/ui/form/field';
+import { Input } from 'src/app/components/ui/input';
+import { CustomersFilter } from 'src/pages/CustomersPage/tabs/AllCustomers/_comp/_addCustomer/_hook/HookFilterCustomers';
+export default function ProductStatusFilter({ formStore }: { formStore: UseFormReturn<CustomersFilter> }) {
 	//  hooks
 	const { t } = useTranslation();
-	const [filterData, setFilterData] = useState<string[]>([]);
-	const [filterDataWoman, setFilterDataWoman] = useState<string[]>([]);
+
 
 	return (
-		<DropDownMenu title={t('Product status')}>
-			<CheckboxWithChild
-				parent='Men'
-				label1='Cloth'
-				label2='Perfumes'
-				filterData={filterData}
-				setFilterData={setFilterData}
-			/>
-			<CheckboxWithChild
-				parent='Women'
-				label1='Cloth'
-				label2='Perfumes'
-				filterData={filterDataWoman}
-				setFilterData={setFilterDataWoman}
-			/>
+		<DropDownMenu title={t('Date')}>
+				<FormField
+					formStore={formStore}
+					name='date_from:'
+					label={t('Date from')}
+					render={(field) => <Input {...field} placeholder={'YYYY-MM-DD'} />}
+				/>
+				<FormField
+					formStore={formStore}
+					name='date_to'
+					label={t('Date to')}
+					render={(field) => <Input {...field} placeholder={'YYYY-MM-DD'} />}
+				/>
 		</DropDownMenu>
 	);
 }
