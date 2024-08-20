@@ -1423,4 +1423,13 @@ export const arabic = {
 	'Not Active':'',
 
 	'add cart rule':'',
+	'Country & City':'',
+	'Date':'',
+	'Gender':'',
+	'Select gender': '',
+	'Customers Filters':'',
+	'all':'',
+	'female':'',
+	'male':'',
+	'Select group':'',
 } satisfies typeof english;

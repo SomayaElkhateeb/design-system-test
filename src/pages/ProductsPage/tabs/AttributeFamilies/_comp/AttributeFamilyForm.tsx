@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import useCustomHookAttributeFamily, { IAddAttributeFamilies } from '../_hook/HookAddAttributeFamilies';
 import FormSwitchField from 'src/app/components/ui/form/FormSwitchField';
 import { getAttributeFamiliesShow, postAttributeFamilies, putAttributeFamilies } from 'src/app/store/slices/Attributes/AttributeFamilies/attributeFamiliesAsyncThunks';
+import CustomizedDialogs from './CustomAttributes';
 
 const AttributeFamilyForm = () => {
 	//  hooks
@@ -103,7 +104,9 @@ const AttributeFamilyForm = () => {
 					<div className=' flex-col-global grid-left'>
 						<FamilyInfo formStore={formStore} />
 
-						<AddGroups formStore={formStore} label={t('Add Attribute')} />
+						<AddGroups formStore={formStore} label={
+								formStore.watch('attribute_groups')?.length > 0 ? t('Add More Group') : t('Add Group')
+							}/>
 					</div>
 					{/* actions */}
 					<div className='global-cards h-fit w-ful'>

@@ -37,6 +37,38 @@ const GroupForm = ({
 
     const customAttributeValue = formStore.watch(`attribute_groups.${index}.custom_attributes`);
 
+    // const handleAddGroup = () => {
+    //     // Get the current custom attributes array
+    //     const currentCustomAttributes = formStore.getValues(`attribute_groups.${index}.custom_attributes`);
+    
+    //     // Check if currentCustomAttributes is an array, if not, initialize it as an empty array
+    //     const customAttributesArray = Array.isArray(currentCustomAttributes) ? currentCustomAttributes : [];
+    
+    //     // Log the current custom attributes to the console
+    //     console.log('Before Adding:', customAttributesArray);
+    
+    //     // Assume `selectedAttributes` is the array of attributes the user selected dynamically
+    //     const selectedAttributes = [];
+    
+    //     // Create a new array with the existing and selected attributes
+    //     const newCustomAttributes = [...customAttributesArray, ...selectedAttributes];
+    
+    //     // Update the form state with the new custom attributes array
+    //     formStore.setValue(`attribute_groups.${index}.custom_attributes`, newCustomAttributes);
+    
+    //     // Log the updated custom attributes to the console
+    //     console.log('After Adding:', newCustomAttributes);
+    
+    //     // Optionally, close the dialog
+    //     handleClose();
+    // };
+    
+
+    
+    
+    
+    
+
     return (
         <GlobalDialog openDialog={openDialog} handleClose={handleClose} style={dialogStyle}>
             <div className='flex-col-global'>
@@ -70,7 +102,7 @@ const GroupForm = ({
                 <Button variant='tertiary' onClick={handleClose}>
                     {t('cancel')}
                 </Button>
-                <Button variant='primary'>
+                <Button variant='primary' >
                     {t('add')}
                 </Button>
             </div>
