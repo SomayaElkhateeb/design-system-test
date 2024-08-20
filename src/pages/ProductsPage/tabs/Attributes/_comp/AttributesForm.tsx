@@ -37,7 +37,7 @@ const AttributesForm = () => {
 	);
 
 	const handleSubmit = (values: addAttributeInterface) => {
-		console.log('ll', values)
+		console.log('attributes', values)
 		const optionsFormatted = values.options.reduce((acc: any, option: any, index: number) => {
 			acc[`option_${(index += 1)}`] = option;
 			return acc;
@@ -46,15 +46,15 @@ const AttributesForm = () => {
 
 		id
 			? dispatch(putAttribute({ data: SendingData, id })).then((promiseResponse) => {
-					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
-					}
-			  })
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			})
 			: dispatch(postAttribute(SendingData)).then((promiseResponse) => {
-					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
-					}
-			  });
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			});
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -65,7 +65,7 @@ const AttributesForm = () => {
 
 	useMemo(() => {
 		if (id) {
-			formStore.setValue('code', attributeShow?.code); // Handling the code property
+			formStore.setValue('code', attributeShow?.code);
 			formStore.setValue('type', attributeShow?.type);
 			formStore.setValue('admin_name', attributeShow?.admin_name);
 			formStore.setValue('en.name', attributeShow?.en.name);

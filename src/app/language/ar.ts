@@ -1421,4 +1421,6 @@ export const arabic = {
 	'priority':'',
 	'Active':'',
 	'Not Active':'',
+
+	'add cart rule':'',
 } satisfies typeof english;

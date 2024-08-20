@@ -1444,4 +1444,6 @@ export const english = {
 	'priority':'priority',
 	'Active':'Active',
 	'Not Active':'Not Active',
+
+	'add cart rule':'add cart rule',
 };

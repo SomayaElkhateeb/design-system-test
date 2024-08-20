@@ -12,12 +12,12 @@ const GroupForm = ({
     formStore,
     openDialog,
     setOpenDialog,
-    index,  
+    index,
 }: {
     formStore: UseFormReturn<IAddAttributeFamilies>;
     openDialog: boolean;
     setOpenDialog: () => void;
-    index: number;  
+    index: number;
 }) => {
     const { t } = useTranslation();
 
@@ -44,20 +44,20 @@ const GroupForm = ({
 
                 <FormField
                     formStore={formStore}
-                    name={`attribute_groups.${index}.name`}  
+                    name={`attribute_groups.${index}.name`}
                     label={t('Group Name')}
                     render={(field) => <Input {...field} placeholder={t('e.g., Group1')} />}
                 />
 
                 <FormField
                     formStore={formStore}
-                    name={`attribute_groups.${index}.position`}  
+                    name={`attribute_groups.${index}.position`}
                     label={t('Position')}
                     render={(field) => <Input {...field} placeholder={t('e.g., 1')} />}
                 />
 
                 <SelectFormField
-                    name={`attribute_groups.${index}.custom_attributes`}  
+                    name={`attribute_groups.${index}.custom_attributes`}
                     label={t('Attributes')}
                     formStore={formStore}
                     options={options}
@@ -74,7 +74,7 @@ const GroupForm = ({
                     {t('add')}
                 </Button>
             </div>
-        </GlobalDialog>
+         </GlobalDialog>
     );
 };
 

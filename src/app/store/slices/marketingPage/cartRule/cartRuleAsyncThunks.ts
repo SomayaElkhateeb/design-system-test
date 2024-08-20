@@ -42,9 +42,9 @@ export const putCartRule = createAsyncThunk(
 			.catch(err => PublicHandlingErrors.onErrorResponse(err)),
 );
 
-// delete coupon
-export const deleteCoupon = createAsyncThunk(
-	'delete/deleteCoupon',
+// delete 
+export const deleteCartRule = createAsyncThunk(
+	'delete/deleteCartRule',
 	(payload: string) => PublicRequest.deleteData(`merchant/marketing/promotions/cart-rules/${payload}`).then((res: any) => {
 		if (res) {
 			toast.success(res?.message);
