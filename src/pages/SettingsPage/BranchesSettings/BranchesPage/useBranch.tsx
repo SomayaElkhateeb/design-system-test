@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { BranchesType } from '../AddBranch/_hook/useAddBranchForm';
+
+import { BranchInterface } from 'src/app/interface/BranchInterface';
 
 // export const branchesData: BranchesType[] = [
 // 	{
@@ -24,7 +25,7 @@ import { BranchesType } from '../AddBranch/_hook/useAddBranchForm';
 // 	},
 // ];
 
-export default function useBranch(initialData: BranchesType[]) {
+export default function useBranch(initialData: BranchInterface[]) {
 	const [filter, setFilter] = useState<string>('all');
 
 	const handleFilterChange = (type: string) => {
