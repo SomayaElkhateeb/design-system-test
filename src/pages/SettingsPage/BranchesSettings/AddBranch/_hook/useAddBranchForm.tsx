@@ -1,39 +1,44 @@
-// const createEmptyDayInfo = (): DailyHours => ({
-// 	officialHours: { opening_time: '', closed_time: '' },
-// 	additionalHours: { opening_time: '', closed_time: '' },
-// 	is_open: false,
-// });
 
-// export const initialDayInfo: WeekSchedule = {
-// 	Mon: createEmptyDayInfo(),
-// 	Tue: createEmptyDayInfo(),
-// 	Wed: createEmptyDayInfo(),
-// 	Thu: createEmptyDayInfo(),
-// 	Fri: createEmptyDayInfo(),
-// 	Sat: createEmptyDayInfo(),
-// 	Sun: createEmptyDayInfo(),
-// };
+const createEmptyDayInfo = (): DailyHours => ({
+	officialHours: { opening_time: '', closed_time: '' },
+	additionalHours: { opening_time: '', closed_time: '' },
+	is_open: false,
+});
 
-// export interface TimeRange {
-// 	opening_time: string;
-// 	closed_time: string;
-// 	is_open: boolean;
-// }
+export const initialDayInfo: WeekSchedule = {
+	Mon: createEmptyDayInfo(),
+	Tue: createEmptyDayInfo(),
+	Wed: createEmptyDayInfo(),
+	Thu: createEmptyDayInfo(),
+	Fri: createEmptyDayInfo(),
+	Sat: createEmptyDayInfo(),
+	Sun: createEmptyDayInfo(),
 
-// export interface DailyHours {
-// 	officialHours: TimeRange;
-// 	additionalHours?: TimeRange;
-// }
+};
 
-// export interface WeekSchedule {
-// 	Mon: DailyHours;
-// 	Tue: DailyHours;
-// 	Wed: DailyHours;
-// 	Thu: DailyHours;
-// 	Fri: DailyHours;
-// 	Sat: DailyHours;
-// 	Sun: DailyHours;
-// }
+export interface TimeRange {
+	opening_time: string;
+	closed_time: string;
+	is_open: boolean;
+
+}
+
+export interface DailyHours {
+	officialHours: TimeRange;
+	additionalHours?: TimeRange;
+
+}
+
+export interface WeekSchedule {
+	Mon: DailyHours;
+	Tue: DailyHours;
+	Wed: DailyHours;
+	Thu: DailyHours;
+	Fri: DailyHours;
+	Sat: DailyHours;
+	Sun: DailyHours;
+
+}
 
 // {"day":"sunday","is_open":1,"times":[{"opening_time":"10:15","closed_time":"12:20"},{"opening_time":"15:30","closed_time":"22:20"}]}
 

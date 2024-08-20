@@ -20,7 +20,7 @@ export const AttributeFamilySchema = {
     name: stringZod,
     attribute_groups: z.object({
         name: stringZod,
-        position: z.coerce.number().min(0),
+        position: z.coerce.number().min(0), 
         is_user_defined: z.coerce.number().min(0).max(1), // 0 | 1
         custom_attributes: stringZod, // []
     }).optional(),

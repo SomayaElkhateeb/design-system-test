@@ -21,7 +21,7 @@ import {
 
 const AttributesForm = () => {
 	// hooks
-
+	const [initialOptions, setInitialOptions] = useState({});
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
@@ -37,9 +37,8 @@ const AttributesForm = () => {
 	);
 
 	const handleSubmit = (values: addAttributeInterface) => {
-
-		const optionsFormatted = values?.options.reduce((acc: any, option: any, index: number) => {
-
+		console.log('attributes', values)
+		const optionsFormatted = values.options.reduce((acc: any, option: any, index: number) => {
 			acc[`option_${(index += 1)}`] = option;
 			return acc;
 		}, {});
@@ -47,15 +46,15 @@ const AttributesForm = () => {
 
 		id
 			? dispatch(putAttribute({ data: SendingData, id })).then((promiseResponse) => {
-					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
-					}
-			  })
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			})
 			: dispatch(postAttribute(SendingData)).then((promiseResponse) => {
-					if ((promiseResponse.payload.code = 200)) {
-						navigate(-1);
-					}
-			  });
+				if ((promiseResponse.payload.code = 200)) {
+					navigate(-1);
+				}
+			});
 	};
 
 	const { formStore, onSubmit } = useForm({
@@ -66,8 +65,7 @@ const AttributesForm = () => {
 
 	useMemo(() => {
 		if (id) {
-			console.log(attributeShow);
-			formStore.setValue('code', attributeShow?.code); // Handling the code property
+			formStore.setValue('code', attributeShow?.code);
 			formStore.setValue('type', attributeShow?.type);
 			formStore.setValue('admin_name', attributeShow?.admin_name);
 			formStore.setValue('en.name', attributeShow?.en.name);
@@ -75,19 +73,19 @@ const AttributesForm = () => {
 			formStore.setValue('swatch_type', attributeShow?.swatch_type);
 			formStore.setValue('default-null-option', attributeShow?.['default-null-option']);
 
-			// if (attributeShow?.options) {
-			// 	const updatedOptions = attributeShow.options.reduce((acc, opt, index) => {
-			// 		acc[`option_${index}`] = {
-			// 			admin_name: opt.admin_name,
-			// 			en: { label: opt.en.label },
-			// 			ar: { label: opt.ar.label },
-			// 			sort_order: opt.sort_order > 0 ? 1 : 0,
-			// 			swatch_value: opt.swatch_value,
-			// 		};
-			// 		return acc;
-			// 	}, {});
-
-			// }
+			if (attributeShow?.options) {
+				const updatedOptions = attributeShow.options.reduce((acc, opt, index) => {
+					acc[`option_${index}`] = {
+						admin_name: opt.admin_name,
+						en: { label: opt.en.label },
+						ar: { label: opt.ar.label },
+						sort_order: opt.sort_order > 0 ? 1 : 0,
+						swatch_value: opt.swatch_value,
+					};
+					return acc;
+				}, {});
+				setInitialOptions(updatedOptions);
+			}
 
 			formStore.setValue('is_required', attributeShow?.is_required > 0 ? 1 : 0);
 			formStore.setValue('is_unique', attributeShow?.is_unique > 0 ? 1 : 0);
@@ -107,7 +105,7 @@ const AttributesForm = () => {
 			dispatch(getAttributeShow(id));
 		}
 	}, [id, dispatch]);
-	console.log(formStore.formState.errors);
+
 	const data = [
 		{ name: 'is_required', label: t('Is Required'), enable: true },
 		{ name: 'is_unique', label: t('Is Unique'), enable: true },

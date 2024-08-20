@@ -141,7 +141,7 @@ const AddGroups = ({ formStore, label }: { formStore: UseFormReturn<IAddAttribut
                     formStore={formStore}
                     openDialog={openDialog}
                     setOpenDialog={() => setOpenDialog(false)}
-                    index={selectedIndex !== null ? selectedIndex : fields.length} // Pass the selected or new index
+                    index={selectedIndex !== null ? selectedIndex : fields.length} 
                 />
             )}
 
