@@ -33,7 +33,7 @@ const Subscription = ({ formStore }: { formStore: UseFormReturn<CustomersFilter>
 
         <FormField
           formStore={formStore}
-          name='email:'
+          name='email'
           label={t('Email')}
           render={(field) => <Input {...field} placeholder={'newcut@gmail.com'} />}
         />

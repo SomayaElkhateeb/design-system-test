@@ -15,7 +15,6 @@ const Group = ({ formStore }: { formStore: UseFormReturn<CustomersFilter> }) => 
     const dispatch = useAppDispatch();
     const { customersGroup } = useAppSelector((state) => state.customersGroup);
 
-    console.log(customersGroup)
     useEffect(() => {
         dispatch(getCustomersGroupTable())
     }, [dispatch])

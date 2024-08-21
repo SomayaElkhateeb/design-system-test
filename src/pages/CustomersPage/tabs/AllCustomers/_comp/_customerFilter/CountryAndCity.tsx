@@ -42,7 +42,7 @@ const CountryAndCity = ({ formStore }: { formStore: UseFormReturn<CustomersFilte
                 />
             )}
 
-            {cities?.length > 0 && (
+            {/* {cities?.length > 0 && (
                 <SelectFormField
                     name='city_id'
                     label={t('City')}
@@ -53,7 +53,7 @@ const CountryAndCity = ({ formStore }: { formStore: UseFormReturn<CustomersFilte
                     }))}
                     placeholder={t('Select city')}
                 />
-            )}
+            )} */}
         </DropDownMenu>
     )
 }

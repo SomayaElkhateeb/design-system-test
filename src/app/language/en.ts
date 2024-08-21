@@ -1456,4 +1456,26 @@ export const english = {
 	'female':'female',
 	'male':'male',
 	'Select group':'Select group',
+	'Items Per Page':'Items Per Page',
+	'Select brands':'Select brands',
+	'Select categories':'Select categories',
+
+	'shipped':'shipped',
+	'taxable':'taxable',
+	'out of stock':'out of stock',
+	'best reviews':'best reviews',
+	'less reviews':'less reviews',
+	'best selling':'best selling',
+	'less selling':'less selling',
+	'most viewed':'most viewed',
+	'less viewed':'less viewed',
+
+	'simple product':'simple product',
+	'configurable product':'configurable product',
+	'Select type':'Select type',
+
+	'Most buying':'Most buying',
+	'Sort & Order':'Sort & Order',
+	'Sort':'Sort',
+	'Select sort':'Select sort',
 };

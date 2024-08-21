@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { Button } from 'src/app/components/optimized';
 import { FilterSideBar } from 'src/app/components/shared';
-
 import useCustomersFilter, { CustomersFilter } from '../_addCustomer/_hook/HookFilterCustomers';
 import { useForm } from 'src/app/utils/hooks/form';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
@@ -12,7 +11,8 @@ import CountryAndCity from './CountryAndCity';
 import Gender from './Gender';
 import Group from './Group';
 import Subscription from './Subscription';
-
+import { getFilterCustomer } from 'src/app/store/slices/customersPage/AllCustomers/customersTableAsyncThunks';
+import SortFilter from './SortFilter';
 
 export default function CustomersFilters({
 	HandelCloseDrawer,
@@ -30,21 +30,28 @@ export default function CustomersFilters({
 
 	// redux
 	const dispatch = useAppDispatch();
-	const { isLoadingAddOrUpdate, allCustomers } = useAppSelector((state) => state.allCustomer);
-
 
 	const handleSubmit = (values: CustomersFilter) => {
-		console.log('values')
-	}
-
-
+		console.log('Form Values:', values);
+	
+		const params = new URLSearchParams();
+	
+		Object.entries(values).forEach(([key, value]) => {
+			if (value) {
+				params.append(key, value.toString());
+			}
+		});
+	
+		console.log('Generated Params:', params.toString());
+	
+		dispatch(getFilterCustomer(params.toString()));
+	};
 	const { formStore, onSubmit } = useForm({
 		schema: CustomersFilterSchema,
 		handleSubmit: handleSubmit,
 		defaultValues: handelDefaultValue(),
 	});
 	
-console.log(formStore.formState.errors)
 
 	return (
 		<Form {...formStore}>
@@ -62,18 +69,18 @@ console.log(formStore.formState.errors)
 
 
 						<div className='w-full'>
+							<SortFilter formStore={formStore}/>
 							<CountryAndCity formStore={formStore}/>
 							<Date formStore={formStore}/>
 							<Gender formStore={formStore}/>
 							<Group formStore={formStore}/>
 							<Subscription formStore={formStore}/>
-
 						</div>
 
 						<div className='flex-row-global justify-between'>
 							<Button>{t('Show Results')}</Button>
 							<Button variant='tertiary' onClick={onSubmit} >{t('Saved Filters')}</Button>
-							<Button variant='tertiary' className='text-[red] bg-white'>
+							<Button variant='tertiary' className='text-[red] bg-white' onClick={HandelCloseDrawer}>
 								{t('Reset')}
 							</Button>
 						</div>

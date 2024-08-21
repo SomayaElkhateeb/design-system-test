@@ -8,7 +8,6 @@ import BrandStatusFilter from './BrandStatusFilter';
 import CategoryStatusFilter from './CategoryStatusFilter';
 import FilterPrice from './FilterPrice';
 import FilterQuantity from './FilterQuantity';
-import ProductStatusFilter from './ProductStatusFilter';
 import ProductTypeStatusFilter from './ProductTypeStatusFilter';
 import SalesStatusFilter from './SalesStatusFilter';
 import { Switch } from 'src/app/components/ui/switch';
@@ -42,7 +41,6 @@ export default function FilterOrdersComponent({
 					<Switch checked={checked} onCheckedChange={() => setChecked(!checked)} />
 				</div>
 				<div className='w-full'>
-					<ProductStatusFilter />
 					<CategoryStatusFilter />
 					<AccessoriesStatusFilter />
 					<BrandStatusFilter />

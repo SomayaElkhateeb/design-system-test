@@ -14,7 +14,7 @@ import {
 } from 'src/pages/ProductsPage/_comp/data';
 import useResponsive from 'src/app/utils/hooks/useResponsive';
 import AddButtonMobile from 'src/app/components/optimized/Buttons/AddButtonMobile';
-import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
+import ProductFilters from '../ProductFilter/ProductFilters';
 
 export default function TopSection({
 	verticalCard,
@@ -126,7 +126,7 @@ export default function TopSection({
 
 			{/* open filter drawer */}
 			{openDrawer && (
-				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+				<ProductFilters openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
 			)}
 		</>
 	);
