@@ -74,3 +74,9 @@ export const getProduct = createAsyncThunk('allProductsTable/getProduct', (paylo
 	PublicRequest.getData(`merchant/catalog/products/show/${payload}`),
 );
 
+
+// filter
+export const getProductFilters = createAsyncThunk(
+	'productFilters/getProductFilters',
+	(payload: string) => PublicRequest.getData(`merchant/catalog/products/filter/${payload}`),
+);

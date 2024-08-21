@@ -41,7 +41,7 @@ export interface addAttributeInterface {
 const stringZod = z.string().min(1);
 const numberZod = z.coerce.number().min(0).max(1);
 
-export const AddAttributeSchema = {
+export const AddAttributeSchema =  z.object({
     code: stringZod,
     type: stringZod, // select
     admin_name: stringZod,
@@ -76,7 +76,7 @@ export const AddAttributeSchema = {
     is_visible_on_front: numberZod,
     use_in_flat: numberZod,
     is_comparable: numberZod,
-};
+});
 
 export default function useCustomHookAddAttribute() {
     // Default values function

@@ -1432,4 +1432,26 @@ export const arabic = {
 	'female':'',
 	'male':'',
 	'Select group':'',
+	'Items Per Page':'',
+	'Select brands':'',
+	'Select categories':'',
+
+	'shipped':'',
+	'taxable':'',
+	'out of stock':'',
+	'best reviews':'',
+	'less reviews':'',
+	'best selling':'',
+	'less selling':'',
+	'most viewed':'',
+	'less viewed':'',
+
+	'simple product':'',
+	'configurable product':'',
+	'Select type':'',
+
+	'Most buying':'',
+	'Sort & Order':'',
+	'Sort':'',
+	'Select sort':'',
 } satisfies typeof english;

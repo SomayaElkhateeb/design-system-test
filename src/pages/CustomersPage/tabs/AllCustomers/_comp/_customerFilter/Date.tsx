@@ -14,7 +14,7 @@ const Date = ({ formStore }: { formStore: UseFormReturn<CustomersFilter> }) => {
         <DropDownMenu title={t('Date')}>
             <FormField
                 formStore={formStore}
-                name='date_from:'
+                name='date_from'
                 label={t('From')}
                 render={(field) => <Input {...field} placeholder={'YYYY-MM-DD'} />}
             />
