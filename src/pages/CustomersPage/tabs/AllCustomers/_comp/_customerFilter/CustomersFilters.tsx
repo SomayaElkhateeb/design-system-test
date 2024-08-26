@@ -52,6 +52,10 @@ export default function CustomersFilters({
 		defaultValues: handelDefaultValue(),
 	});
 	
+	const handleReset = () => {
+        HandelCloseDrawer()
+        formStore.reset();
+    }
 
 	return (
 		<Form {...formStore}>
@@ -80,7 +84,7 @@ export default function CustomersFilters({
 						<div className='flex-row-global justify-between'>
 							<Button>{t('Show Results')}</Button>
 							<Button variant='tertiary' onClick={onSubmit} >{t('Saved Filters')}</Button>
-							<Button variant='tertiary' className='text-[red] bg-white' onClick={HandelCloseDrawer}>
+							<Button variant='tertiary' className='text-[red] bg-white' onClick={handleReset}>
 								{t('Reset')}
 							</Button>
 						</div>

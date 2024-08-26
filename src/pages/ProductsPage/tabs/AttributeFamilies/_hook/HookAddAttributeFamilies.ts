@@ -8,28 +8,27 @@ export interface IAddAttributeFamilies {
     attribute_groups?: {
         name: string;
         position: number;
-        is_user_defined: number; 
-        custom_attributes: addAttributeInterface[]; 
+        is_user_defined: number;
+        custom_attributes: addAttributeInterface[];
     }[];
 }
 
-// Define schema for attribute group
-const AttributeGroupSchema = z.object({
-    name: z.string().min(1),
-    position: z.number().min(0), // Use z.number() instead of z.coerce.number()
-    is_user_defined: z.number().min(0).max(1), // Ensure is_user_defined is 0 or 1
-    custom_attributes: z.array(AddAttributeSchema), // Ensure AddAttributeSchema is correct
-});
 
-// Define schema for the attribute family
-export const AttributeFamilySchema = z.object({
+export const AttributeFamilySchema = {
     code: z.string().min(1),
     name: z.string().min(1),
-    attribute_groups: z.array(AttributeGroupSchema).optional(), // Optional array of attribute groups
-});
+    attribute_groups: z.array(
+        z.object({
+            name: z.string().min(1),
+            position: z.coerce.number().min(0), 
+            is_user_defined: z.number().min(0).max(1),
+            custom_attributes: z.array(AddAttributeSchema), 
+        })
+    ).optional(), 
+};
 
 export default function useCustomHookAttributeFamily() {
-    const handleDefaultValue = (): IAddAttributeFamilies => {
+    const handleDefaultValue = () => {
         return {
             code: '',
             name: '',
@@ -47,3 +46,4 @@ export default function useCustomHookAttributeFamily() {
         handleDefaultValue,
     };
 }
+

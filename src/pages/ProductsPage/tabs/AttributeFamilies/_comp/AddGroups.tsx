@@ -12,23 +12,26 @@ import CustomAttributes from './CustomAttributes';
 import FormField from "src/app/components/ui/form/field";
 import { Input } from "src/app/components/ui/input";
 import { GlobalDialog } from "src/app/components/shared";
+import { getAttributes } from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
+import { useAppDispatch, useAppSelector } from 'src/app/store';
 
 
-const AddGroups = ({ formStore, label }: { formStore: UseFormReturn<IAddAttributeFamilies>; label: string }) => {
+const AddGroups = ({ formStore, onSubmit }: { formStore: UseFormReturn<IAddAttributeFamilies>; }) => {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
     const [openDialog, setOpenDialog] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+    const { attributesList } = useAppSelector((state) => state.attributesProducts);
+
+    useEffect(() => {
+        dispatch(getAttributes());
+    }, [dispatch]);
 
     const { fields, append, remove } = useFieldArray({
         control: formStore.control,
         name: 'attribute_groups',
     });
-
-    const data = [
-        { code: 'dygectey', name: 'cuerh', type: 5 },
-        { code: 'dyctey', name: 'cuerh', type: 5 },
-        // Add more data as needed...
-    ];
 
     const handleClose = () => {
         setOpenDialog(false);
@@ -43,48 +46,43 @@ const AddGroups = ({ formStore, label }: { formStore: UseFormReturn<IAddAttribut
         setSelectedIndex(index);
         setOpenDialog(true);
     };
-
-    const handleAddGroup = () => {
-        // Get the values for the new group
-        const name = formStore.getValues(`attribute_groups.${fields.length}.name`);
-        const position = formStore.getValues(`attribute_groups.${fields.length}.position`);
-        const isUserDefined = formStore.getValues(`attribute_groups.${fields.length}.is_user_defined`) || 0;
+    // const handleAddGroup = () => {
+    //     // Get the values for the new group
+    //     const name = formStore.getValues(`attribute_groups.${fields.length}.name`);
+    //     const position = formStore.getValues(`attribute_groups.${fields.length}.position`);
     
-        // Ensure the position is unique
-        const existingPositions = fields.map(field => field.position);
-        if (existingPositions.includes(position)) {
-            // Optionally, you might want to show an error message or alert here
-            console.log(`Position ${position} already exists.`);
-            return;
-        }
+    //     // Validate the position
+    //     if (position === undefined || position === null || position === 0) {
+    //         console.log('Position is required.');
+    //         return;
+    //     }
     
-        // Create the new group object
-        const newGroup = {
-            name: name || '',
-            position: position || fields.length + 1,
-            is_user_defined: isUserDefined,
-            custom_attributes: [],
-        };
+    //     const existingPositions = fields.map(field => field.position);
+    //     if (existingPositions.includes(position)) {
+    //         console.log(`Position ${position} already exists.`);
+    //         return;
+    //     }
     
-        // Append the new group to the form's array
-        append(newGroup);
+    //     // Create the new group object
+    //     const newGroup = {
+    //         name: name || '',
+    //         position: position || fields.length + 1,
+    //     };
     
-        // Retrieve the updated groups from the form state
-        const updatedGroups = formStore.getValues('attribute_groups');
+    //     append(newGroup);
     
-        // Remove any duplicate groups before saving to localStorage
-        const uniqueGroups = Array.from(new Map(updatedGroups.map(group => [group.position, group])).values());
+    //     // Ensure unique groups in local storage
+    //     const updatedGroups = formStore.getValues('attribute_groups');
+    //     const uniqueGroups = Array.from(new Map(updatedGroups.map(group => [group.position, group])).values());
+    //     localStorage.setItem('attribute_groups', JSON.stringify(uniqueGroups));
     
-        // Save the updated unique groups to localStorage
-        localStorage.setItem('attribute_groups', JSON.stringify(uniqueGroups));
+    //     handleClose();
+    // };
     
-        // Close the dialog
-        handleClose();
-    };
-    
-    
-    
-
+const handleAddGroup = () => {
+    onSubmit()
+    handleClose();
+}
     return (
         <div className="flex-col-global gap-4">
             <div>
@@ -143,10 +141,10 @@ const AddGroups = ({ formStore, label }: { formStore: UseFormReturn<IAddAttribut
                             </div>
                         }
                         variant
-                        title={item.name || t('Group Name')} // Display the name from the field item
+                        title={item.name || t('Group Name')} 
                     >
                         <div>
-                            <GroupAttributeTable data={data} />
+                            {attributesList.length > 0 && <GroupAttributeTable data={attributesList} />}
                             <CustomAttributes />
                         </div>
                     </DropDownMenu>

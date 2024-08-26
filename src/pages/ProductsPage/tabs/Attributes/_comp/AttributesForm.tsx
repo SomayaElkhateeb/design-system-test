@@ -20,17 +20,13 @@ import {
 } from 'src/app/store/slices/Attributes/Attribute/attributeAsyncThunks';
 
 const AttributesForm = () => {
-	// hooks
 	const [initialOptions, setInitialOptions] = useState({});
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get('id');
 
-	// custom hook
 	const { handelDefaultValue, AddAttributeSchema } = useCustomHookAddAttribute();
-
-	// redux
 	const dispatch = useAppDispatch();
 	const { isLoadingAddOrUpdate, attributeShow } = useAppSelector(
 		(state) => state.attributesProducts,
@@ -39,19 +35,19 @@ const AttributesForm = () => {
 	const handleSubmit = (values: addAttributeInterface) => {
 		console.log('attributes', values)
 		const optionsFormatted = values.options.reduce((acc: any, option: any, index: number) => {
-			acc[`option_${(index += 1)}`] = option;
+			acc[`option_${index + 1}`] = option;
 			return acc;
 		}, {});
 		let SendingData = { ...values, options: optionsFormatted };
 
 		id
 			? dispatch(putAttribute({ data: SendingData, id })).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
+				if (promiseResponse.payload.code === 200) {
 					navigate(-1);
 				}
 			})
 			: dispatch(postAttribute(SendingData)).then((promiseResponse) => {
-				if ((promiseResponse.payload.code = 200)) {
+				if (promiseResponse.payload.code === 200) {
 					navigate(-1);
 				}
 			});
@@ -63,48 +59,54 @@ const AttributesForm = () => {
 		defaultValues: handelDefaultValue(),
 	});
 
-	useMemo(() => {
-		if (id) {
-			formStore.setValue('code', attributeShow?.code);
-			formStore.setValue('type', attributeShow?.type);
-			formStore.setValue('admin_name', attributeShow?.admin_name);
-			formStore.setValue('en.name', attributeShow?.en.name);
-			formStore.setValue('ar.name', attributeShow?.ar.name);
-			formStore.setValue('swatch_type', attributeShow?.swatch_type);
-			formStore.setValue('default-null-option', attributeShow?.['default-null-option']);
-
-			if (attributeShow?.options) {
-				const updatedOptions = attributeShow.options.reduce((acc, opt, index) => {
-					acc[`option_${index}`] = {
-						admin_name: opt.admin_name,
-						en: { label: opt.en.label },
-						ar: { label: opt.ar.label },
-						sort_order: opt.sort_order > 0 ? 1 : 0,
-						swatch_value: opt.swatch_value,
-					};
-					return acc;
-				}, {});
-				setInitialOptions(updatedOptions);
-			}
-
-			formStore.setValue('is_required', attributeShow?.is_required > 0 ? 1 : 0);
-			formStore.setValue('is_unique', attributeShow?.is_unique > 0 ? 1 : 0);
-			formStore.setValue('validation', attributeShow?.validation > 0 ? 1 : 0);
-			formStore.setValue('value_per_locale', attributeShow?.value_per_locale > 0 ? 1 : 0);
-			formStore.setValue('value_per_channel', attributeShow?.value_per_channel > 0 ? 1 : 0);
-			formStore.setValue('is_filterable', attributeShow?.is_filterable > 0 ? 1 : 0);
-			formStore.setValue('is_configurable', attributeShow?.is_configurable > 0 ? 1 : 0);
-			formStore.setValue('is_visible_on_front', attributeShow?.is_visible_on_front > 0 ? 1 : 0);
-			formStore.setValue('use_in_flat', attributeShow?.use_in_flat > 0 ? 1 : 0);
-			formStore.setValue('is_comparable', attributeShow?.is_comparable > 0 ? 1 : 0);
-		}
-	}, [id, attributeShow]);
-
 	useEffect(() => {
 		if (id) {
 			dispatch(getAttributeShow(id));
 		}
 	}, [id, dispatch]);
+
+	useEffect(() => {
+		if (id && attributeShow) {
+			formStore.setValue('code', attributeShow?.code || '');
+			formStore.setValue('type', attributeShow?.type || '');
+			formStore.setValue('admin_name', attributeShow?.admin_name || '');
+			formStore.setValue('en.name', attributeShow?.en?.name || '');
+			formStore.setValue('ar.name', attributeShow?.ar?.name || '');
+			formStore.setValue('swatch_type', attributeShow?.swatch_type || '');
+			formStore.setValue('default-null-option', attributeShow?.['default-null-option'] || '');
+	
+			if (attributeShow?.options) {
+				const updatedOptions = attributeShow.options.reduce((acc, opt, index) => {
+					acc[`option_${index}`] = {
+						admin_name: opt?.admin_name || '',
+						en: { label: opt?.en?.label || '' },
+						ar: { label: opt?.ar?.label || '' },
+						sort_order: opt?.sort_order > 0 ? 1 : 0,
+						swatch_value: opt?.swatch_value || '',
+					};
+					return acc;
+				}, {});
+				setInitialOptions(updatedOptions);
+			}
+	
+			const fieldsToConvert = [
+				'is_required',
+				'is_unique',
+				'validation',
+				'value_per_locale',
+				'value_per_channel',
+				'is_filterable',
+				'is_configurable',
+				'is_visible_on_front',
+				'use_in_flat',
+				'is_comparable',
+			];
+	
+			fieldsToConvert.forEach((field) => {
+				formStore.setValue(field, formStore.watch(field) ? 1 : 0);
+			});
+		}
+	}, [id, attributeShow, formStore]);
 
 	const data = [
 		{ name: 'is_required', label: t('Is Required'), enable: true },
@@ -118,47 +120,6 @@ const AttributesForm = () => {
 		{ name: 'use_in_flat', label: t('Use On Flat'), enable: true },
 		{ name: 'is_comparable', label: t('Is Comparable'), enable: true },
 	];
-
-	////////////////////////////////////////  ACTIONS //////////////////////////////////
-	useEffect(() => {
-		formStore.setValue('is_required', formStore.watch('is_required') ? 1 : 0);
-	}, [formStore.watch('is_required')]);
-
-	useEffect(() => {
-		formStore.setValue('is_unique', formStore.watch('is_unique') ? 1 : 0);
-	}, [formStore.watch('is_unique')]);
-
-	useEffect(() => {
-		formStore.setValue('validation', formStore.watch('validation') ? 1 : 0);
-	}, [formStore.watch('validation')]);
-
-	useEffect(() => {
-		formStore.setValue('value_per_locale', formStore.watch('value_per_locale') ? 1 : 0);
-	}, [formStore.watch('value_per_locale')]);
-
-	useEffect(() => {
-		formStore.setValue('value_per_channel', formStore.watch('value_per_channel') ? 1 : 0);
-	}, [formStore.watch('value_per_channel')]);
-
-	useEffect(() => {
-		formStore.setValue('is_filterable', formStore.watch('is_filterable') ? 1 : 0);
-	}, [formStore.watch('is_filterable')]);
-
-	useEffect(() => {
-		formStore.setValue('is_configurable', formStore.watch('is_configurable') ? 1 : 0);
-	}, [formStore.watch('is_configurable')]);
-
-	useEffect(() => {
-		formStore.setValue('is_visible_on_front', formStore.watch('is_visible_on_front') ? 1 : 0);
-	}, [formStore.watch('is_visible_on_front')]);
-
-	useEffect(() => {
-		formStore.setValue('use_in_flat', formStore.watch('use_in_flat') ? 1 : 0);
-	}, [formStore.watch('use_in_flat')]);
-
-	useEffect(() => {
-		formStore.setValue('is_comparable', formStore.watch('is_comparable') ? 1 : 0);
-	}, [formStore.watch('is_comparable')]);
 
 	return (
 		<Form {...formStore}>
@@ -193,3 +154,4 @@ const AttributesForm = () => {
 };
 
 export default AttributesForm;
+

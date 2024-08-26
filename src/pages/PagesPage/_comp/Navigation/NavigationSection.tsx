@@ -18,7 +18,7 @@ export default function NavigationSection() {
 			{!xs && (
 				<div>
 					<Button
-						onClick={() => navigate('AddNavigation')}
+						onClick={() => navigate('admin/AddNavigation')}
 						variant='primary'
 						LeftIcon={IoIosAddCircle}
 					>

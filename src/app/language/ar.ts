@@ -1454,4 +1454,6 @@ export const arabic = {
 	'Sort & Order':'',
 	'Sort':'',
 	'Select sort':'',
+	'Add More Group':'',
+	'Product Status':'',
 } satisfies typeof english;

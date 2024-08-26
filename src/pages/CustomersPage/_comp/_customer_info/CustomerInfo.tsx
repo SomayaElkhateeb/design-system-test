@@ -108,7 +108,7 @@ export default function CustomerInfo() {
 							<div className='flex-row-global justify-between  px-[1.2rem]'>
 								<p className='title'>{t('Addresses')}</p>
 								<div
-									onClick={() => navigate('addNewAddress')}
+									onClick={() => navigate('admin/addNewAddress')}
 									className='flex-row-global gap-[.4rem] cursor-pointer'
 								>
 									<IoIosAddCircle />
@@ -137,7 +137,7 @@ export default function CustomerInfo() {
 														className='cursor-pointer'
 													/>
 													<FiEdit
-														onClick={() => navigate(`addNewAddress?address_id=${e?.id}`)}
+														onClick={() => navigate(`admin/addNewAddress?address_id=${e?.id}`)}
 														className='cursor-pointer'
 													/>
 												</div>

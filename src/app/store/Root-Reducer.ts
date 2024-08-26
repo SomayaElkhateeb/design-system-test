@@ -5,10 +5,6 @@ import couponPage from './slices/marketingPage/coupon/couponSlice';
 import cartRule from './slices/marketingPage/cartRule/cartRuleSlice';
 import catalogRules from './slices/marketingPage/catalogRule/catalogRuleSlice';
 
-import categories from './slices/selectors/categories/categoriesSlice';
-import customers from './slices/selectors/customers/customersSlice';
-import products from './slices/selectors/products/productsSlice';
-import groups from './slices/selectors/groups/groupsSlice';
 import productsAnalytics from './slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableSlice';
 import ordersAnalytics from './slices/analyticsPage/OrderAnalytics/orderAnalyticsTableSlice';
 import customersAnalytics from './slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableSlice';

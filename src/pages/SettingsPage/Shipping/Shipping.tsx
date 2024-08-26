@@ -161,7 +161,7 @@ export default function Shipping() {
 								</GlobalTableCell>,
 								<GlobalTableCell>{e.method}</GlobalTableCell>,
 								<GlobalTableCell>{e.method_title}</GlobalTableCell>,
-								<GlobalTableCell>{handelAppearButton(e)}</GlobalTableCell>,
+								// <GlobalTableCell>{handelAppearButton(e)}</GlobalTableCell>,
 							],
 						};
 					})}

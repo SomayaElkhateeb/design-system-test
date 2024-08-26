@@ -52,7 +52,11 @@ const ProductFilters = ({
         handleSubmit: handleSubmit,
         defaultValues: handelDefaultValue(),
     });
-
+    
+    const handleReset = () => {
+        HandelCloseDrawer()
+        formStore.reset();
+    }
 
     return (
         <Form {...formStore}>
@@ -71,16 +75,16 @@ const ProductFilters = ({
                         <div className='w-full'>
                             <ProductFilterCategories formStore={formStore} />
                             <ProductFilterBrand formStore={formStore} />
-                            <ProductFilterPrice formStore={formStore}/>
-                            <ProductFilterQuantity formStore={formStore}/>
-                            <ProductFilterTypes formStore={formStore}/>
-                            <ProductFilterSwitch formStore={formStore}/>
+                            <ProductFilterPrice formStore={formStore} />
+                            <ProductFilterQuantity formStore={formStore} />
+                            <ProductFilterTypes formStore={formStore} />
+                            <ProductFilterSwitch formStore={formStore} />
                         </div>
 
                         <div className='flex-row-global justify-between'>
                             <Button>{t('Show Results')}</Button>
                             <Button variant='tertiary' onClick={onSubmit} >{t('Saved Filters')}</Button>
-                            <Button variant='tertiary' className='text-[red] bg-white' onClick={HandelCloseDrawer}>
+                            <Button variant='tertiary' className='text-[red] bg-white' onClick={handleReset}>
                                 {t('Reset')}
                             </Button>
                         </div>
