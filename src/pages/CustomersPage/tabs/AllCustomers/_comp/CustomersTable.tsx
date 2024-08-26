@@ -130,7 +130,7 @@ export default function CustomersTable({
 								<div className={classData}>
 									<FaRegEdit
 										className='text-subtitle'
-										onClick={() => navigate(`addCustomer?id=${e?.id}`)}
+										onClick={() => navigate(`/addCustomer?id=${e?.id}`)}
 									/>
 									<div onClick={() => handelId(e?.id)}>{children}</div>
 

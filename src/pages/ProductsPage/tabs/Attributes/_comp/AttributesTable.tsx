@@ -3,7 +3,7 @@ import useLanguage from 'src/app/utils/hooks/useLanguage';
 import BaseTable, {
   GlobalTableCell,
 } from 'src/app/components/optimized/TableLayoutGlobal/base.table';
-import { Attribute } from 'src/app/interface/AttributeInterface';
+import { addAttributeInterface } from '../_hook/HookAddAttributes';
 
 export default function AttributesTable({
   data,
@@ -11,7 +11,7 @@ export default function AttributesTable({
   isLoading,
   children,
 }: {
-  data: Attribute[];
+  data: addAttributeInterface[];
   handelId: (e: string) => void;
   children: React.ReactNode;
   isLoading: boolean;
@@ -37,7 +37,7 @@ export default function AttributesTable({
       language={language}
       color='#55607A'
       headers={dataHeaders.map((h) => h)}
-      rows={data?.map((e: Attribute, i: number) => {
+      rows={data?.map((e: addAttributeInterface, i: number) => {
         return {
           item: e,
           elements: [

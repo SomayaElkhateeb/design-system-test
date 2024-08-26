@@ -11,6 +11,7 @@ import { Button } from 'src/app/components/optimized';
 import DropDownMenu from 'src/app/components/optimized/DropDownMenu';
 import { LiaTrashAlt } from 'react-icons/lia';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { useEffect } from 'react';
 
 const OptionFields = ({
 	formStore,  
@@ -26,6 +27,15 @@ const OptionFields = ({
 		control: formStore.control,
 		name: 'options',
 	});
+
+	useEffect(() => {
+		fields.forEach((item, i) => {
+			formStore.setValue(
+				`options[${i}].sort_order`,
+				formStore.watch(`options[${i}].sort_order`) ? 1 : 0
+			);
+		});
+	}, [formStore, fields]);
 
 	return (
 		<div className='flex-col-global'>

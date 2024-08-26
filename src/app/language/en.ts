@@ -1478,4 +1478,6 @@ export const english = {
 	'Sort & Order':'Sort & Order',
 	'Sort':'Sort',
 	'Select sort':'Select sort',
+	'Add More Group':'Add More Group',
+	'Product Status':'Product Status',
 };

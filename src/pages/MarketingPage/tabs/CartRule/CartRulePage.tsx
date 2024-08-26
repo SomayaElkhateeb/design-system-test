@@ -65,7 +65,7 @@ const CartRulePage = () => {
         break;
       case 'edit':
         setSelectedOption('');
-        custom_Id && navigate(`add-cartRule?id=${custom_Id}`);
+        custom_Id && navigate(`admin/add-cartRule?id=${custom_Id}`);
         break;
     }
   }, [selectedOption, custom_Id]);

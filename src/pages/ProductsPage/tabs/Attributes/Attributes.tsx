@@ -17,15 +17,12 @@ const Attributes = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
 	const { attributesList, isLoading } = useAppSelector((state) => state.attributesProducts);
+	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
 
 	useEffect(() => {
 		dispatch(getAttributes());
 	}, [dispatch]);
-
-	const { selectedOption, handleSelect, setSelectedOption } = useSelectBox();
-
 
 	const options = [
 		{
@@ -57,6 +54,15 @@ const Attributes = () => {
 		});
 	};
 
+	const handelDeleteAllAttribute = () => {
+		dispatch(deleteAllAttributesAction(code)).then((promiseResponse: any) => {
+			if ((promiseResponse.payload.code = 200)) {
+				handelCloseDeleteDialog();
+				dispatch(getAttributes());
+			}
+		});
+	};
+
 	useMemo(() => {
 		switch (selectedOption) {
 			case 'delete':
@@ -67,18 +73,18 @@ const Attributes = () => {
 				setSelectedOption('');
 				custom_Id && navigate(`add-attribute?id=${custom_Id}`);
 				break;
-				case 'Delete all attributes':
-					attributesList?.length > 0
-					? dispatch(deleteAllAttributesAction({ indexes: code })).then(
-						(promiseResponse: any) => {
-							if ((promiseResponse.payload.code = 200)) {
-								dispatch(getAttributes());
-							}
-						},
-					)
-					: toast.error('There are no data to delete it');
-				setSelectedOption('');
-				break;
+			case 'Delete all attributes':
+				attributesList?.length > 0
+				? dispatch(deleteAllAttributesAction({ indexes: code })).then(
+					(promiseResponse: any) => {
+						if ((promiseResponse.payload.code = 200)) {
+							dispatch(getAttributes());
+						}
+					},
+				)
+				: toast.error('There are no data to delete it');
+			setSelectedOption('');
+			break;
 		}
 	}, [selectedOption, custom_Id]);
 

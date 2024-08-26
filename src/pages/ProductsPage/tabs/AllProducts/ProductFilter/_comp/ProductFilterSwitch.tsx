@@ -39,18 +39,18 @@ const ProductFilterSwitch = ({ formStore }: { formStore: UseFormReturn<IProductF
     ];
 
     return (
-        <DropDownMenu title={t('Configurable')}>
+        <DropDownMenu title={t('Product Status')}>
             {filterFields.map((field) => (
-             <div className='flex-row-global gap-4 mb-4'>
-                   <FormSwitchField<IProductFilters>
-                    key={field.name}
-                    formStore={formStore}
-                    name={field.name}
-                    
-                    enable
-                />
-                <p className='text-title text-sm'>{t(field.description)}</p>
-             </div>
+                <div className='flex-row-global gap-4 mb-4'>
+                    <FormSwitchField<IProductFilters>
+                        key={field.name}
+                        formStore={formStore}
+                        name={field.name}
+
+                        enable
+                    />
+                    <p className='text-title text-sm'>{t(field.description)}</p>
+                </div>
             ))}
         </DropDownMenu>
     )
