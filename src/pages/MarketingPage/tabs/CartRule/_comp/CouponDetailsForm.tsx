@@ -19,7 +19,7 @@ export default function CouponDetailsForm({
 		{ value: '1', label: 'Specific Coupon' },
 	];
 
-	cconst handleDateChange = (field: keyof CartRuleInterface) => (date: Dayjs | null) => {
+	const handleDateChange = (field: keyof CartRuleInterface) => (date: Dayjs | null) => {
 		formStore.setValue(field, date, { shouldValidate: true });
 	};
 
