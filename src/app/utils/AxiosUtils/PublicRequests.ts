@@ -69,3 +69,5 @@ export default class PublicRequest {
         return AxiosHandler.getResponse(200, AxiosHandler.vDeleteRequest, path);
     };
 }
+
+
