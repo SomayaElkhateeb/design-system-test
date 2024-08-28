@@ -104,6 +104,6 @@ export const customersSortFunctions: Record<string, (a: any, b: any) => number> 
 		getNumericValue(b.purchasing_customers) - getNumericValue(a.purchasing_customers),
 	'Purchasing customers Ascending': (a, b) =>
 		getNumericValue(a.purchasing_customers) - getNumericValue(b.purchasing_customers),
-	'Customer groups Descending': (a, b) => b.customer_groups - a.customer_groups,
+	'Customer groups Descending': (a, b) => b. - a.customer_groups,
 	'Customer groups Ascending': (a, b) => a.customer_groups - b.customer_groups,
 };

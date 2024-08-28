@@ -1,32 +1,30 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export const UseDeleteItem=()=>{
-    const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+export const UseDeleteItem = () => {
+	const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
 	const [custom_Id, setCustomId] = useState('');
 
-
-    const handelId=(id:string)=>{
-        setCustomId(id);
-    }
-    const handelDeleteItem = (id:string) => {
+	const handelId = (id: string) => {
+		setCustomId(id);
+	};
+	const handelDeleteItem = (id: string) => {
 		setOpenDeleteDialog(true);
-		handelId(id)
+		handelId(id);
 	};
 
 	const handelCloseDeleteDialog = () => {
-        setCustomId("")
+		setCustomId('');
 		setOpenDeleteDialog(false);
 	};
-    const handelOpenDialog=()=>{
-        setOpenDeleteDialog(true);  
-    }
-    return{
-        openDeleteDialog,
-        custom_Id,
-        handelDeleteItem,
-        handelCloseDeleteDialog,
-        handelId,
-        handelOpenDialog
-    }
-
-}
+	const handelOpenDialog = () => {
+		setOpenDeleteDialog(true);
+	};
+	return {
+		openDeleteDialog,
+		custom_Id,
+		handelDeleteItem,
+		handelCloseDeleteDialog,
+		handelId,
+		handelOpenDialog,
+	};
+};

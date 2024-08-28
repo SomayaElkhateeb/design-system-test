@@ -12,7 +12,8 @@ const CartRuleHeader = () => {
   return (
     <div className='md:flex-row-global flex-col-global justify-between w-full'>
     <div>
-      <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('admin/add-cartRule')}>
+      {/* <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('admin/add-cartRule')}> */}
+      <Button variant='primary' LeftIcon={IoIosAddCircle} onClick={() => navigate('add-cartRule')}>
         {t('add cart rule')}
       </Button>
     </div>

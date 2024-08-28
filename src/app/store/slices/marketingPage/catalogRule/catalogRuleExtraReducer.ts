@@ -1,56 +1,58 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { getCoupons, getCouponShow, postCoupon, postCouponMassDestroy } from './catalogRuleAsyncThunks';
+import {
+	getCatalogRules,
+	getCatalogRuleShow,
+	postCatalogRule,
+	// postCouponMassDestroy,
+} from './catalogRuleAsyncThunks';
 
-export const couponsReducer = (
-	builder: ActionReducerMapBuilder<any>,
-) => {
+export const catalogRulesReducer = (builder: ActionReducerMapBuilder<any>) => {
 	builder
 		// // get Coupons
-		.addCase(getCoupons.pending, (state) => {
+		.addCase(getCatalogRules.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getCoupons.fulfilled, (state, { payload }: any) => {
+		.addCase(getCatalogRules.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
 			state.coupons = payload.data;
 		})
-		.addCase(getCoupons.rejected, (state, action) => {
+		.addCase(getCatalogRules.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
 		// // get coupon Show
-		.addCase(getCouponShow.pending, (state) => {
+		.addCase(getCatalogRuleShow.pending, (state) => {
 			state.isLoading = true;
 			state.error = null;
 		})
-		.addCase(getCouponShow.fulfilled, (state, { payload }: any) => {
+		.addCase(getCatalogRuleShow.fulfilled, (state, { payload }: any) => {
 			state.isLoading = false;
 			state.couponShow = payload?.data;
 		})
-		.addCase(getCouponShow.rejected, (state, action) => {
+		.addCase(getCatalogRuleShow.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		})
 		//  add tax rate
-		.addCase(postCoupon.pending, (state) => {
+		.addCase(postCatalogRule.pending, (state) => {
 			state.isLoadingAddOrUpdate = true;
 		})
-		.addCase(postCoupon.fulfilled, (state, { payload }: any) => {
+		.addCase(postCatalogRule.fulfilled, (state, { payload }: any) => {
 			state.isLoadingAddOrUpdate = false;
 		})
-		.addCase(postCoupon.rejected, (state, action) => {
+		.addCase(postCatalogRule.rejected, (state, action) => {
 			state.isLoadingAddOrUpdate = false;
-		})
-		
-		//  post Coupon Mass Destroy
-		.addCase(postCouponMassDestroy.pending, (state) => {
-			state.isLoadingAddOrUpdate = true;
-		})
-		.addCase(postCouponMassDestroy.fulfilled, (state, { payload }: any) => {
-			state.isLoadingAddOrUpdate = false;
-		})
-		.addCase(postCouponMassDestroy.rejected, (state, action) => {
-			state.isLoadingAddOrUpdate = false;
-		})
+		});
 
+	//  post Coupon Mass Destroy
+	// .addCase(postCouponMassDestroy.pending, (state) => {
+	// 	state.isLoadingAddOrUpdate = true;
+	// })
+	// .addCase(postCouponMassDestroy.fulfilled, (state, { payload }: any) => {
+	// 	state.isLoadingAddOrUpdate = false;
+	// })
+	// .addCase(postCouponMassDestroy.rejected, (state, action) => {
+	// 	state.isLoadingAddOrUpdate = false;
+	// });
 };
