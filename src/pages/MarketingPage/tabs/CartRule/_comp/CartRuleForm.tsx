@@ -6,31 +6,32 @@ import {
 	SubHeaderDefaultBtns,
 	SubHeaderMobileBtns,
 } from 'src/app/components/optimized/UiKits/SubHeaderActionBtns';
-// import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { CartRuleInterface, cartRuleSchema, defaultValues } from '../_hook/HookCartRuleForm';
-// import {
-// 	postCartRule,
+import {
+	postCartRule,
 // 	putCartRule,
-// } from 'src/app/store/slices/marketingPage/cartRule/cartRuleAsyncThunks';
-import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+} from 'src/app/store/slices/marketingPage/cartRule/cartRuleAsyncThunks';
+// import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import RuleInfoForm from './RuleInfoForm';
-import CouponDetailsForm from './CouponDetailsForm';
-import ActionsForm from './ActionsForm';
-import ConditionsForm from './ConditionsForm';
+// import CouponDetailsForm from './CouponDetailsForm';
+// import ActionsForm from './ActionsForm';
+// import ConditionsForm from './ConditionsForm';
+// import { useEffect } from 'react';
 // import { useEffect, useMemo, useState } from 'react';
 
 const CartRuleForm = () => {
 	// const [conditions, setConditions] = useState({});
 
 	const { t } = useTranslation();
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 	// const [searchParams] = useSearchParams();
 
 	// const id = searchParams.get('id');
 
 	// redux
-	// const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 
 	const {
 		isLoadingAddOrUpdate,
@@ -45,18 +46,19 @@ const CartRuleForm = () => {
 		// 				navigate(-1);
 		// 			}
 		// 	  })
-		// 	: dispatch(postCartRule(values)).then((promiseResponse) => {
-		// 			if ((promiseResponse.payload.code = 200)) {
-		// 				navigate(-1);
-		// 			}
-		// 	  });
-	};
+		// 	:
+		// const convertedData = {
+    //   ...values,
+    //   customer_groups: Number(data.customer_groups),
+    // };
 
-	const { formStore, onSubmit } = useForm({
-		schema: cartRuleSchema,
-		handleSubmit: handleSubmit,
-		defaultValues,
-	});
+		dispatch(postCartRule(values)).then((promiseResponse) => {
+			if ((promiseResponse.payload.code = 200)) {
+				console.log('Done');
+				navigate(-1);
+			}
+		});
+	};
 
 	// useMemo(() => {
 	// 	if (id) {
@@ -93,12 +95,12 @@ const CartRuleForm = () => {
 	// 	}
 	// }, [id, cartRuleShow]);
 
-	const quickActionsData = [
-		{ name: 'apply_to_shipping', label: t('Apply to Shipping'), enable: true },
-		{ name: 'free_shipping', label: t('Free shipping'), enable: true },
-		{ name: 'end_other_rules', label: t('End Other Rules'), enable: true },
-		{ name: 'sort_order', label: t('Sort Order'), enable: true },
-	];
+	// const quickActionsData = [
+	// 	{ name: 'apply_to_shipping', label: t('Apply to Shipping'), enable: true },
+	// 	{ name: 'free_shipping', label: t('Free shipping'), enable: true },
+	// 	{ name: 'end_other_rules', label: t('End Other Rules'), enable: true },
+	// 	{ name: 'sort_order', label: t('Sort Order'), enable: true },
+	// ];
 
 	// useEffect(() => {
 	// 	formStore.setValue('apply_to_shipping', formStore.watch('apply_to_shipping') ? 1 : 0);
@@ -112,6 +114,12 @@ const CartRuleForm = () => {
 	// 	formStore.setValue('end_other_rules', formStore.watch('end_other_rules') ? 1 : 0);
 	// }, [formStore.watch('end_other_rules')]);
 
+	const { formStore, onSubmit } = useForm({
+		schema: cartRuleSchema,
+		handleSubmit: handleSubmit,
+		defaultValues,
+	});
+	
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
@@ -122,16 +130,16 @@ const CartRuleForm = () => {
 				<div className='custom_container custom-grid-parent'>
 					<div className='flex-col-global grid-left'>
 						<RuleInfoForm formStore={formStore} />
-						<CouponDetailsForm formStore={formStore} />
+						{/* <CouponDetailsForm formStore={formStore} />
 						<ConditionsForm formStore={formStore} />
-						<ActionsForm formStore={formStore} />
+						<ActionsForm formStore={formStore} /> */}
 					</div>
 					<div className='grid-right'>
-						<QuickActions<CartRuleInterface>
+						{/* <QuickActions<CartRuleInterface>
 							formStore={formStore}
 							data={quickActionsData}
 							title={t('Quick actions')}
-						/>
+						/> */}
 					</div>
 				</div>
 

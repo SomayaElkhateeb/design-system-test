@@ -7,22 +7,37 @@ import FormField from 'src/app/components/ui/form/field';
 import { Input } from 'src/app/components/ui/input';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker } from 'src/app/components/optimized';
+import { useEffect } from 'react';
+
 export default function CouponDetailsForm({
 	formStore,
 }: {
 	formStore: UseFormReturn<CartRuleInterface>;
 }) {
+	
 	const { t } = useTranslation();
+	const useAutoGeneration = formStore.watch('use_auto_generation');
+	const couponType = formStore.watch('coupon_type');
+
+	useEffect(() => {
+		formStore.setValue('coupon_type', couponType ? 1 : 0);
+	}, [couponType]);
+
+	useEffect(() => {
+		formStore.setValue('use_auto_generation', useAutoGeneration ? 1 : 0);
+	}, [useAutoGeneration]);
 
 	const couponTypeOptions = [
-		{ value: '0', label: 'No Coupon' },
-		{ value: '1', label: 'Specific Coupon' },
+		{ value: '0', label: t('No Coupon') },
+		{ value: '1', label: t('Specific Coupon') },
 	];
 
 	const handleDateChange = (field: keyof CartRuleInterface) => (date: Dayjs | null) => {
-		formStore.setValue(field, date, { shouldValidate: true });
+		const formattedDate = date ? date.format('YYYY-MM-DD HH:mm:ss') : null;
+		formStore.setValue(field, formattedDate, { shouldValidate: true });
 	};
 
+	console.log('useAutoGeneration', useAutoGeneration, typeof useAutoGeneration);
 	return (
 		<div className='global-cards'>
 			<h3 className='title'>{t('Coupon Details')}</h3>
@@ -32,18 +47,22 @@ export default function CouponDetailsForm({
 				formStore={formStore}
 				options={couponTypeOptions}
 			/>
+			{/* {couponType.toString() === '1' && ( */}
 			<FormSwitchField<CartRuleInterface>
 				formStore={formStore}
 				label={t('Use Auto Generation')}
 				name='use_auto_generation'
 				enable
 			/>
+			{/* )} */}
+			{/* {couponType.toString() === '1' && useAutoGeneration.toString() === '1' && ( */}
 			<FormField
 				formStore={formStore}
 				name='coupon_code'
 				label={t('Coupon Code')}
 				render={(field) => <Input {...field} />}
 			/>
+			{/* )} */}
 			<FormField
 				formStore={formStore}
 				name='uses_per_coupon'
@@ -57,21 +76,16 @@ export default function CouponDetailsForm({
 				description={t('Will be used for logged in customers only.')}
 				render={(field) => <Input {...field} type='number' />}
 			/>
-
 			<DatePicker
-				value={formStore.watch('starts_from')}
+				value={formStore.watch('starts_from') ? dayjs(formStore.watch('starts_from')) : null}
 				label={t('Start Date')}
 				handleOnChange={handleDateChange('starts_from')}
 			/>
-
 			<DatePicker
-				value={formStore.watch('ends_till')}
+				value={formStore.watch('ends_till') ? dayjs(formStore.watch('ends_till')) : null}
 				label={t('End Date')}
 				handleOnChange={handleDateChange('ends_till')}
 			/>
 		</div>
 	);
 }
-// ends_till
-// starts_from
-// value.toDate()

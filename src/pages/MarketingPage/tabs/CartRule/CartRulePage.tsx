@@ -21,7 +21,7 @@ const CartRulePage = () => {
 	const { t } = useTranslation();
 
 	const { cartRules, isLoading } = useAppSelector((state) => state.cartRule);
-
+console.log(cartRules)
 	useEffect(() => {
 		dispatch(getCartRule());
 	}, [dispatch]);

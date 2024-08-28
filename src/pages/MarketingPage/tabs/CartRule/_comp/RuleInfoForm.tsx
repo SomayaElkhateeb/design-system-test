@@ -13,12 +13,13 @@ export default function RuleInfoForm({
 	formStore: UseFormReturn<CartRuleInterface>;
 }) {
 	const { t } = useTranslation();
+	
 	const customerGroupsOptions = [
 		{ value: '0', label: t('Guest') },
 		{ value: '1', label: t('General') },
 		{ value: '2', label: t('Wholesale') },
 	];
-
+	
 	return (
 		<div className='global-cards'>
 			<h3 className='title'>{t('Rule Info')}</h3>
