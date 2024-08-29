@@ -14,18 +14,9 @@ export default function CouponDetailsForm({
 }: {
 	formStore: UseFormReturn<CartRuleInterface>;
 }) {
-	
 	const { t } = useTranslation();
 	const useAutoGeneration = formStore.watch('use_auto_generation');
 	const couponType = formStore.watch('coupon_type');
-
-	useEffect(() => {
-		formStore.setValue('coupon_type', couponType ? 1 : 0);
-	}, [couponType]);
-
-	useEffect(() => {
-		formStore.setValue('use_auto_generation', useAutoGeneration ? 1 : 0);
-	}, [useAutoGeneration]);
 
 	const couponTypeOptions = [
 		{ value: '0', label: t('No Coupon') },
@@ -36,8 +27,6 @@ export default function CouponDetailsForm({
 		const formattedDate = date ? date.format('YYYY-MM-DD HH:mm:ss') : null;
 		formStore.setValue(field, formattedDate, { shouldValidate: true });
 	};
-
-	console.log('useAutoGeneration', useAutoGeneration, typeof useAutoGeneration);
 	return (
 		<div className='global-cards'>
 			<h3 className='title'>{t('Coupon Details')}</h3>
@@ -47,22 +36,24 @@ export default function CouponDetailsForm({
 				formStore={formStore}
 				options={couponTypeOptions}
 			/>
-			{/* {couponType.toString() === '1' && ( */}
-			<FormSwitchField<CartRuleInterface>
-				formStore={formStore}
-				label={t('Use Auto Generation')}
-				name='use_auto_generation'
-				enable
-			/>
-			{/* )} */}
-			{/* {couponType.toString() === '1' && useAutoGeneration.toString() === '1' && ( */}
-			<FormField
-				formStore={formStore}
-				name='coupon_code'
-				label={t('Coupon Code')}
-				render={(field) => <Input {...field} />}
-			/>
-			{/* )} */}
+			{couponType == '1' && (
+				<FormSwitchField<CartRuleInterface>
+					formStore={formStore}
+					label={t('Use Auto Generation')}
+					name='use_auto_generation'
+					enable
+				/>
+			)}
+			{useAutoGeneration !== null &&
+				(couponType === '1' && useAutoGeneration == 0 ? (
+					<FormField
+						formStore={formStore}
+						name='coupon_code'
+						label={t('Coupon Code')}
+						render={(field) => <Input {...field} />}
+					/>
+				) : null)}
+
 			<FormField
 				formStore={formStore}
 				name='uses_per_coupon'

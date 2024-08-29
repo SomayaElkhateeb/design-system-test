@@ -1514,4 +1514,5 @@ export const english = {
 	'Uses Per Customer': 'Uses Per Customer',
 	'Uses Per Coupon': 'Uses Per Coupon',
 	'Coupon Code': 'Coupon Code',
+	'Condition Type': 'Condition Type',
 };

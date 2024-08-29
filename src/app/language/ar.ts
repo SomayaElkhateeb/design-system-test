@@ -1485,4 +1485,5 @@ export const arabic = {
 	'Uses Per Customer': 'عدد مرات الاستخدام لكل عميل',
 	'Uses Per Coupon': 'عدد مرات الاستخدام لكل كوبون',
 	'Coupon Code': 'رمز الكوبون',
+	'Condition Type': 'نوع الحالة',
 } satisfies typeof english;
