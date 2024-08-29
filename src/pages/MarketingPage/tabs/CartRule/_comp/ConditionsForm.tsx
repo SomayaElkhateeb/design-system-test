@@ -22,16 +22,21 @@ export default function ConditionsForm({
 		{ label: t('Greater than'), value: '>' },
 		{ label: t('Less than'), value: '<' },
 	];
+
 	const options = [
 		{ value: '0', label: t('All Conditions are True') },
 		{ value: '1', label: t('Any Condition is True') },
 	];
 
 	const conditionTypes = [
-		{ label: t('Cart'), value: 'cart' },
-		{ label: t('Base Subtotal'), value: 'base_sub_total' },
+		{ label: t('Cart'), value: '0' },
+		{ label: t('Base Subtotal'), value: '1' },
 	];
 
+	const attributeTypeOptions = [
+		{ label: t('Price'), value: '0' },
+		{ label: t('Free'), value: '1' },
+	];
 	const { fields, append, remove } = useFieldArray({
 		control: formStore.control,
 		name: 'conditions',
@@ -41,16 +46,15 @@ export default function ConditionsForm({
 		<div className='global-cards '>
 			<h3 className='title'>{t('Conditions')}</h3>
 			<SelectFormField
-				name='action_type'
-				label={t('Action Type')}
+				name='condition_type'
+				label={t('Condition Type')}
 				formStore={formStore}
 				options={options}
 				placeholder={t('Select type')}
 			/>
-
 			{fields.map((field, index) => (
 				<div key={field.id} className='flex gap-5 items-center'>
-					<div className='grid grid-cols-1 md:grid-cols-3 gap-3 flex-1'>
+					<div className='grid grid-cols-1 md:grid-cols-2 gap-3 flex-1'>
 						<SelectFormField
 							name={`conditions.${index}.attribute`}
 							formStore={formStore}
@@ -62,6 +66,11 @@ export default function ConditionsForm({
 									name={`conditions.${index}.operator`}
 									formStore={formStore}
 									options={comparisonTypes}
+								/>
+								<SelectFormField
+									name={`conditions.${index}.attribute_type`}
+									formStore={formStore}
+									options={attributeTypeOptions}
 								/>
 								<FormField
 									formStore={formStore}
@@ -80,7 +89,7 @@ export default function ConditionsForm({
 				type='button'
 				variant='primary'
 				text={t('Add Condition')}
-				onClick={() => append({ attribute: '', operator: '', value: 0 })}
+				onClick={() => append({ attribute: '', attribute_type: '', operator: '', value: 0 })}
 				className='w-fit'
 			/>
 		</div>

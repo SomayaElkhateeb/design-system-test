@@ -15,9 +15,9 @@ export default function RuleInfoForm({
 	const { t } = useTranslation();
 	
 	const customerGroupsOptions = [
-		{ value: '0', label: t('Guest') },
-		{ value: '1', label: t('General') },
-		{ value: '2', label: t('Wholesale') },
+		{ value: '1', label: t('Guest') },
+		{ value: '2', label: t('General') },
+		{ value: '3', label: t('Wholesale') },
 	];
 	
 	return (

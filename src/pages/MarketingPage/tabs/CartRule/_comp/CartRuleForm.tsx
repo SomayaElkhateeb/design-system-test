@@ -11,16 +11,16 @@ import { useAppDispatch, useAppSelector } from 'src/app/store';
 import { CartRuleInterface, cartRuleSchema, defaultValues } from '../_hook/HookCartRuleForm';
 import {
 	postCartRule,
-// 	putCartRule,
+	// 	putCartRule,
 } from 'src/app/store/slices/marketingPage/cartRule/cartRuleAsyncThunks';
-// import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
+import QuickActions from 'src/app/components/optimized/UiKits/QuickActions';
 import RuleInfoForm from './RuleInfoForm';
-// import CouponDetailsForm from './CouponDetailsForm';
-// import ActionsForm from './ActionsForm';
-// import ConditionsForm from './ConditionsForm';
+import CouponDetailsForm from './CouponDetailsForm';
+import ActionsForm from './ActionsForm';
+import ConditionsForm from './ConditionsForm';
 // import { useEffect } from 'react';
 // import { useEffect, useMemo, useState } from 'react';
-
+import { Path } from 'react-hook-form';
 const CartRuleForm = () => {
 	// const [conditions, setConditions] = useState({});
 
@@ -47,14 +47,16 @@ const CartRuleForm = () => {
 		// 			}
 		// 	  })
 		// 	:
-		// const convertedData = {
-    //   ...values,
-    //   customer_groups: Number(data.customer_groups),
-    // };
 
-		dispatch(postCartRule(values)).then((promiseResponse) => {
+		const convertedData = {
+			...values,
+			customer_groups: [Number(values.customer_groups)],
+			condition_type: Number(values.condition_type),
+			channels: [1],
+		};
+		console.log('n Done', convertedData);
+		dispatch(postCartRule(convertedData)).then((promiseResponse) => {
 			if ((promiseResponse.payload.code = 200)) {
-				console.log('Done');
 				navigate(-1);
 			}
 		});
@@ -95,31 +97,26 @@ const CartRuleForm = () => {
 	// 	}
 	// }, [id, cartRuleShow]);
 
-	// const quickActionsData = [
-	// 	{ name: 'apply_to_shipping', label: t('Apply to Shipping'), enable: true },
-	// 	{ name: 'free_shipping', label: t('Free shipping'), enable: true },
-	// 	{ name: 'end_other_rules', label: t('End Other Rules'), enable: true },
-	// 	{ name: 'sort_order', label: t('Sort Order'), enable: true },
-	// ];
-
-	// useEffect(() => {
-	// 	formStore.setValue('apply_to_shipping', formStore.watch('apply_to_shipping') ? 1 : 0);
-	// }, [formStore.watch('apply_to_shipping')]);
-
-	// useEffect(() => {
-	// 	formStore.setValue('free_shipping', formStore.watch('free_shipping') ? 1 : 0);
-	// }, [formStore.watch('free_shipping')]);
-
-	// useEffect(() => {
-	// 	formStore.setValue('end_other_rules', formStore.watch('end_other_rules') ? 1 : 0);
-	// }, [formStore.watch('end_other_rules')]);
-
+	interface QuickAction {
+		name: Path<CartRuleInterface>;
+		label: string;
+		enable: boolean;
+	}
+	const quickActionsData: QuickAction[] = [
+		{ name: 'apply_to_shipping', label: t('Apply to Shipping'), enable: true },
+		{ name: 'free_shipping', label: t('Free shipping'), enable: true },
+		{ name: 'end_other_rules', label: t('End Other Rules'), enable: true },
+		{ name: 'sort_order', label: t('Sort Order'), enable: true },
+	];
 	const { formStore, onSubmit } = useForm({
 		schema: cartRuleSchema,
 		handleSubmit: handleSubmit,
 		defaultValues,
 	});
-	
+
+	// log Error 
+	console.log('error', formStore.formState.errors);
+
 	return (
 		<Form {...formStore}>
 			<form onSubmit={onSubmit} className='flex-col-global'>
@@ -130,16 +127,16 @@ const CartRuleForm = () => {
 				<div className='custom_container custom-grid-parent'>
 					<div className='flex-col-global grid-left'>
 						<RuleInfoForm formStore={formStore} />
-						{/* <CouponDetailsForm formStore={formStore} />
+						<CouponDetailsForm formStore={formStore} />
 						<ConditionsForm formStore={formStore} />
-						<ActionsForm formStore={formStore} /> */}
+						<ActionsForm formStore={formStore} />
 					</div>
 					<div className='grid-right'>
-						{/* <QuickActions<CartRuleInterface>
+						<QuickActions<CartRuleInterface>
 							formStore={formStore}
 							data={quickActionsData}
 							title={t('Quick actions')}
-						/> */}
+						/>
 					</div>
 				</div>
 
