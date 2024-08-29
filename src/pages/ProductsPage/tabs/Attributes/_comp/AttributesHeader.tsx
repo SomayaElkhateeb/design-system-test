@@ -1,26 +1,24 @@
-import { useTranslation } from 'react-i18next'
-import { IoIosAddCircle } from 'react-icons/io'
-import { useNavigate } from 'react-router-dom'
-import { ArrangeButton, Button } from 'src/app/components/optimized'
-import ActionsButton from 'src/app/components/optimized/Buttons/ActionsButton'
-import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox'
-import { productSortMenu } from 'src/pages/ProductsPage/_comp/data';
-import { FaRegEdit } from 'react-icons/fa';
-import { FiUploadCloud } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
+import { IoIosAddCircle } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
+import { ArrangeButton, Button } from 'src/app/components/optimized';
+import ActionsButton from 'src/app/components/optimized/Buttons/ActionsButton';
+import useSelectBox from 'src/app/components/optimized/Menu/useSelectBox';
 import { LiaTrashAlt } from 'react-icons/lia';
-import { SiMicrosoftexcel } from 'react-icons/si';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 
 export const attributeActionsMenu = [
-  // { id: nanoid(), text: 'Bulk edit', icon: <FaRegEdit className='iconClass' /> },
-  // { id: nanoid(), text: 'Export attributes', icon: <SiMicrosoftexcel className='iconClass' /> },
-  // { id: nanoid(), text: 'Import attributes', icon: <FiUploadCloud className='iconClass' /> },
   {
     id: nanoid(),
     text: 'Delete all attributes',
     icon: <LiaTrashAlt size='28' className='fill-error' />,
   },
 ];
+
+export const sortMenuArrange = [
+  { id: nanoid(), text: 'Name A to Z' },
+	{ id: nanoid(), text: 'Name Z to A' },
+]
 
 const AttributesHeader = () => {
   const { selectedOption, handleSelect } = useSelectBox();
@@ -36,7 +34,7 @@ const AttributesHeader = () => {
       </div>
       <div className='flex-row-global gap-4'>
         <ArrangeButton
-          sortMenus={productSortMenu}
+          sortMenus={sortMenuArrange}
           selectedOption={selectedOption}
           handelSelect={handleSelect}
         />

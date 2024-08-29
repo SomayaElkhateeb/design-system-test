@@ -27,7 +27,12 @@ export default function usePasswordForm({ email }: { email: string }) {
 				toast.success(response?.data?.message);
 				// set to local storage
 				localStorage.setItem('token', response?.data?.data?.token);
-				window.location.href = '/home';
+				// window.location.href = '/home';
+
+				const clientUrl = response?.data?.data?.merchant_url?.client;
+				if (clientUrl) {
+					window.location.href = clientUrl;
+				}
 			},
 			onError: PublicHandlingErrors.onErrorResponse,
 		});
