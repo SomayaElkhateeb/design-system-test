@@ -28,7 +28,7 @@ export default class AxiosHandler {
             params,
         };
 
-        return CategoryApi.get(url, config);
+        return MainApi.get(url, config); //
     };
 
     // POST
@@ -45,7 +45,7 @@ export default class AxiosHandler {
 
         data: any,
     ) => {
-        return CategoryApi.post(url, data);
+        return MainApi.post(url, data); //
     };
 
     // POST FORM-DATA
