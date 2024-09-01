@@ -45,9 +45,9 @@ export default function AttributeFamiliesTable({
             <GlobalTableCell>
               <p className='text-title text-sm'>{e.name}</p>
             </GlobalTableCell>,
-             <GlobalTableCell>
-             <p className='text-title text-sm'>{e.groups.length}</p>
-           </GlobalTableCell>,
+            <GlobalTableCell>
+              <p className='text-title text-sm'>{e.groups.length}</p>
+            </GlobalTableCell>,
             <GlobalTableCell>
               <div onClick={() => handelId(e?.id)}>{children}</div>
             </GlobalTableCell>,

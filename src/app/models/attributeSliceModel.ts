@@ -1,7 +1,7 @@
+import { addAttributeInterface } from 'src/pages/ProductsPage/tabs/Attributes/_hook/HookAddAttributes';
 import { statusGlobal } from '.';
-import { Attribute} from '../interface/AttributeInterface';
 
 export interface attributesSliceModel extends statusGlobal {
-	attributesList: Attribute[];
-    attributeShow: Attribute ;
+	attributesList: addAttributeInterface[];
+    attributeShow: addAttributeInterface | null;
 }

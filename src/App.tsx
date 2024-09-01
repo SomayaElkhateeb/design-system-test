@@ -27,7 +27,7 @@ const App = () => {
 	}, [language, i18n]);
 
 	//
-	const queryClient = new QueryClient({
+	const queryClient = new QueryClient({ //?
 		defaultOptions: {
 			queries: {
 				cacheTime: 1000 * 60 * 5, // 5 minutes

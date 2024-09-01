@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { catalogRulesReducer } from '../cartRule/cartRuleExtraReducer';
-
+import { catalogRulesReducer } from './catalogRuleExtraReducer';
 
 const initialState: any = {
 	catalogRules: [],

@@ -3,5 +3,5 @@ import { AttributeFamily } from '../interface/AttributeFamilyInterface';
 
 export interface attributesFamiliesSliceModel extends statusGlobal {
 	attributesFamilies: AttributeFamily[];
-    attributeFamiliesShow: any;
+    attributeFamiliesShow: AttributeFamily | null;
 }

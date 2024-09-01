@@ -38,7 +38,7 @@ export interface addAttributeInterface {
 }
 
 // Zod schema for validation
-const stringZod = z.string().min(1);
+const stringZod = z.string();
 const numberZod = z.coerce.number().min(0).max(1);
 
 export const AddAttributeSchema = {
@@ -57,13 +57,13 @@ export const AddAttributeSchema = {
         z.object({
             admin_name: stringZod,
             en: z.object({
-                label: stringZod.optional(),
+                label: stringZod,
             }),
             ar: z.object({
-                label: stringZod.optional(),
+                label: stringZod,
             }),
-            sort_order: numberZod.optional(), // 1 or 0
-            swatch_value: stringZod.optional(),
+            sort_order: numberZod, // 1 or 0
+            swatch_value: stringZod,
         })
     ).optional(),
     is_required: numberZod,
@@ -83,7 +83,7 @@ export default function useCustomHookAddAttribute() {
     const handelDefaultValue = (): addAttributeInterface => {
         return {
             code: '',
-            type: 'select', // Default to 'select'
+            type: '', // Default to 'select'
             admin_name: '',
             en: {
                 name: '',

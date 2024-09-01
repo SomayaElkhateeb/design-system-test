@@ -4,6 +4,8 @@ import { HorizontalTabsLink } from 'src/app/components/optimized';
 
 const ProductsLayout = () => {
 	const {t} = useTranslation();
+	// const defaultPath = conditionLocal ? '/admin/products' : '/products';
+
 	const tabs = [
 		{
 			name: t('All Products'),
@@ -33,7 +35,7 @@ const ProductsLayout = () => {
 	return (
 		<div className='flex-col-global'>
 			<div className='Sticky_header'>
-				<HorizontalTabsLink tabs={tabs} path='/products' />
+				<HorizontalTabsLink tabs={tabs} path={'/products'} />
 			</div>
 			<Outlet />
 		</div>

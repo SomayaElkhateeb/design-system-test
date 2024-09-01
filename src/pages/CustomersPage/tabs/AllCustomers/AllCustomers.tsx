@@ -32,6 +32,7 @@ import PopupImportData, { FormSchema } from 'src/app/components/optimized/Popups
 import FilterOrdersComponent from 'src/pages/OrdersPage/FilterOrder/FilterOrdersComponent';
 import { Use_Hook_ForAllCustomersPage } from './_hook/_hookforAllCustomersPage';
 import toast from 'react-hot-toast';
+import CustomersFilters from './_comp/_customerFilter/CustomersFilters';
 
 //  componenet will be used in customers page
 export default function AllCustomers() {
@@ -198,7 +199,7 @@ export default function AllCustomers() {
 
 			{/* open filter drawer */}
 			{openDrawer && (
-				<FilterOrdersComponent openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
+				<CustomersFilters openDrawer={openDrawer} HandelCloseDrawer={HandelCloseDrawer} />
 			)}
 			{/* openDeleteDialog */}
 			{openDeleteDialog && (

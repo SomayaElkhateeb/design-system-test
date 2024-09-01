@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 
 import { NewCampaign, NewDiscount, PlatformSetup } from '.';
 import CampaignElement from '../tabs/Campaigns/_comp/CampaignElement';
+import CartRuleForm from '../tabs/CartRule/_comp/CartRuleForm';
+import CatalogRuleForm from '../tabs/CatalogRule/_comp/CatalogRuleForm';
 
 const MarketingConfig = () => {
 	const { config } = useParams();
@@ -16,6 +18,10 @@ const MarketingConfig = () => {
 			return <NewDiscount coupon />;
 		case 'addCampaign':
 			return <NewCampaign />;
+		case 'add-cartRule':
+			return <CartRuleForm />;
+		case 'add-catalogRule':
+			return <CatalogRuleForm />;
 		case platformKey:
 			return <PlatformSetup platform={platform} />;
 		default:

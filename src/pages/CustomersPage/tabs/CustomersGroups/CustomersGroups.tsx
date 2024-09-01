@@ -120,7 +120,7 @@ export default function CustomersGroups() {
 							firstName={e.name}
 							customersCount={e.customers_count}
 							group
-							path='customers/addGroupCustomer'
+							path='admin/customers/addGroupCustomer'
 							email={e.description}
 						>
 							<ThreeDotsButton

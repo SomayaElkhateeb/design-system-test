@@ -74,7 +74,7 @@ export default function BlogPostsTable({
 									<IoEyeOutline className='text-subtitle' />
 									<FaRegEdit
 										className='text-subtitle'
-										onClick={() => navigate(`addDiscount?id=${e?.id}`)}
+										onClick={() => navigate(`admin/addDiscount?id=${e?.id}`)}
 									/>
 									<ArrowTables path={`blogPosts/${e?.id}`} />
 								</div>

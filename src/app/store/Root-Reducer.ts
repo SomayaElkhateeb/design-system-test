@@ -5,10 +5,6 @@ import couponPage from './slices/marketingPage/coupon/couponSlice';
 import cartRule from './slices/marketingPage/cartRule/cartRuleSlice';
 import catalogRules from './slices/marketingPage/catalogRule/catalogRuleSlice';
 
-import categories from './slices/selectors/categories/categoriesSlice';
-import customers from './slices/selectors/customers/customersSlice';
-import products from './slices/selectors/products/productsSlice';
-import groups from './slices/selectors/groups/groupsSlice';
 import productsAnalytics from './slices/analyticsPage/ProductsAnalytics/productsAnalyticsTableSlice';
 import ordersAnalytics from './slices/analyticsPage/OrderAnalytics/orderAnalyticsTableSlice';
 import customersAnalytics from './slices/analyticsPage/CustomerAnalytics/customersAnalyticsTableSlice';
@@ -39,9 +35,14 @@ import configurations from './slices/settingsPage/configurations/configurationsS
 import taxCategorySettings from './slices/settingsPage/tax/taxCategories/taxCategoriesSlice';
 import taxRateSettings from './slices/settingsPage/tax/taxRates/taxRateSlice';
 import branchSettings from './slices/settingsPage/branches/branchesSlice';
-import attributesSlice from "./slices/Attributes/AttributeTableSlice"
+import attributesSlice from "./slices/Attributes/AttributeTableSlice";
+
+import subdomains from "./slices/subdomains/subdomainSlice";
 
 export const rootReducer = combineReducers({
+
+	// Auth
+	subdomains:subdomains,
 	// ATTRIBUTES
 	attributesProducts:attributesProducts,
 	attributesFamilies:attributesFamilies,
