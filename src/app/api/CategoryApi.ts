@@ -7,6 +7,7 @@ if (typeof window !== 'undefined') {
 	custom_Basic_Url = localStorage.getItem('domain');
 }
 
+
 export const baseUrl = custom_Basic_Url
 	? `https://${custom_Basic_Url}/api/v1/`
 	: 'https://my.dookan.net/api/v1/';

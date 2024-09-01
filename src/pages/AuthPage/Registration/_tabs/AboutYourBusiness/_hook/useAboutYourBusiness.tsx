@@ -5,6 +5,7 @@ import { useMutation } from 'react-query';
 import toast from 'react-hot-toast';
 import PublicHandlingErrors from 'src/app/utils/AxiosUtils/PublicHandlingErrors';
 import { AuthApi } from 'src/app/React-Query/authApi';
+import { getCookie } from 'src/app/utils';
 
 export interface AboutYourBusinessInterface {
 	name: string;
@@ -59,6 +60,18 @@ export default function useAboutYourBusiness({ onFinish }: { onFinish: () => voi
 				onFinish();
 				localStorage.setItem('token', response?.data?.data?.token);
 				localStorage.setItem('domain', response?.data?.data?.data?.company?.domain);
+				// set to cookie
+				document.cookie = `authToken=${response?.data?.data?.token}; domain=.dookan.net; path=/; secure; SameSite=None`;
+				document.cookie = `authDomain=${response?.data?.data?.data?.company?.domain}; domain=.dookan.net; path=/; secure; SameSite=None`;
+
+				const authDomain = getCookie('authDomain');
+
+				if (authDomain) {
+					window.location.href = `https://${authDomain}`; 
+				} else {
+					console.error('authDomain not found.');
+				}
+
 				toast.success(response?.data?.message);
 			},
 			onError: PublicHandlingErrors.onErrorResponse,
